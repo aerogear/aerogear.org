@@ -1,0 +1,170 @@
+body {
+    background-color: #dddddd;
+    padding-top: 120px;
+    padding-bottom: 40px;
+}
+
+.navbar-inner {
+    min-height: 110px;
+    background-color: #dde7ec;
+    background-image: url("../img/banner.png");
+    background-repeat: no-repeat;
+}
+
+.navbar .container {
+    width: auto;
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #669eb2;
+    text-shadow: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.navbar .nav > li > a {
+    color: #e25027;
+    font-weight: bold;
+    text-shadow: none;
+    margin: 2px;
+}
+
+.navbar .nav > li > a:hover {
+    background-color: #669eb2;
+    text-shadow: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.navbar .btn-navbar, .navbar .btn-navbar:hover {
+    background-color: #e25027;
+    background-image: none;
+}
+
+.btn-primary {
+    background-color: #e25027;
+    background-image: -ms-linear-gradient(top, #f27552, #d63a0e);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f27552), to(#d63a0e));
+    background-image: -webkit-linear-gradient(top, #f27552, #d63a0e);
+    background-image: -o-linear-gradient(top, #f27552, #d63a0e);
+    background-image: -moz-linear-gradient(top, #f27552, #d63a0e);
+    background-image: linear-gradient(top, #f27552, #d63a0e);
+    background-repeat: repeat-x;
+    border-color: #05C #05C #003580;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#f27552', endColorstr='#d63a0e', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false)
+}
+
+.splash {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.splash img {
+    display: block;
+    margin: 0 auto;
+}
+
+.start-header h2 {
+    color: #c6000f;
+}
+
+.start-header .btn {
+    float: right;
+    margin-right: 20px;
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: none;
+    padding: 8px;
+    background-color: #e25027;
+    background-image: -ms-linear-gradient(top, #f27552, #d63a0e);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f27552), to(#d63a0e));
+    background-image: -webkit-linear-gradient(top, #f27552, #d63a0e);
+    background-image: -o-linear-gradient(top, #f27552, #d63a0e);
+    background-image: -moz-linear-gradient(top, #f27552, #d63a0e);
+    background-image: linear-gradient(top, #f27552, #d63a0e);
+    background-repeat: repeat-x;
+    border-color: #05C #05C #003580;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#f27552', endColorstr='#d63a0e', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false)
+}
+
+.start-header .btn:hover {
+    background-position: 0 0;
+}
+
+@media (max-width: 979px) {
+    body {
+        padding-top: 0px;
+    }
+
+    .navbar .container {
+        position: relative;
+        right: auto;
+        bottom: auto;
+    }
+
+    .nav-collapse {
+        background-color: #ffffff;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .start-header h2 {
+        font-size: 22px;
+    }
+
+    .start-header .btn {
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .span4 h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .start-header {
+        margin: 0 auto;
+    }
+
+    .start-header h2 {
+        font-size: 18px;
+    }
+
+    .start-header .btn {
+        font-size: 14px;
+        margin-right: 0px;
+    }
+}
+
+@media (max-width: 640px) {
+    .start-header {
+        text-align: center;
+    }
+    .start-header h2 {
+        font-size: 18px;
+    }
+
+    .start-header .btn, .span4 .btn {
+        display: block;
+        float: none;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 500px) {
+    .start-header h2 {
+        font-size: 14px;
+    }
