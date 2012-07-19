@@ -1,10 +1,8 @@
-Get Started with Hybrid Application Frameworks
-===========
+== Get Started with Hybrid Application Frameworks
 
 This wiki page will give an overview of what hybrid applications are, what tools and frameworks are out there to help create them, and some teasers for upcoming examples if you wanted to get involved.
 
-What is a Hybrid Application
--------
+.What is a Hybrid Application
 
 The term "*_hybrid mobile application_*" can be a bit confusing for new developers  Hybrid apps, are native mobile applications that are built using technologies other than the native SDK's for the platforms.  Most of them claim "write once run anywhere", however the truth is more like "write almost once, and run almost anywhere".  As with most things there are different degrees of compatibility and tinkering that is required. 
 
@@ -14,8 +12,7 @@ Hybrid application projects usually involve web based technologies such as JavaS
  
 The leading frameworks in this area are detailed below with links to examples, and future plans (jira's).  If you want to get involved jump right in!
 
-Apache Cordova
--------
+.Apache Cordova
 
 Project link: http://incubator.apache.org/cordova/
  
@@ -25,8 +22,7 @@ Originally known as PhoneGap, the code base was donated to Apache as the Callbac
 * Apache Cordova version of our examples - https://issues.jboss.org/browse/AEROGEAR-15[AEROGEAR-15]
 * Walkthrough of using Cordova based apps on JBoss - https://issues.jboss.org/browse/AEROGEAR-39[AEROGEAR-39]
 
-PhoneGap Build
--------
+.PhoneGap Build
 
 Link: https://build.phonegap.com/
  
@@ -37,17 +33,16 @@ A very neat tool developed by the Cordova team when they were known as PhoneGap.
 * Develop a workflow for CI integration in OpenShift, JBoss AS, and PhoneGap build - https://issues.jboss.org/browse/AEROGEAR-106[AEROGEAR-106]
 * Tutorial of how to do all of this in your own environment - https://issues.jboss.org/browse/AEROGEAR-107[AEROGEAR-107]
 
-Appcelerator
--------
+.Appcelerator
 
 Project link: http://developer.appcelerator.com/
  
 Appcelerator is another leading hybrid application project.  There approach is to primarily use JavaScript programming language and their SDK to development your application.  They are then able to "compile" this down to native applications.  One benefit of this is more access to native UI widgets, and APIs.  The downside is a new SDK to learn, however they do provide there own tooling for that.
  
 .Examples, tasks, and plans:
+
 * Appclerator example with JBoss - https://issues.jboss.org/browse/AEROGEAR-108[AEROGEAR-108]
 
-Others
--------
+.Others
 
 There are other projects out there as well at different levels of maturity.  These include Sencha, RhoMobile, Trigger.io etc...
