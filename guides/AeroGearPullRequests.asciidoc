@@ -35,18 +35,20 @@ This section talks about handling a pull request generated from a community memb
 
 You will need to get the updates from the contributors repository into your own. To do this create a remote reference to their repo
 
+[source,bash]
 ----
-git remote add contrib_usr git@github.com:[contrib_usr]/[target repo].git
+$ git remote add contrib_usr git@github.com:[contrib_usr]/[target repo].git
 ----
 
 ===== Create a topic branch and pull in PR updates
 
 It is highly recommended that you create a topic branch for verifying PRs. After that you need to pull in their updates for review.
 
+[source,bash]
 ----
-git checkout -b <contrib_topic_branch>
-git fetch <contrib_usr>
-git rebase -i <contrib_usr>/<contrib_topic_branch>
+$ git checkout -b <contrib_topic_branch>
+$ git fetch <contrib_usr>
+$ git rebase -i <contrib_usr>/<contrib_topic_branch>
 ----
 
 You now have a topic branch that should be the exact same as the PR.
@@ -67,18 +69,19 @@ When satisfied with the quality and functionality of the PR you can push to the 
 
 There are two options here for merging. You can use --ff-only to not keep the topic branch - this is fine for simple, or single commit updates. For complex or multi-commit updates you can use --no-ff which will force a merge commit, and maintain the topic branch. This can make it easier to visualize, debug and bundle related commits.
 
+[source,bash]
 ----
-git checkout master 
+$ git checkout master 
 
 #for simple or single commit updates
-git merge --ff-only <contrib_topic_branch>
+$ git merge --ff-only <contrib_topic_branch>
 
 #for complex, or multi-commit update
-git merge --no-ff <contrib_topic_branch>
+$ git merge --no-ff <contrib_topic_branch>
 
-git push upstream master
-git push origin master
-git branch -d <contrib_topic_branch>
+$ git push upstream master
+$ git push origin master
+$ git branch -d <contrib_topic_branch>
 ----
 
 At this point the upstream repo, your fork, and your local repo's should be in sync and have the commits from the PR in place.

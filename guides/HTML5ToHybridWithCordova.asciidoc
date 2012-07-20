@@ -20,8 +20,9 @@ First, we will look at building the app for the iOS Simulator. Once you have clo
 
 Next, just open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and then create the link like this:
 
+[source,bash]
 ----
-ln -s <full-path-to-your-repo>/shared/www www
+$ ln -s <full-path-to-your-repo>/shared/www www
 ----
 
 This will create the symbolic link and the folder should be fixed in XCode. If the folder is missing, there is a little trick that you have to do to get XCode to see it. First in the *&lt;repo-folder&gt;/ios/KitchensinkCordova* delete the www file which came from the repo if it exists. Then create a new folder called *www*. Now from finder, drag that folder into XCode and drop it on the KitchensinkCordova project on the left side of the window. A dialog window should appear and you want to select the option to add the folder as a reference. You should now see that folder listed in XCode. This is where it gets tricky. Go back to Finder and delete the *www* folder you just created. It will now show as broken in XCode but that's ok. In Terminal, create the symbolic link using the instructions above and you should be ready to go.
@@ -32,6 +33,7 @@ The last step before we can test is to update the path to our Cordova JavaScript
 
 In XCode, expand the *www* folder and click on the *index.html* file. This will open the file for editing in the center pane in XCode. Around line 40, you should see
 
+[source,html]
 ----
 <!-- Cordova script will be replaced with appropriate version at build time -->
 <script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
@@ -73,6 +75,7 @@ image::img/project.png[Project view in Eclipse]
 
 Now the project is in Eclipse. We need to make one small change to it before it is ready to test. Expand the project and go into the *assets/www* folder and double-click on the *index.html* file. This will open the file for editing in the center pane. Around line 40, you should see
 
+[source,html]
 ----
 <!-- Cordova script will be replaced with appropriate version at build time -->
 <script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>

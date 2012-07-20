@@ -20,6 +20,7 @@ https://github.com/aerogear
 .Clone *your* newly forked copy to your system
 Now that you have your own copy in GitHub you need to get it on your local system.
 
+[source,bash]
 ----
 $ git clone git@github.com:[your user]/[chosen repo].git
 Cloning into [chosen repo]...
@@ -33,29 +34,33 @@ Resolving deltas: 100% (90/90), done.
 .Add a remote reference to the upstream repo
 This is used for pulling in future updates, and keeping your repository up to date.
 
+[source,bash]
 ----
-git remote add upstream git://github.com/aerogear/[chosen repo].git 
+$ git remote add upstream git://github.com/aerogear/[chosen repo].git
 ----
 
 An optional step, but one that helps keep clearity is to rename your "origin" remote to your username. If you do this you can replace "origin" in all of the following commands with your username.
 
+[source,bash]
 ----
-git remote rename origin your_username
+$ git remote rename origin your_username
 ----
 
 .Pull in updates from upstream
 It is a good practice to regularly pull in updates from the upstream repo before starting any work. Especially if your local copy is stale.
 
+[source,bash]
 ----
-git pull --rebase upstream master
+$ git pull --rebase upstream master
 ----
 
 or
 
+[source,bash]
 ----
-git checkout master
-git fetch upstream
-git rebase -i upstream/master
+$ git checkout master
+$ git fetch upstream
+$ git rebase -i upstream/master
 ----
 
 .From: https://community.jboss.org/docs/DOC-15596[Hacking on AS7]
@@ -70,25 +75,28 @@ If you have not done so it is a good idea to communicate any planned bug fixes, 
 ==== Create a topic branch (optional)
 It is a good practice to do any work in a topic branch to keep your master branch clean. This is optional though, but the rest of this document will assume you are using it.
 
+[source,bash]
 ----
-git checkout -b your_topic_branch
+$ git checkout -b your_topic_branch
 ----
 
 If you use a topic branch you may need to merge/rebase from your master or upstream to keep it up to date
 
 *In your topic branch:*
 
+[source,bash]
 ----
-git fetch upstream
-git rebase -i upstream/master
+$ git fetch upstream
+$ git rebase -i upstream/master
 ----
 
 ==== Make your changes, and commit them locally
 Don't forget our coding standards and style guidelines https://github.com/aerogear/ide-config[AeroGear IDE Coding Conventions]. If you have questions just ask.
 
+[source,bash]
 ----
-git commit -m "Your commit message. AEROGEAR-XX"
-git commit -m "Your other commit. AEROGEAR-XX"
+$ git commit -m "Your commit message. AEROGEAR-XX"
+$ git commit -m "Your other commit. AEROGEAR-XX"
 ----
 
 If the changes you are making have a corresponding jira (and they should) add the Jira ID to the commit message.
@@ -120,9 +128,10 @@ As you are working on your branch others may have updated the upstream repositor
 
 *In your topic branch:*
 
+[source,bash]
 ----
-git fetch upstream
-git rebase -i upstream/master
+$ git fetch upstream
+$ git rebase -i upstream/master
 ----
 
 At this point you may run into conflicts depending on what was changed locally and upstream. You will need to resolve any of those conflicts (try `git mergetool`) and rerun the rebase command. You can abort a rebase as well with the `git rebase --abort` command.
@@ -136,8 +145,9 @@ The -i triggers an interactive update which also allows you to combine commits, 
 .Pushing your local changes to your repo
 Now that you're sync'ed with upstream, and your changes are on top of that you are ready to push your local updates to your forked GitHub repository.
 
+[source,bash]
 ----
-git push -f origin your_topic_branch
+$ git push -f origin your_topic_branch
 ----
 
 The push command defaults to your master branch not your current branch, so specifying your topic branch is needed to get it pushed.
@@ -180,15 +190,17 @@ Awesome! Your pull request has been merged, the jira is closed, and you are bask
 
 Before the drinks start to flow, be sure to update your local repository, and forked repo with the latest changes that include your pull request. You can also delete, or manage your topic branch as you see fit.
 
+[source,bash]
 ----
-git checkout master
-git pull --rebase upstream master
+$ git checkout master
+$ git pull --rebase upstream master
 ----
 
 and then
 
+[source,bash]
 ----
-git push origin master
+$ git push origin master
 ----
 
 to update your GitHub fork.
@@ -199,7 +211,7 @@ Below are various tips and tricks for working with git.
 
 ===== Squashing commits
 
-This may sound harder than it, or easier than it seems depending on your starting point. When you run `git rebase -i foo` you are given the opportunity to adjust the commit history of your branch. Once you do this a few times it becomes much easier.
+This may sound harder than it, or easier than it seems depending on your starting point. When you run `$ git rebase -i foo` you are given the opportunity to adjust the commit history of your branch. Once you do this a few times it becomes much easier.
 
 * Great explanation of how to squash your commits, and work with rebase -i
 ** http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
