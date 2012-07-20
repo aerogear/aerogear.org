@@ -1,0 +1,205 @@
+== AeroGear GitHub Workflow & Instructions
+
+This article outlines the standard git and GitHub process, and workflow for working with AeroGear examples, and repositories. Any repository specific requirements will be listed in the repository, and/or will be linked in the document. This article also contains various guidelines, and tips for using git with AeroGear.
+
+Many of instructions here are very closely related to the JBoss AS 7 instructions: https://community.jboss.org/docs/DOC-15596[Hacking on AS7]. Note that one primary difference is AeroGear's use of "--no-ff" and merge commits to make reviewing history and chunks of work easier. This will be discussed further below.
+
+.Get a GitHub account
+
+****
+http://github.com
+****
+
+.Fork the desired AeroGear repository
+Use GitHub's forking feature to get a copy of the repository into your account. AeroGear has multiple repositories available. Choose the one (or more) that you wish to contribute to.
+
+****
+https://github.com/aerogear
+****
+
+.Clone *your* newly forked copy to your system
+Now that you have your own copy in GitHub you need to get it on your local system.
+
+----
+$ git clone git@github.com:[your user]/[chosen repo].git
+Cloning into [chosen repo]...
+remote: Counting objects: 291, done.
+remote: Compressing objects: 100% (175/175), done.
+remote: Total 291 (delta 90), reused 273 (delta 72)
+Receiving objects: 100% (291/291), 264.03 KiB | 295 KiB/s, done.
+Resolving deltas: 100% (90/90), done.
+----
+
+.Add a remote reference to the upstream repo
+This is used for pulling in future updates, and keeping your repository up to date.
+
+----
+git remote add upstream git://github.com/aerogear/[chosen repo].git 
+----
+
+An optional step, but one that helps keep clearity is to rename your "origin" remote to your username. If you do this you can replace "origin" in all of the following commands with your username.
+
+----
+git remote rename origin your_username
+----
+
+.Pull in updates from upstream
+It is a good practice to regularly pull in updates from the upstream repo before starting any work. Especially if your local copy is stale.
+
+----
+git pull --rebase upstream master
+----
+
+or
+
+----
+git checkout master
+git fetch upstream
+git rebase -i upstream/master
+----
+
+.From: https://community.jboss.org/docs/DOC-15596[Hacking on AS7]
+[NOTE]
+=================================
+Please note that --rebase is very important if you do have commits. What happens is that when git pull can't fast forward, it does a merge commit, and a merge commit puts the sucked in changes ON TOP of yours whereas a rebase puts them BELOW yours.
+=================================
+
+.Do the work
+If you have not done so it is a good idea to communicate any planned bug fixes, or updates you wish to make with the community and project team. See link::Contributing.html[Contributing To AeroGear] for more on the best ways to do that.
+
+==== Create a topic branch (optional)
+It is a good practice to do any work in a topic branch to keep your master branch clean. This is optional though, but the rest of this document will assume you are using it.
+
+----
+git checkout -b your_topic_branch
+----
+
+If you use a topic branch you may need to merge/rebase from your master or upstream to keep it up to date
+
+*In your topic branch:*
+
+----
+git fetch upstream
+git rebase -i upstream/master
+----
+
+==== Make your changes, and commit them locally
+Don't forget our coding standards and style guidelines https://github.com/aerogear/ide-config[AeroGear IDE Coding Conventions]. If you have questions just ask.
+
+----
+git commit -m "Your commit message. AEROGEAR-XX"
+git commit -m "Your other commit. AEROGEAR-XX"
+----
+
+If the changes you are making have a corresponding jira (and they should) add the Jira ID to the commit message.
+
+==== Scoping commits, and pull requests
+This is a good time to talk about the recommended way of scoping the work for a commits, and pull requests.
+
+* 1 pull request should represent 1 issue, or feature
+** It should be represented by a jira or be trivial in nature
+** Exceptions can be made for technically related, and/or trivial issues
+* Multiple commits and issues
+** Commits don't need to be squashed into a single commit per issue
+** Trivial commits should be squashed though
+*** Examples:
+**** "Fixed one spelling mistake"
+**** "Reset my type"
+**** "Brainfart"
+** In general commits should be meaningful, and provide value to the history
+** For tips on squashing commits see the related section below.
+* Misc
+** Any whitespace only changes ( such as indentation updates, tab--&gt;space, etc.. ) should be in their own commit and/or pull request.
+*** If this is not done separating out the code changes from the whitespace updates is very difficult.
+
+.Prepare for the pull request
+All your changes are done, and you think you're ready to get your updates seen.
+
+==== Sync with any upstream changes via rebase
+As you are working on your branch others may have updated the upstream repository. You *must* synchronize with those changes by rebasing, before creating the pull request. This will apply your changes on top of any changes from upstream.
+
+*In your topic branch:*
+
+----
+git fetch upstream
+git rebase -i upstream/master
+----
+
+At this point you may run into conflicts depending on what was changed locally and upstream. You will need to resolve any of those conflicts (try `git mergetool`) and rerun the rebase command. You can abort a rebase as well with the `git rebase --abort` command.
+
+.From: https://community.jboss.org/docs/DOC-15596[Hacking on AS7]
+[NOTE]
+=================================
+The -i triggers an interactive update which also allows you to combine commits, alter commit messages etc. It's a good idea to make the commit log very nice for external consumption. Note that this alters history, which while great for making a clean patch, is unfriendly to anyone who has forked your branch. Therefore you want to make sure that you either work in a branch that you don't share, or if you do share it, tell them you are about to revise the branch history (and thus, they will then need to rebase on top of your branch once you push it out).
+=================================
+
+.Pushing your local changes to your repo
+Now that you're sync'ed with upstream, and your changes are on top of that you are ready to push your local updates to your forked GitHub repository.
+
+----
+git push -f origin your_topic_branch
+----
+
+The push command defaults to your master branch not your current branch, so specifying your topic branch is needed to get it pushed.
+
+The "-f" option may be needed depending on the results of the rebase above. Please see the note in that section about rebasing public repo's. As you are likely using your personal account this should not be an issue.
+
+.Creating the pull request
+Now your updates are in your repo, and ready to share. The next step is to let the project know about them.
+
+. In your GitHub repository switch to the topic branch you pushed in the previous step.
+. Click on the "Pull Request" button in the upper right.
+. Fill in the summary, and details for your pull request
+.. See scoping guidelines above
+. Send the pull request using using button in the lower right
+. Copy the pull request URL from the next page
+. In the associated jira click on the "Workflow" menu, and choose "Link Pull Request"
+.. Copy in the link, and and comment you wish
+
+At this point the jira will show "Pull Request Sent", but the jira is still unresolved. There are a couple of options on what to do for your next step depending on the situation.
+
+* Pull request is not blocking work, and/or not time sensitive
+** Will be picked up my the team developed within a couple of days and reviewed.
+** If not follow to next step
+* Pull request is blocking additional work, and/or is time sensitive, and/or critical
+** Email the http://www.redhat.com/mailman/listinfo/aerogear-dev[aerogear-dev] mailing list and post that this PR should be reviewed and why
+** Join the #aerogear freenode irc channel, and request someone review this PR
+* If you are a project developer and the change is trivial, blocking your critical work and other team members are not available
+** Comment in the PR why you are going to push your pull request
+** Do some extra testing :-)
+** Push your updates to the upstream repository
+** Close the pull request, resolve the jira, etc...
+
+In any of these situations please keep an eye out for any comments, or follow up items related to your pull request so that we can act on them quickly. GitHub and the pull request mechinism will be used for code reviews, and comments. Please act on these comments in timely manor so we can get your changes in!
+
+If you are a project developer this is where your job comes in. See link::AeroGearPullRequests.html[How to Handle AeroGear Pull Requests] for more on handling pull requests.
+
+.Updating your branch once the PR has been closed
+
+Awesome! Your pull request has been merged, the jira is closed, and you are basking in the after contributing to an open source project glow!
+
+Before the drinks start to flow, be sure to update your local repository, and forked repo with the latest changes that include your pull request. You can also delete, or manage your topic branch as you see fit.
+
+----
+git checkout master
+git pull --rebase upstream master
+----
+
+and then
+
+----
+git push origin master
+----
+
+to update your GitHub fork.
+
+.Tips
+
+Below are various tips and tricks for working with git.
+
+===== Squashing commits
+
+This may sound harder than it, or easier than it seems depending on your starting point. When you run `git rebase -i foo` you are given the opportunity to adjust the commit history of your branch. Once you do this a few times it becomes much easier.
+
+* Great explanation of how to squash your commits, and work with rebase -i
+** http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
