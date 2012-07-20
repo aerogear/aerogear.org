@@ -1,0 +1,13 @@
+#skin_dir: ../site-skin
+profiles:
+  development:
+  staging:
+    base_url: http://staging.aerogear.org/
+    deploy:
+      host: aerogear.org
+      path: /var/www/domains/aerogear.org/staging/htdocs/ 
+  production:
+    base_url: http://aerogear.org/
+    deploy:
+      host: aerogear.org
+      path: /var/www/domains/aerogear.org/www/htdocs/ 
