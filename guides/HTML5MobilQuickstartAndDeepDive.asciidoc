@@ -327,7 +327,7 @@ Any requests to /members will be routered to this class and be processed by its 
 
 [source, java]
 ----
-@GET
+   @GET
    @Produces(MediaType.APPLICATION_JSON)
    public List<Member> listAllMembers() 
    ...
