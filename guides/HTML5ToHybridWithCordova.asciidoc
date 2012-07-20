@@ -19,6 +19,7 @@ Before getting started, it is important to note the structure of this repo and h
 First, we will look at building the app for the iOS Simulator. Once you have cloned the repo, it is time to start the build process. In order to build a Cordova iOS app, you need to install CordovaLib, Cordova Framework and Cordova XCode templates. At this time, there is not a pre-built installer so it must be built from source before it can be installed. Go to https://github.com/apache/incubator-cordova-ios, click the Tags link and download the latest release which at this time is 2.0.0. Unzip the file to a known location, then follow the instructions https://github.com/apache/incubator-cordova-ios[here] under the section titled "Build and install the Installer Package".
 
 Next, just open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and then create the link like this:
+
 ----
 ln -s <full-path-to-your-repo>/shared/www www
 ----
@@ -30,6 +31,7 @@ image::img/folders.png[Sample Folder List in XCode]
 The last step before we can test is to update the path to our Cordova JavaScript file. In order to share the *www* resources, a placeholder has been added to the index.html file that must be replaced with the path to the appropriate Cordova file for the app you are building.
 
 In XCode, expand the *www* folder and click on the *index.html* file. This will open the file for editing in the center pane in XCode. Around line 40, you should see
+
 ----
 <!-- Cordova script will be replaced with appropriate version at build time -->
 <script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
