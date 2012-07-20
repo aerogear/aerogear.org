@@ -8,7 +8,7 @@ All of our documentation is either in standard [MarkDown](http://github.github.c
 Top Level Document Folders
 --------------------------
 
-* /wiki
+* /guides
  * Tutorials, gettings started docs, how-tos
 * /planning
  * Project roadmaps, plans, etc...
