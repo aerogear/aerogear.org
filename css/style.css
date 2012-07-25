@@ -7,7 +7,7 @@ body {
 .navbar-inner {
     min-height: 110px;
     background-color: #dde7ec;
-    background-image: url("../img/banner.png");
+    background-image: url("/img/banner.png");
     background-repeat: no-repeat;
 }
 
