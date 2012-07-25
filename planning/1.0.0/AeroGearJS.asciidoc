@@ -8,7 +8,7 @@ External References
 -------------------
 
 * link:https://github.com/aerogear/aerogear-js/[Github Repo]
-* link:https://github.com/aerogear/aerogear-js/blob/master/README.md[README.md] file
+* link:https://github.com/aerogear/aerogear-js/blob/master/README.md[README.md]
 * link:https://issues.jboss.org/browse/AEROGEAR/component/12315072[AEROGEAR Jira component]
 
 Deliverables

@@ -9,10 +9,24 @@ External References
 -------------------
 
 * link:https://github.com/aerogear/aerogear-controller/[Github Repo]
-* link:https://github.com/aerogear/aerogear-controller/blob/master/README.md[README.md] file
+* link:https://github.com/aerogear/aerogear-controller/blob/master/README.md[README.md]
 * link:https://github.com/aerogear/aerogear-controller-demo[Controller Demo]
 * link:https://issues.jboss.org/browse/AEROGEAR/component/12315661[AEROGEAR Jira component]
-*  
+
+Release Roadmap
+---------------
+
+The AeroGear Controller will have its own versioning.  Its Roadmap should be defined here.
+
+1.0.0.Alpha1
+~~~~~~~~~~~~
+
+*TODO* complete
+
+1.0.0.M1
+~~~~~~~~
+
+*TODO* complete
 
 Requirements
 ------------

@@ -7,7 +7,7 @@ External References
 -------------------
 
 * link:https://github.com/aerogear/aerogear-ios/[Github Repo]
-* link:https://github.com/aerogear/aerogear-ios/blob/master/README.md[README.md] file
+* link:https://github.com/aerogear/aerogear-ios/blob/master/README.md[README.md]
 * link:https://issues.jboss.org/browse/AEROGEAR/component/12314946[AEROGEAR Jira component]
 
 Deliverables
