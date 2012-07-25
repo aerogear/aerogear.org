@@ -1,0 +1,47 @@
+AeroGear JavaScript Library 1.0.0 - DRAFT
+=========================================
+:Author: Kris Borchers
+
+This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.  Completed functionality may be moved, removed, or updated in the aerogear-js README.md file.
+
+External References
+-------------------
+
+* link:https://github.com/aerogear/aerogear-js/[Github Repo]
+* link:https://github.com/aerogear/aerogear-js/blob/master/README.md[README.md] file
+* link:https://issues.jboss.org/browse/AEROGEAR/component/12315072[AEROGEAR Jira component]
+
+Deliverables
+------------
+
+* aerogear.js
+** Both a minimized version and development version
+* API & usage documentation
+* Integration into an example TODO application
+* JBoss Tools template application
+
+Release Roadmap
+---------------
+
+Each library will have its own versioning.  Its Roadmap should be defined here.
+
+1.0.0.Alpha1
+~~~~~~~~~~~~
+
+*TODO* complete
+
+1.0.0.M1
+~~~~~~~~
+
+*TODO* complete
+
+JavaScript Specific Requirements
+--------------------------------
+
+For common cross-library requirements see:
+
+* link:AeroGearPersistence.html[AeroGear Persistence Plan]
+* link:AeroGearSecurity.html[AeroGear Security Plan]
+
+
+*TODO* Complete

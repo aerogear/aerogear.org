@@ -1,0 +1,49 @@
+AeroGear iOS Library 1.0.0 - DRAFT
+==================================
+
+This document covers the requirements, use-cases and planned API's for the AeroGear iOS client library.  Completed functionality may be moved, removed, or updated in the aerogear-ios README.md file.
+
+External References
+-------------------
+
+* link:https://github.com/aerogear/aerogear-ios/[Github Repo]
+* link:https://github.com/aerogear/aerogear-ios/blob/master/README.md[README.md] file
+* link:https://issues.jboss.org/browse/AEROGEAR/component/12314946[AEROGEAR Jira component]
+
+Deliverables
+------------
+
+* aerogear.dmg
+** XCode installable framework
+* API & usage documentation
+* Integration into an example application
+** Possibly native version of TODO app
+* XCode template application
+
+Release Roadmap
+---------------
+
+Each library will have its own versioning.  Its Roadmap should be defined here.
+
+1.0.0.Alpha1
+~~~~~~~~~~~~
+
+*TODO* complete
+
+1.0.0.M1
+~~~~~~~~
+
+*TODO* complete
+
+iOS Specific Requirements
+-------------------------
+
+For common cross-library requirements see:
+
+* link:AeroGearPersistence.html[AeroGear Persistence Plan]
+* link:AeroGearSecurity.html[AeroGear Security Plan]
+
+Core Data Integration
+~~~~~~~~~~~~~~~~~~~~~
+
+*TODO* Complete

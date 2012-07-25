@@ -1,0 +1,28 @@
+AeroGear Security 1.0.0 - DRAFT
+===============================
+:Author: Bruno Oliveira
+:Author: Jay Balunas
+
+External References
+-------------------
+
+* link:https://github.com/aerogear/aerogear-security/[Github Repo]
+* link:https://github.com/aerogear/aerogear-security/blob/master/README.md[README.md] file
+* link:https://cwiki.apache.org/confluence/display/DeltaSpike/Security+Module+Drafts[DeltaSpike Security Module Spec]
+* link:https://github.com/picketlink/[PicketLink Github]
+
+AeroGear Controller Requirements
+--------------------------------
+
+*TODO* Pull in requirements and use-cases from gist
+
+Common Client Library Requirements
+----------------------------------
+
+*TODO* Pull in requirements & user-cases from gist
+
+Apache DeltaSpike & JBoss PicketLink
+------------------------------------
+
+*TODO* Links to existing resources/discussions
+*TODO* Requirements for those projects

@@ -1,0 +1,47 @@
+AeroGear Android Library 1.0.0 - DRAFT
+======================================
+
+This document covers the requirements, use-cases and planned API's for the AeroGear Android client library.  Completed functionality may be moved, removed, or updated in the aerogear-Android README.md file.
+
+External References
+-------------------
+
+* link:https://github.com/aerogear/aerogear-android/[Github Repo]
+* link:https://github.com/aerogear/aerogear-android/blob/master/README.md[README.md] file
+* link:https://issues.jboss.org/browse/AEROGEAR/component/12314945[AEROGEAR Jira component]
+
+Deliverables
+------------
+
+* aerogear.jar
+** Android SDK Installable Framework
+* API & usage documentation
+* Integration into an example application
+** Possibly native version of TODO app
+* Android SDK template application
+
+Release Roadmap
+---------------
+
+Each library will have its own versioning.  Its Roadmap should be defined here.
+
+1.0.0.Alpha1
+~~~~~~~~~~~~
+
+*TODO* complete
+
+1.0.0.M1
+~~~~~~~~
+
+*TODO* complete
+
+Android Specific Requirements
+-----------------------------
+
+For common cross-library requirements see:
+
+* link:AeroGearPersistence.html[AeroGear Persistence Plan]
+* link:AeroGearSecurity.html[AeroGear Security Plan]
+
+
+*TODO* Complete
