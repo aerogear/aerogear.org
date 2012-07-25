@@ -1,5 +1,7 @@
 body {
-    background-color: #dddddd;
+    background-image: url("/img/bg.png");
+    background-position: bottom;
+    background-repeat: repeat-x;
     padding-top: 120px;
     padding-bottom: 40px;
 }
@@ -63,26 +65,33 @@ body {
 
 .splash {
     background-color: #ffffff;
+    margin: 10px auto;
     padding: 10px;
-    margin-top: 10px;
+    max-width: 1280px;
 }
 
-.splash img {
-    display: block;
+.start-header img {
+    float: right;
+    margin-top: -100px;
+}
+
+.splash .lower-image {
+    display: none;
     margin: 0 auto;
 }
 
 .start-header h2 {
     color: #c6000f;
+    padding-top: 100px;
+    font-size: 40px;
 }
 
 .start-header .btn {
-    float: right;
-    margin-right: 20px;
     font-size: 20px;
     color: #ffffff;
     text-shadow: none;
     padding: 8px;
+    margin-top: 10px;
     background-color: #e25027;
     background-image: -ms-linear-gradient(top, #f27552, #d63a0e);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f27552), to(#d63a0e));
@@ -99,6 +108,44 @@ body {
 
 .start-header .btn:hover {
     background-position: 0 0;
+}
+
+footer .row .span4:last-child {
+    position: relative;
+    min-height: 150px;
+}
+
+.footer-logo {
+    display: block;
+    float: right;
+}
+
+.footer-logo:after {
+    clear: right;
+}
+
+.attribution {
+    display: block;
+    font-size: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 2px;
+}
+
+@media (max-width: 1200px) {
+    .start-header h2 {
+        font-size: 30px;
+        padding-top: 50px;
+    }
+
+    .start-header img {
+        margin-top: -50px;
+    }
+
+    .start-header .btn {
+        float: none;
+        margin-right: 0;
+    }
 }
 
 @media (max-width: 979px) {
@@ -120,13 +167,24 @@ body {
     }
 
     .start-header h2 {
-        font-size: 22px;
+        font-size: 20px;
+        padding-top: 0;
+    }
+
+    .start-header img {
+        display: none;
+    }
+
+    .splash .lower-image {
+        display: block;
     }
 
     .start-header .btn {
         font-size: 16px;
         font-weight: bold;
+        float: right;
         margin-right: 10px;
+        margin-top: -35px;
     }
 
     .span4 h2 {
@@ -145,7 +203,14 @@ body {
 
     .start-header .btn {
         font-size: 14px;
-        margin-right: 0px;
+    }
+
+    .footer-logo {
+        float: none;
+    }
+
+    .footer-logo:after {
+        clear: none;
     }
 }
 
@@ -153,13 +218,19 @@ body {
     .start-header {
         text-align: center;
     }
+
     .start-header h2 {
         font-size: 18px;
+    }
+
+    .start-header .btn {
+        margin: 0;
     }
 
     .start-header .btn, .span4 .btn {
         display: block;
         float: none;
+        clear: both;
         font-weight: bold;
     }
 }
@@ -167,5 +238,9 @@ body {
 @media (max-width: 500px) {
     .start-header h2 {
         font-size: 14px;
+    }
+
+    .footer-logo {
+        width: 100px;
     }
 }
