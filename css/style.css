@@ -110,6 +110,33 @@ body {
     background-position: 0 0;
 }
 
+/* Content Styles */
+.aerogear-list {
+    list-style: url("/img/aerogear_icon_16px.png");
+}
+
+.aerogear-list li {
+    margin-left: 20px;
+}
+
+.span3 h2 {
+    color: #014585;
+}
+
+.span3 .btn {
+    display: block;
+}
+
+#repodiv {
+    display: none;
+    padding: 20px;
+}
+
+#repodiv .ghlink {
+    margin-left: 10px;
+}
+
+/* Footer Styles */
 footer .row .span4:last-child {
     position: relative;
     min-height: 150px;
@@ -227,7 +254,7 @@ footer .row .span4:last-child {
         margin: 0;
     }
 
-    .start-header .btn, .span4 .btn {
+    .start-header .btn {
         display: block;
         float: none;
         clear: both;
