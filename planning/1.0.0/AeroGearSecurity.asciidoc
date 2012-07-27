@@ -1,7 +1,6 @@
 AeroGear Security 1.0.0 - DRAFT
 ===============================
-:Author: Bruno Oliveira
-:Author: Jay Balunas
+:Author: Bruno Oliveira and Jay Balunas
 
 External References
 -------------------
