@@ -16,6 +16,8 @@ External References
 * link:https://github.com/bitwiseshiftleft/sjcl[Stanford Javascript Crypto Library]
 * link:https://github.com/plataformatec/devise/[Devise]
 * link:https://developer.mozilla.org/en/BrowserID/Quick_Setup[BrowserID]
+* link:http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-04[JSON Web Encryption]
+
 
 
 AeroGear Controller Requirements
@@ -35,6 +37,8 @@ AeroGear Security Requirements
 * HTTP Digest authentication
 * OAuth2 support
 * BrowserID support
+* Cryptography support to algoritms like SHA 256 and AES
+* JSON Web Encryption 
 
 
 Use case scenarios
@@ -61,7 +65,7 @@ JavaScript client:
 ----
 
 var httpRequest = new XMLHttpRequest();
-httpRequest.open("GET", "http://myhost/user/1"); 
+httpRequest.open("POST", "http://myhost/auth/signin"); 
 	
 var username = Crypto.SHA1("john", { asString: true });
 var password = Crypto.SHA1("doe", { asString: true });
