@@ -48,7 +48,7 @@ auth/signin
 
 *Resource URL*
 
-[source]
+[source,shell]
 ----
 http://johndoe.com/auth/signin
 ----
@@ -236,4 +236,5 @@ Apache DeltaSpike & JBoss PicketLink
 ------------------------------------
 
 *TODO* Links to existing resources/discussions
+
 *TODO* Requirements for those projects
