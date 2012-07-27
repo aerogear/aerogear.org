@@ -14,7 +14,70 @@ External References
 AeroGear Controller Requirements
 --------------------------------
 
-*TODO* Pull in requirements and use-cases from gist
+REST Authentication API
+-----------------------
+
+The REST resources could be generated to provide the basics for authentication.
+
+POST
+~~~~
+
+auth/signup
+^^^^^^^^^^^
+
+*Resource URL*
+
+[source,shell]
+
+http://johndoe.com/auth/signup
+
+*Example Request*
+
+[source, JavaScript]
+
+{
+    "username": "john", 
+    "password": "doe",
+    "email": "john@doe.com"
+}
+
+auth/signin
+^^^^^^^^^^^
+
+*Resource URL*
+
+[source,shell]
+http://johndoe.com/auth/signin
+
+*Example Request*
+
+[source, JavaScript]
+
+{
+    "username": "john", 
+    "password": "doe",
+}
+
+
+auth/signout
+^^^^^^^^^^^^
+
+*Resource URL*
+
+[source,shell]
+http://johndoe.com/auth/:id/logout
+
+*Example Request*
+
+[source, JavaScript]
+
+{
+    //http://johndoe.com/auth/logout
+    {
+    "request": "/auth/logout"
+    }
+}
+
 
 Common Client Library Requirements
 ----------------------------------
@@ -136,6 +199,35 @@ image:https://img.skitch.com/20120713-myxfergr71u7xeim9ykudfnuin.jpg[]
 ----
 var result = aerogear.auth.signout();
 ----
+
+AeroGear.next
+-------------
+
+Aerogear.next
+---------------
+Authentication
+~~~~~~~~~~~~~~
+
+* REST support
+* Oauth2 support
+* BrowserID support
+
+aerogear.encryptors
+~~~~~~~~~~~~~~~~~~~
+
+* aerogear.encryptors.SipHash
+* aerogear.encryptors.SHA1
+* aerogear.encryptors.SHA_256
+* aerogear.encryptors.AES
+
+Open questions
+--------------
+
+*  The authentication methods proposed are enough? Do we need token support with key derivation on the server side? Something like this:
+
+image:https://img.skitch.com/20120713-xh6b7a3hxsb4a71dkhdxsqhxyk.jpg[]
+
+*  HTTPS has the security necessary to data transport. Do we need to care about environments where HTTPS is not provided or supported?
 
 Apache DeltaSpike & JBoss PicketLink
 ------------------------------------
