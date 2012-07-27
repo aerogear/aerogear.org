@@ -6,10 +6,16 @@ AeroGear Security 1.0.0 - DRAFT
 External References
 -------------------
 
-* link:https://github.com/aerogear/aerogear-security/[Github Repo]
-* link:https://github.com/aerogear/aerogear-security/blob/master/README.md[README.md] file
+* link:https://github.com/aerogear/aerogear-security/[AeroGear Security]
+* link:https://github.com/picketbox/picketbox-core[PicketBox GitHub]
+* link:https://github.com/picketlink/[PicketLink GitHub]
 * link:https://cwiki.apache.org/confluence/display/DeltaSpike/Security+Module+Drafts[DeltaSpike Security Module Spec]
-* link:https://github.com/picketlink/[PicketLink Github]
+* link:http://oauth.net/2/[OAuth2]
+* link:http://www.w3.org/2012/webcrypto/WebCryptoAPI/[Web Cryptography API]
+* link:https://github.com/jedisct1/siphash-js[siphash-js]
+* link:https://github.com/bitwiseshiftleft/sjcl[Stanford Javascript Crypto Library]
+* link:https://github.com/plataformatec/devise/[Devise]
+* link:https://developer.mozilla.org/en/BrowserID/Quick_Setup[BrowserID]
 
 
 AeroGear Controller Requirements
@@ -309,17 +315,6 @@ Requirements
 * Provide flexible authentication solution  
 * Cross-browser implementation
 * Respect user's privacy
-
-References
-~~~~~~~~~~
-
-* http://browserid.org
-* https://github.com/mozilla/browserid-ios
-* http://oauth.net/2/
-* https://github.com/plataformatec/devise/
-* http://en.wikipedia.org/wiki/Secure_Remote_Password_protocol (SRP)
-* https://github.com/jedisct1/siphash-js
-* https://github.com/bitwiseshiftleft/sjcl
 
 Features
 --------
