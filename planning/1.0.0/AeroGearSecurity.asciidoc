@@ -28,36 +28,40 @@ auth/signup
 *Resource URL*
 
 [source,shell]
-
+----
 http://johndoe.com/auth/signup
+----
 
 *Example Request*
 
 [source, JavaScript]
-
+----
 {
     "username": "john", 
     "password": "doe",
     "email": "john@doe.com"
 }
+----
 
 auth/signin
 ^^^^^^^^^^^
 
 *Resource URL*
 
-[source,shell]
+[source]
+----
 http://johndoe.com/auth/signin
+----
 
 *Example Request*
 
 [source, JavaScript]
-
+----
 {
     "username": "john", 
     "password": "doe",
 }
-
+----
 
 auth/signout
 ^^^^^^^^^^^^
@@ -65,19 +69,21 @@ auth/signout
 *Resource URL*
 
 [source,shell]
+----
 http://johndoe.com/auth/:id/logout
+----
 
 *Example Request*
 
 [source, JavaScript]
-
+----
 {
     //http://johndoe.com/auth/logout
     {
     "request": "/auth/logout"
     }
 }
-
+----
 
 Common Client Library Requirements
 ----------------------------------
@@ -199,9 +205,6 @@ image:https://img.skitch.com/20120713-myxfergr71u7xeim9ykudfnuin.jpg[]
 ----
 var result = aerogear.auth.signout();
 ----
-
-AeroGear.next
--------------
 
 Aerogear.next
 ---------------
