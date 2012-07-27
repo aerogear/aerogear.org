@@ -28,7 +28,7 @@ AeroGear Security Requirements
 --------------------------------
 
 * Easy management of identities like Users/Groups/Roles (Well addressed by PicketLink)
-* DeltaSpike integration
+* External security provider/API (DS/PL)
 * Restrict access to protected resources
 * Session timeout
 * REST resource authentication via username/password
@@ -62,7 +62,6 @@ JavaScript client:
 
 var httpRequest = new XMLHttpRequest();
 httpRequest.open("GET", "http://myhost/user/1"); 
-httpRequest.setTimeout(10);
 	
 var username = Crypto.SHA1("john", { asString: true });
 var password = Crypto.SHA1("doe", { asString: true });
@@ -90,8 +89,7 @@ Protected resource:
 [source, java]
 ----
 @Path("/user/{id:[1-9][0-9]*}")
-public class Dummy {
-
+public class UserService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Secured
@@ -120,8 +118,6 @@ JavaScript client:
 ----
 var httpRequest = new XMLHttpRequest();
 httpRequest.open("POST", "http://myhost/user/1?signature=B%Fu51eRT8j0qTcXZjsLwiklwQxT%R6&expires=1162156499"); 
-
-httpRequest.setTimeout(10);
 
 var token = Crypto.SHA1("2fd4e1c67a2d28fced849ee1bb76e7391b93eb12", { asString: true });
 
@@ -171,7 +167,7 @@ Protected resource:
 ----
 
 @Path("/user/{id:[1-9][0-9]*}")
-public class Dummy {
+public class UserService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -203,8 +199,6 @@ JavaScript client:
 var httpRequest = new XMLHttpRequest();
 httpRequest.open("POST", "http://myhost/logout"); 
 
-httpRequest.setTimeout(10);
-
 var token = Crypto.SHA1("2fd4e1c67a2d28fced849ee1bb76e7391b93eb12", { asString: true });
 
 httpRequest.setRequestHeader("Token-Session", token);
@@ -227,7 +221,7 @@ request.header("Auth-Domain", "AeroGear");
 REST Authentication API
 -----------------------
 
-The REST resources could be generated to provide the basics for authentication.
+The REST resources will be generated to provide the basics for authentication.
 
 POST
 ~~~~
@@ -270,6 +264,16 @@ http://johndoe.com/auth/signin
 {
     "username": "john", 
     "password": "doe",
+}
+----
+
+*Example Response*
+
+[source, javascript]
+----
+{
+    "token" : "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
+    "expires": "1141889120"
 }
 ----
 
