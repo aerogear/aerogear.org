@@ -51,7 +51,7 @@ Web mobile users must be able to login providing a username and password
 
 JavaScript client:
 
-[source, JavaScript]
+[source, javascript]
 ----
 
 var httpRequest = new XMLHttpRequest();
@@ -69,7 +69,7 @@ httpRequest.send('{"name":"john"}')
 	
 Java client example:
 
-[source, JavaScript]
+[source, javascript]
 ----
 ClientRequest request = new ClientRequest(deploymentUrl.toString() + RESOURCE_PREFIX + "/user/1");
 request.header("Accept", MediaType.APPLICATION_JSON);
@@ -81,7 +81,7 @@ request.header("Auth-Domain", domain);
 
 Protected resource:
 
-[source, Java]
+[source, java]
 ----
 @Path("/user/{id:[1-9][0-9]*}")
 public class Dummy {
@@ -108,9 +108,9 @@ Web mobile users session must be validated after login
 ** Signed URIs
 ** Http Headers (Auth-Domain) must be provided by aerogear-controller implementation 
  	
- JavaScript client:
+JavaScript client:
  
-[source, JavaScript]
+[source, javascript]
 ----
 var httpRequest = new XMLHttpRequest();
 httpRequest.open("POST", "http://myhost/user/1?signature=B%Fu51eRT8j0qTcXZjsLwiklwQxT%R6&expires=1162156499"); 
@@ -150,7 +150,7 @@ httpRequest.send('{"name":"john"}')
 	
 Java client example:
 
-[source, Java]
+[source, java]
 ----
 ClientRequest request = new ClientRequest(deploymentUrl.toString() + 
 		RESOURCE_PREFIX + "/user/1?signature=B%Fu51eRT8j0qTcXZjsLwiklwQxT%R6&expires=1162156499");
@@ -161,7 +161,7 @@ request.header("Auth-Domain", "AeroGear");
 	
 Protected resource:
 
-[source, Java]
+[source, java]
 ----
 
 @Path("/user/{id:[1-9][0-9]*}")
@@ -191,7 +191,7 @@ Web mobile users must be able to log out
  	
 JavaScript client:
  
-[source, JavaScript]
+[source, javascript]
 ----
 
 var httpRequest = new XMLHttpRequest();
@@ -207,7 +207,7 @@ httpRequest.setRequestHeader("Auth-Domain", domain);
 		
 Java client example:
 
-[source, Java]
+[source, java]
 ----
 
 ClientRequest request = new ClientRequest(deploymentUrl.toString() + 
@@ -238,7 +238,7 @@ http://johndoe.com/auth/signup
 
 *Example Request*
 
-[source, JavaScript]
+[source, javascript]
 ----
 {
     "username": "john", 
@@ -259,7 +259,7 @@ http://johndoe.com/auth/signin
 
 *Example Request*
 
-[source, JavaScript]
+[source, javascript]
 ----
 {
     "username": "john", 
@@ -279,7 +279,7 @@ http://johndoe.com/auth/:id/logout
 
 *Example Request*
 
-[source, JavaScript]
+[source, javascript]
 ----
 {
     //http://johndoe.com/auth/logout
