@@ -19,7 +19,123 @@ AeroGear Controller Requirements
 Common Client Library Requirements
 ----------------------------------
 
-*TODO* Pull in requirements & user-cases from gist
+This is a initial proposal on having a very simple autentication layer.
+
+*Disclaimer*
+
+Every single piece of code here represent few simple ideas that must to be tested in practice and will be modifed across the development process.
+
+
+Client API
+----------
+
+Requirements
+~~~~~~~~~~~~
+
+* Offer ease of use APIs
+* Provide flexible authentication solution  
+* Cross-browser implementation
+* Respect user's privacy
+
+References
+~~~~~~~~~~
+
+* http://browserid.org
+* https://github.com/mozilla/browserid-ios
+* http://oauth.net/2/
+* https://github.com/plataformatec/devise/
+* http://en.wikipedia.org/wiki/Secure_Remote_Password_protocol (SRP)
+* https://github.com/jedisct1/siphash-js
+* https://github.com/bitwiseshiftleft/sjcl
+
+Features
+--------
+
+Authentication
+--------------
+
+aerogear.auth
+~~~~~~~~~~~~~
+
+A _aerogear.auth_ is just a wrapper to support multiple authentication providers, allows you to be explicit on which technology must be used.  
+
+When creating an _aerogear.auth_, the *host* property is optional and if not present the location where the application lives will be assumed. This will point out the place where the REST resources are hosted.
+
+*Example:*
+
+[source,javascript]
+----
+//Create an instance of aerogear.auth
+var auth = aerogear.auth({
+    host: "http://mydefaulthost.com"
+});
+
+----
+
+The *provider* enables user to pick the desired implementation provider and exposes a consistent interface to easily work with it. This attribute is _optional_ and if not present the default *REST* authentication method will be assumed.
+
+
+*Example:*
+
+[source,javascript]
+----
+//Create an instance of aerogear.auth
+var auth = aerogear.auth({
+    provider: "browserid" //or oauth2
+    host: "http://mydefaulthost.com"
+});
+
+----
+
+aerogear.auth.signup
+~~~~~~~~~~~~~~~~~~~~
+
+Aims to provide a flexible registration method representing the properties defined in the server side based on user's input. Following the basic authentication flow above.
+
+image:https://img.skitch.com/20120712-f3i5yusxn3iw63dqtesg6mxia7.jpg[]
+  
+*Example:*
+
+[source,javascript]
+----
+var result = aerogear.auth.signup({
+    username: "john", 
+    password: "doe",
+    email: "john@doe.com"
+});
+----
+
+aerogear.auth.signin
+~~~~~~~~~~~~~~~~~~~~
+
+The authentication parameters must be defined on the server side, since we are dealing with several authentication methods, we must allow a variable number of attributes. In this specific case, user will be authenticated providing username/password for example and the user's state will be created in the server session.
+
+image:https://img.skitch.com/20120713-fn1eqbapancxy9q9s4bpa6n76g.jpg[]
+
+*Example:*
+	
+[source,javascript]
+----
+//Sign-up request
+var result = aerogear.auth.signin({
+    username: "john", 
+    password: "doe"
+});
+----
+
+aerogear.auth.signout
+~~~~~~~~~~~~~~~~~~~~~
+
+Ends the session of the authenticated user.
+
+image:https://img.skitch.com/20120713-myxfergr71u7xeim9ykudfnuin.jpg[]
+
+*Example:*
+	
+[source,javascript]
+----
+var result = aerogear.auth.signout();
+----
 
 Apache DeltaSpike & JBoss PicketLink
 ------------------------------------
