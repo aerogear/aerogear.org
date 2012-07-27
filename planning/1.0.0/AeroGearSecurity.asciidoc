@@ -47,6 +47,8 @@ Use case scenarios
 Authentication
 ~~~~~~~~~~~~~~
 
+The examples below don't make use of AeroGear client libraries
+
 Scenario
 ^^^^^^^^
 
@@ -78,30 +80,14 @@ httpRequest.send('{"name":"john"}')
 	
 Java client example:
 
-[source, javascript]
+[source, java]
 ----
-ClientRequest request = new ClientRequest(deploymentUrl.toString() + RESOURCE_PREFIX + "/user/1");
+ClientRequest request = new ClientRequest(deploymentUrl.toString() + RESOURCE_PREFIX + "/auth/signin");
 request.header("Accept", MediaType.APPLICATION_JSON);
 request.header("Auth-Password", password);
 request.header("Auth-Credential", username);
 request.header("Auth-Domain", domain);	
 
-----
-
-Protected resource:
-
-[source, java]
-----
-@Path("/user/{id:[1-9][0-9]*}")
-public class UserService {
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Secured
-    public Long getUser(@PathParam("id") long id) {
-        System.out.println("User id: " + id);
-        return id;
-    }
-}
 ----
 	
 Scenario
@@ -121,45 +107,20 @@ JavaScript client:
 [source, javascript]
 ----
 var httpRequest = new XMLHttpRequest();
-httpRequest.open("POST", "http://myhost/user/1?signature=B%Fu51eRT8j0qTcXZjsLwiklwQxT%R6&expires=1162156499"); 
-
-var token = Crypto.SHA1("2fd4e1c67a2d28fced849ee1bb76e7391b93eb12", { asString: true });
+httpRequest.open("POST", "http://myhost/car/1"); 
 
 httpRequest.setRequestHeader("Token-Session", token);
 httpRequest.setRequestHeader("Auth-Domain", domain);
 
 httpRequest.send('{"name":"john"}')
 ----
-
-++++	
-<table width="100%">
-<tbody>
-    <tr>
-        <td><b>Parameter</b></td>
-        <td><b>Example</b></td>
-        <td><b>Description</b></td>
-    </tr>
-    <tr>
-        <td>signature</td>
-        <td>B%Fu51eRT8j0qTcXZjsLwiklwQxT%R6</td>
-        <td>URL encoding of the HMAC-SHA1</td>
-    </tr>
-    <tr>
-        <td>expires</td>
-        <td>1141889120</td>
-        <td>Number of seconds since the epoch (00:00:00 UTC on January 1, 1970). A request received after this time (according to the server) will be denied.</td>
-    </tr>
-   </tbody>
-</table>
-++++
-
 	
 Java client example:
 
 [source, java]
 ----
 ClientRequest request = new ClientRequest(deploymentUrl.toString() + 
-		RESOURCE_PREFIX + "/user/1?signature=B%Fu51eRT8j0qTcXZjsLwiklwQxT%R6&expires=1162156499");
+		RESOURCE_PREFIX + "/car/1");
 request.header("Accept", MediaType.APPLICATION_JSON);
 request.header("Token-Session", "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12");
 request.header("Auth-Domain", "AeroGear");	
@@ -170,15 +131,16 @@ Protected resource:
 [source, java]
 ----
 
-@Path("/user/{id:[1-9][0-9]*}")
-public class UserService {
+@Path("/car/{id:[1-9][0-9]*}")
+public class CarService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Secured
-	public Long getUser(@PathParam("id") long id) {
-		System.out.println("User id: " + id);
-		return id;
+	public Long getCar(@PathParam("car") long id) {
+		//Some implementation here
+		System.out.println("Car name: " + name);
+		return name;
 	}
 }
 	
@@ -201,9 +163,7 @@ JavaScript client:
 ----
 
 var httpRequest = new XMLHttpRequest();
-httpRequest.open("POST", "http://myhost/logout"); 
-
-var token = Crypto.SHA1("2fd4e1c67a2d28fced849ee1bb76e7391b93eb12", { asString: true });
+httpRequest.open("POST", "http://myhost/auth/logout"); 
 
 httpRequest.setRequestHeader("Token-Session", token);
 httpRequest.setRequestHeader("Auth-Domain", domain);
@@ -215,7 +175,7 @@ Java client example:
 ----
 
 ClientRequest request = new ClientRequest(deploymentUrl.toString() + 
-		RESOURCE_PREFIX + "/logout");
+		RESOURCE_PREFIX + "/auth/logout");
 request.header("Accept", MediaType.APPLICATION_JSON);
 request.header("Token-Session", "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12");
 request.header("Auth-Domain", "AeroGear");
@@ -281,6 +241,24 @@ http://johndoe.com/auth/signin
 }
 ----
 
+++++	
+<table width="100%">
+<tbody>
+    <tr>
+        <td><b>Parameter</b></td>
+        <td><b>Example</b></td>
+        <td><b>Description</b></td>
+    </tr>
+    <tr>
+        <td>expires</td>
+        <td>1141889120</td>
+        <td>Number of seconds since the epoch (00:00:00 UTC on January 1, 1970). A request received after this time (according to the server) will be denied.</td>
+    </tr>
+   </tbody>
+</table>
+++++
+
+
 auth/signout
 ^^^^^^^^^^^^
 
@@ -288,7 +266,7 @@ auth/signout
 
 [source,shell]
 ----
-http://johndoe.com/auth/:id/logout
+http://johndoe.com/auth/logout
 ----
 
 *Example Request*
@@ -392,7 +370,7 @@ image:img/signin.jpg[]
 	
 [source,javascript]
 ----
-//Sign-up request
+//Sign-in request
 var result = aerogear.auth.signin({
     username: "john", 
     password: "doe"
@@ -412,9 +390,6 @@ image:img/signout.jpg[]
 ----
 var result = aerogear.auth.signout();
 ----
-
-REST Authentication API
------------------------
 
 Aerogear.next
 ---------------
