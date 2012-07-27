@@ -67,7 +67,7 @@ JavaScript client:
 ----
 
 var httpRequest = new XMLHttpRequest();
-httpRequest.open("POST", "http://myhost/auth/signin"); 
+httpRequest.open("POST", "http://myhost/auth/login"); 
 	
 var username = Crypto.SHA1("john", { asString: true });
 var password = Crypto.SHA1("doe", { asString: true });
@@ -82,7 +82,7 @@ Java client example:
 
 [source, java]
 ----
-ClientRequest request = new ClientRequest(deploymentUrl.toString() + RESOURCE_PREFIX + "/auth/signin");
+ClientRequest request = new ClientRequest(deploymentUrl.toString() + RESOURCE_PREFIX + "/auth/login");
 request.header("Accept", MediaType.APPLICATION_JSON);
 request.header("Auth-Password", password);
 request.header("Auth-Credential", username);
@@ -99,7 +99,6 @@ Web mobile users session must be validated after login
 
 * Requirements: 
 ** Http Headers (Token-Session) by mobile application
-** Signed URIs
 ** Http Headers (Auth-Domain) must be provided by aerogear-controller implementation 
  	
 JavaScript client:
@@ -190,14 +189,14 @@ The REST resources will be generated to provide the basics for authentication.
 POST
 ~~~~
 
-auth/signup
+auth/register
 ^^^^^^^^^^^
 
 *Resource URL*
 
 [source,shell]
 ----
-http://johndoe.com/auth/signup
+http://johndoe.com/auth/register
 ----
 
 *Example Request*
@@ -211,14 +210,14 @@ http://johndoe.com/auth/signup
 }
 ----
 
-auth/signin
+auth/login
 ^^^^^^^^^^^
 
 *Resource URL*
 
 [source,shell]
 ----
-http://johndoe.com/auth/signin
+http://johndoe.com/auth/login
 ----
 
 *Example Request*
@@ -259,7 +258,7 @@ http://johndoe.com/auth/signin
 ++++
 
 
-auth/signout
+auth/logout
 ^^^^^^^^^^^^
 
 *Resource URL*
@@ -341,54 +340,54 @@ var auth = aerogear.auth({
 
 ----
 
-aerogear.auth.signup
+aerogear.auth.register
 ~~~~~~~~~~~~~~~~~~~~
 
 Aims to provide a flexible registration method representing the properties defined in the server side based on user's input. Following the basic authentication flow above.
 
-image:img/signup.jpg[]
+image:img/register.jpg[]
   
 *Example:*
 
 [source,javascript]
 ----
-var result = aerogear.auth.signup({
+var result = aerogear.auth.register({
     username: "john", 
     password: "doe",
     email: "john@doe.com"
 });
 ----
 
-aerogear.auth.signin
+aerogear.auth.login
 ~~~~~~~~~~~~~~~~~~~~
 
 The authentication parameters must be defined on the server side, since we are dealing with several authentication methods, we must allow a variable number of attributes. In this specific case, user will be authenticated providing username/password for example and the user's state will be created in the server session.
 
-image:img/signin.jpg[]
+image:img/login.jpg[]
 
 *Example:*
 	
 [source,javascript]
 ----
-//Sign-in request
-var result = aerogear.auth.signin({
+//Login request
+var result = aerogear.auth.login({
     username: "john", 
     password: "doe"
 });
 ----
 
-aerogear.auth.signout
+aerogear.auth.logout
 ~~~~~~~~~~~~~~~~~~~~~
 
 Ends the session of the authenticated user.
 
-image:img/signout.jpg[]
+image:img/logout.jpg[]
 
 *Example:*
 	
 [source,javascript]
 ----
-var result = aerogear.auth.signout();
+var result = aerogear.auth.logout();
 ----
 
 Aerogear.next
