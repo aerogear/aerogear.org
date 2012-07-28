@@ -183,7 +183,7 @@ request.header("Auth-Domain", "AeroGear");
 REST Authentication API
 -----------------------
 
-The REST resources will be generated to provide the basics for authentication.
+The REST resources will be generated using a Maven or Forge plugin to provide the basics for authentication, like link:https://github.com/plataformatec/devise/[Devise] does for Rails applications
 
 POST
 ~~~~
@@ -344,7 +344,7 @@ aerogear.auth.register
 
 Aims to provide a flexible registration method representing the properties defined in the server side based on user's input. Following the basic authentication flow above.
 
-image:img/register.jpg[]
+image:img/register.png[]
   
 *Example:*
 
@@ -362,7 +362,7 @@ aerogear.auth.login
 
 The authentication parameters must be defined on the server side, since we are dealing with several authentication methods, we must allow a variable number of attributes. In this specific case, user will be authenticated providing username/password for example and the user's state will be created in the server session.
 
-image:img/login.jpg[]
+image:img/login.png[]
 
 *Example:*
 	
@@ -380,7 +380,7 @@ aerogear.auth.logout
 
 Ends the session of the authenticated user.
 
-image:img/logout.jpg[]
+image:img/logout.png[]
 
 *Example:*
 	
