@@ -39,3 +39,13 @@ In order build a hybrid application for Android, you'll need to install the Andr
 
 The Android Developer site provides a link:http://developer.android.com/sdk/installing/index.html[step-by-step guide] to set up your environment.
 
+Now, let's setup a Android Virtual Device in Eclipse. Clock on the AVD Button:
+
+image::img/avdbutton.png[AVD Button]
+
+Click on New...
+
+image::img/avd_new.png[New AVD]
+
+And then create the new AVD, giving it a name of your choice. You should have installed an Android 2.x or 4.0 SDK through the SDK manager (as part of the step-by-step guide above). You should choose this as your target when creating a virtual device.
+
