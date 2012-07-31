@@ -18,6 +18,85 @@ External References
 * link:http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-04[JSON Web Encryption]
 
 
+Risks
+-----
+
+* DeltaSpike and PicketLink CDI might not meet our dealine. AeroGear Security and Controller will be immediately affected.
+
+Proposed Roadmap
+----------------
+
+1.0.0.Alpha
+~~~~~~~~~~~
+
+AeroGear Security
+^^^^^^^^^^^^^^^^^
+* DSL secured route support on aerogear controller
+* aerogear security integration with aerogear controller
+* REST authentication API on top of aerogear-security
+* Security provider integration (PL/DS)
+
+aerogear.auth.js
+^^^^^^^^^^^^^^^^^
+* JavaScript Client library with REST authentication support
+* Wrapper support to OAuth (Initially using twitter)
+
+aerogear-android
+^^^^^^^^^^^^^^^^^^
+* REST client libraries support
+
+1.0.0.Beta
+~~~~~~~~~~
+
+* Create a demo application
+
+AeroGear Security
+^^^^^^^^^^^^^^^^^
+* HTTP Digest authentication support
+* Leverage DS/Picketlink integration
+* OAuth support via PicketLink
+
+aerogear.auth.js
+^^^^^^^^^^^^^^^^
+* HTTP Digest authentication
+* JSON web cryptography support (JOSE)
+
+aerogear.encryptor.js
+^^^^^^^^^^^^^^^^^^^^^
+* SHA 256 and AES to support JOSE implementation
+
+aerogear-android
+^^^^^^^^^^^^^^^^
+* OAuth integration
+
+
+1.0.0.CR
+~~~~~~~~
+
+AeroGear Security
+^^^^^^^^^^^^^^^^^
+* Token session support
+* Mobile device detection
+* Maven or Forge plugins
+
+aerogear.auth.js
+^^^^^^^^^^^^^^^^^^
+* BrowserID support to the external services (Mozilla)
+* Session handling 
+* npm packaging
+
+aerogear-android
+^^^^^^^^^^^^^^^^^^
+* Token authentication of the REST calls
+* Maven artifact
+
+* API security testing
+
+1.0.0.Final
+~~~~~~~~~~~
+
+* API review and improvements
+* Examples and documentation review
 
 AeroGear Controller Requirements
 --------------------------------
@@ -333,7 +412,7 @@ The *provider* enables user to pick the desired implementation provider and expo
 ----
 //Create an instance of aerogear.auth
 var auth = aerogear.auth({
-    provider: "browserid", //or oauth2
+    provider: "browserid", //or oauth
     host: "http://mydefaulthost.com"
 });
 
