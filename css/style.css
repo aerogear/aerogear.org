@@ -130,11 +130,11 @@ body {
     margin-left: 20px;
 }
 
-.span3 h2 {
+.span4 h2 {
     color: #c6000f;
 }
 
-.span3 .btn {
+.span4 .btn {
     display: block;
 }
 
@@ -264,14 +264,6 @@ footer .row .span3:last-child {
     .start-header .btn {
         font-size: 14px;
     }
-
-    .footer-logo {
-        float: none;
-    }
-
-    .footer-logo:after {
-        clear: none;
-    }
 }
 
 @media (max-width: 640px) {
@@ -298,9 +290,5 @@ footer .row .span3:last-child {
 @media (max-width: 500px) {
     .start-header h2 {
         font-size: 14px;
-    }
-
-    .footer-logo {
-        width: 100px;
     }
 }
