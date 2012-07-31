@@ -35,7 +35,7 @@ body {
     margin: 2px;
 }
 
-.navbar .nav > li > a:hover {
+.navbar .nav > li a:hover {
     background-color: #669eb2;
     text-shadow: none;
     -webkit-border-radius: 3px;
@@ -46,6 +46,17 @@ body {
 .navbar .btn-navbar, .navbar .btn-navbar:hover {
     background-color: #e25027;
     background-image: none;
+}
+
+.social-menu {
+    min-width: 60px;
+}
+
+.navbar .nav li.dropdown .dropdown-toggle .caret, .navbar .nav li.dropdown.open .caret {
+    border-top-color: inherit;
+    border-bottom-color: inherit;
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
 
 .btn-primary {
@@ -137,26 +148,48 @@ body {
 }
 
 /* Footer Styles */
-footer .row .span4:last-child {
+footer .row .span3:last-child {
     position: relative;
     min-height: 150px;
 }
 
 .footer-logo {
     display: block;
-    float: right;
 }
 
-.footer-logo:after {
-    clear: right;
+.footer-jboss {
+    display: block;
+    margin-top: 20px;
 }
 
 .attribution {
-    display: block;
     font-size: 10px;
-    position: absolute;
-    bottom: 10px;
-    right: 2px;
+    float: right;
+    margin-top: 20px;
+}
+
+#aerogear-twitter {
+    height: 300px;
+    padding-right: 10px;
+    overflow: scroll;
+}
+#aerogear-twitter li {
+    margin-bottom: 10px;
+    font-size: 12px;
+    clear: both;
+    list-style-type:none;
+}
+#aerogear-twitter li img {
+    float:left;
+    margin:0px 10px 10px 0px;
+    border:1px solid #c2c2c2;
+    -moz-box-shadow: 0px 0px 4px #c2c2c2;
+    -webkit-box-shadow: 0px 0px 4px #c2c2c2;
+    box-shadow: 0px 0px 4px #c2c2c2;
+}
+#aerogear-twitter li a {
+    text-decoration:none;
+    color: #009;
 }
 
 @media (max-width: 1200px) {

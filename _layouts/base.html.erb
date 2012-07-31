@@ -32,6 +32,15 @@
                         <li><a href="#contact">Road Map</a></li>
                         <li><a href="#contact">Examples</a></li>
                         <li><a href="#contact">Source</a></li>
+                        <li><a href="/demo/">Demo</a></li>
+                        <li class="dropdown" id="social-menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#social-menu">Follow Us <b class="caret"></b></a>
+                            <ul class="dropdown-menu social-menu">
+                                <li><a href="http://twitter.com/aerogears" target="_blank"><img src="/img/twitter.png"/></a></li>
+                                <li><a href="https://plus.google.com/106588661437153585722/posts" target="_blank"><img src="/img/gplus.png"/></a></li>
+                                <li><a href="#"><img src="/img/facebook.png"/></a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -46,22 +55,29 @@
 
         <footer>
             <div class="row">
-                <div class="span4">
-                    <h3>Heading</h3>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
+                <div class="span3">
+                    <h3><a href="http://twitter.com/AeroGears" target="_blank">@AeroGears</a></h3>
+                    <div id="aerogear-twitter">Loading tweets...</div>
                 </div>
-                <div class="span4">
-                    <h3>Heading</h3>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
+                <div class="span3">
+                    <h3>Find Your Way</h3>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Guides</a></p>
+                    <p><a href="#">Demos</a></p>
                 </div>
-                <div class="span4">
+                <div class="span3">
+                    <h3>Lend a Hand</h3>
+                    <p><a href="http://github.com/aerogear" target="_blank">Contribute</a></p>
+                    <p><a href="issues.jboss.org/browse/AEROGEAR" target="_blank">Report Issues</a></p>
+                    <p><a href="http://www.redhat.com/mailman/listinfo/aerogear-dev" target="_blank">Join the Mailing List</a></p>
+                    <p><a href="irc://irc.freenode.net/aerogear" target="_blank">Chat with the Team</a></p>
+                </div>
+                <div class="span3">
                     <img src="/img/aerogear_logo_200px.png" class="footer-logo"/>
+                    <div>&copy; Copyright 2012 Red Hat, Inc.</div>
+                    <div>Code released under <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.</div>
+                    <img src="/img/jboss.png" class="footer-jboss"/>
+                    <div>AeroGear is a JBoss Community project and development is sponsored by Red Hat, Inc.</div>
                     <span class="attribution">HTML5 Logo and Icons by <a href="http://www.w3.org/" target="_blank"><abbr title="World Wide Web Consortium">W3C</abbr></a></span>
                 </div>
             </div>
@@ -72,6 +88,8 @@
     <script>window.jQuery || document.write( '<script src="/js/libs/jquery-1.7.2.min.js"><\/script>' )</script>
     <script src="/js/libs/bootstrap.min.js"></script>
     <script src="/js/libs/repo.min.js"></script>
+    <script src="/js/libs/ba-linkify.min.js"></script>
+    <script src="/js/libs/jquery.twitter.min.js"></script>
     <script src="/js/script.js"></script>
 </body>
 </html>
