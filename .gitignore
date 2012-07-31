@@ -1,2 +1,6 @@
 .sass-cache
 .DS_Store
+.awestruct
+_site
+_tmp
+Gemfile*
