@@ -8,6 +8,7 @@ $( function() {
         var target = $( event.target ),
             repodiv = $( "#repodiv" ),
             repobtns = $( ".repo-btns" ),
+            body = $( "body" ),
             repoType, repoUser = "aerogear", repoName;
 
         if ( target.is( "#jsrepo-btn" ) ) {
@@ -28,7 +29,7 @@ $( function() {
                 if ( repodiv.data( "repo" ) != repoType ) {
                     repodiv.empty();
                     repodiv.show( function() {
-                        $( window ).scrollTop( repodiv.offset().top );
+                        body.animate( { scrollTop: repodiv.offset().top - 150 }, "slow");
                         repodiv.append( "<a href='http://github.com/" + repodiv.data( "link" ) + "target='_blank' class='ghlink'>View on GitHub</a>" );
                         repodiv.repo({
                             user: repoUser,
@@ -41,7 +42,7 @@ $( function() {
             });
         } else {
             repodiv.show( "slow", function() {
-                $( window ).scrollTop( repodiv.offset().top );
+                body.animate( { scrollTop: repodiv.offset().top - 150 }, "slow");
                 if ( repodiv.data( "repo" ) != repoType ) {
                     repodiv.empty();
                     repodiv.append( "<a href='http://github.com/" + repodiv.data( "link" ) + "target='_blank' class='ghlink'>View on GitHub</a>" );
