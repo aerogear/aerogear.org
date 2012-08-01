@@ -1,0 +1,48 @@
+== Get Started with Hybrid Application Frameworks
+
+This wiki page will give an overview of what hybrid applications are, what tools and frameworks are out there to help create them, and some teasers for upcoming examples if you wanted to get involved.
+
+.What is a Hybrid Application
+
+The term "*_hybrid mobile application_*" can be a bit confusing for new developers  Hybrid apps, are native mobile applications that are built using technologies other than the native SDK's for the platforms.  Most of them claim "write once run anywhere", however the truth is more like "write almost once, and run almost anywhere".  As with most things there are different degrees of compatibility and tinkering that is required. 
+
+image:img/app_types.png[]
+
+Hybrid application projects usually involve web based technologies such as JavaScript, HTML, etc...  There are a number of frameworks out there that assist with this.  They typically involve some sort of wrapper and/or compiling phase to turn your common code into these native applications.  All of these frameworks provide different degrees of access to the native device's functionality.  Once these applications are built they can be deployed just like any other native application - i.e. through appstores, or direct links depending on the device.
+ 
+The leading frameworks in this area are detailed below with links to examples, and future plans (jira's).  If you want to get involved jump right in!
+
+.Apache Cordova
+
+Project link: http://incubator.apache.org/cordova/
+ 
+Originally known as PhoneGap, the code base was donated to Apache as the Callback project, which has now renamed itself to Apache Cordova.  This is one of the most popular hybrid frameworks around.  It uses a native wrapper approach and is developed primarily with direct web technologies.  It also provides a JavaScript bridge into native functionality in the form of plugins.
+ 
+.Examples, tasks, and plans:
+* Apache Cordova version of our examples - https://issues.jboss.org/browse/AEROGEAR-15[AEROGEAR-15]
+* Walkthrough of using Cordova based apps on JBoss - https://issues.jboss.org/browse/AEROGEAR-39[AEROGEAR-39]
+
+.PhoneGap Build
+
+Link: https://build.phonegap.com/
+ 
+A very neat tool developed by the Cordova team when they were known as PhoneGap.  One of the biggest pains for hybrid and cross device development in general is compiling and building the actual applications for each device.  The PhoneGap build tool lets you upload your web based application, and it will generate all of the device specific apps for you!
+ 
+.Examples, tasks, and plans:
+* Integrate our example above with PhoneGap Build - https://issues.jboss.org/browse/AEROGEAR-105[AEROGEAR-105]
+* Develop a workflow for CI integration in OpenShift, JBoss AS, and PhoneGap build - https://issues.jboss.org/browse/AEROGEAR-106[AEROGEAR-106]
+* Tutorial of how to do all of this in your own environment - https://issues.jboss.org/browse/AEROGEAR-107[AEROGEAR-107]
+
+.Appcelerator
+
+Project link: http://developer.appcelerator.com/
+ 
+Appcelerator is another leading hybrid application project.  There approach is to primarily use JavaScript programming language and their SDK to development your application.  They are then able to "compile" this down to native applications.  One benefit of this is more access to native UI widgets, and APIs.  The downside is a new SDK to learn, however they do provide there own tooling for that.
+ 
+.Examples, tasks, and plans:
+
+* Appclerator example with JBoss - https://issues.jboss.org/browse/AEROGEAR-108[AEROGEAR-108]
+
+.Others
+
+There are other projects out there as well at different levels of maturity.  These include Sencha, RhoMobile, Trigger.io etc...

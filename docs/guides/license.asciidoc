@@ -1,0 +1,71 @@
+== AeroGear Licensing and Copyright
+
+The AeroGear project is licensed under the http://www.apache.org/licenses/LICENSE-2.0[Apache License, Version 2.0]
+
+===== Source Code License Header
+
+All *new and modified* files in AeroGear source control must use the following license and copyright headers for the appropriate file type. Replace ${year} with the current year. The AeroGear IDE config repo contains templates that will automatically add the proper headers depending on the file type, and IDE used. This should always be verified however.
+
+[source,java]
+----
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright ${year}, Red Hat, Inc., and individual contributors
+ * by the @authors tag. See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+----
+
+or
+
+[source,html]
+----
+<!--
+   JBoss, Home of Professional Open Source
+   Copyright ${year}, Red Hat, Inc., and individual contributors
+   by the @authors tag. See the copyright.txt in the distribution for a
+   full listing of individual contributors.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+   http://www.apache.org/licenses/LICENSE-2.0
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+----
+
+or
+
+[source,text]
+----
+#
+# JBoss, Home of Professional Open Source
+# Copyright ${year}, Red Hat, Inc., and individual contributors
+# by the @authors tag. See the copyright.txt in the distribution for a
+# full listing of individual contributors.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+----

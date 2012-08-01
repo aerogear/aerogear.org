@@ -1,0 +1,423 @@
+AeroGear Security 1.0.0 - DRAFT
+===============================
+:Author: Bruno Oliveira and Jay Balunas
+
+External References
+-------------------
+
+* link:https://github.com/aerogear/aerogear-security/[AeroGear Security]
+* link:https://github.com/picketbox/picketbox-core[PicketBox GitHub]
+* link:https://github.com/picketlink/[PicketLink GitHub]
+* link:https://cwiki.apache.org/confluence/display/DeltaSpike/Security+Module+Drafts[DeltaSpike Security Module Spec]
+* link:http://oauth.net/2/[OAuth2]
+* link:http://www.w3.org/2012/webcrypto/WebCryptoAPI/[Web Cryptography API]
+* link:https://github.com/jedisct1/siphash-js[siphash-js]
+* link:https://github.com/bitwiseshiftleft/sjcl[Stanford Javascript Crypto Library]
+* link:https://github.com/plataformatec/devise/[Devise]
+* link:https://developer.mozilla.org/en/BrowserID/Quick_Setup[BrowserID]
+* link:http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-04[JSON Web Encryption]
+
+
+
+AeroGear Controller Requirements
+--------------------------------
+
+* REST API 
+* AeroGear security SPI
+
+AeroGear Security Requirements
+--------------------------------
+
+* Easy management of identities like Users/Groups/Roles (Well addressed by PicketLink)
+* External security provider/API (DS/PL)
+* Restrict access to protected resources
+* Session timeout
+* REST resource authentication via username/password
+* HTTP Digest authentication
+* OAuth2 support
+* BrowserID support
+* Cryptography support to algoritms like SHA 256 and AES
+* JSON Web Encryption 
+
+
+Use case scenarios
+------------------
+
+Authentication
+~~~~~~~~~~~~~~
+
+The examples below don't make use of AeroGear client libraries
+
+Scenario
+^^^^^^^^
+
+Web mobile users must be able to login providing a username and password
+
+* Requirements: 
+** Http Headers (Auth-Password/Auth-Credential) by mobile application
+** Http Headers (Auth-Domain) must be provided by aerogear-controller implementation
+** HTTP Digest authentication 
+
+*Examples:*
+
+JavaScript client:
+
+[source, javascript]
+----
+
+var httpRequest = new XMLHttpRequest();
+httpRequest.open("POST", "http://myhost/auth/login"); 
+	
+var username = Crypto.SHA1("john", { asString: true });
+var password = Crypto.SHA1("doe", { asString: true });
+	
+httpRequest.setRequestHeader("Auth-Credential", username);
+httpRequest.setRequestHeader("Auth-Password", password);
+httpRequest.send('{"name":"john"}')
+	
+----
+	
+Java client example:
+
+[source, java]
+----
+ClientRequest request = new ClientRequest(deploymentUrl.toString() + RESOURCE_PREFIX + "/auth/login");
+request.header("Accept", MediaType.APPLICATION_JSON);
+request.header("Auth-Password", password);
+request.header("Auth-Credential", username);
+request.header("Auth-Domain", domain);	
+
+----
+	
+Scenario
+^^^^^^^^
+
+*Session support*
+
+Web mobile users session must be validated after login
+
+* Requirements: 
+** Http Headers (Token-Session) by mobile application
+** Http Headers (Auth-Domain) must be provided by aerogear-controller implementation 
+ 	
+JavaScript client:
+ 
+[source, javascript]
+----
+var httpRequest = new XMLHttpRequest();
+httpRequest.open("POST", "http://myhost/car/1"); 
+
+httpRequest.setRequestHeader("Token-Session", token);
+httpRequest.setRequestHeader("Auth-Domain", domain);
+
+httpRequest.send('{"name":"john"}')
+----
+	
+Java client example:
+
+[source, java]
+----
+ClientRequest request = new ClientRequest(deploymentUrl.toString() + 
+		RESOURCE_PREFIX + "/car/1");
+request.header("Accept", MediaType.APPLICATION_JSON);
+request.header("Token-Session", "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12");
+request.header("Auth-Domain", "AeroGear");	
+----
+	
+Protected resource:
+
+[source, java]
+----
+
+@Path("/car/{id:[1-9][0-9]*}")
+public class CarService {
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Secured
+	public Long getCar(@PathParam("car") long id) {
+		//Some implementation here
+		System.out.println("Car name: " + name);
+		return name;
+	}
+}
+	
+----
+	 	
+Scenario
+^^^^^^^^
+
+*Logout support*
+
+Web mobile users must be able to log out
+
+* Requirements: 
+** Http Headers (Token-Session) by mobile application
+** Http Headers (Auth-Domain) must be provided by aerogear-controller implementation 
+ 	
+JavaScript client:
+ 
+[source, javascript]
+----
+
+var httpRequest = new XMLHttpRequest();
+httpRequest.open("POST", "http://myhost/auth/logout"); 
+
+httpRequest.setRequestHeader("Token-Session", token);
+httpRequest.setRequestHeader("Auth-Domain", domain);
+----
+		
+Java client example:
+
+[source, java]
+----
+
+ClientRequest request = new ClientRequest(deploymentUrl.toString() + 
+		RESOURCE_PREFIX + "/auth/logout");
+request.header("Accept", MediaType.APPLICATION_JSON);
+request.header("Token-Session", "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12");
+request.header("Auth-Domain", "AeroGear");
+----
+
+
+REST Authentication API
+-----------------------
+
+The REST resources will be generated using a Maven or Forge plugin to provide the basics for authentication, like link:https://github.com/plataformatec/devise/[Devise] does for Rails applications
+
+POST
+~~~~
+
+auth/register
+^^^^^^^^^^^
+
+*Resource URL*
+
+[source,shell]
+----
+http://johndoe.com/auth/register
+----
+
+*Example Request*
+
+[source, javascript]
+----
+{
+    "username": "john", 
+    "password": "doe",
+    "email": "john@doe.com"
+}
+----
+
+auth/login
+^^^^^^^^^^^
+
+*Resource URL*
+
+[source,shell]
+----
+http://johndoe.com/auth/login
+----
+
+*Example Request*
+
+[source, javascript]
+----
+{
+    "username": "john", 
+    "password": "doe",
+}
+----
+
+*Example Response*
+
+[source, javascript]
+----
+{
+    "token" : "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
+    "expires": "1141889120"
+}
+----
+
+++++	
+<table width="100%">
+<tbody>
+    <tr>
+        <td><b>Parameter</b></td>
+        <td><b>Example</b></td>
+        <td><b>Description</b></td>
+    </tr>
+    <tr>
+        <td>expires</td>
+        <td>1141889120</td>
+        <td>Number of seconds since the epoch (00:00:00 UTC on January 1, 1970). A request received after this time (according to the server) will be denied.</td>
+    </tr>
+   </tbody>
+</table>
+++++
+
+
+auth/logout
+^^^^^^^^^^^^
+
+*Resource URL*
+
+[source,shell]
+----
+http://johndoe.com/auth/logout
+----
+
+*Example Request*
+
+[source, javascript]
+----
+{
+    //http://johndoe.com/auth/logout
+    {
+    "request": "/auth/logout"
+    }
+}
+----
+
+Common Client Library Requirements
+----------------------------------
+
+This is a initial proposal on having a very simple autentication layer.
+
+*Disclaimer*
+
+Every single piece of code here represent few simple ideas that must to be tested in practice and will be modifed across the development process.
+
+
+Client API
+----------
+
+Requirements
+~~~~~~~~~~~~
+
+* Offer ease of use APIs
+* Provide flexible authentication solution  
+* Cross-browser implementation
+* Respect user's privacy
+
+Features
+--------
+
+Authentication
+--------------
+
+aerogear.auth
+~~~~~~~~~~~~~
+
+A _aerogear.auth_ is just a wrapper to support multiple authentication providers, allows you to be explicit on which technology must be used.  
+
+When creating an _aerogear.auth_, the *host* property is optional and if not present the location where the application lives will be assumed. This will point out the place where the REST resources are hosted.
+
+*Example:*
+
+[source,javascript]
+----
+//Create an instance of aerogear.auth
+var auth = aerogear.auth({
+    host: "http://mydefaulthost.com"
+});
+
+----
+
+The *provider* enables user to pick the desired implementation provider and exposes a consistent interface to easily work with it. This attribute is _optional_ and if not present the default *REST* authentication method will be assumed.
+
+
+*Example:*
+
+[source,javascript]
+----
+//Create an instance of aerogear.auth
+var auth = aerogear.auth({
+    provider: "browserid", //or oauth2
+    host: "http://mydefaulthost.com"
+});
+
+----
+
+aerogear.auth.register
+~~~~~~~~~~~~~~~~~~~~
+
+Aims to provide a flexible registration method representing the properties defined in the server side based on user's input. Following the basic authentication flow above.
+
+image:img/register.png[]
+  
+*Example:*
+
+[source,javascript]
+----
+var result = aerogear.auth.register({
+    username: "john", 
+    password: "doe",
+    email: "john@doe.com"
+});
+----
+
+aerogear.auth.login
+~~~~~~~~~~~~~~~~~~~~
+
+The authentication parameters must be defined on the server side, since we are dealing with several authentication methods, we must allow a variable number of attributes. In this specific case, user will be authenticated providing username/password for example and the user's state will be created in the server session.
+
+image:img/login.png[]
+
+*Example:*
+	
+[source,javascript]
+----
+//Login request
+var result = aerogear.auth.login({
+    username: "john", 
+    password: "doe"
+});
+----
+
+aerogear.auth.logout
+~~~~~~~~~~~~~~~~~~~~~
+
+Ends the session of the authenticated user.
+
+image:img/logout.png[]
+
+*Example:*
+	
+[source,javascript]
+----
+var result = aerogear.auth.logout();
+----
+
+Aerogear.next
+---------------
+Authentication
+~~~~~~~~~~~~~~
+
+* REST support
+* Oauth2 support
+* BrowserID support
+
+aerogear.encryptors
+~~~~~~~~~~~~~~~~~~~
+
+* aerogear.encryptors.SipHash
+* aerogear.encryptors.SHA1
+* aerogear.encryptors.SHA_256
+* aerogear.encryptors.AES
+
+Open questions
+--------------
+
+*  The authentication methods proposed are enough? Do we need token support with key derivation on the server side? Something like this:
+
+image:img/token_request.jpg[]
+
+*  HTTPS has the security necessary to data transport. Do we need to care about environments where HTTPS is not provided or supported?
+
+Apache DeltaSpike & JBoss PicketLink
+------------------------------------
+
+*TODO* Links to existing resources/discussions
+
+*TODO* Requirements for those projects
