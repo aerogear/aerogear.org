@@ -1,11 +1,16 @@
 #skin_dir: ../site-skin
 profiles:
   development:
-  staging:
+  beta:
     base_url: http://staging.aerogear.org/
     deploy:
       host: aerogear.org
       path: /var/www/domains/aerogear.org/staging/htdocs/ 
+  staging:
+    base_url: http://staging.aerogear.org/
+    deploy:
+      host: github_pages
+      branch: site2
   production:
     base_url: http://aerogear.org/
     deploy:
