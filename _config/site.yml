@@ -11,6 +11,7 @@ profiles:
     deploy:
       host: github_pages
       branch: site2
+      path: php/
   production:
     base_url: http://aerogear.org/
     deploy:
