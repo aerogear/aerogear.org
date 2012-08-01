@@ -1,4 +1,4 @@
 Gemfile
 Gemfile.lock
 vendor/*
-.bundle/*
+.bundle/*use_ruby
