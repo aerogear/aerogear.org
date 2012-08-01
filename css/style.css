@@ -138,13 +138,14 @@ body {
     display: block;
 }
 
-#repodiv {
+#repo-container {
+    position: relative;
     display: none;
     padding: 20px;
 }
 
-#repodiv .ghlink {
-    margin-left: 10px;
+#fork-link img {
+    z-index: 100;
 }
 
 /* Footer Styles */

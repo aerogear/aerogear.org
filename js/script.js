@@ -7,7 +7,9 @@ $( function() {
         // Test button pressed and load appropriate repo if necessary
         var target = $( event.target ),
             repodiv = $( "#repodiv" ),
+            repoContainer = $( "#repo-container" ),
             repobtns = $( ".repo-btns" ),
+            repolink = $( "#fork-link" ),
             body = $( "body" ),
             repoType, repoUser = "aerogear", repoName;
 
@@ -24,13 +26,13 @@ $( function() {
             $this.text( $this.data( "original-text" ) );
         });
 
-        if ( repodiv.is( ":visible" ) ) {
-            repodiv.hide( "slow", function() {
+        if ( repoContainer.is( ":visible" ) ) {
+            repoContainer.hide( "slow", function() {
                 if ( repodiv.data( "repo" ) != repoType ) {
                     repodiv.empty();
-                    repodiv.show( function() {
-                        body.animate( { scrollTop: repodiv.offset().top - 150 }, "slow");
-                        repodiv.append( "<a href='http://github.com/" + repodiv.data( "link" ) + "target='_blank' class='ghlink'>View on GitHub</a>" );
+                    repoContainer.show( function() {
+                        body.animate( { scrollTop: repoContainer.offset().top - 150 }, "slow");
+                        repolink.attr( "href", "http://github.com/" + target.data( "link" ) );
                         repodiv.repo({
                             user: repoUser,
                             name: repoName
@@ -41,11 +43,11 @@ $( function() {
                 }
             });
         } else {
-            repodiv.show( "slow", function() {
-                body.animate( { scrollTop: repodiv.offset().top - 150 }, "slow");
+            repoContainer.show( "slow", function() {
+                body.animate( { scrollTop: repoContainer.offset().top - 150 }, "slow");
                 if ( repodiv.data( "repo" ) != repoType ) {
                     repodiv.empty();
-                    repodiv.append( "<a href='http://github.com/" + repodiv.data( "link" ) + "target='_blank' class='ghlink'>View on GitHub</a>" );
+                    repolink.attr( "href", "http://github.com/" + target.data( "link" ) );
                     repodiv.repo({
                         user: repoUser,
                         name: repoName
