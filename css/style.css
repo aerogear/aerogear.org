@@ -148,6 +148,16 @@ body {
     z-index: 100;
 }
 
+.repo li > i {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+}
+.repo li.dir .icon-folder-open {
+    color: #80a6cd;
+}
+
 /* Footer Styles */
 footer .row .span3:last-child {
     position: relative;
