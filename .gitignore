@@ -2,4 +2,7 @@
 .DS_Store
 .awestruct
 _site
-_tmp
+_tmp/
+/.bundle
+/vendor
+/.rbenv-version
