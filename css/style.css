@@ -130,8 +130,28 @@ body {
     margin-left: 20px;
 }
 
+.span4 {
+    width: 360px;
+    border: 2px solid #c3d3e3;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    min-height: 560px;
+    margin-bottom: 20px;
+}
+
 .span4 h2 {
     color: #c6000f;
+    padding-left: 5px;
+    background-color: #c3d3e3;
+    -webkit-border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 10px;
+}
+
+.span4 > div {
+    padding: 5px;
 }
 
 .span4 .btn {
@@ -217,6 +237,18 @@ footer .row .span3:last-child {
         float: none;
         margin-right: 0;
     }
+
+    .span4 {
+        width: 290px;
+    }
+
+    .span4 h2 {
+        font-size: 19px;
+    }
+
+    .span4 h3 {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 979px) {
@@ -258,8 +290,9 @@ footer .row .span3:last-child {
         margin-top: -35px;
     }
 
-    .span4 h2 {
-        font-size: 20px;
+    .span4 {
+        width: 218px;
+        min-height: 0px;
     }
 }
 
@@ -274,6 +307,10 @@ footer .row .span3:last-child {
 
     .start-header .btn {
         font-size: 14px;
+    }
+
+    .span4 {
+        width: 100%;
     }
 }
 
