@@ -133,10 +133,7 @@ body {
 .span4 {
     width: 360px;
     border: 2px solid #c3d3e3;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    min-height: 560px;
+    min-height: 550px;
     margin-bottom: 20px;
 }
 
@@ -144,9 +141,6 @@ body {
     color: #c6000f;
     padding-left: 5px;
     background-color: #c3d3e3;
-    -webkit-border-radius: 8px 8px 0 0;
-    -moz-border-radius: 8px 8px 0 0;
-    border-radius: 8px 8px 0 0;
     margin-bottom: 10px;
 }
 
@@ -267,6 +261,16 @@ footer .row .span3:last-child {
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
+    }
+
+    .twitter-image:after {
+        content: " Twitter";
+    }
+    .gplus-image:after {
+        content: "  Google+";
+    }
+    .fb-image:after {
+        content: "  Facebook";
     }
 
     .start-header h2 {
