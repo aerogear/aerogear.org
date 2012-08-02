@@ -262,7 +262,9 @@ request.header("Auth-Domain", "AeroGear");
 REST Authentication API
 -----------------------
 
-The REST resources will be generated using a Maven or Forge plugin to provide the basics for authentication, like link:https://github.com/plataformatec/devise/[Devise] does for Rails applications
+Note: Having a REST API for auth won't matter if the REST endpoint is not secure
+
+The REST resources will be generated using a Maven or Forge plugin to provide the basics for authentication, like link:https://github.com/plataformatec/devise/[Devise] does for Rails applications. having a REST API for auth won't matter if the REST endpoint is not secure" to the aerogear security document
 
 POST
 ~~~~
