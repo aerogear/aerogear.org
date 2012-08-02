@@ -1,5 +1,5 @@
-AeroGear JavaScript Library 1.0.0 - DRAFT
-=========================================
+AeroGear JavaScript Library 1.0.0
+=================================
 :Author: Kris Borchers
 
 This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.  Completed functionality may be moved, removed, or updated in the aerogear-js README.md file.
@@ -25,15 +25,46 @@ Release Roadmap
 
 Each library will have its own versioning.  Its Roadmap should be defined here.
 
-1.0.0.Alpha1
+1.0.0.Alpha
 ~~~~~~~~~~~~
 
-*TODO* complete
+* aerogear.pipeline.js
+** Initial implementation and REST adapter
+* Initial AeroGear TODO app
+* Release with AeroGear 1.0.0.M5
 
-1.0.0.M1
+1.0.0.Beta1
+~~~~~~~~~~~
+
+* aerogear.auth.js
+** link:AeroGearSecurity.html[AeroGear Security 1.0.0.Alpha]
+* Integrate auth into TODO app
+* Release with AeroGear 1.0.0.M6
+
+1.0.0.Beta2
+~~~~~~~~~~~
+* aerogear.pipeline.js
+** WebSocket Adapter
+* aerogear.auth.js, aerogear.encryptor.js
+** link:AeroGearSecurity.html[AeroGear Security 1.0.0.Beta]
+* Release with AeroGear 1.0.0.M7
+
+1.0.0.CR
 ~~~~~~~~
 
-*TODO* complete
+* Bug fixes and enhancements
+* TODO app enhancement to show new library features
+* aerogear.auth.js
+** link:AeroGearSecurity.html[AeroGear Security 1.0.0.CR]
+* Release with AeroGear 1.0.0.CR
+
+1.0.0.Final
+~~~~~~~~~~~
+
+* Fix any final bugs
+* API and Documentation review
+* TODO app review
+* Release with AeroGear 1.0.0.Final
 
 JavaScript Specific Requirements
 --------------------------------
@@ -43,5 +74,4 @@ For common cross-library requirements see:
 * link:AeroGearPersistence.html[AeroGear Persistence Plan]
 * link:AeroGearSecurity.html[AeroGear Security Plan]
 
-
-*TODO* Complete
+And for the overall AeroGear Roadmap, see the link:AeroGearRoadmap1.0.0.html[AeroGear Roadmap]
