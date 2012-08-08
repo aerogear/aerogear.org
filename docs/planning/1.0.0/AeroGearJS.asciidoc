@@ -1,5 +1,5 @@
-AeroGear JavaScript Library 1.0.0 - DRAFT
-=========================================
+AeroGear JavaScript Library 1.0.0
+=================================
 :Author: Kris Borchers
 
 This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.  Completed functionality may be moved, removed, or updated in the aerogear-js README.md file.
