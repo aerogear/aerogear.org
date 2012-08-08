@@ -12,7 +12,7 @@ In many cases the source code is best location for updated comments and details,
 
 The web client side of this quickstart consists of single page application (index.html), its dependent libraries, and other standard resources (JavaScript, CSS, images). 
 
-.index.html
+==== index.html
 
 Github Source: https://github.com/aerogear/as-quickstarts/blob/master/kitchensink-html5-mobile/src/main/webapp/index.html[index.html]
  
@@ -51,14 +51,14 @@ Directly after this part of the header comes our initialization logic for our ap
  
 In this section we do a couple of different things:
  
-. Demonstrate how to use the yepnope library, which is included in Modernizr to conditionally load the jquery-min.js file from a CDN, or fallback to our own local non-minified version for development.
+* Demonstrate how to use the yepnope library, which is included in Modernizr to conditionally load the jquery-min.js file from a CDN, or fallback to our own local non-minified version for development.
 
-. Use Modernizr and new media queries to determine if this is a mobile device
-  .. Using this information we toggle jQuery mobile support, and which CSS files to include in our app
+* Use Modernizr and new media queries to determine if this is a mobile device
+** Using this information we toggle jQuery mobile support, and which CSS files to include in our app
 
-. When that is completed we setup our initial event listeners, and populate the member table from the server.
+* When that is completed we setup our initial event listeners, and populate the member table from the server.
 
-.HTML5 Semantic Tags & Structure
+==== HTML5 Semantic Tags & Structure
 
 One of the new features of HTML5 is a whole suite of new semantic based tags.  By which I mean descriptive tags that better describe the contained content, such as <section>, <footer>, <aside>, etc....  These make it possible to easily break up your structure without ending up with a forest of  <div id=""> tags all over your document.
  
@@ -77,7 +77,7 @@ In the quickstart application we use them to break up the different sections of 
 
 We also use CSS rules to "hide" various parts of the page based on the client type, and format.  This is helped by the media queries described above, and also by how jQuery Mobile defines its page sections.
 
-.HTML5 Form API
+==== HTML5 Form API
 
 Another new feature of HTML5 and its related specifications are the HTML form elements and API.  In the quickstart we use several of the new features in the member form.
 
@@ -105,17 +105,17 @@ Another new feature of HTML5 and its related specifications are the HTML form el
 </fieldset>
 ----
 
-.Input type attribute
+==== Input type attribute
 
 By setting input type attribute based on the type of field it represents browsers can make various optimizations.  Mobile browsers that support this attribute will display special optimized keyboards - as shown below.  Some desktop browsers (webkit and firefox mainly) will automatically validate the field as well, for example checking that the field is a valid email.
 
 image:img/iphone-2.jpg[]
 
-.Placeholder and Autofocus
+==== Placeholder and Autofocus
 
 You can also see the use of the "placeholder" and "autofocus" attributes.  The placeholder attribute allows you to set a default text string that will display in your field when there is no value.  This is great, especially for mobile devices where you can shrink or eliminate regular labels for fields.  The autofocus attribute is exactly as you would expect, for browsers that support this tag the keyboard/input focus will automatically be on the specified field.
  
-.Input Validation
+==== Input Validation
 
 One of the more critical updates to the form fields is around built in, client validation.  You'll notice attributes like "required" and "pattern".  These along with input type discussed above allow browsers that support it to validate fields on the client side.  For now this is limited to desktop Chrome, Safari, and Firefox, and their support is slightly different between them, but improvements are made all the time in this area. 
  
@@ -127,7 +127,7 @@ Github Source: https://github.com/aerogear/as-quickstarts/blob/master/kitchensin
  
 The app.js file contains the example's core JavaScript logic, and handles the RESTful requests to the server, as well as handling the updates to the UI based on them.
 
-.updateMemberTable
+==== updateMemberTable
 
 This method performs a simple GET call to the server, calls the buildMemberRows() method with the response data.
 
@@ -148,7 +148,7 @@ function updateMemberTable() {
 }
 ----
 
-.buildMemberRows & getMemberTemplate
+==== buildMemberRows & getMemberTemplate
 
 Using underscore.js these methods retrieve the https://github.com/aerogear/as-quickstarts/blob/master/kitchensink-html5-mobile/src/main/webapp/tmpl/member.tmpl[member.tmpl] file from the server and populates it with the json data retrieved from the updateMemberTable method.  The output of this process is the table body for the member table on the application's main page.  For more on what underscore.js does check out the 3rd party section below and the project's home page.
 
@@ -171,7 +171,7 @@ function buildMemberRows(members) {
 }
 ----
 
-.registerMember
+==== registerMember
 
 This method does the heavy lifting of creating a new member on the server using a POST request, and handling any error responses by highlighting fields that are not valid.  Besides basic steps like clearing out older messages, if the request is successful it triggers the member table to update.
 
@@ -247,27 +247,27 @@ This application uses several 3rd party libraries to do some of the heavy liftin
  
 All of these libraries are packaged in both development and minimized versions.  We recommend using the minimized versions for production for best performance.  Development versions are easier to work with while, you guessed it, developing, because you can easily debug into the source.
 
-.jQuery
+==== jQuery
 Project Site: http://jquery.com/
  
 One of the most popular general purpose JavaScript projects available.  This example uses it mainly for DOM manipulation and ajax requests. 
 
-.jQuery Mobile
+==== jQuery Mobile
 Project Site: http://jquerymobile.com/
  
 One of several JavaScript mobile framework projects available.  This is very complete framework for mobile devices and has a great range of device support.  This also means it is one of the larger libraries out there so performance should be considered.  It does a great job of getting you running and is backed by the jQuery project.
 
-.Modernizr
+==== Modernizr
 Project Site: http://www.modernizr.com/
  
 The Moderizr library is primarily used to check device, and browser capabilities allowing you to have a fine grain of control over your application no matter what device or client may be accessing it.  This library integrates with yepnope to combine feature detection with media queries and conditional resource loading.
 
-.Yepnope (Included in Modernizr)
+==== Yepnope (Included in Modernizr)
 Project Site: http://yepnopejs.com/
  
 As the yepnope web site says it is an asynchronous conditional resource loader that's super-fast, and allows you to load only the scripts that your users need.  Our example uses it with modernizr to control resource loading and behavior based on the client accessing the application.
 
-.Underscore.js
+==== Underscore.js
 Project Site: http://documentcloud.github.com/underscore/
  
 This is great utility library that has many great functions.  This examples primary use for it is to process templating of new member table rows by dynamically loading and populating the https://github.com/aerogear/as-quickstarts/blob/master/kitchensink-html5-mobile/src/main/webapp/tmpl/member.tmpl[member.tmpl] file.
@@ -276,7 +276,7 @@ This is great utility library that has many great functions.  This examples prim
 
 The server side of this application consists of a basic domain model using Bean Validation, and JAX-RS service endpoints using RESTEasy to provide access.
 
-.Member.java
+==== Member.java
 Github Source: https://github.com/aerogear/as-quickstarts/blob/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/model/Member.java[Member.java]
 
 [source, java]
