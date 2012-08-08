@@ -6,19 +6,19 @@ layout: basic
 
 As an open source project we are always on the lookout for community members that want to step up and help with the project. There are lots of ways to help, and this article will help you get started!
 
-.Help Others
+==== Help Others
 Have experience with mobile or HTML5 based technologies? Interested in sharing your knowledge?
 
 Join the https://community.jboss.org/community/aerogear[forum discussions] and share what your working on, or struggling with. For more immediate gratification join the IRC channel (#aerogear). There are are usually a good bunch of people hanging out there. Ask your questions, share your experience, or just make jokes :-)
 
 If you've got ideas for the project, or want to discuss ways to improve AeroGear join the http://www.redhat.com/mailman/listinfo/aerogear-dev[aerogear-dev] mailing list, or create a forum post in the https://community.jboss.org/community/aerogear/dev[development forums] and let your ideas be heard. If you've already done that, or found an issue with our stuff check out the next section.
 
-.Found An Issue?
+==== Found An Issue?
 Have you run into an issue with one of our examples, sites, or have a suggestion? The best place to start is probably talking about it in the forums or IRC. If you've already done that, or just want to create the issue please do at https://issues.jboss.org/browse/AEROGEAR.
 
 We only ask that you review our link::JIRAUsage.html[AeroGear Jira Usage and Guidelines] and use your noodle! Help the community help you :-)
 
-.Fix an Issue!
+==== Fix an Issue!
 Your ready to start taking action, dig into an issue, and update some code! Excellent!!
 
 *Communicate*

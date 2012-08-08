@@ -10,7 +10,7 @@ This article will use the example of AeroGear's http://www.github.com/aerogear/a
 Before getting started, it is important to note the structure of this repo and how it may affect your environment. In order to avoid duplicating both files and effort, the web app assets (HTML, CSS, JS) files have been housed in a separate folder called *shared*. In there, you will find a folder called *www* under which are the files. In order for this structure to work during your builds, a symbolic link to the *www* folder from each of the app's respective *www* folders has been created. In iOS, that is in the */ios/KitchensinkCordova* folder and in Android, the symbolic link is in the */android/assets* folder.
 
 === iOS Build
-.System Requirements
+==== System Requirements
 * A Mac running OSX 10.7 Lion or later
 * XCode 4.3 or later
 * The appropriate iOS SDK for your needs
@@ -19,7 +19,7 @@ Before getting started, it is important to note the structure of this repo and h
 ** An iOS Development Certificate
 ** A provisioning profile for each device you plan to test with
 
-.Building the App for the Simulator
+==== Building the App for the Simulator
 First, we will look at building the app for the iOS Simulator. Once you have cloned the repo, it is time to start the build process. In order to build a Cordova iOS app, you need to install CordovaLib, Cordova Framework and Cordova XCode templates. At this time, there is not a pre-built installer so it must be built from source before it can be installed. Go to https://github.com/apache/incubator-cordova-ios, click the Tags link and download the latest release which at this time is 1.6.1. Unzip the file to a known location, then follow the instructions https://github.com/apache/incubator-cordova-ios[here] under the section titled "Build and install the Installer Package".
 
 Next, just open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and then create the link like this:
@@ -47,7 +47,7 @@ Replace the *{{CORDOVA_SCRIPT}}* with *js/libs/cordova-ios-&lt;version&gt;.js* a
 
 image::img/network.png[iOS Simulator shoing network connection output]
 
-.Building the App for Devices
+==== Building the App for Devices
 After you are able to successfully test your app with the iOS Simulator, it is time to test it on a device. As stated above in the system requirements, this is going to require an Apple Developer account, an iOS development certificate (downloaded to your machine) and a provisioning profile (also downloaded and installed in XCode) for the device(s) you plan to test on. For more information about these requirements, visit the http://developer.apple.com[Apple Developer] site. Now, on to the steps to deploy to your device.
 
 One important note about the provisioning profile is that the when you create your App ID, it must match the App ID of the app exactly or it won't work. For this example, we have used *org.jboss.aerogear.KitchensinkCordova* as the App ID so you must also create that App ID in your profile and create a provisioning profile for it if you wish to test this example.
@@ -60,7 +60,7 @@ Next, make sure your device is attached to your machine, then in XCode, near the
 
 === Android Build
 
-.System Requirements
+==== System Requirements
 * Android SDK r17 starter package - http://developer.android.com/sdk/index.html
 * Android Development Tools (ADT) Plugin for Eclipse
 ** Java JDK 1.6
@@ -68,7 +68,7 @@ Next, make sure your device is attached to your machine, then in XCode, near the
 ** Android SDK Tools r17 (included in the Android SDK starter package)
 * At least the Android 2.3 SDK (installed via the Android SDK manager in the ADT)
 
-.Building the App for the Simulator
+==== Building the App for the Simulator
 Once your environment is all set, getting this app built and running is a snap. First, you need to import the project into Eclipse. Open Eclipse and go to File -&gt; Import and select General -&gt; Existing Projects into Workspace and click Next.
 
 image::img/import.png[Import view in Eclipse]
@@ -97,10 +97,10 @@ Now that you have a virtual device, select it and click Start. On the following 
 
 image::img/androidSim.png[App running in Android simulator]
 
-.Building the App for Devices
+==== Building the App for Devices
 Running the app on your Android device is even easier. First, make sure your device has USB debugging enabled. This is usually done by going to *Settings -&gt; Applications -&gt; Development -&gt; USB debugging*. Once you have done this, make sure there are no virtual devices running, then connect your device to your computer with your USB cable. In Eclipse, go to Run -&gt; Run (or click the green "Play" button in the toolbar) and the app should start on your device. If you still have the simulator running, the app may start in the simulator. If this happens, or you would like to have both the simulator running and your device connected, you can use the method outlined in the section on running your app in the simulator. When you get to the part on selecting a running device, both your simulator and your physical device should be in the list and you can select from there.
 
-.Android FAQ
+==== Android FAQ
 * When trying to run the project, I receive a message similar to "Android requires compiler compliance level 5.0 or 6.0. Found '1.4' instead." What do I do?
 ** As recommended by Eclipse, "Please use Android Tools &gt; Fix Project Properties" will fix this issue
 * I receive the error "Unable to resolve target 'android-7'", what do I do?
