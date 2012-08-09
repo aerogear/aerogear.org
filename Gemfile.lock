@@ -1,7 +1,7 @@
 GIT
-  remote: git://github.com/awestruct/awestruct.git
-  revision: 138a1aaa2d265814d45df29ca8ee2791db988a7a
-  ref: 138a1aa
+  remote: git://github.com/qmx/awestruct.git
+  revision: 454c3afb72e1a44dc80e997677f2c8c0d6f56893
+  branch: erubis-ag
   specs:
     awestruct (0.4.6)
       RedCloth (~> 4.2.9)
@@ -9,6 +9,7 @@ GIT
       coffee-script (~> 2.2.0)
       compass (~> 0.12.1)
       compass-960-plugin (~> 0.10.4)
+      erubis (~> 2.7.0)
       eventmachine (~> 1.0.0.beta.4)
       git (~> 1.2.5)
       haml (~> 3.1.4)
@@ -39,6 +40,7 @@ GEM
     compass-960-plugin (0.10.4)
       compass (>= 0.10.0)
     daemons (1.1.8)
+    erubis (2.7.0)
     eventmachine (1.0.0.rc.4)
     execjs (1.4.0)
       multi_json (~> 1.0)

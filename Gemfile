@@ -1,3 +1,3 @@
 source :rubygems
-gem 'awestruct', :github => 'awestruct/awestruct', :ref => '138a1aa'
+gem 'awestruct', :github => 'qmx/awestruct', :branch => 'erubis-ag'
 gem 'therubyracer'
