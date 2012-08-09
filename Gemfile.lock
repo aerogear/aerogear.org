@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/awestruct/awestruct.git
-  revision: 006e997a2cf16616b494bd11d8b8a5a1dc6a55aa
+  revision: 138a1aaa2d265814d45df29ca8ee2791db988a7a
+  ref: 138a1aa
   specs:
     awestruct (0.4.6)
       RedCloth (~> 4.2.9)
@@ -26,7 +27,7 @@ GEM
   specs:
     RedCloth (4.2.9)
     bootstrap-sass (2.0.4.0)
-    chunky_png (1.2.5)
+    chunky_png (1.2.6)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -41,7 +42,7 @@ GEM
     eventmachine (1.0.0.rc.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    ffi (1.1.3)
+    ffi (1.1.4)
     fssm (0.2.9)
     git (1.2.5)
     haml (3.1.6)
