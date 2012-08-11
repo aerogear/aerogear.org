@@ -4,10 +4,11 @@ bundle install --path vendor/bundle
 rm -rf _site/
 rm -rf php/
 git branch | grep -q site && git branch -D site
-bundle exec awestruct
+bundle exec jekyll
 rsync -av _site/ php/
 git checkout -f -b site
 git add php/
 git commit -m "."
 git push -f ssh://8fcbe4e7c9e34ad1b570906f65fb7a5b@agbeta-qmx.rhcloud.com/~/git/agbeta.git/ site:master
+
 git checkout -f master
