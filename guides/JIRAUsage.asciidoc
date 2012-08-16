@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 == AeroGear JIRA Usage and Guidelines
 
 This document describes the basic jira usage and guidelines for AeroGear. The most important point is _use your noodle_! Be descriptive, and link to forums, git, examples, and related jiras - it all helps get it resolved quickly.

@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 == HTML5 + REST Applications
 
 What is a HTML5 + REST application? This could just as easily be called a "plain old open web" application. The HTML5 revolution causes developers to think differently about their overall architecture, with more JavaScript and CSS on the client-side and RESTful endpoints on the server-side. But, the web hasn't changed it's just gotten better and "more open" - this is a direct result of HTML5, the community (you), and moving the web forward.

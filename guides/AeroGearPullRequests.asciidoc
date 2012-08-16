@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 == How to Handle AeroGear Pull Requests
 
 This article shows the guidelines and tasks required for project developers to manage and handle pull requests (PR).
