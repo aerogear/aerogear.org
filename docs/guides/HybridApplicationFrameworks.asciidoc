@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 == Get Started with Hybrid Application Frameworks
 
 This wiki page will give an overview of what hybrid applications are, what tools and frameworks are out there to help create them, and some teasers for upcoming examples if you wanted to get involved.

@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 AeroGear 1.0.0 Roadmap - DRAFT
 ==============================
 :Author: Jay Balunas

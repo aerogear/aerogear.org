@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 AeroGear Controller 1.0.0 - DRAFT
 =================================
 :Author: Doug Campos

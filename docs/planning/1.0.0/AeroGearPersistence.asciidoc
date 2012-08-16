@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 AeroGear Persistence 1.0.0 - DRAFT
 ==================================
 

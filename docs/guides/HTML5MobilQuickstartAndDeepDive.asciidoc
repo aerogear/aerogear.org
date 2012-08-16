@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 == HTML5 Mobile Quickstart & Archetype Deep Dive
 
 This article details the significant files, libraries, and source code for the AeroGear archetype and quickstart that are part of the JBoss-AS quickstart suite called  https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile[kitchensink-html5-mobile]. For instructions on getting started with the archetype and quickstart see: https://community.jboss.org/docs/DOC-17444[Getting Started With HTML5 Mobile Web Development with JBoss].  The quickstart is nearly identical to the archetype, and for that reason this article will use the quickstart for reference, but the same files will exist if you create your own application using the archetype. 

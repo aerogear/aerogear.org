@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 == Contributing to AeroGear
 
 As an open source project we are always on the lookout for community members that want to step up and help with the project. There are lots of ways to help, and this article will help you get started!

@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 AeroGear iOS Library 1.0.0 - DRAFT
 ==================================
 

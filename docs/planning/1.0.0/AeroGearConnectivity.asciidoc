@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 AeroGear Connectivity 1.0.0 - DRAFT
 ===================================
 

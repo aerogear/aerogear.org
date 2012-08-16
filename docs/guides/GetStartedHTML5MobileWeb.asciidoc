@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 Get Started With HTML5 Mobile Web Development
 =============================================
 
