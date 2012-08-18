@@ -16,7 +16,7 @@ production_url : http://aerogear.org
 
 navigation:
 - desc: Get The Gear
-  url: ""
+  url: /
 - desc: Community
   url: /community
 - desc: Documentation

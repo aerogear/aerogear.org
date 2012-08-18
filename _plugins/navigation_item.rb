@@ -6,7 +6,13 @@ module Jekyll
     end
     def render(context)
       page = context['page']
-      return "active" if context[@text] == page['url'].gsub('/index.html', '')
+      provided_url = context[@text]
+      current_url = page['url'].gsub('/index.html', '')
+      if provided_url == '/'
+        provided_url = ''
+      end
+
+      return "active" if current_url == provided_url
       ""
     end
   end
