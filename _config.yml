@@ -13,3 +13,18 @@ pygments: true
 title : AeroGear
 
 production_url : http://aerogear.org
+
+navigation:
+- desc: Get The Gear
+  url: ""
+- desc: Community
+  url: /community
+- desc: Documentation
+  url: /docs
+- desc: Road Map
+  url: "#"
+- desc: Examples / Demos
+  url: "#"
+- desc: Source
+  url: "#"
+

@@ -27,12 +27,11 @@
                 </a>
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="#">Get the Gear!</a></li>
-                        <li><a href="/community">Community</a></li>
-                        <li><a href="/docs">Documentation</a></li>
-                        <li><a href="#">Road Map</a></li>
-                        <li><a href="#">Examples / Demos</a></li>
-                        <li><a href="#">Source</a></li>
+                        {% for nav_item in site.navigation %}
+                        <li class="{% is_active_navigation_item nav_item.url %}">
+                          <a href="{{ nav_item.url }}">{{ nav_item.desc }}</a>
+                        </li>
+                        {% endfor %}
                         <li class="dropdown" id="social-menu">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#social-menu">Follow Us <b class="caret"></b></a>
                             <ul class="dropdown-menu social-menu">
