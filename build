@@ -6,7 +6,7 @@ ASCIIDOC_VERSION="8.6.7"
 ASCIIDOC_URL="http://downloads.sourceforge.net/project/asciidoc/asciidoc/8.6.7/asciidoc-8.6.7.tar.gz"
 
 if [ -z "$ASCIIDOC_HOME" ]; then
-    ASCIIDOC_HOME="$DIR/_tmp/asciidoc_home"
+    ASCIIDOC_HOME="$(pwd)_tmp/asciidoc_home"
 fi
 
 export ASCIIDOC_BIN=${ASCIIDOC_HOME}/bin
