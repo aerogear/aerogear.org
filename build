@@ -1,5 +1,7 @@
 #!/bin/sh
 
+SRCFOLDER="$(pwd)"
+
 # asciidoc setup
 # shamelessly taken from https://github.com/jboss-jdf/jdf-site/blob/master/setup.sh
 ASCIIDOC_VERSION="8.6.7"
@@ -23,6 +25,8 @@ tar -xzf asciidoc-${ASCIIDOC_VERSION}.tar.gz
 
 ln -sf ${ASCIIDOC_DIR}/asciidoc.py ${ASCIIDOC_BIN}/asciidoc
 ln -sf ${ASCIIDOC_DIR}/a2x.py ${ASCIIDOC_BIN}/a2x
+
+cd $SRCFOLDER
 
 gem install --conservative bundler
 bundle install --path vendor/bundle
