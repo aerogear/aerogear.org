@@ -1,0 +1,52 @@
+---
+layout: basic
+---
+
+== AeroGear
+
+=== Guides
+
+Tutorials, gettings started docs, how-tos
+
+* link:guides/AeroGearBrowserTargets/[AeroGear Browser Support Targets]
+* link:guides/AeroGearPullRequests/[How to Handle AeroGear Pull Requests]
+* link:guides/Contributing/[Contributing to AeroGear]
+* link:guides/GetStartedHTML5MobileWeb/[Get Started With HTML5 Mobile Web Development]
+* link:guides/GitHubWorkflow/[AeroGear GitHub Workflow]
+* link:guides/HTML5AppsToOpenshift/[Deploying HTML5 Applications to Openshift]
+* link:guides/HTML5MobilQuickstartAndDeepDive/[HTML5 Mobile Quickstart & Archetype Deep Dive]
+* link:guides/HTML5RESTApps/[HTML5 + REST Applications]
+* link:guides/HTML5ToHybridWithCordova/[Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova]
+* link:guides/HybridApplicationFrameworks/[Get Started with Hybrid Application Frameworks]
+* link:guides/JIRAUsage/[AeroGear JIRA Usage and Guidelines]
+* link:guides/license/[AeroGear Licensing and Copyright]
+
+=== Planning
+
+Project roadmaps, plans, etc...
+
+1.0.0
+~~~~~
+
+* link:planning/1.0.0/AeroGearAndroid/[AeroGear Android Library 1.0.0 - DRAFT]
+* link:planning/1.0.0/AeroGearConnectivity/[AeroGear Connectivity 1.0.0 - DRAFT]
+* link:planning/1.0.0/AeroGearController/[AeroGear Controller 1.0.0 - DRAFT]
+* link:planning/1.0.0/AeroGearJS/[AeroGear JavaScript Library 1.0.0 - DRAFT]
+* link:planning/1.0.0/AeroGearPersistence/[AeroGear Persistence 1.0.0 - DRAFT]
+* link:planning/1.0.0/AeroGearRaodmap1.0.0/[AeroGear 1.0.0 Roadmap - DRAFT]
+* link:planning/1.0.0/AeroGearSecurity/[AeroGear Security 1.0.0 - DRAFT]
+* link:planning/1.0.0/AeroGearServerHooks/[AeroGear Server Integration 1.0.0 - DRAFT]
+* link:planning/1.0.0/AeroGeariOS/[AeroGear iOS Library 1.0.0 - DRAFT]
+* link:planning/1.0.0/license/[AeroGear Licensing and Copyright]
+
+=== Reference
+
+Central project reference material(may not be needed)
+
+=== Scratchpad
+
+Misc scraps, notes, works in progress, etc...
+
+=== Specifications
+
+API specifications for persistence, security...
