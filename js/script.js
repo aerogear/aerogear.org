@@ -60,7 +60,7 @@ $( function() {
     });
 
     // Show Twitter Feed
-    $( "#aerogear-twitter" ).twitter( { ors: "aerogear", rpp: 7 } );
+    $( "#aerogear-twitter" ).twitter( { ors: "aerogear", replies: false, rpp: 7 } );
 
     // Initialize drop down menu
     $( ".dropdown-toggle" ).dropdown();
