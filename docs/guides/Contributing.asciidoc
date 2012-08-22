@@ -11,7 +11,7 @@ Have experience with mobile or HTML5 based technologies? Interested in sharing y
 
 Join the https://community.jboss.org/community/aerogear[forum discussions] and share what your working on, or struggling with. For more immediate gratification join the IRC channel (#aerogear). There are are usually a good bunch of people hanging out there. Ask your questions, share your experience, or just make jokes :-)
 
-If you've got ideas for the project, or want to discuss ways to improve AeroGear join the http://www.redhat.com/mailman/listinfo/aerogear-dev[aerogear-dev] mailing list, or create a forum post in the https://community.jboss.org/community/aerogear/dev[development forums] and let your ideas be heard. If you've already done that, or found an issue with our stuff check out the next section.
+If you've got ideas for the project, or want to discuss ways to improve AeroGear join the https://lists.jboss.org/mailman/listinfo/aerogear-dev[aerogear-dev] mailing list, and let your ideas be heard. If you've already done that, or found an issue with our stuff check out the next section.
 
 ==== Found An Issue?
 Have you run into an issue with one of our examples, sites, or have a suggestion? The best place to start is probably talking about it in the forums or IRC. If you've already done that, or just want to create the issue please do at https://issues.jboss.org/browse/AEROGEAR.
