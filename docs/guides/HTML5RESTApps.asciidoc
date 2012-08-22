@@ -28,5 +28,5 @@ With advanced client side development, we must provide solid backend services wi
 
 For more examples and demos, see:
 
-* link::GetStartedHTML5MobileWeb.html[Get Started With HTML5 Mobile Web Development with JBoss]
-* link::Hybrid_Application_Frameworks.html[Get Started with Hybrid Application Frameworks]
+* link:../GetStartedHTML5MobileWeb[Get Started With HTML5 Mobile Web Development with JBoss]
+* link:../HybridApplicationFrameworks[Get Started with Hybrid Application Frameworks]
