@@ -22,7 +22,7 @@ navigation:
 - desc: Documentation
   url: /docs
 - desc: Road Map
-  url: "#"
+  url: "/docs/planning"
 - desc: Examples / Demos
   url: "#"
 - desc: Source
