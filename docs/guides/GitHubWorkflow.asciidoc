@@ -74,7 +74,7 @@ Please note that --rebase is very important if you do have commits. What happens
 =================================
 
 ==== Do the work
-If you have not done so it is a good idea to communicate any planned bug fixes, or updates you wish to make with the community and project team. See link::Contributing.html[Contributing To AeroGear] for more on the best ways to do that.
+If you have not done so it is a good idea to communicate any planned bug fixes, or updates you wish to make with the community and project team. See link:../Contributing[Contributing To AeroGear] for more on the best ways to do that.
 
 ==== Create a topic branch (optional)
 It is a good practice to do any work in a topic branch to keep your master branch clean. This is optional though, but the rest of this document will assume you are using it.
@@ -176,7 +176,7 @@ At this point the jira will show "Pull Request Sent", but the jira is still unre
 ** Will be picked up my the team developed within a couple of days and reviewed.
 ** If not follow to next step
 * Pull request is blocking additional work, and/or is time sensitive, and/or critical
-** Email the http://www.redhat.com/mailman/listinfo/aerogear-dev[aerogear-dev] mailing list and post that this PR should be reviewed and why
+** Email the https://lists.jboss.org/mailman/listinfo/aerogear-dev[aerogear-dev] mailing list and post that this PR should be reviewed and why
 ** Join the #aerogear freenode irc channel, and request someone review this PR
 * If you are a project developer and the change is trivial, blocking your critical work and other team members are not available
 ** Comment in the PR why you are going to push your pull request
@@ -186,7 +186,7 @@ At this point the jira will show "Pull Request Sent", but the jira is still unre
 
 In any of these situations please keep an eye out for any comments, or follow up items related to your pull request so that we can act on them quickly. GitHub and the pull request mechinism will be used for code reviews, and comments. Please act on these comments in timely manor so we can get your changes in!
 
-If you are a project developer this is where your job comes in. See link::AeroGearPullRequests.html[How to Handle AeroGear Pull Requests] for more on handling pull requests.
+If you are a project developer this is where your job comes in. See link:../AeroGearPullRequests[How to Handle AeroGear Pull Requests] for more on handling pull requests.
 
 ==== Updating your branch once the PR has been closed
 

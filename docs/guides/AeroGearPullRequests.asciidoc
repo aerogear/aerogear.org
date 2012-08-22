@@ -31,9 +31,9 @@ This section talks about handling a pull request generated from a community memb
 ** Please request users sign this, and if there are question contact the project lead
 * Jira
 ** 90% of the time there should be a jira associated with a PR
-** The Jira should be linked to the PR following the instructions in the link::GitHubWorkflow.html[AeroGear GitHub Workflow &amp; Instructions]
+** The Jira should be linked to the PR following the instructions in the link:../GitHubWorkflow[AeroGear GitHub Workflow &amp; Instructions]
 * Make sure your own local repo is up to date with the latest from AeroGear
-** Follow the instructions in the link::GitHubWorkflow.html[AeroGear GitHub Workflow &amp; Instructions] document.
+** Follow the instructions in the link:../GitHubWorkflow[AeroGear GitHub Workflow &amp; Instructions] document.
 
 ===== Add a git remote reference to the PR location
 

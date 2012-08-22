@@ -8,7 +8,7 @@ This guide will show you how to deploy HTML5+REST based applications to Openshif
 
 Prerequisites
 -------------
-This article assumes you have created an application following the instructions in link:GetStartedHTML5MobileWeb.html[Get Started With HTML5 Mobile Web Development].  In that guide you created a new HTML5+REST based mobile web application using JBoss Tools, and have it deploying and executing locally.
+This article assumes you have created an application following the instructions in link:../GetStartedHTML5MobileWeb[Get Started With HTML5 Mobile Web Development].  In that guide you created a new HTML5+REST based mobile web application using JBoss Tools, and have it deploying and executing locally.
 
 Openshift Setup
 ---------------
