@@ -25,6 +25,6 @@ layout: basic
 
 Central project reference material(may not be needed)
 
-### Specifications
+### [Specifications](specs)
 
 API specifications for persistence, security...
