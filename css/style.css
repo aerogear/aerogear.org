@@ -184,6 +184,10 @@ footer .row .span3:last-child {
     min-height: 150px;
 }
 
+.footer-divider {
+    border-color: #CCC;
+}
+
 .footer-logo {
     display: block;
 }
