@@ -11,11 +11,19 @@ if [ -z "$ASCIIDOC_HOME" ]; then
 	ASCIIDOC_HOME="$(pwd)/vendor/asciidoc_home"
 fi
 
+if [ -z "$PYSTUFF_HOME" ]; then
+	PYSTUFF_HOME="$(pwd)/vendor/python"
+fi
+
+virtualenv --distribute $PYSTUFF_HOME
+$PYSTUFF_HOME/bin/pip install pygments
+
+export PYSTUFF_BIN=${PYSTUFF_HOME}/bin
 export ASCIIDOC_BIN=${ASCIIDOC_HOME}/bin
 mkdir -p ${ASCIIDOC_HOME}
 mkdir -p ${ASCIIDOC_BIN}
 export ASCIIDOC_DIR=${ASCIIDOC_HOME}/asciidoc-${ASCIIDOC_VERSION}
-export PATH=${ASCIIDOC_BIN}:${PATH}
+export PATH=${ASCIIDOC_BIN}:${PYSTUFF_BIN}:${PATH}
 echo "************ Please add ${ASCIIDOC_BIN} to your PATH. You probably want to move asciidoc to your system, and update your PATH globally."
 echo "************ Or, install asciidoc via your package manager :-)"
 cd ${ASCIIDOC_HOME}
