@@ -136,8 +136,11 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    min-height: 550px;
     margin-bottom: 20px;
+}
+
+.home-content .span4 {
+    min-height: 550px;
 }
 
 .span4 h2 {
@@ -304,7 +307,7 @@ footer .row .span3:last-child {
         margin-top: -35px;
     }
 
-    .span4 {
+    .home-content .span4 {
         width: 218px;
         min-height: 0px;
     }
