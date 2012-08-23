@@ -64,4 +64,15 @@ $( function() {
 
     // Initialize drop down menu
     $( ".dropdown-toggle" ).dropdown();
+
+    // Dynamic fixed positioning for left nav
+    if ( $( ".nav-box" ).length ) {
+        $( window ).on( "scroll", function( event ) {
+            var navBox = $(".nav-box"),
+                navBottom = navBox.position().top + navBox.height(),
+                footerTop = $("footer").position().top;
+
+            navBox.css( "margin-top", navBottom > footerTop ? footerTop - navBottom - 5 : 0 );
+        });
+    }
 });

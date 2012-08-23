@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container {% if page.url != '/index.html' %}inner-container{% endif %}">
 
         {{ content }}
         <footer>

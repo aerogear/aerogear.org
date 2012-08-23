@@ -2,7 +2,7 @@
 layout: basic
 ---
 
-## AeroGear
+## Documentation
 
 ### Guides
 

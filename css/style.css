@@ -161,6 +161,18 @@ body {
     display: block;
 }
 
+.download-row > .span4 {
+    border: none;
+}
+
+.download-row > .span4 > .span4 {
+    margin-left: 0;
+}
+
+.download-row > .span4 > div {
+    padding: 0;
+}
+
 #repo-container {
     position: relative;
     display: none;
@@ -186,6 +198,52 @@ pre {
 }
 .home-content pre {
     margin-left: -40px;
+}
+
+.span2 {
+    min-height: 1px;
+}
+
+.nav-box {
+    padding: 0;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #aaa;
+    position: fixed;
+    top: 140px;
+    width: 150px;
+    background-color: white;
+}
+
+.nav-box > li > a {
+    border-top: 1px solid #ccc;
+    margin: 0 0 -1px;
+    padding: 8px 10px;
+}
+
+.nav-box > li > a:first-child {
+    border: none;
+}
+
+.nav-box > li > a:hover {
+    background-color: #c3d3e3;
+    color: #444;
+}
+
+.nav-box > li > a .icon-chevron-right {
+    float: right;
+    color: #aaa;
+}
+
+.nav-box > li > a:hover .icon-chevron-right {
+    color: #444;
+}
+
+.download-row .span4 {
+    width: 450px;
 }
 
 /* Footer Styles */
@@ -256,6 +314,10 @@ footer .row .span3:last-child {
         width: 290px;
     }
 
+    .download-row .span4 {
+        width: 375px;
+    }
+
     .span4 h2 {
         font-size: 19px;
     }
@@ -314,9 +376,28 @@ footer .row .span3:last-child {
         margin-top: -35px;
     }
 
+    .span2, .span10 {
+        float: none;
+        width: 100%;
+    }
+
+    .nav-box {
+        position: relative;
+        top: 0;
+        width: 100%;
+    }
+
     .home-content .span4 {
         width: 218px;
         min-height: 0px;
+    }
+
+    .download-row .span4 {
+        width: 325px;
+    }
+
+    .download-row > .span4 {
+        margin-left: 30px;
     }
 }
 
@@ -333,8 +414,12 @@ footer .row .span3:last-child {
         font-size: 14px;
     }
 
-    .home-content .span4, .span4 {
+    .home-content .span4, .span4, .download-row .span4 {
         width: 100%;
+    }
+
+    .download-row > .span4 {
+        margin-left: 0;
     }
 }
 
@@ -356,6 +441,10 @@ footer .row .span3:last-child {
         float: none;
         clear: both;
         font-weight: bold;
+    }
+
+    .inner-container h1 {
+        font-size: 28px;
     }
 }
 
