@@ -11,7 +11,7 @@ Anyone can create an issue. When the issue is created it should as a minimum hav
 
 * a good summary/title (self-explanatory if possible)
 * a component set in the jira
-** If there is no matching component go to the https://community.jboss.org/community/aerogear/dev[AeroGear Development] forums and suggest one.
+** If there is no matching component go to the https://lists.jboss.org/mailman/listinfo/aerogear-dev[AeroGear Development] mailing list and suggest one.
 * an affects version if applicable
 * a description with enough detail for us to reproduce the issue or understand what the feature is about.
 ** Attach tests, projects, logs, problem details, screenshots or even a http://www.jingproject.com/[screencast] to illustrate what you want to describe.
@@ -33,7 +33,7 @@ Keep the description/comments updated as work progresses. This means comments re
 .Fixing/Resolving
 When an issue gets fixed the developer should make sure to:
 
-* Follow instructions on Jira and GitHub pull requests here: link::GitHubWorkflow.html[AeroGear GitHub Workflow &amp; Instructions]
+* Follow instructions on Jira and GitHub pull requests here: link:../GitHubWorkflow[AeroGear GitHub Workflow &amp; Instructions]
 * Resolve (not Close) the issue
 * Comment on what was done.
 ** Sometimes "Done" is fine but a quick comment can save a lot of time.
