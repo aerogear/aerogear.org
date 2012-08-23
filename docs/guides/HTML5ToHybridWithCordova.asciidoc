@@ -43,7 +43,7 @@ In XCode, expand the *www* folder and click on the *index.html* file. This will 
 <script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
 ----
 
-Replace the *{{CORDOVA_SCRIPT}}* with *js/libs/cordova-ios-&lt;version&gt;.js* and save the file. That's it! You should now be ready to see it in action. Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://poh5-aerogear.rhcloud.com[poh5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the AeroGear kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
+Replace the *{{CORDOVA_SCRIPT}}* with *js/libs/cordova-ios-&lt;version&gt;.js* and save the file. That's it! You should now be ready to see it in action. Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://html5-aerogear.rhcloud.com[html5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the AeroGear kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
 
 image::img/network.png[iOS Simulator shoing network connection output]
 
