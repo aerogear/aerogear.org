@@ -23,8 +23,8 @@ navigation:
   url: /docs
 - desc: Road Map
   url: "/docs/planning"
-- desc: Examples / Demos
-  url: "#"
-- desc: Source
+- desc: Sources
   url: "http://github.com/aerogear"
+#- desc: Examples / Demos
+#  url: "#"
 
