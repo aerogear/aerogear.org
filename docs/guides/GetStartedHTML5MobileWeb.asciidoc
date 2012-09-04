@@ -2,6 +2,8 @@
 layout: basic
 ---
 
+== Get Started With HTML5 Mobile Web Development with JBoss
+
 Get Started With HTML5 Mobile Web Development
 =============================================
 
@@ -23,7 +25,7 @@ Prerequisites
 
 Using JBoss tools is optional.  Any IDE that can generate and consume projects from Maven archetypes will work.  Even standard Maven command line tools are fine.
 
-An HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+, and note that some behaviors will vary slightly (ex. validations) based on browser support, especially IE 9.  For more details on AeroGear's target browser support see link:AeroGearBrowserSupportTargets.html[AeroGear Browser Support Targets].
+An HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+, and note that some behaviors will vary slightly (ex. validations) based on browser support, especially IE 9.  For more details on AeroGear's target browser support see link:../AeroGearBrowserSupportTargets[AeroGear Browser Support Targets].
 
 Mobile web support is limited to Android and iOS devices for now, however it should run on HP, and Black Berry devices as well.  Windows Phone, and others will work as jQuery Mobile announces support.
 
@@ -238,8 +240,8 @@ Diving in Deeper
 
 In this article we've shown you how to get started with your own HTML5 based application for both desktop and mobile clients on JBoss.  This is the just tip of the iceberg!  To dig deeper in the code, and inner workings of this application please following the links below:
 
-* link:../HTML5QuickstartArchetypeDeepDive[HTML5 Mobile Quickstart & Archetype Deep Dive]
-* link:../DeployingHTML5AppsToOpenShift[Deploying HTML5 Applications To Openshift]
+* link:../HTML5MobileQuickstartArchetypeDeepDive[HTML5 Mobile Quickstart & Archetype Deep Dive]
+* link:../HTML5AppsToOpenShift[Deploying HTML5 Applications To Openshift]
 * link:../HTML5ToHybridWithCordova[Converting HTML5+REST Apps to Hybrid Apps with Apache Cordova]
 
 You can also watch a webinar where Jay Balunas presented a version of the archetype, and discussed some of the inner workings in more detail:

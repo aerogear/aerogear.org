@@ -4,7 +4,7 @@ layout: basic
 
 == HTML5 Mobile Quickstart & Archetype Deep Dive
 
-This article details the significant files, libraries, and source code for the AeroGear archetype and quickstart that are part of the JBoss-AS quickstart suite called  https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile[kitchensink-html5-mobile]. For instructions on getting started with the archetype and quickstart see: https://community.jboss.org/docs/DOC-17444[Getting Started With HTML5 Mobile Web Development with JBoss].  The quickstart is nearly identical to the archetype, and for that reason this article will use the quickstart for reference, but the same files will exist if you create your own application using the archetype. 
+This article details the significant files, libraries, and source code for the AeroGear archetype and quickstart that are part of the JBoss-AS quickstart suite called  https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile[kitchensink-html5-mobile]. For instructions on getting started with the archetype and quickstart see: link:../GetStartedHTML5MobileWeb[Getting Started With HTML5 Mobile Web Development with JBoss].  The quickstart is nearly identical to the archetype, and for that reason this article will use the quickstart for reference, but the same files will exist if you create your own application using the archetype. 
  
 In many cases the source code is best location for updated comments and details, please refer there for any additional information.
 
@@ -437,6 +437,6 @@ The Resources class uses CDI to alias Java EE resources, such as the persistence
 === Testing the Application Code
 Testing an HTML5 based application requires some addition considerations.  First you need to test the JAX-RS  back end services.  Second with more logic existing in JavaScript you need an effective way of unit testing that.
  
-We will cover this in more detail in: https://community.jboss.org/docs/DOC-17449[Testing HTML5 Mobile Quickstart & Archetype]
+We will cover this in more detail in: Testing HTML5 Mobile Quickstart & Archetype (Coming Soon)
 
 
