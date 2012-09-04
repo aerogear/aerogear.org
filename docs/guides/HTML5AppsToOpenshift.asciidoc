@@ -2,8 +2,6 @@
 layout: basic
 ---
 
-== Deploying HTML5 Applications to Openshift
-
 Deploying HTML5 Applications to Openshift
 =========================================
 This guide will show you how to deploy HTML5+REST based applications to Openshift using JBoss Tools.  It also contains links and information for using Openshift's command line tools.
