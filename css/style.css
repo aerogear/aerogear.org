@@ -30,6 +30,7 @@ body {
 
 .navbar .nav > li > a {
     color: #e25027;
+    font-size: 15px;
     font-weight: bold;
     text-shadow: none;
     margin: 2px;
@@ -247,6 +248,15 @@ pre {
 }
 
 /* Footer Styles */
+footer h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+footer .span3 > p {
+    font-size: 18px;
+}
+
 footer .row .span3:last-child {
     position: relative;
     min-height: 150px;
