@@ -253,6 +253,10 @@ footer h3 {
     margin-bottom: 15px;
 }
 
+footer h3.twitter-notFound {
+    font-size: 20px;
+}
+
 footer .span3 > p {
     font-size: 18px;
 }
