@@ -29,7 +29,7 @@ Release Roadmap
 
 Each library will have its own versioning.  Its Roadmap should be defined here.
 
-1.0.0.Alpha
+1.0.0.Alpha1
 ~~~~~~~~~~~~
 
 * aerogear.pipeline.js
@@ -37,15 +37,17 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Initial AeroGear TODO app
 * Release with AeroGear 1.0.0.M5
 
-1.0.0.Beta1
+1.0.0.M1
 ~~~~~~~~~~~
 
+* aerogear.datamanager.js
+** Initial implementation and memory based adapter to separate data handling from pipeline
 * aerogear.auth.js
 ** link:AeroGearSecurity.html[AeroGear Security 1.0.0.Alpha]
 * Integrate auth into TODO app
 * Release with AeroGear 1.0.0.M6
 
-1.0.0.Beta2
+1.0.0.M2
 ~~~~~~~~~~~
 * aerogear.pipeline.js
 ** WebSocket Adapter
@@ -53,7 +55,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** link:AeroGearSecurity.html[AeroGear Security 1.0.0.Beta]
 * Release with AeroGear 1.0.0.M7
 
-1.0.0.CR
+1.0.0.CR1
 ~~~~~~~~
 
 * Bug fixes and enhancements
