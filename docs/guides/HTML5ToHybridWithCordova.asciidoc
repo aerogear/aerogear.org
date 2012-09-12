@@ -105,7 +105,7 @@ First, we need to create a new project. In Eclipse, go to *File -> New -> Other.
 
 image::img/android_new_project_1.png[]
 
-Enter *KitchensinkCordova* as the project name, and *org.jboss.aerogear.kitchensinkcordova* as the package:
+Enter *KitchensinkCordova* as the project name, and *org.jboss.as.quickstarts.kitchensinkcordova* as the package:
 
 image::img/android_new_project_2.png[]
 
@@ -113,9 +113,13 @@ Click *Next >*. You can accept the defaults on this screen, and hit *Next >*:
 
 image::img/android_new_project_3.png[]
 
-On the next screen click *Next >* to create an activity. Call the activity *KitchensinkCordova*:
+Click *Next >*. You can accept the defaults on this screen, and hit *Next >*:
 
 image::img/android_new_project_4.png[]
+
+On the next screen click *Next >* to create an activity. Call the activity *KitchensinkCordova*:
+
+image::img/android_new_project_5.png[]
 
 Now, hit *Finish*.
 
@@ -124,11 +128,9 @@ Now, hit *Finish*.
 You may need to click *Next* after creating the activity to install the relevant Android libraries.
 ====
 
-Check that the project imported ok:
-
-image::img/project.png[Project view in Eclipse]
-
 Copy *<CORDOVA_HOME>/lib/android/cordova-2.0.0.jar* to *libs/*.
+
+Copy *<CORDOVA_HOME>/lib/android/xml/* to *res/xml/*.
 
 Now, open up the *KitchensinkCordova* class in `src`, alter the class to extend `DroidGap`, and change the class to look like:
 
@@ -145,8 +147,11 @@ public class KitchensinkCordova extends DroidGap {
 }
 ----
 
-Paste the following permissions between the `<uses-sdk.../>` and `<application.../>` tags.
 
+Edit the AndroidManifest.xml file and paste the following permissions between the `<uses-sdk.../>` and `<application.../>` tags.
+
+[source,XML]
+----
     <supports-screens 
         android:largeScreens="true" 
         android:normalScreens="true" 
@@ -168,28 +173,34 @@ Paste the following permissions between the `<uses-sdk.../>` and `<application..
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+----
 
 This gives the app all permissions, which you will want to lock down at some point. Locking down the application is out of the scope of this guide.
 
 Now, support orientation changes by pasting the folowing inside the `<activity>` tag:
 
+[source, XML]
+----
     android:configChanges="orientation|keyboardHidden|screenSize"
+----
 
-Now, we need to create the symbolic link from `shared/www` to `android/assets`. First we remove the generated `assets/www` folder then we create the symbolic link. 
+Now, we need to create the symbolic link from `shared/www` to `android/assets`.
+
+[source, Shell]
+----
     cd assets
-    rm -rf www
-    ln -s <PATH_TO_KITCHENSINK_CORDOVA/shared/www www
+    ln -s <PATH_TO_KITCHENSINK_CORDOVA>/shared/www www
+----
 
+We need to make one small change to it before it is ready to test. Expand the project (you may need to refresh the project) and go into the *assets/www* folder and double-click on the *index.html* file. This will open the file for editing in the center pane. Around line 40, you should see
 
-We need to make one small change to it before it is ready to test. Expand the project and go into the *assets/www* folder and double-click on the *index.html* file. This will open the file for editing in the center pane. Around line 40, you should see
-
-[source,html]
+[source, HTML]
 ----
 <!-- Cordova script will be replaced with appropriate version at build time -->
 <script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
 ----
 
-Replace the *{{CORDOVA_SCRIPT}}* with *js/libs/cordova-android-&lt;version&gt;.js* and save the file. That's it! You should now be ready to see it in action. Near the upper left corner of Eclipse, there is a button that looks like a little phone with a green Android on the screen, click that and it will launch the Android Virtual Device (AVD) manager.
+Replace the `{{CORDOVA_SCRIPT}}` with `js/libs/cordova-android-2.0.0.js` and save the file. That's it! You should now be ready to see it in action. Near the upper left corner of Eclipse, there is a button that looks like a little phone with a green Android on the screen, click that and it will launch the Android Virtual Device (AVD) manager.
 
 image::img/avdbutton.png[AVD Button]
 

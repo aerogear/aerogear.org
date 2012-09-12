@@ -30,13 +30,20 @@ You'll also need Apache Cordova for iOs. It can be installed from the dmg in `li
 In order build a hybrid application for Android, you'll need to install the Android development environment:
 
 * Java JDK 1.6
-* Android SDK r17 starter package
+* Android SDK r20 starter package
 * Eclipse Helios (3.6.2) (or later)
 ** Android Development Tools (ADT) Plugin for Eclipse
-** Android SDK Tools r17 (included in the Android SDK starter package)
+** Android SDK Tools r20 (included in the Android SDK starter package)
 * At least the Android 2.3 SDK (installed via the Android SDK manager in the ADT)
 
 The Android Developer site provides a link:http://developer.android.com/sdk/installing/index.html[step-by-step guide] to set up your environment.
+
+==== Troubleshooting Fedora/Red Hat Enterprise Linux
+
+
+If you have 64-bit systems, you will need to install some 32bit packages, because Android SDK is 32bit
+
+`# sudo yum install glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686`
 
 Now, let's setup an Android Virtual Device in Eclipse. Click on the AVD button:
 
