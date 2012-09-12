@@ -42,9 +42,10 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 
 * aerogear.datamanager.js
 ** Initial implementation and memory based adapter to separate data handling from pipeline
+** Session/Local Storage adapter
+** UUID Generation and data status tracking in preparation for data synchronization
 * aerogear.auth.js
 ** link:AeroGearSecurity.html[AeroGear Security 1.0.0.Alpha]
-* Integrate auth into TODO app
 * Release with AeroGear 1.0.0.M6
 
 1.0.0.M2
@@ -53,6 +54,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** WebSocket Adapter
 * aerogear.auth.js, aerogear.encryptor.js
 ** link:AeroGearSecurity.html[AeroGear Security 1.0.0.Beta]
+* Integrate auth into TODO app
 * Release with AeroGear 1.0.0.M7
 
 1.0.0.CR1
