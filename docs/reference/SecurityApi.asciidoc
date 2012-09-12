@@ -1,0 +1,328 @@
+Security - Proposed REST API 0.0.1 - DRAFT
+==========================================
+:Author: Bruno Oliveira 
+
+
+Simple authentication (Work in progress)
+----------------------------------------
+
+*Note*: Having a REST API for auth won't matter if the REST endpoint is not secure
+
+To make authentication method as simple as possible initially a well defined contract was defined with the basics, providing a loosely coupled authentication system. Authentication methods like OAuth or BrowserID are not the focus of this document and will be discussed in the future. 
+
+Content
+-------
+
+1. References
+2. Requirements
+3. Scenarios
+4. Overall architecture
+5. Endpoint contract 
+    a. User registration
+    b. User login
+    c. User logout
+    d. User profile retrieval
+
+References
+----------
+
+* https://github.com/aerogear/docs.aerogear.org/blob/master/planning/1.0.0/AeroGearSecurity.asciidoc
+
+Requirements
+------------
+
+On the server side: 
+
+- Well defined error handling support
+- IDM API to specify user, roles and groups
+- Authorization API support via annotations or programatically
+- Session management
+
+Scenarios
+---------
+
+- A mobile client wants to access a protected resource, but doesn't have the rights for it
+- The session has timed out and a mobile client try to access a protected resource
+
+Overall architecture
+--------------------
+
+_TODO_
+
+
+Endpoint contract
+-----------------
+
+a. User registration
+~~~~~~~~~~~~~~~~~~~~
+
+*Notes* : 
+
+- _E-mail validation will be a concern to another version of this document_
+- _The REST resources will be generated using a Maven or Forge plugin to provide the basics for authentication_
+
+URL
+^^^
+
+ /auth/register
+
+Method
+^^^^^^
+
+ POST
+
+URL params
+^^^^^^^^^^
+ 
+ None
+
+HTTP Header Params 
+^^^^^^^^^^^^^^^^^^^^
+ None
+
+Data:
+^^^^^
+
+[source, javascript]
+----
+{
+    username: "john@doe.com"
+    password: "doe",
+}
+----
+
+Response:
+^^^^^^^^^
+
+* *Success*
+
+** Status: `200`
+** Data: `{Auth-Token : "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"}`
+
+* *Conflict*
+
+** Status: `409`
+** Data: `{message: "User already exists"}`
+
+* *Bad request*
+
+** Status: `400`
+** Data: `{message: "Invalid data"}`
+
+Example:
+^^^^^^^^
+
+[source, javascript]
+----
+$.ajax({
+    url: "/auth/register",
+    dataType: "json",
+    data : { 
+        u: { 
+            username : "john@doe.com",
+            password : "doe"
+        }
+    },
+    type : "POST",
+    success : function( r ) {
+        console.log( r );
+    }
+});  
+          
+----
+
+b. User login
+~~~~~~~~~~~~~
+
+URL
+^^^
+
+ /auth/login
+
+Method
+^^^^^^
+
+ POST
+
+URL params
+^^^^^^^^^^
+ 
+ None
+
+HTTP Header Params 
+^^^^^^^^^^^^^^^^^^^^
+ Auth-Credential: john
+ Auth-Password: doe
+
+Data:
+^^^^^
+
+ None
+
+Response:
+^^^^^^^^^
+
+* *Success*
+
+** Status: `200`
+** Data: `{Auth-Token : "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"}`
+
+* *Unauthorized* 
+
+** Status: `401`
+** Data: `{message : "User authentication failed"}`
+
+* *Conflict*
+
+** Status: `409`
+** Data: `{message: "User already exists"}`
+
+* *Bad request*
+
+** Status: `400`
+** Data: `{message: "Invalid data"}`
+
+Example:
+^^^^^^^^
+
+[source, javascript]
+----
+$.ajax({
+    url: "/auth/login",
+    headers: {
+        "Auth-Username": "john@doe.com",
+        "Auth-Password": "doe"
+    },
+    type : "POST",
+    success : function( r ) {
+        console.log( r );
+    }
+});  
+----
+
+
+c. User logout
+~~~~~~~~~~~~~~
+
+URL
+^^^
+
+ /auth/logout
+
+Method
+^^^^^^
+
+ POST
+
+URL params
+^^^^^^^^^^
+ 
+ None
+
+HTTP Header Params 
+^^^^^^^^^^^^^^^^^^^^
+ Auth-Token: 2fd4e1c67a2d28fced849ee1bb76e7391b93eb12
+
+Data:
+^^^^^
+
+ None
+
+Response:
+^^^^^^^^^
+
+* *Success*
+
+** Status: `200`
+** Data: `{message : "User logged out"}`
+
+* *Bad request*
+
+** Status: `400`
+** Data: `{message: "Invalid data"}`
+
+Example:
+^^^^^^^^
+
+[source, javascript]
+----
+$.ajax({
+  url: "/auth/logout",
+  headers: {
+    "Auth-Token": "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
+  },
+  dataType: "json",
+  type : "POST",
+  success : function(r) {
+    console.log(r);
+  }
+});            
+----
+
+d. User profile retrieval
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+URL
+^^^
+
+ /auth/user
+
+Method
+^^^^^^
+
+ GET
+
+URL params
+^^^^^^^^^^
+ 
+ None
+
+HTTP Header Params 
+^^^^^^^^^^^^^^^^^^^^
+ Auth-Token: 2fd4e1c67a2d28fced849ee1bb76e7391b93eb12
+
+Data:
+^^^^^
+
+ None
+
+Response:
+^^^^^^^^^
+
+* *Success*
+
+** Status: `200`
+** Data: `{"username" : "john@doe.com", "password" : "doe"}`
+
+* *Forbidden* 
+
+** Status: `403`
+** Data: `{message : "Session has timed out"}`
+
+* *Bad request*
+
+** Status: `400`
+** Data: `{message: "Invalid data"}`
+
+Example:
+^^^^^^^^
+
+[source, javascript]
+----
+$.ajax({
+  url: "/auth/user",
+  headers: {
+    "Auth-Token": "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
+  },
+  dataType: "json",
+  type : "GET",
+  success : function(r) {
+    console.log(r);
+  }
+});            
+----
+
+
+
+
+
