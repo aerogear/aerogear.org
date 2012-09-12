@@ -15,7 +15,7 @@ Before getting started, it is important to note the structure of this repo and h
 
 === System Requirements & Setup
 
-link:CordovaSetup.html[Cordova Setup] details how to set up your system to use Cordova.
+link:../CordovaSetup[Cordova Setup] details how to set up your system to use Cordova.
 
 === iOS
 
@@ -98,7 +98,7 @@ Before we can build the app, and run it in the simulator or on a device, we need
 
 [NOTE]
 ==============================
-These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting-started_android_index.md.html[Getting Started with Android guide for Cordova.
+These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting-started_android_index.md.html[Getting Started with Android guide for Cordova].
 ==============================
 
 First, we need to create a new project. In Eclipse, go to *File -> New -> Other...*, and select *Android Application Project*:
@@ -193,7 +193,7 @@ Replace the *{{CORDOVA_SCRIPT}}* with *js/libs/cordova-android-&lt;version&gt;.j
 
 image::img/avdbutton.png[AVD Button]
 
-If you have not yet created a virtual device, you should do so now. The link:CordovaSetup.html[Cordova Setup] guide details how to do this. This sample was built for the Android 2.1 SDK for maximum compatibility with current devices but should work on any 2.x or 4.0 SDK. The sample was not tested on the 3.x series.
+If you have not yet created a virtual device, you should do so now. The link:../CordovaSetup[Cordova Setup] guide details how to do this. This sample was built for the Android 2.1 SDK for maximum compatibility with current devices but should work on any 2.x or 4.0 SDK. The sample was not tested on the 3.x series.
 
 image::img/avd.png[AVD selection window]
 
