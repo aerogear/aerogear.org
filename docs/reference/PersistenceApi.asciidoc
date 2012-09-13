@@ -1,0 +1,29 @@
+Persistence - Proposed REST API 0.0.1 - DRAFT
+=============================================
+
+Content
+-------
+
+1. References
+2. Requirements
+3. Scenarios
+4. Endpoint contract 
+5. Persistence details
+  a. UUID generation
+
+References
+----------
+
+Requirements
+------------
+
+Scenarios
+---------
+
+Endpoint contract
+-----------------
+
+
+
+
+
