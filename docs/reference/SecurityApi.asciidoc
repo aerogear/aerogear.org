@@ -172,11 +172,6 @@ Response:
 ** Status: `401`
 ** Data: `{message : "User authentication failed"}`
 
-* *Conflict*
-
-** Status: `409`
-** Data: `{message: "User already exists"}`
-
 * *Bad request*
 
 ** Status: `400`
@@ -292,7 +287,7 @@ Response:
 * *Success*
 
 ** Status: `200`
-** Data: `{"username" : "john@doe.com", "password" : "doe"}`
+** Data: `{"username" : "john@doe.com"}`
 
 * *Forbidden* 
 
