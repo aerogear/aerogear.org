@@ -21,7 +21,7 @@ In order to build a hybrid application for iOS, you'll need to install the iOS d
 ** An iOS Development Certificate
 ** A provisioning profile for each device you plan to test with
 
-You can read more about link:https://developer.apple.com/library/ios/#referencelibrary/GettingStarted/RoadMapiOS/GetToolsInstall/GetToolsandInstall.html[installing XCode and enrolling in the iOS Developer Program].
+You can read more about link:https://developer.apple.com/library/ios/#referencelibrary/GettingStarted/RoadMapiOS/chapters/Introduction.html[Start Developing iOS Apps Today].
 
 You'll also need Apache Cordova for iOs. It can be installed from the dmg in `lib/ios` in the PhoneGap 2.0.0 download.
 

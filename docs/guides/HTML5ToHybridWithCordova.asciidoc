@@ -30,28 +30,29 @@ These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting
 
 First, we need to create a new project. In a terminal, change into the kitchensink-cordova directory. Now, run Cordova to generate a project:
 
-    $CORDOVA_HOME/lib/ios/bin/create ios org.jboss.aerogear.KitchensinkCordova KitchensinkCordova
+    $CORDOVA_HOME/lib/ios/bin/create kitchensink-cordova-ios org.jboss.as.quickstarts.kitchensinkcordova KitchensinkCordova
 
-Now, we need to create the symbolic link from `shared/www` to `ios/KitchensinkCordova/www`. First we remove the generated `www` folder then we create the symbolic link:
+Now, we need to create the symbolic link from `shared/www` to `kitchensink-cordova-ios/www`. First we remove the generated `www` folder then we create the symbolic link:
 
-    cd ios/KitchensinkCordova
+    cd kitchensink-cordova-ios
     rm -rf www
     ln -s ../../shared/www www
 
 ==== Import the project into XCode
 
-Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. 
+Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/kitchensink-cordova-ios/* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. 
 
 [TIP]
 ====
-If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and then create the link like this:
+If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/kitchensink-cordova-ios/* folder and then create the link like this:
 
 [source,bash]
 ----
+$ rm -rf wwww
 $ ln -s <full-path-to-your-repo>/shared/www www
 ----
 
-This will create the symbolic link and the folder should be fixed in XCode. If the folder is missing, there is a little trick that you have to do to get XCode to see it. First in the *&lt;repo-folder&gt;/ios/KitchensinkCordova* delete the www file which came from the repo if it exists. Then create a new folder called *www*. Now from finder, drag that folder into XCode and drop it on the KitchensinkCordova project on the left side of the window. A dialog window should appear and you want to select the option to add the folder as a reference. You should now see that folder listed in XCode. This is where it gets tricky. Go back to Finder and delete the *www* folder you just created. It will now show as broken in XCode but that's ok. In Terminal, create the symbolic link using the instructions above and you should be ready to go.
+This will create the symbolic link and the folder should be fixed in XCode. If the folder is missing, there is a little trick that you have to do to get XCode to see it. First in the *&lt;repo-folder&gt;/kitchensink-cordova-ios/KitchensinkCordova* delete the www file which came from the repo if it exists. Then create a new folder called *www*. Now from finder, drag that folder into XCode and drop it on the KitchensinkCordova project on the left side of the window. A dialog window should appear and you want to select the option to add the folder as a reference. You should now see that folder listed in XCode. This is where it gets tricky. Go back to Finder and delete the *www* folder you just created. It will now show as broken in XCode but that's ok. In Terminal, create the symbolic link using the instructions above and you should be ready to go.
 
 ====
 
@@ -82,7 +83,7 @@ image::img/network.png[iOS Simulator shoing network connection output]
 ==== Building the App for Devices
 After you are able to successfully test your app with the iOS Simulator, it is time to test it on a device. As stated above in the system requirements, this is going to require an Apple Developer account, an iOS development certificate (downloaded to your machine) and a provisioning profile (also downloaded and installed in XCode) for the device(s) you plan to test on. For more information about these requirements, visit the http://developer.apple.com[Apple Developer] site. Now, on to the steps to deploy to your device.
 
-One important note about the provisioning profile is that the when you create your App ID, it must match the App ID of the app exactly or it won't work. For this quickstart, we have used *org.jboss.aerogear.KitchensinkCordova* as the App ID so you must also create that App ID in your profile and create a provisioning profile for it if you wish to test this quickstart.
+One important note about the provisioning profile is that the when you create your App ID, it must match the App ID of the app exactly or it won't work. For this quickstart, we have used *org.jboss.as.quickstarts.kitchensinkcordova.KitchensinkCordova* as the App ID so you must also create that App ID in your profile and create a provisioning profile for it if you wish to test this quickstart.
 
 image::img/appID.png[Example App ID]
 
