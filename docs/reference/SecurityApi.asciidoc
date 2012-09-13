@@ -6,7 +6,7 @@ Security - Proposed REST API 0.0.1 - DRAFT
 Simple authentication (Work in progress)
 ----------------------------------------
 
-*Note*: Having a REST API for auth won't matter if the REST endpoint is not secure
+*Note*: Having a REST API for auth won't matter if the REST endpoint is not secure. For this reason SSL support and encryption techniques must be included adding another security layer to apps (_TODO: to be explained_).
 
 To make authentication method as simple as possible initially a well defined contract was defined with the basics, providing a loosely coupled authentication system. Authentication methods like OAuth or BrowserID are not the focus of this document and will be discussed in the future. 
 
@@ -87,7 +87,7 @@ Data:
 ----
 {
     username: "john@doe.com"
-    password: "doe",
+    password: "2a763a0e08e74fea4be7e9e0b1be7053f577968c",
 }
 ----
 
@@ -120,7 +120,7 @@ $.ajax({
     data : { 
         u: { 
             username : "john@doe.com",
-            password : "doe"
+            password : "2a763a0e08e74fea4be7e9e0b1be7053f577968c"
         }
     },
     type : "POST",
@@ -152,7 +152,7 @@ URL params
 HTTP Header Params 
 ^^^^^^^^^^^^^^^^^^^^
  Auth-Credential: john
- Auth-Password: doe
+ Auth-Password: 2a763a0e08e74fea4be7e9e0b1be7053f577968c
 
 Data:
 ^^^^^
@@ -186,7 +186,7 @@ $.ajax({
     url: "/auth/login",
     headers: {
         "Auth-Username": "john@doe.com",
-        "Auth-Password": "doe"
+        "Auth-Password": "2a763a0e08e74fea4be7e9e0b1be7053f577968c"
     },
     type : "POST",
     success : function( r ) {
