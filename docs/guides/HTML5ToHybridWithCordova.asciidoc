@@ -11,7 +11,7 @@ What does all of that mean? Basically, this takes our https://community.jboss.or
 Download the converted application from https://github.com/aerogear/kitchensink-cordova.
 
 === Repo Structure
-Before getting started, it is important to note the structure of this repo and how it may affect your environment. In order to avoid duplicating both files and effort, the web app assets (HTML, CSS, JS) files have been housed in a separate folder called *shared*. In there, you will find a folder called *www* under which are the files. In order for this structure to work during your builds, a symbolic link to the *www* folder from each of the app's respective *www* folders must be created. In iOS, that is in the */ios/KitchensinkCordova* folder and in Android, the symbolic link is in the */android/assets* folder.
+Before getting started, it is important to note the structure of this repo and how it may affect your environment. In order to avoid duplicating both files and effort, the web app assets (HTML, CSS, JS) files have been housed in a separate folder called *shared*. In there, you will find a folder called *www* under which are the files. In order for this structure to work during your builds, a symbolic link to the *www* folder from each of the app's respective *www* folders must be created. In iOS, that is in the */ios/* folder and in Android, the symbolic link is in the */android/assets* folder.
 
 === System Requirements & Setup
 
@@ -30,24 +30,25 @@ These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting
 
 First, we need to create a new project. In a terminal, change into the kitchensink-cordova directory. Now, run Cordova to generate a project:
 
-    $CORDOVA_HOME/lib/ios/bin/create ios org.jboss.aerogear.KitchensinkCordova KitchensinkCordova
+    $CORDOVA_HOME/lib/ios/bin/create ios org.jboss.as.quickstarts.kitchensinkcordova KitchensinkCordova
 
-Now, we need to create the symbolic link from `shared/www` to `ios/KitchensinkCordova/www`. First we remove the generated `www` folder then we create the symbolic link:
+Now, we need to create the symbolic link from `shared/www` to `ios/www`. First we remove the generated `www` folder then we create the symbolic link:
 
-    cd ios/KitchensinkCordova
+    cd ios
     rm -rf www
     ln -s ../../shared/www www
 
 ==== Import the project into XCode
 
-Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. 
+Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. 
 
 [TIP]
 ====
-If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/ios/KitchensinkCordova* folder and then create the link like this:
+If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/ios/* folder and then create the link like this:
 
 [source,bash]
 ----
+$ rm -rf wwww
 $ ln -s <full-path-to-your-repo>/shared/www www
 ----
 
@@ -57,32 +58,20 @@ This will create the symbolic link and the folder should be fixed in XCode. If t
 
 image::img/folders.png[Sample Folder List in XCode]
 
-The last step before we can test is to update the path to our Cordova JavaScript file. In order to share the *www* resources, a placeholder has been added to the index.html file that must be replaced with the path to the appropriate Cordova file for the app you are building.
-
-In XCode, expand the *www* folder and click on the *index.html* file. This will open the file for editing in the center pane in XCode. Around line 40, you should see
-
-[source,html]
-----
-<!-- {{CORDOVA_SCRIPT}} must be replaced manually with either js/libs/cordova-ios-<version>.js or js/libs/cordova-android-<version>.js -->
-<script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
-----
-
-Replace the *{{CORDOVA_SCRIPT}}* with *js/libs/cordova-ios-&lt;version&gt;.js* and save the file. 
-
 That's it! You should now be ready to see it in action. 
 
 Change the *Target* in the *Scheme* menu to *KitchensinkCordova* and select a device:
 
 image::img/xcode_kitchensink_simulator.png[]
 
-Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://poh5-aerogear.rhcloud.com[poh5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the AeroGear kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
+Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://html5-aerogear.rhcloud.com[poh5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the AeroGear kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
 
 image::img/network.png[iOS Simulator shoing network connection output]
 
 ==== Building the App for Devices
 After you are able to successfully test your app with the iOS Simulator, it is time to test it on a device. As stated above in the system requirements, this is going to require an Apple Developer account, an iOS development certificate (downloaded to your machine) and a provisioning profile (also downloaded and installed in XCode) for the device(s) you plan to test on. For more information about these requirements, visit the http://developer.apple.com[Apple Developer] site. Now, on to the steps to deploy to your device.
 
-One important note about the provisioning profile is that the when you create your App ID, it must match the App ID of the app exactly or it won't work. For this quickstart, we have used *org.jboss.aerogear.KitchensinkCordova* as the App ID so you must also create that App ID in your profile and create a provisioning profile for it if you wish to test this quickstart.
+One important note about the provisioning profile is that the when you create your App ID, it must match the App ID of the app exactly or it won't work. For this quickstart, we have used *org.jboss.as.quickstarts.kitchensinkcordova.KitchensinkCordova* as the App ID so you must also create that App ID in your profile and create a provisioning profile for it if you wish to test this quickstart.
 
 image::img/appID.png[Example App ID]
 
@@ -105,7 +94,7 @@ First, we need to create a new project. In Eclipse, go to *File -> New -> Other.
 
 image::img/android_new_project_1.png[]
 
-Enter *KitchensinkCordova* as the project name, and *org.jboss.aerogear.kitchensinkcordova* as the package:
+Enter *KitchensinkCordova* as the project name, and *org.jboss.as.quickstarts.kitchensinkcordova* as the package:
 
 image::img/android_new_project_2.png[]
 
@@ -113,9 +102,13 @@ Click *Next >*. You can accept the defaults on this screen, and hit *Next >*:
 
 image::img/android_new_project_3.png[]
 
-On the next screen click *Next >* to create an activity. Call the activity *KitchensinkCordova*:
+Click *Next >*. You can accept the defaults on this screen, and hit *Next >*:
 
 image::img/android_new_project_4.png[]
+
+On the next screen click *Next >* to create an activity. Call the activity *KitchensinkCordova*:
+
+image::img/android_new_project_5.png[]
 
 Now, hit *Finish*.
 
@@ -124,29 +117,39 @@ Now, hit *Finish*.
 You may need to click *Next* after creating the activity to install the relevant Android libraries.
 ====
 
-Check that the project imported ok:
-
-image::img/project.png[Project view in Eclipse]
-
 Copy *<CORDOVA_HOME>/lib/android/cordova-2.0.0.jar* to *libs/*.
+
+Copy *<CORDOVA_HOME>/lib/android/xml/* to *res/xml/*.
 
 Now, open up the *KitchensinkCordova* class in `src`, alter the class to extend `DroidGap`, and change the class to look like:
 
 [source,java]
 ----
 public class KitchensinkCordova extends DroidGap {
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Loads the URL with HTML application
         super.loadUrl("file:///android_asset/www/index.html");
     }
 
+    @Override
+    public void init() {
+        super.init();
+
+        WebSettings settings = this.appView.getSettings();
+        settings.setUserAgentString("Kitchensink Cordova Webview Android");
+    }
 }
 ----
 
-Paste the following permissions between the `<uses-sdk.../>` and `<application.../>` tags.
 
+Edit the AndroidManifest.xml file and paste the following permissions between the `<uses-sdk.../>` and `<application.../>` tags.
+
+[source,XML]
+----
     <supports-screens 
         android:largeScreens="true" 
         android:normalScreens="true" 
@@ -168,28 +171,26 @@ Paste the following permissions between the `<uses-sdk.../>` and `<application..
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+----
 
 This gives the app all permissions, which you will want to lock down at some point. Locking down the application is out of the scope of this guide.
 
 Now, support orientation changes by pasting the folowing inside the `<activity>` tag:
 
+[source, XML]
+----
     android:configChanges="orientation|keyboardHidden|screenSize"
+----
 
-Now, we need to create the symbolic link from `shared/www` to `android/assets`. First we remove the generated `assets/www` folder then we create the symbolic link. 
+Now, we need to create the symbolic link from `shared/www` to `android/assets`.
+
+[source, Shell]
+----
     cd assets
-    rm -rf www
-    ln -s <PATH_TO_KITCHENSINK_CORDOVA/shared/www www
-
-
-We need to make one small change to it before it is ready to test. Expand the project and go into the *assets/www* folder and double-click on the *index.html* file. This will open the file for editing in the center pane. Around line 40, you should see
-
-[source,html]
-----
-<!-- Cordova script will be replaced with appropriate version at build time -->
-<script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
+    ln -s <PATH_TO_KITCHENSINK_CORDOVA>/shared/www www
 ----
 
-Replace the *{{CORDOVA_SCRIPT}}* with *js/libs/cordova-android-&lt;version&gt;.js* and save the file. That's it! You should now be ready to see it in action. Near the upper left corner of Eclipse, there is a button that looks like a little phone with a green Android on the screen, click that and it will launch the Android Virtual Device (AVD) manager.
+That's it! You should now be ready to see it in action. Near the upper left corner of Eclipse, there is a button that looks like a little phone with a green Android on the screen, click that and it will launch the Android Virtual Device (AVD) manager.
 
 image::img/avdbutton.png[AVD Button]
 
