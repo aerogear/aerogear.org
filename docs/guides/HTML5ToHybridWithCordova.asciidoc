@@ -58,6 +58,18 @@ This will create the symbolic link and the folder should be fixed in XCode. If t
 
 image::img/folders.png[Sample Folder List in XCode]
 
+Finally, open *AppDelegate.m* and add the following code to the beginning of the file just after the *@synthesize* statement to create a custom User-Agent string that we will check for in our app's main JavaScript file:
+
+[source,objective-c]
+----
++ (void)initialize {
+    // Set user agent
+    NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kitchensink Cordova Webview iOS", @"UserAgent", nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
+    [dictionnary release];
+}
+----
+
 That's it! You should now be ready to see it in action. 
 
 Change the *Target* in the *Scheme* menu to *KitchensinkCordova* and select a device:
