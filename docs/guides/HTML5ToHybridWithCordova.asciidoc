@@ -11,7 +11,7 @@ What does all of that mean? Basically, this takes our https://community.jboss.or
 Download the converted application from https://github.com/aerogear/kitchensink-cordova.
 
 === Repo Structure
-Before getting started, it is important to note the structure of this repo and how it may affect your environment. In order to avoid duplicating both files and effort, the web app assets (HTML, CSS, JS) files have been housed in a separate folder called *shared*. In there, you will find a folder called *www* under which are the files. In order for this structure to work during your builds, a symbolic link to the *www* folder from each of the app's respective *www* folders must be created. In iOS, that is in the */ios/KitchensinkCordova* folder and in Android, the symbolic link is in the */android/assets* folder.
+Before getting started, it is important to note the structure of this repo and how it may affect your environment. In order to avoid duplicating both files and effort, the web app assets (HTML, CSS, JS) files have been housed in a separate folder called *shared*. In there, you will find a folder called *www* under which are the files. In order for this structure to work during your builds, a symbolic link to the *www* folder from each of the app's respective *www* folders must be created. In iOS, that is in the */ios/* folder and in Android, the symbolic link is in the */android/assets* folder.
 
 === System Requirements & Setup
 
@@ -30,21 +30,21 @@ These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting
 
 First, we need to create a new project. In a terminal, change into the kitchensink-cordova directory. Now, run Cordova to generate a project:
 
-    $CORDOVA_HOME/lib/ios/bin/create kitchensink-cordova-ios org.jboss.as.quickstarts.kitchensinkcordova KitchensinkCordova
+    $CORDOVA_HOME/lib/ios/bin/create ios org.jboss.as.quickstarts.kitchensinkcordova KitchensinkCordova
 
-Now, we need to create the symbolic link from `shared/www` to `kitchensink-cordova-ios/www`. First we remove the generated `www` folder then we create the symbolic link:
+Now, we need to create the symbolic link from `shared/www` to `ios/www`. First we remove the generated `www` folder then we create the symbolic link:
 
-    cd kitchensink-cordova-ios
+    cd ios
     rm -rf www
     ln -s ../../shared/www www
 
 ==== Import the project into XCode
 
-Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/kitchensink-cordova-ios/* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. 
+Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. 
 
 [TIP]
 ====
-If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/kitchensink-cordova-ios/* folder and then create the link like this:
+If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/ios/* folder and then create the link like this:
 
 [source,bash]
 ----
@@ -52,7 +52,7 @@ $ rm -rf wwww
 $ ln -s <full-path-to-your-repo>/shared/www www
 ----
 
-This will create the symbolic link and the folder should be fixed in XCode. If the folder is missing, there is a little trick that you have to do to get XCode to see it. First in the *&lt;repo-folder&gt;/kitchensink-cordova-ios/KitchensinkCordova* delete the www file which came from the repo if it exists. Then create a new folder called *www*. Now from finder, drag that folder into XCode and drop it on the KitchensinkCordova project on the left side of the window. A dialog window should appear and you want to select the option to add the folder as a reference. You should now see that folder listed in XCode. This is where it gets tricky. Go back to Finder and delete the *www* folder you just created. It will now show as broken in XCode but that's ok. In Terminal, create the symbolic link using the instructions above and you should be ready to go.
+This will create the symbolic link and the folder should be fixed in XCode. If the folder is missing, there is a little trick that you have to do to get XCode to see it. First in the *&lt;repo-folder&gt;/ios/KitchensinkCordova* delete the www file which came from the repo if it exists. Then create a new folder called *www*. Now from finder, drag that folder into XCode and drop it on the KitchensinkCordova project on the left side of the window. A dialog window should appear and you want to select the option to add the folder as a reference. You should now see that folder listed in XCode. This is where it gets tricky. Go back to Finder and delete the *www* folder you just created. It will now show as broken in XCode but that's ok. In Terminal, create the symbolic link using the instructions above and you should be ready to go.
 
 ====
 
@@ -76,7 +76,7 @@ Change the *Target* in the *Scheme* menu to *KitchensinkCordova* and select a de
 
 image::img/xcode_kitchensink_simulator.png[]
 
-Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://poh5-aerogear.rhcloud.com[poh5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the AeroGear kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
+Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://html5-aerogear.rhcloud.com[poh5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the AeroGear kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
 
 image::img/network.png[iOS Simulator shoing network connection output]
 
@@ -197,7 +197,7 @@ We need to make one small change to it before it is ready to test. Expand the pr
 
 [source, HTML]
 ----
-<!-- Cordova script will be replaced with appropriate version at build time -->
+<!-- {{CORDOVA_SCRIPT}} must be replaced manually with either js/libs/cordova-ios-<version>.js or js/libs/cordova-android-<version>.js -->
 <script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
 ----
 
