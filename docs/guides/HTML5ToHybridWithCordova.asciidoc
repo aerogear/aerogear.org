@@ -58,18 +58,6 @@ This will create the symbolic link and the folder should be fixed in XCode. If t
 
 image::img/folders.png[Sample Folder List in XCode]
 
-The last step before we can test is to update the path to our Cordova JavaScript file. In order to share the *www* resources, a placeholder has been added to the index.html file that must be replaced with the path to the appropriate Cordova file for the app you are building.
-
-In XCode, expand the *www* folder and click on the *index.html* file. This will open the file for editing in the center pane in XCode. Around line 40, you should see
-
-[source,html]
-----
-<!-- {{CORDOVA_SCRIPT}} must be replaced manually with either js/libs/cordova-ios-<version>.js or js/libs/cordova-android-<version>.js -->
-<script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
-----
-
-Replace the *{{CORDOVA_SCRIPT}}* with *js/libs/cordova-ios-&lt;version&gt;.js* and save the file. 
-
 That's it! You should now be ready to see it in action. 
 
 Change the *Target* in the *Scheme* menu to *KitchensinkCordova* and select a device:
@@ -138,13 +126,22 @@ Now, open up the *KitchensinkCordova* class in `src`, alter the class to extend 
 [source,java]
 ----
 public class KitchensinkCordova extends DroidGap {
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Loads the URL with HTML application
         super.loadUrl("file:///android_asset/www/index.html");
     }
 
+    @Override
+    public void init() {
+        super.init();
+
+        WebSettings settings = this.appView.getSettings();
+        settings.setUserAgentString("Kitchensink Cordova Webview Android");
+    }
 }
 ----
 
@@ -193,15 +190,7 @@ Now, we need to create the symbolic link from `shared/www` to `android/assets`.
     ln -s <PATH_TO_KITCHENSINK_CORDOVA>/shared/www www
 ----
 
-We need to make one small change to it before it is ready to test. Expand the project (you may need to refresh the project) and go into the *assets/www* folder and double-click on the *index.html* file. This will open the file for editing in the center pane. Around line 40, you should see
-
-[source, HTML]
-----
-<!-- {{CORDOVA_SCRIPT}} must be replaced manually with either js/libs/cordova-ios-<version>.js or js/libs/cordova-android-<version>.js -->
-<script type="text/javascript" src="{{CORDOVA_SCRIPT}}"></script>
-----
-
-Replace the `{{CORDOVA_SCRIPT}}` with `js/libs/cordova-android-2.0.0.js` and save the file. That's it! You should now be ready to see it in action. Near the upper left corner of Eclipse, there is a button that looks like a little phone with a green Android on the screen, click that and it will launch the Android Virtual Device (AVD) manager.
+That's it! You should now be ready to see it in action. Near the upper left corner of Eclipse, there is a button that looks like a little phone with a green Android on the screen, click that and it will launch the Android Virtual Device (AVD) manager.
 
 image::img/avdbutton.png[AVD Button]
 
