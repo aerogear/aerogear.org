@@ -32,12 +32,19 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 1.0.0.Alpha1
 ~~~~~~~~~~~~
 
-*TODO* complete
+* AGPipeline and AGPipe
+** Initial implementation and REST adapter (AGRestAdapter)
+* Integration test project
+* Initial AeroGear TODO app
+* Simple Data Manager (in memory store..)
+* Release via CocoaPods (dependency management for ObjC)
+* Release with AeroGear 1.0.0.M6
 
 1.0.0.M1
 ~~~~~~~~
 
-*TODO* complete
+* CORE DATA integration?
+* Release with AeroGear 1.0.0.M7
 
 iOS Specific Requirements
 -------------------------
