@@ -36,8 +36,8 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * link:https://github.com/aerogear/TODO/[TODO] integration for example app
 * Solidify requirements
 * Basic API structure
- * CRUD
- * Data-binding (via gson)
+** CRUD
+** Data-binding (via gson)
 * Follow good Android practice re: background data transfers / services / etc
 * First cut at user/auth integration (see link:AeroGearSecurity.html[AeroGear Security Plan]) (unsure if this will make it in or not - we should be able to design the API anyway, even if not-yet-functional)
 
