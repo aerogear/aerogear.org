@@ -35,19 +35,44 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * AGPipeline and AGPipe
 ** Initial implementation and REST adapter (AGRestAdapter)
 * Integration test project
-* Initial AeroGear TODO app
-* Simple Data Manager (in memory store..)
+* TODO app
+* AGDataManager
+** in memory storage
+* Security
+** link:../AeroGearSecurity[AeroGear Security 1.0.0.Alpha]
 * Release via CocoaPods (dependency management for ObjC)
 * Release with AeroGear 1.0.0.M6
+
+1.0.0.Alpha2
+~~~~~~~~
+
+* AGDataManager
+** CoreData integration (via AFIncrementalStore and AFNetworking)
+* Security
+** link:../AeroGearSecurity[AeroGear Security 1.0.0.Beta]
+* Release with AeroGear 1.0.0.M7
 
 1.0.0.M1
 ~~~~~~~~
 
-* CORE DATA integration?
-* Release with AeroGear 1.0.0.M7
+* AGPipeline and AGPipe
+** WebSocket adapter (AGWebSocketAdapter, by using SocketRocket)
+* Security
+** link:../AeroGearSecurity[AeroGear Security 1.0.0.CR]
+* Release with AeroGear 1.0.0.CR
+
+1.0.0.Final
+~~~~~~~~
+
+* Fix any final bugs
+* API and Documentation review
+* TODO app review
+* Release with AeroGear 1.0.0.Final
 
 iOS Specific Requirements
 -------------------------
+
+* Push notifications (via APN)
 
 For common cross-library requirements see:
 
