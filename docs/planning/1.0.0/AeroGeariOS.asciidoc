@@ -44,7 +44,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Release with AeroGear 1.0.0.M6
 
 1.0.0.Alpha2
-~~~~~~~~
+~~~~~~~~~~~~
 
 * AGDataManager
 ** CoreData integration (via AFIncrementalStore and AFNetworking)
@@ -62,7 +62,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Release with AeroGear 1.0.0.CR
 
 1.0.0.Final
-~~~~~~~~
+~~~~~~~~~~~
 
 * Fix any final bugs
 * API and Documentation review
