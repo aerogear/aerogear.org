@@ -45,7 +45,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** Session/Local Storage adapter
 ** UUID Generation and data status tracking in preparation for data synchronization
 * aerogear.auth.js
-** link:AeroGearSecurity.html[AeroGear Security 1.0.0.Alpha]
+** link:AeroGearSecurity.asciidoc[AeroGear Security]
 * Release with AeroGear 1.0.0.M6
 
 1.0.0.M2
@@ -54,7 +54,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * aerogear.pipeline.js
 ** WebSocket Adapter
 * aerogear.auth.js, aerogear.encryptor.js
-** link:AeroGearSecurity.html[AeroGear Security 1.0.0.Beta]
+** link:AeroGearSecurity.asciidoc[AeroGear Security]
 * Integrate auth into TODO app
 * Release with AeroGear 1.0.0.M7
 
@@ -64,7 +64,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Bug fixes and enhancements
 * TODO app enhancement to show new library features
 * aerogear.auth.js
-** link:AeroGearSecurity.html[AeroGear Security 1.0.0.CR]
+** link:AeroGearSecurity.asciidoc[AeroGear Security]
 * Release with AeroGear 1.0.0.CR
 
 1.0.0.Final
@@ -80,7 +80,7 @@ JavaScript Specific Requirements
 
 For common cross-library requirements see:
 
-* link:AeroGearPersistence.html[AeroGear Persistence Plan]
-* link:AeroGearSecurity.html[AeroGear Security Plan]
+* link:AeroGearPersistence.asciidoc[AeroGear Persistence Plan]
+* link:AeroGearSecurity.asciidoc[AeroGear Security Plan]
 
-And for the overall AeroGear Roadmap, see the link:AeroGearRoadmap1.0.0.html[AeroGear Roadmap]
+And for the overall AeroGear Roadmap, see the link:AeroGearRoadmap1.0.0.asciidoc[AeroGear Roadmap]
