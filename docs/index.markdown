@@ -30,6 +30,7 @@ title: Documentation
 * [How to Handle AeroGear Pull Requests](guides/AeroGearPullRequests)
 * [AeroGear JIRA Usage and Guidelines](guides/JIRAUsage)
 * [AeroGear Licensing and Copyright](guides/license)
+* [AeroGear Developer Tools Guide](guides/AeroGearDeveloperSetup)
 
 ### Reference
 
