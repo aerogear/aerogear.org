@@ -38,7 +38,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Release with AeroGear 1.0.0.M5
 
 1.0.0.M1
-~~~~~~~~~~~
+~~~~~~~~
 
 * aerogear.datamanager.js
 ** Initial implementation and memory based adapter to separate data handling from pipeline
@@ -49,7 +49,8 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Release with AeroGear 1.0.0.M6
 
 1.0.0.M2
-~~~~~~~~~~~
+~~~~~~~~
+
 * aerogear.pipeline.js
 ** WebSocket Adapter
 * aerogear.auth.js, aerogear.encryptor.js
@@ -58,7 +59,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Release with AeroGear 1.0.0.M7
 
 1.0.0.CR1
-~~~~~~~~
+~~~~~~~~~
 
 * Bug fixes and enhancements
 * TODO app enhancement to show new library features
