@@ -39,7 +39,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** CRUD
 ** Data-binding (via gson)
 * Follow good Android practice re: background data transfers / services / etc
-* First cut at user/auth integration (see link:AeroGearSecurity.html[AeroGear Security Plan]) (unsure if this will make it in or not - we should be able to design the API anyway, even if not-yet-functional)
+* First cut at user/auth integration (see link:AeroGearSecurity.asciidoc[AeroGear Security Plan]) (unsure if this will make it in or not - we should be able to design the API anyway, even if not-yet-functional)
 
 1.0.0.Alpha2
 ~~~~~~~~~~~~
@@ -69,8 +69,8 @@ Android Specific Requirements
 
 For common cross-library requirements see:
 
-* link:AeroGearPersistence.html[AeroGear Persistence Plan]
-* link:AeroGearSecurity.html[AeroGear Security Plan]
+* link:AeroGearPersistence.asciidoc[AeroGear Persistence Plan]
+* link:AeroGearSecurity.asciidoc[AeroGear Security Plan]
 
 
 *TODO* Complete
