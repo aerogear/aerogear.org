@@ -134,7 +134,7 @@ __AeroGear JavaScript Library__
 ** Installation and API documentation
 ** Example application integration & documentation
 ** JBoss Tools template application
-* Requirements: link:AeroGearJS.html[AeroGear JS Planning]
+* Requirements: link:../AeroGearJS[AeroGear JS Planning]
 * Git repository: link:https://github.com/aerogear/aerogear-js[/aerogear-js]
 * Documentation: link:https://github.com/aerogear/aerogear-js/blob/master/README.md[/README.md]
 
@@ -145,7 +145,7 @@ __AeroGear iOS Library__
 ** Installation and API documentation
 ** Example application integration & documentation
 ** XCode template application
-* Requirements: link:AeroGeariOS.html[AeroGear iOS Planning]
+* Requirements: link:../AeroGeariOS[AeroGear iOS Planning]
 * Git repository: link:https://github.com/aerogear/aerogear-ios[/aerogear-ios]
 * Documentation: link:https://github.com/aerogear/aerogear-ios/blob/master/README.md[/README.md] (TBD)
 
@@ -156,7 +156,7 @@ __AeroGear Android Library__
 ** Installation and API documentation
 ** Example application integration & documentation
 ** Android SDK template application
-* Requirements: link:AeroGearAndroid.html[AeroGear Android Planning]
+* Requirements: link:../AeroGearAndroid[AeroGear Android Planning]
 * Git repository: link:https://github.com/aerogear/aerogear-android[/aerogear-android]
 * Documentation: link:https://github.com/aerogear/aerogear-android/blob/master/README.md[/README.md] (TBD)
 
@@ -167,7 +167,7 @@ __AeroGear Controller__
 ** Installation, functionality, and API documentation
 ** Example application integration & documentation
 ** JBoss Tools template application
-* Requirements: link:AeroGearController.html[AeroGear Controller Planning]
+* Requirements: link:../AeroGearController[AeroGear Controller Planning]
 * Git repository: link:https://github.com/aerogear/aerogear-controller[/aerogear-controller]
 * Documentation: link:https://github.com/aerogear/aerogear-controller/blob/master/README.md[/README.md]
 
@@ -175,16 +175,16 @@ AeroGear Orthogonal Concerns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * AeroGear Persistence
-** Requirements: link:AeroGearPersistence.html[AeroGear Persistence Planning]
+** Requirements: link:../AeroGearPersistence[AeroGear Persistence Planning]
 
 * AeroGear Security *
-** Requirements: link:AeroGearSecurity.html[AeroGear Security Planning]
+** Requirements: link:../AeroGearSecurity[AeroGear Security Planning]
 
 * AeroGear Connectivity
-** Requirements: link:AeroGearConnectivity.html[AeroGear Connectivity Planning]
+** Requirements: link:../AeroGearConnectivity[AeroGear Connectivity Planning]
 
 * AeroGear Server Integration Hooks
-** Requirements: link:AeroGearServerHooks.html[AeroGear Server Integration Planning]
+** Requirements: link:../AeroGearServerHooks[AeroGear Server Integration Planning]
 
 Document Of Record
 ~~~~~~~~~~~~~~~~~~
