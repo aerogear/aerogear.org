@@ -191,6 +191,10 @@ body {
     z-index: 100;
 }
 
+.repo {
+    min-height: 115px;
+}
+
 .repo li > i {
     position: absolute;
     top: 10px;

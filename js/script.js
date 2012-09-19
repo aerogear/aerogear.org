@@ -5,21 +5,15 @@ $( function() {
         event.preventDefault();
 
         // Test button pressed and load appropriate repo if necessary
-        var target = $( event.target ),
+        var target = $( event.currentTarget ),
             repodiv = $( "#repodiv" ),
             repoContainer = $( "#repo-container" ),
             repobtns = $( ".repo-btns" ),
             repolink = $( "#fork-link" ),
             body = $( "body" ),
-            repoType, repoUser = "aerogear", repoName;
-
-        if ( target.is( "#jsrepo-btn" ) ) {
-            repoType = "js";
-            repoName = "aerogear-js";
-        } else if ( target.is( "#controllerrepo-btn" ) ) {
-            repoType = "controller";
-            repoName = "aerogear-controller";
-        }
+            dataLink = target.data( "link" ),
+            repoAr = dataLink.split( "/" ),
+            repoName = repoAr[ 1 ], repoUser = "aerogear";
 
         repobtns.each( function() {
             var $this = $( this );
@@ -27,34 +21,32 @@ $( function() {
         });
 
         if ( repoContainer.is( ":visible" ) ) {
-            repoContainer.hide( "slow", function() {
-                if ( repodiv.data( "repo" ) != repoType ) {
+            repoContainer.hide( function() {
+                if ( repodiv.data( "repo" ) != repoName ) {
                     repodiv.empty();
                     repoContainer.show( function() {
                         body.animate( { scrollTop: repoContainer.offset().top - 150 }, "slow");
-                        repolink.attr( "href", "http://github.com/" + target.data( "link" ) );
+                        repolink.attr( "href", "http://github.com/" + dataLink );
                         repodiv.repo({
                             user: repoUser,
                             name: repoName
                         });
                         target.text( "Hide Repo" );
+                        repodiv.data( "repo", repoName );
                     });
-                    repodiv.data( "repo", repoType );
                 }
             });
         } else {
-            repoContainer.show( "slow", function() {
+            repodiv.empty();
+            repoContainer.show( function() {
                 body.animate( { scrollTop: repoContainer.offset().top - 150 }, "slow");
-                if ( repodiv.data( "repo" ) != repoType ) {
-                    repodiv.empty();
-                    repolink.attr( "href", "http://github.com/" + target.data( "link" ) );
-                    repodiv.repo({
-                        user: repoUser,
-                        name: repoName
-                    });
-                    target.text( "Hide Repo" );
-                    repodiv.data( "repo", repoType );
-                }
+                repolink.attr( "href", "http://github.com/" + dataLink );
+                repodiv.repo({
+                    user: repoUser,
+                    name: repoName
+                });
+                target.text( "Hide Repo" );
+                repodiv.data( "repo", repoName );
             });
         }
     });
