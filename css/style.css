@@ -13,6 +13,13 @@ body {
     background-repeat: no-repeat;
 }
 
+.banner-home-link {
+    height: 110px;
+    width: 320px;
+    float: left;
+    cursor: pointer;
+}
+
 .navbar .container {
     width: auto;
     position: absolute;

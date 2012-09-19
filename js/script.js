@@ -75,4 +75,9 @@ $( function() {
             navBox.css( "margin-top", navBottom > footerTop ? footerTop - navBottom - 5 : 0 );
         });
     }
+
+    // Home Link
+    $( ".banner-home-link" ).click( function( event ) {
+        document.location.href = "/";
+    });
 });
