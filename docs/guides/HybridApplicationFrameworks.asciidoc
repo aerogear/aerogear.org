@@ -20,17 +20,19 @@ The leading frameworks in this area are detailed below with links to examples, a
 
 Project link: http://incubator.apache.org/cordova/
  
-Originally known as PhoneGap, the code base was donated to Apache as the Callback project, which has now renamed itself to Apache Cordova.  This is one of the most popular hybrid frameworks around.  It uses a native wrapper approach and is developed primarily with direct web technologies.  It also provides a JavaScript bridge into native functionality in the form of plugins.
+In 2011, Adobe/Nitobi donated the PhoneGap codebase to the Apache Software Foundation (ASF) for incubation.  The first name of this donation was called 'Callback', which has now renamed itself to Apache Cordova.  The Apache Cordova is the heart of the PhoneGap project, which is basically a distribution of the Apache Cordova project.  More details about the relationship of the two projects can be found in a detailed http://phonegap.com/2012/03/19/phonegap-cordova-and-what%E2%80%99s-in-a-name/[blog post].
+
+Apache Cordova is one of the most popular hybrid frameworks around.  It uses a native wrapper approach and is developed primarily with direct web technologies.  It also provides a JavaScript bridge into native functionality in the form of plugins.
  
 ==== Examples, tasks, and plans:
 * Apache Cordova version of our examples - https://issues.jboss.org/browse/AEROGEAR-15[AEROGEAR-15]
 * Walkthrough of using Cordova based apps on JBoss - https://issues.jboss.org/browse/AEROGEAR-39[AEROGEAR-39]
 
-==== PhoneGap Build
+==== Adobe(R) PhoneGap(TM) Build
 
 Link: https://build.phonegap.com/
  
-A very neat tool developed by the Cordova team when they were known as PhoneGap.  One of the biggest pains for hybrid and cross device development in general is compiling and building the actual applications for each device.  The PhoneGap build tool lets you upload your web based application, and it will generate all of the device specific apps for you!
+A very neat tool developed by the PhoneGap team, which offers a service on-top of Apache Cordova.  One of the biggest pains for hybrid and cross device development in general is compiling and building the actual applications for each device.  The Adobe(R) PhoneGap(TM) Build tool lets you upload your web based application, and it will generate all of the device specific apps for you!
  
 ==== Examples, tasks, and plans:
 * Integrate our example above with PhoneGap Build - https://issues.jboss.org/browse/AEROGEAR-105[AEROGEAR-105]
