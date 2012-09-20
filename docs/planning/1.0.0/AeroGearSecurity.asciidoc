@@ -49,6 +49,10 @@ aerogear-android
 ^^^^^^^^^^^^^^^^^^
 * REST client libraries support
 
+aerogear-ios
+^^^^^^^^^^^^
+* REST client libraries support
+
 1.0.0.Beta
 ~~~~~~~~~~
 
@@ -73,6 +77,9 @@ aerogear-android
 ^^^^^^^^^^^^^^^^
 * OAuth integration
 
+aerogear-ios
+^^^^^^^^^^^^
+* TBD
 
 1.0.0.CR
 ~~~~~~~~
@@ -95,6 +102,10 @@ aerogear-android
 * Maven artifact
 
 * API security testing
+
+aerogear-ios
+^^^^^^^^^^^^
+* TBD
 
 1.0.0.Final
 ~~~~~~~~~~~
