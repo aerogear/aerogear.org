@@ -3,7 +3,7 @@
 permalink: /:categories/:year/:month/:day/:title.html
 
 include: ["atom.xml"]
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "bin", "vendor", "Gemfile", "Gemfile.lock", "build"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "bin", "vendor", "Gemfile", "Gemfile.lock", "build", "publish.rb"]
 markdown: kramdown
 pygments: true
 
