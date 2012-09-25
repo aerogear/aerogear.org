@@ -5,10 +5,28 @@
             Home
         </a>
     </li>
-    <li class="{% if page.url contains 'docs' %}active{% endif %}">
+    <li class="{% if page.url contains '/download' %}active{% endif %}">
+        <a href="/download">
+            <i class="icon-chevron-right"></i>
+            Download
+        </a>
+    </li>
+    <li class="{% if page.url contains '/community' %}active{% endif %}">
+        <a href="/community">
+            <i class="icon-chevron-right"></i>
+            Community
+        </a>
+    </li>
+    <li class="{% if page.url contains '/docs' %}{% unless page.url contains '/planning' %}active{% endunless %}{% endif %}">
         <a href="/docs">
             <i class="icon-chevron-right"></i>
             Documentation
+        </a>
+    </li>
+    <li class="{% if page.url contains '/planning' %}active{% endif %}">
+        <a href="/docs/planning">
+            <i class="icon-chevron-right"></i>
+            Road Map
         </a>
     </li>
 </ul>

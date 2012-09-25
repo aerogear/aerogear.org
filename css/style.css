@@ -401,7 +401,11 @@ footer .row .span3:last-child {
         margin-top: -35px;
     }
 
-    .span2, .span10 {
+    .span2 {
+        display: none;
+    }
+
+    .span10 {
         float: none;
         width: 100%;
     }
