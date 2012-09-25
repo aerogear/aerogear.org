@@ -1,3 +1,7 @@
+---
+layout: basic
+---
+
 == Setting up your development enivronment to use Apache Cordova
 
 This tutorial covers setting up Apache Cordova, as well as the iOS and Android development environments, required to build the hybrid application.
