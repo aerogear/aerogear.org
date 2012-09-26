@@ -42,7 +42,7 @@ rm -rf _site/
 #rm -rf php/
 #git branch | grep -q site && git branch -D site
 bundle exec jekyll
-bundle exec ./publish.rb
+bundle exec ./publish
 #rsync -av _site/ php/
 #git checkout -f -b site
 #git add php/
