@@ -29,7 +29,7 @@ Release Roadmap
 
 Each library will have its own versioning.  Its Roadmap should be defined here.
 
-1.0.0.Alpha1
+1.0.0.M1
 ~~~~~~~~~~~~
 
 * Release along with AeroGear 1.0.0.M6
@@ -40,18 +40,22 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** Data-binding (via gson)
 * Follow good Android practice re: background data transfers / services / etc
 * First cut at user/auth integration (see link:../AeroGearSecurity[AeroGear Security Plan]) (unsure if this will make it in or not - we should be able to design the API anyway, even if not-yet-functional)
+* Release as API jar + TODO example app
 
-1.0.0.Alpha2
-~~~~~~~~~~~~
+1.0.0.M2
+~~~~~~~~
 
 * Process API review comments from community
-* More complete User/auth integration (begin to support OAuth?)
-* Data synchronization design
+* More complete User/auth integration
+* Data synchronization prototype
+* Push support?
 * Query/search support?
+* Release as apklib?
 
-1.0.0.Beta
+1.0.0.CR1
 ~~~~~~~~~~
 
+* OAuth support?
 * [TBD]
 
 1.0.0.Final
