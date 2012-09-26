@@ -30,7 +30,7 @@ Release Roadmap
 Each library will have its own versioning.  Its Roadmap should be defined here.
 
 1.0.0.M1
-~~~~~~~~~~~~
+~~~~~~~~
 
 * Release along with AeroGear 1.0.0.M6
 * link:https://github.com/aerogear/TODO/[TODO] integration for example app
@@ -53,7 +53,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Release as apklib?
 
 1.0.0.CR1
-~~~~~~~~~~
+~~~~~~~~~
 
 * OAuth support?
 * [TBD]
