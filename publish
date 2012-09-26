@@ -44,7 +44,6 @@ Net::SFTP.start(HOST, USERNAME, :keys => [KEY_FILE]) do |sftp|
       when :finish then
         puts "all done!"
       end
-    end
-    sftp.loop
+    end.wait
   end
 end
