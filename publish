@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'net/sftp'
 
 # aerogear@filemgmt.jboss.org:www_htdocs/aerogear
