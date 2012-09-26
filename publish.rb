@@ -4,7 +4,7 @@ require 'net/sftp'
 HOST = "filemgmt.jboss.org"
 USERNAME = "aerogear"
 PATH = "/www_htdocs/aerogear"
-KEY_FILE = "/Users/qmx/.ssh/aerogear-site"
+KEY_FILE = "/private/aerogear/aerogear-site"
 BASE_FOLDER = "#{PATH}/staging.aerogear.org"
 FOLDERS = Dir.glob("_site/**/").map {|f| f[0..-2]}
 FILES = Dir.glob("_site/**/*") - FOLDERS
