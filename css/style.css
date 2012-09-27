@@ -258,6 +258,10 @@ pre {
     width: 450px;
 }
 
+.sectionbody img {
+    max-height: 350px;
+}
+
 .note-tip-icon {
     font-size: 30px;
     margin-right: 10px;
