@@ -258,6 +258,26 @@ pre {
     width: 450px;
 }
 
+.note-tip-icon {
+    font-size: 30px;
+    margin-right: 10px;
+    color: #669EB2;
+}
+
+.note-tip-block {
+    margin: 10px 0;
+}
+
+.note-tip-block td {
+    padding: 10px;
+}
+
+.note-tip-content {
+    background-color: #F8F4E1;
+    border: 1px solid #DDDDDD;
+}
+
+
 /* Footer Styles */
 footer h3 {
     font-size: 25px;

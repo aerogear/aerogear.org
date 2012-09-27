@@ -72,4 +72,17 @@ $( function() {
     $( ".banner-home-link" ).click( function( event ) {
         document.location.href = "/";
     });
+
+    // Format notes and tips
+    $( ".admonitionblock .icon .title:contains('Note'), .admonitionblock .icon .title:contains('Tip')" ).each( function() {
+        var $this = $( this ),
+            block = $this.closest( ".admonitionblock" );
+        block.addClass( "note-tip-block" );
+        block.find( ".content:eq(0)" ).addClass( "note-tip-content" );
+        if ( $this.is( ".title:contains('Note')" ) ) {
+            $this.replaceWith( "<i class='icon-pushpin note-tip-icon'></i>" );
+        } else {
+            $this.replaceWith( "<i class='icon-info-sign note-tip-icon'></i>" );
+        }
+    });
 });
