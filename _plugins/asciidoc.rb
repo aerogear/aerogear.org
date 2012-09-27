@@ -12,7 +12,7 @@ module Jekyll
     end
 
     def convert(content)
-      cmd = "asciidoc -s -b html5 -a pygments -a imagesdir='../' -a iconsdir='../' -o - -"
+      cmd = "asciidoc -s -b html5 -a pygments -a imagesdir='../' -a iconsdir='../' -a icons -o - -"
       Open3.popen3(cmd) do |stdin, stdout, _|
         stdin.puts content
         stdin.close
