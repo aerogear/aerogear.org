@@ -39,14 +39,4 @@ cd $SRCFOLDER
 gem install --conservative bundler
 bundle install --path vendor/bundle
 rm -rf _site/
-#rm -rf php/
-#git branch | grep -q site && git branch -D site
 bundle exec jekyll
-bundle exec ./publish
-#rsync -av _site/ php/
-#git checkout -f -b site
-#git add php/
-#git commit -m "."
-#git push -f ssh://022eba6b9059427daf7628a29c6f5f2d@staging-AeroGear.rhcloud.com/~/git/staging.git/ site:master
-
-#git checkout -f master
