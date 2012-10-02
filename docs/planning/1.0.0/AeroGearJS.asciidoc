@@ -45,6 +45,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** Session/Local Storage adapter
 ** UUID Generation and data status tracking in preparation for data synchronization
 * aerogear.auth.js
+** Initial Integration into TODO app
 ** link:AeroGearSecurity.html[AeroGear Security]
 * Release with AeroGear 1.0.0.M6
 
@@ -55,12 +56,13 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** WebSocket Adapter
 * aerogear.auth.js, aerogear.encryptor.js
 ** link:../AeroGearSecurity[AeroGear Security]
-* Integrate auth into TODO app
 * Release with AeroGear 1.0.0.M7
 
 1.0.0.CR1
 ~~~~~~~~~
 
+* Metadata based client side validation
+** link:../AeroGearController[AeroGear Controller]
 * Bug fixes and enhancements
 * TODO app enhancement to show new library features
 * aerogear.auth.js
