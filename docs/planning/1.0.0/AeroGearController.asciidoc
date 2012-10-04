@@ -7,7 +7,7 @@ AeroGear Controller 1.0.0 - DRAFT
 :Author: Doug Campos
 :Author: Jay Balunas
 
-This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.  Completed functionality may be moved, removed, or updated in the aerogear-controller link:https://github.com/aerogear/aerogear-controller[README.md] file.
+This document covers the requirements, use-cases and planned APIs for the AeroGear Controller.  Completed functionality may be moved, removed, or updated in the aerogear-controller link:https://github.com/aerogear/aerogear-controller[README.md] file.
 
 External References
 -------------------
