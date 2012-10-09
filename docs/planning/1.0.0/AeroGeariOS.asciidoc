@@ -49,6 +49,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * AGDataManager
 ** CoreData integration (via AFIncrementalStore and AFNetworking)
 * Security
+** Crypto API usage/evaluation
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.Beta]
 * Release with AeroGear 1.0.0.M7
 
