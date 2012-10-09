@@ -21,7 +21,7 @@ Deliverables
 ** Android SDK Installable Framework
 * API & usage documentation
 * Integration into an example application
-** Possibly native version of TODO app
+** Native version of TODO app
 * Android SDK template application
 
 Release Roadmap
@@ -33,8 +33,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ~~~~~~~~
 
 * Release along with AeroGear 1.0.0.M6
-* link:https://github.com/aerogear/TODO/[TODO] integration for example app
-* Solidify requirements
+* link:https://github.com/aerogear/TODO/[TODO] example application
 * Basic API structure
 ** CRUD
 ** Data-binding (via gson)
@@ -45,7 +44,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 1.0.0.M2
 ~~~~~~~~
 
-* Process API review comments from community
+* Collect and review comments from community
 * More complete User/auth integration
 * Data synchronization prototype
 * Push support?
