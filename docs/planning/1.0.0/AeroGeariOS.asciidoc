@@ -40,6 +40,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** in memory storage
 * Security
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.Alpha]
+* Documentation and Getting started guide
 * Release via CocoaPods (dependency management for ObjC)
 * Release with AeroGear 1.0.0.M6
 
