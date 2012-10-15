@@ -47,7 +47,10 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 1.0.0.Alpha2
 ~~~~~~~~~~~~
 
+* AGPipeline
+** API rewrite (e.g. using DSL/builder patter for pipe creation)
 * AGDataManager
+** API rewrite (e.g. using DSL/builder patter for store creation)
 ** CoreData integration (via AFIncrementalStore and AFNetworking)
 ** Data Sync / Offline
 * Security
