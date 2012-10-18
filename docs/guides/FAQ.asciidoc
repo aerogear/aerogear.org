@@ -1,0 +1,117 @@
+---
+layout: basic
+---
+
+== FAQ
+
+What is AeroGear about?
+=======================
+
+The following describes the basics of the AeroGear API:
+
+What is a pipeline?
+-------------------
+
+A pipeline represents a set of n connections to a server. The pipeline class offers some simple 'management' APIs to work with containing 'pipe' objects. Basically it allows you to add or remove new connections to the pipeline.
+
+What is a pipe?
+----------------
+
+A pipe represents _one_ connection to a server. The pipe API is basically an abstraction layer for any server side connection, which all allows you to simply 'read' from, or 'write' to a server connection. However, technical details like RESTful APIs (e.g. HTTP PUT or HTTT GET) are _not_ exposed on the pipeline and pipe APIs. In the future you can have different type of pipe objects (-> connections). The default (and CURRENTLY only supported) type is a REST connection.
+
+==== JavaScript example
+
+[source, javascript]
+----
+// create an empty pipeline:
+var myPipeline = AeroGear.Pipeline();
+// Add a connection/pipe object which is named 'myprojects' and points to a given server (RESTful) endpoint:
+myPipeline.add(
+    {
+        name: "myprojects",
+        settings: {
+            baseURL: "https://todo-aerogear.rhcloud.com/todo-server/",
+            endPoint: "projects"
+        }
+     }
+);
+
+// Reading data from the 'myprojects' connection:
+myPipeline.pipes['myprojects'].read();
+----
+
+In the above snippet the read will issue a HTTP GET request, but that fact is hidden to the user of the API. The user basically reads data from the server connection.
+
+What is a datamanager?
+-----------------------
+
+A datamanager represents a set of n 'data store' implementations. The datamanager class offers some simple 'management' APIs to work with containing 'store' objects. Basically it allows you to add or remove new stores to the datamanager.
+
+
+What is a store?
+-----------------
+
+A store represents _one_ concrete data store. The store API is basically a mechanism for connecting to and moving data in and out of different types of client side storage. The default implementation in all client platforms is an 'in memory' storage system. Similar to the pipe API technical details of the underlying storage system are not exposed
+
+==== JavaScript example
+
+[source, javascript]
+----
+// Create an empty DataManager
+var datamanager = AeroGear.DataManager();
+
+// add a new store:
+datamanager.add("projects");
+
+// save an object to the 'projects' store:
+datamanager.stores['projects'].save(
+                {
+                    id: "1", 
+                    username: "john"
+                }
+);
+
+// read all the data from the 'projects' store:
+datamanager.stores['projects'].read();
+----
+
+What is an authenticator?
+--------------------------
+
+An authenticator represents a set of n authentication modules. The authenticator class offers some simple 'management' APIs to work with containing 'auth modules'. Basically it allows you to add or remove new modules to the authentication manager.
+
+What is an authentication module?
+---------------------------------
+
+The API represents _one_ concrete authentication module. The API is provides an authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the pipe API technical details of the underlying system are not exposed.
+
+
+==== JavaScript example
+
+[source, javascript]
+----
+// Create an empty authenticator
+var auth = AeroGear.Auth();
+
+// add a new "myAuth" auth module:
+auth.add(
+    {
+        name: "myAuth",
+        settings: { 
+            agAuth: true,
+            baseURL: "/todo-server/"
+        }
+    }
+);
+
+// issue a login:
+var userAndPassword = {username: "john", password: "123"};
+auth.modules['myAuth'].login(JSON.stringify( userAndPassword ), {
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function( data ) {
+                            console.log('login worked...');
+                        }
+});
+----
+
