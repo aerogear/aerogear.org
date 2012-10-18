@@ -12,6 +12,7 @@ layout: basic
 
 #### Getting Started
 
+* [FAQ](guides/FAQ)
 * [Get Started With HTML5 Mobile Web Development](guides/GetStartedHTML5MobileWeb)
 * [Deploying HTML5 Applications to Openshift](guides/HTML5AppsToOpenshift)
 * [HTML5 Mobile Quickstart & Archetype Deep Dive](guides/HTML5MobileQuickstartAndDeepDive)
