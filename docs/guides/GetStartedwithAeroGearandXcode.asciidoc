@@ -1,3 +1,6 @@
+---
+layout: basic
+---
 
 == Getting Started with AeroGear and Xcode
 
