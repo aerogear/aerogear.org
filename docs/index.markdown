@@ -19,6 +19,7 @@ layout: basic
 * [HTML5 + REST Applications](guides/HTML5RESTApps)
 * [Cordova Setup](guides/CordovaSetup)
 * [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](guides/HTML5ToHybridWithCordova)
+* [Getting Started with AeroGear and Xcode](guides/GetStartedwithAeroGearandXcode)
 * [Get Started with Hybrid Application Frameworks](guides/HybridApplicationFrameworks)
 
 #### Contributing to AeroGear

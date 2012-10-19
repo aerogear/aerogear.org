@@ -1,0 +1,156 @@
+
+== Getting Started with AeroGear and Xcode
+
+This guide will help you to setup your development environment for AeroGear, and then build a simple application to verify the installation. The guide assumes that you have XCode IDE installed in your machine. If not, you can download it from the Apple developer web site link:https://developer.apple.com/xcode[here]. Let's get started.
+
+=== Step 1: Create a new Xcode Project
+
+Fire up Xcode and when presented with the welcome screen, choose _"Create a new Xcode Project"_
+
+image::img/ios_welcome_screen.png[Welcome screen]
+
+On the next screen, choose _"Single-View Application"_
+
+image::img/ios_new_project_wizard.png[New Project]
+
+Enter _"AeroGearExample"_ in the Product Name field and your initials as the class prefix. In this example I used _"AG"_. Leave the rest of the default options checked.
+
+image::img/ios_project_details_screen.png[Details]
+
+Xcode creates our project and we are presented with the default project screen.
+
+image::img/ios_main_project_screen.png[Main Project Screen]
+
+Now that our project is created, its time to install required dependencies.
+
+=== Step 2: Install Dependencies
+
+Generally, there are two approaches to install dependencies. The first approach (and the preferred one) is to use link:http://cocoapods.org[CoccoaPods] dependency manager. If you haven't use it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details. The second approach, is to manually add the dependencies to the project. Both approaches are discussed in this guide, so peak the approach you are most familiar with.
+
+==== Using CocoaPods
+
+In the "Podfile", add the following lines:
+[source,bash]
+----
+platform :ios
+pod 'AeroGear', '0.0.4'
+----
+
+And then:
+[source,bash]
+----
+pod install
+----
+
+to install the dependencies. _NOTE:_ Don't forget to open the Xcode workspace file instead of the project file after this step.
+
+==== Using manual Process
+
+We need to download both AFNetworking and the AeroGear libraries from their respective sources. 
+
+* For AFNetworking link:https://github.com/AFNetworking/AFNetworking/zipball/master[click here] 
+* For AeroGear link:https://github.com/aerogear/aerogear-ios/zipball/master[click here]. 
+
+Extract the zip archives and when finished, time to add them to our project. 
+
+First, we add AFNetworking. Click _"File->Add files to AeroGearExample"_. In the dialog sheet that pops up, navigate to where AFNetworking code was extracted and select the AFNetworking folder
+
+image::img/ios_afnetworking_library.png[AFNetworking]
+
+Make sure that _"Copy items into destination group's folder"_ and _"Create Groups for any added folders"_ is checked.
+
+Now time to add AeroGear library. Click again _"File->Add files to AeroGearExample"_. In the dialog sheet that pops up, navigate to where AeroGear code was extracted and select the _"AeroGear"_ folder.
+
+image::img/ios_aerogear_library.png[AeroGear]
+
+Again, make sure that _"Copy items into destination group's folder"_ and _"Create Groups for any added folders"_ is checked.
+
+=== Step 3: Verify installation
+
+Now that our depenendecies are set up, it's time to verify our installation. For this, we are going to build a simple application that will fetch the latest Tasks from the link:http://todo-aerogear.rhcloud.com[TODO application] deployed on link:https://openshift.redhat.com/app/[OpenShift]. The tasks will then be displayed on a standard UITableView component. Let's start.
+
+Click on the _"AGViewController.h"_ on the Project Navigator and change the class to extend from UITableViewController, a convenience class that will manage our table view.
+[source,c]
+----
+@interface AGViewController : UITableViewController
+----
+
+Now, click on the _"AGViewController.m"_. First, we need to import the "AeroGear" library. 
+[source,c]
+----
+#import "AeroGear.h"
+----
+
+Add an instance variable that will hold the tasks returned from the server.
+[source,c]
+----
+@implementation AGViewController {
+    NSArray *_tasks;
+}
+----
+
+Navigate to the viewDidLoad method and add the following:
+[source,c]
+----
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // NSURL object:
+    NSURL* projectsURL = [NSURL URLWithString:@"http://todo-aerogear.rhcloud.com/todo-server"];
+    
+    id<AGPipe> tasksPipe;
+    
+    // create the 'todo' pipeline, which contains the 'tasks' pipe:
+    AGPipeline* todo = [AGPipeline pipelineWithPipe:@"tasks" baseURL:projectsURL type:@"REST"];  [1]
+    
+    tasksPipe = [todo get:@"tasks"]; [2]
+    
+    [tasksPipe read:^(id responseObject) {  [3]
+        
+        _tasks = responseObject; [4]
+        
+        [self.tableView reloadData]; [5]
+        
+    } failure:^(NSError *error) {
+        NSLog(@"An error has occured during fetch! \n%@", error);
+    }];    
+    
+}
+---- 
+
+Central to AeroGear is the concept of link:http://aerogear.github.com/aerogear-ios/Protocols/AGPipe.html[Pipeline] and link:http://aerogear.github.com/aerogear-ios/Protocols/AGPipe.html[Pipe]. The former represents a collection of server connections and the latter the connection itself. In [1] we initialize our Pipeline with the base URL of the remote server application, passing "REST" as the type of communication. (More types of communication are planned for ther future such as websockets). On [2] we extract the tasks pipe from the pipeline and on [3] we issue a "read" request to fetch the tasks from the remote application passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object declared earlier [4] and we ask the tableview to reload itself to display the data.
+
+Now what is left is to add the table data source methods.
+
+[source,c]
+----
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_tasks count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    NSUInteger row = [indexPath row];
+
+    cell.textLabel.text = [[_tasks objectAtIndex:row] objectForKey:@"title"];
+
+    return cell;
+}
+----
+Time to run the project. Select _"Product->Run"_ and if all goes well you will be presented with the following screen.
+
+image::img/ios_emulator.png[Emulator]
+
+*Success!* Your first iOS application built with AeroGear!
+
+You can download the source code of this project from link:https://github.com/cvasilak/AeroGearExample[github]. For a more complete example application that uses AeroGear to perform link:http://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD] operations on a remote endpoint, have a look at the TODO application available on link:https://github.com/aerogear/aerogear-todo-ios[github].
+
+You can also browse link:http://aerogear.github.com/aerogear-ios/index.html[AeroGear iOS API reference] to familiarize yourself with the wealth of options.
