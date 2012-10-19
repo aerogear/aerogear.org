@@ -15,7 +15,8 @@ title: Documentation
 
 * [FAQ](guides/FAQ)
 * [Get Started With HTML5 Mobile Web Development](guides/GetStartedHTML5MobileWeb)
-* [Get Started With Android Development](guides/GetStartedAndroid)
+* [Get Started With Android Development on the Command Line](guides/GetStartedAndroid)
+* [Get Started With Android Development in Eclipse](guides/EclipseSetup)
 * [Deploying HTML5 Applications to Openshift](guides/HTML5AppsToOpenshift)
 * [HTML5 Mobile Quickstart & Archetype Deep Dive](guides/HTML5MobileQuickstartAndDeepDive)
 * [HTML5 + REST Applications](guides/HTML5RESTApps)

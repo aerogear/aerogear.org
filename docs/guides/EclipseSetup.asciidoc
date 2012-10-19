@@ -1,0 +1,71 @@
+---
+layout: basic
+---
+
+== Setting up Eclipse for Developing AeroGear Powered Android Applications 
+
+This guide is geared toward using the command line, and it also assumes that git and mvn are on your PATH.  If you are using Windows, you can use your tools of choice.
+
+=== Requirements
+	Git
+	Maven
+	Eclipse 4.2 with ADT plugin
+	Android SDK
+
+=== Downloading and Importing AeroGear
+
+AeroGear is a Maven based build project.  With the exception of one set up set, we eschew Maven for a more traditional Android + Eclipse experience.  As such we will not be using or need a2e and a2e-android.
+
+==== Getting the source with git
+When you clone your sources, be sure to NOT download them into your Eclipse workspace directory.
+
+[source,bash]
+----
+ git clone https://github.com/aerogear/aerogear-android.git
+ cd aerogear-android/
+ mvn  dependency:copy;#This will download all of the required dependancies and place them in /libs
+----
+
+==== Importing the project into Eclipse
+
+* Right click in project panel 
+* Select Import 
+* Android -> Existing Android Code into Workspace -> Next
+* Browse -> Your code -> check "Copy projects into workspace" 
+* May have to set compiler compliance to 1.6 to clear some errors
+* Set is Library(Properties -> Android -> Is Library)
+
+
+=== AeroGear-TODO
+The TODO sample application relies on ActionBarSherlock and the AeroGear Android library project.
+
+==== Downloading AeroGear-TODO and ActionBarSherlock
+
+AeroGear and ActionBarSherlock are available on GitHub.
+
+[source,bash]
+----
+ git clone https://github.com/aerogear/aerogear-android-todo.git
+ git clone https://github.com/JakeWharton/ActionBarSherlock.git
+----
+
+==== Importing into Eclipse
+First let's import ActionBarSherlock.  
+
+* Right click in project panel 
+* Select Import 
+* Android -> Existing Android Code into Workspace -> Next
+* Browse -> ActionBarSherlock/library -> check "Copy projects into workspace" 
+
+Now TODO
+
+* Right click in project panel 
+* Select Import 
+* Android -> Existing Android Code into Workspace -> Next
+* Browse -> Your code -> check "Copy projects into workspace" 
+* May have to set compiler compliance to 1.6 to clear some errors
+* Add support libs
+* Add references to ActionBarSherlock and AeroGear
+
+You should now be able to run the TODO Application in Eclipse.
+
