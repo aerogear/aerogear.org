@@ -2,53 +2,27 @@
 layout: basic
 ---
 
-== Get Started With Aerogear on Android 
+== Get Started With AeroGear on Android 
 
 === Introduction
 
-Aerogear's Android libraries are built as standalone jars using Maven.  There is no need to have a separate Android Library project and you can package the library in your /libs folder of your Android project.  If you are using http://code.google.com/p/maven-android-plugin/[android-maven-plugin] you can install you can also include Aerogear as a dependancy.  
+AeroGear's Android libraries are built as apklib projects using Maven and the http://code.google.com/p/maven-android-plugin/[android-maven-plugin]. The project follows the standard Android project layout so sources will be in /src instead of /src/main/java and can be imported directly into Eclipse as an Android project.
 
 After the library has been built, we will clone and run the https://github.com/aerogear/aerogear-android-todo[TODO sample application] to confirm it is working.
 
-If you are unfamiliar with Maven, developerWorks has a detailed http://www.ibm.com/developerworks/java/tutorials/j-mavenv2/[introduction].  This guide will cargo cult everything you need to build and test the Aerogear library and real familiarity isn't necessary.
+If you are unfamiliar with Maven, developerWorks has a detailed http://www.ibm.com/developerworks/java/tutorials/j-mavenv2/[introduction].  This guide will cargo cult everything you need to build and test the AeroGear library and real familiarity isn't necessary.
 
-=== Android Areogear Library
+=== Android AeroGear Library
 
 ==== Prerequisites
 
 * Java 6.0 (Java SDK 1.6)+
 * Maven 3+
 * Git
-* You may use any IDE that supports Maven, but this guide currently focuses on the command line.
-
-==== Installing aerogear-android
-
-From the command line run the following.  This will clone the aerogear-android git repository (thus creating a aerogear-android directory) and then build the library and install it in your local maven repository.
-
-[source,bash]
-----
- git clone https://github.com/aerogear/aerogear-android.git
- cd aerogear-android/
- mvn install
-----
-
-If all goes well you should have the project built and installed.  You can confirm the build was successful by looking into the target subdirectory of areogear-android.  The library should be there in a jar file. If you have trouble see the troubleshooting section.
-
-=== Areogear Android Sample TODO Project
-
-Now we will use the sample TODO project to actually use the library. 
-
-==== Prerequisites
-
-* Java 6.0 (Java SDK 1.6)+
 * Maven 3+
 * Android SDK
-* Android Maven SDK Deployer
-* Git
+* Need to have an AVD image running 2.3.3 (API level 10)
 * You may use any IDE that supports Maven, but this guide currently focuses on the command line.
-* Need to have an AVD image running 2.1 or greater (or a phone running Android 2.1 or greater)
-
-If you are new to Android, http://developer.android.com/training/basics/firstapp/index.html[Google's tutorial] will help you get started and walk you through setting up AVD.
 
 ==== Setup Maven Android SDK Deployer
 
@@ -64,11 +38,41 @@ export ANDROID_HOME=YOUR_ANDROID_SDK_DIRECTORY
 mvn install -P 4.1
 ----
 
-Now Maven will be able to include Android 4.1 as a dependancy.  There are also profiles for other version of Android.
+Now Maven will be able to include Android 4.1 as a dependency.  There are also profiles for other version of Android.
+
+
+==== Installing aerogear-android
+
+From the command line run the following.  This will clone the aerogear-android git repository (thus creating a aerogear-android directory) and then build the library and install it in your local maven repository.
+
+[source,bash]
+----
+ git clone https://github.com/aerogear/aerogear-android.git
+ cd aerogear-android/
+ mvn install
+----
+
+If all goes well you should have the project built and installed.  You can confirm the build was successful by looking into the target subdirectory of aerogear-android.  The library should be there in a jar file. If you have trouble see the troubleshooting section.
+
+=== AeroGear Android Sample TODO Project
+
+Now we will use the sample TODO project to actually use the library. 
+
+==== Prerequisites
+
+* Java 6.0 (Java SDK 1.6)+
+* Maven 3+
+* Android SDK
+* Android Maven SDK Deployer
+* Git
+* You may use any IDE that supports Maven, but this guide currently focuses on the command line.
+* Need to have an AVD image running 2.1 or greater (or a phone running Android 2.1 or greater)
+
+If you are new to Android, http://developer.android.com/training/basics/firstapp/index.html[Google's tutorial] will help you get started and walk you through setting up AVD.
 
 ==== Compiling and Running the Sample Application
 
-Now we will confirm that the library is built and installed by building and running the TODO application.  This is a sample Aerogear applicaiton which aggregates several TODO lists.  Before we begin you need to have either an Android smartphone connected to your computer with debugging enabled OR an AVD (Android Virtual Device) running.  
+Now we will confirm that the library is built and installed by building and running the TODO application.  This is a sample AeroGear application which aggregates several TODO lists.  Before we begin you need to have either an Android smart phone connected to your computer with debugging enabled OR an AVD (Android Virtual Device) running.  
 
 You will need to use +adb devices+ to get a list of the device IDs of running and connected devices.  Pick one of them and use it for ${deviceID}.
 
@@ -85,4 +89,4 @@ Confirm the project is running.  If you have multiple AVDs running, deploy and r
 
 === Troubleshooting
 
-If you are having issues, feel free to ask for help on our mailing list (aerogear-dev@lists.jboss.org) or our IRC channel on Freenode, #areogear
+If you are having issues, feel free to ask for help on our mailing list (aerogear-dev@lists.jboss.org) or our IRC channel on Freenode, #aerogear
