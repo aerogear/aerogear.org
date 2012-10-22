@@ -1,0 +1,1912 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>AGPipeline Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">AeroGear-iOS </a></h1>
+				<a id="developerHome" href="../index.html">Red Hat</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">AGPipeline Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/pipeline">&nbsp;&nbsp;&nbsp;&nbsp;+ pipeline</option>
+	
+	<option value="//api/name/pipeline:">&nbsp;&nbsp;&nbsp;&nbsp;+ pipeline:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/add:">&nbsp;&nbsp;&nbsp;&nbsp;- add:</option>
+	
+	<option value="//api/name/add:authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- add:authModule:</option>
+	
+	<option value="//api/name/add:baseURL:">&nbsp;&nbsp;&nbsp;&nbsp;- add:baseURL:</option>
+	
+	<option value="//api/name/add:baseURL:authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- add:baseURL:authModule:</option>
+	
+	<option value="//api/name/add:baseURL:endpoint:">&nbsp;&nbsp;&nbsp;&nbsp;- add:baseURL:endpoint:</option>
+	
+	<option value="//api/name/add:baseURL:endpoint:authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- add:baseURL:endpoint:authModule:</option>
+	
+	<option value="//api/name/add:baseURL:endpoint:type:">&nbsp;&nbsp;&nbsp;&nbsp;- add:baseURL:endpoint:type:</option>
+	
+	<option value="//api/name/add:baseURL:endpoint:type:authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- add:baseURL:endpoint:type:authModule:</option>
+	
+	<option value="//api/name/add:baseURL:type:">&nbsp;&nbsp;&nbsp;&nbsp;- add:baseURL:type:</option>
+	
+	<option value="//api/name/add:baseURL:type:authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- add:baseURL:type:authModule:</option>
+	
+	<option value="//api/name/add:endpoint:">&nbsp;&nbsp;&nbsp;&nbsp;- add:endpoint:</option>
+	
+	<option value="//api/name/add:endpoint:authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- add:endpoint:authModule:</option>
+	
+	<option value="//api/name/add:endpoint:type:">&nbsp;&nbsp;&nbsp;&nbsp;- add:endpoint:type:</option>
+	
+	<option value="//api/name/add:endpoint:type:authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- add:endpoint:type:authModule:</option>
+	
+	<option value="//api/name/add:type:">&nbsp;&nbsp;&nbsp;&nbsp;- add:type:</option>
+	
+	<option value="//api/name/add:type:authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- add:type:authModule:</option>
+	
+	<option value="//api/name/get:">&nbsp;&nbsp;&nbsp;&nbsp;- get:</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/init:">&nbsp;&nbsp;&nbsp;&nbsp;- init:</option>
+	
+	<option value="//api/name/remove:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pipeline">pipeline</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pipeline:">pipeline:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:">add:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:authModule:">add:authModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:baseURL:">add:baseURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:baseURL:authModule:">add:baseURL:authModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:baseURL:endpoint:">add:baseURL:endpoint:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:baseURL:endpoint:authModule:">add:baseURL:endpoint:authModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:baseURL:endpoint:type:">add:baseURL:endpoint:type:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:baseURL:endpoint:type:authModule:">add:baseURL:endpoint:type:authModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:baseURL:type:">add:baseURL:type:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:baseURL:type:authModule:">add:baseURL:type:authModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:endpoint:">add:endpoint:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:endpoint:authModule:">add:endpoint:authModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:endpoint:type:">add:endpoint:type:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:endpoint:type:authModule:">add:endpoint:type:authModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:type:">add:type:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:type:authModule:">add:type:authModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:">get:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init:">init:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:">remove:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="AGPipeline Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">AGPipeline Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">AGPipeline.h<br />AGPipeline.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>AGPipeline represents a &lsquo;collection&rsquo; of server connections (pipes). This object provides a standard way to
+communicate with the server no matter the data format or transport expected.</p>
+
+<p>A <a href="#//api/name/pipeline">pipeline</a> must have at least one pipe.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init:">&ndash;&nbsp;init:</a></code>
+		<span class="tooltip"><p>An initializer method to instantiate an empty AGPipeline.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		<span class="tooltip"><p>An initializer method to instantiate an empty AGPipeline.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pipeline">+&nbsp;pipeline</a></code>
+		<span class="tooltip"><p>A factory method to instantiate an empty AGPipeline.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pipeline:">+&nbsp;pipeline:</a></code>
+		<span class="tooltip"><p>A factory method to instantiate an empty AGPipeline.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:">&ndash;&nbsp;add:</a></code>
+		<span class="tooltip"><p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:authModule:">&ndash;&nbsp;add:authModule:</a></code>
+		<span class="tooltip"><p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:endpoint:">&ndash;&nbsp;add:endpoint:</a></code>
+		<span class="tooltip"><p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:endpoint:authModule:">&ndash;&nbsp;add:endpoint:authModule:</a></code>
+		<span class="tooltip"><p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:type:">&ndash;&nbsp;add:type:</a></code>
+		<span class="tooltip"><p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:type:authModule:">&ndash;&nbsp;add:type:authModule:</a></code>
+		<span class="tooltip"><p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:endpoint:type:">&ndash;&nbsp;add:endpoint:type:</a></code>
+		<span class="tooltip"><p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:endpoint:type:authModule:">&ndash;&nbsp;add:endpoint:type:authModule:</a></code>
+		<span class="tooltip"><p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:baseURL:">&ndash;&nbsp;add:baseURL:</a></code>
+		<span class="tooltip"><p>Adds a new RESTful pipe to the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:baseURL:authModule:">&ndash;&nbsp;add:baseURL:authModule:</a></code>
+		<span class="tooltip"><p>Adds a new RESTful pipe to the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:baseURL:endpoint:">&ndash;&nbsp;add:baseURL:endpoint:</a></code>
+		<span class="tooltip"><p>Adds a new RESTful pipe to the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:baseURL:endpoint:authModule:">&ndash;&nbsp;add:baseURL:endpoint:authModule:</a></code>
+		<span class="tooltip"><p>Adds a new RESTful pipe to the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:baseURL:type:">&ndash;&nbsp;add:baseURL:type:</a></code>
+		<span class="tooltip"><p>Adds a new pipe (server connection) to the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:baseURL:type:authModule:">&ndash;&nbsp;add:baseURL:type:authModule:</a></code>
+		<span class="tooltip"><p>Adds a new pipe (server connection) to the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:baseURL:endpoint:type:">&ndash;&nbsp;add:baseURL:endpoint:type:</a></code>
+		<span class="tooltip"><p>Adds a new pipe (server connection) to the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:baseURL:endpoint:type:authModule:">&ndash;&nbsp;add:baseURL:endpoint:type:authModule:</a></code>
+		<span class="tooltip"><p>Adds a new pipe (server connection) to the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
+		<span class="tooltip"><p>Removes a pipe from the AGPipeline object</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/get:">&ndash;&nbsp;get:</a></code>
+		<span class="tooltip"><p>Look up for a pipe object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/pipeline" title="pipeline"></a>
+	<h3 class="subsubtitle method-title">pipeline</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A factory method to instantiate an empty AGPipeline.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)pipeline</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A factory method to instantiate an empty AGPipeline.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pipeline:" title="pipeline:"></a>
+	<h3 class="subsubtitle method-title">pipeline:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A factory method to instantiate an empty AGPipeline.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)pipeline:(NSURL *)<em>baseURL</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A factory method to instantiate an empty AGPipeline.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/add:" title="add:"></a>
+	<h3 class="subsubtitle method-title">add:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the endpoint name of the actual pipe</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:authModule:" title="add:authModule:"></a>
+	<h3 class="subsubtitle method-title">add:authModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the endpoint name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authModule</em></dt>
+			<dd><p>the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> used to access protected resources</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:baseURL:" title="add:baseURL:"></a>
+	<h3 class="subsubtitle method-title">add:baseURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new RESTful pipe to the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> baseURL:(NSURL *)<em>baseURL</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the endpoint name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new RESTful pipe to the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:baseURL:authModule:" title="add:baseURL:authModule:"></a>
+	<h3 class="subsubtitle method-title">add:baseURL:authModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new RESTful pipe to the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> baseURL:(NSURL *)<em>baseURL</em> authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the endpoint name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authModule</em></dt>
+			<dd><p>the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> used to access protected resources</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new RESTful pipe to the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:baseURL:endpoint:" title="add:baseURL:endpoint:"></a>
+	<h3 class="subsubtitle method-title">add:baseURL:endpoint:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new RESTful pipe to the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> baseURL:(NSURL *)<em>baseURL</em> endpoint:(NSString *)<em>endpoint</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endpoint</em></dt>
+			<dd><p>the serivce endpoint, if differs from the pipe name.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new RESTful pipe to the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:baseURL:endpoint:authModule:" title="add:baseURL:endpoint:authModule:"></a>
+	<h3 class="subsubtitle method-title">add:baseURL:endpoint:authModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new RESTful pipe to the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> baseURL:(NSURL *)<em>baseURL</em> endpoint:(NSString *)<em>endpoint</em> authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endpoint</em></dt>
+			<dd><p>the serivce endpoint, if differs from the pipe name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authModule</em></dt>
+			<dd><p>the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> used to access protected resources</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new RESTful pipe to the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:baseURL:endpoint:type:" title="add:baseURL:endpoint:type:"></a>
+	<h3 class="subsubtitle method-title">add:baseURL:endpoint:type:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new pipe (server connection) to the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> baseURL:(NSURL *)<em>baseURL</em> endpoint:(NSString *)<em>endpoint</em> type:(NSString *)<em>type</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the logical name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endpoint</em></dt>
+			<dd><p>the serivce endpoint, if differs from the pipe name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the actual pipe/connection</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new pipe (server connection) to the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:baseURL:endpoint:type:authModule:" title="add:baseURL:endpoint:type:authModule:"></a>
+	<h3 class="subsubtitle method-title">add:baseURL:endpoint:type:authModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new pipe (server connection) to the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> baseURL:(NSURL *)<em>baseURL</em> endpoint:(NSString *)<em>endpoint</em> type:(NSString *)<em>type</em> authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the logical name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endpoint</em></dt>
+			<dd><p>the serivce endpoint, if differs from the pipe name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the actual pipe/connection</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authModule</em></dt>
+			<dd><p>the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> used to access protected resources</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new pipe (server connection) to the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:baseURL:type:" title="add:baseURL:type:"></a>
+	<h3 class="subsubtitle method-title">add:baseURL:type:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new pipe (server connection) to the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> baseURL:(NSURL *)<em>baseURL</em> type:(NSString *)<em>type</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the endpoint name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the actual pipe/connection</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new pipe (server connection) to the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:baseURL:type:authModule:" title="add:baseURL:type:authModule:"></a>
+	<h3 class="subsubtitle method-title">add:baseURL:type:authModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new pipe (server connection) to the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> baseURL:(NSURL *)<em>baseURL</em> type:(NSString *)<em>type</em> authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the endpoint name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the actual pipe/connection</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authModule</em></dt>
+			<dd><p>the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> used to access protected resources</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new pipe (server connection) to the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:endpoint:" title="add:endpoint:"></a>
+	<h3 class="subsubtitle method-title">add:endpoint:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> endpoint:(NSString *)<em>endpoint</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endpoint</em></dt>
+			<dd><p>the serivce endpoint, if differs from the pipe name.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:endpoint:authModule:" title="add:endpoint:authModule:"></a>
+	<h3 class="subsubtitle method-title">add:endpoint:authModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> endpoint:(NSString *)<em>endpoint</em> authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endpoint</em></dt>
+			<dd><p>the serivce endpoint, if differs from the pipe name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authModule</em></dt>
+			<dd><p>the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> used to access protected resources</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new RESTful pipe to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:endpoint:type:" title="add:endpoint:type:"></a>
+	<h3 class="subsubtitle method-title">add:endpoint:type:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> endpoint:(NSString *)<em>endpoint</em> type:(NSString *)<em>type</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the logical name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endpoint</em></dt>
+			<dd><p>the serivce endpoint, if differs from the pipe name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the actual pipe/connection</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:endpoint:type:authModule:" title="add:endpoint:type:authModule:"></a>
+	<h3 class="subsubtitle method-title">add:endpoint:type:authModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> endpoint:(NSString *)<em>endpoint</em> type:(NSString *)<em>type</em> authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the logical name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endpoint</em></dt>
+			<dd><p>the serivce endpoint, if differs from the pipe name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the actual pipe/connection</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authModule</em></dt>
+			<dd><p>the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> used to access protected resources</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:type:" title="add:type:"></a>
+	<h3 class="subsubtitle method-title">add:type:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> type:(NSString *)<em>type</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the endpoint name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the actual pipe/connection</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/add:type:authModule:" title="add:type:authModule:"></a>
+	<h3 class="subsubtitle method-title">add:type:authModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)add:(NSString *)<em>name</em> type:(NSString *)<em>type</em> authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the endpoint name of the actual pipe</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the actual pipe/connection</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authModule</em></dt>
+			<dd><p>the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> used to access protected resources</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new pipe (server connection) to the AGPipeline object,
+leveraging the given baseURL argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/get:" title="get:"></a>
+	<h3 class="subsubtitle method-title">get:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Look up for a pipe object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)get:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the name of the actual pipe</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Look up for a pipe object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An initializer method to instantiate an empty AGPipeline.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An initializer method to instantiate an empty AGPipeline.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/init:" title="init:"></a>
+	<h3 class="subsubtitle method-title">init:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An initializer method to instantiate an empty AGPipeline.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)init:(NSURL *)<em>baseURL</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>the URL of the server</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An initializer method to instantiate an empty AGPipeline.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/remove:" title="remove:"></a>
+	<h3 class="subsubtitle method-title">remove:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Removes a pipe from the AGPipeline object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)remove:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the name of the actual pipe</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Removes a pipe from the AGPipeline object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-10-22)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
