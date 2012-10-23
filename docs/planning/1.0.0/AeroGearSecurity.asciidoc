@@ -43,7 +43,6 @@ AeroGear Security
 aerogear.auth.js
 ^^^^^^^^^^^^^^^^^
 * JavaScript Client library with REST authentication support
-* Wrapper support to OAuth (Initially using twitter)
 
 aerogear-android
 ^^^^^^^^^^^^^^^^^^
