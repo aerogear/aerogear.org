@@ -44,7 +44,7 @@ Features:
 
 1.0.0.M6
 ~~~~~~~~
-Release Date: September 25 2012
+Release Date: Late October 2012
 
 Features:
 
@@ -63,7 +63,7 @@ Features:
 
 1.0.0.M7
 ~~~~~~~~
-Release Date: November 2012
+Release Date: Late December 2012
 
 Features:
 
@@ -80,7 +80,7 @@ Features:
 
 1.0.0.CR1
 ~~~~~~~~
-Release Date: November 2012
+Release Date: Mid January 2013
 
 Features:
 
@@ -99,7 +99,7 @@ Features:
 
 1.0.0.CR2/Final
 ~~~~~~~~~~~~~~~
-Release Date: December 2012
+Release Date: February 2013
 
 Features:
 
