@@ -51,9 +51,10 @@ aerogear-android
 aerogear-ios
 ^^^^^^^^^^^^
 * REST client libraries support
+* Token based authentication
 
-1.0.0.Beta
-~~~~~~~~~~
+1.0.0.Milestone
+~~~~~~~~~~~~~~~
 
 * Create a demo application
 
@@ -74,11 +75,13 @@ aerogear.encryptor.js
 
 aerogear-android
 ^^^^^^^^^^^^^^^^
-* OAuth integration
+* REST client libraries support
+* Token based authentication
 
 aerogear-ios
 ^^^^^^^^^^^^
-* TBD
+* Improve token authentication
+** Introducing/Using Client ID 
 
 1.0.0.CR
 ~~~~~~~~
@@ -104,7 +107,7 @@ aerogear-android
 
 aerogear-ios
 ^^^^^^^^^^^^
-* TBD
+* API security testing
 
 1.0.0.Final
 ~~~~~~~~~~~
