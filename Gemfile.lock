@@ -19,6 +19,9 @@ GEM
     liquid (2.3.0)
     maruku (0.6.0)
       syntax (>= 1.0.0)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.6.1)
     posix-spawn (0.3.6)
     syntax (1.0.0)
 
@@ -28,3 +31,4 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   jekyll
+  net-sftp
