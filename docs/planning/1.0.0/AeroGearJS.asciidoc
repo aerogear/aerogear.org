@@ -6,19 +6,19 @@ AeroGear JavaScript Library 1.0.0
 =================================
 :Author: Kris Borchers
 
-This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.  Completed functionality may be moved, removed, or updated in the aerogear-js README.md file.
+This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.  Completed functionality may be moved, removed, or updated in the AeroGear-js README.md file.
 
 External References
 -------------------
 
-* link:https://github.com/aerogear/aerogear-js/[Github Repo]
-* link:https://github.com/aerogear/aerogear-js/blob/master/README.md[README.md]
+* link:https://github.com/AeroGear/AeroGear-js/[Github Repo]
+* link:https://github.com/AeroGear/AeroGear-js/blob/master/README.md[README.md]
 * link:https://issues.jboss.org/browse/AEROGEAR/component/12315072[AEROGEAR Jira component]
 
 Deliverables
 ------------
 
-* aerogear.js
+* AeroGear.js
 ** Both a minimized version and development version
 * API & usage documentation
 * Integration into an example TODO application
@@ -32,7 +32,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 1.0.0.Alpha1
 ~~~~~~~~~~~~
 
-* aerogear.pipeline.js
+* AeroGear.Pipeline.js
 ** Initial implementation and REST adapter
 * Initial AeroGear TODO app
 * Release with AeroGear 1.0.0.M5
@@ -40,11 +40,10 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 1.0.0.M1
 ~~~~~~~~
 
-* aerogear.datamanager.js
-** Initial implementation and memory based adapter to separate data handling from pipeline
-** Session/Local Storage adapter
+* AeroGear.DataManager.js
+** Initial implementation and memory based adapter to separate data handling from Pipeline
 ** UUID Generation and data status tracking in preparation for data synchronization
-* aerogear.auth.js
+* AeroGear.auth.js
 ** Initial Integration into TODO app
 ** link:AeroGearSecurity.html[AeroGear Security]
 * Release with AeroGear 1.0.0.M6
@@ -52,9 +51,11 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 1.0.0.M2
 ~~~~~~~~
 
-* aerogear.pipeline.js
+* AeroGear.DataManager.js
+** Session/Local Storage adapter
+* AeroGear.Pipeline.js
 ** WebSocket Adapter
-* aerogear.auth.js, aerogear.encryptor.js
+* AeroGear.auth.js, AeroGear.encryptor.js
 ** link:../AeroGearSecurity[AeroGear Security]
 * Release with AeroGear 1.0.0.M7
 
@@ -65,7 +66,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** link:../AeroGearController[AeroGear Controller]
 * Bug fixes and enhancements
 * TODO app enhancement to show new library features
-* aerogear.auth.js
+* AeroGear.auth.js
 ** link:../AeroGearSecurity[AeroGear Security]
 * Release with AeroGear 1.0.0.CR
 
