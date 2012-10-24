@@ -285,6 +285,11 @@ pre {
 	font-size: 1.3em;
 }
 
+.post img {
+	float: left;
+	padding: 10px;
+}
+
 /* Footer Styles */
 footer h3 {
     font-size: 25px;
