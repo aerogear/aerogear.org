@@ -11,6 +11,9 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : AeroGear
+domain: aerogear.org
+author: AeroGear Project
+email: aerogear-dev@lists.jboss.org
 
 production_url : http://aerogear.org
 
