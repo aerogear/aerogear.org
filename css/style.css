@@ -464,6 +464,10 @@ footer .row .span3:last-child {
     .download-row > .span4 {
         margin-left: 30px;
     }
+
+    .post img {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
