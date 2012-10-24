@@ -290,6 +290,10 @@ pre {
 	padding: 10px 10px 10px 0px;
 }
 
+.post ul {
+	list-style-position: inside;
+}
+
 /* Footer Styles */
 footer h3 {
     font-size: 25px;
