@@ -281,6 +281,9 @@ pre {
     border: 1px solid #DDDDDD;
 }
 
+.post {
+	font-size: 1.3em;
+}
 
 /* Footer Styles */
 footer h3 {
