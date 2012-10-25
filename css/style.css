@@ -281,6 +281,18 @@ pre {
     border: 1px solid #DDDDDD;
 }
 
+.post {
+	font-size: 1.3em;
+}
+
+.post img {
+	float: left;
+	padding: 10px 10px 10px 0px;
+}
+
+.post ul {
+	list-style-position: inside;
+}
 
 /* Footer Styles */
 footer h3 {
@@ -451,6 +463,10 @@ footer .row .span3:last-child {
 
     .download-row > .span4 {
         margin-left: 30px;
+    }
+
+    .post img {
+        display: none;
     }
 }
 
