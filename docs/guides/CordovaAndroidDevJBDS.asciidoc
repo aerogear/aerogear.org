@@ -213,123 +213,90 @@ Now, locate the <activity> tag and add the following attribute:
 
 image:img/ss_project_setup_26.png[]
 
+=== Run Configuration Setup
 
-23) Under the JBDS/Eclipse Run menu, select Run Configurations…
+==== Now lets setup a run configuration.
 
+Under the JBDS/Eclipse Run menu, select Run Configurations…
 
-Add a New Configuration for Android Application – AndroidHelloWorld
+image:img/ss_project_setup_27.png[]
 
+Add a New Configuration for Android Application and name it "AndroidHelloWorld"
 
+image:img/ss_project_setup_28.png[]
 
-Select the AndroidHelloWorld project using the Browse button
+Now, select the AndroidHelloWorld project using the Browse button
 
+image:img/ss_project_setup_29.png[]
 
 And on the Target tab, select “Always prompt to pick device”
 
+image:img/ss_project_setup_30.png[]
+
+TIP: This setup will make it easier for you to switch back and forth between the Android Emulator (AVDs) and a real device plugged in via USB.
 
 
-And select Apply
+Then select Apply.
 
-This setup will make it easier for you to switch back and forth between the Android Emulator (AVDs) and a real devichte plugged in via USB.
-Close the Run Configurations Dialog
-
-24) iOS and Android both have their own unique ways of setting up to run the simulator/emulator as well as on real devices.  In the case of Android, you need to first visit the SDK Manager and install the SDK versions that you wish to work with.
-
-Note: If you originally created the project to require Android 4 and then it may (normally does) complain when you try to deploy it to your Android 2.x real-world phone in your pocket.
-
-There is an icon in the main toolbar to launch the Android SDK Manager – it is the leftmost of the two Android icons.
+You can now close the Run Configurations Dialog
 
 
 === Android SDK Manager
 
+The Android Developer site provides a link:http://developer.android.com/sdk/installing/index.html[step-by-step guide] to set up your environment.
 
-Install Android 2.3.3 (API 10), 4.0.3 (API 15) and 4.1 (API 16) – Cordova works as far as back as Android 2.2 – but our focus is on 2.3, 4.0 and 4.1 (yes, we skipped 3.x altogether).
-
-25) Check the box in the left-most column and select Install 1 package… button that becomes enabled.
-In this screenshot, I have selected Android 4.0 since I have not yet installed it previously.
+==== Troubleshooting Fedora/Red Hat Enterprise Linux
 
 
-Select Accept on the Choose packages
+If you have 64-bit systems, you will need to install some 32bit packages, because Android SDK is 32bit
+
+`# sudo yum install glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686`
+
+=== Setup AVD
+
+Once the SDK has been installed, lets head back over to JBDS and create an Android Virtual Device or AVD
+
+"Right-click" on the project and select "Run As -> Android Application"
+
+image:img/ss_avd_setup_0.png[]
+
+The "Android Device Chooser" dialog will appear.  This will allow you to select between any real world devices that are plugged into your laptop/machine OR AVD/emulators.
+
+image:img/avd.png[]
+
+If this is your first time, then most likely this dialog will be blank.  If you already have and AVD created, then you can skip the setup steps.
+
+Click on New...
+
+image::img/avd_new.png[New AVD]
+
+And then create the new AVD, giving it a name of your choice. You should have installed an Android 2.x or 4.0 SDK through the SDK manager (as part of the step-by-step guide above).
+
+Once an AVD has been created, you can close the Android SDK Manager and return to Android Device Chooser.  Then, select "Refresh" to see the newly added AVD, make sure "Launch a new Android Virtual Device" is selected, highlight the AVD you wish to launch and select "Ok"
+
+==== Launching the AVD
+
+The "default" end-user experience is typically displayed in the emulator.  _You will need to manually bypass the lock screen._
+
+Once the Android OS has fully loaded, it will then run your application.  _This takes a while, on a slower computer likely several minutes._
+
+image:img/ss_avd_setup_1.png[]
+
+The Android Developer site has a good tutorial about setting up your "Real Device" here link:http://developer.androidcom/tools/device.html
+
+Once your device is setup, and you run the Android Device Chooser (Run As Android Application), you should see your actual device listed.  Highlight it and select "OK".
 
 
-
-And select Install
-
-Wait for the download, there is a progress meter at the bottom of the Android SDK Manager dialog.
-
-
-And once it is finished downloading, it will be marked as installed.
-
-
-26) Now back in the main Eclipse/JBDS, right-click on the project and select Run As -> Android Application
-
-
-27) Android Device Chooser dialog allows you to select between any real world devices that are plugged into your laptop/machine OR AVD/emulators.  
-
-
-In your case, this screen is mostly likely blank – no real devices nor any AVDs.  Let’s setup a new AVD – Select the Manager… button in the lower right hand corner.
-This brings up the Android Virtual Device Manager dialog
-
-
-28) Select the New… button
-The Name is any string that you wish to provide – make it something descriptive – since I have a Google Galaxy Nexus Phone…”GoogleGalaxyNexusPhone” 
-Target: This drop-down is populated by the Installed SDKs via the SDK Manager
-CPU: ARM
-SD Card: <blank>
-Skin: WXGA720 (or custom resolution)
-Property: 
-Hardware Back/Home keys = no
-Abstracted LCD Density = 320
-Keyboard lid support = no
-Max VM application heap size = 48
-Device ram size = 1024
-
-Tip: Use Google with something like “Galaxy Nexus AVD Settings” to find out what others have tried for these properties.   This is one challenge with the Android world – lots and lots of devices with various properties.   Some common/popular Android phone configurations can be found in this article:
-http://mobile.tutsplus.com/tutorials/android/common-android-virtual-device-configurations/
-
-
-
-=== Select Create AVD
-
-Close Android SDK Manager and return to Android Device Chooser
-
-29) Select Refresh to see the newly added AVD – make sure Launch a new Android Virtual Device is selected, highlight the AVD you wish to launch and select OK…
-
-
-
-
-
-The “default” end-user experience is typically displayed in the emulator.  You will need to manually bypass the lock screen.   On iOS, this happens “auto-magically” but in Android land, you normally have to manually disengage the lock screen, just click down on the padlock icon and pull your mouse to the right-side of the screen.
-
-
-
-Once the Android OS has fully loaded, it will then run your application.  This takes a while, on a slower computer likely several minutes.
-
-
-
-You may find that deployment to a real device is actually faster than the emulator, plus, you can leave the emulator running which helps with the turnaround time during testing.
-
-For real devices (and sometimes the AVD), you are likely to have to manually unlock. 
-
-
-30) Running on a real device running Android 4.x, on the phone/tablet, go to Settings -> Developer Options and make sure USB debugging is toggled on.  I also like Show touches to be toggled on.
-
-
-
-For Android 2.x, hit the physical Settings/Menu button on the phone, then select Applications.   Check Unknown sources - Allow installation of non-Market applications.  This will allow you and your development buddies to email .apk files around - installing the app from an email attachment.
-Then Select the Development option, check on USB debugging and you may find that Stay awake is also helpful if you are frequently editing, saving, redeploying your application.
-
-Many Android 2.x devices do not have the ability to make a screenshot - so I took these photos with my iPhone test device! 
-
-31) Now on the Android Device Chooser (Run As Android Application), you should see your actual device listed – highlight it and select OK.
-
-
-If you are prompted for something called “LogCat” do say yes.  It is a valuable tool for understanding what might be going wrong/right with your deployment to the real device.
+TIP: If you are prompted for something called “LogCat” do say yes.  It is a valuable tool for understanding what might be going wrong/right with your deployment to the real device.
 
 
 And that’s Hello World
 
-Note: I have seen the run operation fail at times, simply try again.   In one case, the LogCat message indicated that I needed to restart Eclipse just to get things running and after a quick restart (File - Restart) it was back to normal.   
+NOTE: I have seen the run operation fail at times, simply try again.   In one case, the LogCat message indicated that I needed to restart Eclipse just to get things running and after a quick restart (File - Restart) it was back to normal.
+
+
+
+=== Extra Credit
 
 32) Now let’s make it more interesting by adding some jQuery Mobile functionality.  Right-click on “www” and select New Other.
 
@@ -515,80 +482,56 @@ And update access origin to equal ”*” - this is primarily useful for develop
 
 
 
-
-
 And if you wish to be more adventurous, wrap this logic in a check for Wifi vs 3G vs no connection and make a determination as to how to display a message to the end-user.
 
 var networkState = navigator.network.connection.type;
 
 http://docs.phonegap.com/en/2.1.0/cordova_connection_connection.md.html#Connection
 
-This ends the tutorial portion of this document, what follows are some general tips & tricks that I have learned while working with PhoneGap/Apache Cordova + Android.
 
 === Tips & Tricks:
-1) Target Android Version:  In case you wish to switch the Android version targets for your project go to the project properties and Android.
 
+==== Eclipse complains about various JS libs
 
-And also change your AndroidManifest.xml
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
-
-
-2) Android File Transfer (for Mac Users) – allows you to grab files from the device when plugged in via USB
-
-
-http://www.android.com/filetransfer/
-
-3) Phonegap Plugins
-https://github.com/phonegap/phonegap-plugins
-
-ChildBrowser is one of the most popular – it allows you to render a webpage, inside of your application
-
-4) REST Endpoints – you need to “open” access to the specific Internet domains in res/xml/config.xml
-<access origin=".*"/>
-
-5) Google Nexus 7 is $199 – great inexpensive testing device  
-
-Biggest downside…it uses Android 4.1, which is not representative of the overall market – the majority of Android users are still on 2.2 or 2.3.x – and on lower powered CPUs/RAM combinations.
-
-6) Change MainActivity title/label on the installed application – res/values/strings.xml
-
-
-This will change the application name on the launch icon as well as when multi-tasking.
-
-Multitasking UI in Android 4
-
-
-Application Launcher in Android 4
-
-
-7) Phonegap API Explorer – to test your device and phonegap…install
-https://play.google.com/store/apps/details?id=org.coenraets.phonegapexplorer&hl=en
-
-8) Screenshot on Nexus 7 is to press the power button and down volume button, simultaneously, holding for approximately 1 to 2 seconds.
-
-9) Faster Getting Started Experience with MDS AppLaud Eclipse Plug-In
-http://www.mobiledevelopersolutions.com/home/start
-Note: We are not recommending this to customers – but it is useful for personal “ramp-up”.
-
-
-
-
-
-
-
-10) Eclipse complains about various JS libs – and in some cases won’t let you deploy the application.
-
-
-
+In Some cases the your project won’t let you deploy the application.
 
 Workaround: Rename the libraries by removing their .js extensions
 
 Caution: This may mean that Eclipse will not recognize them as JavaScript files and not provide the correct editor.  Another option is to use the full or non-minified versions of the JavaScript library that you are interested in.  Since these files should be bundled in your Cordova-based app’s distribution, there is no significant network download penalty to downloading the file at runtime.
 
-11) You really wish to build apps for the iPhone, but you are too damn cheap to buy a Mac – use https://build.phonegap.com/ - it takes care of the cross-platform app creation for you – iOS, Android, Blackberry 5/6/7, webOS, Symbian and Windows Phone. 
+==== Target Android Version
 
-12) Debugging…on device - Weinre
+In case you wish to switch the Android version targets for your project go to the project properties and Android.
+
+And also change your AndroidManifest.xml
+
+      <uses-sdk
+          android:minSdkVersion="8"
+          android:targetSdkVersion="15" />
+
+==== REST Endpoints
+
+To connect to your endpoints, you need to "open" access to the specific Internet domains in res/xml/config.xml
+
+ex:
+
+  <access origin=".*"/>
 
 
+==== Change MainActivity title/label
+
+To change the title/label on the installed application, you can edit the "strings.xml" file located in "res/values/".
+
+This will change the application name on the launch icon as well as when multi-tasking.
+
+==== Phonegap API Explorer
+
+To test your device and Phonegap/Cordova install
+
+https://play.google.com/store/apps/details?id=org.coenraets.phonegapexplorer&hl=en
+
+==== Phonegap/Cordova Plugins
+
+https://github.com/phonegap/phonegap-plugins
+
+ChildBrowser is one of the most popular – it allows you to render a webpage, inside of your application
