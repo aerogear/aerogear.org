@@ -69,17 +69,16 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 
 1.0.0.CR1
 ~~~~~~~~~
-
+*TODO* Define
 * Query/search support
-* OAuth support?
-* [TBD]
+* OAuth support
 
 1.0.0.Final
 ~~~~~~~~~~~
 
+*TODO* Define
 * Documentation review
 * Community review + feedback
-* 2nd example app?  (chat server?)
 
 Android Specific Requirements
 -----------------------------
@@ -93,4 +92,3 @@ For common cross-library requirements see:
 * link:../AeroGearSecurity[AeroGear Security Plan]
 
 
-*TODO* Complete
