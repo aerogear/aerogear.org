@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova
 ---
 
 == Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova

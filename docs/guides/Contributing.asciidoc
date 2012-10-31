@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Contributing to AeroGear
 ---
 
 == Contributing to AeroGear

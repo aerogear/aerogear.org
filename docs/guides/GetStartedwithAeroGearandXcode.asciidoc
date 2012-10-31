@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Getting Started with AeroGear and Xcode
 ---
 
 == Getting Started with AeroGear and Xcode

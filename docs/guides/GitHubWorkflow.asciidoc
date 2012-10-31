@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: AeroGear GitHub Workflow & Instructions
 ---
 
 == AeroGear GitHub Workflow & Instructions

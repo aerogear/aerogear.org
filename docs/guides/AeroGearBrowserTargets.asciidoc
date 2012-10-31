@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: AeroGear Browser Support Targets
 ---
 
 AeroGear Browser Support Targets

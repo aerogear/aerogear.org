@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Deploying HTML5 Applications to Openshift
 ---
 
 Deploying HTML5 Applications to Openshift

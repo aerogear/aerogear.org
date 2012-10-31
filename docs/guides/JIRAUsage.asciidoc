@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: AeroGear JIRA Usage and Guidelines
 ---
 
 == AeroGear JIRA Usage and Guidelines

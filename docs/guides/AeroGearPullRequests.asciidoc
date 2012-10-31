@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: How to Handle AeroGear Pull Requests 
 ---
 
 == How to Handle AeroGear Pull Requests

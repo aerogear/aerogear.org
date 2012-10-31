@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Setting up your development enivronment to use Apache Cordova
 ---
 
 == Setting up your development enivronment to use Apache Cordova

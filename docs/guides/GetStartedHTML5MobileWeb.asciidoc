@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Get Started With HTML5 Mobile Web Development with JBoss
 ---
 
 == Get Started With HTML5 Mobile Web Development with JBoss
