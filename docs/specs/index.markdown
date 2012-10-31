@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Specifications
 ---
 
 ### Specifications
