@@ -2,7 +2,7 @@
 layout: basic
 ---
 
-AeroGear Servier Integration 1.0.0 - DRAFT
+AeroGear Server Integration 1.0.0 - DRAFT
 ==========================================
 :Author: Jay Balunas
 
