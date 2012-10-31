@@ -57,10 +57,6 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Query and Search
 ** Define Query/search support....
 * Security
-** Start the implementation of OTP storage
-** Crypto API usage/evaluation
-** Generate dynamic secrets
-** OTP generation
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.Beta]
 * Release with AeroGear 1.0.0.M7
 
@@ -84,6 +80,16 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * API and Documentation review
 * TODO app review
 * Release with AeroGear 1.0.0.Final
+
+1.0.0.NEXT
+~~~~~~~~~~
+
+* Security
+** Start the implementation of OTP storage
+** Crypto API usage/evaluation 
+** Generate dynamic secrets
+** OTP generation
+
 
 iOS Specific Requirements
 -------------------------
