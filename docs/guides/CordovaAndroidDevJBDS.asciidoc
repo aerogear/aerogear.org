@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5
 ---
 
 == Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5
