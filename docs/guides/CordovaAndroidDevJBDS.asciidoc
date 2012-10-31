@@ -199,7 +199,7 @@ And then the following:
   <uses-permission android:name="android.permission.GET_ACCOUNTS" />
   <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
-WARNING: Your current “hello world” style application does not yet require any of these permissions but it may eventually.  In a production release, you should remove permissions that are not needed for security purposes.
+NOTE: Your current “hello world” style application does not yet require any of these permissions but it may eventually.  In a production release, you should remove permissions that are not needed for security purposes.
 
 
 The result should look like the following screenshot:
@@ -321,48 +321,46 @@ image:img/ss_build_3.png[]
 
 NOTE: This file contains references to remotely located jQuery & jQuery Mobile - it is recommended that you bring those files locally into the project for a Phonegap/Cordova style application.
 
-36) Edit mobile.html by pulling in copies of jQuery 
-Change the external links for jQuery & jQuery Mobile into “local” ones by downloading the necessary files, loading them into your project and change the references.  For a mobile app, you want the majority of your resources, especially static ones bundled in the app.  
+If you want to load the jQuery libraries remotely, you can skip to the next section.
+
+Otherwise, we will need to edit mobile.html by pulling in local copies of jQuery and jQuery Mobile
 
 Download jQuery Mobile from http://jquerymobile.com/download/ and unzip
+
 Download the uncompressed/development jQuery http://jquery.com/download/
 
-Create a “css” directory underneath “www” - drag & drop the “jquery.mobile-1.1.1.css” and the “images” into “css” as shown in the following screenshot.
+Once downloaded and unzipped, copy both the jQuery and jQuery mobile JavaScript files into the project.  They should be copied to "js/libs".
 
+NOTE: For a mobile app, you want the majority of your resources, especially static ones bundled in the app.
 
+Then, create a "css" directory underneath "www" and drag & drop the "jquery.mobile-1.1.1.css" and the "images" into "css" as shown in the following screenshot. _note: your version of jQuery/jQuery Mobile might be different_
 
+image:img/ss_build_4.png[]
 
-In your “js/libs” folder, add “jquery.mobile-1.1.1.js” and “jquery-1.7.1.js”.  
-
-
-
-Note: It is normally recommended to use the .min versions of the JS libs, however, Eclipse often complains about those files as it cannot parse them.  This can even become a bigger problem when Eclipse refuses to let you deploy (Run As) your app.  Plus, these files are being bundled in your app for deployment the device so size is less important.
+NOTE: It is normally recommended to use the .min versions of the JS libs, however, Eclipse often complains about those files as it cannot parse them.  This can even become a bigger problem when Eclipse refuses to let you deploy (Run As) your app.  Plus, these files are being bundled in your app for deployment the device so size is less important.
 
 Now, change the references in the mobile.html file to point to the correct location and the correct file names.
 
-<link rel="stylesheet" href="css/jquery.mobile-1.1.1.css" /> 
-<script type="text/javascript" src="js/libs/jquery-1.7.1.js"></script> 
-<script type="text/javascript" 
-  src="js/libs/jquery.mobile-1.1.1.js"></script>
+  <link rel="stylesheet" href="css/jquery.mobile-1.1.1.css" />
+  <script type="text/javascript" src="js/libs/jquery-1.7.1.js"></script>
+  <script type="text/javascript" src="js/libs/jquery.mobile-1.1.1.js"></script>
 
 
 Also, change the alert(“Ready To Go”); to console.log
-	<script type="text/javascript"> 
-		$(document).on("pageinit", "#page1", function(event){ 	
+
+	<script type="text/javascript">
+		$(document).on("pageinit", "#page1", function(event){
 			console.log("Ready To Go");
-		}); 
-	</script> 
+		});
+	</script>
 
 And in the LogCat tab you should see the console.log output.
 
+image:img/ss_build_5.png[]
 
-You may need to setup a filter by clicking on the green plus sign + and the easiest filter is to use the “by Application Name”.
+TIP: If you receive a “[ERROR] Error initializing Cordova: Class not found” message then it is likely you forgot to add the xml/config.xml directory & file under “res” in the project.
 
-
-
-If you receive a “[ERROR] Error initializing Cordova: Class not found” message then it is likely you forgot to add the xml/config.xml directory & file under “res” in the project.
-
-Note: It is much easier to perform your JavaScript debugging via Chrome, Safari or FireFox than it is using console.log and LogCat here but you can at least see that your application attempted to load the JS/HTML files if nothing else works.   Weinre, a remote web inspector debugger is covered in another document.
+NOTE: It is much easier to perform your JavaScript debugging via Chrome, Safari or FireFox than it is using console.log and LogCat here but you can at least see that your application attempted to load the JS/HTML files if nothing else works.
 
 Also, make sure the device is awake and not locked, sitting on the home screen before attempting to Run As Android Application – it tends to work more often in that scenario.  In Developer options (on the device), there is an option to Stay awake.
 
@@ -493,7 +491,7 @@ Apps need data, and a good way to do that on a mobile device is with RESTful cal
 
 In the on pageinit function add the block of jQuery code to retrieve data from a rest endpoint and load it into the UL called listOfItems.  _This UL was part of the original template so it should still be in your HTML body._
 
-  $.getJSON("http://cordovaendpoint-burrsutter.rhcloud.com/rest/members", function(members) {
+  $.getJSON("http://html5-aerogear.rhcloud.com/rest/members", function(members) {
       // console.log("returned are " + members);
       var listOfMembers = $("#listOfItems");
       listOfMembers.empty();
