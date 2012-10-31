@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Roadmap
 ---
 
 AeroGear 1.0.0 Roadmap - DRAFT

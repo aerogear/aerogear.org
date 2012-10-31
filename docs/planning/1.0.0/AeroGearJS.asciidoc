@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: JavaScript Library 1.0.0
 ---
 
 AeroGear JavaScript Library 1.0.0

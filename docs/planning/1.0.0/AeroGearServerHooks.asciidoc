@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Server Integration 1.0.0
 ---
 
 AeroGear Server Integration 1.0.0 - DRAFT

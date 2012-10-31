@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Security 1.0.0
 ---
 
 AeroGear Security 1.0.0 - DRAFT

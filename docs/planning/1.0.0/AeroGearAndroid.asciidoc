@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Android Library 1.0.0
 ---
 
 AeroGear Android Library 1.0.0 - DRAFT

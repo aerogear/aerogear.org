@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Controller 1.0.0
 ---
 
 AeroGear Controller 1.0.0 - DRAFT
