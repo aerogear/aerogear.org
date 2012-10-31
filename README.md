@@ -4,7 +4,7 @@
 
 1. Have ruby 1.9.x installed
 1. run `bundle install --path vendor` to install the dependencies
-1. run `bundle jekyll --server --auto`
+1. run `bundle exec jekyll --server --auto`
 1. go to http://127.0.0.1:4000/
 1. profit
 
