@@ -95,7 +95,7 @@ image:img/ss_project_setup_7.png[]
 
 TIP: Think of "www" as the equivalent of "webapp" in a Maven project.
 
-Next, we will need to add the Cordova-2.1.0.jar to our libs directory.  This can be done by just dragging & dropping the jar file( hope you didn't forget where you downloaded it ) into Eclipse/JBDS and when prompted, select copy files and click "Ok".
+Next, we will need to add the cordova-2.1.0.jar to our libs directory.  This can be done by just dragging & dropping the jar file( hope you didn't forget where you downloaded it ) into Eclipse/JBDS and when prompted, select copy files and click "Ok".
 
 image:img/ss_project_setup_8.png[]
 
@@ -143,7 +143,7 @@ Open the new index.html file if isn't already open.  We are going to add in a re
 
 and a hello message in the BODY
 
-  <h1>Hello Cordova</h1>
+  <h1>Hello Apache Cordova</h1>
 
 Your "index.html" file should look similar to this:
 image:img/ss_project_setup_19.png[]
@@ -320,7 +320,7 @@ Once that is complete, Save and Run
 
 image:img/ss_build_3.png[]
 
-NOTE: This file contains references to remotely located jQuery & jQuery Mobile - it is recommended that you bring those files locally into the project for a Phonegap/Cordova style application.
+NOTE: This file contains references to remotely located jQuery & jQuery Mobile - it is recommended that you bring those files locally into the project for a Phonegap/Apache Cordova style application.
 
 If you want to load the jQuery libraries remotely, you can skip to the next section.
 
@@ -367,7 +367,7 @@ Also, make sure the device is awake and not locked, sitting on the home screen b
 
 ==== Geolocation
 
-Time to add in some Cordova Magic. First up, we will add in some "Geolocation" (where is the device on the planet).
+Time to add in some Apache Cordova Magic. First up, we will add in some "Geolocation" (where is the device on the planet).
 
 First, add the reference to cordova.js before the script tag for on(“pageinit”…
 
@@ -433,7 +433,7 @@ http://docs.phonegap.com/en/2.1.0/cordova_geolocation_geolocation.md.html#Geoloc
 
 ==== Accelerometer
 
-The next bit of Cordova Magic we will add is access to the "Accelerometer"
+The next bit of Apache Cordova Magic we will add is access to the "Accelerometer"
 
 Inside the onDeviceReady function, add the block of code that establishes the "watcher" for the device’s accelerometer.
 
@@ -506,7 +506,7 @@ In the on pageinit function add the block of jQuery code to retrieve data from a
 
 Since the "getJSON" call is accessing the network, permission needs to be setup in AndroidMainfest.xml. _This was done during our Project Setup_
 
-In addition, you must add the URL to the Cordova whitelist.
+In addition, you must add the URL to the Apache Cordova whitelist.
 
 The easiest solution is as follows:
 Open res/xml/config.xml
@@ -539,7 +539,7 @@ In Some cases the your project won’t let you deploy the application.
 
 Workaround: Rename the libraries by removing their .js extensions
 
-Caution: This may mean that Eclipse will not recognize them as JavaScript files and not provide the correct editor.  Another option is to use the full or non-minified versions of the JavaScript library that you are interested in.  Since these files should be bundled in your Cordova-based app’s distribution, there is no significant network download penalty to downloading the file at runtime.
+Caution: This may mean that Eclipse will not recognize them as JavaScript files and not provide the correct editor.  Another option is to use the full or non-minified versions of the JavaScript library that you are interested in.  Since these files should be bundled in your Apache Cordova-based app’s distribution, there is no significant network download penalty to downloading the file at runtime.
 
 ==== Target Android Version
 
@@ -568,11 +568,11 @@ This will change the application name on the launch icon as well as when multi-t
 
 ==== Phonegap API Explorer
 
-To test your device and Phonegap/Cordova install
+To test your device and Phonegap/Apache Cordova install
 
 https://play.google.com/store/apps/details?id=org.coenraets.phonegapexplorer&hl=en
 
-==== Phonegap/Cordova Plugins
+==== Phonegap/Apache Cordova Plugins
 
 https://github.com/phonegap/phonegap-plugins
 
