@@ -35,10 +35,12 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 
 * Pipeline and Pipe 
 ** Initial implementation and REST adapter (RestAdapter) 
+** Implement DSL for Pipe creation (e.g. using DSL/builder pattern)
 * Integration with test project
 ** link:https://github.com/aerogear/TODO/[TODO] example application
 * DataManager
 ** in memory storage
+** Implement DSL for DataManager creation (e.g. using DSL/builder pattern)
 * Security
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.M1]
 ** Authentication with AeroGear Security, for further information see 'REST Authentication API' section
@@ -49,16 +51,25 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 1.0.0.M2
 ~~~~~~~~
 
-* Collect and review comments from community
-* More complete User/auth integration
-* Data synchronization prototype
-* Push support?
-* Query/search support?
-* Release as apklib?
+* DataManager
+** Data Sync / Offline
+* Security
+** Start the implementation of OTP storage
+** Crypto API usage/evaluation 
+** Generate dynamic secrets
+** OTP generation
+** Register users against our current endpoints
+** link:../AeroGearSecurity[AeroGear Security 1.0.0.M2]
+* Release with AeroGear 1.0.0.M8
+* Documentation and Getting started guide updates
+* Release via Maven Central
+* Evalute the possiblity to release it as apklib
 
 1.0.0.CR1
 ~~~~~~~~~
 
+* Query/search support
+* Push support
 * OAuth support?
 * [TBD]
 
