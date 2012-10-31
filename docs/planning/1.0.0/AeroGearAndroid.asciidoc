@@ -52,7 +52,8 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ~~~~~~~~
 
 * DataManager
-** Data Sync / Offline
+** Implement adapters to another storage options
+* Push notifications
 * Security
 ** Start the implementation of OTP storage
 ** Crypto API usage/evaluation 
@@ -60,6 +61,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** OTP generation
 ** Register users against our current endpoints
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.M2]
+* Bug fixes
 * Release with AeroGear 1.0.0.M8
 * Documentation and Getting started guide updates
 * Release via Maven Central
@@ -69,7 +71,6 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ~~~~~~~~~
 
 * Query/search support
-* Push support
 * OAuth support?
 * [TBD]
 
