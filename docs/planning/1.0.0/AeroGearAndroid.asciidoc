@@ -33,14 +33,18 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 1.0.0.M1
 ~~~~~~~~
 
-* Release along with AeroGear 1.0.0.M6
-* link:https://github.com/aerogear/TODO/[TODO] example application
-* Basic API structure
-** CRUD
-** Data-binding (via gson)
-* Follow good Android practice re: background data transfers / services / etc
-* First cut at user/auth integration (see link:../AeroGearSecurity[AeroGear Security Plan]) (unsure if this will make it in or not - we should be able to design the API anyway, even if not-yet-functional)
-* Release as API jar + TODO example app
+* Pipeline and Pipe 
+** Initial implementation and REST adapter (RestAdapter) 
+* Integration with test project
+** link:https://github.com/aerogear/TODO/[TODO] example application
+* DataManager
+** in memory storage
+* Security
+** link:../AeroGearSecurity[AeroGear Security 1.0.0.M1]
+** Authentication with AeroGear Security, for further information see 'REST Authentication API' section
+* Documentation and Getting started guide
+* Release via Maven Central
+* Release with AeroGear 1.0.0.M7
 
 1.0.0.M2
 ~~~~~~~~
