@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Developer Setup Guide
 ---
 
 == AeroGear Developer Tools Guide
@@ -14,8 +15,8 @@ _note: this guide will assume you plan to use JBoss AS 7 as your backend.( http:
 To get started the following are highly recommended
 
 * Java 6.0 (Java SDK 1.6)+
-* Maven 3+
-* Git
+* http://maven.apache.org/download.html[Maven 3+]
+* https://help.github.com/articles/set-up-git[Git]
 * http://github.com[Github.com account]
 
 * http://developer.android.com/sdk/index.html[Android SDK]
@@ -42,7 +43,7 @@ To start coding and create your new awesome app, you'll need an editor.
 
 ==== Debuging
 
-The Full Fledged IDE's all have good debbugers for compiled code, but for javascript(mobile web) there are options:
+The Full Fledged IDE's all have good debbugers for compiled code, but for JavaScript(mobile web) there are options:
 
 * https://www.google.com/intl/en/chrome/browser/[Chrome Developer Tools]
 * http://getfirebug.com/[Firebug]
@@ -67,6 +68,7 @@ As stated by link:../Contributing[this guide], communication is key.  Here are s
 
 * http://adium.im/[Adium]
 * http://codeux.com/textual/[Textual]
+* http://limechat.net/mac/[Limechat]
 
 ====  Windows
 
@@ -89,7 +91,7 @@ Here are some packages that will help the development process:
 * TrailingSpaces
 * Markdown Preview
 
-The easiest way to install packages is through the http://wbond.net/sublime_packages/package_control/installation[package manager].
+TIP: The easiest way to install packages is through the http://wbond.net/sublime_packages/package_control/installation[package manager].
 
 === Utilities
 
