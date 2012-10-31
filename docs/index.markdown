@@ -22,6 +22,7 @@ title: Documentation
 * [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](guides/HTML5ToHybridWithCordova)
 * [Getting Started with AeroGear and Xcode](guides/GetStartedwithAeroGearandXcode)
 * [Get Started with Hybrid Application Frameworks](guides/HybridApplicationFrameworks)
+* [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](guides/CordovaAndroidDevJBDS)
 
 #### Contributing to AeroGear
 
