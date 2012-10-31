@@ -31,7 +31,7 @@ Release Roadmap
 Each library will have its own versioning.  Its Roadmap should be defined here.
 
 1.0.0.M1
-~~~~~~~~~~~~
+~~~~~~~~
 
 * AGPipeline and AGPipe
 ** Initial implementation and REST adapter (AGRestAdapter)
@@ -46,7 +46,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Release with AeroGear 1.0.0.M6
 
 1.0.0.M2
-~~~~~~~~~~~~
+~~~~~~~~
 
 * AGPipeline
 ** API rewrite (e.g. using DSL/builder patter for pipe creation)
@@ -60,7 +60,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Release with AeroGear 1.0.0.M7
 
 1.0.0.CR1
-~~~~~~~~
+~~~~~~~~~
 
 * AGPipeline and AGPipe
 ** WebSocket adapter (AGWebSocketAdapter, by using SocketRocket)
