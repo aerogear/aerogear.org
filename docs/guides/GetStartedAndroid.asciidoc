@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Get Started With AeroGear on Android 
 ---
 
 == Get Started With AeroGear on Android 

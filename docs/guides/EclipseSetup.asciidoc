@@ -1,5 +1,6 @@
 ---
 layout: basic
+title: Setting up Eclipse for Developing AeroGear Powered Android Applications 
 ---
 
 == Setting up Eclipse for Developing AeroGear Powered Android Applications 
@@ -7,10 +8,10 @@ layout: basic
 This guide is geared toward using the command line, and it also assumes that git and mvn are on your PATH.  If you are using Windows, you can use your tools of choice.
 
 === Requirements
-	Git
-	Maven
-	Eclipse 4.2 with ADT plugin
-	Android SDK
+* Git
+* Maven
+* Eclipse 4.2 with ADT plugin
+* Android SDK
 
 === Downloading and Importing AeroGear
 
@@ -33,7 +34,7 @@ When you clone your sources, be sure to NOT download them into your Eclipse work
 * Android -> Existing Android Code into Workspace -> Next
 * Browse -> Your code -> check "Copy projects into workspace" 
 * May have to set compiler compliance to 1.6 to clear some errors
-* Set is Library(Properties -> Android -> Is Library)
+* Set "Is Library"(Properties -> Android -> Is Library)
 
 
 === AeroGear-TODO
@@ -56,6 +57,8 @@ First let's import ActionBarSherlock.
 * Select Import 
 * Android -> Existing Android Code into Workspace -> Next
 * Browse -> ActionBarSherlock/library -> check "Copy projects into workspace" 
+* May have to set compiler compliance to 1.6 to clear some errors
+* Set is Library(Properties -> Android -> Is Library)
 
 Now TODO
 
