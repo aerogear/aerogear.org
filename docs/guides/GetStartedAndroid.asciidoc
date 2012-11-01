@@ -18,11 +18,14 @@ If you are unfamiliar with Maven, developerWorks has a detailed http://www.ibm.c
 ==== Prerequisites
 
 * Java 6.0 (Java SDK 1.6)+
+** link:http://www.oracle.com/technetwork/java/javase/downloads/index.html[The latest Java version can be found on Oracle's site]
 * Maven 3+
+** link:http://maven.apache.org/download.html[The latest Maven version can be found on Apaches's site]
 * Git
-* Maven 3+
+** link:http://git-scm.com/downloads[The latest Git version can be found at http://git-scm.com]
 * Android SDK
 * Need to have an AVD image running 2.3.3 (API level 10)
+** link:http://developer.android.com/sdk/index.html[The latest Android SDK and instructions to install]
 * You may use any IDE that supports Maven, but this guide currently focuses on the command line.
 
 ==== Setup Maven Android SDK Deployer
