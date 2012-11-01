@@ -52,7 +52,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ~~~~~~~~~
 * DataManager
 ** Implement adapters to another storage options
-* Push notifications
+* Query/search support
 * Security
 ** Register users against our current endpoints
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.M2]
@@ -78,6 +78,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** Crypto API usage/evaluation 
 ** Generate dynamic secrets
 ** OTP generation
+* Push notifications
 
 
 Android Specific Requirements
