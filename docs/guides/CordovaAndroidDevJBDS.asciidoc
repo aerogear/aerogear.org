@@ -64,7 +64,7 @@ Enter the "Application Name", "Project Name" and "Package Name".  We will use An
 
 image:img/ss_project_setup_1.png[]
 
-_Note: Build SDK and Minimum Required SDK should be set based on your actual Android phone - the physical device.  In addition, these drop boxes are populated based on the Android SDK Manager - “installed” options.   If your real-world device Android OS is not listed here, simply take the defaults for now.  It is possible to switch these settings back to your real target platform, however, it might be best for you to start your project over again - just for the learning experience._
+NOTE: Build SDK and Minimum Required SDK should be set based on your actual Android phone - the physical device.  In addition, these drop boxes are populated based on the Android SDK Manager - “installed” options.   If your real-world device Android OS is not listed here, simply take the defaults for now.  It is possible to switch these settings back to your real target platform, however, it might be best for you to start your project over again - just for the learning experience.
 
 
 Next, We Will keep the defaults on the "Configure Launcher Icon" dialog, so click "Next".
@@ -95,7 +95,7 @@ image:img/ss_project_setup_7.png[]
 
 TIP: Think of "www" as the equivalent of "webapp" in a Maven project.
 
-Next, we will need to add the cordova-2.1.0.jar to our libs directory.  This can be done by just dragging & dropping the jar file( hope you didn't forget where you downloaded it ) into Eclipse/JBDS and when prompted, select copy files and click "Ok".
+Next, we will need to add the cordova-2.1.0.jar to our libs directory.  This can be done by just dragging & dropping the jar file (hope you didn't forget where you downloaded it) into Eclipse/JBDS and when prompted, select copy files and click "Ok".
 
 image:img/ss_project_setup_8.png[]
 
@@ -369,13 +369,15 @@ Also, make sure the device is awake and not locked, sitting on the home screen b
 
 Time to add in some Apache Cordova Magic. First up, we will add in some "Geolocation" (where is the device on the planet).
 
-First, add the reference to cordova.js before the script tag for on(“pageinit”…
+First, add the reference to cordova.js before the script tag for on(“pageinit”…)
 
   <script type="text/javascript" charset="utf-8" src="js/libs/cordova-2.1.0.js"></script>
 
 
 
-Next, below the $(document).on(“pageinit”… block add an eventlistener for "deviceready". NOTE:you only want your JS to begin running after Phonegap/Apache Cordova have established the environment.
+Next, below the $(document).on(“pageinit”…) block add an eventlistener for "deviceready".
+
+NOTE: You only want your JS to begin running after Phonegap/Apache Cordova have established the environment.
 
   document.addEventListener("deviceready", onDeviceReady, false);
 
