@@ -77,8 +77,8 @@ Please note that --rebase is very important if you do have commits. What happens
 ==== Do the work
 If you have not done so it is a good idea to communicate any planned bug fixes, or updates you wish to make with the community and project team. See link:../Contributing[Contributing To AeroGear] for more on the best ways to do that.
 
-==== Create a topic branch (optional)
-It is a good practice to do any work in a topic branch to keep your master branch clean. This is optional though, but the rest of this document will assume you are using it.
+==== Create a topic branch
+It is a good practice to do any work in a topic branch to keep your master branch clean. The rest of this document will assume you are using it.
 
 [source,bash]
 ----
