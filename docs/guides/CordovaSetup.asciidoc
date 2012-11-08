@@ -10,9 +10,9 @@ This tutorial covers setting up Apache Cordova, as well as the iOS and Android d
 
 === Apache Cordova
 
-In order to build a Cordova iOS app, you need to install CordovaLib, Cordova Framework and Cordova XCode templates. PhoneGap helpfully provide builds of Cordova 2.0.0.
+In order to build a Cordova iOS app, you need to install CordovaLib, Cordova Framework and Cordova XCode templates. PhoneGap helpfully provide builds of Cordova 2.1.0.
 
-We recommend you use the latest release, which is 2.0.0 at the time of writing. Download https://github.com/phonegap/phonegap/zipball/2.0.0 and unzip. Take a note of where you unzipped Cordova to; we'll reference this location throughout the tutorials as `<CORDOVA_HOME>`.
+We recommend you use the latest release, which is 2.1.0 at the time of writing. Download https://github.com/phonegap/phonegap/zipball/2.1.0 and unzip. Take a note of where you unzipped Cordova to; we'll reference this location throughout the tutorials as `<CORDOVA_HOME>`.
 
 
 === iOS Build
@@ -27,8 +27,6 @@ In order to build a hybrid application for iOS, you'll need to install the iOS d
 ** A provisioning profile for each device you plan to test with
 
 You can read more about link:https://developer.apple.com/library/ios/#referencelibrary/GettingStarted/RoadMapiOS/chapters/Introduction.html[Start Developing iOS Apps Today].
-
-You'll also need Apache Cordova for iOs. It can be installed from the dmg in `lib/ios` in the PhoneGap 2.0.0 download.
 
 === Android Build
 
