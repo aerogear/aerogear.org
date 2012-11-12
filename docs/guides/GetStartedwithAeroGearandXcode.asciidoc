@@ -107,7 +107,9 @@ Navigate to the viewDidLoad method and add the following:
     // create the 'todo' pipeline, which contains the 'projects' pipe:
     AGPipeline *todo = [AGPipeline pipeline:projectsURL];  [1]
     
-    tasksPipe = [todo add:@"tasks"];  [2]
+    tasksPipe = [pipeline add:^(id<AGPipeConfig> config) {  [2]
+	        [config name:@"tasks"];
+	    }];
     
     [tasksPipe read:^(id responseObject) {  [3]
         
@@ -122,7 +124,7 @@ Navigate to the viewDidLoad method and add the following:
 }
 ---- 
 
-Central to AeroGear is the concept of link:http://aerogear.github.com/aerogear-ios/Protocols/AGPipe.html[Pipeline] and link:http://aerogear.github.com/aerogear-ios/Protocols/AGPipe.html[Pipe]. The former represents a collection of server connections and the latter the connection itself. In [1] we initialize our Pipeline with the base URL of the remote server application. In [2] we call the "add" method on our pipeline passing the name of the remote endpoint (in our case "tasks"). This will give us a fresh Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for ther future, such as websockets). On [3] we issue a "read" request on the Pipe to fetch the tasks from the remote application, passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object declared earlier [4] and we ask the tableview to reload itself to display the data.
+Central to AeroGear is the concept of link:http://aerogear.github.com/aerogear-ios/Protocols/AGPipe.html[Pipeline] and link:http://aerogear.github.com/aerogear-ios/Protocols/AGPipe.html[Pipe]. The former represents a collection of server connections and the latter the connection itself. In [1] we initialize our Pipeline with the base URL of the remote server application. In [2] we call the "add" method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given AGPipeConfig object. This will give us a fresh Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for ther future, such as websockets). On [3] we issue a "read" request on the Pipe to fetch the tasks from the remote application, passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object declared earlier [4] and we ask the tableview to reload itself to display the data.
 
 Now what is left is to add the table data source methods.
 
