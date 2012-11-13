@@ -28,8 +28,6 @@ In order to build a hybrid application for iOS, you'll need to install the iOS d
 
 You can read more about link:https://developer.apple.com/library/ios/#referencelibrary/GettingStarted/RoadMapiOS/chapters/Introduction.html[Start Developing iOS Apps Today].
 
-You'll also need Apache Cordova for iOs. It can be installed from the dmg in `lib/ios` in the PhoneGap 2.0.0 download.
-
 === Android Build
 
 In order build a hybrid application for Android, you'll need to install the Android development environment:
