@@ -82,7 +82,7 @@ Click on the _"AGViewController.h"_ on the Project Navigator and change the clas
 Now, click on the _"AGViewController.m"_. First, we need to import the "AeroGear" library. 
 [source,c]
 ----
-#import "AeroGear.h"
+#import <AeroGear/AeroGear.h>
 ----
 
 Add an instance variable that will hold the tasks returned from the server.
@@ -107,7 +107,7 @@ Navigate to the viewDidLoad method and add the following:
     // create the 'todo' pipeline, which contains the 'projects' pipe:
     AGPipeline *todo = [AGPipeline pipeline:projectsURL];  [1]
     
-    tasksPipe = [pipeline add:^(id<AGPipeConfig> config) {  [2]
+    tasksPipe = [pipeline pipe:^(id<AGPipeConfig> config) {  [2]
 	        [config name:@"tasks"];
 	    }];
     
