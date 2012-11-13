@@ -24,7 +24,7 @@ First make sure that you have a JDK installed on your machine.  JDK 1.6+ is reco
 
 TIP: To find your JDK version run "java -version" from a command prompt
 
-Download and Unzip PhoneGap/Apache Cordova.  link:http://phonegap.com/download[Download Here]
+Download and Unzip PhoneGap/Apache Cordova 2.0.0.  link:http://phonegap.com/download[Download Here]
 
 _Make sure to remember where you unzipped it - you will be pulling several files into your Eclipse-based project throughout this tutorial._
 
@@ -95,7 +95,7 @@ image:img/ss_project_setup_7.png[]
 
 TIP: Think of "www" as the equivalent of "webapp" in a Maven project.
 
-Next, we will need to add the cordova-2.1.0.jar to our libs directory.  This can be done by just dragging & dropping the jar file (hope you didn't forget where you downloaded it) into Eclipse/JBDS and when prompted, select copy files and click "Ok".
+Next, we will need to add the cordova-2.0.0.jar to our libs directory.  This can be done by just dragging & dropping the jar file (hope you didn't forget where you downloaded it) into Eclipse/JBDS and when prompted, select copy files and click "Ok".
 
 image:img/ss_project_setup_8.png[]
 
@@ -103,11 +103,11 @@ image:img/ss_project_setup_9.png[]
 
 image:img/ss_project_setup_10.png[]
 
-Once the "cordova-2.1.0.jar" is in the "lib" directory, "Right-Click" it and select Build Path -> Add to Build Path.
+Once the "cordova-2.0.0.jar" is in the "lib" directory, "Right-Click" it and select Build Path -> Add to Build Path.
 
 image:img/ss_project_setup_11.png[]
 
-Next, under "www" add a "js" folder then "libs" folder so we can add the "cordova-2.1.0.js" to libs by dragging & dropping it the same way we did the .jar file.
+Next, under "www" add a "js" folder then "libs" folder so we can add the "cordova-2.0.0.js" to libs by dragging & dropping it the same way we did the .jar file.
 
 image:img/ss_project_setup_12.png[]
 
@@ -137,9 +137,9 @@ Finally, select the HTML 5 Template and click "Finish"
 image:img/ss_project_setup_18.png[]
 
 
-Open the new index.html file if isn't already open.  We are going to add in a reference to cordova-2.1.0.js into the HEAD section of the HTML.
+Open the new index.html file if isn't already open.  We are going to add in a reference to cordova-2.0.0.js into the HEAD section of the HTML.
 
-  <script type="text/javascript" charset="utf-8" src="js/libs/cordova-2.1.0.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/libs/cordova-2.0.0.js"></script>
 
 and a hello message in the BODY
 
@@ -371,7 +371,7 @@ Time to add in some Apache Cordova Magic. First up, we will add in some "Geoloca
 
 First, add the reference to cordova.js before the script tag for on(“pageinit”…)
 
-  <script type="text/javascript" charset="utf-8" src="js/libs/cordova-2.1.0.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/libs/cordova-2.0.0.js"></script>
 
 
 
@@ -431,7 +431,7 @@ The result:
 image:img/ss_build_7.png[]
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Geolocation check out the API docs at:
-http://docs.phonegap.com/en/2.1.0/cordova_geolocation_geolocation.md.html#Geolocation
+http://docs.phonegap.com/en/2.0.0/cordova_geolocation_geolocation.md.html#Geolocation
 
 ==== Accelerometer
 
@@ -486,7 +486,7 @@ Finally, Run It
 image:img/ss_accel_2.png[]
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Accelerometer check out the API docs at:
-http://docs.phonegap.com/en/2.1.0/cordova_accelerometer_accelerometer.md.html#Accelerometer
+http://docs.phonegap.com/en/2.0.0/cordova_accelerometer_accelerometer.md.html#Accelerometer
 
 ==== Data & REST
 
@@ -530,7 +530,7 @@ And if you wish to be more adventurous, wrap this logic in a check for Wifi vs 3
   var networkState = navigator.network.connection.type;
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Connectivity check out the API docs at:
-http://docs.phonegap.com/en/2.1.0/cordova_connection_connection.md.html#Connection
+http://docs.phonegap.com/en/2.0.0/cordova_connection_connection.md.html#Connection
 
 
 === Tips & Tricks:
