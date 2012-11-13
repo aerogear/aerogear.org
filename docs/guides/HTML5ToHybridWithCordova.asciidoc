@@ -136,7 +136,7 @@ Now, hit *Finish*.
 You may need to click *Next* after creating the activity to install the relevant Android libraries.
 ====
 
-Copy *<CORDOVA_HOME>/lib/android/cordova-2.1.0.jar* to *libs/*.
+Copy *<CORDOVA_HOME>/lib/android/cordova-2.0.0.jar* to *libs/*.
 
 Copy *<CORDOVA_HOME>/lib/android/xml/* to *res/xml/*.
 
