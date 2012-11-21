@@ -54,8 +54,6 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 
 * AeroGear.DataManager.js
 ** Session/Local Storage adapter
-* AeroGear.Pipeline.js
-** WebSocket Adapter
 * AeroGear.auth.js, AeroGear.encryptor.js
 ** link:../AeroGearSecurity[AeroGear Security]
 * Release with AeroGear 1.0.0.M7
@@ -78,6 +76,12 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * API and Documentation review
 * TODO app review
 * Release with AeroGear 1.0.0.Final
+
+1.Future
+~~~~~~~~
+
+* AeroGear.Pipeline.js
+** WebSocket Adapter
 
 JavaScript Specific Requirements
 --------------------------------
