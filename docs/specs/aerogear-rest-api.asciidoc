@@ -226,6 +226,7 @@ When AeroGear-Security is used as the SecurityProvider for AeroGear-Controller, 
 |===================================================
 |Status Code	| Message		| Description
 |400        	| Bad Request	| The request could not be understood by the server due to malformed syntax
+|401        	| Unauthorized	| The request requires user authentication
 |===================================================
 
 === Logout ===
@@ -244,5 +245,5 @@ When AeroGear-Security is used as the SecurityProvider for AeroGear-Controller, 
 |===================================================
 |Status Code	| Message		| Description
 |400        	| Bad Request	| The request could not be understood by the server due to malformed syntax
-|401        	| Unauthorizedt	| The request requires user authentication
+|401        	| Unauthorized	| The request requires user authentication
 |===================================================
