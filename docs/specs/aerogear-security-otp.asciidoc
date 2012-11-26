@@ -1,0 +1,128 @@
+---
+layout: basic
+title: AeroGear Security OTP Specification 
+---
+
+AeroGear Security OTP Specification 
+-----------------------------------
+
+This is a initial proposal on having a two factor authentication layer
+on mobile applications.
+
+References
+~~~~~~~~~~
+
+* http://tools.ietf.org/html/rfc6238[RFC 6238 - TOTP specification]
+* http://tools.ietf.org/html/rfc4226[RFC 4226 - HOTP specification]
+* http://tools.ietf.org/html/rfc2898[RFC 2898 - Password-Based
+Cryptography Specification]
+* https://github.com/picketbox[PicketBox]
+
+Scenarios - v0.0.1
+~~~~~~~~~~~~~~~~~~
+
+*Random Generation*: _secrets are generated randomly at provisioning
+stage and must be stored immediately and kept secure during their life
+cycle. - RFC 4226_
+
+Registration
+^^^^^^^^^^^^
+
+After installing the application, the user will be able to create your
+own account. Before the HTTP request is sent to the server, mobile
+application applies a key derivation function which generates the secret
+shared key (SHA-1, SHA-256 or SHA-512) based on
+http://tools.ietf.org/html/rfc2898[RFC 2898]:
+
+_Secret shared key: user data + time + interval_
+
+Where:
+
+* user data: login, password
+* time: current time (UTC)
+* interval: represents the time in seconds, since the elapsed time.
+
+The secret key will be stored on device for the calculation of a
+one-time password value. When the first request comes to the server it
+runs the same algorithm to generate the secret, store it and validate
+the OTP.
+
+image:img/aerogear_otp_registrationv0.0.1.jpg[registration]
+
+Authentication
+^^^^^^^^^^^^^^
+
+After a user has entered the login and password, mobile application will
+retrieve the secret from storage for the OTP calculation and send it
+back to the server. The server will retrieve the secret locally and
+validate the OTP.
+
+image:img/aerogear_otp_authenticationv0.0.1.jpg[authentication]
+
+Scenarios - v0.0.2
+~~~~~~~~~~~~~~~~~~
+
+*Deterministic Generation*: _secrets are derived from a master seed,
+both at provisioning and verification stages and generated on-the-fly
+whenever it is required. - RFC 4226_
+
+Registration
+^^^^^^^^^^^^
+
+image:img/aerogear_otp_registrationv0.0.2.jpg[registration]
+
+Shared Secret key expiration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+image:img/aerogear_otp_secret_expirationv0.0.2.jpg[expiration]
+
+Proposed roadmap
+----------------
+
+AeroGear Security (server)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.0.0.M1
+^^^^^^^^^^^
+
+* Add OTP validation to our endpoints
+* Improve our persistence model to store the secret key
+
+iOS, Android & JavaScript
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.0.0.M1
+^^^^^^^^^^^
+
+* Start the implementation of OTP storage
+* Generate dynamic secrets
+* OTP creation
+* Register users against our current endpoints
+
+1.0.0.M1
+^^^^^^^^
+
+* Bug fixes and improvements based on feedback
+* Integration with the current libraries
+* PoC with our current TODO app
+* Start PhoneGap plugin
+
+1.0.0.CR
+^^^^^^^^
+
+* Project documentation
+* PhoneGap plugin improvements
+
+1.0.0.Final
+^^^^^^^^^^^
+
+* API review and improvements
+* Examples and documentation review
+
+Common questions
+~~~~~~~~~~~~~~~~
+
+* How it will affect Android, iOS and JavaScript projects?
+
+These libraries are optional and not a requirement.
+
