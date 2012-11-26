@@ -13,3 +13,4 @@ title: Specifications
 
 #### Server Side Specifications
 * [REST API](aerogear-rest-api)
+* [AeroGear Security OTP](aerogear-security-otp)
