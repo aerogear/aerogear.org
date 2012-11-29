@@ -14,13 +14,12 @@ External References
 * link:https://github.com/picketbox/picketbox-core[PicketBox GitHub]
 * link:https://github.com/picketlink/[PicketLink GitHub]
 * link:https://cwiki.apache.org/confluence/display/DeltaSpike/Security+Module+Drafts[DeltaSpike Security Module Spec]
+* link:http://oauth.net/core/1.0a/[OAuth1]
 * link:http://oauth.net/2/[OAuth2]
-* link:http://www.w3.org/2012/webcrypto/WebCryptoAPI/[Web Cryptography API]
-* link:https://github.com/jedisct1/siphash-js[siphash-js]
 * link:https://github.com/bitwiseshiftleft/sjcl[Stanford Javascript Crypto Library]
+* link:http://bouncycastle.org/[Bouncy Castle]
+* link:http://developer.apple.com/library/ios/#documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html[iOS Security Overview]
 * link:https://github.com/plataformatec/devise/[Devise]
-* link:https://developer.mozilla.org/en/BrowserID/Quick_Setup[BrowserID]
-* link:http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-04[JSON Web Encryption]
 
 
 Risks
@@ -31,90 +30,58 @@ Risks
 Proposed Roadmap
 ----------------
 
-1.0.0.Alpha
-~~~~~~~~~~~
-
-AeroGear Security
-^^^^^^^^^^^^^^^^^
-* DSL secured route support on aerogear controller
-* aerogear security integration with aerogear controller
-* REST authentication API on top of aerogear-security
-* Security provider integration (PL/DS)
-
-aerogear.auth.js
-^^^^^^^^^^^^^^^^^
-* JavaScript Client library with REST authentication support
-
-aerogear-android
-^^^^^^^^^^^^^^^^^^
-* REST client libraries support
-
-aerogear-ios
-^^^^^^^^^^^^
-* REST client libraries support
-* Token based authentication
-
-1.0.0.Milestone
-~~~~~~~~~~~~~~~
-
-* Create a demo application
-
-AeroGear Security
-^^^^^^^^^^^^^^^^^
-* HTTP Digest authentication support
-* Leverage DS/Picketlink integration
-* OAuth support via PicketLink
-
-aerogear.auth.js
-^^^^^^^^^^^^^^^^
-* HTTP Digest authentication
-* JSON web cryptography support (JOSE)
-
-aerogear.encryptor.js
-^^^^^^^^^^^^^^^^^^^^^
-* SHA 256 and AES to support JOSE implementation
-
-aerogear-android
-^^^^^^^^^^^^^^^^
-* REST client libraries support
-* Token based authentication
-
-aerogear-ios
-^^^^^^^^^^^^
-* Improve token authentication
-** Introducing/Using Client ID 
-
-1.0.0.CR
+1.0.0.M1
 ~~~~~~~~
 
 AeroGear Security
 ^^^^^^^^^^^^^^^^^
+* DSL secured route support on aerogear controller
+* AeroGear Security integration with AeroGear Controller
+* REST authentication API on top of aerogear-security
+* Security provider integration (PL/DS)
+* OTP support
+* Create a demo application with AeroGear Security and Controller
+
+Aerogear Security (Client) - JS, iOS & Android
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Client library with REST authentication support
+
+1.0.0.CR1
+~~~~~~~~~
+
+AeroGear Security (Server)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+* OAuth 1 & 2 support
 * Token session support
 * Mobile device detection
-* Maven or Forge plugins
 
-aerogear.auth.js
-^^^^^^^^^^^^^^^^^^
-* BrowserID support to the external services (Mozilla)
-* Session handling 
-* npm packaging
 
-aerogear-android
-^^^^^^^^^^^^^^^^^^
+Aerogear Security (Client) - JS, iOS & Android
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 * Token authentication of the REST calls
-* Maven artifact
-
-* API security testing
-
-aerogear-ios
-^^^^^^^^^^^^
-* API security testing
+* First attempt at OAuth integration 
+* Integration tests on OTP 
 
 1.0.0.Final
 ~~~~~~~~~~~
 
 * API review and improvements
 * Examples and documentation review
+
+1.0.0.Next
+~~~~~~~~~~~
+
+AeroGear Security (Server)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Add encryption support
+* Generate dynamic secrets based on link:../../../specs/aerogear-security-otp[OTP Specification - Scenario 0.0.2]
+* Bug fixes and improvements based on feedback
+
+Aerogear Security (Client) - JS, iOS & Android
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Add secure/encrypted storage storage
+* Start PhoneGap plugin
 
 AeroGear Controller Requirements
 --------------------------------
@@ -126,16 +93,14 @@ AeroGear Security Requirements
 --------------------------------
 
 * Easy management of identities like Users/Groups/Roles (Well addressed by PicketLink)
+* Need a flexible identity model to support custom fields for things like device UUID tracking
+* A simple application security programming model
 * External security provider/API (DS/PL)
-* Restrict access to protected resources
+* Secure REST services
 * Session timeout
 * REST resource authentication via username/password
-* HTTP Digest authentication
-* OAuth2 support
-* BrowserID support
+* OAuth 1 & 2 support
 * Cryptography support to algoritms like SHA 256 and AES
-* JSON Web Encryption 
-
 
 Use case scenarios
 ------------------
@@ -490,13 +455,6 @@ var result = aerogear.auth.logout();
 
 Aerogear.next
 ---------------
-Authentication
-~~~~~~~~~~~~~~
-
-* REST support
-* Oauth2 support
-* BrowserID support
-
 aerogear.encryptors
 ~~~~~~~~~~~~~~~~~~~
 

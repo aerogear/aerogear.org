@@ -76,46 +76,6 @@ Shared Secret key expiration
 
 image:img/aerogear_otp_secret_expirationv0.0.2.jpg[expiration]
 
-Proposed roadmap
-----------------
-
-AeroGear Security (server)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1.0.0.M1
-^^^^^^^^^^^
-
-* Add OTP validation to our endpoints
-* Improve our persistence model to store the secret key
-
-iOS, Android & JavaScript
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1.0.0.M1
-^^^^^^^^^^^
-
-* Start the implementation of OTP storage
-* Generate dynamic secrets
-* OTP creation
-* Register users against our current endpoints
-
-1.0.0.CR1
-^^^^^^^^^
-
-* Bug fixes and improvements based on feedback
-* Integration with the current libraries
-* PoC with our current TODO app
-* Start PhoneGap plugin
-
-* Project documentation
-* PhoneGap plugin improvements
-
-1.0.0.Final
-^^^^^^^^^^^
-
-* API review and improvements
-* Examples and documentation review
-
 Common questions
 ~~~~~~~~~~~~~~~~
 
