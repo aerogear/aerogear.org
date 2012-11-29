@@ -99,16 +99,13 @@ iOS, Android & JavaScript
 * OTP creation
 * Register users against our current endpoints
 
-1.0.0.M1
-^^^^^^^^
+1.0.0.CR1
+^^^^^^^^^
 
 * Bug fixes and improvements based on feedback
 * Integration with the current libraries
 * PoC with our current TODO app
 * Start PhoneGap plugin
-
-1.0.0.CR
-^^^^^^^^
 
 * Project documentation
 * PhoneGap plugin improvements
