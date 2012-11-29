@@ -57,6 +57,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Query and Search
 ** Define Query/search support....
 * Security
+** initial OTP library
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.Beta]
 * Release with AeroGear 1.0.0.M7
 
