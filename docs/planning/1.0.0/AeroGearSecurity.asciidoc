@@ -71,8 +71,17 @@ Aerogear Security (Client) - JS, iOS & Android
 
 1.0.0.Next
 ~~~~~~~~~~~
-* Add encryption support on the server side
-* Add secure/encrypted storage storage at the client side
+
+AeroGear Security (Server)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Add encryption support
+* Generate dynamic secrets based on link:../../../specs/aerogear-security-otp[OTP Specification - Scenario 0.0.2]
+* Bug fixes and improvements based on feedback
+
+Aerogear Security (Client) - JS, iOS & Android
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Add secure/encrypted storage storage
+* Start PhoneGap plugin
 
 AeroGear Controller Requirements
 --------------------------------
