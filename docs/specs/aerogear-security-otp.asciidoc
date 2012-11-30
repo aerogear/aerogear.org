@@ -47,7 +47,7 @@ one-time password value. When the first request comes to the server it
 runs the same algorithm to generate the secret, store it and validate
 the OTP.
 
-image:img/aerogear_otp_registrationv0.0.1.jpg[registration]
+image:img/aerogear_otp_registrationv0.0.1.png[registration]
 
 Authentication
 ^^^^^^^^^^^^^^
@@ -57,7 +57,7 @@ retrieve the secret from storage for the OTP calculation and send it
 back to the server. The server will retrieve the secret locally and
 validate the OTP.
 
-image:img/aerogear_otp_authenticationv0.0.1.jpg[authentication]
+image:img/aerogear_otp_authenticationv0.0.1.png[authentication]
 
 Scenarios - v0.0.2
 ~~~~~~~~~~~~~~~~~~
