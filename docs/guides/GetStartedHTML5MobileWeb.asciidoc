@@ -5,7 +5,7 @@ title: Get Started With HTML5 Mobile Web Development with JBoss
 
 == Get Started With HTML5 Mobile Web Development with JBoss
 
-There are many ways of developing mobile web applications. This article is going to show you how to get started quickly to HTML5 + REST development.  This approach uses a pure HTML5 based front end which interactions with server side content through RESTful endpoints.  First we'll get the application up and running on JBoss AS 7, including tests, and mobile device access.  Then we'll go over all the technical details in the companion article link:../HTML5MobilQuickstartAndDeepDive[HTML5 Mobile Quickstart & Archetype Deep Dive].
+There are many ways of developing mobile web applications. This article is going to show you how to get started quickly to HTML5 + REST development.  This approach uses a pure HTML5 based front end which interactions with server side content through RESTful endpoints.  First we'll get the application up and running on JBoss AS 7, including tests, and mobile device access.  Then we'll go over all the technical details in the companion article link:../HTML5MobileQuickstartAndDeepDive[HTML5 Mobile Quickstart & Archetype Deep Dive].
 
 If you are new to the HTML5+REST based development, or want more information before you get started take a look at the link:../HTML5RESTApps[Get Started With HTML5+REST Web] guide.
 
