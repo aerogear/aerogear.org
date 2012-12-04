@@ -12,5 +12,6 @@ title: Specifications
 * [AeroGear Android 1.0.0.M1](aerogear-android)
 
 #### Server Side Specifications
+* [AeroGear Controller 1.0.0.M1](aerogear-controller)
 * [REST API](aerogear-rest-api)
 * [AeroGear Security OTP](aerogear-security-otp)
