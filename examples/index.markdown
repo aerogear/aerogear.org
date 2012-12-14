@@ -21,9 +21,9 @@ Below are lists of example applications and running demos which demonstrate the 
 ### JavaScript
 
 * [HTML5/JavaScript TODO](https://github.com/aerogear/TODO)
-** [Running Demo](http://todo-aerogear.rhcloud.com/)
+    * [Running Demo](http://todo-aerogear.rhcloud.com/)
 * [AS QuickStart](https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-aerogear-js)
-** [Running Demo](http://js-aerogear.rhcloud.com/)
+    * [Running Demo](http://js-aerogear.rhcloud.com/)
 
 
 ### Controller
