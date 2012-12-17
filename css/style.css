@@ -138,6 +138,34 @@ body {
     margin-left: 20px;
 }
 
+
+.latest-news {
+    border: 2px solid #E25027;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-right: 18px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.latest-news h2 {
+    color: #c6000f;
+    padding-left: 5px;
+    background-color: #c3d3e3;
+    -webkit-border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
+    border-radius: 7px 7px 0 0;
+    margin-bottom: 10px;
+}
+
+.latest-news  > div {
+    padding: 5px;
+}
+
+
+
 .span4 {
     width: 360px;
     border: 2px solid #c3d3e3;
