@@ -54,8 +54,6 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 
 * AeroGear.DataManager.js
 ** Session/Local Storage adapter
-* AeroGear.auth.js
-** OTP
 * Release with AeroGear 1.0.0.M7
 
 1.0.0.CR1
@@ -66,6 +64,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 * Bug fixes and enhancements
 * TODO app enhancement to show new library features
 * AeroGear.auth.js, AeroGear.encryptor.js
+** OTP
 ** link:../AeroGearSecurity[AeroGear Security]
 * Release with AeroGear 1.0.0.CR
 
