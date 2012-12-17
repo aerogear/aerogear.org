@@ -224,16 +224,16 @@ If, on the other hand the request fails for some reason the method processes the
 
 Github Source: https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile/src/main/webapp/css[CSS directory]
  
-In our example we have two CSS files; screen.css, and m.screen.css.  One is for desktop and the other is for mobile - guess which one ;-)  These contain the various styles needed for our application.  Most of it is standard CSS styling, but I wanted to point out where it uses the new CSS3 selectors to make styling table cells easy.
+In our example we have three CSS files; d.screen.css, m.screen.css and screen.css; d.screen.css is for desktop, m.screen.css is for mobile, screen.css is common to both. These contain the various styles needed for our application.  Most of it is standard CSS styling, but I wanted to point out where it uses the new CSS3 selectors to make styling table cells easy.
 
 [source, css]
 ----
 /* Using new CSS3 selectors for styling*/
-#members tr:nth-child(odd) {
+#members > div:nth-child(odd) {
    background: #f4f3f3;
 }
  
-#members tr:nth-child(even) {
+#members > div:nth-child(even) {
    background: #ffffff;
 }
 ----
@@ -346,7 +346,7 @@ Any requests to /members will be routered to this class and be processed by its 
 
 The methods above define the different ways of "getting" data from the service.  Not only can you get a full list of members, and individual members, you can get them in either JSON format.  The power of JAX-RS is that these are automatically marshaled from one form to another - we are just dealing with POJOs!
  
-Adding members is where it gets more interesting.  We're creating new members using the traditional POST approach with the @POST annotation, you can see that the POST method is using form parameters. As alternative GET method could be used for JSONP support (see the JSONP section below).    This method delegate to the MemberRegistration class that processes the request. 
+Adding members is where it gets more interesting.  We're creating new members using the traditional POST approach with the @POST annotation, you can see that the POST method is using form parameters.
 
 [source, java]
 ----
@@ -357,18 +357,7 @@ public Response createMember(Member member) {
 ...
 ----
 
-JAX-RS allows our method to accept standard URL encoding form variables, and make it easy to map these to method parameters using the @FormParam annotation.
-
-[source, java]
-----
-//Create a new member class from fields
-Member member = new Member();
-member.setName(name);
-member.setEmail(email);
-member.setPhoneNumber(phone);
-----
-
-Using those values it then constructs a new member object.  We don't want to just commit this to the database though.  We want to make sure it is valid first!
+Using those parameters it then constructs a new member object.  We don't want to just commit this to the database though.  We want to make sure it is valid first!
 
 [source, java]
 ----
@@ -392,7 +381,7 @@ The validateMember method validates the given Member variable and throws validat
 }
 ----
 
-If the member is not valid them a map is created that contains the field name(s) that are not valid, and the error message associated with them from model class.  It is also very important to set the response code correctly.  In our case with use 400 BAD REQUEST for standard constraints, and 409 CONFLICT is another member already has the same email.
+If the member is not valid then a map is created that contains the field name(s) that are not valid, and the error message associated with them from model class.  It is also very important to set the response code correctly.  In our case with use 400 BAD REQUEST for standard constraints, and 409 CONFLICT is another member already has the same email.
  
 If the member is valid the object is committed to the database and a CDI event is triggered just in case anything in the application wanted to know when a new member was created.  The method then returns a standard HTTP 200 OK message using the Response.OK() method.
 

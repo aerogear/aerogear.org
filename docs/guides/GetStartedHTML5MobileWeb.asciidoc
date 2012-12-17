@@ -39,7 +39,7 @@ Move to the directory you wish to create the project in.  Then execute the follo
 mvn archetype:generate \
         -DarchetypeArtifactId=jboss-html5-mobile-archetype \
         -DarchetypeGroupId=org.jboss.aerogear.archetypes \
-        -DarchetypeVersion=1.0.0.M5
+        -DarchetypeVersion=1.0.0.M6c
 ----
 
 Maven will download the archetype, and its dependencies then ask you some questions:
@@ -67,7 +67,7 @@ or if you are using windows
 
 [source,bash]
 ----
-$JBOSS_HOME/bin/standalone.bat
+$JBOSS_HOME\bin\standalone.bat
 ----
 
 Note: Adding '-b 0.0.0.0' to the above commands will allow external clients (phones, tablets, desktops, etc...) connect through your local network.
@@ -119,7 +119,7 @@ mvn test -Parq-jbossas-remote
 
 QUnit
 ^^^^^
-QUnit is a JavaScript unit testing framework used and built by jQuery.  The client application includes a set of QUnit tests in order to verify JavaScript that is core to this HTML5 application.  Executing QUnit test cases is quite easy.  First start the JBoss AS container as described above, and then just load the following HTML file in the browser you wish to test.
+QUnit is a JavaScript unit testing framework used and built by jQuery.  The client application includes a set of QUnit tests in order to verify JavaScript that is core to this HTML5 application. To execute a QUnit test case, ensure your application server is running with the example deployed; then load the following HTML in the browser to be tested:
 
 [source,bash]
 ----
