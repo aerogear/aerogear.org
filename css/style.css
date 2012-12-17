@@ -150,16 +150,6 @@ body {
     font-weight: bold;
 }
 
-.latest-news h2 {
-    color: #c6000f;
-    padding-left: 5px;
-    background-color: #c3d3e3;
-    -webkit-border-radius: 8px 8px 0 0;
-    -moz-border-radius: 8px 8px 0 0;
-    border-radius: 7px 7px 0 0;
-    margin-bottom: 10px;
-}
-
 .latest-news  > div {
     padding: 5px;
 }
@@ -517,6 +507,10 @@ footer .row .span3:last-child {
 
     .download-row > .span4 {
         margin-left: 0;
+    }
+
+    .latest-news { 
+        margin-right: -4px; 
     }
 }
 
