@@ -76,9 +76,10 @@
                 <div id="aerogear-twitter">Loading tweets...</div>
             </div>
             <div class="span3">
-                <h3>Find Your Way</h3>
-                <p><a href="/docs">Documentation</a></p>
-                <p><a href="/examples">Examples</a></p>
+                <h3>News</h3>
+                {% for post in site.posts %}
+                <p><a href="{{ post.url }}">{{ post.title }}</a></p>
+                {% endfor %}
             </div>
             <div class="span3">
                 <h3>Lend a Hand</h3>
@@ -86,6 +87,9 @@
                 <p><a href="http://issues.jboss.org/browse/AEROGEAR" target="_blank">Report Issues</a></p>
                 <p><a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev" target="_blank">Join the Mailing List</a></p>
                 <p><a href="irc://irc.freenode.net/aerogear" target="_blank">Chat with the Team</a></p>
+                <h3>Find Your Way</h3>
+                <p><a href="/docs">Documentation</a></p>
+                <p><a href="/examples">Examples</a></p>
             </div>
             <div class="span3">
                 <img src="/img/aerogear_logo_200px.png" class="footer-logo"/>
