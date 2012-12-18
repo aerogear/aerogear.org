@@ -53,7 +53,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** config object for AGStore creation 
 ** config object for AGAuthModule creation 
 * Core Data / DataManager
-** looking at core data integration (via AFIncrementalStore and AFNetworking)
+** looking at core data integration 
 * Query and Search
 ** Define Query/search support....
 * Security
@@ -65,7 +65,9 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ~~~~~~~~~
 
 * AGPipeline and AGPipe
-** Query/search support
+** Query/search support (NSPredicate)
+* CoreData
+** UIManagedDocument subclass that supports AFIncrementalStore
 * Improve documentation
 ** API doc
 ** Getting started guides
