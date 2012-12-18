@@ -14,4 +14,6 @@ title: Specifications
 #### Server Side Specifications
 * [AeroGear Controller 1.0.0.M1](aerogear-controller)
 * [REST API](aerogear-rest-api)
+* [AeroGear Security](aerogear-security)
+* [AeroGear Security PicketBox](aerogear-security-picketbox)
 * [AeroGear Security OTP](aerogear-security-otp)
