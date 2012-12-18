@@ -37,7 +37,7 @@ In the "Podfile", add the following lines:
 [source,bash]
 ----
 platform :ios
-pod 'AeroGear', '1.0.0.M1'
+pod 'AeroGear', '1.0.0.M2'
 ----
 
 And then:
@@ -155,12 +155,14 @@ Now what is left is to add the table data source methods.
 We are almost ready to run the project. Click on the _"AGAppDelegate.m" and on the _didFinishLaunchingWithOptions_ method replace the line
 
 [source,c]
+----
 self.viewController = [[AGViewController alloc] initWithNibName:@"AGViewController" bundle:nil
 ----
 
 with:
 
 [source,c]
+----
 self.viewController = [[AGViewController alloc] initWithStyle:UITableViewStylePlain];
 ----
 
