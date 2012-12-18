@@ -1,5 +1,9 @@
 # aerogear.org
 
+## requirement
+
+Before you can run the side, make sure you have [asciidoc](http://www.methods.co.nz/asciidoc/) installed on your machine!
+
 ## building
 
 1. Have ruby 1.9.x installed
