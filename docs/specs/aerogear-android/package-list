@@ -1,10 +1,11 @@
 org.aerogear.android
 org.aerogear.android.authentication
 org.aerogear.android.authentication.impl
-org.aerogear.android.core
 org.aerogear.android.datamanager
+org.aerogear.android.http
 org.aerogear.android.impl.core
 org.aerogear.android.impl.datamanager
+org.aerogear.android.impl.http
 org.aerogear.android.impl.pipeline
+org.aerogear.android.impl.reflection
 org.aerogear.android.pipeline
-org.aerogear.stub
