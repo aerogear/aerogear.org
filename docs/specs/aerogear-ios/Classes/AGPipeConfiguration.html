@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGAuthenticator Class Reference</title>
+		<title>AGPipeConfiguration Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGAuthenticator Class Reference</h1>
+				<h1 class="hideInXcode">AGPipeConfiguration Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -40,20 +40,17 @@
 	
 	
 	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/authenticator">&nbsp;&nbsp;&nbsp;&nbsp;+ authenticator</option>
-	
-	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/auth:">&nbsp;&nbsp;&nbsp;&nbsp;- auth:</option>
+	<option value="//api/name/authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- authModule:</option>
 	
-	<option value="//api/name/get:">&nbsp;&nbsp;&nbsp;&nbsp;- get:</option>
+	<option value="//api/name/baseURL:">&nbsp;&nbsp;&nbsp;&nbsp;- baseURL:</option>
 	
-	<option value="//api/name/remove:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:</option>
+	<option value="//api/name/endpoint:">&nbsp;&nbsp;&nbsp;&nbsp;- endpoint:</option>
+	
+	<option value="//api/name/recordId:">&nbsp;&nbsp;&nbsp;&nbsp;- recordId:</option>
 	
 	
 	
@@ -79,21 +76,17 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticator">authenticator</a></span></li>
-	
-</ul></li>
-
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/auth:">auth:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authModule:">authModule:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:">get:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/baseURL:">baseURL:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:">remove:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endpoint:">endpoint:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recordId:">recordId:</a></span></li>
 	
 </ul></li>
 
@@ -102,7 +95,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGAuthenticator Class Reference" name="top"></a>
+				<a title="AGPipeConfiguration Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -111,7 +104,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGAuthenticator Class Reference</h1>
+						<h1 class="title title-header">AGPipeConfiguration Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -121,8 +114,11 @@
 	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/AGPipeConfig.html">AGPipeConfig</a></td>
+</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGAuthenticator.h<br />AGAuthenticator.m</td>
+	<td class="specification-value">AGPipeConfiguration.h<br />AGPipeConfiguration.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -132,9 +128,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>AGAuthenticator manages different <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> implementations. It is basically a
-factory that hides the concrete instantiation of a specific <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> implementation.
-The class offers simple APIs to add, remove, or get access to a &lsquo;authentication module&rsquo;.</p>
+						<p>The internal implementation of the <a href="../Protocols/AGPipeConfig.html">AGPipeConfig</a> to configure <a href="../Protocols/AGPipe.html">AGPipe</a> objects.</p>
 					</div>
 					
 					
@@ -152,30 +146,30 @@ The class offers simple APIs to add, remove, or get access to a &lsquo;authentic
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/authenticator">+&nbsp;authenticator</a></code>
-		<span class="tooltip"><p>A factory method to instantiate an empty AGAuthenticator.</p></span>
+		<code><a href="#//api/name/baseURL:">&ndash;&nbsp;baseURL:</a></code>
+		<span class="tooltip"><p>Applies the baseURL to the configuration.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/auth:">&ndash;&nbsp;auth:</a></code>
-		<span class="tooltip"><p>Adds a new <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object, based on the given configuration object.</p></span>
+		<code><a href="#//api/name/endpoint:">&ndash;&nbsp;endpoint:</a></code>
+		<span class="tooltip"><p>Applies the baseURL to the configuration.
+If no endpoint is specified, the name will be used as its value.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
-		<span class="tooltip"><p>Removes a <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> implementation from the AGAuthenticator. The auth module,
-to be removed is determined by the moduleName argument.</p></span>
+		<code><a href="#//api/name/authModule:">&ndash;&nbsp;authModule:</a></code>
+		<span class="tooltip"><p>Applies the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/get:">&ndash;&nbsp;get:</a></code>
-		<span class="tooltip"><p>Loads a given <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> implementation, based on the given moduleName argument.</p></span>
+		<code><a href="#//api/name/recordId:">&ndash;&nbsp;recordId:</a></code>
+		<span class="tooltip"><p>Applies the recordId to the configuration.</p></span>
 	</span>
 	
 	
@@ -190,58 +184,6 @@ to be removed is determined by the moduleName argument.</p></span>
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/authenticator" title="authenticator"></a>
-	<h3 class="subsubtitle method-title">authenticator</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>A factory method to instantiate an empty AGAuthenticator.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (id)authenticator</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the AGAuthenticator object</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>A factory method to instantiate an empty AGAuthenticator.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthenticator.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
 					
 					
 					<div class="section section-methods">
@@ -249,18 +191,18 @@ to be removed is determined by the moduleName argument.</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/auth:" title="auth:"></a>
-	<h3 class="subsubtitle method-title">auth:</h3>
+	<a name="//api/name/authModule:" title="authModule:"></a>
+	<h3 class="subsubtitle method-title">authModule:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Adds a new <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object, based on the given configuration object.</p>
+		<p>Applies the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id&lt;AGAuthenticationModule&gt;)auth:(void ( ^ ) ( id&lt;AGAuthConfig&gt; config ))<em>config</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
 
     
 	
@@ -268,19 +210,13 @@ to be removed is determined by the moduleName argument.</p></span>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>config</em></dt>
-			<dd><p>A block object which passes in an implementation of the <a href="../Protocols/AGAuthConfig.html">AGAuthConfig</a> protocol.
-the object is used to configure the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object.</p></dd>
+			<dt><em>authModule</em></dt>
+			<dd><p>The <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> of the actual <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
 		</dl>
 		
 	</div>
 	
 	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the newly created <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object</p>
-	</div>
 	
 	
 	
@@ -288,7 +224,7 @@ the object is used to configure the <a href="../Protocols/AGAuthenticationModule
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Adds a new <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object, based on the given configuration object.</p>
+		<p>Applies the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p>
 	</div>
 	
 	
@@ -299,25 +235,25 @@ the object is used to configure the <a href="../Protocols/AGAuthenticationModule
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthenticator.h</code><br />
+		<code class="declared-in-ref">AGPipeConfig.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/get:" title="get:"></a>
-	<h3 class="subsubtitle method-title">get:</h3>
+	<a name="//api/name/baseURL:" title="baseURL:"></a>
+	<h3 class="subsubtitle method-title">baseURL:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Loads a given <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> implementation, based on the given moduleName argument.</p>
+		<p>Applies the baseURL to the configuration.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id&lt;AGAuthenticationModule&gt;)get:(NSString *)<em>moduleName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)baseURL:(NSURL *)<em>baseURL</em></code></div>
 
     
 	
@@ -325,8 +261,8 @@ the object is used to configure the <a href="../Protocols/AGAuthenticationModule
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>moduleName</em></dt>
-			<dd><p>The name of the actual auth module object.</p></dd>
+			<dt><em>baseURL</em></dt>
+			<dd><p>The baseURL of the actual <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
 		</dl>
 		
 	</div>
@@ -339,7 +275,7 @@ the object is used to configure the <a href="../Protocols/AGAuthenticationModule
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Loads a given <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> implementation, based on the given moduleName argument.</p>
+		<p>Applies the baseURL to the configuration.</p>
 	</div>
 	
 	
@@ -350,26 +286,26 @@ the object is used to configure the <a href="../Protocols/AGAuthenticationModule
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthenticator.h</code><br />
+		<code class="declared-in-ref">AGPipeConfig.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/remove:" title="remove:"></a>
-	<h3 class="subsubtitle method-title">remove:</h3>
+	<a name="//api/name/endpoint:" title="endpoint:"></a>
+	<h3 class="subsubtitle method-title">endpoint:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Removes a <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> implementation from the AGAuthenticator. The auth module,
-to be removed is determined by the moduleName argument.</p>
+		<p>Applies the baseURL to the configuration.
+If no endpoint is specified, the name will be used as its value.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id&lt;AGAuthenticationModule&gt;)remove:(NSString *)<em>moduleName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)endpoint:(NSString *)<em>endpoint</em></code></div>
 
     
 	
@@ -377,8 +313,8 @@ to be removed is determined by the moduleName argument.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>moduleName</em></dt>
-			<dd><p>The name of the actual auth module object.</p></dd>
+			<dt><em>endpoint</em></dt>
+			<dd><p>The baseURL of the actual <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
 		</dl>
 		
 	</div>
@@ -391,8 +327,8 @@ to be removed is determined by the moduleName argument.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Removes a <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> implementation from the AGAuthenticator. The auth module,
-to be removed is determined by the moduleName argument.</p>
+		<p>Applies the baseURL to the configuration.
+If no endpoint is specified, the name will be used as its value.</p>
 	</div>
 	
 	
@@ -403,7 +339,58 @@ to be removed is determined by the moduleName argument.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthenticator.h</code><br />
+		<code class="declared-in-ref">AGPipeConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/recordId:" title="recordId:"></a>
+	<h3 class="subsubtitle method-title">recordId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Applies the recordId to the configuration.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)recordId:(NSString *)<em>recordId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordId</em></dt>
+			<dd><p>The name of the field used to uniquely identify a &ldquo;record&rdquo; in the data</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Applies the recordId to the configuration.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeConfig.h</code><br />
 	</div>				
 	
 	

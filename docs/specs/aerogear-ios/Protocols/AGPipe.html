@@ -53,6 +53,8 @@
 	
 	<option value="//api/name/read:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- read:failure:</option>
 	
+	<option value="//api/name/read:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- read:success:failure:</option>
+	
 	<option value="//api/name/readWithFilter:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- readWithFilter:success:failure:</option>
 	
 	<option value="//api/name/remove:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:success:failure:</option>
@@ -96,6 +98,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:failure:">read:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:success:failure:">read:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readWithFilter:success:failure:">readWithFilter:success:failure:</a></span></li>
 	
@@ -180,8 +184,15 @@ communicate with the server and perfoms read/write operations.</p>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/read:success:failure:">&ndash;&nbsp;read:success:failure:</a></code>
+		<span class="tooltip"><p>Read specific object from the underlying server connection.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/readWithFilter:success:failure:">&ndash;&nbsp;readWithFilter:success:failure:</a></code>
-		<span class="tooltip"><p>Reads all the data that matches a given filter creteria from the underlying server connection.</p></span>
+		<span class="tooltip"><p>Reads all the data that matches a given filter criteria from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -367,18 +378,18 @@ the network or parsing error that occurred.</p></dd>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/readWithFilter:success:failure:" title="readWithFilter:success:failure:"></a>
-	<h3 class="subsubtitle method-title">readWithFilter:success:failure:</h3>
+	<a name="//api/name/read:success:failure:" title="read:success:failure:"></a>
+	<h3 class="subsubtitle method-title">read:success:failure:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Reads all the data that matches a given filter creteria from the underlying server connection.</p>
+		<p>Read specific object from the underlying server connection.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)readWithFilter:(id)<em>filterObject</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)read:(id)<em>value</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
     
 	
@@ -386,8 +397,8 @@ the network or parsing error that occurred.</p></dd>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>filterObject</em></dt>
-			<dd><p>TODO some filter object&hellip;&hellip;&hellip;.</p></dd>
+			<dt><em>value</em></dt>
+			<dd><p>The value of the recordId (see method <a href="../Protocols/AGPipeConfig.html#//api/name/recordId:">[AGPipeConfig recordId:]</a>)</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -415,7 +426,73 @@ the network or parsing error that occurred.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Reads all the data that matches a given filter creteria from the underlying server connection.</p>
+		<p>Read specific object from the underlying server connection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/readWithFilter:success:failure:" title="readWithFilter:success:failure:"></a>
+	<h3 class="subsubtitle method-title">readWithFilter:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads all the data that matches a given filter criteria from the underlying server connection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)readWithFilter:(void ( ^ ) ( id&lt;AGFilterConfig&gt; config ))<em>config</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>config</em></dt>
+			<dd><p><a href="../Protocols/AGFilterConfig.html"><code>AGFilterConfig</code></a> object initialized with the filter</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+This block has no return value and takes one argument: The object created from the response
+data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
+or that finishes successfully, but encountered an error while parsing the response data.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads all the data that matches a given filter criteria from the underlying server connection.</p>
 	</div>
 	
 	
@@ -467,7 +544,7 @@ data of request.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
-or that finishes successfully, but encountered an error while parsing the resonse data.
+or that finishes successfully, but encountered an error while parsing the response data.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the network or parsing error that occurred.</p></dd>
 		</dl>
@@ -534,7 +611,7 @@ data of request.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
-or that finishes successfully, but encountered an error while parsing the resonse data.
+or that finishes successfully, but encountered an error while parsing the response data.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the network or parsing error that occurred.</p></dd>
 		</dl>
@@ -579,7 +656,7 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-10-23)</span><br />
+						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-12-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

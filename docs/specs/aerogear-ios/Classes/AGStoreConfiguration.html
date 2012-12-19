@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGRestAuthentication Class Reference</title>
+		<title>AGStoreConfiguration Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGRestAuthentication Class Reference</h1>
+				<h1 class="hideInXcode">AGStoreConfiguration Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,6 +26,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -42,9 +44,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/deauthorize">&nbsp;&nbsp;&nbsp;&nbsp;- deauthorize</option>
-	
-	<option value="//api/name/isAuthenticated">&nbsp;&nbsp;&nbsp;&nbsp;- isAuthenticated</option>
+	<option value="//api/name/recordId:">&nbsp;&nbsp;&nbsp;&nbsp;- recordId:</option>
 	
 	
 	
@@ -55,6 +55,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -72,9 +74,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deauthorize">deauthorize</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticated">isAuthenticated</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recordId:">recordId:</a></span></li>
 	
 </ul></li>
 
@@ -83,7 +83,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGRestAuthentication Class Reference" name="top"></a>
+				<a title="AGStoreConfiguration Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,7 +92,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGRestAuthentication Class Reference</h1>
+						<h1 class="title title-header">AGStoreConfiguration Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -103,13 +103,21 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/AGAuthenticationModuleAdapter.html">AGAuthenticationModuleAdapter</a></td>
+	<td class="specification-value"><a href="../Protocols/AGStoreConfig.html">AGStoreConfig</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGRestAuthentication.h<br />AGRestAuthentication.m</td>
+	<td class="specification-value">AGStoreConfiguration.h<br />AGStoreConfiguration.m</td>
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The internal implementation of the <a href="../Protocols/AGStoreConfig.html">AGStoreConfig</a> to configure <a href="../Protocols/AGStore.html">AGStore</a> objects.</p>
+					</div>
 					
 					
 					
@@ -126,15 +134,8 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/isAuthenticated">&ndash;&nbsp;isAuthenticated</a></code>
-		<span class="tooltip"><p>Performs a simple check if the user of the module impl. is authenticated.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/deauthorize">&ndash;&nbsp;deauthorize</a></code>
-		<span class="tooltip"><p>Performs deauthorization, after logout.</p></span>
+		<code><a href="#//api/name/recordId:">&ndash;&nbsp;recordId:</a></code>
+		<span class="tooltip"><p>Applies the recordId to the configuration.</p></span>
 	</span>
 	
 	
@@ -156,20 +157,30 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/deauthorize" title="deauthorize"></a>
-	<h3 class="subsubtitle method-title">deauthorize</h3>
+	<a name="//api/name/recordId:" title="recordId:"></a>
+	<h3 class="subsubtitle method-title">recordId:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Performs deauthorization, after logout.</p>
+		<p>Applies the recordId to the configuration.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)deauthorize</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)recordId:(NSString *)<em>recordId</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordId</em></dt>
+			<dd><p>The name of the field used to uniquely identify a &ldquo;record&rdquo; in the data</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -179,7 +190,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Performs deauthorization, after logout.</p>
+		<p>Applies the recordId to the configuration.</p>
 	</div>
 	
 	
@@ -190,48 +201,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthenticationModuleAdapter.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/isAuthenticated" title="isAuthenticated"></a>
-	<h3 class="subsubtitle method-title">isAuthenticated</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Performs a simple check if the user of the module impl. is authenticated.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BOOL)isAuthenticated</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Performs a simple check if the user of the module impl. is authenticated.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthenticationModuleAdapter.h</code><br />
+		<code class="declared-in-ref">AGStoreConfig.h</code><br />
 	</div>				
 	
 	

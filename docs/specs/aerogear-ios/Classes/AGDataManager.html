@@ -49,13 +49,11 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/add:">&nbsp;&nbsp;&nbsp;&nbsp;- add:</option>
-	
-	<option value="//api/name/add:type:">&nbsp;&nbsp;&nbsp;&nbsp;- add:type:</option>
-	
 	<option value="//api/name/get:">&nbsp;&nbsp;&nbsp;&nbsp;- get:</option>
 	
 	<option value="//api/name/remove:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:</option>
+	
+	<option value="//api/name/store:">&nbsp;&nbsp;&nbsp;&nbsp;- store:</option>
 	
 	
 	
@@ -91,13 +89,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:">add:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:type:">add:type:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:">get:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:">remove:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/store:">store:</a></span></li>
 	
 </ul></li>
 
@@ -137,7 +133,7 @@
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>AGDataManager manages different <a href="../Protocols/AGStore.html">AGStore</a> implementations. It is basically a
-factory that hides the concrete instanciation of a specific <a href="../Protocols/AGStore.html">AGStore</a> implementation.
+factory that hides the concrete instantiations of a specific <a href="../Protocols/AGStore.html">AGStore</a> implementation.
 The class offers simple APIs to add, remove or get access to a &lsquo;data store&rsquo;.</p>
 
 <p>NOTE: Right now, there is NO automatic data sync. This is up to the user.</p>
@@ -165,22 +161,15 @@ The class offers simple APIs to add, remove or get access to a &lsquo;data store
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/add:">&ndash;&nbsp;add:</a></code>
-		<span class="tooltip"><p>Creates a new default (in memory) <a href="../Protocols/AGStore.html">AGStore</a> implemention.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/add:type:">&ndash;&nbsp;add:type:</a></code>
-		<span class="tooltip"><p>Creates a new <a href="../Protocols/AGStore.html">AGStore</a> implemention. The actual type is determined by the type argument.</p></span>
+		<code><a href="#//api/name/store:">&ndash;&nbsp;store:</a></code>
+		<span class="tooltip"><p>Adds a new <a href="../Protocols/AGStore.html">AGStore</a> object, based on the given configuration object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
-		<span class="tooltip"><p>Removes a <a href="../Protocols/AGStore.html">AGStore</a> implemention from the AGDataManager. The store to be removed
+		<span class="tooltip"><p>Removes a <a href="../Protocols/AGStore.html">AGStore</a> implementation from the AGDataManager. The store to be removed
 is determined by the storeName argument.</p></span>
 	</span>
 	
@@ -188,7 +177,7 @@ is determined by the storeName argument.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/get:">&ndash;&nbsp;get:</a></code>
-		<span class="tooltip"><p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implemention, based on the given storeName argument.</p></span>
+		<span class="tooltip"><p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p></span>
 	</span>
 	
 	
@@ -262,120 +251,13 @@ is determined by the storeName argument.</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/add:" title="add:"></a>
-	<h3 class="subsubtitle method-title">add:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Creates a new default (in memory) <a href="../Protocols/AGStore.html">AGStore</a> implemention.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)add:(NSString *)<em>storeName</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>storeName</em></dt>
-			<dd><p>The name of the actual data store object.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates a new default (in memory) <a href="../Protocols/AGStore.html">AGStore</a> implemention.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGDataManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/add:type:" title="add:type:"></a>
-	<h3 class="subsubtitle method-title">add:type:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Creates a new <a href="../Protocols/AGStore.html">AGStore</a> implemention. The actual type is determined by the type argument.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)add:(NSString *)<em>storeName</em> type:(NSString *)<em>type</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>storeName</em></dt>
-			<dd><p>The name of the actual data store object.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>type</em></dt>
-			<dd><p>The type of the new data store object.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates a new <a href="../Protocols/AGStore.html">AGStore</a> implemention. The actual type is determined by the type argument.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGDataManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/get:" title="get:"></a>
 	<h3 class="subsubtitle method-title">get:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implemention, based on the given storeName argument.</p>
+		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p>
 	</div>		
 	
     
@@ -402,7 +284,7 @@ is determined by the storeName argument.</p></span>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implemention, based on the given storeName argument.</p>
+		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p>
 	</div>
 	
 	
@@ -426,7 +308,7 @@ is determined by the storeName argument.</p></span>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Removes a <a href="../Protocols/AGStore.html">AGStore</a> implemention from the AGDataManager. The store to be removed
+		<p>Removes a <a href="../Protocols/AGStore.html">AGStore</a> implementation from the AGDataManager. The store to be removed
 is determined by the storeName argument.</p>
 	</div>		
 	
@@ -454,8 +336,65 @@ is determined by the storeName argument.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Removes a <a href="../Protocols/AGStore.html">AGStore</a> implemention from the AGDataManager. The store to be removed
+		<p>Removes a <a href="../Protocols/AGStore.html">AGStore</a> implementation from the AGDataManager. The store to be removed
 is determined by the storeName argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGDataManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/store:" title="store:"></a>
+	<h3 class="subsubtitle method-title">store:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new <a href="../Protocols/AGStore.html">AGStore</a> object, based on the given configuration object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)store:(void ( ^ ) ( id&lt;AGStoreConfig&gt; config ))<em>config</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>config</em></dt>
+			<dd><p>A block object which passes in an implementation of the <a href="../Protocols/AGStoreConfig.html">AGStoreConfig</a> protocol.
+the object is used to configure the <a href="../Protocols/AGStore.html">AGStore</a> object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the newly created <a href="../Protocols/AGStore.html">AGStore</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new <a href="../Protocols/AGStore.html">AGStore</a> object, based on the given configuration object.</p>
 	</div>
 	
 	
@@ -485,7 +424,7 @@ is determined by the storeName argument.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-10-23)</span><br />
+						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-12-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
