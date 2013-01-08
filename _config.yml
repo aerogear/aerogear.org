@@ -17,17 +17,3 @@ email: aerogear-dev@lists.jboss.org
 
 production_url : http://aerogear.org
 
-navigation:
-- desc: Get The Gear
-  url: /download
-- desc: Community
-  url: /community
-- desc: Documentation
-  url: /docs
-- desc: Road Map
-  url: "/docs/planning"
-- desc: Sources
-  url: "http://github.com/aerogear"
-#- desc: Examples / Demos
-#  url: "#"
-

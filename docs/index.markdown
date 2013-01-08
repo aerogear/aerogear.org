@@ -5,40 +5,18 @@ title: Documentation
 
 ## Documentation
 
-### Guides
+### [API Documentation and Specifications](specs)
 
-#### Supported Platforms
+API documentation and specifications for all of the AeroGear libraries.
 
-* [AeroGear Browser Support Targets](guides/AeroGearBrowserTargets)
+### [Guides](guides)
 
-#### Getting Started
+A long list of guides and tutorials to help get you off and running with AeroGear.
 
-* [FAQ](guides/FAQ)
-* [Get Started With HTML5 Mobile Web Development](guides/GetStartedHTML5MobileWeb)
-* [Get Started With Android Development on the Command Line](guides/GetStartedAndroid)
-* [Get Started With Android Development in Eclipse](guides/EclipseSetup)
-* [Deploying HTML5 Applications to Openshift](guides/HTML5AppsToOpenshift)
-* [HTML5 Mobile Quickstart & Archetype Deep Dive](guides/HTML5MobileQuickstartAndDeepDive)
-* [HTML5 + REST Applications](guides/HTML5RESTApps)
-* [Cordova Setup](guides/CordovaSetup)
-* [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](guides/HTML5ToHybridWithCordova)
-* [Getting Started with AeroGear and Xcode](guides/GetStartedwithAeroGearandXcode)
-* [Get Started with Hybrid Application Frameworks](guides/HybridApplicationFrameworks)
-* [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](guides/CordovaAndroidDevJBDS)
+### [Roadmap](planning)
 
-#### Contributing to AeroGear
+Where is AeroGear headed? This is a full breakdown of what's to come for AeroGear as a project and for each individual library.
 
-* [Contributing to AeroGear](guides/Contributing)
-* [AeroGear GitHub Workflow](guides/GitHubWorkflow)
-* [How to Handle AeroGear Pull Requests](guides/AeroGearPullRequests)
-* [AeroGear JIRA Usage and Guidelines](guides/JIRAUsage)
-* [AeroGear Licensing and Copyright](guides/license)
-* [AeroGear Developer Tools Guide](guides/AeroGearDeveloperSetup)
+### [Examples](/examples)
 
-### Reference
-
-Central project reference material(may not be needed)
-
-### [Specifications](specs)
-
-API specifications for persistence, security...
+This is the place to find real working examples using the AeroGear libraries.

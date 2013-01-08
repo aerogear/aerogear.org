@@ -44,11 +44,35 @@
                 </a>
                 <div class="nav-collapse">
                     <ul class="nav">
-                        {% for nav_item in site.navigation %}
-                        <li class="{% is_active_navigation_item nav_item.url %}">
-                          <a href="{{ nav_item.url }}">{{ nav_item.desc }}</a>
+                        <li class="{% is_active_navigation_item 'download' %}">
+                            <a href="/download">Get the Gear</a>
                         </li>
-                        {% endfor %}
+                        <li class="dropdown {% if page.url contains '/docs' %}active{% endif %}{% if page.url contains '/examples' %}active{% endif %}" id="doc-menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#doc-menu">Documentation <b class="caret"></b></a>
+                            <ul class="dropdown-menu nav-box">
+                                <li class="{% is_active_navigation_item '/docs/specs' %}">
+                                    <a href="/docs/specs">API Docs</a>
+                                </li>
+                                <li class="{% is_active_navigation_item '/docs/guides' %}">
+                                    <a href="/docs/guides">Guides & Tutorials</a>
+                                </li>
+                                <li class="{% is_active_navigation_item '/docs/planning' %}">
+                                    <a href="/docs/planning">Road Map</a>
+                                </li>
+                                <li class="{% is_active_navigation_item '/examples' %}">
+                                    <a href="/examples">Examples</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="{% is_active_navigation_item '/news' %}">
+                            <a href="/news">News</a>
+                        </li>
+                        <li class="{% is_active_navigation_item '/community' %}">
+                            <a href="/community">Community</a>
+                        </li>
+                        <li>
+                            <a href="http://github.com/aerogear" target="_blank">Source</a>
+                        </li>
                         <li class="dropdown" id="social-menu">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#social-menu">Follow Us <b class="caret"></b></a>
                             <ul class="dropdown-menu social-menu">
