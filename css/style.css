@@ -6,6 +6,10 @@ body {
     padding-bottom: 40px;
 }
 
+.inner-container {
+    min-height: 275px;
+}
+
 .navbar-inner {
     min-height: 110px;
     background-color: #dde7ec;
@@ -26,8 +30,11 @@ body {
     bottom: 5px;
     right: 20px;
 }
-
-.navbar .nav .active > a, .navbar .nav .active > a:hover {
+.nav-list > .active > a, .nav-list > .active > a:hover {
+    margin-top: 5px;
+}
+.navbar .nav .active > a, .navbar .nav .active > a:hover,
+.navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle:hover {
     background-color: #669eb2;
     text-shadow: none;
     -webkit-border-radius: 3px;
@@ -43,7 +50,7 @@ body {
     margin: 2px;
 }
 
-.navbar .nav > li a:hover {
+.navbar .nav > li > a:hover {
     background-color: #669eb2;
     text-shadow: none;
     -webkit-border-radius: 3px;
@@ -235,7 +242,7 @@ pre {
     min-height: 1px;
 }
 
-.nav-box {
+.nav-box-left {
     padding: 0;
     border: 1px solid #ccc;
     -webkit-border-radius: 5px;
@@ -244,9 +251,13 @@ pre {
     font-weight: bold;
     color: #aaa;
     position: fixed;
-    top: 140px;
+    top: 130px;
     width: 150px;
     background-color: white;
+}
+
+.nav-box-left-nested {
+    padding: 0;
 }
 
 .nav-box > li > a {
@@ -264,13 +275,28 @@ pre {
     color: #444;
 }
 
-.nav-box > li > a .icon-chevron-right {
+.nav-box > li > a .icon-chevron-down {
     float: right;
     color: #aaa;
 }
 
-.nav-box > li > a:hover .icon-chevron-right {
+.nav-box > li > a:hover .icon-chevron-down {
     color: #444;
+}
+
+.nav-box-left-nested > li > a {
+    padding: 8px 0 8px 10px;
+    margin-left: 20px;
+}
+
+.navbar .nav .nav-box .active a {
+    color: #fff;
+    background-color: #08C;
+}
+
+.dropdown-menu a {
+    color: #08C;
+    font-weight: bold;
 }
 
 .download-row .span4 {
