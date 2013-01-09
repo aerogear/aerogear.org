@@ -572,3 +572,29 @@ footer .row .span3:last-child {
         font-size: 14px;
     }
 }
+
+.select-all {
+    margin-top: 12px;
+}
+
+.component-group {
+    list-style: none;
+}
+
+.component {
+    display: inline;
+}
+
+.desc {
+    display: block;
+    color: #777;
+    font-size: .9em;
+}
+
+.builder-alert {
+    display: none;
+}
+
+.custom-builder {
+    margin-left: 0;
+}
