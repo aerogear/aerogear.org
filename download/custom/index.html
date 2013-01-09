@@ -17,7 +17,21 @@ title: Download
 	</div>
 	<script type="text/template" id="srcTemplate">
         <div class="span4 group">
+            <h2 class='hed-cat'><%=groupLabel + ( componentsLength > 1 ? " <label class='select-all pull-right'> Select all <input type='checkbox' class='sel-all' name=select-all-" + group + " /></label> " : "" )  %>
+            </h2>
             <%=cat%>
+        </div>
+	</script>
+	<script type="text/template" id="lineItemTemplate">
+        <li>
+            <label class='component' for=<%=id%>><%=item.label%></label>
+            <input type='checkbox' class='inc' id=<%=id%> name=<%=id + ( item.required ? " checked='checked' disabled='true'" : "") %>/>
+            <p class='desc'><%=item.description%></p>
+        </li>
+	</script>
+	<script type="text/template" id="ulItemTemplate">
+        <div>
+            <ul class='component-group' id=<%=id%>></ul>
         </div>
 	</script>
 	<script type="text/javascript" src="lodash.min.js"></script>
