@@ -79,7 +79,6 @@ $( function( $ ) {
 							$( cat ).find( ".hed-cat" ).append( "<label class='select-all pull-right'> Select all <input type='checkbox' class='sel-all' name='select-all-" + group + "' /></label>" );
 						}
 
-						//$form.append( cat );
 						$form.append( _.template( $( "#srcTemplate" ).html(), { "cat": cat.html() } ) );
 					}
 				}
@@ -98,8 +97,6 @@ $( function( $ ) {
 					);
 				}
 			);
-
-			//$form.append( '<div class="span4"><input type="submit" value="Build My Download" class="buildBtn"></div>' ).removeClass( "loading" );
 		},
 		buildCheckListFor = function( id, hash ) {
 			var module = dependencyMap[ id ];
