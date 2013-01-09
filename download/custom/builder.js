@@ -44,43 +44,20 @@ $( function( $ ) {
 
 			_.forEach( groups, function( group, index ) {
 				if ( group != "exclude" ) {
-					var $group = $( "<ul class='component-group' >" ).attr( "id", group2domId( group ) ),
-						catlength = 0,
+					var $group = $( _.template( $( "#ulItemTemplate" ).html(), { "id": group2domId( group ) } ) ),
 						cat,
 						groupLabel,
 						components = _.keys( groupedComponents[ group ] );
 
 					_.forEach( components, function( name ) {
 						var id = module2domId( name ),
-							label = data[ name ].label,
-							desc = data[ name ].description,
-							req = data[ name ].required,
-							labelm = "<label class='component' for='" + id + "'>" + label + "</label>",
-							inputm = "<input type='checkbox' class='inc' id='" + id + "' name='" + id + "'" + ( req ? " checked='checked' disabled='true'" : "") + "/>",
-							descm = "<p class='desc'>" + desc + "</p>",
-							item = inputm;
+                            item = data[ name ];
 
 						groupLabel = data[name].groupLabel;
-						if ( label ) {
-							item = item + labelm;
-							if ( desc ) { item = item + descm; }
-
-							$group.append( "<li>" + item + "</li>" );
-							catlength++;
-						}
+                        $group.find( ".component-group" ).append( _.template( $( "#lineItemTemplate" ).html(), { "item": item, "id": id } ) );
 					});
 
-					if( catlength ) {
-						cat = $("<div class='group'></div>")
-							.append("<h2 class='hed-cat'>" + groupLabel + "</h2>" )
-							.append( $group );
-
-						if( components.length > 1) {
-							$( cat ).find( ".hed-cat" ).append( "<label class='select-all pull-right'> Select all <input type='checkbox' class='sel-all' name='select-all-" + group + "' /></label>" );
-						}
-
-						$form.append( _.template( $( "#srcTemplate" ).html(), { "cat": cat.html() } ) );
-					}
+					$form.append( $( _.template( $( "#srcTemplate" ).html(), { "cat": $group.html(), "groupLabel": groupLabel, "componentsLength": components.length, "group": group } ) ) );
 				}
 			});
 
