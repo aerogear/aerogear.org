@@ -2,8 +2,6 @@ $( function( $ ) {
 	var host = "http://aerogearjsbuilder-lholmqui.rhcloud.com/aerogearjsbuilder/deps",
 		dependencyMap,
         externalMap,
-		builderhtml = [],
-		sortable = [],
 		groupBy = function( data, iterator ) {
 			var res = {};
 
@@ -32,9 +30,6 @@ $( function( $ ) {
 		group2domId = function( group ) {
 			return group.replace( / /g, '_' ).replace( /^(.)/, function( c ) { return c.toLowerCase(); } );
 		},
-		strip = function( file ) {
-			return file.replace( /^\.\//g, '' ).replace( /\./g, '_' );
-		},
 		buildForm = function( data ) {
 			var $form = $( ".builder-content" ).empty(),
 				groupedComponents = groupBy( data, function( o, key ) {
@@ -45,7 +40,6 @@ $( function( $ ) {
 			_.forEach( groups, function( group, index ) {
 				if ( group != "exclude" ) {
 					var $group = $( _.template( $( "#ulItemTemplate" ).html(), { "id": group2domId( group ) } ) ),
-						cat,
 						groupLabel,
 						components = _.keys( groupedComponents[ group ] );
 
@@ -138,12 +132,6 @@ $( function( $ ) {
 								$( "#version" ).append( value.version );
 							}
 							delete map[ key ];
-						} else if ( value.deps ) {
-							_.each( value.deps, function( v, k, m ) {
-								m[ k ] = m[ k ].replace( /^.*!/, "" );  // remove the plugin part
-								m[ k ] = m[ k ].replace( /\[.*$/, "" ); // remove the plugin arguments at the end of the path
-								m[ k ] = m[ k ].replace( /^\.\//, "" ); // remove the relative path "./"
-							});
 						}
 					});
 					buildForm( dependencyMap );
@@ -164,9 +152,7 @@ $( function( $ ) {
 		function( e ) {
 			var $el = $( this ),
 				formData = $el.find( ':checkbox[id]:checked' ),
-				branch = $( "#branch option:selected" ).val() || "master",
 				$button = $( e.target ).find( "input[type=submit]" ),
-				exclude = [ "jquery", "text", "depend", "text!../version.txt" ],
 				config;
 
 			$button.attr( "disabled", true );
@@ -193,7 +179,7 @@ $( function( $ ) {
 				$( ".alert" ).hide();
 				$( "#download" ).html(
                     $( "<iframe>" )
-                        .attr( "src",'http://aerogearjsbuilder-lholmqui.rhcloud.com/aerogearjsbuilder/bundle/aerogear/src/' + branch + '/aerogear.mobile.custom.zip?' + $.param( config ) )
+                        .attr( "src",'http://aerogearjsbuilder-lholmqui.rhcloud.com/aerogearjsbuilder/bundle/aerogear/src/master/aerogear.mobile.custom.zip?' + $.param( config ) )
                 );
 			} else {
                 //show error thing
