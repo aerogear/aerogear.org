@@ -106,10 +106,10 @@ Navigate to the viewDidLoad method and add the following:
     id<AGPipe> tasksPipe;
     
     // create the 'todo' pipeline, which contains the 'projects' pipe:
-    AGPipeline *todo = [AGPipeline pipeline:projectsURL];  [1]
+    AGPipeline *todo = [AGPipeline pipelineWithBaseURL:projectsURL];  [1]
     
-    tasksPipe = [pipeline pipe:^(id<AGPipeConfig> config) {  [2]
-	        [config name:@"tasks"];
+    tasksPipe = [todo pipe:^(id<AGPipeConfig> config) {  [2]
+	        [config setName:@"tasks"];
 	    }];
     
     [tasksPipe read:^(id responseObject) {  [3]
