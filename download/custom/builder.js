@@ -1,5 +1,5 @@
 $( function( $ ) {
-	var host = "http://aerogearjsbuilder-lholmqui.rhcloud.com/aerogearjsbuilder/deps",
+	var host = "http://custombuilder-aerogear.rhcloud.com/builder/deps",
 		dependencyMap,
         externalMap,
 		groupBy = function( data, iterator ) {
@@ -179,7 +179,7 @@ $( function( $ ) {
 				$( ".alert" ).hide();
 				$( "#download" ).html(
                     $( "<iframe>" )
-                        .attr( "src",'http://aerogearjsbuilder-lholmqui.rhcloud.com/aerogearjsbuilder/bundle/aerogear/src/master/aerogear.mobile.custom.zip?' + $.param( config ) )
+                        .attr( "src",'http://custombuilder-aerogear.rhcloud.com/builder/bundle/aerogear/src/master/aerogear.mobile.custom.zip?' + $.param( config ) )
                 );
 			} else {
                 //show error thing
