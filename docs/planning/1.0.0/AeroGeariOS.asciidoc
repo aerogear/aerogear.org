@@ -52,8 +52,6 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** config object for AGPipe creation 
 ** config object for AGStore creation 
 ** config object for AGAuthModule creation 
-* Core Data / DataManager
-** looking at core data integration 
 * Query and Search
 ** Define Query/search support....
 * Security
@@ -65,9 +63,8 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ~~~~~~~~~
 
 * AGPipeline and AGPipe
+** Pagination
 ** Query/search support (NSPredicate)
-* CoreData
-** UIManagedDocument subclass that supports AFIncrementalStore
 * Improve documentation
 ** API doc
 ** Getting started guides
@@ -103,8 +100,3 @@ For common cross-library requirements see:
 
 * link:AeroGearPersistence.html[AeroGear Persistence Plan]
 * link:AeroGearSecurity.html[AeroGear Security Plan]
-
-Core Data Integration
-~~~~~~~~~~~~~~~~~~~~~
-
-*TODO* Complete
