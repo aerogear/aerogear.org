@@ -30,6 +30,8 @@ _Make sure to remember where you unzipped it - you will be pulling several files
 
 Download & Install JBoss Developer Studio.  link:https://devstudio.jboss.com/earlyaccess/[Download Here]
 
+_Note: This link points to JBDS Early Access of JDBS 6.  The User experience should be the same_
+
 Download and Unzip the Android SDK. link:http://developer.android.com/sdk/index.html[Download Here]
 
 _Again, make sure to remember where you unzipped it._
