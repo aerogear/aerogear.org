@@ -201,7 +201,7 @@ When AeroGear-Security is used as the SecurityProvider for AeroGear-Controller, 
 
 ### Registering a user ###
 
-```http://server:host/myapp/auth/register```
+```http://server:host/myapp/auth/enroll```
 
 ##### Success status code and returned body #####
 * ```HTTP/1.1 200 OK```  
