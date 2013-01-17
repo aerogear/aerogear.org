@@ -55,15 +55,6 @@ In order to navigate through a large data set, the following methods are require
 
 _NOTE:_ When scrolling outside of the allowed range (e.g. invoking ```next``` on the last page), the server should  return an empty list.
 
-#### Helper methods
-The following helper methods are convenient methods to see if, for instance, going to the ```next``` page is possible:
-
-- _hasNext_: Returns ```TRUE``` if it is _safe_ to invoke the ```next``` function, to read the next 'page' of the paging result. Would return ```FALSE``` if the previous response did _not_ sent down a _nextIdentifier_. 
-- _hasPrevious_: Returns ```TRUE``` if it is _safe_ to invoke the ```previous``` function, to read the previous 'page' of the paging result. Would return ```FALSE``` if the previous response did _not_ sent down a _previousIdentifier_.
-
-
-Note: _Please see the the platform API doc, for specific details on the method signatures._
-
 ***
 
 ### Use cases - Behaviour 
