@@ -1,0 +1,91 @@
+## Client Paging
+
+This document describes the client side interfaces which a developer can use to Page through data obtained from remote rest services.  This document describes both how to interact with the Aerogear-Controller based paging as well how to extend the client libraries and APIs to support most other restful services.
+
+At a high level, Paging is supported through the Pipe's ```read``` method (see the platform API doc, for specific details).
+
+### Set up the Paging
+
+In order to start a paging request the API needs to accept a configuration setting, which sets the current page (```offset```) and the number of results that should be listed on a page (```limit```). The different platform SDKs may support different ways to apply the _paging configuration_ (see the platform API doc, for specific details).
+
+The actual Pipe implementation will be responsible for processing a request along with any paging data and sending the appropriate headers, data, and query parameters to the server (see [Server API spec](https://gist.github.com/4537431)).  Once the response has been received, the Pipe implementation will provide the result to the supplied callback (see the platform API doc, for specific details).
+
+
+***
+
+### The Paging configuration
+
+An object to apply general information about a (paging) request.
+
+#### Properties
+
+*metadata location*
+
+- _scrollingMetaDataLocation_: string, applies where the library should look for the 'scrolling' metadata (```identifiers```). Scrolling metadata can be found on the ```header``` (default) or on the response body (```content```).
+
+*offset*
+
+- _offsetValue_: int, the requested page index
+- _offsetParam_: string, name of the ```offset``` query param (default: ```offset```)
+- _offsetIdentifier_: string, the ```offset``` identifier name (default: ```AG-Paging-Offset```) 
+
+*limit* 
+
+- _limitValue_: int, the maximum number of results the server should return
+- _limitParam_: string, name of the ```limit``` query param (default: ```limit```)
+- _limitIdentifier_: string, the ```limit``` identifier name (default: ```AG-Paging-Limit```) 
+
+*total*
+- _totalIdentifier_: string, the ```limit``` identifier name (default: ```AG-Paging-Total```)
+
+*Linking*
+
+- _nextIdentifier_: string, the ```next``` identifier name (default: ```AG-Paging-Next```) 
+- _previousIdentifier_: string, the ```previous``` identifier name (default: ```AG-Paging-Previous```) 
+- _firstIdentifier_: string, the ```first``` identifier name (default: ```AG-Paging-First```) 
+- _lastIdentifier_: string, the ```last``` identifier name (default: ```AG-Paging-Last```) 
+
+_TODO:_ what about the [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10)? (How) would it change the links metadata?
+
+
+***
+
+### The Pagination - Scrolling through the result set
+
+In order to navigate through a large data set, the following methods are required. The actual implementation can be different, based on the used SDK (see the platform API doc, for specific details).
+
+#### Methods
+- _first_: Reads the first 'page' of the paging result, from the server.
+- _last_: Reads the last 'page' of the paging result, from the server.
+- _next_: Reads the next 'page' of the paging result, from the server.
+- _previous_: Reads the previous 'page' of the paging result, from the server.
+
+#### Helper methods
+The following helper methods are convenient methods to see if, for instance, going to the ```next``` page is possible:
+
+- _hasFirst_: Returns ```TRUE``` if the we can go to the first 'page' of the paging result.
+- _hasLast_: Returns ```TRUE``` if the we can go to the last 'page' of the paging result.
+- _hasNext_: Returns ```TRUE``` if the we can go to the next 'page' of the paging result.
+- _hasPrevious_: Returns ```TRUE``` if the we can go to the previous 'page' of the paging result.
+
+
+Note: _Please see the the platform API doc, for specific details on the method signatures._
+
+***
+
+### Use cases - Behaviour 
+
+#### start the pagination and next
+
+* start a ```paged read``` (see concrete API docs for details)
+ * this returns the first page
+ * scroll to the ```next``` or ```last``` page - if possible/desired 
+
+#### Jump to a specific page
+
+* set up the paging configuration (set the ```offset``` to the desired page, e.g ```offset:3```)
+* issue a ```read```
+ * This returns the desired page
+ * For there you can scroll (```next``` or ```previous```, if possible...)
+
+_TODO_: more use cases ?! What about "errors"? E.g. throw exception if a ```next()``` is impossible etc....
