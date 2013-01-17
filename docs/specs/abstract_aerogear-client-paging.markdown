@@ -37,10 +37,10 @@ An object to apply general information about a (paging) request.
 
 *Linking*
 
-- _nextIdentifier_: string, the ```next``` identifier name (default: ```AG-Paging-Next```) 
-- _previousIdentifier_: string, the ```previous``` identifier name (default: ```AG-Paging-Previous```) 
+- _nextIdentifier_: string, the ```next``` identifier name (default: ```next```) 
+- _previousIdentifier_: string, the ```previous``` identifier name (default: ```previous```) 
 
-_TODO:_ what about the [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10)? (How) would it change the links metadata?
+_NOTE:_ The AeroGear-Controller uses the [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10) API for this.
 
 
 ***
@@ -53,11 +53,13 @@ In order to navigate through a large data set, the following methods are require
 - _next_: Reads the next 'page' of the paging result, from the server.
 - _previous_: Reads the previous 'page' of the paging result, from the server.
 
+_NOTE:_ When scrolling outside of the allowed range (e.g. invoking ```next``` on the last page), the server should  return an empty list.
+
 #### Helper methods
 The following helper methods are convenient methods to see if, for instance, going to the ```next``` page is possible:
 
-- _hasNext_: Returns ```TRUE``` if the we can go to the next 'page' of the paging result.
-- _hasPrevious_: Returns ```TRUE``` if the we can go to the previous 'page' of the paging result.
+- _hasNext_: Returns ```TRUE``` if it is _safe_ to invoke the ```next``` function, to read the next 'page' of the paging result. Would return ```FALSE``` if the previous response did _not_ sent down a _nextIdentifier_. 
+- _hasPrevious_: Returns ```TRUE``` if it is _safe_ to invoke the ```previous``` function, to read the previous 'page' of the paging result. Would return ```FALSE``` if the previous response did _not_ sent down a _previousIdentifier_.
 
 
 Note: _Please see the the platform API doc, for specific details on the method signatures._
@@ -79,4 +81,4 @@ Note: _Please see the the platform API doc, for specific details on the method s
  * This returns the desired page
  * For there you can scroll (```next``` or ```previous```, if possible...)
 
-_TODO_: more use cases ?! What about "errors"? E.g. throw exception if a ```next()``` is impossible etc....
+_TODO_: more use cases...?
