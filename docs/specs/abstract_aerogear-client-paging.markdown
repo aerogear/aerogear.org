@@ -21,7 +21,7 @@ An object to apply general information about a (paging) request.
 
 *metadata location*
 
-- pagingLocation__: string, applies where the library should look for the 'scrolling' metadata (```identifiers```). Scrolling metadata can be found on the ```header``` (default) or on the response body (```content```).
+- _pagingLocation_: string, applies where the library should look for the 'scrolling' metadata (```identifiers```). Scrolling metadata can be found on the ```header``` (default) or on the response body (```content```).
 
 *offset*
 
@@ -35,15 +35,10 @@ An object to apply general information about a (paging) request.
 - _limitParam_: string, name of the ```limit``` query param (default: ```limit```)
 - _limitIdentifier_: string, the ```limit``` identifier name (default: ```AG-Paging-Limit```) 
 
-*total*
-- _totalIdentifier_: string, the ```limit``` identifier name (default: ```AG-Paging-Total```)
-
 *Linking*
 
 - _nextIdentifier_: string, the ```next``` identifier name (default: ```AG-Paging-Next```) 
 - _previousIdentifier_: string, the ```previous``` identifier name (default: ```AG-Paging-Previous```) 
-- _firstIdentifier_: string, the ```first``` identifier name (default: ```AG-Paging-First```) 
-- _lastIdentifier_: string, the ```last``` identifier name (default: ```AG-Paging-Last```) 
 
 _TODO:_ what about the [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10)? (How) would it change the links metadata?
 
@@ -55,16 +50,12 @@ _TODO:_ what about the [Web Linking](http://tools.ietf.org/html/draft-nottingham
 In order to navigate through a large data set, the following methods are required. The actual implementation can be different, based on the used SDK (see the platform API doc, for specific details).
 
 #### Methods
-- _first_: Reads the first 'page' of the paging result, from the server.
-- _last_: Reads the last 'page' of the paging result, from the server.
 - _next_: Reads the next 'page' of the paging result, from the server.
 - _previous_: Reads the previous 'page' of the paging result, from the server.
 
 #### Helper methods
 The following helper methods are convenient methods to see if, for instance, going to the ```next``` page is possible:
 
-- _hasFirst_: Returns ```TRUE``` if the we can go to the first 'page' of the paging result.
-- _hasLast_: Returns ```TRUE``` if the we can go to the last 'page' of the paging result.
 - _hasNext_: Returns ```TRUE``` if the we can go to the next 'page' of the paging result.
 - _hasPrevious_: Returns ```TRUE``` if the we can go to the previous 'page' of the paging result.
 
