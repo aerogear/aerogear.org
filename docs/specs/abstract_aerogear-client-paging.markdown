@@ -21,7 +21,7 @@ An object to apply general information about a (paging) request.
 
 *metadata location*
 
-- _scrollingMetaDataLocation_: string, applies where the library should look for the 'scrolling' metadata (```identifiers```). Scrolling metadata can be found on the ```header``` (default) or on the response body (```content```).
+- pagingLocation__: string, applies where the library should look for the 'scrolling' metadata (```identifiers```). Scrolling metadata can be found on the ```header``` (default) or on the response body (```content```).
 
 *offset*
 
