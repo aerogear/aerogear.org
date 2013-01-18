@@ -45,12 +45,10 @@ However, it should be always possible for a user to update the arguments on a _p
 *offset*
 
 - _offsetValue_: int, the offset of the first element that should be included in the returned collection (default: ```0```)
-- _offsetIdentifier_: string, the ```offset``` identifier name (default: ```AG-Paging-Offset```) 
 
 *limit* 
 
 - _limitValue_: int, the maximum number of results the server should return (default: ```10```)
-- _limitIdentifier_: string, the ```limit``` identifier name (default: ```AG-Paging-Limit```) 
 
 ##### CUSTOM parameter providers
 
