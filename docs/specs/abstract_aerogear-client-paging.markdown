@@ -6,7 +6,7 @@ At a high level, Paging is supported through the Pipe's ```read``` method (see t
 
 ### Set up the Paging
 
-In order to start a paging request the API needs to accept a configuration setting, which sets the current page (```offset```) and the number of results that should be listed on a page (```limit```). The different platform SDKs may support different ways to apply the _paging configuration_ (see the platform API doc, for specific details).
+In order to start a paging request, the API needs to accept a configuration setting, which sets the offset of the first element that should be included in the returned collection (```offset```) and the number of results that should be listed on a page (```limit```). The different platform SDKs may support different ways to apply the _paging configuration_ (see the platform API doc, for specific details).
 
 The actual Pipe implementation will be responsible for processing a request along with any paging data and sending the appropriate headers, data, and query parameters to the server (see [Server API spec](https://gist.github.com/4537431)).  Once the response has been received, the Pipe implementation will provide the result to the supplied callback (see the platform API doc, for specific details).
 
@@ -19,19 +19,21 @@ An object to apply general information about a (paging) request.
 
 #### Properties
 
-*metadata location*
+*locations*
 
-- _pagingLocation_: string, applies where the library should look for the 'scrolling' metadata (```identifiers```). Scrolling metadata can be found on the ```header``` (default) or on the response body (```content```).
+- _metadataLocation_: string, applies where the library should look for the 'scrolling' metadata (```identifiers```). Scrolling metadata can be found on the response ```header``` (default) or on the response body (```content```).
+- _pagingLocation_:  indicate whether paging information is sent as ```header```s, as ```query``` parameters (default), or even as ```body``` data.
+
 
 *offset*
 
-- _offsetValue_: int, the requested page index
+- _offsetValue_: int, the offset of the first element that should be included in the returned collection (default: ```0```)
 - _offsetParam_: string, name of the ```offset``` query param (default: ```offset```)
 - _offsetIdentifier_: string, the ```offset``` identifier name (default: ```AG-Paging-Offset```) 
 
 *limit* 
 
-- _limitValue_: int, the maximum number of results the server should return
+- _limitValue_: int, the maximum number of results the server should return (default: ```10```)
 - _limitParam_: string, name of the ```limit``` query param (default: ```limit```)
 - _limitIdentifier_: string, the ```limit``` identifier name (default: ```AG-Paging-Limit```) 
 
@@ -72,4 +74,4 @@ _NOTE:_ When scrolling outside of the allowed range (e.g. invoking ```next``` on
  * This returns the desired page
  * For there you can scroll (```next``` or ```previous```, if possible...)
 
-_TODO_: more use cases...?
+
