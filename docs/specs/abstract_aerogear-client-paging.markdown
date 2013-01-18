@@ -21,8 +21,9 @@ An object to apply general information about a (paging) request.
 
 *locations*
 
-- _metadataLocation_: string, applies where the library should look for the 'scrolling' metadata (```identifiers```). Scrolling metadata can be found on the response ```header``` (default) or on the response body (```content```).
-- _pagingLocation_:  indicate whether paging information is sent as ```header```s, as ```query``` parameters (default), or even as ```body``` data.
+- _metadataLocation_: string, indicates whether paging information (see ```identifiers```) is received from the response ```header``` (default) or on the response body (```content```).
+`content```).
+- _pagingLocation_:  indicate whether paging information is sent as ```query``` parameters (default), or on the request ```header```.
 
 
 *offset*
@@ -71,5 +72,4 @@ _NOTE:_ When scrolling outside of the allowed range (e.g. invoking ```next``` on
 * issue a ```read```
  * This returns the desired page
  * For there you can scroll (```next``` or ```previous```, if possible...)
-
 
