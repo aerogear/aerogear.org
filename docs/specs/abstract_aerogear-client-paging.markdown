@@ -40,7 +40,7 @@ The _paging parameters_ can be defined on the Pipe and on the _paging request_. 
 
 However, it should be always possible for a user to update the arguments on a _per request_ base. For instance if the application needs to show for a specific reason ```20``` items _instead_ of the 15 from the beginning. Another reason could be the server does _not_ support the above discussed ```identifier```s, so the application developer needs to maintain the _next_ and _previous_ information.
 
-#### DEFAULT parameter providers
+##### DEFAULT parameter providers
 
 *offset*
 
@@ -52,7 +52,7 @@ However, it should be always possible for a user to update the arguments on a _p
 - _limitValue_: int, the maximum number of results the server should return (default: ```10```)
 - _limitIdentifier_: string, the ```limit``` identifier name (default: ```AG-Paging-Limit```) 
 
-#### DEFAULT parameter providers
+##### CUSTOM parameter providers
 
 A ```parameter provider``` API will be provided to that the application developer can submit any (paging) parameter that the used server requires. An example would be that the used paging service supports sorting as well. 
 
