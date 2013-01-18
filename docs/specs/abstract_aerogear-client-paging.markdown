@@ -44,7 +44,7 @@ However, it should be always possible for a user to update the arguments on a _p
 
 *offset*
 
-- _offsetValue_: int, the offset of the first element that should be included in the returned collection (default: ```0```)
+- _offsetValue_: String, the offset of the first element that should be included in the returned collection (default: ```0```)
 
 *limit* 
 
