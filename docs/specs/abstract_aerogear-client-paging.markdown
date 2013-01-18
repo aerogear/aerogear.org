@@ -64,7 +64,7 @@ In order to navigate through a large data set, the following methods are require
 - _next_: Reads the next 'page' of the paging result, from the server.
 - _previous_: Reads the previous 'page' of the paging result, from the server.
 
-_NOTE:_ When scrolling outside of the allowed range (e.g. invoking ```next``` on the last page), the server should  return an empty list.
+_NOTE:_ When scrolling outside of the allowed range (e.g. invoking ```next``` on the last page), the client should be able to handle any success response, whether there is data or not, and also any error response.
 
 ***
 
