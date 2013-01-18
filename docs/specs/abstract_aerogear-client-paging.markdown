@@ -22,7 +22,6 @@ An object to apply general information about a (paging) request.
 *locations*
 
 - _metadataLocation_: string, indicates whether paging information (see ```identifiers```) is received from the response ```header``` (default) or on the response body (```content```).
-`content```).
 - _pagingLocation_:  indicate whether paging information is sent as ```query``` parameters (default), or on the request ```header```.
 
 
