@@ -23,13 +23,13 @@ An object to apply general information about a (paging) request.
 
 *locations*
 
-- _metadataLocation_: string, indicates whether paging information (see ```identifiers```) is received from the response ```header```, the response body (```body```) or via [RFC 5988](http://tools.ietf.org/html/rfc5988) (```webLinking```), which is the ```default```.
-- _pagingLocation_:  indicate whether paging information is sent as ```query``` parameters (default), or on the request ```header```.
+- _metadataLocation_: String, indicates whether paging information (see ```identifiers```) is received from the response ```header```, the response body (```body```) or via [RFC 5988](http://tools.ietf.org/html/rfc5988) (```webLinking```), which is the ```default```.
+- _pagingLocation_:  String, indicate whether paging information is sent as ```query``` parameters (default), or on the request ```header```.
 
 *Linking*
 
-- _nextIdentifier_: string, the ```next``` identifier name (default: ```next```) 
-- _previousIdentifier_: string, the ```previous``` identifier name (default: ```previous```) 
+- _nextIdentifier_: String, the ```next``` identifier name (default: ```next```) 
+- _previousIdentifier_: String, the ```previous``` identifier name (default: ```previous```) 
 
 _NOTE:_ The AeroGear-Controller uses the [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10) API for this.
 
