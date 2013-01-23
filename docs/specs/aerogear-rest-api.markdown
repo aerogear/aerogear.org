@@ -164,35 +164,25 @@ This section describes the pagination metadata expected to be passed between a c
   The offset of the first element that should be included in the returned collection. Default value is _0_.
 * ```limit```  
   The number of elements that should be returned. Default value is _10_.
-* ```total```  
-  The total number of elements available.
 
 ### Metadata ###
-Information about the pagination parameters, and url links to the first, previous, next, and last need to be passed from the server to the clients. 
+Information about the pagination parameters, and url links to the previous and first pages need to be passed from the server to the clients. 
 There are several options available here:  
 
-*  Information is passed as HTTP Response Headers  
-*  Information is passed in the body of the Response along with the data  
+*  Information is passed as multiple HTTP Response Headers  
+*  Information is passed in a single HTTP Response Header as defined by the [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10) specification.
 
 #### HTTP Response Headers ####
-*  ```AG-Paging-Total:```  
-    The total number of elements available is passed back to the calling client for every request. This is done as this number might change.  
-*   ```AG-Links-First: cars?offset=0&limit=10```  
-    The url to the first set of items.
-*  ```AG-Links-Previous: cars?offset=10&limit=10```   
+*  ```AG-Links-Previous: http://server:host/app/cars?offset=10&limit=10```   
     The url to the previous set of items
-*  ```AG-Links-Next: cars?offset=20&limit=10```  
+*  ```AG-Links-Next: http://server:host/app/cars?offset=20&limit=10```  
     The url to the next set of items  
-*  ```AG-Links-Last: cars?offset=900&limit=10```  
-    The url to the last set of items
 
 Alternatively use [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10):  
 
 * ```Link:```  
-    <https://server:host/myapp/cars?offset=0&limit=10>; rel="first",  
     <https://server:host/myapp/cars?offset=10&limit=10>; rel="previous",  
     <https://server:host/myapp/cars?offset=30&limit=10>; rel="next",  
-    <https://server:host/myapp/cars?offset=90&limit=10>; rel="last"  
 
 ----
 
