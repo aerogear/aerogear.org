@@ -24,7 +24,6 @@ An object to apply general information about a (paging) request.
 *locations*
 
 - _metadataLocation_: String, indicates whether paging information (see ```identifiers```) is received from the response ```header```, the response body (```body```) or via [RFC 5988](http://tools.ietf.org/html/rfc5988) (```webLinking```), which is the ```default```.
-- _pagingLocation_:  String, indicate whether paging information is sent as ```query``` parameters (default), or on the request ```header```.
 
 *Linking*
 
