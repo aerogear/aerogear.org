@@ -124,7 +124,7 @@ firstPage.next(new CallBack<Car>() {
 ```
 
 #### iOS
-*General Use Case* : The client request the next page of a Pipe response.
+*General Use Case* : The client requests the next page of a Pipe response.
 
 ```ObjC
 // move to the next page
@@ -287,6 +287,8 @@ cars.readWithFilter(filter, new Callback<Car>() {
 ```
 
 #### iOS
+
+Simply redefine query params and start over.
 
 ```ObjC
     [cars readWithParams:@{@"color" : @"black", @"offset" : @"6", @"limit" : [NSNumber numberWithInt:10]} success:^(id responseObject) {
