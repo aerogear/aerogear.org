@@ -59,27 +59,27 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.Beta]
 * Release with AeroGear 1.0.0.M7
 
-1.0.0.CR1
+1.0.0.M3
 ~~~~~~~~~
 
 * AGPipeline and AGPipe
 ** Pagination
-** Query/search support (NSPredicate)
+** API overhaul
 * Improve documentation
 ** API doc
 ** Getting started guides
 * Security
 ** link:../AeroGearSecurity[AeroGear Security 1.0.0.CR]
-* binary release (framework file or dmg)
-* Release with AeroGear 1.0.0.CR
+* Release with AeroGear 1.0.0.M8
 
-1.0.0.Final
-~~~~~~~~~~~
+1.0.0.CR1 / Final
+~~~~~~~~~~~~~~~~~
 
 * Fix any final bugs
 * API and Documentation review
 * TODO app review
-* Release with AeroGear 1.0.0.Final
+* binary release (framework file or dmg)
+* Release with AeroGear 1.0.0.CR1 / Final
 
 1.0.0.NEXT
 ~~~~~~~~~~
