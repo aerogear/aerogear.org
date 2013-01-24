@@ -8,7 +8,7 @@ Below is a comparison of the method usage proposed by each lib for handling page
 
 ### Enable Paging
 
-*General Use Case* : The client configures pagging settings.
+*General Use Case* : The client configures paging settings.
 
 #### Android
 
@@ -30,30 +30,32 @@ cars.readWithFilter(filter, new Callback<Car>() {
 
 ```
 
-#### iOS
+#### iOS 
 
 ```ObjC
-// the AGPagedList category:
-__block NSArray *_pagedList;
+    NSURL* baseURL = [NSURL URLWithString:@"http://controllerdemo-danbev.rhcloud.com/aerogear-controller-demo"];
+    AGPipeline* agPipeline = [AGPipeline pipelineWithBaseURL:baseURL];
+ 
+    // create the Pipe and set paging configuration   
+    id<AGPipe> cars = [agPipeline pipe:^(id<AGPipeConfig> config) {
+        [config setName:@"cars"];
+        [config setNextIdentifier:@"AG-Links-Next"];
+        [config setPreviousIdentifier:@"AG-Links-Previous"];
+        [config setMetadataLocation:@"header"];
+    }];
 
-// start the paging........
-[pipe readWithFilter:^(id<AGFilterConfig> config) {
-    //set up the paging details:
-    [config setLimit:3];
-    [config setOffset:0];
-} success:^(id responseObject) {
-    // stash the "paged/query result" object (or what ever the name will be)
-    _pagedList = responseObject;
+    __block NSMutableArray *pagedResultSet;
 
-    // show the results - somehwre
-    NSLog(@"RESULT, PAGE 1: %@", listOfObjects);
-} failure:^(NSError *error) {...}];
+    // fetch the first page
+    [cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : [NSNumber numberWithInt:1]} success:^(id responseObject) {
+        pagedResultSet = responseObject;
 
-// get the second page.....
-[_pagedList next:^(id responseObject) {
-    // show the results - somehwre
-    NSLog(@"RESULT, PAGE 2: %@", responseObject);
-} failure:^(NSError *error) {...}];
+        // do something
+        
+    } failure:^(NSError *error) {
+        [self setFinishRunLoop:YES];
+        STFail(@"%@", error);
+    }];    
 ```
 
 #### JS
@@ -122,29 +124,37 @@ firstPage.next(new CallBack<Car>() {
 ```
 
 #### iOS
+*General Use Case* : The client request the next page of a Pipe response.
 
 ```ObjC
-// the AGPagedList category:
-__block NSArray *_pagedList;
+// move to the next page
+[pagedResultSet next:^(id responseObject) {
+    // do something
+    
+} failure:^(NSError *error) {
+    [self setFinishRunLoop:YES];
+    STFail(@"%@", error);
+}];
+```
 
-// start the paging........
-[pipe readWithFilter:^(id<AGFilterConfig> config) {
-    //set up the paging details:
-    [config setLimit:3];
-    [config setOffset:0];
-} success:^(id responseObject) {
-    // stash the "paged/query result" object (or what ever the name will be)
-    _pagedList = responseObject;
+*Failure Use Case* : The current page is the last page.
 
-    // show the results - somehwre
-    NSLog(@"RESULT, PAGE 1: %@", listOfObjects);
-} failure:^(NSError *error) {...}];
+Moving to the next page from last is left on the specific server implementation, the library will not treat it differently. Some servers can throw an error (like Twitter or AGController does) by respondng with an http error response, or simply return an empty list.
 
-// get the second page.....
-[_pagedList next:^(id responseObject) {
-    // show the results - somehwre
-    NSLog(@"RESULT, PAGE 2: %@", responseObject);
-} failure:^(NSError *error) {...}];
+*Retrieving the first page* : offset must be 0.
+
+To specify new offset, simply redefine query params and start over.
+
+```ObjC
+    [cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : [NSNumber numberWithInt:10]} success:^(id responseObject) {
+        pagedResultSet = responseObject;
+      
+       //do something
+
+    } failure:^(NSError *error) {
+        [self setFinishRunLoop:YES];
+        STFail(@"%@", error);
+    }];
 ```
 
 #### JS
@@ -201,12 +211,21 @@ secondPage.prev(new CallBack<Car>() {
 
 #### iOS
 
+*General Use Case* : The client request the previous page of a Pipe response.
+
 ```ObjC
-// go backwards....,
-[_pagedList previous:^(id responseObject) {
-    /// do something with the payload
-} failure:^(NSError *error) {...}];
+[pagedResultSet previous:^(id responseObject) {
+     // do something
+    
+} failure:^(NSError *error) {
+    [self setFinishRunLoop:YES];
+    STFail(@"%@", error);
+}];
 ```
+
+*Failure Use Case* : The current page is the first page.
+
+Similar to next case, the behaviour is left to the specific server implementation.
 
 #### JS
 
@@ -270,19 +289,15 @@ cars.readWithFilter(filter, new Callback<Car>() {
 #### iOS
 
 ```ObjC
-// REDEFINE the query/pagination, and start over:
-[pipe readWithFilter:^(id<AGFilterConfig> config) {
-    // now we want 10 per page....
-    [config setLimit:10];
-  // starting at page 1.........
-    [config setOffset:1];
-} success:^(id responseObject) {
-    // stash the "paged/query result" object (or what ever the name will be)
-    _pagedList = responseObject;
+    [cars readWithParams:@{@"color" : @"black", @"offset" : @"6", @"limit" : [NSNumber numberWithInt:10]} success:^(id responseObject) {
+        pagedResultSet = responseObject;
+      
+       //do something
 
-    // show the results - somehwre
-        NSLog(@"RESULT, PAGE 1: %@", listOfObjects);
-} failure:^(NSError *error) {...}];
+    } failure:^(NSError *error) {
+        [self setFinishRunLoop:YES];
+        STFail(@"%@", error);
+    }];
 ```
 
 #### JS
@@ -353,20 +368,18 @@ cars.readWithFilter(filter, new Callback<Car>() {
 
 #### iOS
 
-```ObjC
-// REDEFINE the query/pagination, and start over:
-[pipe readWithFilter:^(id<AGFilterConfig> config) {
-    // now we want 10 per page....
-    [config setLimit:10];
-  // starting at page 1.........
-    [config setOffset:1];
-} success:^(id responseObject) {
-    // stash the "paged/query result" object (or what ever the name will be)
-    _pagedList = responseObject;
+Simply redefine query params and start over.
 
-    // show the results - somehwre
-        NSLog(@"RESULT, PAGE 1: %@", listOfObjects);
-} failure:^(NSError *error) {...}];
+```ObjC
+    [cars readWithParams:@{@"color" : @"black", @"offset" : @"10", @"limit" : [NSNumber numberWithInt:5]} success:^(id responseObject) {
+        pagedResultSet = responseObject;
+        
+      // do something with the response...
+
+    } failure:^(NSError *error) {
+        [self setFinishRunLoop:YES];
+        STFail(@"%@", error);
+    }];
 ```
 
 #### JS
