@@ -33,29 +33,28 @@ cars.readWithFilter(filter, new Callback<Car>() {
 #### iOS 
 
 ```ObjC
-    NSURL* baseURL = [NSURL URLWithString:@"http://controllerdemo-danbev.rhcloud.com/aerogear-controller-demo"];
-    AGPipeline* agPipeline = [AGPipeline pipelineWithBaseURL:baseURL];
+NSURL* baseURL = [NSURL URLWithString:@"http://controllerdemo-danbev.rhcloud.com/aerogear-controller-demo"];
+AGPipeline* agPipeline = [AGPipeline pipelineWithBaseURL:baseURL];
  
-    // create the Pipe and set paging configuration   
-    id<AGPipe> cars = [agPipeline pipe:^(id<AGPipeConfig> config) {
-        [config setName:@"cars"];
-        [config setNextIdentifier:@"AG-Links-Next"];
-        [config setPreviousIdentifier:@"AG-Links-Previous"];
-        [config setMetadataLocation:@"header"];
-    }];
+// create the Pipe and set paging configuration   
+id<AGPipe> cars = [agPipeline pipe:^(id<AGPipeConfig> config) {
+    [config setName:@"cars"];
+    [config setNextIdentifier:@"AG-Links-Next"];
+    [config setPreviousIdentifier:@"AG-Links-Previous"];
+    [config setMetadataLocation:@"header"];
+}];
 
-    __block NSMutableArray *pagedResultSet;
+__block NSMutableArray *pagedResultSet;
 
-    // fetch the first page
-    [cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : [NSNumber numberWithInt:1]} success:^(id responseObject) {
-        pagedResultSet = responseObject;
+// fetch the first page
+[cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : @1} success:^(id responseObject) {
+    pagedResultSet = responseObject;
 
-        // do something
+    // do something
         
-    } failure:^(NSError *error) {
-        [self setFinishRunLoop:YES];
-        STFail(@"%@", error);
-    }];    
+} failure:^(NSError *error) {
+    //handle error
+}];    
 ```
 
 #### JS
@@ -132,8 +131,7 @@ firstPage.next(new CallBack<Car>() {
     // do something
     
 } failure:^(NSError *error) {
-    [self setFinishRunLoop:YES];
-    STFail(@"%@", error);
+    //handle error
 }];
 ```
 
@@ -146,15 +144,14 @@ Moving to the next page from last is left on the specific server implementation,
 To specify new offset, simply redefine query params and start over.
 
 ```ObjC
-    [cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : [NSNumber numberWithInt:10]} success:^(id responseObject) {
-        pagedResultSet = responseObject;
+[cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : @10} success:^(id responseObject) {
+    pagedResultSet = responseObject;
       
-       //do something
+   //do something
 
-    } failure:^(NSError *error) {
-        [self setFinishRunLoop:YES];
-        STFail(@"%@", error);
-    }];
+} failure:^(NSError *error) {
+    //handle error
+}];
 ```
 
 #### JS
@@ -218,8 +215,7 @@ secondPage.prev(new CallBack<Car>() {
      // do something
     
 } failure:^(NSError *error) {
-    [self setFinishRunLoop:YES];
-    STFail(@"%@", error);
+    //handle error
 }];
 ```
 
@@ -291,15 +287,14 @@ cars.readWithFilter(filter, new Callback<Car>() {
 Simply redefine query params and start over.
 
 ```ObjC
-    [cars readWithParams:@{@"color" : @"black", @"offset" : @"6", @"limit" : [NSNumber numberWithInt:10]} success:^(id responseObject) {
-        pagedResultSet = responseObject;
+[cars readWithParams:@{@"color" : @"black", @"offset" : @"6", @"limit" : @10} success:^(id responseObject) {
+    pagedResultSet = responseObject;
       
-       //do something
+   //do something
 
-    } failure:^(NSError *error) {
-        [self setFinishRunLoop:YES];
-        STFail(@"%@", error);
-    }];
+} failure:^(NSError *error) {
+    //handle error
+}];
 ```
 
 #### JS
@@ -373,15 +368,14 @@ cars.readWithFilter(filter, new Callback<Car>() {
 Simply redefine query params and start over.
 
 ```ObjC
-    [cars readWithParams:@{@"color" : @"black", @"offset" : @"10", @"limit" : [NSNumber numberWithInt:5]} success:^(id responseObject) {
-        pagedResultSet = responseObject;
+[cars readWithParams:@{@"color" : @"black", @"offset" : @"10", @"limit" : @5} success:^(id responseObject) {
+    pagedResultSet = responseObject;
         
-      // do something with the response...
+    // do something with the response...
 
-    } failure:^(NSError *error) {
-        [self setFinishRunLoop:YES];
-        STFail(@"%@", error);
-    }];
+} failure:^(NSError *error) {
+    //handle error
+}];
 ```
 
 #### JS
