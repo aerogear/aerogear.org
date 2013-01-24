@@ -169,20 +169,23 @@ This section describes the pagination metadata expected to be passed between a c
 Information about the pagination parameters, and url links to the previous and first pages need to be passed from the server to the clients. 
 There are several options available here:  
 
-*  Information is passed as multiple HTTP Response Headers  
 *  Information is passed in a single HTTP Response Header as defined by the [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10) specification.
+*  Information is passed as multiple HTTP Response Headers  
 
 #### HTTP Response Headers ####
+Web Linking returns a single response header named ```Link``` :  
+* ```Link:```  
+    <https://server:host/myapp/cars?offset=10&limit=10>; rel="previous",  
+    <https://server:host/myapp/cars?offset=30&limit=10>; rel="next",  
+
+Alternatively use custom HTTP response headers:
+
 *  ```AG-Links-Previous: http://server:host/app/cars?offset=10&limit=10```   
     The url to the previous set of items
 *  ```AG-Links-Next: http://server:host/app/cars?offset=20&limit=10```  
     The url to the next set of items  
-
-Alternatively use [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10):  
-
-* ```Link:```  
-    <https://server:host/myapp/cars?offset=10&limit=10>; rel="previous",  
-    <https://server:host/myapp/cars?offset=30&limit=10>; rel="next",  
+    
+The ```AG-``` prefix above is the default in AeroGear Controller but can be overridden if required. 
 
 ----
 
