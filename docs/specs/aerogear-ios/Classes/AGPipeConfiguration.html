@@ -44,13 +44,11 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/authModule:">&nbsp;&nbsp;&nbsp;&nbsp;- authModule:</option>
+	<option value="//api/name/endpoint">&nbsp;&nbsp;&nbsp;&nbsp;- endpoint</option>
 	
-	<option value="//api/name/baseURL:">&nbsp;&nbsp;&nbsp;&nbsp;- baseURL:</option>
+	<option value="//api/name/parameterProvider">&nbsp;&nbsp;&nbsp;&nbsp;- parameterProvider</option>
 	
-	<option value="//api/name/endpoint:">&nbsp;&nbsp;&nbsp;&nbsp;- endpoint:</option>
-	
-	<option value="//api/name/recordId:">&nbsp;&nbsp;&nbsp;&nbsp;- recordId:</option>
+	<option value="//api/name/setMetadataLocation:">&nbsp;&nbsp;&nbsp;&nbsp;- setMetadataLocation:</option>
 	
 	
 	
@@ -80,13 +78,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authModule:">authModule:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endpoint">endpoint</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/baseURL:">baseURL:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parameterProvider">parameterProvider</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endpoint:">endpoint:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recordId:">recordId:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMetadataLocation:">setMetadataLocation:</a></span></li>
 	
 </ul></li>
 
@@ -146,30 +142,26 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/baseURL:">&ndash;&nbsp;baseURL:</a></code>
-		<span class="tooltip"><p>Applies the baseURL to the configuration.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/endpoint:">&ndash;&nbsp;endpoint:</a></code>
-		<span class="tooltip"><p>Applies the baseURL to the configuration.
+		<code><a href="#//api/name/endpoint">&ndash;&nbsp;endpoint</a></code>
+		<span class="tooltip"><p>The endpoint to the configuration.
 If no endpoint is specified, the name will be used as its value.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/authModule:">&ndash;&nbsp;authModule:</a></code>
-		<span class="tooltip"><p>Applies the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p></span>
+		<code><a href="#//api/name/parameterProvider">&ndash;&nbsp;parameterProvider</a></code>
+		<span class="tooltip"><p>A dictionary containing all the HTTP request parameters and their values,
+that are passed to the server, used used when issuing paging requests.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/recordId:">&ndash;&nbsp;recordId:</a></code>
-		<span class="tooltip"><p>Applies the recordId to the configuration.</p></span>
+		<code><a href="#//api/name/setMetadataLocation:">&ndash;&nbsp;setMetadataLocation:</a></code>
+		<span class="tooltip"><p>Indicates whether paging information (see identifiers) is received
+from the response &lsquo;header&rsquo;, the response &lsquo;body&rsquo; or via RFC 5988 (&lsquo;webLinking&rsquo;),
+which is the default. Other values are ignored and the default is being used.</p></span>
 	</span>
 	
 	
@@ -191,133 +183,21 @@ If no endpoint is specified, the name will be used as its value.</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/authModule:" title="authModule:"></a>
-	<h3 class="subsubtitle method-title">authModule:</h3>
+	<a name="//api/name/endpoint" title="endpoint"></a>
+	<h3 class="subsubtitle method-title">endpoint</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Applies the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)authModule:(id&lt;AGAuthenticationModule&gt;)<em>authModule</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>authModule</em></dt>
-			<dd><p>The <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> of the actual <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipeConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/baseURL:" title="baseURL:"></a>
-	<h3 class="subsubtitle method-title">baseURL:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Applies the baseURL to the configuration.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)baseURL:(NSURL *)<em>baseURL</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>baseURL</em></dt>
-			<dd><p>The baseURL of the actual <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the baseURL to the configuration.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipeConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/endpoint:" title="endpoint:"></a>
-	<h3 class="subsubtitle method-title">endpoint:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Applies the baseURL to the configuration.
+		<p>The endpoint to the configuration.
 If no endpoint is specified, the name will be used as its value.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)endpoint:(NSString *)<em>endpoint</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)endpoint</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>endpoint</em></dt>
-			<dd><p>The baseURL of the actual <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -327,7 +207,7 @@ If no endpoint is specified, the name will be used as its value.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the baseURL to the configuration.
+		<p>The endpoint to the configuration.
 If no endpoint is specified, the name will be used as its value.</p>
 	</div>
 	
@@ -346,30 +226,21 @@ If no endpoint is specified, the name will be used as its value.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/recordId:" title="recordId:"></a>
-	<h3 class="subsubtitle method-title">recordId:</h3>
+	<a name="//api/name/parameterProvider" title="parameterProvider"></a>
+	<h3 class="subsubtitle method-title">parameterProvider</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Applies the recordId to the configuration.</p>
+		<p>A dictionary containing all the HTTP request parameters and their values,
+that are passed to the server, used used when issuing paging requests.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)recordId:(NSString *)<em>recordId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)parameterProvider</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>recordId</em></dt>
-			<dd><p>The name of the field used to uniquely identify a &ldquo;record&rdquo; in the data</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -379,7 +250,56 @@ If no endpoint is specified, the name will be used as its value.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the recordId to the configuration.</p>
+		<p>A dictionary containing all the HTTP request parameters and their values,
+that are passed to the server, used used when issuing paging requests.</p>
+
+<p>If no &ldquo;parameter provider&rdquo; has been provided, the values for
+limit/<a href="../Protocols/AGPipeConfig.html#//api/name/offset">offset</a> are used</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setMetadataLocation:" title="setMetadataLocation:"></a>
+	<h3 class="subsubtitle method-title">setMetadataLocation:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Indicates whether paging information (see identifiers) is received
+from the response &lsquo;header&rsquo;, the response &lsquo;body&rsquo; or via RFC 5988 (&lsquo;webLinking&rsquo;),
+which is the default. Other values are ignored and the default is being used.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setMetadataLocation:(NSString *)<em>metadataLocation</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Indicates whether paging information (see identifiers) is received
+from the response &lsquo;header&rsquo;, the response &lsquo;body&rsquo; or via RFC 5988 (&lsquo;webLinking&rsquo;),
+which is the default. Other values are ignored and the default is being used.</p>
 	</div>
 	
 	
@@ -409,7 +329,7 @@ If no endpoint is specified, the name will be used as its value.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-12-19)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

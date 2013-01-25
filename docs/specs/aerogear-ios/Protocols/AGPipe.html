@@ -40,9 +40,9 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	<option value="//api/name/URL">&nbsp;&nbsp;&nbsp;&nbsp;URL</option>
 	
-	<option value="//api/name/url">&nbsp;&nbsp;&nbsp;&nbsp;url</option>
+	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
 	
 	
 	
@@ -55,7 +55,7 @@
 	
 	<option value="//api/name/read:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- read:success:failure:</option>
 	
-	<option value="//api/name/readWithFilter:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- readWithFilter:success:failure:</option>
+	<option value="//api/name/readWithParams:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- readWithParams:success:failure:</option>
 	
 	<option value="//api/name/remove:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:success:failure:</option>
 	
@@ -85,9 +85,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/URL">URL</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/url">url</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
 	
 </ul></li>
 
@@ -101,7 +101,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:success:failure:">read:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readWithFilter:success:failure:">readWithFilter:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readWithParams:success:failure:">readWithParams:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:success:failure:">remove:success:failure:</a></span></li>
 	
@@ -170,7 +170,7 @@ communicate with the server and perfoms read/write operations.</p>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/url">&nbsp;&nbsp;url</a></code>
+		<code><a href="#//api/name/URL">&nbsp;&nbsp;URL</a></code>
 		<span class="tooltip"><p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -191,23 +191,22 @@ communicate with the server and perfoms read/write operations.</p>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/readWithFilter:success:failure:">&ndash;&nbsp;readWithFilter:success:failure:</a></code>
-		<span class="tooltip"><p>Reads all the data that matches a given filter criteria from the underlying server connection.</p></span>
+		<code><a href="#//api/name/readWithParams:success:failure:">&ndash;&nbsp;readWithParams:success:failure:</a></code>
+		<span class="tooltip"><p>Reads all the data that matches a given parameter provider from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/save:success:failure:">&ndash;&nbsp;save:success:failure:</a></code>
-		<span class="tooltip"><p>Saves (or updates) a give &lsquo;JSON&rsquo; map on the server;</p></span>
+		<span class="tooltip"><p>Saves (or updates) a given object from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:success:failure:">&ndash;&nbsp;remove:success:failure:</a></code>
-		<span class="tooltip"><p>Removes an object from the underlying server connection. The
-given key argument is used as the objects ID.</p></span>
+		<span class="tooltip"><p>Removes an object from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -223,6 +222,47 @@ given key argument is used as the objects ID.</p></span>
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/URL" title="URL"></a>
+	<h3 class="subsubtitle method-title">URL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *URL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/type" title="type"></a>
@@ -249,47 +289,6 @@ given key argument is used as the objects ID.</p></span>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipe.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/url" title="url"></a>
-	<h3 class="subsubtitle method-title">url</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *url</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;</p>
 	</div>
 	
 	
@@ -398,7 +397,7 @@ the network or parsing error that occurred.</p></dd>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>value</em></dt>
-			<dd><p>The value of the recordId (see method <a href="../Protocols/AGPipeConfig.html#//api/name/recordId:">[AGPipeConfig recordId:]</a>)</p></dd>
+			<dd><p>The value of the recordId. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a></p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -444,18 +443,18 @@ the network or parsing error that occurred.</p></dd>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/readWithFilter:success:failure:" title="readWithFilter:success:failure:"></a>
-	<h3 class="subsubtitle method-title">readWithFilter:success:failure:</h3>
+	<a name="//api/name/readWithParams:success:failure:" title="readWithParams:success:failure:"></a>
+	<h3 class="subsubtitle method-title">readWithParams:success:failure:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Reads all the data that matches a given filter criteria from the underlying server connection.</p>
+		<p>Reads all the data that matches a given parameter provider from the underlying server connection.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)readWithFilter:(void ( ^ ) ( id&lt;AGFilterConfig&gt; config ))<em>config</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)readWithParams:(NSDictionary *)<em>parameterProvider</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
     
 	
@@ -463,8 +462,10 @@ the network or parsing error that occurred.</p></dd>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>config</em></dt>
-			<dd><p><a href="../Protocols/AGFilterConfig.html"><code>AGFilterConfig</code></a> object initialized with the filter</p></dd>
+			<dt><em>parameterProvider</em></dt>
+			<dd><p>A dictionary containing all the parameters and their values, that are
+passed to the server. If no parameterProvider is given, the defaults from the <a href="../Protocols/AGPipeConfig.html"><code>AGPipeConfig</code></a>
+are used.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -492,7 +493,7 @@ the network or parsing error that occurred.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Reads all the data that matches a given filter criteria from the underlying server connection.</p>
+		<p>Reads all the data that matches a given parameter provider from the underlying server connection.</p>
 	</div>
 	
 	
@@ -516,13 +517,12 @@ the network or parsing error that occurred.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Removes an object from the underlying server connection. The
-given key argument is used as the objects ID.</p>
+		<p>Removes an object from the underlying server connection.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)remove:(id)<em>key</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)remove:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
     
 	
@@ -530,8 +530,9 @@ given key argument is used as the objects ID.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>key</em></dt>
-			<dd><p>(string, integer,&hellip;) representing the &lsquo;id&rsquo;</p></dd>
+			<dt><em>object</em></dt>
+			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to remove. Note the map must have the
+&lsquo;recordId&rsquo; key set. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a></p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -559,8 +560,7 @@ the network or parsing error that occurred.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Removes an object from the underlying server connection. The
-given key argument is used as the objects ID.</p>
+		<p>Removes an object from the underlying server connection.</p>
 	</div>
 	
 	
@@ -584,7 +584,7 @@ given key argument is used as the objects ID.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Saves (or updates) a give &lsquo;JSON&rsquo; map on the server;</p>
+		<p>Saves (or updates) a given object from the underlying server connection.</p>
 	</div>		
 	
     
@@ -626,7 +626,7 @@ the network or parsing error that occurred.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Saves (or updates) a give &lsquo;JSON&rsquo; map on the server;</p>
+		<p>Saves (or updates) a given object from the underlying server connection.</p>
 	</div>
 	
 	
@@ -656,7 +656,7 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-12-19)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

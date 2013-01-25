@@ -44,20 +44,20 @@
 	
 	<option value="//api/name/pipeline">&nbsp;&nbsp;&nbsp;&nbsp;+ pipeline</option>
 	
-	<option value="//api/name/pipeline:">&nbsp;&nbsp;&nbsp;&nbsp;+ pipeline:</option>
+	<option value="//api/name/pipelineWithBaseURL:">&nbsp;&nbsp;&nbsp;&nbsp;+ pipelineWithBaseURL:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/get:">&nbsp;&nbsp;&nbsp;&nbsp;- get:</option>
-	
 	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
 	
-	<option value="//api/name/init:">&nbsp;&nbsp;&nbsp;&nbsp;- init:</option>
+	<option value="//api/name/initWithBaseURL:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithBaseURL:</option>
 	
 	<option value="//api/name/pipe:">&nbsp;&nbsp;&nbsp;&nbsp;- pipe:</option>
+	
+	<option value="//api/name/pipeWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- pipeWithName:</option>
 	
 	<option value="//api/name/remove:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:</option>
 	
@@ -89,7 +89,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pipeline">pipeline</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pipeline:">pipeline:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pipelineWithBaseURL:">pipelineWithBaseURL:</a></span></li>
 	
 </ul></li>
 
@@ -97,13 +97,13 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:">get:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init:">init:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithBaseURL:">initWithBaseURL:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pipe:">pipe:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pipeWithName:">pipeWithName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:">remove:</a></span></li>
 	
@@ -163,7 +163,7 @@ communicate with the server no matter the data format or transport expected.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/init:">&ndash;&nbsp;init:</a></code>
+		<code><a href="#//api/name/initWithBaseURL:">&ndash;&nbsp;initWithBaseURL:</a></code>
 		<span class="tooltip"><p>An initializer method to instantiate an empty AGPipeline.</p></span>
 	</span>
 	
@@ -184,7 +184,7 @@ communicate with the server no matter the data format or transport expected.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/pipeline:">+&nbsp;pipeline:</a></code>
+		<code><a href="#//api/name/pipelineWithBaseURL:">+&nbsp;pipelineWithBaseURL:</a></code>
 		<span class="tooltip"><p>A factory method to instantiate an empty AGPipeline.</p></span>
 	</span>
 	
@@ -205,7 +205,7 @@ communicate with the server no matter the data format or transport expected.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/get:">&ndash;&nbsp;get:</a></code>
+		<code><a href="#//api/name/pipeWithName:">&ndash;&nbsp;pipeWithName:</a></code>
 		<span class="tooltip"><p>Look up for a pipe object.</p></span>
 	</span>
 	
@@ -272,8 +272,8 @@ communicate with the server no matter the data format or transport expected.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/pipeline:" title="pipeline:"></a>
-	<h3 class="subsubtitle method-title">pipeline:</h3>
+	<a name="//api/name/pipelineWithBaseURL:" title="pipelineWithBaseURL:"></a>
+	<h3 class="subsubtitle method-title">pipelineWithBaseURL:</h3>
 	
 	
 	
@@ -283,7 +283,7 @@ communicate with the server no matter the data format or transport expected.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (id)pipeline:(NSURL *)<em>baseURL</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (id)pipelineWithBaseURL:(NSURL *)<em>baseURL</em></code></div>
 
     
 	
@@ -336,62 +336,6 @@ communicate with the server no matter the data format or transport expected.</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/get:" title="get:"></a>
-	<h3 class="subsubtitle method-title">get:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Look up for a pipe object.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)get:(NSString *)<em>name</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>name</em></dt>
-			<dd><p>the name of the actual pipe</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Look up for a pipe object.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipeline.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/init" title="init"></a>
 	<h3 class="subsubtitle method-title">init</h3>
 	
@@ -438,8 +382,8 @@ communicate with the server no matter the data format or transport expected.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/init:" title="init:"></a>
-	<h3 class="subsubtitle method-title">init:</h3>
+	<a name="//api/name/initWithBaseURL:" title="initWithBaseURL:"></a>
+	<h3 class="subsubtitle method-title">initWithBaseURL:</h3>
 	
 	
 	
@@ -449,7 +393,7 @@ communicate with the server no matter the data format or transport expected.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)init:(NSURL *)<em>baseURL</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithBaseURL:(NSURL *)<em>baseURL</em></code></div>
 
     
 	
@@ -551,6 +495,62 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/pipeWithName:" title="pipeWithName:"></a>
+	<h3 class="subsubtitle method-title">pipeWithName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Look up for a pipe object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)pipeWithName:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the name of the actual pipe</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Look up for a pipe object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeline.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/remove:" title="remove:"></a>
 	<h3 class="subsubtitle method-title">remove:</h3>
 	
@@ -619,7 +619,7 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-12-19)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

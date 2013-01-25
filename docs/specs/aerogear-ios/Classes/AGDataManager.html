@@ -49,11 +49,11 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/get:">&nbsp;&nbsp;&nbsp;&nbsp;- get:</option>
-	
 	<option value="//api/name/remove:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:</option>
 	
 	<option value="//api/name/store:">&nbsp;&nbsp;&nbsp;&nbsp;- store:</option>
+	
+	<option value="//api/name/storeWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- storeWithName:</option>
 	
 	
 	
@@ -89,11 +89,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:">get:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:">remove:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/store:">store:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/storeWithName:">storeWithName:</a></span></li>
 	
 </ul></li>
 
@@ -176,7 +176,7 @@ is determined by the storeName argument.</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/get:">&ndash;&nbsp;get:</a></code>
+		<code><a href="#//api/name/storeWithName:">&ndash;&nbsp;storeWithName:</a></code>
 		<span class="tooltip"><p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p></span>
 	</span>
 	
@@ -249,57 +249,6 @@ is determined by the storeName argument.</p></span>
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/get:" title="get:"></a>
-	<h3 class="subsubtitle method-title">get:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)get:(NSString *)<em>storeName</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>storeName</em></dt>
-			<dd><p>The name of the actual data store object.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGDataManager.h</code><br />
-	</div>				
-	
-	
-</div>
 						
 						<div class="section-method">
 	<a name="//api/name/remove:" title="remove:"></a>
@@ -411,6 +360,57 @@ the object is used to configure the <a href="../Protocols/AGStore.html">AGStore<
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/storeWithName:" title="storeWithName:"></a>
+	<h3 class="subsubtitle method-title">storeWithName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)storeWithName:(NSString *)<em>storeName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>storeName</em></dt>
+			<dd><p>The name of the actual data store object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGDataManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -424,7 +424,7 @@ the object is used to configure the <a href="../Protocols/AGStore.html">AGStore<
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-12-19)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

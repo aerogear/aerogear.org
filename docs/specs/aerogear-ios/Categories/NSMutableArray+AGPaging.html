@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGFilterConfig Protocol Reference</title>
+		<title>NSMutableArray(AGPaging) Category Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGFilterConfig Protocol Reference</h1>
+				<h1 class="hideInXcode">NSMutableArray(AGPaging) Category Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,8 +26,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
 	
 	
 	
@@ -44,11 +42,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/limit:">&nbsp;&nbsp;&nbsp;&nbsp;- limit:</option>
+	<option value="//api/name/next:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- next:failure:</option>
 	
-	<option value="//api/name/offset:">&nbsp;&nbsp;&nbsp;&nbsp;- offset:</option>
-	
-	<option value="//api/name/where:">&nbsp;&nbsp;&nbsp;&nbsp;- where:</option>
+	<option value="//api/name/previous:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- previous:failure:</option>
 	
 	
 	
@@ -59,8 +55,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
 
 
 
@@ -78,11 +72,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/limit:">limit:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/next:failure:">next:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/offset:">offset:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/where:">where:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/previous:failure:">previous:failure:</a></span></li>
 	
 </ul></li>
 
@@ -91,7 +83,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGFilterConfig Protocol Reference" name="top"></a>
+				<a title="NSMutableArray(AGPaging) Category Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -100,29 +92,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGFilterConfig Protocol Reference</h1>
+						<h1 class="title title-header">NSMutableArray(AGPaging) Category Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/AGConfig.html">AGConfig</a></td>
-</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGFilterConfig.h</td>
+	<td class="specification-value">AGNSMutableArray+Paging.h<br />AGNSMutableArray+Paging.m</td>
 </tr>
 						</tbody></table></div>
 					
-					
-					
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Represents the public API to configure filtering.</p>
-					</div>
 					
 					
 					
@@ -139,25 +120,18 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/limit:">&ndash;&nbsp;limit:</a></code>
-		<span class="tooltip"><p>Applies the limit to the configuration.</p></span>
+		<code><a href="#//api/name/next:failure:">&ndash;&nbsp;next:failure:</a></code>
+		<span class="tooltip"><p>Reads the next &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/offset:">&ndash;&nbsp;offset:</a></code>
-		<span class="tooltip"><p>Applies the offset to the configuration.</p></span>
+		<code><a href="#//api/name/previous:failure:">&ndash;&nbsp;previous:failure:</a></code>
+		<span class="tooltip"><p>Reads the previous &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/where:">&ndash;&nbsp;where:</a></code>
-		<span class="tooltip"><p>Applies the query to the configuration.</p></span>
-	</span>
 	
-	<span class="task-item-suffix">required method</span>
 </li>
 						</ul>
 						
@@ -176,18 +150,18 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/limit:" title="limit:"></a>
-	<h3 class="subsubtitle method-title">limit:</h3>
+	<a name="//api/name/next:failure:" title="next:failure:"></a>
+	<h3 class="subsubtitle method-title">next:failure:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Applies the limit to the configuration.</p>
+		<p>Reads the next &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)limit:(NSUInteger)<em>limit</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)next:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
     
 	
@@ -195,8 +169,18 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>limit</em></dt>
-			<dd><p>The number of the results returned</p></dd>
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+This block has no return value and takes one argument: The object created from the response
+data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
+or that finishes successfully, but encountered an error while parsing the resonse data.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -209,7 +193,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the limit to the configuration.</p>
+		<p>Reads the next &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p>
 	</div>
 	
 	
@@ -220,25 +204,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGFilterConfig.h</code><br />
+		<code class="declared-in-ref">AGNSMutableArray+Paging.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/offset:" title="offset:"></a>
-	<h3 class="subsubtitle method-title">offset:</h3>
+	<a name="//api/name/previous:failure:" title="previous:failure:"></a>
+	<h3 class="subsubtitle method-title">previous:failure:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Applies the offset to the configuration.</p>
+		<p>Reads the previous &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)offset:(NSUInteger)<em>offset</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)previous:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
     
 	
@@ -246,8 +230,18 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>offset</em></dt>
-			<dd><p>The offset in the number of the results</p></dd>
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+This block has no return value and takes one argument: The object created from the response
+data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
+or that finishes successfully, but encountered an error while parsing the resonse data.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -260,7 +254,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the offset to the configuration.</p>
+		<p>Reads the previous &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p>
 	</div>
 	
 	
@@ -271,58 +265,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGFilterConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/where:" title="where:"></a>
-	<h3 class="subsubtitle method-title">where:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Applies the query to the configuration.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)where:(NSDictionary *)<em>where</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>where</em></dt>
-			<dd><p>The query to be used to filter returned results</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the query to the configuration.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGFilterConfig.h</code><br />
+		<code class="declared-in-ref">AGNSMutableArray+Paging.h</code><br />
 	</div>				
 	
 	
@@ -341,7 +284,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Red Hat. All rights reserved. (Last updated: 2012-12-19)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
