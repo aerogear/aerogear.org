@@ -37,7 +37,7 @@ In the "Podfile", add the following lines:
 [source,bash]
 ----
 platform :ios
-pod 'AeroGear', '1.0.0.M2'
+pod 'AeroGear', '1.0.0.M3'
 ----
 
 And then:
