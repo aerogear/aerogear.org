@@ -33,12 +33,12 @@ cars.readWithFilter(filter, new Callback<Car>() {
 #### iOS 
 
 ```ObjC
-NSURL* baseURL = [NSURL URLWithString:@"http://controllerdemo-danbev.rhcloud.com/aerogear-controller-demo"];
+NSURL* baseURL = [NSURL URLWithString:@"https://controller-aerogear.rhcloud.com/aerogear-controller-demo"];
 AGPipeline* agPipeline = [AGPipeline pipelineWithBaseURL:baseURL];
  
 // create the Pipe and set paging configuration   
 id<AGPipe> cars = [agPipeline pipe:^(id<AGPipeConfig> config) {
-    [config setName:@"cars"];
+    [config setName:@"cars-custom"];
     [config setNextIdentifier:@"AG-Links-Next"];
     [config setPreviousIdentifier:@"AG-Links-Previous"];
     [config setMetadataLocation:@"header"];
