@@ -56,16 +56,20 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** Session/Local Storage adapter
 * Release with AeroGear 1.0.0.M7
 
+1.0.0-M3
+~~~~~~~~
+
+* AeroGear.Pipeline.js
+** paging
+* Documentation Cleanup
+* Release with AeroGear 1.0.0.M8
+* Custom JS Builder
+
 1.0.0.CR1
 ~~~~~~~~~
 
-* Metadata based client side validation
-** link:../AeroGearController[AeroGear Controller]
 * Bug fixes and enhancements
 * TODO app enhancement to show new library features
-* AeroGear.auth.js, AeroGear.encryptor.js
-** OTP
-** link:../AeroGearSecurity[AeroGear Security]
 * Release with AeroGear 1.0.0.CR
 
 1.0.0.Final
@@ -81,6 +85,11 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 
 * AeroGear.Pipeline.js
 ** WebSocket Adapter
+* Metadata based client side validation
+** link:../AeroGearController[AeroGear Controller]
+* AeroGear.auth.js, AeroGear.encryptor.js
+** OTP
+** link:../AeroGearSecurity[AeroGear Security]
 
 JavaScript Specific Requirements
 --------------------------------
