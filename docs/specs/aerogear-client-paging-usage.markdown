@@ -63,13 +63,19 @@ __block NSMutableArray *pagedResultSet;
 var cars = AeroGear.Pipeline({
     name: "cars",
     settings: {
-        paged: "headers"
+      pageConfig: {
+        metadataLocation: "header",
+        previousIdentifier: "AG-Links-Previous",
+        nextIdentifier: "AG-Links-Next"
+      }
     }
 }).pipes.cars;
 
+// Fetch first page of 10 cars
 cars.read({
-    page: "next",
-    success: function( data ) {
+    offsetValue: 0,
+    limitValue: 10,
+    success: function( pagedResults ) {
         // do something
     },
     error: function() {
@@ -156,10 +162,31 @@ To specify new offset, simply redefine query params and start over.
 
 #### JS
 
+*General Use Case* : The client requests the next page of a Pipe response.
+
 ```JS
+pagedResults.next({
+    success: function( morePagedResults ) {
+        // do something
+    },
+    error: function() {
+        // handle it
+    }
+});
+```
+
+*Failure Use Case* : The current page is the last page.
+
+Moving to the next page from last is left on the specific server implementation, the library will not treat it differently. Some servers can throw an error (like Twitter or AGController does) by respondng with an http error response, or simply return an empty list.
+
+*Retrieving the first page* : offset must be 0.
+
+```JS
+// Fetch first page of 10 cars
 cars.read({
-    page: "next",
-    success: function( data ) {
+    offsetValue: 0,
+    limitValue: 10,
+    success: function( pagedResults ) {
         // do something
     },
     error: function() {
@@ -225,10 +252,11 @@ Similar to next case, the behaviour is left to the specific server implementatio
 
 #### JS
 
+*General Use Case* : The client request the previous page of a Pipe response.
+
 ```JS
-cars.read({
-    page: "prev",
-    success: function( data ) {
+pagedResults.previous({
+    success: function( morePagedResults ) {
         // do something
     },
     error: function() {
@@ -236,6 +264,10 @@ cars.read({
     }
 });
 ```
+
+*Failure Use Case* : The current page is the first page.
+
+Similar to next case, the behaviour is left to the specific server implementation.
 
 ### Change Offset and Limit
 
@@ -299,31 +331,12 @@ Simply redefine query params and start over.
 
 #### JS
 
+*General Use Case* : The client changes the paging configuration mid-flight.
+
 ```JS
-var cars = AeroGear.Pipeline({
-    name: "cars",
-    settings: {
-        paged: "headers"
-    }
-}).pipes.cars;
-
 cars.read({
-    page: "next",
-    success: function( data ) {
-        // do something
-    },
-    error: function() {
-        // handle it
-    }
-});
-
-cars.updatePageConfig({
-    offset: 2,
-    limit: 10
-});
-
-cars.read({
-    page: "next",
+    offsetValue: 3,
+    limitValue: 5,
     success: function( data ) {
         // do something
     },
@@ -381,21 +394,17 @@ Simply redefine query params and start over.
 #### JS
 
 ```JS
-cars.updatePageConfig({
-    offset: 2,
-});
-
 cars.read({
-    success: function( data ) {
-        // handle page 2
-    },
-    error: function() {
-        // handle it
-    }
+  offsetValue: 1,
+  limitValue: 2,
+  success: function( data ) {
+      // handle page 2
+  },
+  error: function() {
+      // handle page not existing
+  }
 });
-
 ```
-
 
 ### Return All Records (No longer paged)
 
@@ -427,23 +436,9 @@ cars.read(new Callback<Car>() {
 #### JS
 
 ```JS
-// Get all records for a single read but continue paging aftwerward
+// Get all records for a single read but continue paging afterward
 cars.read({
-    page: false,
-    success: function( data ) {
-        // do something
-    },
-    error: function() {
-        // handle it
-    }
-});
-
-// Or permanently update the config to no longer page the results
-cars.updatePageConfig({
-    paged: false
-});
-
-cars.read({
+    paging: false,
     success: function( data ) {
         // do something
     },
