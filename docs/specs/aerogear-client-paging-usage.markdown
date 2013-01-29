@@ -1,5 +1,5 @@
---- 
-layout: basic 
+---
+layout: basic
 title: AeroGear Client Paging Usage
 ---
 ## Client Paging Usage
@@ -21,66 +21,65 @@ cars.readWithFilter(filter, new Callback<Car>() {
   void onSuccess(List<Car> data) {
     firstPage = data;
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
   }
 });
-
 ```
 
-#### iOS 
+#### iOS
 
 ```ObjC
 NSURL* baseURL = [NSURL URLWithString:@"https://controller-aerogear.rhcloud.com/aerogear-controller-demo"];
 AGPipeline* agPipeline = [AGPipeline pipelineWithBaseURL:baseURL];
- 
-// create the Pipe and set paging configuration   
+
+// create the Pipe and set paging configuration
 id<AGPipe> cars = [agPipeline pipe:^(id<AGPipeConfig> config) {
-    [config setName:@"cars-custom"];
-    [config setNextIdentifier:@"AG-Links-Next"];
-    [config setPreviousIdentifier:@"AG-Links-Previous"];
-    [config setMetadataLocation:@"header"];
+  [config setName:@"cars-custom"];
+  [config setNextIdentifier:@"AG-Links-Next"];
+  [config setPreviousIdentifier:@"AG-Links-Previous"];
+  [config setMetadataLocation:@"header"];
 }];
 
 __block NSMutableArray *pagedResultSet;
 
 // fetch the first page
 [cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : @1} success:^(id responseObject) {
-    pagedResultSet = responseObject;
+  pagedResultSet = responseObject;
 
-    // do something
-        
+  // do something
+
 } failure:^(NSError *error) {
-    //handle error
-}];    
+  //handle error
+}];
 ```
 
 #### JS
 
 ```JS
 var cars = AeroGear.Pipeline({
-    name: "cars",
-    settings: {
-      pageConfig: {
-        metadataLocation: "header",
-        previousIdentifier: "AG-Links-Previous",
-        nextIdentifier: "AG-Links-Next"
-      }
+  name: "cars",
+  settings: {
+    pageConfig: {
+      metadataLocation: "header",
+      previousIdentifier: "AG-Links-Previous",
+      nextIdentifier: "AG-Links-Next"
     }
+  }
 }).pipes.cars;
 
 // Fetch first page of 10 cars
 cars.read({
-    offsetValue: 0,
-    limitValue: 10,
-    success: function( pagedResults ) {
-        // do something
-    },
-    error: function() {
-        // handle it
-    }
+  offsetValue: 0,
+  limitValue: 10,
+  success: function( pagedResults ) {
+    // do something
+  },
+  error: function() {
+    // handle it
+  }
 });
 ```
 
@@ -105,7 +104,7 @@ cars.readWithFilter(filter, new Callback<Car>() {
   void onSuccess(List<Car> data) {
     firstPage = data;
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
@@ -118,14 +117,12 @@ firstPage.next(new CallBack<Car>() {
   void onSuccess(List<Car> secondPagedList) {
     //Do somethign with second Paged list
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
   }
 });
-
-
 ```
 
 #### iOS
@@ -134,10 +131,10 @@ firstPage.next(new CallBack<Car>() {
 ```ObjC
 // move to the next page
 [pagedResultSet next:^(id responseObject) {
-    // do something
-    
+  // do something
+
 } failure:^(NSError *error) {
-    //handle error
+  //handle error
 }];
 ```
 
@@ -151,12 +148,12 @@ To specify new offset, simply redefine query params and start over.
 
 ```ObjC
 [cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : @10} success:^(id responseObject) {
-    pagedResultSet = responseObject;
-      
-   //do something
+  pagedResultSet = responseObject;
+
+  //do something
 
 } failure:^(NSError *error) {
-    //handle error
+  //handle error
 }];
 ```
 
@@ -166,12 +163,12 @@ To specify new offset, simply redefine query params and start over.
 
 ```JS
 pagedResults.next({
-    success: function( morePagedResults ) {
-        // do something
-    },
-    error: function() {
-        // handle it
-    }
+  success: function( morePagedResults ) {
+    // do something
+  },
+  error: function() {
+    // handle it
+  }
 });
 ```
 
@@ -184,14 +181,14 @@ Moving to the next page from last is left on the specific server implementation,
 ```JS
 // Fetch first page of 10 cars
 cars.read({
-    offsetValue: 0,
-    limitValue: 10,
-    success: function( pagedResults ) {
-        // do something
-    },
-    error: function() {
-        // handle it
-    }
+  offsetValue: 0,
+  limitValue: 10,
+  success: function( pagedResults ) {
+    // do something
+  },
+  error: function() {
+    // handle it
+  }
 });
 ```
 
@@ -213,7 +210,7 @@ cars.readWithFilter(filter, new Callback<Car>() {
   void onSuccess(List<Car> data) {
     secondPage = data;
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
@@ -225,7 +222,7 @@ secondPage.prev(new CallBack<Car>() {
   void onSuccess(List<Car> firstPagedList) {
     //Do somethign with second Paged list
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
@@ -239,10 +236,10 @@ secondPage.prev(new CallBack<Car>() {
 
 ```ObjC
 [pagedResultSet previous:^(id responseObject) {
-     // do something
-    
+  // do something
+
 } failure:^(NSError *error) {
-    //handle error
+  //handle error
 }];
 ```
 
@@ -256,12 +253,12 @@ Similar to next case, the behaviour is left to the specific server implementatio
 
 ```JS
 pagedResults.previous({
-    success: function( morePagedResults ) {
-        // do something
-    },
-    error: function() {
-        // handle it
-    }
+  success: function( morePagedResults ) {
+    // do something
+  },
+  error: function() {
+    // handle it
+  }
 });
 ```
 
@@ -273,12 +270,10 @@ Similar to next case, the behaviour is left to the specific server implementatio
 
 *General Use Case* : The client changes the paging configuration mid-flight.
 
-
 #### Android
 
 
 ```Java
-
 ReadFilter filter = new ReadFilter();
 filter.setLimit(5);
 filter.setOffset(1);
@@ -288,7 +283,7 @@ cars.readWithFilter(filter, new Callback<Car>() {
   void onSuccess(List<Car> data) {
     //do something
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
@@ -305,13 +300,12 @@ cars.readWithFilter(filter, new Callback<Car>() {
   void onSuccess(List<Car> data) {
     //do something
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
   }
 });
-
 ```
 
 #### iOS
@@ -320,12 +314,12 @@ Simply redefine query params and start over.
 
 ```ObjC
 [cars readWithParams:@{@"color" : @"black", @"offset" : @"6", @"limit" : @10} success:^(id responseObject) {
-    pagedResultSet = responseObject;
-      
-   //do something
+  pagedResultSet = responseObject;
+
+  //do something
 
 } failure:^(NSError *error) {
-    //handle error
+  //handle error
 }];
 ```
 
@@ -335,16 +329,15 @@ Simply redefine query params and start over.
 
 ```JS
 cars.read({
-    offsetValue: 3,
-    limitValue: 5,
-    success: function( data ) {
-        // do something
-    },
-    error: function() {
-        // handle it
-    }
+  offsetValue: 3,
+  limitValue: 5,
+  success: function( data ) {
+    // do something
+  },
+  error: function() {
+    // handle it
+  }
 });
-
 ```
 
 ### Jumping to a specific page
@@ -355,9 +348,7 @@ cars.read({
 
 #### Android
 
-
 ```Java
-
 ReadFilter filter = new ReadFilter();
 filter.setLimit(5);
 filter.setOffset(2);
@@ -367,13 +358,12 @@ cars.readWithFilter(filter, new Callback<Car>() {
   void onSuccess(List<Car> data) {
     //handling page 2
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
   }
 });
-
 ```
 
 #### iOS
@@ -382,9 +372,9 @@ Simply redefine query params and start over.
 
 ```ObjC
 [cars readWithParams:@{@"color" : @"black", @"offset" : @"10", @"limit" : @5} success:^(id responseObject) {
-    pagedResultSet = responseObject;
-        
-    // do something with the response...
+  pagedResultSet = responseObject;
+
+  // do something with the response...
 
 } failure:^(NSError *error) {
     //handle error
@@ -398,10 +388,10 @@ cars.read({
   offsetValue: 1,
   limitValue: 2,
   success: function( data ) {
-      // handle page 2
+    // handle page 2
   },
   error: function() {
-      // handle page not existing
+    // handle page not existing
   }
 });
 ```
@@ -411,13 +401,12 @@ cars.read({
 #### Android
 
 ```Java
-
 cars.read(new Callback<Car>() {
   @Override
   void onSuccess(List<Car> allRecords) {
-   //do something 
+   //do something
   }
-  
+
   @Override
   void onError(Exception ex) {
     //handle error
@@ -429,7 +418,7 @@ cars.read(new Callback<Car>() {
 
 ```ObjC
 [pipe read:^(id responseObject) {
-    // do something with the response...
+  // do something with the response...
 } failure:^(NSError *error) {...}];
 ```
 
@@ -438,12 +427,12 @@ cars.read(new Callback<Car>() {
 ```JS
 // Get all records for a single read but continue paging afterward
 cars.read({
-    paging: false,
-    success: function( data ) {
-        // do something
-    },
-    error: function() {
-        // handle it
-    }
+  paging: false,
+  success: function( data ) {
+    // do something
+  },
+  error: function() {
+    // handle it
+  }
 });
 ```
