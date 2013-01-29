@@ -63,6 +63,7 @@ Each library will have its own versioning.  Its Roadmap should be defined here.
 ** paging
 * Documentation Cleanup
 * Release with AeroGear 1.0.0.M8
+* Custom JS Builder
 
 1.0.0.CR1
 ~~~~~~~~~
