@@ -13,7 +13,7 @@ title: Specifications
 * [AeroGear Android 1.0.0.M1](aerogear-android)
 
 #### Server Side Specifications
-* [AeroGear Controller 1.0.0.M1](aerogear-controller)
+* [AeroGear Controller 1.0.0.M8](aerogear-controller)
 * [REST API](aerogear-rest-api.html)
 * [AeroGear Security](aerogear-security)
 * [AeroGear Security PicketBox](aerogear-security-picketbox)
