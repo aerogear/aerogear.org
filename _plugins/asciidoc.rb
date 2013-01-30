@@ -1,4 +1,4 @@
-require 'open3'
+require 'asciidoctor'
 module Jekyll
   class AsciiDoc < Converter
     safe true
@@ -12,12 +12,7 @@ module Jekyll
     end
 
     def convert(content)
-      cmd = "asciidoc -s -b html5 -a pygments -a imagesdir='../' -o - -"
-      Open3.popen3(cmd) do |stdin, stdout, _|
-        stdin.puts content
-        stdin.close
-        out = stdout.read
-      end
+      Asciidoctor::Document.new(content).render
     end
   end
 end
