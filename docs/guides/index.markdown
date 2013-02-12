@@ -24,6 +24,9 @@ title: Guides
 * [Get Started with Hybrid Application Frameworks](HybridApplicationFrameworks)
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)
 
+#### User Guides
+* [AeroGear Controller User Guide](aerogear-controller)
+
 #### Contributing to AeroGear
 
 * [Contributing to AeroGear](Contributing)
