@@ -112,4 +112,118 @@ This example would use a default prefix of ```Test-``` and would return two head
   
     Test-Links-Previous: http://host/app/cars?offset=0&color=red&limit=5
     Test-Links-Next:  http://host/app/cars?offset=10&color=red&limit=5
+    
+### Custom Paging Strategy
+This section describes how a custom pagination strategy can be implemented in AeroGear Controller.  
+
+Depending on if you need a completely different strategy, or if you simply want to modify the returned HTTP response 
+headers, you have two options:  
+
+* Extend AbstractPaginationStrategy  
+* Implement PaginationStrategy  
+
+#### Extend AbstractPaginationStrategy
+You would extend AbstractPaginationStrategy if you simply want to change/add/rename the returned HTTP response headers, 
+for example: 
+
+    public class MyStrategy extends AbstractPaginationStrategy {
+
+        @Override
+        public void setResponseHeaders(PaginationMetadata md, 
+            HttpServletResponse response, 
+            int resultSize) {
+            for (Entry<String, String> entry : md.getHeaders(resultSize).entrySet()) {
+                response.setHeader(entry.getKey(), entry.getValue());
+            }
+        }
+    }
+    
+This implementation actually does exactly what the default implementation does. But you can of course modify this to suite 
+your own requirements. You have access to all the 
+[metadata](http://aerogear.org/docs/specs/aerogear-controller/org/jboss/aerogear/controller/router/rest/pagination/PagingMetadata.html) 
+for the pagination, like the raw [links](http://aerogear.org/docs/specs/aerogear-controller/org/jboss/aerogear/controller/router/rest/pagination/Links.html) 
+etc, so you could assemble headers in any way you see fit.
+
+#### Implement PaginationStrategy
+This will give you more control over the pagination strategy. The interface you have to implement looks like this:
+
+    /**
+     * A strategy for implementing pagination in AeroGear Controller.
+     */
+    public interface PaginationStrategy {
+    
+       /**
+         * Creates a PaginationInfo instance.
+         * How this information is gathered, be it from an Annotation on the target 
+         * endpoint method, or by using separate request parameters is up to the 
+         * concrete implementation.
+         * 
+         * @param routeContext the {@link RouteContext} of the route being processed.
+         * @param arguments the extracted arguments from the current request.
+         * @return {@link PaginationInfo} the information requred for paging. 
+         */
+        PaginationInfo createPaginationInfo(RouteContext routeContext, 
+            Map<String, Object> arguments);
+    
+        /**
+         * Called before the target endpoint method has been invoked and enables a 
+         * concrete strategy to manipulate the arguments that will be passed to 
+         * the target endpoint method.
+         * 
+         * @param pagingInfo the {@link PaginationInfo} instance created by 
+         * this strategy.
+         * @param arguments the extracted arguments from the current request.
+         *
+         * @return {@code Object[]} the arguments that will be passed to the target 
+         * endpoint method.
+         */
+        Object[] preInvocation(PaginationInfo pagingInfo, Map<String, Object> arguments); 
+    
+        /**
+         * Called after the target endpoint method has been invoked and 
+         * allows the strategy to set HTTP Response headers.  
+         * 
+         * @param result the result returned from the target endpoint method.
+         * @param routeContext the {@link RouteContext}.
+         * @param pagingInfo the {@link PaginationInfo} instance created by this strategy.
+         *
+         * @return {@code Object} Either the unchanged result or a modified result 
+         * depending on the underlying implementation.
+         */
+        Object postInvocation(Object result, 
+            RouteContext routeContext, 
+            PaginationInfo pagingInfo);
+    
+    }
+
+```createPaginationInfo``` is called by AeroGear Controller prior to invoking the target endpoint method. 
+The arguments extracted from the current HTTP request are made available to this method. The implementation can choose whatever 
+way it likes to match information from the request that are related to pagination. This could be using an annotation on the 
+target endpoint method (which is what the default implementation does) or it could simply pick known parameters from the request.   
+  
+```preInvocation``` gives the strategy a chance to modify the actual arguments that will be used to invoke the 
+target endpoint method. Depending on the concrete implementation there might not be anything to be done here other than simply 
+returning the value of the arguments map. But, for example with the default strategy, an endpoint has the option to accept 
+a _PaginationInfo_ type a parameter. In this case we have to add this instance to the arguments before calling the endpoint.  
+  
+```postInvocation``` is called after the target endpoint method has been invoked allows the strategy to set the 
+HTTP Response headers. This method has access to the results of the invocation which is can use to decide on what links should 
+be returned, for example one might not want to return a previous next link header if there is no more data 
+(the number of items in the results is less than the limit).
+
+#### Configuring the Strategy to be used
+Simpy implement the strategy as a standalone class:
+
+    public class CustomPaginationStrategy extends AbstractPaginationStrategy {
+
+        @Override
+        public void setResponseHeaders(PaginationMetadata metadata, HttpServletResponse response, int resultSize) {
+            final Map<String, String> headers = metadata.getHeaders(resultSize);
+            Set<Entry<String, String>> entrySet = headers.entrySet();
+            for (Entry<String, String> entry : entrySet) {
+                response.setHeader(entry.getKey(), entry.getValue());
+            }
+        }
+
+    }
    
