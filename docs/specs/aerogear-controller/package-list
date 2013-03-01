@@ -1,3 +1,4 @@
+org.jboss.aerogear.controller.cdi
 org.jboss.aerogear.controller.filter
 org.jboss.aerogear.controller.log
 org.jboss.aerogear.controller.router
