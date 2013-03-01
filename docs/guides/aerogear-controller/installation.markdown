@@ -11,7 +11,7 @@ Add AeroGear Controller as a maven dependency to your projects ```pom.xml```:
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-controller</artifactId>
-            <version>1.0.0.M8</version>
+            <version>1.0.0.CR1</version>
             <scope>compile</scope>
         </dependency>
         
