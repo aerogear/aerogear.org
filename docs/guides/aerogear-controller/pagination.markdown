@@ -160,7 +160,7 @@ This will give you more control over the pagination strategy. The interface you 
          * 
          * @param routeContext the {@link RouteContext} of the route being processed.
          * @param arguments the extracted arguments from the current request.
-         * @return {@link PaginationInfo} the information requred for paging. 
+         * @return {@link PaginationInfo} the information required for paging. 
          */
         PaginationInfo createPaginationInfo(RouteContext routeContext, 
             Map<String, Object> arguments);
@@ -212,7 +212,7 @@ be returned, for example one might not want to return a previous next link heade
 (the number of items in the results is less than the limit).
 
 #### Configuring the Strategy to be used
-Simpy implement the strategy as a standalone class:
+Simply implement the strategy as a standalone class:
 
     public class CustomPaginationStrategy extends AbstractPaginationStrategy {
 

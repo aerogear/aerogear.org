@@ -19,7 +19,7 @@ as the body of the HTTP response.
 
 Adding a producer differs from adding a consumer. The reason for this is that there is a need to be able to respond 
 to the same media type in different ways.  
-For example, a client may request to recieve content in a certain format using the 
+For example, a client may request to receive content in a certain format using the 
 _Accept_ header, like ```Accept: text/html```. 
 But the route could choose to respond with either a dynamically generated JSP, or a static HTML page.  So there needs to be a way
 for a route to specify that the exact type of response handling it desires.
