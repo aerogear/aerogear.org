@@ -73,7 +73,7 @@ Finally, create a JSP page at `/WEB-INF/pages/<Controller Class Name>/<method>.j
             </body>
         </html>
         
-If you have deployed your application with a context path of _myapp_, you could then access the view by pointing a broswer to:  
+If you have deployed your application with a context path of _myapp_, you could then access the view by pointing a browser to:  
   
 ```http://server:port/myapp/```  
   

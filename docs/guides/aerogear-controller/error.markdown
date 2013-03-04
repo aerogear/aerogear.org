@@ -4,7 +4,7 @@ title: AeroGear Controller Error Handling
 ---
 ## Error handling
 Error handling in AeroGear Controller is done by configuring special routes for errors. Error routes do not have a ```from```
-path as they merly catch exceptions which is how they are invoked. This is opposed to _normal_ routes which are invoked by 
+path as they merely catch exceptions which is how they are invoked. This is opposed to _normal_ routes which are invoked by 
 incoming HTTP requests.
 
 ### Configuring Error views
