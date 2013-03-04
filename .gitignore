@@ -3,6 +3,7 @@
 .awestruct
 _site
 _tmp/
+bin/
 /.bundle
 /vendor
 /.rbenv-version
