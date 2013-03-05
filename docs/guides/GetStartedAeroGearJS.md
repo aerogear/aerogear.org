@@ -11,17 +11,17 @@ This article is going to show how to get started creating a HTML5 + Rest applica
 
 Topics Covered:
 
-*What is a Pipeline?
-*What is a Pipe?
-*What is a DataManager?
-*What is a Store?
+* What is a Pipeline?
+* What is a Pipe?
+* What is a DataManager?
+* What is a Store?
 
 ## Prerequisites
 
-*Java 6.0(Java SDK 1.6)+
-*Maven 3+
-*JBoss Application Server 7.1+
-*JBoss Tools 3.3(optional)
+* Java 6.0(Java SDK 1.6)+
+* Maven 3+
+* JBoss Application Server 7.1+
+* JBoss Tools 3.3(optional)
 
 An HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+, and note that some behaviors will vary slightly (ex. validations) based on browser support, especially IE 9. For more details on AeroGear’s target browser support see AeroGear Browser Support Targets.
 
@@ -31,9 +31,9 @@ Mobile web support is limited to Android and iOS devices for now, however it sho
 
 To get started, if you are using git, you should clone a copy of the example
 
-    $ git clone git://dflsjowijowjf.git && cd directory
+    $ git clone git@github.com:aerogear/kitchensink-aerogear-js.git && cd kitchensink-aerogear-js
 
-If you are not using git, you can download the example from here [link]()
+If you are not using git, you can download the example from [here](https://github.com/aerogear/kitchensink-aerogear-js/archive/master.zip)
 
 ### Deploying
 
@@ -59,9 +59,11 @@ If you followed the [Get Started With HTML5 Mobile Web Development with JBoss](.
 
 Lets dive in!
 
-### Pipeline
+### Pipeline & Pipes
 
-Pipeline is a JavaScript library that provides a persistence API that is protocol agnostic and does not depend on any certain data model. Through the use of adapters, both provided and custom, user supplied, this library provides common methods like read, save and delete that will just work.
+A Pipeline is a JavaScript library that provides a persistence API that is protocol agnostic and does not depend on any certain data model. Through the use of adapters, both provided and custom, user supplied, this library provides common methods like read, save and delete that will just work.
+
+A Pipe is one server connection.  The default adapter is using the REST protocol.
 
 To expand on this concept, lets look "under the hood" and see how this works.
 
@@ -74,15 +76,22 @@ To expand on this concept, lets look "under the hood" and see how this works.
  ]).pipes.members;
 
 
+Whats happening here?  We are calling the Pipeline constructor with an array of objects as it's arguments.  In this case, it is just one object.
 
-### Data Manager
+The object which will become a pipe.  We see that it has a name property and a settings object where we are overriding the baseURL property.  By default Pipes use the name property as the endpoint and baseURL for the REST service.  In this case, we are overriding the baseURL, so our REST call would look something like this:
 
-A collection of data connections (stores) and their corresponding data models. This object provides a standard way to interact with client side data no matter the data format or storage mechanism used.
+    http://localhost/application_name/rest/members
 
 
-    var dm = AeroGear.DataManager("membersStore"),
-    MemberStore = dm.stores["membersStore"];
+### Data Manager & Stores
 
+A Data Manager is a collection of data connections (stores) and their corresponding data models. This object provides a standard way to interact with client side data no matter the data format or storage mechanism used.
+
+
+    var dm = AeroGear.DataManager( "membersStore" ),
+        MemberStore = dm.stores["membersStore"];
+
+Whats happening here?  Similar to the Pipeline and Pipe constructor,  we are creating a DataManager with a default Store( memory ) and then assigning that store to a variable for later use.
 
 ### Putting it together
 
@@ -92,14 +101,16 @@ To get the list of members from the server, all we need to do is use the read() 
 
         memberPipe.read({
             success: function( data ) {
+                ...
                 $('#members').empty().append(buildMemberRows());
-            },
-            stores: MemberStore
+            }
         });
 
 Since our pipe is using the default REST adapter and we have overridden the baseURL property, the read method will make a request to http://localhost:8080/js-kitchensink/rest/members
 
-We specify a success callback( an error callback can also be added ), and also specify the store from the Data Manager we want to use for this pipe( this will be populated with the data from the servers response ).
+We specify a success callback( an error callback can also be added ) and in the callback we add our data from the response to the MemberStore.
+
+    MemberStore.save( data );
 
 To access our data from the store, all we need to do is call the read() method on the store
 
@@ -113,5 +124,11 @@ To save data to the server all we need to do is call the pipes save() method
         success: function( data ) { ... },
         error: function( error ) { ... }
     })
+
+The save method also takes success and error callbacks.
+
+## Wrapping Up
+
+This tutorial is only a small part of what AeroGear.js can do.  Stay tuned for more Getting started guides.
 
 
