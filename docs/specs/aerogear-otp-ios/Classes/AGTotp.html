@@ -13,7 +13,7 @@
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
 				<h1><a id="libraryTitle" href="../index.html">AeroGear-OTP 1.0.0.M1 </a></h1>
-				<a id="developerHome" href="../index.html">Red Hat, Inc.</a>
+				<a id="developerHome" href="../index.html">Red Hat</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -36,16 +38,13 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/clock">&nbsp;&nbsp;&nbsp;&nbsp;clock</option>
-	
-	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/generateOTP">&nbsp;&nbsp;&nbsp;&nbsp;- generateOTP</option>
 	
 	<option value="//api/name/initWithSecret:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithSecret:</option>
 	
@@ -62,6 +61,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -73,17 +74,13 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clock">clock</a></span></li>
-	
-</ul></li>
-
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/generateOTP">generateOTP</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSecret:">initWithSecret:</a></span></li>
 	
@@ -118,10 +115,35 @@
 	<td class="specification-value"><a href="../Classes/AGOtp.html">AGOtp</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGTotp.h</td>
+	<td class="specification-value">AGTotp.h<br />AGTotp.m</td>
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The Totp class generates a one-time password (OTP) using
+the Time-based One-time Password Algorithm described in:
+<a href="http://tools.ietf.org/html/draft-mraihi-totp-timebased">http://tools.ietf.org/html/draft-mraihi-totp-timebased</a></p>
+
+<p>Basically, we define TOTP as TOTP = HOTP(K, T) where T is an integer
+and represents the number of time steps between the initial counter
+time T0 and the current Unix time (i.e. the number of seconds elapsed
+since midnight UTC of January 1, 1970).</p>
+
+<p>More specifically T = (Current Unix time &ndash; T0) / X where:</p>
+
+<ul>
+<li><p>X represents the time step in seconds (default value X = 30
+seconds) and is a system parameter;</p></li>
+<li><p>T0 is the Unix time to start counting time steps (default value is
+0, Unix epoch) and is also a system parameter.</p></li>
+</ul>
+
+					</div>
 					
 					
 					
@@ -133,34 +155,42 @@
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/clock">&nbsp;&nbsp;clock</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/initWithSecret:">&ndash;&nbsp;initWithSecret:</a></code>
-		
+		<span class="tooltip"><p>Returns an AGTotp object initialized with a secret specified by the given string.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/now">&ndash;&nbsp;now</a></code>
-		
+		<span class="tooltip"><p>Generate an TOTP token using the current time.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/now:">&ndash;&nbsp;now:</a></code>
-		
+		<span class="tooltip"><p>Generate an TOTP token using the specified <a href="../Classes/AGClock.html">AGClock</a>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/generateOTP">&ndash;&nbsp;generateOTP</a></code>
+		<span class="tooltip"><p>Entry point to generate an OTP token.</p></span>
 	</span>
 	
 	
@@ -173,23 +203,6 @@
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/clock" title="clock"></a>
-	<h3 class="subsubtitle method-title">clock</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) AGClock *clock</code></div>
-
-    
-</div>
-						
-					</div>
-					
 					
 					
 					
@@ -199,14 +212,107 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/generateOTP" title="generateOTP"></a>
+	<h3 class="subsubtitle method-title">generateOTP</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Entry point to generate an OTP token.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)generateOTP</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSString that contains the token with leading zero-padding as required.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Entry point to generate an OTP token.</p>
+
+<p>NOTE: Subclasses should override this method.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGOtp.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithSecret:" title="initWithSecret:"></a>
 	<h3 class="subsubtitle method-title">initWithSecret:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an AGTotp object initialized with a secret specified by the given string.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (id)initWithSecret:(NSData *)<em>secret</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>secret</em></dt>
+			<dd><p>The secret to use.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An AGTotp object initialized by the specified secret.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an AGTotp object initialized with a secret specified by the given string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGTotp.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -214,10 +320,45 @@
 	<h3 class="subsubtitle method-title">now</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Generate an TOTP token using the current time.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (NSString *)now</code></div>
 
     
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSString that contains the token with leading zero-padding as required.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Generate an TOTP token using the current time.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGTotp.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -225,10 +366,55 @@
 	<h3 class="subsubtitle method-title">now:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Generate an TOTP token using the specified <a href="../Classes/AGClock.html">AGClock</a>.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (NSString *)now:(AGClock *)<em>clock</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>clock</em></dt>
+			<dd><p>The <a href="../Classes/AGClock.html">AGClock</a> object to use.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSString that contains the token with leading zero-padding as required.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Generate an TOTP token using the specified <a href="../Classes/AGClock.html">AGClock</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGTotp.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -244,7 +430,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Red Hat, Inc.. All rights reserved. (Last updated: 2012-12-18)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
