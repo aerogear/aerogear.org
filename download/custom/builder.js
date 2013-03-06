@@ -122,6 +122,7 @@ $( function( $ ) {
 		},
 		refreshForm = function() {
 			var branch = $( "#branch option:selected" ).val() || "master";
+            $( ".loading-indicator" ).show();
 			$.ajax( host, { dataType: "jsonp" } ).done(
 				function( data ) {
 					dependencyMap = data;
@@ -134,6 +135,7 @@ $( function( $ ) {
 							delete map[ key ];
 						}
 					});
+					$( ".loading-indicator" ).hide();
 					buildForm( dependencyMap );
 				}
 			);

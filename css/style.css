@@ -428,6 +428,11 @@ footer .row .span3:last-child {
     margin-left: 0;
 }
 
+.loading-indicator {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
 @media (max-width: 1200px) {
     .start-header h2 {
         font-size: 30px;
