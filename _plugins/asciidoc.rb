@@ -12,7 +12,7 @@ module Jekyll
     end
 
     def convert(content)
-      Asciidoctor::Document.new(content).render
+      Asciidoctor.load(content, {:attributes => {'imagesdir' => '../'}}).render
     end
   end
 end
