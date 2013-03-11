@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -65,6 +67,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -130,6 +134,16 @@
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>An internal <a href="../Protocols/AGPipe.html">AGPipe</a> implementation that uses REST as the communication transport.</p>
+
+<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned automatically when a Pipe with default configuration is constructed or with the <em>type</em> config option set to <em>&ldquo;REST&rdquo;</em>. See <a href="../Classes/AGPipeline.html">AGPipeline</a> and <a href="../Protocols/AGPipe.html">AGPipe</a> class documentation for more information.</p>
+					</div>
 					
 					
 					
@@ -222,11 +236,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 It is your responsibility to provide any neccessary cleanups after calling this method.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-
-    
+	
 	
 	
 	
@@ -267,11 +279,9 @@ call cancel, that action will still take place on the the server.</p>
 		<p>internal key&hellip;</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (NSDictionary *)parseWebLinkInformation:(NSString *)<em>headerValue</em></code></div>
-
-    
+	
 	
 	
 	
@@ -308,11 +318,9 @@ call cancel, that action will still take place on the the server.</p>
 		<p>Reads all the data from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)read:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -369,18 +377,16 @@ the network or parsing error that occurred.</p></dd>
 		<p>Read specific object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)read:(id)<em>value</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>value</em></dt>
-			<dd><p>The value of the recordId. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a></p></dd>
+			<dd><p>The value of the recordId. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -435,11 +441,9 @@ the network or parsing error that occurred.</p></dd>
 		<p>Reads all the data that matches a given parameter provider from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)readWithParams:(NSDictionary *)<em>parameterProvider</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -503,11 +507,9 @@ the network or parsing error that occurred.</p></dd>
 		<p>Removes an object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)remove:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -515,7 +517,7 @@ the network or parsing error that occurred.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>object</em></dt>
 			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to remove. Note the map must have the
-&lsquo;recordId&rsquo; key set. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a></p></dd>
+&lsquo;recordId&rsquo; key set. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -570,18 +572,16 @@ the network or parsing error that occurred.</p></dd>
 		<p>Saves (or updates) a given object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)save:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>object</em></dt>
-			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update</p></dd>
+			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -639,7 +639,7 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-02-28)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

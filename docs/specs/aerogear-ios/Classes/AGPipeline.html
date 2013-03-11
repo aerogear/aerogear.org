@@ -144,8 +144,23 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>AGPipeline represents a &lsquo;collection&rsquo; of server connections (pipes). This object provides a standard way to
-communicate with the server no matter the data format or transport expected.</p>
+						<p>AGPipeline represents a &lsquo;collection&rsquo; of server connections (aka <a href="AGPipe">Pipes</a>). It provides a standard way to communicate with the server no matter the data format or transport expected. It contains some simple management APIs to create and remove <a href="../Protocols/AGPipe.html">Pipe</a> objects.</p>
+
+<h2>Creating a Pipeline and a Pipe object</h2>
+
+<p>Below is an example that creates a Pipeline to AeroGear TODO server application and adds a <a href="../Protocols/AGPipe.html">Pipe</a> to it, that points to the <em>projects</em> REST endpoint.</p>
+
+<pre><code>NSString* baseURL = @"http://todo-aerogear.rhcloud.com/todo-server/";
+
+// create the 'todo' pipeline, which points to the baseURL of the REST application
+AGPipeline* todo = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:baseURL]];
+
+// Add a REST pipe for the 'projects' endpoint
+id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"projects"];
+    [config setType:@"REST"]; // this is the default, can be emitted
+}];
+</code></pre>
 					</div>
 					
 					
@@ -192,14 +207,14 @@ communicate with the server no matter the data format or transport expected.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pipe:">&ndash;&nbsp;pipe:</a></code>
-		<span class="tooltip"><p>Adds a new <a href="../Protocols/AGPipe.html">AGPipe</a> object, based on the give configuration object.</p></span>
+		<span class="tooltip"><p>Adds a new <a href="../Protocols/AGPipe.html">AGPipe</a> object, based on the given configuration object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
-		<span class="tooltip"><p>Removes a pipe from the AGPipeline object</p></span>
+		<span class="tooltip"><p>Removes a pipe from the AGPipeline object.</p></span>
 	</span>
 	
 	
@@ -235,17 +250,15 @@ communicate with the server no matter the data format or transport expected.</p>
 		<p>A factory method to instantiate an empty AGPipeline.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>+ (id)pipeline</code></div>
-
-    
+	
 	
 	
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the AGPipeline object</p>
+		<p>the AGPipeline object.</p>
 	</div>
 	
 	
@@ -281,18 +294,16 @@ communicate with the server no matter the data format or transport expected.</p>
 		<p>A factory method to instantiate an empty AGPipeline.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>+ (id)pipelineWithBaseURL:(NSURL *)<em>baseURL</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>baseURL</em></dt>
-			<dd><p>the URL of the server</p></dd>
+			<dd><p>the URL of the server.</p></dd>
 		</dl>
 		
 	</div>
@@ -301,7 +312,7 @@ communicate with the server no matter the data format or transport expected.</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the AGPipeline object</p>
+		<p>the AGPipeline object.</p>
 	</div>
 	
 	
@@ -345,17 +356,15 @@ communicate with the server no matter the data format or transport expected.</p>
 		<p>An initializer method to instantiate an empty AGPipeline.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
-
-    
+	
 	
 	
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the AGPipeline object</p>
+		<p>the AGPipeline object.</p>
 	</div>
 	
 	
@@ -391,18 +400,16 @@ communicate with the server no matter the data format or transport expected.</p>
 		<p>An initializer method to instantiate an empty AGPipeline.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id)initWithBaseURL:(NSURL *)<em>baseURL</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>baseURL</em></dt>
-			<dd><p>the URL of the server</p></dd>
+			<dd><p>the URL of the server.</p></dd>
 		</dl>
 		
 	</div>
@@ -411,7 +418,7 @@ communicate with the server no matter the data format or transport expected.</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the AGPipeline object</p>
+		<p>the AGPipeline object.</p>
 	</div>
 	
 	
@@ -444,22 +451,19 @@ communicate with the server no matter the data format or transport expected.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Adds a new <a href="../Protocols/AGPipe.html">AGPipe</a> object, based on the give configuration object.</p>
+		<p>Adds a new <a href="../Protocols/AGPipe.html">AGPipe</a> object, based on the given configuration object.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)pipe:(void ( ^ ) ( id&lt;AGPipeConfig&gt; config ))<em>config</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>config</em></dt>
-			<dd><p>A block object which passes in an implementation of the <a href="../Protocols/AGPipeConfig.html">AGPipeConfig</a> protocol.
-the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
+			<dd><p>A block object which passes in an implementation of the <a href="../Protocols/AGPipeConfig.html">AGPipeConfig</a> protocol that is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
 		</dl>
 		
 	</div>
@@ -468,7 +472,7 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the newly created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+		<p>the newly created <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p>
 	</div>
 	
 	
@@ -477,7 +481,7 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Adds a new <a href="../Protocols/AGPipe.html">AGPipe</a> object, based on the give configuration object.</p>
+		<p>Adds a new <a href="../Protocols/AGPipe.html">AGPipe</a> object, based on the given configuration object.</p>
 	</div>
 	
 	
@@ -504,18 +508,16 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 		<p>Look up for a pipe object.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)pipeWithName:(NSString *)<em>name</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>name</em></dt>
-			<dd><p>the name of the actual pipe</p></dd>
+			<dd><p>the name of the actual pipe.</p></dd>
 		</dl>
 		
 	</div>
@@ -524,7 +526,7 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p>
 	</div>
 	
 	
@@ -557,21 +559,19 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Removes a pipe from the AGPipeline object</p>
+		<p>Removes a pipe from the AGPipeline object.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)remove:(NSString *)<em>name</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>name</em></dt>
-			<dd><p>the name of the actual pipe</p></dd>
+			<dd><p>the name of the actual pipe.</p></dd>
 		</dl>
 		
 	</div>
@@ -580,7 +580,7 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object</p>
+		<p>the new created <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p>
 	</div>
 	
 	
@@ -589,7 +589,7 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Removes a pipe from the AGPipeline object</p>
+		<p>Removes a pipe from the AGPipeline object.</p>
 	</div>
 	
 	
@@ -619,7 +619,7 @@ the object is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-02-28)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

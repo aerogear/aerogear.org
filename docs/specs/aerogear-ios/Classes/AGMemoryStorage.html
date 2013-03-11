@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -63,6 +65,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -129,6 +133,16 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>An internal <a href="../Protocols/AGStore.html">AGStore</a> implementation that uses &ldquo;in-memory&rdquo; storage.</p>
+
+<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned automatically when an DataStore with default configuration is constructed or with the <em>type</em> config option set to <em>&ldquo;MEMORY&rdquo;</em>. See <a href="../Classes/AGDataManager.html">AGDataManager</a> and <a href="../Protocols/AGStore.html">AGStore</a> class documentation for more information.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -164,21 +178,21 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/save:error:">&ndash;&nbsp;save:error:</a></code>
-		<span class="tooltip"><p>Saves the given object in the underlying storage system.</p></span>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/reset:">&ndash;&nbsp;reset:</a></code>
-		<span class="tooltip"><p>Resets the entire storage system.</p></span>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:error:">&ndash;&nbsp;remove:error:</a></code>
-		<span class="tooltip"><p>Removes a specific object/record from the underlying storage system.</p></span>
+		
 	</span>
 	
 	
@@ -209,11 +223,9 @@
 		<p>Reads all, based on a filter, from the underlying storage system.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (NSArray *)filter:(NSPredicate *)<em>predicate</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -266,11 +278,9 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Reads a specific object/record from the underlying storage system.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id)read:(id)<em>recordId</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -322,11 +332,9 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Reads all the data from the underlying storage system.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (NSArray *)readAll</code></div>
-
-    
+	
 	
 	
 	
@@ -364,46 +372,15 @@ This method only returns a copy of the data and leaves the underlying storage sy
 	
 	
 	
-	<div class="method-subsection brief-description">
-		<p>Removes a specific object/record from the underlying storage system.</p>
-	</div>		
 	
-    
-
 	<div class="method-subsection method-declaration"><code>- (BOOL)remove:(id)<em>record</em> error:(NSError **)<em>error</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>record</em></dt>
-			<dd><p>the desired object</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>An</em></dt>
-			<dd><p>error object containing details of why the remove failed.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if the operation succeeds, otherwise NO.</p>
-	</div>
 	
 	
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Removes a specific object/record from the underlying storage system.</p>
-	</div>
+	
+	
 	
 	
 	
@@ -425,41 +402,15 @@ This method only returns a copy of the data and leaves the underlying storage sy
 	
 	
 	
-	<div class="method-subsection brief-description">
-		<p>Resets the entire storage system.</p>
-	</div>		
 	
-    
-
 	<div class="method-subsection method-declaration"><code>- (BOOL)reset:(NSError **)<em>error</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>An</em></dt>
-			<dd><p>error object containing details of why the reset failed.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if the operation succeeds, otherwise NO.</p>
-	</div>
 	
 	
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Resets the entire storage system.</p>
-	</div>
+	
+	
 	
 	
 	
@@ -481,46 +432,15 @@ This method only returns a copy of the data and leaves the underlying storage sy
 	
 	
 	
-	<div class="method-subsection brief-description">
-		<p>Saves the given object in the underlying storage system.</p>
-	</div>		
 	
-    
-
 	<div class="method-subsection method-declaration"><code>- (BOOL)save:(id)<em>data</em> error:(NSError **)<em>error</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>data</em></dt>
-			<dd><p>An object or a collection (e.g. NSArray) which is being persisted.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>An</em></dt>
-			<dd><p>error object containing details of why the save failed.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if the operation succeeds, otherwise NO.</p>
-	</div>
 	
 	
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Saves the given object in the underlying storage system.</p>
-	</div>
+	
+	
 	
 	
 	
@@ -549,7 +469,7 @@ This method only returns a copy of the data and leaves the underlying storage sy
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-02-28)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

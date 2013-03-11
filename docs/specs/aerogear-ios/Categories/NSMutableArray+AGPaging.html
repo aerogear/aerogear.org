@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -55,6 +57,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -107,6 +111,75 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The library has built-in paging support, enabling the scrolling to either forward or backwards through a result set returned from the server. Paging metadata located in the server response (either in the headers, in the body or using <a href="http://tools.ietf.org/html/rfc5988">webLinking</a>) are used to identify the <em>next</em> or the <em>previous</em> result set. For example, in Twitter case, paging metadata are located in the body of the response, using <em>&ldquo;next_page&rdquo;</em> or <em>&ldquo;previous_page&rdquo;</em> to identify the next or previous result set respectively. The location of this metadata as well as naming, is fully configurable during the creation of the <a href="../Protocols/AGPipe.html">Pipe</a>, thus enabling greater flexibility in supporting several different paging strategies.</p>
+
+<p>Below is an example that goes against the AeroGear Controller Server:</p>
+
+<pre><code>NSURL* baseURL = [NSURL URLWithString:@"https://controller-aerogear.rhcloud.com/aerogear-controller-demo"]https://controller-aerogear.rhcloud.com/aerogear-controller-demo"];
+AGPipeline* agPipeline = [AGPipeline pipelineWithBaseURL:baseURL];
+
+id&lt;AGPipe&gt; cars = [agPipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"cars-custom"];
+    [config setNextIdentifier:@"AG-Links-Next"];
+    [config setPreviousIdentifier:@"AG-Links-Previous"];
+    [config setMetadataLocation:@"header"];
+}];
+</code></pre>
+
+<p>First we create our <a href="../Classes/AGPipeline.html">Pipeline</a> object. Notice that in the Pipe configuration object, we explicitely declare the name of the paging identifiers supported by the server, as well as the the location of these identifiers in the response. Note that If not specified, the library will assume the server is using Web Linking paging strategy.</p>
+
+<h2>Start Paging</h2>
+
+<p>To kick-start pagination, you use the method <code>readWithParams</code> of the underlying <a href="../Protocols/AGPipe.html">Pipe</a>, passing your desired query parameters to the server. Upon successfully completion, the <em>pagedResultSet</em> (an enchached category of NSArray) will allow you to scroll through the result set.</p>
+
+<pre><code>__block NSMutableArray *pagedResultSet;
+
+// fetch the first page
+[cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : @1} success:^(id responseObject) {
+    pagedResultSet = responseObject;
+
+    // do something
+
+} failure:^(NSError *error) {
+    //handle error
+}];
+</code></pre>
+
+<h2>Move Forward in the result set</h2>
+
+<p>To move forward in the result set, you simple call <code>next</code> on the <em>pagedResultSet</em> :</p>
+
+<pre><code>// move to the next page
+[pagedResultSet next:^(id responseObject) {
+    // do something
+
+} failure:^(NSError *error) {
+    // handle error
+}];
+</code></pre>
+
+<h2>Move Backwards in the result set</h2>
+
+<p>To move backwards in the result set, you simple call <code>previous</code> on the <em>pagedResultSet</em> :</p>
+
+<pre><code>[pagedResultSet previous:^(id responseObject) {
+    // do something
+
+} failure:^(NSError *error) {
+    // handle error
+}];
+</code></pre>
+
+<h2>Exception cases</h2>
+
+<p>Moving beyond last or first page is left on the behaviour of the specific server implementation, that is the library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by respondng with an http error response, or simply return an empty list. The user is responsible to cater for exception cases like this.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -121,14 +194,14 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/next:failure:">&ndash;&nbsp;next:failure:</a></code>
-		<span class="tooltip"><p>Reads the next &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p></span>
+		<span class="tooltip"><p>Reads the next &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/previous:failure:">&ndash;&nbsp;previous:failure:</a></code>
-		<span class="tooltip"><p>Reads the previous &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p></span>
+		<span class="tooltip"><p>Reads the previous &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p></span>
 	</span>
 	
 	
@@ -156,14 +229,12 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Reads the next &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p>
+		<p>Reads the next &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)next:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -193,7 +264,7 @@ the network or parsing error that occurred.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Reads the next &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p>
+		<p>Reads the next &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p>
 	</div>
 	
 	
@@ -217,14 +288,12 @@ the network or parsing error that occurred.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Reads the previous &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p>
+		<p>Reads the previous &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)previous:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -254,7 +323,7 @@ the network or parsing error that occurred.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Reads the previous &lsquo;page&rsquo;, based on the current position, of the paging result, from the server.</p>
+		<p>Reads the previous &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p>
 	</div>
 	
 	
@@ -284,7 +353,7 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-02-28)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

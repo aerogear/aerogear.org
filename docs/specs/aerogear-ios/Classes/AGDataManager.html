@@ -132,11 +132,134 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>AGDataManager manages different <a href="../Protocols/AGStore.html">AGStore</a> implementations. It is basically a
-factory that hides the concrete instantiations of a specific <a href="../Protocols/AGStore.html">AGStore</a> implementation.
-The class offers simple APIs to add, remove or get access to a &lsquo;data store&rsquo;.</p>
+						<p>  AGDataManager manages different <a href="../Protocols/AGStore.html">AGStore</a> implementations. It is basically a
+  factory that hides the concrete instantiations of a specific <a href="../Protocols/AGStore.html">AGStore</a> implementation.
+  The class offers simple APIs to add, remove or get access to a &lsquo;data store&rsquo;.</p>
 
-<p>NOTE: Right now, there is NO automatic data sync. This is up to the user.</p>
+<p>  NOTE: Right now, there is NO automatic data sync. This is up to the user.</p>
+
+<h2>Create a DataManager with a Store object:</h2>
+
+<p>Below is simple example that creates a DataManager initialized to use the default <em>in-memory</em> store.</p>
+
+<pre><code>// create the datamanager
+AGDataManager* dm = [AGDataManager manager];
+// add a new (default) store object:
+id&lt;AGStore&gt; myStore = [dm store:^(id&lt;AGStoreConfig&gt; config) {
+    [config setName:@"tasks"];
+    [config setType:@"MEMORY"];  // can be omitted, the default is an "in-memory" store
+}];
+</code></pre>
+
+<p>Similar to the <a href="../Protocols/AGPipe.html">Pipe</a> API, technical details of the underlying system are not exposed.</p>
+
+<h2>Save data to the Store</h2>
+
+<p>Below is an example that stores the received objects, read from the <a href="../Protocols/AGPipe.html#//api/name/read:failure:">[AGPipe read:failure:]</a> method.</p>
+
+<pre><code>id&lt;AGPipe&gt; tasksPipe = [todo get:@"tasks"];
+
+[tasksPipe read:^(id responseObject) {
+    // the response object represents an NSArray,
+    // containing multile 'Tasks' (as NSDictionary objects)
+
+    // Save the response object to the store
+    NSError *error;
+
+    if (![myStore save:responseObject error:&amp;error])
+        NSLog(@"Save: An error occured during save! \n%@", error);    
+
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<p>When loading all tasks from the server, the AGStore object is used inside of the <em>read</em> block from the AGPipe object. The returned collection of tasks is stored inside our in-memory store, from where the data can be accessed.</p>
+
+<h2>Read an object from the Store</h2>
+
+<p>The <code>read</code> function accepts the <em>recordID</em> of the object you want to retrieve. If the object does not exist in the store, <em>nil</em> is returned.</p>
+
+<pre><code>// read the task with the '0' ID:
+id taskObject =  [myStore read:@"0"];
+</code></pre>
+
+<p>If you want to read <em>all</em> the objects contained in the store, simply call the <code>readAll</code> function</p>
+
+<pre><code>// read all objects from the store
+NSArray *objects = [myStore readAll];
+</code></pre>
+
+<h2>Remove one object from the Store</h2>
+
+<p>The <code>remove</code> function allows you to delete a single entry in the collection, if present:</p>
+
+<pre><code>// remove the task with the '0' ID:
+NSError *error;
+
+if (![myStore remove:@"0" error:error])
+    NSLog(@"Save: An error occured during remove! \n%@", error);    
+</code></pre>
+
+<p>The remove method accepts the <em>recordID</em> of the object you want to remove. If the object does not exist in the store, FALSE is returned.</p>
+
+<h2>Filter the entire Store</h2>
+
+<p>Filtering of the data available in the <a href="../Protocols/AGStore.html">AGStore</a> is also supported, by using the familiar NSPredicate class available in iOS. In the following example, after storing a pair of dictionaries representing user information details in the store (which can be easily come from a response from a server), we simple call the <em>filter</em> method to filter out the desired information:</p>
+
+<pre><code> NSMutableDictionary *user1 = [@{@"id" : @"1",
+                                @"name" : @"Robert",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Cornwell"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"advanced"},
+                                                  @{@"language" : @"C", @"level" : @"advanced"}]
+                              } mutableCopy];
+
+NSMutableDictionary *user2 = [@{@"id" : @"2",
+                                @"name" : @"David",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Cornwell"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"intermediate"},
+                                                  @{@"language" : @"Python", @"level" : @"intermediate"}]
+                              } mutableCopy];
+
+NSMutableDictionary *user3 = [@{@"id" : @"3",
+                                @"name" : @"Peter",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Branton"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"advanced"},
+                                                  @{@"language" : @"C", @"level" : @"intermediate"}]
+                              } mutableCopy];
+
+// save objects
+BOOL success = [_memStore save:users error:nil];
+
+if (success) { // if save succeeded, query the data
+    NSPredicate *predicate = [NSPredicate
+                              predicateWithFormat:@"city = 'Boston' AND department.name = 'Software' \
+                              AND SUBQUERY(experience, $x, $x.language = 'Java' AND $x.level = 'advanced').@count &gt; 0" ];
+
+    NSArray *results = [_memStore filter:predicate];
+
+    // The array now contains the dictionaries _user1_ and _user_3, since they both satisfy the query predicate.
+    // do something with the 'results'
+    // ...
+}
+</code></pre>
+
+<p>Using NSPredicate to filter desired data, is a powerful mechanism offered in iOS and we strongly suggest to familiarize yourself with it, if not already. Take a look at Apple&rsquo;s own <a href="http://tinyurl.com/chmgwv5">documentation</a> for more information.</p>
+
+<h2>Reset the entire Store</h2>
+
+<p>The reset function allows you the erase all data available in the used AGStore object:</p>
+
+<pre><code>// clears the entire store
+NSError *error;
+
+if (![myStore reset:&amp;error])
+    NSLog(@"Reset: An error occured during reset! \n%@", error);    
+</code></pre>
 					</div>
 					
 					
@@ -206,11 +329,9 @@ is determined by the storeName argument.</p></span>
 		<p>A factory method to instantiate the AGDataManager object.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>+ (id)manager</code></div>
-
-    
+	
 	
 	
 	
@@ -261,11 +382,9 @@ is determined by the storeName argument.</p></span>
 is determined by the storeName argument.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)remove:(NSString *)<em>storeName</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -313,11 +432,9 @@ is determined by the storeName argument.</p>
 		<p>Adds a new <a href="../Protocols/AGStore.html">AGStore</a> object, based on the given configuration object.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)store:(void ( ^ ) ( id&lt;AGStoreConfig&gt; config ))<em>config</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -334,7 +451,7 @@ the object is used to configure the <a href="../Protocols/AGStore.html">AGStore<
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the newly created <a href="../Protocols/AGStore.html">AGStore</a> object</p>
+		<p>the newly created <a href="../Protocols/AGStore.html">AGStore</a> object.</p>
 	</div>
 	
 	
@@ -370,11 +487,9 @@ the object is used to configure the <a href="../Protocols/AGStore.html">AGStore<
 		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)storeWithName:(NSString *)<em>storeName</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -424,7 +539,7 @@ the object is used to configure the <a href="../Protocols/AGStore.html">AGStore<
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-02-28)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

@@ -152,7 +152,87 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>AGAuthenticationModule represents an authentication module&hellip;</p>
+						<p>AGAuthenticationModule represents an authentication module and provides the authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the <a href="../Protocols/AGPipe.html">Pipe</a>, technical details of the underlying system are not exposed.</p>
+
+<h2>Register a user</h2>
+
+<p>The <code>enroll</code> function of the <em>AGAuthenticationModule</em> protocol is used to register new users with the backend:</p>
+
+<pre><code>// assemble the dictionary that has all the data for THIS particular user:
+NSMutableDictionary* userData = [NSMutableDictionary dictionary];
+[userData setValue:@"john" forKey:@"username"];
+[userData setValue:@"123" forKey:@"password"];
+[userData setValue:@"me@you.com" forKey:@"email"];
+[userData setValue:@"21sda812sad24" forKey:@"betaAccountToken"];
+
+// register a new user
+[myMod enroll:userData success:^(id data) {
+    // after a successful _registration_, we can work
+    // with the returned data...
+    NSLog(@"We got: %@", data);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<p>The <code>enroll</code> function submits a generic map object with contains all the information about the new user, that the server endpoint requires. The default (REST) auth module issues for the above a request against <em><a href="https://todoauth-aerogear.rhcloud.com/todo-server/auth/enroll">https://todoauth-aerogear.rhcloud.com/todo-server/auth/enroll</a></em>. Besides the NSDictionary, the function accepts two simple blocks that are invoked on success or in case of an failure.</p>
+
+<h2>Login</h2>
+
+<p>Once you have a <em>valid</em> user you can use that information to issue a login against the server, to start accessing protected endpoints:</p>
+
+<pre><code>// issuing a login
+[myMod login:@"john" password:@"123" success:^(id object) {
+    // after a successful _login_, we can work
+    // with the returned data...
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<p>The default (REST) auth module issues for the above a request against <em>https://todoauth-aerogear.rhcloud.com/todo-server/auth/login</em>. Besides the <em>username</em> and the <em>password</em>, the function accepts two simple blocks that are invoked on success or in case of an failure.</p>
+
+<h2>Pass the auth module to a pipe</h2>
+
+<p>After running a successful login, you can start using the <em>AGAuthenticationModule</em> object on a <em>AGPipe</em> object to access protected endpoints:</p>
+
+<pre><code>id&lt;AGPipe&gt; tasks = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"tasks"];
+    [config setBaseURL:serverURL];
+    [config setAuthModule:myMod];
+}];
+
+[tasks read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<p>When creating a <a href="../Protocols/AGPipe.html">Pipe</a> you need to use the <em>authModule</em> argument in order to pass in an <em>AGAuthenticationModule</em> object.</p>
+
+<h2>Logout</h2>
+
+<p>The logout from the server can be archived by using the <code>logout</code> function:</p>
+
+<pre><code>// logout:
+[myMod logout:^{
+    // after a successful _logout_, when can notify the application
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<p>The default (REST) auth module issues for the above a request against <em><a href="https://todoauth-aerogear.rhcloud.com/todo-server/auth/logout">https://todoauth-aerogear.rhcloud.com/todo-server/auth/logout</a></em>. The function accepts two simple blocks that are invoked on success or in case of an failure.</p>
+
+<h2>Time out and Cancel pending operations</h2>
+
+<p>As with the case of Pipe, configured timeout interval (in the config object) and <a href="#//api/name/cancel">cancel</a> operation in <em>AGAuthenticationModule</em> is supported too.</p>
 					</div>
 					
 					
@@ -257,11 +337,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the baseURL string of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *baseURL</code></div>
-
-    
+	
 	
 	
 	
@@ -298,11 +376,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the &lsquo;enroll endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *enrollEndpoint</code></div>
-
-    
+	
 	
 	
 	
@@ -339,11 +415,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the &lsquo;login endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *loginEndpoint</code></div>
-
-    
+	
 	
 	
 	
@@ -380,11 +454,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the &lsquo;logout endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *logoutEndpoint</code></div>
-
-    
+	
 	
 	
 	
@@ -421,11 +493,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the type of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *type</code></div>
-
-    
+	
 	
 	
 	
@@ -473,11 +543,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 It is your responsibility to provide any neccessary cleanups after calling this method.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-
-    
+	
 	
 	
 	
@@ -516,11 +584,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 and send to the endpoint.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)enroll:(id)<em>userData</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -584,11 +650,9 @@ and send to the endpoint.</p>
 to run the signin via TLS/HTTPS.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)login:(NSString *)<em>username</em> password:(NSString *)<em>password</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -655,11 +719,9 @@ to run the signin via TLS/HTTPS.</p>
 		<p>Performs the logout of the current user.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)logout:(void ( ^ ) ( ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -717,7 +779,7 @@ the error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-02-28)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

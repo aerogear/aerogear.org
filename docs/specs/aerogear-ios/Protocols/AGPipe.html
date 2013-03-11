@@ -148,8 +148,132 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>AGPipe represents a server connection. An object of this class is responsible to
-communicate with the server and perfoms read/write operations.</p>
+						<p>AGPipe represents a server connection. An object of this class is responsible to communicate with the server in order to perform read/write operations.</p>
+
+<h2>Save data</h2>
+
+<p>To store newly created objects on a <em>remote</em> server resource you use the <code>save</code> method. Currently the objects are <em>just</em> simple map objects but in the future we are looking to support more advanced(complex) frameworks, like <em>Core Data</em>.</p>
+
+<p>  In the example below, the <code>save</code> function stores the given NSDictionary on the server, in this case on a RESTful resource. As arguments it accepts simple blocks that are invoked on <em>success</em> or in case of an <em>failure</em>.</p>
+
+<pre><code>// create a dictionary and set some key/value data on it:
+NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
+[projectEntity setValue:@"Hello World" forKey:@"title"];
+// add other properties, like style etc ...
+
+// save the 'new' project:
+[projects save:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"CREATE RESPONSE\n%@", [responseObject description]);
+
+    // get the id of the new project, from the JSON response...
+    id resourceId = [responseObject valueForKey:@"id"];
+
+    // and update the 'object', so that it knows its ID...
+    [projectEntity setValue:[resourceId stringValue] forKey:@"id"];
+
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<h2>Update data</h2>
+
+<p>The <code>save</code> method is also responsible for updating an &lsquo;object&rsquo;. However this happens <strong>only</strong> when there is an &lsquo;id&rsquo; property/field available:</p>
+
+<pre><code>// change the title of the previous project 'object':
+[projectEntity setValue:@"Hello Update World!" forKey:@"title"];
+
+// and now update it on the server
+[projects save:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"UPDATE RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"UPDATE: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<h2>Remove data</h2>
+
+<p>The AGPipe also contains a <code>remove</code> method to delete the data on the server. It takes the map object which <strong>must</strong> have an &lsquo;id&rsquo; property/field set, so that it knows which resource to delete:</p>
+
+<pre><code>// Now, just remove the project:
+[projects remove:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"DELETE RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"DELETE: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<p>In this case, where we have a RESTful pipe, the API issues an HTTP DELETE request.</p>
+
+<h2>Read all data from the server</h2>
+
+<p>The <code>read</code> method allows to (currently) read <em>all</em> data from the server, of the underlying AGPipe:</p>
+
+<pre><code>[projects read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+</code></pre>
+
+<p>Since we are pointing to a RESTful endpoint, the API issues a HTTP GET request. The JSON output of the above NSLog() call looks like this:</p>
+
+<pre><code>(
+        {
+        id = 8;
+        style = "project-234-255-0";
+        tasks =         (
+        );
+        title = "Created from testcase";
+    },
+        {
+        id = 15;
+        style = "project-255-255-255";
+        tasks =         (
+        );
+        title = "Some title";
+    }
+)
+</code></pre>
+
+<p>Of course the <em>collection</em> behind the responseObject can be stored to a variable..</p>
+
+<h2>Time out and Cancel pending operations</h2>
+
+<h3>Timeout</h3>
+
+<p>During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an operation to complete. If the time interval is exceeded with no response from the server, then the <em>failure</em> callback is executed.</p>
+
+<p>From the todo example above:</p>
+
+<pre><code>id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setTimeout:20];  // set the time interval to 20 secs
+}];
+</code></pre>
+
+<h3>Cancel</h3>
+
+<p>At any time after starting your operations, you can call <code>cancel</code> on the Pipe object to cancel all running Pipe operations. Any registered callbacks on the pipe are NOT executed so it is your responsibility to provide any neccessary cleanups after calling this method.</p>
+
+<pre><code>[projects read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+
+// cancel operations. NOTE that no 'success' or 'failure' callbacks are executed after this.
+[projects cancel]; 
+</code></pre>
 					</div>
 					
 					
@@ -168,14 +292,14 @@ communicate with the server and perfoms read/write operations.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
-		<span class="tooltip"><p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;</p></span>
+		<span class="tooltip"><p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/URL">&nbsp;&nbsp;URL</a></code>
-		<span class="tooltip"><p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;</p></span>
+		<span class="tooltip"><p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -242,14 +366,12 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;</p>
+		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *URL</code></div>
-
-    
+	
 	
 	
 	
@@ -259,7 +381,7 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;</p>
+		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;.</p>
 	</div>
 	
 	
@@ -283,14 +405,12 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;</p>
+		<p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *type</code></div>
-
-    
+	
 	
 	
 	
@@ -300,7 +420,7 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;</p>
+		<p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;.</p>
 	</div>
 	
 	
@@ -338,11 +458,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 It is your responsibility to provide any neccessary cleanups after calling this method.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-
-    
+	
 	
 	
 	
@@ -383,11 +501,9 @@ call cancel, that action will still take place on the the server.</p>
 		<p>Reads all the data from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)read:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -444,18 +560,16 @@ the network or parsing error that occurred.</p></dd>
 		<p>Read specific object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)read:(id)<em>value</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>value</em></dt>
-			<dd><p>The value of the recordId. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a></p></dd>
+			<dd><p>The value of the recordId. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -510,11 +624,9 @@ the network or parsing error that occurred.</p></dd>
 		<p>Reads all the data that matches a given parameter provider from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)readWithParams:(NSDictionary *)<em>parameterProvider</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -578,11 +690,9 @@ the network or parsing error that occurred.</p></dd>
 		<p>Removes an object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)remove:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -590,7 +700,7 @@ the network or parsing error that occurred.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>object</em></dt>
 			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to remove. Note the map must have the
-&lsquo;recordId&rsquo; key set. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a></p></dd>
+&lsquo;recordId&rsquo; key set. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -645,18 +755,16 @@ the network or parsing error that occurred.</p></dd>
 		<p>Saves (or updates) a given object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)save:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>object</em></dt>
-			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update</p></dd>
+			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -714,7 +822,7 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-02-28)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
