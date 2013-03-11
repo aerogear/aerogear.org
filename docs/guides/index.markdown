@@ -16,7 +16,7 @@ title: Guides
 * [Get Started With HTML5 Mobile Web Development](GetStartedHTML5MobileWeb)
 * [Get Started with Hybrid Application Frameworks](HybridApplicationFrameworks)
 * [Get Started With Android Development on the Command Line](GetStartedAndroid)
-* [Get Started With Android Development in Eclipse](EclipseSetup)
+* [Get Started With Android Development in Eclipse](GetStartedAndroidEclipse)
 * [Get Started with iOS and Xcode](GetStartedwithAeroGearandXcode)
 * [Deploying HTML5 Applications to Openshift](HTML5AppsToOpenshift)
 * [HTML5 Mobile Quickstart & Archetype Deep Dive](HTML5MobileQuickstartAndDeepDive)
