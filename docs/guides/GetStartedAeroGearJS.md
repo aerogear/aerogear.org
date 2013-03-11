@@ -102,13 +102,13 @@ To get the list of members from the server, all we need to do is use the read() 
         memberPipe.read({
             success: function( data ) {
                 ...
-                $('#members').empty().append(buildMemberRows());
+                $( "#members" ).html( buildMemberRows() );
             }
         });
 
 Since our pipe is using the default REST adapter and we have overridden the baseURL property, the read method will make a request to http://localhost:8080/js-kitchensink/rest/members
 
-We specify a success callback( an error callback can also be added ) and in the callback we add our data from the response to the MemberStore.
+We specify a success callback( an error callback should also be added ) and in the callback we add our data from the response to the MemberStore.
 
     MemberStore.save( data );
 
@@ -117,15 +117,6 @@ To access our data from the store, all we need to do is call the read() method o
     return _.template( $( "#member-tmpl" ).html(), {"members": MemberStore.read()});
 
 We are using the default "Memory" adapter for our store, which is just an array.
-
-To save data to the server all we need to do is call the pipes save() method
-
-    memberPipe.save( memberData, {
-        success: function( data ) { ... },
-        error: function( error ) { ... }
-    })
-
-The save method also takes success and error callbacks.
 
 ## Wrapping Up
 
