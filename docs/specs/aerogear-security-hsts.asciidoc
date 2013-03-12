@@ -34,8 +34,7 @@ Getting started
 
 Parameters on web.xml
 ^^^^^^^^^^^^^^^^^^^^^
-
-Basically, browsers that support this feature, are able to remember the fact that a particular website requires HTTPS only, upon the next visit to the respective site the agent will remember about this option on HTTPS only. 
+Basically, browsers that support this feature, are able to remember the fact that a particular website requires HTTPS only, upon the next visit to the site in question the agent will enforce HTTPS.
 
 * *max-age*: set how long the agent (browser) will be remembered to force HTTPS. 
 * *include-subdomain*: this rule will be applied to all the subdomains or not. (*accepted values*: true/false).
