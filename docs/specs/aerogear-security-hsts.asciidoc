@@ -6,7 +6,7 @@ title: HSTS support on AeroGear
 HSTS support
 ------------
 
-*HSTS* (HTTP Strict Transport Security) is a security policy mechanism which enforce users to interact with SSL connections only, preventing attacks like man-in-the-middle.
+*HSTS* (HTTP Strict Transport Security) is a security policy mechanism which enforces users to interact with SSL connections only, preventing attacks like man-in-the-middle.
 
 This implementation is based on http://tools.ietf.org/html/rfc6797[RFC 6797] and depends on web browser implementation. Currently this implementation is supported only in Firefox and Chrome, for further details, please check http://caniuse.com/#search=hsts[caniuse.com] or the RFC. 
 
@@ -35,7 +35,7 @@ Getting started
 Parameters on web.xml
 ^^^^^^^^^^^^^^^^^^^^^
 
-Basically, browsers that support this feature, are able to remember the fact that a particular website requires HTTPS only, the next visit the respective site the agent will remember about this option on HTTPS only. 
+Basically, browsers that support this feature, are able to remember the fact that a particular website requires HTTPS only, upon the next visit to the respective site the agent will remember about this option on HTTPS only. 
 
 * *max-age*: set how long the agent (browser) will be remembered to force HTTPS. 
 * *include-subdomain*: this rule will be applied to all the subdomains or not. (*accepted values*: true/false).
@@ -58,7 +58,7 @@ Copy this file https://gist.github.com/abstractj/a91c4fc960975a111803[standalone
 2. Deploy AG Controller demo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-		git@github.com:abstractj/aerogear-controller-demo.git
+		git@github.com:aerogear/aerogear-controller-demo.git
 		cd aerogear-controller-demo 
 		mvn clean package
 		cp target/aerogear-controller-demo.war $JBOSS_HOME/standalone/deployments
