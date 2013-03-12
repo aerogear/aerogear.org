@@ -7,4 +7,3 @@ bin/
 /.bundle
 /vendor
 /.rbenv-version
-Gemfile.lock
