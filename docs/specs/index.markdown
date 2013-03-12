@@ -20,3 +20,4 @@ title: Specifications
 * [AeroGear Security](aerogear-security)
 * [AeroGear Security PicketBox](aerogear-security-picketbox)
 * [AeroGear Security OTP](aerogear-security-otp)
+* [HSTS support on AeroGear](aerogear-security-hsts)
