@@ -39,7 +39,7 @@ Move to the directory you wish to create the project in.  Then execute the follo
 mvn archetype:generate \
         -DarchetypeArtifactId=jboss-html5-mobile-archetype \
         -DarchetypeGroupId=org.jboss.aerogear.archetypes \
-        -DarchetypeVersion=1.0.0.M6c
+        -DarchetypeVersion=1.0.0.M8
 ----
 
 Maven will download the archetype, and its dependencies then ask you some questions:

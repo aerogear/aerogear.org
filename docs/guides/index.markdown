@@ -19,7 +19,7 @@ title: Guides
 * [HTML5 Mobile Quickstart & Archetype Deep Dive](HTML5MobileQuickstartAndDeepDive)
 * [HTML5 + REST Applications](HTML5RESTApps)
 * [Cordova Setup](CordovaSetup)
-* [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](HTML5ToHybridWithCordova)
+* [Converting a Mobile HTML5 + REST Web App to a Hybrid App with Apache Cordova](HTML5ToHybridWithCordova)
 * [Getting Started with AeroGear and Xcode](GetStartedwithAeroGearandXcode)
 * [Get Started with Hybrid Application Frameworks](HybridApplicationFrameworks)
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)

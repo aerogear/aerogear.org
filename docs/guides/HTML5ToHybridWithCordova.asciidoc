@@ -1,11 +1,11 @@
 ---
 layout: basic
-title: Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova
+title: Converting a Mobile HTML5 + REST Web App to a Hybrid App with Apache Cordova
 ---
 
-== Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova
+== Converting a Mobile HTML5 + REST Web App to a Hybrid App with Apache Cordova
 
-This article will build upon AeroGear's http://www.github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile[kitchensink quickstart], which we have converted to an http://incubator.apache.org/cordova/[Apache Cordova] based hybrid application.
+This article will build upon the HTML5 http://www.github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile[kitchensink quickstart], which we have converted to an http://incubator.apache.org/cordova/[Apache Cordova] based hybrid application.
 
 What does all of that mean? Basically, this takes our https://community.jboss.org/docs/DOC-17326[HTML5 + REST] / http://www.jquerymobile.com"[jQuery Mobile] based web app and converts it to a native app for both iOS and Android. Currently, these apps will need to be built separately but in the future, we hope to provide a single build step for all supported mobile OS types. These concepts can be applied to the conversion of most HTML5/JS based web apps by just replacing the specific paths described in this article with paths that match your environment.
 
@@ -83,7 +83,7 @@ Change the *Target* in the *Scheme* menu to *KitchensinkCordova* and select a de
 
 image::img/xcode_kitchensink_simulator.png[]
 
-Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://html5-aerogear.rhcloud.com[html5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the AeroGear kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
+Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://html5-aerogear.rhcloud.com[html5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the HTML5 kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
 
 image::img/network.png[iOS Simulator shoing network connection output]
 
