@@ -1,3 +1,8 @@
+---
+layout: basic
+title: List of requirements to use AeroGear Android Library
+---
+
 == List of requirements to use AeroGear Android Library
 
 === Requirements
