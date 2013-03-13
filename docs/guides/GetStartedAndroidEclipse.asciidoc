@@ -7,7 +7,20 @@ title: Setting up Eclipse for Developing AeroGear Powered Android Applications
 
 This guide is geared toward using the command line, and it also assumes that git and mvn are on your PATH.  If you are using Windows, you can use your tools of choice.
 
-Please see the link:../AndroidRequirements[Android Library requirements]
+=== Requirements
+
+* Java 6.0 (Java SDK 1.6)+
+** link:http://www.oracle.com/technetwork/java/javase/downloads/index.html[The latest Java version can be found on Oracle's site]
+* Maven 3+
+** link:http://maven.apache.org/download.html[The latest Maven version can be found on Apaches's site]
+* Git
+** link:http://git-scm.com/downloads[The latest Git version can be found at http://git-scm.com]
+* Android SDK
+* Need to have an AVD image running 2.3.3 (API level 10)
+** link:http://developer.android.com/sdk/index.html[The latest Android SDK and instructions to install]
+* Eclipse 4.2 with ADT plugin
+** link:http://www.eclipse.org/downloads/[The latest Eclipse version is availble from the Eclipse Foundation]
+** link:http://developer.android.com/tools/sdk/eclipse-adt.html[Google's instructions on downloading and installing ADT]
 
 === Downloading and Importing AeroGear
 
