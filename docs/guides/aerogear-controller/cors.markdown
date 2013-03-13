@@ -3,7 +3,7 @@ layout: basic
 title: AeroGear Controller CORS
 ---
 ## Cross Origin Resource Sharing (CORS)
-[CORS](http://www.w3.org/TR/cors/) is supported by default but can be disabled, or configured differently by implementing a CDI Producer:
+[CORS](http://www.w3.org/TR/cors/) is supported by default but can be disabled, or configured differently, by implementing a CDI Producer:
 
     @Produces
     public CorsConfiguration demoConfig() {
@@ -35,19 +35,19 @@ Specifies that the HTTP response header _Access-Control-Allow-Credentials_ shoul
 Specifies that the HTTP response header _Access-Control-Allow-Credentials_ should not be returned in the response.
   
 * ```exposeHeaders```  
-Specifies that that HTTP response header _Access-Control-Expose-Headers_ should be included in the response. The headers listed are
+Specifies that the HTTP response header _Access-Control-Expose-Headers_ should be included in the response. The headers listed are
 the headers that will be exposed to clients.
 
 * ```validRequestHeaders```  
-Specifies that that HTTP response header _Access-Control-Allow-Headers_ should be included in the response. The headers listed
+Specifies that the HTTP response header _Access-Control-Allow-Headers_ should be included in the response. The headers listed
 are the headers supported by the server.
 
 * ```validRequestMethods```  
-Specifies that that HTTP response header _Access-Control-Allow-Methods_ should be included in the response. The HTTP methods listed
+Specifies that the HTTP response header _Access-Control-Allow-Methods_ should be included in the response. The HTTP methods listed
 are the methods supported by the server.
 
 * ```maxAge```  
-Specifies that that HTTP response header _Access-Control-Max-Age_ should be included in the response. Making a preflight request
+Specifies that the HTTP response header _Access-Control-Max-Age_ should be included in the response. Making a preflight request
 on every request is expensive as the browser is making two requests for every client request. Setting this value indicates how
 long the response can be cached, and during this time no preflight requests will be made.
   

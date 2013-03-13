@@ -8,20 +8,20 @@ path as they merely catch exceptions which is how they are invoked. This is oppo
 incoming HTTP requests.
 
 ### Configuring Error views
-You can configure a route as an error handler for a type of exception:
+You can configure a route to handle a certain type of exception:
 
         route()
                .on(YourException.class)
                .to(ExceptionHandler.class).errorPage(); 
 
-You can specify multiple exceptions if needed:
+You can specify multiple exception types if needed:
 
         route()
-               .on(YourException.class, SomeOtherException.classk
+               .on(YourException.class, SomeOtherException.class)
                .to(ExceptionHandler.class).errorPage();
                
-If you'd like to log the exception in the error route, you can specify that the target method, errorPage() above, should 
-take a parameter:
+If you'd like to log the exception in the error route, you can specify that the target method, _errorPage()_ in the example
+ above, should take a parameter:
 
         route()
                .on(YourException.class, SomeOtherException.class)
