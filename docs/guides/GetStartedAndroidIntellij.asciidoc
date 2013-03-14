@@ -16,7 +16,7 @@ This guide is geared toward using the command line, and it also assumes that git
 * Git
 ** link:http://git-scm.com/downloads[The latest Git version can be found at http://git-scm.com]
 * Android SDK
-* Need to have an AVD image running 2.3.3 (API level 10)
+* Need to have an AVD image running 2.3.3 (API level 10) and up
 ** link:http://developer.android.com/sdk/index.html[The latest Android SDK and instructions to install]
 
 === Downloading and Importing AeroGear
@@ -52,14 +52,14 @@ image:img/android_intellij_import_004.png[?]
 
 image:img/android_intellij_import_005.png[?]
 
-* Select Android 4.2 Plataform
+* Select your preferred Android Platform (should be 2.3.3 and up)
 
 image:img/android_intellij_import_006.png[?]
 
-* Finish and click ok to the project is imported
+* Finish and click OK and the module is imported to your project.
 
 * Go back to the project structure (File -> Project Structure...), in Module select your project module and (+) -> Module dependency
 
 image:img/android_intellij_import_007.png[?]
 
-* Voilà, everything is set - now have fun!	
+* Voilà, everything is set - now have fun!
