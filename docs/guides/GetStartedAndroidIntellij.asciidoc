@@ -34,32 +34,32 @@ This guide is geared toward using the command line, and it also assumes that git
 
 * Open Project Structure (File -> Project Structure...) and Add Module (Module -> Add -> Import Module)
 
-image:img/android_intellij_import_001.png[?]
+image:img/android_intellij_import_001.png[Project Structure]
 
 * Choice "Import module from external model" and select Maven
 
-image:img/android_intellij_import_002.png[?]
+image:img/android_intellij_import_002.png[Import module from external model]
 
 * Next -> 
 
-image:img/android_intellij_import_003.png[?]
+image:img/android_intellij_import_003.png[Import module]
 
 * On select profiles
 
-image:img/android_intellij_import_004.png[?]
+image:img/android_intellij_import_004.png[Select profiles]
 
 * Select org.jboss.aerogear:aerogear-android:[version]
 
-image:img/android_intellij_import_005.png[?]
+image:img/android_intellij_import_005.png[Maven projects]
 
 * Select your preferred Android Platform (should be 2.3.3 and up)
 
-image:img/android_intellij_import_006.png[?]
+image:img/android_intellij_import_006.png[Android Platform list]
 
 * Finish and click OK and the module is imported to your project.
 
 * Go back to the project structure (File -> Project Structure...), in Module select your project module and (+) -> Module dependency
 
-image:img/android_intellij_import_007.png[?]
+image:img/android_intellij_import_007.png[Add module on project]
 
 * Voilà, everything is set - now have fun!
