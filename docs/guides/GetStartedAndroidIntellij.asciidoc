@@ -5,7 +5,7 @@ title: Setting up IntelliJ for Developing AeroGear Powered Android Applications
 
 == Setting up IntelliJ for Developing AeroGear Powered Android Applications 
 
-This guide is geared toward using the command line, and it also assumes that git and mvn are on your PATH.  If you are using Windows, you can use your tools of choice.
+This guide is geared toward using the command line, and it also assumes that git and Maven are on your PATH.  If you are using Windows, you can use your tools of choice.
 
 === Requirements
 
