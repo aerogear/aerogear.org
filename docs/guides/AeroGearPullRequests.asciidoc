@@ -7,7 +7,7 @@ title: How to Handle AeroGear Pull Requests
 
 This article shows the guidelines and tasks required for project developers to manage and handle pull requests (PR).
 
-==== General Guidelines
+=== General Guidelines
 
 These are general guidelines about handling PRs and things to keep in mind as a project developer.
 
