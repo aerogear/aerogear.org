@@ -6,7 +6,7 @@ title: FAQ
 == FAQ
 
 What is AeroGear about?
-=======================
+~~~~~~~~~~~~~~~~~~~~~~~
 
 The following describes the basics of the AeroGear API:
 
@@ -20,7 +20,8 @@ What is a pipe?
 
 A pipe represents _one_ connection to a server. The pipe API is basically an abstraction layer for any server side connection, which all allows you to simply 'read' from, or 'write' to a server connection. However, technical details like RESTful APIs (e.g. HTTP PUT or HTTT GET) are _not_ exposed on the pipeline and pipe APIs. In the future you can have different type of pipe objects (-> connections). The default (and CURRENTLY only supported) type is a REST connection.
 
-==== JavaScript example
+JavaScript example
+~~~~~~~~~~~~~~~~~~
 
 [source, javascript]
 ----
@@ -54,7 +55,8 @@ What is a store?
 
 A store represents _one_ concrete data store. The store API is basically a mechanism for connecting to and moving data in and out of different types of client side storage. The default implementation in all client platforms is an 'in memory' storage system. Similar to the pipe API technical details of the underlying storage system are not exposed
 
-==== JavaScript example
+JavaScript example
+~~~~~~~~~~~~~~~~~~
 
 [source, javascript]
 ----
@@ -87,7 +89,8 @@ What is an authentication module?
 The API represents _one_ concrete authentication module. The API is provides an authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the pipe API technical details of the underlying system are not exposed.
 
 
-==== JavaScript example
+JavaScript example
+~~~~~~~~~~~~~~~~~~
 
 [source, javascript]
 ----

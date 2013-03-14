@@ -7,7 +7,7 @@ title: Get Started with Hybrid Application Frameworks
 
 This wiki page will give an overview of what hybrid applications are, what tools and frameworks are out there to help create them, and some teasers for upcoming examples if you wanted to get involved.
 
-==== What is a Hybrid Application
+=== What is a Hybrid Application
 
 The term "*_hybrid mobile application_*" can be a bit confusing for new developers  Hybrid apps, are native mobile applications that are built using technologies other than the native SDK's for the platforms.  Most of them claim "write once run anywhere", however the truth is more like "write almost once, and run almost anywhere".  As with most things there are different degrees of compatibility and tinkering that is required. 
 
