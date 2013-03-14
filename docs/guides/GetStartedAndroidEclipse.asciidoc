@@ -33,7 +33,7 @@ When you clone your sources, be sure to NOT download them into your Eclipse work
 ----
  git clone https://github.com/aerogear/aerogear-android.git
  cd aerogear-android/
- mvn  dependency:copy;#This will download all of the required dependancies and place them in /libs
+ mvn dependency:copy; #This will download all of the required dependancies and place them in /libs
 ----
 
 ==== Importing the project into Eclipse
@@ -42,70 +42,26 @@ When you clone your sources, be sure to NOT download them into your Eclipse work
 
 * Select Import 
 
-image:img/Java_Eclipse_SDK_002.png[Eclipse Import Menu]
-
-
+image:img/android_eclipse_import_001.png[Eclipse Import Menu]
 
 * Android -> Existing Android Code into Workspace -> Next
 
-image:img/Import_003.png[Import New Android Project]
-
-
+image:img/android_eclipse_import_002.png[Import New Android Project]
 
 * Browse -> Your code -> check "Copy projects into workspace" 
 
-image:img/Import_004.png[Configure Your Import]
-
-
+image:img/android_eclipse_import_003.png[Configure Your Import]
 
 * May have to set compiler compliance to 1.6 to clear some errors
 
-image:img/Properties_for_aerogear-android_005.png[Java Compiler Properties]
+image:img/android_eclipse_import_004.png[Java Compiler Properties]
 
+* In aerogear-android project set "Is Library"(Properties -> Android -> Is Library)
 
+image:img/android_eclipse_import_005.png[Android Properties]
 
-* Set "Is Library"(Properties -> Android -> Is Library)
+* In your project add aerogear-android library (Properties -> Android -> Add)
 
-image:img/Properties_for_aerogear-android_006.png[Android Properties]
+image:img/android_eclipse_import_006.png[Android Properties]
 
-=== AeroGear-TODO
-The TODO sample application relies on ActionBarSherlock and the AeroGear Android library project.
-
-==== Downloading AeroGear-TODO and ActionBarSherlock
-
-AeroGear and ActionBarSherlock are available on GitHub.
-
-[source,bash]
-----
- git clone https://github.com/aerogear/aerogear-android-todo.git
- git clone https://github.com/JakeWharton/ActionBarSherlock.git
-----
-
-==== Importing into Eclipse
-First let's import ActionBarSherlock.  This is almost exactly the same as importing Aerogear and I will dispense with screenshots.
-
-* Right click in project panel 
-* Select Import 
-* Android -> Existing Android Code into Workspace -> Next
-* Browse -> ActionBarSherlock/library -> check "Copy projects into workspace" 
-* May have to set compiler compliance to 1.6 to clear some errors
-* Set is Library(Properties -> Android -> Is Library)
-
-Importing TODO.  Again this is very similar to the other two projects, but I have included some screen shots where the process diverges.
-
-* Right click in project panel 
-* Select Import 
-* Android -> Existing Android Code into Workspace -> Next
-* Browse -> Your code -> check "Copy projects into workspace" 
-* May have to set compiler compliance to 1.6 to clear some errors
-* Add support libs
-
-image:img/Java_Eclipse_SDK_010.png[ToDo Context Menu]
-
-* Add references to ActionBarSherlock and AeroGear
-
-image:img/Properties_for_TodoActivity_009.png[ToDo Applicaiton Poperties]
-
-
-You should now be able to run the TODO Application in Eclipse.
-
+* Voilà, everything is set - now have fun!	
