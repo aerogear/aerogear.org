@@ -23,7 +23,7 @@ title: Guides
 * [Getting Started with AeroGear and Xcode](GetStartedwithAeroGearandXcode)
 * [Get Started with Hybrid Application Frameworks](HybridApplicationFrameworks)
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)
-* [Get Stared With AeroGear.js](GetStartedAeroGearJS.html)
+* [Get Started With AeroGear.js](GetStartedAeroGearJS.html)
 
 #### User Guides
 * [AeroGear Controller User Guide](aerogear-controller)
