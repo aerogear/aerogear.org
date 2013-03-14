@@ -1,9 +1,9 @@
 ---
 layout: basic
-title: Setting up Intellij for Developing AeroGear Powered Android Applications 
+title: Setting up IntelliJ for Developing AeroGear Powered Android Applications 
 ---
 
-== Setting up Intellij for Developing AeroGear Powered Android Applications 
+== Setting up IntelliJ for Developing AeroGear Powered Android Applications 
 
 This guide is geared toward using the command line, and it also assumes that git and mvn are on your PATH.  If you are using Windows, you can use your tools of choice.
 
@@ -30,7 +30,7 @@ This guide is geared toward using the command line, and it also assumes that git
  mvn dependency:copy; #This will download all of the required dependancies and place them in /libs
 ----
 
-==== Importing the project into Intellij
+==== Importing the project into IntelliJ
 
 * Open Project Structure (File -> Project Structure...) and Add Module (Module -> Add -> Import Module)
 
