@@ -7,7 +7,7 @@ title: Contributing to AeroGear
 
 As an open source project we are always on the lookout for community members that want to step up and help with the project. There are lots of ways to help, and this article will help you get started!
 
-==== Help Others
+=== Help Others
 Have experience with mobile or HTML5 based technologies? Interested in sharing your knowledge?
 
 If you've got ideas for the project, or want to discuss ways to improve AeroGear, join the https://lists.jboss.org/mailman/listinfo/aerogear-dev[aerogear-dev] mailing list] and share what your working on, or struggling with. For more immediate gratification join the IRC channel (#aerogear). There are are usually a good bunch of people hanging out there. Ask your questions, share your experience, or just make jokes :-)
