@@ -4,7 +4,7 @@ title: AeroGear Browser Support Targets
 ---
 
 AeroGear Browser Support Targets
-================================
+--------------------------------
 
 Below is a listing of browsers that are targeted for all AeroGear related projects, and examples.  Given the broad and/or shifting nature of some of the technologies involved some examples may need different supported versions depending on features, frameworks, and goals for the specific example.  Any deviation from this should be documented in the example.
 

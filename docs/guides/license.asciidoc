@@ -7,7 +7,7 @@ title: AeroGear Licensing and Copyright
 
 The AeroGear project is licensed under the http://www.apache.org/licenses/LICENSE-2.0[Apache License, Version 2.0]
 
-===== Source Code License Header
+== Source Code License Header
 
 All *new and modified* files in AeroGear source control must use the following license and copyright headers for the appropriate file type. Replace ${year} with the current year. The AeroGear IDE config repo contains templates that will automatically add the proper headers depending on the file type, and IDE used. This should always be verified however.
 

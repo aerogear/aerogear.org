@@ -9,7 +9,7 @@ This article outlines the standard git and GitHub process, and workflow for work
 
 Many of instructions here are very closely related to the JBoss AS 7 instructions: https://community.jboss.org/docs/DOC-15596[Hacking on AS7]. Note that one primary difference is AeroGear's use of "--no-ff" and merge commits to make reviewing history and chunks of work easier. This will be discussed further below.
 
-==== Get a GitHub account
+=== Get a GitHub account
 
 ****
 http://github.com
