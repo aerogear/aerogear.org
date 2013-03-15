@@ -43,8 +43,10 @@ The target endpoint class for this route.
 
 
 ### MVC Routes
-These are routes that forward the result produced by the endpoints to a view. This is the default in AeroGear Controller if no
+These are routes that forward the result produced by the endpoint to a view. This is the default in AeroGear Controller if no
 ```consumes``` method has been specified. See [Media Types](mediatypes.html) for more information regarding the consumes method.  
+
+Example of MVC Route:
   
     public class Routes extends AbstractRoutingModule {
 
@@ -83,6 +85,8 @@ If you have deployed your application with a context path of _myapp_, you could 
 Routes that should return data to the caller are configured in the same way as an MVC route, except instead of forwarding to a view
 , a RESTful route will specify that it ```produces``` a [Media Type](mediatypes.html) that returns data to the client in the 
 format requested.
+
+Example of RESTful Route:
 
     public class Routes extends AbstractRoutingModule {
 
