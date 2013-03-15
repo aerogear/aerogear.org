@@ -1,0 +1,130 @@
+---
+layout: basic
+title: Getting Started with AeroGear and Xcode Template
+---
+
+== Getting Started with AeroGear and Xcode Template
+
+As of version 1.0 of the AeroGear library, we are offering an Xcode template for our users to easily get started with the framework. This guide will help you setup the template in your existing Xcode installation. Once installed you can easily use the template as a basis for all your future AeroGear iOS applications. The guide assumes that you have Xcode IDE installed in your machine. If not, you can download it from the Apple developer web site link:https://developer.apple.com/xcode[here]. Let's get started.
+
+=== Step 1: Install Xcode Template
+
+Click link:https://github.com/aerogear/aerogear-ios-xcode-template/zipball/master[here] to download the latest version of the template from the link:https://github.com/aerogear/aerogear-ios-xcode-template[project's web site]. Once the download completes, uncompress the file and inside you will find an _AeroGear_ folder. 
+
+image::https://dl.dropbox.com/u/155050/img/ios_template_folder.png[Template folder]
+
+The folder contains the system configuration files that comprise the installable Xcode template. To assist Xcode to recognize the template, we need to copy it to a specific location in order for it to pick it up. Because the location is a hidden folder in the system, we need to manual do the copy operation using a terminal. 
+
+Open a terminal and type:
+
+[source,bash]
+----
+$ ls ~/Library/Developer/Xcode/Templates/Application/Project\ Templates/
+----
+
+If you get back a response that the folder does not exist it means that it's the first time you install a template and the location is not yet initialized. To fix that, simply create the folder otherwise skip to the next step.
+
+[source,bash]
+----
+$ mkdir -p ~/Library/Developer/Xcode/Templates/Application/Project\ Templates/
+----
+
+and finally copy the template:
+
+[source,bash]
+----
+$ cp -r AeroGear ~/Library/Developer/Xcode/Templates/Application/Project\ Templates/
+----
+
+=== Step 3: Verify installation
+
+Fire up Xcode and when presented with the welcome screen, choose "Create a new Xcode Project".
+
+image::https://dl.dropbox.com/u/155050/img/ios_welcome_screen.png[Welcome screen]
+
+If the installation of the template was succesful, you will find the _AeroGear_ template under the iOS section. If not, please verify that you correctly install the template from Step 1.
+
+image:https://dl.dropbox.com/u/155050/img/ios_template_wizard.png[AeroGear screen]
+
+Select the template and click _Next_
+
+Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AG"_. For the device family I used iPhone. 
+
+image::https://dl.dropbox.com/u/155050/img/ios_project_details_screen.png[Details]
+
+Xcode creates our project and we are presented with the default project screen.
+
+image::https://dl.dropbox.com/u/155050/img/ios_template_project_screen.png[Main Project Screen]
+
+Now that our project is created, there is one final step left before we can start using the project.
+
+=== Step 3: Install Dependencies through CocoaPods
+
+The project created by the AeroGear template uses link:http://cocoapods.org[CocoaPods] for managing any external library dependencies (including AeroGear). If you haven't used it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details.
+
+If you take a close look at the "Project Navigator" you will notice a file with name _Podfile_. This file is used by CocoaPods to install any library dependencies the project has. The template has already filled in "AeroGear" for us and you are free to add several other link:https://github.com/CocoaPods/Specs[popular libraries].
+
+So time to install the dependencies.
+
+Close the project window and using the terminal navigate to the project directory. Assuming you have correctly installed CocoaPods, simple do a:
+
+[source,bash]
+----
+pod install
+----
+
+to install the dependencies. Further, this step will also create a workspace file (with the extension <project name>.xcworkspace) that contains the definitions for both the project and it's required library dependencies. We will use that file for now on when opening the project.
+
+=== Step 4: Run
+
+Time to run the sample project. Double click on the generated xcworkspace file and when the project is opened select "Product->Run". If all goes well, you will be presented with the following screen:
+
+image::https://dl.dropbox.com/u/155050/img/ios_template_emulator.png[Emulator]
+
+The template generated a sample project that uses AeroGear to fetch's the latest Tasks from the link:http://todo-aerogear.rhcloud.com[TODO application] deployed on link:https://openshift.redhat.com/app/[OpenShift]. The tasks are then displayed on a standard UITableView component. 
+
+=== Step 5: Walkthrough
+
+Let's do a quick walkthrough of the code generated by the template to familiarize ourselves.
+
+At the Project Navigator click on "AeroGearExampleAPIClient.m". This _singleton_ instance class is used through out our project and holds the Pipes and Pipeline objects, allowing us to connect to remote RESTFul endpoints and perform CRUD operations on them. So what is a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPipeline.html[Pipeline] and link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe] you may ask. Well, the former represents a collection of server connections and the latter the connection itself. 
+
+[source,c]
+----
+// create the Pipeline object pointing to the remote application
+AGPipeline *pipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:kAeroGearExampleAPIBaseURLString]];  [1]
+
+// once pipeline is constructed setup the pipes that will
+// point to the remote application REST endpoints
+_tasksPipe = [pipeline pipe:^(id<AGPipeConfig> config) {  [2]
+    [config setName:@"tasks"];
+}];
+----
+
+In [1] we initialize our Pipeline with the base URL of the remote server application. Here we used the URL of the TODO remote server application. In [2] we call the _pipe_ method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html[AGPipeConfig] object. This will give us a fresh Pipe object connected to the remote "/tasks" endpoint. We then assign the object to the __taskPipe_ instance variable so we can access it later on from our view.
+
+At the Project Navigator click on "AGPViewController.m". This View Controller class holds the table component that will display the Task objects when they are retrieved from the server.
+
+In the _viewDidLoad_ lifecycle method we perform the following:
+
+[source,c]
+----
+...
+// fetch the data
+[[AeroGearExampleAPIClient sharedInstance].tasksPipe read:^(id responseObject) {   [1]
+    _tasks = responseObject;
+    
+    // update table with the newly fetched data
+    [self.tableView reloadData];
+    
+} failure:^(NSError *error) {
+    NSLog(@"An error has occured during read! \n%@", error);
+}];
+...
+----
+
+On [1] we issue a "read" request on the task Pipe object we created earler on our singleton class. This instructs the Pipe object to fetch the tasks from the remote application.  If the fetch was successful, in our success block we assign the return result to a NSArray instance variable, used later by the table delegate data source methods to display the data.
+
+This completes our walkthrough. For a more complete example application that uses AeroGear to perform link:http://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD] operations on a remote endpoint, have a look at the TODO application available on link:https://github.com/aerogear/aerogear-todo-ios[github].
+
+You can also browse link:http://aerogear.org/docs/specs/aerogear-ios/[AeroGear iOS API reference] to familiarize yourself with the wealth of options.
