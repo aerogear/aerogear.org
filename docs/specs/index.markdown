@@ -15,7 +15,7 @@ title: Specifications
 * [Paging API usage examples](aerogear-client-paging-usage)
 
 #### Server Side Specifications
-* [AeroGear Controller 1.0.0.CR1](aerogear-controller)
+* [AeroGear Controller 1.0.0](aerogear-controller)
 * [REST API](aerogear-rest-api)
 * [AeroGear Security](aerogear-security)
 * [AeroGear Security PicketBox](aerogear-security-picketbox)
