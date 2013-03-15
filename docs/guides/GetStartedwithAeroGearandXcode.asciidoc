@@ -7,6 +7,8 @@ title: Getting Started with AeroGear and Xcode
 
 This guide will help you to setup your development environment for AeroGear, and then build a simple application to verify the installation. The guide assumes that you have XCode IDE installed in your machine. If not, you can download it from the Apple developer web site link:https://developer.apple.com/xcode[here]. Let's get started.
 
+TIP: As of version 1.0 of AeroGear, we are also offering an Xcode template for our users to get started with. Click link:./GetStartedwithAeroGearandXcodeTemplate/[here] for more information.
+
 === Step 1: Create a new Xcode Project
 
 Fire up Xcode and when presented with the welcome screen, choose _"Create a new Xcode Project"_
