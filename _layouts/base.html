@@ -13,10 +13,10 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.atom"/>
     <link rel="stylesheet" href="/css/bootstrap-combined.min.css">
-    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/js/libs/modernizr-2.5.3.min.js"></script>
+    <script src="/js/libs/modernizr-2.6.2.min.js"></script>
 		<script type="text/javascript">
 
 			var _gaq = _gaq || [];
@@ -39,12 +39,15 @@
         <div class="banner-home-link"></div>
         <div class="navbar-inner">
             <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <a id="navButton" class="btn btn-navbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <div class="nav-collapse">
+                <div class="nav-collapse menu-closed hidden">
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">Menu<i class="icon-circle-arrow-left menu-close-button"></i></div>
+                    </div>
                     <ul class="nav">
                         <li class="{% is_active_navigation_item 'download' %}">
                             <a href="/download">Get the Gear</a>
@@ -96,7 +99,7 @@
     </div>
     <hr class="footer-divider">
     <footer class="container">
-        <div class="row">
+        <div class="row-fluid">
             <div class="span3">
                 <h3><a href="http://twitter.com/AeroGears" target="_blank">@AeroGears</a></h3>
                 <div id="aerogear-twitter">Loading tweets...</div>
@@ -117,13 +120,13 @@
                 <p><a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev" target="_blank">Join the Mailing List</a></p>
                 <p><a href="irc://irc.freenode.net/aerogear" target="_blank">Chat with the Team</a></p>
             </div>
-            <div class="span3">
+            <div class="span3 logos">
                 <img src="/img/aerogear_logo_200px.png" class="footer-logo"/>
                 <div>&copy; Copyright Red Hat, Inc.</div>
                 <div>Code released under <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.</div>
                 <img src="/img/jboss.png" class="footer-jboss"/>
                 <div>AeroGear is a JBoss Community project and development is sponsored by Red Hat, Inc.</div>
-                <span class="attribution">HTML5 Logo and Icons by <a href="http://www.w3.org/" target="_blank"><abbr title="World Wide Web Consortium">W3C</abbr></a></span>
+                <div class="attribution">HTML5 Logo and Icons by <a href="http://www.w3.org/" target="_blank"><abbr title="World Wide Web Consortium">W3C</abbr></a></div>
             </div>
         </div>
     </footer>
@@ -131,6 +134,7 @@
     <script src="/js/libs/repo-modified.js"></script>
     <script src="/js/libs/ba-linkify.min.js"></script>
     <script src="/js/libs/jquery.twitter.min.js"></script>
+    <script src="/js/libs/jquery.smartresize.js"></script>
     <script src="/js/script.js"></script>
 </body>
 </html>
