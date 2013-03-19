@@ -23,7 +23,7 @@ Let's look at an example of a Route with an endpoint that supports pagination:
            .produces(JSON)
            .to(Cars.class).findCarsBy(param(PaginationInfo.class), param("color"));
 
-```PaginationInfo``` is used to avoid having to add the params for ```offset``` and ```limit``` which would otherwise have 
+[PaginationInfo](http://aerogear.org/docs/specs/aerogear-controller/org/jboss/aerogear/controller/router/rest/pagination/PaginationInfo.html) is used to avoid having to add the params for ```offset``` and ```limit``` which would otherwise have 
 been required:
 
     route()
