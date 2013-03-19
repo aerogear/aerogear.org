@@ -1,0 +1,160 @@
+---
+layout: basic
+title: AeroGear Android Pagination
+---
+== AeroGear Pagination in Android
+
+The Android AeroGear libraries implement paging as defined in link:../../specs/aerogear-client-paging/[the pagination spec].  We also have common use cases for the basic tasks in the Android sections of the  link:../../specs/aerogear-client-paging-usage/[paging usage document.]
+
+These two resources should be enough to get you up and running with Aerogear controller based services.  However, if you have special requirements or legacy services AeroGear\'s pagingation framework can also be extended to support some prett gnarly usecases.
+
+=== Pagination from a third party source
+
+You need to be aware of three interfaces in the paging API: *PagedList*, *PageResultExtractor*, and *ParameterProvider*.  Each of these interfaces has a default implementation that AeroGear will use if you don\'t specify your own.  When paging is configured, a `read` or `readWithFilter` operation on a *Pipe* will load parameters from a *ParameterProvider* and apply them to the request.  Then it will use the *PageResultExtractor* to compute a *PagedList* to return in the `onSuccess` method of the *Callback* supplied to the `read` or `readWithFilter` methods.
+
+Let\'s say we have a service which returns a page of data in the following format:
+
+.Response
+[source, json]
+----
+{
+    "data": {
+        "after": "t3_17i1lt",
+        "before": null,
+        "children": [
+                {"data":"data1"},
+                {"data":"data2"},
+                {"data":"data3"},
+                {"data":"data4"}
+        ]
+    }
+}
+----
+
+The 'after' parameter defines the page of data which comes after the current page.  The 'before' parameter likewise defines the page which comes before the page of data.  This let\'s up write a *PageResultExtractor* which will return a *ReadFilter* which can be used to load the other pages of data.  We also need to define a *PageConfig* object which will tell *Pipe* how to handle the paging data.
+
+.ExampleApplication.java
+[source,java]
+----
+void onCreate() {
+     pipeline = new Pipeline(BASE_URL);
+
+     PageConfig pageConfig = new PageConfig();
+     pageConfig.setLimitValue(25);
+     pageConfig.setMetadataLocation(PageConfig.MetadataLocations.BODY);
+     pageConfig.setNextIdentifier("data.after");
+     pageConfig.setPreviousIdentifier("data.before");
+     pageConfig.setPageHeaderParser(new PageConsumer());
+ 
+     PipeConfig config = new PipeConfig(BASE_URL, Data.class);//Data is just an example type
+     config.setPageConfig(pageConfig);
+     config.setDataRoot("data.children")
+
+     pipeline.pipe(Data.class, config);
+}
+
+public Pipe<Data> get(String name, Activity activity) {
+     return pipeline.get(name,activity);
+}
+----
+
+.SamplePageResultExtractor.java
+[source,java]
+----
+public class SamplePageResultExtractor implements PageResultExtractor<PageConfig>{
+ 
+    @Override
+    public ReadFilter getNextFilter(HeaderAndBody result, PageConfig config) {
+        ReadFilter filter = new ReadFilter();
+        JsonParser parser =new JsonParser();
+        JsonElement element = parser.parse(new String(result.getBody()));
+        String next = getFromJSON(element, config.getNextIdentifier());
+        if (next != null) {
+            filter.setLinkUri(URI.create("?after=" + next));
+        }
+        return filter;
+    }
+ 
+    @Override
+    public ReadFilter getPreviousFilter(HeaderAndBody result, PageConfig config) {
+        ReadFilter filter = new ReadFilter();
+        JsonParser parser =new JsonParser();
+        JsonElement element = parser.parse(new String(result.getBody()));
+        String previous = getFromJSON(element, config.getPreviousIdentifier());
+        if (previous != null) {
+            filter.setLinkUri(URI.create("?before=" + previous));
+        }
+        return filter;
+    }
+ 
+    private String getFromJSON(JsonElement element, String nextIdentifier) {
+        String[] identifiers = nextIdentifier.split("\\.");
+        for( String identifier:identifiers) {
+            element = element.getAsJsonObject().get(identifier);
+        }
+        if (element.isJsonNull()) {
+            return null;
+        }
+ 
+        return element.getAsString();
+    }
+ 
+}
+----
+
+And now when we call `read` or `readWithFilter` our *Callback*'s onSuccess method will be passed a *PagedList* instance.  
+
+.ReadCallback.java
+[source,java]
+----
+public class ReadCallback extends AbstractActivityCallback<List<Data>> {
+    public void onSuccess(List<Data> data) {
+        ExampleActivity activity = getActivity();
+        activity.setData((PagedList<Data>) data);
+        activity.setListAdapter(new ArrayAdapter<Data>(activity,
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                data));
+    }
+ 
+    public void onFailure(Exception e) {
+	//Handle error
+    }
+}
+----
+
+.ExampleActivity
+[source,java]
+----
+public ExampleActivity extends ListActivity {
+
+    Pipe<Data> dataPipe;
+    ReadCallback readCallback = new ReadCallback();
+    PagedList<Data> data;
+
+    public void onCreate() {
+        //Pretend this view has onClick methods wired up to 
+        //nextPressed and previousPressed.
+        setContentView(R.layout.a_view_with_next_and_previous_buttons);
+        dataPipe = ((ExampleApplication)getApplication).get("data", this);
+    }
+
+    public void onStart() {
+        dataPipe.read(readCallback);
+    }
+
+    public void nextPressed(View button) {
+        data.next(readCallback);
+    }
+
+    public void previousPressed(View button) {
+        data.previous(readCallback);
+    }
+
+    public void setData(PagedList<Data> data) {
+        this.data = data;
+    }
+
+}
+
+----

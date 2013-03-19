@@ -1,0 +1,320 @@
+---
+layout: basic
+title: AeroGear Android Customizing Pipes
+---
+
+== Introduction to the Pipe architecture 
+
+AeroGear on Android uses a class called *Pipe* to retrieve data from a source asynchronously.  A *Pipe* has the methods `read`, `readWithFilter`, `remove`, and `save`.  A *Pipe* implementation is responsible for managing *PipeHandler* instances and returning their results and returning them to the user via callbacks provided by the *Pipe* CRUD methods.  AG Android has three *Pipe* implementations: *RestAdapter*, *ModernLoaderAdapter*, and *SupportLoaderAdapter*.
+
+*PipeHander* instances are responsible for connecting to a remote source, sending a request, fetching the response, and returning a deserialized instance of that result to the Pipe which requested it.  *PipeHandlers* do not need to worry about threading, this is the responsibility of the *Pipe*.
+
+For many of the cases, writing an adapter to a remote source which AG can not support is as simple as implementing a *PipeHandler* and passing it to a *Pipeline* via `PipeConfig.setHandler`.
+
+== A practical example, HTTP Pipes
+
+To demonstrate how *Pipe* and *PipeHandler* interact, let's look at the methods `RestAdapter.readWithFilter` and `RestRunner.onReadWithFilter`.
+
+.RestAdapter.java
+[source,java]
+----
+public final class RestAdapter<T> implements Pipe<T> {
+
+    /* snip */
+
+    @Override
+    public void readWithFilter(ReadFilter filter, final Callback<List<T>> callback) {
+        if (filter == null) {
+            filter = new ReadFilter();
+        }
+        final ReadFilter innerFilter = filter;
+
+        /* Remeber, Android doesn't allow network access on the main thread so 
+           we have to be very careful here.  But this is how the asycronous 
+           magic happens.
+        */
+        THREAD_POOL_EXECUTOR.execute(new Runnable() {
+            List<T> result = null;
+            Exception exception = null;
+
+            @Override
+            public void run() {
+                try {
+                    this.result = restRunner.onReadWithFilter(innerFilter, RestAdapter.this);
+                } catch (Exception e) {
+                    Log.e(TAG, e.getMessage(), e);
+                    this.exception = e;
+                }
+                if (exception == null) {
+                    callback.onSuccess(this.result);
+                } else {
+                    callback.onFailure(exception);
+                }
+            }
+        });
+
+    }
+}
+
+----
+
+.RestRunner.java
+[source,java]
+----
+public class RestRunner<T> implements PipeHandler<T> {
+
+    /*
+    *
+    * For clarity, some parts of the method have been removed.  The full source can 
+    * be found at https://github.com/aerogear/aerogear-android/blob/CR1/src/org/jboss/aerogear/android/impl/pipeline/RestRunner.java#L169
+    * This method 
+    *    1) extracts information relevant to the query from the filter param
+    *    2) builds a request
+    *    3) performs a http GET with that request
+    *    4) deserializes the response using a GSON field 
+    *    5) returns it
+    */
+    @Override
+    public List<T> onReadWithFilter(ReadFilter filter, Pipe<T> requestingPipe) {
+        List<T> result;
+        HttpProvider httpProvider;
+        httpProvider = getHttpProvider(filter.getLinkUri());
+    
+        /* Run the request and fetch the response */
+        HeaderAndBody httpResponse = httpProvider.get();
+        byte[] responseBody = httpResponse.getBody();
+        String responseAsString = new String(responseBody, encoding);
+        
+        /*Turn the response into a useful JSON object */
+        JsonParser parser = new JsonParser();
+        JsonElement httpJsonResult = parser.parse(responseAsString);
+        httpJsonResult = getResultElement(httpJsonResult, dataRoot);
+        
+        /* turn the JSONObject result our typed Collection */
+        if (httpJsonResult.isJsonArray()) {
+            T[] resultArray = gson.fromJson(httpJsonResult, arrayKlass);
+            result = Arrays.asList(resultArray);
+        } else {
+            T resultObject = gson.fromJson(httpJsonResult, klass);
+            List<T> resultList = new ArrayList<T>(1);
+            resultList.add(resultObject);
+            result = resultList;
+        }
+        return result;
+
+    }
+}
+
+----
+
+So why separate *Pipe* and *PipeHandler*?  The logic of threading is troublesome and often leads to bugs.  Also it is usually platform (IE Android) specific.  Since AG provides this logic and methods for selecting the most appropriate mechanisms for handling threads, there is no reason to burden a developer with it.  The methods for connecting to datasources and such are much more specific to the use case (IE the app).  While we try to make our libraries simple but configurable, sometimes we can't just hit every use case.  By limiting what a developer has to focus on to JUST the things specific to her servers and data model, we reduce errors and increase happiness.
+
+== An Impractical but custom PipeHandler
+=== Aka: Contrived example is contrived
+
+So let's say all of the data we want isn't stored in a remote server but a local file.  We can easily write a *PipeHandler* to read from this file.  For purposes of this example, let's pretend the file is read only.
+
+First, our file :assets/
+
+.cars.json
+[source,javascript]
+----
+{
+  "data": [
+    {
+      "manufacturer": "Porsche",
+      "model": "911",
+      "price": "135000"
+    },
+    {
+      "manufacturer": "Nissan",
+      "model": "GT-R",
+      "price": "80000"
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "M3",
+      "price": "60500"
+    },
+    {
+      "manufacturer": "Audi",
+      "model": "S5",
+      "price": "53000"
+    },
+    {
+      "manufacturer": "Audi",
+      "model": "TT",
+      "price": "40000"
+    }
+  ]
+}
+----
+
+And our *PipeHandler* 
+
+.PipeHandler
+[source,java]
+----
+/*Imports and exceptions have been snipped for brevity*/
+public class FileHandler implements PipeHandler<Car> {
+
+	private static final String FILE_NAME = "cars.json";
+	private static final Gson GSON = new Gson();
+	private final Context applicationContext;
+	
+	public FileHandler(Context applicationContext) {
+		super();
+		this.applicationContext = applicationContext;
+	}
+
+	@Override
+	public List<Car> onRead(Pipe<Car> requestingPipe) {
+		JsonParser parser = new JsonParser();
+		BufferedReader carsReader;
+		try {
+			carsReader = new BufferedReader(new InputStreamReader(applicationContext.getAssets().open(FILE_NAME)));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		JsonArray carsJson = parser.parse(carsReader).getAsJsonObject().getAsJsonArray("data");
+		return Arrays.asList(GSON.fromJson(carsJson, Car[].class));
+	}
+
+	@Override
+	public List<Car> onReadWithFilter(ReadFilter filter,
+			Pipe<Car> requestingPipe) {
+		return onRead(requestingPipe);
+	}
+
+	@Override
+	public Car onSave(Car item) {
+		throw new IllegalAccessError("Not Supported");
+	}
+
+	@Override
+	public void onRemove(String id) {
+		throw new IllegalAccessError("Not Supported");
+	}
+
+}
+----
+
+And to create a pipe that uses our new handler all we need is to use *PipeConfig* and *Pipeline*.  
+
+[source,java]
+----
+    public class FileTestApplication extends Application {
+    Pipeline pipeline;
+	
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		URL fileURL;
+		
+		try {
+			fileURL = getFilesDir().toURI().toURL();
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		pipeline = new Pipeline(fileURL);
+		PipeConfig fileReaderConfig = new PipeConfig(fileURL, Car.class);
+		fileReaderConfig.setHandler(new FileHandler(this));
+		pipeline.pipe(Car.class, fileReaderConfig);
+	}
+	
+	public LoaderPipe<Car> getCarPipe(Activity activity) {
+		return (LoaderPipe<Car>)pipeline.get("car", activity);
+	}
+	
+}
+
+----
+
+And then we can use it from an Activity thustly:
+
+[source,java]
+----
+public class MainActivity extends Activity {
+
+    Pipe<Car> carsPipe;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		carsPipe = ((FileTestApplication) getApplication()).getCarPipe(this);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		carsPipe.read(new FileCallback());
+	}
+
+	private static final class FileCallback extends
+			AbstractActivityCallback<List<Car>> {
+
+		private static final long serialVersionUID = 1L;
+
+		public FileCallback() {
+			super("hashableValue");
+		}
+
+		@Override
+		public void onSuccess(List<Car> data) {
+			Toast.makeText(getActivity(), data.toString(), Toast.LENGTH_LONG)
+					.show();
+		}
+
+		@Override
+		public void onFailure(Exception e) {
+			Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG)
+					.show();
+		}
+
+	}
+
+}
+----
+
+== More notes and tidbits
+=== GSON
+
+Behind the scenes, AeroGear uses Google\'s GSON for JSON object serialization and deserialization.  *PipeConfig* can consume a *GSONBuilder* and pass it to *Pipe* instances.  This *GSONBuilder* will be used to create *GSON* objects which are used to marshall and unmarshall objects.  If you have nested, typed collections this would be the ideal way to load your data.
+
+=== Nested Data in Result
+
+Sometimes you will have a simple result format, but your data will be surrounded by metadata.  Take this JSON snippit for example:
+
+[source, json]
+----
+{
+    "data": {
+        "after": "t3_17i1lt",
+        "before": null,
+        "children": [
+                {"data":"data1"},
+                {"data":"data2"},
+                {"data":"data3"},
+                {"data":"data4"}
+        ]
+    }
+}
+----
+
+In this example you are interested in the data object\'s "children" collection.  Instead of writing code using GSON to fetch it, you can instead use *PipeConfig.setDataRoot*.
+
+[source,java]
+----
+PageConfig pageConfig = new PageConfig();
+config.setDataRoot("data.children")
+----
+
