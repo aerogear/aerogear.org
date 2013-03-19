@@ -29,6 +29,7 @@ title: Guides
 
 #### User Guides
 * [AeroGear Controller User Guide](aerogear-controller)
+* [AeroGear iOS API Cookbook](iOSCookbook)
 
 #### Contributing to AeroGear
 
