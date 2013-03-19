@@ -7,3 +7,4 @@ bin/
 /.bundle
 /vendor
 /.rbenv-version
+*~
