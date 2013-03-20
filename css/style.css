@@ -13,15 +13,11 @@ body > .container {
     margin: 0;
 }
 
-body > .container > div {
-    padding: 10px;
-}
-
-.splash {
-    padding: 10px 10px 5px 10px;
-}
-
 .home-content {
+    padding: 5px 10px;
+}
+
+.span12 {
     padding: 5px 10px;
 }
 
@@ -221,11 +217,18 @@ body > .container > div {
 #repo-container {
     position: relative;
     display: none;
-    padding: 20px;
+    padding: 20px 0;
+    float: right;
+    width: 100%;
+    margin-top: 10px;
 }
 
 #fork-link img {
     z-index: 100;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: 0;
 }
 
 .repo {
@@ -512,6 +515,15 @@ footer .row .span3:last-child {
 
 .navbar-fixed-top {
     margin: inherit;
+}
+
+.topic-page-logo {
+    float: left;
+    display: inline-block;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    width: 35%;
+    max-width: 200px;
 }
 
 @media (max-width: 1200px) {
