@@ -144,7 +144,7 @@ pipeline.pipe(Project.class, config);
 <hr><strong>ProjectListFragment.java</strong>
 
 public Fragment() {
-   this.readCallback = new ProjectListCallback(this);
+   this.readCallback = new ProjectListCallback();
 }
 
 public void load() {
@@ -155,19 +155,20 @@ public void load() {
 
     // issue the read request passing the callback
     listing.read(readCallback);
-}<hr><strong>ProjectListCallback.java</strong>
+}
 
-public class ProjectListCallback extends AbstractFragmentCallback&lt;List&lt;Project&gt;&gt; {
-    public ProjectListCallback(ProjectListFragment f) {
-        super(f, 1);
-    }
+ private static class ProjectListCallback extends AbstractFragmentCallback&lt;List&lt;Project&gt;&gt; {
+        public ProjectListCallback() {
+            super("myCallback");
+        }
 
-    public void onSuccess(final List&lt;Project&gt; data) {
-        // do something with the response
-    }
+        public void onSuccess(final List&lt;Project&gt; data) {
+            // do something with the response
+        }
 
-    public void onFailure(Exception e) {
-         //Gracefully handle the exception
+        public void onFailure(Exception e) {
+             //Gracefully handle the exception
+        }
     }
 }</code></pre>
                   </div>
