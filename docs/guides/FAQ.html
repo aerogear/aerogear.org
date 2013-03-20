@@ -132,7 +132,7 @@ id&lt;AGPipe&gt; projects = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
                     <pre class="highlight"><code class="java"><strong>MyApplication.java</strong>
 
 // creating the Pipeline pointing to the remote application
-Pipeline pipeline = new Pipeline(new URL("http://todoauth-aerogear.rhcloud.com/todo-server"));
+Pipeline pipeline = new Pipeline("http://todoauth-aerogear.rhcloud.com/todo-server");
 
 // set up the config object for the pipe to point to a given server (RESTful) endpoint:
 PipeConfig config = new PipeConfig(baseURL, Project.class);
@@ -141,7 +141,7 @@ config.setEndpoint("projects");
 
 // initialize Pipe with the given config
 pipeline.pipe(Project.class, config);
-<hr><strong>ProjectFragment.java</strong>
+<hr><strong>ProjectListFragment.java</strong>
 
 public Fragment() {
    this.readCallback = new ProjectListCallback(this);
@@ -158,7 +158,7 @@ public void load() {
 }<hr><strong>ProjectListCallback.java</strong>
 
 public class ProjectListCallback extends AbstractFragmentCallback&lt;List&lt;Project&gt;&gt; {
-    public StoryListCallback(ProjectListFragment f) {
+    public ProjectListCallback(ProjectListFragment f) {
         super(f, 1);
     }
 
@@ -428,7 +428,7 @@ authenticator.auth("myAuth", new AGSecurityAuthenticationConfig());
 <hr><strong>ProjectFragment.java</strong>
 
 MyApplication application = (MyApplication) getActivity().getApplication();
-application.getAuthenticator().get("myAuth", this,  this.getApplicationContext(), new Callback<HeaderAndBody>() {
+application.getAuthenticator().get("myAuth", this,  this.getApplicationContext()).login("john", "123", new Callback<HeaderAndBody>() {
     @Override
     public void onSuccess(HeaderAndBody data) {
         // login successfully
