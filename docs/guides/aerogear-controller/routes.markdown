@@ -125,7 +125,7 @@ Route endpoints currently support the following types of parameters which are al
   
 * ```Cookie```   
 
-All of the above parameters are specfied in the same way:
+All of the above parameters are specified in the same way:
 
     .to(Endpoint.class).methodName(param("paramName"));
 
