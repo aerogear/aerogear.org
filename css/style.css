@@ -13,6 +13,10 @@ body > .container {
     margin: 0;
 }
 
+body > .container > div {
+    padding: 10px;
+}
+
 .splash {
     padding: 10px 10px 5px 10px;
 }
@@ -186,7 +190,15 @@ body > .container {
     margin-bottom: 20px;
 }
 
-.span4 > div {
+.download-row > .span6 > .span6 {
+    border: 2px solid #c3d3e3;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.span4 > div, .download-row > .span6 > .span6 > div {
     padding: 5px;
 }
 
@@ -194,15 +206,15 @@ body > .container {
     display: block;
 }
 
-.download-row > .span4 {
+.download-row > .span6 {
     border: none;
 }
 
-.download-row > .span4 > .span4 {
+.download-row > .span6 > .span6 {
     margin-left: 0;
 }
 
-.download-row > .span4 > div {
+.download-row > .span6 > div {
     padding: 0;
 }
 
@@ -298,8 +310,16 @@ pre {
     font-weight: bold;
 }
 
-.download-row .span4 {
-    width: 450px;
+.download-row {
+    margin-left: 0;
+}
+
+.download-row > .span6 {
+    width: 46%;
+}
+
+.download-row .span6 > .span6 {
+    width: 100%;
 }
 
 .sectionbody img {
@@ -380,6 +400,16 @@ pre {
 
 .nav-collapse.hidden .navbar {
     display: none;
+}
+
+.download-row .span6 h2 {
+    color: #c6000f;
+    padding-left: 5px;
+    background-color: #c3d3e3;
+    -webkit-border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
+    border-radius: 7px 7px 0 0;
+    margin-bottom: 10px;
 }
 
 /* Footer Styles */
@@ -493,10 +523,6 @@ footer .row .span3:last-child {
         font-size: 18px;
     }
 
-    .download-row .span4 {
-        width: 375px;
-    }
-
     .span4 h3 {
         font-size: 16px;
     }
@@ -604,14 +630,6 @@ footer .row .span3:last-child {
         width: 100%;
     }
 
-    .download-row .span4 {
-        width: 325px;
-    }
-
-    .download-row > .span4 {
-        margin-left: 30px;
-    }
-
     .post img {
         display: none;
     }
@@ -636,8 +654,12 @@ footer .row .span3:last-child {
         font-size: 12px;
     }
 
-    .span4, .download-row .span4 {
+    .span4 {
         width: 100%;
+    }
+
+    .download-row .span6 {
+        width: 98%;
     }
 
     .home-content h2 {
@@ -646,10 +668,6 @@ footer .row .span3:last-child {
 
     .home-content .span4 img {
         width: 95%;
-    }
-
-    .download-row > .span4 {
-        margin-left: 0;
     }
 
     .latest-news {
