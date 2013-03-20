@@ -11,7 +11,7 @@ title: Guides
 
 #### Getting Started
 
-* [FAQ](FAQ)
+* [FAQ](FAQ.html)
 * [Get Started With AeroGear.js](GetStartedAeroGearJS.html)
 * [Get Started With HTML5 Mobile Web Development](GetStartedHTML5MobileWeb)
 * [Get Started with Hybrid Application Frameworks](HybridApplicationFrameworks)
