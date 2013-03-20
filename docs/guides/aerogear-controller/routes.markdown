@@ -15,7 +15,7 @@ The simplest way to configure routes is to extend [AbstractRoutingModule](http:/
         public void configuration() {
             route()
                    .from("/").roles("admin")
-                   .consumes(JSP, JSON)
+                   .consumes(JSON)
                    .on(RequestMethod.GET)
                    .produces(JSP, JSON)
                    .to(Home.class).index();
@@ -33,10 +33,16 @@ Roles that the currently authenticated subject must belong to for this route to 
 The HTTP [method(s)](http://aerogear.org/docs/specs/aerogear-controller/org/jboss/aerogear/controller/router/RequestMethod.html) that this route can handle.  
 
 * ```consumes```  
-The [Media Types](mediatypes.html) that this route can consume.  
+The [Media Types](mediatypes.html) that this route can consume. A route can specify the type of data it consumes by using the 
+```consumes``` method.  For example, if a route specifies a media type of ```application/json``` this will cause the body of the 
+HTTP request to be transformed from JSON into a Java Object representation. 
+For information about adding custom consumer, please refer to the [Media Types](mediatypes.html) section.
 
 * ```produces```  
-The [Media Types](mediatypes.html) that this route can produce.  
+The [Media Types](mediatypes.html) that this route can produce. A route can specify the type of data it produces by using the 
+```produces``` method. For example, if a route specifies a media type of ```JSON``` the Java Object returned from the endpoint 
+will be transformed into a JSON representation which will be sent back as the body of the HTTP response.  
+For information about adding custom producer, please refer to the [Media Types](mediatypes.html) section.
 
 * ```to```  
 The target endpoint class for this route. 
@@ -99,10 +105,11 @@ Example of RESTful Route:
                    .to(Cars.class).findById(param("id"));
         }
         
-A GET request to the above route might look like:  
-```http://server:port/myapp/cars/3```  
+A GET request for the above route might look like:  
 
-This route returned list of cars in [JSON](http://www.json.org/) format. The built-in JSON support is provided by [Jackson](http://jackson.codehaus.org).  
+    curl --header "Accept: application/json" http://server:port/myapp/cars/3  
+
+This route would be expected to return car in [JSON](http://www.json.org/) format. The built-in JSON support is provided by [Jackson](http://jackson.codehaus.org).  
 If you are not happy with the built-in consumers or produces you can provide your own, please refer to the section [Media Types](mediatypes.html) for further details.
 
 ## Parameters
@@ -117,6 +124,10 @@ Route endpoints currently support the following types of parameters which are al
 * ```Header```  
   
 * ```Cookie```   
+
+All of the above parameters are specified in the same way:
+
+    .to(Endpoint.class).methodName(param("paramName"));
 
 ### Populating parameters
 You can use immutable beans straight away as controller parameters:
