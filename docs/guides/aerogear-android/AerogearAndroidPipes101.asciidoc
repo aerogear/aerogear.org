@@ -2,6 +2,9 @@
 layout: basic
 title: Android Pipes 101
 ---
+
+== AeroGear Pipe in Android
+
 AeroGear uses a Pipe metaphor for connecting to a remote web service.  All methods on *Pipe* consume a *Callback*.  If you are calling your *Pipe* from an Activity or Fragment it is highly encouraged to create a static class which extends *AbstractActivityCallback*, *AbstractFragmentActivityCallback*, *AbstractFragmentCallback*, or *AbstractSupportFragmentCallback*.  
 
 Let's say you have a simple webservice at *http://www.server.com/car*.  This service has the following API:
