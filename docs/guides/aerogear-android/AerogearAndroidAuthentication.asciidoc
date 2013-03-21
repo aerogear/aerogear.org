@@ -19,13 +19,13 @@ This guide will go indepth on these two topics; however, we will also discuss br
 
 == The Authentication API
 
-Interaction with Authentication services is mediated using classes which implement the *AuthenticationModule* interface, register themselves with the *Authenticator* factory class, and apply themselves to a *Pipe* using *PipeConfig*.
+Interaction with Authentication services is mediated using classes which implement the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] interface, register themselves with the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] factory class, and apply themselves to a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] using link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*].
 
-*AuthenticationModule* wraps up URL fields for enrolling, logging in, and logging out and defines the methods which call these URLs.  Once a login has been succesfully completed, it also provides an *AuthorizationFields* object which encapuslates the necessary parameteres for applying authorization to a request via a *Pipe*.
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] wraps up URL fields for enrolling, logging in, and logging out and defines the methods which call these URLs.  Once a login has been succesfully completed, it also provides an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthorizationFields.html[*AuthorizationFields*] object which encapuslates the necessary parameteres for applying authorization to a request via a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].
 
-*Authenticator* is a manager and a factory.  It can consume an *AuthenticationConfig* object and instanciate a module tuned to work with an AeroGear Controller based server, or you can create a custom *AuthenticationModule* and register it with then *Authenticator*.  *Authenticator* also supplies getters which can wrap any *AuthenticationModule* in a proxy which delegates calls to the server to an Android Loader.
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] is a manager and a factory.  It can consume an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationConfig.html[*AuthenticationConfig*] object and instanciate a module tuned to work with an AeroGear Controller based server, or you can create a custom link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] and register it with then link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*].  link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] also supplies getters which can wrap any link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] in a proxy which delegates calls to the server to an Android Loader.
 
-*AbstractAuthenticationModule* is a convenience class for integrating with non AeroGear REST services.  It is also useful for when you want to only support a subset of the *AuthenticationModule*\'s functionality, and it configures a THREAD_POOL_EXECUTOR for you to delegate your network calls to.  
+*AbstractAuthenticationModule* is a convenience class for integrating with non AeroGear REST services.  It is also useful for when you want to only support a subset of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*]'s functionality, and it configures a THREAD_POOL_EXECUTOR for you to delegate your network calls to.  
 
 === Using Authentication: The TODO App
 For an example of using the Authentication API to connect to a AeroGear Controller, let\'s look at https://github.com/aerogear/aerogear-android-todo.
@@ -63,7 +63,7 @@ public void onCreate() {
 
 ==== Using Authentication
 
-While the application is not logged in, *AuthenticationModule* will stay out of the way.  However, interacting with authentication is this simple.
+While the application is not logged in, link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] will stay out of the way.  However, interacting with authentication is this simple.
 
 .AuthenticationMethodsExample
 [source,java]
