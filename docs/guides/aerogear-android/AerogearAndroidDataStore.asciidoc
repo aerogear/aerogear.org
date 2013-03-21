@@ -3,32 +3,32 @@ layout: basic
 title: Aerogear Android Data Store
 ---
 
-== Data Store Api
+== Aerogear Android Data Store
 
 Aerogear Android provides a simple data storage API.  This API is usful for caching responses, sharing data among different systems, or providing some form of limited offline support.  
 
 === API Overview  
 
-*DataManager* 
- : A factory and provider of *Store* implementations.  It behaves similarly to *Pipeline* and *Authenticator*.  Since *Store* implementations are synchronous, it does not have nor provide Loader wrappers.
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*] 
+ : A factory and provider of link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*] implementations.  It behaves similarly to link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Pipeline.html[*Pipeline*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*]. Since link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*] implementations are synchronous, it does not have nor provide Loader wrappers.
 
-*Store*
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*]
  : An interface which different store implementations implement.
 
-*StoreTypes* 
-: An enum class with values *MEMORY* and *SQL*. 
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreTypes.html[*StoreTypes*]
+: An enum class with values link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreTypes.html#MEMORY[*MEMORY*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreTypes.html#SQL[*SQL*]. 
 
-*SQLStore*  
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/SQLStore.html[*SQLStore*]  
 : A Store implementation which writes to a backing SQLLite database.  
 
-*MemoryStore*
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/MemoryStorage.html[*MemoryStore*]
 : A Store implementation which is backed by a HashMap in memory.
 
 === Examples
 
 ==== Creating a Memory Store
 
-To create a MemoryStore we can use a **StoreConfig** bean and **DataManager**. A Memory store will go away when the application is removed from memory and is best used for short term caching.  Also it can not perform nested querying of its data.
+To create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/MemoryStorage.html[*MemoryStore*] we can use a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreConfig.html[*StoreConfig*] bean and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*]. A Memory store will go away when the application is removed from memory and is best used for short term caching.  Also it can not perform nested querying of its data.
 
 [source,java]
 ----
@@ -41,7 +41,7 @@ To create a MemoryStore we can use a **StoreConfig** bean and **DataManager**. A
 
 ==== Creating a SQLStore
 
-To create a SQLStore we can use a **StoreConfig** bean and **DataManager**. A SQL store needs to be opened using the *open* method. *Open* takes a **Callback** which is called after the database is ready for writing.
+To create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/SQLStore.html[*SQLStore*] we can use a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreConfig.html[*StoreConfig*] bean and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*]. A SQL store needs to be opened using the `open` method. `Open` takes a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*Callback*] which is called after the database is ready for writing.
 
 [source,java]
 ----
@@ -54,7 +54,7 @@ To create a SQLStore we can use a **StoreConfig** bean and **DataManager**. A SQ
 ----
 
 === Using Stores
-Both Store types implement the same interface.  In the case of a SQLStore you will need to make sure open has been called before you use any of these methods however.
+Both Store types implement the same interface.  In the case of a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/SQLStore.html[*SQLStore*] you will need to make sure open has been called before you use any of these methods however.
 
 ==== Saving Data  
 
@@ -103,7 +103,7 @@ Both Store types implement the same interface.  In the case of a SQLStore you wi
 
 ==== Searching Data  
 *Note:* Filtering only supports exact matches  
-*Note:* MemoryStore can conly filter using top level properties.  It will not look at nested properties in the *ReadFilter* or in the object.  Trying to do so will cause an Exception.
+*Note:* link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/MemoryStorage.html[*MemoryStore*] can conly filter using top level properties.  It will not look at nested properties in the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/ReadFilter.html[*ReadFilter*] or in the object.  Trying to do so will cause an Exception.
 
 [source,java]
 ----
