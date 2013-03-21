@@ -5,15 +5,15 @@ title: AeroGear Android Customizing Pipes
 
 == Introduction to the Pipe architecture 
 
-AeroGear on Android uses a class called *Pipe* to retrieve data from a source asynchronously.  A *Pipe* has the methods `read`, `readWithFilter`, `remove`, and `save`.  A *Pipe* implementation is responsible for managing *PipeHandler* instances and returning their results and returning them to the user via callbacks provided by the *Pipe* CRUD methods.  AG Android has three *Pipe* implementations: *RestAdapter*, *ModernLoaderAdapter*, and *SupportLoaderAdapter*.
+AeroGear on Android uses a class called link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] to retrieve data from a source asynchronously.  A link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] has the methods `read`, `readWithFilter`, `remove`, and `save`.  A link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementation is responsible for managing link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] instances and returning their results and returning them to the user via callbacks provided by the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] CRUD methods.  AG Android has three link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementations: link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestAdapter.html[*RestAdapter*], link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/LoaderAdapter.html[*LoaderAdapter*], and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/SupportLoaderAdapter.html[*SupportLoaderAdapter*].
 
-*PipeHander* instances are responsible for connecting to a remote source, sending a request, fetching the response, and returning a deserialized instance of that result to the Pipe which requested it.  *PipeHandlers* do not need to worry about threading, this is the responsibility of the *Pipe*.
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] instances are responsible for connecting to a remote source, sending a request, fetching the response, and returning a deserialized instance of that result to the Pipe which requested it.  link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandlers*] do not need to worry about threading, this is the responsibility of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].
 
-For many of the cases, writing an adapter to a remote source which AG can not support is as simple as implementing a *PipeHandler* and passing it to a *Pipeline* via `PipeConfig.setHandler`.
+For many of the cases, writing an adapter to a remote source which AG can not support is as simple as implementing a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] and passing it to a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Pipeline.html[*Pipeline*] via `PipeConfig.setHandler`.
 
 == A practical example, HTTP Pipes
 
-To demonstrate how *Pipe* and *PipeHandler* interact, let's look at the methods `RestAdapter.readWithFilter` and `RestRunner.onReadWithFilter`.
+To demonstrate how link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] interact, let's look at the methods `RestAdapter.readWithFilter` and `RestRunner.onReadWithFilter`.
 
 .RestAdapter.java
 [source,java]
@@ -107,12 +107,12 @@ public class RestRunner<T> implements PipeHandler<T> {
 
 ----
 
-So why separate *Pipe* and *PipeHandler*?  The logic of threading is troublesome and often leads to bugs.  Also it is usually platform (IE Android) specific.  Since AG provides this logic and methods for selecting the most appropriate mechanisms for handling threads, there is no reason to burden a developer with it.  The methods for connecting to datasources and such are much more specific to the use case (IE the app).  While we try to make our libraries simple but configurable, sometimes we can't just hit every use case.  By limiting what a developer has to focus on to JUST the things specific to her servers and data model, we reduce errors and increase happiness.
+So why separate link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*]?  The logic of threading is troublesome and often leads to bugs.  Also it is usually platform (IE Android) specific.  Since AG provides this logic and methods for selecting the most appropriate mechanisms for handling threads, there is no reason to burden a developer with it.  The methods for connecting to datasources and such are much more specific to the use case (IE the app).  While we try to make our libraries simple but configurable, sometimes we can't just hit every use case.  By limiting what a developer has to focus on to JUST the things specific to her servers and data model, we reduce errors and increase happiness.
 
 == An Impractical but custom PipeHandler
 === Aka: Contrived example is contrived
 
-So let's say all of the data we want isn't stored in a remote server but a local file.  We can easily write a *PipeHandler* to read from this file.  For purposes of this example, let's pretend the file is read only.
+So let's say all of the data we want isn't stored in a remote server but a local file.  We can easily write a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] to read from this file.  For purposes of this example, let's pretend the file is read only.
 
 First, our file :assets/
 
@@ -150,7 +150,7 @@ First, our file :assets/
 }
 ----
 
-And our *PipeHandler* 
+And our link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] 
 
 .PipeHandler
 [source,java]
@@ -199,7 +199,7 @@ public class FileHandler implements PipeHandler<Car> {
 }
 ----
 
-And to create a pipe that uses our new handler all we need is to use *PipeConfig* and *Pipeline*.  
+And to create a pipe that uses our new handler all we need is to use link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Pipeline.html[*Pipeline*].  
 
 [source,java]
 ----
@@ -288,7 +288,7 @@ public class MainActivity extends Activity {
 == More notes and tidbits
 === GSON
 
-Behind the scenes, AeroGear uses Google\'s GSON for JSON object serialization and deserialization.  *PipeConfig* can consume a *GSONBuilder* and pass it to *Pipe* instances.  This *GSONBuilder* will be used to create *GSON* objects which are used to marshall and unmarshall objects.  If you have nested, typed collections this would be the ideal way to load your data.
+Behind the scenes, AeroGear uses Google\'s GSON for JSON object serialization and deserialization.  link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*] can consume a *GSONBuilder* and pass it to link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] instances.  This *GSONBuilder* will be used to create *GSON* objects which are used to marshall and unmarshall objects.  If you have nested, typed collections this would be the ideal way to load your data.
 
 === Nested Data in Result
 

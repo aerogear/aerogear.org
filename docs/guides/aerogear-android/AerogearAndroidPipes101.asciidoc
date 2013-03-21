@@ -5,10 +5,9 @@ title: Android Pipes 101
 
 == AeroGear Pipe in Android
 
-AeroGear uses a Pipe metaphor for connecting to a remote web service.  All methods on *Pipe* consume a *Callback*.  If you are calling your *Pipe* from an Activity or Fragment it is highly encouraged to create a static class which extends *AbstractActivityCallback*, *AbstractFragmentActivityCallback*, *AbstractFragmentCallback*, or *AbstractSupportFragmentCallback*.  
+AeroGear uses a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] metaphor for connecting to a remote web service.  All methods on link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] consume a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*].  If you are calling your link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] from an Activity or Fragment it is highly encouraged to create a static class which extends link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/AbstractActivityCallback.html[*AbstractActivityCallback*], link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/support/AbstractFragmentActivityCallback.html[*AbstractFragmentActivityCallback*], link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/AbstractFragmentCallback.html[*AbstractFragmentCallback*], or link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/support/AbstractSupportFragmentCallback.html[*AbstractSupportFragmentCallback*].
 
 Let's say you have a simple webservice at *http://www.server.com/car*.  This service has the following API:
-
 
 *GET*:/car
  :  Returns a JSON Array of all cars
@@ -34,7 +33,6 @@ public class Car {
     public String toString() {
       return String.format("{make:%s, model:%s}", make, model);
     }
-    
 }
 ----
 
@@ -47,11 +45,11 @@ Pipe<Car> pipe = new RestAdapter<pipe>(Car.class, new URL("http://www.server.com
 
 And `pipe.read`, `pipe.readWithFilter`, `pipe.save`, and `pipe.remove` would all work as advertised with no extra work.  
 
-However, if we are calling this code from an Android Activity or Fragment, then we need to be aware of the Android Activity lifecycle.  If the Application goes into the background (ex. the user gets a phone call), then any results which come in may be lost or cause an Exception if they interact with the UI of the suspended Activity.  If there is a configuration change (ex. the phone was rotated) then the Activity is destroyed and a new one is created.  If you used an anonymous inner class for your *Callback* instance then you will lose your results when the operation completes (because anonymous inner classes have an implicit reference to the outer class).
+However, if we are calling this code from an Android Activity or Fragment, then we need to be aware of the Android Activity lifecycle.  If the Application goes into the background (ex. the user gets a phone call), then any results which come in may be lost or cause an Exception if they interact with the UI of the suspended Activity.  If there is a configuration change (ex. the phone was rotated) then the Activity is destroyed and a new one is created.  If you used an anonymous inner class for your link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*] instance then you will lose your results when the operation completes (because anonymous inner classes have an implicit reference to the outer class).
 
 However, AeroGear also has support for Android's Loader API.  Loader's were introduced by Android in version 3.0, and their lifecycle is managed by Android.  When an Activity is paused and resumed, any activity the Loader was working on is returned.  If the Activity is destroyed because of a configuration change then the Loader will provide its results to the new Activity instance without having to make second call to a remote server.
 
-This code uses the *Pipeline* class to instantiate and manage a *Pipe* object.  `Pipeline.pipe` creates and returns an instance of *Pipe*.  You don't have to keep a reference to the result.  `Pipeline.get(String, Activity)` will return a instance of *LoaderPipe* which is really a wrapper around the original *Pipe* object.  There are also `Pipeline.get` methods for Fragments and the FragmentActivity and Fragment classes Android's support library.
+This code uses the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Pipeline.html[*Pipeline*] class to instantiate and manage a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] object.  `Pipeline.pipe` creates and returns an instance of link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].  You don't have to keep a reference to the result.  `Pipeline.get(String, Activity)` will return a instance of link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/LoaderPipe.html[*LoaderPipe*] which is really a wrapper around the original link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] object.  There are also `Pipeline.get` methods for Fragments and the FragmentActivity and Fragment classes Android's support library.
 
 [source,java]
 ----
