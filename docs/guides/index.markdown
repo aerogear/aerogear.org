@@ -30,11 +30,7 @@ title: Guides
 #### User Guides
 * [AeroGear Controller User Guide](aerogear-controller)
 * [AeroGear Security overview](aerogear-security)
-* [AeroGead Android Pipes 101](AerogearAndroidPipes101)
-* [AeroGead Android Customizing Pipes](AerogearAndroidCustomizingPipes)
-* [AeroGead Android Pagination](AerogearAndroidPagination)
-* [AeroGead Android Authentication](AerogearAndroidAuthentication)
-* [AeroGead Android Store](AerogearAndroidDataStore)
+* [AeroGear Android User Guide](aerogear-android)
 * [AeroGear iOS API Cookbook](iOSCookbook)
 
 #### Contributing to AeroGear
