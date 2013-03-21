@@ -23,7 +23,7 @@ AeroGear Security is distributed under the [Apache License, Version 2.0](http://
             <scope>compile</scope>
         </dependency>
         
-2. AeroGear Security doesn't reinvent the wheel and make use of the existing security providers. For now only PicketLink is supported:
+2. AeroGear Security doesn't reinvent the wheel and makes use of the existing security providers. For now only PicketLink is supported:
 
         <dependency>
              <groupId>org.jboss.aerogear</groupId>
@@ -38,29 +38,29 @@ AeroGear Controller and Security are not tied together, but we've choosen to use
 
 The first thing to do is to implement a *SecurityProvider* and include role validation:
 
-	import org.jboss.aerogear.controller.spi.SecurityProvider;
+    import org.jboss.aerogear.controller.spi.SecurityProvider;
 
-	public class AeroGearSecurityProvider implements SecurityProvider {
+    public class AeroGearSecurityProvider implements SecurityProvider {
 
-    	@Inject
-    	private AeroGearCredential credential;
+        @Inject
+        private AeroGearCredential credential;
 
-    	@Override
-    	public void isRouteAllowed(Route route) throws ServletException {
+        @Override
+        public void isRouteAllowed(Route route) throws ServletException {
 
-       		if (!credential.hasRoles(route.getRoles())) {
-           	throw new AeroGearSecurityException(HttpStatus.AUTHENTICATION_FAILED);
-        	}
-    	}
-	} 
+            if (!credential.hasRoles(route.getRoles())) {
+                throw new AeroGearSecurityException(HttpStatus.AUTHENTICATION_FAILED);
+            }
+        }
+    } 
 	
 The next step is to configure role-based authorization support on Controller:
 
     public class Routes extends AbstractRoutingModule {
 
-		/**
-       	  * Entry point for configuring the routes mapping http requests to the pojo controllers
-          */
+          /**
+           * Entry point for configuring the routes mapping http requests to the pojo controllers
+           */
           @Override
           public void configuration() {
               route()
@@ -115,7 +115,7 @@ To get started, please install and configure SSL support on JBoss [http://docs.j
 
 You can do it with:
 
-	$JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
+    $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
 
 During the process make sure to setup the default password (*"changeit"*) already on JBoss, for testing purposes.
 
@@ -123,27 +123,27 @@ Copy this file [standalone.xml](https://gist.github.com/abstractj/a91c4fc960975a
 
 1. Specify the servlet filter into web.xml and the configuration options:
 
-		<filter>
-       		<filter-name>SecureHeadersFilter</filter-name>
-        	<filter-class>org.jboss.aerogear.security.filter.SecureHeadersFilter</filter-class>
-        	<init-param>
-           		<param-name>max-age</param-name>
-            	<param-value>2592000</param-value>
-        	</init-param>
-        	<init-param>
-           		<param-name>include-subdomains</param-name>
-           		<param-value>false</param-value>
-        	</init-param>
-        	<init-param>
-           		<param-name>Location</param-name>
-           		<param-value>https://localhost:8443/aerogear-controller-demo/mycars</param-value>
-        	</init-param>
-		</filter>
-		
-		<filter-mapping>
-       		<filter-name>SecureHeadersFilter</filter-name>
-        	<url-pattern>/mycars/*</url-pattern>
-    	</filter-mapping>
+       <filter>
+           <filter-name>SecureHeadersFilter</filter-name>
+           <filter-class>org.jboss.aerogear.security.filter.SecureHeadersFilter</filter-class>
+           <init-param>
+               <param-name>max-age</param-name>
+               <param-value>2592000</param-value>
+           </init-param>
+           <init-param>
+               <param-name>include-subdomains</param-name>
+               <param-value>false</param-value>
+           </init-param>
+           <init-param>
+               <param-name>Location</param-name>
+               <param-value>https://localhost:8443/aerogear-controller-demo/mycars</param-value>
+            </init-param>
+       </filter>
+
+<filter-mapping>
+    	<filter-name>SecureHeadersFilter</filter-name>
+    <url-pattern>/mycars/*</url-pattern>
+        </filter-mapping>
 
 
 2. Deploy AG Controller demo
@@ -165,45 +165,45 @@ Copy this file [standalone.xml](https://gist.github.com/abstractj/a91c4fc960975a
 
 #### Configuration
 
-	    <filter>
-       		<filter-name>SecureHeadersFilter</filter-name>
-        	<filter-class>org.jboss.aerogear.security.filter.SecureHeadersFilter</filter-class>
-        	<init-param>
-           		<param-name>x-frame-options</param-name>
-            	<param-value>SAMEORIGIN</param-value>
-        	</init-param>
-    	</filter>
+    <filter>
+        <filter-name>SecureHeadersFilter</filter-name>
+        <filter-class>org.jboss.aerogear.security.filter.SecureHeadersFilter</filter-class>
+        <init-param>
+            <param-name>x-frame-options</param-name>
+            <param-value>SAMEORIGIN</param-value>
+        </init-param>
+    </filter>
 
 ## AeroGear OTP
 
-To provide the maximum flexibility to each scenario OTP module was implemented completely decoupled from AeroGear Security but is possible to have them altogether if you want to store and retrieve OTP *secrets* into the PicketLink IDM. For example:
+To provide the maximum flexibility to each scenario OTP module was implemented completely decoupled from AeroGear Security but it is possible to use them together if you want to store and retrieve OTP secrets from PicketLink IDM. For example:
 
-	public class Otp {
+    public class Otp {
 
-    	@Inject
-    	@Secret
-    	private Instance<String> secret;
-    
-    	@Inject
-    	@LoggedUser
-    	private Instance<String> loggedInUserName;
+    @Inject
+    @Secret
+    private Instance<String> secret;
 
-    	public AeroGearUser secret() {
-       		AeroGearUser user = new AeroGearUser();
-        	user.setUri(new Totp(secret.get()).uri(loggedInUserName.get()));
-        	return user;
-    	}
+    @Inject
+    @LoggedUser
+    private Instance<String> loggedInUserName;
 
-    	public AeroGearUser otp(AeroGearUser user) {
+        public AeroGearUser secret() {
+            AeroGearUser user = new AeroGearUser();
+            user.setUri(new Totp(secret.get()).uri(loggedInUserName.get()));
+            return user;
+        }
 
-       		Totp totp = new Totp(secret.get());
-        	boolean result = totp.verify(user.getOtp());
+        public AeroGearUser otp(AeroGearUser user) {
 
-        	if (!result)
-           		throw new RuntimeException("Invalid OTP");
+            Totp totp = new Totp(secret.get());
+            boolean result = totp.verify(user.getOtp());
 
-        	return user;
-    	}
+            if (!result)
+                throw new RuntimeException("Invalid OTP");
+        
+            return user;
+        }
 	}
 
 For a more detailed description of this implementation please refer to [AeroGear Security OTP](http://aerogear.org/docs/specs/aerogear-security-otp/) specification. You can see the OTP API usage [here](https://github.com/aerogear/aerogear-otp-java) or [use it with iOS](https://github.com/aerogear/aerogear-otp-ios).
