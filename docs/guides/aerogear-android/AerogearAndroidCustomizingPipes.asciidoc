@@ -179,7 +179,8 @@ public class FileHandler implements PipeHandler<Car> {
 			throw new RuntimeException(e);
 		}
 		JsonArray carsJson = parser.parse(carsReader).getAsJsonObject().getAsJsonArray("data");
-		return Arrays.asList(GSON.fromJson(carsJson, Car[].class));
+		Car[] cars = GSON.fromJson(carsJson, Car[].class);
+        return Arrays.asList(cars);
 	}
 
 	@Override
