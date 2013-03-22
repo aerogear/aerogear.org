@@ -205,7 +205,7 @@ And to create a pipe that uses our new handler all we need is to use link:/docs/
 
 [source,java]
 ----
-    public class FileTestApplication extends Application {
+public class FileTestApplication extends Application {
     Pipeline pipeline;
 	
 	@Override
@@ -228,7 +228,6 @@ And to create a pipe that uses our new handler all we need is to use link:/docs/
 	public LoaderPipe<Car> getCarPipe(Activity activity) {
 		return (LoaderPipe<Car>)pipeline.get("car", activity);
 	}
-	
 }
 
 ----
@@ -265,14 +264,12 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onSuccess(List<Car> data) {
-			Toast.makeText(getActivity(), data.toString(), Toast.LENGTH_LONG)
-					.show();
+			Toast.makeText(getActivity(), data.toString(), Toast.LENGTH_LONG).show();
 		}
 
 		@Override
 		public void onFailure(Exception e) {
-			Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG)
-					.show();
+			Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
 		}
 
 	}
