@@ -8,19 +8,20 @@ The Android AeroGear libraries implement paging as defined in link:../../specs/a
 
 These two resources should be enough to get you up and running with Aerogear controller based services.  However, if you have special requirements or legacy services AeroGear\'s pagingation framework can also be extended to support some prett gnarly usecases.
 
-=== Pagination from a third party source
 
-You need to be aware of three interfaces in the paging API: link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*], link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageResultExtractor.html[*PageResultExtractor*], and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/ParameterProvider.html[*ParameterProvider*].  Each of these interfaces has a default implementation that AeroGear will use if you don\'t specify your own.  When paging is configured, a `read` or `readWithFilter` operation on a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] will load parameters from a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/ParameterProvider.html[*ParameterProvider*] and apply them to the request.  Then it will use the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageResultExtractor.html[*PageResultExtractor*] to compute a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] to return in the `onSuccess` method of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*] supplied to the `read` or `readWithFilter` methods.
+AeroGear ships with support for selecting data from the server response and using that data as a relative URI for locations of the "next" and "previous" pages of data.  You can enable paging by configuring a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageConfig.html[*PageConfig*] object and setting it on the Pipe using `PipeConfig.setPageConfig`.  When this option is enabled, `Pipe.read` and `Pipe.readWithFilter` will pass link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] insteances to `Callback.onSuccess` instead of plain Lists.  You can call `PagedList.next` and `PagedList.previous` for load the next and previous data sets respectively.  
+
 
 Let\'s say we have a service which returns a page of data in the following format:
+
 
 .Response
 [source, json]
 ----
 {
     "data": {
-        "after": "t3_17i1lt",
-        "before": null,
+        "after": "?after=t3",
+        "before": ?before=t1,
         "children": [
                 {"data":"data1"},
                 {"data":"data2"},
@@ -31,7 +32,10 @@ Let\'s say we have a service which returns a page of data in the following forma
 }
 ----
 
-The 'after' parameter defines the page of data which comes after the current page.  The 'before' parameter likewise defines the page which comes before the page of data.  This let\'s up write a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageResultExtractor.html[*PageResultExtractor*] which will return a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/ReadFilter.html[*ReadFilter*] which can be used to load the other pages of data.  We also need to define a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageConfig.html[*PageConfig*] object which will tell link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] how to handle the paging data.
+
+The 'after' parameter defines the page of data which comes after the current page.  The 'before' parameter likewise defines the page which comes before the page of data.  If these fields are relative URIs, Aerogear can use them for paging data.  
+
+The link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageConfig.html[*PageConfig*] object has parameters for setting WHERE paging location data is (`pageConfig.setMetadataLocation`), and which fields correspond to which data `pageConfig.setNextIdentifier`, `pageConfig.setPreviousIdentifier`, and several other parameters specified in the JavaDoc.
 
 .ExampleApplication.java
 [source,java]
@@ -44,7 +48,6 @@ void onCreate() {
      pageConfig.setMetadataLocation(PageConfig.MetadataLocations.BODY);
      pageConfig.setNextIdentifier("data.after");
      pageConfig.setPreviousIdentifier("data.before");
-     pageConfig.setPageHeaderParser(new PageConsumer());
  
      PipeConfig config = new PipeConfig(BASE_URL, Data.class);//Data is just an example type
      config.setPageConfig(pageConfig);
@@ -53,56 +56,10 @@ void onCreate() {
      pipeline.pipe(Data.class, config);
 }
 
-public Pipe<Data> get(String name, Activity activity) {
-     return pipeline.get(name,activity);
-}
 ----
 
-.SamplePageResultExtractor.java
-[source,java]
-----
-public class SamplePageResultExtractor implements PageResultExtractor<PageConfig>{
- 
-    @Override
-    public ReadFilter getNextFilter(HeaderAndBody result, PageConfig config) {
-        ReadFilter filter = new ReadFilter();
-        JsonParser parser =new JsonParser();
-        JsonElement element = parser.parse(new String(result.getBody()));
-        String next = getFromJSON(element, config.getNextIdentifier());
-        if (next != null) {
-            filter.setLinkUri(URI.create("?after=" + next));
-        }
-        return filter;
-    }
- 
-    @Override
-    public ReadFilter getPreviousFilter(HeaderAndBody result, PageConfig config) {
-        ReadFilter filter = new ReadFilter();
-        JsonParser parser =new JsonParser();
-        JsonElement element = parser.parse(new String(result.getBody()));
-        String previous = getFromJSON(element, config.getPreviousIdentifier());
-        if (previous != null) {
-            filter.setLinkUri(URI.create("?before=" + previous));
-        }
-        return filter;
-    }
- 
-    private String getFromJSON(JsonElement element, String nextIdentifier) {
-        String[] identifiers = nextIdentifier.split("\\.");
-        for( String identifier:identifiers) {
-            element = element.getAsJsonObject().get(identifier);
-        }
-        if (element.isJsonNull()) {
-            return null;
-        }
- 
-        return element.getAsString();
-    }
- 
-}
-----
+-And now when we call `read` or `readWithFilter` our link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*]'s onSuccess method will be passed a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] instance.  
 
-And now when we call `read` or `readWithFilter` our link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*]'s onSuccess method will be passed a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] instance.  
 
 .ReadCallback.java
 [source,java]
@@ -123,26 +80,11 @@ public class ReadCallback extends AbstractActivityCallback<List<Data>> {
 }
 ----
 
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] has  `next` and `previous` methods.  Both of these methods consume a *Callback* and call `Pipe.readWithFilter` with a *ReadFilter* object designed to reference the particular page requested and the callback provided to the method on link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*]
+
 .ExampleActivity
 [source,java]
 ----
-public ExampleActivity extends ListActivity {
-
-    Pipe<Data> dataPipe;
-    ReadCallback readCallback = new ReadCallback();
-    PagedList<Data> data;
-
-    public void onCreate() {
-        //Pretend this view has onClick methods wired up to 
-        //nextPressed and previousPressed.
-        setContentView(R.layout.a_view_with_next_and_previous_buttons);
-        dataPipe = ((ExampleApplication)getApplication).get("data", this);
-    }
-
-    public void onStart() {
-        dataPipe.read(readCallback);
-    }
-
     public void nextPressed(View button) {
         data.next(readCallback);
     }
@@ -150,11 +92,5 @@ public ExampleActivity extends ListActivity {
     public void previousPressed(View button) {
         data.previous(readCallback);
     }
-
-    public void setData(PagedList<Data> data) {
-        this.data = data;
-    }
-
-}
 
 ----

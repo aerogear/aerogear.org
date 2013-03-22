@@ -1,11 +1,11 @@
 ---
 layout: basic
-title: Aerogear Android Data Store
+title: AeroGear Android Data Store
 ---
 
-== Aerogear Android Data Store
+== Data Store API
 
-Aerogear Android provides a simple data storage API.  This API is usful for caching responses, sharing data among different systems, or providing some form of limited offline support.  
+AeroGear Android provides a simple data storage API.  This API is useful for caching responses, sharing data among different systems, or providing some form of limited offline support.  
 
 === API Overview  
 
@@ -28,7 +28,7 @@ link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/Me
 
 ==== Creating a Memory Store
 
-To create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/MemoryStorage.html[*MemoryStore*] we can use a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreConfig.html[*StoreConfig*] bean and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*]. A Memory store will go away when the application is removed from memory and is best used for short term caching.  Also it can not perform nested querying of its data.
+To create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/MemoryStorage.html[*MemoryStore*] we can use a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreConfig.html[*StoreConfig*] bean and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*]. A Memory store will go away when the application is removed from memory and is best used for short term caching.  
 
 [source,java]
 ----
@@ -101,29 +101,3 @@ Both Store types implement the same interface.  In the case of a link:/docs/spec
     store.remove(1); //Deletes the element with ID 1  
 ----
 
-==== Searching Data  
-*Note:* Filtering only supports exact matches  
-*Note:* link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/MemoryStorage.html[*MemoryStore*] can conly filter using top level properties.  It will not look at nested properties in the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/ReadFilter.html[*ReadFilter*] or in the object.  Trying to do so will cause an Exception.
-
-[source,java]
-----
-    loadBulkData(); //Loads 6 "Data" Elements
-    
-    result = store.readWithFilter(null);  
-    Assert.assertEquals(6, result.size());
-    
-    filter = new ReadFilter();  
-    where = new JSONObject();  
-    where.put("name", "name2");  
-    filter.setWhere(where);  
-    result = store.readWithFilter(filter);  
-    Assert.assertEquals(3, result.size());
-    
-    filter = new ReadFilter();  
-    where = new JSONObject();  
-    where.put("name", "name2");  
-    where.put("description", "description");  
-    filter.setWhere(where);  
-    result = store.readWithFilter(filter);  
-    Assert.assertEquals(2, result.size());  
-----
