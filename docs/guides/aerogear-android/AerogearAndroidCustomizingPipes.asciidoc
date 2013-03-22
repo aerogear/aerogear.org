@@ -206,8 +206,8 @@ And to create a pipe that uses our new handler all we need is to use link:/docs/
 
 [source,java]
 ----
-public class FileTestApplication extends Application {
-    Pipeline pipeline;
+public class GuideApplication extends Application {
+    private Pipeline pipelineForCustomPipeGuide;
 	
 	@Override
 	public void onCreate() {
@@ -220,14 +220,14 @@ public class FileTestApplication extends Application {
 			throw new RuntimeException(e);
 		}
 		
-		pipeline = new Pipeline(fileURL);
+		pipelineForCustomPipeGuide = new Pipeline(fileURL);
 		PipeConfig fileReaderConfig = new PipeConfig(fileURL, Car.class);
 		fileReaderConfig.setHandler(new FileHandler(this));
-		pipeline.pipe(Car.class, fileReaderConfig);
+		pipelineForCustomPipeGuide.pipe(Car.class, fileReaderConfig);
 	}
 	
 	public LoaderPipe<Car> getCarPipe(Activity activity) {
-		return (LoaderPipe<Car>)pipeline.get("car", activity);
+		return (LoaderPipe<Car>)pipelineForCustomPipeGuide.get("car", activity);
 	}
 }
 
@@ -237,7 +237,7 @@ And then we can use it from an Activity as follows:
 
 [source,java]
 ----
-public class MainActivity extends Activity {
+public class HowToUseCustomPipe extends ListActivity {
 
     Pipe<Car> carsPipe;
 
@@ -245,7 +245,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		carsPipe = ((FileTestApplication) getApplication()).getCarPipe(this);
+		carsPipe = ((GuideApplication) getApplication()).getCarPipe(this);
 	}
 
 	@Override
@@ -265,7 +265,8 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onSuccess(List<Car> data) {
-			Toast.makeText(getActivity(), data.toString(), Toast.LENGTH_LONG).show();
+			ListActivity activity = (ListActivity) getActivity();
+            activity.setListAdapter(new ArrayAdapter(activity, android.R.layout.simple_list_item_1, data));
 		}
 
 		@Override
