@@ -245,7 +245,7 @@
                 </td>
             
             
-            <td class="description last">the settings to be passed to the adapter</td>
+            <td class="description last">the settings to be passed to the adapter. Form specific settings, see the documentation for the adapter you are using.</td>
         </tr>
 	
 	
@@ -282,7 +282,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="f25d3e32ae.html">authentication/aerogear.auth.js</a>, line 36
+        <a href="aerogear.auth.js.html">authentication/aerogear.auth.js</a>, line 34
     </li></ul></dd>
     
     
@@ -325,14 +325,14 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        // Create an empty authenticator
-        var auth = AeroGear.Auth();
+    <pre class="prettyprint"><code>    // Create an empty authenticator
+    var auth = AeroGear.Auth();
 
-        // Create a single module using the default adapter
-        var auth2 = AeroGear.Auth( "myAuth" );
+    // Create a single module using the default adapter
+    var auth2 = AeroGear.Auth( "myAuth" );
 
-        // Create multiple modules using the default adapter
-        var auth3 = AeroGear.Auth( [ "someAuth", "anotherAuth" ] );</code></pre>
+    // Create multiple modules using the default adapter
+    var auth3 = AeroGear.Auth( [ "someAuth", "anotherAuth" ] );</code></pre>
 
     
 </dd>
@@ -340,12 +340,6 @@
     
     </div>
     
-    
-        <h3 class="subsection-title">Extends</h3>
-        
-        <ul>
-            <li><a href="AeroGear.Core.html">AeroGear.Core</a></li>
-        </ul>
     
     
     
@@ -396,7 +390,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="f25d3e32ae.html">authentication/aerogear.auth.js</a>, line 65
+        <a href="aerogear.auth.js.html">authentication/aerogear.auth.js</a>, line 63
     </li></ul></dd>
     
     
@@ -451,7 +445,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="f25d3e32ae.html">authentication/aerogear.auth.js</a>, line 53
+        <a href="aerogear.auth.js.html">authentication/aerogear.auth.js</a>, line 51
     </li></ul></dd>
     
     
@@ -469,305 +463,6 @@
         </dl>
     
     
-    
-        <h3 class="subsection-title">Methods</h3>
-        
-        <dl>
-            
-<dt>
-    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(config)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This function is used internally by pipeline, datamanager, etc. to add a new Object (pipe, store, etc.) to the respective collection.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>config</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Array</span>
-|
-
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">This can be a variety of types specifying how to create the object</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="AeroGear.Core.html#add">AeroGear.Core#add</a>
-    </li></dd>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.core.js.html">aerogear.core.js</a>, line 39
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    The object containing the collection that was updated
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(config)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This function is used internally by pipeline, datamanager, etc. to remove an Object (pipe, store, etc.) from the respective collection.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>config</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">String[]</span>
-|
-
-<span class="param-type">Object[]</span>
-|
-
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">This can be a variety of types specifying how to remove the object</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="AeroGear.Core.html#remove">AeroGear.Core#remove</a>
-    </li></dd>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.core.js.html">aerogear.core.js</a>, line 76
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    The object containing the collection that was updated
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-</dd>
-
-        </dl>
     
     
     
@@ -789,7 +484,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 01 2013 09:33:14 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Mar 25 2013 16:20:09 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -643,7 +643,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="6b2ce5cca5.html">pipeline/adapters/rest.js</a>, line 35
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 54
     </li></ul></dd>
     
     
@@ -683,6 +683,28 @@
 
         
     
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    //Create an empty pipeline
+    var pipeline = AeroGear.Pipeline();
+
+    //Add a new Pipe with a custom baseURL, custom endpoint and default paging turned on
+    pipeline.add( "customPipe", {
+        baseURL: "http://customURL.com",
+        endpoint: "customendpoint",
+        pageConfig: true
+    });
+
+    //Add a new Pipe with a custom paging options
+    pipeline.add( "customPipe", {
+        pageConfig: {
+            metadataLocation: "header",
+            previousIdentifier: "back",
+            nextIdentifier: "forward"
+        }
+    });</code></pre>
+
     
 </dd>
 
@@ -819,7 +841,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#completeCallbackREST">AeroGear~completeCallbackREST</a></span>
 
 
             
@@ -854,7 +876,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#errorCallbackREST">AeroGear~errorCallbackREST</a></span>
 
 
             
@@ -1230,7 +1252,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#successCallbackREST">AeroGear~successCallbackREST</a></span>
 
 
             
@@ -1289,7 +1311,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="6b2ce5cca5.html">pipeline/adapters/rest.js</a>, line 253
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 345
     </li></ul></dd>
     
     
@@ -1332,21 +1354,94 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
+    <pre class="prettyprint"><code>    var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
 
-        // Get a set of key/value pairs of all data on the server associated with this pipe
-        var allData = myPipe.read();
+    // Get a set of key/value pairs of all data on the server associated with this pipe
+    var allData = myPipe.read();
 
-        // A data object can be passed to filter the data and in the case of REST,
-        // this object is converted to query string parameters which the server can use.
-        // The values would be determined by what the server is expecting
-        var filteredData = myPipe.read({
-            query: {
-                limit: 10,
-                date: "2012-08-01"
-                ...
+    // A data object can be passed to filter the data and in the case of REST,
+    // this object is converted to query string parameters which the server can use.
+    // The values would be determined by what the server is expecting
+    var filteredData = myPipe.read({
+        query: {
+            limit: 10,
+            date: "2012-08-01"
+            ...
+        }
+    });
+
+    //JSONP - Default JSONP call to a JSONP server
+    myPipe.read({
+        jsonp: true,
+        success: function( data ){
+            .....
+        }
+    });
+
+    //JSONP - JSONP call with a changed callback parameter
+    myPipe.read({
+        jsonp: {
+            callback: "jsonp"
+        },
+        success: function( data ){
+            .....
+        }
+    });
+
+    //Paging - using the default weblinking protocal
+    var defaultPagingPipe = AeroGear.Pipeline([{
+        name: "webLinking",
+        settings: {
+            endpoint: "pageTestWebLink",
+            pageConfig: true
+        }
+    }]).pipes[0];
+
+    //Get a limit of 2 pieces of data from the server, starting from the first page
+    //Calling the "next" function will get the next 2 pieces of data, if available.
+    //Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
+    defaultPagingPipe.read({
+        offsetValue: 1,
+        limitValue: 2,
+        success: function( data, textStatus, jqXHR ) {
+            data.next({
+                success: function( data ) {
+                    data.previous({
+                        success: function() {
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    //Create a new Pipe with a custom paging options
+    var customPagingPipe = AeroGear.Pipeline([{
+        name: "customPipe",
+        settings: {
+            pageConfig: {
+                metadataLocation: "header",
+                previousIdentifier: "back",
+                nextIdentifier: "forward"
             }
-        });</code></pre>
+        }
+    }]).pipes[0];
+
+    //Even with custom options, you use "next" and "previous" the same way
+    customPagingPipe.read({
+        offsetValue: 1,
+        limitValue: 2,
+        success: function( data, textStatus, jqXHR ) {
+            data.next({
+                success: function( data ) {
+                    data.previous({
+                        success: function() {
+                        }
+                    });
+                }
+            });
+        }
+    });</code></pre>
 
     
 </dd>
@@ -1502,7 +1597,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#completeCallbackREST">AeroGear~completeCallbackREST</a></span>
 
 
             
@@ -1533,7 +1628,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#errorCallbackREST">AeroGear~errorCallbackREST</a></span>
 
 
             
@@ -1595,7 +1690,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#successCallbackREST">AeroGear~successCallbackREST</a></span>
 
 
             
@@ -1650,7 +1745,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="6b2ce5cca5.html">pipeline/adapters/rest.js</a>, line 469
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 561
     </li></ul></dd>
     
     
@@ -1693,33 +1788,31 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
+    <pre class="prettyprint"><code>    var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
 
-        // Store a new task
-        myPipe.save({
-            title: "Created Task"
-        });
+    // Store a new task
+    myPipe.save({
+        title: "Created Task",
+        id: 1
+    });
 
-        // Store another new task
-        myPipe.save({
-            title: "Another Created Task"
-        });
+    // Store another new task
+    myPipe.save({
+        title: "Another Created Task",
+        id: 2
+    });
 
-        // Store one more new task
-        myPipe.save({
-            title: "And Another Created Task"
-        });
+    // Store one more new task
+    myPipe.save({
+        title: "And Another Created Task",
+        id: 3
+    });
 
-        // Remove a particular item from the server by its id
-        var toRemove = myPipe.data[ 0 ];
-        myPipe.remove( toRemove.id );
+    // Remove a particular item from the server by its id
+    myPipe.remove( 1 );
 
-        // Remove an item from the server using the data object
-        toRemove = myPipe.data[ 0 ];
-        myPipe.remove( toRemove );
-
-        // Delete all remaining data from the server associated with this pipe
-        myPipe.remove();</code></pre>
+    // Delete all remaining data from the server associated with this pipe
+    myPipe.remove();</code></pre>
 
     
 </dd>
@@ -1870,7 +1963,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#completeCallbackREST">AeroGear~completeCallbackREST</a></span>
 
 
             
@@ -1901,7 +1994,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#errorCallbackREST">AeroGear~errorCallbackREST</a></span>
 
 
             
@@ -1963,7 +2056,7 @@
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type"><a href="AeroGear.html#successCallbackREST">AeroGear~successCallbackREST</a></span>
 
 
             
@@ -2018,7 +2111,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="6b2ce5cca5.html">pipeline/adapters/rest.js</a>, line 380
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 474
     </li></ul></dd>
     
     
@@ -2061,34 +2154,36 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
+    <pre class="prettyprint"><code>    var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
 
-        // Store a new task
-        myPipe.save({
-            title: "Created Task",
-            date: "2012-07-13",
-            ...
-        });
+    // Store a new task
+    myPipe.save({
+        title: "Created Task",
+        date: "2012-07-13",
+        ...
+    });
 
-        // Pass a success and error callback, in this case using the REST pipe and jQuery.ajax so the functions take the same parameters.
-        myPipe.save({
-            title: "Another Created Task",
-            date: "2012-07-13",
-            ...
+    // Pass a success and error callback, in this case using the REST pipe and jQuery.ajax so the functions take the same parameters.
+    myPipe.save({
+        title: "Another Created Task",
+        date: "2012-07-13",
+        ...
+    },
+    {
+        success: function( data, textStatus, jqXHR ) {
+            console.log( "Success" );
         },
-        {
-            success: function( data, textStatus, jqXHR ) {
-                console.log( "Success" );
-            },
-            error: function( jqXHR, textStatus, errorThrown ) {
-                console.log( "Error" );
-            }
-        });
+        error: function( jqXHR, textStatus, errorThrown ) {
+            console.log( "Error" );
+        }
+    });
 
-        // Update an existing piece of data
-        var toUpdate = myPipe.data[ 0 ];
-        toUpdate.data.title = "Updated Task";
-        myPipe.save( toUpdate );</code></pre>
+    // Update an existing piece of data
+    var toUpdate = {
+        id: "Some Existing ID",
+        title: "Updated Task"
+    }
+    myPipe.save( toUpdate );</code></pre>
 
     
 </dd>
@@ -2115,7 +2210,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 01 2013 09:33:14 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Mar 25 2013 16:20:09 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>

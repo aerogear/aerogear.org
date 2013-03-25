@@ -127,7 +127,7 @@ h1
 	font-size: 200%;
 	font-weight: bold;
 	letter-spacing: -0.01em;
-	margin: 6px 0 9px 0;
+	margin: 20px 0 9px 0;
 }
 
 h2
@@ -135,7 +135,7 @@ h2
 	font-size: 170%;
 	font-weight: bold;
 	letter-spacing: -0.01em;
-	margin: 6px 0 3px 0;
+	margin: 20px 0 3px 0;
 }
 
 h3
@@ -144,7 +144,7 @@ h3
 	font-weight: bold;
 	letter-spacing: -0.01em;
 	margin-top: 16px;
-	margin: 6px 0 3px 0;
+	margin: 20px 0 3px 0;
 }
 
 h4
