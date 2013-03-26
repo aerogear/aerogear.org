@@ -50,6 +50,7 @@
     
     <div class="description">
         The REST adapter is the default type used when creating a new pipe. It uses jQuery.ajax to communicate with the server. By default, the RESTful endpoint used by this pipe is the app's current context, followed by the pipe name. For example, if the app is running on http://mysite.com/myApp, then a pipe named `tasks` would use http://mysite.com/myApp/tasks as its REST endpoint.
+    This constructor is instantiated when the "PipeLine.add()" method is called
     </div>
     
 
@@ -643,7 +644,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 54
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 55
     </li></ul></dd>
     
     
@@ -1311,7 +1312,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 345
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 348
     </li></ul></dd>
     
     
@@ -1352,96 +1353,100 @@
         
     
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
-    <pre class="prettyprint"><code>    var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
+    <pre class="prettyprint"><code>var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
 
-    // Get a set of key/value pairs of all data on the server associated with this pipe
-    var allData = myPipe.read();
+// Get a set of key/value pairs of all data on the server associated with this pipe
+var allData = myPipe.read();
 
-    // A data object can be passed to filter the data and in the case of REST,
-    // this object is converted to query string parameters which the server can use.
-    // The values would be determined by what the server is expecting
-    var filteredData = myPipe.read({
-        query: {
-            limit: 10,
-            date: "2012-08-01"
-            ...
-        }
-    });
+// A data object can be passed to filter the data and in the case of REST,
+// this object is converted to query string parameters which the server can use.
+// The values would be determined by what the server is expecting
+var filteredData = myPipe.read({
+    query: {
+        limit: 10,
+        date: "2012-08-01"
+        ...
+    }
+});
 
-    //JSONP - Default JSONP call to a JSONP server
-    myPipe.read({
-        jsonp: true,
-        success: function( data ){
-            .....
-        }
-    });
+    </code></pre>
 
-    //JSONP - JSONP call with a changed callback parameter
-    myPipe.read({
-        jsonp: {
-            callback: "jsonp"
-        },
-        success: function( data ){
-            .....
-        }
-    });
+    <pre class="prettyprint"><code>//JSONP - Default JSONP call to a JSONP server
+myPipe.read({
+    jsonp: true,
+    success: function( data ){
+        .....
+    }
+});
 
-    //Paging - using the default weblinking protocal
-    var defaultPagingPipe = AeroGear.Pipeline([{
-        name: "webLinking",
-        settings: {
-            endpoint: "pageTestWebLink",
-            pageConfig: true
-        }
-    }]).pipes[0];
+//JSONP - JSONP call with a changed callback parameter
+myPipe.read({
+    jsonp: {
+        callback: "jsonp"
+    },
+    success: function( data ){
+        .....
+    }
+});
 
-    //Get a limit of 2 pieces of data from the server, starting from the first page
-    //Calling the "next" function will get the next 2 pieces of data, if available.
-    //Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
-    defaultPagingPipe.read({
-        offsetValue: 1,
-        limitValue: 2,
-        success: function( data, textStatus, jqXHR ) {
-            data.next({
-                success: function( data ) {
-                    data.previous({
-                        success: function() {
-                        }
-                    });
-                }
-            });
-        }
-    });
+    </code></pre>
 
-    //Create a new Pipe with a custom paging options
-    var customPagingPipe = AeroGear.Pipeline([{
-        name: "customPipe",
-        settings: {
-            pageConfig: {
-                metadataLocation: "header",
-                previousIdentifier: "back",
-                nextIdentifier: "forward"
+    <pre class="prettyprint"><code>//Paging - using the default weblinking protocal
+var defaultPagingPipe = AeroGear.Pipeline([{
+    name: "webLinking",
+    settings: {
+        endpoint: "pageTestWebLink",
+        pageConfig: true
+    }
+}]).pipes[0];
+
+//Get a limit of 2 pieces of data from the server, starting from the first page
+//Calling the "next" function will get the next 2 pieces of data, if available.
+//Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
+defaultPagingPipe.read({
+    offsetValue: 1,
+    limitValue: 2,
+    success: function( data, textStatus, jqXHR ) {
+        data.next({
+            success: function( data ) {
+                data.previous({
+                    success: function() {
+                    }
+                });
             }
-        }
-    }]).pipes[0];
+        });
+    }
+});
 
-    //Even with custom options, you use "next" and "previous" the same way
-    customPagingPipe.read({
-        offsetValue: 1,
-        limitValue: 2,
-        success: function( data, textStatus, jqXHR ) {
-            data.next({
-                success: function( data ) {
-                    data.previous({
-                        success: function() {
-                        }
-                    });
-                }
-            });
+//Create a new Pipe with a custom paging options
+var customPagingPipe = AeroGear.Pipeline([{
+    name: "customPipe",
+    settings: {
+        pageConfig: {
+            metadataLocation: "header",
+            previousIdentifier: "back",
+            nextIdentifier: "forward"
         }
-    });</code></pre>
+    }
+}]).pipes[0];
+
+//Even with custom options, you use "next" and "previous" the same way
+customPagingPipe.read({
+    offsetValue: 1,
+    limitValue: 2,
+    success: function( data, textStatus, jqXHR ) {
+        data.next({
+            success: function( data ) {
+                data.previous({
+                    success: function() {
+                    }
+                });
+            }
+        });
+    }
+});</code></pre>
 
     
 </dd>
@@ -1745,7 +1750,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 561
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 564
     </li></ul></dd>
     
     
@@ -2111,7 +2116,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 474
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, line 477
     </li></ul></dd>
     
     
@@ -2210,7 +2215,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Mar 25 2013 16:20:09 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Mar 26 2013 09:37:03 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -50,6 +50,7 @@
     
     <div class="description">
         The Memory adapter is the default type used when creating a new store. Data is simply stored in a data var and is lost on unload (close window, leave page, etc.)
+    This constructor is instantiated when the "DataManager.add()" method is called
     </div>
     
 
@@ -247,7 +248,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 31
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 33
     </li></ul></dd>
     
     
@@ -287,6 +288,17 @@
 
         
     
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>//Create an empty DataManager
+var dm = AeroGear.DataManager();
+
+//Add a custom memory store
+dm.add( "newStore", {
+    recordId: "customID"
+});</code></pre>
+
     
 </dd>
 
@@ -441,7 +453,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 290
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 313
     </li></ul></dd>
     
     
@@ -484,13 +496,21 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
+    <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
 
-    // An object can be passed to filter the data
-    var filteredData = dm.filter({
-        date: "2012-08-01"
-        ...
-    });</code></pre>
+// An object can be passed to filter the data
+// This would return all records with a user named 'admin' **AND** a date of '2012-08-01'
+var filteredData = dm.filter({
+    date: "2012-08-01",
+    user: "admin"
+});
+
+// The matchAny parameter changes the search to an OR operation
+// This would return all records with a user named 'admin' **OR** a date of '2012-08-01'
+var filteredData = dm.filter({
+    date: "2012-08-01",
+    user: "admin"
+}, true);</code></pre>
 
     
 </dd>
@@ -600,7 +620,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 153
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 155
     </li></ul></dd>
     
     
@@ -643,13 +663,13 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
+    <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
 
-    // Get an array of all data in the store
-    var allData = dm.read();
+// Get an array of all data in the store
+var allData = dm.read();
 
-    //Read a specific piece of data based on an id
-    var justOne = dm.read( 12345 );</code></pre>
+//Read a specific piece of data based on an id
+var justOne = dm.read( 12345 );</code></pre>
 
     
 </dd>
@@ -752,7 +772,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 243
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 258
     </li></ul></dd>
     
     
@@ -795,33 +815,33 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
+    <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
 
-    // Store a new task
-    dm.save({
-        title: "Created Task"
-    });
+// Store a new task
+dm.save({
+    title: "Created Task"
+});
 
-    // Store another new task
-    dm.save({
-        title: "Another Created Task"
-    });
+// Store another new task
+dm.save({
+    title: "Another Created Task"
+});
 
-    // Store one more new task
-    dm.save({
-        title: "And Another Created Task"
-    });
+// Store one more new task
+dm.save({
+    title: "And Another Created Task"
+});
 
-    // Remove a particular item from the store by its id
-    var toRemove = dm.read()[ 0 ];
-    dm.remove( toRemove.id );
+// Remove a particular item from the store by its id
+var toRemove = dm.read()[ 0 ];
+dm.remove( toRemove.id );
 
-    // Remove an item from the store using the data object
-    toRemove = dm.read()[ 0 ];
-    dm.remove( toRemove );
+// Remove an item from the store using the data object
+toRemove = dm.read()[ 0 ];
+dm.remove( toRemove );
 
-    // Delete all remaining data from the store
-    dm.remove();</code></pre>
+// Delete all remaining data from the store
+dm.remove();</code></pre>
 
     
 </dd>
@@ -960,7 +980,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 179
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, line 194
     </li></ul></dd>
     
     
@@ -1003,19 +1023,32 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
+    <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
 
-    // Store a new task
-    dm.save({
-        title: "Created Task",
-        date: "2012-07-13",
+// Store a new task
+dm.save({
+    title: "Created Task",
+    date: "2012-07-13",
+    ...
+});
+
+//Store an array of new Tasks
+dm.save([
+    {
+        title: "Task2",
+        date: "2012-07-13"
+    },
+    {
+        title: "Task3",
+        date: "2012-07-13"
         ...
-    });
+    }
+]);
 
-    // Update an existing piece of data
-    var toUpdate = dm.read()[ 0 ];
-    toUpdate.data.title = "Updated Task";
-    dm.save( toUpdate );</code></pre>
+// Update an existing piece of data
+var toUpdate = dm.read()[ 0 ];
+toUpdate.data.title = "Updated Task";
+dm.save( toUpdate );</code></pre>
 
     
 </dd>
@@ -1042,7 +1075,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Mar 25 2013 16:20:09 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Mar 26 2013 09:37:03 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>

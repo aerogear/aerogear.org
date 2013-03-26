@@ -42,6 +42,7 @@
 */
 /**
     The REST adapter is the default type used when creating a new pipe. It uses jQuery.ajax to communicate with the server. By default, the RESTful endpoint used by this pipe is the app's current context, followed by the pipe name. For example, if the app is running on http://mysite.com/myApp, then a pipe named `tasks` would use http://mysite.com/myApp/tasks as its REST endpoint.
+    This constructor is instantiated when the "PipeLine.add()" method is called
     @constructs AeroGear.Pipeline.adapters.Rest
     @param {String} pipeName - the name used to reference this particular pipe
     @param {String} [type="Rest"] - the name used to reference this particular pipe
@@ -280,94 +281,96 @@ AeroGear.Pipeline.adapters.Rest = function( pipeName, settings ) {
     @param {AeroGear~successCallbackREST} [options.success] - a callback to be called when the result of the request to the server is successful
     @returns {Object} The jqXHR created by jQuery.ajax. To cancel the request, simply call the abort() method of the jqXHR object which will then trigger the error and complete callbacks for this request. For more info, see the &lt;a href="http://api.jquery.com/jQuery.ajax/">jQuery.ajax page&lt;/a>.
     @example
-    var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
+var myPipe = AeroGear.Pipeline( "tasks" ).pipes[ 0 ];
 
-    // Get a set of key/value pairs of all data on the server associated with this pipe
-    var allData = myPipe.read();
+// Get a set of key/value pairs of all data on the server associated with this pipe
+var allData = myPipe.read();
 
-    // A data object can be passed to filter the data and in the case of REST,
-    // this object is converted to query string parameters which the server can use.
-    // The values would be determined by what the server is expecting
-    var filteredData = myPipe.read({
-        query: {
-            limit: 10,
-            date: "2012-08-01"
-            ...
-        }
-    });
+// A data object can be passed to filter the data and in the case of REST,
+// this object is converted to query string parameters which the server can use.
+// The values would be determined by what the server is expecting
+var filteredData = myPipe.read({
+    query: {
+        limit: 10,
+        date: "2012-08-01"
+        ...
+    }
+});
 
-    //JSONP - Default JSONP call to a JSONP server
-    myPipe.read({
-        jsonp: true,
-        success: function( data ){
-            .....
-        }
-    });
+    @example
+//JSONP - Default JSONP call to a JSONP server
+myPipe.read({
+    jsonp: true,
+    success: function( data ){
+        .....
+    }
+});
 
-    //JSONP - JSONP call with a changed callback parameter
-    myPipe.read({
-        jsonp: {
-            callback: "jsonp"
-        },
-        success: function( data ){
-            .....
-        }
-    });
+//JSONP - JSONP call with a changed callback parameter
+myPipe.read({
+    jsonp: {
+        callback: "jsonp"
+    },
+    success: function( data ){
+        .....
+    }
+});
 
-    //Paging - using the default weblinking protocal
-    var defaultPagingPipe = AeroGear.Pipeline([{
-        name: "webLinking",
-        settings: {
-            endpoint: "pageTestWebLink",
-            pageConfig: true
-        }
-    }]).pipes[0];
+    @example
+//Paging - using the default weblinking protocal
+var defaultPagingPipe = AeroGear.Pipeline([{
+    name: "webLinking",
+    settings: {
+        endpoint: "pageTestWebLink",
+        pageConfig: true
+    }
+}]).pipes[0];
 
-    //Get a limit of 2 pieces of data from the server, starting from the first page
-    //Calling the "next" function will get the next 2 pieces of data, if available.
-    //Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
-    defaultPagingPipe.read({
-        offsetValue: 1,
-        limitValue: 2,
-        success: function( data, textStatus, jqXHR ) {
-            data.next({
-                success: function( data ) {
-                    data.previous({
-                        success: function() {
-                        }
-                    });
-                }
-            });
-        }
-    });
-
-    //Create a new Pipe with a custom paging options
-    var customPagingPipe = AeroGear.Pipeline([{
-        name: "customPipe",
-        settings: {
-            pageConfig: {
-                metadataLocation: "header",
-                previousIdentifier: "back",
-                nextIdentifier: "forward"
+//Get a limit of 2 pieces of data from the server, starting from the first page
+//Calling the "next" function will get the next 2 pieces of data, if available.
+//Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
+defaultPagingPipe.read({
+    offsetValue: 1,
+    limitValue: 2,
+    success: function( data, textStatus, jqXHR ) {
+        data.next({
+            success: function( data ) {
+                data.previous({
+                    success: function() {
+                    }
+                });
             }
-        }
-    }]).pipes[0];
+        });
+    }
+});
 
-    //Even with custom options, you use "next" and "previous" the same way
-    customPagingPipe.read({
-        offsetValue: 1,
-        limitValue: 2,
-        success: function( data, textStatus, jqXHR ) {
-            data.next({
-                success: function( data ) {
-                    data.previous({
-                        success: function() {
-                        }
-                    });
-                }
-            });
+//Create a new Pipe with a custom paging options
+var customPagingPipe = AeroGear.Pipeline([{
+    name: "customPipe",
+    settings: {
+        pageConfig: {
+            metadataLocation: "header",
+            previousIdentifier: "back",
+            nextIdentifier: "forward"
         }
-    });
+    }
+}]).pipes[0];
+
+//Even with custom options, you use "next" and "previous" the same way
+customPagingPipe.read({
+    offsetValue: 1,
+    limitValue: 2,
+    success: function( data, textStatus, jqXHR ) {
+        data.next({
+            success: function( data ) {
+                data.previous({
+                    success: function() {
+                    }
+                });
+            }
+        });
+    }
+});
  */
 AeroGear.Pipeline.adapters.Rest.prototype.read = function( options ) {
     var url, success, error, extraOptions,
@@ -650,7 +653,7 @@ AeroGear.Pipeline.adapters.Rest.prototype.remove = function( toRemove, options )
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Mar 25 2013 16:20:08 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Mar 26 2013 09:37:03 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>
