@@ -22,7 +22,7 @@ Below are lists of example applications and running demos which demonstrate the 
 
 * [HTML5/JavaScript TODO](https://github.com/aerogear/TODO)
     * [Running Demo](http://todo-aerogear.rhcloud.com/)
-* [AS QuickStart](https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-aerogear-js)
+* [AS QuickStart](https://github.com/aerogear/kitchensink-aerogear-js)
     * [Running Demo](http://js-aerogear.rhcloud.com/)
 
 

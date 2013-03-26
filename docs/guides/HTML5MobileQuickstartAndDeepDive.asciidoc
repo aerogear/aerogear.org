@@ -222,7 +222,7 @@ If, on the other hand the request fails for some reason the method processes the
 
 === CSS Files
 
-Github Source: https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile/src/main/webapp/css[CSS directory]
+Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/webapp/css[CSS directory]
  
 In our example we have three CSS files; d.screen.css, m.screen.css and screen.css; d.screen.css is for desktop, m.screen.css is for mobile, screen.css is common to both. These contain the various styles needed for our application.  Most of it is standard CSS styling, but I wanted to point out where it uses the new CSS3 selectors to make styling table cells easy.
 
@@ -242,7 +242,7 @@ This is just one example of the many updates to the CSS selector options availab
 
 === 3rd Party Libraries
 
-Github Source: JavaScript https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile/client/src/main/webapp/js/libs[libs directory]
+Github Source: JavaScript https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/client/src/main/webapp/js/libs[libs directory]
  
 This application uses several 3rd party libraries to do some of the heavy lifting, and handle plumbing and boilerplate code.  These libraries represent just one combination, and there are many other quality libraries out there.  Look for more details and examples of these in the future.
  

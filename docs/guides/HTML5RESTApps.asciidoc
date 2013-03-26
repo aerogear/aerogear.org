@@ -21,7 +21,7 @@ As you can see, we have all the goodness which exists under the HTML5 unmbrella 
 
 We are leveraging the latest and greatest web technologies on mobile, desktop, and device browsers to bring developers a unified and structured enterprise development workflow.
 
-For our latest example of a HTML5 application you can get started with the link:../GetStartedHTML5MobileWeb[how-to article] which guides you step by step, or https://github.com/aerogear/as-quickstarts/tree/master/kitchensink-html5-mobile[fork it on github].
+For our latest example of a HTML5 application you can get started with the link:../GetStartedHTML5MobileWeb[how-to article] which guides you step by step, or https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile[fork it on github].
 
 image::img/iosAppScreenShot.png[Screen Shot of KitchenSink Quickstart on iOS]
 
