@@ -11,9 +11,7 @@ External References
 -------------------
 
 * link:https://github.com/aerogear/aerogear-security/[AeroGear Security]
-* link:https://github.com/picketbox/picketbox-core[PicketBox GitHub]
 * link:https://github.com/picketlink/[PicketLink GitHub]
-* link:https://cwiki.apache.org/confluence/display/DeltaSpike/Security+Module+Drafts[DeltaSpike Security Module Spec]
 * link:http://oauth.net/core/1.0a/[OAuth1]
 * link:http://oauth.net/2/[OAuth2]
 * link:https://github.com/bitwiseshiftleft/sjcl[Stanford Javascript Crypto Library]

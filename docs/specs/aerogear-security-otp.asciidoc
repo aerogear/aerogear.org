@@ -16,7 +16,7 @@ References
 * http://tools.ietf.org/html/rfc4226[RFC 4226 - HOTP specification]
 * http://tools.ietf.org/html/rfc2898[RFC 2898 - Password-Based
 Cryptography Specification]
-* https://github.com/picketbox[PicketBox]
+* https://github.com/picketlink/picketlink[PicketLink]
 
 Scenarios - v0.0.1
 ~~~~~~~~~~~~~~~~~~
