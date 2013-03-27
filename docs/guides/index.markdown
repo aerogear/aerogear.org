@@ -40,3 +40,4 @@ title: Guides
 * [AeroGear JIRA Usage and Guidelines](JIRAUsage)
 * [AeroGear Licensing and Copyright](license)
 * [AeroGear Developer Tools Guide](AeroGearDeveloperSetup)
+* [AeroGear Versioning Policy](/docs/reference/AeroGearVersioningPolicy)

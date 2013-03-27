@@ -1,3 +1,9 @@
+---
+title: AeroGear Versioning Policy
+layout: base
+
+---
+
 # AeroGear Versioning Policy
 
 For this 1.0.0 release and beyond we're planning some significant changes on how we do versioning for the project.
