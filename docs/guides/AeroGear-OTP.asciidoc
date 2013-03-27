@@ -21,7 +21,7 @@ Here is a snippet of code in the iOS land:
 
 [source, c]
 ----
- // the secret key
+ // the secret key (statically defined here but in practice it's obtained from the network)
  NSString *secret = @"B2374TNIQ3HKC446";   
  // initialize OTP  
  AGTotp *generator = [[AGTotp alloc] initWithSecret:[AGBase32 base32Decode:secret]];                       
@@ -34,7 +34,7 @@ Here is a snippet of code in the Android land:
 
 [source, java]
 ----
- // the secret key  
+ // the secret key (statically defined here but in practice it's obtained from the network)
  String secret = "B2374TNIQ3HKC446";
  // initialize OTP  
  Totp generator = new Totp(secret);
