@@ -46,7 +46,7 @@ To create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/da
 [source,java]
 ----
     StoreConfig sqlStoreConfig = new StoreConfig();  
-    sqlStoreConfig.setContext(Robolectric.application.getApplicationContext());  
+    sqlStoreConfig.setContext(getApplicationContext());  
     sqlStoreConfig.setType(SQL);  
     sqlStoreConfig.setKlass(Data.class);  
     Store store = dataManager.store("sqlStore", sqlStoreConfig);  
@@ -72,25 +72,21 @@ Both Store types implement the same interface.  In the case of a link:/docs/spec
 ----
     store.reset();  
     Data readData = store.read(10);  
-    Assert.assertNull(readData);  
 ----
 
 ==== Reading All Data  
 
 [source,java]
 ----
-    store.save(new Data(1, "name", "description"));  
+    store.save(new Data((1, "name", "description"));  
     store.save(new Data((2, "name", "description"));  
-    store.save(new Data((3, "name2", "description"));  
-    store.save(new Data((4, "name2", "description"));  
-    store.save(new Data((5, "name", "description2"));  
-    store.save(new Data((6, "name2", "description2"));
+    store.save(new Data((3, "name", "description"));  
+    store.save(new Data((4, "name", "description"));  
+    store.save(new Data((5, "name", "description"));  
+    store.save(new Data((6, "name", "description"));
     
-    List<data> allData = new ArrayList</data><data>(store.readAll());  
+    List<Data> allData = new ArrayList<Data>(store.readAll());  
     Collections.sort(allData);  
-    Assert.assertEquals(6, allData.size());  
-    Assert.assertEquals("name", allData.get(0).getName());  
-    Assert.assertEquals("name2", allData.get(5).getName());  
 ----
 
 ==== Deleting Data  
