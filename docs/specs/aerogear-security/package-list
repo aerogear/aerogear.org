@@ -1,9 +1,7 @@
 org.jboss.aerogear.security.auth
 org.jboss.aerogear.security.authz
 org.jboss.aerogear.security.exception
+org.jboss.aerogear.security.filter
+org.jboss.aerogear.security.http
 org.jboss.aerogear.security.idm
 org.jboss.aerogear.security.model
-org.jboss.aerogear.security.rest
-org.jboss.aerogear.security.rest.filter
-org.jboss.aerogear.security.rest.service
-org.jboss.aerogear.security.spi
