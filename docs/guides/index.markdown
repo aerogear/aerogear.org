@@ -30,7 +30,7 @@ title: Guides
 #### User Guides
 * [AeroGear Controller User Guide](aerogear-controller)
 * [AeroGear iOS API Cookbook](iOSCookbook)
-* [AeroGear Two-Factor Authentication with OTP](iOSCookbook)
+* [AeroGear Two-Factor Authentication with OTP](AeroGear-OTP)
 
 
 #### Contributing to AeroGear
