@@ -3,110 +3,107 @@ layout: base
 title: Open Source Libraries for Mobile Connectivity
 ---
 
-<div class="splash clearfix">
+<div class="clearfix">
     <div class="start-header">
-        <h2><img src="/img/aerogear-splash.png"/>Open Source Libraries for Mobile Connectivity</h2>
-        <a class="btn" href="download">Gear Up for Mobile!</a>
+        <div class="start-title">Bringing Mobile and<br class="title-break"><span class="title-line2"> Enterprise Together!</span></div>
+        <p>Libraries to <strong>simplify</strong> and <strong>unify</strong> mobile development across different platforms.</p>
     </div>
-    <img src="/img/aerogear-splash.png" class="lower-image"/>
-</div>
-<div class="latest-news">
-    <div>
-       Latest News : <a href="{{ site.posts.first.url }}">{{ site.posts.first.title }}</a>
-    </div>
-    
 </div>
 <div class="home-content">
-    <div class="row">
-        <div class="span4">
-            <h2>Mobile Web and Hybrid</h2>
+    <div class="row-fluid modules">
+        <div class="span3 module">
             <div>
-                <h3>Mobile Web</h3>
-                <p>When building mobile web apps, it is important to have lightweight, performant code that gives a great experience to your users no matter what device they might be using. That is where AeroGear.js comes in. This library provides everything from a simple persistence layer to a security API and everything in between.</p>
-                <ul class="aerogear-list">
-                    <li><a href="files/aerogear-js/aerogear.zip" target="_blank">Download Now</a> v1.0.0-CR1</li>
-                    <li><a href="download/custom/" >Create a custom download</li>
-                    <li><a href="http://todo-aerogear.rhcloud.com/" target="_blank">View a Demo</a></li>
-                </ul>
-                <p><a class="btn" href="docs/guides/GetStartedAeroGearJS.html">Learn More</a></p>
-                <p><a id="jsrepo-btn" class="btn repo-btns" href="#" data-original-text="View the Source" data-link="aerogear/aerogear-js">View the Source</a></p>
-                <h3>Hybrid</h3>
-                <p>Using the same AeroGear.js library we use for mobile web apps, we can move our app to the device and gain access to native APIs thanks to <a href="http://incubator.apache.org/cordova/" target="_blank">Apache Cordova</a>.</p>
-                <ul class="aerogear-list">
-                    <li><a href="/docs/guides/HTML5ToHybridWithCordova/">Learn More</a></li>
-                </ul>
+                <a href="/javascript/">
+                    <img src="img/js-logo.png"/>
+                    <h2>JavaScript</h2>
+                </a>
             </div>
         </div>
-        <div class="span4">
-            <h2>Native Apps on iOS & Android</h2>
+        <div class="span3 module">
             <div>
-                <p>To take your app to the next level and gain performance improvements and access to more restricted APIs that Cordova can't yet reach, you may want to go native. AeroGear has you covered there as well! Whether your developing an iOS or an Android app, by using AeroGear.dmg or AeroGear.jar you'll have the same easy to use APIs as the mobile web but specific to the native environment you're working in.</p>
-                <!--<p><a class="btn" href="#">Learn More</a></p>-->
-                <ul class="aerogear-list">
-                    <li>
-                        <h3>iOS</h3>
-                        <ul class="aerogear-list">
-                            <li><a href="https://github.com/aerogear/aerogear-ios/zipball/1.0.0" target="_blank">Download Now</a> v1.0.0</li>
-                            <li>Also available on <a href="http://cocoapods.org/?q=AeroGear" target="_blank">CocoaPods.org</a></li>
-                            <li><a href="https://github.com/aerogear/aerogear-todo-ios/zipball/1.0.0" target="_blank">Demo Application</a></li>
-                            <li><a href="/docs/guides/GetStartedwithAeroGearandXcode/">Learn More</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <p><a id="iosrepo-btn" class="btn repo-btns" href="#" data-original-text="View the iOS Source" data-link="aerogear/aerogear-ios">View the iOS Source</a></p>
-                <ul class="aerogear-list">
-                    <li>
-                        <h3>Android</h3>
-                        <ul class="aerogear-list">
-                            <li><a href="https://github.com/aerogear/aerogear-android/archive/1.0.0.M1.zip">Download Now</a> v1.0.0.M1</li>
-                            <li><a href="https://github.com/aerogear/aerogear-android-todo/archive/1.0.0.M1.zip">Demo Application</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <p><a id="androidrepo-btn" class="btn repo-btns" href="#" data-original-text="View the Android Source" data-link="aerogear/aerogear-android">View the Android Source</a></p>
+                <a href="/ios/">
+                    <img src="img/ios-logo.png"/>
+                    <h2>Objective-C</h2>
+                </a>
             </div>
         </div>
-        <div class="span4">
-            <h2>Server Side Resources</h2>
+        <br class="title-break">
+        <div class="span3 module">
             <div>
-                <p>Providing the glue for all of these client libraries into the JBoss ecosystem are the server side hooks, and AeroGear Controller sub-project.  These include extensions into existing projects like RESTEasy, while also providing a new set of services specifically for the client libraries.</p>
-                <!--<p><a class="btn" href="#">Learn More</a></p>-->
-                <ul class="aerogear-list">
-                    <li>
-                        <h3>AeroGear Controller</h3>
-                        <ul class="aerogear-list">
-                            <li>
-                                Grab it from Maven Central
-                                <pre>
-&lt;dependency>
-  &lt;groupId>org.jboss.aerogear&lt;/groupId>
-  &lt;artifactId>aerogear-controller&lt;/artifactId>
-  &lt;version>1.0.0&lt;/version>
-&lt;/dependency></pre>
-                            </li>
-                            <li><a href="https://github.com/aerogear/aerogear-controller-demo">Demo App</a></li>
-                            <li><a href="docs/guides/aerogear-controller">Learn More</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <p><a id="controllerrepo-btn" class="btn repo-btns" href="#" data-original-text="View the Source" data-link="aerogear/aerogear-controller">View the Source</a></p>
-                <ul class="aerogear-list">
-                    <li>
-                        <h3>AeroGear Security</h3>
-                        <ul class="aerogear-list">
-                            <li><a href="https://github.com/aerogear/aerogear-controller-demo">Demo App</a></li>
-                            <li><a href="https://github.com/aerogear/aerogear-otp-ios">iOS</a> and <a href="https://github.com/aerogear/aerogear-otp-java">Android</a> OTP implementations</li>
-                            <li><a href="docs/guides/aerogear-security">Learn More</a></li>
-                        </ul>
-                    </li>
-                  </ul>
-                <p><a id="securityrepo-btn" class="btn repo-btns" href="#" data-original-text="View the Source" data-link="aerogear/aerogear-security">View the Source</a></p>
+                <a href="/android/">
+                    <img src="img/android-logo.png"/>
+                    <h2>Android</h2>
+                </a>
+            </div>
+        </div>
+        <div class="span3 module">
+            <div>
+                <a href="/cordova/">
+                    <img src="img/cordova-logo.png"/>
+                    <h2>Hybrid</h2>
+                </a>
             </div>
         </div>
     </div>
-</div>
-<div id="repo-container">
-    <!-- Fork Me on Github Ribbon -->
-    <a id="fork-link" href="https://github.com/aerogear/aerogear-js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
-    <div id="repodiv"></div>
+    <div class="latest-news">
+        <div>
+           Latest News : <a href="{{ site.posts.first.url }}">{{ site.posts.first.title }}</a>
+        </div>
+    </div>
+    <div class="home-accordion">
+        <div class="accordion-group">
+            <div class="row-fluid accordion-title" data-toggle="collapse" data-target="#home-collapse1" data-parent=".home-accordion">
+                <div class="span12"><h2><i class="icon-circle-arrow-right"></i> Mobilize enteprise applications seamlessly</h2></div>
+            </div>
+            <div id="home-collapse1" class="row-fluid collapse in">
+                <div class="span8">
+                    <div class="image-container"><img src="http://placekitten.com/800/300"/></div>
+                </div>
+                <div class="span4">
+                    <p>Mobile development doesn't need to be boring. AeroGear helps to cut all the repetitive infrastructure tasks common to apps. Never bother with plain HTTP requests again!</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="row-fluid accordion-title" data-toggle="collapse" data-target="#home-collapse2" data-parent=".home-accordion">
+                <div class="span12"><h2><i class="icon-circle-arrow-right"></i> Code efficiently with easy REST resources</h2></div>
+            </div>
+            <div id="home-collapse2" class="row-fluid collapse in">
+                <div class="span8">
+                    <p>Integrating with REST backends couldn't be easier! AeroGear libraries abstract all the plumbing and gives you a simple programmatic API for doing CRUD operations, and paginate large amounts of data.</p>
+                    <p>The client libraries are flexible and extensible, making it possible to integrate with the most exotic endpoints.</p>
+                </div>
+                <div class="span4">
+                    <div class="image-container"><img src="http://placekitten.com/400/300"/></div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="row-fluid accordion-title" data-toggle="collapse" data-target="#home-collapse3" data-parent=".home-accordion">
+                <div class="span12"><h2><i class="icon-circle-arrow-right"></i> Simplify your backend with AeroGear Controller</h2></div>
+            </div>
+            <div id="home-collapse3" class="row-fluid collapse in">
+                <div class="span8">
+                    <div class="image-container"><img src="http://placekitten.com/800/300"/></div>
+                </div>
+                <div class="span4">
+                    <p>AeroGear Controller provides you with a simple Java internal DSL for defining HTTP routes programatically. The perfect fit for client-heavy applications where you have very few entry points and delegate logic to the client tiers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="row-fluid accordion-title" data-toggle="collapse" data-target="#home-collapse2" data-parent=".home-accordion">
+                <div class="span12"><h2><i class="icon-circle-arrow-right"></i> Make Enterprise Security Work for you!</h2></div>
+            </div>
+            <div id="home-collapse2" class="row-fluid collapse in">
+                <div class="span8">
+                    <p>AeroGear Security helps you to integrate with your existing enterprise security environment.</p>
+                    <p>Need two-factor authentication on your mobile apps? AeroGear OTP provides an easy way of improving your application's security.</p>
+                </div>
+                <div class="span4">
+                    <div class="image-container"><img src="http://placekitten.com/400/300"/></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

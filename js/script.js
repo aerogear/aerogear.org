@@ -1,6 +1,8 @@
 /* License, etc. */
 
 $( function() {
+    var smallLayout;
+
     $( ".repo-btns" ).click( function( event ) {
         event.preventDefault();
 
@@ -85,4 +87,66 @@ $( function() {
             $this.replaceWith( "<i class='icon-info-sign note-tip-icon'></i>" );
         }
     });
+
+    // Show/Hide Mobile Nav
+    $("#navButton, .menu-close-button").on("click", function() {
+        var nav = $(".nav-collapse"),
+            isHidden = nav.hasClass("hidden");
+
+        if ( isHidden ) {
+            nav.removeClass("hidden");
+            setTimeout( function() {
+                nav.addClass("menu-open");
+            }, 0);
+        } else {
+            nav.removeClass("menu-open");
+            setTimeout( function() {
+                nav.addClass("hidden");
+            }, 350);
+        }
+    });
+
+    // Resize accordion switch for home page
+    if ( $(".home-content").length ) {
+        $(window).smartresize( accordionConfig, 500 );
+        $( function() {
+            accordionConfig();
+        });
+    }
+
+    function accordionConfig() {
+        var collapsibles, collapseTriggers;
+        collapsibles = $(".collapse");
+        collapseTriggers = $(".accordion-group > div");
+
+        if ( !smallLayout && Modernizr.mq("only screen and (max-width: 768px)") ) {
+            collapsibles
+                .on("hide", function() {
+                    $( this ).closest(".accordion-group").find(".icon-circle-arrow-down").removeClass("icon-circle-arrow-down").addClass("icon-circle-arrow-right");
+                })
+                .on("show", function() {
+                    $( this ).closest(".accordion-group").find(".icon-circle-arrow-right").removeClass("icon-circle-arrow-right").addClass("icon-circle-arrow-down");
+                    collapsibles.not( $( this ) ).collapse("hide");
+                });
+
+            smallLayout = true;
+            collapsibles.collapse("hide");
+            collapsibles.eq( 0 ).collapse("show");
+        } else if ( smallLayout && Modernizr.mq("only screen and (min-width: 769px)") ) {
+            collapsibles.off("hide show");
+            collapsibles.each(function() {
+                $( this ).closest(".accordion-group").find(".icon-circle-arrow-down").removeClass("icon-circle-arrow-down").addClass("icon-circle-arrow-right");
+            });
+
+            smallLayout = false;
+            collapsibles.collapse("show");
+        }
+
+        if ( smallLayout === undefined ) {
+            smallLayout = false;
+            collapsibles.each(function() {
+                $( this ).closest(".accordion-group").find("i").hide();
+            });
+        }
+    }
 });

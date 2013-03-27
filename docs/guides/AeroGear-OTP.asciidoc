@@ -1,0 +1,66 @@
+---
+layout: basic
+title: AeroGear Two-Factor Authentication with OTP
+---
+
+== AeroGear Two-Factor Authentication with OTP
+
+=== Introduction
+If you happen to use online banking systems, certainly you will have come across small security devices that provide you with an extra password during your login process. That is, in addition to your standard username/password combination, you are asked to provide an extra password, the so called link:http://en.wikipedia.org/wiki/One-time_password["One Time Password" (OTP)"].  That has two effects __a__) the bank can verify that you are the actual person making the transaction because of the possession of this device that only you can have, the so called possession factor in the link:http://en.wikipedia.org/wiki/Two-factor_authentication[two-factor authentication] system and __b__) prevents link:http://en.wikipedia.org/wiki/Replay_attack[replay attacks] cause the password is only valid for a limited amount of time. This generation of the OTP password can either be done using a hardware device (hardware token) as we described earlier, or with the help of a mobile application running on a smartphone (software token).
+
+In general, there are two approaches to OTP generation, either link:http://tools.ietf.org/html/rfc4226[Mathematical-algorithm-based] or link:http://tools.ietf.org/html/rfc6238[Time-synchronized]. The former, as the name suggests uses a complex mathematical algorithm, typically a cryptographic hash function in a hash chain mode, together with a secret key to generate the password.  The latter, takes also into consideration the time, which causes the password to change constantly over a period of time e.g. once per minute, greatly enhancing security. On example of such approach is the link:http://tools.ietf.org/html/rfc6238[Time Based One Time Password (TOTP)].
+
+So how OTP is related to the AeroGear project? Well recently, with the amazing work of my fellow developer link:https://github.com/abstractj[abstractj], library implementations for both link:https://github.com/aerogear/aerogear-otp-ios[iOS] and link:https://github.com/aerogear/aerogear-otp-java[Android] (and soon Javascript) of the OTP standard were introduced to the project. Currently they support only TOTP with SHA1 but work is in progress to add additional support for the other standard OTP algorithm, the event-based HOTP, together with more cryptographic hash functions support SHA-256/512.
+
+=== So how do you use it?
+
+First, a shared secret needs to be obtained that will be used for the calculation of TOTP. Here we use a static string for the purpose of the tutorial and in our demo we transfer it from the network. In practice, a QRCode encoded image of the secret should be used, so the secret should not travel across the network! In the future we will use encoded images for it.
+
+Here is a snippet of code in the iOS land:
+
+
+[source, c]
+----
+ // the secret key (statically defined here but in practice it's obtained from the network)
+ NSString *secret = @"B2374TNIQ3HKC446";   
+ // initialize OTP  
+ AGTotp *generator = [[AGTotp alloc] initWithSecret:[AGBase32 base32Decode:secret]];                       
+ // generate token  
+ NSString *totp = [generator generateOTP];  
+----
+
+Here is a snippet of code in the Android land:
+
+
+[source, java]
+----
+ // the secret key (statically defined here but in practice it's obtained from the network)
+ String secret = "B2374TNIQ3HKC446";
+ // initialize OTP  
+ Totp generator = new Totp(secret);
+ // generate token  
+ String totp = generator.now();  
+----
+
+In both cases variable "totp" now holds our token which can be send to the remote authentication server to validate.
+
+Worth noticing is that the Java implementation has the verifier component also implemented, so if you back-end is Java, you can also use the implementation in your server-side back-end to verify totp tokens.
+
+If you are an iOS developer, you can find the library already in the link:http://cocoapods.org/?q=aerogear-otp[coccoapods]. Further a demo application has been created that demos the library in action, so I suggest you have a look. You can find it link:https://github.com/aerogear/aerogear-otp-ios-demo/zipball/1.0.0[here].
+
+If you are an Android developer, you can find the library already in maven. Just include it in your project.
+[source, xml]
+----
+<dependency>
+    <groupId>org.jboss.aerogear</groupId>
+    <artifactId>aerogear-otp-java</artifactId>
+    <version>1.0.0.M1</version>
+    <scope>compile</scope>
+</dependency>
+----
+
+For more in-depth information about OTP and AeroGear, I suggest you to look at the official documentation page link:http://aerogear.org/docs/specs/aerogear-security-otp/[here]. The page includes nice diagrams showing the flow of the authentication process and will help you to better understand the concept.
+
+So go ahead and give them a try. We will love your link:https://issues.jboss.org/browse/AEROGEAR[feedback and suggestions]!
+
+Enjoy!

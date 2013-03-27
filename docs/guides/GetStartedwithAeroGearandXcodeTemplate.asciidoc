@@ -9,7 +9,7 @@ As of version 1.0 of the AeroGear library, we are offering an Xcode template for
 
 === Step 1: Install Xcode Template
 
-Click link:https://github.com/aerogear/aerogear-ios-xcode-template/zipball/master[here] to download the latest version of the template from the link:https://github.com/aerogear/aerogear-ios-xcode-template[project's web site]. Once the download completes, uncompress the file and inside you will find an _AeroGear_ folder. 
+link:https://github.com/aerogear/aerogear-ios-xcode-template/zipball/master[Click here] to download the latest version of the template from the link:https://github.com/aerogear/aerogear-ios-xcode-template[project's web site]. Once the download completes, uncompress the file and inside you will find an _AeroGear_ folder. 
 
 image::https://dl.dropbox.com/u/155050/img/ios_template_folder.png[Template folder]
 
