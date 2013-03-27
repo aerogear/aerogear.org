@@ -18,6 +18,7 @@ title: Guides
 * [Get Started With Android Development on the Command Line](GetStartedAndroid)
 * [Get Started With Android Development in Eclipse](GetStartedAndroidEclipse)
 * [Get Started With Android Development in Intellij](GetStartedAndroidIntellij)
+* [Get Started With Android Development in NetBeans](GettingStartedAndroidNetbeans)
 * [Get Started with iOS and Xcode](GetStartedwithAeroGearandXcode)
 * [Get Started with iOS and AeroGear Xcode Template](GetStartedwithAeroGearandXcodeTemplate)
 * [Deploying HTML5 Applications to Openshift](HTML5AppsToOpenshift)
@@ -30,6 +31,7 @@ title: Guides
 #### User Guides
 * [AeroGear Controller User Guide](aerogear-controller)
 * [AeroGear Security overview](aerogear-security)
+* [AeroGear Android User Guide](aerogear-android)
 * [AeroGear iOS API Cookbook](iOSCookbook)
 
 #### Contributing to AeroGear
