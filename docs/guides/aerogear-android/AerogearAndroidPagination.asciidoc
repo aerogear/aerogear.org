@@ -4,7 +4,7 @@ title: AeroGear Android Pagination
 ---
 == AeroGear Pagination in Android
 
-The Android AeroGear libraries implement paging as defined in link:../../specs/aerogear-client-paging/[the pagination spec].  We also have common use cases for the basic tasks in the Android sections of the  link:../../specs/aerogear-client-paging-usage/[paging usage document.]
+The Android AeroGear libraries implement paging as defined in link:/docs/specs/aerogear-client-paging/[the pagination spec].  We also have common use cases for the basic tasks in the Android sections of the  link:/docs/specs/aerogear-client-paging-usage/[paging usage document.]
 
 These two resources should be enough to get you up and running with Aerogear controller based services.  However, if you have special requirements or legacy services AeroGear\'s pagingation framework can also be extended to support some prett gnarly usecases.
 
