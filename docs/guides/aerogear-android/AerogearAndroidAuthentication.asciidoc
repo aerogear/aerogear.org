@@ -12,7 +12,7 @@ In RESTful services there are two basic parts of Authentication:
 * Logging in and Fetching a token
 * Applying the token to a request
 
-This guide will go indepth on these two topics; however, we will also discuss briefly:
+This guide will go in depth on these two topics; however, we will also discuss briefly:
 
 * Registering a new user
 * Logging out of a service

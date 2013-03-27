@@ -6,10 +6,10 @@ title: AeroGear Android Pagination
 
 The Android AeroGear libraries implement paging as defined in link:/docs/specs/aerogear-client-paging/[the pagination spec].  We also have common use cases for the basic tasks in the Android sections of the  link:/docs/specs/aerogear-client-paging-usage/[paging usage document.]
 
-These two resources should be enough to get you up and running with Aerogear controller based services.  However, if you have special requirements or legacy services AeroGear\'s pagingation framework can also be extended to support some prett gnarly usecases.
+These two resources should be enough to get you up and running with Aerogear controller based services.  However, if you have special requirements or legacy services AeroGear\'s pagination framework can also be extended to support some pretty gnarly use cases.
 
 
-AeroGear ships with support for selecting data from the server response and using that data as a relative URI for locations of the "next" and "previous" pages of data.  You can enable paging by configuring a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageConfig.html[*PageConfig*] object and setting it on the Pipe using `PipeConfig.setPageConfig`.  When this option is enabled, `Pipe.read` and `Pipe.readWithFilter` will pass link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] insteances to `Callback.onSuccess` instead of plain Lists.  You can call `PagedList.next` and `PagedList.previous` for load the next and previous data sets respectively.  
+AeroGear ships with support for selecting data from the server response and using that data as a relative URI for locations of the "next" and "previous" pages of data.  You can enable paging by configuring a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageConfig.html[*PageConfig*] object and setting it on the Pipe using `PipeConfig.setPageConfig`.  When this option is enabled, `Pipe.read` and `Pipe.readWithFilter` will pass link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] instances to `Callback.onSuccess` instead of plain Lists.  You can call `PagedList.next` and `PagedList.previous` for load the next and previous data sets respectively.  
 
 
 Let\'s say we have a service which returns a page of data in the following format:
@@ -33,7 +33,7 @@ Let\'s say we have a service which returns a page of data in the following forma
 ----
 
 
-The 'after' parameter defines the page of data which comes after the current page.  The 'before' parameter likewise defines the page which comes before the page of data.  If these fields are relative URIs, Aerogear can use them for paging data.  
+The 'after' parameter defines the page of data which comes after the current page.  The 'before' parameter likewise defines the page which comes before the page of data.  If these fields are relative URIs, AeroGear can use them for paging data.  
 
 The link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageConfig.html[*PageConfig*] object has parameters for setting WHERE paging location data is (`pageConfig.setMetadataLocation`), and which fields correspond to which data `pageConfig.setNextIdentifier`, `pageConfig.setPreviousIdentifier`, and several other parameters specified in the JavaDoc.
 
