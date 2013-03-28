@@ -145,10 +145,6 @@ body > .container {
     list-style: url("/img/aerogear_icon_16px.png");
 }
 
-.aerogear-list li {
-    margin-left: 20px;
-}
-
 
 .latest-news {
     border: 2px solid rgba(88,140,165, 1.0);
@@ -249,6 +245,10 @@ body > .container {
 }
 .repo li.dir .icon-folder-open {
     color: #80a6cd;
+}
+
+.repo-btns {
+    margin-left: 20px;
 }
 
 pre {
@@ -528,7 +528,11 @@ footer .row .span3:last-child {
     display: inline-block;
     margin-right: 50px;
     margin-bottom: 30px;
-    width: 35%;
+    height: 300px;
+}
+
+.topic-page-logo img {
+    width: 90%;
     max-width: 200px;
 }
 
@@ -738,5 +742,20 @@ footer .row .span3:last-child {
 
     .home-content .home-accordion h2 {
         font-size: 12px;
+    }
+
+    .library-landing .span3 {
+        width: 95%;
+        margin-bottom: 30px;
+    }
+
+    .topic-page-logo {
+        float: right;
+        margin: none;
+        height: auto;
+    }
+
+    .topic-page-logo img {
+        width: 75px;
     }
 }
