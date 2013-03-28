@@ -142,11 +142,12 @@ body > .container {
 }
 
 .aerogear-list {
+    padding-left: 20%;
     list-style: url("/img/aerogear_icon_16px.png");
 }
 
 .aerogear-list li {
-    margin-left: 20px;
+    margin-left: 6%;
 }
 
 
