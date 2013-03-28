@@ -532,6 +532,10 @@ footer .row .span3:last-child {
     max-width: 200px;
 }
 
+.basic {
+    padding: 10px;
+}
+
 @media (max-width: 1200px) {
     .start-header .start-title {
         font-size: 30px;
@@ -730,5 +734,9 @@ footer .row .span3:last-child {
 
     .home-content h2 {
         font-size: 1.5em;
+    }
+
+    .home-content .home-accordion h2 {
+        font-size: 12px;
     }
 }
