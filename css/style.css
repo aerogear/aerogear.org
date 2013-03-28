@@ -351,8 +351,9 @@ pre {
 }
 
 .post {
-	font-size: 1.3em;
+	font-size: 1em;
     font-weight: lighter;
+    padding: 10px;
 }
 
 .post img {
@@ -384,18 +385,9 @@ pre {
 }
 
 .accordion-group .image-container {
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
     background-color: #EEEEEE;
-    padding: 8px;
+    padding: 3px;
     display: inline-block;
-}
-
-.accordion-group .image-container img {
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
 }
 
 .nav-collapse.hidden {
@@ -756,5 +748,9 @@ footer .row .span3:last-child {
 
     .topic-page-logo img {
         width: 75px;
+    }
+
+    .collapse {
+        margin-top: 10px;
     }
 }

@@ -115,8 +115,9 @@ $( function() {
     }
 
     function accordionConfig() {
-        var collapsibles, collapseTriggers;
+        var collapsibles, collapseTriggers, visibles;
         collapsibles = $(".collapse");
+        visibles = collapsibles.filter(":visible");
         collapseTriggers = $(".accordion-group > div");
 
         if ( !smallLayout && Modernizr.mq("only screen and (max-width: 768px)") ) {
@@ -140,6 +141,13 @@ $( function() {
 
             smallLayout = false;
             collapsibles.collapse("show");
+        } else {
+            collapsibles.off("hide show")
+                .on("hide", function() {
+                    if ( visibles.length > 1 ) {
+                        $( this ).collapse("show");
+                    }
+                });
         }
 
         if ( smallLayout === undefined ) {
