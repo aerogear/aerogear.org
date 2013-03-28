@@ -699,6 +699,7 @@ footer .row .span3:last-child {
         cursor: pointer;
         padding: 0 10px;
         margin-left: -10px;
+        width: 100%;
     }
 
     footer .logos {
