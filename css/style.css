@@ -184,6 +184,7 @@ body > .container {
     -moz-border-radius: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
+    padding: 10px;
 }
 
 .module img {
@@ -714,7 +715,7 @@ footer .row .span3:last-child {
     }
 
     .home-content h2 {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 
@@ -728,6 +729,6 @@ footer .row .span3:last-child {
     }
 
     .home-content h2 {
-        font-size: 12px;
+        font-size: 1.5em;
     }
 }
