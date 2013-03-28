@@ -1,9 +1,5 @@
 body {
-    background-image: url("/img/bg.png");
-    background-position: bottom;
-    background-repeat: repeat-x;
     padding-top: 120px;
-    padding-bottom: 40px;
     font-size: 14px;
 }
 
@@ -422,6 +418,12 @@ pre {
 }
 
 /* Footer Styles */
+footer.container {
+    margin-top: 20px;
+    background-color: rgba(197, 219, 229, 0.5);
+    border-top: 3px solid #CCCCCC;
+}
+
 footer .span3 {
     padding: 10px;
 }
@@ -442,10 +444,6 @@ footer .span3 > p {
 footer .row .span3:last-child {
     position: relative;
     min-height: 150px;
-}
-
-.footer-divider {
-    border-color: #CCC;
 }
 
 .footer-logo {
