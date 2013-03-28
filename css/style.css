@@ -151,8 +151,8 @@ body > .container {
 
 
 .latest-news {
-    border: 2px solid #E25027;
-    background-color: rgba(226, 80, 39, 0.2);
+    border: 2px solid rgba(88,140,165, 1.0);
+    background-color: rgba(197, 219, 229, 0.5);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
