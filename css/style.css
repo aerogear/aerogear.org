@@ -391,6 +391,11 @@ pre {
     display: inline-block;
 }
 
+.accordion-group .image-container img {
+    width: 100%;
+    max-width: 800px;
+}
+
 .nav-collapse.hidden {
     display: inherit;
     visibility: visible;
