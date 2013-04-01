@@ -10,7 +10,7 @@ It currently depends on any JEE application server that has
 a _Context and Dependency Injection_ ([CDI](http://jcp.org/en/jsr/detail?id=299)) and can be easily integrated with [AeroGear Controller](../aerogear-controller)
 
 ## License
-AeroGear Security is distributed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).%
+AeroGear Security is distributed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
 
 ## Installation 
 
