@@ -519,6 +519,10 @@ footer .row .span3:last-child {
     margin: inherit;
 }
 
+.navbar-fixed-top .nav-collapse {
+    z-index: 2;
+}
+
 .topic-page-logo {
     float: left;
     display: inline-block;
