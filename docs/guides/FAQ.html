@@ -132,7 +132,7 @@ id&lt;AGPipe&gt; projects = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
                     <pre class="highlight"><code class="java"><strong>MyApplication.java</strong>
 
 // creating the Pipeline pointing to the remote application
-Pipeline pipeline = new Pipeline("http://todoauth-aerogear.rhcloud.com/todo-server");
+Pipeline pipeline = new Pipeline("http://todo-aerogear.rhcloud.com/todo-server");
 
 // set up the config object for the pipe to point to a given server (RESTful) endpoint:
 PipeConfig config = new PipeConfig(baseURL, Project.class);
@@ -390,7 +390,7 @@ AGAuthenticator* authenticator = [AGAuthenticator authenticator];
 // add a new "myAuth" auth module:
 id<AGAuthenticationModule> myMod = [authenticator auth:^(id<AGAuthConfig> config) {
     [config setName:@"myAuth"];
-    [config setBaseURL:[NSURL URLWithString:@"https://todoauth-aerogear.rhcloud.com/todo-server/"];
+    [config setBaseURL:[NSURL URLWithString:@"https://todo-aerogear.rhcloud.com/todo-server/"];
 }];
 
 // issue a login:
@@ -419,7 +419,7 @@ id<AGAuthenticationModule> myMod = [authenticator auth:^(id<AGAuthConfig> config
              <div class="content monospaced">
                 <pre class="highlight"><code class="java"><strong>MyApplication.java</strong>
 
-URL baseURL = new URL("http://todoauth-aerogear.rhcloud.com/todo-server");
+URL baseURL = new URL("http://todo-aerogear.rhcloud.com/todo-server");
 
 // create an authenticator pointing to the remote application
 Authenticator authenticator = new Authenticator(baseURL);
