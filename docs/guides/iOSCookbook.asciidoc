@@ -440,7 +440,7 @@ To create an authenticator, you need to use the AGAuthenticator class. Below is 
 AGAuthenticator* authenticator = [AGAuthenticator authenticator];
 
 // add a new auth module and the required 'base url':
-NSURL* baseURL = [NSURL URLWithString:@"https://todoauth-aerogear.rhcloud.com/todo-server/"];
+NSURL* baseURL = [NSURL URLWithString:@"https://todo-aerogear.rhcloud.com/todo-server/"];
 id<AGAuthenticationModule> myMod = [authenticator auth:^(id<AGAuthConfig> config) {
     [config setName:@"authMod"];
     [config setBaseURL:baseURL];
@@ -473,7 +473,7 @@ NSMutableDictionary* userData = [NSMutableDictionary dictionary];
 }];
 ----
 
-The _enroll_ function submits a generic map object with contains all the information about the new user, that the server endpoint requires. The default (REST) auth module issues for the above a request against _https://todoauth-aerogear.rhcloud.com/todo-server/auth/enroll_. Besides the NSDictionary the function accepts two simple blocks that are invoked on success or in case of a failure.
+The _enroll_ function submits a generic map object with contains all the information about the new user, that the server endpoint requires. The default (REST) auth module issues for the above a request against _https://todo-aerogear.rhcloud.com/todo-server/auth/enroll_. Besides the NSDictionary the function accepts two simple blocks that are invoked on success or in case of a failure.
 
 === Login 
 
@@ -491,7 +491,7 @@ Once you have a _valid_ user you can use that information to issue a login again
 }];
 ----
 
-The default (REST) auth module issues for the above a request against _https://todoauth-aerogear.rhcloud.com/todo-server/auth/login_. Besides the _username_ and the _password_, the function accepts two simple blocks that are invoked on success or in case of a failure.
+The default (REST) auth module issues for the above a request against _https://todo-aerogear.rhcloud.com/todo-server/auth/login_. Besides the _username_ and the _password_, the function accepts two simple blocks that are invoked on success or in case of a failure.
 
 === Pass the auth module to a pipe
 
@@ -531,7 +531,7 @@ The logout from the server can be archived by using the _logout_ function:
 }];
 ----
 
-The default (REST) auth module issues for the above a request against _https://todoauth-aerogear.rhcloud.com/todo-server/auth/logout_. The function accepts two simple blocks that are invoked on success or in case of a failure.
+The default (REST) auth module issues for the above a request against _https://todo-aerogear.rhcloud.com/todo-server/auth/logout_. The function accepts two simple blocks that are invoked on success or in case of a failure.
 
 === Time out and Cancel pending operations
 

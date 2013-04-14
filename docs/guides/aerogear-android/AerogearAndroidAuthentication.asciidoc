@@ -38,8 +38,8 @@ For an example of using the Authentication API to connect to a AeroGear Controll
 
 //Class definitions, exceptions, and full configuration of Pipes are snipped for clarity.
 
-URL baseURL = new URL("http://todoauth-aerogear.rhcloud.com/todo-server");
-private Pipeline pipeline = new Pipeline(baseURL);;
+URL baseURL = new URL("http://todo-aerogear.rhcloud.com/todo-server");
+private Pipeline pipeline = new Pipeline(baseURL);
 private Authenticator auth = new Authenticator(baseURL);
 
 @Override
