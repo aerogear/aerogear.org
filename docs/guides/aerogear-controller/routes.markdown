@@ -15,8 +15,8 @@ The simplest way to configure routes is to extend [AbstractRoutingModule](http:/
         public void configuration() {
             route()
                    .from("/").roles("admin")
-                   .consumes(JSON)
                    .on(RequestMethod.GET)
+                   .consumes(JSON)
                    .produces(JSP, JSON)
                    .to(Home.class).index();
             }
