@@ -185,7 +185,7 @@ body > .container {
     max-width: 200px;
 }
 
-.download-row > .span6 > .span6 {
+.download-row > .span6 > .span6, .download-row > .span4 {
     border: 2px solid #c3d3e3;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -405,7 +405,7 @@ pre {
     display: none;
 }
 
-.download-row .span6 h2 {
+.download-row .span6 h2, .download-row .span4 h2  {
     color: #c6000f;
     padding-left: 5px;
     background-color: #c3d3e3;

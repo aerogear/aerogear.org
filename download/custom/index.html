@@ -2,7 +2,7 @@
 layout: basic
 title: Download
 ---
-	<div class="span8 custom-builder">
+	<div class="span12 custom-builder">
 	<h1>AeroGear.js Custom Builder <small id="version">v</small></h1>
     <p>Below you will be able to create and download a zip file of your custom build.  The zip file contains both the development and minified versions</p>
     <div class="alert alert-error builder-alert">
@@ -11,9 +11,11 @@ title: Download
     </div>
      <div class="loading-indicator"><img src="/img/ajax-loader.gif"></div>
 		<form name="builder" id="builder" class="builder loading" method="post">
-            <div class="builder-content row"></div>
-            <input type="submit" value="Build My Download" class="buildBtn btn"> or 
-            <a href="../../files/aerogear-js/aerogear.zip" class="btn">Give me everything</a>
+            <div class="builder-content download-row"></div>
+            <div class="span12">
+                <input type="submit" value="Build My Download" class="buildBtn btn"> or 
+                <a href="../../files/aerogear-js/aerogear.zip" class="btn">Give me everything</a>
+            </div>
 		</form>
 		<div id="download" style="display:none"></div>
 	</div>
