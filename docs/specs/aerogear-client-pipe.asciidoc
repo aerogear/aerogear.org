@@ -1,18 +1,20 @@
 ---
 layout: basic
-title: AeroGear Client Content Pipes 
-
+title: AeroGear Pipelines and Pipes
 ---
 
-# AeroGear Pipelines and Pipes
+AeroGear Pipelines and Pipes
+----------------------------
 
 The AeroGear client libraries provide the **Pipe** interface as an abstraction around high latency data sources.  **Pipe** defines several asynchronous methods for performing CRUD operations on a `resource` managed by this source.
 
 **Pipe** objects are instantiated, referenced, and accessed from the **Pipeline** service.  **Pipeline** consumes a `baseURL`, and a configuration object to create a **Pipe**.  
 
-## Pipe 
+=== The Pipe Spec
 
-### Behavior & Functions
+
+Behavior & Functions
+^^^^^^^^^^^^^^^^^^^^
 
 Calls to CRUD methods should have any side effects.
 
@@ -22,19 +24,20 @@ read(successCallback)
  : The will schedule an operation which will fetch a resource or collection and return the result from the server to the callback parameter.
 
 read(parameters, successCallback)
- : as `read(callback)` but this method also includes extra parameteres for reading.  These may be *identifiers*, *filtering*, or *paging parameters*(TODO link to paging param doc).
+ : as `read(callback)` but this method also includes extra parameteres for reading.  These may be __identifiers__, __filtering__, or *paging parameters*(TODO link to paging param doc).
 
 save(resource, successCallback)
  : This method will schedule an operation to persist the `resource` parameter.  If successful, the callback will be invoked with `resource` as a parameter.
 
 delete( id, successCallback )
- : This method will delete a resource with identified by *id*.  If successful the callback will be invoked with no parameter.
+ : This method will delete a resource with identified by __id__.  If successful the callback will be invoked with no parameter.
 
-### Error Handling
-
+Error Handling
+^^^^^^^^^^^^^^
 Pipe's make use of a callback to pass error information to the client.  The callback is often passed to the CRUD methods along with the callback to be invoked for successful processing.
 
-### Configuration
+Configuration
+^^^^^^^^^^^^^
 
 **Pipe** instances have the following properties which will be consumed by **Pipeline** to create instances.
 
@@ -63,12 +66,12 @@ timeout
  : This is the maximum time an operation is allowed to run.  When this limit is reached, `callback.onFailure` must be called.  It defaults to `MAX_INTEGER`.
  
 
-### RestAdapter
-
+RestAdapter
+^^^^^^^^^^^
 **RestAdapter** is a implementation of **Pipe** provided by AeroGear which is used for accessing remote HTTP based REST services.
 
-#### Method implementation details
-
+Method implementation details
++++++++++++++++++++++++++++++
 read(callback)
  : HTTP_GET ${baseUrl}/${resource}
 
@@ -81,16 +84,19 @@ save(resource, callback)
 delete( id, callback )
  : HTTP_DELETE ${baseUrl}/${resource}/${id}
 
-## Pipeline
+Pipeline
+~~~~~~~~
 
 A Pipeline is both a factory  for new **Pipes** and a reference to existing **Pipes**.
 
-### Properties
+Properties
+^^^^^^^^^^
 
 baseURL
-: the URL of the server the resources the *Pipes* will connect to
+: the URL of the server the resources the __Pipes__ will connect to
 
-### Functions
+Functions
+^^^^^^^^^
 
 pipe(configuration)
 : Creates a Pipe and stores a reference using the `name` property of the configuration object
@@ -98,6 +104,7 @@ pipe(configuration)
 remove(pipeName)
 : Removes a pipe associate with `pipeName`
 
-### Retreiving Pipes
+Retrieving Pipes
+^^^^^^^^^^^^^^^^
 
-**Pipe** instances are retreived from **Pipeline** by using the Pipe's name parameter.
+**Pipe** instances are retrieved from **Pipeline** by using the Pipe's name parameter.
