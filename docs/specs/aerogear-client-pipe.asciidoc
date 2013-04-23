@@ -1,36 +1,42 @@
 ---
 layout: basic
 title: AeroGear Pipelines and Pipes
+
 ---
 
 AeroGear Pipelines and Pipes
 ----------------------------
 
-The AeroGear client libraries provide the **Pipe** interface as an abstraction around high latency data sources.  **Pipe** defines several asynchronous methods for performing CRUD operations on a `resource` managed by this source.
+The AeroGear client libraries provide **Pipe** implementations as abstractions around high latency data sources.  **Pipe** defines several asynchronous methods for performing CRUD operations on a `resource` managed by this source.
 
-**Pipe** objects are instantiated, referenced, and accessed from the **Pipeline** service.  **Pipeline** consumes a `baseURL`, and a configuration object to create a **Pipe**.  
+**Pipe** implementations are instantiated, referenced, and accessed from the **Pipeline** service.  **Pipeline** consumes a `baseURL`, and a configuration object to create a **Pipe**.  
 
-=== The Pipe Spec
+''''
+
+== Pipe
+
+Methods
+^^^^^^^^
 
 
-Behavior & Functions
-^^^^^^^^^^^^^^^^^^^^
+* *read* : This method fetches a resource or collection of resources from the data source.
+  ** This method MUST be passed a callback which will be used to handle the resulting data
+  ** This method MAY be passed other parameters including but not limited to __identifiers__, __filters__, or __paging parameters__ (TODO link to paging param doc)
 
-Calls to CRUD methods should have any side effects.
+* *save* : This method saves a resource to a data source
+ ** This method MUST be provided a resource to save.  If an identifying value is set on the resource then the Pipe will update the remote record.  Otherwise it will create the remote record.
+ ** This method MUST be provided a callback which will be called upon completion of the operation.  This callback will be passed an instance of the recourse which was saved.
 
-Pipes are also responsible for applying any necessary metadata connected to a request including but not limited to authentication, authorization, and paging.  A Pipe is responsible for handling errors and passing them to the user.  
+* *delete* : This method will remove a resource from the data source
+ ** This method MUST be passed some value which will be used to identify the resource to delete
+ ** This method MUST be provided a callback which will be called upon completion of the operation.  No data will be passed to the callback
 
-read(successCallback)
- : The will schedule an operation which will fetch a resource or collection and return the result from the server to the callback parameter.
+#NOTE:#
 
-read(parameters, successCallback)
- : as `read(callback)` but this method also includes extra parameteres for reading.  These may be __identifiers__, __filtering__, or *paging parameters*(TODO link to paging param doc).
+* Calls to CRUD methods should have any side effects.
 
-save(resource, successCallback)
- : This method will schedule an operation to persist the `resource` parameter.  If successful, the callback will be invoked with `resource` as a parameter.
+* Pipes are also responsible for applying any necessary metadata connected to a request including but not limited to authentication, authorization, and paging.  A Pipe is responsible for handling errors and passing them to the user.  
 
-delete( id, successCallback )
- : This method will delete a resource with identified by __id__.  If successful the callback will be invoked with no parameter.
 
 Error Handling
 ^^^^^^^^^^^^^^
