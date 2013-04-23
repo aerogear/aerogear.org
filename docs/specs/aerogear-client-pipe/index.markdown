@@ -30,7 +30,6 @@ save(resource, callback)
 delete( id, callback )
  : This method will delete a resource with identified by *id*.  If successful `callback.onSuccess` will be called with no parameter.
 
-**Pipe** implementations are allowed to delegate to or proxy objects which perform lower level operations such as file reads, socket connections, etc.  If this is the case, a **Pipe** object should expose this object as a *Handler* property.
 
 ### Configuration
 
@@ -56,9 +55,6 @@ pageConfig
 
 authModule
  : This is the object which will provide authentication information.  (//TODO link to a nd write authentication spec)
-
-handler
- : This is a optional parameter which implements concrete operations such as file IO, network IO etc.
 
 timeout 
  : This is the maximum time an operation is allowed to run.  When this limit is reached, `callback.onFailure` must be called.  It defaults to `MAX_INTEGER`.
