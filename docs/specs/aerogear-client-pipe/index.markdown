@@ -8,7 +8,7 @@ title: AeroGear Client Content Pipes
 
 The AeroGear client libraries provide the **Pipe** interface as an abstraction around high latency data sources.  **Pipe** defines several asynchronous methods for performing CRUD operations on a `resource` managed by this source.
 
-**Pipe** objects are instanciated, referenced, and accessed from the **Pipeline** service.  **Pipeline** consumes a `baseURL`, and a **PipeConfig** object to create a **Pipe**.  
+**Pipe** objects are instantiated, referenced, and accessed from the **Pipeline** service.  **Pipeline** consumes a `baseURL`, and a configuration object to create a **Pipe**.  
 
 ## Pipe 
 
@@ -89,8 +89,8 @@ baseURL
 
 ### Functions
 
-pipe(PipeConfig)
-: Creates a Pipe and stores a reference using the`name` property of the **PipeConfig**
+pipe(configuration)
+: Creates a Pipe and stores a reference using the `name` property of the configuration object
 
 get(pipeName)
 : Returns a pipe associated with `pipeName`.  This is not guranteed to be the same instance.
