@@ -6,7 +6,7 @@ title: AeroGear Client Content Pipes
 
 # AeroGear Pipelines and Pipes
 
-The Aerogear client libraries provide the **Pipe** interface as an abstraction around high latency data sources.  **Pipe** defines several asynchronous methods for performing CRUD operations on a `resource` managed by this source.
+The AeroGear client libraries provide the **Pipe** interface as an abstraction around high latency data sources.  **Pipe** defines several asynchronous methods for performing CRUD operations on a `resource` managed by this source.
 
 **Pipe** objects are instanciated, referenced, and accessed from the **Pipeline** service.  **Pipeline** consumes a `baseURL`, and a **PipeConfig** object to create a **Pipe**.  
 
