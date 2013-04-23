@@ -95,12 +95,9 @@ baseURL
 pipe(configuration)
 : Creates a Pipe and stores a reference using the `name` property of the configuration object
 
-get(pipeName)
-: Returns a pipe associated with `pipeName`.  This is not guranteed to be the same instance.
-
-get(pipeName, properties)
-: Returns a proxy to the pipe associated with `pipeName`.  This instance will have extra behvaior based on `properties`.  For example in Android this method is used to build [Loaders](http://developer.android.com/guide/components/loaders.html) used by the **Pipe**.  The values accepted by this method are platform specific.
-
 remove(pipeName)
 : Removes a pipe associate with `pipeName`
 
+### Retreiving Pipes
+
+**Pipe** instances are retreived from **Pipeline** by using the Pipe's name parameter.
