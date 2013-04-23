@@ -14,22 +14,25 @@ The AeroGear client libraries provide the **Pipe** interface as an abstraction a
 
 ### Behavior & Functions
 
-**Pipe** instances should be threadsafe.  Calls to CRUD methods should not change the internal state of a **Pipe**.  These methods will not block and all consume a **Callback** parameter.  All of these methods will call `Callback.onFailure` in the event of an error.
+Calls to CRUD methods should have any side effects.
 
 Pipes are also responsible for applying any necessary metadata connected to a request including but not limited to authentication, authorization, and paging.  A Pipe is responsible for handling errors and passing them to the user.  
 
-read(callback)
- : The will schedule an operation which will fetch a resource or collection and return this to `Callback.onSuccess`.
+read(successCallback)
+ : The will schedule an operation which will fetch a resource or collection and return the result from the server to the callback parameter.
 
-read(parameters, callback)
+read(parameters, successCallback)
  : as `read(callback)` but this method also includes extra parameteres for reading.  These may be *identifiers*, *filtering*, or *paging parameters*(TODO link to paging param doc).
 
-save(resource, callback)
- : This method will schedule an operation to persist the provided *resource*.  If successful, the resource will be passed to `callback.onSuccess`.
+save(resource, successCallback)
+ : This method will schedule an operation to persist the `resource` parameter.  If successful, the callback will be invoked with `resource` as a parameter.
 
-delete( id, callback )
- : This method will delete a resource with identified by *id*.  If successful `callback.onSuccess` will be called with no parameter.
+delete( id, successCallback )
+ : This method will delete a resource with identified by *id*.  If successful the callback will be invoked with no parameter.
 
+### Error Handling
+
+Pipe's make use of a callback to pass error information to the client.  The callback is often passed to the CRUD methods along with the callback to be invoked for successful processing.
 
 ### Configuration
 
