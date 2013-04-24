@@ -59,8 +59,8 @@ validate the OTP.
 
 image:img/aerogear_otp_authenticationv0.0.1.png[authentication]
 
-Scenarios - v0.0.2
-~~~~~~~~~~~~~~~~~~
+Scenarios
+~~~~~~~~~
 
 *Deterministic Generation*: _secrets are derived from a master seed,
 both at provisioning and verification stages and generated on-the-fly
@@ -69,7 +69,22 @@ whenever it is required. - RFC 4226_
 Registration
 ^^^^^^^^^^^^
 
-image:img/aerogear_otp_registrationv0.0.2.jpg[registration]
+This scenarios aims to describe a common workflow for JavaScript aplications
+and can also be provided to native clients
+
+image:img/aerogear_otp_registrationv0.0.3.png[registration]
+
+TOTP as a password-based key derivation (password + OTP)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Registration
+^^^^^^^^^^^^
+
+image:img/aerogear_otp_registrationv0.0.3_1.png[registration]
+
+Login
+^^^^^
+image:img/aerogear_otp_registrationv0.0.3_2.png[registration]
 
 Shared Secret key expiration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
