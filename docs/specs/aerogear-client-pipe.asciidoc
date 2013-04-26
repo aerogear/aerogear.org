@@ -15,8 +15,18 @@ The AeroGear client libraries provide **Pipe** implementations as abstractions a
 
 == Pipe
 
+
 Methods
 ^^^^^^^^
+
+
+*NOTE:*
+
+* Calls to CRUD methods should have any side effects.
+
+* Pipes are also responsible for applying any necessary metadata connected to a request including but not limited to authentication, authorization, and paging.  
+
+* A Pipe is responsible for handling errors and passing them to the user.  
 
 
 * *read* : This method fetches a resource or collection of resources from the data source.
@@ -31,15 +41,10 @@ Methods
  ** This method MUST be passed some value which will be used to identify the resource to delete
  ** This method MUST be provided a callback which will be called upon completion of the operation.  No data will be passed to the callback
 
-#NOTE:#
-
-* Calls to CRUD methods should have any side effects.
-
-* Pipes are also responsible for applying any necessary metadata connected to a request including but not limited to authentication, authorization, and paging.  A Pipe is responsible for handling errors and passing them to the user.  
-
 
 Error Handling
 ^^^^^^^^^^^^^^
+
 Pipe's make use of a callback to pass error information to the client.  The callback is often passed to the CRUD methods along with the callback to be invoked for successful processing.
 
 Configuration
@@ -47,68 +52,67 @@ Configuration
 
 **Pipe** instances have the following properties which will be consumed by **Pipeline** to create instances.
 
-resource
- : This is a type of object or data that the **Pipe** interacts with.  I.E. a blog has resources post, author, comment, etc
+ * *resource* : This is a type of object or data that the **Pipe** interacts with.  
+  ** I.E. a blog has resources post, author, comment, etc
 
-baseURL
- : This is the URL of the service which is hosting resources a **Pipe** handles
+ * *baseURL* : This is the URL of the service which is hosting resources a **Pipe** handles
     
-name
- : this is value that **Pipeline** will use to reference a **Pipe** instance.  It defaults to `lowerCase(resource)`
+ * *name* : this is value that **Pipeline** will use to reference a **Pipe** instance.  
+  ** It defaults to `lowerCase(resource)`
     
-endpoint
- : This is the value appended to baseURL to form the full URL to `resource`.   It defaults to `lowerCase(resource)`
+ * *endpoint* : This is the value appended to baseURL to form the full URL to `resource`.   
+  ** It defaults to `lowerCase(resource)`
     
-type
- : This is the implementation of the **Pipe** instance.  It defaults to `REST`.
+ * *type* : This is the implementation of the **Pipe** instance.  
+  ** It defaults to `REST`.
 
-pageConfig
- : This is the configuration for paging.  (//TODO link to paging)
+ * *pageConfig* : This is the configuration for paging.  (//TODO link to paging)
 
-authModule
- : This is the object which will provide authentication information.  (//TODO link to a nd write authentication spec)
+ * *authModule* : This is the object which will provide authentication information.  (//TODO link to a nd write authentication spec)
 
-timeout 
- : This is the maximum time an operation is allowed to run.  When this limit is reached, `callback.onFailure` must be called.  It defaults to `MAX_INTEGER`.
+ * *timeout* : This is the maximum time an operation is allowed to run.  
+  ** When this limit is reached, the **Pipe** should report it as an error.  
+  ** It defaults to a large integer.
  
+''''
 
-RestAdapter
-^^^^^^^^^^^
+== RestAdapter
+
 **RestAdapter** is a implementation of **Pipe** provided by AeroGear which is used for accessing remote HTTP based REST services.
 
-Method implementation details
-+++++++++++++++++++++++++++++
-read(callback)
- : HTTP_GET ${baseUrl}/${resource}
+=== Method implementation details
 
-read(parameters, callback)
- : HTTP_GET ${baseUrl}/${resource}/${parameters.uri}?${parameteres.query} //TODO: Add in nested resources
+ * *read* : Performs a HTTP GET to the URL defined by ${baseUrl}/${resource}
+  ** Additional parameters may be appended to the URL's path or query.
 
-save(resource, callback)
- : if resource has an `id` field HTTP_POST ${baseUrl}/${resource}/${id} with a JSON serialized body version of `resource`.  Otherwise HTTP_PUT ${baseUrl}/${resource} with the JSON serialized `resource`.
+ * *save* : Performs a HTTP POST or PUT to the URL defined by ${baseUrl}/${resource}/${resource.id}
+  ** The body of the request is a JSON serialized version of the resource being saved
+  ** If resource has an identifying value, RestAdapter uses an HTTP_POST 
+  ** If there is no identifying value, a PUT method is called.  ${resource.id} is omitted from the path
 
-delete( id, callback )
- : HTTP_DELETE ${baseUrl}/${resource}/${id}
+ * *delete* : Performs and HTTP DELETE to the URL defined by ${baseUrl}/${resource}/${id}
+  ** If there is no id available, this is an error.
 
-Pipeline
-~~~~~~~~
+''''
+
+== Pipeline
 
 A Pipeline is both a factory  for new **Pipes** and a reference to existing **Pipes**.
 
 Properties
 ^^^^^^^^^^
 
-baseURL
-: the URL of the server the resources the __Pipes__ will connect to
+ * *baseURL* : the URL of the server the resources the __Pipes__ will connect to
 
 Functions
 ^^^^^^^^^
 
-pipe(configuration)
-: Creates a Pipe and stores a reference using the `name` property of the configuration object
+ * *pipe* : Creates a Pipe and returns an instance
+  ** This method MUST be provided a resource parameter for the resulting Pipe
+  ** This method MAY be provided addition configuration parameters for the Pipe
 
-remove(pipeName)
-: Removes a pipe associate with `pipeName`
+* *remove* : Removes a Pipe from the Pipelines cache
+  ** This method MUST be provided with a name of the Pipe to remove
 
 Retrieving Pipes
 ^^^^^^^^^^^^^^^^
