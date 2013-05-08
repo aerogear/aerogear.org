@@ -1,0 +1,6 @@
+---
+layout: basic
+title: The Server
+---
+
+Hello...
