@@ -257,9 +257,16 @@ To move backwards in the result set, you simple call _previous_ on the _pagedRes
 }];
 ----
 
-=== Exception cases
-
-Moving beyond last or first page is left on the behaviour of the specific server implementation, that is the library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by respondng with an http error response, or simply return an empty list. The user is responsible to cater for exception cases like this.
+ ## Notes
+ 
+ The library uses the 'next' and 'previous' identifiers:
+ 
+ - to extract the paging information params from the response and
+ - filling those paging information params in the subsequent ```next``` and ```previous``` requests.
+ 
+ Failing to provide correct identifiers, means that no paging params would be appended in the request. Caution: Without valid paging parameters the used service API may simply return the entire data. To ensure the results returned  do 'logical' represent a 'next' and 'previous' page, the user must ensure correct identifiers are set in the Page configuration.
+ 
+ Further, moving beyond last or first page is left on the behaviour of the specific server implementation, that is the library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by respondng with an http error response, or simply return an empty list. The user is responsible to cater for exception cases like this.
 
 == [[store]]Store and DataManager
 
