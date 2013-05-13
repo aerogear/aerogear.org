@@ -29,7 +29,7 @@ Now that our project is created, its time to install required dependencies.
 
 === Step 2: Install Dependencies
 
-Generally, there are two approaches to install dependencies. The first approach (and the preferred one) is to use link:http://cocoapods.org[CoccoaPods] dependency manager. If you haven't used it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details. The second approach, is to manually add the dependencies to the project. Both approaches are discussed in this guide, so peak the approach you are most familiar with.
+Generally, there are two approaches to install dependencies. The first approach (and the preferred one) is to use link:http://cocoapods.org[CocoaPods] dependency manager. If you haven't used it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details. The second approach, is to manually add the dependencies to the project. Both approaches are discussed in this guide, so peak the approach you are most familiar with.
 
 ==== Using CocoaPods
 
