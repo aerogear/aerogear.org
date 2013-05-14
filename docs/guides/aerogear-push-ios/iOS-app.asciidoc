@@ -3,4 +3,129 @@ layout: basic
 title: iOS app
 ---
 
-Hello...
+== Before we start
+
+Please install link::http://cocoapods.org/[CocoaPods].
+
+
+Afterwards, please clone this link::https://github.com/matzew/AeroGear-PushTest-iOS[Sample App]. It uses our _early_ SDK to register your _Mobile Variant Instance_ (the application on the device) with the iOS Variant you registered earlier!
+
+== Sample App
+
+Once the application is on your filesystem, invoke the following command:
+
+[source,c]
+----
+pod install
+----
+
+This downloads the project dependencies (e.g. our little SDK) and creates a Workspace, which you need to open in order to work with the Application. In the same folder invoke
+
+[source,c]
+----
+open PushTest.xcworkspace
+----
+
+== Setting up the iOS Variant ID
+
+In Xcode, now open the link::https://github.com/matzew/AeroGear-PushTest-iOS/blob/master/PushTest/AGAppDelegate.m[AGAppDelegate file]. Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
+
+
+[source,c]
+----
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    
+// Let the device know we want to receive push notifications
+ [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+  (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+...
+...
+...
+----
+
+Once the application is started the _FIRST_ time, it generates the following dialog, where the user has to agree that the application _may_ receive "Push Notification Messages":
+
+
+image:./img/PushDialog.jpg[iOS Push Dialoag]
+
+Once the user agrees, Push Messages can be received by the app!
+
+
+After making sure the user is asked to agree on receiving Push Messages, we need to implement the _application:didRegisterForRemoteNotificationsWithDeviceToken:_ from the _UIApplicationDelegate_ protocol. This is callback is _ALWAYS_ invoked when the user is allowing _Puhs Notifications_. It basically delegates the _DeviceToken_, that your device and the Apple Push Network Service negotiated, to your application so that you can store it in a "Database", in order to use the token to send messages to it. The _deviceToken_ basically identifies THIS phone with _APNs_.
+
+
+_Note: Mostly the token stays the same, but there are cases when it may change..._
+
+
+Now let's look at the important code section:
+
+[source,c]
+----
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    // currently, we need a little helper:
+    NSString *pushToken = [self convertToNSString:deviceToken];
+    
+    // we init our "Registration helper:
+    AGDeviceRegistration *registration =
+    
+        // WARNING: make sure, you start JBoss with the -b 0.0.0.0 option, to bind on all interfaces
+        // from the iPhone, you can NOT use localhost :)
+        [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"http://192.168.0.102:8080/ag-push/"]];
+    
+    [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
+        
+        // Use the Mobile Variant ID, from your register iOS Variant
+        //
+        // This ID was received when performing the HTTP-based registration
+        // with the PushEE server:
+        [clientInfo setMobileVariantID:@"402880e63ea239b9013ea23be9dc0004"];
+        
+        
+        // apply the token, to identify THIS device
+        [clientInfo setToken:pushToken];
+
+        // set some more infos, that may be useful:
+        [clientInfo setDeviceType:@"iPhone"];
+        [clientInfo setOperatingSystem:@"iOS"];
+        
+        
+    } success:^(id responseObject) {
+        // Yeah! We could register our device :)
+    } failure:^(NSError *error) {
+        // did receive an HTTP error from the PushEE server ???
+        // Let's log it for now:
+        NSLog(@"PushEE registration Error: %@", error);
+    }];
+}
+----
+
+First we (CURRENTLY) use a little helper function to convert the _NSData_ type into a string. Next we initialize our _AGDeviceRegistration_ object. **NOTE:** You can not use _localhost_ from the device, you have to use an (internal) IP addres, where the _AeroGear Unified Push Server_ is running!
+
+==== MobileVariantID
+
+Inside of the **registerWithClientInfo** callback, we - at least - have to specify the _mobileVariantID_ and the _token_. You did receive the **Mobile Variant ID** in the previous chapter, when registering the _iOS Variant_ with your _Push Application_.
+
+==== DeviceToken
+
+The _token_ has been transformed to a _NSString_ and needs to be present as well, since otherwise the _AeroGear Unified Push Server_ has no clue about your device! It is valid to specify a bit more data on the _clientInfo_ object!
+
+==== Callbacks
+
+The _success_ callback is invoked, when the _AeroGear Unified Push Server_ was able to register your device with the given _iOS Variant_. Otherwise the _failure_ callback would be invoked. One case could be a wrong IP address....
+
+
+The _application:didFailToRegisterForRemoteNotificationsWithError:_ would be invoked if there is a problem in receving a token from _APNs_...
+
+
+== Test the app on your device
+
+Now run the phone on the device. After agreeing on receiving Push Messages, you will see another Dialog, that welcomes you! Now put the app into the background, by clicking the home screen.
+
+
+== Sending messages to the device
+
+The last chapter shows how to link:../send-push[send messages] to the device, using the _AeroGear Unified Push Server_!
+
+
