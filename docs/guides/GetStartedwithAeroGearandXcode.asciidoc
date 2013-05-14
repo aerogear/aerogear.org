@@ -46,7 +46,8 @@ And then:
 pod install
 ----
 
-to install the dependencies. _NOTE:_ Don't forget to open the Xcode workspace file instead of the project file after this step.
+to install the dependencies. 
+_NOTE:_ Don't forget to open the Xcode workspace file instead of the project file after this step.
 
 ==== Using manual Process
 
@@ -152,7 +153,7 @@ Now what is left is to add the table data source methods.
     return cell;
 }
 ----
-We are almost ready to run the project. Click on the _"AGAppDelegate.m" and on the _didFinishLaunchingWithOptions_ method replace the line
+We are almost ready to run the project. Click on the _"AGAppDelegate.m"_ and on the _didFinishLaunchingWithOptions_ method replace the line
 
 [source,c]
 ----
