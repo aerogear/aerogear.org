@@ -1,0 +1,74 @@
+---
+layout: basic
+title: Sending messages
+---
+
+Now you have the Sample App running on your phone, so it is time to use the _AeroGear Unified Push Server_ for delivering a _Push Notification_ message to your device!
+
+== Simple Sender
+
+A bit earlier you received an **ID** after the successful registration of the _Push Application_. This **ID** is used for sending a _broadcast_ message to all _registered_ devices (_Mobile Variant instances_). Now, on a command line issue the following _CURL_ command:
+
+[source,c]
+----
+curl -v -H "Accept: application/json" -H "Content-type: application/json" 
+   -X POST
+
+   -d '{"alert":"Hello AeroGear Unified Push!"}'
+
+http://localhost:8080/ag-push/rest/sender/broadcast/{PushApplicationID}
+----
+
+The payload is simply a JSON map. You can send different key/value pairs, but be sure it is not too long, otherwise Apple does _NOT_ deliver the message to your phone. The _alert_ key is recoginzed by the _AeroGear Unified Push Server_ and translated into an APNs specific _alert_.
+
+
+When the application is inactive, and a _Push Notification_, containing the _alert_ key, is received by the device. An _Popup_ will show up, which displays the value of the _alert_ key:
+
+image:./img/PushMessage.jpg[iOS Push Notification]
+
+
+**NOTE:** No custom code for this feature is required. It's build-in to _iOS Platform_.
+
+
+== Custom Dialog
+
+While the application is running, the above described feature is _NOT_ available. However, a different callback can be implemented on the _AppDelegate_ class:
+
+[source,c]
+----
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
+    // A JSON object is received, represented as a NSDictionary.
+    // use it to pick your custom key
+    
+    // For demo reasons, we simply read the "alert" key, from the "aps" dictionary:
+    NSString *alertValue = [userInfo valueForKeyPath:@"aps.alert"];
+    
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Custom Dialog, while Program is active"
+                          message: alertValue
+                          delegate: nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert show];
+}
+----
+
+The _application didReceiveRemoteNotification:_ method receives a _NSDictionary_ which represents a _JSON_ map, of the received payload. The _aps_ field of that map contains all the received attributes, like the earlier mentioned _alert_ key/value pair. The show code simply reads the value of the _alert_ key and explicitly displays it in a custom dialog. Of course, based on the needed functionality it would be also possible to update a view, based on the received message.
+
+
+The custom Dialog:
+
+image:./img/CustomDialog.jpg[Custom Dialog]
+
+
+== You are done
+
+That's all, you need to use the _AeroGear_ project for sending, and receiving _Push Notifications_ for an iOS device.
+
+=== A final note
+
+When using _Push Notifications_, have in mind that it's more for signaling and once in a while notifying a client. The app has to, by Apple's guidelines, function without receving _Push Notifications_. _Remember:_ The user could have disagreed after installing your app!
+
+
