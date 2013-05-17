@@ -13,11 +13,11 @@ Fire up Xcode and when presented with the welcome screen, choose _"Create a new 
 
 image::img/ios_welcome_screen.png[Welcome screen]
 
-On the next screen, choose _"Single-View Application"_
+On the next screen, choose _"Empty Application"_
 
 image::img/ios_new_project_wizard.png[New Project]
 
-Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AG"_. For the device family I used iPhone. Uncheck "Use StoryBoards", we are not going to use them in our example application. Leave the rest of the default options checked.
+Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AG"_. For the device family I used iPhone. Leave the default options checked.
 
 image::img/ios_project_details_screen.png[Details]
 
@@ -27,17 +27,24 @@ image::img/ios_main_project_screen.png[Main Project Screen]
 
 Now that our project is created, its time to install required dependencies.
 
+
 === Step 2: Install Dependencies
 
-Generally, there are two approaches to install dependencies. The first approach (and the preferred one) is to use link:http://cocoapods.org[CocoaPods] dependency manager. If you haven't used it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details. The second approach, is to manually add the dependencies to the project. Both approaches are discussed in this guide, so peak the approach you are most familiar with.
+Generally, there are two approaches to install dependencies. 
 
-==== Using CocoaPods
+The first approach (and the preferred one) is to use link:http://cocoapods.org[CocoaPods] dependency manager. If you haven't used it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details. 
+
+The second approach, is to manually add the dependencies to the project. Both approaches are discussed in this guide, so peak the approach you are most familiar with.
+
+==== Approach 1: using CocoaPods
 
 In the "Podfile", add the following lines:
 [source,bash]
 ----
-platform :ios
-pod 'AeroGear', '1.0.0'
+xcodeproj 'AeroGearExample.xcodeproj'
+platform :ios, '5.0'
+pod 'Reachability',  '~> 3.0.0'
+pod 'AeroGear', :git => 'https://github.com/aerogear/aerogear-ios.git'
 ----
 
 And then:
@@ -47,9 +54,10 @@ pod install
 ----
 
 to install the dependencies. 
+
 _NOTE:_ Don't forget to open the Xcode workspace file instead of the project file after this step.
 
-==== Using manual Process
+==== Approach 2: using manual Process
 
 We need to download both AFNetworking and the AeroGear libraries from their respective sources. 
 
@@ -72,64 +80,118 @@ Again, make sure that _"Copy items into destination group's folder"_ and _"Creat
 
 === Step 3: Verify installation
 
+
 Now that our depenendecies are set up, it's time to verify our installation. For this, we are going to build a simple application that will fetch the latest Tasks from the link:http://todo-aerogear.rhcloud.com[TODO application] deployed on link:https://openshift.redhat.com/app/[OpenShift]. The tasks will then be displayed on a standard UITableView component. Let's start.
 
-First 
-Click on the _"AGViewController.h"_ on the Project Navigator and change the class to extend from UITableViewController, a convenience class that will manage our table view.
+- 1: Create your controller 
+Create a new objective-c file, choose the name AGViewController, make it extends UITableViewController.
+
+- 2: Link view and controller
+Click on the _"AGAppDelegate.h"_ on the Project Navigator, add a property that link to AGViewController (don't forget to import it).
+
 [source,c]
 ----
-@interface AGViewController : UITableViewController
+#import <UIKit/UIKit.h>
+#import "AGViewController.h"
+
+@interface AGAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+@property(strong, nonatomic) AGViewController *controller;
+
+@end
 ----
 
-Now, click on the _"AGViewController.m"_. First, we need to import the "AeroGear" library. 
-[source,c]
-----
-#import <AeroGear/AeroGear.h>
-----
+Click on the _"AGAppDelegate.m"_, add line [1] and [2] to initialize the controller.
 
-Add an instance variable that will hold the tasks returned from the server.
 [source,c]
 ----
-@implementation AGViewController {
-    NSArray *_tasks;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.controller = [[AGViewController alloc] initWithStyle:UITableViewStylePlain]; // [1]
+    self.window.rootViewController = self.controller;                                 // [2]
+    [self.window makeKeyAndVisible];
+    return YES;
 }
 ----
 
-Navigate to the viewDidLoad method and add the following:
+- 3: Implement AeroGear login and retrieve tasks
+
+Now, click on the _"AGViewController.m"_. First of all, import the "AeroGear" library [1]. 
+
+Modify AGViewController implementation to add instance variables for authentication module [2] and for the task [3] returned from the server.
+
 [source,c]
 ----
+#import "AGViewController.h"
+#import <AeroGear/AeroGear.h>                                           // [1]
+
+@interface AGViewController ()
+
+@end
+
+@implementation AGViewController {
+    id<AGAuthenticationModule> _authModule;                             // [2]
+    NSArray *_tasks;                                                    // [3]
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // NSURL object:
-    NSURL* projectsURL = [NSURL URLWithString:@"http://todo-aerogear.rhcloud.com/todo-server"];
+    NSURL* projectsURL = [NSURL URLWithString:@"http://todo-aerogear.rhcloud.com/todo-server/"];
     
-    id<AGPipe> tasksPipe;
+    AGAuthenticator* authenticator = [AGAuthenticator authenticator];
+    _authModule = [authenticator auth:^(id<AGAuthConfig> config) {
+        [config setName:@"myModule"];
+        [config setBaseURL:projectsURL];
+    }];
+    
+    id<AGPipe> tasksPipe; 
     
     // create the 'todo' pipeline, which contains the 'projects' pipe:
-    AGPipeline *todo = [AGPipeline pipelineWithBaseURL:projectsURL];  [1]
+    AGPipeline *todo = [AGPipeline pipelineWithBaseURL:projectsURL];    // [4]
     
-    tasksPipe = [todo pipe:^(id<AGPipeConfig> config) {  [2]
-	        [config setName:@"tasks"];
-	    }];
+    tasksPipe = [todo pipe:^(id<AGPipeConfig> config) {                 // [5]
+        [config setName:@"tasks"];
+        [config setAuthModule:_authModule]; 
+    }];
     
-    [tasksPipe read:^(id responseObject) {  [3]
-        
-        _tasks = responseObject; [4]
-        
-        [self.tableView reloadData]; [5]
-        
-    } failure:^(NSError *error) {
-        NSLog(@"An error has occured during fetch! \n%@", error);
-    }];    
+    [_authModule login:@"john" password:@"123" success:^(id object) {   // [6]
     
+    [tasksPipe read:^(id responseObject) {                              // [7]
+        
+     _tasks = responseObject;                                           // [8]
+
+        [self.tableView reloadData];                                    // [9]
+        
+     }
+            failure:^(NSError *error) {
+            NSLog(@"An error has occured during fetch! \n%@", error);
+            }];}
+     
+               failure:^(NSError *error) {
+                    NSLog(@"Auth:%@", error);
+               }]; 
 }
----- 
+// the rest of your file ...
+----
 
-Central to AeroGear is the concept of link:/docs/specs/aerogear-ios/Classes/AGPipeline.html[Pipeline] and link:/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe]. The former represents a collection of server connections and the latter the connection itself. In [1] we initialize our Pipeline with the base URL of the remote server application. In [2] we call the "add" method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given AGPipeConfig object. This will give us a fresh Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for ther future, such as websockets). On [3] we issue a "read" request on the Pipe to fetch the tasks from the remote application, passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object declared earlier [4] and we ask the tableview to reload itself to display the data.
+Let's explain in more details, what we're doing here:
 
-Now what is left is to add the table data source methods.
+Central to AeroGear is the concept of link:/docs/specs/aerogear-ios/Classes/AGPipeline.html[Pipeline] and link:/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe]. The former represents a collection of server connections and the latter the connection itself. 
 
+In [4] we initialize our Pipeline with the base URL of the remote server application. 
+
+In [5] we call the "add" method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given AGPipeConfig object. In the config, we also link the authenticate module. This will give us a fresh authentificated Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for ther future, such as websockets). 
+
+In [6] we send the login message, within the success callback issue a "read" request [7] on the Pipe to fetch the tasks from the remote application, passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object [8]. Finally, we ask the tableview to reload 
+itself to display the data [9].
+
+- 4: RefreshView with data
 [source,c]
 ----
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -147,27 +209,14 @@ Now what is left is to add the table data source methods.
     }
     
     NSUInteger row = [indexPath row];
-
+    
     cell.textLabel.text = [[_tasks objectAtIndex:row] objectForKey:@"title"];
-
+    
     return cell;
 }
 ----
-We are almost ready to run the project. Click on the _"AGAppDelegate.m"_ and on the _didFinishLaunchingWithOptions_ method replace the line
 
-[source,c]
-----
-self.viewController = [[AGViewController alloc] initWithNibName:@"AGViewController" bundle:nil
-----
-
-with:
-
-[source,c]
-----
-self.viewController = [[AGViewController alloc] initWithStyle:UITableViewStylePlain];
-----
-
-This is because by default the project template created by Xcode tries to use NIB file to load the UI and in our case we don't use it.
+- 5: Run it!
 
 Ok we are now ready to run the project. Select _"Product->Run"_ and if all goes well you will be presented with the following screen.
 
