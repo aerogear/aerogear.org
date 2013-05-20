@@ -10,7 +10,7 @@ RestAdapter
 **RestAdapter** is a implementation of **Pipe** provided by AeroGear which is used for accessing remote HTTP based REST services.
 
 Methods
-^^^^^^^
+~~~~~~~
 
 * *read* : Performs a HTTP GET to the URL defined by $\{baseUrl}/$\{resource}
   ** Additional parameters may be appended to the URL's path or query.
