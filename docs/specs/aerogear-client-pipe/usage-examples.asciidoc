@@ -1,0 +1,153 @@
+---
+layout: basic
+title: AeroGear Client Paging Usage
+
+---
+
+== Android Pipe Examples
+
+.Creating a Pipe with the Default Configuration
+[source,java]
+----
+Pipeline pipeline = new Pipeline(SAMPLE_URL);
+Pipe newPipe = pipeline.pipe(Data.class);
+----
+
+.Creating a Pipe with a Custom Configuration
+[source,java]
+----
+Pipeline pipeline = new Pipeline(SAMPLE_URL);
+
+PipeConfig config = Data.class, new PipeConfig(url, Data.class);
+config.setEndpoint("data.json");
+
+Pipe newPipe = pipeline.pipe(Data.class, config);
+----
+
+.Fetching A Pipe
+[source,java]
+----
+Pipeline pipeline = new Pipeline(SAMPLE_URL);
+
+PipeConfig config = Data.class, new PipeConfig(url, Data.class);
+pipeline.pipe(Data.class, config);
+
+Pipe dataPipe = pipeline.get("data");
+----
+
+.Reading From a Pipe
+[source,java]
+----
+Pipe dataPipe = pipeline.get("data");
+
+dataPipe.read(new Callback<Data>() {
+    void onSuccess(List<Data> data) {
+	Log.d("Success", data.toString);
+    }
+
+    void onFailure(Exception e) {
+        Log.e("FAILURE", e.getMessage, e);
+    }
+}
+
+);
+----
+
+.Saving an Object using a Pipe
+[source,java]
+----
+
+private static Class Data {
+
+   @RecordId
+   private String id;
+   private String name;
+
+   /* snipping default constructors and accessor methods*/
+}
+
+Pipe dataPipe = pipeline.get("data");
+
+//Null id, new object
+final Data dataBeingSaved = new Data(null, "name");
+
+dataPipe.save( dataBeingSaved, new Callback<Data>() {
+    void onSuccess(Data data) {
+	assert data.getId() != null;
+	assert data.getName().equals(dataBeingSaved.name());
+	Log.d("Success", data.toString);
+    }
+
+    void onFailure(Exception e) {
+        Log.e("FAILURE", e.getMessage, e);
+    }
+}
+
+);
+----
+
+
+.Updating an Object using a Pipe
+[source,java]
+----
+
+private static Class Data {
+
+   @RecordId
+   private String id;
+   private String name;
+
+   /* snipping default constructors and accessor methods*/
+}
+
+Pipe dataPipe = pipeline.get("data");
+
+final Data dataBeingSaved = new Data("id", "name");
+
+dataPipe.save( dataBeingSaved, new Callback<Data>() {
+    void onSuccess(Data data) {
+	assert dataBeingSaved.equals(data);
+	Log.d("Success", data.toString);
+    }
+
+    void onFailure(Exception e) {
+        Log.e("FAILURE", e.getMessage, e);
+    }
+}
+
+);
+----
+
+.Deleting an Object using a Pipe
+[source,java]
+----
+
+private static Class Data {
+
+   @RecordId
+   private String id;
+   private String name;
+
+   /* snipping default constructors and accessor methods*/
+}
+
+Pipe dataPipe = pipeline.get("data");
+
+final Data dataBeingDeleted = new Data("id", "name");
+
+dataPipe.remove(dataBeingDeleted.getId(), new Callback<Void>() {
+    void onSuccess(Void ignore) {
+	Log.d("Success", "The data was deleted");
+    }
+
+    void onFailure(Exception e) {
+        Log.e("FAILURE", e.getMessage, e);
+    }
+}
+
+);
+----
+
+== iOS Pipe Examples
+
+== JavaScript Pipe Examples
