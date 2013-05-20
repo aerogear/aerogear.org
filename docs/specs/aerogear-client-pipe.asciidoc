@@ -13,8 +13,8 @@ The AeroGear client libraries provide **Pipe** implementations as abstractions a
 
 ''''
 
-== Pipe
-
+Pipe
+~~~~
 
 Methods
 ^^^^^^^
@@ -84,7 +84,8 @@ See Also
  * link:../aerogear-client-paging/[Paging spec] : An extension of the Pipe API to include paging information
 
 
-== Pipeline
+Pipeline
+~~~~~~~~
 
 A Pipeline is both a factory  for new **Pipes** and a reference to existing **Pipes**.
 
