@@ -20,3 +20,4 @@ title: Specifications
 * [AeroGear Security PicketLink 1.0.0](aerogear-security-picketlink)
 * [REST API](aerogear-rest-api)
 * [AeroGear Security OTP](aerogear-security-otp)
+* [AeroGear Server Push](aerogear-server-push)
