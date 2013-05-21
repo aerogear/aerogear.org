@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGPropertyListStorage Class Reference</title>
+		<title>AGPageBodyExtractor Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGPropertyListStorage Class Reference</h1>
+				<h1 class="hideInXcode">AGPageBodyExtractor Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -66,7 +66,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGPropertyListStorage Class Reference" name="top"></a>
+				<a title="AGPageBodyExtractor Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -75,7 +75,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGPropertyListStorage Class Reference</h1>
+						<h1 class="title title-header">AGPageBodyExtractor Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -83,10 +83,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/AGMemoryStorage.html">AGMemoryStorage</a> : NSObject</td>
+	<td class="specification-value"><a href="../Classes/AGPageBaseExtractor.html">AGPageBaseExtractor</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGPropertyListStorage.h<br />AGPropertyListStorage.m</td>
+	<td class="specification-value">AGPageBodyExtractor.h<br />AGPageBodyExtractor.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -96,32 +96,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>An <a href="../Protocols/AGStore.html">AGStore</a> implementation that uses a <a href="http://tinyurl.com/ccbo327">Property List</a> for storage.</p>
-
-<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned automatically when an DataStore with the <em>type</em> config option is set to <em>&ldquo;PLIST&rdquo;</em>. See <a href="../Classes/AGDataManager.html">AGDataManager</a> and <a href="../Protocols/AGStore.html">AGStore</a> class documentation for more information.</p>
-
-<h2>Create a DataManager with a Property List store backend</h2>
-
-<p>Below is a small example on how to save to the file system:</p>
-
-<pre><code>// initalize plist store (if the file does not exist it will be created)
-AGDataManager* manager = [AGDataManager manager];
-id&lt;AGStore&gt; plistStore = [manager store:^(id&lt;AGStoreConfig&gt; config) {
-    [config setName:@"secrets"]; // will be used as the filename for the plist
-    [config setType:@"PLIST"]; // specify that a Property List is required
-}];
-
-// the object to save (e.g. a dictionary)
-NSDictionary *otp = [NSDictionary dictionaryWithObjectsAndKeys:@"19a01df0281afcdbe", @"otp", @"1", @"id", nil];
-
-// save it
-NSError *error;
-
-if (![plistStore save:otp error:&amp;error])
-    NSLog(@"Save: An error occured during save! \n%@", error);    
-</code></pre>
-
-<p>The <code>read</code>, <code>reset</code> or <code>remove</code> methods found in <a href="../Protocols/AGStore.html">AGStore</a> behave the same, as on the default (&ldquo;in memory&rdquo;) store.</p>
+						<p>An internal <a href="../Protocols/AGPageParameterExtractor.html">AGPageParameterExtractor</a> implementation that uses
+the response body to parse paging information.</p>
 					</div>
 					
 					

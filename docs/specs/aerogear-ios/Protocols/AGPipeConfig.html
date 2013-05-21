@@ -46,17 +46,7 @@
 	
 	<option value="//api/name/endpoint">&nbsp;&nbsp;&nbsp;&nbsp;endpoint</option>
 	
-	<option value="//api/name/limit">&nbsp;&nbsp;&nbsp;&nbsp;limit</option>
-	
-	<option value="//api/name/metadataLocation">&nbsp;&nbsp;&nbsp;&nbsp;metadataLocation</option>
-	
-	<option value="//api/name/nextIdentifier">&nbsp;&nbsp;&nbsp;&nbsp;nextIdentifier</option>
-	
-	<option value="//api/name/offset">&nbsp;&nbsp;&nbsp;&nbsp;offset</option>
-	
-	<option value="//api/name/parameterProvider">&nbsp;&nbsp;&nbsp;&nbsp;parameterProvider</option>
-	
-	<option value="//api/name/previousIdentifier">&nbsp;&nbsp;&nbsp;&nbsp;previousIdentifier</option>
+	<option value="//api/name/pageConfig">&nbsp;&nbsp;&nbsp;&nbsp;pageConfig</option>
 	
 	<option value="//api/name/recordId">&nbsp;&nbsp;&nbsp;&nbsp;recordId</option>
 	
@@ -96,17 +86,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endpoint">endpoint</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/limit">limit</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metadataLocation">metadataLocation</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nextIdentifier">nextIdentifier</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/offset">offset</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parameterProvider">parameterProvider</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/previousIdentifier">previousIdentifier</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pageConfig">pageConfig</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recordId">recordId</a></span></li>
 	
@@ -193,58 +173,8 @@ If no endpoint is specified, the name will be used as its value.</p></span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/parameterProvider">&nbsp;&nbsp;parameterProvider</a></code>
-		<span class="tooltip"><p>A dictionary containing all the HTTP request parameters and their values,
-that are passed to the server, used used when issuing paging requests.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/offset">&nbsp;&nbsp;offset</a></code>
-		<span class="tooltip"><p>The offset of the first element that should be included in the
-returned collection (default: 0)</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/limit">&nbsp;&nbsp;limit</a></code>
-		<span class="tooltip"><p>The maximum number of results the server should return (default: 10)</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/metadataLocation">&nbsp;&nbsp;metadataLocation</a></code>
-		<span class="tooltip"><p>Indicates whether paging information (see identifiers) is received
-from the response &lsquo;header&rsquo;, the response &lsquo;body&rsquo; or via RFC 5988 (&lsquo;webLinking&rsquo;),
-which is the default. Other values are ignored and the default is being used.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/nextIdentifier">&nbsp;&nbsp;nextIdentifier</a></code>
-		<span class="tooltip"><p>The next identifier name (default: &lsquo;next&rsquo;).</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/previousIdentifier">&nbsp;&nbsp;previousIdentifier</a></code>
-		<span class="tooltip"><ul>
-<li>The previous identifier name (default: &lsquo;previous&rsquo;).
-sb</li>
-</ul>
-</span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/authModule">&nbsp;&nbsp;authModule</a></code>
-		<span class="tooltip"><p>The <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p></span>
+		<span class="tooltip"><p>The Authentication Module configured for this Pipe.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -252,6 +182,15 @@ sb</li>
 	<span class="tooltip">
 		<code><a href="#//api/name/timeout">&nbsp;&nbsp;timeout</a></code>
 		<span class="tooltip"><p>The timeout interval for a request to complete.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pageConfig">&nbsp;&nbsp;pageConfig</a></code>
+		<span class="tooltip"><p>A block specifying paging configuration for this Pipe.
+See <a href="../Protocols/AGPageConfig.html">AGPageConfig</a> and for the available paging configuration parameters
+and category AGNSMutableArray(Paging) for example usage.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -275,7 +214,7 @@ sb</li>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p>
+		<p>The Authentication Module configured for this Pipe.</p>
 	</div>		
 	
 	
@@ -290,7 +229,7 @@ sb</li>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> object to the configuration.</p>
+		<p>The Authentication Module configured for this Pipe.</p>
 	</div>
 	
 	
@@ -388,17 +327,19 @@ If no endpoint is specified, the name will be used as its value.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/limit" title="limit"></a>
-	<h3 class="subsubtitle method-title">limit</h3>
+	<a name="//api/name/pageConfig" title="pageConfig"></a>
+	<h3 class="subsubtitle method-title">pageConfig</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The maximum number of results the server should return (default: 10)</p>
+		<p>A block specifying paging configuration for this Pipe.
+See <a href="../Protocols/AGPageConfig.html">AGPageConfig</a> and for the available paging configuration parameters
+and category AGNSMutableArray(Paging) for example usage.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSNumber *limit</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) void ( ^ ) ( id&lt;AGPageConfig&gt; ) pageConfig</code></div>
 	
 	
 	
@@ -409,225 +350,9 @@ If no endpoint is specified, the name will be used as its value.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The maximum number of results the server should return (default: 10)</p>
-
-<p>If a paramater provider has been given, the limit value is ignored.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipeConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/metadataLocation" title="metadataLocation"></a>
-	<h3 class="subsubtitle method-title">metadataLocation</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Indicates whether paging information (see identifiers) is received
-from the response &lsquo;header&rsquo;, the response &lsquo;body&rsquo; or via RFC 5988 (&lsquo;webLinking&rsquo;),
-which is the default. Other values are ignored and the default is being used.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *metadataLocation</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Indicates whether paging information (see identifiers) is received
-from the response &lsquo;header&rsquo;, the response &lsquo;body&rsquo; or via RFC 5988 (&lsquo;webLinking&rsquo;),
-which is the default. Other values are ignored and the default is being used.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipeConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/nextIdentifier" title="nextIdentifier"></a>
-	<h3 class="subsubtitle method-title">nextIdentifier</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The next identifier name (default: &lsquo;next&rsquo;).</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *nextIdentifier</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The next identifier name (default: &lsquo;next&rsquo;).</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipeConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/offset" title="offset"></a>
-	<h3 class="subsubtitle method-title">offset</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The offset of the first element that should be included in the
-returned collection (default: 0)</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *offset</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The offset of the first element that should be included in the
-returned collection (default: 0)</p>
-
-<p>If a paramater provider has been given, the offset value is ignored.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipeConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/parameterProvider" title="parameterProvider"></a>
-	<h3 class="subsubtitle method-title">parameterProvider</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>A dictionary containing all the HTTP request parameters and their values,
-that are passed to the server, used used when issuing paging requests.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSDictionary *parameterProvider</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>A dictionary containing all the HTTP request parameters and their values,
-that are passed to the server, used used when issuing paging requests.</p>
-
-<p>If no &ldquo;parameter provider&rdquo; has been provided, the values for
-limit/<a href="../Protocols/AGPipeConfig.html#//api/name/offset">offset</a> are used</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGPipeConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/previousIdentifier" title="previousIdentifier"></a>
-	<h3 class="subsubtitle method-title">previousIdentifier</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<ul>
-<li>The previous identifier name (default: &lsquo;previous&rsquo;).
-sb</li>
-</ul>
-
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *previousIdentifier</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li>The previous identifier name (default: &lsquo;previous&rsquo;).
-sb</li>
-</ul>
-
+		<p>A block specifying paging configuration for this Pipe.
+See <a href="../Protocols/AGPageConfig.html">AGPageConfig</a> and for the available paging configuration parameters
+and category AGNSMutableArray(Paging) for example usage.</p>
 	</div>
 	
 	
@@ -739,7 +464,7 @@ sb</li>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-03-26)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-05-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
