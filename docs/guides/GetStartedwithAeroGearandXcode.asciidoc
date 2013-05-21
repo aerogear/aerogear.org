@@ -44,7 +44,7 @@ In the "Podfile", add the following lines:
 xcodeproj 'AeroGearExample.xcodeproj'
 platform :ios, '5.0'
 pod 'Reachability',  '~> 3.0.0'
-pod 'AeroGear', :git => 'https://github.com/aerogear/aerogear-ios.git'
+pod 'AeroGear', '1.0.1'
 ----
 
 And then:
@@ -130,52 +130,50 @@ Modify AGViewController implementation to add instance variables for authenticat
 #import <AeroGear/AeroGear.h>                                           // [1]
 
 @interface AGViewController ()
-
 @end
 
 @implementation AGViewController {
-    id<AGAuthenticationModule> _authModule;                             // [2]
     NSArray *_tasks;                                                    // [3]
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    id<AGAuthenticationModule> authModule;                                 
     // NSURL object:
     NSURL* projectsURL = [NSURL URLWithString:@"http://todo-aerogear.rhcloud.com/todo-server/"];
     
     AGAuthenticator* authenticator = [AGAuthenticator authenticator];
-    _authModule = [authenticator auth:^(id<AGAuthConfig> config) {
+    authModule = [authenticator auth:^(id<AGAuthConfig> config) {       // [4]
         [config setName:@"myModule"];
         [config setBaseURL:projectsURL];
     }];
     
-    id<AGPipe> tasksPipe; 
+    id<AGPipe> tasksPipe;
     
     // create the 'todo' pipeline, which contains the 'projects' pipe:
-    AGPipeline *todo = [AGPipeline pipelineWithBaseURL:projectsURL];    // [4]
+    AGPipeline *todo = [AGPipeline pipelineWithBaseURL:projectsURL];    // [5]
     
-    tasksPipe = [todo pipe:^(id<AGPipeConfig> config) {                 // [5]
+    tasksPipe = [todo pipe:^(id<AGPipeConfig> config) {                 // [6]
         [config setName:@"tasks"];
-        [config setAuthModule:_authModule]; 
+        [config setAuthModule:authModule];
     }];
     
-    [_authModule login:@"john" password:@"123" success:^(id object) {   // [6]
-    
-    [tasksPipe read:^(id responseObject) {                              // [7]
+    [authModule login:@"john" password:@"123" success:^(id object) {    // [7]
         
-     _tasks = responseObject;                                           // [8]
-
-        [self.tableView reloadData];                                    // [9]
-        
-     }
-            failure:^(NSError *error) {
-            NSLog(@"An error has occured during fetch! \n%@", error);
-            }];}
+        [tasksPipe read:^(id responseObject) {                          // [8]
+            
+            _tasks = responseObject;                                    // [9]
+            
+            [self.tableView reloadData];                                // [10]
+            
+        }
+                failure:^(NSError *error) {
+                    NSLog(@"An error has occured during fetch! \n%@", error);
+                }];}
      
                failure:^(NSError *error) {
-                    NSLog(@"Auth:%@", error);
-               }]; 
+                   NSLog(@"Auth:%@", error);
+               }];
 }
 // the rest of your file ...
 ----
@@ -184,14 +182,15 @@ Let's explain in more details, what we're doing here:
 
 Central to AeroGear is the concept of link:/docs/specs/aerogear-ios/Classes/AGPipeline.html[Pipeline] and link:/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe]. The former represents a collection of server connections and the latter the connection itself. 
 
-In [4] we initialize our Pipeline with the base URL of the remote server application. 
+In [4] and [5] we initialize our Pipeline and Authenticator objects. Both act a factory in which the former creates Pipe objects connected to remote endpoints, while the latter give us access to different authentication modules provided by AeroGear (such as Rest, Basic and Digest).
 
-In [5] we call the "add" method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given AGPipeConfig object. In the config, we also link the authenticate module. This will give us a fresh authentificated Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for ther future, such as websockets). 
+In [6] we call the "add" method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given AGPipeConfig object. In the config, we also link the authenticate module we described earlier. This will give us a fresh authentificated Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for ther future, such as websockets). 
 
-In [6] we send the login message, within the success callback issue a "read" request [7] on the Pipe to fetch the tasks from the remote application, passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object [8]. Finally, we ask the tableview to reload 
-itself to display the data [9].
+In [7] we send the login message, within the success callback issue a "read" request [8] on the Pipe to fetch the tasks from the remote application, passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object [9]. Finally, we ask the tableview to reload 
+itself to display the data [10].
 
 - 4: RefreshView with data
+Time to fill the empty table data source methods that Xcode created automatically for us when we created the class, with code that renders the fetched data.
 [source,c]
 ----
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -224,6 +223,6 @@ image::img/ios_emulator.png[Emulator]
 
 *Success!* Your first iOS application built with AeroGear!
 
-You can download the source code of this project from link:https://github.com/cvasilak/AeroGearExample[github]. For a more complete example application that uses AeroGear to perform link:http://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD] operations on a remote endpoint, have a look at the TODO application available on link:https://github.com/aerogear/aerogear-todo-ios[github].
+You can download the source code of this project from link:https://github.com/corinnekrych/SampleAeroGear[github]. For a more complete example application that uses AeroGear to perform link:http://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD] operations on a remote endpoint, have a look at the TODO application available on link:https://github.com/aerogear/aerogear-todo-ios[github].
 
 You can also browse link:http://aerogear.org/docs/specs/aerogear-ios/[AeroGear iOS API reference] to familiarize yourself with the wealth of options.
