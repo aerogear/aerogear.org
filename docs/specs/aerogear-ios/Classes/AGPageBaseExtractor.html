@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGStoreConfig Protocol Reference</title>
+		<title>AGPageBaseExtractor Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGStoreConfig Protocol Reference</h1>
+				<h1 class="hideInXcode">AGPageBaseExtractor Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,13 +38,15 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/recordId">&nbsp;&nbsp;&nbsp;&nbsp;recordId</option>
 	
 	
 	
 	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/parse:headers:next:prev:">&nbsp;&nbsp;&nbsp;&nbsp;- parse:headers:next:prev:</option>
+	
+	<option value="//api/name/transformQueryString:">&nbsp;&nbsp;&nbsp;&nbsp;- transformQueryString:</option>
 	
 	
 	
@@ -68,22 +70,24 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recordId">recordId</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parse:headers:next:prev:">parse:headers:next:prev:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transformQueryString:">transformQueryString:</a></span></li>
 	
 </ul></li>
-
-
-
-
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGStoreConfig Protocol Reference" name="top"></a>
+				<a title="AGPageBaseExtractor Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,18 +96,21 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGStoreConfig Protocol Reference</h1>
+						<h1 class="title title-header">AGPageBaseExtractor Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/AGConfig.html">AGConfig</a></td>
+	<td class="specification-value"><a href="../Protocols/AGPageParameterExtractor.html">AGPageParameterExtractor</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGStoreConfig.h</td>
+	<td class="specification-value">AGPageBaseExtractor.h<br />AGPageBaseExtractor.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -113,7 +120,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Represents the public API to configure <a href="../Protocols/AGStore.html">AGStore</a> objects.</p>
+						<p>Abstract base class that concrete page extractor implementations can derive for.
+Used to provide useful methods, that implementions can use.</p>
 					</div>
 					
 					
@@ -126,16 +134,33 @@
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/recordId">&nbsp;&nbsp;recordId</a></code>
-		<span class="tooltip"><p>Applies the recordId to the configuration.</p></span>
+		<code><a href="#//api/name/transformQueryString:">&ndash;&nbsp;transformQueryString:</a></code>
+		<span class="tooltip"><p>Parses a query string of the form &ldquo;?param1=val1&amp;param2=val&amp;..&rdquo; and
+returns a dictionary with the params encapsulated as a key/value pairs.
+Note: If a prefix of &lsquo;<a href="http://..">http://..</a>&ldquo; location is present, it is choped prior parsing.</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parse:headers:next:prev:">&ndash;&nbsp;parse:headers:next:prev:</a></code>
+		<span class="tooltip"><p>Parse a response and extract paging information</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -145,25 +170,56 @@
 					
 					
 					
+					
+					
+					
+					
 					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/recordId" title="recordId"></a>
-	<h3 class="subsubtitle method-title">recordId</h3>
+	<a name="//api/name/parse:headers:next:prev:" title="parse:headers:next:prev:"></a>
+	<h3 class="subsubtitle method-title">parse:headers:next:prev:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Applies the recordId to the configuration.</p>
+		<p>Parse a response and extract paging information</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *recordId</code></div>
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)parse:(id)<em>response</em> headers:(NSDictionary *)<em>headers</em> next:(NSString *)<em>nextIdentifier</em> prev:(NSString *)<em>prevIdentifier</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>The response from the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>next</em></dt>
+			<dd><p>The &lsquo;next page&rsquo; identifier</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>previous</em></dt>
+			<dd><p>The &lsquo;previous page&rsquo; identifier</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSDictionary with keys &lsquo;AG-next-key&rsquo; and &lsquo;AG-prev-key&rsquo; with
+the next and previous page information respectively.
+See <a href="../Classes/AGPageBodyExtractor.html">AGPageBodyExtractor</a>, <a href="../Classes/AGPageWebLinkingExtractor.html">AGPageWebLinkingExtractor</a></p>
+	</div>
 	
 	
 	
@@ -171,7 +227,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the recordId to the configuration.</p>
+		<p>Parse a response and extract paging information</p>
 	</div>
 	
 	
@@ -182,17 +238,61 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGStoreConfig.h</code><br />
+		<code class="declared-in-ref">AGPageParameterExtractor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/transformQueryString:" title="transformQueryString:"></a>
+	<h3 class="subsubtitle method-title">transformQueryString:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Parses a query string of the form &ldquo;?param1=val1&amp;param2=val&amp;..&rdquo; and
+returns a dictionary with the params encapsulated as a key/value pairs.
+Note: If a prefix of &lsquo;<a href="http://..">http://..</a>&ldquo; location is present, it is choped prior parsing.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)transformQueryString:(NSString *)<em>value</em></code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>an NSDictionary with the parsed key-value params.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Parses a query string of the form &ldquo;?param1=val1&amp;param2=val&amp;..&rdquo; and
+returns a dictionary with the params encapsulated as a key/value pairs.
+Note: If a prefix of &lsquo;<a href="http://..">http://..</a>&ldquo; location is present, it is choped prior parsing.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPageBaseExtractor.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
-					
-					
-					
-					
 					
 					
 				</div>

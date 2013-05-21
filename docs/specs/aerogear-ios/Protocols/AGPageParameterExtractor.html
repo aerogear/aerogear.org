@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGPropertyListStorage Class Reference</title>
+		<title>AGPageParameterExtractor Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGPropertyListStorage Class Reference</h1>
+				<h1 class="hideInXcode">AGPageParameterExtractor Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -32,12 +32,19 @@
 	
 	
 	
+	<option value="tasks">Tasks</option>
 	
 	
 	
 	
 	
 	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/parse:headers:next:prev:">&nbsp;&nbsp;&nbsp;&nbsp;- parse:headers:next:prev:</option>
 	
 	
 	
@@ -53,6 +60,9 @@
 
 
 
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
 
 
 
@@ -60,13 +70,20 @@
 
 
 
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parse:headers:next:prev:">parse:headers:next:prev:</a></span></li>
+	
+</ul></li>
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGPropertyListStorage Class Reference" name="top"></a>
+				<a title="AGPageParameterExtractor Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -75,18 +92,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGPropertyListStorage Class Reference</h1>
+						<h1 class="title title-header">AGPageParameterExtractor Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/AGMemoryStorage.html">AGMemoryStorage</a> : NSObject</td>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGPropertyListStorage.h<br />AGPropertyListStorage.m</td>
+	<td class="specification-value">AGPageParameterExtractor.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -96,32 +113,33 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>An <a href="../Protocols/AGStore.html">AGStore</a> implementation that uses a <a href="http://tinyurl.com/ccbo327">Property List</a> for storage.</p>
+						<p>Classes which implement this protocol are responsible for consuming
+a response from a server and extracting paging information (if any).</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
 
-<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned automatically when an DataStore with the <em>type</em> config option is set to <em>&ldquo;PLIST&rdquo;</em>. See <a href="../Classes/AGDataManager.html">AGDataManager</a> and <a href="../Protocols/AGStore.html">AGStore</a> class documentation for more information.</p>
-
-<h2>Create a DataManager with a Property List store backend</h2>
-
-<p>Below is a small example on how to save to the file system:</p>
-
-<pre><code>// initalize plist store (if the file does not exist it will be created)
-AGDataManager* manager = [AGDataManager manager];
-id&lt;AGStore&gt; plistStore = [manager store:^(id&lt;AGStoreConfig&gt; config) {
-    [config setName:@"secrets"]; // will be used as the filename for the plist
-    [config setType:@"PLIST"]; // specify that a Property List is required
-}];
-
-// the object to save (e.g. a dictionary)
-NSDictionary *otp = [NSDictionary dictionaryWithObjectsAndKeys:@"19a01df0281afcdbe", @"otp", @"1", @"id", nil];
-
-// save it
-NSError *error;
-
-if (![plistStore save:otp error:&amp;error])
-    NSLog(@"Save: An error occured during save! \n%@", error);    
-</code></pre>
-
-<p>The <code>read</code>, <code>reset</code> or <code>remove</code> methods found in <a href="../Protocols/AGStore.html">AGStore</a> behave the same, as on the default (&ldquo;in memory&rdquo;) store.</p>
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parse:headers:next:prev:">&ndash;&nbsp;parse:headers:next:prev:</a></code>
+		<span class="tooltip"><p>Parse a response and extract paging information</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li>
+						</ul>
+						
 					</div>
 					
 					
@@ -132,9 +150,77 @@ if (![plistStore save:otp error:&amp;error])
 					
 					
 					
-					
-					
-					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/parse:headers:next:prev:" title="parse:headers:next:prev:"></a>
+	<h3 class="subsubtitle method-title">parse:headers:next:prev:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Parse a response and extract paging information</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)parse:(id)<em>response</em> headers:(NSDictionary *)<em>headers</em> next:(NSString *)<em>nextIdentifier</em> prev:(NSString *)<em>prevIdentifier</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>The response from the server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>next</em></dt>
+			<dd><p>The &lsquo;next page&rsquo; identifier</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>previous</em></dt>
+			<dd><p>The &lsquo;previous page&rsquo; identifier</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSDictionary with keys &lsquo;AG-next-key&rsquo; and &lsquo;AG-prev-key&rsquo; with
+the next and previous page information respectively.
+See <a href="../Classes/AGPageBodyExtractor.html">AGPageBodyExtractor</a>, <a href="../Classes/AGPageWebLinkingExtractor.html">AGPageWebLinkingExtractor</a></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Parse a response and extract paging information</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPageParameterExtractor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 				</div>
