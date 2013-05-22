@@ -10,6 +10,12 @@ body > .container {
     margin: 0;
 }
 
+p {
+    line-height: 24px;
+    font-size: 16px;
+    color: #444;
+}
+
 .home-content {
     padding: 5px 10px;
 }
