@@ -455,11 +455,13 @@ footer .row .span3:last-child {
 
 .footer-logo {
     display: block;
+    margin-bottom: 20px;
 }
 
 .footer-jboss {
     display: block;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .attribution {
