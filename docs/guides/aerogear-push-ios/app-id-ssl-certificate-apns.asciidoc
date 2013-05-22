@@ -33,7 +33,7 @@ Later in the same page you are asked for an *Explicit App ID*, since the generic
 
 image::./img/AppID_2.png[Apply the Bundle ID from our App]
 
-In the next screen confirm your new App ID, and double check that the _Push Notifications_ option is _enabled_, afterwards click the _Submit_ button! Now you are _Done_. In the next screen, click on on the newly create *App ID*:
+In the next screen confirm your new App ID, and double check that the _Push Notifications_ option is _enabled_, afterwards click the _Submit_ button! Now you are _Done_. In the next screen, click on on the *newly created* App ID. After clicking on it, the following screen is visible:
 
 image::./img/AppID_3.png[Overview]
 
