@@ -3,9 +3,13 @@ layout: basic
 title: Creating a Provisioning Profile
 ---
 
+Creating a Provisioning Profile
+-------------------------------
+
 Now that you have created an App ID and you got your SSL certificate, it's time to create a _Provisioning Profile_
 
-== Provisioning Profile
+Provisioning Profile
+~~~~~~~~~~~~~~~~~~~~
 
 In the _Provisioning Portal_ you need to create an _iOS App Development_ provisioning profile, so that you can test the Push Notifications on your own iOS devices:
 
@@ -33,7 +37,8 @@ Now dowload the Profile and open the file. It will be added to Xcode's Organizer
 image::./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profile]
 
 
-== Unified Push Server
+Unified Push Server
+~~~~~~~~~~~~~~~~~~~
 
 Now, after managing all the Apple certificates, let's setup the link:../unified-push-server[Unified Push Server]
 

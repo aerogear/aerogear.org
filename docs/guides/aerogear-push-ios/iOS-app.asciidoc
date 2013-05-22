@@ -3,14 +3,17 @@ layout: basic
 title: iOS app
 ---
 
-== Before we start
+Creating an iOS application
+---------------------------
 
-Please install link::http://cocoapods.org/[CocoaPods].
+
+Before we start, please install link::http://cocoapods.org/[CocoaPods].
 
 
 Afterwards, please clone this link::https://github.com/matzew/AeroGear-PushTest-iOS[Sample App]. It uses our _early_ SDK to register your _Mobile Variant Instance_ (the application on the device) with the iOS Variant you registered earlier!
 
-== Sample App
+Sample App
+~~~~~~~~~~
 
 Once the application is on your filesystem, invoke the following command:
 
@@ -26,7 +29,8 @@ This downloads the project dependencies (e.g. our little SDK) and creates a Work
 open PushTest.xcworkspace
 ----
 
-== Setting up the iOS Variant ID
+Setting up the iOS Variant ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In Xcode, now open the link::https://github.com/matzew/AeroGear-PushTest-iOS/blob/master/PushTest/AGAppDelegate.m[AGAppDelegate file]. Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
 
@@ -103,15 +107,18 @@ Now let's look at the important code section:
 
 First we (CURRENTLY) use a little helper function to convert the _NSData_ type into a string. Next we initialize our _AGDeviceRegistration_ object. **NOTE:** You can not use _localhost_ from the device, you have to use an (internal) IP addres, where the _AeroGear Unified Push Server_ is running!
 
-==== MobileVariantID
+MobileVariantID
+^^^^^^^^^^^^^^^
 
 Inside of the **registerWithClientInfo** callback, we - at least - have to specify the _mobileVariantID_ and the _token_. You did receive the **Mobile Variant ID** in the previous chapter, when registering the _iOS Variant_ with your _Push Application_.
 
-==== DeviceToken
+DeviceToken
+^^^^^^^^^^^
 
 The _token_ has been transformed to a _NSString_ and needs to be present as well, since otherwise the _AeroGear Unified Push Server_ has no clue about your device! It is valid to specify a bit more data on the _clientInfo_ object!
 
-==== Callbacks
+Callbacks
+^^^^^^^^^
 
 The _success_ callback is invoked, when the _AeroGear Unified Push Server_ was able to register your device with the given _iOS Variant_. Otherwise the _failure_ callback would be invoked. One case could be a wrong IP address....
 
@@ -119,12 +126,14 @@ The _success_ callback is invoked, when the _AeroGear Unified Push Server_ was a
 The _application:didFailToRegisterForRemoteNotificationsWithError:_ would be invoked if there is a problem in receving a token from _APNs_...
 
 
-== Test the app on your device
+Test the app on your device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now run the phone on the device. After agreeing on receiving Push Messages, you will see another Dialog, that welcomes you! Now put the app into the background, by clicking the home screen.
 
 
-== Sending messages to the device
+Sending messages to the device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The last chapter shows how to link:../send-push[send messages] to the device, using the _AeroGear Unified Push Server_!
 
