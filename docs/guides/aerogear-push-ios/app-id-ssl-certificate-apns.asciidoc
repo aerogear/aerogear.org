@@ -3,9 +3,13 @@ layout: basic
 title: Apple setup
 ---
 
+Apple related setup
+-------------------
+
 Before you are able to use Push Notifications on your iOS Application, a few steps are required. This section of the tutorial gives a quick overview of what is needed!
 
-== Certificate Signing Request
+Certificate Signing Request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First you need to submit a request for a new digital certificate, which is based on a public/private key. The Certificate itself is acting as the public key, and when you request it, a private key is added to your *KeyChain* tool. Now the actual CSR (Certificate Signing Request) is done using *KeyChain Access*: In there choose *Certificate Assistant > Request a Certificate from a Certificate Authority*:
 
@@ -15,7 +19,8 @@ Make sure that you have choosen to store the CSR _on file_, since you need it la
 
 image::./img/KeyChain_prtKey.png[private]
 
-== Apple App ID and SSL certificate for APNs
+Apple App ID and SSL certificate for APNs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have your CSR, go to the link:https://developer.apple.com/account/overview.action[Provisioning Portal] and log in there. Now click on the *Identifiers* link in order to create a new App ID (use the *PLUS* Icon on the right). In the formular give the *App ID* a _descriptive_ name, like *My first AeroGear Push App*. Double check that the *Push Notifications* checkbox is _selected_:
 
@@ -54,6 +59,7 @@ image::./img/PushCert_Export.png[Export to .p12 format]
 
 When exporting the file, as your private key, you need to assing a passphrase for it. Later, when connecting to APNs, you need the exported file and the passphrase.
 
-== Provisioning Profile
+Provisioning Profile
+^^^^^^^^^^^^^^^^^^^^
 
 Next, you need to create an link:../provisioning-profiles[Apple Provisioning Profile]
