@@ -477,6 +477,7 @@ footer .row .span3:last-child {
     height: 300px;
     padding-right: 10px;
     overflow: scroll;
+    overflow-x: hidden;
 }
 #aerogear-twitter li {
     margin-bottom: 10px;
