@@ -29,10 +29,16 @@ This downloads the project dependencies (e.g. our little SDK) and creates a Work
 open PushTest.xcworkspace
 ----
 
+Once the project is opened in Xcode, you need to change the *Bundle ID*, since it *has* to match the one that you created earlier:
+
+image:./img/bundleIDchange.png[Change the Bundle Identifier]
+
+
+
 Setting up the iOS Variant ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In Xcode, now open the link::https://github.com/matzew/AeroGear-PushTest-iOS/blob/master/PushTest/AGAppDelegate.m[AGAppDelegate file]. Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
+Now it is time to look at the code: Open the link::https://github.com/matzew/AeroGear-PushTest-iOS/blob/master/PushTest/AGAppDelegate.m[AGAppDelegate file]. Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
 
 
 [source,c]

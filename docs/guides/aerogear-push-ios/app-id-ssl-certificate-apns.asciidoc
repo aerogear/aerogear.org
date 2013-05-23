@@ -28,8 +28,7 @@ Now that you have your CSR, go to the link:https://developer.apple.com/account/o
 image::./img/AppID_1.png[Give the App ID a name]
 
 
-Later in the same page you are asked for an *Explicit App ID*, since the generic *Wildcard App ID* does not work with Push Notifications. In the _Bundle ID_ field enter *org.aerogear.PushTest*, because that is the ID of our app, that we are building in this tutorial. *NOTE:* The _Bundle ID_ has to match the one from the actual iOS app.
-
+Later in the same page you are asked for an *Explicit App ID*, since the generic *Wildcard App ID* does not work with Push Notifications. In the _Bundle ID_ field enter *YOUR* bundle ID. This is similar to Java packages. In this example we choose _org.aerogear.PushTest_, however you *must* use your own ID. *NOTE:* The _Bundle ID_ has to match the one from the actual iOS application, that you are building later in this guide.
 
 image::./img/AppID_2.png[Apply the Bundle ID from our App]
 
