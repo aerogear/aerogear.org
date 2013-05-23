@@ -10,6 +10,12 @@ body > .container {
     margin: 0;
 }
 
+p {
+    line-height: 24px;
+    font-size: 16px;
+    color: #444;
+}
+
 .home-content {
     padding: 5px 10px;
 }
@@ -418,8 +424,13 @@ pre {
 /* Footer Styles */
 footer.container {
     margin-top: 20px;
+    padding: 40px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
     background-color: rgba(197, 219, 229, 0.5);
-    border-top: 3px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
 }
 
 footer .span3 {
@@ -446,11 +457,13 @@ footer .row .span3:last-child {
 
 .footer-logo {
     display: block;
+    margin-bottom: 20px;
 }
 
 .footer-jboss {
     display: block;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .attribution {
