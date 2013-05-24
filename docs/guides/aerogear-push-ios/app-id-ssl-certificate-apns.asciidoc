@@ -15,14 +15,14 @@ First you need to submit a request for a new digital certificate, which is based
 
 image::./img/SubmitCSR.png[Submit Signing Request]
 
-Make sure that you have choosen to store the CSR _on file_, since we will upload it later to Apple's provisioning portal. Going back to *KeyChain Access* you now see a new *private* key:
+Make sure that you have choosen to store the CSR _on file_, so we can upload it later in the provisioning portal when requesting the actual SSL cert. Going back to *KeyChain Access* you now see a new *private* key:
 
 image::./img/KeyChain_prtKey.png[private]
 
 Apple App ID and SSL certificate for APNs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that CSR is generated, go to the link:https://developer.apple.com/account/overview.action[Provisioning Portal] and log in with your Apple developer account. Now, click on the *Identifiers* link in order to create a new App ID (use the *PLUS* Icon on the right). In the formular give the *App ID* a _descriptive_ name, like *My first AeroGear Push App*. Double check that the *Push Notifications* checkbox is _selected_:
+Now that the CSR is generated, go to the link:https://developer.apple.com/account/overview.action[Provisioning Portal] and log in with your Apple developer account. Now, click on the *Identifiers* link in order to create a new App ID (use the *PLUS* Icon on the right). In the formular give the *App ID* a _descriptive_ name, like *My first AeroGear Push App*. Double check that the *Push Notifications* checkbox is _selected_:
 
 
 image::./img/AppID_1.png[Give the App ID a name]
