@@ -1,8 +1,0 @@
----
-layout: basic
-title: Connectivity 1.0.0
----
-
-AeroGear Connectivity 1.0.0 - DRAFT
-===================================
-
