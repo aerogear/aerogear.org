@@ -1,102 +1,102 @@
 ---
 layout: basic
-title: JavaScript Library 1.0.0
+title: AeroGear JavaScript Library
 ---
 
-AeroGear JavaScript Library 1.0.0
-=================================
+AeroGear JavaScript Library
+===========================
 :Author: Kris Borchers
 
-This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.  Completed functionality may be moved, removed, or updated in the AeroGear-js README.md file.
+This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.
 
 External References
 -------------------
 
-* link:https://github.com/AeroGear/AeroGear-js/[Github Repo]
-* link:https://github.com/AeroGear/AeroGear-js/blob/master/README.md[README.md]
-* link:https://issues.jboss.org/browse/AEROGEAR/component/12315072[AEROGEAR Jira component]
+* link:https://github.com/aerogear/aerogear-js/[Github Repo]
+* link:https://issues.jboss.org/browse/AGJS/[JIRA]
 
-Deliverables
-------------
+1.0.x Release(s)
+~~~~~~~~~~~~~~~~
+* *Bug Fixes and Minor Feature Additions*
+* *Dates*
+** Released as needed
+** If not critical, can be wrapped into a 1.x release
 
-* AeroGear.js
-** Both a minimized version and development version
-* API & usage documentation
-* Integration into an example TODO application
-* JBoss Tools template application
+1.1.0 (Mid June)
+~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
+* *Auth*
+** Basic/Digest Adapter
+* *Notifier*
+** Used for background communication in applications
+** Adapters
+*** SockJS
+*** More? (STOMP and other protocols to "unify" APIs)
+**** Can be moved to future releases
 
-Release Roadmap
----------------
+1.2.0 (Mid August)
+~~~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
+* *SimplePush*
+** Base on Mozilla's SimplePush Protocol Specification
+** WebSocket/SockJS via Notifier
+* *Unified Push Client*
+** Separate module for app registration/unregistration with unified push server
+* *Showcase App*
+** First version featuring all features from library up to this point
 
-Each library will have its own versioning.  Its Roadmap should be defined here.
+New Adapters
+^^^^^^^^^^^^
+* *DataManager*
+** IndexedDB/WebSQL Adapter
+*** Feature detection to determine which is available
+*** IE9 supports neither so need to also be able to fall back to localStorage but use same API
+*** Probably should investigate PouchDB's implementation
+* *Auth*
+** OTP Adapter
+** OAuth2 Adapter
+*** Customizable Provider
 
-1.0.0.Alpha1
-~~~~~~~~~~~~
+1.3.0 (Mid October)
+~~~~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
+* *Pipeline*
+** Multi-part Uploads
+* *DataManager*
+** Add encryption to sessionLocal adapter
+* *Data Sync*
+** Utility for keeping data in DataManager synchronized with a persistent server side store
+** Possibly use Notifier for communication / data transfer
+* *Showcase App*
+** Add latest library features
 
-* AeroGear.Pipeline.js
-** Initial implementation and REST adapter
-* Initial AeroGear TODO app
-* Release with AeroGear 1.0.0.M5
+1.4.0 (Mid January)
+~~~~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
+* *Offline*
+** Support for using apps offline and detecting status
+** Simplified App Cache API
+** Scaffolding for proper App Cache setup
+** Use DataSync when returning to online status
+* *Showcase App*
+** Add latest library features
 
-1.0.0.M1
-~~~~~~~~
 
-* AeroGear.DataManager.js
-** Initial implementation and memory based adapter to separate data handling from Pipeline
-** UUID Generation and data status tracking in preparation for data synchronization
-* AeroGear.auth.js
-** Initial Integration into TODO app
-** link:AeroGearSecurity.html[AeroGear Security]
-* Release with AeroGear 1.0.0.M6
+2.0.0 Release
+~~~~~~~~~~~~~
+* Tie up any loose ends
 
-1.0.0.M2
-~~~~~~~~
-
-* AeroGear.DataManager.js
-** Session/Local Storage adapter
-* Release with AeroGear 1.0.0.M7
-
-1.0.0-M3
-~~~~~~~~
-
-* AeroGear.Pipeline.js
-** paging
-* Documentation Cleanup
-* Release with AeroGear 1.0.0.M8
-* Custom JS Builder
-
-1.0.0.CR1
-~~~~~~~~~
-
-* Bug fixes and enhancements
-* TODO app enhancement to show new library features
-* Release with AeroGear 1.0.0.CR
-
-1.0.0.Final
-~~~~~~~~~~~
-
-* Fix any final bugs
-* API and Documentation review
-* TODO app review
-* Release with AeroGear 1.0.0.Final
-
-1.Future
-~~~~~~~~
-
-* AeroGear.Pipeline.js
-** WebSocket Adapter
-* Metadata based client side validation
-** link:../AeroGearController[AeroGear Controller]
-* AeroGear.auth.js, AeroGear.encryptor.js
-** OTP
-** link:../AeroGearSecurity[AeroGear Security]
-
-JavaScript Specific Requirements
---------------------------------
-
-For common cross-library requirements see:
-
-* link:../AeroGearPersistence[AeroGear Persistence Plan]
-* link:../AeroGearSecurity[AeroGear Security Plan]
+2.x Release(s)
+~~~~~~~~~~~~~~
+* *Social*
+** Auth
+*** Login via Facebook, G+, Twitter?
+*** AeroGear.Auth adapter or separate?
+** Common API
+*** Posting, Profile Info, Friend List, etc.
 
 And for the overall AeroGear Roadmap, see the link:../AeroGearRoadmap1.0.0[AeroGear Roadmap]
