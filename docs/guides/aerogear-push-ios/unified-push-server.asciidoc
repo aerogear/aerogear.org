@@ -1,0 +1,53 @@
+---
+layout: basic
+title: The Unified Push Server
+---
+
+The Unified Push Server
+-----------------------
+
+
+With all the Apple work being done, we now need to setup the Unified Push Server, so that it can be used to connect to APNs for a later message sending.
+
+AeroGear Unified Push Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The _AeroGear Unified Push Server_ defines logical constracts for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Mobile Variants". For this tutorial we need to create a _Push Application_ which will contain one _Mobile Variant_. Details on the AeroGear Unified Push Server are discussed link::https://github.com/aerogear/aerogear.org/blob/d60660fcc83f788526c9e443a3374e78dfa9a68b/docs/specs/aerogear-server-push/index.markdown[here].
+
+=== Register a Push Application 
+
+The server has different HTTP interfaces. The create a new _Push Application_ execute the following _curl_ command:
+
+[source,c]
+----
+curl -v -H "Accept: application/json"
+    -H "Content-type: application/json" 
+	-X POST 
+	-d '{"name" : "AeroGear-iOS-Push", "description" :  "My first iOS Push App, that uses AeroGear" }'
+	http://localhost:8080/ag-push/rest/applications
+----
+ 
+The response returns an ID, which you need to register a _Mobile Variant_ for iOS:
+
+Register an iOS Variant
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The create an iOS Variant, you need the ID of the newly created _Push Application_. Now issue the following _curl_ command:
+
+
+[source,c]
+----
+curl -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
+
+  -F "certificate=@/PATH/TO/EXPORTED/File.p12"
+  -F "passphrase=TopSecret"
+
+  -X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
+----
+
+Note, that the above is not an _application/json_ request. Here we simply need to upload the SSL Certificate, which we created earlier. This is used, together with the _Passphrase_ to allow the _AeroGear Unified Push Server_ to establish a connection to the Apple Push Network Service.
+
+Xcode
+~~~~~
+
+That's all. Now, let's move to Xcode to create a very simple link:../iOS-app[example app]
