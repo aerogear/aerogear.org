@@ -106,8 +106,7 @@ Click on the _"AGAppDelegate.m"_, add line [1] and [2] to initialize the control
 
 [source,c]
 ----
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -166,14 +165,13 @@ Modify AGViewController implementation to add instance variables for authenticat
             
             [self.tableView reloadData];                                // [10]
             
-        }
-                failure:^(NSError *error) {
-                    NSLog(@"An error has occured during fetch! \n%@", error);
-                }];}
-     
-               failure:^(NSError *error) {
-                   NSLog(@"Auth:%@", error);
-               }];
+        } failure:^(NSError *error) {
+            NSLog(@"An error has occured during fetch! \n%@", error);
+        }];
+    
+    } failure:^(NSError *error) {
+       NSLog(@"An error has occured during login:%@", error);
+   }];
 }
 // the rest of your file ...
 ----
@@ -190,16 +188,15 @@ In [7] we send the login message, within the success callback issue a "read" req
 itself to display the data [10].
 
 - 4: RefreshView with data
+
 Time to fill the empty table data source methods that Xcode created automatically for us when we created the class, with code that renders the fetched data.
 [source,c]
 ----
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_tasks count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
