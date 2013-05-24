@@ -7,16 +7,16 @@ The Unified Push Server
 -----------------------
 
 
-With all the Apple work being done, we now need to setup the Unified Push Server, so that it can be used to connect to APNs for a later message sending.
+With all the Apple work being done, we are now ready to setup the Unified Push Server, so that it can be used to connect to APNs for a later message sending.
 
 AeroGear Unified Push Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The _AeroGear Unified Push Server_ defines logical constracts for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Mobile Variants". For this tutorial we need to create a _Push Application_ which will contain one _Mobile Variant_. Details on the AeroGear Unified Push Server are discussed link::https://github.com/aerogear/aerogear.org/blob/d60660fcc83f788526c9e443a3374e78dfa9a68b/docs/specs/aerogear-server-push/index.markdown[here].
+The _AeroGear Unified Push Server_ defines logical constracts for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Mobile Variants". For this tutorial we need to create a _Push Application_ which will contain one _Mobile Variant_. Details on the AeroGear Unified Push Server are discussed link:https://github.com/aerogear/aerogear.org/blob/d60660fcc83f788526c9e443a3374e78dfa9a68b/docs/specs/aerogear-server-push/index.markdown[here].
 
 === Register a Push Application 
 
-The server has different HTTP interfaces. The create a new _Push Application_ execute the following _curl_ command:
+The server has different HTTP interfaces. To create a new _Push Application_ execute the following _curl_ command:
 
 [source,c]
 ----

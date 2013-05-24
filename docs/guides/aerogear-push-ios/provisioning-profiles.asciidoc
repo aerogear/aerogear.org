@@ -32,7 +32,7 @@ Give it a Profile Name and generate it:
 
 image::./img/ProfileName.png[Give the Profile a Name]
 
-Now dowload the Profile and open the file. It will be added to Xcode's Organizer:
+Now download the Profile and open the file. It will be added to Xcode's Organizer:
 
 image::./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profile]
 
