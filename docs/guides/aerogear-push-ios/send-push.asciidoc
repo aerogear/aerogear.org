@@ -22,7 +22,7 @@ http://localhost:8080/ag-push/rest/sender/broadcast/{PushApplicationID}
 The payload is simply a JSON map. You can send different key/value pairs, but be sure it is not too long, otherwise Apple does _NOT_ deliver the message to your phone. The _alert_ key is recoginzed by the _AeroGear Unified Push Server_ and translated into an APNs specific _alert_.
 
 
-When the application is inactive, and a _Push Notification_, containing the _alert_ key, is received by the device. An _Popup_ will show up, which displays the value of the _alert_ key:
+When the application is inactive, and a _Push Notification_ containing the _alert_ key is received by the device, a _Popup_ will show up, which displays the value of the _alert_ key:
 
 image:./img/PushMessage.jpg[iOS Push Notification]
 
@@ -65,7 +65,7 @@ image:./img/CustomDialog.jpg[Custom Dialog]
 
 == You are done
 
-That's all, you need to use the _AeroGear_ project for sending, and receiving _Push Notifications_ for an iOS device.
+That's all you need to use the _AeroGear_ project for sending, and receiving _Push Notifications_ for an iOS device.
 
 === A final note
 
