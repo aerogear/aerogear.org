@@ -91,11 +91,6 @@ Data:
 }
 ----
 
-HTTP Header Response
-^^^^^^^^^^^^^^^^^^^^
-
- Auth-Token: 2fd4e1c67a2d28fced849ee1bb76e7391b93eb12
-
 Response:
 ^^^^^^^^^
 
@@ -162,11 +157,6 @@ Data:
 
  None
 
-HTTP Header Response
-^^^^^^^^^^^^^^^^^^^^
-
- Auth-Token: 2fd4e1c67a2d28fced849ee1bb76e7391b93eb12
-
 Response:
 ^^^^^^^^^
 
@@ -221,10 +211,6 @@ URL params
  
  None
 
-HTTP Header Params 
-^^^^^^^^^^^^^^^^^^^^
- Auth-Token: 2fd4e1c67a2d28fced849ee1bb76e7391b93eb12
-
 Data:
 ^^^^^
 
@@ -250,9 +236,6 @@ Example:
 ----
 $.ajax({
   url: "/auth/logout",
-  headers: {
-    "Auth-Token": "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
-  },
   dataType: "json",
   type : "POST",
   success : function(r) {
@@ -278,10 +261,6 @@ URL params
 ^^^^^^^^^^
  
  None
-
-HTTP Header Params 
-^^^^^^^^^^^^^^^^^^^^
- Auth-Token: 2fd4e1c67a2d28fced849ee1bb76e7391b93eb12
 
 Data:
 ^^^^^
@@ -313,9 +292,6 @@ Example:
 ----
 $.ajax({
   url: "/auth/user",
-  headers: {
-    "Auth-Token": "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
-  },
   dataType: "json",
   type : "GET",
   success : function(r) {
