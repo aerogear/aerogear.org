@@ -203,10 +203,6 @@ When AeroGear-Security is used as the SecurityProvider for AeroGear-Controller, 
 ##### Failure status code and desciption #####
 * ```HTTP/1.1 400 Bad Request```  
     The request could not be understood by the server due to malformed syntax.
-    
-##### Headers #####
-* ```Auth-Token```  
-    The authentication token for the registered and now logged-in user.
 
 ### Login ###
 
@@ -223,10 +219,6 @@ When AeroGear-Security is used as the SecurityProvider for AeroGear-Controller, 
 * ```HTTP/1.1 401 Unauthorized```  
     The request requires user authentication.
     
-##### Headers #####
-* ```Auth-Token```  
-    The authentication token for the registered and now logged-in user.
-
 ### Logout ###
 
 ```http://server:host/myapp/auth/logout```
