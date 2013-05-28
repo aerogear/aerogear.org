@@ -1,95 +1,65 @@
 ---
 layout: basic
-title: Android Library 1.0.0
+title: AeroGear Android Library
 ---
 
-AeroGear Android Library 1.0.0 - DRAFT
-======================================
-
-This document covers the requirements, use-cases and planned API's for the AeroGear Android client library.  Completed functionality may be moved, removed, or updated in the aerogear-Android README.md file.
-
+AeroGear Android Library
+========================
+ 
+This document covers the requirements, use-cases and planned API's for the AeroGear Android library.
+ 
 External References
 -------------------
-
+ 
 * link:https://github.com/aerogear/aerogear-android/[Github Repo]
-* link:https://github.com/aerogear/aerogear-android/blob/master/README.md[README.md]
-* link:https://issues.jboss.org/browse/AEROGEAR/component/12314945[AEROGEAR Jira component]
+* link:https://issues.jboss.org/browse/AGDROID/[JIRA]
 
-Deliverables
-------------
+1.0.x
+~~~~~
+* Add cookie on requests to keep session (link:https://issues.jboss.org/browse/AGDROID-16[AGDROID-16])
+* Remove Auth-Token (link:https://issues.jboss.org/browse/AGDROID-25[AGDROID-25])
+* Accept Header (link:https://issues.jboss.org/browse/AGDROID-1[AGDROID-1])
+* Integration test project and main project in travis (link:https://issues.jboss.org/browse/AGDROID-32[AGDROID-32] / link:https://issues.jboss.org/browse/AGDROID-15[AGDROID-15])
+* RecordId annotation does not consider superclasses (link:https://issues.jboss.org/browse/AGDROID-13[AGDROID-13])
+* Pipe Timeout (link:https://issues.jboss.org/browse/AGDROID-31[AGDROID-31])
+* Create android OTP demo app (link:https://issues.jboss.org/browse/AGDROID-19[AGDROID-19])
+* Pipe.read can't configure how readfilter params are turned into a query (link:https://issues.jboss.org/browse/AGDROID-4[AGDROID-4])
+* Mark http basic as experimental (link:https://issues.jboss.org/browse/AGDROID-2[AGDROID-2])
 
-* aerogear.jar
-** Android SDK Installable Framework
-* API & usage documentation
-* Integration into an example application
-** Native version of TODO app
-* Android SDK template application
+1.1
+~~~
+* HttpDigest Authentication (link:https://issues.jboss.org/browse/AGDROID-10[AGDROID-10])
+* Multipart/File Upload (link:https://issues.jboss.org/browse/AGDROID-9[AGDROID-9])
+* Deprecate readWithFilter and add a renamed "Read" method (link:https://issues.jboss.org/browse/AGDROID-6[AGDROID-6])
+* Provide a parameter on Android to enable/disable the usage of cookies (link:https://issues.jboss.org/browse/AGDROID-28[AGDROID-28])
+* Pipe needs a cancel method (link:https://issues.jboss.org/browse/AGDROID-11[AGDROID-11])
+* HttpBasic Authentication (link:https://issues.jboss.org/browse/AGDROID-27[AGDROID-27])
+* Add HOTP support to aerogear-otp-java (link:https://issues.jboss.org/browse/AGDROID-30[AGDROID-30])
+* Pipe Retrieve by ID (link:https://issues.jboss.org/browse/AGDROID-7[AGDROID-7])
 
-Release Roadmap
----------------
+1.2
+~~~
+* Push
+** Client APIS
+*** Register w/ AG-PUSH server
+*** Necessary callbacks
+** Server APIs
+*** Google Cloud provider handling 
+*** Unregister, resend etc
 
-Each library will have its own versioning.  Its Roadmap should be defined here.
+Next
+~~~~
+* Sync & Offline (1.3 ish)
+* Accounts Integration
+* Notifications
+* Analytics and Monitoring/measuring
 
-1.0.0.M1
-~~~~~~~~
+2.0 
+~~~
+* Remove deprecated APIs
+* Android specific Services 
+** ex. Account, Sharing Adapter, 
 
-* Pipeline and Pipe 
-** Initial implementation and REST adapter (RestAdapter) 
-** Implement DSL for Pipe creation (e.g. using DSL/builder pattern)
-* Integration with test project
-** link:https://github.com/aerogear/TODO/[TODO] example application
-* DataManager
-** in memory storage
-** Implement DSL for DataManager creation (e.g. using DSL/builder pattern)
-* Security
-** link:../AeroGearSecurity[AeroGear Security 1.0.0.M1]
-** Authentication with AeroGear Security, for further information see 'REST Authentication API' section
-* Documentation and Getting started guide
-* Release via Maven Central
-* Release with AeroGear 1.0.0.M7
-
-1.0.0.CR1
-~~~~~~~~~
-* DataManager
-** Implement adapters to another storage options
-* Query/search support
-* Security
-** Register users against our current endpoints
-** link:../AeroGearSecurity[AeroGear Security 1.0.0.M2]
-* Bug fixes
-* Release with AeroGear 1.0.0.CR1
-* Documentation and Getting started guide updates
-* Release via Maven Central
-* Evaluate the possibility to release it as apklib
-
-
-1.0.0.Final
-~~~~~~~~~~~
-
-*TODO* Define
-* Documentation review
-* Community review + feedback
-
-1.0.0.Next
-~~~~~~~~~~~
-
-* Security
-** Start the implementation of OTP storage
-** Crypto API usage/evaluation 
-** Generate dynamic secrets
-** OTP generation
-* Push notifications
-
-
-Android Specific Requirements
------------------------------
-
-* Push (link:http://developer.android.com/guide/google/gcm/index.html[Cloud Messaging]), including custom broadcast intents for data updates
-* Server-backed ContentProvider?
-
-For common cross-library requirements see:
-
-* link:../AeroGearPersistence[AeroGear Persistence Plan]
-* link:../AeroGearSecurity[AeroGear Security Plan]
-
-
+Misc
+~~~~
+* Implementation and API usage for android crypto (link:https://issues.jboss.org/browse/AGDROID-34[AGDROID-34])
