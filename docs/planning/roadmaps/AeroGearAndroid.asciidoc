@@ -22,7 +22,7 @@ External References
 * Integration test project and main project in travis (link:https://issues.jboss.org/browse/AGDROID-32[AGDROID-32] / link:https://issues.jboss.org/browse/AGDROID-15[AGDROID-15])
 * RecordId annotation does not consider superclasses (link:https://issues.jboss.org/browse/AGDROID-13[AGDROID-13])
 * Pipe Timeout (link:https://issues.jboss.org/browse/AGDROID-31[AGDROID-31])
-* Create android otp demo app (link:https://issues.jboss.org/browse/AGDROID-19[AGDROID-19])
+* Create android OTP demo app (link:https://issues.jboss.org/browse/AGDROID-19[AGDROID-19])
 * Pipe.read can't configure how readfilter params are turned into a query (link:https://issues.jboss.org/browse/AGDROID-4[AGDROID-4])
 * Mark http basic as experimental (link:https://issues.jboss.org/browse/AGDROID-2[AGDROID-2])
 
