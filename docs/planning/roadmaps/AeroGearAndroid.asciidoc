@@ -25,6 +25,7 @@ External References
 * Create android OTP demo app (link:https://issues.jboss.org/browse/AGDROID-19[AGDROID-19])
 * Pipe.read can't configure how readfilter params are turned into a query (link:https://issues.jboss.org/browse/AGDROID-4[AGDROID-4])
 * Mark http basic as experimental (link:https://issues.jboss.org/browse/AGDROID-2[AGDROID-2])
+* HttpBasic Authentication (link:https://issues.jboss.org/browse/AGDROID-27[AGDROID-27])
 
 1.1
 ~~~
@@ -33,7 +34,6 @@ External References
 * Deprecate readWithFilter and add a renamed "Read" method (link:https://issues.jboss.org/browse/AGDROID-6[AGDROID-6])
 * Provide a parameter on Android to enable/disable the usage of cookies (link:https://issues.jboss.org/browse/AGDROID-28[AGDROID-28])
 * Pipe needs a cancel method (link:https://issues.jboss.org/browse/AGDROID-11[AGDROID-11])
-* HttpBasic Authentication (link:https://issues.jboss.org/browse/AGDROID-27[AGDROID-27])
 * Add HOTP support to aerogear-otp-java (link:https://issues.jboss.org/browse/AGDROID-30[AGDROID-30])
 * Pipe Retrieve by ID (link:https://issues.jboss.org/browse/AGDROID-7[AGDROID-7])
 
