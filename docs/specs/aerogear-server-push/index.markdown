@@ -10,8 +10,6 @@ The _AeroGear Unified Push Server_ is a server that allows sending native push m
 ## Motivation / Purpose
 The _AeroGear Native Push Server_ offers a _Notification Service API_ to different backend applications. This gives a server the ability to send _Push Notifications_ to mobile applications. The Notification Service API is a signaling mechanismn, like Apple APNs, Google Cloud Messaging or Mozilla SimplePush for sending messages. It's not suitable to be used as a data carrying system (e.g. use in a chat application).
 
-The _AeroGear Native Push Server_ offers different backend applications a _Notification Service API_ to send _Push Notifications_ to mobile applications. It's more a signaling mechanismn (e.g. APNs, GCM or SimplePush) and not a data carrying system (e.g. chat).
-
 ### Some Usage Scenarios
 * MyWarehouseInc-backend can send "notification messages" to different "customer" groups (e.g. discounts for only iOS (or only Android) users).
 * MyInsuranceCorp-backend can send "notification messages" to different variants of its mobile Applications:
