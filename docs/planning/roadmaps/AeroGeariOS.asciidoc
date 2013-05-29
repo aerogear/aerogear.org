@@ -3,100 +3,77 @@ layout: basic
 title: iOS Library 1.0.0
 ---
 
-AeroGear iOS Library 1.0.0 - DRAFT
-==================================
+AeroGear iOS Library
+====================
 
-This document covers the requirements, use-cases and planned API's for the AeroGear iOS client library.  Completed functionality may be moved, removed, or updated in the aerogear-ios README.md file.
+This document covers the requirements, use-cases and planned API's for the AeroGear iOS client library.
 
 External References
 -------------------
 
 * link:https://github.com/aerogear/aerogear-ios/[Github Repo]
-* link:https://github.com/aerogear/aerogear-ios/blob/master/README.md[README.md]
-* link:https://issues.jboss.org/browse/AEROGEAR/component/12314946[AEROGEAR Jira component]
+* link:https://issues.jboss.org/browse/AGIOS/[JIRA]
 
-Deliverables
-------------
+1.0.x Release(s)
+~~~~~~~~~~~~~~~~
+* *Bug Fixes and Minor Feature Additions*
+* *Dates*
+** Released as needed
+** If not critical, can be wrapped into a 1.x release
 
-* aerogear.dmg
-** XCode installable framework
-* API & usage documentation
-* Integration into an example application
-** Possibly native version of TODO app
-* XCode template application
-
-Release Roadmap
----------------
-
-Each library will have its own versioning.  Its Roadmap should be defined here.
-
-1.0.0.M1
-~~~~~~~~
-
-* AGPipeline and AGPipe
-** Initial implementation and REST adapter (AGRestAdapter)
-* Integration test project
-* TODO app
-* AGDataManager
-** in memory storage
-* Security
-** link:../AeroGearSecurity[AeroGear Security 1.0.0.Alpha]
-* Documentation and Getting started guide
-* Release via CocoaPods (dependency management for ObjC)
-* Release with AeroGear 1.0.0.M6
-
-1.0.0.M2
-~~~~~~~~
-
-* Configuration objects
-** config object for AGPipe creation 
-** config object for AGStore creation 
-** config object for AGAuthModule creation 
-* Query and Search
-** Define Query/search support....
-* Security
-** initial OTP library
-** link:../AeroGearSecurity[AeroGear Security 1.0.0.Beta]
-* Release with AeroGear 1.0.0.M7
-
-1.0.0.M3
-~~~~~~~~~
-
-* AGPipeline and AGPipe
-** Pagination
-** API overhaul
-* Improve documentation
-** API doc
-** Getting started guides
-* Security
-** link:../AeroGearSecurity[AeroGear Security 1.0.0.CR]
-* Release with AeroGear 1.0.0.M8
-
-1.0.0.CR1 / Final
-~~~~~~~~~~~~~~~~~
-
-* Fix any final bugs
-* API and Documentation review
-* TODO app review
-* binary release (framework file or dmg)
-* Release with AeroGear 1.0.0.CR1 / Final
-
-1.0.0.NEXT
-~~~~~~~~~~
-
-* Security
-** Start the implementation of OTP storage
-** Crypto API usage/evaluation 
-** Generate dynamic secrets
-** OTP generation
+1.1.0 (Mid June)
+~~~~~~~~~~~~~~~~
+* *Library*
+** link:https://issues.jboss.org/browse/AGIOS-4[AGIOS-4]: Add HTTP basic authentication support on AeroGear iOS
+** link:https://issues.jboss.org/browse/AGIOS-5[AGIOS-5]: Add HTTP digest authentication support on AeroGear iOS
+** link:https://issues.jboss.org/browse/AGIOS-1[AGIOS-1]: Add HOTP support to aerogear-otp-ios
+* *Unit Tests*
+** link:https://issues.jboss.org/browse/AGIOS-11[AGIOS-11]: iOS: Evaluate the OHHTTPStubs project
+* *Xcode*
+** link:https://issues.jboss.org/browse/AGIOS-7[AGIOS-7]: Xcode template: include OTP option
+** link:https://issues.jboss.org/browse/AGIOS-10[AGIOS-10]: Update aerogear-ios-xcode template to include Basic/Digest auth options
+* *Demo / Evaluation*
+** link:https://issues.jboss.org/browse/AGIOS-8[AGIOS-8]: Evaluate ARGenericTableViewController for use in the TODO app
 
 
-iOS Specific Requirements
--------------------------
+1.2.0 (Mid August)
+~~~~~~~~~~~~~~~~~~
+* *Unified Push*
+** link:https://issues.jboss.org/browse/AGIOS-22[AGIOS-22]: Add SDK for Push: Device registration
+** link:https://issues.jboss.org/browse/AGIOS-23[AGIOS-23]: Demo app for Push SDK
+** link:https://issues.jboss.org/browse/AGIOS-24[AGIOS-24]: Tutorial/Guide for Push Notifications on iOS
 
-* Push notifications (via APN)
 
-For common cross-library requirements see:
+1.3.0 (Mid October)
+~~~~~~~~~~~~~~~~~~~
+* *Pipeline*
+** link:https://issues.jboss.org/browse/AGIOS-15[AGIOS-15]: Multipart support
+* *Crypto* 
+** link:https://issues.jboss.org/browse/AGIOS-3[AGIOS-3] Implementation and API usage for iOS crypto
+** DEMO/Docs for Crypto
+* *Offline*
+** link:https://issues.jboss.org/browse/AGIOS-25[AGIOS-25]: SQLite support
+** perhaps... better CoreData integration, see link:https://issues.jboss.org/browse/AGIOS-14[AGIOS-14]
 
-* link:AeroGearPersistence.html[AeroGear Persistence Plan]
-* link:AeroGearSecurity.html[AeroGear Security Plan]
+1.4.0 (Mid January)
+~~~~~~~~~~~~~~~~~~~
+* *Data Sync*
+** see link:https://issues.jboss.org/browse/AEROGEAR-830[AEROGEAR-830] and linked JIRAs
+* *Notifications*
+** integration with _Data Sync_ and _Offline_
+
+2.0.0 Release
+~~~~~~~~~~~~~
+* Tie up any loose ends
+
+2.x Release(s)
+~~~~~~~~~~~~~~
+* *Social*
+** Auth
+*** Login via Facebook, G+, Twitter
+*** AeroGear.Auth adapter or separate
+** Common API
+*** Posting, Profile Info, Friend List, etc.
+* *Notifications*
+** MQTT support
+
