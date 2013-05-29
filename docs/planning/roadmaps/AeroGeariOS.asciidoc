@@ -53,7 +53,7 @@ External References
 ** DEMO/Docs for Crypto
 * *Offline*
 ** link:https://issues.jboss.org/browse/AGIOS-25[AGIOS-25]: SQLite support
-** perhpas... better CoreData integration, see link:https://issues.jboss.org/browse/AGIOS-14[AGIOS-14]
+** perhaps... better CoreData integration, see link:https://issues.jboss.org/browse/AGIOS-14[AGIOS-14]
 
 1.4.0 (Mid January)
 ~~~~~~~~~~~~~~~~~~~
