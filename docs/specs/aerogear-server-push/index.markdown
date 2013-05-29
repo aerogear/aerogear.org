@@ -8,12 +8,13 @@ title: AeroGear Unified Push Server
 The _AeroGear Unified Push Server_ is a server that allows sending native push messages to different mobile operation systems. The initial version of the server supports [Apple's APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla's Simple Push](https://wiki.mozilla.org/WebAPI/SimplePush).
 
 ## Motivation / Purpose
+The _AeroGear Native Push Server_ offers a _Notification Service API_ to different backend applications. This gives a server the ability to send _Push Notifications_ to mobile applications. The Notification Service API is a signaling mechanismn, like Apple APNs, Google Cloud Messaging or Mozilla SimplePush for sending messages. It's not suitable to be used as a data carrying system (e.g. use in a chat application).
 
 The _AeroGear Native Push Server_ offers different backend applications a _Notification Service API_ to send _Push Notifications_ to mobile applications. It's more a signaling mechanismn (e.g. APNs, GCM or SimplePush) and not a data carrying system (e.g. chat).
 
-###Some Usage Scenarios
+### Some Usage Scenarios
 * MyWarehouseInc-backend can send "notification messages" to different "customer" groups (e.g. discounts for only iOS (or only Android) users).
-* MyInsuranceCorp-backend can send "notification messages" to diffenrent variants of its mobile Applications:
+* MyInsuranceCorp-backend can send "notification messages" to different variants of its mobile Applications:
  * App for the Customers
  * App for the employed Sales Agents
 * Publishing Company
@@ -22,7 +23,7 @@ The _AeroGear Native Push Server_ offers different backend applications a _Notif
 * A company has different backends (small/simple apps for different tasks) - and these different backends could be able to reach all (or some) of the company's mobile apps.
 
 
-**Goal**: Any (JBoss/AeroGear powered) mobile application, that is backed by JBoss technology (e.g. admin console, Errai, drools, etc.), is able to easily work with mobile push messages. For a JBoss "backend application" it should be as simple as possible, to send messages to its different mobile clients.
+**Goal**: To make any (JBoss/AeroGear powered) mobile application, that is backed by JBoss technology (e.g. admin console, Errai, drools, etc.), work easily with mobile push messages. For a JBoss "backend application" it should be as simple as possible to send messages to its different mobile clients.
 
 ## Definitions
 
@@ -46,17 +47,17 @@ A simple message to be send to a mobile application, to notify it of a data chan
 
 #### Sender API
 
-Is a component that sends _Push Notification Messages_ to a ```Push Application``` or a ```Mobile Variants```. The message is than delivered to all (valid) ```Mobile Variant Instance```. It's also possible to use a _selected send_, for notifying a selected group of users (aka ```Mobile Variant Instance```). 
+Is a component that sends _Push Notification Messages_ to a ```Push Application``` or a ```Mobile Variants```. The message is then delivered to all (valid) ```Mobile Variant Instance```. It's also possible to use a _selected send_, for notifying a selected group of users (aka ```Mobile Variant Instance```). 
 
 #### Developer
 
-A _Developer_ is in charge of enabling Push Notifications for his different backend systems. For that he has to create a ```Push Application``` and a few ```Mobile Variants``` on the _AeroGear Unified Push Server_.
+A _Developer_ is in charge of enabling Push Notifications for his different backend systems. For that he has to create a ```Push Application``` and one or more ```Mobile Variants``` on the _AeroGear Unified Push Server_.
 
-A Developer will use the _Sender API_ to send "notification messages" to different 
+A _Developer_ will use the _Sender API_ to send "notification messages" to different ```Mobile Variant Instances```.
 
 #### User
 
-A user of an AeroGear mobile application (aka ```Mobile Variant Instance```), which may consume notification messages.
+A user of an AeroGear ```Mobile Variant Instance```, which may consume notification messages.
 
 
 ## Overview
@@ -68,7 +69,7 @@ The _AeroGear Unified Push Server_ contains three different components:
 
 The graphic below gives a little overview:
 
-![components](./PUSH-SERVER.png)
+![components](./aerogear_unified_push_server.png)
 
 ## Functionality 
 
@@ -110,7 +111,7 @@ An iOS variant represents a logical construct for one iOS application (e.g. ```H
 * APNs Push Certificate file
 * Passphrase
 
-The server offers an HTTP interfaces to register an _iOS varian_:
+The server offers an HTTP interfaces to register an _iOS variant_:
 
     curl -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
 
@@ -158,7 +159,7 @@ _The response returns an ID for the SimplePush variant._
 
 #### Mobile Variant Instance Registration
 
-Adds an _mobile variant instance_ to an existing _mobile variant_ (e.g. User1 runs HR-iPad on his device). It is possible that one user can have multiple devices. A _mobile variant instance_ contains the following properties:
+Adds a _mobile variant instance_ to an existing _mobile variant_ (e.g. User1 runs HR-iPad on his device). It is possible that one user can have multiple devices. A _mobile variant instance_ contains the following properties:
 
 ###### Required Data
 
@@ -308,7 +309,7 @@ A ```Developer``` can register multiple ```Push Applications```. Each ```Push Ap
 
 #### Add Mobile Variant
 
-A ```Developer``` can add a ```Mobile Variant``` to an existing ```Push Applications```.
+A ```Developer``` can add a ```Mobile Variant``` to an existing ```Push Application```.
 
 ### Remove Push Application
 
@@ -320,7 +321,7 @@ A ```Developer```** should be able to remove a ```Mobile Variant```, of an exist
 
 ### Mobile Variant Instance Registration
 
-Once a ```User``` installs and launches the mobile application, the embedding OS generates a _Device-Token_ (or _Registration ID_(Android) or _ChannelID_ (SimplePush)). The application needs to send this ```token``` (and a few more informations) to the _AeroGear Unified Push Server_ (See [here](https://gist.github.com/matzew/b918eb45d3f17de09b8f#mobile-variant-instance-registration)), in order to be able to receive Push Notification Messages.
+Once a ```User``` installs and launches the mobile application, the embedding OS generates a _Device-Token_ (or _Registration ID_(Android) or _ChannelID_ (SimplePush)). The application needs to send this ```token``` (and a few more pieces of information) to the _AeroGear Unified Push Server_ (See [here](https://gist.github.com/matzew/b918eb45d3f17de09b8f#mobile-variant-instance-registration)), in order to be able to receive Push Notification Messages.
 
 ### Remove Mobile Variant Instance
 
