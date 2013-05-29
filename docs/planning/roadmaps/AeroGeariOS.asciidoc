@@ -70,10 +70,10 @@ External References
 ~~~~~~~~~~~~~~
 * *Social*
 ** Auth
-*** Login via Facebook, G+, Twitter?
-*** AeroGear.Auth adapter or separate?
+*** Login via Facebook, G+, Twitter
+*** AeroGear.Auth adapter or separate
 ** Common API
 *** Posting, Profile Info, Friend List, etc.
 * *Notifications*
-** MQTT support ?
+** MQTT support
 
