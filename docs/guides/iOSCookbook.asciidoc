@@ -236,6 +236,8 @@ __block NSMutableArray *pagedResultSet;
 
 To move forward in the result set, you simple call _next_ on the _pagedResultSet_ :
 
+[source,c]
+----
 // move to the next page
 [pagedResultSet next:^(id responseObject) {
     // do something
@@ -249,6 +251,8 @@ To move forward in the result set, you simple call _next_ on the _pagedResultSet
 
 To move backwards in the result set, you simple call _previous_ on the _pagedResultSet_ :
 
+[source,c]
+----
 [pagedResultSet previous:^(id responseObject) {
     // do something
     
