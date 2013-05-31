@@ -10,12 +10,13 @@ Below are lists of example applications and running demos which demonstrate the 
 ### Android
 
 * [Android TODO](https://github.com/aerogear/aerogear-android-todo)
+* [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo)
 
 
 ### iOS
 
 * [iOS TODO](https://github.com/aerogear/aerogear-todo-ios)
-* [OTP DEMO](https://github.com/aerogear/aerogear-otp-ios-demo)
+* [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo)
 
 
 ### JavaScript
