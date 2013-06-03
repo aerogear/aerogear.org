@@ -40,7 +40,7 @@ The easiest way to connect to this service with AeroGear would be
 
 [source,java]
 ----
-Pipe<Car> pipe = new RestAdapter<pipe>(Car.class, new URL("http://www.server.com/"));
+Pipe<Car> pipe = new RestAdapter<Car>(Car.class, new URL("http://www.server.com/"));
 ----
 
 And `pipe.read`, `pipe.readWithFilter`, `pipe.save`, and `pipe.remove` would all work as advertised with no extra work.  
