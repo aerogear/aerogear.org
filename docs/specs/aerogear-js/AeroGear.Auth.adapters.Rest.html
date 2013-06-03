@@ -181,41 +181,6 @@
 	
         <tr>
             
-                <td class="name"><code>agAuth</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">True if this adapter should use AeroGear's token based authentication model</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
                 <td class="name"><code>baseURL</code></td>
             
             
@@ -285,43 +250,6 @@
         </tr>
 	
 	
-	
-        <tr>
-            
-                <td class="name"><code>tokenName</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    "Auth-Token"
-                
-                </td>
-            
-            
-            <td class="description last">defines the name used for the token header when using agAuth</td>
-        </tr>
-	
-	
 	</tbody>
 </table>
             </td>
@@ -355,7 +283,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js.html">authentication/adapters/rest.js</a>, line 47
+        <a href="rest.js.html">authentication/adapters/rest.js</a>, line 43
     </li></ul></dd>
     
     
@@ -403,13 +331,11 @@ var auth = AeroGear.Auth();
 
 //Add a custom REST module to it
 auth.add( "module1", {
-    agAuth: true,
     baseURL: "http://customURL.com"
 });
 
 //Add a custom REST module to it with custom security endpoints
 auth.add( "module2", {
-    agAuth: true,
     endpoints: {
         enroll: "register",
         login: "go",
@@ -633,7 +559,7 @@ auth.add( "module2", {
             
             
             
-            <td class="description last">set the content type for the AJAX request (defaults to application/json when using agAuth)</td>
+            <td class="description last">set the content type for the AJAX request</td>
         </tr>
 	
 	
@@ -664,7 +590,7 @@ auth.add( "module2", {
             
             
             
-            <td class="description last">specify the data expected to be returned by the server (defaults to json when using agAuth)</td>
+            <td class="description last">specify the data expected to be returned by the server</td>
         </tr>
 	
 	
@@ -794,7 +720,7 @@ auth.add( "module2", {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js.html">authentication/adapters/rest.js</a>, line 224
+        <a href="rest.js.html">authentication/adapters/rest.js</a>, line 158
     </li></ul></dd>
     
     
@@ -847,11 +773,11 @@ auth.enroll( data );
 var custom = AeroGear.Auth({
     name: "customModule",
     settings: {
-        agAuth: true,
         endpoints: {
-        enroll: "register",
-        login: "go",
-        logout: "leave"
+            enroll: "register",
+            login: "go",
+            logout: "leave"
+        }
     }
 }).modules[ 0 ],
 data = { userName: "user", password: "abc123", name: "John" };
@@ -1060,7 +986,7 @@ custom.enroll( data, {
             
             
             
-            <td class="description last">set the content type for the AJAX request (defaults to application/json when using agAuth)</td>
+            <td class="description last">set the content type for the AJAX request</td>
         </tr>
 	
 	
@@ -1091,7 +1017,7 @@ custom.enroll( data, {
             
             
             
-            <td class="description last">specify the data expected to be returned by the server (defaults to json when using agAuth)</td>
+            <td class="description last">specify the data expected to be returned by the server</td>
         </tr>
 	
 	
@@ -1221,7 +1147,7 @@ custom.enroll( data, {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js.html">authentication/adapters/rest.js</a>, line 310
+        <a href="rest.js.html">authentication/adapters/rest.js</a>, line 241
     </li></ul></dd>
     
     
@@ -1274,11 +1200,11 @@ auth.login( data );
 var custom = AeroGear.Auth({
     name: "customModule",
     settings: {
-        agAuth: true,
         endpoints: {
-        enroll: "register",
-        login: "go",
-        logout: "leave"
+            enroll: "register",
+            login: "go",
+            logout: "leave"
+        }
     }
 }).modules[ 0 ],
 data = { userName: "user", password: "abc123", name: "John" };
@@ -1553,7 +1479,7 @@ custom.login( data, {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js.html">authentication/adapters/rest.js</a>, line 392
+        <a href="rest.js.html">authentication/adapters/rest.js</a>, line 320
     </li></ul></dd>
     
     
@@ -1605,11 +1531,11 @@ auth.logout();
 var custom = AeroGear.Auth({
     name: "customModule",
     settings: {
-        agAuth: true,
         endpoints: {
-        enroll: "register",
-        login: "go",
-        logout: "leave"
+            enroll: "register",
+            login: "go",
+            logout: "leave"
+        }
     }
 }).modules[ 0 ],
 data = { userName: "user", password: "abc123", name: "John" };
@@ -1645,7 +1571,7 @@ custom.logout({
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Mar 26 2013 09:37:03 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Jun 03 2013 09:58:19 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>
