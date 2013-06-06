@@ -86,4 +86,4 @@ The message format is very simple: A generic JSON map is used to send messages t
 
 ##### SimplePush
 
-For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants (similar to broadcast case). However _HERE_ we use an object to send (selective) different versions to different channels.
+For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants (similar to broadcast case). However, _HERE_ we use an object to send (selective) different versions to different channels.
