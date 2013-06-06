@@ -19,7 +19,7 @@ title: AeroGear Android User Guide
 * [Store](AerogearAndroidDataStore)
 
 ## JavaDoc documentation
-* [1.0.0 JavaDocs](/docs/specs/aerogear-android/)
+* [1.0.1 JavaDocs](/docs/specs/aerogear-android/)
 
 ## Projects using AeroGear on Android
 * [call4paperz4android](https://github.com/danielpassos/call4paperz4android)
