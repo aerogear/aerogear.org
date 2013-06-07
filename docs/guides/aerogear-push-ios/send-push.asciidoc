@@ -7,7 +7,7 @@ Now you have the Sample App running on your phone, so it is time to use the _Aer
 
 == Simple Sender
 
-A bit earlier you received an **ID** after the successful registration of the _Push Application_. This **ID** is used for sending a _broadcast_ message to all _registered_ devices (_Mobile Variant instances_). Now, on a command line issue the following _CURL_ command:
+A bit earlier you received an **PushApplicationID** after the successful registration of the _Push Application_. This **PushApplicationID** is used for sending a _broadcast_ message to all _registered_ devices (_Mobile Variant instances_). Now, on a command line issue the following _CURL_ command:
 
 [source,c]
 ----
