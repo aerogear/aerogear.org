@@ -1,0 +1,4 @@
+org.jboss.aerogear.security.shiro.auth
+org.jboss.aerogear.security.shiro.authz
+org.jboss.aerogear.security.shiro.config
+org.jboss.aerogear.security.shiro.model
