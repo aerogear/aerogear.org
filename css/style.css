@@ -661,6 +661,7 @@ footer p,footer ul {
     }
 
     .links a {
+        min-width: 125px;
         padding-left: 20px !important;
         width: 32%;
         padding-right: 20px !important;
