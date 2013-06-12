@@ -24,4 +24,5 @@ title: Specifications
 
 #### Unified Push Specifications
 * [AeroGear UnifiedPush Server](aerogear-server-push)
+* [AeroGear UnifiedPush Client Registration](aerogear-client-push)
 * [AeroGear UnifiedPush Messages](aerogear-push-messages)
