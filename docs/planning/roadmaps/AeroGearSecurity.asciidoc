@@ -28,7 +28,9 @@ External References
 
 * AGSEC-36: Add CRUD methods for AerogearUser
 
-* Initial support for OTP on JS 
+* AGJS-3: Initial support for OTP on JS 
+
+* AGSEC-48: Add Apache Shiro support on AeroGear Security
 
 1.1.0 (Mid June)
 ~~~~~~~~~~~~~~~~
@@ -66,7 +68,6 @@ External References
     
     ** AGSEC-52: Unified Push: Secure registration of Mobile Variant    
     
-* AGSEC-48: Add Apache Shiro support on AeroGear Security
 
 1.2.0 (Mid August)
 ~~~~~~~~~~~~~~~~~~
