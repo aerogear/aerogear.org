@@ -3,5 +3,3 @@ org.jboss.aerogear.security.authz
 org.jboss.aerogear.security.exception
 org.jboss.aerogear.security.filter
 org.jboss.aerogear.security.http
-org.jboss.aerogear.security.idm
-org.jboss.aerogear.security.model
