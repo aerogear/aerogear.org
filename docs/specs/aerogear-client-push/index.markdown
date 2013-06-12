@@ -57,10 +57,6 @@ _Optional_ method that helps to unregister the client device information with th
 
 The client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
 
-## Auth/Security
-
-To be discussed.....
-
 ## Platform specific details 
 
 Every client platform has it's own base APIs, to receive Push Message from it's Push Network. The AeroGear client SDK _may_ offer utilities to even more simplify this process.
