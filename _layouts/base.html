@@ -37,15 +37,15 @@
   <body>
       <header>
           <div class="wrapper">
-              <div id="logo"></div>
-              <a href="{{ site.posts.first.url }}" class="news">Hey listen! {{ site.posts.first.title }}</a>
+              <a href="/"><div id="logo"></div></a>
+              <a href="{{ site.posts.first.url }}" class="news fixed">Hey listen!<br class="title-break"> {{ site.posts.first.title }}</a>
           </div>
       </header>
          
       <nav>
           <div class="wrapper">
             <div class="links">
-                <a href="/">Home</a>
+                <a href="/" class="fixed">Home</a>
                 <a href="/download" class="{% is_active_navigation_item 'download' %}">Get started</a>
                 <a href="/docs" class="{% is_active_navigation_item 'documentation' %}">Documentation</a>
                 <a href="/news" class="{% is_active_navigation_item '/news' %}">News</a>
@@ -75,7 +75,7 @@
                   <h3>Get help</h3>
                   <p><a href="/docs">Documentation</a></p>
                   <p><a href="/examples">Examples</a></p>
-                  </div>
+              </div>
               <div class="column">
                   <h3>Contribute</h3>
                   <p><a href="http://github.com/aerogear" target="_blank">Source code</a></p>
@@ -83,12 +83,18 @@
                   <p><a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev" target="_blank">Mailing list</a></p>
                   <p><a href="irc://irc.freenode.net/aerogear" target="_blank">IRC channel</a></p>
               </div>
+              <div class="column responsive">
+                  <h3>Social</h3>
+                  <p><a href="">Twitter</a></p>
+                  <p><a href="">Google Plus</a></p>
+                  <p><a href="">Facebook</a></p>
+              </div>
               <div class="column">
                   <h3><a href="http://twitter.com/AeroGears" target="_blank">@AeroGears</a></h3>
                   <div id="aerogear-twitter">Loading tweets...</div>
               </div>
               <div class="logos">
-                  <p>AeroGear is a <a href="http://www.jboss.org/">JBoss Community</a> project and its development is sponsored by <a href="http://www.redhat.com/">Red Hat, Inc</a>.<br>Project code is released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.</p>
+                  <p>AeroGear is a <a href="http://www.jboss.org/">JBoss Community</a> project and its<br class="title-break"> development is sponsored by <a href="http://www.redhat.com/">Red Hat, Inc</a>.<br class="title-break"><br>Project code is released under <br class="title-break">the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.</p>
                   <p><a href="http://www.jboss.org/"><img src="/img/jboss_community.png" alt="JBoss Community"></a> <a href="http://www.redhat.com/"><img src="/img/red_hat.png" alt="Red Hat"></a></p>
                   <p>Copyright &copy; 2012, Red Hat, Inc.</p>
   <div class="clearfix"></div>

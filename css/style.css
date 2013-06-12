@@ -7,9 +7,9 @@
     box-sizing: border-box;
 }
 
-html,body {
-    width: 100%;
+html, body {
     height: 100%;
+    min-width: 480px;
 }
 
 body {
@@ -88,6 +88,7 @@ li ul {
 
 li p {
     margin: 0;
+    text-align: left;
 }
 
 li {
@@ -99,8 +100,8 @@ li {
 }
 
 p {
-    margin: 24px 16px;
-    width: 80%;
+    margin: 24px 0;
+    width: 85%;
 }
 
 .basic img {
@@ -167,6 +168,7 @@ nav .links a {
     text-decoration: none;
     display: inline-block;
     padding: 10px 28px;
+    text-align: center;
 }
 
 nav .links a:hover {
@@ -184,6 +186,7 @@ a.news {
     color: #878787;
     text-decoration: none;
     margin-bottom: -20px;
+    text-align: right;
 }
 
 a.news:hover {
@@ -586,11 +589,8 @@ footer p,footer ul {
 
 #aerogear-twitter li img {
     float: left;
-    margin: 0 10px 10px 0;
-    border: 1px solid #c2c2c2;
-    -moz-box-shadow: 0 0 4px #c2c2c2;
-    -webkit-box-shadow: 0 0 4px #c2c2c2;
-    box-shadow: 0 0 4px #c2c2c2;
+    margin: 0 12px 12px 0;
+    border-radius: 4px;
 }
 
 #aerogear-twitter li a {
@@ -640,4 +640,104 @@ footer p,footer ul {
 .topic-page-logo img {
     width: 90%;
     max-width: 200px;
+}
+
+.responsive {
+    display: none;
+}
+
+
+@media (max-width: 680px) {
+    .title-break {
+      display: block;
+    }
+}
+
+
+@media (max-width: 960px) {
+    .links {
+        text-align: center;
+        width: 100% !important;
+        float: none;
+    }
+
+    .links a {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    .responsive {
+        display: block;
+    }
+    
+    a.fixed {
+        display: none !important;
+    }
+
+    body {
+        overflow-x: hidden;
+    }    
+    
+    #logo {
+        margin-left: 36px;   
+    }
+    
+    nav, header, footer, .wrapper, .feature {
+        width: 100%;
+    }
+    
+    a.news {
+        display: none;
+    }
+    
+    .social {
+        display: none;
+    }
+    
+    footer {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+    
+    footer .column {
+        clear: both;
+    }
+    
+    .feature {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+    
+    .basic {
+        padding-left: 48px;
+    }
+    
+    .feature img {
+        display: none;
+    }
+
+    #aerogear-twitter {
+        width: 100%;
+        max-width: 480px;
+        padding-right: 0;
+    }
+
+    .logos {
+        padding: 48px 0;
+    }    
+        
+    .logos p {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    footer .column {
+        margin-right: 0;
+        padding-right: 0;
+    }
+    
+    footer h3 {
+        margin-top: 34px;
+    }
 }
