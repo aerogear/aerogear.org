@@ -10,7 +10,7 @@ Creating an iOS application
 Before we start, please install link:http://cocoapods.org/[CocoaPods].
 
 
-Afterwards, please clone this link:https://github.com/matzew/AeroGear-PushTest-iOS[Sample Application]. It uses our _early_ SDK to register your _Mobile Variant Instance_ (the application on the device) with the iOS Variant you registered earlier!
+Afterwards, please clone this link:https://github.com/aerogear/aerogear-push-ios-demo[Sample Application]. It uses our _early_ SDK to register your _Mobile Variant Instance_ (the application on the device) with the iOS Variant you registered earlier!
 
 Sample App
 ~~~~~~~~~~
@@ -38,7 +38,7 @@ image:./img/bundleIDchange.png[Change the Bundle Identifier]
 Setting up the iOS Variant ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now it is time to look at the code: Open the link:https://github.com/matzew/AeroGear-PushTest-iOS/blob/master/PushTest/AGAppDelegate.m[AGAppDelegate file]. Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
+Now it is time to look at the code: Open the link:https://github.com/aerogear/aerogear-push-ios-demo/blob/master/PushTest/AGAppDelegate.m[AGAppDelegate file]. Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
 
 
 [source,c]
