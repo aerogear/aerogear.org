@@ -19,7 +19,7 @@ AeroGear Security is distributed under the [Apache License, Version 2.0](http://
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <scope>compile</scope>
         </dependency>
         
@@ -28,7 +28,7 @@ AeroGear Security is distributed under the [Apache License, Version 2.0](http://
         <dependency>
              <groupId>org.jboss.aerogear</groupId>
              <artifactId>aerogear-security-picketlink</artifactId>
-             <version>1.0.0</version>
+             <version>1.0.1</version>
              <scope>compile</scope>
         </dependency>
         
@@ -43,12 +43,12 @@ The first thing to do is to implement a *SecurityProvider* and include role vali
     public class AeroGearSecurityProvider implements SecurityProvider {
 
         @Inject
-        private AeroGearCredential credential;
+        private IdentityManagement identityManagement;
 
         @Override
         public void isRouteAllowed(Route route) throws ServletException {
 
-            if (!credential.hasRoles(route.getRoles())) {
+            if (!identityManagement.hasRoles(route.getRoles())) {
                 throw new AeroGearSecurityException(HttpStatus.AUTHENTICATION_FAILED);
             }
         }
@@ -188,16 +188,14 @@ To provide the maximum flexibility to each scenario OTP module was implemented c
     @LoggedUser
     private Instance<String> loggedInUserName;
 
-        public AeroGearUser secret() {
-            AeroGearUser user = new AeroGearUser();
-            user.setUri(new Totp(secret.get()).uri(loggedInUserName.get()));
-            return user;
+        public String secret() {
+            return new Totp(secret.get()).uri(loggedInUserName.get());
         }
 
-        public AeroGearUser otp(AeroGearUser user) {
+        public User otp(SimpleUser user, String otp) {
 
             Totp totp = new Totp(secret.get());
-            boolean result = totp.verify(user.getOtp());
+            boolean result = totp.verify(otp);
 
             if (!result)
                 throw new RuntimeException("Invalid OTP");
