@@ -498,8 +498,9 @@ Once you have a _valid_ user you can use that information to issue a login again
 
 [source,c]
 ----
+NSDictionary *credentials = @{@"username": @"john", @"password": @"123"};
 // issuing a login
-[myMod login:@"john" password:@"123" success:^(id object) {
+[myMod login:credentials success:^(id object) {
     // after a successful _login_, we can work
     // with the returned data...
 } failure:^(NSError *error) {
@@ -508,7 +509,7 @@ Once you have a _valid_ user you can use that information to issue a login again
 }];
 ----
 
-The default (REST) auth module issues for the above a request against _https://todo-aerogear.rhcloud.com/todo-server/auth/login_. Besides the _username_ and the _password_, the function accepts two simple blocks that are invoked on success or in case of a failure.
+The default (REST) auth module issues for the above a request against _https://todo-aerogear.rhcloud.com/todo-server/auth/login_. Besides the _username_ and the _password_ (stored in a _NSDictionary_), the function accepts two simple blocks that are invoked on success or in case of a failure.
 
 === Pass the auth module to a pipe
 
