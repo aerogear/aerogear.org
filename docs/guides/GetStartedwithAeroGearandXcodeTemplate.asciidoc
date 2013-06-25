@@ -117,7 +117,8 @@ During application load, the method _loginWithUsername_ of the singleton class i
     }];
 
     // login to the service
-    [todoAuthMod login:username password:password success:^(id responseObject) { [4]
+    NSDictionary *credentials = @{@"username": username, @"password": password};
+    [todoAuthMod login:credentials success:^(id responseObject) { [4]
         // if successfully logged in, it is time to construct our pipes.
         // Note that we assign the authentication module we
         // created earlier, so every request can be properly
