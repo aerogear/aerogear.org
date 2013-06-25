@@ -551,6 +551,23 @@ The logout from the server can be archived by using the _logout_ function:
 
 The default (REST) auth module issues for the above a request against _https://todo-aerogear.rhcloud.com/todo-server/auth/logout_. The function accepts two simple blocks that are invoked on success or in case of a failure.
 
+=== NSURLCredential support.
+As of version 1.1.0 of the library, you can pass directly on the Pipe configuration an link:http://tinyurl.com/neqbum2[NSURLCredential] object. Doing that will give you instant support for the built-in authentication protocols already supported in iOS (such as Basic/Digest). When a request comes in where an authentication challenge is required, the library will pass to the server those credentials. 
+
+To pass the NSURLCredential object, use the _setCredential_ configuration method during construction of the Pipe:
+
+[source,c]
+----
+id<AGPipe> tasks = [pipeline pipe:^(id<AGPipeConfig> config) {
+    [config setName:@"tasks"];
+    [config setCredential:[NSURLCredential
+                credentialWithUser:@"username" password:@"passwd" persistence:NSURLCredentialPersistenceNone];
+}];
+----
+
+NOTE: Care should be taken when specifying the persistence type param when constructing the NSURLCredential object. Specifying type other than link:http://tinyurl.com/q28l9hd[NSURLCredentialPersistenceNone], will have the effect of the credentials to be preserved across session and application restarts. In that case, the developer is responsible to clear the cache. See link:http://tinyurl.com/n9amy5q[NSURLCredentialStorage] class reference for more information. 
+
+
 === Time out and Cancel pending operations
 
 As with the case of Pipe, configured timeout interval (in the config object) and cancel operation in _AGAuthenticationModule_ is supported too.
