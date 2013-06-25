@@ -44,6 +44,8 @@
 	
 	<option value="//api/name/baseURL">&nbsp;&nbsp;&nbsp;&nbsp;baseURL</option>
 	
+	<option value="//api/name/credential">&nbsp;&nbsp;&nbsp;&nbsp;credential</option>
+	
 	<option value="//api/name/endpoint">&nbsp;&nbsp;&nbsp;&nbsp;endpoint</option>
 	
 	<option value="//api/name/pageConfig">&nbsp;&nbsp;&nbsp;&nbsp;pageConfig</option>
@@ -83,6 +85,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authModule">authModule</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/baseURL">baseURL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/credential">credential</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endpoint">endpoint</a></span></li>
 	
@@ -187,6 +191,13 @@ If no endpoint is specified, the name will be used as its value.</p></span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/credential">&nbsp;&nbsp;credential</a></code>
+		<span class="tooltip"><p>The NSURLCredential to use if the request requires authentication.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/pageConfig">&nbsp;&nbsp;pageConfig</a></code>
 		<span class="tooltip"><p>A block specifying paging configuration for this Pipe.
 See <a href="../Protocols/AGPageConfig.html">AGPageConfig</a> and for the available paging configuration parameters
@@ -217,9 +228,11 @@ and category AGNSMutableArray(Paging) for example usage.</p></span>
 		<p>The Authentication Module configured for this Pipe.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) id&lt;AGAuthenticationModule&gt; authModule</code></div>
-	
+
+    
 	
 	
 	
@@ -256,9 +269,11 @@ and category AGNSMutableArray(Paging) for example usage.</p></span>
 		<p>The baseURL to the configuration.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSURL *baseURL</code></div>
-	
+
+    
 	
 	
 	
@@ -286,6 +301,58 @@ and category AGNSMutableArray(Paging) for example usage.</p></span>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/credential" title="credential"></a>
+	<h3 class="subsubtitle method-title">credential</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The NSURLCredential to use if the request requires authentication.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSURLCredential *credential</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The NSURLCredential to use if the request requires authentication.</p>
+
+<p>The credential is used during the authentication challenge to a remote
+server that supports HTTP Basic and HTTP Digest authentication.</p>
+
+<p>Note: Care should be taken when specifying the persistence type param
+when constructing the NSURLCredential object. Specifying type other than
+<a href="http://tinyurl.com/q28l9hd">NSURLCredentialPersistenceNone</a>, will have the
+effect of the credentials to be preserved across session and application restarts.
+In that case, the developer is responsible to clear the cache.
+See <a href="http://tinyurl.com/n9amy5q">NSURLCredentialStorage</a> class reference
+for more information.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/endpoint" title="endpoint"></a>
 	<h3 class="subsubtitle method-title">endpoint</h3>
 	
@@ -296,9 +363,11 @@ and category AGNSMutableArray(Paging) for example usage.</p></span>
 If no endpoint is specified, the name will be used as its value.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *endpoint</code></div>
-	
+
+    
 	
 	
 	
@@ -338,9 +407,11 @@ See <a href="../Protocols/AGPageConfig.html">AGPageConfig</a> and for the availa
 and category AGNSMutableArray(Paging) for example usage.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) void ( ^ ) ( id&lt;AGPageConfig&gt; ) pageConfig</code></div>
-	
+
+    
 	
 	
 	
@@ -379,9 +450,11 @@ and category AGNSMutableArray(Paging) for example usage.</p>
 		<p>The recordId to the configuration.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *recordId</code></div>
-	
+
+    
 	
 	
 	
@@ -418,9 +491,11 @@ and category AGNSMutableArray(Paging) for example usage.</p>
 		<p>The timeout interval for a request to complete.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSTimeInterval timeout</code></div>
-	
+
+    
 	
 	
 	
@@ -464,7 +539,7 @@ and category AGNSMutableArray(Paging) for example usage.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-05-21)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-06-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

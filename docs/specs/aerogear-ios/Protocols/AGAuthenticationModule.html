@@ -63,6 +63,8 @@
 	
 	<option value="//api/name/login:password:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- login:password:success:failure:</option>
 	
+	<option value="//api/name/login:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- login:success:failure:</option>
+	
 	<option value="//api/name/logout:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- logout:failure:</option>
 	
 	
@@ -112,6 +114,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enroll:success:failure:">enroll:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/login:password:success:failure:">login:password:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/login:success:failure:">login:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logout:failure:">logout:failure:</a></span></li>
 	
@@ -176,14 +180,14 @@ NSMutableDictionary* userData = [NSMutableDictionary dictionary];
 }];
 </code></pre>
 
-<p>The <code>enroll</code> function submits a generic map object with contains all the information about the new user, that the server endpoint requires. The default (REST) auth module issues for the above a request against <em><a href="https://todo-aerogear.rhcloud.com/todo-server/auth/enroll">https://todo-aerogear.rhcloud.com/todo-server/auth/enroll</a></em>. Besides the NSDictionary, the function accepts two simple blocks that are invoked on success or in case of an failure.</p>
+<p>The <code>enroll</code> function submits a generic map object which contains all the information about the new user, that the server endpoint requires. The default (REST) auth module issues for the above, a request against <em><a href="https://todo-aerogear.rhcloud.com/todo-server/auth/enroll">https://todo-aerogear.rhcloud.com/todo-server/auth/enroll</a></em>. Besides the NSDictionary, the function accepts two simple blocks that are invoked on success or in case of an failure.</p>
 
 <h2>Login</h2>
 
 <p>Once you have a <em>valid</em> user you can use that information to issue a login against the server, to start accessing protected endpoints:</p>
 
 <pre><code>// issuing a login
-[myMod login:@"john" password:@"123" success:^(id object) {
+[myMod login:@{@"username": @"john", @"password": @"123"} success:^(id object) {
     // after a successful _login_, we can work
     // with the returned data...
 } failure:^(NSError *error) {
@@ -192,7 +196,9 @@ NSMutableDictionary* userData = [NSMutableDictionary dictionary];
 }];
 </code></pre>
 
-<p>The default (REST) auth module issues for the above a request against <em>https://todo-aerogear.rhcloud.com/todo-server/auth/login</em>. Besides the <em>username</em> and the <em>password</em>, the function accepts two simple blocks that are invoked on success or in case of an failure.</p>
+<p>The <code>login</code> function submits a generic map object which contains the credentials that the server login service requires and accepts two simple blocks that are invoked on success or in case of a failure to login.</p>
+
+<p>The default (REST) auth module issues for the above, a request against _https://todo-aerogear.rhcloud.com/todo-server/auth/login</p>
 
 <h2>Pass the auth module to a pipe</h2>
 
@@ -294,6 +300,13 @@ and send to the endpoint.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/login:password:success:failure:">&ndash;&nbsp;login:password:success:failure:</a></code>
+		<span class="tooltip"><p>DEPREACTED.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/login:success:failure:">&ndash;&nbsp;login:success:failure:</a></code>
 		<span class="tooltip"><p>Performs the login for the given user. Since the data will be sent in plaintext, it is IMPORTANT,
 to run the signin via TLS/HTTPS.</p></span>
 	</span>
@@ -337,9 +350,11 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the baseURL string of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *baseURL</code></div>
-	
+
+    
 	
 	
 	
@@ -376,9 +391,11 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the &lsquo;enroll endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *enrollEndpoint</code></div>
-	
+
+    
 	
 	
 	
@@ -415,9 +432,11 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the &lsquo;login endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *loginEndpoint</code></div>
-	
+
+    
 	
 	
 	
@@ -454,9 +473,11 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the &lsquo;logout endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *logoutEndpoint</code></div>
-	
+
+    
 	
 	
 	
@@ -493,9 +514,11 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the type of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *type</code></div>
-	
+
+    
 	
 	
 	
@@ -543,9 +566,11 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 It is your responsibility to provide any neccessary cleanups after calling this method.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-	
+
+    
 	
 	
 	
@@ -584,9 +609,11 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 and send to the endpoint.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>- (void)enroll:(id)<em>userData</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)enroll:(NSDictionary *)<em>userData</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -646,13 +673,14 @@ and send to the endpoint.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Performs the login for the given user. Since the data will be sent in plaintext, it is IMPORTANT,
-to run the signin via TLS/HTTPS.</p>
+		<p>DEPREACTED.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)login:(NSString *)<em>username</em> password:(NSString *)<em>password</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -665,6 +693,76 @@ to run the signin via TLS/HTTPS.</p>
 		<dl class="argument-def parameter-def">
 			<dt><em>password</em></dt>
 			<dd><p>password</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the operation finishes successfully.
+This block has no return value and takes one argument: A collection (NSDictionary), containing the response
+from the &lsquo;login&rsquo; service.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the operation finishes unsuccessfully.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>DEPREACTED.</p>
+
+<p>Performs the login for the given user. Since the data will be sent in plaintext, it is IMPORTANT,
+to run the signin via TLS/HTTPS.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/login:success:failure:" title="login:success:failure:"></a>
+	<h3 class="subsubtitle method-title">login:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs the login for the given user. Since the data will be sent in plaintext, it is IMPORTANT,
+to run the signin via TLS/HTTPS.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)login:(NSDictionary *)<em>loginData</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>loginData</em></dt>
+			<dd><p>A map (NSDictionary) containing the credentials required by the
+&lsquo;log in&rsquo; service.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -719,9 +817,11 @@ to run the signin via TLS/HTTPS.</p>
 		<p>Performs the logout of the current user.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)logout:(void ( ^ ) ( ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -779,7 +879,7 @@ the error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-05-21)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-06-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
