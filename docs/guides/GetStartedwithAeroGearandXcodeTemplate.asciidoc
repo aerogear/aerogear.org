@@ -113,8 +113,7 @@ static NSString * const kAeroGearExampleAPIBaseURLString = @"http://todo-aerogea
     }];
 
     // login to the service
-    NSDictionary *credentials = @{@"username": username, @"password": password};
-    [todoAuthMod login:credentials success:^(id responseObject) { [4]
+    [todoAuthMod login:@{@"username": username, @"password": password} success:^(id responseObject) { [4]
 
         // if successfully logged in, it is time to construct our pipes.
         // Note that we assign the authentication module we
