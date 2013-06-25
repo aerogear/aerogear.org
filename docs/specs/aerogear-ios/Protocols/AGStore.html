@@ -51,6 +51,8 @@
 	
 	<option value="//api/name/filter:">&nbsp;&nbsp;&nbsp;&nbsp;- filter:</option>
 	
+	<option value="//api/name/isEmpty">&nbsp;&nbsp;&nbsp;&nbsp;- isEmpty</option>
+	
 	<option value="//api/name/read:">&nbsp;&nbsp;&nbsp;&nbsp;- read:</option>
 	
 	<option value="//api/name/readAll">&nbsp;&nbsp;&nbsp;&nbsp;- readAll</option>
@@ -96,6 +98,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/filter:">filter:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEmpty">isEmpty</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:">read:</a></span></li>
 	
@@ -204,6 +208,13 @@
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/isEmpty">&ndash;&nbsp;isEmpty</a></code>
+		<span class="tooltip"><p>Checks if the storage system contains no stored elements.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/remove:error:">&ndash;&nbsp;remove:error:</a></code>
 		<span class="tooltip"><p>Removes a specific object/record from the underlying storage system.</p></span>
 	</span>
@@ -232,9 +243,11 @@
 		<p>Returns the type of the underlying &lsquo;store implementation&rsquo;</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *type</code></div>
-	
+
+    
 	
 	
 	
@@ -281,9 +294,11 @@
 		<p>Reads all, based on a filter, from the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)filter:(NSPredicate *)<em>predicate</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -327,6 +342,52 @@ This method only returns a copy of the data and leaves the underlying storage sy
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/isEmpty" title="isEmpty"></a>
+	<h3 class="subsubtitle method-title">isEmpty</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Checks if the storage system contains no stored elements.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isEmpty</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the storage is empty, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Checks if the storage system contains no stored elements.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/read:" title="read:"></a>
 	<h3 class="subsubtitle method-title">read:</h3>
 	
@@ -336,9 +397,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Reads a specific object/record from the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)read:(id)<em>recordId</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -390,9 +453,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Reads all the data from the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)readAll</code></div>
-	
+
+    
 	
 	
 	
@@ -434,9 +499,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Removes a specific object/record from the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)remove:(id)<em>record</em> error:(NSError **)<em>error</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -493,9 +560,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Resets the entire storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)reset:(NSError **)<em>error</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -547,9 +616,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Saves the given object in the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)save:(id)<em>data</em> error:(NSError **)<em>error</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -609,7 +680,7 @@ This method only returns a copy of the data and leaves the underlying storage sy
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-05-21)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-06-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

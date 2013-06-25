@@ -19,7 +19,7 @@ image::img/ios_new_project_wizard.png[New Project]
 
 Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AG"_. For the device family I used iPhone. Leave the default options checked.
 
-image::img/ios_project_details_screen.png[Details]
+image::img/ios_project_standard_details_screen.png[Details]
 
 Xcode creates our project and we are presented with the default project screen.
 
@@ -44,7 +44,7 @@ In the "Podfile", add the following lines:
 xcodeproj 'AeroGearExample.xcodeproj'
 platform :ios, '5.0'
 pod 'Reachability',  '~> 3.0.0'
-pod 'AeroGear', '1.0.1'
+pod 'AeroGear', '1.1.0'
 ----
 
 And then:
@@ -157,7 +157,8 @@ Modify AGViewController implementation to add instance variables for authenticat
         [config setAuthModule:authModule];
     }];
     
-    [authModule login:@"john" password:@"123" success:^(id object) {    // [7]
+  NSDictionary *credentials = @{@"username": "john", @"password": @"123"};
+    [authModule login:credentials success:^(id object) {                // [7]
         
         [tasksPipe read:^(id responseObject) {                          // [8]
             
