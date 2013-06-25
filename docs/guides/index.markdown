@@ -3,13 +3,13 @@ layout: basic
 title: Guides
 ---
 
-### Guides
+## Guides
 
-#### Supported Platforms
+### Supported Platforms
 
 * [AeroGear Browser Support Targets](AeroGearBrowserTargets)
 
-#### Getting Started
+### Getting Started
 
 * [FAQ](FAQ.html)
 * [Get Started With AeroGear.js](GetStartedAeroGearJS.html)
@@ -29,7 +29,7 @@ title: Guides
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)
 * [Tutorial: iOS Push Notifications](aerogear-push-ios)
 
-#### User Guides
+### User Guides
 * [AeroGear Controller User Guide](aerogear-controller)
 * [AeroGear Security User Guide](aerogear-security)
 * [AeroGear Android User Guide](aerogear-android)
@@ -37,7 +37,7 @@ title: Guides
 * [AeroGear Two-Factor Authentication with OTP](AeroGear-OTP)
 
 
-#### Contributing to AeroGear
+### Contributing to AeroGear
 
 * [Contributing to AeroGear](Contributing)
 * [AeroGear GitHub Workflow](GitHubWorkflow)
