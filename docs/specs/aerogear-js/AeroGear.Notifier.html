@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Module: Pipeline</h1>
+    <h1 class="page-title">Module: Notifier</h1>
     
     
 
@@ -29,7 +29,7 @@
     <h2>
         <span class="ancestors"><a href="AeroGear.html">AeroGear</a>.</span>
     
-    Pipeline
+    Notifier
     </h2>
     
 </header>  
@@ -41,7 +41,7 @@
     
         
 <dt>
-    <h4 class="name" id="Pipeline"><span class="type-signature"></span>new Pipeline<span class="signature">(<span class="optional">config</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="Notifier"><span class="type-signature"></span>new Notifier<span class="signature">(<span class="optional">config</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
@@ -49,7 +49,7 @@
     
     
     <div class="description">
-        The AeroGear.Pipeline provides a persistence API that is protocol agnostic and does not depend on any certain data model. Through the use of adapters, this library provides common methods like read, save and delete that will just work.
+        The AeroGear.Notifier namespace provides a messaging API. Through the use of adapters, this library provides common methods like connect, disconnect, subscribe, unsubscribe and publish.
     </div>
     
 
@@ -115,7 +115,7 @@
             
             
             
-            <td class="description last">A configuration for the pipe(s) being created along with the Pipeline. If an object or array containing objects is used, the objects can have the following properties:
+            <td class="description last">A configuration for the client(s) being created along with the notifier. If an object or array containing objects is used, the objects can have the following properties:
                 <h6>Properties</h6>
                 
 
@@ -171,7 +171,7 @@
                 </td>
             
             
-            <td class="description last">the name that the pipe will later be referenced by</td>
+            <td class="description last">the name that the client will later be referenced by</td>
         </tr>
 	
 	
@@ -203,49 +203,12 @@
             
                 <td class="default">
                 
-                    "rest"
+                    "vertx"
                 
                 </td>
             
             
-            <td class="description last">the type of pipe as determined by the adapter used</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>recordId</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    "id"
-                
-                </td>
-            
-            
-            <td class="description last">the identifier used to denote the unique id for each record in the data associated with this pipe</td>
+            <td class="description last">the type of client as determined by the adapter used</td>
         </tr>
 	
 	
@@ -282,7 +245,7 @@
                 </td>
             
             
-            <td class="description last">the settings to be passed to the adapter. For specific settings, see the documentation for the adapter you are using.</td>
+            <td class="description last">the settings to be passed to the adapter</td>
         </tr>
 	
 	
@@ -319,7 +282,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.pipeline.js.html">pipeline/aerogear.pipeline.js</a>, line 57
+        <a href="aerogear.notifier.js.html">notifier/aerogear.notifier.js</a>, line 64
     </li></ul></dd>
     
     
@@ -340,7 +303,7 @@
     
             
 <div class="param-desc">
-    pipeline - The created Pipeline containing any pipes that may have been created
+    The created notifier containing any messaging clients that may have been created
 </div>
 
 
@@ -362,35 +325,42 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>// Create an empty Pipeline
-var pl = AeroGear.Pipeline();
+    <pre class="prettyprint"><code>        // Create an empty notifier
+        var notifier = AeroGear.Notifier();
 
-// Create a single pipe using the default adapter
-var pl2 = AeroGear.Pipeline( "tasks" );
+        // Create a single client using the default adapter
+        var notifier2 = AeroGear.Notifier( "myNotifier" );
 
-// Create multiple pipes using the default adapter
-var pl3 = AeroGear.Pipeline( [ "tasks", "projects" ] );
+        // Create multiple clients using the default adapter
+        var notifier3 = AeroGear.Notifier( [ "someNotifier", "anotherNotifier" ] );
 
-//Create a new REST pipe with a custom ID using an object
-var pl4 = AeroGear.Pipeline({
-    name: "customPipe",
-    type: "rest",
-    recordId: "CustomID"
-});
+        // Create a default adapter with settings
+        var notifier4 = AeroGear.Notifier({
+            name: "vertxNotifier",
+            type: "vertx",
+            settings: { ... }
+        });
 
-//Create multiple REST pipes using objects
-var pl5 = AeroGear.Pipeline([
-    {
-        name: "customPipe",
-        type: "rest",
-        recordId: "CustomID"
-    },
-    {
-        name: "customPipe2",
-        type: "rest",
-        recordId: "CustomID"
-    }
-]);</code></pre>
+        // Create a stompws adapter with settings
+        var notifier5 = AeroGear.Notifier({
+            name: "STOMPNotifier",
+            type: "stompws",
+            settings: { ... }
+        });
+
+        // Create a vertx and stompws adapter with settings
+        var notifier6 = AeroGear.Notifier([
+            {
+                name: "vertxNotifier",
+                type: "vertx",
+                settings: { ... }
+            },
+            {
+                name: "STOMPNotifier",
+                type: "stompws",
+                settings: { ... }
+            }
+        ]);</code></pre>
 
     
 </dd>
@@ -427,7 +397,7 @@ var pl5 = AeroGear.Pipeline([
 <dd>
     
     <div class="description">
-        The adapters object is provided so that adapters can be added to the AeroGear.Pipeline namespace dynamically and still be accessible to the add method
+        The adapters object is provided so that adapters can be added to the AeroGear.Notifier namespace dynamically and still be accessible to the add method
     </div>
     
     
@@ -454,7 +424,59 @@ var pl5 = AeroGear.Pipeline([
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.pipeline.js.html">pipeline/aerogear.pipeline.js</a>, line 87
+        <a href="aerogear.notifier.js.html">notifier/aerogear.notifier.js</a>, line 93
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="CONNECTING"><span class="type-signature">&lt;static> </span>CONNECTING<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        A set of constants used to track the state of a client connection.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.notifier.js.html">notifier/aerogear.notifier.js</a>, line 98
     </li></ul></dd>
     
     
@@ -479,7 +501,7 @@ var pl5 = AeroGear.Pipeline([
 <dd>
     
     <div class="description">
-        The name used to reference the collection of pipe instances created from the adapters
+        The name used to reference the collection of notifier client instances created from the adapters
     </div>
     
     
@@ -503,13 +525,13 @@ var pl5 = AeroGear.Pipeline([
     
     
     <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy"><li>pipes</li></ul></dd>
+    <dd class="tag-default"><ul class="dummy"><li>modules</li></ul></dd>
     
     
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.pipeline.js.html">pipeline/aerogear.pipeline.js</a>, line 75
+        <a href="aerogear.notifier.js.html">notifier/aerogear.notifier.js</a>, line 81
     </li></ul></dd>
     
     
