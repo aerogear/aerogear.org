@@ -19,7 +19,7 @@ image::img/ios_new_project_wizard.png[New Project]
 
 Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AG"_. For the device family I used iPhone. Leave the default options checked.
 
-image::img/ios_project_details_screen.png[Details]
+image::img/ios_project_standard_details_screen.png[Details]
 
 Xcode creates our project and we are presented with the default project screen.
 
