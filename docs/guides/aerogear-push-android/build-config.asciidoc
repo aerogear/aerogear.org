@@ -1,0 +1,49 @@
+---
+layout: basic
+title: Configure the build
+---
+
+Configure the Build
+-------------------
+
+There are a few preparatory steps you must take to be able to get an application up and running. For this example, we will be using ``pusheedemoapp''.
+
+Getting the Code
+~~~~~~~~~~~~~~~~
+Clone the git repo of aerogear-android (currently the ``push'' branch)
+[source,c]
+----
+git clone https://github.com/aerogear/aerogear-android.git
+----
+
+Clone the git repo of pusheedemo
+[source,c]
+----
+git clone https://github.com/secondsun/PushEEDemo
+----
+
+Dependencies
+~~~~~~~~~~~~
+
+PushEEDemo relies upon ``aerogear-android'', so we must enable the two to work in tandem on the build path. In Eclipse ADT, 
+right click ``aerogear-android'', choose ``Properties'', then choose ``Android'', and check ``Is Library''.
+Now, right click ``MainActivity'' of PushEEDemo, and choose ``Properties'' again. Click ``Java Build Path'', and check the 
+box next to ``aerogear-android''. This will include the necessary resources needed for AeroGear.
+
+Finally, we also need to add a few Android and Google resources to the build path. In the ``Java Build Path'' of PushEEDemo, 
+choose ``Libraries'', and ``Add External JARs...'' We need to import android-support-v*.jar, where * denotes a version number.
+
+*This JAR is located in $ANDROID_HOME/extras/android/support. If you do not have this in your SDK, use the SDK Manager to 
+download it. Located under ``Extras'', install ``Android Support Library''.*
+
+Depending upon your configuration, you may need to also reference the following external JARs (followed by location) in your *aerogear-android* project:
+
+- Android Support Libraries: android-support-v*.jar ($ANDROID_HOME/extras/android/support/v*)
+- Google Guava: https://code.google.com/p/guava-libraries/[guava.jar]
+- Google GSon: https://code.google.com/p/google-gson/[gson-v-v-v.jar] (v is version)
+- Goole Play Services: google-play-services.jar ($ANDROID_HOME/extras/google/google_play_services/libproject/google-play-services_lib/libs/)
+
+image::./img/build-path.png[Build Path Configuration]
+
+
+*Now, you can link:../register-device[Register the Device]*
