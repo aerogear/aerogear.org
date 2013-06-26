@@ -1,0 +1,51 @@
+---
+layout: basic
+title: Register the Device
+---
+
+Register the Device
+-------------------
+
+Now that we are all set up and ready to go, we need to interface with our PushEE server to get some registration data. This information is necessry in the next few steps.
+
+Registration
+~~~~~~~~~~~~
+[source,c]
+---
+curl -v -H "Accept: application/json" -H "Content-type: application/json"
+    -X POST
+    -d '{"name" : "MyApp", "description" :  "awesome app" }'
+
+http://SERVER/applications
+---
+_This response returns an ID for the push application_
+
+Android Variant
+~~~~~~~~~~~~~~~
+The next request will take this ID for the application and register it as an _Android variant_. Use your Google API key obtained above as the googleKey value.
+[source,c]
+---
+curl -v -H "Accept: application/json" -H "Content-type: application/json"
+ -X POST
+ -d '{"googleKey" : "IDDASDASDSA"}'
+  
+ http://SERVER/applications/{PUSH_ID}/android
+---
+_This response returns an ID for the Android variant_
+
+
+Currently, AeroGear handles the registration of the application within the unifiedpush Registrar.java, so you have to configure a few fields within the pusheedemo application itself.
+
+
+Configure the Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~
+Now that we have our push ID and Android variant ID, we need to add them into the pushEEdemo project. These configurations can be found in MainApplication.java.
+
+- The URL of the AeroGear push server, as ``URL''
+- The Sender ID (obtained as Project ID above) as ``PushConfig''
+- Mobile Variant ID (obtained above via CURL command) ``setMobileVariantID''
+- Alias (arbitrary)
+
+Now, the application can be run and it should register itself with the server.
+
+*Finally, we can link:../rpush-notification[Send a Push Notification]*
