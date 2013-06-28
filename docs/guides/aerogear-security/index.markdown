@@ -19,7 +19,7 @@ AeroGear Security is distributed under the [Apache License, Version 2.0](http://
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security</artifactId>
-            <version>1.0.1</version>
+            <version>1.1.1</version>
             <scope>compile</scope>
         </dependency>
         
@@ -28,7 +28,7 @@ AeroGear Security is distributed under the [Apache License, Version 2.0](http://
         <dependency>
              <groupId>org.jboss.aerogear</groupId>
              <artifactId>aerogear-security-picketlink</artifactId>
-             <version>1.0.1</version>
+             <version>1.0.2</version>
              <scope>compile</scope>
         </dependency>
         
@@ -125,7 +125,7 @@ Copy this file [standalone.xml](https://gist.github.com/abstractj/a91c4fc960975a
 
        <filter>
            <filter-name>SecureHeadersFilter</filter-name>
-           <filter-class>org.jboss.aerogear.security.filter.SecureHeadersFilter</filter-class>
+           <filter-class>org.jboss.aerogear.security.web.filter.SecureHeadersFilter</filter-class>
            <init-param>
                <param-name>max-age</param-name>
                <param-value>2592000</param-value>
@@ -167,7 +167,7 @@ Copy this file [standalone.xml](https://gist.github.com/abstractj/a91c4fc960975a
 
     <filter>
         <filter-name>SecureHeadersFilter</filter-name>
-        <filter-class>org.jboss.aerogear.security.filter.SecureHeadersFilter</filter-class>
+        <filter-class>org.jboss.aerogear.security.web.filter.SecureHeadersFilter</filter-class>
         <init-param>
             <param-name>x-frame-options</param-name>
             <param-value>SAMEORIGIN</param-value>
