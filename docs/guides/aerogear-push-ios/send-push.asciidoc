@@ -7,16 +7,14 @@ Now you have the Sample App running on your phone, so it is time to use the _Aer
 
 == Simple Sender
 
-A bit earlier you received an **PushApplicationID** after the successful registration of the _Push Application_. This **PushApplicationID** is used for sending a _broadcast_ message to all _registered_ devices (_Mobile Variant instances_). Now, on a command line issue the following _CURL_ command:
+A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the successful registration of the _Push Application_. These ID's  are used for sending a _broadcast_ message to all _registered_ devices (_Mobile Variant instances_). Now, on a command line issue the following _CURL_ command:
 
 [source,c]
 ----
-curl -v -H "Accept: application/json" -H "Content-type: application/json" 
-   -X POST
-
-   -d '{"alert":"Hello AeroGear Unified Push!"}'
-
-http://localhost:8080/ag-push/rest/sender/broadcast/{PushApplicationID}
+curl -u "{pushApplicationID}:{masterSecret}"
+   -v -H "Accept: application/json" -H "Content-type: application/json" 
+   -X POST -d '{"alert":"Hello AeroGear Unified Push!"}'
+   http://localhost:8080/ag-push/rest/sender/broadcast
 ----
 
 The payload is simply a JSON map. You can send different key/value pairs, but be sure it is not too long, otherwise Apple does _NOT_ deliver the message to your phone. The _alert_ key is recoginzed by the _AeroGear Unified Push Server_ and translated into an APNs specific _alert_.

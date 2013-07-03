@@ -14,38 +14,53 @@ AeroGear Unified Push Server
 
 The _AeroGear Unified Push Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Mobile Variants". For this tutorial we need to create a _Push Application_ which will contain one _Mobile Variant_. Details on the AeroGear Unified Push Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
 
-=== Register a Push Application 
+For the purpose of the guide, we will fail back on the command line and the _curl_ tool to perform the registrations with the server. In the near feature this won't be needed cause a Push Administration console would be used instead (currently in the works).
 
-The server has different HTTP interfaces. To create a new _Push Application_ execute the following _curl_ command:
+=== Login to the server
+
+Prior to perform any work with the server, we need to login first. A temporary user 'admin:123' has already been configured, so let's use these credentials to login:
 
 [source,c]
 ----
-curl -v -H "Accept: application/json"
-    -H "Content-type: application/json" 
-	-X POST 
-	-d '{"name" : "AeroGear-iOS-Push", "description" :  "My first iOS Push App, that uses AeroGear" }'
+curl -v -b cookies.txt -c cookies.txt
+	-H "Accept: application/json" -H "Content-type: application/json" 
+	-X POST -d '{"loginName": "admin", "password":"123"}'
+	http://localhost:8080/ag-push/rest/auth/login 
+----
+
+The server would respond with a 'HTTP/1.1 200 OK' status, which means that the login was succeeded. If not, check if you typed correctly the command and if the server is correctly setup. 
+
+=== Register a Push Application 
+
+Now that we are logged in, let's create a new _Push Application_ by executing the following _curl_ command:
+
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt 
+	-H "Accept: application/json" -H "Content-type: application/json"
+	-X POST -d '{"name" : "AeroGear-iOS-Push", "description" :  "My first iOS Push App, that uses AeroGear" }'
 	http://localhost:8080/ag-push/rest/applications
 ----
  
-The response returns an ID, which you need to register a _Mobile Variant_ for iOS:
+The response returns a _pushApplicationID_ and a _masterSecret_. Make a note on these ID's cause we will use them later on.
 
-Register an iOS Variant
-~~~~~~~~~~~~~~~~~~~~~~~
+=== Register an iOS Variant
 
-The create an iOS Variant, you need the ID of the newly created _Push Application_. Now issue the following _curl_ command:
+Time to register our iOS Variant. Prior to execute the following _curl_ command, replace in the URL the _PUSH_ID_ with the _pushApplicationID_ you received earlier and change the certificate parameter to point to your exported _p12_ file. Don't forget to change the _passphrase_ also!
 
+[NOTE]
+The 'Content-type' is not an _application/json_ request. Here we simply need to upload the SSL Certificate, which we created earlier. This is used, together with the _Passphrase_ to allow the _AeroGear Unified Push Server_ to establish a connection to the Apple Push Network Service.
 
 [source,c]
 ----
-curl -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
-
-  -F "certificate=@/PATH/TO/EXPORTED/File.p12"
-  -F "passphrase=TopSecret"
-
-  -X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
+curl -v -b cookies.txt -c cookies.txt 
+	-i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
+	-F "certificate=@/PATH/TO/EXPORTED/File.p12"
+	-F "passphrase=TopSecret"
+	-X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
 ----
 
-Note, that the above is not an _application/json_ request. Here we simply need to upload the SSL Certificate, which we created earlier. This is used, together with the _Passphrase_ to allow the _AeroGear Unified Push Server_ to establish a connection to the Apple Push Network Service.
+The response returns a _variantID_ and a _secret_, that will be both used later on when registering your installation through the iOS client SDK so please make a note on them too.
 
 Xcode
 ~~~~~

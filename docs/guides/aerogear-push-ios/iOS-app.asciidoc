@@ -74,7 +74,9 @@ Now let's look at the important code section:
 ----
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    // we initialize our "Registration helper"
+    // initialize "Registration helper" object using the
+    // base URL where the "AeroGear Unified Push Server" is running.
+
     AGDeviceRegistration *registration =    // [1]
     
         // WARNING: make sure, you start JBoss with the -b 0.0.0.0 option, to bind on all interfaces
@@ -83,22 +85,21 @@ Now let's look at the important code section:
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {   // [2]
         
-        // Use the Mobile Variant ID, from your register iOS Variant
-        //
-        // This ID was received when performing the HTTP-based registration
-        // with the PushEE server:
+        // You need to fill the 'Mobile Variant Id together with the 'Mobile Variant Secret'
+        // both received when performing the mobile variant registration with the server.
         [clientInfo setMobileVariantID:@"402880e63ea239b9013ea23be9dc0004"];  // [3]
-        
+        [clientInfo setMobileVariantSecret:@"45d23ff4-cba4-49f2-ab91-6ba5fd7d23b4"];  // [4]
+
         // apply the token, to identify THIS device
-        [clientInfo setDeviceToken:deviceToken];  // [4]
+        [clientInfo setDeviceToken:deviceToken];  // [5]
 
         // --optional config--
         // set some 'useful' hardware information params
         UIDevice *currentDevice = [UIDevice currentDevice];
         
-        [clientInfo setOperatingSystem:[currentDevice systemName]];  // [5]
-        [clientInfo setOsVersion:[currentDevice systemVersion]];     // [6]
-        [clientInfo setDeviceType: [currentDevice model]];           // [7]
+        [clientInfo setOperatingSystem:[currentDevice systemName]];  // [6]
+        [clientInfo setOsVersion:[currentDevice systemVersion]];     // [7]
+        [clientInfo setDeviceType: [currentDevice model]];           // [8]
         
     } success:^(id responseObject) {
         
@@ -114,7 +115,7 @@ Now let's look at the important code section:
 
 In [1] we initialize our _AGDeviceRegistration_ object. **NOTE:** You can not use _localhost_ from the device, you have to use an (internal) IP address, where the _AeroGear Unified Push Server_ is running!
 
-Next, in [2] we call _registerWithClientInfo_ passing a configuration block that sets up the parameters needed to register this app with the _AeroGear Push Server_. The required parameters that need to be present are the _MobileVariantID_ [3] (which we received it in the previous chapter when we were registering the _iOS Variant_ with the _Push Application_) and the Device Token [4]. It is valid to specify a bit more data on the _clientInfo_ and we do here by setting metadata such the operating system [5], its version [6] and the device type [6].
+Next, in [2] we call _registerWithClientInfo_ passing a configuration block that sets up the parameters needed to register this app with the _AeroGear Push Server_. The required parameters that need to be present are the _MobileVariantID_ [3] and _MobileVariantSecret_ [4]  (which we received it in the previous chapter when we were registering the _iOS Variant_ with the _Push Application_) and the Device Token [5]. It is valid to specify a bit more data on the _clientInfo_ and we do here by setting metadata such the operating system [6], its version [7] and the device type [8].
 
 Callbacks
 ^^^^^^^^^
