@@ -90,7 +90,7 @@ Now let's look at the important code section:
         [clientInfo setMobileVariantID:@"402880e63ea239b9013ea23be9dc0004"];  // [3]
         
         // apply the token, to identify THIS device
-        [clientInfo setDeviceToken:pushToken];  // [4]
+        [clientInfo setDeviceToken:deviceToken];  // [4]
 
         // --optional config--
         // set some 'useful' hardware information params
