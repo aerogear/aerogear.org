@@ -48,7 +48,7 @@ image:./img/ios_template_wizard.png[AeroGear screen]
 
 Select the template and click _Next_
 
-Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AG"_.  The template also has support for specifying the authentication type and appropriate authentication code will also be generated. In the example application that we will build later, will connect to our TODO server which is configured with 'AeroGear Security' so choose this Authentication type. For the device family I used iPhone. 
+Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AGP"_.  The template also has options for specifying the 'Authentication type' as well as an option to enable 'Push' (check the <<push,Unified Push section>> later in the tutorial). Uncheck 'Push' support since we won't need it in our example, but choose 'AeroGear Security' as the Authentication type, since the AeroGear TODO server we will connect to is configured to use this type of authentication. For the device family choose iPhone. 
 
 image::./img/ios_project_details_screen.png[Details]
 
@@ -150,7 +150,16 @@ This completes our walkthrough for the "AeroGearExampleAPIClient.m" class.
 
 At the Project Navigator click on "AGPViewController.m". This View Controller class holds the table component that will display the Task objects when they are retrieved from the server.
 
-The connection and fetching of data is performed on the _viewDidLoad_ lifecycle method, called by the system after the view is loaded. 
+First we need to declare an instance variable that will hold the 'Tasks' objects as retrieved by the server:
+
+[source,c]
+----
+@implementation AGPViewController {
+    NSArray *_tasks;
+}
+----
+
+The connection and fetching of data is performed on the _viewDidLoad_ lifecycle method, called by the system after the view is loaded. Modify the method to look like the following:
 
 [source,c]
 ----
@@ -219,9 +228,12 @@ We are ready now to run the sample project. Double click on the generated xcwork
 
 image::./img/ios_template_emulator.png[Emulator]
 
+
 This completes our walkthrough. For a more complete example application that uses AeroGear to perform link:http://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD] operations on a remote endpoint, have a look at the TODO application available on link:https://github.com/aerogear/aerogear-todo-ios[github].
 
 You can also browse link:http://aerogear.org/docs/specs/aerogear-ios/[AeroGear iOS API reference] to familiarize yourself with the wealth of options.
 
 
+== [[push]]Unified Push Support
 
+By clicking the Enable 'Push' option in the wizard, the template will also generate for you code to connect to the link:../../specs/aerogear-server-push[AeroGear Unified Push Server], a new effort from JBoss to unify notification messaging across different mobile operating systems. By using the Unified Push Server at your backend it will allow you to send and receive notification across different mobile devices, do broadcasts and selective sends and much much more. If that sounds interesting, please have a look at this link:../aerogear-push-ios/[tutorial] for more information. It will show you how to setup the unified push server, arrange the provision profiles with Apple and send notification messages.
