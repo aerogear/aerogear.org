@@ -101,7 +101,7 @@ Now let's look at the important code section:
         [clientInfo setOsVersion:[currentDevice systemVersion]];     // [7]
         [clientInfo setDeviceType: [currentDevice model]];           // [8]
         
-    } success:^(id responseObject) {
+    } success:^() {
         
         // successfully registered!
 
