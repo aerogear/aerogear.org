@@ -1,0 +1,54 @@
+---
+layout: basic
+title: AeroGear UnifiedPush Sending Push Notifications
+---
+
+Sender API
+~~~~~~~~~~
+
+Broadcast (+HTTP POST+)
+^^^^^^^^^^^^^^^^^^^^^^^
+
+[source,c]
+----
+http://server:port/context/rest/sender/broadcast
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 200 OK+
+Indicates the Job has been accepted and is being process by the AeroGear UnifiedPush Server.
+
+Failure status code and desciption
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_PushApplication_ or _MobileVariants_) does not exist.
+
+
+Selective Send (+HTTP POST+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[source,c]
+----
+http://server:port/context/rest/sender/selected
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 200 OK+
+Indicates the Job has been accepted and is being process by the AeroGear UnifiedPush Server.
+
+Failure status code and desciption
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_PushApplication_ or _MobileVariants_) does not exist.
