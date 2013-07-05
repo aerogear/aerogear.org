@@ -1,0 +1,142 @@
+---
+layout: basic
+title: AeroGear UnifiedPush working with Variant(s)
+---
+
+APIs for working with Mobile Variant(s)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following _MobileVariants_ are supported
+
+* iOS
+* android
+* simplePush
+
+_The above writing matches the +{variantName}+ in belows URLs_
+
+
+Registration of a *MobileVariant* (+HTTP POST+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For the +iOS+ variant, the MediaType is +multipart/form-data+.
+
+[source,c]
+----
+http://server:port/context/rest/applications/{PUSH_APP_ID}/{variantName}
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 201 Created+
+The Body will contain (JSON) details about the created _MobileVariant_
+
+Failure status code and desciption
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 400 Bad Request+
+The format of the client request was incorrect (e.g. missing required values).
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_PushApplication_) does not exist.
+
+
+Read all *MobileVariants* for a *PushApplication* (+HTTP GET+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[source,c]
+----
+http://server:port/context/rest/applications/{PUSH_APP_ID}/{variantName}
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 200 OK+
+The Body will contain a JSON list of the _MobileVariants_.
+
+Failure status code and desciption
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+
+Read a specific *MobileVariants* (+HTTP GET+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[source,c]
+----
+http://server:port/context/rest/applications/{PUSH_APP_ID}/{variantName}/{variantID}
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 200 OK+
+The Body will contain (JSON) details about the _MobileVariant_
+
+Failure status code and desciption
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_MobileVariant_) does not exist.
+
+
+Update a specific *MobileVariant* (+HTTP PUT+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For the +iOS+ variant, the MediaType is +multipart/form-data+.
+
+[source,c]
+----
+http://server:port/context/rest/applications/{PUSH_APP_ID}/{variantName}/{variantID}
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 204 No Content+
+Empty body.
+
+Failure status code and desciption
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 400 Bad Request+
+The format of the client request was incorrect  (e.g. missing required values).
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_MobileVariant_) does not exist.
+
+
+Delete a specific *MobileVariant* (+HTTP DELETE+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[source,c]
+----
+http://server:port/context/rest/applications/{PUSH_APP_ID}/{variantName}/{variantID}
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 204 No Content+
+Empty body.
+
+Failure status code and desciption
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_MobileVariant_) does not exist.
