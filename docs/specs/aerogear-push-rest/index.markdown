@@ -10,6 +10,6 @@ The functionality described in the [Server-Side specification](http://aerogear.o
 
 * [Authentication APIs](Authentication)
 * [PushApplication APIs](PushApplication)
-* [Variant APIs](Variant)
+* [Variant APIs](Variants)
 * [Device Installation APIs](DeviceRegistration)
 * [Sender APIs](Sender)

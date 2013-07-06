@@ -6,9 +6,28 @@ title: AeroGear UnifiedPush Sending Push Notifications
 Sender API
 ~~~~~~~~~~
 
+The RESTful APIs for sending +Push Notifications+ are explained below:
+
+
 Broadcast (+HTTP POST+)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+Endpoint _protected_ with +HTTP BASIC+. Credentials: +PushApplicationID:masterSecret+
+
+Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-messages[details]):
+[source,json]
+----
+{
+  "alert":"HELLO!",
+  "sound":"default",
+  "badge":7,
+  "simple-push":"version=123",
+  "someKey":"some value",
+  "anotherCustomKey":"some other value"
+}
+----
+
+URL:
 [source,c]
 ----
 http://server:port/context/rest/sender/broadcast
@@ -33,6 +52,31 @@ The requested resource (_PushApplication_ or _MobileVariants_) does not exist.
 Selective Send (+HTTP POST+)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
+Endpoint _protected_ with +HTTP BASIC+. Credentials: +PushApplicationID:masterSecret+
+
+Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-messages[details]):
+[source,json]
+----
+{
+  "alias" : ["user@account.com", "someone@aerogear.org", ....],
+  "deviceType" : ["iPad", "AndroidTablet"],
+  "message": {
+    "alert":"HELLO!",
+    "sound":"default",
+    "badge":7,
+    "simple-push":"version=123",
+    "someKey":"some value",
+    "anotherCustomKey":"some other value"
+  },
+  "simple-push": {
+    "SomeCategory":"version=123",
+    "anotherCategory":"version=456"
+  }
+}
+----
+
+URL:
 [source,c]
 ----
 http://server:port/context/rest/sender/selected
