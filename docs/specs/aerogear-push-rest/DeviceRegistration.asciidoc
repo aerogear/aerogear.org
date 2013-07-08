@@ -9,7 +9,7 @@ APIs for Device/Installation Registration
 The RESTful APIs for Device/Installation Registration are explained below:
 
 
-Device Registration (+HTTP Post+)
+Device Registration (+HTTP POST+)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Endpoint _protected_ with +HTTP BASIC+. Credentials: +variantID:secret+
