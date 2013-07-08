@@ -94,7 +94,7 @@ Failure status code and desciption
 The request requires authentication.
 
 
-Read a specific *Android Variants* (+HTTP GET+)
+Read a specific *Android Variant* (+HTTP GET+)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 [source,c]
