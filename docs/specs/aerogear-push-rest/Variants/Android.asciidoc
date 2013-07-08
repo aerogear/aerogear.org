@@ -80,7 +80,7 @@ The Body will contain a JSON list of the _Android Variants_, for the given PushA
     "id":"402880e43fa95bb3013faf3c41b40005",
     "name":"Android App",
     "description":"The Android Variant",
-	...
+    ...
   },
   {...}
 ]
