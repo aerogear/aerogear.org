@@ -3,7 +3,7 @@ layout: basic
 title: AeroGear Unified Push Server 
 ---
 
-# AeroGear UnifiedPush Registration Client Spec (DRAFT 0.0.3)
+# AeroGear UnifiedPush Registration Client Spec
 
 This document describes the functionality of a client SDK that works with the [AeroGear UnifiedPush Server](http://aerogear.org/docs/specs/aerogear-server-push/).
 
