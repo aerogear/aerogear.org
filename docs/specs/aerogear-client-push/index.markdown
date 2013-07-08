@@ -9,15 +9,15 @@ This document describes the functionality of a client SDK that works with the [A
 
 ## Motivation / Purpose
 
-The [AeroGear UnifiedPush Server](http://aerogear.org/docs/specs/aerogear-server-push/) is accessible via HTTP. Instead of having to manually register a device (```MobileVariantInstance```) with the HTTP interface, a client library should be offered.
+The [AeroGear UnifiedPush Server](http://aerogear.org/docs/specs/aerogear-server-push/) is accessible via HTTP. Instead of having to manually register a device (```Installation```) with the HTTP interface, a client library should be offered.
 
-**Goal:** A client library to register a mobile application (```MobileVariantInstance```) with the UnifiedPush Server.
+**Goal:** A client library to register a mobile application (```Installation```) with the UnifiedPush Server.
 
 #### Background: Push Network Token
 
 To receive native push notifications from a Push Network (e.g. APNs, GCM or SimplePush), the mobile device is identified with a unique ```device-token```, assigned by the actual Push Network. This ```device-token``` is passed, by the underlying Operating-System, to the mobile application. Details are different on each platform and  **not** part of this document.
 
-The ```device-token``` needs to be registered with the _AeroGear UnifiedPush Server_, to indicate there is a new ```MobileVariantInstance``` for a ```MobileVariant```. More details about the server-side part of this can be found in the _AeroGear Unified Push Server_ [spec](http://aerogear.org/docs/specs/aerogear-server-push/).
+The ```device-token``` needs to be registered with the _AeroGear UnifiedPush Server_, to indicate there is a new ```Installation``` for a ```Variant```. More details about the server-side part of this can be found in the _AeroGear Unified Push Server_ [spec](http://aerogear.org/docs/specs/aerogear-server-push/).
 
 ## Functionality 
 
@@ -25,10 +25,10 @@ The ```device-token``` needs to be registered with the _AeroGear UnifiedPush Ser
 
 The client SDK offers the following features:
 
-* Registration and Updating of a ```MobileVariantInstance``` 
-* Unregistration of a ```Mobile Variant Instance``` (optional, due to platform specific restrictions)
+* Registration and Updating of a ```Installation``` 
+* Unregistration of a ```Installation``` (optional, due to platform specific restrictions)
 
-### Registration and Updating of a Mobile Variant Instance
+### Registration and Updating of a Installation
 
 Everytime when a mobile application launches it receives the above mentioned ```device-token```, via a _platform-specific_ method (or callback). Since the Push Network (e.g. APNs or GCM) _may_ assign a **new** token to a device, it is _recommended_ to _always_ (re)register the ```device-token``` with the _AeroGear UnifiedPush Server_.
 
