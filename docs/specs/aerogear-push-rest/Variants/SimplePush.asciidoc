@@ -94,7 +94,7 @@ Failure status code and desciption
 The request requires authentication.
 
 
-Read a specific *SimplePush Variants* (+HTTP GET+)
+Read a specific *SimplePush Variant* (+HTTP GET+)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 [source,c]
