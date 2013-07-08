@@ -81,7 +81,7 @@ The Body will contain a JSON list of the _iOS Variants_, for the given PushAppli
     "id":"402880e43fa95bb3013faf3c41b40005",
     "name":"iOS App",
     "description":"The iOS Variant",
-	...
+    ...
   },
   {...}
 ]
