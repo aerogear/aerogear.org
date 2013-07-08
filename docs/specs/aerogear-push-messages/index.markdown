@@ -8,8 +8,8 @@ title: AeroGear UnifiedPush Message Format
 The Unified Push Server allows two different ways to send message to the native Push API, of the supported devices:
 
 * broadcast
-  * to all ```MobileVariants``` and their ```MobileVariant Instances``` (devices) 
-  * to one specific ```MobileVariant``` and its ```MobileVariant Instances``` (devices) 
+  * to all ```Variants``` and their ```Installations``` (devices) 
+  * to one specific ```Variant``` and its ```Installations``` (devices) 
 * selective Send
 
 ## Broadcast
@@ -24,9 +24,9 @@ The Unified Push Server allows two different ways to send message to the native 
     http://localhost:8080/ag-push/rest/sender/broadcast 
 
 
-If the ```ag-push-application``` header is used, a message is sent to a ```PushApplication``` and **ALL** MobileVariantInstances will receive the message.
+If the ```ag-push-application``` header is used, a message is sent to a ```PushApplication``` and **ALL** Installations will receive the message.
 
-If the ```ag-mobile-variant``` header is used, a message is sent to a particular ```MobileVariant``` and **ALL** of its MobileVariantInstances will receive the message.
+If the ```ag-mobile-variant``` header is used, a message is sent to a particular ```Variant``` and **ALL** of its Installations will receive the message.
 
 
 
@@ -51,7 +51,7 @@ None! The JSON map is submitted as it is, directly to the device. There are no A
 
 ## Selective Send
 
-A message is sent to a restricted number of ```MobileVariantInstances```, based on a given criteria. The following example shows the corresponding HTTP interface:
+A message is sent to a restricted number of ```Installations```, based on a given criteria. The following example shows the corresponding HTTP interface:
 
     curl -v -H "Accept: application/json" -H "Content-type: application/json" 
        -X POST
