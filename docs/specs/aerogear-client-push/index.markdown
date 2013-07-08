@@ -32,20 +32,23 @@ The client SDK offers the following features:
 
 Everytime when a mobile application launches it receives the above mentioned ```device-token```, via a _platform-specific_ method (or callback). Since the Push Network (e.g. APNs or GCM) _may_ assign a **new** token to a device, it is _recommended_ to _always_ (re)register the ```device-token``` with the _AeroGear UnifiedPush Server_.
 
-Besides the ```device-token``` the _AeroGear UnifiedPush Server_ is able to store some of the below device- or user-specific metadata:
+The required metadata for an ```Installation```:
 
 * **deviceToken:** _Identifies the device/user-agent within its Push Network._
+* **variantID:** _The ID of the variant, where the client belongs to_
+* **variantSecret:** _Password of the actual variant_
+
+The _AeroGear UnifiedPush Server_ is able to store some user-specific metadata as well:
+
 * **deviceType:** _The device type of the device or the user agent._
 * **mobileOperatingSystem:** _The name of the underlying Operating System._
 * **osVersion:** _The version of the used Operating System._
-* **alias:** _ Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
+* **alias:** _Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
 * **category:** _Used tp apply a "tag". Mainly usful for the SimplePush channel(s)._
-
-Besides the slight chance that the ```device-token`` may change, some of the above metadata is more likely to change. Therefore another reason to always send this metadata to the _AeroGear UnifiedPush Server_.
 
 #### Reachability
 
-The client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
+Internally, the client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
 
 ### Unregistration of client device information
 
@@ -55,7 +58,7 @@ _Optional_ method that helps to unregister the client device information with th
 
 #### Reachability
 
-The client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
+Internally, the client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
 
 ## Platform specific details 
 
