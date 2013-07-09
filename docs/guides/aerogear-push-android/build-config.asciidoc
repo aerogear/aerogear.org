@@ -10,13 +10,14 @@ There are a few preparatory steps you must take to be able to get an application
 
 Getting the Code
 ~~~~~~~~~~~~~~~~
-Clone the git repo of aerogear-android (currently the ``push'' branch)
+Clone the git repo of https://github.com/aerogear/aerogear-android[aerogear-android] and switch to the ``push'' branch
 [source,c]
 ----
 git clone https://github.com/aerogear/aerogear-android.git
+git checkout push
 ----
 
-Clone the git repo of pusheedemo
+Clone the git repo of https://github.com/secondsun/PushEEDemo.git[pusheedemo]
 [source,c]
 ----
 git clone https://github.com/secondsun/PushEEDemo
@@ -25,10 +26,16 @@ git clone https://github.com/secondsun/PushEEDemo
 Dependencies
 ~~~~~~~~~~~~
 
-PushEEDemo relies upon ``aerogear-android'', so we must enable the two to work in tandem on the build path. In Eclipse ADT, 
-right click ``aerogear-android'', choose ``Properties'', then choose ``Android'', and check ``Is Library''.
-Now, right click ``MainActivity'' of PushEEDemo, and choose ``Properties'' again. Click ``Java Build Path'', and check the 
-box next to ``aerogear-android''. This will include the necessary resources needed for AeroGear.
+Since aerogear utilizes Maven, many of the below steps can be skipped by running
+[source,c]
+----
+mvn dependency:copy
+----
+This will install the dependencies into the /libs folder of the project, so ADT will pick them up automatically.
+
+If you choose not to build with Maven, then you will need to configure the projects in Eclipse. Right click ``aerogear-android'', choose ``Properties'', then choose ``Android'', and check ``Is Library''.
+Now, right click PushEEDemo, and choose ``Properties'' again. Click ``Android'', and Add aerogear-android to the Library section. This will include the necessary resources needed for AeroGear. In addition, make sure that 
+your build target is >= 4.0, due to the fragments API Google introduced.
 
 Finally, we also need to add a few Android and Google resources to the build path. In the ``Java Build Path'' of PushEEDemo, 
 choose ``Libraries'', and ``Add External JARs...'' We need to import android-support-v*.jar, where * denotes a version number.
@@ -41,9 +48,10 @@ Depending upon your configuration, you may need to also reference the following 
 - Android Support Libraries: android-support-v*.jar ($ANDROID_HOME/extras/android/support/v*)
 - Google Guava: https://code.google.com/p/guava-libraries/[guava.jar]
 - Google GSon: https://code.google.com/p/google-gson/[gson-v-v-v.jar] (v is version)
-- Goole Play Services: google-play-services.jar ($ANDROID_HOME/extras/google/google_play_services/libproject/google-play-services_lib/libs/)
+- Google Play Services: google-play-services.jar ($ANDROID_HOME/extras/google/google_play_services/libproject/google-play-services_lib/libs/)
 
 image::./img/build-path.png[Build Path Configuration]
 
 
 *Now, you can link:../register-device[Register the Device]*
+

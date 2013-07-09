@@ -16,20 +16,24 @@ First, we must authenticate with Google. Google offers the Google Cloud Messagin
 - Firstly, you need to go to the https://code.google.com/apis/console/b/0/?pli=1[Google APIs Console] page.
 - If you haven't created a project, click ``Create Project...''
 - From the URL, grab the project ID (used later as the sender ID). This will be the numeric part of ``#project:*000000000000*''
+
 image::./img/url-project-id.png[Project ID/Sender ID from URL]
 - Next, you need to enable the GCM service, by going to ``Services'' and turn ``Google Cloud Messaging'' on.
 - Finally, we must obtain the API key. Select ``API Access'', then ``Create new Server Key''
 - You will need to whitelist at least one IP address for the sending server in order for the messages to not be rejected.
-image::./img/api-key.png[Project ID/Sender ID from URL]
+
+image::img/api-key.png[Project ID/Sender ID from URL]
 
 Preparing the Application
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Prerequisites
+Prerequisites:
+
 - http://developer.android.com/sdk/index.html[Android SDK]
 - Google Cloud Messaging for Android Library (from SDK manager)
 - Android emulator or device
 
 Now that Google is ready to accept and deliver our messages, we need to create and enable our application to receive them.
 
-*Now, we can link:../build-config[Configure the Build]*
+Now, we are ready to link:../build-config[Configure the Build]
+
