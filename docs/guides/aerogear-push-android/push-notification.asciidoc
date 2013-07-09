@@ -4,7 +4,7 @@ title: Send a Push Notification
 ---
 
 Configure to Receive
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 Within the PushEEDemo (or other application), the application should handle its own registration of the specific installation. This is also sent through a JSON request to the push server, and contains a few fields. The request should be structured as this curl command:
 
@@ -25,11 +25,11 @@ http://localhost:8080/ag-push/rest/registry/device
 
 
 Send the Message
-~~~~~~~~~~~~~~~~
+----------------
 Now that the application is configured and registered, we can send a message! We have two options, to send the message to all mobile apps of a certain ``app'', or to send a message to a selected list of channels.
 
 Broadcast
----------
+~~~~~~~~~
 
 [source,c]
 ----
@@ -43,7 +43,7 @@ http://localhost:8080/ag-push/rest/sender/broadcast
 ----
 
 Selected Send
--------------
+~~~~~~~~~~~~~
 
 [source,c]
 ----
