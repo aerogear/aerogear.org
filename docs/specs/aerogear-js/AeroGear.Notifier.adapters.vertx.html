@@ -426,7 +426,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 62
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 61
     </li></ul></dd>
     
     
@@ -469,37 +469,37 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        // Create an empty Notifier
-        var notifier = AeroGear.Notifier();
+    <pre class="prettyprint"><code>    // Create an empty Notifier
+    var notifier = AeroGear.Notifier();
 
-        // Create a channel object and the channel callback function
-        var channelObject = {
-            address: "org.aerogear.messaging.global",
-            callback: channelCallback
-        };
+    // Create a channel object and the channel callback function
+    var channelObject = {
+        address: "org.aerogear.messaging.global",
+        callback: channelCallback
+    };
 
-        function channelCallback( message ) {
-            console.log( message );
+    function channelCallback( message ) {
+        console.log( message );
+    }
+
+    // Add a vertx client with all the settings
+    notifier.add({
+        name: "client1",
+        settings: {
+            autoConnect: true,
+            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            onConnect: function() {
+                console.log( "connected" );
+            },
+            onConnectError: function() {
+                console.log( "connection error" );
+            },
+            onDisconnect: function() {
+                console.log( "Disconnected" );
+            },
+            channels: [ channelObject ]
         }
-
-        // Add a vertx client with all the settings
-        notifier.add({
-            name: "client1",
-            settings: {
-                autoConnect: true,
-                connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
-                onConnect: function() {
-                    console.log( "connected" );
-                },
-                onConnectError: function() {
-                    console.log( "connection error" );
-                },
-                onDisconnect: function() {
-                    console.log( "Disconnected" );
-                },
-                channels: [ channelObject ]
-            }
-        });</code></pre>
+    });</code></pre>
 
     
 </dd>
@@ -783,7 +783,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 226
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 225
     </li></ul></dd>
     
     
@@ -804,28 +804,28 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        // Create an empty Notifier
-        var notifier = AeroGear.Notifier();
+    <pre class="prettyprint"><code>    // Create an empty Notifier
+    var notifier = AeroGear.Notifier();
 
-        // Add a vertx client
-        notifier.add({
-            name: "client1",
-            settings: {
-                connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
-                onConnect: function() {
-                    console.log( "connected" );
-                },
-                onConnectError: function() {
-                    console.log( "connection error" );
-                },
-                onDisconnect: function() {
-                    console.log( "Disconnected" );
-                }
+    // Add a vertx client
+    notifier.add({
+        name: "client1",
+        settings: {
+            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            onConnect: function() {
+                console.log( "connected" );
+            },
+            onConnectError: function() {
+                console.log( "connection error" );
+            },
+            onDisconnect: function() {
+                console.log( "Disconnected" );
             }
-        });
+        }
+    });
 
-        // Connect to the vertx messaging service
-        notifierVertx.clients.client1.connect();</code></pre>
+    // Connect to the vertx messaging service
+    notifierVertx.clients.client1.connect();</code></pre>
 
     
 </dd>
@@ -874,7 +874,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 292
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 291
     </li></ul></dd>
     
     
@@ -895,31 +895,210 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        // Create an empty Notifier
-        var notifier = AeroGear.Notifier();
+    <pre class="prettyprint"><code>    // Create an empty Notifier
+    var notifier = AeroGear.Notifier();
 
-        // Add a vertx client
-        notifier.add({
-            name: "client1",
-            settings: {
-                connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
-                onConnect: function() {
-                    console.log( "connected" );
-                },
-                onConnectError: function() {
-                    console.log( "connection error" );
-                },
-                onDisconnect: function() {
-                    console.log( "Disconnected" );
-                }
+    // Add a vertx client
+    notifier.add({
+        name: "client1",
+        settings: {
+            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            onConnect: function() {
+                console.log( "connected" );
+            },
+            onConnectError: function() {
+                console.log( "connection error" );
+            },
+            onDisconnect: function() {
+                console.log( "Disconnected" );
             }
-        });
+        }
+    });
 
-        // Connect to the vertx messaging service
-        notifierVertx.clients.client1.connect();
+    // Connect to the vertx messaging service
+    notifierVertx.clients.client1.connect();
 
-        // Disconnect from the vertx messaging service
-        notifierVertx.clients.client1.disconnect();</code></pre>
+    // Disconnect from the vertx messaging service
+    notifierVertx.clients.client1.disconnect();</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(channel, <span class="optional">message</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Send a message to a particular channel
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>channel</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">the channel to which to send the message</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    ""
+                
+                </td>
+            
+            
+            <td class="description last">the message object to send</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 421
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    // Send an empty message to a channel
+    notifier.clients.client1.send( "test.address" );
+
+    // Send a "Hello" message to a channel
+    notifier.clients.client1.send( "test.address", "Hello" );
+
+    // Send a "Hello" message as an object
+    notifier.clients.client1.send( "test.address", { "message": "Hello" } );</code></pre>
 
     
 </dd>
@@ -1058,7 +1237,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 357
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 356
     </li></ul></dd>
     
     
@@ -1079,57 +1258,57 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        // Create an empty Notifier
-        var notifier = AeroGear.Notifier();
+    <pre class="prettyprint"><code>    // Create an empty Notifier
+    var notifier = AeroGear.Notifier();
 
-        // Create a channel object and the channel callback function
-        var channelObject = {
-            address: "org.aerogear.messaging.global",
-            callback: channelCallback
-        };
+    // Create a channel object and the channel callback function
+    var channelObject = {
+        address: "org.aerogear.messaging.global",
+        callback: channelCallback
+    };
 
-        function channelCallback( message ) {
-            console.log( message );
-        }
+    function channelCallback( message ) {
+        console.log( message );
+    }
 
-        // Add a vertx client with autoConnect === true and no channels
-        notifier.add({
-            name: "client1",
-            settings: {
-                autoConnect: true,
-                connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
-                onConnect: function() {
-                    console.log( "connected" );
-                },
-                onConnectError: function() {
-                    console.log( "connection error" );
-                },
-                onDisconnect: function() {
-                    console.log( "Disconnected" );
-                }
-            }
-        });
-
-        //Subscribe to a channel
-        notifierVertx.clients.client1.subscribe( channelObject );
-
-        //Subscribe to multiple channels at once
-        notifierVertx.clients.client1.subscribe([
-            {
-                address: "newChannel",
-                callback: function(){...}
+    // Add a vertx client with autoConnect === true and no channels
+    notifier.add({
+        name: "client1",
+        settings: {
+            autoConnect: true,
+            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            onConnect: function() {
+                console.log( "connected" );
             },
-            {
-                address: "anotherChannel",
-                callback: function(){ ... }
+            onConnectError: function() {
+                console.log( "connection error" );
+            },
+            onDisconnect: function() {
+                console.log( "Disconnected" );
             }
-        ]);
+        }
+    });
 
-        //Subscribe to a channel, but first unsubscribe from all currently subscribed channels by adding the reset parameter
-        notifierVertx.clients.client1.subscribe({
-                address: "newChannel",
-                callback: function(){ ... }
-            }, true );</code></pre>
+    //Subscribe to a channel
+    notifierVertx.clients.client1.subscribe( channelObject );
+
+    //Subscribe to multiple channels at once
+    notifierVertx.clients.client1.subscribe([
+        {
+            address: "newChannel",
+            callback: function(){...}
+        },
+        {
+            address: "anotherChannel",
+            callback: function(){ ... }
+        }
+    ]);
+
+    //Subscribe to a channel, but first unsubscribe from all currently subscribed channels by adding the reset parameter
+    notifierVertx.clients.client1.subscribe({
+            address: "newChannel",
+            callback: function(){ ... }
+        }, true );</code></pre>
 
     
 </dd>
@@ -1229,7 +1408,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 397
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, line 396
     </li></ul></dd>
     
     
@@ -1250,25 +1429,25 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>        // Unsubscribe from a previously subscribed channel
-        notifierVertx.clients.client1.unsubscribe(
-            {
-                address: "org.aerogear.messaging.global",
-                callback: channelCallback
-            }
-        );
+    <pre class="prettyprint"><code>    // Unsubscribe from a previously subscribed channel
+    notifierVertx.clients.client1.unsubscribe(
+        {
+            address: "org.aerogear.messaging.global",
+            callback: channelCallback
+        }
+    );
 
-        // Unsubscribe from multiple channels
-        notifierVertx.clients.client1.unsubscribe([
-            {
-                address: "newChannel",
-                callback: newCallbackFunction
-            },
-            {
-                address: "anotherChannel",
-                callback: "anotherChannelCallbackFunction"
-            }
-        ]);</code></pre>
+    // Unsubscribe from multiple channels
+    notifierVertx.clients.client1.unsubscribe([
+        {
+            address: "newChannel",
+            callback: newCallbackFunction
+        },
+        {
+            address: "anotherChannel",
+            callback: "anotherChannelCallbackFunction"
+        }
+    ]);</code></pre>
 
     
 </dd>
@@ -1295,7 +1474,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Jun 25 2013 07:04:37 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Jul 09 2013 10:00:43 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>
