@@ -3,5 +3,66 @@ layout: basic
 title: Send a Push Notification
 ---
 
-Send a Push Notification
-------------------------
+Configure to Receive
+~~~~~~~~~~~~~~~~~~~~
+
+Within the PushEEDemo (or other application), the application should handle its own registration of the specific installation. This is also sent through a JSON request to the push server, and contains a few fields. The request should be structured as this curl command:
+
+[source,c]
+----
+curl -u "{MobileVariantID}:{secret}"
+   -v -H "Accept: application/json" -H "Content-type: application/json" 
+   -X POST
+   -d '{
+      "deviceToken" : "someTokenString",
+      "deviceType" : "ANDROID",
+      "mobileOperatingSystem" : "android",
+      "osVersion" : "4.0.1"
+    }'
+
+http://localhost:8080/ag-push/rest/registry/device
+----
+
+
+Send the Message
+~~~~~~~~~~~~~~~~
+Now that the application is configured and registered, we can send a message! We have two options, to send the message to all mobile apps of a certain ``app'', or to send a message to a selected list of channels.
+
+Broadcast
+---------
+
+[source,c]
+----
+curl -u "{PushApplicationID}:{MasterSecret}"
+   -v -H "Accept: application/json" -H "Content-type: application/json" 
+   -X POST
+   -d '{"key":"value", "alert":"HELLO!", "sound":"default", "badge":7,
+       "simple-push":"version=123"}'
+
+http://localhost:8080/ag-push/rest/sender/broadcast
+----
+
+Selected Send
+-------------
+
+[source,c]
+----
+curl -u "{PushApplicationID}:{MasterSecret}"
+   -v -H "Accept: application/json" -H "Content-type: application/json" 
+   -X POST
+
+   -d '{
+      "alias" : ["user@account.com", "jay@redhat.org", ....],
+
+      "deviceType" : ["iPad", "AndroidTablet"],
+
+      "message": {"key":"value", "key2":"other value", "alert":"HELLO!",
+        "simple-push": { "SomeCategory":"version=123", "anotherCategory":"version=456"}
+      }
+   }'
+
+http://localhost:8080/ag-push/rest/sender/selected 
+----
+
+
+Congratulations, you should now be able to send and receive push notifications with your application!
