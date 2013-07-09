@@ -66,3 +66,12 @@ http://localhost:8080/ag-push/rest/sender/selected
 
 
 Congratulations, you should now be able to send and receive push notifications with your application!
+
+Last-Minute Notes
+-----------------
+Since we interface with the Android devices via link:http://developer.android.com/google/gcm/index.html[Google Cloud Messaging], we still have a few things to keep in mind regarding the messages we send.
+- Messages can be maximum 4kb
+- Messages can be link:http://developer.android.com/google/gcm/adv.html#throttling[throttled]
+- Google will hold messages in queue for 28 days if the intended device is unavailable for delivery, after which they will be discarded
+
+For a more thorough explanation of the GCM system and queue, check out link:http://developer.android.com/google/gcm/adv.html[GCM Advanced Topics], and link:http://developer.android.com/google/gcm/gcm.html[GCM Architectual Overview]
