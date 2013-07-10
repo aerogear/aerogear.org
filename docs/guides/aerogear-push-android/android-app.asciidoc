@@ -5,7 +5,7 @@ title: The Android App
 
 Creating an Android Application
 -------------------------------
-This part of the tutorial focuses specifically on using http://developer.android.com/tools/sdk/eclipse-adt.html[[Android Developer Tools] in Eclipse.
+This part of the tutorial focuses specifically on using http://developer.android.com/tools/sdk/eclipse-adt.html[Android Developer Tools] in Eclipse.
 
 PushEEDemo
 ~~~~~~~~~~
