@@ -17,12 +17,6 @@ git clone https://github.com/aerogear/aerogear-android.git
 git checkout push
 ----
 
-Clone the git repo of https://github.com/secondsun/PushEEDemo.git[pusheedemo]
-[source,c]
-----
-git clone https://github.com/secondsun/PushEEDemo
-----
-
 Dependencies
 ~~~~~~~~~~~~
 
@@ -51,6 +45,20 @@ Depending upon your configuration, you may need to also reference the following 
 - Google Play Services: google-play-services.jar ($ANDROID_HOME/extras/google/google_play_services/libproject/google-play-services_lib/libs/)
 
 image::./img/build-path.png[Build Path Configuration]
+
+Emulator or Device?
+-------------------
+Unlike iOS, the Android emulator is able to receive push notifications. If you wish to use an emulated device to test your application, it must be configured properly. Here's a list of resources and configurations you need:
+- Google APIs (for the API level you're using/targeting) These are in the SDK manager
+- An emulated device in the Android Virtual Device Manager, _targeting ``Google APIs (Google Inc.)''_
+
+If you do not target the Google APIs for your API level, the GCM service will not be available for the device. Most Android devices on the market support these APIs, as long as they have the Google Play Store, which means they are https://support.google.com/googleplay/answer/1397129?hl=en[not licensed by Google] to use their services.
+
+image::./img/nexus-4-target.png[A properly-configured virtual device]
+
+If you are planning on using an actual Android device (tablet, phone, etc.), then you only need to have Android debugging enabled. To enable Developer Options in Jelly Bean, you must tap the ``Build Number'' in the ``About Phone'' screen 7 times. You also need to whitelist the computer's RSA key on the Android device.
+Older Android devices have Developer Options available either in the main Settings panel, or within the ``Applications'' setting screen.
+For more information regarding Developer Options/USB Debugging, see Google's http://developer.android.com/tools/device.html[Using Hardware Devices] article.
 
 
 *Now, you can link:../register-device[Register the Device]*
