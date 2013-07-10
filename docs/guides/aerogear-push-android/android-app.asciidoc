@@ -1,0 +1,39 @@
+---
+layout: basic
+title: The Android App
+---
+
+Creating an Android Application
+-------------------------------
+This part of the tutorial focuses specifically on using http://developer.android.com/tools/sdk/eclipse-adt.html[[Android Developer Tools] in Eclipse.
+
+PushEEDemo
+~~~~~~~~~~
+We will be using the ``PushEEDemo'' application, which you can clone via
+[source,c]
+----
+git clone https://github.com/secondsun/PushEEDemo
+----
+
+Aerogear-Android
+~~~~~~~~~~~~~~~~
+Of course, we will also use aerogear-android as a library to our project. As discussed in the next step, Configuring the Build, we have a few options as to how to import the two. Aerogear-Android can be obtained via
+[source,c]
+----
+git clone https://github.com/aerogear/aerogear-android.git
+----
+
+Using ADT
+~~~~~~~~~
+- Open up Eclipse with ADT, select File > New > Project...
+- From the project selection, choose Android > Android Project from Existing Code
+image::./img/android-project.png[New Android Project]
+- Browse to the directory where aerogear-android is, if you will be using this within ADT, and import it
+- Browse to the directory where pusheedemo is located, and import it
+
+Setting up the Android Variant ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Within PushEEDemo's MainApplication.java, there are a few parameters that need to be set. Once the application is ready to be run, this will be necessary to communicate with the push server. Right now, we don't have all the information necessary to send push messages yet. This is further discussed in the link:../register-device[register device] step of the tutorial.
+
+
+*Now, we can link:../build-config[Configure the Build*, including manage the necessary dependencies*
