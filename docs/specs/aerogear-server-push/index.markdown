@@ -45,7 +45,7 @@ A simple message to be send to a mobile application, to notify it of a data chan
 
 #### Sender API
 
-Is a component that sends _Push Notification Messages_ to a ```Push Application``` or a ```Variants```. The message is then delivered to all (valid) ```Installations```. It's also possible to use a _selective send_, for notifying a selected group of users (aka ```Installations```). 
+Is a component that sends _Push Notification Messages_ to a ```Push Application``` or different ```Variants```. The message is then delivered to all (valid) ```Installations```. It's also possible to use a _selective send_, for notifying a selected group of users (aka ```Installations```). 
 
 #### Developer
 
