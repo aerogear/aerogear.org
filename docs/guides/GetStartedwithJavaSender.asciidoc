@@ -5,7 +5,7 @@ title: Getting Started with Java Sender client API
 
 == Getting Started with Java Sender client API
 
-As of version x, AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit this page link:http://aerogear.org/docs/specs/aerogear-server-push/[page] to get a general overview and also the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
+As of version x, AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit this link:http://aerogear.org/docs/specs/aerogear-server-push/[page] to get a general overview and also the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
 
 === Installation
 
