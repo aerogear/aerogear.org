@@ -1,0 +1,192 @@
+---
+layout: basic
+title: Getting Started with Java Sender client API
+---
+
+== Getting Started with Java Sender client API
+
+As of version x, AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit this page link:http://aerogear.org/docs/specs/aerogear-server-push/[page] to get a general overview and also the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
+
+=== Installation
+
+The library can be downloaded through the project link:https://github.com/aerogear/aerogear-unified-push-java-client[github] page or if you are using Maven, simply add the following dependency in your ```pom.xml```:
+
+        <dependency>
+            <groupId>org.jboss.aerogear.unifiedpush</groupId>
+            <artifactId>java-sender</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+
+=== API Overview
+
+The API is straightforward to use and consists of a single Class ```DefaultJavaSender``` with the following method signature:
+
+[source,java]
+----
+public void send(Message payload, String pushApplicationID, String masterSecret); 
+----
+
+The method takes as parameters a Message object that encapsulates the payload, as well as the ```application ID``` and the ```masterSecret```, both created when you registered your Application with the UnifiedPush server (see link:http://aerogear.org/docs/guides/aerogear-push-ios/unified-push-server/[here]).
+
+To easily create the Message payload, the API provides a convinient builder accessed by the builder() method in the ```Message``` class:
+
+[source,java]
+----
+Message message = new Message().builder()
+  .enableSound() 
+  .alert("A simple notification message!")
+  .badge("2")
+  .attribute("somekey", "somevalue")  // attach an arbitary key-value pair specific to your business context.
+  .build()
+----
+
+This is the simplest form of a 'Broadcast' message. Once received by the server, it will be send to all mobile variants registered under the Push Application ID. 
+
+To narrow down the list of the receipents and perform a "selective send", you are given the following options: (shown with the respecive builder method)
+
+- narrow down by a specific mobile variant (e.g. HR Android, HR iPhone)
+[source,java]
+----
+    variants("mobileVariantID1", "mobileVariantID2");
+----
+- narrow down by specific alias, thus allowing to send a message directly to a specific mobile variant instance.
+[source,java]
+----
+    .alias("john@somewhere.com", "maria@somewhere.com");
+----
+- narrow down by a specific deviceType
+[source,java]
+----
+    .deviceTypes("someDeviceType", "someOtherDeviceType");
+----
+- narrow down by a category
+[source,java]
+----
+   .categories("someCategory", "someOtherCategory");
+----
+
+As you realize from the list, the Sender API offers _tremendous_ flexiblity in supporting even the most complex schenarios. You can mix and match options to target a specific mobile audience. 
+
+Let's exercise the API with some examples:
+
+- Examples showing different schenarios
+
+
+
+
+=== Integrating with Java EE
+
+The library can be used inside a Java EE environment to enable your enterpise applications to send notification messages to mobile clients, when e.g. a particular business event occurs. Let's see one approach of integration through an example of a PaymentGateway.
+
+A payment request is initiated through a REST endpoint. The endpoint delegates the processing to an EJB and if the transaction succeeds, a CDI Payment Event is fired. The event is then picked up an CDI Observer bean which then uses the JavaSender API to sends a notification back to client.
+
+Payment.java
+
+[source,java]
+----
+ public class Payment {
+
+    private String userAlias;
+    private BigDecimal amount;
+    private Date datetime;
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public Date getUserAlias() {
+        return datetime;
+    }
+
+    public void setUserAlias(String userAlias) {
+        this.userAlias = userAlias;
+    }
+}
+----
+
+PaymentResource.java
+
+[source,java]
+----
+ @Path("/payments")
+ public class PaymentResource {
+
+  @Inject
+  PaymentsProcessor processor;
+
+  @POST
+  @Consumes("application/json")
+  public Response pay(Payment payment) {
+    processor.pay(payment)
+
+    return Response.ok().build();
+  }    
+}
+----
+
+PaymentsProcessor.java
+
+[source,java]
+----
+@Stateless
+ public class PaymentsProcessor {
+
+    @Inject
+    Event<Payment> event;
+
+    public void pay(Payment payment) {
+        // process the payment
+        // ...
+
+        event.fire(payment);
+    }
+}
+----
+
+NotificationSender.java
+
+[source,java]
+----
+public class NotificationSender {
+
+  @Inject 
+  DefaultJavaSender sender;
+
+  void sendPaymentNotification(@Observes(during = AFTER_SUCCESS) Payment payment) {
+      Message message = new Message().builder()
+      .enableSound() 
+      .alert("Thank you for your payment!")
+      .alias(payment.getUserAlias())  // send to the user that did the payment
+      .build();
+
+      sender.send(message, "http://localhost:8080/ag-push", "7ed56ab4-c111-408c-842b-12396483730a")
+  }
+}
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
