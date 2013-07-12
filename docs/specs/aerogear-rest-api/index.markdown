@@ -231,4 +231,9 @@ When AeroGear-Security is used as the SecurityProvider for AeroGear-Controller, 
 ##### Failure status code and desciption #####
 * ```HTTP/1.1 400 Bad Request```  
     The request could not be understood by the server due to malformed syntax.
-* ```HTTP/1.1 401 Unauthorized```  
+* ```HTTP/1.1 401 Unauthorized``` 
+
+#### Note: 
+
+AeroGear Security comes with PicketLink servlet filters for Basic/Digest authentication, when enabled the endpoints above will be ignored
+and AeroGear Security will make use of PicketLink authentication system.
