@@ -10,7 +10,7 @@ Creating an iOS application
 Before we start, please install link:http://cocoapods.org/[CocoaPods].
 
 
-Afterwards, please clone this link:https://github.com/aerogear/aerogear-push-ios-demo[Sample Application]. It uses our _early_ SDK to register your _Variant Instance_ (the application on the device) with the iOS Variant you registered earlier!
+Afterwards, please clone this link:https://github.com/aerogear/aerogear-push-ios-demo[Sample Application]. It uses our SDK to register your application installation with the iOS Variant you registered earlier!
 
 Sample App
 ~~~~~~~~~~
