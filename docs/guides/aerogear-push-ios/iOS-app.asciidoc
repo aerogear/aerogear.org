@@ -10,7 +10,7 @@ Creating an iOS application
 Before we start, please install link:http://cocoapods.org/[CocoaPods].
 
 
-Afterwards, please clone this link:https://github.com/aerogear/aerogear-push-ios-demo[Sample Application]. It uses our _early_ SDK to register your _Mobile Variant Instance_ (the application on the device) with the iOS Variant you registered earlier!
+Afterwards, please clone this link:https://github.com/aerogear/aerogear-push-ios-demo[Sample Application]. It uses our _early_ SDK to register your _Variant Instance_ (the application on the device) with the iOS Variant you registered earlier!
 
 Sample App
 ~~~~~~~~~~
@@ -85,8 +85,8 @@ Now let's look at the important code section:
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {   // [2]
         
-        // You need to fill the 'Variant Id together with the 'Variant Secret'
-        // both received when performing the mobile variant registration with the server.
+        // You need to fill the 'Variant Id' together with the 'Variant Secret'
+        // both received when performing the variant registration with the server.
         [clientInfo setVariantID:@"402880e63ea239b9013ea23be9dc0004"];  // [3]
         [clientInfo setVariantSecret:@"45d23ff4-cba4-49f2-ab91-6ba5fd7d23b4"];  // [4]
 
