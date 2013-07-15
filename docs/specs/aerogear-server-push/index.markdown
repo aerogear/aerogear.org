@@ -1,23 +1,23 @@
 --- 
 layout: basic 
-title: AeroGear Unified Push Server 
+title: AeroGear UnifiedPush Server 
 ---
 
-# AeroGear Unified Push Server (Draft 0.0.3)
+# AeroGear UnifiedPush Server
 
-The _AeroGear Unified Push Server_ is a server that allows sending native push messages to different mobile operation systems. The initial version of the server supports [Apple's APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla's Simple Push](https://wiki.mozilla.org/WebAPI/SimplePush).
+The _AeroGear UnifiedPush Server_ is a server that allows sending native push messages to different mobile operation systems. The initial version of the server supports [Apple's APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla's Simple Push](https://wiki.mozilla.org/WebAPI/SimplePush).
 
 ## Motivation / Purpose
-The _AeroGear Native Push Server_ offers a _Notification Service API_ to different backend applications. This gives a server the ability to send _Push Notifications_ to mobile applications. The Notification Service API is a signaling mechanismn, like Apple APNs, Google Cloud Messaging or Mozilla SimplePush for sending messages. It's not suitable to be used as a data carrying system (e.g. use in a chat application).
+The _AeroGear UnifiedPush Server_ offers a _Notification Service API_ to different backend applications. This gives a server the ability to send _Push Notifications_ to mobile applications. The Notification Service API is a signaling mechanismn, like Apple APNs, Google Cloud Messaging or Mozilla SimplePush for sending messages. It's not suitable to be used as a data carrying system (e.g. use in a chat application).
 
 ### Some Usage Scenarios
 * MyWarehouseInc-backend can send "notification messages" to different "customer" groups (e.g. discounts for only iOS (or only Android) users).
 * MyInsuranceCorp-backend can send "notification messages" to different variants of its mobile Applications:
- * App for the Customers
- * App for the employed Sales Agents
-* Publishing Company
- * MyPublishing-Company-backend sends _update_ "notification messages" to all of its apps (free and premium - regardless of the mobile OS).
- * The arrival of "advanced content" is only notified to the paying customers (e.g. those that run the _premium_ app).
+  * App for the Customers
+  * App for the employed Sales Agents
+* Publishing Company:
+  * MyPublishing-Company-backend sends _update_ "notification messages" to all of its apps (free and premium - regardless of the mobile OS).
+  * The arrival of "advanced content" is only notified to the paying customers (e.g. those that run the _premium_ app).
 * A company has different backends (small/simple apps for different tasks) - and these different backends could be able to reach all (or some) of the company's mobile apps.
 
 
@@ -31,13 +31,13 @@ Before we get into details, it's important that we have a good lexicon.
 
 A logical construct that represents an overall mobile application (e.g. ```Mobile HR```).
 
-#### Mobile Variant
+#### Variant
 
-A mobile variant of the _Push Application_. There can be multiple variants for a _Push Application_ (e.g. ```HR Android```, ```HR iPad```, ```HR iPhone free```,  ```HR iPhone premium``` or ```HR Mobile Web```). A _Mobile Variant_ contains platform specific properties, such as a _Google API key_ (```Android```) or a PushNetwork URL (```SimplePush```).
+A variant of the _Push Application_. There can be multiple variants for a _Push Application_ (e.g. ```HR Android```, ```HR iPad```, ```HR iPhone free```,  ```HR iPhone premium``` or ```HR Mobile Web```). A _Variant_ contains platform specific properties, such as a _Google API key_ (```Android```) or a PushNetwork URL (```SimplePush```).
 
-#### Mobile Variant Instance
+#### Installation
 
-Represents an actual installation on a mobile device (e.g. _User1 connected via MobileWeb_ or _User2 runs **HR iPhone premium** on his phone_)
+Represents an actual installation on a mobile device / client (e.g. _User1 connected via MobileWeb_ or _User2 runs **HR iPhone premium** on his phone_)
 
 #### (Push) Notification Message
 
@@ -45,25 +45,26 @@ A simple message to be send to a mobile application, to notify it of a data chan
 
 #### Sender API
 
-Is a component that sends _Push Notification Messages_ to a ```Push Application``` or a ```Mobile Variants```. The message is then delivered to all (valid) ```Mobile Variant Instance```. It's also possible to use a _selected send_, for notifying a selected group of users (aka ```Mobile Variant Instance```). 
+Is a component that sends _Push Notification Messages_ to a ```Push Application``` or different ```Variants```. The message is then delivered to all (valid) ```Installations```. It's also possible to use a _selective send_, for notifying a selected group of users (aka ```Installations```). 
 
 #### Developer
 
-A _Developer_ is in charge of enabling Push Notifications for his different backend systems. For that he has to create a ```Push Application``` and one or more ```Mobile Variants``` on the _AeroGear Unified Push Server_.
+A _Developer_ is in charge of enabling Push Notifications for his different backend systems. For that he has to create a ```Push Application``` and one or more ```Variants``` on the _AeroGear UnifiedPush Server_.
 
-A _Developer_ will use the _Sender API_ to send "notification messages" to different ```Mobile Variant Instances```.
+A _Developer_ will use the _Sender API_ to send "notification messages" to different ```Installations```.
 
 #### User
 
-A user of an AeroGear ```Mobile Variant Instance```, which may consume notification messages.
+A user of an AeroGear ```Installation```, which may consume notification messages.
 
 
 ## Overview
 
-The _AeroGear Unified Push Server_ contains three different components:
-* Registration: _Registry for ```Push Applications```, ```Mobile Variants``` and  ```Mobile Variant Instances```_
-* Storage: _A database, storing the registered applications and instances_
-* Sender: _Receives messages and sends them to different ```Mobile Variant Instances```_
+The _AeroGear UnifiedPush Server_ contains three different components:
+
+* Registration: _Registry for ```Push Applications```, ```Variants``` and  ```Installations```_
+* Storage: _A database, storing the registered applications and installations_
+* Sender: _Receives messages and sends them to different ```Installations```_
 
 The graphic below gives a little overview:
 
@@ -71,9 +72,13 @@ The graphic below gives a little overview:
 
 ## Functionality 
 
+### Login
+
+ssss
+
 ### Registration 
 
-Three different registration types are provided by the _AeroGear Unified Push Server_.
+Three different registration types are provided by the _AeroGear UnifiedPush Server_.
 
 #### Push Application Registration
 
@@ -81,23 +86,25 @@ Adds a logical construct, that represents an overall mobile application (e.g. Mo
 
 * Name
 * Description
-* A collection of ```Mobile Variant```s
+* A collection of ```Variant```s
 
 The server offers an HTTP interfaces to apply a _Push Application_ registration:
 
-    curl -v -H "Accept: application/json" -H "Content-type: application/json"
-        -X POST
-        -d '{"name" : "MyApp", "description" :  "awesome app" }'
+    curl -v -b cookies.txt -c cookies.txt
+         -v -H "Accept: application/json" -H "Content-type: application/json"
+         -X POST
+         -d '{"name" : "MyApp", "description" :  "awesome app" }'
 
-    http://SERVER/applications
+    http://SERVER:PORT/context/rest/applications
 
-_The response returns an ID for the Push Application._
+_The response returns a JSON map, representing the Push Application._
 
-#### Mobile Variant Registration
+#### Variant Registration
 
-Adds a _mobile variant_ for an **existing** _Push Application_. There can be multiple variants for a _Push Application_ (e.g. HR Android, HR iPad, HR iPhone free, HR iPhone premium or HR Mobile Web).
+Adds a _variant_ for an **existing** _Push Application_. There can be multiple variants for a _Push Application_ (e.g. HR Android, HR iPad, HR iPhone free, HR iPhone premium or HR Mobile Web).
 
 The server supports the following variant types:
+
 * iOS
 * Android
 * SimplePush
@@ -111,16 +118,19 @@ An iOS variant represents a logical construct for one iOS application (e.g. ```H
 
 The server offers an HTTP interfaces to register an _iOS variant_:
 
-    curl -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
+    curl -v -b cookies.txt -c cookies.txt 
+         -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
+         -F "certificate=@/path/to/the/cert.p12"
+         -F "passphrase=TopSecret"
+         -F "description=An iPhone variant"
+         -F "name=HR for iPhone"
+         -X POST
 
-    -F "certificate=@/Users/matzew/Desktop/MyCert.p12"
-    -F "passphrase=TopSecret"
-
-    -X POST http://SERVER/applications/{PUSH_ID}/iOS
+    http://SERVER:PORT/context/rest/applications/{pushApplicationID}/iOS
 
 **NOTE:** The above is a _multipart/form-data_, since it is required to upload the "Apple Push certificate"!
 
-_The response returns an ID for the iOS variant._
+_The response returns a JSON map, representing the iOS variant._
 
 ##### Android Variant
 
@@ -132,11 +142,11 @@ The server offers an HTTP interfaces to register an _Android variant_:
 
     curl -v -H "Accept: application/json" -H "Content-type: application/json"
      -X POST
-     -d '{"googleKey" : "IDDASDASDSA"}'
+     -d '{"googleKey" : "IDDASDASDSA", "name" : "HR for Android", "description" :  "Android variant" }'
   
-     http://SERVER/applications/{PUSH_ID}/android 
+     http://SERVER:PORT/context/rest/applications/{pushApplicationID}/android
 
-_The response returns an ID for the Android variant.
+_The response returns a JSON map, representing the Android variant._
 
 ##### SimplePush Variant
 
@@ -148,147 +158,150 @@ The server offers an HTTP interfaces to register an _SimplePush variant_:
 
     curl -v -H "Accept: application/json" -H "Content-type: application/json"
       -X POST
-      -d '{"pushNetworkURL" : "http://localhost:7777/endpoint/"}'
+      -d '{"pushNetworkURL" : "http://localhost:7777/endpoint/", "name" : "HR mobile Web", "description" :  "SimplePush variant" }'
 
-      http://SERVER/applications/{PUSH_ID}/simplePush 
+      http://SERVER:PORT/context/rest/applications/{pushApplicationID}/simplePush 
 
-_The response returns an ID for the SimplePush variant._
+_The response returns a JSON map, representing the SimplePush variant._
 
 
-#### Mobile Variant Instance Registration
+#### Installation Registration
 
-Adds a _mobile variant instance_ to an existing _mobile variant_ (e.g. User1 runs HR-iPad on his device). It is possible that one user can have multiple devices. A _mobile variant instance_ contains the following properties:
+**Supported by Client SDKs:** Adds an _installation_ to an existing _variant_ (e.g. _User1 runs HR-iPad on his device_). It is possible that one user can have multiple devices. An _installation_ contains the following properties:
 
 ###### Required Data
 
-- **token**
+- **deviceToken**
 
-_The platform specific token, that identifies the device/application with the used push network, in order to deliver messages._
+_Identifies the device/user-agent within its Push Network._
 
-- **operatingSystem**
+- **variantID**
 
-_It is required for the device to submit it's exact name of the underlying OS._
+_The ID of the variant, where the client belongs to._
 
-- **osVersion**
+- **variantSecret**
 
-_It is required for the device to submit it's exact version of the underlying OS._
-
-- **Mobile Variation ID**
-
-_ID received when registering a ```Mobile Variant```. This ID needs to be submitted as a request header (```ag-mobile-variant```). **NOTE:** It is possible that this ID goes away, in favor for a digital signature in a future release_
+_Password of the actual variant._
 
 ###### Optional Data
 
-- **deviceType**
+- **deviceType:**
 
-_It is recommended to store the (exact) device type (e.g. ```phone``` vs ```tablet```)._
+_The device type of the device or the user agent._
 
-- **alias**
+- **mobileOperatingSystem:**
 
-_If the business application requires the conecpt of a user, the registration must submit an unique identifier (like a username), to identify the user. It is possible that one user has multiple devices._
+_The name of the underlying Operating System._
 
-- **category**
+- **osVersion:**
 
-_A logical group, useful when sending broadcast message to a certain "category"._
+_The version of the used Operating System._
 
-###### Business Data
+- **alias:**
 
-The above are technical information bits that are required to get a message to the device. This the app wants to send notification based on a criteria, the relevant data has to be stored in the business backend. This way the backend app is very flexible on the criterias (e.g. max salary, geolocation, number of children, etc). All this data is NOT directly related to the technical functionality of sending data. The usage of the AeroGear Pipe is **highly recommended** to store business data on the business backend.
+_Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
 
-The server offers an HTTP interfaces to register an _mobile variant instance_:
+- **category:**
 
-    curl -v -H "Accept: application/json" -H "Content-type: application/json" 
-      -H "ag-mobile-variant: {id}"
-      -X POST
-      -d '{
-         "alias" : "user@company.com", 
-         "token" : "someTokenString", 
-         "deviceType" : "ANDROID", 
-         "mobileOperatingSystem" : "android", 
-         "osVersion" : "4.0.1"
-       }'
+_Used tp apply a "tag". Mainly usful for the SimplePush channel(s)._
 
-    http://SERVER/registry/device 
 
-**NOTE**: Platform specific Client SDKs will be provided to submit the require data to the _AeroGear Unified Push Server_.
+##### REST APIs
 
-### Storage
+The server offers an HTTP interfaces to register an _installation_:
 
-A (configurable) database that stores all registered applications and instances.
+    curl -u "{MobileVariantID}:{secret}"
+        -v -H "Accept: application/json" -H "Content-type: application/json" 
+        -X POST
+        -d '{
+          "deviceToken" : "someTokenString",
+          "deviceType" : "iPad",
+          "mobileOperatingSystem" : "iOS",
+          "osVersion" : "6.1.2",
+          "alias" : "someUsername or email adress...",
+          "category" : "football"
+         }'
+
+    http://SERVER:PORT/context/rest/registry/device
+
+**NOTE**: Platform specific Client SDKs are provided to submit the require data to the _AeroGear UnifiedPush Server_.
 
 ### Sender
 
-HTTP interface that receives messages for a delivery to different Mobile Push Networks. A few different _Sender Types_ are supported by the push server.
+The RESTful APIs for sending Push Notifications to different Mobile Push Networks. A few different _Sender Types_ are supported by the push server.
 
-#### Global Broadcast Sender
+#### Broadcast
 
-Sends a push message to all _mobile variants_ (and all of its _mobile variant intances_), of a given _Push Application_:
+Sends a push message to all _variants_ (and all of its _installations_), of a given _Push Application_:
 
-    curl -v -H "Accept: application/json" -H "Content-type: application/json" 
-      -X POST
-
-      -d '{"key":"blah", "alert":"HELLO!"}'
-   
-    http://SERVER/sender/broadcast/{PushApplicationID} 
-
-Sends a JSON map to the server. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear Unified Push Server_.
-
-#### Variant specific Broadcast
-
-Sends a push message to only one _mobile variants_ (and all of its _mobile variant intances_).:
-
-    curl -v -H "Accept: application/json" -H "Content-type: application/json" 
-       -X POST
-
-       -d '{"key":"blah", "alert":"HELLO!"}'
-   
-    http://SERVER/sender/broadcast/variant/{MobileVariantID} 
-
-
-Sends a JSON map to the server. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear Unified Push Server_.
-
-#### Selected Sender
-
-Sends a push message to a selected list of identified users (regardless of their variant):
-
-
-    curl -v -H "Accept: application/json" -H "Content-type: application/json" 
-       -X POST
-
-       -d '{
-           alias: ["user@foo.com", "bar@moz.org", ....],
-           message: {"key":"blah", "alert":"HELLO!"}
+    curl -u "{PushApplicationID}:{MasterSecret}"
+         -v -H "Accept: application/json" -H "Content-type: application/json" 
+         -X POST
+         -d '{
+           "alert":"HELLO!",
+           "sound":"default",
+           "badge":7,
+           "simple-push":"version=123",
+           "someKey":"some value",
+           "anotherCustomKey":"some other value"
          }'
-   
-    http://SERVER/sender/selected 
 
-The ```alias``` value is used to identied the desired users. The payload (```messages```) is a standard JSON map. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear Unified Push Server_.
+    http://SERVER:PORT/context/rest/sender/broadcast
+
+Sends a JSON map to the server. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
+
+#### Selective Send
+
+Sends a push message to a selected list of devices/clients, based on different query criterias:
+
+    curl -u "{PushApplicationID}:{MasterSecret}"
+         -v -H "Accept: application/json" -H "Content-type: application/json" 
+         -X POST
+       -d '{
+           "alias" : ["user@account.com", "someone@aerogear.org", ....],
+           "deviceType" : ["iPad", "AndroidTablet"],
+           "message": {
+               "alert":"HELLO!",
+               "sound":"default",
+               "badge":7,
+               "someKey":"some value",
+               "anotherCustomKey":"some other value"
+           },
+           "simple-push": {
+               "SomeCategory":"version=123",
+               "anotherCategory":"version=456"
+            }
+        }'
+
+    http://SERVER:PORT/context/rest/sender/broadcast
+
+The ```alias``` value is used to identied the desired users, while the ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
 
 ## Use Cases
 
-Below are the BASIC use-cases, that the _AeroGear Unified Push Server_ needs to _initially_ support. 
+Below are the BASIC use-cases, that the _AeroGear UnifiedPush Server_ needs to _initially_ support. 
 
 * Enroll ```Developer```
 * Remove ```Developer```
 * Developer can register a ```Push Application```
- * Developer can add a ```Mobile Variant``` for different operation systems
- * Developer can remove a ```Mobile Variant```
+  * Developer can add a ```Variant``` for different operation systems
+  * Developer can remove a ```Variant```
 * Developer can remove ```Push Application```
-* ```User``` registers his ```Mobile Variant Instance``` (see [here](https://gist.github.com/matzew/b918eb45d3f17de09b8f#mobile-variant-instance-registration)).
-* ```User``` unregisters his ```Mobile Variant Instance``` (e.g. app got deinstalled, user deleted etc)
-* ```User``` receives _Push Notification Messages_ (handled by the native OS, once accepted to receive messages) 
-* ```Developer``` send _Push Notification Messages_
-* ```Developer``` can disable Push Notifications to selected ```Mobile Variant Instance```s.
+* User registers his ```Installation```
+* User unregisters his ```Installation``` (e.g. app got deinstalled, user deleted etc)
+* User receives _Push Notification Messages_ (handled by the native OS, once accepted to receive messages) 
+* Developer send _Push Notification Messages_
+* Developer can disable Push Notifications to selected ```Installation```s.
 
 ### Enroll
 
 ##### Developer
 
-The **Developer** role is always registered with the _AeroGear Unified Push Server_ and a username/password combination is required.
+The **Developer** role is always registered with the _AeroGear UnifiedPush Server_ and a username/password combination is required.
 
 ##### User
 
-Not all mobile applications know the concept of a user (e.g. Sport Broadcast apps), but others do (e.g. Twitter). The ```User``` is never registered with the _AeroGear Unified Push Server_. The ```User``` lives in the ```Business Database```. In cases where the mobile app requires a ```User```, it is highly recommend to register an _alias_ with the ```Mobile Variant Instance```. See [here](https://gist.github.com/matzew/b918eb45d3f17de09b8f#optional-data) for more details.
+Not all mobile applications define the concept of a registered user (e.g. Sport Broadcast apps), but others do (e.g. Twitter). The ```User``` is never registered with the _AeroGear UnifiedPush Server_. The ```User``` lives in the ```Business Database```. In cases where the mobile app requires a ```User```, it is highly recommend to register an _alias_ with the ```Installation```.
 
 ### Remove
 
@@ -298,36 +311,36 @@ It should be possible to remove ```Devlopers``` from the Server.
 
 ##### User
 
-It should be possible to remove a ```Mobile Variant Instance```, so that it can no longer receive _Push Notification Messages_.
+It should be possible to remove a ```Installation```, so that it can no longer receive _Push Notification Messages_.
 
 
 ### Register Push Applications
 
-A ```Developer``` can register multiple ```Push Applications```. Each ```Push Application``` has a generated AeroGear-Application-Key (ID) to identify the "server side" representation of the Push-App. Each ```Push Application``` can have several ```Mobile Variants```.
+A ```Developer``` can register multiple ```Push Applications```. Each ```Push Application``` can have several ```Variants```.
 
-#### Add Mobile Variant
+#### Add Variant
 
-A ```Developer``` can add a ```Mobile Variant``` to an existing ```Push Application```.
+A ```Developer``` can add a ```Variant``` to an existing ```Push Application```.
 
 ### Remove Push Application
 
-A ```Developer```** should be able to remove a ```Push Application``` (including its ```Mobile Variant```).
+A ```Developer``` should be able to remove a ```Push Application``` (including its ```Variant```).
 
-### Remove Mobile Variant
+### Remove Variant
 
-A ```Developer```** should be able to remove a ```Mobile Variant```, of an existing ```Push Application```.
+A ```Developer``` should be able to remove a ```Variant```, of an existing ```Push Application```.
 
-### Mobile Variant Instance Registration
+### Installation Registration
 
-Once a ```User``` installs and launches the mobile application, the embedding OS generates a _Device-Token_ (or _Registration ID_(Android) or _ChannelID_ (SimplePush)). The application needs to send this ```token``` (and a few more pieces of information) to the _AeroGear Unified Push Server_ (See [here](https://gist.github.com/matzew/b918eb45d3f17de09b8f#mobile-variant-instance-registration)), in order to be able to receive Push Notification Messages.
+The mobile application needs to send his ```device-token``` (and some more metadata) to the _AeroGear UnifiedPush Server_, in order to be able to receive Push Notification Messages.
 
-### Remove Mobile Variant Instance
+### Remove Installation
 
 #### uninstall
-If an app gets uninstalled, the phone is no longer able to receive push messages. Therefore inactive ```Mobile Variant Instance``` should be removed, on the server. However... there is no harm if invalid keys are used, on the server, when trying to send push messages...
+If an app gets uninstalled, the phone is no longer able to receive push messages. Therefore inactive ```Installation``` should be removed, on the server. However... there is no harm if invalid keys are used, on the server, when trying to send push messages. They are ignored by the actual Push Networks.
 
 #### access removed
-Admin can disable push notifications for a specific ```Mobile Variant Instance```.
+Admin can disable push notifications for a specific ```Installation```.
 
 ### Receives Push Notification Messages
 
@@ -338,38 +351,29 @@ _**Note:** On iOS the user as to agree to receive push messages_
 ### Sending Push Notification Messages
 
 #### Broadcast
-The _AeroGear Unified Push Server_ acts as a broker to deliver _Push Notification Messages_ to several ```Mobile Variant Instances```. A ```developer``` can send _Push Notification Messages_ to a specific ```Push Application``` or ```Mobile Variant```.
+The _AeroGear UnifiedPush Server_ acts as a broker to deliver _Push Notification Messages_ to several ```Installations```. A ```developer``` can send _Push Notification Messages_ to a specific ```Push Application``` (including all ```Installations``` of the containing ```Variants```).
 
-#### Filtered/Selected messaging
+#### Selective Send
+The _AeroGear UnifiedPush Server_ acts as a broker to deliver _Push Notification Messages_ to several ```Installations```. A ```developer``` can send _Push Notification Messages_ to a specific ```Installations```, using query criterias, such as ```alias``` or ```deviceType```.
 
-Sending message to a specific ```Mobile Variant Instances```.... We need a DSL to filter users etc.... This will be done later...
+### API access
 
-#### In-APP messaging
+#### PushApplications and Variants
 
-Later, there will be an option to have the app (via client SDK) also submit _Push Notification Messages_, to broadcast to other ```Mobile Variant Instances``` of the app (or to a specific ```Mobile Variant Instances```).  This will be done later...
+The AeroGear Security Module is used to secure the endpoints for:
 
-## API access
+* Working with PushApplications
+* Working with Variants
 
-_Initial_ focus is that the above functionality is _ONLY_ accessable via  RESTful/HTTP APIs! 
+#### Installation Registration API
 
-For interaction with the API endpoints (for ```app registration``` and ```sending```) we need a proper sec/auth model/workflow. Perhaps something like OAuth...:
+HTTP Basic is used to secure the endpoint. Credentials: ```variantID:variantSecret```
 
-![oauth](https://developers.google.com/accounts/images/nativeflow.png)
+#### Sender API
 
-(Image from Google's developer network)
+HTTP Basic is used to secure the endpoint. Credentials: ```pushApplicationID:masterSecret```
 
-_**NOTE**: The User in the image is a **DEVELOPER** in our wordings..._
-
-### Device/Installation Registration
-
-TO DISCUSS 
 
 ### Client SDK / API
 
-An abstract client spec is in the works.
-
-Later we will have a few more SDKs:
-* Client APIs (for Android, iOS, JS/SimplePush)
-* Server APIs (send a push message out of your JavaEE app, without submitting (manually) the HTTP calls)
-
-
+The Client SDKs for ```Installation Regitration``` are tracked [here](http://aerogear.org/docs/specs/aerogear-client-push/)

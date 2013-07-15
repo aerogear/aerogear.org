@@ -3,21 +3,21 @@ layout: basic
 title: AeroGear Unified Push Server 
 ---
 
-# AeroGear UnifiedPush Registration Client Spec (DRAFT 0.0.3)
+# AeroGear UnifiedPush Registration Client Spec
 
 This document describes the functionality of a client SDK that works with the [AeroGear UnifiedPush Server](http://aerogear.org/docs/specs/aerogear-server-push/).
 
 ## Motivation / Purpose
 
-The [AeroGear UnifiedPush Server](http://aerogear.org/docs/specs/aerogear-server-push/) is accessible via HTTP. Instead of having to manually register a device (```MobileVariantInstance```) with the HTTP interface, a client library should be offered.
+The [AeroGear UnifiedPush Server](http://aerogear.org/docs/specs/aerogear-server-push/) is accessible via HTTP. Instead of having to manually register a device (```Installation```) with the HTTP interface, a client library should be offered.
 
-**Goal:** A client library to register a mobile application (```MobileVariantInstance```) with the UnifiedPush Server.
+**Goal:** A client library to register a mobile application (```Installation```) with the UnifiedPush Server.
 
 #### Background: Push Network Token
 
 To receive native push notifications from a Push Network (e.g. APNs, GCM or SimplePush), the mobile device is identified with a unique ```device-token```, assigned by the actual Push Network. This ```device-token``` is passed, by the underlying Operating-System, to the mobile application. Details are different on each platform and  **not** part of this document.
 
-The ```device-token``` needs to be registered with the _AeroGear UnifiedPush Server_, to indicate there is a new ```MobileVariantInstance``` for a ```MobileVariant```. More details about the server-side part of this can be found in the _AeroGear Unified Push Server_ [spec](http://aerogear.org/docs/specs/aerogear-server-push/).
+The ```device-token``` needs to be registered with the _AeroGear UnifiedPush Server_, to indicate there is a new ```Installation``` for a ```Variant```. More details about the server-side part of this can be found in the _AeroGear Unified Push Server_ [spec](http://aerogear.org/docs/specs/aerogear-server-push/).
 
 ## Functionality 
 
@@ -25,27 +25,30 @@ The ```device-token``` needs to be registered with the _AeroGear UnifiedPush Ser
 
 The client SDK offers the following features:
 
-* Registration and Updating of a ```MobileVariantInstance``` 
-* Unregistration of a ```Mobile Variant Instance``` (optional, due to platform specific restrictions)
+* Registration and Updating of a ```Installation``` 
+* Unregistration of a ```Installation``` (optional, due to platform specific restrictions)
 
-### Registration and Updating of a Mobile Variant Instance
+### Registration and Updating of a Installation
 
 Everytime when a mobile application launches it receives the above mentioned ```device-token```, via a _platform-specific_ method (or callback). Since the Push Network (e.g. APNs or GCM) _may_ assign a **new** token to a device, it is _recommended_ to _always_ (re)register the ```device-token``` with the _AeroGear UnifiedPush Server_.
 
-Besides the ```device-token``` the _AeroGear UnifiedPush Server_ is able to store some of the below device- or user-specific metadata:
+The required metadata for an ```Installation```:
 
 * **deviceToken:** _Identifies the device/user-agent within its Push Network._
+* **variantID:** _The ID of the variant, where the client belongs to_
+* **variantSecret:** _Password of the actual variant_
+
+The _AeroGear UnifiedPush Server_ is able to store some user-specific metadata as well:
+
 * **deviceType:** _The device type of the device or the user agent._
 * **mobileOperatingSystem:** _The name of the underlying Operating System._
 * **osVersion:** _The version of the used Operating System._
-* **alias:** _ Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
+* **alias:** _Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
 * **category:** _Used tp apply a "tag". Mainly usful for the SimplePush channel(s)._
-
-Besides the slight chance that the ```device-token`` may change, some of the above metadata is more likely to change. Therefore another reason to always send this metadata to the _AeroGear UnifiedPush Server_.
 
 #### Reachability
 
-The client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
+Internally, the client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
 
 ### Unregistration of client device information
 
@@ -55,7 +58,7 @@ _Optional_ method that helps to unregister the client device information with th
 
 #### Reachability
 
-The client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
+Internally, the client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
 
 ## Platform specific details 
 
