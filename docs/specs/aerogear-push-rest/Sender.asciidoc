@@ -60,7 +60,7 @@ Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-message
 ----
 {
   "alias" : ["user@account.com", "someone@aerogear.org", ....],
-  "category" : ["someCategory"],
+  "category" : "someCategory",
   "deviceType" : ["iPad", "AndroidTablet"],
   "message": {
     "alert":"HELLO!",

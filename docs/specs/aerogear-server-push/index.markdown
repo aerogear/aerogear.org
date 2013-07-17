@@ -259,7 +259,7 @@ Sends a push message to a selected list of devices/clients, based on different q
          -X POST
        -d '{
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
-		   "category" : ["someCategory"],
+		   "category" : "someCategory",
            "deviceType" : ["iPad", "AndroidTablet"],
            "message": {
                "alert":"HELLO!",
