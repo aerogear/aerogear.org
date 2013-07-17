@@ -56,7 +56,7 @@ A message is sent to a restricted number of ```Installations```, based on a give
        -X POST
        -d '{
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
-           "category" : ["someCategory"],
+           "category" : "someCategory",
            "deviceType" : ["iPad", "AndroidTablet"],
            "message": {
              "alert":"HELLO!",
