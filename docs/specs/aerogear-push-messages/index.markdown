@@ -62,7 +62,6 @@ A message is sent to a restricted number of ```Installations```, based on a give
              "alert":"HELLO!",
              "sound":"default",
              "badge":7,
-             "simple-push":"version=123",
              "someKey":"some value",
              "anotherCustomKey":"some other value"
            },
