@@ -259,6 +259,7 @@ Sends a push message to a selected list of devices/clients, based on different q
          -X POST
        -d '{
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
+		   "category" : ["someCategory"],
            "deviceType" : ["iPad", "AndroidTablet"],
            "message": {
                "alert":"HELLO!",
@@ -275,7 +276,7 @@ Sends a push message to a selected list of devices/clients, based on different q
 
     http://SERVER:PORT/context/rest/sender/broadcast
 
-The ```alias``` value is used to identied the desired users, while the ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
+The ```alias``` value is used to identied the desired users, while the ```cateogry``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
 
 ## Use Cases
 
