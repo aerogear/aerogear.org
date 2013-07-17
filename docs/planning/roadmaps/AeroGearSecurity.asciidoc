@@ -31,6 +31,9 @@ External References
 * AGJS-3: Initial support for OTP on JS 
 
 * AGSEC-48: Add Apache Shiro support on AeroGear Security
+  
+    ** AGSEC-62: Add session management support
+
 
 1.1.0 (Mid June)
 ~~~~~~~~~~~~~~~~
