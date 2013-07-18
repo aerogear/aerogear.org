@@ -9,7 +9,7 @@ This wiki page will give an overview of what hybrid applications are, what tools
 
 === What is a Hybrid Application
 
-The term "*_hybrid mobile application_*" can be a bit confusing for new developers  Hybrid apps, are native mobile applications that are built using technologies other than the native SDK's for the platforms.  Most of them claim "write once run anywhere", however the truth is more like "write almost once, and run almost anywhere".  As with most things there are different degrees of compatibility and tinkering that is required. 
+The term "*_hybrid mobile application_*" can be a bit confusing for new developers. Hybrid apps, are native mobile applications that are built using technologies other than the native SDK's for the platforms.  Most of them claim "write once run anywhere", however the truth is more like "write almost once, and run almost anywhere".  As with most things there are different degrees of compatibility and tinkering that is required. 
 
 image:img/app_types.png[]
 
@@ -44,11 +44,11 @@ A very neat tool developed by the PhoneGap team, which offers a service on-top o
 
 Project link: http://developer.appcelerator.com/
  
-Appcelerator is another leading hybrid application project.  There approach is to primarily use JavaScript programming language and their SDK to development your application.  They are then able to "compile" this down to native applications.  One benefit of this is more access to native UI widgets, and APIs.  The downside is a new SDK to learn, however they do provide there own tooling for that.
+Appcelerator is another leading hybrid application project.  There approach is to primarily use JavaScript programming language and their SDK to develop your application.  They are then able to "compile" this down to native applications.  One benefit of this is more access to native UI widgets, and APIs.  The downside is a new SDK to learn, however they do provide their own tooling for that.
  
 ==== Examples, tasks, and plans:
 
-* Appclerator example with JBoss - https://issues.jboss.org/browse/AEROGEAR-108[AEROGEAR-108]
+* Appcelerator example with JBoss - https://issues.jboss.org/browse/AEROGEAR-108[AEROGEAR-108]
 
 ==== Others
 
