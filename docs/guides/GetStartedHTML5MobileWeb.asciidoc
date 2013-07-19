@@ -25,9 +25,9 @@ Using JBoss tools is optional.  Any IDE that can generate and consume projects f
 
 An HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+, and note that some behaviors will vary slightly (ex. validations) based on browser support, especially IE 9.  For more details on AeroGear's target browser support see link:../AeroGearBrowserSupportTargets[AeroGear Browser Support Targets].
 
-Mobile web support is limited to Android and iOS devices for now, however it should run on HP, and Black Berry devices as well.  Windows Phone, and others will work as jQuery Mobile announces support.
+Mobile web support is limited to Android and iOS devices for now, however it should run on HP, and BlackBerry devices as well. Windows Phone, and others will work as jQuery Mobile announces support.
 
-As was mentioned before there are multiple ways to create this application from the Maven archetype.  The archetype is located in the Maven central repository so there is no need to follow any special Maven setup steps.
+As it was mentioned before, there are multiple ways to create this application from the Maven archetype.  The archetype is located in the Maven central repository so there is no need to follow any special Maven setup steps.
 
 Command Line
 ------------
