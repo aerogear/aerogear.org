@@ -16,7 +16,8 @@ This guide is geared toward using the command line, and it also assumes that git
 * Git
 ** link:http://git-scm.com/downloads[The latest Git version can be found at http://git-scm.com]
 * Android SDK
-* Need to have an AVD image running 2.3.3 (API level 10)
+* Need to have an AVD image running 4.2 (API level 17)
+* Need to include the Android Support Library.
 ** link:http://developer.android.com/sdk/index.html[The latest Android SDK and instructions to install]
 * Eclipse 4.2 with ADT plugin
 ** link:http://www.eclipse.org/downloads/[The latest Eclipse version is availble from the Eclipse Foundation]

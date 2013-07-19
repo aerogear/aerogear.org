@@ -17,7 +17,8 @@ After the library has been built, we will clone and run the https://github.com/a
 * Git
 ** link:http://git-scm.com/downloads[The latest Git version can be found at http://git-scm.com]
 * Android SDK
-** Need to have an AVD image running 4.1 (API level 16)
+** Need to have an AVD image running 4.2 (API level 17)
+** Need to include the Android Support Library.
 ** link:http://developer.android.com/sdk/index.html[The latest Android SDK and instructions to install]
 * NetBeans 7.2+
 
@@ -27,17 +28,17 @@ After the library has been built, we will clone and run the https://github.com/a
 
 We need to have the https://github.com/mosabua/maven-android-sdk-deployer[Android Maven SDK Deployer] installed and configured.  These are only quickstart instructions, the Android Maven SDK Deployer GitHub has a much more in depth install guide.
 
-You must have the version of the platform installed through the Android SDK as you are using for your profile.  In this example, make sure Android 4.1 is installed.
+You must have the version of the platform installed through the Android SDK as you are using for your profile.  In this example, make sure Android 4.2 is installed.
 
 [source,bash]
 ----
 git clone https://github.com/mosabua/maven-android-sdk-deployer.git
 cd maven-android-sdk-deployer
 export ANDROID_HOME=YOUR_ANDROID_SDK_DIRECTORY
-mvn install -P 4.1
+mvn install -P 4.2
 ----
 
-Now Maven will be able to include Android 4.1 as a dependency.  There are also profiles for other version of Android.
+Now Maven will be able to include Android 4.2 as a dependency.  There are also profiles for other version of Android.
 
 ==== Downloading and Opening the Project
 
