@@ -72,10 +72,6 @@ The graphic below gives a little overview:
 
 ## Functionality 
 
-### Login
-
-ssss
-
 ### Registration 
 
 Three different registration types are provided by the _AeroGear UnifiedPush Server_.
