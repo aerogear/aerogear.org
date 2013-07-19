@@ -8,7 +8,7 @@ title: AeroGear UnifiedPush Server
 The _AeroGear UnifiedPush Server_ is a server that allows sending native push messages to different mobile operation systems. The initial version of the server supports [Apple's APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla's Simple Push](https://wiki.mozilla.org/WebAPI/SimplePush).
 
 ## Motivation / Purpose
-The _AeroGear UnifiedPush Server_ offers a _Notification Service API_ to different backend applications. This gives a server the ability to send _Push Notifications_ to mobile applications. The Notification Service API is a signaling mechanismn, like Apple APNs, Google Cloud Messaging or Mozilla SimplePush for sending messages. It's not suitable to be used as a data carrying system (e.g. use in a chat application).
+The _AeroGear UnifiedPush Server_ offers a _Notification Service API_ to different backend applications. This gives a server the ability to send _Push Notifications_ to mobile applications. The Notification Service API is a signalling mechanism, like Apple APNs, Google Cloud Messaging or Mozilla SimplePush for sending messages. It's not suitable to be used as a data carrying system (e.g. use in a chat application).
 
 ### Some Usage Scenarios
 * MyWarehouseInc-backend can send "notification messages" to different "customer" groups (e.g. discounts for only iOS (or only Android) users).
@@ -71,10 +71,6 @@ The graphic below gives a little overview:
 ![components](./aerogear_unified_push_server.png)
 
 ## Functionality 
-
-### Login
-
-ssss
 
 ### Registration 
 
@@ -203,7 +199,7 @@ _Application specific alias to identify users with the system. For instance an `
 
 - **category:**
 
-_Used tp apply a "tag". Mainly usful for the SimplePush channel(s)._
+_Used to apply a "tag" for the registered ```Installation```._
 
 
 ##### REST APIs
@@ -259,6 +255,7 @@ Sends a push message to a selected list of devices/clients, based on different q
          -X POST
        -d '{
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
+		   "category" : "someCategory",
            "deviceType" : ["iPad", "AndroidTablet"],
            "message": {
                "alert":"HELLO!",
@@ -275,7 +272,7 @@ Sends a push message to a selected list of devices/clients, based on different q
 
     http://SERVER:PORT/context/rest/sender/broadcast
 
-The ```alias``` value is used to identied the desired users, while the ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
+The ```alias``` value is used to identify the desired users, while the ```category``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
 
 ## Use Cases
 
@@ -307,7 +304,7 @@ Not all mobile applications define the concept of a registered user (e.g. Sport 
 
 ##### Developer
 
-It should be possible to remove ```Devlopers``` from the Server.
+It should be possible to remove ```Developers``` from the Server.
 
 ##### User
 
@@ -376,4 +373,4 @@ HTTP Basic is used to secure the endpoint. Credentials: ```pushApplicationID:mas
 
 ### Client SDK / API
 
-The Client SDKs for ```Installation Regitration``` are tracked [here](http://aerogear.org/docs/specs/aerogear-client-push/)
+The Client SDKs for ```Installation Registration``` are tracked [here](http://aerogear.org/docs/specs/aerogear-client-push/)
