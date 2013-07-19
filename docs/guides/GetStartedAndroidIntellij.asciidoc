@@ -16,7 +16,8 @@ This guide is geared toward using the command line, and it also assumes that git
 * Git
 ** link:http://git-scm.com/downloads[The latest Git version can be found at http://git-scm.com]
 * Android SDK
-* Need to have an AVD image running 2.3.3 (API level 10) and up
+* Need to have an AVD image running 4.2 (API level 17) or higher
+* Need to include the Android Support Library.
 ** link:http://developer.android.com/sdk/index.html[The latest Android SDK and instructions to install]
 
 === Downloading and Importing AeroGear
@@ -52,7 +53,7 @@ image:img/android_intellij_import_004.png[Select profiles]
 
 image:img/android_intellij_import_005.png[Maven projects]
 
-* Select your preferred Android Platform (should be 2.3.3 and up)
+* Select your preferred Android Platform (should be 4.2 and up)
 
 image:img/android_intellij_import_006.png[Android Platform list]
 
