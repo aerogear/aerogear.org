@@ -26,6 +26,8 @@ The Cars JSON marshals to this object
 [source,java]
 ----
 public class Car {
+
+    @RecordId
     public Long id;
     public String make;
     public String model;
@@ -40,10 +42,10 @@ The easiest way to connect to this service with AeroGear would be
 
 [source,java]
 ----
-Pipe<Car> pipe = new RestAdapter<Car>(Car.class, new URL("http://www.server.com/"));
+Pipe<Car> pipe = new RestAdapter<Car>(Car.class, new URL("http://www.server.com/car"));
 ----
 
-And `pipe.read`, `pipe.readWithFilter`, `pipe.save`, and `pipe.remove` would all work as advertised with no extra work.  
+And `pipe.read`, `pipe.save`, and `pipe.remove` would all work as advertised with no extra work.  
 
 However, if we are calling this code from an Android Activity or Fragment, then we need to be aware of the link:http://developer.android.com/training/basics/activity-lifecycle/index.html[Android Activity lifecycle].  If the Application goes into the background (ex. the user gets a phone call), then any results which come in may be lost or cause an Exception if they interact with the UI of the suspended Activity.  If there is a configuration change (ex. the phone was rotated) then the Activity is destroyed and a new one is created.  If you used an anonymous inner class for your link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*] instance then you will lose your results when the operation completes (because anonymous inner classes have an implicit reference to the outer class).
 
