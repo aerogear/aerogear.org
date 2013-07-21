@@ -102,3 +102,34 @@ Now the pipe instance will be respectful of the Android lifecycle and calls to i
 
 `Pipeline.get` also works on *android.app.Fragment*, *android.support.v4.app.Fragment*, and *FragmentActivity*.
 
+Often a webservice will not quite match up to the default patterns supported by AeroGear.  For instance, the data may not be root element of a JSON response, the data source may require authentication, you may need to specify a specific endpoint, etc.  For these instances we use the *PipeConfig* object.
+
+[source,java]
+----
+public class MyActivity extends ListActivity {
+
+  Pipeline pipeline;
+
+  void onCreate() {
+
+     PipeConfig pipeConfig = new PipeConfig(new URL("http://www.server.com"), Car.class);
+     pipeConfig.setEndpoint("cars.json");
+
+     pipeline = new Pipeline("http://www.server.com");
+
+     pipeline.pipe(Car.class, pipeConfig);
+  }
+
+  void onStart() {
+
+     /*
+     By default, Pipeline.pipe stores the Pipe created by Pipeline.pipe
+     using a key which is the lowercase of the class the Pipe is marshaling.
+     */
+     LoaderPipe<Car> pipe = pipeline.get("car", this);
+     pipe.read(new MyCallback());//Will make a call to http://www.server.com/car.json
+  }
+}
+----
+
+The full set of options you can configure on *PipeConfig* are on the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*javadoc*] page.
