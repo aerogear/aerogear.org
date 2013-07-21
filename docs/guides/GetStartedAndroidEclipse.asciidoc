@@ -65,4 +65,8 @@ image:img/android_eclipse_import_005.png[Android Properties]
 
 image:img/android_eclipse_import_006.png[Android Properties]
 
+* And finally, add the support library (Android Tools-> Add Support Library)
+
+image:img/android_eclipse_import_007.png[Android Context Menu]
+
 * Voilà, everything is set - now have fun!	
