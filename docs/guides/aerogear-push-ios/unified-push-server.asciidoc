@@ -51,13 +51,17 @@ Time to register our iOS Variant. Prior to execute the following _curl_ command,
 [NOTE]
 The 'Content-type' is not an _application/json_ request. Here we simply need to upload the SSL Certificate, which we created earlier. This is used, together with the _Passphrase_ to allow the _AeroGear Unified Push Server_ to establish a connection to the Apple Push Network Service.
 
+You can register for a development variant or for a production one using the flag _production_.
+
 [source,c]
 ----
 curl -v -b cookies.txt -c cookies.txt 
-	-i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
-	-F "certificate=@/PATH/TO/EXPORTED/File.p12"
-	-F "passphrase=TopSecret"
-	-X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
+  -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
+  -F "certificate=@/Users/matzew/Desktop/MyTestCert.p12"
+  -F "passphrase=TopSecret"
+  -F "production=false"  // make sure you have Development certificate and Provisioning Profile
+
+  -X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
 ----
 
 The response returns a _variantID_ and a _secret_, that will be both used later on when registering your installation through the iOS client SDK so please make a note on them too.
