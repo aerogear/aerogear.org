@@ -5,7 +5,7 @@ title: Getting Started with Java Sender client API
 
 == Getting Started with Java Sender client API
 
-As of version x, AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit this link:http://aerogear.org/docs/specs/aerogear-server-push/[page] to get a general overview and also the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
+AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit this link:http://aerogear.org/docs/specs/aerogear-server-push/[page] to get a general overview and also the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
 
 === Installation
 
@@ -13,77 +13,118 @@ The library can be downloaded through the project link:https://github.com/aeroge
 
         <dependency>
             <groupId>org.jboss.aerogear.unifiedpush</groupId>
-            <artifactId>java-sender</artifactId>
-            <version>0.1.0</version>
+            <artifactId>unified-push-java-client</artifactId>
+            <version>0.2.0</version>
         </dependency>
 
 === API Overview
 
-The API is straightforward to use and consists of a single Class ```DefaultJavaSender``` with the following method signature:
+The API is straightforward to use and consists of the following interface:
+  
+[source,java]
+----
+public interface JavaSender {
+
+    /**
+     * Sends the given payload to all Mobile Variant Instances of the referenced PushApplication.
+     */
+    void broadcast(UnifiedMessage unifiedMessage);
+
+    /**
+     * Sends the given payload to a selection of Mobile Installations of the referenced PushApplication.
+     */
+    void sendTo(UnifiedMessage unifiedMessage);
+}
+----
+
+The _UnifiedMessage_ object passed as a parameter on those methods contain the actual notification payload. The object, as we will see in the example later on, utilizes the builder pattern to help you construct easily the payload.
+
+A concrete implementation of the _JavaSender_ interface can be found on the 'SenderClient' class, which internally uses _HttpURLConnection_ for the communication (but can easily be adopted to support other http providers).
+
+=== Broadcast send
+
+Let start now with a simple example of a 'broadcast' send, where the notification is send to all mobile variants registered under the Push Application ID: 
 
 [source,java]
 ----
-public void send(Message payload, String pushApplicationID, String masterSecret); 
+JavaSender sender = new SenderClient("http://localhost:8080/ag-push");       // [1]
+
+UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()                 // [2]
+                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")  
+                .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
+                .alert("Hello from Java Sender API!")
+                .sound("default")
+                .badge("1")
+                .attribute("some_key", "with_value")  // add a user defined attribute applicable to your context.
+                .simplePush("version=123")  // applicable for 'SimplePush' Variants only
+                .build();
+
+sender.broadcast(unifiedMessage);    // [3]
 ----
 
-The method takes as parameters a Message object that encapsulates the payload, as well as the ```application ID``` and the ```masterSecret```, both created when you registered your Application with the UnifiedPush server (see link:http://aerogear.org/docs/guides/aerogear-push-ios/unified-push-server/[here]).
+In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. In [2], we access the builder object and we use it to fill in the parameters. The _pushApplicationId_ and _masterSecret_ params help the UnifiedPush server to identify the particular Push Application installation you are interested in and are required to be present, otherwise there will be an error when trying to send. Further, support is provided with the help of the _attribute_ param, to attach on the notification arbitary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives.
 
-To easily create the Message payload, the API provides a convinient builder accessed by the builder() method in the ```Message``` class:
+=== Selected send
 
+To narrow down the list of the receipents, you are given the following options: (shown with the respective builder method)
+
+- narrow down by a specific mobile variant (e.g. HR Android, HR iPhone):
 [source,java]
 ----
-Message message = new Message().builder()
-  .enableSound() 
-  .alert("A simple notification message!")
-  .badge("2")
-  .attribute("somekey", "somevalue")  // attach an arbitary key-value pair specific to your business context.
-  .build()
+    variants("c3f0a94f-48de-4b77-a08e-68114460857e" /* HR_Premium */, "444939cd-ae63-4ce1-96a4-de74b77e3737" /* HR_Free */);
 ----
-
-This is the simplest form of a 'Broadcast' message. Once received by the server, it will be send to all mobile variants registered under the Push Application ID. 
-
-To narrow down the list of the receipents and perform a "selective send", you are given the following options: (shown with the respecive builder method)
-
-- narrow down by a specific mobile variant (e.g. HR Android, HR iPhone)
+- narrow down by specific alias, thus allowing to send a message directly to a specific mobile installation:
 [source,java]
 ----
-    variants("mobileVariantID1", "mobileVariantID2");
+    .aliases("john@somewhere.com", "maria@somewhere.com");
 ----
-- narrow down by specific alias, thus allowing to send a message directly to a specific mobile variant instance.
+- narrow down by a specific device type:
 [source,java]
 ----
-    .alias("john@somewhere.com", "maria@somewhere.com");
+    .deviceType("iPhone", "iPad_Mini");
 ----
-- narrow down by a specific deviceType
+- narrow down by a category:
 [source,java]
 ----
-    .deviceTypes("someDeviceType", "someOtherDeviceType");
-----
-- narrow down by a category
-[source,java]
-----
-   .categories("someCategory", "someOtherCategory");
+   .category("someCategory");
 ----
 
 As you realize from the list, the Sender API offers _tremendous_ flexiblity in supporting even the most complex schenarios. You can mix and match options to target a specific mobile audience. 
 
-Let's exercise the API with some examples:
-
-- Examples showing different schenarios
-
-
+Once the UnifiedMessage is build with your desired criterias, simply call the _sendTo_ method on the JavaSender to send the notification.
 
 
 === Integrating with Java EE
 
 The library can be used inside a Java EE environment to enable your enterpise applications to send notification messages to mobile clients, when e.g. a particular business event occurs. Let's see one approach of integration through an example of a PaymentGateway.
 
-A payment request is initiated through a REST endpoint. The endpoint delegates the processing to an EJB and if the transaction succeeds, a CDI Payment Event is fired. The event is then picked up an CDI Observer bean which then uses the JavaSender API to sends a notification back to client.
+A payment request is initiated through a REST endpoint. The endpoint delegates the processing to an EJB and if the transaction succeeds, a CDI Payment Event is fired. The event is then picked up from CDI Observer bean, which then uses the JavaSender API to send a notification back to client.
+
+[source,java]
+----
+/**
+ *  Various resource produces e.g. PersistentContext etc.
+ */
+public class Resources {
+
+    // ...
+
+    @Produces
+    @ApplicationScoped
+    public SenderClient getSenderClient() {
+       // initialize to point to the hostname of the running UnifiedPush server
+       return new SenderClient("http://localhost:8080/ag-push/");
+    }
+}
+----
 
 Payment.java
 
 [source,java]
 ----
+/**
+ * Models a payment
+ */
  public class Payment {
 
     private String userAlias;
@@ -112,6 +153,9 @@ PaymentResource.java
 
 [source,java]
 ----
+/**
+ *  A JAX-RS endpoint for clients to kickstart payment processing
+ */
  @Path("/payments")
  public class PaymentResource {
 
@@ -132,8 +176,11 @@ PaymentsProcessor.java
 
 [source,java]
 ----
+/**
+ *  The EJB responsible for processing the payment
+ */
 @Stateless
- public class PaymentsProcessor {
+public class PaymentsProcessor {
 
     @Inject
     Event<Payment> event;
@@ -151,24 +198,32 @@ NotificationSender.java
 
 [source,java]
 ----
+/**
+ * The class that listens for payment events 
+ * and responsible to send receipt notifications
+ */
 public class NotificationSender {
 
   @Inject 
-  DefaultJavaSender sender;
+  SenderClient sender;
 
   void sendPaymentNotification(@Observes(during = AFTER_SUCCESS) Payment payment) {
-      Message message = new Message().builder()
-      .enableSound() 
-      .alert("Thank you for your payment!")
-      .alias(payment.getUserAlias())  // send to the user that did the payment
-      .build();
+      UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()
+                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")  
+                .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
+                .alert("Thank you for your payment!")
+                .sound("default")
+                .aliases(Arrays.asList(payment.getUserAlias()))
+                .build();
 
-      sender.send(message, "http://localhost:8080/ag-push", "7ed56ab4-c111-408c-842b-12396483730a")
+      sender.sendTo(message)
   }
 }
 ----
 
+=== Conclusion
 
+The Sender API is simple and use to use, allowing you to connect to the UnifiedPush server and send notifications. It can be used both in your standalone applications or be embedded in a Java EE environment. Work is being done to port it to other languages too and if you are interested you can give us a hand too! Please join our link:https://lists.jboss.org/mailman/listinfo/aerogear-dev[developer mailing list] or find us on link:irc://irc.freenode.net/aerogear[IRC] and introduce yourself!
 
 
 
