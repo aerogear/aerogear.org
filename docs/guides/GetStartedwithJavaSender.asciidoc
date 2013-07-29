@@ -26,12 +26,12 @@ The API is straightforward to use and consists of the following interface:
 public interface JavaSender {
 
     /**
-     * Sends the given payload to all Mobile Installations of the referenced PushApplication.
+     * Sends the given payload to all installations of the referenced PushApplication.
      */
     void broadcast(UnifiedMessage unifiedMessage);
 
     /**
-     * Sends the given payload to a selection of Mobile Installations of the referenced PushApplication.
+     * Sends the given payload to a selection of installations of the referenced PushApplication.
      */
     void sendTo(UnifiedMessage unifiedMessage);
 }
