@@ -254,8 +254,9 @@ Sends a push message to a selected list of devices/clients, based on different q
          -v -H "Accept: application/json" -H "Content-type: application/json" 
          -X POST
        -d '{
+           "variants" : ["c3f0a94f-48de-4b77-a08e-68114460857e", "444939cd-ae63-4ce1-96a4-de74b77e3737" ....],
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
-		   "category" : "someCategory",
+           "category" : "someCategory",
            "deviceType" : ["iPad", "AndroidTablet"],
            "message": {
                "alert":"HELLO!",
@@ -272,7 +273,7 @@ Sends a push message to a selected list of devices/clients, based on different q
 
     http://SERVER:PORT/context/rest/sender/broadcast
 
-The ```alias``` value is used to identify the desired users, while the ```category``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
+The ```variants``` is a filter for notifying certain variants (e.g. HR Android, HR iPad etc.) of the PushApplication with the respective IDs. The ```alias``` value is used to identify the desired users, while the ```category``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
 
 ## Use Cases
 
