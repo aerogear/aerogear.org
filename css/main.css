@@ -1,0 +1,648 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==================================================================================================================
+   Base styles: opinionated defaults
+   ================================================================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==================================================================================================================
+   Chrome Frame prompt
+   ================================================================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==================================================================================================================
+   AeroGear custom styles for desktop
+   ================================================================================================================== */
+
+a {
+    color: #669eb2;
+}
+
+.basic a:hover {
+    opacity: 0.61;
+}
+
+h1,h2,h3,h4 {
+    color: #e25027;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.25em;
+    margin-top: 3em;
+}
+
+h4 {
+    font-size: 1em;
+    margin-top: 3em;
+}
+
+h2 + h3 {
+    margin-top: 0.875em;
+}
+
+h3 + h4 {
+    margin-top: 0.875em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #575653;
+}
+
+.clearfix {
+    clear: both;
+}
+
+/* =================== Nav bar ====================================================================================== */
+#main-header nav {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 110px;
+    background-color: #f2f2f2;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+    width: 100%;
+}
+
+#main-header ul {
+    list-style: none;
+}
+
+#main-header nav li {
+    display: inline-block;
+    margin: 0 1.2em;
+}
+
+#main-header nav li#download-btn {
+    display: none;
+}
+
+#main-header nav li a {
+    text-decoration: none;
+    font-size: 0.9em;
+    color: #7F7F7F;
+}
+
+#main-header nav li.selected a {
+    color: #373435;
+}
+
+nav a:hover {
+    border-bottom: 2px solid #669eb2;
+    color: #669eb2 !important;
+}
+
+/* =================== AeroGear title =============================================================================== */
+#logo {
+    height: 5.75em;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-image: url(/img/aerogear_logo.png);
+}
+
+a.news {
+    margin-top: -1.6em;
+    font-style: italic;
+    float: right;
+    color: #878787;
+    text-decoration: none;
+    margin-bottom: -1.3em;
+    padding-right: 0.4em;
+    text-align: right;
+}
+
+a.news:hover {
+    text-decoration: underline;
+}
+
+
+/* =================== Modules: iOS, JS, Cordova, Android sections ================================================== */
+.modules {
+    text-align: center;
+}
+
+.modules p,.modules h3 {
+    margin: 0 auto;
+}
+
+.modules .module {
+    text-align: center;
+    float: none;
+    display: inline-block;
+    margin-bottom: 1.4em;
+    text-decoration: none;
+}
+
+.module img {
+    width: 6em;
+    padding: 0.3em;
+}
+
+.module p {
+    color: #878787;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.module:hover img,.module:active img {
+    border: 5px #dadada solid;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.module.ios h3 {
+    color: #214067;
+}
+
+.module.android h3 {
+    color: #718927;
+}
+
+.module.web h3 {
+    color: #be420c;
+}
+
+.module.hybrid h3 {
+    color: #60625e;
+}
+
+/* =================== Bringing mobile together ===================================================================== */
+.start-header {
+    margin-top: 6em;
+    text-align: center;
+    margin-bottom: 0.8em;
+}
+
+.start-header .start-title {
+    color: #669eb2;
+    font-weight: 700;
+    font-size: 2em;
+    margin-bottom: 0.8em;
+    letter-spacing: -1px;
+}
+
+.start-header p {
+    font-size: 1em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.start-header strong {
+    font-style: italic;
+}
+
+/* =================== Main page content: features ================================================================== */
+.features p {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.features h3 {
+    margin-top: 0;
+}
+
+.feature {
+    margin: 3em auto;
+    max-width: 60em;
+}
+
+.feature .description {
+    float: left;
+}
+
+.feature .description p {
+    margin: 0.75em 0;
+}
+
+.feature .illustration {
+    float: right;
+    width: 18.75em;
+    text-align: center;
+}
+
+.feature .illustration img {
+    border-left: 1px #dadada solid;
+}
+
+.feature .illustration.left {
+    float: left;
+}
+
+.feature .illustration.left img {
+    border-right: 1px #dadada solid;
+    border-left: none;
+}
+
+
+/* =================== Footer ======================================================================================= */
+/*footer.container {*/
+    /**/
+    /*padding: 40px;*/
+    /*-moz-box-sizing: border-box;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-o-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+    /*border-top: 1px solid #CCC;*/
+/*}*/
+
+footer {
+    background-color: #f2f2f2;
+    border-top: 1px #dadada solid !important;
+    /*max-width: 60em;*/
+    padding: 0 2.5em;
+    margin-top: 1.25em;
+
+}
+
+footer #container {
+
+}
+
+footer h3 {
+    margin-top: 0.5em
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .column {
+    float: left;
+    min-width: 10em;
+    padding-right: 1.12em;
+    margin-right: 1.12em;
+}
+
+footer .column:last-child {
+    float: left;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+footer h3 {
+    margin-bottom: 15px;
+    color: #555 !important;
+}
+
+footer h3.twitter-notFound {
+    font-size: 1.25em;
+    text-align: left;
+}
+
+footer p,footer ul {
+    margin: 0;
+}
+
+/* =================== Logos in Footer ============================================================================== */
+.logos {
+    clear: both;
+    padding: 0.5em;
+}
+
+.logos p {
+    font-size: 0.75em;
+    text-align: center;
+}
+
+.logos img {
+    margin: 0.5em 0;
+}
+
+
+/* ==================================================================================================================
+    AeroGear custom styles for Tablets
+    For small than 850 px
+===================================================================================================================== */
+
+@media only screen and (max-width: 53em) {
+
+    /* =================== Main page content: features ============================================================== */
+    .feature {
+        max-width: 45em;
+    }
+
+}
+
+/* ==================================================================================================================
+    AeroGear custom styles for Phone
+    For small than 560 px
+===================================================================================================================== */
+
+@media only screen and (max-width: 35em) {
+    /* =================== Modules: iOS, JS, Cordova, Android sections ============================================== */
+    .module {
+        width: 35%;
+    }
+
+    a.fixed {
+        display: none !important;
+    }
+
+    /* =============== Main page content: features ================================================================== */
+    .feature img {
+        display: none;
+    }
+
+    .feature .description p {
+        margin: 0.75em 1em;
+    }
+    .features h3 {
+        margin: 0 0.5em;
+    }
+}
+
+
+
+
+
+
+/* ==================================================================================================================
+   Helper classes
+   ================================================================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==================================================================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ================================================================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==================================================================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ================================================================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

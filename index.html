@@ -3,95 +3,67 @@ layout: base
 title: Open Source Libraries for Mobile Connectivity
 ---
 
-<div class="clearfix">
-    <div class="start-header">
-        <div class="start-title">Bringing Mobile and<br class="title-break"><span class="title-line2"> Enterprise Together!</span></div>
-        <p>Libraries to <strong>simplify</strong> and <strong>unify</strong> mobile development across different platforms.</p>
-    </div>
+<div class="start-header" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <div class="start-title">Bringing Mobile and Enterprise Together!</div>
+    <p>Libraries to <strong>simplify</strong> and <strong>unify</strong> mobile development across different platforms.</p>
 </div>
-<div class="home-content">
-    <div class="row-fluid modules">
-        <div class="span3 module">
-            <div>
-                <a href="/javascript/">
-                    <img src="img/js-logo.png"/>
-                    <h2>JavaScript</h2>
-                </a>
-            </div>
-        </div>
-        <div class="span3 module">
-            <div>
-                <a href="/ios/">
-                    <img src="img/ios-logo.png"/>
-                    <h2>Objective-C</h2>
-                </a>
-            </div>
-        </div>
-        <br class="title-break">
-        <div class="span3 module">
-            <div>
-                <a href="/android/">
-                    <img src="img/android-logo.png"/>
-                    <h2>Android</h2>
-                </a>
-            </div>
-        </div>
-        <div class="span3 module">
-            <div>
-                <a href="/cordova/">
-                    <img src="img/cordova-logo.png"/>
-                    <h2>Hybrid</h2>
-                </a>
-            </div>
-        </div>
+
+<div>
+    <div class="modules">
+        <a href="/ios/" class="module ios">
+            <img src="img/ios-logo.png" alt="iOS">
+            <h3>iOS</h3><p>Objective-C</p>
+        </a>
+        <a href="/android/" class="module android">
+            <img src="img/library_android.png" alt="Android">
+            <h3>Android</h3><p>Java</p>
+        </a>
+        <a href="/javascript/" class="module web">
+            <img src="img/js-logo.png" alt="Web">
+            <h3>Web</h3><p>Javascript</p>
+        </a>
+        <a href="/cordova/" class="module hybrid">
+            <img src="img/cordova-logo.png" alt="Hybrid">
+            <h3>Hybrid</h3><p>Cordova</p>
+        </a>
     </div>
-    <div class="latest-news">
-        <div>
-           Latest News : <a href="{{ site.posts.first.url }}">{{ site.posts.first.title }}</a>
+
+    <div class="features">
+        <div class="feature">
+            <div class="description">
+                <div class="illustration"><img src="img/feature_1.png" alt=""></div>
+                <h3>Unify mobile development</h3>
+                <p>AeroGear provides flexible and extensible libraries to simplify mobile development across platforms and cut common repetitive infrastructure tasks. Integrate with the most exotic of endpoints.</p>
+                <p><a href="/download/">Learn more</a></p>
+            </div>
+            <div class="clearfix"></div>
         </div>
-    </div>
-    <div class="home-accordion">
-        <div class="accordion-group">
-            <div class="accordion-title" data-toggle="collapse" data-target="#home-collapse1" data-parent=".home-accordion">
-                <h2><i class="icon-circle-arrow-right"></i> Mobilize enterprise applications seamlessly</h2>
+        <div class="feature">
+            <div class="description">
+                <div class="illustration left"><img src="img/feature_2.png" alt=""></div>
+                <h3>Simple API</h3>
+                <p>Talking to <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> backends couldn't be easier. We've abstracted all of the plumbing into a simple programmatic API for doing <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations and paginating large amounts of data.</p>
+                <p><a href="/docs/specs/">Browse API documentation</a></p>
             </div>
-            <div id="home-collapse1" class="row-fluid collapse in">
-                <div class="span8">
-                    <div class="image-container"><img src="img/code.jpg"/></div>
-                </div>
-                <div class="span4">
-                    <p>Mobile development doesn't need to be boring. AeroGear helps to cut all the repetitive infrastructure tasks common to apps. Never bother with plain HTTP requests again!</p>
-                </div>
-            </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="accordion-group">
-            <div class="accordion-title" data-toggle="collapse" data-target="#home-collapse2" data-parent=".home-accordion">
-                <h2><i class="icon-circle-arrow-right"></i> Code efficiently with easy REST resources</h2>
+        <div class="feature">
+            <div class="description">
+                <div class="illustration"><img src="img/feature_3.png" alt=""></div>
+                <h3>Easy server routing</h3>
+                <p>Define HTTP routes with a simple Java Internal <a href="http://en.wikipedia.org/wiki/Domain-specific_language">Domain-Specific Language</a>. The perfect fit for client-heavy applications where you have very few entry points and delegate logic to the client tiers.</p>
+                <p><a href="/docs/guides/aerogear-controller/">Learn about AeroGear Controller</a></p>
             </div>
-            <div id="home-collapse2" class="row-fluid collapse in">
-                <div class="span6">
-                    <p>Integrating with REST backends couldn't be easier! AeroGear libraries abstract all the plumbing and gives you a simple programmatic API for doing CRUD operations, and paginate large amounts of data.</p>
-                    <p>The client libraries are flexible and extensible, making it possible to integrate with the most exotic endpoints.</p>
-                </div>
-                <div class="span6">
-                    <div class="image-container"><img src="img/puzzle.jpg"/></div>
-                </div>
-            </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="accordion-group">
-            <div class="accordion-title" data-toggle="collapse" data-target="#home-collapse3" data-parent=".home-accordion">
-                <h2><i class="icon-circle-arrow-right"></i> Your one-stop-shop for integrating with Java Backends</h2>
+        <div class="feature">
+            <div class="description">
+                <div class="illustration left"><img src="img/feature_4.png" alt=""></div>
+                <h3>Mobility and security, both</h3>
+                <p>Integrate with your existing enterprise environment. AeroGear provides Two-Factor Authentication and One-Time-Password features to improve your application's security.</p>
+                <p><a href="/docs/guides/aerogear-security/">Learn about AeroGear Security</a></p>
             </div>
-            <div id="home-collapse3" class="row-fluid collapse in">
-                <div class="span8">
-                    <div class="image-container"><img src="img/gears.png"/></div>
-                </div>
-                <div class="span4">
-                    <p>AeroGear Controller provides you with a simple Java internal DSL for defining HTTP routes programatically. The perfect fit for client-heavy applications where you have very few entry points and delegate logic to the client tiers.</p>
-                    <p>AeroGear Security helps you to integrate with your existing enterprise security environment.</p>
-                    <p>Need two-factor authentication on your mobile apps? AeroGear OTP provides an easy way of improving your application's security.</p>
-                </div>
-            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>
