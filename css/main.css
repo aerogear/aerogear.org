@@ -332,20 +332,9 @@ a.news:hover {
 
 
 /* =================== Footer ======================================================================================= */
-/*footer.container {*/
-    /**/
-    /*padding: 40px;*/
-    /*-moz-box-sizing: border-box;*/
-    /*-webkit-box-sizing: border-box;*/
-    /*-o-box-sizing: border-box;*/
-    /*box-sizing: border-box;*/
-    /*border-top: 1px solid #CCC;*/
-/*}*/
-
 footer {
     background-color: #f2f2f2;
     border-top: 1px #dadada solid !important;
-    /*max-width: 60em;*/
     padding: 0 2.5em;
     margin-top: 1.25em;
 
@@ -409,6 +398,24 @@ footer p,footer ul {
     margin: 0.5em 0;
 }
 
+/* =============== Side Navigation: hidden for desktop ============================================================== */
+#sideNav {
+    background: transparent;
+    width: 220px;
+    z-index: 1;
+    left: 10px;
+    top: 150px;
+    height: auto;
+    float: left;
+}
+
+#sideNav nav.site {
+    display: none;
+}
+
+#sideNav li a {
+    padding: 12px 0 0 10px;
+}
 
 /* ==================================================================================================================
     AeroGear custom styles for Tablets
@@ -450,6 +457,116 @@ footer p,footer ul {
     .features h3 {
         margin: 0 0.5em;
     }
+
+    /* =============== Display facebook icon on menu ================================================================ */
+    /*.social {*/
+        /*float: right;*/
+        /*margin-top: 6px;*/
+        /*margin-left: 8px;*/
+        /*width: 28px;*/
+        /*height: 28px;*/
+        /*border-radius: 3px;*/
+    /*}*/
+
+    /*.twitter {*/
+        /*background-image: url(/img/twitter_tile.png);*/
+    /*}*/
+
+    /*.google-plus {*/
+        /*background-image: url(/img/google_plus_tile.png);*/
+    /*}*/
+
+    /*.facebook {*/
+        /*background-image: url(/img/facebook_tile.png);*/
+    /*}*/
+
+    /*.twitter:hover {*/
+        /*background-image: url(/img/twitter_tile_hover.png);*/
+    /*}*/
+
+    /*.google-plus:hover {*/
+        /*background-image: url(/img/google_plus_tile_hover.png);*/
+    /*}*/
+
+    /*.facebook:hover {*/
+        /*background-image: url(/img/facebook_tile_hover.png);*/
+    /*}*/
+
+
+    /* =============== Side Navigation: accessible with swipe ======================================================= */
+
+    /*
+    * Display menu swipe button 'hamburger like' icon
+    */
+    .topcoat-icon-button--large--quiet {
+        position: absolute;
+        display: inline-block;
+        margin: 32px;
+        line-height: 3rem;
+    }
+
+    .topcoat-icon--large {
+        position: absolute;
+        display: inline-block;
+        vertical-align: top;
+        overflow: hidden;
+        width: 1.5rem;
+        height: 1.5rem;
+        vertical-align: middle;
+    }
+
+    .topcoat-icon--menu-stack {
+        background: url("/img/hamburger_light.svg") no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+    /*
+    * Swipe effect: shift by 250px
+    */
+    #site {
+        width: 100%;
+        position: absolute;
+        z-index: 10;
+        background: inherit;
+        left: 0;
+        transition: all 0.2s ease-out;
+        -webkit-transition: all 0.2s ease-out;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    #site.open {
+        transform: translate3d(200px, 0, 0);
+        -webkit-transform: translate3d(200px, 0, 0);
+    }
+
+    /*
+    * Display sidebar menu once clicked on hamburger button to open it
+    */
+    #sideNav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #sideNav li a {
+        color: #7F7F7F;
+        display: block;
+        height: 46px;
+        font-size: 16px;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 12px 0 0 20px;
+        text-decoration: none;
+    }
+    #sideNav nav.site, #sideNav  {
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        display: block;
+    }
+
 }
 
 

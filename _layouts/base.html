@@ -38,7 +38,20 @@
     <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
     <!--<script>window.jQuery || document.write( '<script src="/js/libs/jquery-1.7.2.min.js"><\/script>' )</script>-->
 </head>
-<body>
+<body >
+
+    <div id="sideNav" class="hidden">
+        <nav class="site">
+            <ul>
+                <li ><a href="/" class="">Home</a></li>
+                <li ><a href="/download" class="">Get started</a></li>
+                <li ><a href="/docs" class="">Documentation</a></li>
+                <li ><a href="/community" class="">Community</a></li>
+                <li ><a href="/news" class=" ">News</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <!--<div class="navbar navbar-fixed-top">-->
         <!--<div class="banner-home-link"></div>-->
         <!--<div class="navbar-inner">-->
@@ -98,29 +111,29 @@
             <!--</div>-->
         <!--</div>-->
     <!--</div>-->
-
-    <header id="main-header">
-        <div class="max-width">
+<div id="site">
+    <header >
+        <div id="main-header">
             <a href="/"><div id="logo"></div></a>
             <a  class="news fixed" href="{{ site.posts.first.url }}">Hey listen! {{ site.posts.first.title }}</a>
             <nav >
                 <ul >
                     <li ><a href="/" class="fixed">Home</a></li>
-                    <li ><a href="/download" class="">Get started</a></li>
-                    <li ><a href="/docs" class="">Documentation</a></li>
-                    <li ><a href="/community" class="">Community</a></li>
+                    <li ><a href="/download" class="fixed">Get started</a></li>
+                    <li ><a href="/docs" class="fixed">Documentation</a></li>
+                    <li ><a href="/community" class="fixed">Community</a></li>
                     <li ><a href="/news" class="fixed ">News</a></li>
-                    <li  >
-                        <a href="https://www.facebook.com/AeroGearProject"><div class="social facebook"></div></a>
-                        <a href="https://plus.google.com/106588661437153585722/posts"><div class="social google-plus"></div></a>
-                        <a href="https://www.twitter.com/aerogears"><div class="social twitter"></div></a>
-                    </li>
+                    <!--<li  >-->
+                        <!--<a href="https://www.facebook.com/AeroGearProject"><div class="social facebook"></div></a>-->
+                        <!--<a href="https://plus.google.com/106588661437153585722/posts"><div class="social google-plus"></div></a>-->
+                        <!--<a href="https://www.twitter.com/aerogears"><div class="social twitter"></div></a>-->
+                    <!--</li>-->
                 </ul>
                 <div class="clearfix"></div>
-            </nav><a id="slide-menu-button" class="topcoat-icon-button--large--quiet"><span class="topcoat-icon--large topcoat-icon--menu-stack"></span></a>
+            </nav>
         </div>
     </header>
-
+    <a id="slide-menu-button" class="topcoat-icon-button--large--quiet"><span class="topcoat-icon--large topcoat-icon--menu-stack"></span></a>
 
 
     <div> <!--class="container {% if page.url != '/index.html' %}inner-container{% endif %}"-->
@@ -205,8 +218,8 @@
         </div>
 
     </footer>
-
-
+</div>
+    <script src="/js/main.js"></script>
     <!--<script src="/js/libs/bootstrap.min.js"></script>-->
     <!--<script src="/js/libs/repo-modified.js"></script>-->
     <!--<script src="/js/libs/ba-linkify.min.js"></script>-->
