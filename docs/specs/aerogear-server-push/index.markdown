@@ -185,7 +185,7 @@ _Password of the actual variant._
 
 _The device type of the device or the user agent._
 
-- **mobileOperatingSystem:**
+- **operatingSystem:**
 
 _The name of the underlying Operating System._
 
@@ -212,7 +212,7 @@ The server offers an HTTP interfaces to register an _installation_:
         -d '{
           "deviceToken" : "someTokenString",
           "deviceType" : "iPad",
-          "mobileOperatingSystem" : "iOS",
+          "operatingSystem" : "iOS",
           "osVersion" : "6.1.2",
           "alias" : "someUsername or email adress...",
           "category" : "football"
