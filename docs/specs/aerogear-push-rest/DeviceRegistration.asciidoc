@@ -20,7 +20,7 @@ JSON Payload:
 {
   "deviceToken" : "someTokenString",
   "deviceType" : "iPad",
-  "mobileOperatingSystem" : "iOS",
+  "operatingSystem" : "iOS",
   "osVersion" : "6.1.2",
   "alias" : "someUsername or email adress...",
   "category" : "football"
@@ -45,7 +45,7 @@ On successful storage of the device related metadata:
   "id":"402880e43fa95bb3013fa960f9ee0002",
   "deviceToken":"someTokenString",
   "deviceType":"iPad",
-  "mobileOperatingSystem":"iOS",
+  "operatingSystem":"iOS",
   "osVersion":"6.1.2",
   "alias":"dude@dude.org",
   "category":"football"

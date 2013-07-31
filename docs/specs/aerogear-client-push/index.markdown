@@ -41,7 +41,7 @@ The required metadata for an ```Installation```:
 The _AeroGear UnifiedPush Server_ is able to store some user-specific metadata as well:
 
 * **deviceType:** _The device type of the device or the user agent._
-* **mobileOperatingSystem:** _The name of the underlying Operating System._
+* **operatingSystem:** _The name of the underlying Operating System._
 * **osVersion:** _The version of the used Operating System._
 * **alias:** _Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
 * **category:** _Used tp apply a "tag". Mainly usful for the SimplePush channel(s)._
