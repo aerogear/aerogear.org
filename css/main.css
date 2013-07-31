@@ -417,6 +417,10 @@ footer p,footer ul {
     padding: 12px 0 0 10px;
 }
 
+#slide-menu-button {
+    visibility: hidden;
+}
+
 /* ==================================================================================================================
     AeroGear custom styles for Tablets
     For small than 850 px
@@ -433,10 +437,10 @@ footer p,footer ul {
 
 /* ==================================================================================================================
     AeroGear custom styles for Phone
-    For small than 560 px
+    For small than 660 px
 ===================================================================================================================== */
 
-@media only screen and (max-width: 35em) {
+@media only screen and (max-width: 41em) {
     /* =================== Modules: iOS, JS, Cordova, Android sections ============================================== */
     .module {
         width: 35%;
@@ -498,29 +502,10 @@ footer p,footer ul {
     /*
     * Display menu swipe button 'hamburger like' icon
     */
-    .topcoat-icon-button--large--quiet {
-        position: absolute;
-        display: inline-block;
-        margin: 32px;
-        line-height: 3rem;
+    #slide-menu-button {
+        visibility: visible;
     }
 
-    .topcoat-icon--large {
-        position: absolute;
-        display: inline-block;
-        vertical-align: top;
-        overflow: hidden;
-        width: 1.5rem;
-        height: 1.5rem;
-        vertical-align: middle;
-    }
-
-    .topcoat-icon--menu-stack {
-        background: url("/img/hamburger_light.svg") no-repeat;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
-    }
     /*
     * Swipe effect: shift by 250px
     */
