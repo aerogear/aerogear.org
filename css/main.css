@@ -337,11 +337,7 @@ footer {
     border-top: 1px #dadada solid !important;
     padding: 0 2.5em;
     margin-top: 1.25em;
-
-}
-
-footer #container {
-
+    text-align: center;
 }
 
 footer h3 {
@@ -421,6 +417,83 @@ footer p,footer ul {
     visibility: hidden;
 }
 
+/* =============== Display facebook icon on footer ================================================================== */
+.social {
+    display: inline-block;
+    /*float: right;*/
+    margin-top: 6px;
+    margin-left: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.twitter {
+    background-image: url(/img/twitter_tile.png);
+}
+
+.google-plus {
+    background-image: url(/img/google_plus_tile.png);
+}
+
+.facebook {
+    background-image: url(/img/facebook_tile.png);
+}
+
+.doc {
+    background-image: url(/img/doc_tile.png);
+}
+
+.email {
+    background-image: url(/img/email_tile.png);
+}
+
+.github {
+    background-image: url(/img/github_tile.png);
+}
+
+.jira {
+    background-image: url(/img/jira_tile.png);
+}
+
+.irc {
+    background-image: url(/img/irc_tile.png);
+}
+
+.twitter:hover {
+    background-image: url(/img/twitter_tile_hover.png);
+}
+
+.google-plus:hover {
+    background-image: url(/img/google_plus_tile_hover.png);
+}
+
+.facebook:hover {
+    background-image: url(/img/facebook_tile_hover.png);
+}
+
+.doc:hover {
+    background-image: url(/img/doc_tile_hover.png);
+}
+
+.email:hover {
+    background-image: url(/img/email_tile_hover.png);
+}
+
+.github:hover {
+    background-image: url(/img/github_tile_hover.png);
+}
+
+.jira:hover {
+    background-image: url(/img/jira_tile_hover.png);
+}
+
+.irc:hover {
+    background-image: url(/img/irc_tile_hover.png);
+}
+
 /* ==================================================================================================================
     AeroGear custom styles for Tablets
     For small than 850 px
@@ -458,6 +531,7 @@ footer p,footer ul {
     .feature .description p {
         margin: 0.75em 1em;
     }
+
     .features h3 {
         margin: 0 0.5em;
     }
@@ -495,6 +569,7 @@ footer p,footer ul {
     /*.facebook:hover {*/
         /*background-image: url(/img/facebook_tile_hover.png);*/
     /*}*/
+
 
 
     /* =============== Side Navigation: accessible with swipe ======================================================= */
