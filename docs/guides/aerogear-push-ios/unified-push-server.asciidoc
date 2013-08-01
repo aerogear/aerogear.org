@@ -53,6 +53,7 @@ The 'Content-type' is not an _application/json_ request. Here we simply need to 
 
 You can register for a development variant or for a production one using the flag _production_.
 
+Add a _DEVELOPMENT_ Variant:
 [source,c]
 ----
 curl -v -b cookies.txt -c cookies.txt 
@@ -64,7 +65,19 @@ curl -v -b cookies.txt -c cookies.txt
   -X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
 ----
 
-The response returns a _variantID_ and a _secret_, that will be both used later on when registering your installation through the iOS client SDK so please make a note on them too.
+Add a _PRODUCTION_ Variant:
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt 
+  -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
+  -F "certificate=@/Users/matzew/Desktop/MyProdCert.p12"
+  -F "passphrase=TopSecret"
+  -F "production=true"  // make sure you have Production certificate and Provisioning Profile
+
+  -X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
+----
+
+Both commands return a _variantID_ and a _secret_, that will be both used later on when registering your installation through the iOS client SDK so please make a note on them too.
 
 Xcode
 ~~~~~
