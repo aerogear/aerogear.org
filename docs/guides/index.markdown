@@ -28,6 +28,7 @@ title: Guides
 * [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](HTML5ToHybridWithCordova)
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)
 * [Tutorial: iOS Push Notifications](aerogear-push-ios)
+* [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
 #### User Guides
 * [AeroGear Controller User Guide](aerogear-controller)
