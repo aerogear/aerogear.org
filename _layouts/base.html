@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
 		<title>AeroGear - {{page.title}}</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -12,13 +11,10 @@
 
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.atom"/>
-    <!--<link rel="stylesheet" href="/css/bootstrap-combined.min.css">-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,300,300italic,600italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
-
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!--<link rel="stylesheet" href="/css/style.css">-->
 
     <script src="/js/libs/modernizr-2.6.2.min.js"></script>
 		<script type="text/javascript">
@@ -35,7 +31,7 @@
 			})();
 
 		</script>
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <!--<script>window.jQuery || document.write( '<script src="/js/libs/jquery-1.7.2.min.js"><\/script>' )</script>-->
 </head>
 <body >
@@ -52,65 +48,6 @@
         </nav>
     </div>
 
-    <!--<div class="navbar navbar-fixed-top">-->
-        <!--<div class="banner-home-link"></div>-->
-        <!--<div class="navbar-inner">-->
-            <!--<div class="container">-->
-                <!--<a id="navButton" class="btn btn-navbar">-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                <!--</a>-->
-                <!--<div class="nav-collapse menu-closed hidden">-->
-                    <!--<div class="navbar navbar-inverse">-->
-                        <!--<div class="navbar-inner">Menu<i class="icon-circle-arrow-left menu-close-button"></i></div>-->
-                    <!--</div>-->
-                    <!--<ul class="nav">-->
-                        <!--<li>-->
-                            <!--<a href="/">Home</a>-->
-                        <!--</li>-->
-                        <!--<li class="{% is_active_navigation_item 'download' %}">-->
-                            <!--<a href="/download">Get the Gear</a>-->
-                        <!--</li>-->
-                        <!--<li class="dropdown {% if page.url contains '/docs' %}active{% endif %}{% if page.url contains '/examples' %}active{% endif %}" id="doc-menu">-->
-                            <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#doc-menu">Documentation <b class="caret"></b></a>-->
-                            <!--<ul class="dropdown-menu nav-box">-->
-                                <!--<li class="{% is_active_navigation_item '/docs/specs' %}">-->
-                                    <!--<a href="/docs/specs">API Docs</a>-->
-                                <!--</li>-->
-                                <!--<li class="{% is_active_navigation_item '/docs/guides' %}">-->
-                                    <!--<a href="/docs/guides">Guides & Tutorials</a>-->
-                                <!--</li>-->
-                                <!--<li class="{% is_active_navigation_item '/docs/planning' %}">-->
-                                    <!--<a href="/docs/planning">Road Map</a>-->
-                                <!--</li>-->
-                                <!--<li class="{% is_active_navigation_item '/examples' %}">-->
-                                    <!--<a href="/examples">Examples</a>-->
-                                <!--</li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                        <!--<li class="{% is_active_navigation_item '/news' %}">-->
-                            <!--<a href="/news">News</a>-->
-                        <!--</li>-->
-                        <!--<li class="{% is_active_navigation_item '/community' %}">-->
-                            <!--<a href="/community">Community</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="http://github.com/aerogear" target="_blank">Source</a>-->
-                        <!--</li>-->
-                        <!--<li class="dropdown" id="social-menu">-->
-                            <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#social-menu">Follow Us <b class="caret"></b></a>-->
-                            <!--<ul class="dropdown-menu social-menu">-->
-                                <!--<li><a class="twitter-image" href="http://twitter.com/aerogears" target="_blank"><img src="/img/twitter.png"/></a></li>-->
-                                <!--<li><a class="gplus-image" href="https://plus.google.com/106588661437153585722/posts" target="_blank"><img src="/img/gplus.png"/></a></li>-->
-                                <!--<li><a class="fb-image" href="https://www.facebook.com/AeroGearProject" target="_blank"><img src="/img/facebook.png"/></a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
 <div id="site">
     <header >
         <div id="main-header">
@@ -137,45 +74,8 @@
 
 
     <div> <!--class="container {% if page.url != '/index.html' %}inner-container{% endif %}"-->
-
         {{ content }}
-
     </div>
-    <!--<footer>-->
-        <!--<div>-->
-            <!--<h3><a href="http://twitter.com/AeroGears" target="_blank">@AeroGears</a></h3>-->
-            <!--<div id="aerogear-twitter">Loading tweets...</div>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<h3>News</h3>-->
-            <!--{% for post in site.posts %}-->
-            <!--<p><a href="{{ post.url }}">{{ post.title }}</a></p>-->
-            <!--{% endfor %}-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<h3>Find Your Way</h3>-->
-            <!--<p><a href="/docs">Documentation</a></p>-->
-            <!--<p><a href="/examples">Examples</a></p>-->
-            <!--<h3>Lend a Hand</h3>-->
-            <!--<p><a href="http://github.com/aerogear" target="_blank">Contribute</a></p>-->
-            <!--<p><a href="http://issues.jboss.org/browse/AEROGEAR" target="_blank">Report Issues</a></p>-->
-            <!--<p><a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev" target="_blank">Join the Mailing List</a></p>-->
-            <!--<p><a href="irc://irc.freenode.net/aerogear" target="_blank">Chat with the Team</a></p>-->
-        <!--</div>-->
-        <!--<div class="logos">-->
-            <!--<img src="/img/aerogear_logo_200px.png" class="footer-logo"/>-->
-            <!--<div>&copy; Copyright Red Hat, Inc.</div>-->
-            <!--<div>Code released under <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.</div>-->
-            <!--<img src="/img/jboss.png" class="footer-jboss"/>-->
-            <!--<div>AeroGear is a JBoss Community project and development is sponsored by Red Hat, Inc.</div>-->
-            <!--<div class="attribution">-->
-                <!--HTML5 Logo and Icons by <a href="http://www.w3.org/" target="_blank"><abbr title="World Wide Web Consortium">W3C</abbr></a><br>-->
-                <!--Abstract Color Gears Vector Graphic by <a href="http://webdesignhot.com" target="_blank">Vector Graphics</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 3.0</a><br>-->
-                <!--Scattered puzzle pieces next to solved fragment by <a href="http://www.flickr.com/photos/10361931@N06/4273913228" target="_blank">Horia Varlan</a>, <a href="http://creativecommons.org/licenses/by/2.0/deed.en" target="_blank">CC BY 2.0</a>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</footer>-->
-
 
     <footer>
         <div class="container">
@@ -203,12 +103,7 @@
                 <p><a href="">Google Plus</a></p>
                 <p><a href="">Facebook</a></p>
             </div>
-            <!--<div class="column">-->
-                <!--<h3><a href="http://twitter.com/AeroGears" target="_blank">@AeroGears</a></h3>-->
-                <!--<div id="aerogear-twitter">Loading tweets...</div>-->
-            <!--</div>-->
-
-        </div>
+         </div>
         <div class="clearfix"></div>
         <div class="logos">
             <p>AeroGear is a <a href="http://www.jboss.org/">JBoss Community</a> project and its development is sponsored by <a href="http://www.redhat.com/">Red Hat, Inc</a>. Project code is released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.</p>
