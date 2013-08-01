@@ -36,7 +36,7 @@ In the next screen confirm your new App ID, and double check that the _Push Noti
 
 image::./img/AppID_3.png[Overview]
 
-Here click the _Settings_ button and create a _Development SSL Certificate_:
+Here click the _Edit_ button and create a _Development SSL Certificate_:
 
 image::./img/SSLCert.png[SSL Certificate]
  
@@ -44,19 +44,39 @@ Inside of the next Dialog you are asked to upload the _Certificate Signing Reque
 
 image::./img/SSLCert_upload.png[CSR upload]
 
-Finishing the upload dialog, you are coming back to the overview of the *App ID*. Now you can download the *Development SSL Certificate* that Apple has created for you:
+Finishing the upload dialog, you are coming back to the overview of the *App ID*.
 
-image::./img/SSLCert_download.png[SSL Certificate download]
+image::./img/AppID_3.png[Overview]
 
-The file is being downloaded as _aps_developer_identity.cer_. Double click on it and it shows up in the *KeyChain Access* tool:
+*Now* Click _Edit_ button again and follow the same steps to create _Production SSL Certificate_.
+
+image::./img/SSLCertProd.png[SSL Certificate Production]
+
+Inside of the next Dialog you are *again* asked to upload the _Certificate Signing Request_ that we created earlier. Now perform an upload of the *same CSR* and click the _Generate_ button:
+
+image::./img/SSLCert_upload.png[CSR upload]
+
+Once you are done, you are coming back to the overview of the *App ID*.
+
+Click _Edit_ button again to download the *Development SSL Certificate* and *Production SSL Certificate* that Apple has created for you:
+
+image::./img/SSLCert_downloadProd.png[SSL Certificate download]
+
+The _Development SSL Certificate_ file is being downloaded as _aps_development.cer_. Double click on it and it shows up in the *KeyChain Access* tool:
 
 image::./img/PushCert.png[APNs certificate]
 
-Now you have to export this certificate/private key pair to the *.p12* (_Personal Information Exchange_): This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself on _Apple Push Network Service_ and send messages to it.
+Now you have to export this certificate/private key pair to the *.p12* (_Personal Information Exchange_): This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself for your *development* application on _Apple Push Network Service_ and send messages to it.
 
 image::./img/PushCert_Export.png[Export to .p12 format]
 
 When exporting the file, as your private key, you need to assing a passphrase for it. Make note on it, cause later when uploading it to the _AeroGear Push Server_ you will need both the exported file and the passphrase.
+
+Follow same steps to download the _Production SSL Certificate_, the file is being downloaded as _aps_production.cer_. Double click to add in your *KeyChain Access* tool:
+
+image::./img/PushCertProd.png[APNs Distribution certificate]
+
+Now export it to *.p12* (_Personal Information Exchange_).: This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself for your *production* application on _Apple Push Network Service_ and send messages to it. When exporting the file, as your private key, you need to assing a passphrase for it (this can be same or different with your passphrase for your development certificate). Make note on this one too, cause later when uploading it to the _AeroGear Push Server_ you will need both the exported file and the passphrase.
 
 Provisioning Profile
 ^^^^^^^^^^^^^^^^^^^^

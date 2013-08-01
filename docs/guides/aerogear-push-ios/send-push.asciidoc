@@ -13,7 +13,7 @@ A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the 
 ----
 curl -u "{pushApplicationID}:{masterSecret}"
    -v -H "Accept: application/json" -H "Content-type: application/json" 
-   -X POST -d '{"alert":"Hello AeroGear Unified Push!"}'
+   -X POST -d '{"alert":"Hello AeroGear Unified Push!", "badge":1}'
    http://localhost:8080/ag-push/rest/sender/broadcast
 ----
 
