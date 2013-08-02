@@ -2,7 +2,6 @@
 layout: basic
 title: News
 ---
-
 ## AeroGear News
 
 * [AeroGear 1.0.0 is out!](2013/03/28/aerogear-1.0.0-is-out/)

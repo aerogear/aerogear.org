@@ -93,6 +93,37 @@ textarea {
    AeroGear custom styles for desktop
    ================================================================================================================== */
 
+/* =================== custom fonts ================================================================================= */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'),
+    url(/font/DXI1ORHCpsQm3Vp6mXoaTeY5mlVXtdNkpsMpKkrDXP4.woff) format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'),
+    url(/font/MTP_ySUJH_bn48VBG8sNSuY5mlVXtdNkpsMpKkrDXP4.woff) format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'),
+    url(/font/PRmiXeptR36kaC0GEAetxnZ4362_PV5aPD5jU0S2ELI.woff) format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 600;
+    src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'),
+    url(/font/PRmiXeptR36kaC0GEAetxhyVJL_BP-r1aUfHSUUH87w.woff) format('woff');
+}
+
+/* =================== Standard elements ============================================================================ */
 a {
     color: #669eb2;
 }
@@ -108,16 +139,19 @@ h1,h2,h3,h4 {
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 2em;
+    /*margin: 2.5em 0 0em 0em;*/
 }
 
 h2 {
     font-size: 1.75em;
+    /*margin: 2.5em 0 0em 1em;*/
+
 }
 
 h3 {
     font-size: 1.25em;
-    margin-top: 3em;
+    /*margin-top: 3em;*/
 }
 
 h4 {
@@ -141,6 +175,16 @@ img {
 body {
     font-family: "Open Sans", sans-serif;
     color: #575653;
+}
+
+p {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    /*margin: 3em auto;*/
+    /*margin: 2.5em 0 0 0;*/
+    max-width: 60em;
 }
 
 .clearfix {
@@ -193,6 +237,11 @@ nav a:hover {
     background-repeat:no-repeat;
     background-position:center;
     background-image: url(/img/aerogear_logo.png);
+}
+
+.end-title {
+    /* keep space for grey menu bar*/
+    margin-bottom: 5.5em;
 }
 
 a.news {
@@ -333,6 +382,7 @@ a.news:hover {
 
 /* =================== Footer ======================================================================================= */
 footer {
+    clear:both;
     background-color: #f2f2f2;
     border-top: 1px #dadada solid !important;
     padding: 0 2.5em;
@@ -388,6 +438,7 @@ footer p,footer ul {
 .logos p {
     font-size: 0.75em;
     text-align: center;
+    max-width: 100%
 }
 
 .logos img {
@@ -494,18 +545,86 @@ footer p,footer ul {
     background-image: url(/img/irc_tile_hover.png);
 }
 
+/* =================== Content ====================================================================================== */
+.container {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    width:100%;
+}
+
+.basic, .post {
+    margin-left: 5%;
+}
+
+.row {
+    display:inline-block;
+    float:left;
+    width:100%;
+}
+
+.column {
+    width: 45%;
+    float: left;
+    display: inline-block;
+    /*margin-left: 2%;*/
+
+}
+
+pre {
+    background-color: #f2f2f2;
+    border: 1px #dadada dotted;
+    font-size: 0.7em;
+    margin-right: 5%;
+    padding-left: 2%;
+    white-space: pre;
+}
+
+/* =================== Custom Builder =============================================================================== */
+
+.builder-alert {
+    display: none;
+}
+
+.alert {
+    padding:8px 35px 8px 14px;
+    margin-bottom:18px;
+    margin-right:18px;
+    text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color:#fcf8e3;
+    border: 1px solid;
+}
+
+.alert-error {
+    background-color:#f2f2f2;
+    border-color:#e25027;
+    color:#e25027;
+}
+
+.desc {
+    padding:0;
+    font-style:italic;;
+    font-size: 0.75em;
+}
+
+
+
 /* ==================================================================================================================
-    AeroGear custom styles for Tablets
-    For small than 850 px
+   AeroGear custom styles for Tablets
+   For small than 850 px
 ===================================================================================================================== */
 
 @media only screen and (max-width: 53em) {
+
+    p {
+        max-width: 45em;
+    }
 
     /* =================== Main page content: features ============================================================== */
     .feature {
         max-width: 45em;
     }
-
 }
 
 /* ==================================================================================================================
@@ -514,6 +633,34 @@ footer p,footer ul {
 ===================================================================================================================== */
 
 @media only screen and (max-width: 41em) {
+
+    /* =================== Content ================================================================================== */
+
+    .row {
+        float:none;
+    }
+
+    .column {
+        width:90%;
+        float: none;
+        margin-right: 1%;
+        padding-left: 0.5%;
+    }
+
+    .column pre {
+        margin-right: 2%;
+    }
+
+    h1 {
+        font-size: 1.75em;
+        margin: 3em 0 0 0;
+    }
+
+    h2 {
+        font-size: 1.25em;
+    }
+
+
     /* =================== Modules: iOS, JS, Cordova, Android sections ============================================== */
     .module {
         width: 35%;
