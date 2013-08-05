@@ -235,13 +235,16 @@ nav a:hover {
 #logo {
     height: 5.75em;
     background-repeat:no-repeat;
-    background-position:center;
+    background-position:left;
     background-image: url(/img/aerogear_logo.png);
+    margin-left: 5%;
 }
 
 .end-title {
     /* keep space for grey menu bar*/
     margin-bottom: 5.5em;
+    max-width: 60em;
+    margin: 0 auto;
 }
 
 a.news {
@@ -438,7 +441,7 @@ footer p,footer ul {
 .logos p {
     font-size: 0.75em;
     text-align: center;
-    max-width: 100%
+    max-width: 100%;
 }
 
 .logos img {
@@ -609,21 +612,21 @@ pre {
 }
 
 
-
 /* ==================================================================================================================
    AeroGear custom styles for Tablets
    For small than 850 px
 ===================================================================================================================== */
 
-@media only screen and (max-width: 53em) {
+
+@media only screen and (max-width: 848px) {
 
     p {
-        max-width: 45em;
+        max-width: 720px;
     }
 
     /* =================== Main page content: features ============================================================== */
     .feature {
-        max-width: 45em;
+        max-width: 720px;
     }
 }
 
@@ -632,7 +635,11 @@ pre {
     For small than 660 px
 ===================================================================================================================== */
 
-@media only screen and (max-width: 41em) {
+@media only screen and (max-width: 656px) {
+
+    #logo {
+        background-position:center;
+    }
 
     /* =================== Content ================================================================================== */
 
@@ -775,10 +782,6 @@ pre {
     }
 
 }
-
-
-
-
 
 
 /* ==================================================================================================================
