@@ -41,7 +41,7 @@ image::./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profi
 Distribution Provisioning Profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to test Push Notifications on *production environment*, you need to create an _iOS App Distribution_ provisioning profile in the _Provisioning Portal_.
+In order to test Push Notifications on a *production environment*, you need to create an _iOS App Distribution_ provisioning profile in the _Provisioning Portal_.
 
 image::./img/Provisioning_profile_2.png[Distribution Profile]
 
