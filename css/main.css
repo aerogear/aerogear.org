@@ -140,18 +140,14 @@ h1,h2,h3,h4 {
 
 h1 {
     font-size: 2em;
-    /*margin: 2.5em 0 0em 0em;*/
 }
 
 h2 {
     font-size: 1.75em;
-    /*margin: 2.5em 0 0em 1em;*/
-
 }
 
 h3 {
     font-size: 1.25em;
-    /*margin-top: 3em;*/
 }
 
 h4 {
@@ -182,8 +178,6 @@ p {
     -webkit-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
-    /*margin: 3em auto;*/
-    /*margin: 2.5em 0 0 0;*/
     max-width: 60em;
 }
 
@@ -233,12 +227,6 @@ nav a:hover {
     border-bottom: 2px solid #669eb2;
     color: #669eb2 !important;
 }
-
-
-/*.nabble {*/
-    /*margin-top: 3em;*/
-/*}*/
-
 
 /* =================== AeroGear title =============================================================================== */
 #logo {
@@ -483,7 +471,6 @@ footer p,footer ul {
 /* =============== Display facebook icon on footer ================================================================== */
 .social {
     display: inline-block;
-    /*float: right;*/
     margin-top: 6px;
     margin-left: 8px;
     width: 40px;
@@ -505,26 +492,6 @@ footer p,footer ul {
     background-image: url(/img/facebook_tile.png);
 }
 
-.doc {
-    background-image: url(/img/doc_tile.png);
-}
-
-.email {
-    background-image: url(/img/email_tile.png);
-}
-
-.github {
-    background-image: url(/img/github_tile.png);
-}
-
-.jira {
-    background-image: url(/img/jira_tile.png);
-}
-
-.irc {
-    background-image: url(/img/irc_tile.png);
-}
-
 .twitter:hover {
     background-image: url(/img/twitter_tile_hover.png);
 }
@@ -535,26 +502,6 @@ footer p,footer ul {
 
 .facebook:hover {
     background-image: url(/img/facebook_tile_hover.png);
-}
-
-.doc:hover {
-    background-image: url(/img/doc_tile_hover.png);
-}
-
-.email:hover {
-    background-image: url(/img/email_tile_hover.png);
-}
-
-.github:hover {
-    background-image: url(/img/github_tile_hover.png);
-}
-
-.jira:hover {
-    background-image: url(/img/jira_tile_hover.png);
-}
-
-.irc:hover {
-    background-image: url(/img/irc_tile_hover.png);
 }
 
 /* =================== Content ====================================================================================== */
@@ -581,8 +528,6 @@ footer p,footer ul {
     width: 45%;
     float: left;
     display: inline-block;
-    /*margin-left: 2%;*/
-
 }
 
 pre {
