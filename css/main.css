@@ -259,7 +259,6 @@ a.news:hover {
     text-decoration: underline;
 }
 
-
 /* =================== Modules: iOS, JS, Cordova, Android sections ================================================== */
 .modules {
     text-align: center;
@@ -530,6 +529,18 @@ footer p,footer ul {
     display: inline-block;
 }
 
+.column3 {
+    width: 30%;
+    float: left;
+    display: inline-block;
+}
+
+.column4 {
+    width: 23%;
+    float: left;
+    display: inline-block;
+}
+
 pre {
     background-color: #f2f2f2;
     border: 1px #dadada dotted;
@@ -602,7 +613,7 @@ pre {
         float:none;
     }
 
-    .column {
+    .column, .column3, .column4 {
         width:90%;
         float: none;
         margin-right: 1%;
