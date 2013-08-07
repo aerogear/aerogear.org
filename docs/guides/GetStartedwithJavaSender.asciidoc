@@ -71,17 +71,17 @@ To narrow down the list of the recipients, you are given the following options: 
 - narrow down by a specific mobile variant (e.g. HR Android, HR iPhone):
 [source,java]
 ----
-    variants("c3f0a94f-48de-4b77-a08e-68114460857e" /* HR_Premium */, "444939cd-ae63-4ce1-96a4-de74b77e3737" /* HR_Free */);
+    variants(Arrays.asList("c3f0a94f-48de-4b77-a08e-68114460857e" /* HR_Premium */, "444939cd-ae63-4ce1-96a4-de74b77e3737" /* HR_Free */));
 ----
 - narrow down by specific alias, thus allowing to send a message directly to a specific mobile installation. Note that here we used an email address, but anything that helps to identify a user can be used (e.g. username, user ID, etc)
 [source,java]
 ----
-    .aliases("john@somewhere.com", "maria@somewhere.com");
+    .aliases(Arrays.asList("john@somewhere.com", "maria@somewhere.com"));
 ----
 - narrow down by a specific device type:
 [source,java]
 ----
-    .deviceType("iPhone", "iPad_Mini");
+    .deviceType(Arrays.asList("iPhone", "iPad_Mini"));
 ----
 - narrow down by a category:
 [source,java]
