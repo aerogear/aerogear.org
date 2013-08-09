@@ -5,7 +5,7 @@ title: AeroGear Security
 
 AeroGear Security Roadmap 
 =========================
-:Author: Bruno Oliveira and Jay Balunas
+:Author: Bruno Oliveira
 
 External References
 -------------------
@@ -15,18 +15,18 @@ External References
 * link:https://github.com/aerogear/aerogear-security-picketlink/[AeroGear Security PicketLink]
 * link:https://github.com/picketlink/[PicketLink GitHub]
 
-1.0.1
-~~~~~
+1.0.1 (_Released_ 12 Jun, 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Bug fixes on examples and updates on AeroGear Security
 
-* AGSEC-16: Support for multiple roles for AerogearUser
+* AGSEC-42: Digest authentication doesn't work on AG controller demo
 
-* AGSEC-29: Documentation with the overview and description on AeroGear Security
+* AGSEC-43: Basic & Digest filters can't coexist on ag-controller demo
 
-* AGSEC-36: Add a method to retrieve all registered users on the AuthenticationManager interface
+* AGSEC-44: Auth-Token is not being properly validated on AG Security
 
-* AGSEC-36: Add CRUD methods for AerogearUser
+* AGSEC-45: Provide a detailed specification about how to use OTP on JS
 
 * AGJS-3: Initial support for OTP on JS 
 
@@ -34,75 +34,89 @@ External References
   
     ** AGSEC-62: Add session management support
 
+* AGSEC-56: Update AeroGear Security with PicketLink beta3
 
-1.1.0 (Mid June)
-~~~~~~~~~~~~~~~~
+* AGSEC-63: Refactor AeroGear Security and Update to PicketLink beta4
 
-* AGSEC-13: Add HTTP basic authentication support to the client side
+1.0.2 (_Released_ 14 Jun, 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    ** AGDROID-27: Add HTTP basic authentication support on AeroGear Android
+* AGSEC-65: Login method returns false on a successful login
 
-    ** AGIOS-4: Add HTTP basic authentication support on AeroGear iOS
+1.1.0 (_Released_ 28 Jun, 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    ** AGJS-18: Add HTTP basic authentication support on AeroGear.js
-
-* AGSEC-18: Add session management support
-
-* AGSEC-27: Provide a detailed specification and which kind of authentication schemes will be supported
-
-* AGSEC-28: HOTP support
-
-    ** AGDROID-30: Add HOTP support to aerogear-otp-java 
-
-    ** AGIOS-1: Add HOTP support to aerogear-otp-ios
-    
-    
 * AGSEC-55: Various security tasks for the Unified Push server  
        
-    ** AGSEC-30: Unified Push (Add Client Access Key) 
-
-    ** AGSEC-33: Unified Push: Sec: Add OAuth component to PushEE
-
     ** AGSEC-34: Unified Push: Sec: Add Security Framework to PushEE
     
     ** AGSEC-50: Unified Push: Secure registration of Mobile Variant instance with the server
     
     ** AGSEC-51: Unified Push: Secure registration of Push Application
     
-    ** AGSEC-52: Unified Push: Secure registration of Mobile Variant    
+    ** AGSEC-52: Unified Push: Secure registration of Mobile Variant   
     
+    ** AGSEC-54: Unified Push: Secure http endpoint for sending push notification 
 
-1.2.0 (Mid August)
-~~~~~~~~~~~~~~~~~~
+* AGSEC-68: Add authorization support to AGPUSH
 
-* AGSEC-6: Encryption for mobile devices
+* AGSEC-69: Add class level authorization support to AGPUSH
 
-    ** AGDROID-34: Implementation and API usage for android crypto
+* AGSEC-70: Extract security bits from AGPUSH to AGSec
 
-    ** AGIOS-3: Implementation and API usage for iOS crypto
-    
-* AGSEC-15: Add HTTP digest authentication support to the client side
+* AGSEC-76: Update AeroGear Security Picketlink to beta5
 
-    ** AGDROID-10: Add HTTP digest authentication support on AeroGear Android
- 
-    
-    ** AGIOS-5: Add HTTP digest authentication support on AeroGear iOS	   
-    
-    ** AGIOS-6: Provide a parameter on iOS to enable/disable the usage of cookies
+1.1.1 (_Released_ 12 Jul, 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    ** AGJS-23: Add HTTP digest authentication support on AeroGear.js 
+* AGSEC-75: Bad Request (400) on "org.picketlink.idm.IdentityManagementException"
 
-* AGSEC-26: Authentication schemes for mobile devices
-    
+* AGSEC-80: Update dependent projects with AG PicketLink 1.1.1 after Maven central sync
+
+1.1.2 (_Released_ 7 Aug, 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* AGSEC-82: Add method to reset the password of a User in IDM
+
+* AGSEC-94: Add method to revoke user roles
+
+* AGSEC-95: Provide a method for credential matching
+
+* AGSEC-96: Update examples and projects depending of AGSec after the release
+
+.Note
+[NOTE] 
+This version was released to keep the API compatibility on the unified push server with PicketLink 2.5 Beta5
+
+1.2.0 (_Released_ 1 Aug, 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * AGSEC-49: Add Hawk support on AeroGear Security
 
-* AGSEC-55: Various security tasks for the Unified Push server  
-       
-    ** AGSEC-31: Unified Push: Evaluate non repudiation for each application on the server
-    
-    ** AGSEC-53: Unified Push: Secure Admin UI
-    
-    ** AGSEC-54: Unified Push: Secure http endpoint for sending push notification
+* AGSEC-60: Update AG-Sec-Spec for REST APIs
+
+* AGSEC-73: Basic authentication is not properly validating credentials
+
+* AGSEC-78: Add JavaDoc for Secure annotation
+
+* AGSEC-87: Add certificate validation support
+
+* AGSEC-91: Update all the dependent projects with the new release of AeroGear Security
+
+* AGSEC-92: Adding unit tests for empty passwords and certificates
+
+* AGSEC-93: Update AG Security PL with PicketLink beta6
+
+1.2.1 (Mid Aug)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* AGSEC-99: Update AeroGear Security to keep the API compatibility
+
+* AGSEC-100: Update AeroGear Security PicketLink with beta7
+
+* AGSEC-101: Update Unified Push server with AeroGear Security 1.2.1
+
+* AGSEC-102: Update the quickstarts and demos with 1.2.1 release
 
 1.3.0 (Mid October)
 ~~~~~~~~~~~~~~~~~~~
