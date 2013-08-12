@@ -2,36 +2,34 @@
 layout: basic
 title: Download
 ---
-	<div class="span12 custom-builder">
+	<div>
 	<h1>AeroGear.js Custom Builder <small id="version">v</small></h1>
     <p>Below you will be able to create and download a zip file of your custom build.  The zip file contains both the development and minified versions</p>
     <div class="alert alert-error builder-alert">
-      <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
       <strong>Error! </strong>Please make a selection
     </div>
-     <div class="loading-indicator"><img src="/img/ajax-loader.gif"></div>
+     <div class="loading-indicator"><img src="/img/loading.gif"></div>
 		<form name="builder" id="builder" class="builder loading" method="post">
             <div class="builder-content download-row"></div>
-            <div class="span12">
-                <input type="submit" value="Build My Download" class="buildBtn btn"> or 
+            <div class="clearfix"></div>
+            <div>
+                <input type="submit" value="Build My Download" class="buildBtn btn"> or
                 <a href="../../files/aerogear-js/aerogear.zip" class="btn">Give me everything</a>
             </div>
 		</form>
 		<div id="download" style="display:none"></div>
 	</div>
 	<script type="text/template" id="srcTemplate">
-        <div class="span4 group">
-            <h2 class='hed-cat'><%=groupLabel + ( componentsLength > 1 ? " <label class='select-all pull-right'> Select all <input type='checkbox' class='sel-all' name=select-all-" + group + " /></label> " : "" )  %>
-            </h2>
+        <div class="column">
+            <h3><%=groupLabel%>
+            </h3>
             <%=cat%>
         </div>
 	</script>
 	<script type="text/template" id="lineItemTemplate">
-        <li>
             <label class='component' for=<%=id%>><%=item.label%></label>
             <input type='checkbox' class='inc' id=<%=id%> name=<%=id + ( item.required ? " checked='checked' disabled='true'" : "") %>/>
             <p class='desc'><%=item.description%></p>
-        </li>
 	</script>
 	<script type="text/template" id="ulItemTemplate">
         <div>
