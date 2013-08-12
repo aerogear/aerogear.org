@@ -65,7 +65,7 @@ Failure status code and desciption
 The request requires authentication.
 
 Update Password (+HTTP PUT+)
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 JSON Payload:
 [source,json]
@@ -80,7 +80,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/auth/login
+http://server:port/context/rest/auth/update
 ----
 
 Success status code and returned body
