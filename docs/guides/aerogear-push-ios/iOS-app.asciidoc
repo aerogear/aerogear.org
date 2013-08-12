@@ -62,7 +62,7 @@ image:./img/PushDialog.jpg[iOS Push Dialoag]
 Once the user agrees, Push Messages can be received by the app!
 
 
-After making sure the user is asked to agree on receiving Push Messages, we need to implement the _application:didRegisterForRemoteNotificationsWithDeviceToken:_ from the _UIApplicationDelegate_ protocol. This is callback is _ALWAYS_ invoked when the user is allowing _Push Notifications_. It basically delegates the _DeviceToken_, that your device and the _Apple Push Network Service_ negotiated, to _AeroGear Push Server_ so that it can store it in a "Database" and use it to send messages to it. The _deviceToken_ basically identifies THIS phone with _APNs_.
+After making sure the user is asked to agree on receiving Push Messages, we need to implement the _application: didRegisterForRemoteNotificationsWithDeviceToken:_ from the _UIApplicationDelegate_ protocol. This is callback is _ALWAYS_ invoked when the user is allowing _Push Notifications_. It basically delegates the _DeviceToken_, that your device and the _Apple Push Network Service_ negotiated, to _AeroGear Push Server_ so that it can store it in a "Database" and use it to send messages to it. The _deviceToken_ basically identifies THIS phone with _APNs_.
 
 
 _Note: Mostly the token stays the same, but there are cases when it may change..._
@@ -123,7 +123,7 @@ Callbacks
 The _success_ callback is invoked, when the _AeroGear Unified Push Server_ was able to register your device with the given _iOS Variant_. Otherwise the _failure_ callback would be invoked. One case could be a wrong IP address....
 
 
-The _application:didFailToRegisterForRemoteNotificationsWithError:_ would be invoked if there is a problem in receving a token from _APNs_...
+The _application: didFailToRegisterForRemoteNotificationsWithError:_ would be invoked if there is a problem in receving a token from _APNs_...
 
 
 Test the app on your device
