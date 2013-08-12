@@ -1,66 +1,62 @@
 ---
 layout: basic
-title: Register the Device
+title: The AeroGear UnifiedPush Server
 ---
 
-Register the Device
--------------------
+The AeroGear UnifiedPush Server
+-------------------------------
 
-Now that we are all set up and ready to go, we need to interface with our PushEE server to get some registration data. This information is necessary in the next few steps.
+With all the Google work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to CGM for a later message sending.
 
-Log In
-~~~~~~
-The server currently requires user authentication. Make sure you have write capabilities in your working directory, to save the cookie.
+AeroGear Unified Push Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain one Android Variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
+
+For the purpose of the guide, we will fail back on the command line and the _CURL_ tool to perform the registrations with the server. In the near feature this won't be needed cause a Push Administration console would be used instead (currently in the works).
+
+=== Login to the server
+
+Prior to perform any work with the server, we need to login first. A temporary user 'admin:123' has already been configured, so let's use these credentials to login:
+
 [source,c]
 ----
-curl -v -b cookies.txt -c cookies.txt 
+curl -v -b cookies.txt -c cookies.txt
   -H "Accept: application/json" -H "Content-type: application/json" 
   -X POST -d '{"loginName": "admin", "password":"123"}'
-  http://localhost:8080/ag-push/rest/auth/login
+  http://localhost:8080/ag-push/rest/auth/login 
 ----
 
-Registration
-~~~~~~~~~~~~
+The server would respond with a 'HTTP/1.1 200 OK' status, which means that the login was succeeded. If not, check if you typed correctly the command and if the server is correctly setup. 
 
-The _AeroGear Unified Push Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Mobile Variants". For this tutorial we need to create a _Push Application_ which will contain one _Mobile Variant_. Details on the AeroGear Unified Push Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
+=== Register a Push Application 
 
-[source,c]
-----
-curl -v -b cookies.txt -c cookies.txt -v -H "Accept: application/json" -H "Content-type: application/json"
-  -X POST
-  -d '{"name" : "MyApp", "description" :  "awesome app" }'
-  http://localhost:8080/ag-push/rest/applications
-----
-
-The response returns a pushApplicationId, which you need to register a _Mobile Variant_ for Android:
-
-Android Variant
-~~~~~~~~~~~~~~~
-The next request will take the pushApplicationId for the application and register it as an _Android variant_. Use your Google API key obtained above as the googleKey value.
+Now that we are logged in, let's create a new _Push Application_ by executing the following _CURL_ command:
 
 [source,c]
 ----
 curl -v -b cookies.txt -c cookies.txt 
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST -d '{"name" : "AeroGear-Android-Push", "description" :  "My first Android Push App, that uses AeroGear" }'
+  http://localhost:8080/ag-push/rest/applications
+----
+ 
+The response returns a _pushApplicationID_ and a _masterSecret_. Make a note on these ID's cause we will use them later on.
+
+=== Register an Android Variant
+
+Time to register our Android variant. Prior to execute the following _CURL_ command, replace in the URL the _PUSH_ID_ with the _pushApplicationID_ you received earlier and change the _googleKey_ parameter to the Google API key you obtained earlier from the Google API console.
+
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt
   -v -H "Accept: application/json" -H "Content-type: application/json"
   -X POST
   -d '{"googleKey" : "IDDASDASDSA"}'
 
-  http://localhost:8080/ag-push/rest/applications/PUSH_ID}/android
+  http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/android
 ----
 
-This response returns a variantId for the Android variant
+The server would responsd with _variantID_ and a _secret_, that will be both used later on when registering your installation through the Android client SDK so please make a note on them too.
 
-Currently, AeroGear handles the registration of the application within the unifiedpush Registrar.java, so you have to configure a few fields within the PushEEDemo application itself.
-
-
-Configure the Parameters
-~~~~~~~~~~~~~~~~~~~~~~~~
-Now that we have our push ID and Android variant ID, we need to add them into the PushEEDemo project. These configurations can be found in MainApplication.java.
-
-image::img/mainactivity-adjust.png[MainActivity.java]
-
-
-Once you fill the details you are ready to run the application.
-
-*Finally, we can link:../push-notification[Send a Push Notification]*
-
+The server is now configured. Time to link:../android-app[create an Android application] that will use the AeroGear Android library to connect to the UnifiedPush server and start receiving notifications.
