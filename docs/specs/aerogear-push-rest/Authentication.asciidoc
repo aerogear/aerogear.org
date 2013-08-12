@@ -23,7 +23,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/rest/auth/login
+http://server:port/context/rest/auth/login
 ----
 
 Success status code and returned body
@@ -50,7 +50,7 @@ Success status code and returned body
 
 [source,c]
 ----
-http://server:port/context/rest/rest/auth/logout
+http://server:port/context/rest/auth/logout
 ----
 
 * +HTTP/1.1 200 OK+
@@ -80,7 +80,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/rest/auth/enroll
+http://server:port/context/rest/auth/enroll
 ----
 
 Success status code and returned body
