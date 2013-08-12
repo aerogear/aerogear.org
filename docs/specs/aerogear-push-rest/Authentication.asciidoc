@@ -80,7 +80,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/auth/enroll
+http://server:port/context/rest/admin/enroll
 ----
 
 Success status code and returned body
