@@ -201,6 +201,10 @@ _Application specific alias to identify users with the system. For instance an `
 
 _Used to apply a "tag" for the registered ```Installation```._
 
+- **simplePushEndpoint:**
+
+_SimplePush server endpoint which receives update requests for one SimplePush client/channel._
+
 
 ##### REST APIs
 
