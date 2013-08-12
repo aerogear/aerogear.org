@@ -46,8 +46,8 @@ Create a new class, name it 'PushApplication' and paste the following code:
 ----
 package com.push.pushapplication;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.jboss.aerogear.android.unifiedpush.PushConfig;
 import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
@@ -75,14 +75,14 @@ public class PushApplication extends Application {
         Registrations registrations = new Registrations();  // 1
 		
         try {
-            PushConfig config = new PushConfig(new URL(UNIFIED_PUSH_URL), GCM_SENDER_ID);  // 2
+            PushConfig config = new PushConfig(new URI(UNIFIED_PUSH_URL), GCM_SENDER_ID);  // 2
             config.setVariantID(VARIANT_ID);
             config.setSecret(SECRET);
             config.setAlias(MY_ALIAS);
 			
             registration = registrations.push("unifiedpush", config);  // 3
 
-        } catch (MalformedURLException e) {
+        } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }
