@@ -54,6 +54,7 @@ Internally, the client SDK needs to check if the device can establish a connecti
 ### Unregistration of client device information
 
 _Optional_ method that helps to unregister the client device information with the [AeroGear Unified Push Server](http://aerogear.org/docs/specs/aerogear-server-push/). **Note:** _The method is optional, since not all supported Push Networks recommend having a client application actively performing an _unregister_. Apple for instance has a ```Feedback Service```, which the _AeroGear Unified Push Server_ needs to frequently query for inactive tokens. Tokens, with Apple, are _inactive_ when the user:
+
 * Disables Push (Settings)
 * Deinstalls the app
 
