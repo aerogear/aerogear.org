@@ -44,22 +44,22 @@ The _AeroGear UnifiedPush Server_ is able to store some user-specific metadata a
 * **operatingSystem:** _The name of the underlying Operating System._
 * **osVersion:** _The version of the used Operating System._
 * **alias:** _Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
-* **category:** _Used tp apply a "tag"._
+* **category:** _Used to apply a "tag"._
 * **simplePushEndpoint:** _SimplePush specific Endpoint URL, which is used to send updates to the SimplePush server._
 
 #### Reachability
 
-Internally, the client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
+Internally, the client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachability of the services.
 
 ### Unregistration of client device information
 
-_Optional_ method that helps to unregister the client device information with the [AeroGear Unified Push Server](http://aerogear.org/docs/specs/aerogear-server-push/). **Note:** _The method is optional, since not all supported Push Networks recommend having a client application actively performing an _unregister_. Apple for instance has a ```Feedback Service```, which the _AeroGear Unified Push Server_ needs to freequently query for inactive tokens. Tokens, with Apple, are _inactive_ when the user:
+_Optional_ method that helps to unregister the client device information with the [AeroGear Unified Push Server](http://aerogear.org/docs/specs/aerogear-server-push/). **Note:** _The method is optional, since not all supported Push Networks recommend having a client application actively performing an _unregister_. Apple for instance has a ```Feedback Service```, which the _AeroGear Unified Push Server_ needs to frequently query for inactive tokens. Tokens, with Apple, are _inactive_ when the user:
 * Disables Push (Settings)
 * Deinstalls the app
 
 #### Reachability
 
-Internally, the client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachablility of the services.
+Internally, the client SDK needs to check if the device can establish a connection to the internet (PushNetwork and UnifiedPush Server). It should make use of the platform-specific APIs to check the reachability of the services.
 
 ## Platform specific details 
 
