@@ -44,7 +44,8 @@ The _AeroGear UnifiedPush Server_ is able to store some user-specific metadata a
 * **operatingSystem:** _The name of the underlying Operating System._
 * **osVersion:** _The version of the used Operating System._
 * **alias:** _Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
-* **category:** _Used tp apply a "tag". Mainly usful for the SimplePush channel(s)._
+* **category:** _Used tp apply a "tag"._
+* **simplePushEndpoint:** _SimplePush specific Endpoint URL, which is used to send updates to the SimplePush server._
 
 #### Reachability
 
