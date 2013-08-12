@@ -41,6 +41,8 @@ The format of the client request was incorrect (e.g. user session still active).
 * +HTTP/1.1 401 Unauthorized+
 Incorrect credentials applied.
 
+* +HTTP/1.1 403 Forbidden+
+Expired credentials applied.
 
 Logout (+HTTP POST+)
 ^^^^^^^^^^^^^^^^^^^^
@@ -61,6 +63,37 @@ Failure status code and desciption
 
 * +HTTP/1.1 401 Unauthorized+
 The request requires authentication.
+
+Update Password (+HTTP PUT+)
+^^^^^^^^^^^^^^^^^^^
+
+JSON Payload:
+[source,json]
+----
+{
+  "loginName" : "misterX",
+  "password" : "currentPassword",
+  "newPassword" : "theNewPassword"
+}
+----
+
+URL:
+[source,c]
+----
+http://server:port/context/rest/auth/login
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 200 OK+
+Indicates the password update has been successful.
+
+Failure status code and desciption
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+Incorrect credentials applied.
 
 Enroll new +Developer+ (+HTTP POST+)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
