@@ -185,6 +185,17 @@ p {
     clear: both;
 }
 
+/* CSS for markdown [NOTE] */
+.title  {
+    text-align: left;
+    font-weight: 700;
+}
+
+.icon  {
+    display: table-cell;
+    vertical-align: top;
+}
+
 /* =================== Nav bar ====================================================================================== */
 #main-header nav {
     display: inline-block;
@@ -464,7 +475,13 @@ footer p,footer ul {
 }
 
 #slide-menu-button {
+
     visibility: hidden;
+}
+
+a#slide-menu-button:hover {
+    text-decoration:none;
+    border-bottom: 0px
 }
 
 /* =============== Display facebook icon on footer ================================================================== */
