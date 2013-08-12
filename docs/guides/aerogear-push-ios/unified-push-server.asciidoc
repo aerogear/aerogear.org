@@ -1,18 +1,18 @@
 ---
 layout: basic
-title: The Unified Push Server
+title: The UnifiedPush Server
 ---
 
-The Unified Push Server
+The UnifiedPush Server
 -----------------------
 
 
 With all the Apple work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[Unified Push Server], so that it can be used to connect to APNs for a later message sending.
 
-AeroGear Unified Push Server
+AeroGear UnifiedPush Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The _AeroGear Unified Push Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain two _Variants_ (one for iOS _Development_ and one for iOS _Production_ app). Details on the AeroGear Unified Push Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
+The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain two _Variants_ (one for iOS _Development_ and one for iOS _Production_ app). Details on the AeroGear Unified Push Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
 
 For the purpose of the guide, we will fail back on the command line and the _curl_ tool to perform the registrations with the server. In the near feature this won't be needed cause a Push Administration console would be used instead (currently in the works).
 
