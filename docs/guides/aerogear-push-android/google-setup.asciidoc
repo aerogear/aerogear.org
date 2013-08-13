@@ -1,0 +1,39 @@
+---
+layout: basic
+title: Google setup
+---
+
+Google Related Setup
+--------------------
+
+Before the Android device is able to receive the notifications, you must authenticate yourself with Google as a developer. Luckily this is both easy and free to do, and doesn't require much set-up. Unlike iOS devices, you are able to test out your push notifications in either an emulator or on a real device.
+
+Registering with Google
+~~~~~~~~~~~~~~~~~~~~~~~
+
+First, we must authenticate with Google. Google offers the Google Cloud Messaging (GCM) platform, formerly known as Cloud to Device Messaging (C2DM). You will need a Google Account for this.
+
+- Firstly, you need to go to the https://code.google.com/apis/console/b/0/?pli=1[Google APIs Console] page.
+- If you haven't created a project, click ``Create Project...''
+- From the URL, grab the project ID (used later as the sender ID). This will be the numeric part of ``#project:000000000000''
+
+image::./img/url-project-id.png[Project ID/Sender ID from URL]
+- Next, you need to enable the GCM service, by going to ``Services'' and turn ``Google Cloud Messaging'' on.
+- Finally, we must obtain the API key. Select ``API Access'', then ``Create new Server Key''
+- For extra security, you may whitelist an IP address (or multiple) for the sending server
+
+image::img/api-key.png[Project ID/Sender ID from URL]
+
+Preparing the Application
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Prerequisites:
+
+- http://developer.android.com/sdk/index.html[Android SDK]
+- Google Cloud Messaging for Android Library (from SDK manager)
+- Android emulator or device
+
+Now that Google is ready to accept and deliver our messages, we need to create and enable our application to receive them.
+
+Now, we are ready to link:../android-app[create our Android app]
+

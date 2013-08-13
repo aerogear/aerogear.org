@@ -1,0 +1,66 @@
+---
+layout: basic
+title: Register the Device
+---
+
+Register the Device
+-------------------
+
+Now that we are all set up and ready to go, we need to interface with our PushEE server to get some registration data. This information is necessary in the next few steps.
+
+Log In
+~~~~~~
+The server currently requires user authentication. Make sure you have write capabilities in your working directory, to save the cookie.
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt 
+  -H "Accept: application/json" -H "Content-type: application/json" 
+  -X POST -d '{"loginName": "admin", "password":"123"}'
+  http://localhost:8080/ag-push/rest/auth/login
+----
+
+Registration
+~~~~~~~~~~~~
+
+The _AeroGear Unified Push Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Mobile Variants". For this tutorial we need to create a _Push Application_ which will contain one _Mobile Variant_. Details on the AeroGear Unified Push Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
+
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt -v -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST
+  -d '{"name" : "MyApp", "description" :  "awesome app" }'
+  http://localhost:8080/ag-push/rest/applications
+----
+
+The response returns a pushApplicationId, which you need to register a _Mobile Variant_ for Android:
+
+Android Variant
+~~~~~~~~~~~~~~~
+The next request will take the pushApplicationId for the application and register it as an _Android variant_. Use your Google API key obtained above as the googleKey value.
+
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt 
+  -v -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST
+  -d '{"googleKey" : "IDDASDASDSA"}'
+
+  http://localhost:8080/ag-push/rest/applications/PUSH_ID}/android
+----
+
+This response returns a variantId for the Android variant
+
+Currently, AeroGear handles the registration of the application within the unifiedpush Registrar.java, so you have to configure a few fields within the PushEEDemo application itself.
+
+
+Configure the Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~
+Now that we have our push ID and Android variant ID, we need to add them into the PushEEDemo project. These configurations can be found in MainApplication.java.
+
+image::img/mainactivity-adjust.png[MainActivity.java]
+
+
+Once you fill the details you are ready to run the application.
+
+*Finally, we can link:../push-notification[Send a Push Notification]*
+
