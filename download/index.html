@@ -28,9 +28,7 @@ title: Download
             <pre>
 &lt;dependency&gt;
   &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
-  &lt;artifactId&gt;
-    aerogear-android
-  &lt;/artifactId&gt;
+  &lt;artifactId&gt;aerogear-android&lt;/artifactId&gt;
   &lt;version&gt;1.1.0&lt;/version&gt;
   &lt;type&gt;apklib&lt;/type&gt;
 &lt;/dependency&gt;</pre>
@@ -44,25 +42,54 @@ title: Download
                 <pre>
 &lt;dependency&gt;
   &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
-  &lt;artifactId&gt;
-    aerogear-controller
-  &lt;/artifactId&gt;
+  &lt;artifactId&gt;aerogear-controller&lt;/artifactId&gt;
   &lt;version&gt;1.0.0&lt;/version&gt;
 &lt;/dependency&gt;</pre>
         </div>
         <div>
             <h2>AeroGear Security</h2>
-                iOS-OTP - 1.0.0 <a href="https://github.com/aerogear/aerogear-otp-ios/archive/1.0.0.zip" target="_blank">zip</a> / <a href="http://cocoapods.org/?q=AeroGear-OTP" target="_blank">cocoa pod</a><br/>
-                Java-OTP - 1.0.0<br/>
                 <i>Grab it from Maven Central</i><br/>
                 <pre>
 &lt;dependency&gt;
   &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
-  &lt;artifactId&gt;
-    aerogear-otp-java
-  &lt;/artifactId&gt;
+  &lt;artifactId&gt;aerogear-security&lt;/artifactId&gt;
+  &lt;version&gt;1.2.1&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+                <i>Integration with Security Providers</i></br>
+                PicketLink</br>
+                <pre>
+&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
+  &lt;artifactId&gt;aerogear-security-picketlink&lt;/artifactId&gt;
+  &lt;version&gt;1.2.1&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+                Apache Shiro</br>
+                <pre>
+&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
+  &lt;artifactId&gt;aerogear-security-shiro&lt;/artifactId&gt;
+  &lt;version&gt;0.1.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+                <i>Alternative authentication methods</i></br>
+                Hawk</br> 
+                <pre>
+&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
+  &lt;artifactId&gt;aerogear-security-hawk&lt;/artifactId&gt;
+  &lt;version&gt;0.1.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+                JAVA-OTP</br> 
+                <pre>
+&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
+  &lt;artifactId&gt;aerogear-otp-java&lt;/artifactId&gt;
   &lt;version&gt;1.0.0&lt;/version&gt;
 &lt;/dependency&gt;</pre>
+                iOS-OTP - 1.0.0 <a href="https://github.com/aerogear/aerogear-otp-ios/archive/1.0.0.zip" target="_blank">zip</a> / <a href="http://cocoapods.org/?q=AeroGear-OTP" target="_blank">Cocoapods</a><br/>
+                <pre>
+platform :ios, '5.0'
+
+pod 'AeroGear-OTP', '1.0.0'</pre>
         </div>
     </div>
 </div>
