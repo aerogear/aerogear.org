@@ -14,8 +14,10 @@ Registering with Google
 First, we must authenticate with Google. Google offers the Google Cloud Messaging (GCM) platform, formerly known as Cloud to Device Messaging (C2DM). You will need a Google Account for this.
 
 - Firstly, you need to go to the https://code.google.com/apis/console/b/0/?pli=1[Google APIs Console] page.
-- If you haven't created a project, click ``Create Project...''
-- From the URL, grab the project ID (used later as the sender ID). This will be the numeric part of ``#project:000000000000''
+- If you haven't created a project, click ``Create Project...''. If you already have other projects, create new project from project pull down menu:
+
+image::./img/google_apis_create_project.png[Create New Project]
+- From the URL, grab the project ID (used later as the _Sender ID_). This will be the numeric part of ``#project:000000000000''
 
 image::./img/url-project-id.png[Project ID/Sender ID from URL]
 - Next, you need to enable the GCM service, by going to ``Services'' and turn ``Google Cloud Messaging'' on.
