@@ -23,8 +23,9 @@ title: Specifications
 * [REST API](aerogear-rest-api)
 * [AeroGear Security OTP](aerogear-security-otp)
 
-#### Unified Push Specifications
+#### UnifiedPush Specifications
 * [AeroGear UnifiedPush Server](aerogear-server-push)
 * [AeroGear UnifiedPush Client Registration](aerogear-client-push)
 * [AeroGear UnifiedPush Messages](aerogear-push-messages)
 * [AeroGear UnifiedPush RESTful APIs](aerogear-push-rest)
+* [AeroGear UnifiedPush Java Client](aerogear-unifiedpush-java-client)
