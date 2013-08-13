@@ -18,14 +18,39 @@ For the purpose of the guide, we will fail back on the command line and the _cur
 
 === Login to the server
 
-Prior to perform any work with the server, we need to login first. A temporary user 'admin:123' has already been configured, so let's use these credentials to login:
+Prior to perform any work with the server, we need to login first. A temporary user 'admin:123' has already been configured, but for security reasons we need to change the password at first login. 
+
+Let's first login to the server:
 
 [source,c]
 ----
 curl -v -b cookies.txt -c cookies.txt
-	-H "Accept: application/json" -H "Content-type: application/json" 
-	-X POST -d '{"loginName": "admin", "password":"123"}'
-	http://localhost:8080/ag-push/rest/auth/login 
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST -d '{"loginName": "admin", "password":"123"}'
+  http://localhost:8080/ag-push/rest/auth/login
+----
+
+The server would respond with a 'HTTP/1.1 403 Forbidden' status with a 'Credential has expired' message. We can now update user's password:
+
+[NOTE]
+To _update_ the initial password, you need to specify the old 'password' and new password ('newPassword').
+
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X PUT -d '{"loginName": "admin", "password":"123", "newPassword":"SOMENEWPASSWORD"}'
+  http://localhost:8080/ag-push/rest/auth/update
+----
+
+We are now ready to login:
+
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST -d '{"loginName": "admin", "password":"SOMENEWPASSWORD"}'
+  http://localhost:8080/ag-push/rest/auth/login
 ----
 
 The server would respond with a 'HTTP/1.1 200 OK' status, which means that the login was succeeded. If not, check if you typed correctly the command and if the server is correctly setup. 
