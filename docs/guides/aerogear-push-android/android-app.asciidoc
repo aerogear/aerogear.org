@@ -9,7 +9,7 @@ Now that the UnifiedPush server is up and running, time to create a sample appli
 Let's get started!
 
 == Creating the application
-Fire up Eclipse IDE and choose 'File'-> 'New Android Application'. Fill the 'Application Name' field with the name 'PushApplication' and the 'Package Name' with 'com.push.pushapplication'. As link:http://developer.android.com/google/gcm/gs.html[Google advices], the 'Minimum Required SDK' option for the GCM feature is 'API.8 Android 2.2 (Froyo)' so select this option if not selected. For 'Target SDK' and 'Compile With' options, choose the maximum API SDK installed on your machine.
+Fire up Eclipse IDE and choose 'File'-> 'New Android Application'. Fill the 'Application Name' field with the name 'PushApplication' and the 'Package Name' with 'com.push.pushapplication'. As link:http://developer.android.com/google/gcm/gs.html[Google advises], the 'Minimum Required SDK' option for the GCM feature is 'API.8 Android 2.2 (Froyo)' so select this option if not selected. For 'Target SDK' and 'Compile With' options, choose the maximum API SDK installed on your machine.
 
 image::./img/new-project.png[New Project]
 
@@ -36,7 +36,7 @@ Now that we have the project set up, time to configure it to receive Push notifi
 The entry point for registration is the link:http://www.aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#push[Registrations:push] method. The method acts as a factory of different implementations of the link:http://www.aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar] interface which contain the actual registration/unregistration methods. 
 
 [NOTE]
-By default, the method will return an implementation that supports registration with the UnifiedPush server. But having the flexibility of a factory method, allows us in the future to expand it to support other different message brokers under a common messaging interface.
+By default, the method will return an implementation that supports registration with the UnifiedPush server. Having the flexibility of a factory method, allows us in the future to expand it to support other different message brokers under a common messaging interface.
 
 Since the registration setup is an one-step process not bound to any Android 'Activity', let's encapsulate it in a subclass of an Android link:http://developer.android.com/reference/android/app/Application.html[Application].
 
@@ -97,7 +97,7 @@ public class PushApplication extends Application {
 At the top of the file we declare the configurations params we obtained at the previous steps. Fill them with the values representing your specific configuration.
 
 [NOTE]
-Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are common source of problem, so please revisit them if you are experiencing problems.
+Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are a very common source of problems, so please revisit them if you are experiencing problems.
 
 The setup of the registration happens on the 'onCreate' lifecycle method called when Android first initializes your application. In [1] we instantiate a new 'Registrations' object and in [2] we create a link:http://www.aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushConfig.html[PushConfig] object that will hold the configuration params we declared earlier. This object together with a name (it can be anything you choose) are passed as params on the 'push' factory method to create the PushRegistrar object [3]. 
 
