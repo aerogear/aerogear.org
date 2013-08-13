@@ -9,3 +9,4 @@ bin/
 /.rbenv-version
 *~
 *.iml
+Gemfile.lock
