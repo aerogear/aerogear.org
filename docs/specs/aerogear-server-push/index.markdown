@@ -154,7 +154,7 @@ The server offers an HTTP interfaces to register an _SimplePush variant_:
 
     curl -v -H "Accept: application/json" -H "Content-type: application/json"
       -X POST
-      -d '{"pushNetworkURL" : "http://localhost:7777/endpoint/", "name" : "HR mobile Web", "description" :  "SimplePush variant" }'
+      -d '{"name" : "HR mobile Web", "description" :  "SimplePush variant" }'
 
       http://SERVER:PORT/context/rest/applications/{pushApplicationID}/simplePush 
 
@@ -201,6 +201,10 @@ _Application specific alias to identify users with the system. For instance an `
 
 _Used to apply a "tag" for the registered ```Installation```._
 
+- **simplePushEndpoint:**
+
+_SimplePush server endpoint which receives update requests for one SimplePush client/channel._
+
 
 ##### REST APIs
 
@@ -215,7 +219,8 @@ The server offers an HTTP interfaces to register an _installation_:
           "operatingSystem" : "iOS",
           "osVersion" : "6.1.2",
           "alias" : "someUsername or email adress...",
-          "category" : "football"
+          "category" : "football",
+          "simplePushEndpoint" : "http://server.com/someEndpoint"
          }'
 
     http://SERVER:PORT/context/rest/registry/device
