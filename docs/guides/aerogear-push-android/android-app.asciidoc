@@ -56,15 +56,25 @@ import org.jboss.aerogear.android.unifiedpush.Registrations;
 import android.app.Application;
 
 public class PushApplication extends Application {
-	
-    // the UnifiedPush configuration parameters
+
+    /**********************************************************/	
+    /******** The UnifiedPush configuration parameters ********/
+    /**********************************************************/
+    
     private final String VARIANT_ID       = "<Your-Variant-ID>";
     private final String SECRET           = "<Your-Variant-Secret>";
     private final String GCM_SENDER_ID    = "<Your-Sender-ID>";
+    
+    // the URL which points to your UnifiedPush Server (e.g. "http://YOUR_SERVER_IP:8080/ag-push/")
     private final String UNIFIED_PUSH_URL = "<the URL of the running UnifiedPush server>";
+    
     // used for 'selective send' to target a specific user
     // it can be any arbitary value (e.g. name, email etc)
     private final String MY_ALIAS         = "<name, email etc>";
+    
+    /***********************************************************/	
+    /***** End of the UnifiedPush configuration parameters *****/
+    /***********************************************************/
     
     private PushRegistrar registration;
 	
