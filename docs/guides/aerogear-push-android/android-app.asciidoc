@@ -87,7 +87,7 @@ public class PushApplication extends Application {
         }
     }
 	
-    // Accessor method for Activities to access the 'PushRegistar' object
+    // Accessor method for Activities to access the 'PushRegistrar' object
     public PushRegistrar getRegistration() {
         return registration;
     }
@@ -136,7 +136,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ----
 
-In [1] we access the 'PushRegistar' object from the 'PushApplication' we created earlier and on [2] we fire up the registration process passing an instance of a link:http://www.aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[Callback] object that encapsulates the success/failure callback methods. If the registration succeeds, we simply display a popup to inform the user [3], otherwise we log the error in the console [4].
+In [1] we access the 'PushRegistrar' object from the 'PushApplication' we created earlier and on [2] we fire up the registration process passing an instance of a link:http://www.aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[Callback] object that encapsulates the success/failure callback methods. If the registration succeeds, we simply display a popup to inform the user [3], otherwise we log the error in the console [4].
 
 That is all what is needed to register with the UnifiedPush server!
 
