@@ -8,7 +8,8 @@ title: Specifications
 #### Client Library Specifications
 
 * [AeroGear JS 1.1.2](aerogear-js)
-* [AeroGear iOS 1.1.0](aerogear-ios)
+* [AeroGear iOS 1.2.0](aerogear-ios)
+* [AeroGear-Push iOS 0.7.0](aerogear-ios-push)
 * [AeroGear-OTP iOS 1.0.0](aerogear-otp-ios)
 * [AeroGear Android 1.1.0](aerogear-android)
 * [Pipe API](aerogear-client-pipe)
