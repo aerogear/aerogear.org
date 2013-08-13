@@ -196,6 +196,11 @@ p {
     vertical-align: top;
 }
 
+/* In tutorial guide, keep limited image size */
+.sectionbody img {
+    max-height: 400px;
+}
+
 /* =================== Nav bar ====================================================================================== */
 #main-header nav {
     display: inline-block;
