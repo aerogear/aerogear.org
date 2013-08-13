@@ -11,9 +11,9 @@ With all the Google work being done, we are now ready to setup the link:https://
 AeroGear Unified Push Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain one Android Variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
+The _AeroGear UnifiedPush Server_ defines a logical _abstraction_ for Mobile Applications that have support for different Push Networks. Its _Push Applications_ can have different "Variants". For this tutorial we'll need to create a _Push Application_ which will contain one Android Variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
 
-For the purpose of the guide, we will fail back on the command line and the _CURL_ tool to perform the registrations with the server. In the near feature this won't be needed cause a Push Administration console would be used instead (currently in the works).
+For the purpose of the guide, we will fall back to the command line and the _CURL_ tool to perform the registrations with the server. In the near feature this won't be needed cause a Push Administration console would be used instead (currently in the works).
 
 === Login to the server
 
