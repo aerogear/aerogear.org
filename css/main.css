@@ -182,9 +182,13 @@ p {
     -webkit-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
+<<<<<<< HEAD
     /*margin: 3em auto;*/
     /*margin: 2.5em 0 0 0;*/
     max-width: 60em;
+=======
+    max-width: 960px;
+>>>>>>> 15a858d... max-width apply to core div
 }
 
 .clearfix {
@@ -569,6 +573,7 @@ footer p,footer ul {
 .basic, .post {
     margin-left: 5%;
     margin-top: 5em;
+    max-width: 960px;
 }
 
 .row {
@@ -631,6 +636,10 @@ pre {
 @media only screen and (max-width: 848px) {
 
     p {
+        max-width: 720px;
+    }
+
+    .basic, .post {
         max-width: 720px;
     }
 
