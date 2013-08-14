@@ -1,0 +1,56 @@
+---
+layout: basic
+title: AeroGear SimplePush Server
+---
+
+The AeroGear SimplePush Server
+------------------------------
+
+The _AeroGear SimplePush server_ is a high performant implementation of the SimplePush protocol based on link:http://netty.io[Netty framework]. It can be used both as a standalone component, or be integrated into JBoss Application Server. In this guide we will describe how to run the standalone component, but you can have a look at this link:https://github.com/aerogear/aerogear-simple-push-server/tree/master/wildfly-module[page] for details on how to integrate the server with JBoss.
+
+=== Requirements
+
+Please ensure that you use at least the minimum versions of the following components:
+
+* Java SDK 1.7+
+* Maven 3.0.5+
+
+=== Setup
+
+Download the server from the project's link:https://github.com/aerogear/aerogear-simple-push-server[github page]. For the needs of the project, a custom Netty SockJS adapter implementation was written, but since it's not yet integrated in the Netty mainline (planned for next version) we need to install it manually for now. Simple issue the following command to install it in your local maven repository:
+
+[source,c]
+----
+git clone https://github.com/danbev/netty/tree/ci
+cd ci
+mvn install -DskipTests=true
+----
+
+Once that is done, we are ready to install the server. On the command line issue:
+
+[source,c]
+----
+cd aerogear-simple-push-server
+mvn install -DskipTests=true
+----
+
+We are now ready to run the server. On the command line issue:
+
+[source,c]
+----
+cd server-netty
+mvn exec:java -Dexec.args="-host=localhost -port=7777 -tls=false -ack_interval=10000 -useragent_reaper_timeout=60000 -token_key=yourRandomToken  
+----
+
+This will start the server and by default it will listen on localhost using port 7777. If you want to override those arguments have a look at the link:https://github.com/aerogear/aerogear-simple-push-server/tree/master/server-netty[server documentation] for more details.
+
+On the console you should now see the following:
+
+[source,c]
+----
+....
+[INFO] --- exec-maven-plugin:1.2:java (default-cli) @ aerogear-simplepush-server-netty ---
+SockJS server with options {ACK_INTERVAL=10000, PORT=7777, TOKEN_KEY=yourRandomToken, TLS=false, USERAGENT_REAPER_TIMEOUT=60000, HOST=localhost}
+----
+
+Now that we have the SimplePush server up and running, let's move to the link:../unifiedpush-server[next section] to configure the UnifiedPush server.
