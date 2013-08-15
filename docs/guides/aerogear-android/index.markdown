@@ -17,6 +17,7 @@ title: AeroGear Android User Guide
 * [Pagination](AerogearAndroidPagination)
 * [Authentication](AerogearAndroidAuthentication)
 * [Store](AerogearAndroidDataStore)
+* [Push Messaging](AerogearAndroidPush)
 
 ## JavaDoc documentation
 * [1.0.1 JavaDocs](/docs/specs/aerogear-android/)
