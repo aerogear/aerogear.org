@@ -65,7 +65,7 @@ public class PushApplication extends Application {
     private final String SECRET           = "<Your-Variant-Secret>";
     private final String GCM_SENDER_ID    = "<Your-Sender-ID>";
     
-    // the URL which points to your UnifiedPush Server (e.g. "http://YOUR_SERVER_IP:8080/ag-push/")
+    // the URL which points to your UnifiedPush Server (e.g. "http://SERVER:PORT/CONTEXT/")
     private final String UNIFIED_PUSH_URL = "<the URL of the running UnifiedPush server>";
     
     // used for 'selective send' to target a specific user
@@ -104,7 +104,7 @@ public class PushApplication extends Application {
 }
 ----
 
-At the top of the file we declare the configurations params we obtained at the previous steps. Fill them with the values representing your specific configuration.
+At the top of the file we declare the configurations params we obtained at the previous steps.  The VARIANT_ID and SECRET are the id's you got after registering your Android variant to the UnifiedPush server, while the GCM_SENDER_ID is the Project number given by https://code.google.com/apis/console/b/0/?pli=1[Google APIs Console] as described in Google setup. Fill them with the values representing your specific configuration.
 
 [NOTE]
 Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are a very common source of problems, so please revisit them if you are experiencing problems.
