@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Module: DataManager</h1>
+    <h1 class="page-title">Module: SimplePushClient</h1>
     
     
 
@@ -30,7 +30,7 @@
     <h2>
         <span class="ancestors"><a href="AeroGear.html">AeroGear</a>.</span>
     
-    DataManager
+    SimplePushClient
     </h2>
     
 </header>  
@@ -42,19 +42,19 @@
     
         
 <dt>
-    <h4 class="name" id="DataManager"><span class="type-signature"></span>new DataManager<span class="signature">(<span class="optional">config</span>)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="SimplePushClient"><span class="type-signature"></span>new SimplePushClient<span class="signature">(options)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
 <dd>
     
     
-    <h5>Status: <span class="labelStable">Stable</span></h5>
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
     
 
     
     <div class="description">
-        A collection of data connections (stores) and their corresponding data models. This object provides a standard way to interact with client side data no matter the data format or storage mechanism used.
+        The SimplePushClient object is used as a sort of polyfill/implementation of the SimplePush spec implemented in Firefox OS and the Firefox browser and provides a mechanism for subscribing to and acting on push notifications in a web application. See https://wiki.mozilla.org/WebAPI/SimplePush
     </div>
     
 
@@ -76,8 +76,6 @@
 		<th>Type</th>
 		
 		
-		<th>Argument</th>
-		
 		
 		
 		
@@ -90,18 +88,12 @@
 	
         <tr>
             
-                <td class="name"><code>config</code></td>
+                <td class="name"><code>options</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Array</span>
-|
-
 <span class="param-type">Object</span>
 
 
@@ -109,20 +101,10 @@
             </td>
             
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
             
             
             
-            
-            <td class="description last">A configuration for the store(s) being created along with the DataManager. If an object or array containing objects is used, the objects can have the following properties:
+            <td class="description last">an object used to initialize the connection to the SimplePush server
                 <h6>Properties</h6>
                 
 
@@ -152,48 +134,13 @@
 	
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>useNative</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">the name that the store will later be referenced by</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
+<span class="param-type">Boolean</span>
 
 
             
@@ -214,19 +161,19 @@
             
                 <td class="default">
                 
-                    "memory"
+                    false
                 
                 </td>
             
             
-            <td class="description last">the type of store as determined by the adapter used</td>
+            <td class="description last">if true, the connection will first try to use the Mozilla push network (still in development and not ready for production) before falling back to the SimplePush server specified</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>recordId</code></td>
+                <td class="name"><code>simplePushServerURL</code></td>
             
             
             <td class="type">
@@ -253,25 +200,23 @@
             
                 <td class="default">
                 
-                    "id"
-                
                 </td>
             
             
-            <td class="description last">the identifier used to denote the unique id for each record in the data associated with this store</td>
+            <td class="description last">the URL of the SimplePush server. This option is optional but only if you don't want to support browsers that are missing websocket support and you trust the not yet production ready Mozilla push server.</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>settings</code></td>
+                <td class="name"><code>onConnect</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">Function</span>
 
 
             
@@ -279,8 +224,6 @@
             
             
                 <td class="attributes">
-                
-                    &lt;optional><br>
                 
                     
                 
@@ -292,12 +235,45 @@
             
                 <td class="default">
                 
-                    {}
+                </td>
+            
+            
+            <td class="description last">a callback to fire when a connection is established with the SimplePush server. This is a deviation from the SimplePush spec as it is not necessary when you using the in browser functionality since the browser establishes the connection before the application is started.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onClose</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
                 
                 </td>
             
             
-            <td class="description last">the settings to be passed to the adapter. For specific settings, see the documentation for the adapter you are using.</td>
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">a callback to fire when a connection to the SimplePush server is closed or lost.</td>
         </tr>
 	
 	
@@ -334,7 +310,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.datamanager.js.html">data-manager/aerogear.datamanager.js</a>, <a href="aerogear.datamanager.js.html#line59">line 59</a>
+        <a href="aerogear.simplepush.js.html">simplepush/aerogear.simplepush.js</a>, <a href="aerogear.simplepush.js.html#line35">line 35</a>
     </li></ul></dd>
     
     
@@ -359,7 +335,7 @@
     
             
 <div class="param-desc">
-    dataManager - The created DataManager containing any stores that may have been created
+    The created unified push server client
 </div>
 
 
@@ -370,7 +346,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
 	</dd>
@@ -381,36 +357,12 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>// Create an empty DataManager
-var dm = AeroGear.DataManager();
-
-// Create a single store using the default adapter
-var dm2 = AeroGear.DataManager( "tasks" );
-
-// Create multiple stores using the default adapter
-var dm3 = AeroGear.DataManager( [ "tasks", "projects" ] );
-
-//Create a custom store
-var dm3 = AeroGear.DataManager({
-    name: "mySessionStorage",
-    type: "SessionLocal",
-    id: "customID"
-});
-
-//Create multiple custom stores
-var dm4 = AeroGear.DataManager([
-    {
-        name: "mySessionStorage",
-        type: "SessionLocal",
-        id: "customID"
-    },
-    {
-        name: "mySessionStorage2",
-        type: "SessionLocal",
-        id: "otherId",
-        settings: { ... }
-    }
-]);</code></pre>
+    <pre class="prettyprint"><code>        //Create the SimplePushClient object:
+        var client = AeroGear.SimplePushClient({
+            simplePushServerURL: "https://localhost:7777/simplepush",
+            onConnect: myConnectCallback,
+            onClose: myCloseCallback
+        });</code></pre>
 
     
 </dd>
@@ -419,11 +371,6 @@ var dm4 = AeroGear.DataManager([
     </div>
     
     
-        <h3 class="subsection-title">Extends</h3>
-        
-        <ul>
-            <li>AeroGear.Core</li>
-        </ul>
     
     
     
@@ -433,134 +380,6 @@ var dm4 = AeroGear.DataManager([
     
     
     
-    
-    
-        <h3 class="subsection-title">Members</h3>
-        
-        <dl>
-            
-<dt>
-    <h4 class="name" id="adapters"><span class="type-signature">&lt;static> </span>adapters<span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The adapters object is provided so that adapters can be added to the AeroGear.DataManager namespace dynamically and still be accessible to the add method
-    </div>
-    
-    
-    
-
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.datamanager.js.html">data-manager/aerogear.datamanager.js</a>, <a href="aerogear.datamanager.js.html#line89">line 89</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="this.collectionName"><span class="type-signature">&lt;static> </span>this.collectionName<span class="type-signature"> :Object</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The name used to reference the collection of data store instances created from the adapters
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">Object</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>stores</li>
-        </ul></dd>
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.datamanager.js.html">data-manager/aerogear.datamanager.js</a>, <a href="aerogear.datamanager.js.html#line77">line 77</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        </dl>
     
     
     

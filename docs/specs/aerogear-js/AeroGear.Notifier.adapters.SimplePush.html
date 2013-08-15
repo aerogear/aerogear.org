@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Adapter: vertx</h1>
+    <h1 class="page-title">Adapter: SimplePush</h1>
     
     
 
@@ -30,7 +30,7 @@
     <h2>
         <span class="ancestors"><a href="AeroGear.html">AeroGear</a><a href="AeroGear.Notifier.html">.Notifier</a><a href="AeroGear.Notifier.html#adapters">.adapters</a>.</span>
     
-    vertx
+    SimplePush
     </h2>
     
 </header>  
@@ -42,19 +42,19 @@
     
         
 <dt>
-    <h4 class="name" id="vertx"><span class="type-signature"></span>new vertx<span class="signature">(clientName, <span class="optional">settings</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="SimplePush"><span class="type-signature"></span>new SimplePush<span class="signature">(clientName, <span class="optional">settings</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
 <dd>
     
     
-    <h5>Status: <span class="labelStable">Stable</span></h5>
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
     
 
     
     <div class="description">
-        The vertx adapter is the default type used when creating a new notifier client. It uses the vert.x bus and underlying SockJS implementation for messaging.
+        This adapter allows communication with the AeroGear implementation of the SimplePush server protocol. Most of this functionality will be hidden behind the SimplePush client polyfill but is accessible if necessary.
     </div>
     
 
@@ -189,45 +189,6 @@
 	
         <tr>
             
-                <td class="name"><code>autoConnect</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">Automatically connect the client to the connectURL on creation. This option is ignored and a connection is automatically established if channels are provided as the connection is necessary prior to channel subscription</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
                 <td class="name"><code>connectURL</code></td>
             
             
@@ -267,13 +228,13 @@
 	
         <tr>
             
-                <td class="name"><code>onConnect</code></td>
+                <td class="name"><code>useNative</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Function</span>
+<span class="param-type">Boolean</span>
 
 
             
@@ -294,123 +255,12 @@
             
                 <td class="default">
                 
-                </td>
-            
-            
-            <td class="description last">callback to be executed when a connection is established if autoConnect === true</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onDisconnect</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
+                    false
                 
                 </td>
             
             
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">callback to be executed when a connection is terminated if autoConnect === true</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onConnectError</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">callback to be executed when connecting to a service is unsuccessful if autoConnect === true</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>channels</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    []
-                
-                </td>
-            
-            
-            <td class="description last">a set of channel objects to which this client can subscribe. Each object should have a String address as well as a callback to be executed when a message is received on that channel.</td>
+            <td class="description last">Create a WebSocket connection to the Mozilla SimplePush server instead of a SockJS connection to a custom server</td>
         </tr>
 	
 	
@@ -447,7 +297,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line62">line 62</a>
+        <a href="simplePush.js.html">notifier/adapters/simplePush.js</a>, <a href="simplePush.js.html#line26">line 26</a>
     </li></ul></dd>
     
     
@@ -491,41 +341,6 @@
 
         
     
-    
-        <h5>Example</h5>
-        
-    <pre class="prettyprint"><code>    // Create an empty Notifier
-    var notifier = AeroGear.Notifier();
-
-    // Create a channel object and the channel callback function
-    var channelObject = {
-        address: "org.aerogear.messaging.global",
-        callback: channelCallback
-    };
-
-    function channelCallback( message ) {
-        console.log( message );
-    }
-
-    // Add a vertx client with all the settings
-    notifier.add({
-        name: "client1",
-        settings: {
-            autoConnect: true,
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
-            onConnect: function() {
-                console.log( "connected" );
-            },
-            onConnectError: function() {
-                console.log( "connection error" );
-            },
-            onDisconnect: function() {
-                console.log( "Disconnected" );
-            },
-            channels: [ channelObject ]
-        }
-    });</code></pre>
-
     
 </dd>
 
@@ -586,8 +401,6 @@
 		
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -622,12 +435,6 @@
                 </td>
             
             
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
             
             
             <td class="description last">Options to pass to the connect method
@@ -717,40 +524,7 @@
             
             
             
-            <td class="description last">callback to be executed when a connection is established</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onDisconnect</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">callback to be executed when a connection is terminated</td>
+            <td class="description last">callback to be executed when a connection is established and hello message has been acknowledged</td>
         </tr>
 	
 	
@@ -787,6 +561,39 @@
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>onClose</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">callback to be executed when a connection to the server is closed</td>
+        </tr>
+	
+	
 	</tbody>
 </table>
             </td>
@@ -820,7 +627,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line226">line 226</a>
+        <a href="simplePush.js.html">notifier/adapters/simplePush.js</a>, <a href="simplePush.js.html#line278">line 278</a>
     </li></ul></dd>
     
     
@@ -845,28 +652,23 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    // Create an empty Notifier
-    var notifier = AeroGear.Notifier();
-
-    // Add a vertx client
-    notifier.add({
-        name: "client1",
+    <pre class="prettyprint"><code>    var SPNotifier = AeroGear.Notifier({
+        name: "sp",
+        type: "SimplePush",
         settings: {
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
-            onConnect: function() {
-                console.log( "connected" );
-            },
-            onConnectError: function() {
-                console.log( "connection error" );
-            },
-            onDisconnect: function() {
-                console.log( "Disconnected" );
-            }
+            connectURL: "http://localhost:7777/simplepush"
         }
-    });
+    }).clients.sp;
 
-    // Connect to the vertx messaging service
-    notifierVertx.clients.client1.connect();</code></pre>
+    // Use all defaults
+    SPNotifier.connect();
+
+    // Custom options
+    SPNotifier.connect({
+        simplePushServerURL: "http://some.other.domain",
+        onConnect: spConnect,
+        onClose: spClose
+    });</code></pre>
 
     
 </dd>
@@ -874,7 +676,7 @@
         
             
 <dt>
-    <h4 class="name" id="disconnect"><span class="type-signature"></span>disconnect<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="disconnect"><span class="type-signature"></span>disconnect<span class="signature">(<span class="optional">onDisconnect</span>)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -885,106 +687,6 @@
     
     <div class="description">
         Disconnect the client from the messaging service
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line292">line 292</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="prettyprint"><code>    // Create an empty Notifier
-    var notifier = AeroGear.Notifier();
-
-    // Add a vertx client
-    notifier.add({
-        name: "client1",
-        settings: {
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
-            onConnect: function() {
-                console.log( "connected" );
-            },
-            onConnectError: function() {
-                console.log( "connection error" );
-            },
-            onDisconnect: function() {
-                console.log( "Disconnected" );
-            }
-        }
-    });
-
-    // Connect to the vertx messaging service
-    notifierVertx.clients.client1.connect();
-
-    // Disconnect from the vertx messaging service
-    notifierVertx.clients.client1.disconnect();</code></pre>
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(channel, <span class="optional">message</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-
-    
-    <div class="description">
-        Send a message to a particular channel
     </div>
     
 
@@ -1010,8 +712,6 @@
 		
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -1022,51 +722,13 @@
 	
         <tr>
             
-                <td class="name"><code>channel</code></td>
+                <td class="name"><code>onDisconnect</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">the channel to which to send the message</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Object</span>
+<span class="param-type">Function</span>
 
 
             
@@ -1085,14 +747,8 @@
             
             
             
-                <td class="default">
-                
-                    ""
-                
-                </td>
             
-            
-            <td class="description last">the message object to send</td>
+            <td class="description last">callback to be executed when a connection is terminated</td>
         </tr>
 	
 	
@@ -1123,7 +779,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line422">line 422</a>
+        <a href="simplePush.js.html">notifier/adapters/simplePush.js</a>, <a href="simplePush.js.html#line342">line 342</a>
     </li></ul></dd>
     
     
@@ -1148,14 +804,21 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    // Send an empty message to a channel
-    notifier.clients.client1.send( "test.address" );
+    <pre class="prettyprint"><code>    var SPNotifier = AeroGear.Notifier({
+        name: "sp",
+        type: "SimplePush",
+        settings: {
+            connectURL: "http://localhost:7777/simplepush"
+        }
+    }).clients.sp;
 
-    // Send a "Hello" message to a channel
-    notifier.clients.client1.send( "test.address", "Hello" );
+    // Default
+    SPNotifier.disconnect();
 
-    // Send a "Hello" message as an object
-    notifier.clients.client1.send( "test.address", { "message": "Hello" } );</code></pre>
+    // Pass disconnect callback
+    SPNotifier.disconnect(function() {
+        console.log("Disconnected");
+    });</code></pre>
 
     
 </dd>
@@ -1236,7 +899,7 @@
             
             
             
-            <td class="description last">a channel object or array of channel objects to which this client can subscribe. Each object should have a String address as well as a callback to be executed when a message is received on that channel.</td>
+            <td class="description last">a channel object or array of channel objects to which this client can subscribe. At a minimum, each channel should contain a requestObject which will eventually contain the subscription success callback and a callback, which is fired when notifications are received. Reused channels may also contain channelID and other metadata.</td>
         </tr>
 	
 	
@@ -1300,7 +963,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line357">line 357</a>
+        <a href="simplePush.js.html">notifier/adapters/simplePush.js</a>, <a href="simplePush.js.html#line371">line 371</a>
     </li></ul></dd>
     
     
@@ -1325,57 +988,20 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    // Create an empty Notifier
-    var notifier = AeroGear.Notifier();
-
-    // Create a channel object and the channel callback function
-    var channelObject = {
-        address: "org.aerogear.messaging.global",
-        callback: channelCallback
-    };
-
-    function channelCallback( message ) {
-        console.log( message );
-    }
-
-    // Add a vertx client with autoConnect === true and no channels
-    notifier.add({
-        name: "client1",
+    <pre class="prettyprint"><code>    var SPNotifier = AeroGear.Notifier({
+        name: "sp",
+        type: "SimplePush",
         settings: {
-            autoConnect: true,
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
-            onConnect: function() {
-                console.log( "connected" );
-            },
-            onConnectError: function() {
-                console.log( "connection error" );
-            },
-            onDisconnect: function() {
-                console.log( "Disconnected" );
-            }
+            connectURL: "http://localhost:7777/simplepush"
         }
-    });
+    }).clients.sp;
 
-    //Subscribe to a channel
-    notifierVertx.clients.client1.subscribe( channelObject );
-
-    //Subscribe to multiple channels at once
-    notifierVertx.clients.client1.subscribe([
-        {
-            address: "newChannel",
-            callback: function(){...}
-        },
-        {
-            address: "anotherChannel",
-            callback: function(){ ... }
+    SPNotifier.subscribe({
+        requestObject: {},
+        callback: function( message ) {
+            console.log("Notification Received");
         }
-    ]);
-
-    //Subscribe to a channel, but first unsubscribe from all currently subscribed channels by adding the reset parameter
-    notifierVertx.clients.client1.subscribe({
-            address: "newChannel",
-            callback: function(){ ... }
-        }, true );</code></pre>
+    });</code></pre>
 
     
 </dd>
@@ -1477,7 +1103,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line397">line 397</a>
+        <a href="simplePush.js.html">notifier/adapters/simplePush.js</a>, <a href="simplePush.js.html#line440">line 440</a>
     </li></ul></dd>
     
     
@@ -1502,25 +1128,15 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    // Unsubscribe from a previously subscribed channel
-    notifierVertx.clients.client1.unsubscribe(
-        {
-            address: "org.aerogear.messaging.global",
-            callback: channelCallback
+    <pre class="prettyprint"><code>    var SPNotifier = AeroGear.Notifier({
+        name: "sp",
+        type: "SimplePush",
+        settings: {
+            connectURL: "http://localhost:7777/simplepush"
         }
-    );
+    }).clients.sp;
 
-    // Unsubscribe from multiple channels
-    notifierVertx.clients.client1.unsubscribe([
-        {
-            address: "newChannel",
-            callback: newCallbackFunction
-        },
-        {
-            address: "anotherChannel",
-            callback: "anotherChannelCallbackFunction"
-        }
-    ]);</code></pre>
+    SPNotifier.unsubscribe( channelObject );</code></pre>
 
     
 </dd>
