@@ -13,6 +13,6 @@ The following step-by-step guides, will briefly introduce you to the concepts of
 
 1. [SimplePush Protocol Primer](simplepush-primer)
 2. [The AeroGear SimplePush Server](simplepush-server)
-3. [The AeroGear Unified Push Server](unified-push-server)
+3. [The AeroGear UnifiedPush Server](unifiedpush-server)
 4. [Web Example](web-app)
 5. [Finally: Send a Push Notification](send-push)
