@@ -32,6 +32,7 @@ title: Guides
 * [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
 #### User Guides
+* [AeroGear UnifiedPush Administration Console User Guide](AdminConsoleGuide)
 * [AeroGear Controller User Guide](aerogear-controller)
 * [AeroGear Security User Guide](aerogear-security)
 * [AeroGear Android User Guide](aerogear-android)
