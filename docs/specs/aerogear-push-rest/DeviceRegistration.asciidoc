@@ -75,6 +75,8 @@ Unregister of a device (+HTTP DELETE+)
 http://server:port/context/rest/registry/device/{deviceToken}
 ----
 
+**NOTE:** This request additionally requires _Content-type: application/json_ header
+
 Success status code and returned body
 +++++++++++++++++++++++++++++++++++++
 
