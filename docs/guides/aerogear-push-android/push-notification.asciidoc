@@ -1,0 +1,40 @@
+---
+layout: basic
+title: Send a Push Notification
+---
+
+Now that we have the sample application running, it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message.
+
+== Simple Sender
+
+A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the successful registration of the _Push Application_. These ID's are used for sending a _broadcast_ message to all _registered_ devices (installations). Now, on a command line issue the following _CURL_ command:
+
+[source,c]
+----
+curl -u "{pushApplicationID}:{masterSecret}"
+   -v -H "Accept: application/json" -H "Content-type: application/json" 
+   -X POST -d '{"alert":"Hello AeroGear UnifiedPush server!"}'
+   http://localhost:8080/ag-push/rest/sender/broadcast
+----
+
+If all goes well, you should see the message payload being displayed on screen:
+
+image::./img/hello-unifiedpush-active.png[Message Receiced-Active]
+
+Now click the 'Home' button to return to Android Home Screen and re-execute the _CURL_ command. You should see the notification being displayed in the Notification Manager:
+
+image::./img/hello-unifiedpush-inactive.png[Message Receiced-InActive]
+
+== You are done
+
+That's all you need to use the _AeroGear_ project for sending and receiving _Push Notifications_ from Android.
+
+Last-Minute Notes
+-----------------
+Since we interface with the Android devices via link:http://developer.android.com/google/gcm/index.html[Google Cloud Messaging], we still have a few things to keep in mind regarding the messages we send:
+
+- Messages can be maximum 4kb
+- Messages can be link:http://developer.android.com/google/gcm/adv.html#throttling[throttled]
+- Google will hold messages in queue for 28 days if the intended device is unavailable for delivery, after which they will be discarded
+
+For a more thorough explanation of the GCM system and queue, check out link:http://developer.android.com/google/gcm/adv.html[GCM Advanced Topics], and link:http://developer.android.com/google/gcm/gcm.html[GCM Architectual Overview]
