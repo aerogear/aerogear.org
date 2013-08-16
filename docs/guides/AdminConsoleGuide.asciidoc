@@ -5,9 +5,9 @@ title: UnifiedPush Administration Console User Guide
 
 == UnifiedPush Administration Console User Guide
 
-link:https://github.com/aerogear/aerogear-unifiedpush-server[AeroGear UnifiedPush] server provides an administration console to ease the process of the registration of your UnifiedPush application with its different mobile variant types. A 'Push Application' represents an overall mobile application (e.g. Mobile HR), while a variant is a specific instance of a mobile application targetting a specific platform (e.g. HR Android Free, HR Android Pro, HR iPAD, HR iPhone Free etc.).  Details on the AeroGear UnifiedPush Server are discussed in the server's link:http://aerogear.org/docs/specs/aerogear-server-push[documentation]. 
+link:https://github.com/aerogear/aerogear-unifiedpush-server[AeroGear UnifiedPush] server provides an administration console to ease the process of the registration of your UnifiedPush application with its different 'Variant' types. A 'Push Application' represents an overall mobile application (e.g. Mobile HR), while a 'Variant' is a specific instance of a mobile application targetting a specific platform (e.g. HR Android Free, HR Android Pro, HR iPAD, HR iPhone Free etc.).  Details on the AeroGear UnifiedPush Server are discussed in the server's link:http://aerogear.org/docs/specs/aerogear-server-push[documentation]. 
 
-After the server is started, the administration console can be accessed via the following URL: `http://SERVER:PORT/ag-push`.
+After the server is started, the administration console can be accessed via the following URL: `http://SERVER:PORT/CONTEXT`.
 
 Login
 ------
@@ -23,7 +23,7 @@ Once you login, you will be presented with the home screen that lists your curre
 
 image:./img/console-push-applications.png[Push Applications Screen]
 
-Besides the 'Name' and 'Description' of your Push Application, the 'Variants' column display the total number of the different mobile variants configured. From this screen also, you can 'Edit' or 'Remove' a Push Application.
+Besides the 'Name' and 'Description' of your Push Application, the 'Variants' column display the total number of the different variants configured. From this screen also, you can 'Edit' or 'Remove' a Push Application.
 
 Create a new Push Application
 -----------------------------
@@ -40,16 +40,16 @@ Click on the name of your newly created application to reveal its configuration 
 
 image:./img/console-app-screen.png[Push Application Screen]
 
-In the 'Authentication Info' section, the console displays your Push Application 'ID' and 'Master Secret'. Those id's are used for authentication with the UnifiedPush server when sending notifications. At the bottom of the page the console displays a list of your current configured Mobile Variants (initially the list would be empty).
+In the 'Authentication Info' section, the console displays your Push Application 'ID' and 'Master Secret'. Those id's are used for authentication with the UnifiedPush server when sending notifications. At the bottom of the page the console displays a list of your current configured 'Variants' (initially the list would be empty).
 
-Create a new Mobile Variant
----------------------------
+Create a new Variant
+--------------------
 
-To create a new Mobile Variant, click the button 'Create' on the upper right corner of the table and the following screen will appear:
+To create a new 'Variant', click the button 'Create' on the upper right corner of the table and the following screen will appear:
 
 image:./img/console-create-variant.png[Create new Variant Screen]
 
-At the top of the page, you need to fill the 'Name' and 'Description' of your Mobile Variant installation. Then, a list of the currently supported Push Networks is displayed for you to choose. Each Push Network requires different number of configurations params, which we will explain below.
+At the top of the page, you need to fill the 'Name' and 'Description' of your 'Variant' installation. Then, a list of the currently supported Push Networks is displayed for you to choose. Each Push Network requires different number of configurations params, which we will explain below.
 
 [NOTE]
 Please make sure correct values are entered on each respective Push Network otherwise the UnifiedPush server won't be able to send Push notifications.
@@ -74,30 +74,30 @@ To create a SimplePush variant, choose the 'SimplePush' option. No configuration
 image:./img/console-variant-simplepush.png[SimplePush Variant settings]
 
 
-List of Mobile Variants
------------------------
+List of Variants
+----------------
 
-You can see the currently configured Mobile Variants in the Push Application's overview screen. The 'Platform' of each Mobile Variant is displayed, as well as the total number of current active mobile 'Instances'. An instance represents an actual device (or a web application client for 'SimplePush') registered in the UnifiedPush server.
+You can see the currently configured variants in the Push Application's overview screen. The 'Platform' of each 'Variant' is displayed, as well as the total number of current active mobile 'Instances'. An instance represents an actual device (or a web application client for 'SimplePush') registered in the UnifiedPush server.
 
 image:./img/console-list-variants.png[Push Application Variants List]
 
-Clicking on the 'Name' of a Mobile Variant will reveal its configuration dialog.
+Clicking on the 'Name' of a variant will reveal its configuration dialog.
 
-Mobile Variant Details Screen
------------------------------
+Variant Details Screen
+----------------------
 
-In this screen the console displays a list of all the current active mobile installations, as well as the Variant's 'ID' and 'Secret', used in your mobile client SDK to register your mobile installation with the UnifiedPush Server. For each mobile installation, useful metadata are displayed such as the device token, device type and platform. Further, the 'Status' column indicates whether the installation is able to receive notifications. You can toggle this status, as we will see in the next section in the Mobile Installation details screen.
+In this screen the console displays a list of all the current active installations, as well as the Variant's 'ID' and 'Secret', used by your client SDK to register your installation with the UnifiedPush Server. For each installation, useful metadata are displayed such as the device token, device type and platform. Further, the 'Status' column indicates whether the installation is able to receive notifications. You can toggle this status, as we will see in the next section in the Installation details screen.
 
-image:./img/console-mobile-variant.png[Push Application Mobile Variant]
+image:./img/console-mobile-variant.png[Push Application Variant]
 
-Clicking on the 'Token' column will reveal the 'Mobile Installation' screen for more details of that particular installation.
+Clicking on the 'Token' column will reveal the 'Installation Details' screen for more details of that particular installation.
 
-Mobile Installation Details Screen
-----------------------------------
+Installation Details Screen
+---------------------------
 
-In this screen the console displays full details of a particular installation and gives an option to toggle the ability for a device to receive notifications. The 'Alias' and 'Category' columns display the values used by the developer during registration of the mobile installation and are useful when performing 'selected send' against the UnifiedPush server. You can consult this screen to verify why a particular device is not receiving the notification (e.g. by incorrect values entered by the developer).
+In this screen the console displays full details of a particular installation and gives an option to toggle the ability for a device to receive notifications. The 'Alias' and 'Category' columns display the values used by the developer during registration of the installation and are useful when performing 'selected send' against the UnifiedPush server. You can consult this screen to verify why a particular device is not receiving the notification (e.g. by incorrect values entered by the developer).
 
-image:./img/console-mobile-installation.png[Push Application Mobile Installation]
+image:./img/console-mobile-installation.png[Push Application Installation]
 
 
 Logout
