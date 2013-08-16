@@ -41,7 +41,7 @@ if ( mailEndpoint.pushEndpoint ) {
         deviceToken: mailEndpoint.channelID,
         simplePushEndpoint: mailEndpoint.pushEndpoint,
         alias: "john",
-        category: "email"
+        category: "mail"
     };
 
     // register with the server
