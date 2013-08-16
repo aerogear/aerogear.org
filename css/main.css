@@ -687,6 +687,10 @@ pre {
         visibility: visible;
     }
 
+    #main-header nav li {
+        margin: 0 -1em;
+    }
+
     /*
     * Swipe effect: shift by 250px
     */
