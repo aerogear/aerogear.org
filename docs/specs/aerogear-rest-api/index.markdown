@@ -145,7 +145,7 @@ Example of a DELETE request:
 ```http://server:port/myapp/cars/1```
 
 ##### Success status code and returned body #####
-* ```HTTP/1.1 203 No Content```  
+* ```HTTP/1.1 204 No Content```  
     Empty body.
 
 ##### Failure status code and desciption #####
