@@ -535,8 +535,11 @@ a#slide-menu-button:hover {
 }
 
 .basic, .post {
-    margin-left: 5%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 5em;
+    width: 90%;
+    max-width: 960px;
 }
 
 .row {
