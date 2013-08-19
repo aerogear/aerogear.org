@@ -1,0 +1,70 @@
+---
+layout: basic
+title: Web Example
+---
+
+== Web Example
+
+Now that we have configured both SimplePush and UnifiedPush servers and have them up and running, it's time to explore a simple web application that will exercise AeroGear JavaScript API support and demonstrate the workflow in action. Start by cloning the example from link:https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart[here]. 
+
+As with the link:http://aerogear.org/docs/guides/aerogear-push-ios/iOS-app/[iOS] and link:http://aerogear.org/docs/guides/aerogear-push-android/android-app/[Android] client SDKs, we need to configure the _variantId_, _variantSecret_ and the _URL's_ of our running servers. Navigate to _js/_ folder and open in your favorite text editor, the _unifiedpush.js_ file. The file contains the main logic of the application and is responsible to register the channels with the SimplePush server, retrieve the endpoints for the update, and then register those endpoints with the UnifiedPush server so that notifications can be received.
+
+Prior to run the application, let's do a walkthrough of the code involved. On top of the file you will notice the configuration params that you need to change according to your specific configuration:
+
+[source,javascript]
+----
+var variantId = "<Your-Variant-ID";
+var variantSecret = "<Your-Variant-Secret>";
+var simplePushUrl = "<URL of the running SimplePush server>"
+var unifiedPushUrl = "<URL of the running UnifiedPush server>";
+----
+
+[NOTE]
+Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are common source of problem, so please revisit them if you are experiencing problems.
+
+Next our UnifiedPush client object is created passing along the configuration params we declared earlier. The object would be used, as we will see later, to register the received endpoints from the SimplePush server to the UnifiedPush server.
+
+[source,javascript]
+----
+var UPClient = AeroGear.UnifiedPushClient(variantId, variantSecret, unifiedPushUrl + "/rest/registry/device");
+----
+
+The code is then similar to our link:https://github.com/aerogear/aerogear-simplepush-quickstart[simplepush-quickstart] with one difference. When we first register the channel with the SimplePush server, we grab the _pushEndpoint_ and _channelID_ we received, construct a registration object containing these metadata [1] and we use the _UPClient.registerWithPushServer_ function [2] to register the installation with the UnifiedPush server.
+
+[source,javascript]
+----
+// if it is the first registration, need to register 
+// the 'pushEndpoint' with the UnifiedPush server.
+if ( mailEndpoint.pushEndpoint ) {
+    // assemble the metadata for registration with the UnifiedPush server
+    var metadata = {                                  // 1
+        deviceToken: mailEndpoint.channelID,
+        simplePushEndpoint: mailEndpoint.pushEndpoint,
+        alias: "john",
+        category: "mail"
+    };
+
+    // register with the server
+    UPClient.registerWithPushServer(metadata);       // 2
+
+    appendTextArea("Registered 'Mail' endpoint with UnifiedPush server!")
+
+} else {
+	appendTextArea("'Mail' was already registered!");
+}
+----
+
+If you notice in our example we register two endpoints, one for 'mail' notifications and a second-one for 'broadcast'. On the client side it is just two channels registered, but our UnifiedPush server will use the 'broadcast' channel when sending broadcast messages as we will see later one.
+
+[NOTE]
+It is important to use the name 'broadcast' in the 'category' key of the registration object, otherwise you won't be able to receive messages when performing 'broadcast' send on the UnifiedPush server.
+
+We are ready to run the application. Point your web browser to it and you should see the following:
+
+image:./img/unifiedpush_main_screen.png[UnifiedPush main screen]
+
+*Success!*
+
+A connection to the SimplePush server is established where we register our 'mail' and 'broadcast' channels, and then we register the endpoints received with the UnifiedPush server.
+
+Now that we have our application up an running time to link:../send-push[send messages] using the AeroGear UnifiedPush Server!
