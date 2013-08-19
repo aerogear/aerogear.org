@@ -29,6 +29,7 @@ title: Guides
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)
 * [Tutorial: iOS Push Notifications](aerogear-push-ios)
 * [Tutorial: Android Push Notifications](aerogear-push-android)
+* [Tutorial: JS Push Notifications](aerogear-push-js)
 * [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
 #### User Guides
