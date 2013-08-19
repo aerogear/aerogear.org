@@ -178,7 +178,7 @@ p {
     -webkit-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
-    max-width: 60em;
+    max-width: 960px;
 }
 
 .clearfix {
@@ -535,8 +535,11 @@ a#slide-menu-button:hover {
 }
 
 .basic, .post {
-    margin-left: 5%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 5em;
+    width: 90%;
+    max-width: 960px;
 }
 
 .row {
@@ -609,6 +612,10 @@ pre {
 @media only screen and (max-width: 848px) {
 
     p {
+        max-width: 720px;
+    }
+
+    .basic, .post {
         max-width: 720px;
     }
 
