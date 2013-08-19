@@ -571,8 +571,11 @@ footer p,footer ul {
 }
 
 .basic, .post {
-    margin-left: 5%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 5em;
+
+    width: 90%;
     max-width: 960px;
 }
 
