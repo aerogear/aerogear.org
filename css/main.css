@@ -639,7 +639,7 @@ pre {
     }
 
     .column, .column3, .column4 {
-        width:90%;
+        width: 100%;
         float: none;
         margin-right: 1%;
         padding-left: 0.5%;
