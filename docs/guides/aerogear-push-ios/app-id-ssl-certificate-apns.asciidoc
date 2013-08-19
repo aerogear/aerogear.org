@@ -36,7 +36,9 @@ In the next screen confirm your new App ID, and double check that the _Push Noti
 
 image::./img/AppID_3.png[Overview]
 
-Here click the _Settings_ button and create a _Development SSL Certificate_:
+Click the Edit button and scroll down to the Push Notifications section. Here we are asked to generate a _Development_ and a _Production_ certificate that would be used by the UnifiedPush server when contacting the Apple Push Notification service to send messages. If you plan to distribute your app in the App Store, you are required to generate a Production certificate. In this guide we will generate both Certificates and register them with the UnifiedPush server.
+
+Let's start first by generating the _Development Certificate_. Click the _Generate_ button on the _Development SSL Certificate_ section:
 
 image::./img/SSLCert.png[SSL Certificate]
  
@@ -44,19 +46,35 @@ Inside of the next Dialog you are asked to upload the _Certificate Signing Reque
 
 image::./img/SSLCert_upload.png[CSR upload]
 
-Finishing the upload dialog, you are coming back to the overview of the *App ID*. Now you can download the *Development SSL Certificate* that Apple has created for you:
+Finishing the upload dialog, you are coming back to the overview of the *App ID*.
 
-image::./img/SSLCert_download.png[SSL Certificate download]
+image::./img/AppID_3.png[Overview]
 
-The file is being downloaded as _aps_developer_identity.cer_. Double click on it and it shows up in the *KeyChain Access* tool:
+*Now* click the _Edit_ button again and scroll down to the Push Notifications section. Notice that the _Development SSL Certificate_ section is filled with the required details.
+
+image::./img/SSLCertProd.png[SSL Certificate Production]
+
+Time now to create the _Production_ certificate by following the same steps as previously, this time by clicking the 'Create Certificate' button on the _Production SSL Certificate_ section. Once you are done, you are back to the overview of the *App ID*.
+
+Click the _Edit_ button again and scroll down to the Push Notifications section. Now that we have both Certificates generated, time to download them locally to your computer.
+
+image::./img/SSLCert_downloadProd.png[SSL Certificate download]
+
+The _Development SSL Certificate_ file is being downloaded as _aps_development.cer_. Double click on it and it shows up in the *KeyChain Access* tool:
 
 image::./img/PushCert.png[APNs certificate]
 
-Now you have to export this certificate/private key pair to the *.p12* (_Personal Information Exchange_): This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself on _Apple Push Network Service_ and send messages to it.
+Now you have to export this certificate/private key pair to the *.p12* (_Personal Information Exchange_). This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself for your *development* application on _Apple Push Network Service_ and send messages to it.
 
 image::./img/PushCert_Export.png[Export to .p12 format]
 
-When exporting the file, as your private key, you need to assing a passphrase for it. Make note on it, cause later when uploading it to the _AeroGear Push Server_ you will need both the exported file and the passphrase.
+When exporting the file, as your private key, you need to assign a passphrase for it. Make note on it, cause later when uploading it to the _AeroGear Push Server_ you will need both the exported file and the passphrase.
+
+Follow the same steps to download the _Production SSL Certificate_, the file is being downloaded as _aps_production.cer_. Double click to add in your *KeyChain Access* tool:
+
+image::./img/PushCertProd.png[APNs Distribution certificate]
+
+Now export it too as a *.p12* (_Personal Information Exchange_). This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself for your *production* application on _Apple Push Network Service_ and send messages to it. When exporting the file, as your private key, you need to assing a passphrase for it (this can be same or different with your passphrase for your development certificate).
 
 Provisioning Profile
 ^^^^^^^^^^^^^^^^^^^^

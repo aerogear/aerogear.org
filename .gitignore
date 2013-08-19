@@ -8,3 +8,5 @@ bin/
 /vendor
 /.rbenv-version
 *~
+*.iml
+Gemfile.lock

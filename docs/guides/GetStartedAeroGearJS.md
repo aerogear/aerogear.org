@@ -7,7 +7,7 @@ title: Get started with AeroGear.js
 ## Get Started With AeroGear.js
 
 
-This article is going to show how to get started creating a HTML5 + Rest application using the AeroGear.js Javascript library.  This guide builds upon what you have learned in the [Get Started With HTML5 Mobile Web Development with JBoss](../GetStartedHTML5MobileWeb/) guide.
+This article is going to show how to get started creating an HTML5 + Rest application using the AeroGear.js Javascript library.  This guide builds upon what you have learned in the [Get Started With HTML5 Mobile Web Development with JBoss](./GetStartedHTML5MobileWeb/) guide.
 
 Topics Covered:
 
@@ -23,9 +23,9 @@ Topics Covered:
 * JBoss Application Server 7.1+
 * JBoss Tools 3.3(optional)
 
-An HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+, and note that some behaviors will vary slightly (ex. validations) based on browser support, especially IE 9. For more details on AeroGear’s target browser support see AeroGear Browser Support Targets.
+An HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+, and note that some behaviors will vary slightly (ex. validations) based on browser support, especially IE 9. For more details on AeroGear’s target browser support see [AeroGear Browser Support Targets](./AeroGearBrowserTargets/).
 
-Mobile web support is limited to Android and iOS devices for now, however it should run on HP, and Black Berry devices as well. Windows Phone, and others will work as jQuery Mobile announces support.
+Mobile web support is limited to Android and iOS devices for now, however it should run on HP, and BlackBerry devices as well. Windows Phone, and others will work as jQuery Mobile announces support.
 
 ### Get The Example Code
 
@@ -55,7 +55,7 @@ Once the JBoss Container is started, you can then run this command to build and 
 
 Assuming the defaults, the application will now be running at [http://localhost:8080/jboss-as-kitchensink-aerogear-js/](http://localhost:8080/jboss-as-kitchensink-aerogear-js/)
 
-If you followed the [Get Started With HTML5 Mobile Web Development with JBoss](../GetStartedHTML5MobileWeb/) guide,  you shouldn't see a difference in the User Interface.  The real difference is under the hood.
+If you followed the [Get Started With HTML5 Mobile Web Development with JBoss](./GetStartedHTML5MobileWeb/) guide,  you shouldn't see a difference in the User Interface.  The real difference is under the hood.
 
 Lets dive in!
 

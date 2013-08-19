@@ -19,7 +19,7 @@ AeroGear Security is distributed under the [Apache License, Version 2.0](http://
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security</artifactId>
-            <version>1.1.1</version>
+            <version>1.2.1</version>
             <scope>compile</scope>
         </dependency>
         
@@ -28,7 +28,7 @@ AeroGear Security is distributed under the [Apache License, Version 2.0](http://
         <dependency>
              <groupId>org.jboss.aerogear</groupId>
              <artifactId>aerogear-security-picketlink</artifactId>
-             <version>1.0.2</version>
+             <version>1.2.1</version>
              <scope>compile</scope>
         </dependency>
         

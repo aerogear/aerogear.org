@@ -39,4 +39,4 @@ cd $SRCFOLDER
 gem install --conservative bundler
 bundle install --path vendor/bundle
 rm -rf _site/
-bundle exec jekyll
+bundle exec jekyll build

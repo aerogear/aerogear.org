@@ -16,8 +16,7 @@ JSON Payload:
 ----
 {
   "name" : "SimplePush App",
-  "description" : "The SimplePush Variant",
-  "pushNetworkURL" : "http://localhost:7777/endpoint/"
+  "description" : "The SimplePush Variant"
 }
 ----
 
@@ -41,12 +40,11 @@ The Body will contain (JSON) details about the created _SimplePush Variant_:
   "variantID":"04e9f747-d256-4a24-a0ac-29b9a15e37b1",
   "secret":"70135d26-696d-426a-8183-e1fd0fcb86fe",
   "developer":"admin",
-  "instances":[],
-  "pushNetworkURL":"http://localhost:7777/endpoint/"
+  "instances":[]
 }
 ----
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 400 Bad Request+
@@ -87,7 +85,7 @@ The Body will contain a JSON list of the _SimplePush Variants_, for the given Pu
 ----
 
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 401 Unauthorized+
@@ -116,13 +114,12 @@ The Body will contain (JSON) details about the specific _SimplePush Variant_:
   "variantID":"04e9f747-d256-4a24-a0ac-29b9a15e37b1",
   "secret":"70135d26-696d-426a-8183-e1fd0fcb86fe",
   "developer":"admin",
-  "instances":[],
-  "pushNetworkURL":"http://localhost:7777/endpoint/"
+  "instances":[]
 }
 ----
 
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 401 Unauthorized+
@@ -140,8 +137,7 @@ JSON Payload:
 ----
 {
   "name" : "SimplePush App",
-  "description" : "A nice SimplePush Variant",
-  "pushNetworkURL" : "http://push.mozilla.com/"
+  "description" : "A nice SimplePush Variant"
 }
 ----
 
@@ -157,7 +153,7 @@ Success status code and returned body
 * +HTTP/1.1 204 No Content+
 Empty body.
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 400 Bad Request+
@@ -178,13 +174,15 @@ Delete a specific *SimplePush Variant* (+HTTP DELETE+)
 http://server:port/context/rest/applications/{pushApplicationID}/simplePush/{variantID}
 ----
 
+**NOTE:** This request additionally requires _Content-type: application/json_ header
+
 Success status code and returned body
 +++++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 204 No Content+
 Empty body.
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 401 Unauthorized+

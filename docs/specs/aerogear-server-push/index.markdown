@@ -8,7 +8,7 @@ title: AeroGear UnifiedPush Server
 The _AeroGear UnifiedPush Server_ is a server that allows sending native push messages to different mobile operation systems. The initial version of the server supports [Apple's APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla's Simple Push](https://wiki.mozilla.org/WebAPI/SimplePush).
 
 ## Motivation / Purpose
-The _AeroGear UnifiedPush Server_ offers a _Notification Service API_ to different backend applications. This gives a server the ability to send _Push Notifications_ to mobile applications. The Notification Service API is a signaling mechanismn, like Apple APNs, Google Cloud Messaging or Mozilla SimplePush for sending messages. It's not suitable to be used as a data carrying system (e.g. use in a chat application).
+The _AeroGear UnifiedPush Server_ offers a _Notification Service API_ to different backend applications. This gives a server the ability to send _Push Notifications_ to mobile applications. The Notification Service API is a signalling mechanism, like Apple APNs, Google Cloud Messaging or Mozilla SimplePush for sending messages. It's not suitable to be used as a data carrying system (e.g. use in a chat application).
 
 ### Some Usage Scenarios
 * MyWarehouseInc-backend can send "notification messages" to different "customer" groups (e.g. discounts for only iOS (or only Android) users).
@@ -71,10 +71,6 @@ The graphic below gives a little overview:
 ![components](./aerogear_unified_push_server.png)
 
 ## Functionality 
-
-### Login
-
-ssss
 
 ### Registration 
 
@@ -158,7 +154,7 @@ The server offers an HTTP interfaces to register an _SimplePush variant_:
 
     curl -v -H "Accept: application/json" -H "Content-type: application/json"
       -X POST
-      -d '{"pushNetworkURL" : "http://localhost:7777/endpoint/", "name" : "HR mobile Web", "description" :  "SimplePush variant" }'
+      -d '{"name" : "HR mobile Web", "description" :  "SimplePush variant" }'
 
       http://SERVER:PORT/context/rest/applications/{pushApplicationID}/simplePush 
 
@@ -189,7 +185,7 @@ _Password of the actual variant._
 
 _The device type of the device or the user agent._
 
-- **mobileOperatingSystem:**
+- **operatingSystem:**
 
 _The name of the underlying Operating System._
 
@@ -203,7 +199,11 @@ _Application specific alias to identify users with the system. For instance an `
 
 - **category:**
 
-_Used tp apply a "tag". Mainly usful for the SimplePush channel(s)._
+_Used to apply a "tag" for the registered ```Installation```._
+
+- **simplePushEndpoint:**
+
+_SimplePush server endpoint which receives update requests for one SimplePush client/channel._
 
 
 ##### REST APIs
@@ -216,10 +216,11 @@ The server offers an HTTP interfaces to register an _installation_:
         -d '{
           "deviceToken" : "someTokenString",
           "deviceType" : "iPad",
-          "mobileOperatingSystem" : "iOS",
+          "operatingSystem" : "iOS",
           "osVersion" : "6.1.2",
           "alias" : "someUsername or email adress...",
-          "category" : "football"
+          "category" : "football",
+          "simplePushEndpoint" : "http://server.com/someEndpoint"
          }'
 
     http://SERVER:PORT/context/rest/registry/device
@@ -258,7 +259,9 @@ Sends a push message to a selected list of devices/clients, based on different q
          -v -H "Accept: application/json" -H "Content-type: application/json" 
          -X POST
        -d '{
+           "variants" : ["c3f0a94f-48de-4b77-a08e-68114460857e", "444939cd-ae63-4ce1-96a4-de74b77e3737" ....],
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
+           "category" : "someCategory",
            "deviceType" : ["iPad", "AndroidTablet"],
            "message": {
                "alert":"HELLO!",
@@ -275,7 +278,7 @@ Sends a push message to a selected list of devices/clients, based on different q
 
     http://SERVER:PORT/context/rest/sender/broadcast
 
-The ```alias``` value is used to identied the desired users, while the ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
+The ```variants``` is a filter for notifying certain variants (e.g. HR Android, HR iPad etc.) of the PushApplication with the respective IDs. The ```alias``` value is used to identify the desired users, while the ```category``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
 
 ## Use Cases
 
@@ -307,7 +310,7 @@ Not all mobile applications define the concept of a registered user (e.g. Sport 
 
 ##### Developer
 
-It should be possible to remove ```Devlopers``` from the Server.
+It should be possible to remove ```Developers``` from the Server.
 
 ##### User
 
@@ -376,4 +379,4 @@ HTTP Basic is used to secure the endpoint. Credentials: ```pushApplicationID:mas
 
 ### Client SDK / API
 
-The Client SDKs for ```Installation Regitration``` are tracked [here](http://aerogear.org/docs/specs/aerogear-client-push/)
+The Client SDKs for ```Installation Registration``` are tracked [here](http://aerogear.org/docs/specs/aerogear-client-push/)

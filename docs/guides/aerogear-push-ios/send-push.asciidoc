@@ -3,7 +3,7 @@ layout: basic
 title: Sending messages
 ---
 
-Now you have the Sample App running on your phone, so it is time to use the _AeroGear Unified Push Server_ for delivering a _Push Notification_ message to your device!
+Now you have the Sample App running on your phone, so it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message to your device!
 
 == Simple Sender
 
@@ -13,11 +13,11 @@ A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the 
 ----
 curl -u "{pushApplicationID}:{masterSecret}"
    -v -H "Accept: application/json" -H "Content-type: application/json" 
-   -X POST -d '{"alert":"Hello AeroGear Unified Push!"}'
+   -X POST -d '{"alert":"Hello AeroGear Unified Push!", "badge":1}'
    http://localhost:8080/ag-push/rest/sender/broadcast
 ----
 
-The payload is simply a JSON map. You can send different key/value pairs, but be sure it is not too long, otherwise Apple does _NOT_ deliver the message to your phone. The _alert_ key is recoginzed by the _AeroGear Unified Push Server_ and translated into an APNs specific _alert_.
+The payload is simply a JSON map. You can send different key/value pairs, but be sure it is not too long, otherwise Apple does _NOT_ deliver the message to your phone. The _alert_ key is recognized by the _AeroGear UnifiedPush Server_ and translated into an APNs specific _alert_.
 
 
 When the application is inactive, and a _Push Notification_ containing the _alert_ key is received by the device, a _Popup_ will show up, which displays the value of the _alert_ key:

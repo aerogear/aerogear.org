@@ -1,31 +1,56 @@
 ---
 layout: basic
-title: The Unified Push Server
+title: The UnifiedPush Server
 ---
 
-The Unified Push Server
+The UnifiedPush Server
 -----------------------
 
 
 With all the Apple work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[Unified Push Server], so that it can be used to connect to APNs for a later message sending.
 
-AeroGear Unified Push Server
+AeroGear UnifiedPush Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The _AeroGear Unified Push Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain one _Variant_. Details on the AeroGear Unified Push Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
+The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain two _Variants_ (one for iOS _Development_ and one for iOS _Production_ app). Details on the AeroGear Unified Push Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
 
 For the purpose of the guide, we will fail back on the command line and the _curl_ tool to perform the registrations with the server. In the near feature this won't be needed cause a Push Administration console would be used instead (currently in the works).
 
 === Login to the server
 
-Prior to perform any work with the server, we need to login first. A temporary user 'admin:123' has already been configured, so let's use these credentials to login:
+Prior to perform any work with the server, we need to login first. A temporary user 'admin:123' has already been configured, but for security reasons we need to change the password at first login. 
+
+Let's first login to the server:
 
 [source,c]
 ----
 curl -v -b cookies.txt -c cookies.txt
-	-H "Accept: application/json" -H "Content-type: application/json" 
-	-X POST -d '{"loginName": "admin", "password":"123"}'
-	http://localhost:8080/ag-push/rest/auth/login 
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST -d '{"loginName": "admin", "password":"123"}'
+  http://localhost:8080/ag-push/rest/auth/login
+----
+
+The server would respond with a 'HTTP/1.1 403 Forbidden' status with a 'Credential has expired' message. We can now update user's password:
+
+[NOTE]
+To _update_ the initial password, you need to specify the old 'password' and new password ('newPassword').
+
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X PUT -d '{"loginName": "admin", "password":"123", "newPassword":"SOMENEWPASSWORD"}'
+  http://localhost:8080/ag-push/rest/auth/update
+----
+
+We are now ready to login:
+
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST -d '{"loginName": "admin", "password":"SOMENEWPASSWORD"}'
+  http://localhost:8080/ag-push/rest/auth/login
 ----
 
 The server would respond with a 'HTTP/1.1 200 OK' status, which means that the login was succeeded. If not, check if you typed correctly the command and if the server is correctly setup. 
@@ -51,16 +76,33 @@ Time to register our iOS Variant. Prior to execute the following _curl_ command,
 [NOTE]
 The 'Content-type' is not an _application/json_ request. Here we simply need to upload the SSL Certificate, which we created earlier. This is used, together with the _Passphrase_ to allow the _AeroGear Unified Push Server_ to establish a connection to the Apple Push Network Service.
 
+You can register for a development variant or for a production one using the flag _production_.
+
+Add a _DEVELOPMENT_ Variant:
 [source,c]
 ----
 curl -v -b cookies.txt -c cookies.txt 
-	-i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
-	-F "certificate=@/PATH/TO/EXPORTED/File.p12"
-	-F "passphrase=TopSecret"
-	-X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
+  -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
+  -F "certificate=@/Users/matzew/Desktop/MyTestCert.p12"
+  -F "passphrase=TopSecret"
+  -F "production=false"  // make sure you have Development certificate and Provisioning Profile
+
+  -X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
 ----
 
-The response returns a _variantID_ and a _secret_, that will be both used later on when registering your installation through the iOS client SDK so please make a note on them too.
+Add a _PRODUCTION_ Variant:
+[source,c]
+----
+curl -v -b cookies.txt -c cookies.txt 
+  -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
+  -F "certificate=@/Users/matzew/Desktop/MyProdCert.p12"
+  -F "passphrase=TopSecret"
+  -F "production=true"  // make sure you have Production certificate and Provisioning Profile
+
+  -X POST http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/iOS
+----
+
+Both commands return a _variantID_ and a _secret_, that will be both used later on when registering your installation through the iOS client SDK so please make a note on them too.
 
 Xcode
 ~~~~~

@@ -46,7 +46,7 @@ The Body will contain (JSON) details about the created _Android Variant_:
 }
 ----
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 400 Bad Request+
@@ -87,7 +87,7 @@ The Body will contain a JSON list of the _Android Variants_, for the given PushA
 ----
 
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 401 Unauthorized+
@@ -122,7 +122,7 @@ The Body will contain (JSON) details about the specific _Android Variant_:
 ----
 
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 401 Unauthorized+
@@ -157,7 +157,7 @@ Success status code and returned body
 * +HTTP/1.1 204 No Content+
 Empty body.
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 400 Bad Request+
@@ -184,7 +184,7 @@ Success status code and returned body
 * +HTTP/1.1 204 No Content+
 Empty body.
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 401 Unauthorized+

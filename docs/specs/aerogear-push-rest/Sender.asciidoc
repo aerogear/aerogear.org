@@ -39,7 +39,7 @@ Success status code and returned body
 * +HTTP/1.1 200 OK+
 Indicates the Job has been accepted and is being process by the AeroGear UnifiedPush Server.
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 401 Unauthorized+
@@ -60,6 +60,7 @@ Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-message
 ----
 {
   "alias" : ["user@account.com", "someone@aerogear.org", ....],
+  "category" : "someCategory",
   "deviceType" : ["iPad", "AndroidTablet"],
   "message": {
     "alert":"HELLO!",
@@ -87,7 +88,7 @@ Success status code and returned body
 * +HTTP/1.1 200 OK+
 Indicates the Job has been accepted and is being process by the AeroGear UnifiedPush Server.
 
-Failure status code and desciption
+Failure status code and description
 ++++++++++++++++++++++++++++++++++
 
 * +HTTP/1.1 401 Unauthorized+

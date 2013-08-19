@@ -1,0 +1,11 @@
+.labelExperimental {
+    color: #ff6119;
+}
+
+.labelStable {
+    color: #009640;
+}
+
+.labelDeprecated {
+    color: #ce0000;
+}

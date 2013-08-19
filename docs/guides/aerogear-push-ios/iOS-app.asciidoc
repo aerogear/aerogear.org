@@ -62,7 +62,7 @@ image:./img/PushDialog.jpg[iOS Push Dialoag]
 Once the user agrees, Push Messages can be received by the app!
 
 
-After making sure the user is asked to agree on receiving Push Messages, we need to implement the _application:didRegisterForRemoteNotificationsWithDeviceToken:_ from the _UIApplicationDelegate_ protocol. This is callback is _ALWAYS_ invoked when the user is allowing _Push Notifications_. It basically delegates the _DeviceToken_, that your device and the _Apple Push Network Service_ negotiated, to _AeroGear Push Server_ so that it can store it in a "Database" and use it to send messages to it. The _deviceToken_ basically identifies THIS phone with _APNs_.
+After making sure the user is asked to agree on receiving Push Messages, we need to implement the _application: didRegisterForRemoteNotificationsWithDeviceToken:_ from the _UIApplicationDelegate_ protocol. This is callback is _ALWAYS_ invoked when the user is allowing _Push Notifications_. It basically delegates the _DeviceToken_, that your device and the _Apple Push Network Service_ negotiated, to _AeroGear Push Server_ so that it can store it in a "Database" and use it to send messages to it. The _deviceToken_ basically identifies THIS phone with _APNs_.
 
 
 _Note: Mostly the token stays the same, but there are cases when it may change..._
@@ -75,7 +75,7 @@ Now let's look at the important code section:
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     // initialize "Registration helper" object using the
-    // base URL where the "AeroGear Unified Push Server" is running.
+    // base URL where the "AeroGear UnifiedPush Server" is running.
 
     AGDeviceRegistration *registration =    // [1]
     
@@ -113,17 +113,20 @@ Now let's look at the important code section:
 }
 ----
 
-In [1] we initialize our _AGDeviceRegistration_ object. **NOTE:** You can not use _localhost_ from the device, you have to use an (internal) IP address, where the _AeroGear Unified Push Server_ is running!
+In [1] we initialize our _AGDeviceRegistration_ object. **NOTE:** You can not use _localhost_ from the device, you have to use an (internal) IP address, where the _AeroGear UnifiedPush Server_ is running!
 
 Next, in [2] we call _registerWithClientInfo_ passing a configuration block that sets up the parameters needed to register this app with the _AeroGear Push Server_. The required parameters that need to be present are the _VariantID_ [3] and _VariantSecret_ [4]  (which we received it in the previous chapter when we were registering the _iOS Variant_ with the _Push Application_) and the Device Token [5]. It is valid to specify a bit more data on the _clientInfo_ and we do here by setting metadata such the operating system [6], its version [7] and the device type [8].
+
+[NOTE]
+Do not forget to use the _development_ _VariantID_ and _VariantSecret_ if you are using your _development_ provisioning profile as your signing identity in Xcode, or to use _production_ _VariantID_ and _VariantSecret_ if you are using your _distribution_ provisioning profile.)
 
 Callbacks
 ^^^^^^^^^
 
-The _success_ callback is invoked, when the _AeroGear Unified Push Server_ was able to register your device with the given _iOS Variant_. Otherwise the _failure_ callback would be invoked. One case could be a wrong IP address....
+The _success_ callback is invoked, when the _AeroGear UnifiedPush Server_ was able to register your device with the given _iOS Variant_. Otherwise the _failure_ callback would be invoked. One case could be a wrong IP address....
 
 
-The _application:didFailToRegisterForRemoteNotificationsWithError:_ would be invoked if there is a problem in receving a token from _APNs_...
+The _application: didFailToRegisterForRemoteNotificationsWithError:_ would be invoked if there is a problem in receving a token from _APNs_...
 
 
 Test the app on your device
@@ -135,6 +138,6 @@ Now run the phone on the device. After agreeing on receiving Push Messages, you 
 Sending messages to the device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The last chapter shows how to link:../send-push[send messages] to the device, using the _AeroGear Unified Push Server_!
+The last chapter shows how to link:../send-push[send messages] to the device, using the _AeroGear UnifiedPush Server_!
 
 

@@ -86,7 +86,7 @@ An authenticator represents a set of n authentication modules. The authenticator
 What is an authentication module?
 ---------------------------------
 
-The API represents _one_ concrete authentication module. The API is provides an authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the pipe API technical details of the underlying system are not exposed.
+The API represents _one_ concrete authentication module. The API provides an authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the pipe API technical details of the underlying system are not exposed.
 
 
 JavaScript example
