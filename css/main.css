@@ -179,6 +179,8 @@ p {
     -o-box-sizing: border-box;
     box-sizing: border-box;
     max-width: 60em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .clearfix {
@@ -233,6 +235,8 @@ p {
     text-decoration: none;
     font-size: 0.9em;
     color: #7F7F7F;
+
+    padding-bottom: 1.2em;
 }
 
 #main-header nav li.selected a {
