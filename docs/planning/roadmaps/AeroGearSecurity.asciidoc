@@ -13,7 +13,7 @@ External References
 * link:https://issues.jboss.org/browse/AGSEC/[AeroGear Security JIRA]
 * link:https://github.com/aerogear/aerogear-security/[AeroGear Security]
 * link:https://github.com/aerogear/aerogear-security-picketlink/[AeroGear Security PicketLink]
-* link:https://github.com/picketlink/[PicketLink GitHub]
+* link:http://www.picketlink.org/[PicketLink Web site]
 
 1.0.1 (_Released_ 12 Jun, 2013)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
