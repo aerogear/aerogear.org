@@ -535,8 +535,11 @@ a#slide-menu-button:hover {
 }
 
 .basic, .post {
-    margin-left: 5%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 5em;
+    width: 90%;
+    max-width: 960px;
 }
 
 .row {
@@ -636,7 +639,7 @@ pre {
     }
 
     .column, .column3, .column4 {
-        width:90%;
+        width: 100%;
         float: none;
         margin-right: 1%;
         padding-left: 0.5%;
