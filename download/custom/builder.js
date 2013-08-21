@@ -181,7 +181,7 @@ $( function( $ ) {
 				$( ".alert" ).hide();
 				$( "#download" ).html(
                     $( "<iframe>" )
-                        .attr( "src",'http://custombuilder-aerogear.rhcloud.com/builder/bundle/aerogear/src/master/aerogear.mobile.custom.zip?' + $.param( config ) )
+                        .attr( "src",'http://custombuilder-aerogear.rhcloud.com/builder/bundle/aerogear/src/master/aerogear.custom.zip?' + $.param( config ) )
                 );
 			} else {
                 //show error thing
