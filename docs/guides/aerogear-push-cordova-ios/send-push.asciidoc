@@ -34,7 +34,7 @@ While the application is running, the above described feature is _NOT_ available
 
 [source,javascript]
 ----
-// handle the incomming APNS notifications for iOS
+// handle the incoming APNS notifications for iOS
 function onNotificationAPN(e) {
     // display the push notification message... (extract the APNs alert key value....)
     alert(e.alert);
@@ -52,6 +52,6 @@ That's all you need to use the _AeroGear_ project for sending, and receiving _Pu
 
 === A final note
 
-When using _Push Notifications_, have in mind that it's more for signaling and once in a while notifying a client. The app has to, by Apple's guidelines, function without receving _Push Notifications_. _Remember:_ The user could have disagreed after installing your app!
+When using _Push Notifications_, have in mind that it's more for signaling and once in a while notifying a client. The app has to, by Apple's guidelines, function without receiving _Push Notifications_. _Remember:_ The user could have disagreed after installing your app!
 
 
