@@ -10,12 +10,10 @@ Before we start, please install link:https://github.com/apache/cordova-cli/[Apac
 
 Next you need to _install_ the *Cordova Push Notifications Plugin for Android and iOS*. With the 3.0.x version of Apache Cordova you need to clone this link:https://github.com/jdhiro/PushPlugin[fork/repo]. Once checkout out, _remember_ the installation path of the repository.
 
-Afterwards, please clone this link:https://github.com/aerogear/aerogear-push-ios-demo[Sample Application]. It uses our SDK to register your application installation with the iOS Variant you registered earlier!
-
 Sample App
 ~~~~~~~~~~
 
-Creating a Corodva app is simple:
+Creating a Cordova app is simple:
 
 [source,c]
 ----
@@ -63,11 +61,11 @@ Inside of the +index.html+ you need to add references to the required JavaScript
 ...
 ----
 
-Besides the aerogear.js and its dependency the +PushNotification.js+ file from the used Plugin needs to be referenced as well. For the purpose of this demo we continue to use the +js/index.js+ file for our application. Below is the entire file:
+Besides the aerogear.js and its dependency, the +PushNotification.js+ file from the PushPlugin needs to be referenced as well. For the purpose of this demo we continue to use the +js/index.js+ file for our application. Below is the entire file:
 
 [source,javascript]
 ----
-// handle the incomming APNS notifications for iOS
+// handle the incoming APNS notifications for iOS
 function onNotificationAPN(e) {
     // display the push notification message... (extract the APNs alert key value....)
     alert(e.alert);
@@ -134,7 +132,7 @@ var app = {
             function() {
                 console.log("Fail");
             },
-            // Seeting options to allow badge,sound and alert APNs keys
+            // Setting options to allow badge,sound and alert APNs keys
             {
                 "badge":"true",
                 "sound":"true",
@@ -171,12 +169,12 @@ initAeroGearPush: function() {
     var pushNotification = window.plugins.pushNotification;
 
     // set callbacks for dealing with the device token or an Error.
-    // The options specifiy the interest of the different APNs message event types.
+    // The options specify the interest of the different APNs message event types.
     pushNotification.register(successCallback, errorCallback, options);
 }
 ----
 
-The +successCallback+ is an anonymous JavaScript function that is invoked if the iOS environment could receive a device token from the APNs servers. The plugin executes the required native bits (similar like explained in the link:/docs/guides/aerogear-push-ios[iOS Push Tutorial]) and passes the token to the given function. If an error occurs within the registration with the APNs servers the +errorCallback+ is invoked. The _interesting_ part is the +options+ object: It tells the plugin what type of notifcation messages the application is interested in. The +options+ object also takes a note of the JavaScript function that receives the notifications, while the application is active. Remember the +onNotificationAPN+ function from the begining of the JavaScript file?
+The +successCallback+ is an anonymous JavaScript function that is invoked if the iOS environment could receive a device token from the APNs servers. The plugin executes the required native bits (similar like explained in the link:/docs/guides/aerogear-push-ios[iOS Push Tutorial]) and passes the token to the given function. If an error occurs within the registration with the APNs servers the +errorCallback+ is invoked. The _interesting_ part is the +options+ object: It tells the plugin what type of notification messages the application is interested in. The +options+ object also takes a note of the JavaScript function that receives the notifications, while the application is active. Remember the +onNotificationAPN+ function from the beginning of the JavaScript file?
 
 In case of a successful registration the +successCallback+ is being invoked. In the demo we use a anonymous JavaScript function to receive the device token:
 
@@ -220,7 +218,7 @@ Here we tell the plugin that we would like to be notified by iOS for received _b
 Test the app on your device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now run the phone on the device. After agreeing on receiving Push Messages, you will see the default Apache Cordova page from the generated project. Now put the app into the background, by clicking the home button.
+Now run the app on the device. After agreeing on receiving Push Messages, you will see the default Apache Cordova page from the generated project. Now put the app into the background, by clicking the home button.
 
 
 Sending messages to the device
