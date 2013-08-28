@@ -14,25 +14,9 @@ The SimplePush specification states that secure WebSockets should be used as the
 
 In this guide we will describe the setup of the _Netty_ based implementation which can be used both as a standalone component, or be integrated into JBoss Application Server. Details on how you can integrate the server with the JBoss can be found in link:https://github.com/aerogear/aerogear-simplepush-server/tree/master/wildfly-module[this page] but this guide will use the standalone component.
 
-=== Requirements
-
-Please ensure that you use at least the minimum versions of the following components:
-
-* Java SDK 1.7+
-* Maven 3.0.5+
-
 === Setup
 
-Download the server from the project's link:https://github.com/aerogear/aerogear-simplepush-server[github page]. For the needs of the project, a custom Netty SockJS adapter implementation was written, but since it's not yet integrated in the Netty mainline (planned in an upcoming release) we need to install it manually for now. Simple issue the following command to install it in your local maven repository:
-
-[source,c]
-----
-git clone https://github.com/danbev/netty/tree/ci
-cd ci
-mvn install -DskipTests=true
-----
-
-Once that is done, we are ready to install the server. On the command line issue:
+Download the server from the project's link:https://github.com/aerogear/aerogear-simplepush-server[github page]. Then on the command line issue:
 
 [source,c]
 ----
