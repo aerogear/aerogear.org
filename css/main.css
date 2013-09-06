@@ -575,6 +575,11 @@ pre {
     white-space: pre;
 }
 
+.newsletter-label {
+    display: inline-block;
+    min-width: 90px;
+}
+
 /* =================== Custom Builder =============================================================================== */
 
 .builder-alert {
