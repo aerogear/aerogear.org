@@ -279,7 +279,7 @@ A Store represents an abstraction layer for a storage system. Currently implemen
 
 A DataManager manages different Store implementations. It is basically a factory that hides the concrete instantiations of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.
 
-The code snippets below are part of https://github.com/aerogear/aerogear-ios/tree/master/AeroGear-iOS/AeroGear-iOSTests[aerogear-ios test suite]. You can browser ou BDD specifications for further samples. 
+The code snippets below are part of https://github.com/aerogear/aerogear-ios/tree/master/AeroGear-iOS/AeroGear-iOSTests[aerogear-ios test suite]. You can browse our BDD specifications for further samples. 
 
 NOTE: Right now, there is NO automatic data sync. This is up to the user.
 
