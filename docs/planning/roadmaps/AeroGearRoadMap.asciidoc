@@ -26,7 +26,7 @@ title: RoadMap
 ** Extra getting started guides, and polished example
 ** Polished OpenShift experience
 
-=== AeroGear 1.2.0 (~+6wks) (Mid November)
+=== AeroGear 1.2.0 (Mid November)
 
 * Security
 ** encrypted local storage
@@ -36,6 +36,6 @@ title: RoadMap
 
 *	Offline/sync
 
-=== AeroGear 2.0.0 (~+6wks) (Mid March)
+=== AeroGear 2.0.0 (Mid March)
 
 
