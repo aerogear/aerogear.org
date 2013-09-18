@@ -21,7 +21,7 @@ title: RoadMap
 * Getting starting experience
 ** Check docs, examples
 
-* Unified push server
+* UnifiedPush Server
 ** Server, client, and basic admin UI
 ** Extra getting started guides, and polished example
 ** Polished OpenShift experience
