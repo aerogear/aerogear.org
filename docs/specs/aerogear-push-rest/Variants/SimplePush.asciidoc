@@ -174,8 +174,6 @@ Delete a specific *SimplePush Variant* (+HTTP DELETE+)
 http://server:port/context/rest/applications/{pushApplicationID}/simplePush/{variantID}
 ----
 
-**NOTE:** This request additionally requires _Content-type: application/json_ header
-
 Success status code and returned body
 +++++++++++++++++++++++++++++++++++++
 
