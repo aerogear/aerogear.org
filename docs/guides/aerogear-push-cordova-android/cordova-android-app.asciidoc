@@ -209,7 +209,7 @@ function onNotification(e) {
 }
 ----
 
-To trigger the setup of the _PushPlugin_ we have added a +initAeroGearPush+ function onto the +app+ scope, the function is invoked by the +onDeviceReady+ function which itself is invoked once the Apache Cordova related initialization is done. It is responsible to get a reference of the Plugin's +pushNotification+ object in order to invoke its +register+ function:
+To trigger the setup of the _PushPlugin_ we have added a +initAeroGearPush+ function onto the +app+ scope, the function is invoked by the +onDeviceReady+ function which itself is invoked once the Apache Cordova related initialization is done. It is responsible to get a reference of the Plugin's +pushNotification+ object in order to invoke its +register+ function which will register the device with CGM. Notice, that the function apart from the usual success/failure callbacks, require as parameter the Google Sender ID and the callback function name which would be invoked by the PushPlugin to pass along the notification events. Here we use the 'onNotification' function name that we defined earlier.
 
 [source,javascript]
 ----
@@ -219,7 +219,7 @@ initAeroGearPush: function() {
 
     // set callbacks for dealing with the device token or an Error.
     // The options specify the interest of the different APNs message event types.
-    pushNotification.register(successCallback, errorCallback, options);
+    pushNotification.register(successCallback, errorCallback, {"senderID": "e.g. 4815162342", "ecb": "onNotification"})
 }
 ----
 
