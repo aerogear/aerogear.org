@@ -209,7 +209,7 @@ function onNotification(e) {
 }
 ----
 
-To trigger the setup of the _PushPlugin_ we have added a +initAeroGearPush+ function onto the +app+ scope, the function is invoked by the +onDeviceReady+ function which itself is invoked once the Apache Cordova related initialization is done. The is responsible to get a reference of the Plugin's +pushNotification+ object in order to invoke its +register+ function:
+To trigger the setup of the _PushPlugin_ we have added a +initAeroGearPush+ function onto the +app+ scope, the function is invoked by the +onDeviceReady+ function which itself is invoked once the Apache Cordova related initialization is done. It is responsible to get a reference of the Plugin's +pushNotification+ object in order to invoke its +register+ function:
 
 [source,javascript]
 ----
