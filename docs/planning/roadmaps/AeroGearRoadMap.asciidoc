@@ -26,6 +26,8 @@ title: RoadMap
 ** Extra getting started guides, and polished example
 ** Polished OpenShift experience
 
+* SimplePush Server
+
 === AeroGear 1.2.0 (Mid November)
 
 * Security
