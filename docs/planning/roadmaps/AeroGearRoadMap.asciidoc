@@ -28,7 +28,7 @@ title: RoadMap
 
 * SimplePush Server
 
-=== AeroGear 1.2.0 (Mid November)
+=== AeroGear 1.2.0 (Early November)
 
 * Security
 ** encrypted local storage
