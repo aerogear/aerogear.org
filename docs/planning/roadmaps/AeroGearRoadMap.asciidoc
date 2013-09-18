@@ -31,12 +31,12 @@ title: RoadMap
 === AeroGear 1.2.0 (Early November)
 
 * Security
-** encrypted local storage
+** Encrypted Local Storage
 * Move aerogear.org / staging.aerogear.org out of jborgs
 
 === AeroGear 1.3.0 (Late January)
 
-*	Offline/sync
+*	Offline/Sync
 
 === AeroGear 2.0.0 (Mid March)
 
