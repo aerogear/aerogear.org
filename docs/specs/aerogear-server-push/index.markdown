@@ -133,12 +133,13 @@ _The response returns a JSON map, representing the iOS variant._
 An Android variant represents a logical construct for one Android application (e.g. ```HR for Android```). The Android variant requires some Google specific values:
 
 * Google API Key
+* Google Project Number / Sender ID (optional)
 
 The server offers an HTTP interfaces to register an _Android variant_:
 
     curl -v -H "Accept: application/json" -H "Content-type: application/json"
      -X POST
-     -d '{"googleKey" : "IDDASDASDSA", "name" : "HR for Android", "description" :  "Android variant" }'
+     -d '{"googleKey" : "My Google API Key","projectNumber":"My Project Number / Sender ID", "name" : "HR for Android", "description" :  "Android variant" }'
   
      http://SERVER:PORT/context/rest/applications/{pushApplicationID}/android
 
