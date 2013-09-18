@@ -162,7 +162,7 @@ Push Notification registry and setup
 
 At the beginning of the file there is a +onNotification+ function, which acts as a central hub invoked by the Cordova PushPlugin when it is time to deliver an interesting event to the application. The events we are mostly interested to utilise are the 'registered' and 'message'. The former is invoked when the PushPlugin has successfully registered the device with the GCM service, so we get the chance to register the device with the UnifiedPush server. This is done by calling 'app.registerDevice(e.regid)' function passing along the device token received by the CGM (more details on the function later in the tutorial).
 
-In main other case is that we receive a message and we handle different senarios here if the application _only_ is in the background a notification will be shown. So in this forground case we might want to do something different then just log the message or play a sound.
+The latter event is invoked when an actual notification is received from CGM. Now, If the application is not running, or is in the background, Cordova PushPlugin by default, will display the notification up into the notification drawer. If the user decides to click on it, the application would be brought to the foreground, and the +onNotification+ callback function would be called with the event set to 'message'. Here we can distinguish whether the application was in the foreground, cold-started (that is started running when the notification was clicked), or in the background when the notification was received. Depending on the state, you may decide to perform different operations.
 
 [source,javascript]
 ----
