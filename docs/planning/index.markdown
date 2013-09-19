@@ -5,7 +5,7 @@ title: Road Map
 
 ## Road Map
 
-### [AeroGear Project Roadmap](roadmaps/AeroGearRoadmap1.0.0)
+### [AeroGear Project Roadmap](roadmaps/AeroGearRoadMap)
 
 ### Subproject Roadmaps
 * [Android](roadmaps/AeroGearAndroid)
