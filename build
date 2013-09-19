@@ -1,41 +1,5 @@
 #!/bin/sh
 
-SRCFOLDER="$(pwd)"
-
-# asciidoc setup
-# shamelessly taken from https://github.com/jboss-jdf/jdf-site/blob/master/setup.sh
-ASCIIDOC_VERSION="8.6.7"
-ASCIIDOC_URL="http://downloads.sourceforge.net/project/asciidoc/asciidoc/8.6.7/asciidoc-8.6.7.tar.gz"
-
-if [ -z "$ASCIIDOC_HOME" ]; then
-	ASCIIDOC_HOME="$(pwd)/vendor/asciidoc_home"
-fi
-
-if [ -z "$PYSTUFF_HOME" ]; then
-	PYSTUFF_HOME="$(pwd)/vendor/python"
-fi
-
-virtualenv --distribute $PYSTUFF_HOME
-$PYSTUFF_HOME/bin/pip install pygments
-
-export PYSTUFF_BIN=${PYSTUFF_HOME}/bin
-export ASCIIDOC_BIN=${ASCIIDOC_HOME}/bin
-mkdir -p ${ASCIIDOC_HOME}
-mkdir -p ${ASCIIDOC_BIN}
-export ASCIIDOC_DIR=${ASCIIDOC_HOME}/asciidoc-${ASCIIDOC_VERSION}
-export PATH=${ASCIIDOC_BIN}:${PYSTUFF_BIN}:${PATH}
-echo "************ Please add ${ASCIIDOC_BIN} to your PATH. You probably want to move asciidoc to your system, and update your PATH globally."
-echo "************ Or, install asciidoc via your package manager :-)"
-cd ${ASCIIDOC_HOME}
-curl -L -O $ASCIIDOC_URL 
-
-tar -xzf asciidoc-${ASCIIDOC_VERSION}.tar.gz
-
-ln -sf ${ASCIIDOC_DIR}/asciidoc.py ${ASCIIDOC_BIN}/asciidoc
-ln -sf ${ASCIIDOC_DIR}/a2x.py ${ASCIIDOC_BIN}/a2x
-
-cd $SRCFOLDER
-
 gem install --conservative bundler
 bundle install --path vendor/bundle
 rm -rf _site/
