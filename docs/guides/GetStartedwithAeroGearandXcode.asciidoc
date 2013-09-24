@@ -157,7 +157,7 @@ Modify AGViewController implementation to add instance variables for authenticat
         [config setAuthModule:authModule];
     }];
     
-  NSDictionary *credentials = @{@"username": "john", @"password": @"123"};
+  NSDictionary *credentials = @{@"username": @"john", @"password": @"123"};
     [authModule login:credentials success:^(id object) {                // [7]
         
         [tasksPipe read:^(id responseObject) {                          // [8]
@@ -183,7 +183,7 @@ Central to AeroGear is the concept of link:/docs/specs/aerogear-ios/Classes/AGPi
 
 In [4] and [5] we initialize our Pipeline and Authenticator objects. Both act a factory in which the former creates Pipe objects connected to remote endpoints, while the latter give us access to different authentication modules provided by AeroGear (such as Rest, Basic and Digest).
 
-In [6] we call the "add" method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given AGPipeConfig object. In the config, we also link the authenticate module we described earlier. This will give us a fresh authentificated Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for ther future, such as websockets). 
+In [6] we call the "add" method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given AGPipeConfig object. In the config, we also link the authenticate module we described earlier. This will give us a fresh authentificated Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for the future, such as websockets). 
 
 In [7] we send the login message, within the success callback issue a "read" request [8] on the Pipe to fetch the tasks from the remote application, passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object [9]. Finally, we ask the tableview to reload 
 itself to display the data [10].
@@ -193,6 +193,10 @@ itself to display the data [10].
 Time to fill the empty table data source methods that Xcode created automatically for us when we created the class, with code that renders the fetched data.
 [source,c]
 ----
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_tasks count];
 }
