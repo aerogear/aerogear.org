@@ -15,7 +15,7 @@ Prior to run the application, let's do a walkthrough of the code involved. On to
 ----
 var variantId = "<Your-Variant-ID";
 var variantSecret = "<Your-Variant-Secret>";
-var simplePushUrl = "<URL of the running SimplePush server>"
+var simplePushUrl = "<URL of the running SimplePush server>";
 var unifiedPushUrl = "<URL of the running UnifiedPush server>";
 ----
 
@@ -26,7 +26,7 @@ Next our UnifiedPush client object is created passing along the configuration pa
 
 [source,javascript]
 ----
-var UPClient = AeroGear.UnifiedPushClient(variantId, variantSecret, unifiedPushUrl + "/rest/registry/device");
+UPClient = AeroGear.UnifiedPushClient(variantId, variantSecret, unifiedPushUrl + "/rest/registry/device");
 ----
 
 The code is then similar to our link:https://github.com/aerogear/aerogear-simplepush-quickstart[simplepush-quickstart] with one difference. When we first register the channel with the SimplePush server, we grab the _pushEndpoint_ and _channelID_ we received, construct a registration object containing these metadata [1] and we use the _UPClient.registerWithPushServer_ function [2] to register the installation with the UnifiedPush server.
@@ -47,7 +47,7 @@ if ( mailEndpoint.pushEndpoint ) {
     // register with the server
     UPClient.registerWithPushServer(metadata);       // 2
 
-    appendTextArea("Registered 'Mail' endpoint with UnifiedPush server!")
+    appendTextArea("Registered 'Mail' endpoint with UnifiedPush server!");
 
 } else {
 	appendTextArea("'Mail' was already registered!");
