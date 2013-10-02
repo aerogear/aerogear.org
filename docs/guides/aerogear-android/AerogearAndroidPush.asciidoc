@@ -5,15 +5,15 @@ title: AeroGear Android Push
 
 == AeroGear Push APIs for Android
 
-AeroGear for Android provides support for integrating with push services.  Currently only Google's Cloud Messaging(GCM) with the AeroGear Unified Push Server is supported, but we are planning to add support for Mozilla's Simple Push, MQTT, and standalone GCM soon.
+AeroGear for Android provides support for integrating with push services. Currently only Google's Cloud Messaging (GCM) with the AeroGear Unified Push Server is supported, but we are planning to add support for Mozilla's Simple Push, MQTT, and standalone GCM soon.
 
-This document supplements the link:/docs/guides/aerogear-push-android/[Push Notification Tutorial] by focusing only on the Push API code.  The tutorial includes a much fuller look at the Android's place in the push ecosystem.
+This document supplements the link:/docs/guides/aerogear-push-android/[Push Notification Tutorial] by focusing only on the Push API code. The tutorial includes a much fuller look at the Android's place in the push ecosystem.
 
 === Push in a Nutshell
 
 Push messaging is a mechanism for sending data to mobile clients from a remote server.  For mobile services this reduces battery usage, removes polling code, and provides for a better user experience as data changes are communicated in real time.
 
-On Android messages that GCM receives from a application server are sent to the Android device over an XMPP connection managed by the operating system.  These messages are then extracted and passed to applications via a BroadcastReceiver.  Android applications can register to receive push notifications by declaring a receiver in their AndroidManifest.xml files.
+On Android messages that GCM receives from an application server are sent to the Android device over an XMPP connection managed by the operating system.  These messages are then extracted and passed to applications via a BroadcastReceiver.  Android applications can register to receive push notifications by declaring a receiver in their AndroidManifest.xml files.
 
 === Push API overview
 
@@ -156,7 +156,7 @@ Classes which implement MessageHandler can ask that their methods be called on e
 In an Activity you MUST remove the handler when the Activity goes into the background and MUST reenable it when it comes into the foreground.
 [source,java]
 ----
-public class MainActivity extends Activity implements MessageHandler{
+public class MainActivity extends Activity implements MessageHandler {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
