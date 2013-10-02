@@ -421,7 +421,12 @@ if (![myStore reset:&error])
 
 === Persistent Storage system
 
-A simple _Property list_ storage system is part of the library as well, The same 'AGStore' protocol is used for reading and writing. Here is a quick example, that stores an link:http://en.wikipedia.org/wiki/One-time_password[One Time Password (OTP)] secret in the filesystem so that OTP tokens can be generated later (check AeroGear OTP iOS link:https://github.com/aerogear/aerogear-otp-ios[library] and link:https://github.com/aerogear/aerogear-otp-ios-demo[demo] for more information on OTP).
+A simple _Property list_ storage system is part of the library as well that uses the same 'AGStore' protocol for reading and writing. Depending on the type specified during store configuration, the system will use either link:https://developer.apple.com/library/mac/documentation/cocoa/reference/foundation/Classes/NSPropertyListSerialization_Class/Reference/Reference.html[NSPropertyListSerialization] (type ''_PLIST_'') or link:https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html[NSJSONSerialization] (type ''_JSON_'') when exporting data.
+
+NOTE
+You must adhere to the rules governing the serialization of data types for each respective plist type.
+
+Here is a quick example, that stores an link:http://en.wikipedia.org/wiki/One-time_password[One Time Password (OTP)] secret in the filesystem so that OTP tokens can be generated later (check AeroGear OTP iOS link:https://github.com/aerogear/aerogear-otp-ios[library] and link:https://github.com/aerogear/aerogear-otp-ios-demo[demo] for more information on OTP).
 
 [source,c]
 ----
