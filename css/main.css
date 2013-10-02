@@ -203,6 +203,11 @@ p {
     max-height: 400px;
 }
 
+li > p {
+    overflow: visible;
+    margin: 0;
+}
+
 /* =================== Nav bar ====================================================================================== */
 #main-header nav {
     display: inline-block;
