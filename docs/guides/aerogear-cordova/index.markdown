@@ -11,6 +11,6 @@ title: AeroGear Cordova User Guide
 * [Cordova Command-line Interface](http://cordova.apache.org/docs/en/3.0.0/guide_cli_index.md.html)
 
 ## Usage Guides
-* [Push Messaging](AerogearAndroidPipes101)
-* [OTP](AerogearAndroidPipes101)
+* [Push Messaging](AerogearCordovaPush)
+* [OTP](AerogearCordovaOTP)
 
