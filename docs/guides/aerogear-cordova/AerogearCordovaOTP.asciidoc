@@ -23,11 +23,14 @@ cordova platform add ios
 cordova plugin add https://github.com/aerogear/aerogear-otp-cordova.git
 ----
 
-There is one function that will do the entire sequence:
-
-1. If there is no secret stored it will fire up the barcode reader to scan the secret
-2. Once scanned the secret is stored
-3. Generate a OTP from the stored secret
+There is one function that will do the entire following:
+++++
+<ol>
+<li>If there is no secret stored it will fire up the barcode reader to scan the secret</li>
+<li>Once scanned the secret is stored</li>
+<li>Generate a OTP from the stored secret</li>
+</ol>
+++++
 
 [source,javascript]
 ----
