@@ -63,9 +63,23 @@ image:img/android_eclipse_import_005.png[Android Properties]
 
 * In your project add aerogear-android library (Properties -> Android -> Add)
 
-image:img/android_eclipse_import_006.png[Android Properties]
+image:img/android_eclipse_import_006.png[Android Properties] 
 
-* For support of Push Notifications with the UnifiedPush Server make sure you have Google Play libs selected (Properties -> Android -> Add)
+* For support of Push Notifications with the UnifiedPush Server make sure you have Google Play libs imported and linked
+
+** Confirm the Google Play services extra package is installed
+
+image:img/Play_services_installed.png[Android SDK with Play Services Installed] 
+
+** Import the project into Eclipse
+
+image:img/android_eclipse_import_001.png[Eclipse Import Menu]
+
+** The project will be found under ${ANDROID_HOME}/extras/google/google_play_services/libproject/
+
+image:img/play_lib_dir.png[The Google Play services project in a file picker]
+
+** Finally, link the libproject to your project.
 
 image:img/android_eclipse_import_007.png[Android Properties]
 
