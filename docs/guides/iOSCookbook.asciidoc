@@ -172,7 +172,7 @@ id<AGPipe> projects = [todo pipe:^(id<AGPipeConfig> config) {
 NOTE: If you are running on iOS versions < 6 and a timeout occurs on a pipe's _save_ operation, the error code is set to _NSURLErrorCancelled_.
 
 === Cancel
-At any time after starting your operations, you can call ```cancel``` on the Pipe object to cancel all running Pipe operations. Doing so will invoke the pipe's 'failure' block with an error code set to ```NSURLErrorCancelled```. You can then check this code in order to perform your 'cancellation' logic.
+At any time after starting your operations, you can call 'cancel' on the Pipe object to cancel all running Pipe operations. Doing so will invoke the pipe's 'failure' block with an error code set to 'NSURLErrorCancelled'. You can then check this code in order to perform your "cancellation" logic.
 
 [source,c]
 ----
