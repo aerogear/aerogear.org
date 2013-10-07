@@ -17,7 +17,8 @@ JSON Payload:
 {
   "name" : "Android App",
   "description" : "The Android Variant",
-  "googleKey" : "IDDASDASDSA"
+  "googleKey" : "My Google API Key",
+  "projectNumber" : "My Project Number / Sender ID"
 }
 ----
 
@@ -42,7 +43,8 @@ The Body will contain (JSON) details about the created _Android Variant_:
   "secret":"70135d26-696d-426a-8183-e1fd0fcb86fe",
   "developer":"admin",
   "instances":[],
-  "googleKey":"IDDASDASDSA"
+  "googleKey":"My Google API Key",
+  "projectNumber":"My Project Number / Sender ID"
 }
 ----
 
@@ -117,7 +119,8 @@ The Body will contain (JSON) details about the specific _Android Variant_:
   "secret":"70135d26-696d-426a-8183-e1fd0fcb86fe",
   "developer":"admin",
   "instances":[],
-  "googleKey":"IDDASDASDSA"
+  "googleKey":"My Google API Key",
+  "projectNumber":"My Project Number / Sender ID"
 }
 ----
 
@@ -141,7 +144,8 @@ JSON Payload:
 {
   "name" : "Android App",
   "description" : "A nice Android Variant",
-  "googleKey" : "SomeOtherKey"
+  "googleKey" : "Updated Google API Key",
+  "projectNumber" : "Updated Project Number / Sender ID"
 }
 ----
 

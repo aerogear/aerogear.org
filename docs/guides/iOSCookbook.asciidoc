@@ -157,7 +157,7 @@ In this case, where we have a RESTful pipe the API issues a HTTP DELETE request.
 == Time out and Cancel pending operations
 
 === Timeout
-During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an operation to complete. If the time interval is exceeded with no response from the server, then the _failure_ callback is executed. 
+During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an operation to complete. If the time interval is exceeded with no response from the server, then the _failure_ callback is executed with an error code set to _NSURLErrorTimedOut_.
 
 From the todo example above:
 
@@ -169,8 +169,10 @@ id<AGPipe> projects = [todo pipe:^(id<AGPipeConfig> config) {
 }];
 ----
 
+NOTE: If you are running on iOS versions < 6 and a timeout occurs on a pipe's _save_ operation, the error code is set to _NSURLErrorCancelled_.
+
 === Cancel
-At any time after starting your operations, you can call 'cancel' on the Pipe object to cancel all running Pipe operations. Any registered callbacks on the pipe are NOT executed so it is your responsibility to provide any neccessary cleanups after calling this method.
+At any time after starting your operations, you can call 'cancel' on the Pipe object to cancel all running Pipe operations. Doing so will invoke the pipe's 'failure' block with an error code set to 'NSURLErrorCancelled'. You can then check this code in order to perform your "cancellation" logic.
 
 [source,c]
 ----
@@ -182,7 +184,7 @@ At any time after starting your operations, you can call 'cancel' on the Pipe ob
     NSLog(@"Read: An error occured! \n%@", error);
 }];
 
-// cancel operations. NOTE that no 'success' or 'failure' callbacks are executed after this.
+ // cancel the request
 [projects cancel];
 ----
 
@@ -260,23 +262,26 @@ To move backwards in the result set, you simple call _previous_ on the _pagedRes
     // handle error
 }];
 ----
+[NOTE]
+====
 
- ## Notes
- 
- The library uses the 'next' and 'previous' identifiers:
- 
+.The library uses the 'next' and 'previous' identifiers:
  - to extract the paging information params from the response and
- - filling those paging information params in the subsequent ```next``` and ```previous``` requests.
+ - filling those paging information params in the subsequent 'next' and 'previous' requests.
  
- Failing to provide correct identifiers, means that no paging params would be appended in the request. Caution: Without valid paging parameters the used service API may simply return the entire data. To ensure the results returned  do 'logical' represent a 'next' and 'previous' page, the user must ensure correct identifiers are set in the Page configuration.
- 
- Further, moving beyond last or first page is left on the behaviour of the specific server implementation, that is the library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by respondng with an http error response, or simply return an empty list. The user is responsible to cater for exception cases like this.
+Failing to provide correct identifiers, means that no paging params would be appended in the request. 
 
+CAUTION: Without valid paging parameters the used service API may simply return the entire data. To ensure the results returned  do 'logical' represent a 'next' and 'previous' page, the user must ensure correct identifiers are set in the Page configuration.
+ 
+Further, moving beyond last or first page is left on the behaviour of the specific server implementation, that is the library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by respondng with an http error response, or simply return an empty list. The user is responsible to cater for exception cases like this.
+====
 == [[store]]Store and DataManager
 
 A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] storage.
 
 A DataManager manages different Store implementations. It is basically a factory that hides the concrete instantiations of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.
+
+The code snippets below are part of https://github.com/aerogear/aerogear-ios/tree/master/AeroGear-iOS/AeroGear-iOSTests[aerogear-ios test suite]. You can browse our BDD specifications for further samples. 
 
 NOTE: Right now, there is NO automatic data sync. This is up to the user.
 
@@ -418,7 +423,12 @@ if (![myStore reset:&error])
 
 === Persistent Storage system
 
-A simple _Property list_ storage system is part of the library as well, The same 'AGStore' protocol is used for reading and writing. Here is a quick example, that stores an link:http://en.wikipedia.org/wiki/One-time_password[One Time Password (OTP)] secret in the filesystem so that OTP tokens can be generated later (check AeroGear OTP iOS link:https://github.com/aerogear/aerogear-otp-ios[library] and link:https://github.com/aerogear/aerogear-otp-ios-demo[demo] for more information on OTP).
+A simple _Property list_ storage system is part of the library as well that uses the same 'AGStore' protocol for reading and writing. Depending on the type specified during store configuration, the system will use either link:https://developer.apple.com/library/mac/documentation/cocoa/reference/foundation/Classes/NSPropertyListSerialization_Class/Reference/Reference.html[NSPropertyListSerialization] (type ''_PLIST_'') or link:https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html[NSJSONSerialization] (type ''_JSON_'') when exporting data.
+
+NOTE
+You must adhere to the rules governing the serialization of data types for each respective plist type.
+
+Here is a quick example, that stores an link:http://en.wikipedia.org/wiki/One-time_password[One Time Password (OTP)] secret in the filesystem so that OTP tokens can be generated later (check AeroGear OTP iOS link:https://github.com/aerogear/aerogear-otp-ios[library] and link:https://github.com/aerogear/aerogear-otp-ios-demo[demo] for more information on OTP).
 
 [source,c]
 ----

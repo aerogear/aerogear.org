@@ -33,7 +33,7 @@ If you are unfamiliar with Maven, developerWorks has a detailed http://www.ibm.c
 
 We need to have the https://github.com/mosabua/maven-android-sdk-deployer[Android Maven SDK Deployer] installed and configured.  These are only quickstart instructions, the Android Maven SDK Deployer GitHub has a much more in depth install guide.
 
-You must have the version of the platform installed through the Android SDK as you are using for your profile.  In this example, make sure Android 4.1 is installed.
+You must have the version of the platform installed through the Android SDK as you are using for your profile.  In this example, make sure Android 4.2 is installed.
 
 [source,bash]
 ----

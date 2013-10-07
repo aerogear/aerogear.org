@@ -30,3 +30,4 @@ title: Specifications
 * [AeroGear UnifiedPush Messages](aerogear-push-messages)
 * [AeroGear UnifiedPush RESTful APIs](aerogear-push-rest)
 * [AeroGear UnifiedPush Java Client](aerogear-unifiedpush-java-client)
+* [AeroGear UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
