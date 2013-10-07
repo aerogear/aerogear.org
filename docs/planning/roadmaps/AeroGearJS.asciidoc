@@ -44,46 +44,42 @@ New Features
 ** WebSocket/SockJS via Notifier
 * *Unified Push Client*
 ** Separate module for app registration/unregistration with unified push server
-* *Showcase App*
-** First version featuring all features from library up to this point
 
-New Adapters
+1.3.0 (Mid November)
+~~~~~~~~~~~~~~~~~~~
+New Features
 ^^^^^^^^^^^^
+* *Crypto*
+** aerogear.crypto.js
+** Provide encryption/decryption for passwords, data, etc.
+* *Pipeline*
+** Multi-part Uploads
 * *DataManager*
 ** IndexedDB/WebSQL Adapter
 *** Feature detection to determine which is available
 *** IE9 supports neither so need to also be able to fall back to localStorage but use same API
-*** Probably should investigate PouchDB's implementation
 * *Auth*
 ** OTP Adapter
 ** OAuth2 Adapter
 *** Customizable Provider
 
-1.3.0 (Mid October)
+1.4.0 (Mid January)
 ~~~~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
-* *Pipeline*
-** Multi-part Uploads
-* *DataManager*
-** Add encryption to sessionLocal adapter
 * *Data Sync*
 ** Utility for keeping data in DataManager synchronized with a persistent server side store
 ** Possibly use Notifier for communication / data transfer
-* *Showcase App*
-** Add latest library features
+** Investigate PouchDB as provider or inspiration
 
-1.4.0 (Mid January)
+1.5.0 (Early March)
 ~~~~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
 * *Offline*
 ** Support for using apps offline and detecting status
-** Simplified App Cache API
-** Scaffolding for proper App Cache setup
+** Simplified App Cache API / Keep eye on new offline APIs
 ** Use DataSync when returning to online status
-* *Showcase App*
-** Add latest library features
 
 
 2.0.0 Release
