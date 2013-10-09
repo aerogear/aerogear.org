@@ -5,60 +5,25 @@ title: Sending messages
 
 == Sending messages
 
-Now that we have the web application running and we have registered both for 'broadcast' and 'mail' endpoints on the UnifiedPush server, it's time to send notifications. A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the successful registration of the Push Application. These ID’s are used both for sending a broadcast and a selected send message to all registered SimplePush installations.
+Now that we have the web application running and we have registered the 'mail' endpoint on the UnifiedPush server, it's time to send notifications. A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the successful registration of the Push Application. These ID’s are used for sending a message to all registered SimplePush installations, per channel.
 
-Let's start first by sending a 'broadcast' message. On a command line issue the following _CURL_ command:
+On a command line issue the following _CURL_ command:
 
 [source,c]
 ----
-curl -u "{PushApplicationID}:{MasterSecret}"
+curl -3 -u "{PushApplicationID}:{MasterSecret}"
    -v -H "Accept: application/json" -H "Content-type: application/json"
    -X POST
-   -d '{
-       "key":"value",
-       "alert":"HELLO!",
-       "sound":"default",
-       "badge":7,
-    
-       "simple-push":"version=123"
-     }'
+   -d '{"simple-push": { "mail":"version=123"}
+   }'
 
-http://localhost:8080/ag-push/rest/sender/broadcast
+https://SERVER:PORT/CONTEXT/rest/sender
 ----
 
-Notice the added _simple-push_ key in the payload together with the 'version' field. AeroGear UnifiedPush server will interpret that key and for all registered SimplePush installations under the PushApplication, it will perform an HTTP PUT update at the 'broadcast' endpoint on the SimplePush server. This will cause the SimplePush server to send the push notification to web clients.
-
-[NOTE]
-Besides the _simple-push_ key, nothing else is submitted to the _Web clients_. All other keys shown in the payload (such as _alert_, _sound_ etc) are only submitted to the native Android/iOS platforms.
-
-You should now see the 'broadcast' notification being received and appended in the textarea:
-
-image:./img/unifiedpush_broadcast_screen.png[UnifiedPush Broadcast screen]
-
+Notice the _simple-push_ object in the payload. It contains the name of one channel (here _mail_) and its version number. The AeroGear UnifiedPush Server will perform an HTTP PUT update on the SimplePush server. This will cause the SimplePush server to send the push notification to web clients.
 
 [NOTE]
 If you want to send another push notification to that endpoint, make sure you are increasing the version number (e.g. version=124 or version=125 in this case)! Using the same version for that given endpoint does not cause a push notification to be sent to the client.
-
-Similar to the 'broadcast' message payload, the 'selected' message payload also contains the _simple-push_ key, this time with a list of comma-separated 'category' names you assigned when you registered the endpoints to the UnifiedPush server in the previous section. 
-
-[NOTE]
-As with the 'broadcast send' nothing else is submitted to the _Web clients_ besides the _simple-push_ key. All other keys shown in the payload (such as _alert_, _sound_ etc) are only submitted to the native Android/iOS platforms.
-
-On a command line issue the following _CURL_ command: 
-
-[source,c]
-----
-curl -u "{PushApplicationID}:{MasterSecret}"
-   -v -H "Accept: application/json" -H "Content-type: application/json"
-   -X POST
-   -d '{
-      "message": {"key":"value", "alert":"HELLO!", "sound":"default", "badge":7},   
-
-      "simple-push": { "mail":"version=123"}
-   }'
-
-http://localhost:8080/ag-push/rest/sender/selected
-----
 
 You should see again the 'mail' notification being received:
 

@@ -45,7 +45,7 @@ A simple message to be send to a mobile application, to notify it of a data chan
 
 #### Sender API
 
-Is a component that sends _Push Notification Messages_ to a ```Push Application``` or different ```Variants```. The message is then delivered to all (valid) ```Installations```. It's also possible to use a _selective send_, for notifying a selected group of users (aka ```Installations```). 
+Is a component that sends _Push Notification Messages_ to a ```Push Application``` or some of its different ```Variants```. 
 
 #### Developer
 
@@ -86,12 +86,12 @@ Adds a logical construct, that represents an overall mobile application (e.g. Mo
 
 The server offers an HTTP interfaces to apply a _Push Application_ registration:
 
-    curl -v -b cookies.txt -c cookies.txt
+    curl -3 -v -b cookies.txt -c cookies.txt
          -v -H "Accept: application/json" -H "Content-type: application/json"
          -X POST
          -d '{"name" : "MyApp", "description" :  "awesome app" }'
 
-    http://SERVER:PORT/context/rest/applications
+    https://SERVER:PORT/context/rest/applications
 
 _The response returns a JSON map, representing the Push Application._
 
@@ -114,7 +114,7 @@ An iOS variant represents a logical construct for one iOS application (e.g. ```H
 
 The server offers an HTTP interfaces to register an _iOS variant_:
 
-    curl -v -b cookies.txt -c cookies.txt 
+    curl -3 -v -b cookies.txt -c cookies.txt 
          -i -H "Accept: application/json" -H "Content-type: multipart/form-data" 
          -F "certificate=@/path/to/the/cert.p12"
          -F "passphrase=TopSecret"
@@ -122,7 +122,7 @@ The server offers an HTTP interfaces to register an _iOS variant_:
          -F "name=HR for iPhone"
          -X POST
 
-    http://SERVER:PORT/context/rest/applications/{pushApplicationID}/iOS
+    https://SERVER:PORT/context/rest/applications/{pushApplicationID}/iOS
 
 **NOTE:** The above is a _multipart/form-data_, since it is required to upload the "Apple Push certificate"!
 
@@ -137,11 +137,11 @@ An Android variant represents a logical construct for one Android application (e
 
 The server offers an HTTP interfaces to register an _Android variant_:
 
-    curl -v -H "Accept: application/json" -H "Content-type: application/json"
+    curl -3 -v -H "Accept: application/json" -H "Content-type: application/json"
      -X POST
      -d '{"googleKey" : "My Google API Key","projectNumber":"My Project Number / Sender ID", "name" : "HR for Android", "description" :  "Android variant" }'
   
-     http://SERVER:PORT/context/rest/applications/{pushApplicationID}/android
+     https://SERVER:PORT/context/rest/applications/{pushApplicationID}/android
 
 _The response returns a JSON map, representing the Android variant._
 
@@ -153,11 +153,11 @@ An SimplePush variant represents a logical construct for one SimplePush applicat
 
 The server offers an HTTP interfaces to register an _SimplePush variant_:
 
-    curl -v -H "Accept: application/json" -H "Content-type: application/json"
+    curl -3 -v -H "Accept: application/json" -H "Content-type: application/json"
       -X POST
       -d '{"name" : "HR mobile Web", "description" :  "SimplePush variant" }'
 
-      http://SERVER:PORT/context/rest/applications/{pushApplicationID}/simplePush 
+      https://SERVER:PORT/context/rest/applications/{pushApplicationID}/simplePush 
 
 _The response returns a JSON map, representing the SimplePush variant._
 
@@ -211,7 +211,7 @@ _SimplePush server endpoint which receives update requests for one SimplePush cl
 
 The server offers an HTTP interfaces to register an _installation_:
 
-    curl -u "{MobileVariantID}:{secret}"
+    curl -3 -u "{MobileVariantID}:{secret}"
         -v -H "Accept: application/json" -H "Content-type: application/json" 
         -X POST
         -d '{
@@ -224,39 +224,19 @@ The server offers an HTTP interfaces to register an _installation_:
           "simplePushEndpoint" : "http://server.com/someEndpoint"
          }'
 
-    http://SERVER:PORT/context/rest/registry/device
+    https://SERVER:PORT/context/rest/registry/device
 
 **NOTE**: Platform specific Client SDKs are provided to submit the require data to the _AeroGear UnifiedPush Server_.
 
 ### Sender
 
-The RESTful APIs for sending Push Notifications to different Mobile Push Networks. A few different _Sender Types_ are supported by the push server.
+The RESTful APIs for sending Push Notifications to different Mobile Push Networks:
 
-#### Broadcast
+#### RESTful Sender
 
-Sends a push message to all _variants_ (and all of its _installations_), of a given _Push Application_:
+Sends a push message to a selected list of devices/clients, or all, based on different query criterias:
 
-    curl -u "{PushApplicationID}:{MasterSecret}"
-         -v -H "Accept: application/json" -H "Content-type: application/json" 
-         -X POST
-         -d '{
-           "alert":"HELLO!",
-           "sound":"default",
-           "badge":7,
-           "simple-push":"version=123",
-           "someKey":"some value",
-           "anotherCustomKey":"some other value"
-         }'
-
-    http://SERVER:PORT/context/rest/sender/broadcast
-
-Sends a JSON map to the server. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
-
-#### Selective Send
-
-Sends a push message to a selected list of devices/clients, based on different query criterias:
-
-    curl -u "{PushApplicationID}:{MasterSecret}"
+    curl -3 -u "{PushApplicationID}:{MasterSecret}"
          -v -H "Accept: application/json" -H "Content-type: application/json" 
          -X POST
        -d '{
@@ -277,7 +257,7 @@ Sends a push message to a selected list of devices/clients, based on different q
             }
         }'
 
-    http://SERVER:PORT/context/rest/sender/broadcast
+    https://SERVER:PORT/context/rest/sender
 
 The ```variants``` is a filter for notifying certain variants (e.g. HR Android, HR iPad etc.) of the PushApplication with the respective IDs. The ```alias``` value is used to identify the desired users, while the ```category``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
 
@@ -354,11 +334,8 @@ _**Note:** On iOS the user as to agree to receive push messages_
 
 ### Sending Push Notification Messages
 
-#### Broadcast
-The _AeroGear UnifiedPush Server_ acts as a broker to deliver _Push Notification Messages_ to several ```Installations```. A ```developer``` can send _Push Notification Messages_ to a specific ```Push Application``` (including all ```Installations``` of the containing ```Variants```).
-
-#### Selective Send
-The _AeroGear UnifiedPush Server_ acts as a broker to deliver _Push Notification Messages_ to several ```Installations```. A ```developer``` can send _Push Notification Messages_ to a specific ```Installations```, using query criterias, such as ```alias``` or ```deviceType```.
+#### Sender
+The _AeroGear UnifiedPush Server_ acts as a broker to deliver _Push Notification Messages_ to several ```Installations```. A ```developer``` can send _Push Notification Messages_ to a specific ```Installations```, using query criterias, such as ```alias``` or ```deviceType```, or all (aka _broadcast_) when no criteria is provided.
 
 ### API access
 

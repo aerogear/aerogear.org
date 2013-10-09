@@ -54,17 +54,12 @@ if ( mailEndpoint.pushEndpoint ) {
 }
 ----
 
-If you notice in our example we register two endpoints, one for 'mail' notifications and a second-one for 'broadcast'. On the client side it is just two channels registered, but our UnifiedPush server will use the 'broadcast' channel when sending broadcast messages as we will see later one.
-
-[NOTE]
-It is important to use the name 'broadcast' in the 'category' key of the registration object, otherwise you won't be able to receive messages when performing 'broadcast' send on the UnifiedPush server.
-
-We are ready to run the application. Point your web browser to it and you should see the following:
+On the client side we registered one endpoint for 'mail' notifications. We are ready to run the application. Point your web browser to it and you should see the following:
 
 image:./img/unifiedpush_main_screen.png[UnifiedPush main screen]
 
 *Success!*
 
-A connection to the SimplePush server is established where we register our 'mail' and 'broadcast' channels, and then we register the endpoints received with the UnifiedPush server.
+A connection to the SimplePush server is established where we register our 'mail' channel, and then we register the endpoint received with the UnifiedPush server.
 
 Now that we have our application up an running time to link:../send-push[send messages] using the AeroGear UnifiedPush Server!

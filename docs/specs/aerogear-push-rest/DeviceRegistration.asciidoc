@@ -24,14 +24,14 @@ JSON Payload:
   "osVersion" : "6.1.2",
   "alias" : "someUsername or email adress...",
   "category" : "football",
-  "simplePushEndpoint":"http://server.com/endpointPath"
+  "simplePushEndpoint":"https://server.com/endpointPath"
 }
 ----
 
 URL:
 [source,c]
 ----
-http://server:port/context/rest/registry/device
+https://SERVER:PORT/CONTEXT/rest/registry/device
 ----
 
 Success status code and returned body
@@ -50,7 +50,7 @@ On successful storage of the device related metadata:
   "osVersion":"6.1.2",
   "alias":"dude@dude.org",
   "category":"football",
-  "simplePushEndpoint":"http://server.com/endpointPath"
+  "simplePushEndpoint":"https://server.com/endpointPath"
 }
 ----
 
@@ -72,7 +72,7 @@ Unregister of a device (+HTTP DELETE+)
 
 [source,c]
 ----
-http://server:port/context/rest/registry/device/{deviceToken}
+https://SERVER:PORT/CONTEXT/rest/registry/device/{deviceToken}
 ----
 
 Success status code and returned body

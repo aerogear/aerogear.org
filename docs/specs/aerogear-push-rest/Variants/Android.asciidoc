@@ -25,7 +25,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/android
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/android
 ----
 
 Success status code and returned body
@@ -66,7 +66,7 @@ Read all *Android Variants* for a *PushApplication* (+HTTP GET+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/android
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/android
 ----
 
 Success status code and returned body
@@ -101,7 +101,7 @@ Read a specific *Android Variant* (+HTTP GET+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/android/{variantID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/android/{variantID}
 ----
 
 Success status code and returned body
@@ -152,7 +152,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/android/{variantID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/android/{variantID}
 ----
 
 Success status code and returned body
@@ -179,7 +179,7 @@ Delete a specific *Android Variant* (+HTTP DELETE+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/android/{variantID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/android/{variantID}
 ----
 
 Success status code and returned body
