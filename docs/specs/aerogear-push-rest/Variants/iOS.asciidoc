@@ -27,7 +27,7 @@ Form Data:
 URL:
 [source,c]
 ----
-https://server:port/context/rest/applications/{pushApplicationID}/iOS
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/iOS
 ----
 
 Success status code and returned body
@@ -65,7 +65,7 @@ Read all *iOS Variants* for a *PushApplication* (+HTTP GET+)
 
 [source,c]
 ----
-https://server:port/context/rest/applications/{pushApplicationID}/iOS
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/iOS
 ----
 
 Success status code and returned body
@@ -100,7 +100,7 @@ Read a specific *iOS Variant* (+HTTP GET+)
 
 [source,c]
 ----
-https://server:port/context/rest/applications/{pushApplicationID}/iOS/{variantID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/iOS/{variantID}
 ----
 
 Success status code and returned body
@@ -151,7 +151,7 @@ Form Data:
 URL:
 [source,c]
 ----
-https://server:port/context/rest/applications/{pushApplicationID}/iOS/{variantID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/iOS/{variantID}
 ----
 
 Success status code and returned body
@@ -178,7 +178,7 @@ Delete a specific *iOS Variant* (+HTTP DELETE+)
 
 [source,c]
 ----
-https://server:port/context/rest/applications/{pushApplicationID}/iOS/{variantID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/iOS/{variantID}
 ----
 
 Success status code and returned body
