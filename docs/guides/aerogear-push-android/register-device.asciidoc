@@ -23,10 +23,10 @@ Let's first login to the server:
 
 [source,c]
 ----
-curl -v -b cookies.txt -c cookies.txt
+curl -3 -v -b cookies.txt -c cookies.txt
   -H "Accept: application/json" -H "Content-type: application/json"
   -X POST -d '{"loginName": "admin", "password":"123"}'
-  http://localhost:8080/ag-push/rest/auth/login
+  https://SERVER:PORT/CONTEXT/rest/auth/login
 ----
 
 The server would respond with a 'HTTP/1.1 403 Forbidden' status with a 'Credential has expired' message. We can now update user's password:
@@ -36,20 +36,20 @@ To _update_ the initial password, you need to specify the old 'password' and new
 
 [source,c]
 ----
-curl -v -b cookies.txt -c cookies.txt
+curl -3 -v -b cookies.txt -c cookies.txt
   -H "Accept: application/json" -H "Content-type: application/json"
   -X PUT -d '{"loginName": "admin", "password":"123", "newPassword":"SOME_NEW_PASSWORD"}'
-  http://localhost:8080/ag-push/rest/auth/update
+  https://SERVER:PORT/CONTEXT/rest/auth/update
 ----
 
 We are now ready to login:
 
 [source,c]
 ----
-curl -v -b cookies.txt -c cookies.txt
+curl -3 -v -b cookies.txt -c cookies.txt
   -H "Accept: application/json" -H "Content-type: application/json"
   -X POST -d '{"loginName": "admin", "password":"SOME_NEW_PASSWORD"}'
-  http://localhost:8080/ag-push/rest/auth/login
+  https://SERVER:PORT/CONTEXT/rest/auth/login
 ----
 
 The server would respond with a 'HTTP/1.1 200 OK' status, which means that the login was succeeded. If not, check if you typed correctly the command and if the server is correctly setup. 
@@ -60,10 +60,10 @@ Now that we are logged in, let's create a new _Push Application_ by executing th
 
 [source,c]
 ----
-curl -v -b cookies.txt -c cookies.txt 
+curl -3 -v -b cookies.txt -c cookies.txt 
   -H "Accept: application/json" -H "Content-type: application/json"
   -X POST -d '{"name" : "AeroGear-Android-Push", "description" :  "My first Android Push App, that uses AeroGear" }'
-  http://localhost:8080/ag-push/rest/applications
+  https://SERVER:PORT/CONTEXT/rest/applications
 ----
  
 The response returns a _pushApplicationID_ and a _masterSecret_. Make a note on these ID's cause we will use them later on.
@@ -74,12 +74,12 @@ Time to register our Android variant. Prior to execute the following _CURL_ comm
 
 [source,c]
 ----
-curl -v -b cookies.txt -c cookies.txt
+curl -3 -v -b cookies.txt -c cookies.txt
   -v -H "Accept: application/json" -H "Content-type: application/json"
   -X POST
   -d '{"googleKey" : "IDDASDASDSA"}'
 
-  http://localhost:8080/ag-push/rest/applications/{PUSH_ID}/android
+  https://SERVER:PORT/CONTEXT/rest/applications/{PUSH_ID}/android
 ----
 
 The server would responsd with _variantID_ and a _secret_, that will be both used later on when registering your installation through the Android client SDK so please make a note on them too.

@@ -11,10 +11,10 @@ A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the 
 
 [source,c]
 ----
-curl -u "{pushApplicationID}:{masterSecret}"
+curl -3 -u "{pushApplicationID}:{masterSecret}"
    -v -H "Accept: application/json" -H "Content-type: application/json" 
    -X POST -d '{"message": {"alert":"Hello AeroGear UnifiedPush server!"}}'
-   http://localhost:8080/ag-push/rest/sender
+   https://SERVER:PORT/CONTEXT/rest/sender
 ----
 
 If all goes well, you should see the message payload being displayed on screen:

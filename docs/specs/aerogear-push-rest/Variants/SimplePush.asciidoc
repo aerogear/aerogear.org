@@ -23,7 +23,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/simplePush
+https://server:port/context/rest/applications/{pushApplicationID}/simplePush
 ----
 
 Success status code and returned body
@@ -62,7 +62,7 @@ Read all *SimplePush Variants* for a *PushApplication* (+HTTP GET+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/simplePush
+https://server:port/context/rest/applications/{pushApplicationID}/simplePush
 ----
 
 Success status code and returned body
@@ -97,7 +97,7 @@ Read a specific *SimplePush Variant* (+HTTP GET+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/simplePush/{variantID}
+https://server:port/context/rest/applications/{pushApplicationID}/simplePush/{variantID}
 ----
 
 Success status code and returned body
@@ -144,7 +144,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/simplePush/{variantID}
+https://server:port/context/rest/applications/{pushApplicationID}/simplePush/{variantID}
 ----
 
 Success status code and returned body
@@ -171,7 +171,7 @@ Delete a specific *SimplePush Variant* (+HTTP DELETE+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}/simplePush/{variantID}
+https://server:port/context/rest/applications/{pushApplicationID}/simplePush/{variantID}
 ----
 
 Success status code and returned body

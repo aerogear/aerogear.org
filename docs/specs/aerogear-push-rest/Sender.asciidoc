@@ -37,7 +37,7 @@ Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-message
 URL:
 [source,c]
 ----
-http://server:port/context/rest/sender
+https://server:port/context/rest/sender
 ----
 
 Success status code and returned body
