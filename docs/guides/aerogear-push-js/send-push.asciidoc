@@ -11,13 +11,13 @@ On a command line issue the following _CURL_ command:
 
 [source,c]
 ----
-curl -u "{PushApplicationID}:{MasterSecret}"
+curl -3 -u "{PushApplicationID}:{MasterSecret}"
    -v -H "Accept: application/json" -H "Content-type: application/json"
    -X POST
    -d '{"simple-push": { "mail":"version=123"}
    }'
 
-http://localhost:8080/ag-push/rest/sender
+https://SERVER:PORT/CONTEXT/rest/sender
 ----
 
 Notice the _simple-push_ object in the payload. It contains the name of one channel (here _mail_) and its version number. The AeroGear UnifiedPush Server will perform an HTTP PUT update on the SimplePush server. This will cause the SimplePush server to send the push notification to web clients.

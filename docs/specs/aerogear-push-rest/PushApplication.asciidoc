@@ -23,7 +23,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/applications
+https://SERVER:PORT/CONTEXT/rest/applications
 ----
 
 Success status code and returned body
@@ -60,7 +60,7 @@ Read all *PushApplications* (+HTTP GET+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications
+https://SERVER:PORT/CONTEXT/rest/applications
 ----
 
 Success status code and returned body
@@ -93,7 +93,7 @@ Read a specific *PushApplication* (+HTTP GET+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}
 ----
 
 Success status code and returned body
@@ -141,7 +141,7 @@ JSON Payload:
 URL:
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}
 ----
 
 Success status code and returned body
@@ -168,7 +168,7 @@ Delete a specific *PushApplication* (+HTTP DELETE+)
 
 [source,c]
 ----
-http://server:port/context/rest/applications/{pushApplicationID}
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}
 ----
 
 Success status code and returned body
