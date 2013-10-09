@@ -67,4 +67,4 @@ Currently the Server will support the following query criteria:
 * ```category```: A category to _tag_ the current client. Gives a semantic meaning to a registered ```Installation```.
 * ```deviceType```: A list of raw device types that should receive the message (e.g. Coupon only for iPad and AndroidTablets). The ```deviceType``` needs to be stored when the device is registering itself with the server. _**NOTE:**_ For SimplePush, the ```deviceType``` is **ONLY** ```web```. No specifics on the actual device are used due to general limitations on "user agent sniffing".
 
-_**NOTE:**_ All these query cirterias are optionnal. If no criterias are passed it will act as a  _broadcast_ send, where _all_ clients are notified. 
+_**NOTE:**_ All these query criterias are optionnal. If no criterias are passed it will act as a  _broadcast_ send, where _all_ clients are notified. 
