@@ -1,0 +1,43 @@
+---
+layout: basic
+title: iOS Library 1.0.0
+---
+
+AeroGear Cordova
+================
+
+This document covers the requirements, use-cases and planned API's for AeroGear Cordova Support.
+
+External References
+-------------------
+
+Cordova plugins:
+
+* link:https://github.com/aerogear/aerogear-pushplugin-cordova/[Push Github Repo]
+* link:https://github.com/aerogear/aerogear-otp-cordova/[OTP Github Repo]
+* link:https://github.com/aerogear/aerogear-aerodoc-cordova/[Demo Github Repo]
+
+1.3.0 (Mid October)
+~~~~~~~~~~~~~~~~~~~
+* *Plugin to support AeroGear API*
+* AeroGear Push Plugin for Unified Push
+* AeroGear OTP Plugin Two Factor Authentication
+
+1.4.0 (Mid January)
+~~~~~~~~~~~~~~~~~~~
+* *More Plugins*
+* Security Plugin maybe
+* Geo data pluing maybe
+
+2.0.0 Release
+~~~~~~~~~~~~~
+* Tie up any loose ends
+
+2.x Release(s)
+~~~~~~~~~~~~~~
+* *Social*
+** Auth
+*** Login via Facebook, G+, Twitter
+*** AeroGear.Auth adapter or separate
+** Common API
+*** Posting, Profile Info, Friend List, etc.
