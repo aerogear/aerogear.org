@@ -24,9 +24,9 @@ title: Guides
 * [Deploying HTML5 Applications to Openshift](HTML5AppsToOpenshift)
 * [HTML5 Mobile Quickstart & Archetype Deep Dive](HTML5MobileQuickstartAndDeepDive)
 * [HTML5 + REST Applications](HTML5RESTApps)
-* [Cordova Setup](CordovaSetup)
+* [Cordova Setup](aerogear-cordova/CordovaSetup)
 * [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](aerogear-cordova/HTML5ToHybridWithCordova)
-* [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)
+* [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](aerogear-cordova/CordovaAndroidDevJBDS)
 * [Tutorial: iOS Push Notifications](aerogear-push-ios)
 * [Tutorial: Apache Cordova and Android Push Notifications](aerogear-push-cordova-android)
 * [Tutorial: Apache Cordova and iOS Push Notifications](aerogear-push-cordova-ios)
@@ -42,6 +42,8 @@ title: Guides
 * [AeroGear Android User Guide](aerogear-android)
 * [AeroGear iOS API Cookbook](iOSCookbook)
 * [AeroGear Two-Factor Authentication with OTP](AeroGear-OTP)
+* [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](aerogear-cordova/AerogearCordovaOTP)
+* [AeroGear Cordova PushPlugin](aerogear-cordova/AerogearCordovaPush)
 
 
 #### Contributing to AeroGear
