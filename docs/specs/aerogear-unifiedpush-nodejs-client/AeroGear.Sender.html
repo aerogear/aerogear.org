@@ -64,22 +64,22 @@
 
 <table class="params">
     <thead>
-	<tr>
+    <tr>
 
-		<th>Name</th>
-
-
-		<th>Type</th>
+        <th>Name</th>
 
 
+        <th>Type</th>
 
 
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
 
-	<tbody>
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
 
 
         <tr>
@@ -104,7 +104,7 @@
         </tr>
 
 
-	</tbody>
+    </tbody>
 </table>
 
 
@@ -131,7 +131,7 @@
 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-sender-client.js.html">aerogear-sender-client.js</a>, <a href="aerogear-sender-client.js.html#line75">line 75</a>
+        <a href="aerogear-sender-client.js.html">aerogear-sender-client.js</a>, <a href="aerogear-sender-client.js.html#line88">line 88</a>
     </li></ul></dd>
 
 
@@ -162,15 +162,15 @@
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
+    <dt>
+        Type
+    </dt>
+    <dd>
 
 <span class="param-type">Object</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
 
@@ -199,7 +199,7 @@
         <dl>
 
 <dt>
-    <h4 class="name" id="broadcast"><span class="type-signature"></span>broadcast<span class="signature">(message={}, settings={})</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(message={}, settings={})</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
 
 </dt>
@@ -209,7 +209,7 @@
 
 
     <div class="description">
-        The broadcast Method
+        The send Method
     </div>
 
 
@@ -223,633 +223,26 @@
 
 <table class="params">
     <thead>
-	<tr>
+    <tr>
 
-		<th>Name</th>
+        <th>Name</th>
 
 
-		<th>Type</th>
+        <th>Type</th>
 
 
-		<th>Argument</th>
+        <th>Argument</th>
 
 
 
+        <th>Default</th>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
 
-	<tbody>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-
-        <tr>
-
-                <td class="name"><code>message={}</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Object</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">the message to be passed</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>message.alert</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last"></td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>message.sound</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last"></td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>message.badge</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last"></td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>message.simple-push</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last"></td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>settings={}</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Object</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">the settings to be passed to the adapter</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>settings.applicationID</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">The Application ID</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>settings.masterSecret</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">The Master Secret</td>
-        </tr>
-
-
-	</tbody>
-</table>
-
-
-
-<dl class="details">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-sender-client.js.html">aerogear-sender-client.js</a>, <a href="aerogear-sender-client.js.html#line106">line 106</a>
-    </li></ul></dd>
-
-
-
-
-
-
-
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Returns:</h5>
-
-
-<div class="param-desc">
-    itself
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-
-
-
-</dd>
-
-
-
-<dt>
-    <h4 class="name" id="sendTo"><span class="type-signature"></span>sendTo<span class="signature">(<span class="optional">criteria</span>, message={}, settings={})</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-
-</dt>
-<dd>
-
-
-
-
-    <div class="description">
-        The sendTo Method
-    </div>
-
-
-
-
-
-
-
-        <h5>Parameters:</h5>
-
-
-<table class="params">
-    <thead>
-	<tr>
-
-		<th>Name</th>
-
-
-		<th>Type</th>
-
-
-		<th>Argument</th>
-
-
-
-		<th>Default</th>
-
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-
-
-        <tr>
-
-                <td class="name"><code>criteria</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Object</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-                <td class="default">
-
-                    {}
-
-                </td>
-
-
-            <td class="description last">the criteria to select
-                <h6>Properties</h6>
-
-
-<table class="params">
-    <thead>
-	<tr>
-
-		<th>Name</th>
-
-
-		<th>Type</th>
-
-
-		<th>Argument</th>
-
-
-
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-
-
-        <tr>
-
-                <td class="name"><code>alias</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Array</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">a list of email or name strings</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>deviceType</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Array</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">a list of device types as strings</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>category</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Array</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">a list of categories as strings</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>variants</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Array</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">a list of variantID's as strings</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>simple-push</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Object</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-
-            <td class="description last">an object containing simple-push criteria</td>
-        </tr>
-
-
-	</tbody>
-</table>
-            </td>
-        </tr>
-
+    <tbody>
 
 
         <tr>
@@ -1102,7 +495,238 @@
         </tr>
 
 
-	</tbody>
+
+        <tr>
+
+                <td class="name"><code>settings.criteria</code></td>
+
+
+            <td class="type">
+
+
+<span class="param-type">Object</span>
+
+
+
+            </td>
+
+
+                <td class="attributes">
+
+                    &lt;optional><br>
+
+
+
+
+
+                </td>
+
+
+
+                <td class="default">
+
+                    {}
+
+                </td>
+
+
+            <td class="description last">the criteria to select
+                <h6>Properties</h6>
+
+
+<table class="params">
+    <thead>
+    <tr>
+
+        <th>Name</th>
+
+
+        <th>Type</th>
+
+
+        <th>Argument</th>
+
+
+
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+
+        <tr>
+
+                <td class="name"><code>alias</code></td>
+
+
+            <td class="type">
+
+
+<span class="param-type">Array</span>
+
+
+
+            </td>
+
+
+                <td class="attributes">
+
+                    &lt;optional><br>
+
+
+
+
+
+                </td>
+
+
+
+
+            <td class="description last">a list of email or name strings</td>
+        </tr>
+
+
+
+        <tr>
+
+                <td class="name"><code>deviceType</code></td>
+
+
+            <td class="type">
+
+
+<span class="param-type">Array</span>
+
+
+
+            </td>
+
+
+                <td class="attributes">
+
+                    &lt;optional><br>
+
+
+
+
+
+                </td>
+
+
+
+
+            <td class="description last">a list of device types as strings</td>
+        </tr>
+
+
+
+        <tr>
+
+                <td class="name"><code>category</code></td>
+
+
+            <td class="type">
+
+
+<span class="param-type">Array</span>
+
+
+
+            </td>
+
+
+                <td class="attributes">
+
+                    &lt;optional><br>
+
+
+
+
+
+                </td>
+
+
+
+
+            <td class="description last">a list of categories as strings</td>
+        </tr>
+
+
+
+        <tr>
+
+                <td class="name"><code>variants</code></td>
+
+
+            <td class="type">
+
+
+<span class="param-type">Array</span>
+
+
+
+            </td>
+
+
+                <td class="attributes">
+
+                    &lt;optional><br>
+
+
+
+
+
+                </td>
+
+
+
+
+            <td class="description last">a list of variantID's as strings</td>
+        </tr>
+
+
+
+        <tr>
+
+                <td class="name"><code>simple-push</code></td>
+
+
+            <td class="type">
+
+
+<span class="param-type">Object</span>
+
+
+
+            </td>
+
+
+                <td class="attributes">
+
+                    &lt;optional><br>
+
+
+
+
+
+                </td>
+
+
+
+
+            <td class="description last">an object containing simple-push criteria</td>
+        </tr>
+
+
+    </tbody>
+</table>
+            </td>
+        </tr>
+
+
+    </tbody>
 </table>
 
 
@@ -1129,7 +753,7 @@
 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-sender-client.js.html">aerogear-sender-client.js</a>, <a href="aerogear-sender-client.js.html#line139">line 139</a>
+        <a href="aerogear-sender-client.js.html">aerogear-sender-client.js</a>, <a href="aerogear-sender-client.js.html#line125">line 125</a>
     </li></ul></dd>
 
 
@@ -1160,15 +784,15 @@
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
+    <dt>
+        Type
+    </dt>
+    <dd>
 
 <span class="param-type">Object</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
 
@@ -1192,13 +816,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="AeroGear.Sender.html">AeroGear.Sender</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="AeroGear.Sender.html">AeroGear.Sender</a></li></ul><h3>Adapters</h3><ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Sep 11 2013 15:48:36 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Oct 10 2013 13:43:51 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
