@@ -28,13 +28,13 @@ title: AeroGear Crypto API
 
 **Note**: For all scenarios the authentication process was intentionally ignored. 
 
-## Local data encryption (priority 1)
+## symmetric encryption - Local data encryption (priority 1)
 
 * An user wants to store sensitive data on mobile device and the data must be protected
 
 ![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgTG9jYWwgZGF0YSBlbmNyeXB0aW9uCgpDbGllbnQtPgACBjogVHlwZSBzb21lIHN1cGVyIHBhc3N3b3JkABgRR2VuZXJhdGUgdGhlIGtleXMAOhFJbnB1dABGBgByBWFuZCBzdG9yZQB5CGUARBIAegV0aAB2CABlH0Rpc3BsYXkAfgUAgVUFb24gc2NyZWVu&s=napkin)
 
-## Key agreement (priority 2)
+## asymmetric encryption - Key agreement (priority 2)
 
 * The data must be backed up on the server, but passwords can't be exposed
 
