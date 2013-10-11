@@ -212,17 +212,22 @@ send a request to authorize that key
 
 ## iOS
 
+There was an initial iOS Security meeting (check the [agenda](http://oksoclap.com/p/iOS_Meeting_(Security\)) ) on [IRC](http://transcripts.jboss.org/meeting/irc.freenode.org/aerogear/2013/aerogear.2013-10-08-13.55.log.html).
+
 ### Dependencies
 
-[TBD] - http://oksoclap.com/p/iOS_Meeting_(Security)
+The following frameworks and libraries are part of the iOS platform:
 
 - [Common Crypto](https://developer.apple.com/library/mac/documentation/security/conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html)
+- [Security Framework](https://developer.apple.com/library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html)
 
 
 ### Implementation details
 
-[TBD]
-
+* Plan:
+ * build AeroGear wrappers around the above dependencies
+ * build the wrappers in an OO-style (in ObjC)
+ * evaluate JS/Android API for an easy to use interface (to have it similar to existing APIs, since it would be odd if the iOS library looks totally different)
 
 ### API (draft 0)
 
@@ -242,7 +247,9 @@ send a request to authorize that key
 
 [Under development]
  
-- Asymmetric encryption support (ECC)
+- Asymmetric encryption support (ECC);
+ 
+**NOTE:** Not supported by the above dependencies, at some point it looks like we need to provide that on our own
 
 [Under development]
 
