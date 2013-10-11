@@ -30,11 +30,7 @@ title: AeroGear Crypto API
 
 ## Local data encryption (priority 1)
 
-* A logged in user wants to store sensitive data on mobile
-
-![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRGF0YSBlbmNyeXB0aW9uCgpDbGllbnQtPlNlcnZlcjogUmVxdWVzdAAZCyBrZXlzCgAaBgAeCkdlbmVyYXRlIHRoZQAdBSBhbmQgc3RvcmUAIwkAVgY6IFNlbmQAIAggYmFjayB0bwAzBWMAeAUAewkAKAhFAIEaBgBWBWRhdGEK&s=napkin)
-
-* The mobile device goes offline but the sensitive data must be protected
+* An user wants to store sensitive data on mobile device and the data must be protected
 
 ![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgTG9jYWwgZGF0YSBlbmNyeXB0aW9uCgpDbGllbnQtPgACBjogVHlwZSBzb21lIHN1cGVyIHBhc3N3b3JkABgRR2VuZXJhdGUgdGhlIGtleXMAOhFJbnB1dABGBgByBWFuZCBzdG9yZQB5CGUARBIAegV0aAB2CABlH0Rpc3BsYXkAfgUAgVUFb24gc2NyZWVu&s=napkin)
 
