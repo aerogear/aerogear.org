@@ -11,6 +11,7 @@ title: AeroGear Crypto API
 
 - Bruno Oliveira
 - Douglas Campos
+- Matthias Wessendorf
 - *put your pretty name here* 
 
 ## Goals
