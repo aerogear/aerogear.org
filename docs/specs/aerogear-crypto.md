@@ -205,7 +205,11 @@ send a request to authorize that key
 
 # iOS
 
-There was an initial iOS Security meeting (check the [agenda](http://oksoclap.com/p/iOS_Meeting_(Security\)) ) on [IRC](http://transcripts.jboss.org/meeting/irc.freenode.org/aerogear/2013/aerogear.2013-10-08-13.55.log.html).
+## Meetings
+
+* 08/10/2013 check the ([agenda](http://oksoclap.com/p/iOS_Meeting_(Security))) on [IRC](http://transcripts.jboss.org/meeting/irc.freenode.org/aerogear/2013/aerogear.2013-10-08-13.55.log.html).
+
+* 11/10/2013 check the ([agenda](http://oksoclap.com/p/iOS_Security_Notes_11.10.13)) on [IRC](http://transcripts.jboss.org/meeting/irc.freenode.org/aerogear/2013/aerogear.2013-10-11-11.11.log.html).
 
 ## Dependencies
 
@@ -217,7 +221,8 @@ The following frameworks and libraries are part of the iOS platform:
 
 ## Implementation details
 
-* Plan:
+Plan:
+
  * build AeroGear wrappers around the above dependencies
  * build the wrappers in an OO-style (in ObjC)
  * evaluate JS/Android API for an easy to use interface (to have it similar to existing APIs, since it would be odd if the iOS library looks totally different)
@@ -229,6 +234,8 @@ The following frameworks and libraries are part of the iOS platform:
 [Under development]
 
 * Symmetric encryption support (GCM)
+
+**NOTE:** AES GCM Mode is supported by CommonCrypto but it's currently part of a [private interface](https://github.com/Apple-FOSS-Mirror/CommonCrypto/blob/master/Source/CommonCryptoSPI/CommonCryptorSPI.h#L71) so makes it unavailable to use. We start first with exposing Mode AES CBC which is [supported](https://gist.github.com/cvasilak/b967893655a04cbe5b7b#file-gistfile1-txt-L669).
 
 [Under development]
 
@@ -242,7 +249,7 @@ The following frameworks and libraries are part of the iOS platform:
  
 * Asymmetric encryption support (ECC);
  
-**NOTE:** Not supported by the above dependencies, at some point it looks like we need to provide that on our own
+**NOTE:** ECC is supported by CommonCrypto but it's currently part of a [private interface](https://github.com/Apple-FOSS-Mirror/CommonCrypto/blob/master/Source/CommonCryptoSPI/CommonECCryptor.h) so makes it unavailable to use. We will stick with RSA with Diffie Hellman for it.
 
 [Under development]
 
