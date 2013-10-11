@@ -9,7 +9,7 @@ title: AeroGear Cordova User Guide
 * [Getting Started with Hybrid apps](HybridApplicationFrameworks)
 * [Cordova Setup](CordovaSetup)
 * [Converting an AeroGear HTML5 + REST Web App to a Hybrid App](HTML5ToHybridWithCordova)
-* Cordova Command-line Interface - [http://cordova.apache.org/docs/en/3.0.0/guide_cli_index.md.html](http://cordova.apache.org/docs/en/3.0.0/guide_cli_index.md.html)
+* [Cordova Command-line Interface](http://cordova.apache.org/docs/en/3.0.0/guide_cli_index.md.html)
 
 ## Tutorials
 * [Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)
