@@ -42,13 +42,13 @@ By default the API will provide *AES* with *GCM*, if for some reason the crypto 
 
 **Note**: The following solution doesn't prevent an attacker from extract the data via USB and try to break the encryption. 
 
-![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgTG9jYWwgZGF0YSBlbmNyeXB0aW9uCiAKQ2xpZW50LT4AAgY6IFR5cGUgc29tZSBzdXBlciBwYXNzd29yZAAYEUdlbmVyYXRlIHRoZSBrZXlzADoRSW5wdXQARgYAcwVhbmQgc3RvcmUAeghlAEQSAHoFdGgAdggAZR9EaXNwbGF5AH4FAIFWBW9uIHNjcmVlbgog&s=modern-blue)
+![](img/local_encryption_0.0.1.png)
 
 ## asymmetric encryption - Key agreement (priority 2)
 
 * The data must be backed up on the server, but passwords can't be exposed
 
-![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgUmVtb3RlIGRhdGEgRW5jcnlwdGlvbgoKQ2xpZW50LT4AAgY6IEdlbmVyYXRlIGMAFAUga2V5IHBhaXIAIAlTZXJ2ZXI6IFNlbmQgdGhlIHB1YmxpYyBrZXkAExFSZXF1ZXN0IGF1dGhvcml6YXRpb24gdG8AMwVzAEQFCgBKBgBOCkEAJQdlIGRldmljZQAQEQCBGQl0aGUAgRYJIAA3EUtleSBhZ3JlZW1lbnQAXQkAgV8IAIEiHACCAwhJbnB1dCBzb20AgjAHYW5kIHN0b3JlIGUAgjsGZWQAgi4RVHlwAIETBnN1cGVyAAEFciBwYXNzd29yABwSRGlzcGxheQCCQgUAgxUFb24gc2NyZWVuAIJVGgBzCQCDRgYAgj8OIA&s=modern-blue)
+![](img/remote_0.0.1.png)
 
 * The application was installed into another device and the keys must be revoked on the server
 
