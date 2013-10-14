@@ -3,6 +3,8 @@ layout: basic
 title: AeroGear Crypto API
 ---
 
+# Status: Experimental
+
 # AeroGear Crypto API
 
 **Note**: This document is a working progress if you strongly disagree with something, fix it.
@@ -28,17 +30,25 @@ title: AeroGear Crypto API
 
 **Note**: For all scenarios the authentication process was intentionally ignored. 
 
-## symmetric encryption - Local data encryption (priority 1)
+## Local data encryption (priority 1)
 
 * An user wants to store sensitive data on mobile device and the data must be protected
 
-![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgTG9jYWwgZGF0YSBlbmNyeXB0aW9uCgpDbGllbnQtPgACBjogVHlwZSBzb21lIHN1cGVyIHBhc3N3b3JkABgRR2VuZXJhdGUgdGhlIGtleXMAOhFJbnB1dABGBgByBWFuZCBzdG9yZQB5CGUARBIAegV0aAB2CABlH0Rpc3BsYXkAfgUAgVUFb24gc2NyZWVu&s=napkin)
+For this scenario we will make use of *symmetric ciphers* to encrypt/decrypt the local data, of course an efficient way to properly store the key must be evaluated and the key should never be shared with others. 
+
+The API *can't* encourage developers to commit some common mistakes like predictable key, IV or salt, that said the API must be responsible for the entropy behind the scenes and as well generate these values. 
+
+By default the API will provide *AES* with *GCM*, if for some reason the crypto provider doesn't have any support for these modes, *CBC* or *CTR*  must be replacement and the change explicitly documented.
+
+**Note**: The following solution doesn't prevent an attacker from extract the data via USB and try to break the encryption. 
+
+![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgTG9jYWwgZGF0YSBlbmNyeXB0aW9uCiAKQ2xpZW50LT4AAgY6IFR5cGUgc29tZSBzdXBlciBwYXNzd29yZAAYEUdlbmVyYXRlIHRoZSBrZXlzADoRSW5wdXQARgYAcwVhbmQgc3RvcmUAeghlAEQSAHoFdGgAdggAZR9EaXNwbGF5AH4FAIFWBW9uIHNjcmVlbgog&s=modern-blue)
 
 ## asymmetric encryption - Key agreement (priority 2)
 
 * The data must be backed up on the server, but passwords can't be exposed
 
-![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRGF0YSBiYWNrdXAKCkNsaWVudC0-U2VydmVyOiBLZXkgYWdyZWVtZW50CgAQBi0-ACAGOiAAJgkACQhJbnB1dCBzb21lIGRhdGEgYW5kIHN0b3JlIGVuY3J5cHRlZAAjEVR5cGUgdGhlIHN1cGVyAAEFciBwYXNzd29yABwSRGlzcGxheQAsBQBeBW9uIHNjcmVlbgCBKxFTZW5kAFQFAHMJAIEPBnRvAGkGAIFeBQ&s=napkin)
+![](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgUmVtb3RlIGRhdGEgRW5jcnlwdGlvbgoKQ2xpZW50LT4AAgY6IEdlbmVyYXRlIGMAFAUga2V5IHBhaXIAIAlTZXJ2ZXI6IFNlbmQgdGhlIHB1YmxpYyBrZXkAExFSZXF1ZXN0IGF1dGhvcml6YXRpb24gdG8AMwVzAEQFCgBKBgBOCkEAJQdlIGRldmljZQAQEQCBGQl0aGUAgRYJIAA3EUtleSBhZ3JlZW1lbnQAXQkAgV8IAIEiHACCAwhJbnB1dCBzb20AgjAHYW5kIHN0b3JlIGUAgjsGZWQAgi4RVHlwAIETBnN1cGVyAAEFciBwYXNzd29yABwSRGlzcGxheQCCQgUAgxUFb24gc2NyZWVuAIJVGgBzCQCDRgYAgj8OIA&s=modern-blue)
 
 * The application was installed into another device and the keys must be revoked on the server
 
@@ -51,11 +61,6 @@ title: AeroGear Crypto API
 * Device was stolen and data must be destroyed  
 
 [Under development]
-
-generate the keys per app on the server
-generate the keys on the client
-send a request to authorize that key
-
 
 # JavaScript
 
