@@ -12,46 +12,43 @@ title: News
 
 <script type="text/javascript" src="/js/libs/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="/js/libs/jquery.jfeed.min.js"></script>
+<script type="text/javascript" src="/js/libs/handlebars-1.0.0.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
+<script type="text/x-handlebars-template" id="tmpl">
+</script>
+
 <script type="text/javascript">
+Handlebars.registerHelper("formatDate", function( itemDate ) {
+  return moment( itemDate ).fromNow();
+});
 
-jQuery(function() {
+Handlebars.registerHelper("summarize", function( description ) {
+    var div = document.createElement("div");
+    div.innerHTML = description;
+    var text = div.textContent || div.innerText || "";
+    return text.substring(0, 300);
+});
 
-    jQuery.getFeed({
-        url: 'http://blog-edewit.rhcloud.com',
-        success: function(feed) {
-            var html = '';
-            
-            for(var i = 0; i < feed.items.length; i++) {
-            
-                var item = feed.items[i];
-                
-                html += '<h3>'
-                + '<a href="'
-                + item.link
-                + '">'
-                + item.title
-                + '</a>'
-                + '</h3>';
-                
-                html += '<div class="desc">'
-                + moment(item.updated).fromNow()
-                + '</div>';
-                
-                var div = document.createElement("div");
-				div.innerHTML = item.description;
-				var text = div.textContent || div.innerText || "";
+var template;
 
-                html += '<div>'
-                + text.substring(0, 300)
-                + ' ... <a href="'
-                + item.link 
-                +'">Read more »</a></div>';
-            }
-            
-            jQuery('#result').append(html);
-        }    
-    });
+$.ajax({
+    url: "template.html", //ex. js/templates/mytemplate.handlebars
+    cache: true,
+    success: function(source) {
+        template  = Handlebars.compile(source);
+        $('#target').html(template);
+    }               
+}); 
+
+$.getFeed({
+  url: "http://blog-edewit.rhcloud.com",
+  success: function( feed ) {
+    $("#result").append(
+      template({
+        feedItems: feed.items
+      })
+    );
+  }
 });
 
 </script>
