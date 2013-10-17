@@ -17,10 +17,10 @@ title: News
 {% raw  %}
 <script type="text/x-handlebars-template" id="tmpl">
   {{#each feedItems}}
-    <h3><a href="{{link}}">{{title}}</a></h3>
+    <h3><a href="{{link}}" target="_blank">{{title}}</a></h3>
     <div class="desc">{{formatDate updated}}</div>
     <div>
-      {{summarize description}}... <a href="{{link}}">Read more »</a>
+      {{summarize description}}... <a href="{{link}}" target="_blank">Read more »</a>
     </div>
   {{/each}}
 </script>
