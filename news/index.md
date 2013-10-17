@@ -14,6 +14,15 @@ title: News
 <script type="text/javascript" src="/js/libs/jquery.jfeed.min.js"></script>
 <script type="text/javascript" src="/js/libs/handlebars-1.0.0.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
+{% raw  %}
+<script type="text/x-handlebars-template" id="tmpl">
+  {{#each feedItems}}
+    <h3><a href="{{link}}">{{title}}</a></h3>
+    <div>{{formatDate updated}}</div>
+    <div>{{description}}</div>
+  {{/each}}
+</script>
+{% endraw %}
 
 <script type="text/javascript">
 Handlebars.registerHelper("formatDate", function( itemDate ) {
@@ -27,16 +36,7 @@ Handlebars.registerHelper("summarize", function( description ) {
     return text.substring(0, 300);
 });
 
-var template;
-
-$.ajax({
-    url: "template.html",
-    cache: true,
-    success: function(source) {
-        template  = Handlebars.compile(source);
-        $('#target').html(template);
-    }               
-}); 
+var template = Handlebars.compile($('#tmpl').html());
 
 $.getFeed({
   url: "http://blog-edewit.rhcloud.com",
