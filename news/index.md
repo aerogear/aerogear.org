@@ -14,8 +14,6 @@ title: News
 <script type="text/javascript" src="/js/libs/jquery.jfeed.min.js"></script>
 <script type="text/javascript" src="/js/libs/handlebars-1.0.0.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
-<script type="text/x-handlebars-template" id="tmpl">
-</script>
 
 <script type="text/javascript">
 Handlebars.registerHelper("formatDate", function( itemDate ) {
@@ -32,7 +30,7 @@ Handlebars.registerHelper("summarize", function( description ) {
 var template;
 
 $.ajax({
-    url: "template.html", //ex. js/templates/mytemplate.handlebars
+    url: "template.html",
     cache: true,
     success: function(source) {
         template  = Handlebars.compile(source);
