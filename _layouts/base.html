@@ -77,24 +77,38 @@
     </div>
 
     <footer>
-        <a href="/docs"/>Documentation</a> -
-        <a href="/docs/guides/Contributing/"/>Contribute</a> -
-        <a href="http://issues.jboss.org/browse/AEROGEAR" target="_blank">Report issues</a> -
-        <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev" target="_blank"/>Join mailing list</a> -
-        <a href="irc://irc.freenode.net/aerogear" target="_blank"/>Chat with the team</a>
-        <br/>
-        <a href="https://www.facebook.com/AeroGearProject"><div class="social facebook"></div></a>
-        <a href="https://plus.google.com/106588661437153585722/posts"><div class="social google-plus"></div></a>
-        <a href="https://www.twitter.com/aerogears"><div class="social twitter"></div></a>
+        <div class="column">
+            <h3>Latest tweets</h3>
+            <a class="twitter-timeline" href="https://twitter.com/AeroGears" data-widget-id="390765107455594496">
+                Tweets by @AeroGears
+            </a>
+        </div>
+        <div class="column">
+            <h3>Blog</h3>
+            <div id="footer-blogs" class="recent-blogs"></div>
+        </div>
         <div class="clearfix"></div>
-        <div class="logos">
-            <p>AeroGear is a <a href="http://www.jboss.org/">JBoss Community</a> project and its development is
-                sponsored by <a href="http://www.redhat.com/">Red Hat, Inc</a>. Project code is released under the <a
-                        href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.
-            </p>
-            <p><a href="http://www.jboss.org/"><img src="/img/jboss_community.png" alt="JBoss Community"></a> <a
-                    href="http://www.redhat.com/"><img src="/img/red_hat.png" alt="Red Hat"></a></p>
-            <p>Copyright &copy; 2012, Red Hat, Inc.</p>
+
+        <div>
+            <a href="/docs"/>Documentation</a> -
+            <a href="/docs/guides/Contributing/"/>Contribute</a> -
+            <a href="http://issues.jboss.org/browse/AEROGEAR" target="_blank">Report issues</a> -
+            <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev" target="_blank"/>Join mailing list</a> -
+            <a href="irc://irc.freenode.net/aerogear" target="_blank"/>Chat with the team</a>
+            <br/>
+            <a href="https://www.facebook.com/AeroGearProject"><div class="social facebook"></div></a>
+            <a href="https://plus.google.com/106588661437153585722/posts"><div class="social google-plus"></div></a>
+            <a href="https://www.twitter.com/aerogears"><div class="social twitter"></div></a>
+            <div class="clearfix"></div>
+            <div class="logos">
+                <p>AeroGear is a <a href="http://www.jboss.org/">JBoss Community</a> project and its development is
+                    sponsored by <a href="http://www.redhat.com/">Red Hat, Inc</a>. Project code is released under the <a
+                            href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.
+                </p>
+                <p><a href="http://www.jboss.org/"><img src="/img/jboss_community.png" alt="JBoss Community"></a> <a
+                        href="http://www.redhat.com/"><img src="/img/red_hat.png" alt="Red Hat"></a></p>
+                <p>Copyright &copy; 2012, Red Hat, Inc.</p>
+            </div>
         </div>
     </footer>
 </div>
@@ -123,6 +137,52 @@
 
     }(document));
 </script>
+
+<!-- Twitter widget -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<!-- Blogger widget -->
+<script type="text/javascript" src="/js/libs/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="/js/libs/jquery.jfeed.min.js"></script>
+<script type="text/javascript" src="/js/libs/handlebars-1.0.0.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
+
+<script type="text/javascript">
+  Handlebars.registerHelper("formatDate", function( itemDate ) {
+    return moment( itemDate ).fromNow();
+  });
+
+  Handlebars.registerHelper("summarize", function( description ) {
+    var div = document.createElement("div");
+    div.innerHTML = description;
+    var text = div.textContent || div.innerText || "";
+    return text.substring(0, 100);
+  });
+
+  var template;
+
+  $.ajax({
+    url: "/news/template.html",
+    cache: true,
+    success: function(source) {
+      template  = Handlebars.compile(source);
+      $('#target').html(template);
+    }
+  });
+
+  var template = Handlebars.compile( $('#tmpl').text() );
+  $.getFeed({
+    url: "http://blog-edewit.rhcloud.com",
+    success: function( feed ) {
+      $("#footer-blogs").append(
+          template({
+            feedItems: feed.items.slice(0,5)
+          })
+      );
+    }
+  });
+</script>
+
 
 </body>
 </html>

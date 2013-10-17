@@ -448,6 +448,14 @@ footer p,footer ul {
     margin: 0;
 }
 
+footer .recent-blogs {
+    text-align: left;
+    border: 1px solid #e8e8e8;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1em;
+}
+
 /* =================== Logos in Footer ============================================================================== */
 .logos {
     clear: both;
