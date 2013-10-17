@@ -18,8 +18,10 @@ title: News
 <script type="text/x-handlebars-template" id="tmpl">
   {{#each feedItems}}
     <h3><a href="{{link}}">{{title}}</a></h3>
-    <div>{{formatDate updated}}</div>
-    <div>{{description}}</div>
+    <div class="desc">{{formatDate updated}}</div>
+    <div>
+      {{summarize description}}... <a href="{{link}}">Read more »</a>
+    </div>
   {{/each}}
 </script>
 {% endraw %}
