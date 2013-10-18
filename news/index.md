@@ -10,10 +10,6 @@ title: News
 
 ## AeroGear Blogs
 
-<script type="text/javascript" src="/js/libs/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="/js/libs/jquery.jfeed.min.js"></script>
-<script type="text/javascript" src="/js/libs/handlebars-1.0.0.min.js"></script>
-<script type="text/javascript" src="/js/libs/moment.min.js"></script>
 {% raw  %}
 <script type="text/x-handlebars-template" id="tmpl">
   {{#each feedItems}}
@@ -27,10 +23,6 @@ title: News
 {% endraw %}
 
 <script type="text/javascript">
-Handlebars.registerHelper("formatDate", function( itemDate ) {
-  return moment( itemDate ).fromNow();
-});
-
 Handlebars.registerHelper("summarize", function( description ) {
     var div = document.createElement("div");
     div.innerHTML = description;
@@ -38,13 +30,13 @@ Handlebars.registerHelper("summarize", function( description ) {
     return text.substring(0, 300);
 });
 
-var template = Handlebars.compile($('#tmpl').html());
+var blogTemplate = Handlebars.compile($('#tmpl').html());
 
 $.getFeed({
   url: "http://blog-edewit.rhcloud.com",
   success: function( feed ) {
     $("#result").append(
-      template({
+      blogTemplate({
         feedItems: feed.items
       })
     );
