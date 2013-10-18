@@ -44,12 +44,13 @@ External References
 ** link:https://issues.jboss.org/browse/AGIOS-24[AGIOS-24]: Tutorial/Guide for Push Notifications on iOS
 
 
-1.3.0 (Mid October)
+1.3.0 (Mid November)
 ~~~~~~~~~~~~~~~~~~~
 * *Pipeline*
 ** link:https://issues.jboss.org/browse/AGIOS-15[AGIOS-15]: Multipart support
 * *Crypto* 
-** link:https://issues.jboss.org/browse/AGIOS-3[AGIOS-3] Implementation and API usage for iOS crypto
+** link:https://issues.jboss.org/browse/AGIOS-78[AGIOS-78] Provide an interface for symmetric encryption into iOS
+** link:https://issues.jboss.org/browse/AGIOS-83[AGIOS-83] Manage cryptographic keys and respective owner in iOS
 ** DEMO/Docs for Crypto
 * *Offline*
 ** link:https://issues.jboss.org/browse/AGIOS-25[AGIOS-25]: SQLite support
@@ -75,5 +76,6 @@ External References
 ** Common API
 *** Posting, Profile Info, Friend List, etc.
 * *Notifications*
+** STOMP support
 ** MQTT support
 
