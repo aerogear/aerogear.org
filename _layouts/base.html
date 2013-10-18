@@ -181,7 +181,7 @@
   var template = Handlebars.compile($('#blog').html());
   
   $.getFeed({
-    url: "http://blog-edewit.rhcloud.com",
+    url: "http://aggregator-aerogear.rhcloud.com",
     success: function( feed ) {
       $("#footer-blogs").append(
           template({
