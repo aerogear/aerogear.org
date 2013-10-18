@@ -41,7 +41,7 @@ Handlebars.registerHelper("summarize", function( description ) {
 var template = Handlebars.compile($('#tmpl').html());
 
 $.getFeed({
-  url: "http://blog-edewit.rhcloud.com",
+  url: "http://blog-aerogear.rhcloud.com",
   success: function( feed ) {
     $("#result").append(
       template({
