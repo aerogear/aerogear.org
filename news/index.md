@@ -12,8 +12,8 @@ title: News
 
 <script type="text/javascript" src="/js/libs/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="/js/libs/jquery.jfeed.min.js"></script>
-<script type="text/javascript" src="/js/libs/handlebars-1.0.0.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
+<script type="text/javascript" src="/js/libs/handlebars-1.0.0.min.js"></script>
+<script type="text/javascript" src="/js/libs/moment.min.js"></script>
 {% raw  %}
 <script type="text/x-handlebars-template" id="tmpl">
   {{#each feedItems}}
