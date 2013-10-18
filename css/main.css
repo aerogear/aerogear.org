@@ -454,6 +454,20 @@ footer .recent-blogs {
     background-color: #fff;
     border-radius: 5px;
     padding: 1em;
+    max-width: 520px;
+    font-size: 14px;
+    height: 530px;
+    overflow: scroll;
+}
+
+footer .more-news {
+    text-align: center;
+}
+
+footer .latest {
+    max-width: 80em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* =================== Logos in Footer ============================================================================== */
