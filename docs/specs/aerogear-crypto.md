@@ -14,6 +14,7 @@ title: AeroGear Crypto API
 * Bruno Oliveira
 * Douglas Campos
 * Matthias Wessendorf
+* Corinne Krych
 * *put your pretty name here* 
 
 # Goals
@@ -216,6 +217,8 @@ By default the API will provide *AES* with *GCM*, if for some reason the crypto 
 
 * 11/10/2013 check the ([agenda](http://oksoclap.com/p/iOS_Security_Notes_11.10.13)) on [IRC](http://transcripts.jboss.org/meeting/irc.freenode.org/aerogear/2013/aerogear.2013-10-11-11.11.log.html).
 
+* 16/10/2013 check the ([minute](http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-iOS-Crypto-findings-II-td5101.html))
+
 ## Dependencies
 
 The following frameworks and libraries are part of the iOS platform:
@@ -236,13 +239,42 @@ Plan:
 
 * Password based key derivation support (PBKDF2)
 
-[Under development]
+```c
+@interface AGPBKDF2 : NSObject
+- (NSData *)deriveKey:(NSString *)password;
+- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt;
+- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations;
+- (BOOL)validate:(NSString *)password encryptedPassword:(NSData *)encryptedPassword salt:(NSData *)salt;
+- (NSData *)salt;
+@end
+```
+
+NOTE: What about using deriveKey (as already used in JS) rather than encrypt (used in Java), encrypt is already used by Cryptobox to encrypt data. See [mailing list thread](
+http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-iOS-Crypto-questions-td5143.html)
 
 * Symmetric encryption support (GCM)
 
 **NOTE:** AES GCM Mode is supported by CommonCrypto but it's currently part of a [private interface](https://github.com/Apple-FOSS-Mirror/CommonCrypto/blob/master/Source/CommonCryptoSPI/CommonCryptorSPI.h#L71) so makes it unavailable to use. We start first with exposing Mode AES CBC which is [supported](https://gist.github.com/cvasilak/b967893655a04cbe5b7b#file-gistfile1-txt-L669).
 
-[Under development]
+```c
+@interface AGCryptoBox : NSObject
+- (id)initWithKey:(NSData *)key;
+- (NSData *)encrypt:(NSData *)data IV:(NSData *)IV;
+- (NSData *)decrypt:(NSData *)data IV:(NSData *)IV;
+@end
+```
+
+We need to reach some common API
+
+    => Java:
+    cryptoBox.encrypt(IV, message);
+    => objective-C
+    NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+    => JavaScript
+    AeroGear.decrypt( options );
+
+See discussion [mailing list thread](
+http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-iOS-Crypto-questions-td5143.html)
 
 * Message authentication support (GMAC, HMAC)
 
@@ -266,5 +298,10 @@ Plan:
 
 Reference: [http://vimeo.com/77804314](http://vimeo.com/77804314)
 
-![](img/workflow-demo-crypto.jpg)
+* Manage cryptographic keys and respective owners
+
+[Under development]
+
+See [AGSEC JIRA](https://issues.jboss.org/browse/AGSEC-125)
+and [AGIOS JIRA](https://issues.jboss.org/browse/AGIOS-83)
 
