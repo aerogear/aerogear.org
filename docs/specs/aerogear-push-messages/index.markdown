@@ -30,7 +30,7 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
            }
          }'
 
-    https://SERVER:PORT/CONTEXT/rest/sender/selected
+    https://SERVER:PORT/CONTEXT/rest/sender
 
 ### Message Format
 The message format is very simple: A generic JSON map is used to sent messages to Android and iOS devices. 
