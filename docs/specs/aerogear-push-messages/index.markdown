@@ -17,6 +17,7 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
            "category" : "someCategory",
            "deviceType" : ["iPad", "AndroidTablet"],
+           "ttl" : 3600,
            "message": {
              "alert":"HELLO!",
              "sound":"default",
@@ -34,6 +35,10 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
 
 ### Message Format
 The message format is very simple: A generic JSON map is used to sent messages to Android and iOS devices. 
+
+* ```ttl``` Specifies in seconds the ```time-to-live``` for the submitted notification. This value is supported by APNs and GCM. If a device is offline for a longer time than specified by the ```ttl``` value, the supported Push Networks may not deliver the notification.
+
+
 
 #### Message Object
 
