@@ -244,6 +244,7 @@ Sends a push message to a selected list of devices/clients, or all, based on dif
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
            "category" : "someCategory",
            "deviceType" : ["iPad", "AndroidTablet"],
+           "ttl" : 3600,
            "message": {
                "alert":"HELLO!",
                "sound":"default",
@@ -259,7 +260,7 @@ Sends a push message to a selected list of devices/clients, or all, based on dif
 
     https://SERVER:PORT/context/rest/sender
 
-The ```variants``` is a filter for notifying certain variants (e.g. HR Android, HR iPad etc.) of the PushApplication with the respective IDs. The ```alias``` value is used to identify the desired users, while the ```category``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
+The ```variants``` is a filter for notifying certain variants (e.g. HR Android, HR iPad etc.) of the PushApplication with the respective IDs. The ```alias``` value is used to identify the desired users, while the ```category``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The ```ttl``` is supported on GCM/APNs to specify how long the supported networks should try to deliver the notification. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
 
 ## Use Cases
 
