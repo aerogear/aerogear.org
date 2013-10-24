@@ -49,8 +49,7 @@ External References
 * *Pipeline*
 ** link:https://issues.jboss.org/browse/AGIOS-15[AGIOS-15]: Multipart support
 * *Crypto* 
-** link:https://issues.jboss.org/browse/AGIOS-78[AGIOS-78] Provide an interface for symmetric encryption into iOS
-** link:https://issues.jboss.org/browse/AGIOS-83[AGIOS-83] Manage cryptographic keys and respective owner in iOS
+** Epic that groups on-going iOS security work can be found link:https://issues.jboss.org/browse/AGIOS-87[here]
 ** DEMO/Docs for Crypto
 * *Offline*
 ** link:https://issues.jboss.org/browse/AGIOS-25[AGIOS-25]: SQLite support
