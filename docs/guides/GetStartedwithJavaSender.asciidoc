@@ -14,25 +14,42 @@ The library can be downloaded through the project link:https://github.com/aeroge
         <dependency>
             <groupId>org.jboss.aerogear.unifiedpush</groupId>
             <artifactId>unified-push-java-client</artifactId>
-            <version>0.3.0</version>
+            <version>0.4.0</version>
         </dependency>
+
+        <!-- RestEasy's Jackson Plugin -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>2.3.2.Final</version>
+        </dependency>
+
+NOTE: The 'RestEasy Jackson Plugin' dependency is needed only if you are using the library as part of a standalone Java application. If you are running on an evironment that already provides the functionality (e.g. an application running inside the 'JBoss' application server) it can be omitted.
 
 === API Overview
 
-The API is straightforward to use and consists of a single method:
+The API is straightforward to use and consists of the following methods:
   
 [source,java]
 ----
 public interface JavaSender {
 
     /**
-     * Sends the given payload to a selection of installations of the referenced PushApplication.
+     * Sends the given payload to installations of the referenced PushApplication.
+     * We also pass a callback to handle the message.
+     */
+    void send(UnifiedMessage unifiedMessage, MessageResponseCallback callback);
+
+    /**
+     * Sends the given payload to installations of the referenced PushApplication.
      */
     void send(UnifiedMessage unifiedMessage);
+
+    ...
 }
 ----
 
-The _UnifiedMessage_ object passed as a parameter on those methods contain the actual notification payload. The object, as we will see in the example later on, utilizes the builder pattern to help you construct easily the payload.
+The _UnifiedMessage_ object passed as a parameter on those methods contain the actual notification payload. The object, as we will see in the example later on, utilizes the builder pattern to help you construct easily the payload. The difference between the two methods, is that the first one allows you to pass a callback so that you can be notified regarding whether the notification was successfully accepted by the server for transmission.
 
 A concrete implementation of the _JavaSender_ interface can be found on the 'SenderClient' class, which internally uses _HttpURLConnection_ for the communication (but can easily be adopted to support other http providers).
 
@@ -53,10 +70,24 @@ UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()                 // 
                 .attribute("some_key", "with_value")  // add a user defined attribute applicable to your context.
                 .build();
 
-sender.send(unifiedMessage);    // [3]
+sender.send(unifiedMessage, new MessageResponseCallback() {      // [3]
+
+            @Override
+            public void onComplete(int statusCode) {
+              // check the 'statusCode' to determine whether the notification
+              // was accepted for transmission by the server.
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+              // an error occured during send
+            }
+          });
 ----
 
-In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. In [2], we access the builder object and we use it to fill in the parameters. The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. Further, support is provided with the help of the _attribute_ param, to attach on the notification arbitary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives.
+In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. In [2], we access the builder object and we use it to fill in the parameters. The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. Further, support is provided with the help of the _attribute_ param, to attach on the notification arbitary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
+
+Once the notication payload is constructed, we invoke the send method [3] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
 
 === Selected send
 
