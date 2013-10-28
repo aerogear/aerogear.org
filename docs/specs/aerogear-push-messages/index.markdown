@@ -25,10 +25,7 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
              "someKey":"some value",
              "anotherCustomKey":"some other value"
            },
-           "simple-push": {
-             "SomeCategory":"version=123",
-             "anotherCategory":"version=456"
-           }
+           "simple-push": "version=123"
          }'
 
     https://SERVER:PORT/CONTEXT/rest/sender
@@ -60,7 +57,7 @@ None! The JSON map is submitted as it is, directly to the device. There are no A
 
 #### SimplePush Object
 
-For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants. The different versions are submitted to all connected client, that are subscribed on their their matching channels.
+For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants. The version is submitted to all connected client, that are subscribed on their matching channels.
 
 
 #### Query component
