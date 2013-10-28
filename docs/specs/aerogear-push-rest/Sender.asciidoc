@@ -28,10 +28,7 @@ Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-message
     "someKey":"some value",
     "anotherCustomKey":"some other value"
   },
-  "simple-push": {
-    "SomeCategory":"version=123",
-    "anotherCategory":"version=456"
-  }
+  "simple-push": "version=123"
 }
 ----
 
