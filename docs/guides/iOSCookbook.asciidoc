@@ -434,7 +434,7 @@ if (![myStore reset:&error])
     NSLog(@"Reset: An error occured during reset! \n%@", error);    
 ----
 
-=== Persistent Storage system
+=== PropertyList Storage Specific
 
 A simple _Property list_ storage system is part of the library as well that uses the same 'AGStore' protocol for reading and writing. Depending on the type specified during store configuration, the system will use either link:https://developer.apple.com/library/mac/documentation/cocoa/reference/foundation/Classes/NSPropertyListSerialization_Class/Reference/Reference.html[NSPropertyListSerialization] (type ''_PLIST_'') or link:https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html[NSJSONSerialization] (type ''_JSON_'') when exporting data.
 
