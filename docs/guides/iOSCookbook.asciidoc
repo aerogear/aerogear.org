@@ -277,7 +277,7 @@ Further, moving beyond last or first page is left on the behaviour of the specif
 ====
 == [[store]]Store and DataManager
 
-A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] storage.
+A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage.
 
 A DataManager manages different Store implementations. It is basically a factory that hides the concrete instantiations of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.
 
@@ -299,7 +299,20 @@ id<AGStore> myStore = [dm store:^(id<AGStoreConfig> config) {
 }];
 ----
 
-The AGDataManager class offers some simple 'management' APIs to work with containing AGStore objects. The API offers read and write functionality. The default implementation represents an "in-memory" store. Similar to the pipe API technical details of the underlying system are not exposed.
+The AGDataManager class offers some simple 'management' APIs to work with containing AGStore objects. The API offers read and write functionality. The default implementation represents an "in-memory" store. If you want to create a AGPropertyListStorage or a AGSQLiteStorage, add a config type as shown below:
+
+[source,c]
+----
+// create the datamanager
+AGDataManager* dm = [AGDataManager manager];
+// add a new (default) store object:
+            id<AGStore> store = [manager store:^(id<AGStoreConfig> config) {
+                [config setName:@"tasks"];
+                [config setType:@"SQLITE"];
+            }];
+----
+
+Storage can be of type: MEMORY, PLIST or SQLITE. Similar to the pipe API technical details of the underlying system are not exposed.
 
 === Save data to the Store
 
