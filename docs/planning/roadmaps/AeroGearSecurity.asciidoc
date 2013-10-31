@@ -123,11 +123,8 @@ External References
 * AGSEC-114: Provide easy to use cryptography interface
 
     ** AGSEC-115: Symmetric encryption support (link:http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf[GCM])
-    ** AGSEC-116: Asymmetric encryption support (link:http://www.nsa.gov/business/programs/elliptic_curve.shtml[ECC])
     ** AGSEC-117: Password based key derivation support (link:http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf[PBKDF2])
     ** AGSEC-118: Hashing support (link:http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf[SHA-256, SHA-512])
-    ** AGSEC-119: Message authentication support (link:http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf[GMAC], link:http://csrc.nist.gov/publications/fips/fips198-1/FIPS-198-1_final.pdf[HMAC])
-    ** AGSEC-120: Digital signatures support (link:http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf[ECDSA])
 
 * AGSEC-2: Secure storage and cache documentation
     
@@ -193,6 +190,12 @@ External References
     ** AGSEC-30: Unified Push: Sec: Add Client Access Key
 
     ** AGSEC-31: Unified Push: Evaluate non repudiation for each application on the server
+
+* AGSEC-114: Provide easy to use cryptography interface
+
+    ** AGSEC-116: Asymmetric encryption support (link:http://www.nsa.gov/business/programs/elliptic_curve.shtml[ECC])
+    ** AGSEC-119: Message authentication support (link:http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf[GMAC], link:http://csrc.nist.gov/publications/fips/fips198-1/FIPS-198-1_final.pdf[HMAC])
+    ** AGSEC-120: Digital signatures support (link:http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf[ECDSA])
 
 * AGSEC-128: Key agreement with the server
 
