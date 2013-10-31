@@ -262,3 +262,7 @@ Plan:
 
 [Under development]
 
+# Demo application workflow
+
+![](img/workflow-demo-crypto.jpg)
+
