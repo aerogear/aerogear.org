@@ -264,5 +264,7 @@ Plan:
 
 # Demo application workflow
 
+Reference: [http://vimeo.com/77804314](http://vimeo.com/77804314)
+
 ![](img/workflow-demo-crypto.jpg)
 
