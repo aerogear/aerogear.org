@@ -147,20 +147,11 @@ External References
 
 * AGSEC-127: Encrypted cache
 
-* AGSEC-128: Key agreement with the server
-
-* AGSEC-129: Key privilege revocation
-
-* AGSEC-130: Key privilege expiration
-
-* AGSEC-131: Data seek and destroy
-
 * AGSEC-132: Encrypted storage showcase app
     
     ** AGSEC-133: Provide a screen to input user's password
     ** AGSEC-134: Allow user to include passwords specifying the alias
     ** AGSEC-135: Allow password to be decrypted and displayed on the screen
-    ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
 
 * AGSEC-137: Performance checks
 
@@ -174,7 +165,7 @@ External References
 
 * AGSEC-113: Update to AeroGear Security PicketLink with the version 2.5 Final
 
-1.4.0 (Mid January)
+1.4.0 (End January)
 ~~~~~~~~~~~~~~~~~~~
 
 * AGSEC-12: Offline authentication
@@ -202,6 +193,21 @@ External References
     ** AGSEC-30: Unified Push: Sec: Add Client Access Key
 
     ** AGSEC-31: Unified Push: Evaluate non repudiation for each application on the server
+
+* AGSEC-128: Key agreement with the server
+
+* AGSEC-129: Key privilege revocation
+
+* AGSEC-130: Key privilege expiration
+
+* AGSEC-131: Data seek and destroy
+
+* AGSEC-132: Encrypted storage showcase app
+    
+    ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
+
+* AGSEC-143: Provide a server implementation/specification for encrypted storage
+
 
 2.0.0 (Mid March) 
 ~~~~~~~~~~~~~~~~~
