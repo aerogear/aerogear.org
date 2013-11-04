@@ -211,14 +211,6 @@ By default the API will provide *AES* with *GCM*, if for some reason the crypto 
 
 # iOS
 
-## Meetings
-
-* 08/10/2013 check the ([agenda](http://oksoclap.com/p/iOS_Meeting_(Security))) on [IRC](http://transcripts.jboss.org/meeting/irc.freenode.org/aerogear/2013/aerogear.2013-10-08-13.55.log.html).
-
-* 11/10/2013 check the ([agenda](http://oksoclap.com/p/iOS_Security_Notes_11.10.13)) on [IRC](http://transcripts.jboss.org/meeting/irc.freenode.org/aerogear/2013/aerogear.2013-10-11-11.11.log.html).
-
-* 16/10/2013 check the ([minute](http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-iOS-Crypto-findings-II-td5101.html))
-
 ## Dependencies
 
 The following frameworks and libraries are part of the iOS platform:
@@ -232,8 +224,10 @@ The following frameworks and libraries are part of the iOS platform:
 Plan:
 
  * build AeroGear wrappers around the above dependencies
- * build the wrappers in an OO-style (in ObjC)
+ * build the wrappers in an OO-style (in Obj-C)
  * evaluate JS/Android API for an easy to use interface (to have it similar to existing APIs, since it would be odd if the iOS library looks totally different)
+ * GCM is not impemented in [Common Crypto](https://developer.apple.com/library/mac/documentation/security/conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html), [CBC symmetric encryption](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mode has been chosen for symmetric encryption.
+ * For asymmetric encryption, ECDH is not supported by [Common Crypto](https://developer.apple.com/library/mac/documentation/security/conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html). Still under investigation. 
 
 ## API (draft 0)
 
@@ -249,12 +243,9 @@ Plan:
 @end
 ```
 
-NOTE: What about using deriveKey (as already used in JS) rather than encrypt (used in Java), encrypt is already used by Cryptobox to encrypt data. See [mailing list thread](
-http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-iOS-Crypto-questions-td5143.html)
-
 * Symmetric encryption support (GCM)
 
-**NOTE:** AES GCM Mode is supported by CommonCrypto but it's currently part of a [private interface](https://github.com/Apple-FOSS-Mirror/CommonCrypto/blob/master/Source/CommonCryptoSPI/CommonCryptorSPI.h#L71) so makes it unavailable to use. We start first with exposing Mode AES CBC which is [supported](https://gist.github.com/cvasilak/b967893655a04cbe5b7b#file-gistfile1-txt-L669).
+**NOTE:** AES GCM Mode is not publicly supported by CommonCrypto (Part of a [private interface](https://github.com/Apple-FOSS-Mirror/CommonCrypto/blob/master/Source/CommonCryptoSPI/CommonCryptorSPI.h#L71) ). We start first with exposing Mode AES CBC.
 
 ```c
 @interface AGCryptoBox : NSObject
@@ -263,18 +254,6 @@ http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-iOS-Crypto-questions-td51
 - (NSData *)decrypt:(NSData *)data IV:(NSData *)IV;
 @end
 ```
-
-We need to reach some common API
-
-    => Java:
-    cryptoBox.encrypt(IV, message);
-    => objective-C
-    NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-    => JavaScript
-    AeroGear.decrypt( options );
-
-See discussion [mailing list thread](
-http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-iOS-Crypto-questions-td5143.html)
 
 * Message authentication support (GMAC, HMAC)
 
@@ -294,10 +273,6 @@ http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-iOS-Crypto-questions-td51
 
 [Under development]
 
-# Demo application workflow
-
-Reference: [http://vimeo.com/77804314](http://vimeo.com/77804314)
-
 * Manage cryptographic keys and respective owners
 
 [Under development]
@@ -305,3 +280,14 @@ Reference: [http://vimeo.com/77804314](http://vimeo.com/77804314)
 See [AGSEC JIRA](https://issues.jboss.org/browse/AGSEC-125)
 and [AGIOS JIRA](https://issues.jboss.org/browse/AGIOS-83)
 
+# Demo application workflow
+
+The demo app ```AeroGear Crypto``` is a single app that let you easily create alisaes and encrypted passwords and store them in an encrypted database that only you can access. One central point for all your passwords.
+
+For the initial release, the flow to change master password will not be implemented.
+
+Video links: 
+
+* For [Android client](http://vimeo.com/77804314)
+
+* For [iOS client](http://vimeo.com/78366502) 
