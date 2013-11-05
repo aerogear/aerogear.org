@@ -23,7 +23,7 @@ JSON Payload:
   "operatingSystem" : "iOS",
   "osVersion" : "6.1.2",
   "alias" : "someUsername or email adress...",
-  "category" : "football",
+  "categories" : ["football", "sport"],
   "simplePushEndpoint":"https://server.com/endpointPath"
 }
 ----
@@ -49,7 +49,7 @@ On successful storage of the device related metadata:
   "operatingSystem":"iOS",
   "osVersion":"6.1.2",
   "alias":"dude@dude.org",
-  "category":"football",
+  "categories":["football","sport"],
   "simplePushEndpoint":"https://server.com/endpointPath"
 }
 ----

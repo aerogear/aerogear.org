@@ -198,9 +198,9 @@ _The version of the used Operating System._
 
 _Application specific alias to identify users with the system. For instance an ```email address``` or a ```username```._
 
-- **category:**
+- **categories:**
 
-_Used to apply a "tag" for the registered ```Installation```._
+_Used to apply one or more "tags" for the registered ```Installation```._
 
 - **simplePushEndpoint:**
 
@@ -220,7 +220,7 @@ The server offers an HTTP interfaces to register an _installation_:
           "operatingSystem" : "iOS",
           "osVersion" : "6.1.2",
           "alias" : "someUsername or email adress...",
-          "category" : "football",
+          "categories" : ["football", "sport"],
           "simplePushEndpoint" : "http://server.com/someEndpoint"
          }'
 
@@ -242,8 +242,9 @@ Sends a push message to a selected list of devices/clients, or all, based on dif
        -d '{
            "variants" : ["c3f0a94f-48de-4b77-a08e-68114460857e", "444939cd-ae63-4ce1-96a4-de74b77e3737" ....],
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
-           "category" : "someCategory",
+           "categories" : ["someCategory", "otherCategory"],
            "deviceType" : ["iPad", "AndroidTablet"],
+           "ttl" : 3600,
            "message": {
                "alert":"HELLO!",
                "sound":"default",
@@ -251,15 +252,12 @@ Sends a push message to a selected list of devices/clients, or all, based on dif
                "someKey":"some value",
                "anotherCustomKey":"some other value"
            },
-           "simple-push": {
-               "SomeCategory":"version=123",
-               "anotherCategory":"version=456"
-            }
+           "simple-push": "version=123"
         }'
 
     https://SERVER:PORT/context/rest/sender
 
-The ```variants``` is a filter for notifying certain variants (e.g. HR Android, HR iPad etc.) of the PushApplication with the respective IDs. The ```alias``` value is used to identify the desired users, while the ```category``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The payload (```message``` and ```simple-push```) are standard JSON maps. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
+The ```variants``` is a filter for notifying certain variants (e.g. HR Android, HR iPad etc.) of the PushApplication with the respective IDs. The ```alias``` value is used to identify the desired users, while the ```categories``` is more a semantical tag, of a registered ```Installation```. The ```deviceType``` is a filter for notifying only users, running a certain device. The ```ttl``` is supported on GCM/APNs to specify how long the supported networks should try to deliver the notification. The payload (```message``` and ```simple-push```) are standard JSON objects. If platform specific key words (e.g. alert for APNs) are used, they are honored for the specific platform. This transformation is done by the _AeroGear UnifiedPush Server_.
 
 ## Use Cases
 

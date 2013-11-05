@@ -15,8 +15,9 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
        -d '{
            "variants" : ["c3f0a94f-48de-4b77-a08e-68114460857e", "444939cd-ae63-4ce1-96a4-de74b77e3737" ....],
            "alias" : ["user@account.com", "someone@aerogear.org", ....],
-           "category" : "someCategory",
+           "categories" : ["someCategory", "otherCategory"],
            "deviceType" : ["iPad", "AndroidTablet"],
+           "ttl" : 3600,
            "message": {
              "alert":"HELLO!",
              "sound":"default",
@@ -24,16 +25,17 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
              "someKey":"some value",
              "anotherCustomKey":"some other value"
            },
-           "simple-push": {
-             "SomeCategory":"version=123",
-             "anotherCategory":"version=456"
-           }
+           "simple-push": "version=123"
          }'
 
-    https://SERVER:PORT/CONTEXT/rest/sender/selected
+    https://SERVER:PORT/CONTEXT/rest/sender
 
 ### Message Format
 The message format is very simple: A generic JSON map is used to sent messages to Android and iOS devices. 
+
+* ```ttl``` Specifies in seconds the ```time-to-live``` for the submitted notification. This value is supported by APNs and GCM. If a device is offline for a longer time than specified by the ```ttl``` value, the supported Push Networks may not deliver the notification.
+
+
 
 #### Message Object
 
@@ -55,8 +57,7 @@ None! The JSON map is submitted as it is, directly to the device. There are no A
 
 #### SimplePush Object
 
-For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants. The different versions are submitted to all connected client, that are subscribed on their their matching channels.
-
+For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants. The version is submitted to all connected client, that are subscribed on their matching channels.
 
 #### Query component
 
@@ -64,7 +65,7 @@ Currently the Server will support the following query criteria:
 
 * ```variants```: A list of one or more _mobile variant ID's_ to identify a particular PushApplication variant (e.g. HR Android, HR iPad).
 * ```alias```: A list of one or more _identifiers_ (such as ```email``` or ```username```) to send messages to *ALL* devices of the user(s). The ```alias``` needs to be stored, when the device is registering itself with the server.
-* ```category```: A category to _tag_ the current client. Gives a semantic meaning to a registered ```Installation```.
+* ```categories```: Helps to _tag_ the current client with multiple categories. Gives a semantic meaning to a registered ```Installation```.
 * ```deviceType```: A list of raw device types that should receive the message (e.g. Coupon only for iPad and AndroidTablets). The ```deviceType``` needs to be stored when the device is registering itself with the server. _**NOTE:**_ For SimplePush, the ```deviceType``` is **ONLY** ```web```. No specifics on the actual device are used due to general limitations on "user agent sniffing".
 
 _**NOTE:**_ All these query criterias are optionnal. If no criterias are passed it will act as a  _broadcast_ send, where _all_ clients are notified. 

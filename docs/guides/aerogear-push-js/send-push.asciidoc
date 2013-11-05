@@ -14,13 +14,13 @@ On a command line issue the following _CURL_ command:
 curl -3 -u "{PushApplicationID}:{MasterSecret}"
    -v -H "Accept: application/json" -H "Content-type: application/json"
    -X POST
-   -d '{"simple-push": { "mail":"version=123"}
+   -d '{"simple-push": "version=123"}
    }'
 
 https://SERVER:PORT/CONTEXT/rest/sender
 ----
 
-Notice the _simple-push_ object in the payload. It contains the name of one channel (here _mail_) and its version number. The AeroGear UnifiedPush Server will perform an HTTP PUT update on the SimplePush server. This will cause the SimplePush server to send the push notification to web clients.
+Notice the _simple-push_ object in the payload. It contains a version number. The AeroGear UnifiedPush Server will perform an HTTP PUT update on the SimplePush server. This will cause the SimplePush server to send the push notification to all connected web clients, that belong to the used PushApplication.
 
 [NOTE]
 If you want to send another push notification to that endpoint, make sure you are increasing the version number (e.g. version=124 or version=125 in this case)! Using the same version for that given endpoint does not cause a push notification to be sent to the client.

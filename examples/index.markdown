@@ -27,6 +27,4 @@ Below are lists of example applications and running demos which demonstrate the 
     * [Running Demo](http://js-aerogear.rhcloud.com/)
 
 
-### Controller
 
-* [Demo](https://github.com/aerogear/aerogear-controller-demo)

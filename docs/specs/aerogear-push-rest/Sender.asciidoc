@@ -18,8 +18,9 @@ Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-message
 ----
 {
   "alias" : ["user@account.com", "someone@aerogear.org", ....],
-  "category" : "someCategory",
+  "categories" : ["someCategory", "otherCategory"],
   "deviceType" : ["iPad", "AndroidTablet"],
+  "ttl" : 3600,
   "message": {
     "alert":"HELLO!",
     "sound":"default",
@@ -27,10 +28,7 @@ Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-message
     "someKey":"some value",
     "anotherCustomKey":"some other value"
   },
-  "simple-push": {
-    "SomeCategory":"version=123",
-    "anotherCategory":"version=456"
-  }
+  "simple-push": "version=123"
 }
 ----
 
