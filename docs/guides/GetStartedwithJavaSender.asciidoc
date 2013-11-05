@@ -67,10 +67,11 @@ UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()                 // 
                 .alert("Hello from Java Sender API!")
                 .sound("default")
                 .badge("1")
-                .attribute("some_key", "with_value")  // add a user defined attribute applicable to your context.
+                .timeToLive(3600)  // [3]                                       
+                .attribute("some_key", "with_value")  // [4]
                 .build();
 
-sender.send(unifiedMessage, new MessageResponseCallback() {      // [3]
+sender.send(unifiedMessage, new MessageResponseCallback() {      // [5]
 
             @Override
             public void onComplete(int statusCode) {
@@ -85,9 +86,9 @@ sender.send(unifiedMessage, new MessageResponseCallback() {      // [3]
           });
 ----
 
-In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. In [2], we access the builder object and we use it to fill in the parameters. The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. Further, support is provided with the help of the _attribute_ param, to attach on the notification arbitary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
+In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. In [2], we access the builder object and we use it to fill in the parameters. The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. An optional _timeToLive_ [3] (in seconds) can be added on the notification payload, instructing the remote provider to drop the notification in case the device is unable to receive it (e.g. offline) for a period longer than the seconds specified. Further, support is provided with the help of the _attribute_ param [4], to attach on the notification arbitary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
 
-Once the notication payload is constructed, we invoke the send method [3] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
+Once the notication payload is constructed, we invoke the send method [5] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
 
 === Selected send
 
@@ -257,24 +258,3 @@ public class NotificationSender {
 === Conclusion
 
 The Sender API is simple and easy to use, allowing you to connect to the UnifiedPush server and send notifications. It can be used both in your standalone applications or be embedded in a Java EE environment. Work is being done to port it to other languages too and if you are interested you can give us a hand too! Please join our link:https://lists.jboss.org/mailman/listinfo/aerogear-dev[developer mailing list], or find us on link:irc://irc.freenode.net/aerogear[IRC] and introduce yourself!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
