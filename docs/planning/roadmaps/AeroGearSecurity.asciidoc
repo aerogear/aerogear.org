@@ -158,10 +158,6 @@ External References
 
 * AGSEC-59: Inclusion of a responsible disclosure for security at aerogear.org
 
-* AGSEC-108: Update AeroGear Security to PicketLink CR1
-
-* AGSEC-113: Update to AeroGear Security PicketLink with the version 2.5 Final
-
 1.4.0 (End January)
 ~~~~~~~~~~~~~~~~~~~
 
