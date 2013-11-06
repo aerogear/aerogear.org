@@ -306,10 +306,10 @@ The AGDataManager class offers some simple 'management' APIs to work with contai
 // create the datamanager
 AGDataManager* dm = [AGDataManager manager];
 // add a new (default) store object:
-            id<AGStore> store = [manager store:^(id<AGStoreConfig> config) {
-                [config setName:@"tasks"];
-                [config setType:@"SQLITE"];
-            }];
+id<AGStore> store = [dm store:^(id<AGStoreConfig> config) {
+   [config setName:@"tasks"];
+   [config setType:@"SQLITE"];
+}];
 ----
 
 Storage can be of type: MEMORY, PLIST or SQLITE. Similar to the pipe API technical details of the underlying system are not exposed.
