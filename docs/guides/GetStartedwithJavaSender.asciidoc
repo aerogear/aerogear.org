@@ -112,7 +112,7 @@ To narrow down the list of the recipients, you are given the following options: 
 - narrow down by a category:
 [source,java]
 ----
-   .category("someCategory");
+   .categories("someCategory", "otherCategory");
 ----
 - narrow down SimplePush clients: (NOTE: you must explicitely set the 'deviceType' to be "'web'" as above)
 [source,java]
