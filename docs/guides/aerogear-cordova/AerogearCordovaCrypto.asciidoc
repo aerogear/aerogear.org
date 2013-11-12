@@ -1,0 +1,94 @@
+---
+layout: basic
+title: AeroGear Cordova Crypto
+---
+
+== AeroGear Cordova Crypto
+
+Before we start please install link:https://github.com/apache/cordova-cli/[Apache Cordova CLI], which is the command
+line tool to build, deploy and manage Cordova-based applications.
+
+Read about how OTP works on this link:/docs/guides/AeroGear-OTP/[AeroGear OTP guide]
+
+=== Example
+
+First let's create a new project and install the plugin.
+
+[source,c]
+----
+cordova create <app name>
+cd <app name>
+cordova platform add android
+cordova platform add ios
+cordova plugin add https://github.com/aerogear/aerogear-crypto-cordova.git
+----
+[NOTE]
+====
+for use in ios, you'll need to run `pod install`
+====
+
+Password based key derivation support (PBKDF2)
+
+[source,javascript]
+----
+AeroGear.crypto.deriveKey( function(password) {
+    /* derived key password */;    
+}, errorHandler, 'your-password' );   
+----
+
+Symmetric encryption support (GCM)
+
+* Encryption
+
+[source,javascript]
+----
+AeroGear.crypto.deriveKey( function(rawPassword) {
+    var options = {
+            IV: "69696ee955b62b73cd62bda875fc73d68219e0036b7a0b37",
+            AAD: "feedfacedeadbeeffeedfacedeadbeefabaddad2",
+            key: rawPassword,
+            data: "My Bonnie lies over the ocean, my Bonnie lies over the sea"
+        };
+    AeroGear.crypto.encrypt( function(cipherText) {
+        /* encrypted cipherText */
+    }, options ); 
+}, errorHandler, 'myPassword' );
+----
+
+* Decryption
+
+[source,javascript]
+----
+var options = {
+        IV: "69696ee955b62b73cd62bda875fc73d68219e0036b7a0b37",
+        AAD: "feedfacedeadbeeffeedfacedeadbeefabaddad2",
+        key: rawPassword,
+        data: cipherText
+    };
+AeroGear.crypto.decrypt( function(text) {
+    /* your text */
+}, options ); 
+----
+
+Asymmetric encryption support (ECC) / iOS not supported
+
+[source,javascript]
+----
+AeroGear.crypto.KeyPair(function(keyPair) { //generate keypair 1
+    AeroGear.crypto.KeyPair(function(keyPairPandora) { //generate keypair 2
+        var options = {
+            IV: "69696ee955b62b73cd62bda875fc73d68219e0036b7a0b37",
+            AAD: "feedfacedeadbeeffeedfacedeadbeefabaddad2",
+            key: new AeroGear.crypto.KeyPair(keyPair.privateKey, keyPairPandora.publicKey),
+            data: "My bonnie lies over the ocean"
+        };
+        AeroGear.crypto.encrypt(function (cipherText) {
+            options.key = new AeroGear.crypto.KeyPair(keyPairPandora.privateKey, keyPair.publicKey);
+            options.data = cipherText;
+            AeroGear.crypto.decrypt(function (plainText) {
+                /* end of the example */
+            }, options);
+        }, options);
+    });
+});
+----
