@@ -20,4 +20,4 @@ title: AeroGear Cordova User Guide
 ## Usage Guides
 * [AeroGear Cordova PushPlugin](AerogearCordovaPush)
 * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](AerogearCordovaOTP)
-
+* [AeroGear Crypto Plugin](AerogearCordovaCrypto)
