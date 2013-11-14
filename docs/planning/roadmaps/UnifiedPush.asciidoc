@@ -1,0 +1,101 @@
+---
+layout: basic
+title: UnifiedPush Server
+---
+
+AeroGear UnifiedPush Server
+===========================
+
+This document covers the requirements, use-cases and planned API's for the AeroGear UnifiedPush Server.
+
+External References
+-------------------
+
+* link:https://github.com/aerogear/aerogear-unifiedpush-server/[Github Repo]
+* link:https://issues.jboss.org/browse/AGPUSH/[JIRA]
+
+0.8.0 (Mid August 2013)
+~~~~~~~~~~~~~~~~~~~~~~~
+* Initial community release and OpenShift Cartridge
+
+0.8.1 (Mid October 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~
+* *RESTful Sender API: remove of _broadcast_ endpoint*
+* *Client Updates*
+* *Bean Validation support*
+* *WildFly support*
+
+0.9.0 (Mid November 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+* *Server API change (multiple categories)*
+* *Mysql CLI support*
+* *Client updates*
+* *Admin UI improvements and fixes*
+* *Refactorings (server and client)*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321875[JIRA: Push 0.9.0]
+
+0.10.0 (Mid January 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+* *User Management*
+* *Admin UI fixes and improvements*
+* *New Server Features*
+** link:https://issues.jboss.org/browse/AGPUSH-306[Proxy Server Settings]
+** link:https://issues.jboss.org/browse/AGPUSH-365[iOS silent messages]
+** link:https://issues.jboss.org/browse/AGPUSH-112[IP Whitelisting]
+** link:https://issues.jboss.org/browse/AGPUSH-111[Re-try of sending]
+** link:https://issues.jboss.org/browse/AGPUSH-420[SendCriteria: Support device token]
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321876[JIRA: Push 0.10.0]
+
+0.11.0 (Mid February 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *Refactoring*
+** link:https://issues.jboss.org/browse/AGPUSH-454[Internals of Sender API]
+* *Browser based Push*
+** link:https://issues.jboss.org/browse/AGPUSH-244[GCM for Chrome]
+** link:https://issues.jboss.org/browse/AGPUSH-454[APNs for Safari]
+* *Admin UI*
+** link:https://issues.jboss.org/browse/AGPUSH-150[Pagination]
+** link:https://issues.jboss.org/browse/AGPUSH-260[Copy/Paste IDs/Secrets]
+** other polishing
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321883[JIRA: Push 0.11.0]
+
+0.12.0 (Mid March 2014)
+~~~~~~~~~~~~~~~~~~~~~~~
+* *APNs Improvements*
+** link:https://issues.jboss.org/browse/AGPUSH-193[Passbook]
+** link:https://issues.jboss.org/browse/AGPUSH-194[Newstand]
+* *Client Registration*
+** link:https://issues.jboss.org/browse/AGPUSH-119[Quiet time]
+* *Sender*
+** more criterias
+* *Server Refactoring*
+* *Admin UI tweaks*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323753[JIRA: Push 0.12.0]
+
+1.0.0 (Mid April 2014)
+~~~~~~~~~~~~~~~~~~~~~~
+* *Final Release*
+* *critical fixes and stabilization*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323754[JIRA: Push 1.0.0]
+
+1.x Release(s)
+~~~~~~~~~~~~~~
+There might be different 1.x.y release, things that come to mind are:
+
+** link:https://issues.jboss.org/browse/AGPUSH-116[Analytics]
+** link:https://issues.jboss.org/browse/AGPUSH-457[Kindle notifications]
+** link:https://issues.jboss.org/browse/AGPUSH-37[RHQ Plugin]
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321884[JIRA: Push (future)]
+
+2.x Release(s)
+~~~~~~~~~~~~~~
+Evaluating new and different runtimes like:
+
+* *Netty*
+* *vert.x*
