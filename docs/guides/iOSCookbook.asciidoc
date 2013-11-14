@@ -599,21 +599,98 @@ As with the case of Pipe, configured timeout interval (in the config object) and
 
 == [[crypto]] Cryptography support
 
+Since 1.3.0 release, iOS AeroGear provides _Symmetric encryption API_ and enhances its Core API with _Encrypted Stores_. Let's delve into how to use encryption to secure your enterprise app.
+
 === Symmetric encryption API
+
+Symmetric encryption (also called private key encryption) is when the same key is used to encrypt and decrypt data. It is best defined with 4 basic concepts:
+
+- *Password* is easy to remember and usually defined by user and must be kept secret. A password is not a key.
+- *Encryption key* is a block of bytes of a **specific length**. Key can be derived from password using for example, PBKDF2 algorithm. Must be kept secret.
+- *IV (Initialization Vector)* s a random value that is used to encrypt data. Encryption algorithms usually work on fixed-size blocks, IV defines the first encrypted block.
+- *Salt* is a random value that is used together with a password to derive en encryption key. A salt value does not need to be kept secret.
+
+AeroGear-Crypto symmetric encryption is powered by link:http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29[CBC symmetric encryption]. Build upon link:https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/CC_crypto.3cc.html#//apple_ref/doc/man/3cc/CC_crypto[ComomCrypto] and link:https://developer.apple.com/Library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html[Security framework], it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.
+
+First of all, to encrypt your data you need an encryption key. Your key can be derived from a PIN, password or passphrase using link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2]. 
+
+[source,c]
+----
+
+    NSData *salt = [AGRandomGenerator randomBytes];
+    NSData *encryptionKey = [pbkdf2 deriveKey:@"password4me" salt:salt];
+
+
+----
+
+For random generation of key, use link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGRandomGenerator.html[AGRandomGenerator]. By default, AGRandomGenerator generates 16 bytes key, but you can also specify the length if you wish.
+
+Once you've got your encryption key, use link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox.html[AGCryptoBox] to do the actual encryption. Its interface is simple:
+
+[source,c]
+----
+
+@interface AGCryptoBox : NSObject
+- (id)initWithKey:(NSData*)key;
+- (NSData*)encrypt:(NSData*)data IV:(NSData*)IV;
+- (NSData*)decrypt:(NSData*)data IV:(NSData*)IV;
+@end
+
+
+----
+
+With link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox.html[AGCryptoBox], you can encrypt/decrypt data using your encryption key and a randomly generated IV (Initialization Vector) as shown below:
+
+[source,c]
+----
+
+    NSString* stringToEncrypt = @"I want to keep it secret";
+    // encode string into data
+    NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* IV = [AGRandomGenerator randomBytes:16];
+    
+    // encrypt
+    NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:IV];
+                
+    // decrypt
+    NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:IV];
+
+
+----
+
+NOTE: To be able to decrypt you need to store the encryption key and the ramdonly generated IV. You can store the sensitive information in KeyCahin for example.
 
 === Encrypted storage
 
-If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted store with the same API than plain store. 
+If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted stores with the same API than plain stores. 
 
+Current available implementation are: link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[encrypted memory store] which allows you to work in-memory with sensitive data and link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[encrypted property list] storage implementation. 
+link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[Encrypted SQLite] will come in next release.
 
-Currently available is link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[encrypted memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[encrypted property list] storage implementation. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[Encrypted SQLite] will come in next release.
+Before
+
+To create a DataManager with encrypted permanent storage, you simply have to specify in the config the type *ENCRYPTED_PLIST*, and here you go you've got your property list encrypted storage available!
+[source,c]
+----
+TODO
+
+// create the datamanager
+AGDataManager* dm = [AGDataManager manager];
+// add a new encrypted store object:
+id<AGStore> encryptedStore = [dm store:^(id<AGStoreConfig> config) {
+   [config setName:@"tasks"];
+   [config setType:@"ENCRYPTED_PLIST"];
+}];
+----
+
+Reading and saving
+
 
 
 === AeroGear Crypto Password
 
-If you want to see it all together, 
-The demo AeroGear Crypto Password is a single app that will let you easily create stronger passwords and store them in an encrypted database that only you can access. One central point for all your passwords.
+If you want to see it all together, give a try to ```AeroGear Crypto Password``` app. Using encrypted storage you can store in a central point all your passwords. Intial load of application will prompt you to enter you password, store it in keychain so that when you later login.  passphrase, all your existing passwords will be decrypted. 
 
-Enter your passphrase, all your existing passwords will be decrypted. AeroGear Crypto Password secures your data using AeroGear-Crypto library underneath powered by CBC symmetric encryption.
+
 Manage cryptographic keys and respective owners
 keychain
