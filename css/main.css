@@ -184,7 +184,7 @@ p {
 }
 
 li > p { 
-    overflow: initial; 
+    overflow: visible; 
 }
 
 .clearfix {
