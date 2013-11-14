@@ -10,6 +10,7 @@ The goal of this guide is to introduce you to the current available link:http://
 - <<pipe,HTTP REST abstraction>> + <<paging,Paging>>
 - <<store,Store and DataManager>>
 - <<auth,Authentication and User enrollment>>
+- <<crypto, Cryptography support>>
 
 == [[pipe]]Pipe and Pipeline
 
@@ -594,3 +595,25 @@ NOTE: Care should be taken when specifying the persistence type param when const
 === Time out and Cancel pending operations
 
 As with the case of Pipe, configured timeout interval (in the config object) and cancel operation in _AGAuthenticationModule_ is supported too.
+
+
+== [[crypto]] Cryptography support
+
+=== Symmetric encryption API
+
+=== Encrypted storage
+
+If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted store with the same API than plain store. 
+
+
+Currently available is link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[encrypted memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[encrypted property list] storage implementation. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[Encrypted SQLite] will come in next release.
+
+
+=== AeroGear Crypto Password
+
+If you want to see it all together, 
+The demo AeroGear Crypto Password is a single app that will let you easily create stronger passwords and store them in an encrypted database that only you can access. One central point for all your passwords.
+
+Enter your passphrase, all your existing passwords will be decrypted. AeroGear Crypto Password secures your data using AeroGear-Crypto library underneath powered by CBC symmetric encryption.
+Manage cryptographic keys and respective owners
+keychain
