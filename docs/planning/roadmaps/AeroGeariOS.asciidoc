@@ -49,7 +49,11 @@ External References
 * *Pipeline*
 ** link:https://issues.jboss.org/browse/AGIOS-15[AGIOS-15]: Multipart support
 * *Crypto* 
-** Epic that groups on-going iOS security work can be found link:https://issues.jboss.org/browse/AGIOS-87[here]
+** Symmetric encryption interface
+** Password based key generation using AGPBKDF2
+** Encrypted variants of the existing Memory and Property Lists stores
+** Initial work on an Encryption Services API to provide different encryption providers
+*** Epic that groups on-going iOS security work can be found link:https://issues.jboss.org/browse/AGIOS-87[here]
 ** DEMO/Docs for Crypto
 * *Offline*
 ** link:https://issues.jboss.org/browse/AGIOS-25[AGIOS-25]: SQLite support
@@ -57,6 +61,14 @@ External References
 
 1.4.0 (Mid January)
 ~~~~~~~~~~~~~~~~~~~
+* *Crypto* 
+** Assymmetric encryption interface
+** Digital signatures support interface
+** Hashing functions wrapper interface
+** Apple's keychain wrapper interface
+** Message authentication support
+** SQLite Encryption store variant
+*** Epic that groups on-going iOS security work can be found link:https://issues.jboss.org/browse/AGIOS-87[here]
 * *Data Sync*
 ** see link:https://issues.jboss.org/browse/AEROGEAR-830[AEROGEAR-830] and linked JIRAs
 * *Notifications*
