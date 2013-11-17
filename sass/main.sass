@@ -72,13 +72,33 @@ textarea
  */
 /* =================== custom fonts =================================================================================
  */
+@font-face
+  font-family: 'Open Sans'
+  font-style: normal
+  font-weight: 300
+  src: local("Open Sans Light"), local("OpenSans-Light"), url(/font/DXI1ORHCpsQm3Vp6mXoaTeY5mlVXtdNkpsMpKkrDXP4.woff) format("woff")
+
 
 @font-face
   font-family: 'Open Sans'
-  src: url('/font/OpenSans-Regular-webfont.eot')
-  src: url('/font/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('/font/OpenSans-Regular-webfont.woff') format('woff'), url('/font/OpenSans-Regular-webfont.ttf') format('truetype'), url('/font/OpenSans-Regular-webfont.svg#open_sansregular') format('svg')
-  font-weight: normal
   font-style: normal
+  font-weight: 600
+  src: local("Open Sans Semibold"), local("OpenSans-Semibold"), url(/font/MTP_ySUJH_bn48VBG8sNSuY5mlVXtdNkpsMpKkrDXP4.woff) format("woff")
+
+
+@font-face
+  font-family: 'Open Sans'
+  font-style: italic
+  font-weight: 300
+  src: local("Open Sans Light Italic"), local("OpenSansLight-Italic"), url(/font/PRmiXeptR36kaC0GEAetxnZ4362_PV5aPD5jU0S2ELI.woff) format("woff")
+
+
+@font-face
+  font-family: 'Open Sans'
+  font-style: italic
+  font-weight: 600
+  src: local("Open Sans Semibold Italic"), local("OpenSans-SemiboldItalic"), url(/font/PRmiXeptR36kaC0GEAetxhyVJL_BP-r1aUfHSUUH87w.woff) format("woff")
+
 
 /* =================== Pre-processors: mixins definition, color etc ==================================================
  */
@@ -90,23 +110,6 @@ $filling-color: #f2f2f2
 $line-filling-color:#dadada
 $news-text-color: #878787
 $menu-text-color:#7F7F7F
-$heading-color:#ffffff
-
-/*white theme*/
-//$tab-border-color: $line-filling-color
-//$section-color: $background-color
-//$core-color:#df7220
-//$seperator-color:$line-filling-color
-//$section-text-color: $main-text-color
-//$code: $filling-color
-
-/*Dracula theme*/
-$tab-border-color: #323232
-$section-color: #323232
-$core-color: #df7220
-$seperator-color: #121212
-$section-text-color: #ebebeb
-$code: #222
 
 @mixin border-box
   -moz-box-sizing: border-box
@@ -129,6 +132,14 @@ $break-tablet:848px
       @content
 
 $size-ref:1em
+
+$gear-color:#FFF000
+$aero-color:#000FFF
+$main-text-color: #73ff73
+$filling-color: #f2beef
+$line-filling-color:#f23eea
+$news-text-color: #7514e1
+$menu-text-color:#790f7f
 
 /* =================== Standard elements ============================================================================
  */
@@ -210,13 +221,13 @@ p
 #main-header
   nav
     display: inline-block
-    margin-top: 18px
+    position: absolute
+    right: 0
+    top: 110px
     background-color: $filling-color
     border-top: 1px solid $line-filling-color
     border-bottom: 1px solid $line-filling-color
     width: 100%
-    ul
-      padding-left: 0
   ul
     list-style: none
     max-width: 60em
@@ -304,118 +315,6 @@ a.news
   &.hybrid h3
     color: #60625e
 
-
-$section-color:#323232
-$core-color:#df7220
-$seperator-color:#121212
-$section-text-color:#ebebeb
-$code: #222
-
-div.section
-  color: $section-text-color
-  background-color: $section-color
-  border-top: $seperator-color solid 16px
-  .sect1 h2
-    background: url('/img/example-icon.png') no-repeat left
-    margin: -40px
-    padding: 40px
-    color: $section-text-color
-  .sect1 h3
-    text-transform: uppercase
-    color: $section-text-color
-  pre
-    background-color: $code
-    border: none
-  .hljs
-    background-color: $code
-    
-div.core  
-  a
-    color: $core-color
-    text-decoration: none
-  strong
-    font-weight: normal
-  a:hover
-    text-decoration: underline
-  .section-strip
-    border-top-color: $core-color
-    
-.section-strip
-  border-top-width: 4px
-  border-top-style: solid
-
-/* =================== Code tabs =====================================================================
- */    
-.nav .nav-tabs
-  margin-right: 5%
-  border: 0
-
-.nav 
-  margin-bottom: 0 
-  padding-left: 0 
-  list-style: none 
-
-.nav:before,
-.nav:after 
-  content: " " 
-  display: table 
-
-.nav:after 
-  clear: both 
-
-.nav > li 
-  position: relative 
-  display: block 
-
-.nav > li > a 
-  position: relative 
-  display: block 
-  padding: 10px 15px 
-
-.nav > li > a:hover,
-.nav > li > a:focus 
-  text-decoration: none 
-  background-color: $code 
-
-.nav-tabs   
-  border-bottom: 1px solid $section-color 
-  margin: 0 0.5em
- 
-.nav-tabs > li  
-  float: right 
-  margin-bottom: -1px 
- 
-.nav-tabs > li > a  
-  margin-right: 2px 
-  line-height: 1.428571429 
-  border: 1px solid transparent 
-  border-radius: 4px 4px 0 0 
-  color: $section-text-color
- 
-.nav-tabs > li > a:hover  
-  border-color: $section-color $section-color $seperator-color 
- 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus  
-  background-color: $code 
-  border: 1px solid $section-color 
-  border-bottom-color: transparent 
-  cursor: default     
-
-.tab-content > .tab-pane 
-  @include respond-to(desktop)
-  display: none
-
-.tab-content > .active 
-  @include respond-to(desktop)
-  display: block
-
-.tab-content pre
-  padding: 20px
-  margin-right: 0
-  margin-top: 0
-
 /* =================== Bringing mobile together =====================================================================
  */
 .start-header
@@ -464,7 +363,7 @@ div.core
     img
       border-left: 1px $line-filling-color solid
       @include respond-to(phone)
-        display: none
+        display :none
     &.left
       float: left
       img
@@ -555,7 +454,7 @@ footer
 #slide-menu-button
   visibility: hidden
   @include respond-to(phone)
-    visibility: visible
+    visibility: visble
 
 a#slide-menu-button:hover
   text-decoration: none
@@ -615,7 +514,7 @@ a#slide-menu-button:hover
 .basic, .post
   margin-left: auto
   margin-right: auto
-  margin-top: 2em
+  margin-top: 5em
   width: 90%
   max-width: 960px
 
@@ -654,7 +553,7 @@ a#slide-menu-button:hover
 pre
   background-color: $filling-color
   border: 1px $line-filling-color dotted
-  font-size: 0.8em
+  font-size: 0.7em
   margin-right: 5%
   padding-left: 2%
   white-space: pre
@@ -763,19 +662,6 @@ pre
     display: table
     clear: both
   *zoom: 1
-
-.specTable
-  border-style: solid
-  border-width: 1px
-  th
-    border-width: 1px
-    border-style: solid
-    padding: 5px
-  td
-    border-width: 1px
-    border-style: solid
-    padding: 5px
-    text-align: center
 
 /* ==================================================================================================================
  * Print styles.
