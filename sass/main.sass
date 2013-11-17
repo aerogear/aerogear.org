@@ -1,0 +1,712 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+
+/* ==================================================================================================================
+ * Base styles: opinionated defaults
+ * ==================================================================================================================
+ */
+html, button, input, select, textarea
+  color: #222
+
+body
+  font-size: 1em
+  line-height: 1.4
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+\::-moz-selection, ::selection
+  background: #b3d4fc
+  text-shadow: none
+
+/*
+ * A better looking default horizontal rule
+ */
+hr
+  display: block
+  height: 1px
+  border: 0
+  border-top: 1px solid #ccc
+  margin: 1em 0
+  padding: 0
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+img
+  vertical-align: middle
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset
+  border: 0
+  margin: 0
+  padding: 0
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea
+  resize: vertical
+
+/* ==================================================================================================================
+ * Chrome Frame prompt
+ * ==================================================================================================================
+ */
+.chromeframe
+  margin: 0.2em 0
+  background: #ccc
+  color: #000
+  padding: 0.2em 0
+
+/* ==================================================================================================================
+ * AeroGear custom styles for desktop
+ * ==================================================================================================================
+ */
+/* =================== custom fonts =================================================================================
+ */
+@font-face
+  font-family: 'Open Sans'
+  font-style: normal
+  font-weight: 300
+  src: local("Open Sans Light"), local("OpenSans-Light"), url(/font/DXI1ORHCpsQm3Vp6mXoaTeY5mlVXtdNkpsMpKkrDXP4.woff) format("woff")
+
+
+@font-face
+  font-family: 'Open Sans'
+  font-style: normal
+  font-weight: 600
+  src: local("Open Sans Semibold"), local("OpenSans-Semibold"), url(/font/MTP_ySUJH_bn48VBG8sNSuY5mlVXtdNkpsMpKkrDXP4.woff) format("woff")
+
+
+@font-face
+  font-family: 'Open Sans'
+  font-style: italic
+  font-weight: 300
+  src: local("Open Sans Light Italic"), local("OpenSansLight-Italic"), url(/font/PRmiXeptR36kaC0GEAetxnZ4362_PV5aPD5jU0S2ELI.woff) format("woff")
+
+
+@font-face
+  font-family: 'Open Sans'
+  font-style: italic
+  font-weight: 600
+  src: local("Open Sans Semibold Italic"), local("OpenSans-SemiboldItalic"), url(/font/PRmiXeptR36kaC0GEAetxhyVJL_BP-r1aUfHSUUH87w.woff) format("woff")
+
+
+/* =================== Pre-processors: mixins definition, color etc ==================================================
+ */
+
+$gear-color:#669eb2
+$aero-color:#e25027
+$main-text-color: #575653
+$filling-color: #f2f2f2
+$line-filling-color:#dadada
+$news-text-color: #878787
+$menu-text-color:#7F7F7F
+
+@mixin border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -o-box-sizing: border-box
+  box-sizing: border-box
+
+$break-phone:656px
+$break-tablet:848px
+
+@mixin respond-to($media-size)
+  @if $media-size == phone
+    @media only screen and (max-width: $break-phone)
+      @content
+  @else if $media-size == tablet
+    @media only screen and (min-width:$break-phone + 1) and (max-width: $break-tablet - 1)
+      @content
+  @else if $media-size == desktop
+    @media only screen and (min-width: $break-tablet)
+      @content
+
+$size-ref:1em
+
+$gear-color:#FFF000
+$aero-color:#000FFF
+$main-text-color: #73ff73
+$filling-color: #f2beef
+$line-filling-color:#f23eea
+$news-text-color: #7514e1
+$menu-text-color:#790f7f
+
+/* =================== Standard elements ============================================================================
+ */
+
+a
+  color: $gear_color
+  @include respond-to(phone)
+    &.fixed
+      display: none !important
+
+.basic a:hover
+  opacity: 0.61
+
+
+h1, h2, h3, h4
+  color: $aero-color
+  font-weight: 700
+  letter-spacing: -1px
+
+h1
+  font-size: $size-ref + 1em
+  @include respond-to(phone)
+    font-size: 1.75em
+    margin: 3em 0 0 0
+
+h2
+  font-size: $size-ref + 0.75em
+  @include respond-to(phone)
+    font-size: $size-ref + 0.25em
+
+h3
+  font-size: $size-ref + 0.25em
+
+h4
+  font-size: $size-ref
+  margin-top: 3em
+
+h2 + h3, h3 + h4
+  margin-top: 0.875em
+
+img
+  max-width: 100%
+  height: auto
+
+body
+  font-family: "Open Sans", sans-serif
+  color: $main-text-color
+
+p
+  @include border-box
+  overflow: hidden
+  text-overflow: ellipsis
+  @include respond-to(desktop)
+    max-width: 960px
+  @include respond-to(tablet)
+    max-width: 720px
+
+.clearfix
+  clear: both
+
+/* CSS for markdown [NOTE]
+ */
+
+.title
+  text-align: left
+  font-weight: 700
+
+.icon
+  display: table-cell
+  vertical-align: top
+
+/* In tutorial guide, keep limited image size
+  */
+.sectionbody img
+  max-height: 400px
+
+/* =================== Nav bar ======================================================================================
+ */
+#main-header
+  nav
+    display: inline-block
+    position: absolute
+    right: 0
+    top: 110px
+    background-color: $filling-color
+    border-top: 1px solid $line-filling-color
+    border-bottom: 1px solid $line-filling-color
+    width: 100%
+  ul
+    list-style: none
+    max-width: 60em
+    margin-left: auto
+    margin-right: auto
+  nav li
+    display: inline-block
+    margin: 0 1.2em
+    &#download-btn
+      display: none
+    a
+      text-decoration: none
+      font-size: 0.9em
+      color: $menu-text-color
+      padding-bottom: 1.2em
+    &.selected a
+      color: #373435
+
+nav a:hover
+  border-bottom: 2px solid $gear_color
+  color: $gear_color !important
+
+/* =================== AeroGear title ===============================================================================
+ */
+#logo
+  height: 5.75em
+  background-repeat: no-repeat
+  background-position: left
+  @media only screen and (max-width: 656px)
+    background-position: center
+  background-image: url(/img/aerogear_logo.png)
+  margin-left: 5%
+
+.end-title
+  /* keep space for grey menu bar */
+  margin-bottom: 5.5em
+  max-width: 60em
+  margin: 0 auto
+
+a.news
+  margin-top: -1.6em
+  font-style: italic
+  float: right
+  color: $news-text-color
+  text-decoration: none
+  margin-bottom: -1.3em
+  padding-right: 0.4em
+  text-align: right
+  &:hover
+    text-decoration: underline
+
+/* =================== Modules: iOS, JS, Cordova, Android sections ==================================================
+ */
+.modules
+  text-align: center
+  p, h3
+    margin: 0 auto
+  .module
+    text-align: center
+    float: none
+    display: inline-block
+    margin-bottom: 1.4em
+    text-decoration: none
+
+.module
+  @include respond-to(phone)
+    width:  35%
+  img
+    width: 6em
+    padding: 5px
+  p
+    color: $news-text-color
+    text-align: center
+    font-size: 0.9em
+  &:hover img, &:active img
+    border: 5px $line-filling-color solid
+    padding: 0
+    border-radius: 4px
+  &.ios h3
+    color: #214067
+  &.android h3
+    color: #718927
+  &.web h3
+    color: #be420c
+  &.hybrid h3
+    color: #60625e
+
+/* =================== Bringing mobile together =====================================================================
+ */
+.start-header
+  margin-top: 6em
+  text-align: center
+  margin-bottom: 0.8em
+  .start-title
+    color: $gear_color
+    font-weight: 700
+    font-size: 2em
+    margin-bottom: 0.8em
+    letter-spacing: -1px
+  p
+    font-size: 1em
+    margin: 0 auto
+    text-align: center
+  strong
+    font-style: italic
+
+/* =================== Main page content: features ==================================================================
+ */
+.features
+  p
+    @include border-box
+  h3
+    margin-top: 0
+    @include respond-to(phone)
+      margin: 0 0.5em
+
+.feature
+  margin: 3em auto
+  @include respond-to(desktop)
+    max-width: 960px
+  @include respond-to(tablet)
+    max-width: 720px
+  .description
+    float: left
+    p
+      margin: 0.75em 0
+      @include respond-to(phone)
+        margin: 0.75em 1em
+  .illustration
+    float: right
+    width: 18.75em
+    text-align: center
+    img
+      border-left: 1px $line-filling-color solid
+      @include respond-to(phone)
+        display :none
+    &.left
+      float: left
+      img
+        border-right: 1px $line-filling-color solid
+        border-left: none
+
+/* =================== Footer =======================================================================================
+ */
+footer
+  clear: both
+  background-color: $filling-color
+  border-top: 1px $line-filling-color solid !important
+  padding: 0 2.5em
+  margin-top: 1.25em
+  text-align: center
+  h3
+    margin-top: 0.5em
+  a
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  .column
+    float: left
+    min-width: 10em
+    padding-right: 1.12em
+    margin-right: 1.12em
+    &:last-child
+      float: left
+      padding-right: 0
+      margin-right: 0
+  h3
+    margin-bottom: 15px
+    color: #555 !important
+    &.twitter-notFound
+      font-size: 1.25em
+      text-align: left
+  p, ul
+    margin: 0
+
+/* =================== Logos in Footer ==============================================================================
+ */
+.logos
+  clear: both
+  padding: 0.5em
+  p
+    font-size: 0.75em
+    text-align: center
+    max-width: 100%
+  img
+    margin: 0.5em 0
+
+/* =============== Side Navigation: hidden for desktop ==============================================================
+ */
+
+#sideNav
+  background: transparent
+  width: 220px
+  z-index: 1
+  left: 10px
+  top: 150px
+  height: auto
+  float: left
+  nav.site
+    display: none
+  li a
+    padding: 12px 0 0 10px
+  @include respond-to(phone)
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+    li a
+      color: $menu-text-color
+      display: block
+      height: 46px
+      font-size: 16px
+      @include border-box
+      padding: 12px 0 0 20px
+      text-decoration: none
+    nav.site
+      @include border-box
+      padding: 10px
+      display: block
+    @include border-box
+    padding: 10px
+    display: block
+
+#slide-menu-button
+  visibility: hidden
+  @include respond-to(phone)
+    visibility: visble
+
+a#slide-menu-button:hover
+  text-decoration: none
+  border-bottom: 0px
+
+#site
+  @include respond-to(phone)
+    width: 100%
+    position: absolute
+    z-index: 10
+    background: inherit
+    left: 0
+    transition: all 0.2s ease-out
+    -webkit-transition: all 0.2s ease-out
+    transform: translate3d(0, 0, 0)
+    -webkit-transform: translate3d(0, 0, 0)
+    &.open
+      transform: translate3d(200px, 0, 0)
+      -webkit-transform: translate3d(200px, 0, 0)
+
+/* =============== Display facebook icon on footer ==================================================================
+ */
+.social
+  display: inline-block
+  margin-top: 6px
+  margin-left: 8px
+  width: 40px
+  height: 40px
+  border-radius: 3px
+  background-repeat: no-repeat
+  background-position: center
+
+.twitter
+  background-image: url(/img/twitter_tile.png)
+
+.google-plus
+  background-image: url(/img/google_plus_tile.png)
+
+.facebook
+  background-image: url(/img/facebook_tile.png)
+
+.twitter:hover
+  background-image: url(/img/twitter_tile_hover.png)
+
+.google-plus:hover
+  background-image: url(/img/google_plus_tile_hover.png)
+
+.facebook:hover
+  background-image: url(/img/facebook_tile_hover.png)
+
+/* =================== Content ======================================================================================
+ */
+.container
+  @include border-box
+  width: 100%
+
+.basic, .post
+  margin-left: auto
+  margin-right: auto
+  margin-top: 5em
+  width: 90%
+  max-width: 960px
+
+.row
+  display: inline-block
+  float: left
+  @include respond-to(phone)
+    float: none
+  width: 100%
+
+.column_base
+  float: left
+  display: inline-block
+  @include respond-to(phone)
+    width: 100%
+    float: none
+    margin-right: 1%
+    padding-left: 0.5%
+
+.column
+  @extend .column_base
+  width: 45%
+
+.column3
+  @extend .column_base
+  width: 30%
+
+.column4
+  @extend .column_base
+  width: 23%
+
+@include respond-to(phone)
+  .column pre
+    margin-right: 2%
+
+pre
+  background-color: $filling-color
+  border: 1px $line-filling-color dotted
+  font-size: 0.7em
+  margin-right: 5%
+  padding-left: 2%
+  white-space: pre
+
+.newsletter-label
+  display: inline-block
+  min-width: 90px
+
+/* =================== Custom Builder ===============================================================================
+ */
+.builder-alert
+  display: none
+
+.alert
+  padding: 8px 35px 8px 14px
+  margin-bottom: 18px
+  margin-right: 18px
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
+  background-color: #fcf8e3
+  border: 1px solid
+
+.alert-error
+  background-color: $filling-color
+  border-color: $aero-color
+  color: $aero-color
+
+.desc
+  padding: 0
+  font-style: italic
+  font-size: 0.75em
+
+/* ==================================================================================================================
+ * Helper classes
+ * ==================================================================================================================
+
+/*
+ * Image replacement  */
+
+.ir
+  background-color: transparent
+  border: 0
+  overflow: hidden
+  /* IE 6/7 fallback   */
+  *text-indent: -9999px
+  &:before
+    content: ""
+    display: block
+    width: 0
+    height: 150%
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden
+  display: none !important
+  visibility: hidden
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+  */
+.visuallyhidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
+  &.focusable
+    &:active, &:focus
+      clip: auto
+      height: auto
+      margin: 0
+      overflow: visible
+      position: static
+      width: auto
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible
+  visibility: hidden
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix
+  &:before
+    content: " "
+    display: table
+  &:after
+    content: " "
+    display: table
+    clear: both
+  *zoom: 1
+
+/* ==================================================================================================================
+ * Print styles.
+ * Inlined to avoid required HTTP connection: h5bp.com/r
+ * ==================================================================================================================
+ */
+@media print
+  *
+    background: transparent !important
+    color: #000 !important
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important
+    text-shadow: none !important
+  a
+    text-decoration: underline
+    &:visited
+      text-decoration: underline
+    &[href]:after
+      content: " (" attr(href) ")"
+  abbr[title]:after
+    content: " (" attr(title) ")"
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
+  .ir a:after
+    content: ""
+  a
+    &[href^="javascript:"]:after, &[href^="#"]:after
+      content: ""
+  pre, blockquote
+    border: 1px solid #999
+    page-break-inside: avoid
+  thead
+    display: table-header-group
+    /* h5bp.com/t  */
+  tr
+    page-break-inside: avoid
+  img
+    page-break-inside: avoid
+    max-width: 100% !important
+  @page
+    margin: 0.5cm
+
+  p, h2, h3
+    orphans: 3
+    widows: 3
+  h2, h3
+    page-break-after: avoid

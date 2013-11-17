@@ -1,99 +1,70 @@
-/*
- * HTML5 Boilerplate
+/* HTML5 Boilerplate
  *
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
+ * Kroc Camen, and the H5BP dev community and team. */
 /* ==================================================================================================================
-   Base styles: opinionated defaults
-   ================================================================================================================== */
-
-html,
-button,
-input,
-select,
-textarea {
-    color: #222;
-}
+ * Base styles: opinionated defaults
+ * ==================================================================================================================
+ */
+html, button, input, select, textarea {
+  color: #222222; }
 
 body {
-    font-size: 1em;
-    line-height: 1.4;
-}
+  font-size: 1em;
+  line-height: 1.4; }
 
-/*
- * Remove text-shadow in selection highlight: h5bp.com/i
+/* Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
  * Customize the background color to match your design.
  */
+::-moz-selection, ::selection {
+  background: #b3d4fc;
+  text-shadow: none; }
 
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
+/* A better looking default horizontal rule
  */
-
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
 
-/*
- * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+/* Remove the gap between images and the bottom of their containers: h5bp.com/i/440
  */
-
 img {
-    vertical-align: middle;
-}
+  vertical-align: middle; }
 
-/*
- * Remove default fieldset styles.
+/* Remove default fieldset styles.
  */
-
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
+  border: 0;
+  margin: 0;
+  padding: 0; }
 
-/*
- * Allow only vertical resizing of textareas.
+/* Allow only vertical resizing of textareas.
  */
-
 textarea {
-    resize: vertical;
-}
+  resize: vertical; }
 
 /* ==================================================================================================================
-   Chrome Frame prompt
-   ================================================================================================================== */
-
+ * Chrome Frame prompt
+ * ==================================================================================================================
+ */
 .chromeframe {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
+  margin: 0.2em 0;
+  background: #cccccc;
+  color: black;
+  padding: 0.2em 0; }
 
 /* ==================================================================================================================
-   AeroGear custom styles for desktop
-   ================================================================================================================== */
-
-/* =================== custom fonts ================================================================================= */
+ * AeroGear custom styles for desktop
+ * ==================================================================================================================
+ */
+/* =================== custom fonts =================================================================================
+ */
 @font-face {
     font-family: 'Open Sans';
     src: url('/font/OpenSans-Regular-webfont.eot');
@@ -108,709 +79,619 @@ textarea {
 
 /* =================== Standard elements ============================================================================ */
 a {
-    color: #669eb2;
-}
+  color: #fff000; }
+  @media only screen and (max-width: 656px) {
+    a.fixed {
+      display: none !important; } }
 
 .basic a:hover {
-    opacity: 0.61;
-}
+  opacity: 0.61; }
 
-h1,h2,h3,h4 {
-    color: #e25027;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
+h1, h2, h3, h4 {
+  color: #000fff;
+  font-weight: 700;
+  letter-spacing: -1px; }
 
 h1 {
-    font-size: 2em;
-}
+  font-size: 2em; }
+  @media only screen and (max-width: 656px) {
+    h1 {
+      font-size: 1.75em;
+      margin: 3em 0 0 0; } }
 
 h2 {
-    font-size: 1.75em;
-}
+  font-size: 1.75em; }
+  @media only screen and (max-width: 656px) {
+    h2 {
+      font-size: 1.25em; } }
 
 h3 {
-    font-size: 1.25em;
-}
+  font-size: 1.25em; }
 
 h4 {
-    font-size: 1em;
-    margin-top: 3em;
-}
+  font-size: 1em;
+  margin-top: 3em; }
 
-h2 + h3 {
-    margin-top: 0.875em;
-}
-
-h3 + h4 {
-    margin-top: 0.875em;
-}
+h2 + h3, h3 + h4 {
+  margin-top: 0.875em; }
 
 img {
-    max-width: 100%;
-    height: auto;
-}
+  max-width: 100%;
+  height: auto; }
 
 body {
-    font-family: "Open Sans", sans-serif;
-    color: #575653;
-}
+  font-family: "Open Sans", sans-serif;
+  color: #73ff73; }
 
 p {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-    max-width: 60em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  @media only screen and (min-width: 848px) {
+    p {
+      max-width: 960px; } }
+  @media only screen and (min-width: 657px) and (max-width: 847px) {
+    p {
+      max-width: 720px; } }
 
 li > p {
     overflow: visible;
 }
 
 .clearfix {
-    clear: both;
-}
+  clear: both; }
 
-/* CSS for markdown [NOTE] */
-.title  {
-    text-align: left;
-    font-weight: 700;
-}
+/* CSS for markdown [NOTE]
+ */
+.title {
+  text-align: left;
+  font-weight: 700; }
 
-.icon  {
-    display: table-cell;
-    vertical-align: top;
-}
+.icon {
+  display: table-cell;
+  vertical-align: top; }
 
-/* In tutorial guide, keep limited image size */
+/* In tutorial guide, keep limited image size
+ */
 .sectionbody img {
-    max-height: 400px;
-}
+  max-height: 400px; }
 
-/* =================== Nav bar ====================================================================================== */
+/* =================== Nav bar ======================================================================================
+ */
 #main-header nav {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    top: 110px;
-    background-color: #f2f2f2;
-    border-top: 1px solid #dadada;
-    border-bottom: 1px solid #dadada;
-    width: 100%;
-}
-
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 110px;
+  background-color: #f2beef;
+  border-top: 1px solid #f23eea;
+  border-bottom: 1px solid #f23eea;
+  width: 100%; }
 #main-header ul {
-    list-style: none;
-    max-width: 60em;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+  list-style: none;
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto; }
 #main-header nav li {
-    display: inline-block;
-    margin: 0 1.2em;
-}
-
-#main-header nav li#download-btn {
-    display: none;
-}
-
-#main-header nav li a {
+  display: inline-block;
+  margin: 0 1.2em; }
+  #main-header nav li#download-btn {
+    display: none; }
+  #main-header nav li a {
     text-decoration: none;
     font-size: 0.9em;
-    color: #7F7F7F;
-
-    padding-bottom: 1.2em;
-}
-
-#main-header nav li.selected a {
-    color: #373435;
-}
+    color: #790f7f;
+    padding-bottom: 1.2em; }
+  #main-header nav li.selected a {
+    color: #373435; }
 
 nav a:hover {
-    border-bottom: 2px solid #669eb2;
-    color: #669eb2 !important;
-}
+  border-bottom: 2px solid #fff000;
+  color: #fff000 !important; }
 
-/* =================== AeroGear title =============================================================================== */
+/* =================== AeroGear title ===============================================================================
+ */
 #logo {
-    height: 5.75em;
-    background-repeat:no-repeat;
-    background-position:left;
-    background-image: url(/img/aerogear_logo.png);
-    margin-left: 5%;
-}
+  height: 5.75em;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-image: url(/img/aerogear_logo.png);
+  margin-left: 5%; }
+  @media only screen and (max-width: 656px) {
+    #logo {
+      background-position: center; } }
 
 .end-title {
-    /* keep space for grey menu bar*/
-    margin-bottom: 5.5em;
-    max-width: 60em;
-    margin: 0 auto;
-}
+  /* keep space for grey menu bar */
+  margin-bottom: 5.5em;
+  max-width: 60em;
+  margin: 0 auto; }
 
 a.news {
-    margin-top: -1.6em;
-    font-style: italic;
-    float: right;
-    color: #878787;
-    text-decoration: none;
-    margin-bottom: -1.3em;
-    padding-right: 0.4em;
-    text-align: right;
-}
+  margin-top: -1.6em;
+  font-style: italic;
+  float: right;
+  color: #7514e1;
+  text-decoration: none;
+  margin-bottom: -1.3em;
+  padding-right: 0.4em;
+  text-align: right; }
+  a.news:hover {
+    text-decoration: underline; }
 
-a.news:hover {
-    text-decoration: underline;
-}
-
-/* =================== Modules: iOS, JS, Cordova, Android sections ================================================== */
+/* =================== Modules: iOS, JS, Cordova, Android sections ==================================================
+ */
 .modules {
-    text-align: center;
-}
-
-.modules p,.modules h3 {
-    margin: 0 auto;
-}
-
-.modules .module {
+  text-align: center; }
+  .modules p, .modules h3 {
+    margin: 0 auto; }
+  .modules .module {
     text-align: center;
     float: none;
     display: inline-block;
     margin-bottom: 1.4em;
-    text-decoration: none;
-}
+    text-decoration: none; }
 
+@media only screen and (max-width: 656px) {
+  .module {
+    width: 35%; } }
 .module img {
-    width: 6em;
-    padding: 5px;
-}
-
+  width: 6em;
+  padding: 5px; }
 .module p {
-    color: #878787;
-    text-align: center;
-    font-size: 0.9em;
-}
-
-.module:hover img,.module:active img {
-    border: 5px #dadada solid;
-    padding: 0;
-    border-radius: 4px;
-}
-
+  color: #7514e1;
+  text-align: center;
+  font-size: 0.9em; }
+.module:hover img, .module:active img {
+  border: 5px #f23eea solid;
+  padding: 0;
+  border-radius: 4px; }
 .module.ios h3 {
-    color: #214067;
-}
-
+  color: #214067; }
 .module.android h3 {
-    color: #718927;
-}
-
+  color: #718927; }
 .module.web h3 {
-    color: #be420c;
-}
-
+  color: #be420c; }
 .module.hybrid h3 {
-    color: #60625e;
-}
+  color: #60625e; }
 
-/* =================== Bringing mobile together ===================================================================== */
+/* =================== Bringing mobile together =====================================================================
+ */
 .start-header {
-    margin-top: 6em;
-    text-align: center;
-    margin-bottom: 0.8em;
-}
-
-.start-header .start-title {
-    color: #669eb2;
+  margin-top: 6em;
+  text-align: center;
+  margin-bottom: 0.8em; }
+  .start-header .start-title {
+    color: #fff000;
     font-weight: 700;
     font-size: 1.95em;
     margin-bottom: 0.8em;
-    letter-spacing: -1px;
-}
-
-.start-header p {
+    letter-spacing: -1px; }
+  .start-header p {
     font-size: 1em;
     margin: 0 auto;
-    text-align: center;
-}
+    text-align: center; }
+  .start-header strong {
+    font-style: italic; }
 
-.start-header strong {
-    font-style: italic;
-}
-
-/* =================== Main page content: features ================================================================== */
+/* =================== Main page content: features ==================================================================
+ */
 .features p {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
 .features h3 {
-    margin-top: 0;
-}
+  margin-top: 0; }
+  @media only screen and (max-width: 656px) {
+    .features h3 {
+      margin: 0 0.5em; } }
 
 .feature {
-    margin: 3em auto;
-    max-width: 60em;
-}
-
-.feature .description {
-    float: left;
-}
-
-.feature .description p {
-    margin: 0.75em 0;
-}
-
-.feature .illustration {
+  margin: 3em auto; }
+  @media only screen and (min-width: 848px) {
+    .feature {
+      max-width: 960px; } }
+  @media only screen and (min-width: 657px) and (max-width: 847px) {
+    .feature {
+      max-width: 720px; } }
+  .feature .description {
+    float: left; }
+    .feature .description p {
+      margin: 0.75em 0; }
+      @media only screen and (max-width: 656px) {
+        .feature .description p {
+          margin: 0.75em 1em; } }
+  .feature .illustration {
     float: right;
     width: 18.75em;
-    text-align: center;
-}
+    text-align: center; }
+    .feature .illustration img {
+      border-left: 1px #f23eea solid; }
+    .feature .illustration.left {
+      float: left; }
+      .feature .illustration.left img {
+        border-right: 1px #f23eea solid;
+        border-left: none; }
 
-.feature .illustration img {
-    border-left: 1px #dadada solid;
-}
-
-.feature .illustration.left {
-    float: left;
-}
-
-.feature .illustration.left img {
-    border-right: 1px #dadada solid;
-    border-left: none;
-}
-
-
-/* =================== Footer ======================================================================================= */
+/* =================== Footer =======================================================================================
+ */
 footer {
-    clear:both;
-    background-color: #f2f2f2;
-    border-top: 1px #dadada solid !important;
-    padding: 0 2.5em;
-    margin-top: 1.25em;
-    text-align: center;
-}
-
-footer h3 {
-    margin-top: 0.5em
-}
-
-footer a {
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-footer .column {
+  clear: both;
+  background-color: #f2beef;
+  border-top: 1px #f23eea solid !important;
+  padding: 0 2.5em;
+  margin-top: 1.25em;
+  text-align: center; }
+  footer h3 {
+    margin-top: 0.5em; }
+  footer a {
+    text-decoration: none; }
+    footer a:hover {
+      text-decoration: underline; }
+  footer .column {
     float: left;
     min-width: 10em;
     padding-right: 1.12em;
-    margin-right: 1.12em;
-}
-
-footer .column:last-child {
-    float: left;
-    padding-right: 0;
-    margin-right: 0;
-}
-
-footer h3 {
+    margin-right: 1.12em; }
+    footer .column:last-child {
+      float: left;
+      padding-right: 0;
+      margin-right: 0; }
+  footer h3 {
     margin-bottom: 15px;
-    color: #555 !important;
-}
+    color: #555555 !important; }
+    footer h3.twitter-notFound {
+      font-size: 1.25em;
+      text-align: left; }
+  footer p, footer ul {
+    margin: 0; }
 
-footer h3.twitter-notFound {
-    font-size: 1.25em;
-    text-align: left;
-}
-
-footer p,footer ul {
-    margin: 0;
-}
-
-/* =================== Logos in Footer ============================================================================== */
+/* =================== Logos in Footer ==============================================================================
+ */
 .logos {
-    clear: both;
-    padding: 0.5em;
-}
-
-.logos p {
+  clear: both;
+  padding: 0.5em; }
+  .logos p {
     font-size: 0.75em;
     text-align: center;
-    max-width: 100%;
-}
+    max-width: 100%; }
+  .logos img {
+    margin: 0.5em 0; }
 
-.logos img {
-    margin: 0.5em 0;
-}
-
-/* =============== Side Navigation: hidden for desktop ============================================================== */
+/* =============== Side Navigation: hidden for desktop ==============================================================
+ */
 #sideNav {
-    background: transparent;
-    width: 220px;
-    z-index: 1;
-    left: 10px;
-    top: 150px;
-    height: auto;
-    float: left;
-}
-
-#sideNav nav.site {
-    display: none;
-}
-
-#sideNav li a {
-    padding: 12px 0 0 10px;
-}
-
-#slide-menu-button {
-
-    visibility: hidden;
-}
-
-a#slide-menu-button:hover {
-    text-decoration:none;
-    border-bottom: 0px
-}
-
-/* =============== Display facebook icon on footer ================================================================== */
-.social {
-    display: inline-block;
-    margin-top: 6px;
-    margin-left: 8px;
-    width: 40px;
-    height: 40px;
-    border-radius: 3px;
-    background-repeat:no-repeat;
-    background-position:center;
-}
-
-.twitter {
-    background-image: url(/img/twitter_tile.png);
-}
-
-.google-plus {
-    background-image: url(/img/google_plus_tile.png);
-}
-
-.facebook {
-    background-image: url(/img/facebook_tile.png);
-}
-
-.twitter:hover {
-    background-image: url(/img/twitter_tile_hover.png);
-}
-
-.google-plus:hover {
-    background-image: url(/img/google_plus_tile_hover.png);
-}
-
-.facebook:hover {
-    background-image: url(/img/facebook_tile_hover.png);
-}
-
-/* =================== Content ====================================================================================== */
-.container {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-    width:100%;
-}
-
-.basic, .post {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5em;
-    width: 90%;
-    max-width: 960px;
-}
-
-.row {
-    display:inline-block;
-    float:left;
-    width:100%;
-}
-
-.column {
-    width: 45%;
-    float: left;
-    display: inline-block;
-}
-
-.column3 {
-    width: 30%;
-    float: left;
-    display: inline-block;
-}
-
-.column4 {
-    width: 23%;
-    float: left;
-    display: inline-block;
-}
-
-pre {
-    background-color: #f2f2f2;
-    border: 1px #dadada dotted;
-    font-size: 0.7em;
-    margin-right: 5%;
-    padding-left: 2%;
-    white-space: pre;
-}
-
-.newsletter-label {
-    display: inline-block;
-    min-width: 90px;
-}
-
-/* =================== Custom Builder =============================================================================== */
-
-.builder-alert {
-    display: none;
-}
-
-.alert {
-    padding:8px 35px 8px 14px;
-    margin-bottom:18px;
-    margin-right:18px;
-    text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);
-    background-color:#fcf8e3;
-    border: 1px solid;
-}
-
-.alert-error {
-    background-color:#f2f2f2;
-    border-color:#e25027;
-    color:#e25027;
-}
-
-.desc {
-    padding:0;
-    font-style:italic;;
-    font-size: 0.75em;
-}
-
-
-/* ==================================================================================================================
-   AeroGear custom styles for Tablets
-   For small than 850 px
-===================================================================================================================== */
-
-
-@media only screen and (max-width: 848px) {
-
-    p {
-        max-width: 720px;
-    }
-
-    /* =================== Main page content: features ============================================================== */
-    .feature {
-        max-width: 720px;
-    }
-}
-
-/* ==================================================================================================================
-    AeroGear custom styles for Phone
-    For small than 660 px
-===================================================================================================================== */
-
-@media only screen and (max-width: 656px) {
-
-    #logo {
-        background-position:center;
-    }
-
-    /* =================== Content ================================================================================== */
-
-    .row {
-        float:none;
-    }
-
-    .column, .column3, .column4 {
-        width: 100%;
-        float: none;
-        margin-right: 1%;
-        padding-left: 0.5%;
-    }
-
-    .column pre {
-        margin-right: 2%;
-    }
-
-    h1 {
-        font-size: 1.75em;
-        margin: 3em 0 0 0;
-    }
-
-    h2 {
-        font-size: 1.25em;
-    }
-
-
-    /* =================== Modules: iOS, JS, Cordova, Android sections ============================================== */
-    .module {
-        width: 35%;
-    }
-
-    a.fixed {
-        display: none !important;
-    }
-
-    /* =============== Main page content: features ================================================================== */
-    .feature img {
-        display: none;
-    }
-
-    .feature .description p {
-        margin: 0.75em 1em;
-    }
-
-    .features h3 {
-        margin: 0 0.5em;
-    }
-
-    /* =============== Side Navigation: accessible with swipe ======================================================= */
-
-    #main-header nav ul {
-        padding-left: 0;
-    }
-
-    /*
-    * Display menu swipe button 'hamburger like' icon
-    */
-    #slide-menu-button {
-        visibility: visible;
-    }
-
-    /*
-    * Swipe effect: shift by 250px
-    */
-    #site {
-        width: 100%;
-        position: absolute;
-        z-index: 10;
-        background: inherit;
-        left: 0;
-        transition: all 0.2s ease-out;
-        -webkit-transition: all 0.2s ease-out;
-        transform: translate3d(0, 0, 0);
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-
-    #site.open {
-        transform: translate3d(200px, 0, 0);
-        -webkit-transform: translate3d(200px, 0, 0);
-    }
-
-    /*
-    * Display sidebar menu once clicked on hamburger button to open it
-    */
-    #sideNav ul {
+  background: transparent;
+  width: 220px;
+  z-index: 1;
+  left: 10px;
+  top: 150px;
+  height: auto;
+  float: left; }
+  #sideNav nav.site {
+    display: none; }
+  #sideNav li a {
+    padding: 12px 0 0 10px; }
+  @media only screen and (max-width: 656px) {
+    #sideNav {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 10px;
+      display: block; }
+      #sideNav ul {
         list-style: none;
         margin: 0;
-        padding: 0;
-    }
-
-    #sideNav li a {
-        color: #7F7F7F;
+        padding: 0; }
+      #sideNav li a {
+        color: #790f7f;
         display: block;
         height: 46px;
         font-size: 16px;
         -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -o-box-sizing: border-box;
         box-sizing: border-box;
         padding: 12px 0 0 20px;
-        text-decoration: none;
-    }
-    #sideNav nav.site, #sideNav  {
+        text-decoration: none; }
+      #sideNav nav.site {
         -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -o-box-sizing: border-box;
         box-sizing: border-box;
         padding: 10px;
-        display: block;
-    }
+        display: block; } }
 
-}
+#slide-menu-button {
+  visibility: hidden; }
+  @media only screen and (max-width: 656px) {
+    #slide-menu-button {
+      visibility: visble; } }
 
+a#slide-menu-button:hover {
+  text-decoration: none;
+  border-bottom: 0px; }
+
+@media only screen and (max-width: 656px) {
+  #site {
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    background: inherit;
+    left: 0;
+    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0); }
+    #site.open {
+      transform: translate3d(200px, 0, 0);
+      -webkit-transform: translate3d(200px, 0, 0); } }
+
+/* =============== Display facebook icon on footer ==================================================================
+ */
+.social {
+  display: inline-block;
+  margin-top: 6px;
+  margin-left: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.twitter {
+  background-image: url(/img/twitter_tile.png); }
+
+.google-plus {
+  background-image: url(/img/google_plus_tile.png); }
+
+.facebook {
+  background-image: url(/img/facebook_tile.png); }
+
+.twitter:hover {
+  background-image: url(/img/twitter_tile_hover.png); }
+
+.google-plus:hover {
+  background-image: url(/img/google_plus_tile_hover.png); }
+
+.facebook:hover {
+  background-image: url(/img/facebook_tile_hover.png); }
+
+/* =================== Content ======================================================================================
+ */
+.container {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%; }
+
+.basic, .post {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5em;
+  width: 90%;
+  max-width: 960px; }
+
+.row {
+  display: inline-block;
+  float: left;
+  width: 100%; }
+  @media only screen and (max-width: 656px) {
+    .row {
+      float: none; } }
+
+.column_base, .column, .column3, .column4 {
+  float: left;
+  display: inline-block; }
+  @media only screen and (max-width: 656px) {
+    .column_base, .column, .column3, .column4 {
+      width: 100%;
+      float: none;
+      margin-right: 1%;
+      padding-left: 0.5%; } }
+
+.column {
+  width: 45%; }
+
+.column3 {
+  width: 30%; }
+
+.column4 {
+  width: 23%; }
+
+@media only screen and (max-width: 656px) {
+  .column pre {
+    margin-right: 2%; } }
+pre {
+  background-color: #f2beef;
+  border: 1px #f23eea dotted;
+  font-size: 0.7em;
+  margin-right: 5%;
+  padding-left: 2%;
+  white-space: pre; }
+
+.newsletter-label {
+  display: inline-block;
+  min-width: 90px; }
+
+/* =================== Custom Builder ===============================================================================
+ */
+.builder-alert {
+  display: none; }
+
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  margin-right: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid; }
+
+.alert-error {
+  background-color: #f2beef;
+  border-color: #000fff;
+  color: #000fff; }
+
+.desc {
+  padding: 0;
+  font-style: italic;
+  font-size: 0.75em; }
 
 /* ==================================================================================================================
-   Helper classes
-   ================================================================================================================== */
-
-/*
- * Image replacement
+ *    AeroGear custom styles for Phone
+ *    For small than 660 px
+ * ==================================================================================================================
  */
+@media only screen and (max-width: 656px) {
+  /* =================== Content ==================================================================================
+   */
+  .row {
+    float: none; }
 
+  .column, .column3, .column4 {
+    width: 100%;
+    float: none;
+    margin-right: 1%;
+    padding-left: 0.5%; }
+
+  .column pre {
+    margin-right: 2%; }
+
+  h1 {
+    font-size: 1.75em;
+    margin: 3em 0 0 0; }
+
+  h2 {
+    font-size: 1.25em; }
+
+  /* =================== Modules: iOS, JS, Cordova, Android sections ==============================================
+   */
+  .module {
+    width: 35%; }
+
+  a.fixed {
+    display: none !important; }
+
+  /* =============== Main page content: features ==================================================================
+   */
+  .feature img {
+    display: none; }
+  .feature .description p {
+    margin: 0.75em 1em; }
+
+  .features h3 {
+    margin: 0 0.5em; }
+
+
+  /* =============== Side Navigation: accessible with swipe ======================================================= */
+  /** Display menu swipe button 'hamburger like' icon
+   */
+  #slide-menu-button {
+    visibility: visible; }
+
+  #site {
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    background: inherit;
+    left: 0;
+    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0); }
+    #site.open {
+      transform: translate3d(200px, 0, 0);
+      -webkit-transform: translate3d(200px, 0, 0); }
+
+  /** Display sidebar menu once clicked on hamburger button to open it
+   */
+  #sideNav {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    display: block; }
+    #sideNav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+    #sideNav li a {
+      color: #790f7f;
+      display: block;
+      height: 46px;
+      font-size: 16px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 12px 0 0 20px;
+      text-decoration: none; }
+    #sideNav nav.site {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 10px;
+      display: block; } }
+/* ==================================================================================================================
+=======
+>>>>>>> variables operations
+ * Helper classes
+ * ================================================================================================================== */
+/* Image replacement  */
 .ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
-}
-
-.ir:before {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback   */
+  *text-indent: -9999px; }
+  .ir:before {
     content: "";
     display: block;
     width: 0;
-    height: 150%;
-}
+    height: 150%; }
 
-/*
- * Hide from both screenreaders and browsers: h5bp.com/u
+/* Hide from both screenreaders and browsers: h5bp.com/u
  */
-
 .hidden {
-    display: none !important;
-    visibility: hidden;
-}
+  display: none !important;
+  visibility: hidden; }
 
-/*
- * Hide only visually, but have it available for screenreaders: h5bp.com/v
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-/*
- * Extends the .visuallyhidden class to allow the element to be focusable
- * when navigated to via the keyboard: h5bp.com/p
- */
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+  .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
     clip: auto;
     height: auto;
     margin: 0;
     overflow: visible;
     position: static;
-    width: auto;
-}
+    width: auto; }
 
-/*
- * Hide visually and from screenreaders, but maintain layout
+/* Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
  */
-
+/* Hide visually and from screenreaders, but maintain layout
+ */
 .invisible {
-    visibility: hidden;
-}
+  visibility: hidden; }
 
-/*
- * Clearfix: contain floats
+/* Clearfix: contain floats
  *
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
@@ -820,25 +701,51 @@ pre {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-
-.clearfix:before,
-.clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-/*
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-
 .clearfix {
-    *zoom: 1;
-}
+  *zoom: 1; }
+  .clearfix:before {
+    content: " ";
+    display: table; }
+  .clearfix:after {
+    content: " ";
+    display: table;
+    clear: both; }
+
+/* ==================================================================================================================
+ * Print styles.
+ * Inlined to avoid required HTTP connection: h5bp.com/r
+ * ==================================================================================================================
+ */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important; }
+
+  a {
+    text-decoration: underline; }
+    a:visited {
+      text-decoration: underline; }
+    a[href]:after {
+      content: " (" attr(href) ")"; }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")"; }
+
+  /* Don't show links for images, or javascript/internal links
+   */
+  .ir a:after {
+    content: ""; }
+
+  a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: ""; }
+
+  pre, blockquote {
+    border: 1px solid #999999;
+    page-break-inside: avoid; }
+
 
 .specTable {
     border-style:solid;
@@ -862,85 +769,23 @@ pre {
    Modify as content requires.
    ================================================================================================================== */
 
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t  */ }
 
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
-}
+  tr {
+    page-break-inside: avoid; }
 
-/* ==================================================================================================================
-   Print styles.
-   Inlined to avoid required HTTP connection: h5bp.com/r
-   ================================================================================================================== */
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important; }
 
-@media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
+  @page {
+    margin: 0.5cm; }
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3; }
 
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
-
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
-}
+  h2, h3 {
+    page-break-after: avoid; } }
