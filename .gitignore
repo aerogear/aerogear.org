@@ -10,3 +10,4 @@ bin/
 *~
 *.iml
 Gemfile.lock
+node_modules/

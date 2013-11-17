@@ -1,10 +1,13 @@
 # aerogear.org
 
-## requirement
+## Requirement
 
-Before you can run the side, make sure you have [asciidoc](http://www.methods.co.nz/asciidoc/) installed on your machine!
+Before you can run the side, make sure you have:
 
-## building
+*[asciidoc](http://www.methods.co.nz/asciidoc/) installed on your machine!
+*[sass](http://sass-lang.com/install) installed
+
+## Building
 
 1. Install rvm (https://rvm.io/)
 1. Run rvm install ruby 1.9.x
@@ -14,6 +17,13 @@ Before you can run the side, make sure you have [asciidoc](http://www.methods.co
 1. run `bundle exec jekyll serve --watch`
 1. go to http://127.0.0.1:4000/
 1. profit
+
+## Building CSS
+
+CSS source code id in ```sass``` folder, generated CSS is into ```css``` folder.
+When writing into sass folder run the folowing command to generate CSS on the fly:
+
+  sass --watch sass:css
 
 ## deploy
 
