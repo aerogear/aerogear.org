@@ -58,10 +58,6 @@ New Features
 ** IndexedDB/WebSQL Adapter
 *** Feature detection to determine which is available
 *** IE9 supports neither so need to also be able to fall back to localStorage but use same API
-* *Auth*
-** OTP Adapter
-** OAuth2 Adapter
-*** Customizable Provider
 
 1.4.0 (Mid January)
 ~~~~~~~~~~~~~~~~~~~
@@ -71,6 +67,10 @@ New Features
 ** Utility for keeping data in DataManager synchronized with a persistent server side store
 ** Possibly use Notifier for communication / data transfer
 ** Investigate PouchDB as provider or inspiration
+* *Auth*
+** OTP Adapter
+** OAuth2 Adapter
+*** Customizable Provider
 
 1.5.0 (Early March)
 ~~~~~~~~~~~~~~~~~~~
