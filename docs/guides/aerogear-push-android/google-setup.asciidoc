@@ -11,19 +11,36 @@ Before the Android application is able to receive the notifications, you must au
 Registering with Google
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-First, we must authenticate with Google. Google offers the Google Cloud Messaging (GCM) platform, formerly known as Cloud to Device Messaging (C2DM). You will need a Google Account for this.
+First, we must authenticate with Google. Google offers the Google Cloud Messaging (GCM) platform, formerly known as Cloud to Device Messaging (C2DM). You will need a Google Account for this. Now open the https://cloud.google.com/console[Google Cloud Console].
 
-- Firstly, you need to go to the https://code.google.com/apis/console/b/0/?pli=1[Google APIs Console] page.
-- If you haven't created a project, click ``Create Project...''. If you already have other projects, create new project from project pull down menu:
 
-image::./img/google_apis_create_project.png[Create New Project]
-- From the URL, grab the project ID (used later as the _Sender ID_). This will be the numeric part of ``#project:000000000000''
+- If you haven't created a project, click ``Create Project'':
 
-image::./img/url-project-id.png[Project ID/Sender ID from URL]
-- Next, you need to enable the GCM service, by going to ``Services'' and turn ``Google Cloud Messaging'' on.
-- Finally, we must obtain the API key. Select ``API Access'', then ``Create new Server Key''
+image::./img/gcc_1.png[Create New Project]
+
+- Now give the new project a name:
+
+image::./img/gcc_2.png[New Project Name]
+
+- Once the project has been created you will see the overview screen. From there grab the project number (used later as the _Sender ID_):
+
+image::./img/gcc_3.png[Project Number]
+
+Now you need to enable the _Google Cloud Messaging Android_ APIs. To do that, navigate to +APIs & auth+ > +APIs+ and scroll down to the _Google Cloud Messaging Android_ item, which you need to turn on:
+
+image::./img/gcc_4.png[Project Number]
+
+Now we need to register our application and state that we are accessing the Google APIs from a _Web Server_, the _AeroGear UnifiedPush Server_ in this case. First go to +APIs & auth+ > +Registered apps+ and click the red *REGISTER APP* button:
+
+image::./img/gcc_5.png[Project Number]
+
+On the next screen we select _Android_ and choose the _Accessing APIs via a web server_ option:
+
+image::./img/gcc_6.png[Project Number]
+
+On the last screen we are finally getting Server Key, which we will use later:
+
+image::./img/gcc_7.png[Project Number]
 - For extra security, you may whitelist an IP address (or multiple) for the sending server
-
-image::img/api-key.png[Project ID/Sender ID from URL]
 
 Now that Google is ready to accept and deliver our messages, we are ready to setup the link:../register-device[UnifiedPush server].
