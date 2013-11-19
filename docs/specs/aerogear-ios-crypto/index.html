@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>AeroGear-Crypto Reference</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="index.html">AeroGear-Crypto </a></h1>
+				<a id="developerHome" href="index.html">Red Hat</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">AeroGear-Crypto Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<div id="overview_contents" role="main">
+				<div class="main-navigation navigation-top">
+					<a href="hierarchy.html">Next</a>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">AeroGear-Crypto Reference</h1>
+					</div>		
+				</div>
+				<div id="container">
+					
+					<div class="section section-overview index-overview">
+						
+						
+						<h1>aerogear-crypto-ios</h1>
+
+<h2>Project Aim</h2>
+
+<p><em>&ldquo;Crypto for Humans&rdquo;</em></p>
+
+<p>The aim of the project is to provide useful and easy to use API interfaces for performing advanced cryptographic techniques in the iOS platform. We base our work on the existing <a href="http://tinyurl.com/n6zf3le">Security and CommonCrypto</a> services  already provided by the platform, but we strive to provide a friendlier interface around those services. Anyone who has tried to use those frameworks directly can understand the pain of using them (conversion of CF data types to Obj-C anyone?), let alone using them correctly. We understand that applying good cryptographic techniques is not an easy task and requires deep knowledge of the underlying concepts. But we <em>strongly</em> believe a &ldquo;friendlier&rdquo; developer interface can ease the pain.</p>
+
+<p>The project shares the same vision with our sibling AeroGear project <a href="https://github.com/aerogear/aerogear-crypto-java">AeroGear-Crypto-Java</a>. If you are a Java developer, we strongly recommend to look at the project.</p>
+
+<p>The project is also the base of providing cryptographic services to <a href="http://www.aerogear.org">AeroGear-IOS</a> library project.</p>
+
+<h2>Project Status</h2>
+
+<p>Currently we are in our initial stages, setting the ground for the next items to come. In particular, the following services are currently provided:</p>
+
+<ul>
+<li>A <a href="http://en.wikipedia.org/wiki/Symmetric-key_algorithm">Symmetric encryption</a> interface</li>
+<li>Password based key generation using <a href="http://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a></li>
+<li>Generation of Cryptographically secure <a href="http://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator">random numbers</a>.</li>
+</ul>
+
+
+<p>Currently the <a href="https://github.com/aerogear/aerogear-ios">AeroGear-iOS</a> library is already using it to provide initial versions of an encrypted memory and Property List versions of it&rsquo;s data stores interface. Have a look at the Cryptography support section <a href="http://aerogear.org/docs/guides/iOSCookbook/">here</a> for a brief guide of example usage of the API. The page would be continuously enhanced as more items are added into the library.</p>
+
+<h2>Ongoing work</h2>
+
+<p>Work is under way to provide the following features:</p>
+
+<ul>
+<li>An Asymmetric encryption interface</li>
+<li>Digital signatures support interface</li>
+<li>Hashing functions wrapper interface</li>
+<li>Apple&rsquo;s keychain wrapper interface</li>
+<li>Message authentication support</li>
+</ul>
+
+
+<h3>Installation with CocoaPods</h3>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Objective-C, which eases the pain of installing third-party libraries in your programs. The project is already published in the Cocoapods repository, so just add the following line in your <em>&lsquo;Podfile&rsquo;</em> :</p>
+
+<h4>Podfile</h4>
+
+<pre><code>pod "AeroGear-Crypto", '0.1.0'
+</code></pre>
+
+<h2>Join us</h2>
+
+<p>On-going work is tracked on project&rsquo;s <a href="(https://issues.jboss.org/browse/AGIOS">JIRA</a> issue tracker as well as on our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">mailing list</a>. You can also find the developers hanging on <a href="irc://irc.freenode.net/aerogear">IRC</a>, feel free to join in the discussions. We want your feedback!</p>
+						
+						
+					</div>
+					
+                        
+                    
+					
+					
+					<div class="index-column">
+						<h2 class="index-title">Class References</h2>
+						<ul>
+							
+							<li><a href="Classes/AGCryptoBox.html">AGCryptoBox</a></li>
+							
+							<li><a href="Classes/AGPBKDF2.html">AGPBKDF2</a></li>
+							
+							<li><a href="Classes/AGRandomGenerator.html">AGRandomGenerator</a></li>
+							
+							<li><a href="Classes/AGSymmetricCryptoEngine.html">AGSymmetricCryptoEngine</a></li>
+							
+						</ul>
+					</div>
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<a href="hierarchy.html">Next</a>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
+						
+	
+					</div>
+				</div>
+			</div>
+		</article>		
+	</body>
+</html>
