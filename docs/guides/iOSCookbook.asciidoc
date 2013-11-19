@@ -599,8 +599,13 @@ As with the case of Pipe, configured timeout interval (in the config object) and
 
 == [[crypto]] Cryptography support
 
-Since 1.3.0 release, iOS AeroGear provides _Symmetric encryption API_ and enhances its Core API with _Encrypted Stores_.
-If you need to encrypt only a few fields in your data, use encryption API directly, if all your data are sensitive, AeroGear provides a Encrypted Storage which transparently let you access your encrypted data. Let's delve into how to use encryption to secure your enterprise app.
+Since 1.3.0 release of the library, we build on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-ios[aerogear-crypto-ios]
+to offer encrypted variants of our existing in-memory and plist based data stores
+ (with an sqlite variant coming next release). If you have been using the existing data stores to persist
+ your data, you will be happy to know that you easily switch to an encrypted variant by simple changing the
+ type and some small (really!) amount of code to provide the necessary crypto params.
+ Let's start with a small primer to symmetric encryption, which is primary cryptography mechanism used
+ to encrypt the data stores.
 
 === Symmetric encryption API
 
@@ -611,7 +616,7 @@ Symmetric encryption (also called private key encryption) is when the same key i
 - *IV (Initialization Vector)* is a random value that is used to encrypt data. Encryption algorithms usually work on fixed-size blocks, IV defines the first encrypted block.
 - *Salt* is a random value that is used together with a password to derive en encryption key. A salt value does not need to be kept secret.
 
-AeroGear-Crypto symmetric encryption is powered by link:http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29[CBC symmetric encryption]. Build upon link:https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/CC_crypto.3cc.html#//apple_ref/doc/man/3cc/CC_crypto[ComomCrypto] and link:https://developer.apple.com/Library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html[Security framework], it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.
+AeroGear-Crypto symmetric encryption is powered by link:http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29[CBC symmetric encryption]. Build upon link:https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/CC_crypto.3cc.html#//apple_ref/doc/man/3cc/CC_crypto[CommomCrypto] and link:https://developer.apple.com/Library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html[Security framework], it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.
 
 First of all, to encrypt your data you need an encryption key. Your key can be derived from a PIN, password or passphrase using link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2]. 
 
@@ -721,6 +726,6 @@ Reading and saving operations are done like all the other stores.
 === AeroGear Crypto Password
 
 If you want to see it all together, give a try to link:https://github.com/aerogear/aerogear-crypto-ios-demo[AeroGear Crypto Password] app.
-This application shows you how using encrypted storag,e you can store in a central point all your passwords.
+This application shows you how using encrypted storage you can store in a central point all your passwords.
 
 
