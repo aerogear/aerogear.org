@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGClientDeviceInformation Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -40,7 +39,7 @@
 	
 	<option value="//api/name/alias">&nbsp;&nbsp;&nbsp;&nbsp;alias</option>
 	
-	<option value="//api/name/category">&nbsp;&nbsp;&nbsp;&nbsp;category</option>
+	<option value="//api/name/categories">&nbsp;&nbsp;&nbsp;&nbsp;categories</option>
 	
 	<option value="//api/name/deviceToken">&nbsp;&nbsp;&nbsp;&nbsp;deviceToken</option>
 	
@@ -82,7 +81,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/alias">alias</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/category">category</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/categories">categories</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deviceToken">deviceToken</a></span></li>
 	
@@ -131,8 +130,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					
 					
@@ -148,57 +147,48 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/deviceToken">&nbsp;&nbsp;deviceToken</a></code>
-		<span class="tooltip"><p>The Device Token which identifies the device within APNs.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/variantID">&nbsp;&nbsp;variantID</a></code>
-		<span class="tooltip"><p>The ID of the mobile Variant, for which this client will be registered.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/variantSecret">&nbsp;&nbsp;variantSecret</a></code>
-		<span class="tooltip"><p>The mobile Variant&rsquo;s secret.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/alias">&nbsp;&nbsp;alias</a></code>
-		<span class="tooltip"><p>Application specific alias to identify users with the system.
-E.g. email address or username</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/category">&nbsp;&nbsp;category</a></code>
-		<span class="tooltip"><p>A category, used for tagging/metadata</p></span>
+		<code><a href="#//api/name/categories">&nbsp;&nbsp;categories</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/operatingSystem">&nbsp;&nbsp;operatingSystem</a></code>
-		<span class="tooltip"><p>The name of the underlying OS (e.g. iOS)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/osVersion">&nbsp;&nbsp;osVersion</a></code>
-		<span class="tooltip"><p>The version of the used OS (e.g. 6.1.3)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/deviceType">&nbsp;&nbsp;deviceType</a></code>
-		<span class="tooltip"><p>The device type (e.g. iPhone or iPod)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -259,18 +249,18 @@ E.g. email address or username</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/category" title="category"></a>
-	<h3 class="subsubtitle method-title">category</h3>
+	<a name="//api/name/categories" title="categories"></a>
+	<h3 class="subsubtitle method-title">categories</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A category, used for tagging/metadata</p>
+		<p>Some categories, used for tagging the device (metadata)</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *category</code></div>
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSArray *categories</code></div>
 
     
 	
@@ -282,7 +272,7 @@ E.g. email address or username</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>A category, used for tagging/metadata</p>
+		<p>Some categories, used for tagging the device (metadata)</p>
 	</div>
 	
 	
@@ -552,6 +542,8 @@ E.g. email address or username</p>
 					
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -562,9 +554,9 @@ E.g. email address or username</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-08-13)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-19)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>
