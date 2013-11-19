@@ -599,24 +599,26 @@ As with the case of Pipe, configured timeout interval (in the config object) and
 
 == [[crypto]] Cryptography support
 
-Since 1.3.0 release of the library, we build on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-ios[aerogear-crypto-ios]
+Since 1.3.0 release of the library, we've built on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-ios[aerogear-crypto-ios]
 to offer encrypted variants of our existing in-memory and plist based data stores
  (with an sqlite variant coming next release). If you have been using the existing data stores to persist
- your data, you will be happy to know that you easily switch to an encrypted variant by simple changing the
+ your data, you will be happy to know that you can easily switch to an encrypted variant by simple changing the
  type and some small (really!) amount of code to provide the necessary crypto params.
  Let's start with a small primer to symmetric encryption, which is primary cryptography mechanism used
  to encrypt the data stores.
 
 === Symmetric encryption API
 
-Symmetric encryption (also called private key encryption) is when the same key is used to encrypt and decrypt data. It is best defined with 4 basic concepts:
+Symmetric encryption (also called private key encryption) is when the same key is used to encrypt and decrypt data. It is best defined with the following concepts:
 
-- *Password* is easy to remember and usually defined by user and must be kept secret. A password is not a key.
 - *Encryption key* is a block of bytes of a _specific length_. Key can be derived from password using for example, PBKDF2 algorithm. Must be kept secret.
 - *IV (Initialization Vector)* is a random value that is used to encrypt data. Encryption algorithms usually work on fixed-size blocks, IV defines the first encrypted block.
+
+You can derive the encryption key using a password or phassphrase and salt with link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2].
+- *Password* is easy to remember and usually defined by user and must be kept secret. A password is not a key.
 - *Salt* is a random value that is used together with a password to derive en encryption key. A salt value does not need to be kept secret.
 
-AeroGear-Crypto symmetric encryption is powered by link:http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29[CBC symmetric encryption]. Build upon link:https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/CC_crypto.3cc.html#//apple_ref/doc/man/3cc/CC_crypto[CommomCrypto] and link:https://developer.apple.com/Library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html[Security framework], it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.
+AeroGear-Crypto symmetric encryption is powered by link:http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29[CBC mode]. Build upon link:https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/CC_crypto.3cc.html#//apple_ref/doc/man/3cc/CC_crypto[CommomCrypto] and link:https://developer.apple.com/Library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html[Security framework], it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.
 
 First of all, to encrypt your data you need an encryption key. Your key can be derived from a PIN, password or passphrase using link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2]. 
 
@@ -664,31 +666,21 @@ With link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox
 
 ----
 
-NOTE: To be able to decrypt, you need to store the encryption key and the randomly generated IV.
-You can store the sensitive information in KeyChain for example.
+NOTE: To be able to decrypt, you need the randomly generated IV and you can regenerate the key with the salt and the password (prompted on the fly).
+It is not recommended to store either password or derived key. Salt and IV are not sensitive data and can be stored.
 
 === Encrypted storage
 
 If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted stores with the same API than plain stores. 
 
-Current available implementation are:
+Current available implementations are:
 
 1. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[encrypted memory store] which allows you to work in-memory with sensitive data
 1. and link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[encrypted property list] storage implementation for a permanent storage.
 
 link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[Encrypted SQLite] will come in next release.
 
-In order to keep your password safe, you can use *AGEncryptionService* which takes care of storing the password/passphrase
-required for encryption. Those information should be kept secret and are needed in order to decrypt the encrypted data.
-AGEncryptionService stores your secret.
-
-You can initialize an encrypted store with an _alias_ and a _password_. Three possible scenarios can occur:
-
-1. If alias/password are not present in AGEncryptionService,
-they will be stored. AGEncryptionService will be made available for encrypted store initialization.
-1. If the alias already exists and the password is correct, AGEncryptionService is available.
-1. If the alias exists but password is wrong, AGEncryptionService is not initialized. It is up to the application developer
- to deal with the wrong credentials use case.
+You can initialize an encrypted store with an _salt_ and a _passphrase_.
 
 [source,c]
 ----
@@ -696,18 +688,17 @@ they will be stored. AGEncryptionService will be made available for encrypted st
     // create the datamanager
     AGDataManager *manager = [AGDataManager manager];
 
-    // keychain crypto params
-    AGKeyStoreCryptoConfig *config = [[AGKeyStoreCryptoConfig alloc] init];
-    [config setAlias:@"MyUser"];
-    [config setPassword:@"MyUserPassword"];
+    // randomly generate salt
+    NSData *salt = [AGRandomGenerator randomBytes];
 
-    // initialize the keychain encryption service passing the crypto params
+    // crypto config
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];
+    [config setSalt:salt];
+    [config setPassphrase:@"secret_entered_by_user"];
+
+    // initialize the encryption service passing the crypto config
     id<AGEncryptionService> encService = [[AGKeyManager manager] keyService:config];
 
-    // if the encryption service wasn't initialized (aka wrong crypto params) inform user
-    if (!encService) {
-        // TODO: deal with wrong credentials
-    }
     // create Encrypted Store (using property list impl)
     store = [manager store:^(id<AGStoreConfig> config) {
         [config setName:@"MyPasswordApp"];
