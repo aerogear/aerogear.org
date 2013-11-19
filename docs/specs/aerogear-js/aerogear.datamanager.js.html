@@ -48,8 +48,8 @@
     @augments AeroGear.Core
     @param {String|Array|Object} [config] - A configuration for the store(s) being created along with the DataManager. If an object or array containing objects is used, the objects can have the following properties:
     @param {String} config.name - the name that the store will later be referenced by
-    @param {String} [config.type="memory"] - the type of store as determined by the adapter used
-    @param {String} [config.recordId="id"] - the identifier used to denote the unique id for each record in the data associated with this store
+    @param {String} [config.type="Memory"] - the type of store as determined by the adapter used
+    @param {String} [config.recordId="id"] - @deprecated the identifier used to denote the unique id for each record in the data associated with this store
     @param {Object} [config.settings={}] - the settings to be passed to the adapter. For specific settings, see the documentation for the adapter you are using.
     @returns {object} dataManager - The created DataManager containing any stores that may have been created
     @example
@@ -90,10 +90,69 @@ AeroGear.DataManager = function( config ) {
         return new AeroGear.DataManager( config );
     }
 
-    // Super Constructor
-    AeroGear.Core.call( this );
+    /**
+        This function is used by the AeroGear.DataManager to add a new Object to its respective collection.
+        @name AeroGear.add
+        @method
+        @param {String|Array|Object} config - This can be a variety of types specifying how to create the object. See the particular constructor for the object calling .add for more info.
+        @returns {Object} The object containing the collection that was updated
+     */
+    this.add = function( config ){
+        config = config || {};
+
+        var i, type;
+
+        config = AeroGear.isArray( config ) ? config : [ config ];
+
+        config = config.map( function( value, index, array ) {
+            if ( typeof value !== "string" ) {
+                type = value.type || "Memory";
+                if( !( type in AeroGear.DataManager.validAdapters ) ) {
+                    for( i = 0; i &lt; AeroGear.DataManager.prefered.length; i++ ) {
+                        if( AeroGear.DataManager.prefered[ i ] in AeroGear.DataManager.validAdapters ) {
+                            //For Deprecation purposes in 1.3.0  will be removed in 1.4.0
+                            if( type === "IndexedDB" || type === "WebSQL" ) {
+                                value.settings = AeroGear.extend( value.settings || {}, { async: true } );
+                            }
+                            value.type = AeroGear.DataManager.prefered[ i ];
+                            return value;
+                        }
+                    }
+                }
+            }
+            return value;
+        }, this );
+
+        AeroGear.Core.call( this );
+        this.add( config );
+
+        //Put back DataManager.add
+        this.add = this._add;
+    };
+
+    //Save a reference to DataManager.add to put back later
+    this._add = this.add;
+
+    /**
+        This function is used internally by datamanager to remove an Object from the respective collection.
+        @name AeroGear.remove
+        @method
+        @param {String|String[]|Object[]|Object} config - This can be a variety of types specifying how to remove the object.
+        @returns {Object} The object containing the collection that was updated
+     */
+    this.remove = function( config ){
+        AeroGear.Core.call( this );
+        this.remove( config );
+
+        //Put back DataManager.remove
+        this.remove = this._remove;
+    };
+
+    //Save a reference to DataManager.remove to put back later
+    this._remove = this.remove;
 
     this.lib = "DataManager";
+
     this.type = config ? config.type || "Memory" : "Memory";
 
     /**
@@ -109,6 +168,25 @@ AeroGear.DataManager = function( config ) {
 
 AeroGear.DataManager.prototype = AeroGear.Core;
 AeroGear.DataManager.constructor = AeroGear.DataManager;
+
+/**
+    Stores the valid adapters
+*/
+AeroGear.DataManager.validAdapters = {};
+
+/**
+    prefered adapters for the fallback strategy
+*/
+AeroGear.DataManager.prefered = [ "IndexedDB", "WebSQL", "SessionLocal", "Memory" ];
+
+/**
+    Method to determine and store what adapters are valid for this environment
+*/
+AeroGear.DataManager.validateAdapter = function( id, obj ) {
+    if( obj.isValid() ) {
+        AeroGear.DataManager.validAdapters[ id ] = obj;
+    }
+};
 
 /**
     The adapters object is provided so that adapters can be added to the AeroGear.DataManager namespace dynamically and still be accessible to the add method
@@ -130,13 +208,13 @@ AeroGear.DataManager.STATUS_REMOVED = 0;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Sun Aug 18 2013 19:56:49 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Nov 19 2013 10:58:57 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

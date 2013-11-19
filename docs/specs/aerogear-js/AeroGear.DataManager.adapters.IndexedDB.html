@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Adapter: Memory</h1>
+    <h1 class="page-title">Adapter: IndexedDB</h1>
     
     
 
@@ -30,7 +30,7 @@
     <h2>
         <span class="ancestors"><a href="AeroGear.html">AeroGear</a><a href="AeroGear.DataManager.html">.DataManager</a><a href="AeroGear.DataManager.html#adapters">.adapters</a>.</span>
     
-    Memory
+    IndexedDB
     </h2>
     
 </header>  
@@ -42,19 +42,19 @@
     
         
 <dt>
-    <h4 class="name" id="Memory"><span class="type-signature"></span>new Memory<span class="signature">(storeName, <span class="optional">settings</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="IndexedDB"><span class="type-signature"></span>new IndexedDB<span class="signature">(storeName, <span class="optional">settings</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
 <dd>
     
     
-    <h5>Status: <span class="labelStable">Stable</span></h5>
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
     
 
     
     <div class="description">
-        The Memory adapter is the default type used when creating a new store. Data is simply stored in a data var and is lost on unload (close window, leave page, etc.)
+        The IndexedDB adapter stores data in an IndexedDB database for more persistent client side storage
     This constructor is instantiated when the "DataManager.add()" method is called
     </div>
     
@@ -190,45 +190,6 @@
 	
         <tr>
             
-                <td class="name"><code>async</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">If true, all operations will be simulated as asynchronous and return a promise. This is a compatibility option for the Memory and SessionLocal adapters only for 1.3.0 and will be removed in the 1.4.0 release</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
                 <td class="name"><code>recordId</code></td>
             
             
@@ -265,6 +226,136 @@
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>crypto</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">the crypto settings to be passed to the adapter
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>agcrypto</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the AeroGear.Crypto object to be used</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the specific options for the AeroGear.Crypto encrypt/decrypt methods</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
 	</tbody>
 </table>
             </td>
@@ -298,7 +389,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line35">line 35</a>
+        <a href="indexeddb.js.html">data-manager/adapters/indexeddb.js</a>, <a href="indexeddb.js.html#line39">line 39</a>
     </li></ul></dd>
     
     
@@ -345,13 +436,14 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>//Create an empty DataManager
-var dm = AeroGear.DataManager();
+    <pre class="prettyprint"><code>    //Create an empty DataManager
+    var dm = AeroGear.DataManager();
 
-//Add a custom memory store
-dm.add( "newStore", {
-    recordId: "customID"
-});</code></pre>
+    //Add an IndexedDB store
+    dm.add({
+        name: "newStore",
+        storageType: "IndexedDB"
+    });</code></pre>
 
     
 </dd>
@@ -420,7 +512,7 @@ dm.add( "newStore", {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line150">line 150</a>
+        <a href="indexeddb.js.html">data-manager/adapters/indexeddb.js</a>, <a href="indexeddb.js.html#line101">line 101</a>
     </li></ul></dd>
     
     
@@ -448,7 +540,92 @@ dm.add( "newStore", {
         
             
 <dt>
-    <h4 class="name" id="filter"><span class="type-signature"></span>filter<span class="signature">(<span class="optional">filterParameters</span>, <span class="optional">matchAny</span>, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="close"><span class="type-signature"></span>close<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    <div class="description">
+        Close the current store
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="indexeddb.js.html">data-manager/adapters/indexeddb.js</a>, <a href="indexeddb.js.html#line488">line 488</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    //Create an empty DataManager
+    var dm = AeroGear.DataManager();
+
+    //Add an IndexedDB store and then delete a record
+    dm.add({
+        name: "newStore",
+        storageType: "IndexedDB"
+    });
+
+    dm.stores.newStore.close();</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="filter"><span class="type-signature"></span>filter<span class="signature">(<span class="optional">filterParameters</span>, <span class="optional">matchAny</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
@@ -459,6 +636,280 @@ dm.add( "newStore", {
     
     <div class="description">
         Filter the current store's data
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>filterParameters</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">An object containing key value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>matchAny</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">When true, an item is included in the output if any of the filter parameters is matched.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options.success</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">AeroGear~successCallbackINDEXEDDB</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">a callback to be called after successful filtering of an IndexedDB</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options.error</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">AeroGear~errorCallbackINDEXEDDB</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">a callback to be calledd after an error filtering of an IndexedDB</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="indexeddb.js.html">data-manager/adapters/indexeddb.js</a>, <a href="indexeddb.js.html#line446">line 446</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A jQuery.Deferred promise
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    //Create an empty DataManager
+    var dm = AeroGear.DataManager();
+
+    //Add an IndexedDB store
+    dm.add({
+        name: "newStore",
+        storageType: "IndexedDB"
+    });
+
+    dm.stores.newStore.open({
+        success: function() { ... },
+        error: function() { ... }
+    });
+
+    dm.stores.test1.filter( { "name": "Lucas" }, true, {
+        success: function( data ) { ... },
+        error: function( error ) { ... }
+    });</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="open"><span class="type-signature"></span>open<span class="signature">(<span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    <div class="description">
+        Open the Database
     </div>
     
 
@@ -496,80 +947,6 @@ dm.add( "newStore", {
 	
         <tr>
             
-                <td class="name"><code>filterParameters</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">An object containing key value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>matchAny</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">When true, an item is included in the output if any of the filter parameters is matched.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
                 <td class="name"><code>options</code></td>
             
             
@@ -602,41 +979,20 @@ dm.add( "newStore", {
                 </td>
             
             
-            <td class="description last">options
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+            <td class="description last">options</td>
+        </tr>
 	
-	<tbody>
 	
 	
         <tr>
             
-                <td class="name"><code>success</code></td>
+                <td class="name"><code>settings.success</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">AeroGear~successCallbackMEMORY</span>
+<span class="param-type">AeroGear~successCallbackINDEXEDDB</span>
 
 
             
@@ -655,14 +1011,49 @@ dm.add( "newStore", {
             
             
             
+                <td class="default">
+                
+                </td>
             
-            <td class="description last">a callback to be called after successfully filter data from a Memory Store -  this filter is synchronous but the callback is provided for API symmetry.</td>
+            
+            <td class="description last">a callback to be called after successfully opening an IndexedDB</td>
         </tr>
 	
 	
-	</tbody>
-</table>
+	
+        <tr>
+            
+                <td class="name"><code>settings.error</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">AeroGear~errorCallbackINDEXEDDB</span>
+
+
+            
             </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">a callback to be called when there is an error with the opening of an IndexedDB</td>
         </tr>
 	
 	
@@ -693,7 +1084,7 @@ dm.add( "newStore", {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line365">line 365</a>
+        <a href="indexeddb.js.html">data-manager/adapters/indexeddb.js</a>, <a href="indexeddb.js.html#line126">line 126</a>
     </li></ul></dd>
     
     
@@ -715,8 +1106,8 @@ dm.add( "newStore", {
     
     
     <h5>Returns:</h5>
-    <ul>
-            <li>
+    
+            
 <div class="param-desc">
     A jQuery.Deferred promise
 </div>
@@ -734,47 +1125,25 @@ dm.add( "newStore", {
 
 	</dd>
 </dl>
-</li>
+
         
-            <li>
-<div class="param-desc">
-    @deprecated Returns a filtered array of data objects based on the contents of the store's data object and the filter parameters. This method only returns a copy of the data and leaves the original data object intact.
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Array</span>
-
-
-	</dd>
-</dl>
-</li>
-        </ul>
     
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
+    <pre class="prettyprint"><code>    //Create an empty DataManager
+    var dm = AeroGear.DataManager();
 
-// An object can be passed to filter the data
-// This would return all records with a user named 'admin' **AND** a date of '2012-08-01'
-var filteredData = dm.filter({
-    date: "2012-08-01",
-    user: "admin"
-});
+    //Add an IndexedDB store
+    dm.add({
+        name: "newStore",
+        storageType: "IndexedDB"
+    });
 
-// The matchAny parameter changes the search to an OR operation
-// This would return all records with a user named 'admin' **OR** a date of '2012-08-01'
-var filteredData = dm.filter({
-    date: "2012-08-01",
-    user: "admin"
-}, true);</code></pre>
+    dm.stores.newStore.open({
+        success: function() { ... },
+        error: function() { ... }
+    });</code></pre>
 
     
 </dd>
@@ -902,7 +1271,7 @@ var filteredData = dm.filter({
                 </td>
             
             
-            <td class="description last">options
+            <td class="description last">additional options
                 <h6>Properties</h6>
                 
 
@@ -936,7 +1305,7 @@ var filteredData = dm.filter({
             <td class="type">
             
                 
-<span class="param-type">AeroGear~successCallbackMEMORY</span>
+<span class="param-type">AeroGear~successCallbackINDEXEDDB</span>
 
 
             
@@ -956,7 +1325,40 @@ var filteredData = dm.filter({
             
             
             
-            <td class="description last">a callback to be called after successfully reading a Memory Store -  this read is synchronous but the callback is provided for API symmetry.</td>
+            <td class="description last">a callback to be called after the successful reading of an IndexedDB</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">AeroGear~errorCallbackINDEXEDDB</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">a callback to be called when there is an error reading an IndexedDB</td>
         </tr>
 	
 	
@@ -993,7 +1395,7 @@ var filteredData = dm.filter({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line170">line 170</a>
+        <a href="indexeddb.js.html">data-manager/adapters/indexeddb.js</a>, <a href="indexeddb.js.html#line192">line 192</a>
     </li></ul></dd>
     
     
@@ -1015,8 +1417,8 @@ var filteredData = dm.filter({
     
     
     <h5>Returns:</h5>
-    <ul>
-            <li>
+    
+            
 <div class="param-desc">
     A jQuery.Deferred promise
 </div>
@@ -1034,39 +1436,36 @@ var filteredData = dm.filter({
 
 	</dd>
 </dl>
-</li>
+
         
-            <li>
-<div class="param-desc">
-    @deprecated Returns data from the store, optionally filtered by an id
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Array</span>
-
-
-	</dd>
-</dl>
-</li>
-        </ul>
     
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
+    <pre class="prettyprint"><code>    //Create an empty DataManager
+    var dm = AeroGear.DataManager();
 
-// Get an array of all data in the store
-var allData = dm.read();
+    //Add an IndexedDB store
+    dm.add({
+        name: "newStore",
+        storageType: "IndexedDB"
+    });
 
-//Read a specific piece of data based on an id
-var justOne = dm.read( 12345 );</code></pre>
+    dm.stores.newStore.open({
+        success: function() { ... },
+        error: function() { ... }
+    });
+
+    dm.stores.test1.read( undefined, {
+        success: function( data ) { ... },
+        error: function( error ) { ... }
+    });
+
+    //read a record with a particular id
+    dm.stores.test1.read( 5, {
+        success: function( data ) { ... },
+        error: function( error ) { ... }
+    });</code></pre>
 
     
 </dd>
@@ -1074,7 +1473,7 @@ var justOne = dm.read( 12345 );</code></pre>
         
             
 <dt>
-    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(toRemove, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(toRemove)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
@@ -1109,8 +1508,6 @@ var justOne = dm.read( 12345 );</code></pre>
 		<th>Argument</th>
 		
 		
-		
-		<th>Default</th>
 		
 		
 		<th class="last">Description</th>
@@ -1151,10 +1548,6 @@ var justOne = dm.read( 12345 );</code></pre>
             
             
             
-                <td class="default">
-                
-                </td>
-            
             
             <td class="description last">A variety of objects can be passed to remove to specify the item or if nothing is provided, all data is removed</td>
         </tr>
@@ -1163,13 +1556,13 @@ var justOne = dm.read( 12345 );</code></pre>
 	
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>options.success</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">AeroGear~successCallbackINDEXEDDB</span>
 
 
             
@@ -1188,48 +1581,21 @@ var justOne = dm.read( 12345 );</code></pre>
             
             
             
-                <td class="default">
-                
-                    {}
-                
-                </td>
             
-            
-            <td class="description last">options
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+            <td class="description last">a callback to be called after successfully removing a record out of an IndexedDB</td>
+        </tr>
 	
-	<tbody>
 	
 	
         <tr>
             
-                <td class="name"><code>success</code></td>
+                <td class="name"><code>options.error</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">AeroGear~successCallbackMEMORY</span>
+<span class="param-type">AeroGear~errorCallbackINDEXEDDB</span>
 
 
             
@@ -1249,13 +1615,7 @@ var justOne = dm.read( 12345 );</code></pre>
             
             
             
-            <td class="description last">a callback to be called after successfully removing data from a  Memory Store -  this remove is synchronous but the callback is provided for API symmetry.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+            <td class="description last">a callback to be called when there is an error removing a record out of an IndexedDB</td>
         </tr>
 	
 	
@@ -1286,7 +1646,7 @@ var justOne = dm.read( 12345 );</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line304">line 304</a>
+        <a href="indexeddb.js.html">data-manager/adapters/indexeddb.js</a>, <a href="indexeddb.js.html#line366">line 366</a>
     </li></ul></dd>
     
     
@@ -1308,8 +1668,8 @@ var justOne = dm.read( 12345 );</code></pre>
     
     
     <h5>Returns:</h5>
-    <ul>
-            <li>
+    
+            
 <div class="param-desc">
     A jQuery.Deferred promise
 </div>
@@ -1327,59 +1687,37 @@ var justOne = dm.read( 12345 );</code></pre>
 
 	</dd>
 </dl>
-</li>
+
         
-            <li>
-<div class="param-desc">
-    @deprecated Returns the updated data from the store
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Array</span>
-
-
-	</dd>
-</dl>
-</li>
-        </ul>
     
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
+    <pre class="prettyprint"><code>    //Create an empty DataManager
+    var dm = AeroGear.DataManager();
 
-// Store a new task
-dm.save({
-    title: "Created Task"
-});
+    //Add an IndexedDB store
+    dm.add({
+        name: "newStore",
+        storageType: "IndexedDB"
+    });
 
-// Store another new task
-dm.save({
-    title: "Another Created Task"
-});
+    dm.stores.newStore.open({
+        success: function() { ... },
+        error: function() { ... }
+    });
 
-// Store one more new task
-dm.save({
-    title: "And Another Created Task"
-});
+    // Delete a record
+    dm.stores.newStore.remove( 1, {
+        success: function( data ) { ... },
+        error: function( error ) { ... }
+    });
 
-// Remove a particular item from the store by its id
-var toRemove = dm.read()[ 0 ];
-dm.remove( toRemove.id );
-
-// Remove an item from the store using the data object
-toRemove = dm.read()[ 0 ];
-dm.remove( toRemove );
-
-// Delete all remaining data from the store
-dm.remove();</code></pre>
+    //Remove all data
+    dm.stores.newStore.remove( undefined, {
+        success: function( data ) { ... },
+        error: function( error ) { ... }
+    });</code></pre>
 
     
 </dd>
@@ -1505,7 +1843,7 @@ dm.remove();</code></pre>
                 </td>
             
             
-            <td class="description last">options
+            <td class="description last">additional options
                 <h6>Properties</h6>
                 
 
@@ -1572,7 +1910,7 @@ dm.remove();</code></pre>
             <td class="type">
             
                 
-<span class="param-type">AeroGear~successCallbackMEMORY</span>
+<span class="param-type">AeroGear~successCallbackINDEXEDDB</span>
 
 
             
@@ -1592,7 +1930,40 @@ dm.remove();</code></pre>
             
             
             
-            <td class="description last">a callback to be called after successfully saving data from a Memory Store -  this save is synchronous but the callback is provided for API symmetry.</td>
+            <td class="description last">a callback to be called after the successful saving of a record into an IndexedDB</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">AeroGear~errorCallbackINDEXEDDB</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">a callback to be called when there is an error with the saving of a record into an IndexedDB</td>
         </tr>
 	
 	
@@ -1629,7 +2000,7 @@ dm.remove();</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line231">line 231</a>
+        <a href="indexeddb.js.html">data-manager/adapters/indexeddb.js</a>, <a href="indexeddb.js.html#line284">line 284</a>
     </li></ul></dd>
     
     
@@ -1651,8 +2022,8 @@ dm.remove();</code></pre>
     
     
     <h5>Returns:</h5>
-    <ul>
-            <li>
+    
+            
 <div class="param-desc">
     A jQuery.Deferred promise
 </div>
@@ -1670,58 +2041,42 @@ dm.remove();</code></pre>
 
 	</dd>
 </dl>
-</li>
+
         
-            <li>
-<div class="param-desc">
-    @deprecated Returns the updated data from the store
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Array</span>
-
-
-	</dd>
-</dl>
-</li>
-        </ul>
     
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
+    <pre class="prettyprint"><code>    //Create an empty DataManager
+    var dm = AeroGear.DataManager();
 
-// Store a new task
-dm.save({
-    title: "Created Task",
-    date: "2012-07-13",
-    ...
-});
+    //Add an IndexedDB store
+    dm.add({
+        name: "newStore",
+        storageType: "IndexedDB"
+    });
 
-//Store an array of new Tasks
-dm.save([
-    {
-        title: "Task2",
-        date: "2012-07-13"
-    },
-    {
-        title: "Task3",
-        date: "2012-07-13"
-        ...
-    }
-]);
+    dm.stores.newStore.open({
+        success: function() { ... },
+        error: function() { ... }
+    });
 
-// Update an existing piece of data
-var toUpdate = dm.read()[ 0 ];
-toUpdate.data.title = "Updated Task";
-dm.save( toUpdate );</code></pre>
+    dm.stores.newStore.save( { "id": 3, "name": "Grace", "type": "Little Person" }, {
+        success: function( data ) { ... },
+        error: function( error ) { ... }
+    });
+
+    //Save multiple Records
+    dm.stores.newStore.save(
+        [
+            { "id": 3, "name": "Grace", "type": "Little Person" },
+            { "id": 4, "name": "Graeham", "type": "Really Little Person" }
+        ],
+        {
+            success: function( data ) { ... },
+            error: function( error ) { ... }
+        }
+    );</code></pre>
 
     
 </dd>
