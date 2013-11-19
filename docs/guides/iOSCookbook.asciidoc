@@ -597,6 +597,7 @@ NOTE: Care should be taken when specifying the persistence type param when const
 As with the case of Pipe, configured timeout interval (in the config object) and cancel operation in _AGAuthenticationModule_ is supported too.
 
 
+
 == [[crypto]] Cryptography support
 
 Since 1.3.0 release of the library, we've built on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-ios[aerogear-crypto-ios]
