@@ -183,8 +183,8 @@ p {
     text-overflow: ellipsis;
 }
 
-li > p { 
-    overflow: visible; 
+li > p {
+    overflow: visible;
 }
 
 .clearfix {
