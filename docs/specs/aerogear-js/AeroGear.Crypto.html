@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AeroGear.js API Documentation</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/aerogear.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Module: Crypto</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+        <span class="ancestors"><a href="AeroGear.html">AeroGear</a>.</span>
+    
+    Crypto
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <h4 class="name" id="Crypto"><span class="type-signature"></span>new Crypto<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        AeroGear.Crypto is used to provide various crypto methods
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.crypto.js.html">crypto/aerogear.crypto.js</a>, <a href="aerogear.crypto.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    agCrypto - The created Crypto Object
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    // Create a AeroGear.Crypto Object
+
+    var agCrypto = AeroGear.Crypto();</code></pre>
+
+    
+</dd>
+
+    
+    </div>
+    
+    
+        <h3 class="subsection-title">Extends</h3>
+        
+        <ul>
+            <li>AeroGear.Core</li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="decrypt"><span class="type-signature"></span>decrypt<span class="signature">(options)</span><span class="type-signature"> &rarr; {bitArray}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        Decrypts in GCM mode
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">includes IV (Initialization Vector), AAD
+            (Additional Authenticated Data), key (private key for encryption),
+            ciphertext (data to be decrypted)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.crypto.js.html">crypto/aerogear.crypto.js</a>, <a href="aerogear.crypto.js.html#line156">line 156</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    - The decrypted data
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">bitArray</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        //Data decryption:
+        var options = {
+            IV: myIV,
+            AAD: myAAD,
+            key: mySecretKey,
+            data: ciphertext
+        };
+        AeroGear.Crypto().decrypt( options );</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="deriveKey"><span class="type-signature"></span>deriveKey<span class="signature">(password, providedSalt)</span><span class="type-signature"> &rarr; {bitArray}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        Returns the value of the key
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">master password</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>providedSalt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">salt provided to recreate the key</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.crypto.js.html">crypto/aerogear.crypto.js</a>, <a href="aerogear.crypto.js.html#line100">line 100</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    - the derived key
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">bitArray</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        //Password encryption:
+        AeroGear.Crypto().deriveKey( 'mypassword', 42 );</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="encrypt"><span class="type-signature"></span>encrypt<span class="signature">(options)</span><span class="type-signature"> &rarr; {bitArray}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        Encrypts in GCM mode
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">includes IV (Initialization Vector), AAD
+            (Additional Authenticated Data), key (private key for encryption),
+            plainText (data to be encrypted)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.crypto.js.html">crypto/aerogear.crypto.js</a>, <a href="aerogear.crypto.js.html#line125">line 125</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    - The encrypted data represented by an array of bytes
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">bitArray</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        //Data encryption:
+        var options = {
+            IV: myIV,
+            AAD: myAAD,
+            key: mySecretKey,
+            data: message
+        };
+        AeroGear.Crypto().encrypt( options );</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getRandomValue"><span class="type-signature"></span>getRandomValue<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        Returns the random value
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.crypto.js.html">crypto/aerogear.crypto.js</a>, <a href="aerogear.crypto.js.html#line84">line 84</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    - the random value
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Number</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        //Random number generator:
+        AeroGear.Crypto().getRandomValue();</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="hash"><span class="type-signature"></span>hash<span class="signature">(data)</span><span class="type-signature"> &rarr; {bitArray}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        Generates a hash output based on SHA-256
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">bitArray</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">to hash.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.crypto.js.html">crypto/aerogear.crypto.js</a>, <a href="aerogear.crypto.js.html#line173">line 173</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    - Hash value
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">bitArray</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        //Data hashing:
+        AeroGear.Crypto().hash( options );</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sign"><span class="type-signature"></span>sign<span class="signature">(options)</span><span class="type-signature"> &rarr; {bitArray}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        Sign messages with ECDSA
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">includes keys (provided keys to sign the message),
+            message (message to be signed)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.crypto.js.html">crypto/aerogear.crypto.js</a>, <a href="aerogear.crypto.js.html#line192">line 192</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    - Digital signature
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">bitArray</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        //Message sign:
+        var options = {
+            keys: providedKey,
+            message: PLAIN_TEXT
+        };
+        AeroGear.Crypto().sign( options );</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="verify"><span class="type-signature"></span>verify<span class="signature">(options)</span><span class="type-signature"> &rarr; {bitArray}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        Verify signed messages with ECDSA
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">includes keys (provided keys to sign the message),
+            message (message to be verified), signature (Digital signature)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.crypto.js.html">crypto/aerogear.crypto.js</a>, <a href="aerogear.crypto.js.html#line214">line 214</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    - Signature
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">bitArray</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        //Message validation
+        var options = {
+            keys: sjcl.ecc.ecdsa.generateKeys(192),
+            signature: signatureToBeVerified
+        };
+        AeroGear.Crypto().verify( options );</code></pre>
+
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Nov 19 2013 10:58:57 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

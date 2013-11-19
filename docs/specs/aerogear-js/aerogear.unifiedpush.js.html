@@ -62,12 +62,19 @@
         var metadata = {
             deviceToken: "theDeviceToken",
             alias: "some_username",
-            category: "email",
+            categories: [ "email" ],
             simplePushEndpoint: "http://server.com/simplePushEndpoint"
         };
 
+        var settings = {
+            success: function(){ ... },
+            error: function() { ... }
+        };
+
+        settings.metadata = metadata;
+
         // perform the registration against the UnifiedPush server:
-        client.registerWithPushServer(metadata);
+        client.registerWithPushServer( settings );
 
      */
     AeroGear.UnifiedPushClient = function( variantID, variantSecret, pushServerURL ) {
@@ -84,28 +91,33 @@
 
         /**
             Performs a register request against the UnifiedPush Server using the given metadata which represents a client that wants to register with the server.
-            @param {Object} metadata - the metadata for the client
-            @param {String} metadata.deviceToken - identifies the client within its PushNetwork. On Android this is the registrationID, on iOS this is the deviceToken and on SimplePush this is the channelID of the subscribed channel.
-            @param {String} metadata.simplePushEndpoint - the URL of the given SimplePush server/network that is needed in order to trigger a notification to be sent to the SimplePush client.
-            @param {String} [metadata.alias] - Application specific alias to identify users with the system. Common use case would be an email address or a username.
-            @param {String} [metadata.category] - In SimplePush this is the name of the registration endpoint. On Hybrid platforms like Apache Cordova this is used for tagging the registered client.
-            @param {String} [metadata.operatingSystem] - Useful on Hybrid platforms like Apache Cordova to specifiy the underlying operating system.
-            @param {String} [metadata.osVersion] - Useful on Hybrid platforms like Apache Cordova to specify the version of the underlying operating system.
-            @param {String} [metadata.deviceType] - Useful on Hybrid platforms like Apache Cordova to specify the type of the used device, like iPad or Android-Phone.
+            @param {Object} settings The settings to pass in
+            @param {Object} settings.metadata - the metadata for the client
+            @param {String} settings.metadata.deviceToken - identifies the client within its PushNetwork. On Android this is the registrationID, on iOS this is the deviceToken and on SimplePush this is the channelID of the subscribed channel.
+            @param {String} settings.metadata.simplePushEndpoint - the URL of the given SimplePush server/network that is needed in order to trigger a notification to be sent to the SimplePush client.
+            @param {String} [settings.metadata.alias] - Application specific alias to identify users with the system. Common use case would be an email address or a username.
+            @param {Array} [settings.metadata.categories] - In SimplePush this is the name of the registration endpoint. On Hybrid platforms like Apache Cordova this is used for tagging the registered client.
+            @param {String} [settings.metadata.operatingSystem] - Useful on Hybrid platforms like Apache Cordova to specifiy the underlying operating system.
+            @param {String} [settings.metadata.osVersion] - Useful on Hybrid platforms like Apache Cordova to specify the version of the underlying operating system.
+            @param {String} [settings.metadata.deviceType] - Useful on Hybrid platforms like Apache Cordova to specify the type of the used device, like iPad or Android-Phone.
+            @param {AeroGear~completeCallbackREST} [settings.complete] - a callback to be called when the result of the request to the server is complete, regardless of success
+            @param {AeroGear~errorCallbackREST} [settings.error] - callback to be executed if the AJAX request results in an error
+            @param {AeroGear~successCallbackREST} [settings.success] - callback to be executed if the AJAX request results in success
+            @returns {Object} The jqXHR created by jQuery.ajax
          */
-        this.registerWithPushServer = function( metadata ) {
+        this.registerWithPushServer = function( settings ) {
+            settings = settings || {};
+            var metadata = settings.metadata || {};
 
             // we need a deviceToken, registrationID or a channelID:
             if ( !metadata.deviceToken ) {
                 throw "UnifiedPushRegistrationException";
             }
 
-            // if we see a category that is not the (SimplePush) broadcast, we require the alias to be present:
-            if ( metadata.category !== "broadcast" && !metadata.alias ) {
-                throw "UnifiedPushRegistrationException";
-            }
+            // Make sure that settings.metadata.categories is an Array
+            metadata.categories = AeroGear.isArray( metadata.categories ) ? metadata.categories : ( metadata.categories ? [ metadata.categories ] : [] );
 
-            $.ajax({
+            return $.ajax({
                 contentType: "application/json",
                 dataType: "json",
                 type: "POST",
@@ -113,16 +125,25 @@
                 headers: {
                     "Authorization": "Basic " + window.btoa(variantID + ":" + variantSecret)
                 },
-                data: JSON.stringify( metadata )
+                data: JSON.stringify( metadata ),
+                success: settings.success,
+                error: settings.error,
+                complete: settings.complete
             });
         };
 
         /**
             Performs an unregister request against the UnifiedPush Server for the given deviceToken. The deviceToken identifies the client within its PushNetwork. On Android this is the registrationID, on iOS this is the deviceToken and on SimplePush this is the channelID of the subscribed channel.
             @param {String} deviceToken - unique String which identifies the client that is being unregistered.
+            @param {Object} [settings = {}] The options to pass in
+            @param {AeroGear~completeCallbackREST} [settings.complete] - a callback to be called when the result of the request to the server is complete, regardless of success
+            @param {AeroGear~errorCallbackREST} [settings.error] - callback to be executed if the AJAX request results in an error
+            @param {AeroGear~successCallbackREST} [settings.success] - callback to be executed if the AJAX request results in success
+            @returns {Object} The jqXHR created by jQuery.ajax
          */
-        this.unregisterWithPushServer = function( deviceToken ) {
-            $.ajax({
+        this.unregisterWithPushServer = function( deviceToken, settings ) {
+            settings = settings || {};
+            return $.ajax({
                 contentType: "application/json",
                 dataType: "json",
                 type: "DELETE",
@@ -130,9 +151,9 @@
                 headers: {
                     "Authorization": "Basic " + window.btoa(variantID + ":" + variantSecret)
                 },
-                data: JSON.stringify({
-                    deviceToken: deviceToken
-                })
+                success: settings.success,
+                error: settings.error,
+                complete: settings.complete
             });
         };
     };
@@ -148,13 +169,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Sun Aug 18 2013 19:56:49 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Nov 19 2013 10:58:57 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

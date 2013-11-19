@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>AeroGear.js API Documentation</title>
-    
+
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
@@ -17,13 +17,13 @@
 <body>
 
 <div id="main">
-    
+
     <h1 class="page-title"><img src="http://aerogear.org/img/aerogear_logo_200px.png"/></h1>
-    
-    
 
 
-    
+
+
+
 
 
     <h3> </h3>
@@ -36,113 +36,146 @@
 
 
 
-    
+
 
 
 
 
     <section>
-        <article><h1>aerogear-js <a href="https://travis-ci.org/aerogear/aerogear-js"><img src="https://travis-ci.org/aerogear/aerogear-js.png" alt="Build Status"></a></h1>
-<p>JavaScript client library implementation for AeroGear. Eventually, this will include API's for persistence, security, data synchronization and more. For more information and downloads, visit <a href="http://aerogear.org/javascript">AeroGear.org</a>.</p>
+        <article><h1>aerogear-js <img alt="Build Status" src="https://travis-ci.org/aerogear/aerogear-js.png"/></h1>
+
+<p>JavaScript client library implementation for AeroGear. Eventually, this will include API&#39;s for persistence, security, data synchronization and more. For more information and downloads, visit <a href="http://aerogear.org/javascript">AeroGear.org</a>.</p>
+
 <h2>Auth</h2>
-<hr>
+
+<hr/>
+
 <p>The AeroGear.Auth namespace provides an authentication and enrollment API. Through the use of adapters, this library provides common methods like enroll, login and logout that will just work.</p>
+
 <p>See the <a href="http://aerogear.org/docs/specs/aerogear-js/AeroGear.Auth.html">Auth API docs</a> for more info.</p>
+
+<h2>Crypto</h2>
+
+<hr/>
+
+<p>The AeroGear.Crypto namespace provides an encryption and decryption API for data as well as an interface for password encryption</p>
+
+<p>See the <a href="http://aerogear.org/docs/specs/aerogear-js/AeroGear.Crypto.html">Crypto API Docs</a> for more info.</p>
+
 <h2>DataManager</h2>
-<hr>
+
+<hr/>
+
 <p>A collection of data connections (stores) and their corresponding data models. This object provides a standard way to interact with client side data no matter the data format or storage mechanism used.</p>
+
 <p>See the <a href="http://aerogear.org/docs/specs/aerogear-js/AeroGear.DataManager.html">DataManager API docs</a> for more info.</p>
+
 <h2>Notifier</h2>
-<hr>
+
+<hr/>
+
 <p>Notifier is a collection of adapters which provide a unified or similar API for interacting with different messaging services and protocols.</p>
+
 <p>See the <a href="http://aerogear.org/docs/specs/aerogear-js/AeroGear.Notifier.html">Notifier API docs</a> for more info.</p>
+
 <h2>Pipeline</h2>
-<hr>
+
+<hr/>
+
 <p>Pipeline is a JavaScript library that provides a persistence API that is protocol agnostic and does not depend on any certain data model. Through the use of adapters, both provided and custom, user supplied, this library provides common methods like read, save and delete that will just work.</p>
+
 <p>See the <a href="http://aerogear.org/docs/specs/aerogear-js/AeroGear.Pipeline.html">Pipeline API docs</a> for more info.</p>
+
 <h2>SimplePushClient</h2>
-<hr>
-<p>SimplePushClient is a client implementation and polyfill for the Mozilla SimplePush specification. SimplePush allows for simple push notification support in web, as well as Firefox OS, applications. This implementation does differ slightly from the specification in that it only works in applications that are &quot;online&quot; and active in the browser. This implementation also supports connecting to both Mozilla's SimplePush server as well as the AeroGear project's server.</p>
+
+<hr/>
+
+<p>SimplePushClient is a client implementation and polyfill for the Mozilla SimplePush specification. SimplePush allows for simple push notification support in web, as well as Firefox OS, applications. This implementation does differ slightly from the specification in that it only works in applications that are &quot;online&quot; and active in the browser. This implementation also supports connecting to both Mozilla&#39;s SimplePush server as well as the AeroGear project&#39;s server.</p>
+
 <p>See the <a href="http://aerogear.org/docs/specs/aerogear-js/AeroGear.SimplePushClient.html">SimplePushClient API docs</a> for more info. Also, please see the <a href="https://wiki.mozilla.org/WebAPI/SimplePush">Mozilla SimplePush specification</a> for more info on SimplePush.</p>
+
 <h2>UnifiedPushClient</h2>
-<hr>
-<p>UnifiedPushClient is used in conjunction with AeroGear's UnifiedPush server to register web applications for push notifications. Using the SimplePushClient, a web application can register for push notifications from a SimplePush network and then inform the UnifiedPush server as to where it should send those push notifications.</p>
+
+<hr/>
+
+<p>UnifiedPushClient is used in conjunction with AeroGear&#39;s UnifiedPush server to register web applications for push notifications. Using the SimplePushClient, a web application can register for push notifications from a SimplePush network and then inform the UnifiedPush server as to where it should send those push notifications.</p>
+
 <p>See the <a href="http://aerogear.org/docs/specs/aerogear-js/AeroGear.UnifiedPushClient.html">UnifiedPushClient API docs</a> for more info.</p>
+
 <h2>Feature Stability</h2>
-<hr>
+
+<hr/>
+
 <p>All features of the library are given a stability rating which is noted in the documentation for that feature. The stability ratings are as follows:</p>
-<ul>
-<li><strong class="labelExperimental">Experimental</strong> - This feature is new and has not been thoroughly tested outside of development. This feature could be changed or removed at any time. Use of these features in a production environment is at your own risk.</li>
-<li><strong class="labelStable">Stable</strong> - This feature has existed for a full release cycle and has been thoroughly tested. These features are considered safe for use in production environments.</li>
-<li><strong class="labelDeprecated">Deprecated</strong> - This feature is being removed or replaced. As with experimental features, these features could be removed at any time and their use in production environments is at your own risk. For features being replaced, it is recommended to update to the next version and begin using the new feature.</li>
-</ul>
+
+<ul><li><strong class="labelExperimental">Experimental</strong> - This feature is new and has not been thoroughly tested outside of development. This feature could be changed or removed at any time. Use of these features in a production environment is at your own risk.</li><li><strong class="labelStable">Stable</strong> - This feature has existed for a full release cycle and has been thoroughly tested. These features are considered safe for use in production environments.</li><li><strong class="labelDeprecated">Deprecated</strong> - This feature is being removed or replaced. As with experimental features, these features could be removed at any time and their use in production environments is at your own risk. For features being replaced, it is recommended to update to the next version and begin using the new feature.</li></ul>
+
 <h2>Library Dependencies</h2>
-<hr>
+
+<hr/>
+
 <p>Some parts of AeroGear.js depend on external libraries which are not bundled in the same file. Below is a list of each plugin and their adapters along with external dependencies, if they have any. It is recommended to use the latest stable version of each dependency unless otherwise noted.</p>
+
 <h3>Auth</h3>
-<ul>
-<li><strong>REST</strong><ul>
-<li><a href="http://jquery.com/download/">jQuery</a></li>
-</ul>
-</li>
-</ul>
+
+<ul><li><strong>REST</strong><ul><li><a href="http://jquery.com/download/">jQuery</a></li></ul></li></ul>
+
+<h3>Crypto</h3>
+
+<ul><li><a href="https://github.com/bitwiseshiftleft/sjcl">SJCL</a> - bundled w/ AeroGear.js</li></ul>
+
 <h3>DataManager</h3>
-<ul>
-<li><strong>Memory</strong><ul>
-<li><a href="http://jquery.com/download/">jQuery</a></li>
-</ul>
-</li>
-<li><strong>SessionLocal</strong><ul>
-<li><a href="http://jquery.com/download/">jQuery</a></li>
-</ul>
-</li>
-</ul>
+
+<ul><li><strong>Memory</strong><ul><li><a href="http://jquery.com/download/">jQuery</a></li></ul></li><li><strong>SessionLocal</strong><ul><li><a href="http://jquery.com/download/">jQuery</a></li></ul></li><li><strong>IndexedDB</strong><ul><li><a href="http://jquery.com/download/">jQuery</a></li></ul></li><li><strong>WebSQL</strong><ul><li><a href="http://jquery.com/download/">jQuery</a></li></ul></li></ul>
+
 <h3>Notifier</h3>
-<ul>
-<li><strong>STOMP-WS</strong><ul>
-<li><a href="https://github.com/jmesnil/stomp-websocket/">STOMP Over WebSocket</a></li>
-</ul>
-</li>
-<li><strong>vert.x</strong><ul>
-<li><a href="http://vertx.io/downloads.html">vert.x Event Bus</a></li>
-<li><a href="http://cdn.sockjs.org/">SockJS</a></li>
-</ul>
-</li>
-<li><strong>SimplePush</strong><ul>
-<li>See SimplePush Plugin</li>
-</ul>
-</li>
-</ul>
+
+<ul><li><strong>STOMP-WS</strong><ul><li><a href="https://github.com/jmesnil/stomp-websocket/">STOMP Over WebSocket</a></li></ul></li><li><strong>vert.x</strong><ul><li><a href="http://vertx.io/downloads.html">vert.x Event Bus</a></li><li><a href="http://cdn.sockjs.org/">SockJS</a></li></ul></li><li><strong>SimplePush</strong><ul><li>See SimplePush Plugin</li></ul></li></ul>
+
 <h3>Pipeline</h3>
-<ul>
-<li><strong>REST</strong><ul>
-<li><a href="http://jquery.com/download/">jQuery</a></li>
-</ul>
-</li>
-</ul>
+
+<ul><li><strong>REST</strong><ul><li><a href="http://jquery.com/download/">jQuery</a></li></ul></li></ul>
+
 <h3>SimplePush</h3>
-<ul>
-<li><a href="http://jquery.com/download/">jQuery</a></li>
-<li><a href="http://cdn.sockjs.org/">SockJS</a></li>
-</ul>
+
+<ul><li><a href="http://jquery.com/download/">jQuery</a></li><li><a href="http://cdn.sockjs.org/">SockJS</a></li></ul>
+
 <h3>UnifiedPush</h3>
-<ul>
-<li><a href="http://jquery.com/download/">jQuery</a></li>
-</ul>
+
+<ul><li><a href="http://jquery.com/download/">jQuery</a></li></ul>
+
 <h2>Building</h2>
-<hr>
+
+<hr/>
+
 <h3>Grunt</h3>
-<p><a href="http://gruntjs.com/">Grunt</a> is used as the build tool which requires <a href="http://nodejs.org/">Node.js</a> version &gt;= 0.8.0.
+
+<p><a href="http://gruntjs.com/">Grunt</a> is used as the build tool which requires <a href="http://nodejs.org/">Node.js</a> version &gt;= 0.10.
 Please refer to <a href="http://nodejs.org">nodejs.org</a> for details regarding installing Node.js.
-Please refer to Grunt's <a href="http://gruntjs.com/getting-started">getting started</a> guide for details regarding installing Grunt.</p>
+Please refer to Grunt&#39;s <a href="http://gruntjs.com/getting-started">getting started</a> guide for details regarding installing Grunt.</p>
+
 <h3>Installing Build Dependencies</h3>
+
 <p>To install the dependencies of the project run the following command:</p>
+
 <pre><code>$ npm install</code></pre>
+
 <p>This will install the versions of the dependencies declared in package.json. This is only required to be done once before
 building the first time, or if the dependencies in package.json have been updated.</p>
+
 <h3>Building the project</h3>
+
 <pre><code>$ grunt</code></pre>
-<p>The produced JavaScript will be in the <strong>dist</strong> directory.</p></article>
+
+<p>The produced JavaScript will be in the <strong>dist</strong> directory.</p>
+
+<h3>Generating the documentation</h3>
+
+<p>To generate the API docs, run the following command:</p>
+
+<pre><code>$ jsdoc-aerogear src/ -r -d docs README.md</code></pre>
+
+<p><em>The docs use a slightly modified version of jsdoc</em></p></article>
     </section>
 
 
@@ -153,13 +186,13 @@ building the first time, or if the dependencies in package.json have been update
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 22 2013 07:22:05 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Nov 19 2013 10:58:57 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>
