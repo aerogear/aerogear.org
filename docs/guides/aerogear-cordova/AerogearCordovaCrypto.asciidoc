@@ -31,7 +31,7 @@ Password based key derivation support (PBKDF2)
 
 [source,javascript]
 ----
-AeroGear.crypto.deriveKey( function(password) {
+AeroGear.Crypto().deriveKey( function(password) {
     /* derived key password */;    
 }, errorHandler, 'your-password' );   
 ----
@@ -42,14 +42,15 @@ Symmetric encryption support (GCM)
 
 [source,javascript]
 ----
-AeroGear.crypto.deriveKey( function(rawPassword) {
+var agCrypto = new AeroGear.Crypto();
+agCrypto.deriveKey( function(rawPassword) {
     var options = {
             IV: "69696ee955b62b73cd62bda875fc73d68219e0036b7a0b37",
             AAD: "feedfacedeadbeeffeedfacedeadbeefabaddad2",
             key: rawPassword,
             data: "My Bonnie lies over the ocean, my Bonnie lies over the sea"
         };
-    AeroGear.crypto.encrypt( function(cipherText) {
+    agCrypto.encrypt( function(cipherText) {
         /* encrypted cipherText */
     }, options ); 
 }, errorHandler, 'myPassword' );
@@ -65,7 +66,7 @@ var options = {
         key: rawPassword,
         data: cipherText
     };
-AeroGear.crypto.decrypt( function(text) {
+AeroGear.Crypto().decrypt( function(text) {
     /* your text */
 }, options ); 
 ----
@@ -74,16 +75,17 @@ Asymmetric encryption support (ECC) / iOS not supported
 
 [source,javascript]
 ----
-AeroGear.crypto.KeyPair(function(keyPair) { //generate keypair 1
-    AeroGear.crypto.KeyPair(function(keyPairPandora) { //generate keypair 2
+var agCrypto = new AeroGear.Crypto();
+agCrypto.KeyPair(function(keyPair) { //generate keypair 1
+    agCrypto.KeyPair(function(keyPairPandora) { //generate keypair 2
         var options = {
             IV: "69696ee955b62b73cd62bda875fc73d68219e0036b7a0b37",
             AAD: "feedfacedeadbeeffeedfacedeadbeefabaddad2",
-            key: new AeroGear.crypto.KeyPair(keyPair.privateKey, keyPairPandora.publicKey),
+            key: new agCrypto.KeyPair(keyPair.privateKey, keyPairPandora.publicKey),
             data: "My bonnie lies over the ocean"
         };
-        AeroGear.crypto.encrypt(function (cipherText) {
-            options.key = new AeroGear.crypto.KeyPair(keyPairPandora.privateKey, keyPair.publicKey);
+        agCrypto.encrypt(function (cipherText) {
+            options.key = new agCrypto.KeyPair(keyPairPandora.privateKey, keyPair.publicKey);
             options.data = cipherText;
             AeroGear.crypto.decrypt(function (plainText) {
                 /* end of the example */
