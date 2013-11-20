@@ -17,7 +17,7 @@ Please ensure that you already have installed the following components:
 
 === Setup
 
-Download the server from the project's link:https://github.com/aerogear/aerogear-unifiedpush-server[github page]. First, start your JBoss Application server and make your you have a _PushEEDS_ datasource installed. The link:https://github.com/aerogear/aerogear-unifiedpush-server#database-configuration[README] has details how to use MySQL or H2 as your database. Once the setup is done, simple execute on the command line the following: 
+Download the server from the project's link:https://github.com/aerogear/aerogear-unifiedpush-server[github page]. First, start your JBoss Application server and make sure you have a _PushEEDS_ datasource installed. The link:https://github.com/aerogear/aerogear-unifiedpush-server#database-configuration[README] has details how to use MySQL or H2 as your database. Once the setup is done, simple execute on the command line the following: 
 
 [source,c]
 ----
