@@ -676,7 +676,7 @@ If your storage information need to be encrypted, AeroGear provides convenient a
 Current available implementations are:
 
 1. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[encrypted memory store] which allows you to work in-memory with sensitive data
-1. and link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[encrypted property list] storage implementation for a permanent storage.
+2. and link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[encrypted property list] storage implementation for a permanent storage.
 
 link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[Encrypted SQLite] will come in next release.
 
