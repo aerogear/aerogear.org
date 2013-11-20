@@ -7,6 +7,7 @@ title: Specifications
 
 #### Client Library Specifications
 
+<<<<<<< HEAD
 * [AeroGear JS 1.3.0](aerogear-js)
 * [AeroGear iOS 1.3.0](aerogear-ios)
 * [AeroGear-Push iOS 0.8.0](aerogear-ios-push)
