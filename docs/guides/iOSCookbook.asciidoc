@@ -616,7 +616,7 @@ Symmetric encryption (also called private key encryption) is when the same key i
 
 You can derive the encryption key using a password or phassphrase and salt with link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2].
 - *Password* is easy to remember and usually defined by user and must be kept secret. A password is not a key.
-- *Salt* is a random value that is used together with a password to derive en encryption key. A salt value does not need to be kept secret.
+- *Salt* is a random value that is used together with a password to derive an encryption key. A salt value does not need to be kept secret.
 
 AeroGear-Crypto symmetric encryption is powered by link:http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29[CBC mode]. Build upon link:https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/CC_crypto.3cc.html#//apple_ref/doc/man/3cc/CC_crypto[CommomCrypto] and link:https://developer.apple.com/Library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html[Security framework], it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.
 
@@ -667,11 +667,50 @@ With link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox
 ----
 
 NOTE: To be able to decrypt, you need the randomly generated IV and you can regenerate the key with the salt and the password (prompted on the fly).
-It is not recommended to store either password or derived key. Salt and IV are not sensitive data and can be stored.
+It is not recommended to store either password or derived key. Salt and IV are not security sensitive in the sense that they can be stored.
 
 === Encrypted storage
 
-If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted stores with the same API than plain stores. 
+If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted stores with the same API than plain stores.
+
+Current available implementations are:
+
+1. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[encrypted memory store] which allows you to work in-memory with sensitive data
+2. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[encrypted property list] storage implementation for a permanent storage.
+
+link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[Encrypted SQLite] will come in next release.
+
+You can initialize an encrypted store with an _salt_ and a _passphrase_.
+
+[source,c]
+----
+
+    // create the datamanager
+    AGDataManager *manager = [AGDataManager manager];
+
+    // randomly generate salt
+    NSData *salt = [AGRandomGenerator randomBytes];
+
+    // crypto config
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];
+    [config setSalt:salt];
+    [config setPassphrase:@"secret_entered_by_user"];
+
+    // initialize the encryption service passing the crypto config
+    id<AGEncryptionService> encService = [[AGKeyManager manager] keyService:config];
+
+    // create Encrypted Store (using property list impl)
+    store = [manager store:^(id<AGStoreConfig> config) {
+        [config setName:@"MyPasswordApp"];
+        [config setType:@"ENCRYPTED_PLIST"];
+        [config setEncryptionService:encService];
+    }];
+
+
+----
+
+To create a DataManager with encrypted permanent storage, you simply have to specify in the config the type *ENCRYPTED_PLIST*,
+and here you go: you've got your property list encrypted storage available!
 
 Current available implementations are:
 
