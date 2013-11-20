@@ -9,7 +9,7 @@ title: Specifications
 
 * [AeroGear JS 1.2.0](aerogear-js)
 * [AeroGear iOS 1.3.0](aerogear-ios)
-* [AeroGear-Push iOS 0.7.0](aerogear-ios-push)
+* [AeroGear-Push iOS 0.8.0](aerogear-ios-push)
 * [AeroGear-OTP iOS 1.0.0](aerogear-otp-ios)
 * [AeroGear-Crypto iOS 0.1.0](aerogear-ios-crypto)
 * [AeroGear Android 1.2.1](aerogear-android)
