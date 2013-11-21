@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -32,12 +32,31 @@
 	
 	
 	
+	<option value="tasks">Tasks</option>
 	
 	
 	
 	
 	
 	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/filter:">&nbsp;&nbsp;&nbsp;&nbsp;- filter:</option>
+	
+	<option value="//api/name/isEmpty">&nbsp;&nbsp;&nbsp;&nbsp;- isEmpty</option>
+	
+	<option value="//api/name/read:">&nbsp;&nbsp;&nbsp;&nbsp;- read:</option>
+	
+	<option value="//api/name/readAll">&nbsp;&nbsp;&nbsp;&nbsp;- readAll</option>
+	
+	<option value="//api/name/remove:error:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:error:</option>
+	
+	<option value="//api/name/reset:">&nbsp;&nbsp;&nbsp;&nbsp;- reset:</option>
+	
+	<option value="//api/name/save:error:">&nbsp;&nbsp;&nbsp;&nbsp;- save:error:</option>
 	
 	
 	
@@ -53,6 +72,9 @@
 
 
 
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
 
 
 
@@ -60,6 +82,25 @@
 
 
 
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/filter:">filter:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEmpty">isEmpty</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:">read:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readAll">readAll</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:error:">remove:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reset:">reset:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save:error:">save:error:</a></span></li>
+	
+</ul></li>
 
 
 			</ul>
@@ -83,7 +124,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/AGMemoryStorage.html">AGMemoryStorage</a> : NSObject</td>
+	<td class="specification-value"><a href="../Classes/AGBaseStorage.html">AGBaseStorage</a> : NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/AGStore.html">AGStore</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">AGPropertyListStorage.h<br />AGPropertyListStorage.m</td>
@@ -96,9 +140,12 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>An <a href="../Protocols/AGStore.html">AGStore</a> implementation that uses a <a href="http://tinyurl.com/ccbo327">Property List</a> for storage.</p>
+						<p>An <a href="../Protocols/AGStore.html">AGStore</a> implementation that uses a <a href="http://tinyurl.com/ccbo327">Property List</a> for storage. It can either use a PLIST or JSON serialization output format depending on type <a href="../Classes/name.html">name</a> passed when constructing the Store. If the type is &lsquo;JSON&rsquo; the store will use NSJSONSerialization  as its backend otherwise it will fell to use NSPropertyListSerialization.</p>
 
-<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned automatically when an DataStore with the <em>type</em> config option is set to <em>&ldquo;PLIST&rdquo;</em>. See <a href="../Classes/AGDataManager.html">AGDataManager</a> and <a href="../Protocols/AGStore.html">AGStore</a> class documentation for more information.</p>
+<p><em>NOTE:</em>
+You must adhere to the rules governing the serialization of data types for each respective plist type.</p>
+
+<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned automatically when an DataStore with the <em>type</em> config option is set to <em>&ldquo;PLIST&rdquo;</em> or <em>&ldquo;JSON&rdquo;</em>. See <a href="../Classes/AGDataManager.html">AGDataManager</a> and <a href="../Protocols/AGStore.html">AGStore</a> class documentation for more information.</p>
 
 <h2>Create a DataManager with a Property List store backend</h2>
 
@@ -108,7 +155,8 @@
 AGDataManager* manager = [AGDataManager manager];
 id&lt;AGStore&gt; plistStore = [manager store:^(id&lt;AGStoreConfig&gt; config) {
     [config setName:@"secrets"]; // will be used as the filename for the plist
-    [config setType:@"PLIST"]; // specify that a Property List is required
+    // specify that a Property List is required and will use the PLIST format as its output
+    [config setType:@"PLIST"];  // you can also use 'JSON' to instruct JSON serialization.
 }];
 
 // the object to save (e.g. a dictionary)
@@ -128,6 +176,68 @@ if (![plistStore save:otp error:&amp;error])
 					
 					
 					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/save:error:">&ndash;&nbsp;save:error:</a></code>
+		<span class="tooltip"><p>Saves the given object in the underlying storage system.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/readAll">&ndash;&nbsp;readAll</a></code>
+		<span class="tooltip"><p>Reads all the data from the underlying storage system.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/read:">&ndash;&nbsp;read:</a></code>
+		<span class="tooltip"><p>Reads a specific object/record from the underlying storage system.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/filter:">&ndash;&nbsp;filter:</a></code>
+		<span class="tooltip"><p>Reads all, based on a filter, from the underlying storage system.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reset:">&ndash;&nbsp;reset:</a></code>
+		<span class="tooltip"><p>Resets the entire storage system.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isEmpty">&ndash;&nbsp;isEmpty</a></code>
+		<span class="tooltip"><p>Checks if the storage system contains no stored elements.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/remove:error:">&ndash;&nbsp;remove:error:</a></code>
+		<span class="tooltip"><p>Removes a specific object/record from the underlying storage system.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
 					
 					
 					
@@ -135,6 +245,384 @@ if (![plistStore save:otp error:&amp;error])
 					
 					
 					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/filter:" title="filter:"></a>
+	<h3 class="subsubtitle method-title">filter:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads all, based on a filter, from the underlying storage system.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)filter:(NSPredicate *)<em>predicate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>predicate</em></dt>
+			<dd><p>The NSPredicate to apply to the data from the underlying storage system.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A collection (NSArray), containing all stored objects, matching the given predicate.
+This method only returns a copy of the data and leaves the underlying storage system intact.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads all, based on a filter, from the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isEmpty" title="isEmpty"></a>
+	<h3 class="subsubtitle method-title">isEmpty</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Checks if the storage system contains no stored elements.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)isEmpty</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the storage is empty, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Checks if the storage system contains no stored elements.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/read:" title="read:"></a>
+	<h3 class="subsubtitle method-title">read:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads a specific object/record from the underlying storage system.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)read:(id)<em>recordId</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordId</em></dt>
+			<dd><p>id from the desired object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The object (or nil) read from the underlying storage.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads a specific object/record from the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/readAll" title="readAll"></a>
+	<h3 class="subsubtitle method-title">readAll</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads all the data from the underlying storage system.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)readAll</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A collection (NSArray), containing all stored objects.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads all the data from the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/remove:error:" title="remove:error:"></a>
+	<h3 class="subsubtitle method-title">remove:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Removes a specific object/record from the underlying storage system.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)remove:(id)<em>record</em> error:(NSError **)<em>error</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>record</em></dt>
+			<dd><p>the desired object</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error object containing details of why the remove failed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the operation succeeds, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Removes a specific object/record from the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reset:" title="reset:"></a>
+	<h3 class="subsubtitle method-title">reset:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Resets the entire storage system.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)reset:(NSError **)<em>error</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error object containing details of why the reset failed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the operation succeeds, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Resets the entire storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/save:error:" title="save:error:"></a>
+	<h3 class="subsubtitle method-title">save:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Saves the given object in the underlying storage system.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)save:(id)<em>data</em> error:(NSError **)<em>error</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>A mutable dictionary representing key/value, dictionary must be mutable as
+id is optional and can be added after being saved. Data can also be a collection (e.g. NSArray) of
+mutable dictionary. This parameter is the object being persisted.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error object containing details of why the save failed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the operation succeeds, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Saves the given object in the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 				</div>
@@ -147,9 +635,9 @@ if (![plistStore save:otp error:&amp;error])
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-08-13)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						
 					</div>
 				</div>

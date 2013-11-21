@@ -1,0 +1,562 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>AGKeyManager Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">AeroGear-iOS </a></h1>
+				<a id="developerHome" href="../index.html">Red Hat</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">AGKeyManager Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/manager">&nbsp;&nbsp;&nbsp;&nbsp;+ manager</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/keyService:">&nbsp;&nbsp;&nbsp;&nbsp;- keyService:</option>
+	
+	<option value="//api/name/keyServiceWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- keyServiceWithName:</option>
+	
+	<option value="//api/name/remove:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/manager">manager</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/keyService:">keyService:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/keyServiceWithName:">keyServiceWithName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:">remove:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="AGKeyManager Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">AGKeyManager Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">AGKeyManager.h<br />AGKeyManager.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>AGKeyManager manages different <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> implementations. It is basically a
+factory that hides the concrete instantiations of a specific <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> implementation.</p>
+
+<h2>Example usage</h2>
+
+<p>Here is an example usage of retrieving an encryption service (based on PBKDF2) and assigning to a data store to provide on-the fly encryption and decryption of data:</p>
+
+<pre><code> // randomly generate salt
+ NSData *salt = [AGRandomGenerator randomBytes];  // [1]
+
+ // set up crypto params configuration object
+ AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];  // [2]
+ [config setSalt:salt];  // [3]
+ [config setPassphrase:self.password.text];   // [4]
+
+ // initialize the encryption service passing the config
+ id&lt;AGEncryptionService&gt; encService = [[AGKeyManager manager] keyService:config];  // [5]
+
+ // access Store Manager
+ AGDataManager *manager = [AGDataManager manager];  // [6]
+
+ // create store
+ store = [manager store:^(id&lt;AGStoreConfig&gt; config) {
+     [config setName:@"CredentialsStorage"];
+     [config setType:@"ENCRYPTED_PLIST"];  // [7]
+     [config setEncryptionService:encService];  // [8]
+ }];
+
+ // ok time to attempt reading..
+ NSArray *data = [store readAll]) { // [9]
+
+ if (data)
+    // decryption succeeded!
+</code></pre>
+
+<p>In [1] we initialize a random salt that will be used in the encryption. In [2] we initialize an instance of a CryptoConfig configuration object to set our crypto params. Here we use an PassphraseCryptoConfig object, that sets the necessary crypto params for the PBKDF2 Encryption Service, mainly the salt [3] and the passphrase [4].</p>
+
+<p>Now that we have setup the configuration, it’s time to obtain an instance of an EncryptionService and that’s exactly what we do in [5]. KeyManager parses the configuration and returns an instance of it. Because we passed an PassphraseCryptoConfig object, a PBKDF2 encryption service would be returned.</p>
+
+<p>In [6] we initialize our data store (an encrypted plist [7]), setting the encryption service we obtained earlier [8]. Reading and saving operations are done like all the other stores, but this time the data are transparently encrypted/decrypted.</p>
+
+<p>In [9] we attempt to read data from the store. If that fails, then user supplied wrong crypto parameters (either passphrase or salt).</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/manager">+&nbsp;manager</a></code>
+		<span class="tooltip"><p>A factory method to instantiate the AGKeyManager object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/keyService:">&ndash;&nbsp;keyService:</a></code>
+		<span class="tooltip"><p>Return an implementation of an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> based on the <a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a> configuration object passed in. See <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> and <a href="../Classes/AGPassphraseKeyServices.html">AGPassphraseKeyServices</a> for the different encyption providers.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
+		<span class="tooltip"><p>Removes am <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> from the AGKeyManager object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/keyServiceWithName:">&ndash;&nbsp;keyServiceWithName:</a></code>
+		<span class="tooltip"><p>Look up for an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/manager" title="manager"></a>
+	<h3 class="subsubtitle method-title">manager</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A factory method to instantiate the AGKeyManager object.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)manager</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the AGKeyManager object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A factory method to instantiate the AGKeyManager object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGKeyManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/keyService:" title="keyService:"></a>
+	<h3 class="subsubtitle method-title">keyService:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return an implementation of an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> based on the <a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a> configuration object passed in. See <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> and <a href="../Classes/AGPassphraseKeyServices.html">AGPassphraseKeyServices</a> for the different encyption providers.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGEncryptionService&gt;)keyService:(id&lt;AGCryptoConfig&gt;)<em>config</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>config</em></dt>
+			<dd><p>The CryptoConfig object. See <a href="../Classes/AGKeyStoreCryptoConfig.html">AGKeyStoreCryptoConfig</a> and <a href="../Classes/AGPassphraseCryptoConfig.html">AGPassphraseCryptoConfig</a> configuration objects.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the newly created <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Return an implementation of an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> based on the <a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a> configuration object passed in. See <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> and <a href="../Classes/AGPassphraseKeyServices.html">AGPassphraseKeyServices</a> for the different encyption providers.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGKeyManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/keyServiceWithName:" title="keyServiceWithName:"></a>
+	<h3 class="subsubtitle method-title">keyServiceWithName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Look up for an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> object.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGEncryptionService&gt;)keyServiceWithName:(NSString *)<em>name</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the <a href="../Classes/name.html">name</a> of the actual <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Look up for an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGKeyManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/remove:" title="remove:"></a>
+	<h3 class="subsubtitle method-title">remove:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Removes am <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> from the AGKeyManager object.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGEncryptionService&gt;)remove:(NSString *)<em>name</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>the <a href="../Classes/name.html">name</a> of the actual <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Removes am <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> from the AGKeyManager object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGKeyManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
