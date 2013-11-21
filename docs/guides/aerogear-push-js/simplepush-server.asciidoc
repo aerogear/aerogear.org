@@ -29,7 +29,7 @@ We are now ready to run the server. On the command line issue:
 [source,c]
 ----
 cd server-netty
-mvn exec:java -Dexec.args="-host=localhost -port=7777 -tls=false -ack_interval=10000 -useragent_reaper_timeout=60000 -token_key=yourRandomToken  
+mvn exec:java -Dexec.args="-host=localhost -port=7777 -tls=false -ack_interval=10000 -useragent_reaper_timeout=60000 -token_key=yourRandomToken"  
 ----
 
 This will start the server and by default it will listen on localhost using port 7777. If you want to override those arguments have a look at the link:https://github.com/aerogear/aerogear-simplepush-server/tree/master/server-netty[server documentation] for more details.

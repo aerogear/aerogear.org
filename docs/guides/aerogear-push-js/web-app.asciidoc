@@ -13,7 +13,7 @@ Prior to run the application, let's do a walkthrough of the code involved. On to
 
 [source,javascript]
 ----
-var variantId = "<Your-Variant-ID";
+var variantId = "<Your-Variant-ID>";
 var variantSecret = "<Your-Variant-Secret>";
 var simplePushUrl = "<URL of the running SimplePush server>";
 var unifiedPushUrl = "<URL of the running UnifiedPush server>";
@@ -29,7 +29,7 @@ Next our UnifiedPush client object is created passing along the configuration pa
 UPClient = AeroGear.UnifiedPushClient(variantId, variantSecret, unifiedPushUrl + "/rest/registry/device");
 ----
 
-The code is then similar to our link:https://github.com/aerogear/aerogear-simplepush-quickstart[simplepush-quickstart] with one difference. When we first register the channel with the SimplePush server, we grab the _pushEndpoint_ and _channelID_ we received, construct a registration object containing these metadata [1] and we use the _UPClient.registerWithPushServer_ function [2] to register the installation with the UnifiedPush server.
+The code is then similar to our link:https://github.com/aerogear/aerogear-simplepush-quickstart[simplepush-quickstart] with one difference. When we first register the channel with the SimplePush server, we grab the _pushEndpoint_ and _channelID_ we received, construct a registration object containing these metadata [1], apply some callback [2] and stash the metadata on the settings object [3]. Finally we use the _UPClient.registerWithPushServer_ function [4] to register the installation with the UnifiedPush server.
 
 [source,javascript]
 ----
@@ -41,13 +41,24 @@ if ( mailEndpoint.pushEndpoint ) {
         deviceToken: mailEndpoint.channelID,
         simplePushEndpoint: mailEndpoint.pushEndpoint,
         alias: "john",
-        category: "mail"
+        categories: ["mail"]
     };
 
-    // register with the server
-    UPClient.registerWithPushServer(metadata);       // 2
+    // apply callbacks
+    var settings = {                                  // 2
+        success: function() {
+            console.log("Registered 'Mail' endpoint with UnifiedPush server!");
+        },
+        error: function() {
+            console.log("Error when registering with UnifiedPush server!");
+        }
+    };
 
-    appendTextArea("Registered 'Mail' endpoint with UnifiedPush server!");
+    // stash the metadata on the settings object     // 3
+    settings.metadata = metadata;
+
+    // register with the server
+    UPClient.registerWithPushServer(metadata);       // 4
 
 } else {
 	appendTextArea("'Mail' was already registered!");
