@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -63,6 +63,8 @@
 	
 	<option value="//api/name/save:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- save:success:failure:</option>
 	
+	<option value="//api/name/setUploadProgressBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- setUploadProgressBlock:</option>
+	
 	
 	
 </select>
@@ -110,6 +112,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:success:failure:">remove:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save:success:failure:">save:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setUploadProgressBlock:">setUploadProgressBlock:</a></span></li>
 	
 </ul></li>
 
@@ -211,7 +215,7 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 
 <p>In this case, where we have a RESTful pipe, the API issues an HTTP DELETE request.</p>
 
-<h2>Read all data from the server</h2>
+<p>  ## Read all data from the server</p>
 
 <p>The <code>read</code> method allows to (currently) read <em>all</em> data from the server, of the underlying AGPipe:</p>
 
@@ -246,11 +250,37 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 
 <p>Of course the <em>collection</em> behind the responseObject can be stored to a variable..</p>
 
+<h2>Upload files</h2>
+
+<p>The AGPipe also supports uploading of files. If the map object passed on save method, contain values that are instances of NS<a href="#//api/name/URL">URL</a> objects that point to local files, a multipart request will be constructed to perform the uplaoding. Here is an example usage:</p>
+
+<p>// the files to be uploaded
+NS<a href="#//api/name/URL">URL</a> <em>file1 = [[NSBundle mainBundle] URLForResource:@&ldquo;picture1&rdquo; withExtension:@&ldquo;jpg&rdquo;];
+NS<a href="#//api/name/URL">URL</a> </em>file2 = [[NSBundle mainBundle] URLForResource:@&ldquo;picture2&rdquo; withExtension:@&ldquo;jpg&rdquo;];</p>
+
+<p>// construct the data to sent with the files added
+NSDictionary *dict = @{@&ldquo;somekey&rdquo;: @&ldquo;somevalue&rdquo;, @&ldquo;jboss.jpg&rdquo;:file1, @&ldquo;jboss2.jpg&rdquo;:file2 };</p>
+
+<p>// set an (optional) progress block
+[pipe setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+NSLog(@&ldquo;Sent bytesWritten=%d totalBytesWritten=%qi of totalBytesExpectedToWrite=%qi bytes&rdquo;, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+}];</p>
+
+<p>// upload data
+[[pipe save:dict success:^(id responseObject) {
+NSLog(@&ldquo;Successfully uploaded!&rdquo;);</p>
+
+<p>} failure:^(NSError *error) {
+NSLog(@&ldquo;An error has occured during upload! \n%@&rdquo;, error);
+}];</p>
+
+<p>Note the &lsquo;key&rsquo; in the dictionary is used as the &lsquo;name&rsquo; field in the multipart request and is required. Further, you don&rsquo;t need to specify the &lsquo;Content-type&rsquo; or the &lsquo;filename&rsquo; fields as they are automatically determined internally by the last path component of the NSURL object passed in. If the mime-type can&rsquo;t be determined an &lsquo;application-octet-stream&rsquo; would be send instead.</p>
+
 <h2>Time out and Cancel pending operations</h2>
 
 <h3>Timeout</h3>
 
-<p>During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an operation to complete. If the time interval is exceeded with no response from the server, then the <em>failure</em> callback is executed.</p>
+<p>During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an operation to complete. If the time interval is exceeded with no response from the server, then the <em>failure</em> callback is executed with an error code set to <em>NSURLErrorTimedOut</em>.</p>
 
 <p>From the todo example above:</p>
 
@@ -259,9 +289,11 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 }];
 </code></pre>
 
+<p>Note: If you are running on iOS versions &lt; 6 and a timeout occurs on a pipe&rsquo;s <em>save</em> operation, the error code is set to <em>NSURLErrorCancelled</em>.</p>
+
 <h3>Cancel</h3>
 
-<p>At any time after starting your operations, you can call <code>cancel</code> on the Pipe object to cancel all running Pipe operations. Any registered callbacks on the pipe are NOT executed so it is your responsibility to provide any neccessary cleanups after calling this method.</p>
+<p>At any time after starting your operations, you can call <code>cancel</code> on the Pipe object to cancel all running Pipe operations. Doing so will invoke the pipe&rsquo;s <em>failure</em> block with an error code set to  <em>NSURLErrorCancelled</em>. You can then check this code in order to perform your &lsquo;cancellation&rsquo; logic .</p>
 
 <pre><code>[projects read:^(id responseObject) {
     // LOG the JSON response, returned from the server:
@@ -271,8 +303,8 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
     NSLog(@"Read: An error occured! \n%@", error);
 }];
 
-// cancel operations. NOTE that no 'success' or 'failure' callbacks are executed after this.
-[projects cancel]; 
+// cancel the request
+[projects cancel];
 </code></pre>
 					</div>
 					
@@ -341,8 +373,15 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
-		<span class="tooltip"><p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p></span>
+		<span class="tooltip"><p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setUploadProgressBlock:">&ndash;&nbsp;setUploadProgressBlock:</a></code>
+		<span class="tooltip"><p>Sets a progress status callback that is invoked during uploading of a file(s).</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -369,11 +408,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *URL</code></div>
-
-    
+	
 	
 	
 	
@@ -410,11 +447,9 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 		<p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *type</code></div>
-
-    
+	
 	
 	
 	
@@ -458,15 +493,13 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p>
+		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-
-    
+	
 	
 	
 	
@@ -476,8 +509,8 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p>
+		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p>
 
 <p>Note: Calling cancel has no effect on the server, so if you do a save or remove and then
 call cancel, that action will still take place on the the server.</p>
@@ -507,11 +540,9 @@ call cancel, that action will still take place on the the server.</p>
 		<p>Reads all the data from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)read:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -568,11 +599,9 @@ the network or parsing error that occurred.</p></dd>
 		<p>Read specific object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)read:(id)<em>value</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -634,11 +663,9 @@ the network or parsing error that occurred.</p></dd>
 		<p>Reads all the data that matches a given parameter provider from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)readWithParams:(NSDictionary *)<em>parameterProvider</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -702,11 +729,9 @@ the network or parsing error that occurred.</p></dd>
 		<p>Removes an object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)remove:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -769,18 +794,18 @@ the network or parsing error that occurred.</p></dd>
 		<p>Saves (or updates) a given object from the underlying server connection.</p>
 	</div>		
 	
-    
-
+	
 	<div class="method-subsection method-declaration"><code>- (void)save:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-
-    
+	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>object</em></dt>
-			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update.</p></dd>
+			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update. If the map contains values
+of NSURL objects that point to local files, a multipart request will be constructed to upload the
+files to the server. To track progress of the upload, call <a href="#//api/name/setUploadProgressBlock:">[AGPipe setUploadProgressBlock:]</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -825,6 +850,59 @@ the network or parsing error that occurred.</p></dd>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/setUploadProgressBlock:" title="setUploadProgressBlock:"></a>
+	<h3 class="subsubtitle method-title">setUploadProgressBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets a progress status callback that is invoked during uploading of a file(s).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setUploadProgressBlock:(void ( ^ ) ( NSUInteger bytesWritten , long long totalBytesWritten , long long totalBytesExpectedToWrite ))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block accepts three arguments: the number of bytes written in the latest write,
+the total bytes written for this connection, and the total bytes expected to be written during
+the request determined by the length of the HTTP body.</p>
+
+<p>NOTE. The block can be called several times and is always executed on the main thread.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sets a progress status callback that is invoked during uploading of a file(s).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -838,9 +916,9 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-08-13)</span><br />
+						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						
 					</div>
 				</div>
