@@ -9,6 +9,7 @@ org.jboss.aerogear.android.authentication.impl.loader.support
 org.jboss.aerogear.android.datamanager
 org.jboss.aerogear.android.http
 org.jboss.aerogear.android.impl.core
+org.jboss.aerogear.android.impl.crypto
 org.jboss.aerogear.android.impl.datamanager
 org.jboss.aerogear.android.impl.http
 org.jboss.aerogear.android.impl.pipeline
