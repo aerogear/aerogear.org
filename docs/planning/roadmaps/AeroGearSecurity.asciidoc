@@ -1,9 +1,9 @@
 ---
 layout: basic
-title: AeroGear Security 
+title: AeroGear Security
 ---
 
-AeroGear Security Roadmap 
+AeroGear Security Roadmap
 =========================
 :Author: Bruno Oliveira
 
@@ -28,10 +28,10 @@ External References
 
 * AGSEC-45: Provide a detailed specification about how to use OTP on JS
 
-* AGJS-3: Initial support for OTP on JS 
+* AGJS-3: Initial support for OTP on JS
 
 * AGSEC-48: Add Apache Shiro support on AeroGear Security
-  
+
     ** AGSEC-62: Add session management support
 
 * AGSEC-56: Update AeroGear Security with PicketLink beta3
@@ -46,17 +46,17 @@ External References
 1.1.0 (_Released_ 28 Jun, 2013)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* AGSEC-55: Various security tasks for the Unified Push server  
-       
+* AGSEC-55: Various security tasks for the Unified Push server
+
     ** AGSEC-34: Unified Push: Sec: Add Security Framework to PushEE
-    
+
     ** AGSEC-50: Unified Push: Secure registration of Mobile Variant instance with the server
-    
+
     ** AGSEC-51: Unified Push: Secure registration of Push Application
-    
-    ** AGSEC-52: Unified Push: Secure registration of Mobile Variant   
-    
-    ** AGSEC-54: Unified Push: Secure http endpoint for sending push notification 
+
+    ** AGSEC-52: Unified Push: Secure registration of Mobile Variant
+
+    ** AGSEC-54: Unified Push: Secure http endpoint for sending push notification
 
 * AGSEC-68: Add authorization support to AGPUSH
 
@@ -142,12 +142,12 @@ External References
       *** AGJS-78 Provide an interface for symmetric encryption into AeroGear.js
     ** AGSEC-117: Password based key derivation support (link:http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf[PBKDF2])
       *** AGIOS-78: Provide an interface for symmetric encryption into iOS
-      *** AGDROID-124: Provide an interface for password encryption into Android	
+      *** AGDROID-124: Provide an interface for password encryption into Android
       *** AGJS-79: Provide an interface for password encryption into AeroGear.js
 
 * AGSEC-122: Generating keys for encryption
     ** AGSEC-123: Provide password based encryption support to generate the keys
-    ** AGSEC-124: Automatically key generation with no interaction 
+    ** AGSEC-124: Automatically key generation with no interaction
     ** AGIOS-78: Provide an interface for symmetric encryption into iOS
     ** AGJS-79: Provide an interface for password encryption into AeroGear.js
     ** AGJS-94: Provide an interface and examples for password based encryption
@@ -160,7 +160,7 @@ External References
 
 * AGSEC-132: Encrypted storage showcase app
     ** AGIOS-92: Encrypted storage showcase app
-    ** AGDROID-145: Encrypted storage showcase app for Android 
+    ** AGDROID-145: Encrypted storage showcase app for Android
     ** AGSEC-133: Provide a screen to input user's password
     ** AGSEC-134: Allow user to include passwords specifying the alias
     ** AGSEC-135: Allow password to be decrypted and displayed on the screen
@@ -216,11 +216,11 @@ External References
     ** AGSEC-120: Digital signatures support (link:http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf[ECDSA])
 
 * AGSEC-154: Encrypted storage showcase app
-    
+
     ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
 
 
-2.0.0 (Mid March) 
+2.0.0 (Mid March)
 ~~~~~~~~~~~~~~~~~
 
 * AGSEC-3: Url and Forms that perform important operations must be protected by random tokens (hidden nonce values)
@@ -228,9 +228,9 @@ External References
 * AGSEC-4: Authentication of RESTful requests per transactions must be provided as alternative on AeroGear Security
 
 * AGSEC-5: Social login
-    
+
     ** AGSEC-8: Provide a detailed specification about which methods will be supported
-    
+
 * AGSEC-14: HTTP signed requests
 
 * AGSEC-19: Security & privacy policy (geo, user, misc data)
