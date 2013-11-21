@@ -117,61 +117,64 @@ External References
 
 * AGSEC-102: Update the quickstarts and demos with 1.2.1 release
 
-1.3.0 (Mid November)
+1.3.0 (End November)
 ~~~~~~~~~~~~~~~~~~~~
 
-* AGSEC-114: Provide easy to use cryptography interface
-
-    ** AGSEC-115: Symmetric encryption support (link:http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf[GCM])
-    ** AGSEC-117: Password based key derivation support (link:http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf[PBKDF2])
-    ** AGSEC-118: Hashing support (link:http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf[SHA-256, SHA-512])
-
 * AGSEC-2: Secure storage and cache documentation
-    
-    ** AGSEC-7: Provide a specification about how to properly do key management
-    ** AGSEC-121: Provide some use case scenarios for encryption: JS, Android, iOS
-    ** AGSEC-9: Provide a specification and which kind of algorithms will be provided
-    ** AGSEC-27: Provide a specification and which kind of authentication schemes will be supported
-    ** AGSEC-47: Create a documentation with the overview of AeroGear Security
+  ** AGSEC-9: Provide a detailed specification and which kind of algorithms will be provided
+  ** AGSEC-121: Provide some use case scenarios for encryption: JS, Android, iOS
 
-* AGSEC-122: Generating keys for encryption
-    ** AGSEC-123: Provide password based encryption support to generate the keys
-    ** AGSEC-124: Automatically key generation with no interaction 
-
-* AGSEC-125: Manage cryptographic keys and respective owners
-
-* AGSEC-126: Encrypted offline storage for sensitive data
-
-* AGSEC-127: Encrypted cache
-
-* AGSEC-132: Encrypted storage showcase app
-    
-    ** AGSEC-133: Provide a screen to input user's password
-    ** AGSEC-134: Allow user to include passwords specifying the alias
-    ** AGSEC-135: Allow password to be decrypted and displayed on the screen
-
-* AGSEC-137: Performance checks
-
-* AGSEC-138: Hold the fort    
+* AGSEC-6: Encryption for mobile devices
+  ** AGDROID-34: Implementation and API usage for android crypto
+  ** AGIOS-3: Implementation and API usage for iOS crypto
 
 * AGSEC-58: Setup a mailing list to report security issues
 
 * AGSEC-59: Inclusion of a responsible disclosure for security at aerogear.org
 
+* AGSEC-113: Update to AeroGear Security PicketLink with the version 2.5 Final
+
+* AGSEC-114: Provide easy to use cryptography interface
+
+    ** AGSEC-115: Symmetric encryption support (link:http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf[GCM])
+      *** AGIOS-78: Provide an interface for symmetric encryption into iOS
+      *** AGDROID-125: Provide an interface for symmetric encryption into Android
+      *** AGJS-78 Provide an interface for symmetric encryption into AeroGear.js
+    ** AGSEC-117: Password based key derivation support (link:http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf[PBKDF2])
+      *** AGIOS-78: Provide an interface for symmetric encryption into iOS
+      *** AGDROID-124: Provide an interface for password encryption into Android	
+      *** AGJS-79: Provide an interface for password encryption into AeroGear.js
+
+* AGSEC-122: Generating keys for encryption
+    ** AGSEC-123: Provide password based encryption support to generate the keys
+    ** AGSEC-124: Automatically key generation with no interaction 
+    ** AGIOS-78: Provide an interface for symmetric encryption into iOS
+    ** AGJS-79: Provide an interface for password encryption into AeroGear.js
+    ** AGJS-94: Provide an interface and examples for password based encryption
+
+* AGSEC-126: Encrypted offline storage for sensitive data
+    ** AGIOS-104: Encryption of Memory Storage
+    ** AGIOS-105: Encryption of Plist storage
+    ** AGJS-97: Add crypto support to AGJS datamanager
+    ** AGDROID-136: Encrypt Stores
+
+* AGSEC-132: Encrypted storage showcase app
+    ** AGIOS-92: Encrypted storage showcase app
+    ** AGDROID-145: Encrypted storage showcase app for Android 
+    ** AGSEC-133: Provide a screen to input user's password
+    ** AGSEC-134: Allow user to include passwords specifying the alias
+    ** AGSEC-135: Allow password to be decrypted and displayed on the screen
+
+
 1.4.0 (End January)
 ~~~~~~~~~~~~~~~~~~~
 
+* AGSEC-2: Secure storage and cache documentation
+  ** AGSEC-7: Provide a specification about how to properly do key management
+  ** AGSEC-27: Provide a detailed specification and which kind of authentication schemes will be supported
+  ** AGSEC-47: Create a documentation with the overview of AeroGear Security
+
 * AGSEC-12: Offline authentication
-
-* AGSEC-13: Add HTTP basic authentication support to the client side
-    
-    ** AGJS-18: Add HTTP basic authentication support on AeroGear.js
-
-* AGSEC-15: Add HTTP digest authentication support to the client side
-
-    ** AGIOS-6: Provide a parameter on iOS to enable/disable the usage of cookies
-
-    ** AGJS-23: Add HTTP digest authentication support on AeroGear.js
 
 * AGSEC-17: Mobile devices blacklist support
 
@@ -187,11 +190,9 @@ External References
 
     ** AGSEC-31: Unified Push: Evaluate non repudiation for each application on the server
 
-* AGSEC-114: Provide easy to use cryptography interface
+* AGSEC-125: Manage cryptographic keys and respective owner
 
-    ** AGSEC-116: Asymmetric encryption support (link:http://www.nsa.gov/business/programs/elliptic_curve.shtml[ECC])
-    ** AGSEC-119: Message authentication support (link:http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf[GMAC], link:http://csrc.nist.gov/publications/fips/fips198-1/FIPS-198-1_final.pdf[HMAC])
-    ** AGSEC-120: Digital signatures support (link:http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf[ECDSA])
+* AGSEC-127: Encrypted cache
 
 * AGSEC-128: Key agreement with the server
 
@@ -201,11 +202,22 @@ External References
 
 * AGSEC-131: Data seek and destroy
 
-* AGSEC-132: Encrypted storage showcase app
-    
-    ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
+* AGSEC-137: Performance checks
+
+* AGSEC-138: Hold the fort
 
 * AGSEC-143: Provide a server implementation/specification for encrypted storage
+
+* AGSEC-147: Provide easy to use API interface for advanced encryption
+
+    ** AGSEC-116: Asymmetric encryption support (link:http://www.nsa.gov/business/programs/elliptic_curve.shtml[ECC])
+    ** AGSEC-118: Hashing support (link:http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf[SHA])
+    ** AGSEC-119: Message authentication support (link:http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf[GMAC], link:http://csrc.nist.gov/publications/fips/fips198-1/FIPS-198-1_final.pdf[HMAC])
+    ** AGSEC-120: Digital signatures support (link:http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf[ECDSA])
+
+* AGSEC-154: Encrypted storage showcase app
+    
+    ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
 
 
 2.0.0 (Mid March) 
