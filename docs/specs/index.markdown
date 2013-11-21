@@ -16,6 +16,7 @@ title: Specifications
 * [Pipe API](aerogear-client-pipe)
 * [Paging API](aerogear-client-paging)
 * [Paging API usage examples](aerogear-client-paging-usage)
+* [AeroGear Security Crypto](aerogear-crypto)
 
 #### Server Side Specifications
 * [AeroGear Controller 1.0.0](aerogear-controller)
