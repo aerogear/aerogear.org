@@ -58,7 +58,7 @@ AeroGear JS make use of [sjcl](http://crypto.stanford.edu/sjcl/) with wrappers f
                 data: cipherText
             };
 
-            var plainText = AeroGear.Crypto().decrypt ( options );;
+            var plainText = AeroGear.Crypto().decrypt( options );;
             
 
 ## Android
