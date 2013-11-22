@@ -71,7 +71,13 @@ External References
 *** Epic that groups on-going iOS security work can be found link:https://issues.jboss.org/browse/AGIOS-87[here]
 * *Data Sync*
 ** see link:https://issues.jboss.org/browse/AEROGEAR-830[AEROGEAR-830] and linked JIRAs
+
+1.5.0 (Mid March)
+~~~~~~~~~~~~~~~~~
 * *Notifications*
+** inspired by the JS module
+** STOMP support
+** MQTT support
 ** integration with _Data Sync_ and _Offline_
 
 2.0.0 Release
@@ -80,13 +86,13 @@ External References
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
+* Web 2.0 features
+** AFNetworking 2.x upgrade
+** SSE (Server Sent Event)
+** "real time web"
 * *Social*
 ** Auth
 *** Login via Facebook, G+, Twitter
 *** AeroGear.Auth adapter or separate
 ** Common API
 *** Posting, Profile Info, Friend List, etc.
-* *Notifications*
-** STOMP support
-** MQTT support
-
