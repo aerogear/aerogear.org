@@ -5,7 +5,7 @@ title: News
 ## AeroGear News
 
 {% for post in site.posts %}
-* [{{post.title}}]({{post.url}})
+*  {{post.date |  date: "%-d %b %Y" }} - [{{post.title}}]({{post.url}})
 {% endfor %}
 
 ## AeroGear Blogs
