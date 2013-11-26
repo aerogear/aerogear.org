@@ -659,6 +659,9 @@ With link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox
     NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
     NSData* IV = [AGRandomGenerator randomBytes:16];
     
+    // init cryptobox with a key
+    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:encryptionKey];
+
     // encrypt
     NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:IV];
                 
