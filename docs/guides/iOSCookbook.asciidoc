@@ -365,14 +365,14 @@ The remove function allows you to delete a single entry in the collection, if pr
 
 [source,c]
 ----
-// remove the task with the '0' ID:
+// remove the taskObject:
 NSError *error;
 
-if (![myStore remove:@"0" error:error])
+if (![myStore remove:taskObject error:error])
     NSLog(@"Save: An error occured during remove! \n%@", error);    
 ----
 
-The remove method accepts the _recordID_ of the object you want to remove. If the object does not exist in the store, FALSE is returned.
+The remove method accepts a _taskObject_ which is the object you want to remove. If the object does not exist in the store, FALSE is returned.
 
 === Filter the entire store
 
