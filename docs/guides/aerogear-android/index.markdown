@@ -34,5 +34,5 @@ title: AeroGear Android User Guide
 * [call4paperz4android](https://github.com/danielpassos/call4paperz4android)
 * [AGReddit](http://github.com/secondsun/AGReddit)
 
-## Presentations about AreoGear on Android
+## Presentations about AeroGear on Android
 * [AeroGear Android 1.0.0 ](http://www.rvl.io/secondsun/aerogear-android-1)
