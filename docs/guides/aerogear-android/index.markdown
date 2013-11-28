@@ -19,6 +19,14 @@ title: AeroGear Android User Guide
 * [Store](AerogearAndroidDataStore)
 * [Push Messaging](AerogearAndroidPush)
 
+## Example apps
+
+* [Cookbook](https://github.com/aerogear/aerogear-android-cookbook)
+* [TODO](https://github.com/aerogear/aerogear-android-todo)
+* [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-android)
+* [Crypto Demo](https://github.com/aerogear/aerogear-crypto-android-demo)
+* [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo)
+
 ## JavaDoc documentation
 * [1.3.0 JavaDocs](/docs/specs/aerogear-android/)
 
