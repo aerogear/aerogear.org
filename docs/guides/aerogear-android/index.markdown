@@ -36,3 +36,4 @@ title: AeroGear Android User Guide
 
 ## Presentations about AeroGear on Android
 * [AeroGear Android 1.0.0 ](http://www.rvl.io/secondsun/aerogear-android-1)
+* [AeroGear Android - The mobile developer's utility belt](http://www.slideshare.net/danielpassos/mobileconf-2013-aerogear-android)
