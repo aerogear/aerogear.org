@@ -12,8 +12,8 @@ AeroGear provides a Java library that allows you to programmatically access and 
 The library can be downloaded through the project link:https://github.com/aerogear/aerogear-unified-push-java-client[github] page or if you are using Maven, simply add the following dependency in your 'pom.xml':
 
         <dependency>
-            <groupId>org.jboss.aerogear.unifiedpush</groupId>
-            <artifactId>unified-push-java-client</artifactId>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>unifiedpush-java-client</artifactId>
             <version>0.4.0</version>
         </dependency>
 
