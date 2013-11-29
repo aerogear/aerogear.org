@@ -188,6 +188,18 @@ Open the _AndroidManifest.xml_ file and below the '<manifest>' entry add the nec
 ...
 ----
 
+Set the application name.  In the '<application>' element add the android:name attribute:
+
+[source,xml]
+----
+<application
+    android:allowBackup="true"
+    android:icon="@drawable/ic_launcher"
+    android:label="@string/app_name"
+    android:theme="@style/AppTheme" 
+    android:name="com.push.pushapplication.PushApplication">
+----
+
 Let's register now AeroGear's Broadcast Receiver that will listen for notifications. Below the '<application>' entry add the following:
 
 [source,xml]
