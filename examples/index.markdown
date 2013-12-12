@@ -16,6 +16,9 @@ Below are lists of example applications and running demos which demonstrate the 
 
 ### iOS
 
+* [Cookbook](https://github.com/aerogear/aerogear-ios-cookbook)
+* [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-ios)
+* [Crypto Demo](https://github.com/aerogear/aerogear-crypto-ios-demo)
 * [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo)
 
 
