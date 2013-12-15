@@ -39,5 +39,17 @@ Now, clientB still has the old revision and tries to update the car object:
     {"error":"conflict","reason":"Document update conflict."}
     This conflict would the have to be handled by the client. Could we start out with something similar and as simple as this and evolve it?  
 
+# Summersp's Unified Push Sync notifications
 
+My idea is to send out a message using unified push.  
 
+The message should have a key which identifies what type of data is being synchronized (it doesn't matter what the key is as long as it is the same for all clients of the application).
+
+    UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()
+    .pushApplicationId("66ebc03c-55d7-428d-8dc5-95e800c03f1f")
+    .masterSecret("f9bd9ff9-0d62-4882-949e-6351815817d8")
+    .aliases(Arrays.asList(user.getEmail()))
+    .attribute("org.devnexus.sync.UserCalendar", "true")
+    .build();
+
+In this case, the key is "org.devnexus.sync.UserCalendar".  The client's message handlers will check for this key and run a `loadRemoteChanges` on the synchronizer which corresponds to "org.devnexus.sync.UserCalendar".
