@@ -40,9 +40,9 @@ The Body will contain (JSON) details about the created _PushApplication_:
   "pushApplicationID":"c4c7bd2a-9eb0-4613-90fe-43c214424d69",
   "masterSecret":"cdba924f-ab55-4f74-af40-3d6d8f823115",
   "developer":"admin",
-  "androidApps":[],
-  "simplePushApps":[],
-  "iosapps":[]
+  "androidVariants":[],
+  "simplePushVariants":[],
+  "iosvariants":[]
 }
 ----
 
@@ -111,9 +111,9 @@ The Body will contain (JSON) details about the _PushApplication_:
   "pushApplicationID":"c4c7bd2a-9eb0-4613-90fe-43c214424d69",
   "masterSecret":"cdba924f-ab55-4f74-af40-3d6d8f823115",
   "developer":"admin",
-  "androidApps":[],
-  "simplePushApps":[],
-  "iosapps":[]
+  "androidVariants":[],
+  "simplePushVariants":[],
+  "iosvariants":[]
 }
 ----
 
