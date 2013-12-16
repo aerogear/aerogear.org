@@ -10,3 +10,4 @@ The following _Variants_ are supported:
 * [Android Variant](Android)
 * [iOS Variant](iOS)
 * [SimplePush Variant](SimplePush)
+* [Chrome Packaged App Variant](ChromePackagedApp)
