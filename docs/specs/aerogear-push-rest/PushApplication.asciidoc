@@ -156,7 +156,7 @@ Failure status code and description
 * +HTTP/1.1 400 Bad Request+
 The format of the client request was incorrect  (e.g. missing required values).
 
-* +HTTP/1.1 401 Unauthorized+ 
+* +HTTP/1.1 401 Unauthorized+
 The request requires authentication.
 
 * +HTTP/1.1 404 Not Found+
