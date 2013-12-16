@@ -42,7 +42,8 @@ The Body will contain (JSON) details about the created _PushApplication_:
   "developer":"admin",
   "androidVariants":[],
   "simplePushVariants":[],
-  "iosvariants":[]
+  "iosvariants":[],
+  "chromePackagedAppVariants":[]
 }
 ----
 
@@ -113,7 +114,8 @@ The Body will contain (JSON) details about the _PushApplication_:
   "developer":"admin",
   "androidVariants":[],
   "simplePushVariants":[],
-  "iosvariants":[]
+  "iosvariants":[],
+  "chromePackagedAppVariants":[]
 }
 ----
 
