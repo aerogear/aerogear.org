@@ -57,7 +57,7 @@ This will create the symbolic link and the folder should be fixed in XCode. If t
 
 ====
 
-image::img/folders.png[Sample Folder List in XCode]
+image::../img/folders.png[Sample Folder List in XCode]
 
 Next, open *AppDelegate.m* and add the following code to the beginning of the file just after the *@synthesize* statement to create a custom User-Agent string that we will check for in our app's main JavaScript file:
 
@@ -75,24 +75,24 @@ Finally, we must add an exception in Cordova to allow it to access external urls
 
     html5-aerogear.rhcloud.com
 
-image:img/iosCordovapList.png[Cordova pList]
+image:../img/iosCordovapList.png[Cordova pList]
 
 That's it! You should now be ready to see it in action. 
 
 Change the *Target* in the *Scheme* menu to *KitchensinkCordova* and select a device:
 
-image::img/xcode_kitchensink_simulator.png[]
+image::../img/xcode_kitchensink_simulator.png[]
 
 Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://html5-aerogear.rhcloud.com[html5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the HTML5 kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
 
-image::img/network.png[iOS Simulator shoing network connection output]
+image::../img/network.png[iOS Simulator shoing network connection output]
 
 ==== Building the App for Devices
 After you are able to successfully test your app with the iOS Simulator, it is time to test it on a device. As stated above in the system requirements, this is going to require an Apple Developer account, an iOS development certificate (downloaded to your machine) and a provisioning profile (also downloaded and installed in XCode) for the device(s) you plan to test on. For more information about these requirements, visit the http://developer.apple.com[Apple Developer] site. Now, on to the steps to deploy to your device.
 
 One important note about the provisioning profile is that the when you create your App ID, it must match the App ID of the app exactly or it won't work. For this quickstart, we have used *org.jboss.as.quickstarts.kitchensinkcordova.KitchensinkCordova* as the App ID so you must also create that App ID in your profile and create a provisioning profile for it if you wish to test this quickstart.
 
-image::img/appID.png[Example App ID]
+image::../img/appID.png[Example App ID]
 
 Once you have your provisioning profile set up and installed, open your project in XCode again. In the center pane, on the left side under Projects, click on your project (in this case KitchensinkCordova). Now, to the right of that, at the top, click *Build Settings*. In the build settings, there is a section named *Code Signing*. Next to the *Code Signing Identity*, click to change the value to your certificate which should be in the list if you followed the steps from the Apple Developer site on installing your certificate. Your certificate name should look something like *iPhone Developer: Kristopher Borchers (&lt;some_random_string&gt;)*.
 
@@ -111,23 +111,23 @@ These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting
 
 First, we need to create a new project. In Eclipse, go to *File -> New -> Other...*, and select *Android Application Project*:
 
-image::img/android_new_project_1.png[]
+image::../img/android_new_project_1.png[]
 
 Enter *KitchensinkCordova* as the project name, and *org.jboss.as.quickstarts.kitchensinkcordova* as the package:
 
-image::img/android_new_project_2.png[]
+image::../img/android_new_project_2.png[]
 
 Click *Next >*. You can accept the defaults on this screen, and hit *Next >*:
 
-image::img/android_new_project_3.png[]
+image::../img/android_new_project_3.png[]
 
 Click *Next >*. You can accept the defaults on this screen, and hit *Next >*:
 
-image::img/android_new_project_4.png[]
+image::../img/android_new_project_4.png[]
 
 On the next screen click *Next >* to create an activity. Call the activity *KitchensinkCordova*:
 
-image::img/android_new_project_5.png[]
+image::../img/android_new_project_5.png[]
 
 Now, hit *Finish*.
 
@@ -215,15 +215,15 @@ Finally, just like the iOS version, we must add an exception in Cordova to allow
 
 That's it! You should now be ready to see it in action. Near the upper left corner of Eclipse, there is a button that looks like a little phone with a green Android on the screen, click that and it will launch the Android Virtual Device (AVD) manager.
 
-image::img/avdbutton.png[AVD Button]
+image::../img/avdbutton.png[AVD Button]
 
 If you have not yet created a virtual device, you should do so now. The link:../CordovaSetup[Cordova Setup] guide details how to do this. This sample was built for the Android 2.1 SDK for maximum compatibility with current devices but should work on any 2.x or 4.0 SDK. The sample was not tested on the 3.x series.
 
-image::img/avd.png[AVD selection window]
+image::../img/avd.png[AVD selection window]
 
 Now that you have a virtual device, select it and click Start. On the following screen, keep the default settings and click Launch and the simulator will start. Now that you have a running simulator, go back to Eclipse, close the AVD window, then right-click (control+click) the project in the left pane, and go to *Run as -&gt; Android Application*. Select your simulator from the list of running devices, and click OK. This will launch the app in the simulator and you are off and running.
 
-image::img/androidSim.png[App running in Android simulator]
+image::../img/androidSim.png[App running in Android simulator]
 
 ==== Building the App for Devices
 Running the app on your Android device is even easier. First, make sure your device has USB debugging enabled. This is usually done by going to *Settings -&gt; Applications -&gt; Development -&gt; USB debugging*. Once you have done this, make sure there are no virtual devices running, then connect your device to your computer with your USB cable. In Eclipse, go to Run -&gt; Run (or click the green "Play" button in the toolbar) and the app should start on your device. If you still have the simulator running, the app may start in the simulator. If this happens, or you would like to have both the simulator running and your device connected, you can use the method outlined in the section on running your app in the simulator. When you get to the part on selecting a running device, both your simulator and your physical device should be in the list and you can select from there.
