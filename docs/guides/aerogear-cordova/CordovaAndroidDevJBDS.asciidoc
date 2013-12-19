@@ -39,19 +39,19 @@ _Again, make sure to remember where you unzipped it._
 Now install the Android (ADT) Plug-Ins into JBDS/Eclipse
 Click Help > Install New Software
 
-image:img/ss_install_software.png[]
+image:../img/ss_install_software.png[]
 
 Next, Enter this url: https://dl-ssl.google.com/android/eclipse/ in the "Work with" box and click enter
 
-image:img/ss_install_software_dt_0.png[]
+image:../img/ss_install_software_dt_0.png[]
 
 Then, Check Developer Tools
 
-image:img/ss_install_software_dt_1.png[]
+image:../img/ss_install_software_dt_1.png[]
 
 You will be prompted to restart Eclipse, please do so.
 
-When JBDS/Eclipse restarts you should notice at least two new icons in your toolbar - image:img/ss_install_software_dt_icon.png[]
+When JBDS/Eclipse restarts you should notice at least two new icons in your toolbar - image:../img/ss_install_software_dt_icon.png[]
 the leftmost one is the Android SDK Manager.  Click on the SDK Manager to see if it launches correctly, make sure that your Android OS version, for your real-world device is listed as “Installed”.  This will be covered again later in this tutorial.
 
 === Project Setup - Part 1
@@ -60,28 +60,28 @@ Now that your system is setup, lets create a new Android Project by clicking Fil
 
 In the "Select a wizard" dialog, select "Android Application Project", then click "Next".
 
-image:img/ss_project_setup_0.png[]
+image:../img/ss_project_setup_0.png[]
 
 Enter the "Application Name", "Project Name" and "Package Name".  We will use AndroidHelloWorld.  Your setup should look similar to the screen shot below
 
-image:img/ss_project_setup_1.png[]
+image:../img/ss_project_setup_1.png[]
 
 NOTE: Build SDK and Minimum Required SDK should be set based on your actual Android phone - the physical device.  In addition, these drop boxes are populated based on the Android SDK Manager - “installed” options.   If your real-world device Android OS is not listed here, simply take the defaults for now.  It is possible to switch these settings back to your real target platform, however, it might be best for you to start your project over again - just for the learning experience.
 
 
 Next, We Will keep the defaults on the "Configure Launcher Icon" dialog, so click "Next".
 
-image:img/ss_project_setup_2.png[]
+image:../img/ss_project_setup_2.png[]
 
 
 Then, make sure that "Blank Activity" is selected on the "Create Activity" dialog, then click "Next".
 
-image:img/ss_project_setup_3.png[]
+image:../img/ss_project_setup_3.png[]
 
 
 Lastly, we will keep the defaults on the "New Activity" dialog, so just click "Finish".
 
-image:img/ss_project_setup_4.png[]
+image:../img/ss_project_setup_4.png[]
 
 === Project Setup - Part 2
 
@@ -89,54 +89,54 @@ Now that we have our shell, we need to add a few more files and directories befo
 
 First, under the "assets" directory we need to create a new folder called "www".  The easiest way to do this is to "Right-Click" the "assets" directory and select "New Folder".  Then, in the dialog box type "www" and click "Finish".
 
-image:img/ss_project_setup_5.png[]
+image:../img/ss_project_setup_5.png[]
 
-image:img/ss_project_setup_6.png[]
+image:../img/ss_project_setup_6.png[]
 
-image:img/ss_project_setup_7.png[]
+image:../img/ss_project_setup_7.png[]
 
 TIP: Think of "www" as the equivalent of "webapp" in a Maven project.
 
 Next, we will need to add the cordova-2.0.0.jar to our libs directory.  This can be done by just dragging & dropping the jar file (hope you didn't forget where you downloaded it) into Eclipse/JBDS and when prompted, select copy files and click "Ok".
 
-image:img/ss_project_setup_8.png[]
+image:../img/ss_project_setup_8.png[]
 
-image:img/ss_project_setup_9.png[]
+image:../img/ss_project_setup_9.png[]
 
-image:img/ss_project_setup_10.png[]
+image:../img/ss_project_setup_10.png[]
 
 Once the "cordova-2.0.0.jar" is in the "lib" directory, "Right-Click" it and select Build Path -> Add to Build Path.
 
-image:img/ss_project_setup_11.png[]
+image:../img/ss_project_setup_11.png[]
 
 Next, under "www" add a "js" folder then "libs" folder so we can add the "cordova-2.0.0.js" to libs by dragging & dropping it the same way we did the .jar file.
 
-image:img/ss_project_setup_12.png[]
+image:../img/ss_project_setup_12.png[]
 
 We also need to bring in the "XML" folder with its config.xml into the "res" directory, also by dragging & dropping the same way we did for the previous to files.
 
-image:img/ss_project_setup_13.png[]
+image:../img/ss_project_setup_13.png[]
 
-image:img/ss_project_setup_14.png[]
+image:../img/ss_project_setup_14.png[]
 
 
 Now that our folders and libraries and setup, it's time to start creating our content.
 
 First we need to create an "index.html".  To do this, right-click the "www" folder, then choose New -> Other
 
-image:img/ss_project_setup_15.png[]
+image:../img/ss_project_setup_15.png[]
 
 Then, select "HTML File" and click "Next"
 
-image:img/ss_project_setup_16.png[]
+image:../img/ss_project_setup_16.png[]
 
 Then, name it "index.html" and click "Next"
 
-image:img/ss_project_setup_17.png[]
+image:../img/ss_project_setup_17.png[]
 
 Finally, select the HTML 5 Template and click "Finish"
 
-image:img/ss_project_setup_18.png[]
+image:../img/ss_project_setup_18.png[]
 
 
 Open the new index.html file if isn't already open.  We are going to add in a reference to cordova-2.0.0.js into the HEAD section of the HTML.
@@ -148,7 +148,7 @@ and a hello message in the BODY
   <h1>Hello Apache Cordova</h1>
 
 Your "index.html" file should look similar to this:
-image:img/ss_project_setup_19.png[]
+image:../img/ss_project_setup_19.png[]
 
 
 Next, we need to edit the "MainActivity.java".  We need to change "extends Activity" to be "extends DroidGap"
@@ -157,7 +157,7 @@ This will initially give you a ton of red in the editor as DroidGap has not yet 
 
 Then select "Import DroidGap (org.apache.cordova)"
 
-image:img/ss_project_setup_21.png[]
+image:../img/ss_project_setup_21.png[]
 
 Comment out
 
@@ -167,12 +167,12 @@ and enter the following line:
 
   super.loadUrl("file:///android_asset/www/index.html");
 
-image:img/ss_project_setup_23.png[]
+image:../img/ss_project_setup_23.png[]
 
 
 Now we need to edit the "AndroidManifest.xml"
 
-image:img/ss_project_setup_24.png[]
+image:../img/ss_project_setup_24.png[]
 
 
 With the file open, we need to insert the following between the "uses-sdk" and "application" tags.
@@ -207,14 +207,14 @@ NOTE: Your current “hello world” style application does not yet require any 
 
 The result should look like the following screenshot:
 
-image:img/ss_project_setup_25.png[]
+image:../img/ss_project_setup_25.png[]
 
 
 Now, locate the <activity> tag and add the following attribute:
 
   android:configChanges = "orientation|keyboardHidden"
 
-image:img/ss_project_setup_26.png[]
+image:../img/ss_project_setup_26.png[]
 
 === Run Configuration Setup
 
@@ -222,19 +222,19 @@ image:img/ss_project_setup_26.png[]
 
 Under the JBDS/Eclipse Run menu, select Run Configurations…
 
-image:img/ss_project_setup_27.png[]
+image:../img/ss_project_setup_27.png[]
 
 Add a New Configuration for Android Application and name it "AndroidHelloWorld"
 
-image:img/ss_project_setup_28.png[]
+image:../img/ss_project_setup_28.png[]
 
 Now, select the AndroidHelloWorld project using the Browse button
 
-image:img/ss_project_setup_29.png[]
+image:../img/ss_project_setup_29.png[]
 
 And on the Target tab, select “Always prompt to pick device”
 
-image:img/ss_project_setup_30.png[]
+image:../img/ss_project_setup_30.png[]
 
 TIP: This setup will make it easier for you to switch back and forth between the Android Emulator (AVDs) and a real device plugged in via USB.
 
@@ -261,17 +261,17 @@ Once the SDK has been installed, lets head back over to JBDS and create an Andro
 
 "Right-click" on the project and select "Run As -> Android Application"
 
-image:img/ss_avd_setup_0.png[]
+image:../img/ss_avd_setup_0.png[]
 
 The "Android Device Chooser" dialog will appear.  This will allow you to select between any real world devices that are plugged into your laptop/machine OR AVD/emulators.
 
-image:img/avd.png[]
+image:../img/avd.png[]
 
 If this is your first time, then most likely this dialog will be blank.  If you already have and AVD created, then you can skip the setup steps.
 
 Click on New...
 
-image::img/avd_new.png[New AVD]
+image::../img/avd_new.png[New AVD]
 
 And then create the new AVD, giving it a name of your choice. You should have installed an Android 2.x or 4.0 SDK through the SDK manager (as part of the step-by-step guide above).
 
@@ -283,7 +283,7 @@ The "default" end-user experience is typically displayed in the emulator.  _You 
 
 Once the Android OS has fully loaded, it will then run your application.  _This takes a while, on a slower computer likely several minutes._
 
-image:img/ss_avd_setup_1.png[]
+image:../img/ss_avd_setup_1.png[]
 
 The Android Developer site has a good tutorial about setting up your "Real Device" here: http://developer.androidcom/tools/device.html
 
@@ -303,16 +303,16 @@ NOTE: I have seen the run operation fail at times, simply try again.   In one ca
 
 Now lets make it more interesting by adding some jQuery Mobile functionality.  Right-click on "www" and select "New Other", then select "HTML File".
 
-image:img/ss_build_0.png[]
+image:../img/ss_build_0.png[]
 
 
 Name it "mobile.html" and select "Next"
 
-image:img/ss_build_1.png[]
+image:../img/ss_build_1.png[]
 
 Select "HTML5 jQuery Mobile Page" and select "Finish"
 
-image:img/ss_build_2.png[]
+image:../img/ss_build_2.png[]
 
 This will be our new "landing" page, but first we need to open MainActivity.java and change the reference to index.html to mobile.html
 
@@ -320,7 +320,7 @@ This will be our new "landing" page, but first we need to open MainActivity.java
 
 Once that is complete, Save and Run
 
-image:img/ss_build_3.png[]
+image:../img/ss_build_3.png[]
 
 NOTE: This file contains references to remotely located jQuery & jQuery Mobile - it is recommended that you bring those files locally into the project for a Phonegap/Apache Cordova style application.
 
@@ -338,7 +338,7 @@ NOTE: For a mobile app, you want the majority of your resources, especially stat
 
 Then, create a "css" directory underneath "www" and drag & drop the "jquery.mobile-1.1.1.css" and the "images" into "css" as shown in the following screenshot. _note: your version of jQuery/jQuery Mobile might be different_
 
-image:img/ss_build_4.png[]
+image:../img/ss_build_4.png[]
 
 NOTE: It is normally recommended to use the .min versions of the JS libs, however, Eclipse often complains about those files as it cannot parse them.  This can even become a bigger problem when Eclipse refuses to let you deploy (Run As) your app.  Plus, these files are being bundled in your app for deployment the device so size is less important.
 
@@ -359,7 +359,7 @@ Also, change the alert(“Ready To Go”); to console.log
 
 And in the LogCat tab you should see the console.log output.
 
-image:img/ss_build_5.png[]
+image:../img/ss_build_5.png[]
 
 TIP: If you receive a “[ERROR] Error initializing Cordova: Class not found” message then it is likely you forgot to add the xml/config.xml directory & file under “res” in the project.
 
@@ -430,7 +430,7 @@ Finally, add the HTML tag needed to display the results.  This will go in the da
 
 The result:
 
-image:img/ss_build_7.png[]
+image:../img/ss_build_7.png[]
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Geolocation check out the API docs at:
 http://docs.phonegap.com/en/2.0.0/cordova_geolocation_geolocation.md.html#Geolocation
@@ -475,17 +475,17 @@ Your code should now look like the following:
 
 Scripts:
 
-image:img/ss_accel_0.png[]
+image:../img/ss_accel_0.png[]
 
 
 HTML:
 
-image:img/ss_accel_1.png[]
+image:../img/ss_accel_1.png[]
 
 
 Finally, Run It
 
-image:img/ss_accel_2.png[]
+image:../img/ss_accel_2.png[]
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Accelerometer check out the API docs at:
 http://docs.phonegap.com/en/2.0.0/cordova_accelerometer_accelerometer.md.html#Accelerometer
@@ -517,11 +517,11 @@ Open res/xml/config.xml
 
 And update access origin to equal ”*”
 
-image:img/ss_rest_0.png[]
+image:../img/ss_rest_0.png[]
 
 Now, Run it.
 
-image:img/ss_rest_1.png[]
+image:../img/ss_rest_1.png[]
 
 NOTE: This is primarily useful for development.  An app you are deploying to real end-users via the Google Play Store, you will wish to be more specific.
 
