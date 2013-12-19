@@ -50,11 +50,11 @@ If you have 64-bit systems, you will need to install some 32bit packages, becaus
 
 Now, let's setup an Android Virtual Device in Eclipse. Click on the AVD button:
 
-image::img/avdbutton.png[AVD Button]
+image::../img/avdbutton.png[AVD Button]
 
 Click on New...
 
-image::img/avd_new.png[New AVD]
+image::../img/avd_new.png[New AVD]
 
 And then create the new AVD, giving it a name of your choice. You should have installed an Android 2.x or 4.0 SDK through the SDK manager (as part of the step-by-step guide above). You should choose this as your target when creating a virtual device.
 
