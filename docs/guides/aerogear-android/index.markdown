@@ -6,6 +6,7 @@ title: AeroGear Android User Guide
 # AeroGear Android User Guides
 
 ## Getting Started Guides
+* [How to build AeroGear Android library](HowToBuildAeroGearAndroidLibrary)
 * [Get Started With Android Development on the Command Line](/docs/guides/GetStartedAndroid/)
 * [Get Started With Android Development in Eclipse](/docs/guides/GetStartedAndroidEclipse/)
 * [Get Started With Android Development in Intellij](/docs/guides/GetStartedAndroidIntellij/)

@@ -1,0 +1,95 @@
+---
+layout: basic
+title: How to build AeroGear Android Library
+---
+
+== How to build AeroGear Android Library
+
+=== Prereqs
+
+* link:http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java 7]
+* link:http://maven.apache.org/[Maven 3.1.1]
+* Latest link:https://developer.android.com/sdk/index.html[Android SDK] and link:http://developer.android.com/tools/revisions/platforms.html[Plataform version]
+* Latest link:http://developer.android.com/tools/support-library/index.html[Android Support Library] and link:http://developer.android.com/google/play-services/index.html[Google Play Services]
+* Latest link:https://github.com/mosabua/maven-android-sdk-deployer[Maven Android SDK Deployer]
+
+=== Usage
+
+==== non-maven/gradle
+
+You will also need
+
+* link:http://developer.android.com/tools/support-library/index.html[Android Support Library]
+* link:http://developer.android.com/google/play-services/index.html[Google Play Service] (Only for link:https://github.com/aerogear/aerogear-unifiedpush-server[UPS])
+* link:http://code.google.com/p/google-gson/downloads/list[gson 2.2.2]
+* link:http://code.google.com/p/guava-libraries/[guava 13.0.1]
+* link:https://github.com/aerogear/aerogear-crypto-java/releases[Aerogear Crypto 0.1.0]
+If you use the Crypto features you will also need to download
+* link:http://rtyley.github.io/spongycastle/#downloads[Spongey Castle]
+ 
+See our "Getting Started Guides" for detailed instructions
+
+=== Maven
+
+```
+<dependency>
+  <groupId>org.jboss.aerogear</groupId>
+  <artifactId>aerogear-android</artifactId>
+  <version>1.3.0</version>
+  <scope>provided</scope>
+  <type>jar</type>
+</dependency>
+
+<dependency>
+  <groupId>org.jboss.aerogear</groupId>
+  <artifactId>aerogear-android</artifactId>
+  <version>1.3.0</version>
+  <type>apklib</type>
+</dependency>
+```
+
+=== Gradle (as experimental)
+
+```
+dependencies {
+  compile 'org.jboss.aerogear:aerogear-android:1.3.0'
+}
+```
+
+
+== Building
+
+AeroGear's Android libraries are built as apklib projects using Maven, but Google doesn't ship all the needed libraries to maven central. You need locally deploy them using the link:https://github.com/mosabua/maven-android-sdk-deployer[maven-android-sdk-deployer].
+
+=== Checkout maven-android-sdk-deployer
+```
+git clone git://github.com/mosabua/maven-android-sdk-deployer.git
+```
+
+=== Install android platform
+```
+cd $PWD/maven-android-sdk-deployer/platforms/19
+mvn install -N --quiet
+cd -
+```
+
+=== Install locally google-play-services
+```
+cd $PWD/maven-android-sdk-deployer/extras/google-play-services
+mvn  install -N --quiet
+cd -
+```
+
+=== Install locally compatibility-v4
+```
+cd $PWD/maven-android-sdk-deployer/extras/compatibility-v4
+mvn install -N --quiet
+cd -
+```
+
+=== Install locally compatibility-v7-appcompat
+```
+cd $PWD/maven-android-sdk-deployer/extras/compatibility-v7-appcompat
+mvn install -N --quiet
+cd -
+```
