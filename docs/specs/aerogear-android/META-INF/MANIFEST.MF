@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: passos
+Build-Jdk: 1.7.0_45
+Specification-Title: AeroGear Android Library
+Specification-Version: 1.3.1
+Specification-Vendor: JBoss by Red Hat
+Implementation-Title: AeroGear Android Library
+Implementation-Version: 1.3.1
+Implementation-Vendor-Id: org.jboss.aerogear
+Implementation-Vendor: JBoss by Red Hat
+Build-Timestamp: Wed, 18 Dec 2013 17:27:39 -0200
+Implementation-URL: http://aerogear.org
+Java-Vendor: Oracle Corporation
+Java-Version: 1.7
+Os-Arch: x86_64
+Os-Name: Mac OS X
+Os-Version: 10.9
+Scm-Connection: scm:git:git@github.com:aerogear/aerogear-android.git
+Scm-Revision: 5887e8078d1a2f1ce7397d4d7f97d29f5b8bfdab
+Scm-Url: git@github.com:aerogear/aerogear-android.git
+
