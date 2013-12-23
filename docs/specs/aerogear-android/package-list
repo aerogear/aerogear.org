@@ -17,9 +17,11 @@ org.jboss.aerogear.android.impl.pipeline.loader
 org.jboss.aerogear.android.impl.pipeline.loader.support
 org.jboss.aerogear.android.impl.pipeline.paging
 org.jboss.aerogear.android.impl.reflection
+org.jboss.aerogear.android.impl.security
 org.jboss.aerogear.android.impl.unifiedpush
 org.jboss.aerogear.android.impl.util
 org.jboss.aerogear.android.pipeline
 org.jboss.aerogear.android.pipeline.paging
 org.jboss.aerogear.android.pipeline.support
+org.jboss.aerogear.android.security
 org.jboss.aerogear.android.unifiedpush
