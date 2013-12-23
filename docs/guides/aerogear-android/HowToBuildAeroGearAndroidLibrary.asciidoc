@@ -17,7 +17,7 @@ title: How to build AeroGear Android Library
 
 ==== non-maven/gradle
 
-You will also need
+Depending on what you want to implement, you may also need:
 
 * link:http://developer.android.com/tools/support-library/index.html[Android Support Library]
 * link:http://developer.android.com/google/play-services/index.html[Google Play Service] (Only for link:https://github.com/aerogear/aerogear-unifiedpush-server[UPS])
