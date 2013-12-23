@@ -27,7 +27,7 @@ title: AeroGear Android User Guide
 * [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo)
 
 ## JavaDoc documentation
-* [1.3.0 JavaDocs](/docs/specs/aerogear-android/)
+* [1.3.1 JavaDocs](/docs/specs/aerogear-android/)
 
 ## Projects using AeroGear on Android
 * [call4paperz4android](https://github.com/danielpassos/call4paperz4android)
