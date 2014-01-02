@@ -42,7 +42,7 @@ The Body will contain (JSON) details about the created _Android Variant_:
   "variantID":"04e9f747-d256-4a24-a0ac-29b9a15e37b1",
   "secret":"70135d26-696d-426a-8183-e1fd0fcb86fe",
   "developer":"admin",
-  "instances":[],
+  "installations":[],
   "googleKey":"My Google API Key",
   "projectNumber":"My Project Number / Sender ID"
 }
@@ -118,7 +118,7 @@ The Body will contain (JSON) details about the specific _Android Variant_:
   "variantID":"04e9f747-d256-4a24-a0ac-29b9a15e37b1",
   "secret":"70135d26-696d-426a-8183-e1fd0fcb86fe",
   "developer":"admin",
-  "instances":[],
+  "installations":[],
   "googleKey":"My Google API Key",
   "projectNumber":"My Project Number / Sender ID"
 }

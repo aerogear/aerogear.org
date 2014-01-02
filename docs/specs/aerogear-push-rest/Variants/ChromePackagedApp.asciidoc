@@ -1,0 +1,202 @@
+---
+layout: basic
+title: AeroGear UnifiedPush Chrome Packaged App Variant REST APIs
+---
+
+APIs for working with Chrome Packaged App Variants
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The RESTful APIs for working with +Chrome Packaged App Variants+ are explained below:
+
+Creation of an *Chrome Packaged App Variant* (+HTTP POST+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+JSON Payload:
+[source,json]
+----
+{
+  "name" : "Chrome Packaged App App",
+  "description" : "The Chrome Packaged App Variant",
+  "clientID" : "My Google Client ID",
+  "clientSecret" : "My Google Client Secret",
+  "refreshToken" : "My Google Client Refresh Token"
+}
+----
+
+URL:
+[source,c]
+----
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/chrome
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 201 Created+
+The Body will contain (JSON) details about the created _Chrome Packaged App Variant_:
+[source,json]
+----
+{
+  "id":"402880e43fa95bb3013faf3c41b40005",
+  "name":"Chrome Packaged App App",
+  "description":"The Chrome Packaged App Variant",
+  "variantID":"04e9f747-d256-4a24-a0ac-29b9a15e37b1",
+  "secret":"70135d26-696d-426a-8183-e1fd0fcb86fe",
+  "developer":"admin",
+  "installations":[],
+  "clientID" : "My Google Client ID",
+  "clientSecret" : "My Google Client Secret",
+  "refreshToken" : "My Google Client Refresh Token"
+}
+----
+
+Failure status code and description
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 400 Bad Request+
+The format of the client request was incorrect (e.g. missing required values).
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_PushApplication_) does not exist.
+
+
+Read all *Chrome Packaged App Variants* for a *PushApplication* (+HTTP GET+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[source,c]
+----
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/chrome
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 200 OK+
+The Body will contain a JSON list of the _Chrome Packaged App Variants_, for the given PushApplication:
+
+[source,json]
+----
+[
+  {
+    "id":"402880e43fa95bb3013faf3c41b40005",
+    "name":"Chrome Packaged App App",
+    "description":"The Chrome Packaged App Variant",
+    ...
+  },
+  {...}
+]
+----
+
+
+Failure status code and description
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+
+Read a specific *Chrome Packaged App Variant* (+HTTP GET+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[source,c]
+----
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/chrome/{variantID}
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 200 OK+
+The Body will contain (JSON) details about the specific _Chrome Packaged App Variant_:
+[source,json]
+----
+{
+  "id":"402880e43fa95bb3013faf3c41b40005",
+  "name":"Chrome Packaged App App",
+  "description":"The Chrome Packaged App Variant",
+  "variantID":"04e9f747-d256-4a24-a0ac-29b9a15e37b1",
+  "secret":"70135d26-696d-426a-8183-e1fd0fcb86fe",
+  "developer":"admin",
+  "installations":[],
+  "clientID" : "My Google Client ID",
+  "clientSecret" : "My Google Client Secret",
+  "refreshToken" : "My Google Client Refresh Token"
+}
+----
+
+
+Failure status code and description
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_Chrome Packaged App Variant_) does not exist.
+
+
+Update a specific *Chrome Packaged App Variant* (+HTTP PUT+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+JSON Payload:
+[source,json]
+----
+{
+  "name" : "Updated Chrome Packaged App",
+  "description" : "A nice Chrome Packaged App Variant",
+  "clientID" : "Updated Google Client ID",
+  "clientSecret" : "Updated Google Client Secret",
+  "refreshToken" : "Updated Google Client Refresh Token"
+}
+----
+
+URL:
+[source,c]
+----
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/chrome/{variantID}
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 204 No Content+
+Empty body.
+
+Failure status code and description
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 400 Bad Request+
+The format of the client request was incorrect  (e.g. missing required values).
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_Chrome Packaged App Variant_) does not exist.
+
+
+Delete a specific *Chrome Packaged App Variant* (+HTTP DELETE+)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[source,c]
+----
+https://SERVER:PORT/CONTEXT/rest/applications/{pushApplicationID}/chrome/{variantID}
+----
+
+Success status code and returned body
++++++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 204 No Content+
+Empty body.
+
+Failure status code and description
+++++++++++++++++++++++++++++++++++
+
+* +HTTP/1.1 401 Unauthorized+
+The request requires authentication.
+
+* +HTTP/1.1 404 Not Found+
+The requested resource (_Chrome Packaged App Variant_) does not exist.
