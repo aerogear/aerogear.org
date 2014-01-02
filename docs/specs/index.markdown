@@ -33,3 +33,10 @@ title: Specifications
 * [AeroGear UnifiedPush RESTful APIs](aerogear-push-rest)
 * [AeroGear UnifiedPush Java Client](aerogear-unifiedpush-java-client)
 * [AeroGear UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
+
+#### Sync Specifications
+
+ * [Use Cases](aerogear-sync-use-cases)
+ * [Brain Storm](aerogear-data-sync)
+ * [Client API Proposals](aerogear-sync-client-api)
+ * [Server API Proposals](aerogear-sync-server-api)
