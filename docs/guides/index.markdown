@@ -15,6 +15,7 @@ title: Guides
 * [Get Started With AeroGear.js](GetStartedAeroGearJS.html)
 * [Get Started With HTML5 Mobile Web Development](GetStartedHTML5MobileWeb)
 * [Get Started with Hybrid Application Frameworks](aerogear-cordova/HybridApplicationFrameworks)
+* [How to build AeroGear Android library](aerogear-android/HowToBuildAeroGearAndroidLibrary)
 * [Get Started With Android Development on the Command Line](GetStartedAndroid)
 * [Get Started With Android Development in Eclipse](GetStartedAndroidEclipse)
 * [Get Started With Android Development in Intellij](GetStartedAndroidIntellij)
