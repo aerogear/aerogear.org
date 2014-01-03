@@ -94,7 +94,7 @@ var options = {
     key: rawPassword,
     data: cipherText
 };
-AeroGear.Crypto().decrypt(options, {
+agCrypto.decrypt(options, {
     success: function (text) {
         console.log(text);
     }
