@@ -1,0 +1,124 @@
+---
+layout: basic
+title: AeroGear Cordova Crypto
+---
+
+== AeroGear Cordova Crypto
+
+Before we start please install link:https://github.com/apache/cordova-cli/[Apache Cordova CLI], which is the command
+line tool to build, deploy and manage Cordova-based applications.
+
+Read about how OTP works on this link:/docs/guides/AeroGear-OTP/[AeroGear OTP guide]
+
+=== Example
+
+First let's create a new project and install the plugin.
+
+[source,c]
+----
+cordova create <app name>
+cd <app name>
+cordova platform add android
+cordova platform add ios
+cordova plugin add https://github.com/aerogear/aerogear-crypto-cordova.git
+----
+[NOTE]
+====
+for use in ios, you'll need to run `pod install`
+====
+
+Password based key derivation support (PBKDF2)
+
+[source,javascript]
+----
+var agCrypto = new AeroGear.Crypto();
+agCrypto.deriveKey('my password', null, {
+    success: function (rawPassword) {
+        console.log(rawPassword);
+    }
+});
+----
+
+Symmetric encryption support (GCM)
+
+* Encryption
+
+[source,javascript]
+----
+$.when(agCrypto.deriveKey('my password'), agCrypto.getRandomValue())
+    .then(function (rawPassword, IV) {
+            var options = {
+                IV: IV[0],
+                key: rawPassword[0],
+                data: "My Bonnie lies over the ocean, my Bonnie lies over the sea"
+            };
+            agCrypto.encrypt(options).then(function (cipherText) {
+                    console.log(cipherText);
+                }
+            });
+        },
+        function (error) {
+            console.log('error ' + error);
+        });
+        
+// or with regular callbacks
+
+agCrypto.deriveKey('my password', null, {
+    success: function (rawPassword) {
+        agCrypto.getRandomValue({
+            success: function (generatedIV) {
+                var options = {
+                    IV: generatedIV,
+                    key: rawPassword,
+                    data: "My Bonnie lies over the ocean, my Bonnie lies over the sea"
+                };
+                agCrypto.encrypt(options {
+                    success: function (cipherText) {
+                        console.log(cipherText);
+                    }
+                });
+            }
+        });
+    }
+});
+
+----
+
+* Decryption
+
+[source,javascript]
+----
+var options = {
+    IV: "69696ee955b62b73cd62bda875fc73d68219e0036b7a0b37",
+    AAD: "feedfacedeadbeeffeedfacedeadbeefabaddad2",
+    key: rawPassword,
+    data: cipherText
+};
+agCrypto.decrypt(options, {
+    success: function (text) {
+        console.log(text);
+    }
+});
+----
+
+Asymmetric encryption support (ECC) / iOS not supported
+
+[source,javascript]
+----
+$.when(agCrypto.KeyPair(), agCrypto.KeyPair(), agCrypto.getRandomValue())
+    .then(function (keyPair, keyPairPandora, IV) {
+        var options = {
+            IV: IV[0],
+            key: new agCrypto.KeyPair(keyPair[0].privateKey, keyPairPandora[0].publicKey),
+            data: "My bonnie lies over the ocean"
+        };
+        agCrypto.encrypt(options).then(function (cipherText) {
+            options.key = new agCrypto.KeyPair(keyPairPandora[0].privateKey, keyPair[0].publicKey);
+            options.data = cipherText;
+            agCrypto.decrypt(options).then(function (plainText) {
+                console.log('plainText ' + plainText);
+            });
+        });
+
+    });
+----
