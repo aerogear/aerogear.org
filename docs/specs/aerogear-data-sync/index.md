@@ -122,23 +122,11 @@ volunteers needed ;)
 
 ## Transport
 
-Since we know about the future-looking ideas on v2.0, it would be really nice for us to specify a very simple/dumb JSON-based protocol for those change messages. Something that could accomodate both the full document updates and the OT/EC incremental bits too. I have no ideas on this, tbh.  
+Since we know about the future-looking ideas on v2.0, it would be really nice for us to specify a very simple/dumb JSON-based protocol for those change messages. Something that could accomodate both the full document updates and the OT/EC incremental bits too. 
 
-#### Strawman - Summers
-
-{id : Object, data : String, checksum: long}
-
-**id** : 
- This is the global identifier for the object.  This field is optional.
-
-**data** : 
- This is the sync data for the application.  It may be a diff, a whole object, etc.  This field is required.
-
-**checksum** :
- This is the client's idea of what a known good sync will look like.  If, post merge, the server's checksum and client's check sum do not match then the client is out of sync and must resync and handle the conflict.
+- TBD 
 
 ## Appendix Use Cases:
-
 
 Here are a few contrived use cases that we may want to keep in mind.
 
