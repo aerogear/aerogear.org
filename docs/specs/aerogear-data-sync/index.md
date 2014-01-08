@@ -2,27 +2,55 @@
 layout: basic
 title: AeroGear Data Sync
 ---
-
 # Status: Experimental
 
-# AeroGear Data Sync
+# Goals
+-
 
+# References
 
-## basics?
+- [CouchDB data model](http://wiki.apache.org/couchdb/EntityRelationship)
 
-Since we've been catering the enterprise market, this essentially means we need to get the __boring__ stuff right first, then move over to the __shiny__ stuff, like realtime data sync, update policies & friends.
+# Implementation
 
-### data model
+- [AeroGear Sync Server](https://github.com/danbev/aerogear-sync-server)
 
-For starters, I think that the most important thing that needs to be agreed upon is the data model and the atomic operations around it. As previous discussed, I really like CouchDB's datamodel -- and hate erlang ;)
+# Scenarios
+
+TBD
+
+# API specification
+
+This document defines a common API for each mobile platform to make sure that everyone will be speaking about the same domain/vocabulary. 
+
+## Levels
+
+As soon as we have a rough data-model defined, we can start dabbling around different API levels to be served:
+
+(parts **I think** are potentially deliverable for a 1.0)
+
+- level 0: explodes when there's a conflict
+- level 1: semi-automatic conflict resolution via something like google's diff-match-patch
+- level 2: business rules determine who wins a conflicting update (supervisor wins over normal user)
+
+(parts **I think** are potentially deliverable for a 2.0)
+
+- level 3: real-time updates via diff-match-patch
+- level 4: real-time updates via OT/EC
+
+All those proposed API operations should be serializable, meaning I can potentially keep doing changes offline then just replying them to the server when online.
+
+## Data model
+
+For starters, I think that the most important thing that needs to be agreed upon is the data model and the atomic operations around it. 
 
 `{_id:<guid>, content:<arbitrary json>, rev:<last revision>}`
 
-#### JS
+### JS
 
 Well, it's JSON, it _Just Works_&trade; 
 
-#### Java
+### Java
 
 I didn't want to pick on Java, but since its fame forces me to it. First stab (a courtesy of our friend Dan Bevenius):
 
@@ -42,11 +70,11 @@ We naturally want to kick this a notch, and use objects instead of plain strings
     
 In this case, we can use the convention requiring that `T` is any **object serializable to  JSON**. `ID` is a convenience shorthand since it's a **GUID/UUID**. I think this key isn't necessarily a natural key (a surrogate key instead).
 
-#### Objective-C
+### Objective-C
 
 volunteers needed ;)
 
-### Transactions
+## Consistency
 
 These are the most basic parts of sync I can think of that our system should be able to do/manage.  Our internal representation of the client documents and collections should make implementing this automatically and without user intervention as simple as possible
 
@@ -74,25 +102,19 @@ These are the most basic parts of sync I can think of that our system should be 
 
     There must be a mechanism for resolving a conflict.  The CAN be done automatically using default resolvers provided by AeroGear, by using a resolver provided by the developer/user, or by the app user selecting the correct merge.  This will possibly generate a new sync message.
 
+### JS
 
-### API levels
+volunteers needed ;)
 
-As soon as we have a rough data-model defined, we can start dabbling around different API levels to be served:
+### Java
 
-(parts **I think** are potentially deliverable for a 1.0)
+volunteers needed ;)
 
-- level 0: explodes when there's a conflict
-- level 1: semi-automatic conflict resolution via something like google's diff-match-patch
-- level 2: business rules determine who wins a conflicting update (supervisor wins over normal user)
+### Objective-C
 
-(parts **I think** are potentially deliverable for a 2.0)
+volunteers needed ;)
 
-- level 3: real-time updates via diff-match-patch
-- level 4: real-time updates via OT/EC
-
-All those proposed API operations should be serializable, meaning I can potentially keep doing changes offline then just replying them to the server when online.
-
-### transport
+## Transport
 
 Since we know about the future-looking ideas on v2.0, it would be really nice for us to specify a very simple/dumb JSON-based protocol for those change messages. Something that could accomodate both the full document updates and the OT/EC incremental bits too. I have no ideas on this, tbh.  
 
@@ -108,8 +130,6 @@ Since we know about the future-looking ideas on v2.0, it would be really nice fo
 
 **checksum** :
  This is the client's idea of what a known good sync will look like.  If, post merge, the server's checksum and client's check sum do not match then the client is out of sync and must resync and handle the conflict.
-
-
 
 ## Appendix Use Cases:
 
@@ -203,3 +223,9 @@ Census system - we have mobile apps focused on offline data collection. We have 
 - [Summers' Devnexus Sync Demo](https://plus.google.com/103442292643366117394/posts/HGVHwtPArPW)
 
 - Google Android Sync Architecture
+
+# Next
+
+- Realtime data sync
+- Update policies
+
