@@ -126,7 +126,15 @@ Since we know about the future-looking ideas on v2.0, it would be really nice fo
 
 - TBD 
 
-## Appendix Use Cases:
+# AeroGear.next
+
+- Realtime data sync
+- Update policies
+- Advanced levels of the API
+    - level 3: real-time updates via diff-match-patch
+    - level 4: real-time updates via OT/EC
+
+# Appendix Use Cases:
 
 Here are a few contrived use cases that we may want to keep in mind.
 
@@ -200,9 +208,7 @@ Now they start finding expired fire extinguishers and start to add them to the r
 
 Census system - we have mobile apps focused on offline data collection. We have the previous year's info that needs to be updated on the server. The interviewee needs to take a call, then asks the interviewer to come back later. This results in two sets of changes for the same document, stacked together, which should work flawlessly.
 
-
-# Appendix Reference (Open Source) Products:
-
+## Reference (Open Source) Products:
 
 - Wave-in-a-box
 
@@ -218,12 +224,5 @@ Census system - we have mobile apps focused on offline data collection. We have 
 
 - Google Android Sync Architecture
 
-# AeroGear.next
-
-- Realtime data sync
-- Update policies
-- Advanced levels of the API
-    - level 3: real-time updates via diff-match-patch
-    - level 4: real-time updates via OT/EC
 
 
