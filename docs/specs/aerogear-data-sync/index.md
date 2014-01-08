@@ -5,7 +5,8 @@ title: AeroGear Data Sync
 # Status: Experimental
 
 # Goals
--
+
+- TBD
 
 # References
 
@@ -17,7 +18,7 @@ title: AeroGear Data Sync
 
 # Scenarios
 
-TBD
+- TBD
 
 # API specification
 
@@ -27,16 +28,9 @@ This document defines a common API for each mobile platform to make sure that ev
 
 As soon as we have a rough data-model defined, we can start dabbling around different API levels to be served:
 
-(parts **I think** are potentially deliverable for a 1.0)
-
 - level 0: explodes when there's a conflict
 - level 1: semi-automatic conflict resolution via something like google's diff-match-patch
 - level 2: business rules determine who wins a conflicting update (supervisor wins over normal user)
-
-(parts **I think** are potentially deliverable for a 2.0)
-
-- level 3: real-time updates via diff-match-patch
-- level 4: real-time updates via OT/EC
 
 All those proposed API operations should be serializable, meaning I can potentially keep doing changes offline then just replying them to the server when online.
 
@@ -44,7 +38,19 @@ All those proposed API operations should be serializable, meaning I can potentia
 
 For starters, I think that the most important thing that needs to be agreed upon is the data model and the atomic operations around it. 
 
-`{_id:<guid>, content:<arbitrary json>, rev:<last revision>}`
+`{_id:<guid>, content:<arbitrary json>, rev:<last revision>, checksum:<checksum>}`
+
+**id** (Object) : 
+ This is the global identifier for the object.  This field is optional.
+
+**data**  (String): 
+ This is the sync data for the application.  It may be a diff, a whole object, etc.  This field is required.
+ 
+ **revision** (long):
+Describes the version of the data stored and should be updated when the data changes.
+
+**checksum**  (long):
+ This is the client's idea of what a known good sync will look like.  If, post merge, the server's checksum and client's check sum do not match then the client is out of sync and must resync and handle the conflict.
 
 ### JS
 
@@ -224,8 +230,12 @@ Census system - we have mobile apps focused on offline data collection. We have 
 
 - Google Android Sync Architecture
 
-# Next
+# AeroGear.next
 
 - Realtime data sync
 - Update policies
+- Advanced levels of the API
+    - level 3: real-time updates via diff-match-patch
+    - level 4: real-time updates via OT/EC
+
 
