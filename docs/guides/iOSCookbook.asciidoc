@@ -155,6 +155,53 @@ The AGPipe also contains a 'remove' method to delete the object on the server. A
 
 In this case, where we have a RESTful pipe the API issues a HTTP DELETE request.
 
+== Multipart Upload
+
+Support for multipart upload is also provided. The types of data that can be uploaded are local files, instances of NSData and NSInputStream. 
+Let's see how the upload mechanism works with an example:
+
+[source,c]
+----
+// a multipart that contains a file
+NSURL *file1 = <path to a local file>
+AGFilePart *filePart = [[AGFilePart alloc]initWithFileURL:file1 name:@"myfile"];  // 1
+
+// a multipart that contains an NSData object
+NSData *data1 = [@"Lorem ipsum dolor sit amet.." dataUsingEncoding:NSUTF8StringEncoding]; 
+AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:data1    // 2
+                                                               name:@"data1"
+                                                            fileName:@"data1.txt" mimeType:@"text/plain"];
+
+// set up payload
+NSDictionary *dict = @{@"somekey": @"somevalue",  // 3
+                       @"another_key": @"some_other_key",
+                       @"file1":filePart,
+                       @"file2":dataPart};
+
+// set an (optional) progress block  // 4
+[[apiClient uploadPipe] setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+    NSLog(@"UPLOADPIPE Sent bytesWritten=%d totalBytesWritten=%qi of totalBytesExpectedToWrite=%qi bytes", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+}];
+ 
+// upload data
+[[apiClient uploadPipe] save:dict success:^(id responseObject) {
+    NSLog(@"Successfully uploaded!");
+
+} failure:^(NSError *error) {
+    NSLog(@"An error has occured during upload! \n%@", error);
+}];
+----
+
+An link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L46[AGFilePart] [1] and link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L64[AGFileDataPart] [2] objects are used to attach the data we want to upload. The former is initialized to point to a local file whereas the latter point to an NSData object respectively. Not shown in the example above, but an link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L86[AGStreamPart] can be also used to read the data from a NSInputStream directly.
+
+NOTE: For NSData we need to explicitly specify both the _'filename'_ and the _'MIME type'_, since they can not be automatically determined as with the case of a file.
+
+After initialization of the objects, we simply attach them to the payload [3], setting an (optional) progress block [4] so we can get notified during the upload.
+
+NOTE: Prior to version 1.4 of the library, multipart upload was supported by the means of attaching a __NSURL__ object directly on the payload. The method is still supported, but it is now deprecated and will be removed in the future versions of the library.
+
+=== Timeout
+
 == Time out and Cancel pending operations
 
 === Timeout
