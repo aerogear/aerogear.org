@@ -853,6 +853,22 @@ pre {
     *zoom: 1;
 }
 
+.specTable {
+    border-style:solid;
+    border-width: 1px;
+}
+.specTable th {
+     border-width: 1px;
+    border-style:solid;
+    padding:5px;
+}
+.specTable td {
+     border-width: 1px;
+    border-style:solid;
+    padding:5px;
+    text-align:center;
+}
+
 /* ==================================================================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
