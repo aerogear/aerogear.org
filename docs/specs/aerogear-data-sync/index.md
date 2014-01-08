@@ -38,7 +38,7 @@ All those proposed API operations should be serializable, meaning I can potentia
 
 For starters, I think that the most important thing that needs to be agreed upon is the data model and the atomic operations around it. 
 
-`{_id:<guid>, content:<arbitrary json>, rev:<last revision>, checksum:<checksum>}`
+`{_id:<guid>, content:<arbitrary json>, rev:<last revision>, signature:<digital signature>}`
 
 **id** (Object) : 
  This is the global identifier for the object.  This field is optional.
@@ -47,10 +47,11 @@ For starters, I think that the most important thing that needs to be agreed upon
  This is the sync data for the application.  It may be a diff, a whole object, etc.  This field is required.
  
  **revision** (long):
-Describes the version of the data stored and should be updated when the data changes.
-
-**checksum**  (long):
+ 
  This is the client's idea of what a known good sync will look like.  If, post merge, the server's checksum and client's check sum do not match then the client is out of sync and must resync and handle the conflict.
+
+**signature**  (byte array or String):
+Ensure the integrity of the data against tampering or corruption.
 
 ### JS
 
