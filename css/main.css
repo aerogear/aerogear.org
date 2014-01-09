@@ -219,6 +219,10 @@ li > p {
     width: 100%;
 }
 
+#main-header nav ul {
+    padding-left: 0;
+}
+
 #main-header ul {
     list-style: none;
     max-width: 60em;
