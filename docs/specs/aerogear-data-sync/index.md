@@ -78,7 +78,17 @@ In this case, we can use the convention requiring that `T` is any **object seria
 
 ### Objective-C
 
-volunteers needed ;)
+The first version of the Objective-C Data Model API would look like:
+
+    @interface AGDocument : NSObject
+
+    @property (readonly) NSString* documentID;
+    @property (readonly) NSString* revision;
+    @property id content;
+
+    @end
+
+The immutable `documentID` and `revision` properties represent the unique identifier of the document and its revision. The actual content/data is stored on the `content` property. They _dynamic_ `id` type is used to store objects that are **serializable to JSON**. In Objective-C that is usually `NSArray` and `NSDictionary`.
 
 ## Consistency
 
