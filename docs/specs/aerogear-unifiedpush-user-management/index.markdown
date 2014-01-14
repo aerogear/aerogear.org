@@ -5,8 +5,7 @@ title: AeroGear UnifiedPush Server - User Management
 
 ## Introduction
 
-The goal of this document is to describe how the User Management will be implemented in the Unified Push Server. Currently there is only one user created by default when installing UPS. Having the possibility to create multiple users is a "Must Have" and should be manageable from the Admin Console. Some roles should also be introduced 
-
+The goal of this document is to describe how the User Management will be implemented in the Unified Push Server.
    
 
 ## Roles / Permissions
@@ -62,7 +61,9 @@ There will be 3 different roles in this first version :
   </tbody>
 </table>
 
+## Default user creation on the first installation.
 
+When one deploys a fresh (including an empty database) UPS distribution, by default, an user ``` admin ``` with the role ``` admin ``` is created with the default password ``` 123 ```. When he logs in for the first time, he will be asked to change his password.
 
 ## User management flow
 
