@@ -5,7 +5,7 @@ title: HTML5 Mobile Quickstart & Archetype Deep Dive
 
 == HTML5 Mobile Quickstart & Archetype Deep Dive
 
-This article details the significant files, libraries, and source code for the HTML5 archetype and quickstart that are part of the JBoss-AS quickstart suite called  https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile[kitchensink-html5-mobile]. For instructions on getting started with the archetype and quickstart see: link:../GetStartedHTML5MobileWeb[Getting Started With HTML5 Mobile Web Development with JBoss].  The quickstart is nearly identical to the archetype, and for that reason this article will use the quickstart for reference, but the same files will exist if you create your own application using the archetype. 
+This article details the significant files, libraries, and source code for the HTML5 archetype and quickstart that are part of the JBoss-AS quickstart suite called https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile[kitchensink-html5-mobile]. For instructions on getting started with the archetype and quickstart see: link:../GetStartedHTML5MobileWeb[Getting Started With HTML5 Mobile Web Development with JBoss].  The quickstart is nearly identical to the archetype, and for that reason this article will use the quickstart for reference, but the same files will exist if you create your own application using the archetype. 
  
 In many cases the source code is best location for updated comments and details, please refer there for any additional information.
 
@@ -15,7 +15,7 @@ The web client side of this quickstart consists of single page application (inde
 
 ==== index.html
 
-Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/webapp/index.html[index.html]
+Github Source: https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/webapp/index.html[index.html]
  
 For this application we chose to follow the single page application approach where your entire client application can be encapsulated into a single html file.  While this may sound crazy at first there are actually some http://en.wikipedia.org/wiki/Single-page_application[very good reasons] to do this, especially if it fits your use-case.  For more complex use-cases other approaches may be appropriate.  In order for this approach to work you must follow a concept called "responsive design" where your application can adjust based on the client accessing it.  This application follows many of those tenants, and you can see this though our source comments, and sections below.
 
@@ -23,7 +23,7 @@ For this application we chose to follow the single page application approach whe
 
 From the header of the document you can see that this is a HTML5 file because of the <!DOCTYPE html> tag.  We then set the <meta> tags to define the scaling and viewport properties for our application.  In our case we are setting the initial width of the page to the width of the device and the initial scale to 1.
  
-After this comes our 3rd party libraries that we are using.  They are described in more detail in their own section below.  We also pull our app.js file which contains the majority of our JavaScript logic. There are some notes about minifying app.js which you can read more about in the https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/README.md[README].
+After this comes our 3rd party libraries that we are using.  They are described in more detail in their own section below.  We also pull our app.js file which contains the majority of our JavaScript logic. There are some notes about minifying app.js which you can read more about in the https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/README.md[README].
 
 [source, html]
 ----
@@ -48,7 +48,7 @@ After this comes our 3rd party libraries that we are using.  They are described 
 </head>
 ----
 
-Directly after this part of the header comes our initialization logic for our application.  This is best viewed in source code starting from https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/webapp/index.html#L44[line 44] or so.
+Directly after this part of the header comes our initialization logic for our application.  This is best viewed in source code starting from https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/webapp/index.html#L44[line 44] or so.
  
 In this section we do a couple of different things:
  
@@ -124,7 +124,7 @@ Note: it is important that any validation you enter here should match the Bean V
 
 === app.js
 
-Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/webapp/js/app.js[app.js]
+Github Source: https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/webapp/js/app.js[app.js]
  
 The app.js file contains the example's core JavaScript logic, and handles the RESTful requests to the server, as well as handling the updates to the UI based on them.
 
@@ -151,7 +151,7 @@ function updateMemberTable() {
 
 ==== buildMemberRows & getMemberTemplate
 
-Using underscore.js these methods retrieve the https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/webapp/tmpl/member.tmpl[member.tmpl] file from the server and populates it with the json data retrieved from the updateMemberTable method.  The output of this process is the table body for the member table on the application's main page.  For more on what underscore.js does check out the 3rd party section below and the project's home page.
+Using underscore.js these methods retrieve the https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/webapp/tmpl/member.tmpl[member.tmpl] file from the server and populates it with the json data retrieved from the updateMemberTable method.  The output of this process is the table body for the member table on the application's main page.  For more on what underscore.js does check out the 3rd party section below and the project's home page.
 
 [source, javascript]
 ----
@@ -218,11 +218,11 @@ function registerMember(memberData) {
 }
 ----
 
-If, on the other hand the request fails for some reason the method processes the JSON response and based on the JAX-RS response status displays validation errors to the user based on the field, and message provided by the server.  For more on the response codes and format see the server side section below on the https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/rest/MemberService.java[MemberService.java] class.
+If, on the other hand the request fails for some reason the method processes the JSON response and based on the JAX-RS response status displays validation errors to the user based on the field, and message provided by the server.  For more on the response codes and format see the server side section below on the https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/rest/MemberService.java[MemberService.java] class.
 
 === CSS Files
 
-Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/webapp/css[CSS directory]
+Github Source: https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/webapp/css[CSS directory]
  
 In our example we have three CSS files; d.screen.css, m.screen.css and screen.css; d.screen.css is for desktop, m.screen.css is for mobile, screen.css is common to both. These contain the various styles needed for our application.  Most of it is standard CSS styling, but I wanted to point out where it uses the new CSS3 selectors to make styling table cells easy.
 
@@ -242,7 +242,7 @@ This is just one example of the many updates to the CSS selector options availab
 
 === 3rd Party Libraries
 
-Github Source: JavaScript https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/client/src/main/webapp/js/libs[libs directory]
+Github Source: JavaScript https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/client/src/main/webapp/js/libs[libs directory]
  
 This application uses several 3rd party libraries to do some of the heavy lifting, and handle plumbing and boilerplate code.  These libraries represent just one combination, and there are many other quality libraries out there.  Look for more details and examples of these in the future.
  
@@ -271,14 +271,14 @@ As the yepnope web site says it is an asynchronous conditional resource loader t
 ==== Underscore.js
 Project Site: http://documentcloud.github.com/underscore/
  
-This is great utility library that has many great functions.  This examples primary use for it is to process templating of new member table rows by dynamically loading and populating the https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/webapp/tmpl/member.tmpl[member.tmpl] file.
+This is great utility library that has many great functions.  This examples primary use for it is to process templating of new member table rows by dynamically loading and populating the https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/webapp/tmpl/member.tmpl[member.tmpl] file.
 
 === JAX-RS Endpoint Source Code
 
 The server side of this application consists of a basic domain model using Bean Validation, and JAX-RS service endpoints using RESTEasy to provide access.
 
 ==== Member.java
-Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/model/Member.java[Member.java]
+Github Source: https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/model/Member.java[Member.java]
 
 [source, java]
 ----
@@ -315,7 +315,7 @@ Here you can see the domain object that is the base of our quickstart.  This cla
 Also note that at the top we are defining a table name for this object, and specifying that the Email field must be unique in the data table.  This will come into play later when need to validate this in the JAX-RS services, and process the response codes effectively.
 
 === MemberService.java
-Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/rest/MemberService.java[MemberService.java]
+Github Source: https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/rest/MemberService.java[MemberService.java]
  
 This class contains the actual RESTful endpoint definitions and processing code.  It uses RESTEasy which is JBoss's implementation of the JAX-RS specification to make this easy to do, and is configured using annotations.  A general discussion of JAX-RS is beyond the scope of this article but checkout the http://www.jboss.org/resteasy[RESTEasy] site for more!
 
@@ -403,12 +403,12 @@ builder = Response.ok();
 
 === JSONP Support
 
-Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/util/JSONPRequestFilter.java[JSONPRequestFilter.java]
+Github Source: https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/util/JSONPRequestFilter.java[JSONPRequestFilter.java]
  
 JSONP support makes requests accessible across domains by adding a callback function to the response. This may be necessary in certain situations like requesting information from a sub-domain of your site.  Look for more specific information on JSONP in a separate article, as it is a topic all its own.
 
 === Misc
-Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/rest/JaxRsActivator.java[JaxRsActivator.java]
+Github Source: https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/rest/JaxRsActivator.java[JaxRsActivator.java]
  
 The JaxRsActivator class does two things for us.  First is initializes JAX-RS without the need of a web.xml file, and second it defined the root path for all other JAX-RS HTTP call like this:
 
@@ -420,7 +420,7 @@ public class JaxRsActivator extends Application {
 }
 ----
 
-Github Source: https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/util/Resources.java[Resources.java]
+Github Source: https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/master/kitchensink-html5-mobile/src/main/java/org/jboss/as/quickstarts/html5_mobile/util/Resources.java[Resources.java]
  
 The Resources class uses CDI to alias Java EE resources, such as the persistence context, to CDI beans.  This makes them available to all other CDI beans, ala MemberSerice.java.
 
