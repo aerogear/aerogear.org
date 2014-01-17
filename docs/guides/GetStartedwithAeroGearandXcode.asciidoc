@@ -79,7 +79,7 @@ Again, make sure that _"Copy items into destination group's folder"_ and _"Creat
 
 === Step 3: Verify installation
 
-Now that our depenendecies are set up, it's time to verify our installation. For this, we are going to build a simple application that will fetch remote data from our testbed link:server.com[testbed server] deployed on link:https://openshift.redhat.com/app/[OpenShift]. The data represent a list of developer information (image, name, twitter) that will be displayed on a standard UITableView component. Upon clicking a developer on the list, his twitter page will be opened using the system's default browser. Let's start.
+Now that our dependencies are set up, it's time to verify our installation. For this, we are going to build a simple application that will fetch remote data from our testbed link:server.com[testbed server] deployed on link:https://openshift.redhat.com/app/[OpenShift]. The data represent a list of developer information (image, name, twitter) that will be displayed on a standard UITableView component. Upon clicking a developer on the list, his twitter page will be opened using the system's default browser. Let's start.
 
 - 1: Create your controller 
 
