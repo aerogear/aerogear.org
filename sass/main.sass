@@ -110,6 +110,7 @@ $filling-color: #f2f2f2
 $line-filling-color:#dadada
 $news-text-color: #878787
 $menu-text-color:#7F7F7F
+$heading-color:#ffffff
 
 @mixin border-box
   -moz-box-sizing: border-box
@@ -132,14 +133,6 @@ $break-tablet:848px
       @content
 
 $size-ref:1em
-
-$gear-color:#FFF000
-$aero-color:#000FFF
-$main-text-color: #73ff73
-$filling-color: #f2beef
-$line-filling-color:#f23eea
-$news-text-color: #7514e1
-$menu-text-color:#790f7f
 
 /* =================== Standard elements ============================================================================
  */
@@ -221,9 +214,7 @@ p
 #main-header
   nav
     display: inline-block
-    position: absolute
-    right: 0
-    top: 110px
+    margin-top: 18px
     background-color: $filling-color
     border-top: 1px solid $line-filling-color
     border-bottom: 1px solid $line-filling-color
@@ -315,6 +306,47 @@ a.news
   &.hybrid h3
     color: #60625e
 
+
+$section-color:#323232
+$core-color:#df7220
+$seperator-color:#121212
+$section-text-color:#ebebeb
+
+div.section
+  color: $section-text-color
+  background-color: $section-color
+  border-top: $seperator-color solid 16px
+  .sect1 h2
+    background: url('/img/example-icon.png') no-repeat left
+    margin: -40px
+    padding: 40px
+  pre
+    background-color: $seperator-color
+    border: none
+  .hljs
+    background-color: $seperator-color
+    
+div.core  
+  a
+    color: $core-color
+    text-decoration: none
+  strong
+    font-weight: normal
+  a:hover
+    text-decoration: underline
+  .section-strip
+    border-top-color: $core-color
+    
+.section-strip
+  border-top-width: 4px
+  border-top-style: solid
+
+.tab-content .highlight
+  margin-top: 0
+.nav .nav-tabs
+  margin-right: 5%
+  border: 0
+    
 /* =================== Bringing mobile together =====================================================================
  */
 .start-header
@@ -514,7 +546,7 @@ a#slide-menu-button:hover
 .basic, .post
   margin-left: auto
   margin-right: auto
-  margin-top: 5em
+  margin-top: 2em
   width: 90%
   max-width: 960px
 
