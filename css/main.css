@@ -79,7 +79,7 @@ textarea {
 
 /* =================== Standard elements ============================================================================ */
 a {
-  color: #fff000; }
+  color: #669eb2; }
   @media only screen and (max-width: 656px) {
     a.fixed {
       display: none !important; } }
@@ -88,7 +88,7 @@ a {
   opacity: 0.61; }
 
 h1, h2, h3, h4 {
-  color: #000fff;
+  color: #e25027;
   font-weight: 700;
   letter-spacing: -1px; }
 
@@ -121,7 +121,7 @@ img {
 
 body {
   font-family: "Open Sans", sans-serif;
-  color: #73ff73; }
+  color: #575653; }
 
 p {
   -moz-box-sizing: border-box;
@@ -136,10 +136,6 @@ p {
   @media only screen and (min-width: 657px) and (max-width: 847px) {
     p {
       max-width: 720px; } }
-
-li > p {
-    overflow: visible;
-}
 
 .clearfix {
   clear: both; }
@@ -163,12 +159,10 @@ li > p {
  */
 #main-header nav {
   display: inline-block;
-  position: absolute;
-  right: 0;
-  top: 110px;
-  background-color: #f2beef;
-  border-top: 1px solid #f23eea;
-  border-bottom: 1px solid #f23eea;
+  margin-top: 18px;
+  background-color: #f2f2f2;
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
   width: 100%; }
 #main-header ul {
   list-style: none;
@@ -183,14 +177,14 @@ li > p {
   #main-header nav li a {
     text-decoration: none;
     font-size: 0.9em;
-    color: #790f7f;
+    color: #7f7f7f;
     padding-bottom: 1.2em; }
   #main-header nav li.selected a {
     color: #373435; }
 
 nav a:hover {
-  border-bottom: 2px solid #fff000;
-  color: #fff000 !important; }
+  border-bottom: 2px solid #669eb2;
+  color: #669eb2 !important; }
 
 /* =================== AeroGear title ===============================================================================
  */
@@ -214,7 +208,7 @@ a.news {
   margin-top: -1.6em;
   font-style: italic;
   float: right;
-  color: #7514e1;
+  color: #878787;
   text-decoration: none;
   margin-bottom: -1.3em;
   padding-right: 0.4em;
@@ -242,11 +236,11 @@ a.news {
   width: 6em;
   padding: 5px; }
 .module p {
-  color: #7514e1;
+  color: #878787;
   text-align: center;
   font-size: 0.9em; }
 .module:hover img, .module:active img {
-  border: 5px #f23eea solid;
+  border: 5px #dadada solid;
   padding: 0;
   border-radius: 4px; }
 .module.ios h3 {
@@ -258,6 +252,41 @@ a.news {
 .module.hybrid h3 {
   color: #60625e; }
 
+div.section {
+  color: #ebebeb;
+  background-color: #323232;
+  border-top: #121212 solid 16px; }
+  div.section .sect1 h2 {
+    background: url("/img/example-icon.png") no-repeat left;
+    margin: -40px;
+    padding: 40px; }
+  div.section pre {
+    background-color: #121212;
+    border: none; }
+  div.section .hljs {
+    background-color: #121212; }
+
+div.core a {
+  color: #df7220;
+  text-decoration: none; }
+div.core strong {
+  font-weight: normal; }
+div.core a:hover {
+  text-decoration: underline; }
+div.core .section-strip {
+  border-top-color: #df7220; }
+
+.section-strip {
+  border-top-width: 4px;
+  border-top-style: solid; }
+
+.tab-content .highlight {
+  margin-top: 0; }
+
+.nav .nav-tabs {
+  margin-right: 5%;
+  border: 0; }
+
 /* =================== Bringing mobile together =====================================================================
  */
 .start-header {
@@ -265,7 +294,7 @@ a.news {
   text-align: center;
   margin-bottom: 0.8em; }
   .start-header .start-title {
-    color: #fff000;
+    color: #669eb2;
     font-weight: 700;
     font-size: 1.95em;
     margin-bottom: 0.8em;
@@ -310,19 +339,19 @@ a.news {
     width: 18.75em;
     text-align: center; }
     .feature .illustration img {
-      border-left: 1px #f23eea solid; }
+      border-left: 1px #dadada solid; }
     .feature .illustration.left {
       float: left; }
       .feature .illustration.left img {
-        border-right: 1px #f23eea solid;
+        border-right: 1px #dadada solid;
         border-left: none; }
 
 /* =================== Footer =======================================================================================
  */
 footer {
   clear: both;
-  background-color: #f2beef;
-  border-top: 1px #f23eea solid !important;
+  background-color: #f2f2f2;
+  border-top: 1px #dadada solid !important;
   padding: 0 2.5em;
   margin-top: 1.25em;
   text-align: center; }
@@ -389,7 +418,7 @@ footer {
         margin: 0;
         padding: 0; }
       #sideNav li a {
-        color: #790f7f;
+        color: #7f7f7f;
         display: block;
         height: 46px;
         font-size: 16px;
@@ -474,7 +503,7 @@ a#slide-menu-button:hover {
 .basic, .post {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5em;
+  margin-top: 2em;
   width: 90%;
   max-width: 960px; }
 
@@ -509,8 +538,8 @@ a#slide-menu-button:hover {
   .column pre {
     margin-right: 2%; } }
 pre {
-  background-color: #f2beef;
-  border: 1px #f23eea dotted;
+  background-color: #f2f2f2;
+  border: 1px #dadada dotted;
   font-size: 0.7em;
   margin-right: 5%;
   padding-left: 2%;
@@ -534,9 +563,9 @@ pre {
   border: 1px solid; }
 
 .alert-error {
-  background-color: #f2beef;
-  border-color: #000fff;
-  color: #000fff; }
+  background-color: #f2f2f2;
+  border-color: #e25027;
+  color: #e25027; }
 
 .desc {
   padding: 0;
