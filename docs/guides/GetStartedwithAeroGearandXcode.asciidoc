@@ -255,6 +255,6 @@ image::img/ios_emulator.png[Emulator]
 
 *Success!* Your first iOS application built with AeroGear!
 
-You can download the source code of this project from link:https://github.com/aerogear/aerogear-ios-cookbook/PipeDemo[github]. For more complete example applications that utilize different parts of the AeroGear library, have a look at our available cookbooks examples on link:https://github.com/aerogear/aerogear-ios-cookbook[github].
+You can download the source code of this project from link:https://github.com/aerogear/aerogear-ios-cookbook/Buddies[github]. For more complete example applications that utilize different parts of the AeroGear library, have a look at our available cookbooks examples on link:https://github.com/aerogear/aerogear-ios-cookbook[github].
 
 You can also browse link:http://aerogear.org/docs/specs/aerogear-ios/[AeroGear iOS API reference] to familiarize yourself with the wealth of options.
