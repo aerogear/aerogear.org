@@ -5,7 +5,7 @@ title: AeroGear UnifiedPush Server - User Management
 
 ## Introduction
 
-The goal of this document is to describe how the User Management will be implemented in the Unified Push Server.
+The goal of this document is to describe how the User Management will be implemented in the UnifiedPush Server.
    
 
 ## Roles / Permissions
