@@ -10,7 +10,21 @@ layout: base
 </div>
 
 <ul class="nav nav-tabs">
-  <li><a href="#home" data-toggle="tab">Java</a></li>
-  <li><a href="#profile" data-toggle="tab">Objective-C</a></li>
-  <li><a href="#messages" data-toggle="tab">Javascript</a></li>
+  <li class="active"><a href="#java" data-toggle="tab">Java</a></li>
+  <li><a href="#objc" data-toggle="tab">Objective-C</a></li>
+  <li><a href="#js" data-toggle="tab">Javascript</a></li>
 </ul>
+
+<script>
+  //iter
+  $('.nav').insertBefore($('.tab-content'));
+  
+  $('.tab-content').children().each(function() {
+    $( this ).attr('class', 'tab-pane');
+  });
+  
+  var tab = $('.tab-pane:eq(0)');
+  tab.attr('id', 'java');
+  tab.addClass('active');
+  $('.tab-pane:eq(1)').attr('id', 'objc');
+</script>
