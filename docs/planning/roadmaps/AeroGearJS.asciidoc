@@ -59,7 +59,7 @@ New Features
 *** Feature detection to determine which is available
 *** IE9 supports neither so need to also be able to fall back to localStorage but use same API
 
-1.4.0 (Mid January)
+1.4.0 (Mid March)
 ~~~~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
@@ -72,7 +72,7 @@ New Features
 ** OAuth2 Adapter
 *** Customizable Provider
 
-1.5.0 (Early March)
+1.5.0 (Early June)
 ~~~~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
@@ -88,6 +88,9 @@ New Features
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
+* *Remove jQuery Requirements*
+** Ajax & Promises
+** JSON only
 * *Social*
 ** Auth
 *** Login via Facebook, G+, Twitter?
