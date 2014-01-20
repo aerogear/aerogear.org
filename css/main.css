@@ -259,12 +259,13 @@ div.section {
   div.section .sect1 h2 {
     background: url("/img/example-icon.png") no-repeat left;
     margin: -40px;
-    padding: 40px; }
+    padding: 40px;
+    color: #ebebeb; }
   div.section pre {
-    background-color: #121212;
+    background-color: #222222;
     border: none; }
   div.section .hljs {
-    background-color: #121212; }
+    background-color: #222222; }
 
 div.core a {
   color: #df7220;
@@ -280,12 +281,75 @@ div.core .section-strip {
   border-top-width: 4px;
   border-top-style: solid; }
 
-.tab-content .highlight {
-  margin-top: 0; }
-
+/* =================== Code tabs =====================================================================
+ */
 .nav .nav-tabs {
   margin-right: 5%;
   border: 0; }
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none; }
+
+.nav:before,
+.nav:after {
+  content: " ";
+  display: table; }
+
+.nav:after {
+  clear: both; }
+
+.nav > li {
+  position: relative;
+  display: block; }
+
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px; }
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #222222; }
+
+.nav-tabs {
+  border-bottom: 1px solid #323232;
+  margin: 0 0.5em; }
+
+.nav-tabs > li {
+  float: right;
+  margin-bottom: -1px; }
+
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  color: #ebebeb; }
+
+.nav-tabs > li > a:hover {
+  border-color: #323232 #323232 #121212; }
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  background-color: #222222;
+  border: 1px solid #323232;
+  border-bottom-color: transparent;
+  cursor: default; }
+
+.tab-content > .tab-pane {
+  display: none; }
+
+.tab-content > .active {
+  display: block; }
+
+.tab-content pre {
+  padding: 20px;
+  margin-right: 0;
+  margin-top: 0; }
 
 /* =================== Bringing mobile together =====================================================================
  */
@@ -540,7 +604,7 @@ a#slide-menu-button:hover {
 pre {
   background-color: #f2f2f2;
   border: 1px #dadada dotted;
-  font-size: 0.7em;
+  font-size: 0.8em;
   margin-right: 5%;
   padding-left: 2%;
   white-space: pre; }
