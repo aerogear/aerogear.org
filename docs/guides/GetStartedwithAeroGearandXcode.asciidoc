@@ -42,9 +42,8 @@ In the "Podfile", add the following lines:
 [source,bash]
 ----
 xcodeproj 'AeroGearExample.xcodeproj'
-platform :ios, '5.0'
-pod 'Reachability',  '~> 3.0.0'
-pod 'AeroGear', '1.3.0'
+
+pod 'AeroGear'
 ----
 
 And then:
@@ -61,7 +60,7 @@ _NOTE:_ Don't forget to open the Xcode workspace file instead of the project fil
 
 We need to download both AFNetworking and the AeroGear libraries from their respective sources. 
 
-* For AFNetworking link:https://github.com/AFNetworking/AFNetworking/zipball/master[click here] 
+* For AFNetworking link:https://github.com/AFNetworking/AFNetworking/archive/1.3.1.zip[click here] 
 * For AeroGear link:https://github.com/aerogear/aerogear-ios/zipball/master[click here]. 
 
 Extract the zip archives and when finished, time to add them to our project. 
@@ -80,48 +79,51 @@ Again, make sure that _"Copy items into destination group's folder"_ and _"Creat
 
 === Step 3: Verify installation
 
-
-Now that our depenendecies are set up, it's time to verify our installation. For this, we are going to build a simple application that will fetch the latest Tasks from the link:http://todo-aerogear.rhcloud.com[TODO application] deployed on link:https://openshift.redhat.com/app/[OpenShift]. The tasks will then be displayed on a standard UITableView component. Let's start.
+Now that our dependencies are set up, it's time to verify our installation. For this, we are going to build a simple application that will fetch remote data from our testbed link:server.com[testbed server] deployed on link:https://openshift.redhat.com/app/[OpenShift]. The data represent a list of developer information (image, name, twitter) that will be displayed on a standard UITableView component. Upon clicking a developer on the list, his twitter page will be opened using the system's default browser. Let's start.
 
 - 1: Create your controller 
-Create a new objective-c file, choose the name AGViewController, make it extends UITableViewController.
 
-- 2: Link view and controller
-Click on the _"AGAppDelegate.h"_ on the Project Navigator, add a property that link to AGViewController (don't forget to import it).
+Create a new objective-c file, choose the name _"AGViewController"_ and make it extend _"UITableViewController"_.
+
+- 2: Link view and Navigation Controller
+
+Click on the _"AGAppDelegate.h"_ on the Project Navigator. We need to add a property for a UINavigationController, which will be used to embed our table view in it [1].
 
 [source,c]
 ----
 #import <UIKit/UIKit.h>
-#import "AGViewController.h"
 
 @interface AGAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property(strong, nonatomic) AGViewController *controller;
+@property(strong, nonatomic)  UINavigationController *controller;  [1]
 
 @end
 ----
 
-Click on the _"AGAppDelegate.m"_, add line [1] and [2] to initialize the controller.
+Now, click on the _"AGAppDelegate.m"_ on the Project Navigator. At the top of the file, add an import statement for the AGViewController class [1] we created earlier. Then, on the 'didFinishLaunchingWithOptions' method add line [2] and [3] to initialize the Navigation Controller and our AGViewController class.
 
 [source,c]
 ----
+#import "AGViewController.h"  [1]
+...
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    self.controller = [[AGViewController alloc] initWithStyle:UITableViewStylePlain]; // [1]
-    self.window.rootViewController = self.controller;                                 // [2]
+    self.controller = [[UINavigationController alloc]     // [2]
+                       initWithRootViewController:[[AGViewController alloc] initWithStyle:UITableViewStylePlain]];
+    self.window.rootViewController = self.controller;     // [3]                               
+
     [self.window makeKeyAndVisible];
     return YES;
 }
 ----
 
-- 3: Implement AeroGear login and retrieve tasks
+- 3: Retrieve information
 
-Now, click on the _"AGViewController.m"_. First of all, import the "AeroGear" library [1]. 
-
-Modify AGViewController implementation to add instance variables for authentication module [2] and for the task [3] returned from the server.
+Now, click on the _"AGViewController.m"_ on the Project Navigator. At the top of the file, add an import statement for the "AeroGear" library [1].  Then add an instance variable that will hold the data [2] returned from the server.
 
 [source,c]
 ----
@@ -132,65 +134,47 @@ Modify AGViewController implementation to add instance variables for authenticat
 @end
 
 @implementation AGViewController {
-    NSArray *_tasks;                                                    // [3]
+    NSArray *_data;                                                    // [2]
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    id<AGAuthenticationModule> authModule;                                 
-    // NSURL object:
-    NSURL* projectsURL = [NSURL URLWithString:@"http://todo-aerogear.rhcloud.com/todo-server/"];
     
-    AGAuthenticator* authenticator = [AGAuthenticator authenticator];
-    authModule = [authenticator auth:^(id<AGAuthConfig> config) {       // [4]
-        [config setName:@"myModule"];
-        [config setBaseURL:projectsURL];
+    NSURL* projectsURL = [NSURL URLWithString:@"http://igtests-cvasilak.rhcloud.com/rest"];
+    
+    // create the server 'Pipeline'
+    AGPipeline *server = [AGPipeline pipelineWithBaseURL:projectsURL];             // [3]
+    
+    // create the 'Pipe' that will point to the remote '/developer/' endpoint
+    id<AGPipe> developerPipe = [server pipe:^(id<AGPipeConfig> config) {          // [4]
+        [config setName:@"/team/developers"];
     }];
-    
-    id<AGPipe> tasksPipe;
-    
-    // create the 'todo' pipeline, which contains the 'projects' pipe:
-    AGPipeline *todo = [AGPipeline pipelineWithBaseURL:projectsURL];    // [5]
-    
-    tasksPipe = [todo pipe:^(id<AGPipeConfig> config) {                 // [6]
-        [config setName:@"tasks"];
-        [config setAuthModule:authModule];
-    }];
-    
-  NSDictionary *credentials = @{@"username": @"john", @"password": @"123"};
-    [authModule login:credentials success:^(id object) {                // [7]
+
+    // read from the 'Pipe'
+    [developerPipe read:^(id responseObject) {      // [5]
+        // hold the response
+        _data = responseObject;     // [6]
         
-        [tasksPipe read:^(id responseObject) {                          // [8]
-            
-            _tasks = responseObject;                                    // [9]
-            
-            [self.tableView reloadData];                                // [10]
-            
-        } failure:^(NSError *error) {
-            NSLog(@"An error has occured during fetch! \n%@", error);
-        }];
-    
+        // refresh table view with the data returned
+        [self.tableView reloadData];      // [7]
+        
     } failure:^(NSError *error) {
-       NSLog(@"An error has occured during login:%@", error);
-   }];
+        NSLog(@"An error has occured during pipe read! \n%@", error);
+    }];
+
+
 }
 // the rest of your file ...
 ----
 
-Let's explain in more details, what we're doing here:
+Central to AeroGear is the concept of link:/docs/specs/aerogear-ios/Classes/AGPipeline.html[Pipeline] and link:/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe]. The former represents a collection of server connections and the latter the connection itself. In [3] we initialize our Pipeline object with the base URL of the remote application and then we call it's 'pipe' method [4] passing a link:/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html[configuration object] that sets the name of the remote endpoint (in our case "/team/developers").
 
-Central to AeroGear is the concept of link:/docs/specs/aerogear-ios/Classes/AGPipeline.html[Pipeline] and link:/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe]. The former represents a collection of server connections and the latter the connection itself. 
+We then perform a 'read' request [5] on the Pipe to fetch the data from the remote endpoint, passing a success and failure block. If the fetch was successful, we assign the returned result to our data object [6]. Finally, we ask the tableview to reload itself to display the data [7].
 
-In [4] and [5] we initialize our Pipeline and Authenticator objects. Both act a factory in which the former creates Pipe objects connected to remote endpoints, while the latter give us access to different authentication modules provided by AeroGear (such as Rest, Basic and Digest).
-
-In [6] we call the "add" method on our pipeline and use the given code block to set the name of the remote endpoint (in our case "tasks") on the given AGPipeConfig object. In the config, we also link the authenticate module we described earlier. This will give us a fresh authentificated Pipe object to work with. Note that, if not specified in the add method, the pipe will use REST as its communication type. (More types are planned for the future, such as websockets). 
-
-In [7] we send the login message, within the success callback issue a "read" request [8] on the Pipe to fetch the tasks from the remote application, passing a success and failure block. If the fetch was successful, we assign the return result to our tasks object [9]. Finally, we ask the tableview to reload 
-itself to display the data [10].
-
-- 4: RefreshView with data
+- 4: Refresh Table View with data
 
 Time to fill the empty table data source methods that Xcode created automatically for us when we created the class, with code that renders the fetched data.
+
 [source,c]
 ----
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -198,7 +182,7 @@ Time to fill the empty table data source methods that Xcode created automaticall
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_tasks count];
+    return [_data count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -206,18 +190,64 @@ Time to fill the empty table data source methods that Xcode created automaticall
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    NSUInteger row = [indexPath row];
-    
-    cell.textLabel.text = [[_tasks objectAtIndex:row] objectForKey:@"title"];
+    // extract the developer
+    NSDictionary *developer = [_data objectAtIndex:indexPath.row];  //  [1]
+
+    // fill cell data   // [2]
+    cell.textLabel.text = [developer objectForKey:@"name"];
+    cell.detailTextLabel.text = [developer objectForKey:@"twitter"];
+    cell.tag = indexPath.row;
+
+    // fetch the twitter image asynchronous not to block UI
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{    // [3]
+        NSData *imageData = [NSData dataWithContentsOfURL:
+                             [NSURL URLWithString:[developer objectForKey:@"photoURL"]]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (cell.tag == indexPath.row) {   // [4]
+                cell.imageView.image = [UIImage imageWithData:imageData];   // [5]
+                [cell setNeedsLayout];
+            }
+        });
+    });
     
     return cell;
 }
 ----
 
-- 5: Run it!
+In [1] we extract the developer object that is about to be rendered, from the list retrieved earlier during the initial Pipe 'read'. We then use it to fill the cell data with developer information [2]. Since we don't want to block the UI when the 'twitter' image is fetched, we dispatch it asynchronously [3] with the power of link:https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html#//apple_ref/doc/uid/TP40008091-CH102-SW1[GCD]. When the image is finally fetched, we set it on the cell [5].
+
+NOTE
+Since iOS table view component recycles cells in order to save memory (e.g. for large data sets), we need to ensure not to overwrite a 'recycled' cell with an old image. The trick we use here is to assign a tag on the cell with the row index and we verify in [4] when we are about to display it. 
+
+
+- 5: Open Twitter developer page
+
+What is left now is to add functionality where when a cell is clicked the application open's the system browser and redirects to the developer's twitter page. Add the following method:
+
+[source,c]
+----
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // extract the developer
+    NSDictionary *developer = [_data objectAtIndex:indexPath.row];  // [1]
+    
+    // format twitter url  
+    NSURL *url = [NSURL URLWithString:
+                  [NSString stringWithFormat:@"http://twitter.com/%@", [developer objectForKey:@"twitter"]]];   // [2]
+    
+    // open twitter page
+    [[UIApplication sharedApplication] openURL:url];  // [3]
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+----
+
+The 'didSelectRowAtIndexPath' delegate is called when the user clicks a cell on the table. In [1] we extract the developer object as we did previously from the cell the user clicked. We then setup an NSURL object [2] that points to the developers twitter page and we ask the system to open it the browser [3].
+
+- 6: Run it!
 
 Ok we are now ready to run the project. Select _"Product->Run"_ and if all goes well you will be presented with the following screen.
 
@@ -225,6 +255,6 @@ image::img/ios_emulator.png[Emulator]
 
 *Success!* Your first iOS application built with AeroGear!
 
-You can download the source code of this project from link:https://github.com/corinnekrych/SampleAeroGear[github]. For a more complete example application that uses AeroGear to perform link:http://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD] operations on a remote endpoint, have a look at the TODO application available on link:https://github.com/aerogear/aerogear-todo-ios[github].
+You can download the source code of this project from link:https://github.com/aerogear/aerogear-ios-cookbook/Buddies[github]. For more complete example applications that utilize different parts of the AeroGear library, have a look at our available cookbooks examples on link:https://github.com/aerogear/aerogear-ios-cookbook[github].
 
 You can also browse link:http://aerogear.org/docs/specs/aerogear-ios/[AeroGear iOS API reference] to familiarize yourself with the wealth of options.
