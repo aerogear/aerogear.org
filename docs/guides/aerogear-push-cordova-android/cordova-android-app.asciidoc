@@ -8,7 +8,7 @@ Creating a Cordova push application
 
 Before we start, please install link:https://github.com/apache/cordova-cli/[Apache Cordova CLI], which is the command line tool to build, deploy and manage Cordova-based applications. Currently cordova 3.0 has some issues be sure that you use 2.9!
 
-Next you need to _install_ the *Cordova Push Notifications Plugin for Android and iOS*. Once checkout out, _remember_ the installation path of the repository.
+Next you need to _install_ our *Cordova Unified Push Plugin*
 
 Sample App
 ~~~~~~~~~~
@@ -20,13 +20,8 @@ Creating a Cordova app is simple:
 cordova create FolderOfTheApp com.my.id.AppName AppName
 cd FolderOfTheApp
 cordova platform add android
-cordova plugin add folder_of_PushPlugin
+cordova plugin add org.jboss.aerogear.cordova.push
 ----
-
-JavaScript libraries
-~~~~~~~~~~~~~~~~~~~~
-
-Next install the link:http://aerogear.org/download/custom[+aerogear.js+ library] check the UnifiedPush Client SDK chekbox and click +Build my Download+, then download latest link:http://jquery.com/download[jQuery] version. Save these files into the +www+ folder of your Apache Cordova project.
 
 Build the android application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,67 +38,35 @@ In order to start playing with the project, you can import it with your favorite
 The JavaScript
 ~~~~~~~~~~~~~~
 
-Inside of the +index.html+ you need to add references to the required JavaScript files:
-
-[source,javascript]
-----
-...
-<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="aerogear.custom.js"></script>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="PushNotification.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript">
-    app.initialize();
-</script>
-...
-----
-
-Besides the aerogear.custom.js and its dependency, the +PushNotification.js+ file from the PushPlugin needs to be referenced as well. For the purpose of this demo we continue to use the +js/index.js+ file for our application. Below is the entire file:
+For the purpose of this demo we continue to use the +js/index.js+ file for our application. Below is the entire file:
 
 [source,javascript]
 ----
 // handle the incoming notifications
 function onNotification(e) {
-    console.log('EVENT -> RECEIVED:' + e.event);
-    switch (e.event) {
-        case 'registered':
-            if (e.regid.length > 0) {
-                console.log('REGISTERED -> REGID:' + e.regid);
-                //now you can register this device with this registration id
-                app.registerDevice(e.regid)
-            }
-            break;
-
-        case 'message':
-            // if this flag is set, this notification happened while we were in the foreground.
-            // you might want to play a sound to get the user's attention, throw up a dialog, etc.
-            if (e.foreground) {
-                console.log('--INLINE NOTIFICATION--');
-                // if the notification contains a soundname, play it.
-                var my_media = new Media("/android_asset/www/" + e.payload.sound);
-                my_media.play();
-            }
-            else {   // otherwise we were launched because the user touched a notification in the notification tray.
-                if (e.coldstart) {
-                    console.log('--COLDSTART NOTIFICATION--');
-                }
-                else {
-                    console.log('--BACKGROUND NOTIFICATION--');
-                }
-            }
-
-            console.log('MESSAGE -> MSG: ' + e.payload.alert);
-            break;
-
-        case 'error':
-            console.log('ERROR -> MSG:' + e.msg);
-            break;
-
-        default:
-            console.log('EVENT -> Unknown, an event was received and we do not know what it is');
-            break;
+    // if this flag is set, this notification happened while we were in the foreground.
+    // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+    if (e.foreground) {
+        console.log('--INLINE NOTIFICATION--');
+        // if the notification contains a soundname, play it.
+        var my_media = new Media("/android_asset/www/" + e.sound);
+        my_media.play();
     }
+    else {   // otherwise we were launched because the user touched a notification in the notification tray.
+        if (e.coldstart) {
+            console.log('--COLDSTART NOTIFICATION--');
+        }
+        else {
+            console.log('--BACKGROUND NOTIFICATION--');
+        }
+    }
+
+    //only on ios
+    if (e.badge) {
+      push.setApplicationIconBadgeNumber(successHandler, e.badge);
+    }    
+
+    console.log('MESSAGE -> MSG: ' + e.alert);
 }
 
 var app = {
@@ -124,33 +87,22 @@ var app = {
         var completeElem = document.querySelector('#' + id + ' .complete');
         completeElem.className = completeElem.className.split('hide').join('');
     },
-    registerDevice: function (token) {
-        // create the unified push helper:
-        var agUnifiedPush = AeroGear.UnifiedPushClient(
-            "variantID",
-            "secret",
-            "https://SERVER:PORT/CONTEXT/rest/registry/device"
-        );
-
-        agUnifiedPush.registerWithPushServer({
-            alias: "alias",
-            deviceToken: token
-        });
-    },
     initAeroGearPush: function () {
-        // get the push plugin object
-        var pushNotification = window.plugins.pushNotification;
+        var config = {
+          senderID: "<senderID>",
+          pushServerURL: "https://SERVER:PORT/CONTEXT/",
+          variantID: "<variantID>",
+          variantSecret: "<variantSecret>"
+        }
 
-        // set callbacks for dealing with the DeviceToken, or an Error
-        pushNotification.register(
+        push.register(
             function (result) {
                 console.log('success: ' + result);
             },
             function (error) {
                 console.log('error: ' + error);
-            },
-            {"senderID": "e.g. 4815162342", "ecb": "onNotification"}
-        );
+            }, 
+            {"ecb": "onNotification", pushConfig: config});
     }
 };
 ----
@@ -160,89 +112,55 @@ Most of the code is actually already there, generated by Apache Cordova, so let'
 Push Notification registry and setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-At the beginning of the file there is a +onNotification+ function, which acts as a central hub invoked by the Cordova PushPlugin when it is time to deliver an interesting event to the application. The events we are mostly interested to utilise are the 'registered' and 'message'. The former is invoked when the PushPlugin has successfully registered the device with the GCM service, so we get the chance to register the device with the UnifiedPush server. This is done by calling 'app.registerDevice(e.regid)' function passing along the device token received by the CGM (more details on the function later in the tutorial).
-
-The latter event is invoked when an actual notification is received from CGM. Now, If the application is not running, or is in the background, Cordova PushPlugin by default, will display the notification up into the notification drawer. If the user decides to click on it, the application would be brought to the foreground, and the +onNotification+ callback function would be called with the event set to 'message'. Here we can distinguish whether the application was in the foreground, cold-started (that is started running when the notification was clicked), or in the background when the notification was received. Depending on the state, you may decide to perform different operations.
+At the beginning of the file there is a +onNotification+ function, which acts as a central hub invoked by the Cordova PushPlugin when it is time to deliver an push notification to the application. Now, If the application is not running, or is in the background, Cordova PushPlugin by default, will display the notification up into the notification drawer. If the user decides to click on it, the application would be brought to the foreground, and the +onNotification+ callback function would be called with the event set to 'alert'. Here we can distinguish whether the application was in the foreground, cold-started (that is started running when the notification was clicked), or in the background when the notification was received. Depending on the state, you may decide to perform different operations.
 
 [source,javascript]
 ----
 function onNotification(e) {
-    console.log('EVENT -> RECEIVED:' + e.event);
-    switch (e.event) {
-        case 'registered':
-            if (e.regid.length > 0) {
-                console.log('REGISTERED -> REGID:' + e.regid);
-                //now you can register this device with this registration id
-                app.registerDevice(e.regid)
-            }
-            break;
-
-        case 'message':
-            // if this flag is set, this notification happened while we were in the foreground.
-            // you might want to play a sound to get the user's attention, throw up a dialog, etc.
-            if (e.foreground) {
-                console.log('--INLINE NOTIFICATION--');
-                // if the notification contains a soundname, play it.
-                var my_media = new Media("/android_asset/www/" + e.payload.sound);
-                my_media.play();
-            }
-            else {   // otherwise we were launched because the user touched a notification in the notification tray.
-                if (e.coldstart) {
-                    console.log('--COLDSTART NOTIFICATION--');
-                }
-                else {
-                    console.log('--BACKGROUND NOTIFICATION--');
-                }
-            }
-
-            console.log('MESSAGE -> MSG: ' + e.payload.alert);
-            break;
-
-        case 'error':
-            console.log('ERROR -> MSG:' + e.msg);
-            break;
-
-        default:
-            console.log('EVENT -> Unknown, an event was received and we do not know what it is');
-            break;
+    // if this flag is set, this notification happened while we were in the foreground.
+    // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+    if (e.foreground) {
+        console.log('--INLINE NOTIFICATION--');
+        // if the notification contains a soundname, play it.
+        var my_media = new Media("/android_asset/www/" + e.payload.sound);
+        my_media.play();
     }
+    else {   // otherwise we were launched because the user touched a notification in the notification tray.
+        if (e.coldstart) {
+            console.log('--COLDSTART NOTIFICATION--');
+        }
+        else {
+            console.log('--BACKGROUND NOTIFICATION--');
+        }
+    }
+
+    //only on ios
+    if (e.badge) {
+      push.setApplicationIconBadgeNumber(successHandler, e.badge);
+    }    
+
+    console.log('MESSAGE -> MSG: ' + e.alert);
 }
 ----
 
-To trigger the setup of the _PushPlugin_ we have added a +initAeroGearPush+ function onto the +app+ scope, the function is invoked by the +onDeviceReady+ function which itself is invoked once the Apache Cordova related initialization is done. It is responsible to get a reference of the Plugin's +pushNotification+ object in order to invoke its +register+ function which will register the device with CGM. Notice, that the function apart from the usual success/failure callbacks, require as parameter the Google Sender ID and the callback function name which would be invoked by the PushPlugin to pass along the notification events. Here we use the 'onNotification' function name that we defined earlier.
+To trigger the setup of the _PushPlugin_ we have added a +initAeroGearPush+ function onto the +app+ scope, the function is invoked by the +onDeviceReady+ function which itself is invoked once the Apache Cordova related initialization is done. It is responsible to get a reference of the Plugin's +push+ object in order to invoke its +register+ function which will register the device with CGM and Unified Push Server. Notice, that the function apart from the usual success/failure callbacks, require as parameters the Google Sender ID the Unified Push server location, VariantId and secret and the callback function name which would be invoked by the PushPlugin to pass along the notification events. Here we use the 'onNotification' function name that we defined earlier.
 
 [source,javascript]
 ----
 initAeroGearPush: function() {
-    // get the push plugin object
-    var pushNotification = window.plugins.pushNotification;
 
-    // set callbacks for dealing with the device token or an Error.
+    var config = {
+      senderID: "e.g. 4815162342",  
+      pushServerURL: "https://SERVER:PORT/CONTEXT/",
+      variantID: "e.g. 610030de-904a-4e50-8043-37978ab32296",
+      variantSecret: "e.g. b83186ae-127a-40bf-8fa7-a9eb41b2b33f"
+    }
+
+    // set callbacks for dealing with the registration error and success.
     // The options specify the interest of the different APNs message event types.
-    pushNotification.register(successCallback, errorCallback, {"senderID": "e.g. 4815162342", "ecb": "onNotification"})
+    pushNotification.register(successCallback, errorCallback, {"ecb": "onNotification", pushConfig: config});
 }
 ----
-
-In the +registerDevice+ we create a UnifiedPushClient, passing along the _variant ID_, _variant secret_ and the _registration url_. We pass the +deviceToken+ from the GCM and setting an +alias+ (e.g. a username or an email address). Finally we perform a registration with the UnifiedPush server.
-
-[source,javascript]
-----
-registerDevice: function (token) {
-        // create the unified push helper:
-        var agUnifiedPush = AeroGear.UnifiedPushClient(
-            "variantID",
-            "secret",
-            "https://SERVER:PORT/CONTEXT/rest/registry/device"
-        );
-
-        agUnifiedPush.registerWithPushServer({
-            alias: "alias",
-            deviceToken: token
-        });
-    }
-----    
-
-The +errorCallback+ is pretty trivial, simply doing a +console.log("Fail");+
 
 Test the app
 ~~~~~~~~~~~~
