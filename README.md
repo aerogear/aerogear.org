@@ -4,8 +4,8 @@
 
 Before you can run the side, make sure you have:
 
-*[asciidoc](http://www.methods.co.nz/asciidoc/) installed on your machine!
-*[sass](http://sass-lang.com/install) installed
+* [asciidoc](http://www.methods.co.nz/asciidoc/) installed on your machine!
+* [sass](http://sass-lang.com/install) installed
 
 ## Building
 
