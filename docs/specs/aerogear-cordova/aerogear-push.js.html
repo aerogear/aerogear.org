@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: aerogear-pushplugin-cordova/www/aerogear-push.js</title>
+    
+    <script src="../aerogear-js/scripts/prettify/prettify.js"> </script>
+    <script src="../aerogear-js/scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="../aerogear-js/styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../aerogear-js/styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: aerogear-pushplugin-cordova/www/aerogear-push.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* AeroGear Cordova Plugin
+* https://github.com/aerogear/aerogear-pushplugin-cordova
+* JBoss, Home of Professional Open Source
+* Copyright Red Hat, Inc., and individual contributors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+* http://www.apache.org/licenses/LICENSE-2.0
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+    var exec = require("cordova/exec");
+
+    /**
+     * This is a global variable called push exposed by cordova
+     * @status Stable
+     * @constructs Push
+    */    
+    var Push = function(){};
+
+    /**
+        Registers the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+        @param {Function} success - callback to be executed if the request results in success
+        @param {Function} [error] - callback to be executed if the request results in error
+        @param {Object} options - object to hold all registiation options
+        @param {String} options.ecb - callback to be executed if a message arrives
+        @param {String} [options.badge] - ios specific - enable badge in message registation
+        @param {String} [options.sound] - ios specific - enable sound in message registation
+        @param {String} [options.alert] - ios specific - enable alert messages in message registation
+        @param {String|Array|Object} options.pushConfig - A configuration for the Unified Push server, so that it can register this device. If an object or array containing objects is used, the objects can have the following properties:
+        @param {String} [options.pushConfig.senderId] - android specific - the id representing the Google project ID
+        @param {String} options.pushConfig.variantID - the id representing the mobile application variant
+        @param {String} options.pushConfig.variantSecret - the secret for the mobile application variant
+        @param {String} options.pushConfig.pushServerURL - the location of the UnifiedPush server
+        @param {String} [options.pushConfig.alias] - Application specific alias to identify users with the system. Common use case would be an email address or a username.
+        @returns {void}
+        @example
+
+        var pushConfig = {
+            senderID: "&lt;senderID>",
+            pushServerURL: "&lt;pushServerURL>",
+            variantID: "&lt;variantID>",
+            variantSecret: "&lt;variantSecret>",
+            alias: "&lt;alias>"
+        }
+
+        push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
+            "alert": "true", "ecb": "onNotification", pushConfig: pushConfig});
+    */
+    Push.prototype.register = function (successCallback, errorCallback, options) {
+        if (errorCallback == null) {
+            errorCallback = function () {
+            }
+        }
+
+        if (typeof successCallback != "function") {
+            console.log("Push.register failure: success callback parameter must be a function");
+            return;
+        }
+
+        cordova.exec(successCallback, errorCallback, "PushPlugin", "register", [options]);
+    };
+
+    /**
+        Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+        @status Stable
+        @param {Function} success - callback to be executed if the request results in success
+        @param {Function} [error] - callback to be executed if the request results in error
+        @returns {void}
+        @example
+
+        push.unregister(successHandler, errorHandler);
+    */
+    Push.prototype.unregister = function (successCallback, errorCallback) {
+        if (errorCallback == null) {
+            errorCallback = function () {
+            }
+        }
+
+        if (typeof successCallback != "function") {
+            console.log("Push.unregister failure: success callback parameter must be a function");
+            return;
+        }
+
+        cordova.exec(successCallback, errorCallback, "PushPlugin", "unregister", []);
+    };
+
+
+    /**
+        Call this to set the application icon badge -- ios specific
+        @status Stable
+        @param {Function} success - callback to be executed if the request results in success
+        @param {String|Number} [badge] - the badge number to set on the application icon
+        @returns {void}
+        @example
+
+        push.setApplicationIconBadgeNumber(successHandler, errorHandler);
+    */
+    Push.prototype.setApplicationIconBadgeNumber = function (successCallback, badge) {
+        if (typeof successCallback != "function") {
+            console.log("Push.setApplicationIconBadgeNumber failure: success callback parameter must be a function");
+            return;
+        }
+
+        cordova.exec(successCallback, successCallback, "PushPlugin", "setApplicationIconBadgeNumber", [
+            {badge: badge}
+        ]);
+    };
+
+    module.exports = new Push();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="Push.html">Push</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha3</a> on Thu Jan 23 2014 16:28:41 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="../aerogear-js/scripts/linenumber.js"> </script>
+</body>
+</html>
