@@ -92,7 +92,8 @@ var app = {
           senderID: "<senderID>",
           pushServerURL: "https://SERVER:PORT/CONTEXT/",
           variantID: "<variantID>",
-          variantSecret: "<variantSecret>"
+          variantSecret: "<variantSecret>",
+          alias: "some alias" // optional 
         }
 
         push.register(
@@ -143,7 +144,7 @@ function onNotification(e) {
 }
 ----
 
-To trigger the setup of the _PushPlugin_ we have added a +initAeroGearPush+ function onto the +app+ scope, the function is invoked by the +onDeviceReady+ function which itself is invoked once the Apache Cordova related initialization is done. It is responsible to get a reference of the Plugin's +push+ object in order to invoke its +register+ function which will register the device with CGM and Unified Push Server. Notice, that the function apart from the usual success/failure callbacks, require as parameters the Google Sender ID the Unified Push server location, VariantId and secret and the callback function name which would be invoked by the PushPlugin to pass along the notification events. Here we use the 'onNotification' function name that we defined earlier.
+To trigger the setup of the _PushPlugin_ we have added a +initAeroGearPush+ function onto the +app+ scope, the function is invoked by the +onDeviceReady+ function which itself is invoked once the Apache Cordova related initialization is done. It is responsible to get a reference of the Plugin's +push+ object in order to invoke its +register+ function which will register the device with CGM and Unified Push Server. Notice, that the function apart from the usual success/failure callbacks, require as parameters the Google Sender ID the Unified Push server location, VariantId and secret and the callback function name which would be invoked by the PushPlugin to pass along the notification events here we use the 'onNotification' function name that we defined earlier. Finally we set an +alias+ (e.g. a username or an email address)
 
 [source,javascript]
 ----
@@ -153,7 +154,8 @@ initAeroGearPush: function() {
       senderID: "e.g. 4815162342",  
       pushServerURL: "https://SERVER:PORT/CONTEXT/",
       variantID: "e.g. 610030de-904a-4e50-8043-37978ab32296",
-      variantSecret: "e.g. b83186ae-127a-40bf-8fa7-a9eb41b2b33f"
+      variantSecret: "e.g. b83186ae-127a-40bf-8fa7-a9eb41b2b33f",
+      alias: "some alias"
     }
 
     // set callbacks for dealing with the registration error and success.
