@@ -5,6 +5,8 @@ title: Guides
 
 ### Guides
 
+[Core](core/index/index.html)
+
 #### Supported Platforms
 
 * [AeroGear Browser Support Targets](AeroGearBrowserTargets)
