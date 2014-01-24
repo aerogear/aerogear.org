@@ -43,6 +43,7 @@ A Pipeline object represents a 'collection' of server connections (aka Pipes). I
         return String.format("{make:%s, model:%s}", make, model);
       }
   }
+
   Pipe<Car> pipe = new RestAdapter<Car>(Car.class, new URL("http://www.server.com/car"));
   ----
   [source,ios]
