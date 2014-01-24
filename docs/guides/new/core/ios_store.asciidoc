@@ -1,0 +1,192 @@
+---
+layout: basic
+title: store
+---
+== [[store]]Store and DataManager
+
+A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage.
+
+A DataManager manages different Store implementations. It is basically a factory that hides the concrete instantiations of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.
+
+The code snippets below are part of https://github.com/aerogear/aerogear-ios/tree/master/AeroGear-iOS/AeroGear-iOSTests[aerogear-ios test suite]. You can browse our BDD specifications for further samples.
+
+NOTE: Right now, there is NO automatic data sync. This is up to the user.
+
+=== Create a datamanager with store object:
+
+After receiving data from the server, your application may want to keep the data around. The AGDataManager API allows you to create AGStore instances. To create a datamanager, you need to use the AGDataManager class. Below is an example:
+
+[source,c]
+----
+// create the datamanager
+AGDataManager* dm = [AGDataManager manager];
+// add a new (default) store object:
+id<AGStore> myStore = [dm store:^(id<AGStoreConfig> config) {
+    [config setName:@"tasks"];
+}];
+----
+
+The AGDataManager class offers some simple 'management' APIs to work with containing AGStore objects. The API offers read and write functionality. The default implementation represents an "in-memory" store. If you want to create a AGPropertyListStorage or a AGSQLiteStorage, add a config type as shown below:
+
+[source,c]
+----
+// create the datamanager
+AGDataManager* dm = [AGDataManager manager];
+// add a new (default) store object:
+id<AGStore> store = [dm store:^(id<AGStoreConfig> config) {
+   [config setName:@"tasks"];
+   [config setType:@"SQLITE"];
+}];
+----
+
+Storage can be of type: MEMORY, PLIST or SQLITE. Similar to the pipe API technical details of the underlying system are not exposed.
+
+=== Save data to the Store
+
+When using a pipe to read all entries of a endpoint, you can use the AGStore to save the received objects:
+
+[source,c]
+----
+id<AGPipe> tasksPipe = [todo get:@"tasks"];
+
+[tasksPipe read:^(id responseObject) {
+    // the response object represents an NSArray,
+    // containing multile 'Tasks' (as NSDictionary objects)
+
+    // Save the response object to the store
+    NSError *error;
+
+    if (![myStore save:responseObject error:&error])
+        NSLog(@"Save: An error occured during save! \n%@", error);
+
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+----
+
+When loading all tasks from the server, the AGStore object is used inside of the _read_ block from the AGPipe object. The returned collection of tasks is stored inside our in-memory store, from where the data can be accessed.
+
+=== Read an object from the Store
+
+[source,c]
+----
+// read the task with the '0' ID:
+id taskObject =  [myStore read:@"0"];
+----
+
+The _read_ function accepts the _recordID_ of the object you want to retrieve. If the object does not exist in the store, _nil_ is returned.
+
+If you want to read _all_ the objects contained in the store, simply call the _readAll_ function
+
+[source,c]
+----
+// read all objects from the store
+NSArray *objects = [myStore readAll];
+----
+
+=== Remove one object from the Store
+
+The remove function allows you to delete a single entry in the collection, if present:
+
+[source,c]
+----
+// remove the taskObject:
+NSError *error;
+
+if (![myStore remove:taskObject error:error])
+    NSLog(@"Save: An error occured during remove! \n%@", error);
+----
+
+The remove method accepts a _taskObject_ which is the object you want to remove. If the object does not exist in the store, FALSE is returned.
+
+=== Filter the entire store
+
+Filtering of the data available in the AGStore is also supported, by using the familiar NSPredicate class available in iOS. In the following example, after storing a pair of dictionaries representing user information details in the store (which can be easily come from a response from a server), we simple call the _filter_ method to filter out the desired information:
+
+[source,c]
+----
+ NSMutableDictionary *user1 = [@{@"id" : @"1",
+                                @"name" : @"Robert",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Cornwell"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"advanced"},
+                                                  @{@"language" : @"C", @"level" : @"advanced"}]
+                              } mutableCopy];
+
+NSMutableDictionary *user2 = [@{@"id" : @"2",
+                                @"name" : @"David",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Cornwell"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"intermediate"},
+                                                  @{@"language" : @"Python", @"level" : @"intermediate"}]
+                              } mutableCopy];
+
+NSMutableDictionary *user3 = [@{@"id" : @"3",
+                                @"name" : @"Peter",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Branton"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"advanced"},
+                                                  @{@"language" : @"C", @"level" : @"intermediate"}]
+                              } mutableCopy];
+
+// save objects
+BOOL success = [_memStore save:users error:nil];
+
+if (success) { // if save succeeded, query the data
+    NSPredicate *predicate = [NSPredicate
+                              predicateWithFormat:@"city = 'Boston' AND department.name = 'Software' \
+                              AND SUBQUERY(experience, $x, $x.language = 'Java' AND $x.level = 'advanced').@count > 0" ];
+
+    NSArray *results = [_memStore filter:predicate];
+
+    // The array now contains the dictionaries _user1_ and _user_3, since they both satisfy the query predicate.
+    // do something with the 'results'
+    // ...
+}
+----
+
+Using NSPredicate to filter desired data, is a powerful mechanism offered in iOS and we strongly suggest to familiarize yourself with it, if not already. Take a look at Apple's own link:http://tinyurl.com/chmgwv5[documentation] for more information.
+
+=== Reset the entire store
+
+The reset function allows you the erase all data available in the used AGStore object:
+
+[source,c]
+----
+// clears the entire store
+NSError *error;
+
+if (![myStore reset:&error])
+    NSLog(@"Reset: An error occured during reset! \n%@", error);
+----
+
+=== PropertyList Storage Specific
+
+A simple _Property list_ storage system is part of the library as well that uses the same 'AGStore' protocol for reading and writing. Depending on the type specified during store configuration, the system will use either link:https://developer.apple.com/library/mac/documentation/cocoa/reference/foundation/Classes/NSPropertyListSerialization_Class/Reference/Reference.html[NSPropertyListSerialization] (type ''_PLIST_'') or link:https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html[NSJSONSerialization] (type ''_JSON_'') when exporting data.
+
+NOTE
+You must adhere to the rules governing the serialization of data types for each respective plist type.
+
+Here is a quick example, that stores an link:http://en.wikipedia.org/wiki/One-time_password[One Time Password (OTP)] secret in the filesystem so that OTP tokens can be generated later (check AeroGear OTP iOS link:https://github.com/aerogear/aerogear-otp-ios[library] and link:https://github.com/aerogear/aerogear-otp-ios-demo[demo] for more information on OTP).
+
+[source,c]
+----
+// initalize plist store (if the file does not exist it will be created)
+AGDataManager* manager = [AGDataManager manager];
+id<AGStore> plistStore = [manager store:^(id<AGStoreConfig> config) {
+    [config setName:@"secrets"]; // will be used as the filename for the plist
+    [config setType:@"PLIST"];
+}];
+
+// the object to save (e.g. a dictionary)
+NSDictionary *otp = [NSDictionary dictionaryWithObjectsAndKeys:@"19a01df0281afcdbe", @"otp", @"1", @"id", nil];
+
+// save it
+NSError *error;
+
+if (![plistStore save:otp error:&error])
+    NSLog(@"Save: An error occured during save! \n%@", error);
+----
+
+The 'read', 'reset' or 'remove' API behave the same, as on the default ("in memory") store.
