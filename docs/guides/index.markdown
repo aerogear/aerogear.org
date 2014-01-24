@@ -5,7 +5,7 @@ title: Guides
 
 ### Guides
 
-[Core](core/index/index.html)
+[Core](new/index)
 
 #### Supported Platforms
 
