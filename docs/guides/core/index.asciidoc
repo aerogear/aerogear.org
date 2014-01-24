@@ -45,11 +45,11 @@ A Pipeline object represents a 'collection' of server connections (aka Pipes). I
   }
   Pipe<Car> pipe = new RestAdapter<Car>(Car.class, new URL("http://www.server.com/car"));
   ----
-  [source,iOS]
+  [source,ios]
   ----
   AGPipeline* pipe = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://www.server.com/car"]];
   ----
-  [source,JavaSCript]
+  [source,javascript]
   ----
   TODO
   ----
