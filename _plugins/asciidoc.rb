@@ -20,8 +20,8 @@ class TabsBlock < Asciidoctor::Extensions::BlockProcessor
     source << '</ul><div class="tab-content">'
 
     lines = reader.lines.collect! { |element|
-    element.strip
-  }
+      element = element[2..-1]
+    }
 
   source << (Asciidoctor.render lines)
   source << '</div>'
