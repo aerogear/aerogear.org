@@ -66,6 +66,6 @@ Currently the Server will support the following query criteria:
 * ```variants```: A list of one or more _mobile variant ID's_ to identify a particular PushApplication variant (e.g. HR Android, HR iPad).
 * ```alias```: A list of one or more _identifiers_ (such as ```email``` or ```username```) to send messages to *ALL* devices of the user(s). The ```alias``` needs to be stored, when the device is registering itself with the server.
 * ```categories```: Helps to _tag_ the current client with multiple categories. Gives a semantic meaning to a registered ```Installation```.
-* ```deviceType```: A list of raw device types that should receive the message (e.g. Coupon only for iPad and AndroidTablets). The ```deviceType``` needs to be stored when the device is registering itself with the server. _**NOTE:**_ For SimplePush, the ```deviceType``` is **ONLY** ```web```. No specifics on the actual device are used due to general limitations on "user agent sniffing".
+* ```deviceType```: A list of raw device types that should receive the message (e.g. Coupon only for iPad and AndroidTablets). The ```deviceType``` needs to be stored when the device is registering itself with the server.
 
 _**NOTE:**_ All these query criterias are optionnal. If no criterias are passed it will act as a  _broadcast_ send, where _all_ clients are notified. 
