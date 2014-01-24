@@ -13,8 +13,7 @@ title: AeroGear Android User Guide
 * [Get Started With Android Development in NetBeans](/docs/guides/GettingStartedAndroidNetbeans/)
 
 ## Usage Guides
-* [Pipes 101](AerogearAndroidPipes101)
-* [Customizing Pipes](AerogearAndroidCustomizingPipes)
+* [Pipe](pipe)
 * [Pagination](AerogearAndroidPagination)
 * [Authentication](AerogearAndroidAuthentication)
 * [Store](AerogearAndroidDataStore)
