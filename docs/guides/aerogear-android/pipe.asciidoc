@@ -1,0 +1,262 @@
+--- 
+layout: basic 
+title: AeroGear Android User Guide 
+---
+
+= AeroGear Pipes in Android
+
+== Pipe
+
+AeroGear uses a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] metaphor for connecting to a remote web service. All methods on link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] consume a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*]. If you are calling your link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] from an Activity or Fragment it is highly encouraged to create a static class which extends link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/AbstractActivityCallback.html[*AbstractActivityCallback*], link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/support/AbstractFragmentActivityCallback.html[*AbstractFragmentActivityCallback*], link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/AbstractFragmentCallback.html[*AbstractFragmentCallback*], or link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/support/AbstractSupportFragmentCallback.html[*AbstractSupportFragmentCallback*].
+
+Let's say you have a simple webservice at *http://www.server.com/developer*. This service has the following API:
+
+[width="40%",frame="topbot",options="header"]
+|=============================
+| http verb | endpoint        
+| GET       | /developer      
+| POST      | /developer      
+| PUT       | /developer/$id  
+| DELETE    | /developer/$id  
+|=============================
+
+The developer JSON retrieved via get http verb
+
+[source, json]
+----
+[
+    {
+        "id": "1",
+        "photoURL": "https://pbs.twimg.com/profile_images/378800000054312650/2ed585582b38130e65b772b9ff787c09.jpeg",
+        "twitter": "passos",
+        "name": "Daniel Passos"
+    },
+    {
+        "id": "2",
+        "photoURL": "https://pbs.twimg.com/profile_images/2936447891/ebe9da7e1797936b921fa056404d52a3.jpeg",
+        "twitter": "summerspittman",
+        "name": "Summers Pittman"
+    }
+]
+----    
+
+marshals to this class
+
+[source, java]
+----
+public class Developer {
+    
+    @RecordId
+    private Long id;
+    private String twitter;
+    private String photoURL;
+
+}
+----    
+
+How? link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Pipeline.html[*Pipeline*] class is used to instantiate and manage a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] object. `Pipeline.pipe` creates and returns an instance of link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*]. You don't have to keep a reference to the result. `Pipeline.get(String, Activity)` will return a instance of link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/LoaderPipe.html[*LoaderPipe*] which is really a wrapper around the original link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] object. There are also `Pipeline.get` methods for _Fragments_, _FragmentActivity_ and _Fragment_ (link:http://developer.android.com/tools/support-library[*Android's support library*]) classes 
+
+[source, java]
+----
+public class MyActivity extends ListActivity {
+
+    private Pipeline pipeline;
+
+    protected void onCreate() {
+        String serverURL = "http://www.server.com";
+        pipeline = new Pipeline(serverURL);
+        pipeline.pipe(Developer.class);
+    }
+
+    protected void onStart() {
+        
+        // By default, Pipeline.pipe stores the Pipe created by Pipeline.pipe
+        // using a key which is the lowercase of the class the Pipe is marshaling.
+        // and append the same with endpoint in url
+        LoaderPipe<Developer> pipe = pipeline.get("developer", this);
+        pipe.read(new MyCallback());
+    }
+
+    private static class MyCallback extends AbstractActivityCallback<List<Developer>> {
+
+        /*
+        * AbstractActivity's constructor consumes a varargs of Objects which it uses
+        * to generate the value returned by hashCode();
+        */
+        public MyCallback() {
+            super("myCallback");
+        }
+
+        public void onSuccess(List<Developer> data) {
+            ListActivity activity = (ListActivity) getActivity();
+            activity.setListAdapter(new ArrayAdapter(activity, 
+                android.R.simple_list_item_1, data));
+        }
+
+        public void onFailure(Exception e) {
+            // Gracefully handle the exception
+        }
+
+    }
+
+}
+----    
+
+You need to be aware of the link:http://developer.android.com/training/basics/activity-lifecycle/index.html[*Android Activity lifecycle*]. If the Application goes into the background (ex. the user gets a phone call), then any results which come in may be lost or cause an Exception if they interact with the UI of the suspended Activity. If there is a configuration change (ex. the phone was rotated) then the Activity is destroyed and a new one is created.  If you used an anonymous inner class for your link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*] instance then you will lose your results when the operation completes (because anonymous inner classes have an implicit reference to the outer class).
+
+However, AeroGear also has support for link:http://developer.android.com/training/basics/activity-lifecycle/index.html[*Android's Loader API*]. Loader's were introduced by Android in version 3.0, and their lifecycle is managed by Android. When an Activity is paused and resumed, any activity the Loader was working on is returned. If the Activity is destroyed because of a configuration change then the Loader will provide its results to the new Activity instance without having to make second call to a remote server.
+
+The pipe instance will be respectful of the Android lifecycle and calls to its methods will be handled by and behave like Loaders.  For instance, if the device is rotated the result of the read will be returned from a local cache instead of being fetched from the web again.  If you want to force a read, just call `pipe.reset()` before your read.
+
+Often a webservice will not quite match up to the default patterns supported by AeroGear. For instance, the data may not be root element of a JSON response, you may need to specify a specific endpoint, etc.  For these instances we use the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*] object.
+
+[source, java]
+----
+protected void onCreate() {
+
+    String serverURL = "http://www.server.com";
+
+    PipeConfig pipeConfig = new PipeConfig(new URL(serverURL), Developer.class);
+    pipeConfig.setEndpoint("developers.json");
+
+    Pipeline pipeline = new Pipeline(serverURL);
+    pipeline.pipe(Developer.class, pipeConfig);
+    
+}
+----
+
+The full set of options you can configure on _PipeConfig_ are on the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*javadoc*] page.
+
+== PipeHandler
+
+AeroGear on Android uses a class called link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] to retrieve data from a _source asynchronously_. A link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] has the methods `read`, `readWithFilter`, `remove`, and `save`. A link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementation is responsible for managing link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] instances, processing their results and returning the results to the user via callbacks provided by the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] CRUD methods. AG Android has three link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementations: link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestAdapter.html[*RestAdapter*], link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/LoaderAdapter.html[*LoaderAdapter*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/SupportLoaderAdapter.html[*SupportLoaderAdapter*].
+
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] instances are responsible for connecting to a remote source, sending a request, fetching the response, and returning a deserialized instance of that result to the Pipe which requested it. link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] do not need to worry about threading, this is the responsibility of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].
+
+So why separate link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*]? The logic of threading is troublesome and often leads to bugs. The patterns and trade offs are usually specific to Android and not your application. Since AeroGear provides this logic along with methods for selecting the most appropriate mechanisms for handling threads, there is no reason to burden a developer with it. The methods for connecting to remote services are much more specific to the use case (IE the app). If our default implementations do not fit your needs, it is much simpler to implement a PipeHandler and allow a RestAdapter to manage the threading for you.
+
+For many of the cases, writing an adapter to a remote source which AG can not support is as simple as implementing a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] and passing it to a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] via `PipeConfig.setHandler`.
+
+So let’s say all of the data we want isn’t stored in a remote server but a local file. We can easily write a PipeHandler to read from this file. For purposes of this example, let’s pretend the file is read only.
+
+*PipeHandler*
+
+[source, java]
+----
+public class FilePipeHandler implements PipeHandler<Developer> {
+
+    public FilePipeHandler(Context applicationContext) {
+    }
+
+    @Override
+    public List<Developer> onRead(Pipe<Developer> requestingPipe) {
+        // Read file, parse JSON and return a List of Developers
+    }
+
+    // Other methods
+
+}
+----
+
+*How to use the new PipeHandle*
+
+[source, java]
+----
+URL fileURL = this.getFilesDir().toURI().toURL();
+
+Pipeline pipeline = new Pipeline(fileURL);
+PipeConfig pipeConfig = new PipeConfig(fileURL, Developer.class);
+
+pipeConfig.setHandler(new FileHandler(getApplicationContext()));
+pipeline.pipe(Developer.class, pipeConfig);
+
+LoaderPipe<Developer> developerLoaderPipe = pipeline.get("developer", this);
+developerLoaderPipe.read(new myCallback);
+----
+
+See the complete implementation in link:https://github.com/aerogear/aerogear-android-cookbook[*cookbook app*]
+
+_Feel free to create new Handlers, RequestBuilders, ResponseParsers and send to the project ;)_
+
+== RequestBuilder, ResponseParser
+
+
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] uses link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] to interact with services. The default link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] is link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestRunner.html[*RestRunner*], the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestRunner.html[*RestRunner*] delegates requests for link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonRequestBuilder.html[*GsonRequestBuilder*] and response parse to link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonResponseParser.html[*GsonResponseParser*]
+
+=== GSON
+
+Behind the scenes, link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonRequestBuilder.html[*GsonRequestBuilder*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonResponseParser.html[*GsonResponseParser*] uses Google's GSON for JSON object serialization and deserialization. Both have a construction to consume a _GSON_ instance. This _GSON_ will be used to marshall and unmarshall objects. If you have nested, typed collections, etc. You can configure a GSON which supports your data model and pass it to the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonRequestBuilder.html[*GsonRequestBuilder*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonResponseParser.html[*GsonResponseParser*]
+
+[source, json]
+----
+Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
+PipeConfig config = new PipeConfig(serverURL, MyModel.class);
+config.setRequestBuilder(new GsonRequestBuilder(gson));
+config.setResponseParser(new GsonResponseParser(gson));
+----
+
+=== Nested Data in Result
+
+Sometimes you will have a simple result format, but your data will be surrounded by metadata. Take this JSON snippit for example:
+
+[source, json]
+----
+{
+    "data": {
+        "after": "t3_17i1lt",
+        "before": null,
+        "children": [
+                {"data":"data1"},
+                {"data":"data2"},
+                {"data":"data3"},
+                {"data":"data4"}
+        ]
+    }
+}
+----
+
+In this example you are interested in the data object's "children" collection. Instead of writing code using GSON to fetch it, you can instead use `PipeConfig.setDataRoot`.
+
+[source, java]
+----
+PipeConfig pipeConfig = new PipeConfig(serverURL, MyModel.class);
+pipeConfig.setDataRoot("data.children")
+----
+
+## Multipart Upload
+
+The multipart upload is a good example to use link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/RequestBuilder.html[*RequestBuilder*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/ResponseParser.html[*ResponseParser*]. In the most of the cases you need to send a file to server and receive a JSON with response. In this case you don't need to create a new Handler, just set a new link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/RequestBuilder.html[*RequestBuilder*] in link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*] for link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestRunner.html[*RestRunner*]
+
+We already have a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/RequestBuilder.html[*RequestBuilder*] for multipart upload the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/MultipartRequestBuilder.html[*MultipartRequestBuilder*]
+
+*Model*
+
+[source, java]
+----
+public class Developer {
+    
+    @RecordId
+    private Long id;
+    private String twitter;
+    private String photoURL;
+    private InputStream photo;
+
+}
+----
+
+*How to use MultipartRequestBuilder*
+
+[source, java]
+----
+String serverURL = "http://www.server.com";
+
+PipeConfig pipeConfig = new PipeConfig(serverURL, Developer.class);
+config.setRequestBuilder(new MultipartRequestBuilder<Developer>());
+
+Pipeline pipeline = new Pipeline(url);
+pipeline.pipe(Developer.class, pipeConfig);
+
+LoaderPipe<Developer> pipe = pipeline.get("developer", this);
+pipe.save(developerInstance, myCallback);
+----
