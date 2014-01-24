@@ -17,7 +17,7 @@ title: Specifications
 * [Paging API](aerogear-client-paging)
 * [Paging API usage examples](aerogear-client-paging-usage)
 * [AeroGear Security Crypto](aerogear-crypto)
-* [AeroGear Cordova Push](aerogear-cordova)
+* [AeroGear Cordova](aerogear-cordova)
 
 #### Server Side Specifications
 * [AeroGear Controller 1.0.0](aerogear-controller)
