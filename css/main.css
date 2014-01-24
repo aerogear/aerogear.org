@@ -261,6 +261,9 @@ div.section {
     margin: -40px;
     padding: 40px;
     color: #ebebeb; }
+  div.section .sect1 h3 {
+    text-transform: uppercase;
+    color: #ebebeb; }
   div.section pre {
     background-color: #222222;
     border: none; }

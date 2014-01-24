@@ -1,0 +1,126 @@
+---
+layout: core
+title: Aerogear Core
+---
+== AeroGear Core
+
+AeroGear core take care of basics. For an abstraction of the connenctivity, use <<pipe, pipe>>, <<pipe, pipeline>> and
+<<paging, paging>>. Abstracting your storage level via <<store, DataManager>> and <<store, Store>>. You can even use our
+convenient encrypted storage.
+
+
+=== [[pipe]]Using pipe
+
+AeroGear uses a Pipe metaphor for connecting to a remote web service. Pipe represents a server connection and are
+responsible to communicate with the server in order to perform read/write operations. All methods on Pipe are
+asynchronous and therefore use callback methods.
+
+A Pipeline object represents a 'collection' of server connections (aka Pipes). It provides a standard way to communicate
+ with the server no matter the data format or transport expected. It contains some simple management APIs to create and
+ remove Pipe objects. Let's say you have a simple REST webservice with a base URL www.server.com/car,  here is how
+ the pipe API is declined:
+
+[width="60%",frame="topbot",options="header"]
+|======================
+|HTTP protocol |Pipe's method | Description
+|GET:/car        |Pipe.read | return a JSON array
+|POST:/car        |Pipe.save | create a car record
+|PUT:/car/$id        |Pipe.save |update car
+|DELETE:/car/$id        |Three items| delete car
+|======================
+
+
+[tabs]
+[names="Java,iOS,JavaScript"]
+  [source,java]
+  ----
+ * Pipeline pipeline = new Pipeline("http://www.server.com");
+ * pipeline.pipe(Car.class);
+ *
+ * LoaderPipe<Car> carsPipe = pipeline.get("car", this);
+ * carsPipe.read(new MyCallback());
+  ----
+  [source,ios]
+  ----
+ *  AGPipeline* pipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://www.server.com/"];];
+ *  id<AGPipe> carsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
+ *      [config setName:@"cars"];
+ *      [config setType:@"REST"];
+ *  }];
+  ----
+ * [source,javascript]
+  ----
+ * TODO
+  ----
+
+Read more on link:/docs/guides/new/core/android_pipe[*Pipes on Android*]
+/ link:/docs/guides/new/core/ios_pipe[*Pipes on iOS*]
+/ link:/docs/guides/new/core/js_pipe[*Paging on Web*]
+
+=== [[paging]]Using Pagination
+
+The library has built-in paging support, enabling the scrolling to either forward or backwards through a result set
+returned from the server. Paging metadata located in the server response (either in the headers via
+link:http://tools.ietf.org/html/rfc5988[WebLinking RFC] or custom headers, or in the body) are used to identify the next
+ or the previous result set.
+
+For example, the Twitter search paging metadata is located in the
+link:https://dev.twitter.com/docs/api/1/get/search[body] of the response signifying the next or previous result set.
+The location of this metadata as well as naming, is fully configurable during the creation of the pipe, thus enabling
+greater flexibility in supporting several different paging strategies.
+
+[tabs]
+[names="Java,iOS,JavaScript"]
+  [source,java]
+  ----
+ *  TODO ANDROID
+ *
+ *
+  ----
+  [source,ios]
+  ----
+ * TODO iOS
+  ----
+ * [source,javascript]
+  ----
+ * TODO JS
+  ----
+
+Read more on link:/docs/guides/new/core/android_paging[*Paging on Android*]
+/ link:/docs/guides/new/core/ios_paging[*Paging on iOS*]
+/ link:/docs/guides/new/core/js_paging[*Paging on JavaScript*]
+
+=== [[store]]Using Store
+
+A Store represents an abstraction layer for a storage system. Depending on your platform you have several storage
+implementations. A DataManager manages different Stores. It is basically a factory that hides the concrete instantiations
+of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.
+
+[tabs]
+[names="Java,iOS,JavaScript"]
+  [source,java]
+  ----
+ * public class Car {
+ *     @RecordId
+ *     public Long id;
+ *     public String make;
+ *     public String model;
+ *     public String toString() {
+ *       return String.format("{make:%s, model:%s}", make, model);
+ *     }
+ * }
+ *
+ * Pipe<Car> pipe = new RestAdapter<Car>(Car.class, new URL("http://www.server.com/car"));
+  ----
+  [source,ios]
+  ----
+ * AGPipeline* pipe = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://www.server.com/car"]];
+  ----
+ * [source,javascript]
+  ----
+ * TODO
+  ----
+
+Read more on link:/docs/guides/new/core/android_store[*Store on Android*]
+/ link:/docs/guides/new/core/ios_store[*Store on iOS*]
+/ link:/docs/guides/new/core/js_store[*Store on JavaScript*]

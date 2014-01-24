@@ -1,0 +1,33 @@
+### Pipeline & Pipes
+
+A Pipeline is a JavaScript library that provides a persistence API that is protocol agnostic and does not depend on any certain data model. Through the use of adapters, both provided and custom, user supplied, this library provides common methods like read, save and delete that will just work.
+
+A Pipe is one server connection.  The default adapter is using the REST protocol.
+
+To expand on this concept, lets look "under the hood" and see how this works.
+
+    var memberPipe  = AeroGear.Pipeline([{
+        name: "members",
+        settings: {
+            baseURL: "rest/"
+        }
+    }
+ ]).pipes.members;
+
+
+Whats happening here?  We are calling the Pipeline constructor with an array of objects as it's arguments.  In this case, it is just one object.
+
+The object which will become a pipe.  We see that it has a name property and a settings object where we are overriding the baseURL property.  By default Pipes use the name property as the endpoint and baseURL for the REST service.  In this case, we are overriding the baseURL, so our REST call would look something like this:
+
+    http://localhost/application_name/rest/members
+
+
+### Data Manager & Stores
+
+A Data Manager is a collection of data connections (stores) and their corresponding data models. This object provides a standard way to interact with client side data no matter the data format or storage mechanism used.
+
+
+    var dm = AeroGear.DataManager( "membersStore" ),
+        MemberStore = dm.stores["membersStore"];
+
+Whats happening here?  Similar to the Pipeline and Pipe constructor,  we are creating a DataManager with a default Store( memory ) and then assigning that store to a variable for later use.
