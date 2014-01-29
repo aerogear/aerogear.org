@@ -20,6 +20,8 @@ Let's say you have a simple webservice at *http://www.server.com/developer*. Thi
 | DELETE    | /developer/$id  
 |=============================
 
+Here is an example of using the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] API to retrieve the JSON payload shown earlier. Note that the library will automatically marshall the payload to your model, leaving you only with task to display the results in the UI. Further and equal important, it will respect the Activity (or Fragment) lifecycle, a common source of problem bugging Android development as we will discuss next
+
 The developer JSON retrieved via get http verb
 
 [source, json]
@@ -180,8 +182,6 @@ developerLoaderPipe.read(new myCallback);
 
 See the complete implementation in link:https://github.com/aerogear/aerogear-android-cookbook[*cookbook app*]
 
-_Feel free to create new Handlers, RequestBuilders, ResponseParsers and send to the project ;)_
-
 === RequestBuilder, ResponseParser
 
 
@@ -264,3 +264,5 @@ pipeline.pipe(Developer.class, pipeConfig);
 LoaderPipe<Developer> pipe = pipeline.get("developer", this);
 pipe.save(developerInstance, myCallback);
 ----
+
+_Feel free to create new Handlers, RequestBuilders, ResponseParsers and send to the project ;)_
