@@ -129,7 +129,9 @@ protected void onCreate() {
 
 The full set of options you can configure on _PipeConfig_ are on the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*javadoc*] page.
 
-== PipeHandler
+== Plugging into the Pipe API
+
+=== PipeHandler
 
 AeroGear on Android uses a class called link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] to retrieve data from a _source asynchronously_. A link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] has the methods `read`, `readWithFilter`, `remove`, and `save`. A link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementation is responsible for managing link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] instances, processing their results and returning the results to the user via callbacks provided by the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] CRUD methods. AG Android has three link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementations: link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestAdapter.html[*RestAdapter*], link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/LoaderAdapter.html[*LoaderAdapter*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/SupportLoaderAdapter.html[*SupportLoaderAdapter*].
 
@@ -180,12 +182,12 @@ See the complete implementation in link:https://github.com/aerogear/aerogear-and
 
 _Feel free to create new Handlers, RequestBuilders, ResponseParsers and send to the project ;)_
 
-== RequestBuilder, ResponseParser
+=== RequestBuilder, ResponseParser
 
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] uses link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] to interact with services. The default link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] is link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestRunner.html[*RestRunner*], the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestRunner.html[*RestRunner*] delegates requests for link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonRequestBuilder.html[*GsonRequestBuilder*] and response parse to link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonResponseParser.html[*GsonResponseParser*]
 
-=== GSON
+==== GSON
 
 Behind the scenes, link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonRequestBuilder.html[*GsonRequestBuilder*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonResponseParser.html[*GsonResponseParser*] uses Google's GSON for JSON object serialization and deserialization. Both have a construction to consume a _GSON_ instance. This _GSON_ will be used to marshall and unmarshall objects. If you have nested, typed collections, etc. You can configure a GSON which supports your data model and pass it to the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonRequestBuilder.html[*GsonRequestBuilder*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/GsonResponseParser.html[*GsonResponseParser*]
 
@@ -198,7 +200,7 @@ config.setRequestBuilder(new GsonRequestBuilder(gson));
 config.setResponseParser(new GsonResponseParser(gson));
 ----
 
-=== Nested Data in Result
+==== Nested Data in Result
 
 Sometimes you will have a simple result format, but your data will be surrounded by metadata. Take this JSON snippet for example:
 
@@ -226,7 +228,7 @@ PipeConfig pipeConfig = new PipeConfig(serverURL, MyModel.class);
 pipeConfig.setDataRoot("data.children")
 ----
 
-## Multipart Upload
+=== Multipart Upload
 
 The multipart upload is a good example to use link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/RequestBuilder.html[*RequestBuilder*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/ResponseParser.html[*ResponseParser*]. In the most of the cases you need to send a file to server and receive a JSON with response. In this case you don't need to create a new Handler, just set a new link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/RequestBuilder.html[*RequestBuilder*] in link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*] for link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/RestRunner.html[*RestRunner*]
 
