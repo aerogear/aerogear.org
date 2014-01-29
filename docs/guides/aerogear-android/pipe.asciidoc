@@ -200,7 +200,7 @@ config.setResponseParser(new GsonResponseParser(gson));
 
 === Nested Data in Result
 
-Sometimes you will have a simple result format, but your data will be surrounded by metadata. Take this JSON snippit for example:
+Sometimes you will have a simple result format, but your data will be surrounded by metadata. Take this JSON snippet for example:
 
 [source, json]
 ----
