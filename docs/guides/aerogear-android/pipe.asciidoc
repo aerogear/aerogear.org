@@ -108,6 +108,8 @@ However, AeroGear also has support for link:http://developer.android.com/trainin
 
 The pipe instance will be respectful of the Android lifecycle and calls to its methods will be handled by and behave like Loaders.  For instance, if the device is rotated the result of the read will be returned from a local cache instead of being fetched from the web again.  If you want to force a read, just call `pipe.reset()` before your read.
 
+== Configuring the Pipe
+
 Often a webservice will not quite match up to the default patterns supported by AeroGear. For instance, the data may not be root element of a JSON response, you may need to specify a specific endpoint, etc.  For these instances we use the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*] object.
 
 [source, java]
