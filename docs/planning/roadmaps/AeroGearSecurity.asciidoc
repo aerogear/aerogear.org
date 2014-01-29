@@ -117,8 +117,8 @@ External References
 
 * AGSEC-102: Update the quickstarts and demos with 1.2.1 release
 
-1.3.0 (End November)
-~~~~~~~~~~~~~~~~~~~~
+1.3.0 (_Released_ 19 Dec, 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * AGSEC-2: Secure storage and cache documentation
   ** AGSEC-9: Provide a detailed specification and which kind of algorithms will be provided
@@ -166,8 +166,8 @@ External References
     ** AGSEC-135: Allow password to be decrypted and displayed on the screen
 
 
-1.4.0 (End January)
-~~~~~~~~~~~~~~~~~~~
+1.4.0 (End Mar)
+~~~~~~~~~~~~~~~
 
 * AGSEC-2: Secure storage and cache documentation
   ** AGSEC-7: Provide a specification about how to properly do key management
@@ -176,35 +176,11 @@ External References
 
 * AGSEC-12: Offline authentication
 
-* AGSEC-17: Mobile devices blacklist support
-
-* AGSEC-29: AeroGear OTP for JavaScript
-
-* AGSEC-32: Server should generate certificates on the fly to protect the developer's credential
-
-* AGSEC-35: Add CSP support on AeroGear security
-
 * AGSEC-55: Various security tasks for the Unified Push server
-
-    ** AGSEC-30: Unified Push: Sec: Add Client Access Key
-
-    ** AGSEC-31: Unified Push: Evaluate non repudiation for each application on the server
 
 * AGSEC-125: Manage cryptographic keys and respective owner
 
 * AGSEC-127: Encrypted cache
-
-* AGSEC-128: Key agreement with the server
-
-* AGSEC-129: Key privilege revocation
-
-* AGSEC-130: Key privilege expiration
-
-* AGSEC-131: Data seek and destroy
-
-* AGSEC-137: Performance checks
-
-* AGSEC-138: Hold the fort
 
 * AGSEC-143: Provide a server implementation/specification for encrypted storage
 
@@ -219,9 +195,26 @@ External References
 
     ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
 
+1.5.0 (End Apr)
+~~~~~~~~~~~~~~~
 
-2.0.0 (Mid March)
-~~~~~~~~~~~~~~~~~
+* AGSEC-17: Mobile devices blacklist support
+
+* AGSEC-128: Key agreement with the server
+
+* AGSEC-129: Key privilege revocation
+
+* AGSEC-130: Key privilege expiration
+
+* AGSEC-131: Data seek and destroy
+
+* AGSEC-137: Performance checks
+
+* AGSEC-138: Hold the fort
+
+
+2.0.0 (End May)
+~~~~~~~~~~~~~~~
 
 * AGSEC-3: Url and Forms that perform important operations must be protected by random tokens (hidden nonce values)
 
