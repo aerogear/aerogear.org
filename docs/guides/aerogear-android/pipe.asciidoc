@@ -20,6 +20,8 @@ Let's say you have a simple webservice at *http://www.server.com/developer*. Thi
 | DELETE    | /developer/$id  
 |=============================
 
+Here is an example of using the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] API to retrieve the JSON payload shown earlier. Note that the library will automatically marshall the payload to your model, leaving you only with task to display the results in the UI. Further and equal important, it will respect the Activity (or Fragment) lifecycle, a common source of problem bugging Android development as we will discuss next
+
 The developer JSON retrieved via get http verb
 
 [source, json]
@@ -137,7 +139,7 @@ AeroGear on Android uses a class called link:/docs/specs/aerogear-android/org/jb
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] instances are responsible for connecting to a remote source, sending a request, fetching the response, and returning a deserialized instance of that result to the Pipe which requested it. link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] do not need to worry about threading, this is the responsibility of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].
 
-So why separate link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*]? The logic of threading is troublesome and often leads to bugs. The patterns and trade offs are usually specific to Android and not your application. Since AeroGear provides this logic along with methods for selecting the most appropriate mechanisms for handling threads, there is no reason to burden a developer with it. The methods for connecting to remote services are much more specific to the use case (IE the app). If our default implementations do not fit your needs, it is much simpler to implement a PipeHandler and allow a RestAdapter to manage the threading for you.
+So why separate link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*]? The logic of threading is troublesome and often leads to bugs. The patterns and trade offs are usually specific to Android and not your application. Since AeroGear provides this logic along with methods for selecting the most appropriate mechanisms for handling threads, there is no reason to burden a developer with it. The methods for connecting to remote services are much more specific to the use case (IE the app). If our default implementations do not fit your needs, it is much simpler to implement a PipeHandler and allow a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] to manage the threading for you.
 
 For many of the cases, writing an adapter to a remote source which AG can not support is as simple as implementing a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/PipeHandler.html[*PipeHandler*] and passing it to a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] via `PipeConfig.setHandler`.
 
@@ -179,8 +181,6 @@ developerLoaderPipe.read(new myCallback);
 ----
 
 See the complete implementation in link:https://github.com/aerogear/aerogear-android-cookbook[*cookbook app*]
-
-_Feel free to create new Handlers, RequestBuilders, ResponseParsers and send to the project ;)_
 
 === RequestBuilder, ResponseParser
 
@@ -264,3 +264,5 @@ pipeline.pipe(Developer.class, pipeConfig);
 LoaderPipe<Developer> pipe = pipeline.get("developer", this);
 pipe.save(developerInstance, myCallback);
 ----
+
+_Feel free to create new Handlers, RequestBuilders, ResponseParsers and send to the project ;)_
