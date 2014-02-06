@@ -14,7 +14,7 @@ title: AeroGear Data Sync
 
 # Implementation
 
-- [AeroGear Sync Server](https://github.com/danbev/aerogear-sync-server)
+- [AeroGear Sync Server](https://github.com/aerogear/aerogear-sync-server)
 
 # Scenarios
 
@@ -35,60 +35,7 @@ As soon as we have a rough data-model defined, we can start dabbling around diff
 All those proposed API operations should be serializable, meaning I can potentially keep doing changes offline then just replying them to the server when online.
 
 ## Data model
-
-For starters, I think that the most important thing that needs to be agreed upon is the data model and the atomic operations around it. 
-
-`{_id:<guid>, content:<arbitrary json>, rev:<last revision>, checksum:<checksum>}`
-
-**id** (Object) : 
- This is the global identifier for the object.  This field is optional.
-
-**data**  (String): 
- This is the sync data for the application.  It may be a diff, a whole object, etc.  This field is required.
- 
- **revision** (long):
-Describes the version of the data stored and should be updated when the data changes.
-
-**checksum**  (long):
- This is the client's idea of what a known good sync will look like.  If, post merge, the server's checksum and client's check sum do not match then the client is out of sync and must resync and handle the conflict.
-
-### JS
-
-Well, it's JSON, it _Just Works_&trade; 
-
-### Java
-
-I didn't want to pick on Java, but since its fame forces me to it. First stab (a courtesy of our friend Dan Bevenius):
-
-    public interface Document {
-        public String id;
-        public String content;
-        public String rev;
-    }
-    
-We naturally want to kick this a notch, and use objects instead of plain strings:
-
-    public interface Document<T, ID> {
-    	public ID id;
-    	public T content;
-    	public String rev;
-    }
-    
-In this case, we can use the convention requiring that `T` is any **object serializable to  JSON**. `ID` is a convenience shorthand since it's a **GUID/UUID**. I think this key isn't necessarily a natural key (a surrogate key instead).
-
-### Objective-C
-
-The first version of the Objective-C Data Model API would look like:
-
-    @interface AGDocument : NSObject
-
-    @property (readonly) NSString* documentID;
-    @property (readonly) NSString* revision;
-    @property id content;
-
-    @end
-
-The immutable `documentID` and `revision` properties represent the unique identifier of the document and its revision. The actual content/data is stored on the `content` property. They _dynamic_ `id` type is used to store objects that are **serializable to JSON**. In Objective-C that is usually `NSArray` and `NSDictionary`.
+* [Data Format](aerogear-sync-data-format)
 
 ## Consistency
 
