@@ -38,5 +38,6 @@ title: Specifications
 
  * [Use Cases](aerogear-sync-use-cases)
  * [Brain Storm](aerogear-data-sync)
+ * [Data Format](aerogear-sync-data-format)
  * [Client API Proposals](aerogear-sync-client-api)
  * [Server API Proposals](aerogear-sync-server-api)
