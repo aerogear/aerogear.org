@@ -16,7 +16,7 @@ This data model is defined in JavaScript Object Notation (JSON) and specifies th
         content: <arbitrary json> 
     }
 
-#### objectId (String)
+#### id (String)
 This is the global identifier for the object.  
 This field is optional.
 
