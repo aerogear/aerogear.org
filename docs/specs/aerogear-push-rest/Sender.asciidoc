@@ -21,6 +21,7 @@ Flexible JSON Payload (link:http://aerogear.org/docs/specs/aerogear-push-message
   "categories" : ["someCategory", "otherCategory"],
   "deviceType" : ["iPad", "AndroidTablet"],
   "ttl" : 3600,
+  "content-available" : true,
   "message": {
     "alert":"HELLO!",
     "sound":"default",
