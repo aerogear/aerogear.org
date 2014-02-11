@@ -325,7 +325,7 @@ Further, moving beyond last or first page is left on the behaviour of the specif
 ====
 == [[store]]Store and DataManager
 
-A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage.
+A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage (note that encrypted variants of these stores are also available, check the <<crypto, Cryptography support>> section below).
 
 A DataManager manages different Store implementations. It is basically a factory that hides the concrete instantiations of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.
 
@@ -648,8 +648,7 @@ As with the case of Pipe, configured timeout interval (in the config object) and
 == [[crypto]] Cryptography support
 
 Since 1.3.0 release of the library, we've built on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-ios[aerogear-crypto-ios]
-to offer encrypted variants of our existing in-memory and plist based data stores
-(with an sqlite variant coming next release). If you have been using the existing data stores to persist
+to offer encrypted variants of our existing in-memory, plist and sqlite data stores. If you have been using the existing data stores to persist
 your data, you will be happy to know that you can easily switch to an encrypted variant by simple changing the
 type and some small (really!) amount of code to provide the necessary crypto params.
 Let's start with a small primer to symmetric encryption, which is primary cryptography mechanism used
@@ -727,10 +726,9 @@ If your storage information need to be encrypted, AeroGear provides convenient a
 
 Current available implementations are:
 
-1. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedMemoryStorage.html[Encrypted Memory] storage which allows you to work in-memory with sensitive data
-2. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedPropertyListStorage.html[Encrypted Property List] storage implementation for a permanent storage.
-
-link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[Encrypted SQLite] will come in next release.
+1. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedMemoryStorage.html[Encrypted Memory] storage which allows you to work in-memory with sensitive data.
+2. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedPropertyListStorage.html[Encrypted Property List] storage implementation.
+3. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedSQLiteStorage.html[Encrypted SQLite] storage implementation.
 
 Prior to using an encrypted data store variant, we need to obtain an instance of an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptionService.html[EncryptionService] which we will set it as a configuration parameter when we first initialise the store. The store will then use that service to perform encryption and decryption of data. Let's see how this works:
 
