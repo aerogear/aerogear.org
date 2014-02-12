@@ -3,10 +3,13 @@ layout: basic
 title: AeroGear Web Site 
 ---
 
-This document extract most of the suggestions from ML threads, split them in small JIRA tickets in an attempt to organize them.
+
 
 AeroGear Web Site Roadmap 
 =========================
+
+This document extract most of the suggestions from ML threads, split them in small JIRA tickets in an attempt to organize them.
+
 As AeroGear enhanced its features, we need to make sure information is easeliy found by first time users but also, information, tutorial (per platforms) is available to developer to dig in further.
 
 
