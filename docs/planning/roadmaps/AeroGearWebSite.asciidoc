@@ -25,9 +25,9 @@ External References
 The web site articulates into 4 layers: HOME page, GET IT page and EXAMPLE page. Soon to come PLATFORM EXAMPLE page.
 
 0.1.0 New Layout (End March 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* link:http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-aerogear-org-revamp-where-to-fit-in-platform-example-page-td6250.html[ML thread] How to navigate from EXAMPLE page to PLATFORM EXAMPLE page
+* link:http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-aerogear-org-revamp-where-to-fit-in-platform-example-page-td6250.html[In ML thread] How to navigate from EXAMPLE page to PLATFORM EXAMPLE page
 
 * link:https://issues.jboss.org/browse/AEROGEAR-1403[AEROGEAR-1403]: Provide CSS colors, asciidoc plugin for EXAMPLES pages
 
@@ -37,7 +37,7 @@ The web site articulates into 4 layers: HOME page, GET IT page and EXAMPLE page.
 
 * link:https://issues.jboss.org/browse/AEROGEAR-1434[AEROGEAR-1434]: footer
 
-* link:https://issues.jboss.org/browse/AEROGEAR-1435[AEROGEAR-1435]: asciidoc plugin for PLATFORM EXAMPLE to display code snippet from cookbook. As suggested by Karel in ML thread
+* link:https://issues.jboss.org/browse/AEROGEAR-1435[AEROGEAR-1435]: asciidoc source included for PLATFORM EXAMPLE to display code snippet from cookbook. As suggested by Karel in link:http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-Fwd-Website-restructure-tp5837p5948.html;cid=1389091451229-905[ML thread] we can use link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[asciidoctor features] (section "Code block sourced from file relative to source directory).
 
 * link:https://issues.jboss.org/browse/AEROGEAR-1436[AEROGEAR-1436]: HOME page: layout should break down into features: Core/Security/Push/Sync
 
@@ -57,7 +57,7 @@ The web site articulates into 4 layers: HOME page, GET IT page and EXAMPLE page.
 
 
 0.2.0 GET IT/ EXAMPLE pages ( Mid April)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * GET IT page for AG Security
 
