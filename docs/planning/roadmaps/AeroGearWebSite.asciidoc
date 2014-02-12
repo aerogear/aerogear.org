@@ -24,7 +24,7 @@ External References
 
 The web site articulates into 4 layers: HOME page, GET IT page and EXAMPLE page. Soon to come PLATFORM EXAMPLE page.
 
-0.1 New Layout (End March 2014)
+0.1.0 New Layout (End March 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * link:http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-aerogear-org-revamp-where-to-fit-in-platform-example-page-td6250.html[ML thread] How to navigate from EXAMPLE page to PLATFORM EXAMPLE page
@@ -56,7 +56,7 @@ The web site articulates into 4 layers: HOME page, GET IT page and EXAMPLE page.
 * News / Twitter / Blog link: need any enhancement?
 
 
-0.2 GET IT/ EXAMPLE pages ( Mid April)
+0.2.0 GET IT/ EXAMPLE pages ( Mid April)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * GET IT page for AG Security
@@ -75,7 +75,7 @@ The web site articulates into 4 layers: HOME page, GET IT page and EXAMPLE page.
 etc...
 
 
-0.3 PLATFORM EXAMPLE pages ( Mid May)
+0.3.0 PLATFORM EXAMPLE pages ( Mid May)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * PLAFTOM EXAMPLE AG Core - Store
