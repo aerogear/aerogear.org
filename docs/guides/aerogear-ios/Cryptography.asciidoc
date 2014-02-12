@@ -1,0 +1,137 @@
+---
+layout: basic
+title: Cryptography support
+---
+
+== Cryptography support
+
+Since 1.3.0 release of the library, we've built on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-ios[aerogear-crypto-ios]
+to offer encrypted variants of our existing in-memory, plist and sqlite data stores. If you have been using the existing data stores to persist
+your data, you will be happy to know that you can easily switch to an encrypted variant by simple changing the
+type and some small (really!) amount of code to provide the necessary crypto params.
+Let's start with a small primer to symmetric encryption, which is primary cryptography mechanism used
+to encrypt the data stores.
+
+=== Symmetric encryption API
+
+Symmetric encryption (also called private key encryption) is when the same key is used to encrypt and decrypt data. It is best defined with the following concepts:
+
+- *Encryption key* is a block of bytes of a _specific length_. Key can be derived from password using for example, PBKDF2 algorithm. Must be kept secret.
+- *IV (Initialization Vector)* is a random value that is used to encrypt data. Encryption algorithms usually work on fixed-size blocks, IV defines the first encrypted block.
+
+You can derive the encryption key using a password or phassphrase and salt with link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2].
+
+- *Password* is easy to remember and usually defined by user and must be kept secret. A password is not a key.
+- *Salt* is a random value that is used together with a password to derive an encryption key. A salt value does not need to be kept secret.
+
+AeroGear-Crypto symmetric encryption is powered by link:http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29[CBC mode]. Build upon link:https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/CC_crypto.3cc.html#//apple_ref/doc/man/3cc/CC_crypto[CommomCrypto] and link:https://developer.apple.com/Library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html[Security framework], it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.
+
+First of all, to encrypt your data you need an encryption key. Your key can be derived from a PIN, password or passphrase using link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2]. 
+
+[source,c]
+----
+
+    NSData *salt = [AGRandomGenerator randomBytes];
+    NSData *encryptionKey = [pbkdf2 deriveKey:@"password4me" salt:salt];
+
+
+----
+
+For random generation of key, salt or IV, use link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGRandomGenerator.html[AGRandomGenerator]. By default, AGRandomGenerator generates 16 bytes key, but you can also specify the length if you wish.
+
+Once you've got your encryption key, use link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox.html[AGCryptoBox] to do the actual encryption. Its interface is simple:
+
+[source,c]
+----
+
+@interface AGCryptoBox : NSObject
+- (id)initWithKey:(NSData*)key;
+- (NSData*)encrypt:(NSData*)data IV:(NSData*)IV;
+- (NSData*)decrypt:(NSData*)data IV:(NSData*)IV;
+@end
+
+
+----
+
+With link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox.html[AGCryptoBox], you can encrypt/decrypt data using your encryption key and a randomly generated IV (Initialization Vector) as shown below:
+
+[source,c]
+----
+
+    NSString* stringToEncrypt = @"I want to keep it secret";
+    // encode string into data
+    NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* IV = [AGRandomGenerator randomBytes:16];
+    
+    // init cryptobox with a key
+    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:encryptionKey];
+
+    // encrypt
+    NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:IV];
+                
+    // decrypt
+    NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:IV];
+
+
+----
+
+NOTE: To be able to decrypt, you need the randomly generated IV and you can regenerate the key with the salt and the password (prompted on the fly).
+It is not recommended to store either password or derived key. Salt and IV are not security sensitive in the sense that they can be stored.
+
+=== Encrypted storage
+
+If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted stores with the same API as the plain ones.
+
+Current available implementations are:
+
+1. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedMemoryStorage.html[Encrypted Memory] storage which allows you to work in-memory with sensitive data.
+2. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedPropertyListStorage.html[Encrypted Property List] storage implementation.
+3. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedSQLiteStorage.html[Encrypted SQLite] storage implementation.
+
+Prior to using an encrypted data store variant, we need to obtain an instance of an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptionService.html[EncryptionService] which we will set it as a configuration parameter when we first initialise the store. The store will then use that service to perform encryption and decryption of data. Let's see how this works:
+
+[source,c]
+----
+
+    // randomly generate salt
+    NSData *salt = [AGRandomGenerator randomBytes];  // [1]
+
+    // set up crypto params configuration object
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];  // [2]
+    [config setSalt:salt];  // 3
+    [config setPassphrase:self.password.text];   // 4
+
+    // initialize the encryption service passing the config
+    id<AGEncryptionService> encService = [[AGKeyManager manager] keyService:config];  // [5]
+    
+    // access Store Manager
+    AGDataManager *manager = [AGDataManager manager];  // 6
+
+    // create store
+    store = [manager store:^(id<AGStoreConfig> config) {
+        [config setName:@"CredentialsStorage"];
+        [config setType:@"ENCRYPTED_PLIST"];  // 7
+        [config setEncryptionService:encService];  // 8
+    }];
+    
+    // ok time to attempt reading..
+    NSArray *data = [store readAll]) { // 9
+
+    if (data) 
+        // decryption succeeded!
+    
+    
+----
+
+In [1] we initialize a random _salt_ that will be used in the encryption. In [2] we initialize an instance of a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGCryptoConfig.html[CryptoConfig] configuration object to set our crypto params. Here we use an http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPassphraseCryptoConfig.html[PassphraseCryptoConfig] object, that sets the necessary crypto params for the PBKDF2 Encryption Service, mainly the salt [3] and the passphrase [4].
+
+Now that we have setup the configuration, it's time to obtain an instance of an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptionService.html[EncryptionService] and that's exactly what we do in [5]. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGKeyManager.html[KeyManager] parses the configuration and returns an instance of it. Because we passed an http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPassphraseCryptoConfig.html[PassphraseCryptoConfig] object, a PBKDF2 encryption service would be returned.
+
+In [6] we initialize our data store (an encrypted plist [7]), setting the encryption service we obtained earlier [8]. Reading and saving operations are done like all the other stores, but this time the data are transparently encrypted/decrypted.
+
+In [9] we attempt to read data from the store. If that fails, then user supplied wrong crypto parameters (either passphrase or salt).
+
+=== AeroGear Crypto Password
+
+If you want to see it all together, give a try to link:https://github.com/aerogear/aerogear-crypto-ios-demo[AeroGear Crypto Password] app.
+This application shows you how using encrypted storage you can store in a central point all your passwords.
