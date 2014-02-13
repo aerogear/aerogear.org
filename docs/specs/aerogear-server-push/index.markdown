@@ -249,6 +249,7 @@ Sends a push message to a selected list of devices/clients, or all, based on dif
                "alert":"HELLO!",
                "sound":"default",
                "badge":7,
+               "content-available" : true,
                "someKey":"some value",
                "anotherCustomKey":"some other value"
            },
