@@ -14,14 +14,30 @@ title: News
 <script type="text/javascript" src="/js/libs/jquery.jfeed.min.js"></script>
 <script type="text/javascript" src="/js/libs/handlebars-1.0.0.min.js"></script>
 <script type="text/javascript" src="/js/libs/moment.min.js"></script>
+<script type="text/javascript" src="/js/libs/md5-3.1.2.js"></script>
+<style type="text/css">
+  .avatar {
+    width: 10%;
+    float: left;
+    display: inline-block;
+  }
+</style>
+
 {% raw  %}
 <script type="text/x-handlebars-template" id="tmpl">
   {{#each feedItems}}
-    <h3><a href="{{link}}" target="_blank">{{title}}</a></h3>
-    <div class="desc">{{formatDate updated}}</div>
     <div>
-      {{summarize description}}... <a href="{{link}}" target="_blank">Read more »</a>
-    </div>
+      <h3><a href="{{link}}" target="_blank">{{title}}</a></h3>
+      <div class="avatar">
+        <img src="http://www.gravatar.com/avatar/{{avatar author}}">
+      </div>
+      <div>
+        <div class="desc">{{formatDate updated}} by {{creator}}</div>
+        <div>
+          {{summarize description}}... <a href="{{link}}" target="_blank">Read more »</a>
+        </div>
+      </div>
+    <div>
   {{/each}}
 </script>
 {% endraw %}
@@ -29,6 +45,10 @@ title: News
 <script type="text/javascript">
 Handlebars.registerHelper("formatDate", function( itemDate ) {
   return moment( itemDate ).fromNow();
+});
+
+Handlebars.registerHelper("avatar", function( author ) {
+  return CryptoJS.MD5( author );
 });
 
 Handlebars.registerHelper("summarize", function( description ) {
