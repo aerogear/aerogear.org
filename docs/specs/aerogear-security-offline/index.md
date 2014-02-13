@@ -100,33 +100,50 @@ TBD
 ## Offline Storage
 component: offline, crypto, storage
 
-- AGSEC-XXX: Queries on encrypted database <br />
+- AGSEC-XXX: Queries on encrypted database
+
 *Description*: Currently for the local storage we encrypt and decrypt the whole database, which makes the solution impractical in scenarios where 1GB of data is provided
-- AGSEC-XXX: Key management based on device unlock <br />
+
+- AGSEC-XXX: Key management based on device unlock
+
 *Description*: Investigate if is possible to derive the key based on device unlock or PIN
 
 ## Encrypted Cache
 component: offline, crypto, cache
 
-- AGSEC-XXX: R&D about LRU <br />
+- AGSEC-XXX: R&D about LRU
+
 *Description*: Currently is necessary to investigate better if LRU is the best politic for JS, iOS and Android for the sake of API symmetry
-- AGSEC-XXX: Add data caching support for mobile devices <br />
+
+- AGSEC-XXX: Add data caching support for mobile devices
+
 *Description*: Allow developers to choose when they want to cache the data
-* AGSEC-XXX: Add cache encryption support for mobile devices <br />
+
+* AGSEC-XXX: Add cache encryption support for mobile devices
+
 *Description*: Allow developers to choose when they want their cache encrypted
 
 ## Remote Storage
 component: crypto, sync
 
-- AGSEC-XXX: Device registration <br />
+- AGSEC-XXX: Device registration
+
 *Description*: Device registration and management on the server side
-- AGSEC-XXX: Revoke capability <br />
+
+- AGSEC-XXX: Revoke capability
+
 *Description*: Adds the ability to revoke the key stored on device using another authorized device 
-- AGSEC-XXX: Remote wipe a mobile device <br />
+
+- AGSEC-XXX: Remote wipe a mobile device
+
 *Description*: Removal of the data when the user is online including offline storage and cache
-- AGSEC-XXX: Add Public Key to Remote Server <br />
+
+- AGSEC-XXX: Add Public Key to Remote Server
+
 *Description*: Send the public key to the server. The key provided will be used to encrypt data and verify digital signatures. Ex. Thinking about data sync when user include a record the server should be able to encrypt the data with the user's public key and sent it back to the device.
-- AGSEC-XXX: Public key authentication <br />
+
+- AGSEC-XXX: Public key authentication
+
 *Description*: As an additional level of security each user will have her own digital signature to provide authentication and data integrity, ensuring that the origin is legit. Pretty similar to the SSH scheme, but we want to keep the password into this situation.
 
 # Next steps
