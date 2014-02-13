@@ -19,7 +19,7 @@ title: Offline Storage Specification (OSS)
 
 # Introduction
 
-Offline storage is still a challenging subject for mobile development, because is an wild environment where developers do not have any control over it, users can have their devices stolen, borrowed to someone or infected with whatever kind of malware available.  There is no magic, most part of the time you can just hope for the best and try to conciliate security and usability instead of put them under glass.
+Offline storage is still a challenging subject for mobile development, because it is a wild environment where developers do not have any control over it, users can have their devices stolen, borrowed by someone or infected with whatever kind of malware available.  There is no magic, most part of the time you can just hope for the best and try to conciliate security and usability instead of put them under glass.
 
 The [previous release](https://issues.jboss.org/browse/AGSEC-156?jql=fixVersion%20%3D%20%221.3.0%22%20AND%20project%20%3D%20AGSEC) our major concern was to lay the groundwork for future growth. This documentation will discuss: offline authentication, encrypted cache, how to protect the local storage and some possibilities for data sync.
 
