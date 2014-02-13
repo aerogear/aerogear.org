@@ -18,11 +18,11 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
            "categories" : ["someCategory", "otherCategory"],
            "deviceType" : ["iPad", "AndroidTablet"],
            "ttl" : 3600,
-           "content-available" : true,
            "message": {
              "alert":"HELLO!",
              "sound":"default",
              "badge":7,
+             "content-available" : true,
              "someKey":"some value",
              "anotherCustomKey":"some other value"
            },
