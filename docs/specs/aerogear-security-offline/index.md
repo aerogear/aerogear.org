@@ -87,7 +87,8 @@ TBD
 
 ## iOS
 
-- NSCache?
+- [NSCache](https://github.com/gnustep/gnustep-base/blob/master/Source/NSCache.m#L195)
+
 TBD
 
 # Demo application
