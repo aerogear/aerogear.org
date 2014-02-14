@@ -35,12 +35,11 @@ The _enroll_ function of the 'AGAuthenticationModule' protocol is used to regist
 [source,c]
 ----
 // assemble the dictionary that has all the data for THIS particular user:
-NSMutableDictionary* userData = [NSMutableDictionary dictionary];
-[userData setValue:@"john" forKey:@"username"];
-[userData setValue:@"123" forKey:@"password"];
-[userData setValue:@"me@you.com" forKey:@"email"];
-[userData setValue:@"21sda812sad24" forKey:@"betaAccountToken"];
 
+NSDictionary* userData = @{@"username": @"john",
+						   @"password": @"123",
+						   @"email", @"me@you.com",
+						   @"betaAccountToken", @"21sda812sad24"};
 // register a new user
 [myMod enroll:userData success:^(id data) {
     // after a successful _registration_, we can work

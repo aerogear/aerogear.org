@@ -24,7 +24,7 @@ title: AeroGear iOS User Guide
 * [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo)
 
 ## API documentation
-* [1.3.0 API documentation](/docs/specs/aerogear-ios/)
+* [1.4.0 API documentation](/docs/specs/aerogear-ios/)
 
 ## Presentations about AeroGear on iOS
 *  -
