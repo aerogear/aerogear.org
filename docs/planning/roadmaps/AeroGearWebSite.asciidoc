@@ -1,12 +1,14 @@
 ---
 layout: basic
-title: AeroGear Web Site 
+title: AeroGear Web Site Roadmap
 ---
 
-
-
-AeroGear Web Site Roadmap 
+AeroGear Web Site Roadmap
 =========================
+:Author: Corinne Krych
+
+About this document
+-------------------
 
 This document extract most of the suggestions from ML threads, split them in small JIRA tickets in an attempt to organize them.
 
@@ -76,7 +78,7 @@ etc...
 
 
 0.3.0 PLATFORM EXAMPLE pages ( Mid May)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * PLAFTOM EXAMPLE AG Core - Store
 
