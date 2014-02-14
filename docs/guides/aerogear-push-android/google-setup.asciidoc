@@ -6,7 +6,7 @@ title: Google setup
 Google Related Setup
 --------------------
 
-Before the Android application is able to receive the notifications, you must authenticate yourself with Google as a developer. Luckily this is both easy and free to do, and doesn't require much set-up. Unlike iOS devices, you are able to test out your push notifications in either an emulator or on a real device.
+Before the Android application is able to receive the notifications, you must authenticate yourself with Google as a developer. Luckily this is both easy and free to do, and doesn't require much set-up. Like iOS, you are only able to test out your push notifications in a real device.
 
 Registering with Google
 ~~~~~~~~~~~~~~~~~~~~~~~
