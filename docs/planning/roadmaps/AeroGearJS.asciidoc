@@ -60,7 +60,7 @@ New Features
 *** IE9 supports neither so need to also be able to fall back to localStorage but use same API
 
 1.4.0 (Mid March)
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
 * *Data Sync*
