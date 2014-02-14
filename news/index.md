@@ -20,6 +20,7 @@ title: News
     width: 10%;
     float: left;
     display: inline-block;
+    padding-right: 0.5em;
   }
 </style>
 
