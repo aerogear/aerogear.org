@@ -40,7 +40,7 @@ id<AGStore> store = [dm store:^(id<AGStoreConfig> config) {
 }];
 ----
 
-Storage can be of type: MEMORY, PLIST or SQLITE. Similar to the pipe API technical details of the underlying system are not exposed.
+Storage can be of type:¬†MEMORY, PLIST or SQLITE. Similar to the pipe API technical details of the underlying system are not exposed.
 
 === Save data to the Store
 
@@ -168,26 +168,5 @@ A simple _Property list_ storage system is part of the library as well that uses
 
 NOTE
 You must adhere to the rules governing the serialization of data types for each respective plist type.
-
-Here is a quick example, that stores an link:http://en.wikipedia.org/wiki/One-time_password[One Time Password (OTP)] secret in the filesystem so that OTP tokens can be generated later (check AeroGear OTP iOS link:https://github.com/aerogear/aerogear-otp-ios[library] and link:https://github.com/aerogear/aerogear-otp-ios-demo[demo] for more information on OTP).
-
-[source,c]
-----
-// initalize plist store (if the file does not exist it will be created)
-AGDataManager* manager = [AGDataManager manager];
-id<AGStore> plistStore = [manager store:^(id<AGStoreConfig> config) {
-    [config setName:@"secrets"]; // will be used as the filename for the plist
-    [config setType:@"PLIST"];
-}];
-
-// the object to save (e.g. a dictionary)
-NSDictionary *otp = [NSDictionary dictionaryWithObjectsAndKeys:@"19a01df0281afcdbe", @"otp", @"1", @"id", nil];
-
-// save it
-NSError *error;
-    
-if (![plistStore save:otp error:&error])
-    NSLog(@"Save: An error occured during save! \n%@", error);    
-----
-    
+   
 The 'read', 'reset' or 'remove' API behave the same, as on the default ("in memory") store. 

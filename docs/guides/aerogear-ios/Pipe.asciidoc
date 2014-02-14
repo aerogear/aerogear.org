@@ -79,9 +79,7 @@ The AGPipe offers an API to store objects on a _remote_ server resource. *Curren
 [source,c]
 ----
 // create a dictionary and set some key/value data on it:
-NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
-[projectEntity setValue:@"Hello World" forKey:@"title"];
-// add other properties, like style etc ...
+NSMutableDictionary* projectEntity = [@{@"title": @"Hello World"} mutableCopy];
 
 // save the 'new' project:
 [projects save:projectEntity success:^(id responseObject) {
