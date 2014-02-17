@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGPageConfig Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -131,8 +130,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -156,55 +155,42 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/parameterProvider">&nbsp;&nbsp;parameterProvider</a></code>
-		<span class="tooltip"><p>A dictionary containing all the HTTP request parameters and their values,
-that are passed to the server, used when issuing paging requests.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/offset">&nbsp;&nbsp;offset</a></code>
-		<span class="tooltip"><p>The offset of the first element that should be included in the
-returned collection (default: 0)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/limit">&nbsp;&nbsp;limit</a></code>
-		<span class="tooltip"><p>The maximum number of results the server should return (default: 10)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/metadataLocation">&nbsp;&nbsp;metadataLocation</a></code>
-		<span class="tooltip"><p>Indicates whether paging information (see identifiers) is received
-from the response &lsquo;header&rsquo;, the response &lsquo;body&rsquo; or via RFC 5988 (&lsquo;webLinking&rsquo;),
-which is the default. Other values are ignored and the default is being used.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/nextIdentifier">&nbsp;&nbsp;nextIdentifier</a></code>
-		<span class="tooltip"><p>The next identifier name (default: &lsquo;next&rsquo;).</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/previousIdentifier">&nbsp;&nbsp;previousIdentifier</a></code>
-		<span class="tooltip"><p>The previous identifier name (default: &lsquo;previous&rsquo;).</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pageExtractor">&nbsp;&nbsp;pageExtractor</a></code>
-		<span class="tooltip"><p>An extension point to override the default strategies provided by the library. If set,
-the library will use this strategy to determine server paging. The strategy should
-conform to the protocol <a href="../Protocols/AGPageParameterExtractor.html">AGPageParameterExtractor</a>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -231,9 +217,11 @@ conform to the protocol <a href="../Protocols/AGPageParameterExtractor.html">AGP
 		<p>The maximum number of results the server should return (default: 10)</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSNumber *limit</code></div>
-	
+
+    
 	
 	
 	
@@ -245,7 +233,7 @@ conform to the protocol <a href="../Protocols/AGPageParameterExtractor.html">AGP
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The maximum number of results the server should return (default: 10)</p>
 
-<p>If a paramater provider has been given, the limit value is ignored.</p>
+<p>If a parameter provider has been given, the limit value is ignored.</p>
 	</div>
 	
 	
@@ -274,9 +262,11 @@ from the response &lsquo;header&rsquo;, the response &lsquo;body&rsquo; or via R
 which is the default. Other values are ignored and the default is being used.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *metadataLocation</code></div>
-	
+
+    
 	
 	
 	
@@ -320,9 +310,11 @@ configuration property for more information.</p>
 		<p>The next identifier name (default: &lsquo;next&rsquo;).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *nextIdentifier</code></div>
-	
+
+    
 	
 	
 	
@@ -360,9 +352,11 @@ configuration property for more information.</p>
 returned collection (default: 0)</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *offset</code></div>
-	
+
+    
 	
 	
 	
@@ -375,7 +369,7 @@ returned collection (default: 0)</p>
 		<p>The offset of the first element that should be included in the
 returned collection (default: 0)</p>
 
-<p>If a paramater provider has been given, the offset value is ignored.</p>
+<p>If a parameter provider has been given, the offset value is ignored.</p>
 	</div>
 	
 	
@@ -404,9 +398,11 @@ the library will use this strategy to determine server paging. The strategy shou
 conform to the protocol <a href="../Protocols/AGPageParameterExtractor.html">AGPageParameterExtractor</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) id&lt;AGPageParameterExtractor&gt; pageExtractor</code></div>
-	
+
+    
 	
 	
 	
@@ -452,9 +448,11 @@ See internal <a href="../Classes/AGPageWebLinkingExtractor.html">AGPageWebLinkin
 that are passed to the server, used when issuing paging requests.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSDictionary *parameterProvider</code></div>
-	
+
+    
 	
 	
 	
@@ -495,9 +493,11 @@ limit/<a href="../Protocols/AGPageConfig.html#//api/name/offset">offset</a> are 
 		<p>The previous identifier name (default: &lsquo;previous&rsquo;).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *previousIdentifier</code></div>
-	
+
+    
 	
 	
 	
@@ -531,6 +531,8 @@ limit/<a href="../Protocols/AGPageConfig.html#//api/name/offset">offset</a> are 
 					
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -541,9 +543,9 @@ limit/<a href="../Protocols/AGPageConfig.html#//api/name/offset">offset</a> are 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>

@@ -5,7 +5,7 @@
 		<title>AeroGear-iOS Reference</title>
 		<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -31,40 +31,6 @@
 				</div>
 				<div id="container">
 					
-					<div class="section section-overview index-overview">
-						
-						
-						<h1>aerogear-ios <a href="https://travis-ci.org/aerogear/aerogear-ios"><img src="https://travis-ci.org/aerogear/aerogear-ios.png" alt="Build Status" /></a></h1>
-
-<p>iOS/Objective-C client library implementation for AeroGear!</p>
-
-<p>The AeroGear iOS client lib is based on the <a href="https://github.com/AFNetworking/AFNetworking/">AFNetworking</a> library.</p>
-
-<p>The project requires <a href="http://cocoapods.org/">CocoaPods</a> for dependency management;</p>
-
-<h2>API docs</h2>
-
-<p>The API is documented <a href="http://aerogear.org/docs/specs/aerogear-ios/">here</a>.</p>
-
-<h2>iOS Cookbook</h2>
-
-<p>Some basic usages are documented <a href="http://aerogear.org/docs/guides/iOSCookbook/">here</a>.</p>
-
-<h2>Getting started</h2>
-
-<p>Open the <em>AeroGear-iOS.xcworkspace</em> in Xcode, if you want to get the project&hellip;</p>
-
-<h2>Tutorial</h2>
-
-<p>We also have a little page for <a href="http://aerogear.org/docs/guides/GetStartedwithAeroGearandXcode/">getting started</a> with Xcode and the library!</p>
-
-<h3>Note on running Unit Tests</h3>
-
-<p>There is an issue when running unit tests on the iOS 6 simulator and in particular when you switch live from another iOS version (e.g. iOS 7). It turns out that the keychain access is broken, resulting in test failures whenever a method tries to access the keychain. A workaround for this is to File->Exit the emulator and re-run the tests on iOS 6. We are continue investigating the cause of this issue (see discussion on <a href="https://devforums.apple.com/message/919209">Apple forum</a> for more information)</p>
-						
-						
-					</div>
-					
                         
                     
 					
@@ -73,43 +39,31 @@
 						<h2 class="index-title">Class References</h2>
 						<ul>
 							
-							<li><a href="Classes/AFHTTPClient.html">AFHTTPClient</a></li>
-							
-							<li><a href="Classes/AFHTTPRequestOperation.html">AFHTTPRequestOperation</a></li>
-							
-							<li><a href="Classes/AFImageRequestOperation.html">AFImageRequestOperation</a></li>
-							
-							<li><a href="Classes/AFJSONRequestOperation.html">AFJSONRequestOperation</a></li>
-							
-							<li><a href="Classes/AFNetworkActivityIndicatorManager.html">AFNetworkActivityIndicatorManager</a></li>
-							
-							<li><a href="Classes/AFPropertyListRequestOperation.html">AFPropertyListRequestOperation</a></li>
-							
-							<li><a href="Classes/AFStreamingMultipartFormData.html">AFStreamingMultipartFormData</a></li>
-							
-							<li><a href="Classes/AFURLConnectionOperation.html">AFURLConnectionOperation</a></li>
-							
-							<li><a href="Classes/AFXMLRequestOperation.html">AFXMLRequestOperation</a></li>
-							
 							<li><a href="Classes/AGAuthConfiguration.html">AGAuthConfiguration</a></li>
 							
 							<li><a href="Classes/AGAuthenticator.html">AGAuthenticator</a></li>
+							
+							<li><a href="Classes/AGAuthorizer.html">AGAuthorizer</a></li>
+							
+							<li><a href="Classes/AGAuthzConfiguration.html">AGAuthzConfiguration</a></li>
 							
 							<li><a href="Classes/AGBaseEncryptionService.html">AGBaseEncryptionService</a></li>
 							
 							<li><a href="Classes/AGBaseStorage.html">AGBaseStorage</a></li>
 							
-							<li><a href="Classes/AGCryptoBox.html">AGCryptoBox</a></li>
-							
 							<li><a href="Classes/AGDataManager.html">AGDataManager</a></li>
 							
 							<li><a href="Classes/AGEncryptedMemoryStorage.html">AGEncryptedMemoryStorage</a></li>
 							
+							<li><a href="Classes/AGEncryptedPListEncoder.html">AGEncryptedPListEncoder</a></li>
+							
 							<li><a href="Classes/AGEncryptedPropertyListStorage.html">AGEncryptedPropertyListStorage</a></li>
 							
-							<li><a href="Classes/AGHTTPMockHelper.html">AGHTTPMockHelper</a></li>
+							<li><a href="Classes/AGEncryptedSQLiteStorage.html">AGEncryptedSQLiteStorage</a></li>
 							
-							<li><a href="Classes/AGHttpClient.html">AGHttpClient</a></li>
+							<li><a href="Classes/AGFileDataPart.html">AGFileDataPart</a></li>
+							
+							<li><a href="Classes/AGFilePart.html">AGFilePart</a></li>
 							
 							<li><a href="Classes/AGJsonEncoder.html">AGJsonEncoder</a></li>
 							
@@ -118,10 +72,6 @@
 							<li><a href="Classes/AGKeyStoreCryptoConfig.html">AGKeyStoreCryptoConfig</a></li>
 							
 							<li><a href="Classes/AGMemoryStorage.html">AGMemoryStorage</a></li>
-							
-							<li><a href="Classes/AGMockedPageExtractor2.html">AGMockedPageExtractor2</a></li>
-							
-							<li><a href="Classes/AGPBKDF2.html">AGPBKDF2</a></li>
 							
 							<li><a href="Classes/AGPListEncoder.html">AGPListEncoder</a></li>
 							
@@ -149,21 +99,15 @@
 							
 							<li><a href="Classes/AGRESTPipe.html">AGRESTPipe</a></li>
 							
-							<li><a href="Classes/AGRandomGenerator.html">AGRandomGenerator</a></li>
-							
 							<li><a href="Classes/AGRestAuthentication.html">AGRestAuthentication</a></li>
+							
+							<li><a href="Classes/AGRestAuthzModule.html">AGRestAuthzModule</a></li>
 							
 							<li><a href="Classes/AGSQLiteStorage.html">AGSQLiteStorage</a></li>
 							
 							<li><a href="Classes/AGStoreConfiguration.html">AGStoreConfiguration</a></li>
 							
-							<li><a href="Classes/AGSymmetricCryptoEngine.html">AGSymmetricCryptoEngine</a></li>
-							
-							<li><a href="Classes/FMDatabase.html">FMDatabase</a></li>
-							
-							<li><a href="Classes/KWExample.html">KWExample</a></li>
-							
-							<li><a href="Classes/KWUserDefinedMatcher.html">KWUserDefinedMatcher</a></li>
+							<li><a href="Classes/AGStreamPart.html">AGStreamPart</a></li>
 							
 						</ul>
 					</div>
@@ -175,13 +119,17 @@
 						<h2 class="index-title">Protocol References</h2>
 						<ul>
 							
-							<li><a href="Protocols/AFMultipartFormData.html">AFMultipartFormData</a></li>
-							
 							<li><a href="Protocols/AGAuthConfig.html">AGAuthConfig</a></li>
 							
 							<li><a href="Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a></li>
 							
 							<li><a href="Protocols/AGAuthenticationModuleAdapter.html">AGAuthenticationModuleAdapter</a></li>
+							
+							<li><a href="Protocols/AGAuthzConfig.html">AGAuthzConfig</a></li>
+							
+							<li><a href="Protocols/AGAuthzModule.html">AGAuthzModule</a></li>
+							
+							<li><a href="Protocols/AGAuthzModuleAdapter.html">AGAuthzModuleAdapter</a></li>
 							
 							<li><a href="Protocols/AGConfig.html">AGConfig</a></li>
 							
@@ -190,6 +138,8 @@
 							<li><a href="Protocols/AGEncoder.html">AGEncoder</a></li>
 							
 							<li><a href="Protocols/AGEncryptionService.html">AGEncryptionService</a></li>
+							
+							<li><a href="Protocols/AGMultipart.html">AGMultipart</a></li>
 							
 							<li><a href="Protocols/AGPageConfig.html">AGPageConfig</a></li>
 							
@@ -205,13 +155,12 @@
 							
 						</ul>
 						
+                        
 						
 						<h2 class="index-title">Category References</h2>
 						<ul>
 							
 							<li><a href="Categories/NSMutableArray+AGPaging.html">NSMutableArray(AGPaging)</a></li>
-							
-							<li><a href="Categories/UIImageView+AFNetworking.html">UIImageView(AFNetworking)</a></li>
 							
 						</ul>
 						
@@ -224,9 +173,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 	
 					</div>

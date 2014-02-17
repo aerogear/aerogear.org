@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGSQLiteStorage Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -134,24 +133,27 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>An <a href="../Protocols/AGStore.html">AGStore</a> implementation that uses a SQLite for storage. The storage is a key value store. The content is serialized in JSON output.</p>
+						<p>An <a href="../Protocols/AGStore.html">AGStore</a> implementation that uses a SQLite for storage. The storage is a key value store. The content is serialized
+in JSON output.</p>
 
 <p><em>NOTE:</em>
 You must adhere to the rules governing the serialization of data types for each respective field type.</p>
 
-<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned automatically when an DataStore with the <em>type</em> config option is set to <em>&ldquo;SQLITE&rdquo;</em>. See <a href="../Classes/AGDataManager.html">AGDataManager</a> and <a href="../Protocols/AGStore.html">AGStore</a> class documentation for more information.</p>
+<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned
+automatically when an DataStore with the <em>type</em> config option is set to <em>&ldquo;SQLITE&rdquo;</em>. See <a href="../Classes/AGDataManager.html">AGDataManager</a> and <a href="../Protocols/AGStore.html">AGStore</a> class
+documentation for more information.</p>
 
 <h2>Create a DataManager with a SQLite store backend</h2>
 
 <p>Below is a small example on how to use SQLite:</p>
 
-<pre><code>// initalize SQLite store (if the file does not exist it will be created)
+<pre><code>// initialize SQLite store (if the file does not exist it will be created)
 AGDataManager* manager = [AGDataManager manager];
 id&lt;AGStore&gt; store = [manager store:^(id&lt;AGStoreConfig&gt; config) {
   [config setName:@"secrets"]; // will be used as the filename for the sqlite database.
@@ -165,10 +167,11 @@ NSDictionary *otp = [NSDictionary dictionaryWithObjectsAndKeys:@"19a01df0281afcd
 NSError *error;
 
 if (![store save:otp error:&amp;error])
-NSLog(@"Save: An error occured during save! \n%@", error);
+NSLog(@"Save: An error occurred during save! \n%@", error);
 </code></pre>
 
-<p>The <code>read</code>, <code>reset</code> or <code>remove</code> methods found in <a href="../Protocols/AGStore.html">AGStore</a> behave the same, as on the default (&ldquo;in memory&rdquo;) store.</p>
+<p>The <code>read</code>, <code>reset</code> or <code>remove</code> methods found in <a href="../Protocols/AGStore.html">AGStore</a> behave the same, as on the default
+(&ldquo;in memory&rdquo;) store.</p>
 					</div>
 					
 					
@@ -187,49 +190,42 @@ NSLog(@"Save: An error occured during save! \n%@", error);
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/readAll">&ndash;&nbsp;readAll</a></code>
-		<span class="tooltip"><p>Reads all the data from the underlying storage system.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/read:">&ndash;&nbsp;read:</a></code>
-		<span class="tooltip"><p>Reads a specific object/record from the underlying storage system.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/filter:">&ndash;&nbsp;filter:</a></code>
-		<span class="tooltip"><p>Reads all, based on a filter, from the underlying storage system.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/save:error:">&ndash;&nbsp;save:error:</a></code>
-		<span class="tooltip"><p>Saves the given object in the underlying storage system.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/reset:">&ndash;&nbsp;reset:</a></code>
-		<span class="tooltip"><p>Resets the entire storage system.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isEmpty">&ndash;&nbsp;isEmpty</a></code>
-		<span class="tooltip"><p>Checks if the storage system contains no stored elements.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:error:">&ndash;&nbsp;remove:error:</a></code>
-		<span class="tooltip"><p>Removes a specific object/record from the underlying storage system.</p></span>
 	</span>
 	
 	
@@ -260,9 +256,11 @@ NSLog(@"Save: An error occured during save! \n%@", error);
 		<p>Reads all, based on a filter, from the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)filter:(NSPredicate *)<em>predicate</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -315,9 +313,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Checks if the storage system contains no stored elements.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)isEmpty</code></div>
-	
+
+    
 	
 	
 	
@@ -359,9 +359,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Reads a specific object/record from the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)read:(id)<em>recordId</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -413,9 +415,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Reads all the data from the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)readAll</code></div>
-	
+
+    
 	
 	
 	
@@ -457,9 +461,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Removes a specific object/record from the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)remove:(id)<em>record</em> error:(NSError **)<em>error</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -516,9 +522,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Resets the entire storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)reset:(NSError **)<em>error</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -570,9 +578,11 @@ This method only returns a copy of the data and leaves the underlying storage sy
 		<p>Saves the given object in the underlying storage system.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)save:(id)<em>data</em> error:(NSError **)<em>error</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -624,6 +634,8 @@ mutable dictionary. This parameter is the object being persisted.</p></dd>
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -634,9 +646,9 @@ mutable dictionary. This parameter is the object being persisted.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>

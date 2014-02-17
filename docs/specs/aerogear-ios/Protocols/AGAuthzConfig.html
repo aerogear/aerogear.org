@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGAuthConfig Protocol Reference</title>
+		<title>AGAuthzConfig Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGAuthConfig Protocol Reference</h1>
+				<h1 class="hideInXcode">AGAuthzConfig Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -39,13 +39,19 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/accessTokenEndpoint">&nbsp;&nbsp;&nbsp;&nbsp;accessTokenEndpoint</option>
+	
+	<option value="//api/name/authzEndpoint">&nbsp;&nbsp;&nbsp;&nbsp;authzEndpoint</option>
+	
 	<option value="//api/name/baseURL">&nbsp;&nbsp;&nbsp;&nbsp;baseURL</option>
 	
-	<option value="//api/name/enrollEndpoint">&nbsp;&nbsp;&nbsp;&nbsp;enrollEndpoint</option>
+	<option value="//api/name/clientId">&nbsp;&nbsp;&nbsp;&nbsp;clientId</option>
 	
-	<option value="//api/name/loginEndpoint">&nbsp;&nbsp;&nbsp;&nbsp;loginEndpoint</option>
+	<option value="//api/name/clientSecret">&nbsp;&nbsp;&nbsp;&nbsp;clientSecret</option>
 	
-	<option value="//api/name/logoutEndpoint">&nbsp;&nbsp;&nbsp;&nbsp;logoutEndpoint</option>
+	<option value="//api/name/redirectURL">&nbsp;&nbsp;&nbsp;&nbsp;redirectURL</option>
+	
+	<option value="//api/name/scopes">&nbsp;&nbsp;&nbsp;&nbsp;scopes</option>
 	
 	<option value="//api/name/timeout">&nbsp;&nbsp;&nbsp;&nbsp;timeout</option>
 	
@@ -77,13 +83,19 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/accessTokenEndpoint">accessTokenEndpoint</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authzEndpoint">authzEndpoint</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/baseURL">baseURL</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enrollEndpoint">enrollEndpoint</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clientId">clientId</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginEndpoint">loginEndpoint</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clientSecret">clientSecret</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logoutEndpoint">logoutEndpoint</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/redirectURL">redirectURL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scopes">scopes</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/timeout">timeout</a></span></li>
 	
@@ -98,7 +110,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGAuthConfig Protocol Reference" name="top"></a>
+				<a title="AGAuthzConfig Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -107,7 +119,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGAuthConfig Protocol Reference</h1>
+						<h1 class="title title-header">AGAuthzConfig Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -118,7 +130,7 @@
 	<td class="specification-value"><a href="../Protocols/AGConfig.html">AGConfig</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGAuthConfig.h</td>
+	<td class="specification-value">AGAuthzConfig.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -128,7 +140,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Represents the public API to configure <a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a> objects.</p>
+						<p>Represents the public API to configure <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> objects.</p>
 					</div>
 					
 					
@@ -152,19 +164,37 @@
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/loginEndpoint">&nbsp;&nbsp;loginEndpoint</a></code>
+		<code><a href="#//api/name/authzEndpoint">&nbsp;&nbsp;authzEndpoint</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/logoutEndpoint">&nbsp;&nbsp;logoutEndpoint</a></code>
+		<code><a href="#//api/name/redirectURL">&nbsp;&nbsp;redirectURL</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/enrollEndpoint">&nbsp;&nbsp;enrollEndpoint</a></code>
+		<code><a href="#//api/name/accessTokenEndpoint">&nbsp;&nbsp;accessTokenEndpoint</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/scopes">&nbsp;&nbsp;scopes</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clientId">&nbsp;&nbsp;clientId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clientSecret">&nbsp;&nbsp;clientSecret</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -186,6 +216,88 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/accessTokenEndpoint" title="accessTokenEndpoint"></a>
+	<h3 class="subsubtitle method-title">accessTokenEndpoint</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Applies the &ldquo;access token endpoint&rdquo; to the exchange code for access token.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *accessTokenEndpoint</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Applies the &ldquo;access token endpoint&rdquo; to the exchange code for access token.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGAuthzConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authzEndpoint" title="authzEndpoint"></a>
+	<h3 class="subsubtitle method-title">authzEndpoint</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Applies the &ldquo;authorization endpoint&rdquo; to the request token.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *authzEndpoint</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Applies the &ldquo;authorization endpoint&rdquo; to the request token.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGAuthzConfig.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/baseURL" title="baseURL"></a>
@@ -222,25 +334,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthConfig.h</code><br />
+		<code class="declared-in-ref">AGAuthzConfig.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/enrollEndpoint" title="enrollEndpoint"></a>
-	<h3 class="subsubtitle method-title">enrollEndpoint</h3>
+	<a name="//api/name/clientId" title="clientId"></a>
+	<h3 class="subsubtitle method-title">clientId</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Applies the &ldquo;enroll endpoint&rdquo; to the configuration.</p>
+		<p>Applies the &ldquo;client id&rdquo; obtained with the client registration process.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *enrollEndpoint</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *clientId</code></div>
 
     
 	
@@ -252,7 +364,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the &ldquo;enroll endpoint&rdquo; to the configuration.</p>
+		<p>Applies the &ldquo;client id&rdquo; obtained with the client registration process.</p>
 	</div>
 	
 	
@@ -263,25 +375,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthConfig.h</code><br />
+		<code class="declared-in-ref">AGAuthzConfig.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/loginEndpoint" title="loginEndpoint"></a>
-	<h3 class="subsubtitle method-title">loginEndpoint</h3>
+	<a name="//api/name/clientSecret" title="clientSecret"></a>
+	<h3 class="subsubtitle method-title">clientSecret</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Applies the &ldquo;login endpoint&rdquo; to the configuration.</p>
+		<p>Applies the &ldquo;client secret&rdquo; obtained with the client registration process.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *loginEndpoint</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *clientSecret</code></div>
 
     
 	
@@ -293,7 +405,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the &ldquo;login endpoint&rdquo; to the configuration.</p>
+		<p>Applies the &ldquo;client secret&rdquo; obtained with the client registration process.</p>
 	</div>
 	
 	
@@ -304,25 +416,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthConfig.h</code><br />
+		<code class="declared-in-ref">AGAuthzConfig.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/logoutEndpoint" title="logoutEndpoint"></a>
-	<h3 class="subsubtitle method-title">logoutEndpoint</h3>
+	<a name="//api/name/redirectURL" title="redirectURL"></a>
+	<h3 class="subsubtitle method-title">redirectURL</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Applies the &ldquo;logout endpoint&rdquo; to the configuration.</p>
+		<p>Applies the &ldquo;callback URL&rdquo; once request token issued.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *logoutEndpoint</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *redirectURL</code></div>
 
     
 	
@@ -334,7 +446,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the &ldquo;logout endpoint&rdquo; to the configuration.</p>
+		<p>Applies the &ldquo;callback URL&rdquo; once request token issued.</p>
 	</div>
 	
 	
@@ -345,7 +457,48 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthConfig.h</code><br />
+		<code class="declared-in-ref">AGAuthzConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/scopes" title="scopes"></a>
+	<h3 class="subsubtitle method-title">scopes</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Applies the &ldquo;scope&rdquo; of the authorization.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSArray *scopes</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Applies the &ldquo;scope&rdquo; of the authorization.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGAuthzConfig.h</code><br />
 	</div>				
 	
 	
@@ -386,7 +539,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGAuthConfig.h</code><br />
+		<code class="declared-in-ref">AGAuthzConfig.h</code><br />
 	</div>				
 	
 	

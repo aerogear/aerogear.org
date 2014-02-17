@@ -2,12 +2,11 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>FMDatabase Class Reference</title>
+		<title>AGAuthorizer Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -17,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">FMDatabase Class Reference</h1>
+				<h1 class="hideInXcode">AGAuthorizer Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,6 +25,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -40,20 +41,18 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/storeableDateFormat:">&nbsp;&nbsp;&nbsp;&nbsp;+ storeableDateFormat:</option>
+	<option value="//api/name/authorizer">&nbsp;&nbsp;&nbsp;&nbsp;+ authorizer</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/dateFromString:">&nbsp;&nbsp;&nbsp;&nbsp;- dateFromString:</option>
+	<option value="//api/name/authz:">&nbsp;&nbsp;&nbsp;&nbsp;- authz:</option>
 	
-	<option value="//api/name/hasDateFormatter">&nbsp;&nbsp;&nbsp;&nbsp;- hasDateFormatter</option>
+	<option value="//api/name/authzModuleWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- authzModuleWithName:</option>
 	
-	<option value="//api/name/setDateFormat:">&nbsp;&nbsp;&nbsp;&nbsp;- setDateFormat:</option>
-	
-	<option value="//api/name/stringFromDate:">&nbsp;&nbsp;&nbsp;&nbsp;- stringFromDate:</option>
+	<option value="//api/name/remove:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:</option>
 	
 	
 	
@@ -64,6 +63,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -79,7 +80,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/storeableDateFormat:">storeableDateFormat:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authorizer">authorizer</a></span></li>
 	
 </ul></li>
 
@@ -87,13 +88,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dateFromString:">dateFromString:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authz:">authz:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasDateFormatter">hasDateFormatter</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authzModuleWithName:">authzModuleWithName:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDateFormat:">setDateFormat:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringFromDate:">stringFromDate:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:">remove:</a></span></li>
 	
 </ul></li>
 
@@ -102,7 +101,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="FMDatabase Class Reference" name="top"></a>
+				<a title="AGAuthorizer Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -111,7 +110,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">FMDatabase Class Reference</h1>
+						<h1 class="title title-header">AGAuthorizer Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -122,10 +121,37 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">FMDatabase.h<br />FMDatabase.m</td>
+	<td class="specification-value">AGAuthorizer.h<br />AGAuthorizer.m</td>
 </tr>
 						</tbody></table></div>
 					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>  AGAuthorizer manages different AGAuthzModule implementations. It is basically a
+  factory that hides the concrete instantiation of a specific AGAuthzModule implementation.
+  The class offers simple APIs to add, remove, or get access to a &lsquo;authorization module&rsquo;.</p>
+
+<h2>Creating an Authorizer with an Authorizer module</h2>
+
+<p>Below is an example that creates an Authorizer for OAuth2 implementation.</p>
+
+<pre><code>AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+
+_restAuthzModule = [authorizer authz:^(id&lt;AGAuthzConfig&gt; config) {
+    config.name = @"restAuthMod";
+    config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+    config.authzEndpoint = @"/o/oauth2/auth";
+    config.accessTokenEndpoint = @"/o/oauth2/token";
+    config.clientId = @"XXXXX";
+    config.redirectURL = @"org.aerogear.GoogleDrive:/oauth2Callback";
+    config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+}];;
+</code></pre>
+					</div>
 					
 					
 					
@@ -142,36 +168,25 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/storeableDateFormat:">+&nbsp;storeableDateFormat:</a></code>
-		<span class="tooltip"><p>Generate an NSDateFormat that won&rsquo;t be broken by timezone or locale changes.</p></span>
+		<code><a href="#//api/name/authorizer">+&nbsp;authorizer</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/hasDateFormatter">&ndash;&nbsp;hasDateFormatter</a></code>
-		<span class="tooltip"><p>Test whether the database has a date formatter assigned.</p></span>
+		<code><a href="#//api/name/authz:">&ndash;&nbsp;authz:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setDateFormat:">&ndash;&nbsp;setDateFormat:</a></code>
-		<span class="tooltip"><p>Set to a date formatter to use string dates with sqlite instead of the default UNIX timestamps.</p></span>
+		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/dateFromString:">&ndash;&nbsp;dateFromString:</a></code>
-		<span class="tooltip"><p>Convert the supplied NSString to NSDate, using the current database formatter.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/stringFromDate:">&ndash;&nbsp;stringFromDate:</a></code>
-		<span class="tooltip"><p>Convert the supplied NSDate to NSString, using the current database formatter.</p></span>
+		<code><a href="#//api/name/authzModuleWithName:">&ndash;&nbsp;authzModuleWithName:</a></code>
 	</span>
 	
 	
@@ -191,36 +206,27 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/storeableDateFormat:" title="storeableDateFormat:"></a>
-	<h3 class="subsubtitle method-title">storeableDateFormat:</h3>
+	<a name="//api/name/authorizer" title="authorizer"></a>
+	<h3 class="subsubtitle method-title">authorizer</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Generate an NSDateFormat that won&rsquo;t be broken by timezone or locale changes.</p>
+		<p>A factory method to instantiate an empty AGAuthorizer.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>+ (NSDateFormatter *)storeableDateFormat:(NSString *)<em>format</em></code></div>
-	
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>dateFormat</em></dt>
-			<dd><p>A valid NSDateFormatter format string.</p>
+    
 
-<p>Example:</p>
+	<div class="method-subsection method-declaration"><code>+ (id)authorizer</code></div>
 
-<p>myDB.dateFormat = [FMDatabase storeableDateFormat:@&ldquo;yyyy-MM-dd HH:mm:ss&rdquo;];</p>
-
-<p>Note that NSDateFormatter is not thread-safe, so the formatter generated by this method should be assigned to only one FMDB instance and should not be used for other purposes.</p></dd>
-		</dl>
-		
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the <a href="../Classes/AGAuthenticator.html">AGAuthenticator</a> object</p>
 	</div>
-	
-	
 	
 	
 	
@@ -228,9 +234,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Generate an NSDateFormat that won&rsquo;t be broken by timezone or locale changes.</p>
-
-<p>Use this method to generate values to set the dateFormat property.</p>
+		<p>A factory method to instantiate an empty AGAuthorizer.</p>
 	</div>
 	
 	
@@ -241,7 +245,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">FMDatabase.h</code><br />
+		<code class="declared-in-ref">AGAuthorizer.h</code><br />
 	</div>				
 	
 	
@@ -256,20 +260,38 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/dateFromString:" title="dateFromString:"></a>
-	<h3 class="subsubtitle method-title">dateFromString:</h3>
+	<a name="//api/name/authz:" title="authz:"></a>
+	<h3 class="subsubtitle method-title">authz:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Convert the supplied NSString to NSDate, using the current database formatter.</p>
+		<p>Adds a new <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> object, based on the given configuration object.</p>
 	</div>		
 	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGAuthzModule&gt;)authz:(void ( ^ ) ( id&lt;AGAuthzConfig&gt; config ))<em>config</em></code></div>
+
+    
 	
-	<div class="method-subsection method-declaration"><code>- (NSDate *)dateFromString:(NSString *)<em>s</em></code></div>
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>config</em></dt>
+			<dd><p>A block object which passes in an implementation of the <a href="../Protocols/AGAuthzConfig.html">AGAuthzConfig</a> protocol.
+the object is used to configure the <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> object.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the newly created <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> object</p>
+	</div>
 	
 	
 	
@@ -277,9 +299,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Convert the supplied NSString to NSDate, using the current database formatter.</p>
-
-<p>Returns nil if no formatter is set.</p>
+		<p>Adds a new <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> object, based on the given configuration object.</p>
 	</div>
 	
 	
@@ -290,25 +310,37 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">FMDatabase.h</code><br />
+		<code class="declared-in-ref">AGAuthorizer.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/hasDateFormatter" title="hasDateFormatter"></a>
-	<h3 class="subsubtitle method-title">hasDateFormatter</h3>
+	<a name="//api/name/authzModuleWithName:" title="authzModuleWithName:"></a>
+	<h3 class="subsubtitle method-title">authzModuleWithName:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Test whether the database has a date formatter assigned.</p>
+		<p>Loads a given <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> implementation, based on the given moduleName argument.</p>
 	</div>		
 	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGAuthzModule&gt;)authzModuleWithName:(NSString *)<em>moduleName</em></code></div>
+
+    
 	
-	<div class="method-subsection method-declaration"><code>- (BOOL)hasDateFormatter</code></div>
-	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>moduleName</em></dt>
+			<dd><p>The name of the actual authz module object.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -318,7 +350,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Test whether the database has a date formatter assigned.</p>
+		<p>Loads a given <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> implementation, based on the given moduleName argument.</p>
 	</div>
 	
 	
@@ -329,25 +361,38 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">FMDatabase.h</code><br />
+		<code class="declared-in-ref">AGAuthorizer.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/setDateFormat:" title="setDateFormat:"></a>
-	<h3 class="subsubtitle method-title">setDateFormat:</h3>
+	<a name="//api/name/remove:" title="remove:"></a>
+	<h3 class="subsubtitle method-title">remove:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Set to a date formatter to use string dates with sqlite instead of the default UNIX timestamps.</p>
+		<p>Removes a <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> implementation from the AGAuthorizer. The authz module,
+to be removed is determined by the moduleName argument.</p>
 	</div>		
 	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;AGAuthzModule&gt;)remove:(NSString *)<em>moduleName</em></code></div>
+
+    
 	
-	<div class="method-subsection method-declaration"><code>- (void)setDateFormat:(NSDateFormatter *)<em>format</em></code></div>
-	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>moduleName</em></dt>
+			<dd><p>The name of the actual auth module object.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -357,15 +402,8 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Set to a date formatter to use string dates with sqlite instead of the default UNIX timestamps.</p>
-
-<p>Set to nil to use UNIX timestamps.</p>
-
-<p>Defaults to nil.</p>
-
-<p>Should be set using a formatter generated using FMDatabase::storeableDateFormat.</p>
-
-<p>Note there is no direct getter for the NSDateFormatter, and you should not use the formatter you pass to FMDB for other purposes, as NSDateFormatter is not thread-safe.</p>
+		<p>Removes a <a href="../Protocols/AGAuthzModule.html">AGAuthzModule</a> implementation from the AGAuthorizer. The authz module,
+to be removed is determined by the moduleName argument.</p>
 	</div>
 	
 	
@@ -376,48 +414,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">FMDatabase.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/stringFromDate:" title="stringFromDate:"></a>
-	<h3 class="subsubtitle method-title">stringFromDate:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Convert the supplied NSDate to NSString, using the current database formatter.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (NSString *)stringFromDate:(NSDate *)<em>date</em></code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Convert the supplied NSDate to NSString, using the current database formatter.</p>
-
-<p>Returns nil if no formatter is set.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">FMDatabase.h</code><br />
+		<code class="declared-in-ref">AGAuthorizer.h</code><br />
 	</div>				
 	
 	
@@ -426,6 +423,8 @@
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -436,9 +435,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>

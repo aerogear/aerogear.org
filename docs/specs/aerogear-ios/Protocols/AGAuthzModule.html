@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGKeyStoreCryptoConfig Class Reference</title>
+		<title>AGAuthzModule Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGKeyStoreCryptoConfig Class Reference</h1>
+				<h1 class="hideInXcode">AGAuthzModule Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -31,17 +31,8 @@
 	
 	
 	
-	<option value="tasks">Tasks</option>
 	
 	
-	
-	
-	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/alias">&nbsp;&nbsp;&nbsp;&nbsp;alias</option>
-	
-	<option value="//api/name/password">&nbsp;&nbsp;&nbsp;&nbsp;password</option>
 	
 	
 	
@@ -61,21 +52,9 @@
 
 
 
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-</ul></li>
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/alias">alias</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/password">password</a></span></li>
-	
-</ul></li>
 
 
 
@@ -86,7 +65,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGKeyStoreCryptoConfig Class Reference" name="top"></a>
+				<a title="AGAuthzModule Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -95,21 +74,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGKeyStoreCryptoConfig Class Reference</h1>
+						<h1 class="title title-header">AGAuthzModule Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
+	<td class="specification-title">Conforms to</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a></td>
-</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGKeyStoreCryptoConfig.h<br />AGKeyStoreCryptoConfig.m</td>
+	<td class="specification-value">AGAuthzModule.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -119,130 +95,54 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Configuration object for an <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> provider.</p>
+						<p>AGAuthzModule represents an OAuth2 module and provides an interface for managing OAuth2 dance. The
+default implementation uses REST as the authz transport. Similar to the <a href="../Protocols/AGPipe.html">Pipe</a>, technical details of the
+underlying system are not exposed.</p>
+
+<h2>Login</h2>
+
+<p>Once you have a <em>valid</em> user you can use that information to issue a login against the server, to start accessing
+protected endpoints:</p>
+
+<pre><code>AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+
+_restAuthzModule = [authorizer authz:^(id&lt;AGAuthzConfig&gt; config) {
+    config.name = @"restAuthMod";
+    config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+    config.authzEndpoint = @"/o/oauth2/auth";
+    config.accessTokenEndpoint = @"/o/oauth2/token";
+    config.clientId = @"XXXXXXX";
+    config.clientSecret = @"XXXXXXX";
+    config.redirectURL = @"org.aerogear.GoogleDrive:/oauth2Callback";
+    config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+}];
+
+[_restAuthzModule requestAccessSuccess:^(id object) {
+   // object contain the access token needed to query exposed web service
+   // You can use ipe as usual
+} failure:^(NSError *error) {
+    // an error occurred
+}];
+</code></pre>
+
+<p>}</p>
+
+<p>The <code>requestAccess:success:failure:</code> function deal with the OAuth dance. To manage callback to application,
+the AeroGear uses URL scheme. Schema should be carefully defined in you plist application.</p>
+
+<h2>Time out and Cancel pending operations</h2>
+
+<p>As with the case of Pipe, configured timeout interval (in the config object) and cancel operation in
+<em><a href="../Protocols/AGAuthenticationModule.html">AGAuthenticationModule</a></em> is supported too.</p>
 					</div>
 					
 					
 					
 					
 					
-					<div class="section section-tasks">
-						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
-						
-						
-						
-						
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/alias">&nbsp;&nbsp;alias</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/password">&nbsp;&nbsp;password</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li>
-						</ul>
-						
-					</div>
 					
 					
 					
-					
-					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/alias" title="alias"></a>
-	<h3 class="subsubtitle method-title">alias</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Applies the alias to the configuration.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *alias</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the alias to the configuration.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGKeyStoreCryptoConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/password" title="password"></a>
-	<h3 class="subsubtitle method-title">password</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Applies the password to the configuration.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *password</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the password to the configuration.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGKeyStoreCryptoConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 					

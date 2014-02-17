@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AGKeyStoreCryptoConfig Class Reference</title>
+		<title>AGEncryptedSQLiteStorage Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AGKeyStoreCryptoConfig Class Reference</h1>
+				<h1 class="hideInXcode">AGEncryptedSQLiteStorage Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -31,17 +31,8 @@
 	
 	
 	
-	<option value="tasks">Tasks</option>
 	
 	
-	
-	
-	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/alias">&nbsp;&nbsp;&nbsp;&nbsp;alias</option>
-	
-	<option value="//api/name/password">&nbsp;&nbsp;&nbsp;&nbsp;password</option>
 	
 	
 	
@@ -61,21 +52,9 @@
 
 
 
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-</ul></li>
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/alias">alias</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/password">password</a></span></li>
-	
-</ul></li>
 
 
 
@@ -86,7 +65,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AGKeyStoreCryptoConfig Class Reference" name="top"></a>
+				<a title="AGEncryptedSQLiteStorage Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -95,7 +74,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AGKeyStoreCryptoConfig Class Reference</h1>
+						<h1 class="title title-header">AGEncryptedSQLiteStorage Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -103,13 +82,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
-</tr><tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a></td>
+	<td class="specification-value"><a href="../Classes/AGSQLiteStorage.html">AGSQLiteStorage</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AGKeyStoreCryptoConfig.h<br />AGKeyStoreCryptoConfig.m</td>
+	<td class="specification-value">AGEncryptedSQLiteStorage.h<br />AGEncryptedSQLiteStorage.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -119,130 +95,50 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Configuration object for an <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> provider.</p>
+						<p>An <a href="../Protocols/AGStore.html">AGStore</a> implementation that uses a SQLite for storage and encryption. This storage is a variant of <a href="../Classes/AGSQLiteStorage.html">AGSQLiteStorage</a>
+with encryption. You can use your encrypted store transparently, the same way you work with <a href="../Classes/AGSQLiteStorage.html">AGSQLiteStorage</a>.</p>
+
+<p><em>NOTE:</em>
+You must adhere to the rules governing the serialization of data types for each respective field type.</p>
+
+<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned
+automatically when an DataStore with the <em>type</em> config option is set to <em>&ldquo;ENCRYPTED_SQLITE&rdquo;</em>.
+See AGDataManager and AGStore class documentation for more information.</p>
+
+<h2>Create a DataManager with an encrypted SQLite store backend</h2>
+
+<p>Below is a small example on how to use EncryptedSQLite:</p>
+
+<pre><code>// randomly generate salt
+NSData *salt = [AGRandomGenerator randomBytes];  // [1]
+
+// set up crypto params configuration object
+AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];  // [2]
+[config setSalt:salt];  // 3
+[config setPassphrase:self.password.text];   // 4
+
+// initialize the encryption service passing the config
+id&lt;AGEncryptionService&gt; encService = [[AGKeyManager manager] keyService:config];  // [5]
+
+// access Store
+AGDataManager* manager = [AGDataManager manager];
+id&lt;AGStore&gt; store = [manager store:^(id&lt;AGStoreConfig&gt; config) {
+  [config setName:@"secrets"]; // will be used as the filename for the sqlite database.
+  [config setType:@"ENCRYPTED_SQLITE"];  // specify you want to use Encrypted SQLite store.
+  [config setEncryptionService:encService]; // specify the encryption service
+}];
+</code></pre>
+
+<p>The <code>read</code>, <code>reset</code> or <code>remove</code> methods found in <a href="../Protocols/AGStore.html">AGStore</a> behave the same, as on the default (&ldquo;in memory&rdquo;) store.</p>
 					</div>
 					
 					
 					
 					
 					
-					<div class="section section-tasks">
-						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
-						
-						
-						
-						
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/alias">&nbsp;&nbsp;alias</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/password">&nbsp;&nbsp;password</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li>
-						</ul>
-						
-					</div>
 					
 					
 					
-					
-					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/alias" title="alias"></a>
-	<h3 class="subsubtitle method-title">alias</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Applies the alias to the configuration.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *alias</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the alias to the configuration.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGKeyStoreCryptoConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/password" title="password"></a>
-	<h3 class="subsubtitle method-title">password</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Applies the password to the configuration.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *password</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Applies the password to the configuration.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGKeyStoreCryptoConfig.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 					

@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGKeyManager Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -126,8 +125,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -137,7 +136,8 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 
 <h2>Example usage</h2>
 
-<p>Here is an example usage of retrieving an encryption service (based on PBKDF2) and assigning to a data store to provide on-the fly encryption and decryption of data:</p>
+<p>Here is an example usage of retrieving an encryption service (based on PBKDF2) and assigning to a data store to provide
+on-the fly encryption and decryption of data:</p>
 
 <pre><code> // randomly generate salt
  NSData *salt = [AGRandomGenerator randomBytes];  // [1]
@@ -167,13 +167,20 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
     // decryption succeeded!
 </code></pre>
 
-<p>In [1] we initialize a random salt that will be used in the encryption. In [2] we initialize an instance of a CryptoConfig configuration object to set our crypto params. Here we use an PassphraseCryptoConfig object, that sets the necessary crypto params for the PBKDF2 Encryption Service, mainly the salt [3] and the passphrase [4].</p>
+<p>In [1] we initialize a random salt that will be used in the encryption. In [2] we initialize an instance of a
+CryptoConfig configuration object to set our crypto params. Here we use an PassphraseCryptoConfig object, that sets
+the necessary crypto params for the PBKDF2 Encryption Service, mainly the salt [3] and the passphrase [4].</p>
 
-<p>Now that we have setup the configuration, it’s time to obtain an instance of an EncryptionService and that’s exactly what we do in [5]. KeyManager parses the configuration and returns an instance of it. Because we passed an PassphraseCryptoConfig object, a PBKDF2 encryption service would be returned.</p>
+<p>Now that we have setup the configuration, it’s time to obtain an instance of an EncryptionService and that’s exactly
+what we do in [5]. KeyManager parses the configuration and returns an instance of it. Because we passed an
+PassphraseCryptoConfig object, a PBKDF2 encryption service would be returned.</p>
 
-<p>In [6] we initialize our data store (an encrypted plist [7]), setting the encryption service we obtained earlier [8]. Reading and saving operations are done like all the other stores, but this time the data are transparently encrypted/decrypted.</p>
+<p>In [6] we initialize our data store (an encrypted plist [7]), setting the encryption service we obtained earlier [8].
+Reading and saving operations are done like all the other stores, but this time the data are transparently
+encrypted/decrypted.</p>
 
-<p>In [9] we attempt to read data from the store. If that fails, then user supplied wrong crypto parameters (either passphrase or salt).</p>
+<p>In [9] we attempt to read data from the store. If that fails, then user supplied wrong crypto parameters
+(either passphrase or salt).</p>
 					</div>
 					
 					
@@ -192,28 +199,24 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/manager">+&nbsp;manager</a></code>
-		<span class="tooltip"><p>A factory method to instantiate the AGKeyManager object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/keyService:">&ndash;&nbsp;keyService:</a></code>
-		<span class="tooltip"><p>Return an implementation of an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> based on the <a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a> configuration object passed in. See <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> and <a href="../Classes/AGPassphraseKeyServices.html">AGPassphraseKeyServices</a> for the different encyption providers.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
-		<span class="tooltip"><p>Removes am <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> from the AGKeyManager object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/keyServiceWithName:">&ndash;&nbsp;keyServiceWithName:</a></code>
-		<span class="tooltip"><p>Look up for an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> object.</p></span>
 	</span>
 	
 	
@@ -242,9 +245,11 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 		<p>A factory method to instantiate the AGKeyManager object.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id)manager</code></div>
-	
+
+    
 	
 	
 	
@@ -291,12 +296,15 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Return an implementation of an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> based on the <a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a> configuration object passed in. See <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> and <a href="../Classes/AGPassphraseKeyServices.html">AGPassphraseKeyServices</a> for the different encyption providers.</p>
+		<p>Return an implementation of an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> based on the <a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a> configuration object passed in.
+See <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> and <a href="../Classes/AGPassphraseKeyServices.html">AGPassphraseKeyServices</a> for the different encyption providers.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGEncryptionService&gt;)keyService:(id&lt;AGCryptoConfig&gt;)<em>config</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -321,7 +329,8 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Return an implementation of an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> based on the <a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a> configuration object passed in. See <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> and <a href="../Classes/AGPassphraseKeyServices.html">AGPassphraseKeyServices</a> for the different encyption providers.</p>
+		<p>Return an implementation of an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> based on the <a href="../Protocols/AGCryptoConfig.html">AGCryptoConfig</a> configuration object passed in.
+See <a href="../Classes/AGPasswordKeyServices.html">AGPasswordKeyServices</a> and <a href="../Classes/AGPassphraseKeyServices.html">AGPassphraseKeyServices</a> for the different encyption providers.</p>
 	</div>
 	
 	
@@ -348,16 +357,18 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 		<p>Look up for an <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> object.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGEncryptionService&gt;)keyServiceWithName:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>name</em></dt>
-			<dd><p>the <a href="../Classes/name.html">name</a> of the actual <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a>.</p></dd>
+			<dd><p>the name of the actual <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a>.</p></dd>
 		</dl>
 		
 	</div>
@@ -402,16 +413,18 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 		<p>Removes am <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a> from the AGKeyManager object.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGEncryptionService&gt;)remove:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>name</em></dt>
-			<dd><p>the <a href="../Classes/name.html">name</a> of the actual <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a>.</p></dd>
+			<dd><p>the name of the actual <a href="../Protocols/AGEncryptionService.html">AGEncryptionService</a>.</p></dd>
 		</dl>
 		
 	</div>
@@ -449,6 +462,8 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -459,9 +474,9 @@ factory that hides the concrete instantiations of a specific <a href="../Protoco
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>
