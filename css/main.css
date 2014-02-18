@@ -643,20 +643,6 @@ pre {
   padding: 0;
   font-style: italic;
   font-size: 0.75em; }
-   */
-   */
-  #sideNav {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    display: block; }
-      -webkit-box-sizing: border-box;
-      -o-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -o-box-sizing: border-box;
-/* ==================================================================================================================
  * Helper classes
  * ================================================================================================================== */
 /* Image replacement  */
@@ -718,6 +704,19 @@ pre {
   .clearfix:before {
     content: " ";
     display: table; }
+.specTable {
+  border-style: solid;
+  border-width: 1px; }
+  .specTable th {
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px; }
+  .specTable td {
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+    text-align: center; }
+
  * ==================================================================================================================
  */
 @media print {
@@ -752,8 +751,6 @@ pre {
     content: " ";
     display: table;
     clear: both; }
-
-.specTable {
   border-style: solid;
   border-width: 1px; }
   .specTable th {
