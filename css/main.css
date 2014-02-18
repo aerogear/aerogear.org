@@ -507,7 +507,7 @@ footer {
   visibility: hidden; }
   @media only screen and (max-width: 656px) {
     #slide-menu-button {
-      visibility: visble; } }
+      visibility: visible; } }
 
 a#slide-menu-button:hover {
   text-decoration: none;
