@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGPipeConfig Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -41,6 +40,8 @@
 	<option value="properties">Properties</option>
 	
 	<option value="//api/name/authModule">&nbsp;&nbsp;&nbsp;&nbsp;authModule</option>
+	
+	<option value="//api/name/authzModule">&nbsp;&nbsp;&nbsp;&nbsp;authzModule</option>
 	
 	<option value="//api/name/baseURL">&nbsp;&nbsp;&nbsp;&nbsp;baseURL</option>
 	
@@ -83,6 +84,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authModule">authModule</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authzModule">authzModule</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/baseURL">baseURL</a></span></li>
 	
@@ -131,8 +134,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -156,52 +159,48 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/baseURL">&nbsp;&nbsp;baseURL</a></code>
-		<span class="tooltip"><p>The baseURL to the configuration.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/endpoint">&nbsp;&nbsp;endpoint</a></code>
-		<span class="tooltip"><p>The endpoint to the configuration.
-If no endpoint is specified, the name will be used as its value.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/recordId">&nbsp;&nbsp;recordId</a></code>
-		<span class="tooltip"><p>The recordId to the configuration.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/authModule">&nbsp;&nbsp;authModule</a></code>
-		<span class="tooltip"><p>The Authentication Module configured for this Pipe.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authzModule">&nbsp;&nbsp;authzModule</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/timeout">&nbsp;&nbsp;timeout</a></code>
-		<span class="tooltip"><p>The timeout interval for a request to complete.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/credential">&nbsp;&nbsp;credential</a></code>
-		<span class="tooltip"><p>The NSURLCredential to use if the request requires authentication.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pageConfig">&nbsp;&nbsp;pageConfig</a></code>
-		<span class="tooltip"><p>A block specifying paging configuration for this Pipe.
-See <a href="../Protocols/AGPageConfig.html">AGPageConfig</a> and for the available paging configuration parameters
-and category AGNSMutableArray(Paging) for example usage.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -228,9 +227,52 @@ and category AGNSMutableArray(Paging) for example usage.</p></span>
 		<p>The Authentication Module configured for this Pipe.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) id&lt;AGAuthenticationModule&gt; authModule</code></div>
+
+    
 	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The Authentication Module configured for this Pipe.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipeConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authzModule" title="authzModule"></a>
+	<h3 class="subsubtitle method-title">authzModule</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The Authentication Module configured for this Pipe.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) id&lt;AGAuthzModule&gt; authzModule</code></div>
+
+    
 	
 	
 	
@@ -267,9 +309,11 @@ and category AGNSMutableArray(Paging) for example usage.</p></span>
 		<p>The baseURL to the configuration.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSURL *baseURL</code></div>
-	
+
+    
 	
 	
 	
@@ -306,9 +350,11 @@ and category AGNSMutableArray(Paging) for example usage.</p></span>
 		<p>The NSURLCredential to use if the request requires authentication.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSURLCredential *credential</code></div>
-	
+
+    
 	
 	
 	
@@ -357,9 +403,11 @@ for more information.</p>
 If no endpoint is specified, the name will be used as its value.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *endpoint</code></div>
-	
+
+    
 	
 	
 	
@@ -399,9 +447,11 @@ See <a href="../Protocols/AGPageConfig.html">AGPageConfig</a> and for the availa
 and category AGNSMutableArray(Paging) for example usage.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) void ( ^ ) ( id&lt;AGPageConfig&gt; ) pageConfig</code></div>
-	
+
+    
 	
 	
 	
@@ -440,9 +490,11 @@ and category AGNSMutableArray(Paging) for example usage.</p>
 		<p>The recordId to the configuration.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *recordId</code></div>
-	
+
+    
 	
 	
 	
@@ -479,9 +531,11 @@ and category AGNSMutableArray(Paging) for example usage.</p>
 		<p>The timeout interval for a request to complete.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSTimeInterval timeout</code></div>
-	
+
+    
 	
 	
 	
@@ -515,6 +569,8 @@ and category AGNSMutableArray(Paging) for example usage.</p>
 					
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -525,9 +581,9 @@ and category AGNSMutableArray(Paging) for example usage.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>

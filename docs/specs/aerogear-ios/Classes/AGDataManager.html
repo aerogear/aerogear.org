@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGDataManager Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -126,8 +125,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -142,7 +141,7 @@
 
 <p>Below is simple example that creates a DataManager initialized to use the default <em>in-memory</em> store.</p>
 
-<pre><code>// create the datamanager
+<pre><code>// create the DataManager
 AGDataManager* dm = [AGDataManager manager];
 // add a new (default) store object:
 id&lt;AGStore&gt; myStore = [dm store:^(id&lt;AGStoreConfig&gt; config) {
@@ -161,17 +160,17 @@ id&lt;AGStore&gt; myStore = [dm store:^(id&lt;AGStoreConfig&gt; config) {
 
 [tasksPipe read:^(id responseObject) {
     // the response object represents an NSArray,
-    // containing multile 'Tasks' (as NSDictionary objects)
+    // containing multiple 'Tasks' (as NSDictionary objects)
 
     // Save the response object to the store
     NSError *error;
 
     if (![myStore save:responseObject error:&amp;error])
-        NSLog(@"Save: An error occured during save! \n%@", error);    
+        NSLog(@"Save: An error occurred during save! \n%@", error);
 
 } failure:^(NSError *error) {
     // when an error occurs... at least log it to the console..
-    NSLog(@"Read: An error occured! \n%@", error);
+    NSLog(@"Read: An error occurred! \n%@", error);
 }];
 </code></pre>
 
@@ -199,7 +198,7 @@ NSArray *objects = [myStore readAll];
 NSError *error;
 
 if (![myStore remove:@"0" error:error])
-    NSLog(@"Save: An error occured during remove! \n%@", error);    
+    NSLog(@"Save: An error occurred during remove! \n%@", error);
 </code></pre>
 
 <p>The remove method accepts the <em>recordID</em> of the object you want to remove. If the object does not exist in the store, NO is returned.</p>
@@ -258,7 +257,7 @@ if (success) { // if save succeeded, query the data
 NSError *error;
 
 if (![myStore reset:&amp;error])
-    NSLog(@"Reset: An error occured during reset! \n%@", error);    
+    NSLog(@"Reset: An error occurred during reset! \n%@", error);
 </code></pre>
 					</div>
 					
@@ -278,29 +277,24 @@ if (![myStore reset:&amp;error])
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/manager">+&nbsp;manager</a></code>
-		<span class="tooltip"><p>A factory method to instantiate the AGDataManager object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/store:">&ndash;&nbsp;store:</a></code>
-		<span class="tooltip"><p>Adds a new <a href="../Protocols/AGStore.html">AGStore</a> object, based on the given configuration object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
-		<span class="tooltip"><p>Removes a <a href="../Protocols/AGStore.html">AGStore</a> implementation from the AGDataManager. The store to be removed
-is determined by the storeName argument.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/storeWithName:">&ndash;&nbsp;storeWithName:</a></code>
-		<span class="tooltip"><p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p></span>
 	</span>
 	
 	
@@ -329,9 +323,11 @@ is determined by the storeName argument.</p></span>
 		<p>A factory method to instantiate the AGDataManager object.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id)manager</code></div>
-	
+
+    
 	
 	
 	
@@ -382,9 +378,11 @@ is determined by the storeName argument.</p></span>
 is determined by the storeName argument.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)remove:(NSString *)<em>storeName</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -432,9 +430,11 @@ is determined by the storeName argument.</p>
 		<p>Adds a new <a href="../Protocols/AGStore.html">AGStore</a> object, based on the given configuration object.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)store:(void ( ^ ) ( id&lt;AGStoreConfig&gt; config ))<em>config</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -487,9 +487,11 @@ the object is used to configure the <a href="../Protocols/AGStore.html">AGStore<
 		<p>Loads a given <a href="../Protocols/AGStore.html">AGStore</a> implementation, based on the given storeName argument.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGStore&gt;)storeWithName:(NSString *)<em>storeName</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -529,6 +531,8 @@ the object is used to configure the <a href="../Protocols/AGStore.html">AGStore<
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -539,9 +543,9 @@ the object is used to configure the <a href="../Protocols/AGStore.html">AGStore<
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>

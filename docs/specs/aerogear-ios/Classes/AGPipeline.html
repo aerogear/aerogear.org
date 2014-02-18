@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGPipeline Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -138,17 +137,20 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>AGPipeline represents a &lsquo;collection&rsquo; of server connections (aka <a href="AGPipe">Pipes</a>). It provides a standard way to communicate with the server no matter the data format or transport expected. It contains some simple management APIs to create and remove <a href="../Protocols/AGPipe.html">Pipe</a> objects.</p>
+						<p>AGPipeline represents a &lsquo;collection&rsquo; of server connections (aka <a href="AGPipe">Pipes</a>). It provides a standard way to
+communicate with the server no matter the data format or transport expected. It contains some simple management APIs to
+create and remove <a href="../Protocols/AGPipe.html">Pipe</a> objects.</p>
 
 <h2>Creating a Pipeline and a Pipe object</h2>
 
-<p>Below is an example that creates a Pipeline to AeroGear TODO server application and adds a <a href="../Protocols/AGPipe.html">Pipe</a> to it, that points to the <em>projects</em> REST endpoint.</p>
+<p>Below is an example that creates a Pipeline to AeroGear TODO server application and adds a <a href="../Protocols/AGPipe.html">Pipe</a> to it, that
+points to the <em>projects</em> REST endpoint.</p>
 
 <pre><code>NSString* baseURL = @"http://todo-aerogear.rhcloud.com/todo-server/";
 
@@ -179,49 +181,42 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithBaseURL:">&ndash;&nbsp;initWithBaseURL:</a></code>
-		<span class="tooltip"><p>An initializer method to instantiate an empty AGPipeline.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
-		<span class="tooltip"><p>An initializer method to instantiate an empty AGPipeline.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pipeline">+&nbsp;pipeline</a></code>
-		<span class="tooltip"><p>A factory method to instantiate an empty AGPipeline.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pipelineWithBaseURL:">+&nbsp;pipelineWithBaseURL:</a></code>
-		<span class="tooltip"><p>A factory method to instantiate an empty AGPipeline.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pipe:">&ndash;&nbsp;pipe:</a></code>
-		<span class="tooltip"><p>Adds a new <a href="../Protocols/AGPipe.html">AGPipe</a> object, based on the given configuration object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:">&ndash;&nbsp;remove:</a></code>
-		<span class="tooltip"><p>Removes a pipe from the AGPipeline object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pipeWithName:">&ndash;&nbsp;pipeWithName:</a></code>
-		<span class="tooltip"><p>Look up for a pipe object.</p></span>
 	</span>
 	
 	
@@ -250,9 +245,11 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 		<p>A factory method to instantiate an empty AGPipeline.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id)pipeline</code></div>
-	
+
+    
 	
 	
 	
@@ -294,9 +291,11 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 		<p>A factory method to instantiate an empty AGPipeline.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id)pipelineWithBaseURL:(NSURL *)<em>baseURL</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -356,9 +355,11 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 		<p>An initializer method to instantiate an empty AGPipeline.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
-	
+
+    
 	
 	
 	
@@ -400,9 +401,11 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 		<p>An initializer method to instantiate an empty AGPipeline.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithBaseURL:(NSURL *)<em>baseURL</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -454,16 +457,19 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 		<p>Adds a new <a href="../Protocols/AGPipe.html">AGPipe</a> object, based on the given configuration object.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)pipe:(void ( ^ ) ( id&lt;AGPipeConfig&gt; config ))<em>config</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>config</em></dt>
-			<dd><p>A block object which passes in an implementation of the <a href="../Protocols/AGPipeConfig.html">AGPipeConfig</a> protocol that is used to configure the <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
+			<dd><p>A block object which passes in an implementation of the <a href="../Protocols/AGPipeConfig.html">AGPipeConfig</a> protocol that is used to configure
+the <a href="../Protocols/AGPipe.html">AGPipe</a> object.</p></dd>
 		</dl>
 		
 	</div>
@@ -508,16 +514,18 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 		<p>Look up for a pipe object.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)pipeWithName:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>name</em></dt>
-			<dd><p>the <a href="../Classes/name.html">name</a> of the actual pipe.</p></dd>
+			<dd><p>the name of the actual pipe.</p></dd>
 		</dl>
 		
 	</div>
@@ -562,16 +570,18 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 		<p>Removes a pipe from the AGPipeline object.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;AGPipe&gt;)remove:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>name</em></dt>
-			<dd><p>the <a href="../Classes/name.html">name</a> of the actual pipe.</p></dd>
+			<dd><p>the name of the actual pipe.</p></dd>
 		</dl>
 		
 	</div>
@@ -609,6 +619,8 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -619,9 +631,9 @@ id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>

@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>NSMutableArray(AGPaging) Category Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -108,13 +107,19 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The library has built-in paging support, enabling the scrolling to either forward or backwards through a result set returned from the server. Paging metadata located in the server response (either in the headers by <a href="http://tools.ietf.org/html/rfc5988">webLinking</a> or custom headers, or in the body) are used to identify the <em>next</em> or the <em>previous</em> result set. For example, in Twitter case, paging metadata are located in the body of the response, using <em>&ldquo;next_page&rdquo;</em> or <em>&ldquo;previous_page&rdquo;</em> to identify the next or previous result set respectively. The location of this metadata as well as naming, is fully configurable during the creation of the <a href="../Protocols/AGPipe.html">Pipe</a>, thus enabling greater flexibility in supporting several different paging strategies.</p>
+						<p>The library has built-in paging support, enabling the scrolling to either forward or backwards through a result set
+returned from the server. Paging metadata located in the server response (either in the headers by
+<a href="http://tools.ietf.org/html/rfc5988">webLinking</a> or custom headers, or in the body) are used to identify the <em>next</em> or
+the <em>previous</em> result set. For example, in Twitter case, paging metadata are located in the body of the response,
+using <em>&ldquo;next_page&rdquo;</em> or <em>&ldquo;previous_page&rdquo;</em> to identify the next or previous result set respectively. The location of
+this metadata as well as naming, is fully configurable during the creation of the <a href="../Protocols/AGPipe.html">Pipe</a>, thus enabling greater
+flexibility in supporting several different paging strategies.</p>
 
 <p>Below is an example that goes against the AeroGear Controller Server:</p>
 
@@ -132,9 +137,18 @@ id&lt;AGPipe&gt; cars = [agPipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
 }];
 </code></pre>
 
-<p>Paging configuration parameters are encapsulated in the AGPageConfig object. Similar to the way we set Pipe configuration params by means of a block, paging configuration params are set using <a href="../Protocols/AGPipeConfig.html#//api/name/pageConfig">[AGPipeConfig setPageConfig:]</a> method passing a block with the desired paging paramaters. Notice that in our example, we explicitely declare the name of the paging identifiers supported by the server, as well as the location of these identifiers in the response. If the metadataLocation is not specified, the library will assume the server is using Web Linking pagination strategy and will default to it.</p>
+<p>Paging configuration parameters are encapsulated in the AGPageConfig object. Similar to the way we set Pipe
+configuration params by means of a block, paging configuration params are set using <a href="../Protocols/AGPipeConfig.html#//api/name/pageConfig">[AGPipeConfig setPageConfig:]</a> method
+passing a block with the desired paging parameters. Notice that in our example, we explicitly declare the name of the
+paging identifiers supported by the server, as well as the location of these identifiers in the response. If the
+metadataLocation is not specified, the library will assume the server is using Web Linking pagination strategy and will
+default to it.</p>
 
-<p>For cases that a custom pagination strategy is followed in the server application , the library also allows the user to plug in a user-defined one, by the means of the [pageConfig setPageParameterExtractor] configuration setting. If set, the library will follow this strategy, overriding the build-in provided ones. In that case, the metadata location is not required and is ignored if set. The strategy should follow the protocol <a href="../Protocols/AGPageParameterExtractor.html">AGPageParameterExtractor</a>, allowing the library to determine the &lsquo;next&rsquo; and &lsquo;previous&rsquo; parameters.</p>
+<p>For cases that a custom pagination strategy is followed in the server application , the library also allows the user to
+plug in a user-defined one, by the means of the [pageConfig setPageParameterExtractor] configuration setting. If set,
+the library will follow this strategy, overriding the build-in provided ones. In that case, the metadata location is not
+required and is ignored if set. The strategy should follow the protocol <a href="../Protocols/AGPageParameterExtractor.html">AGPageParameterExtractor</a>, allowing the library
+to determine the &lsquo;next&rsquo; and &lsquo;previous&rsquo; parameters.</p>
 
 <h2>Start Paging</h2>
 
@@ -188,9 +202,15 @@ id&lt;AGPipe&gt; cars = [agPipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
 </ul>
 
 
-<p>Failing to provide correct identifiers, means that no paging params would be appended in the request. Caution: Without valid paging parameters the used service API may simply return the entire data. To ensure the results returned  do &lsquo;logical&rsquo; represent a &lsquo;next&rsquo; and &lsquo;previous&rsquo; page, the user must ensure correct identifiers are set in the Page configuration.</p>
+<p>Failing to provide correct identifiers, means that no paging params would be appended in the request. Caution: Without
+valid paging parameters the used service API may simply return the entire data. To ensure the results returned  do
+&lsquo;logical&rsquo; represent a &lsquo;next&rsquo; and &lsquo;previous&rsquo; page, the user must ensure correct identifiers are set in the Page
+configuration.</p>
 
-<p>Further, moving beyond last or first page is left on the behaviour of the specific server implementation, that is the library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by respondng with an http error response, or simply return an empty list. The user is responsible to cater for exception cases like this.</p>
+<p>Further, moving beyond last or first page is left on the behaviour of the specific server implementation, that is the
+library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by
+responding with an http error response, or simply return an empty list. The user is responsible to cater for exception
+cases like this.</p>
 					</div>
 					
 					
@@ -209,14 +229,12 @@ id&lt;AGPipe&gt; cars = [agPipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/next:failure:">&ndash;&nbsp;next:failure:</a></code>
-		<span class="tooltip"><p>Reads the next &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/previous:failure:">&ndash;&nbsp;previous:failure:</a></code>
-		<span class="tooltip"><p>Reads the previous &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p></span>
 	</span>
 	
 	
@@ -247,9 +265,11 @@ id&lt;AGPipe&gt; cars = [agPipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
 		<p>Reads the next &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)next:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -264,7 +284,7 @@ data of request.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
-or that finishes successfully, but encountered an error while parsing the resonse data.
+or that finishes successfully, but encountered an error while parsing the response data.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the network or parsing error that occurred.</p></dd>
 		</dl>
@@ -306,9 +326,11 @@ the network or parsing error that occurred.</p></dd>
 		<p>Reads the previous &lsquo;page&rsquo;, based on the current position of the paging result from the server.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)previous:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -323,7 +345,7 @@ data of request.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
-or that finishes successfully, but encountered an error while parsing the resonse data.
+or that finishes successfully, but encountered an error while parsing the response data.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the network or parsing error that occurred.</p></dd>
 		</dl>
@@ -358,6 +380,8 @@ the network or parsing error that occurred.</p></dd>
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -368,9 +392,9 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>
