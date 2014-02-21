@@ -63,17 +63,24 @@ New Features
 ~~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
+* *Auth*
+** OAuth2 Adapter
+*** Customizable Provider
+
+* *JS Cookbook*
+** Recipes for common usages
+
+1.5.0 (Early June)
+~~~~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
 * *Data Sync*
 ** Utility for keeping data in DataManager synchronized with a persistent server side store
 ** Possibly use Notifier for communication / data transfer
 ** Investigate PouchDB as provider or inspiration
-* *Auth*
-** OTP Adapter
-** OAuth2 Adapter
-*** Customizable Provider
 
-1.5.0 (Early June)
-~~~~~~~~~~~~~~~~~~~
+1.6.0
+~~~~~
 New Features
 ^^^^^^^^^^^^
 * *Offline*
