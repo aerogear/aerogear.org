@@ -113,6 +113,19 @@ and include the following XML:
 </array>
 ----
 
+=== Sending Notifications for Background Processing
+
+To ensure that your message is really received by our application when it is in background mode, you need to include +"content-available":true+ into your JSON payload, like:
+
+[source,c]
+----
+
+curl -3 -u "{pushApplicationID}:{masterSecret}"
+   -v -H "Accept: application/json" -H "Content-type: application/json" 
+   -X POST -d '{"message": {"content-available":true, "alert":"Hello AeroGear Unified Push!", "badge":1, "customKey":"some value"}}'
+   https://SERVER:PORT/CONTEXT/rest/sender
+----
+
 
 == You are done
 
