@@ -13,7 +13,7 @@ A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the 
 ----
 curl -3 -u "{pushApplicationID}:{masterSecret}"
    -v -H "Accept: application/json" -H "Content-type: application/json" 
-   -X POST -d '{"message": {"alert":"Hello AeroGear Unified Push!", "badge":1}}'
+   -X POST -d '{"message": {"alert":"Hello AeroGear Unified Push!", "badge":1, "customKey":"some value"}}'
    https://SERVER:PORT/CONTEXT/rest/sender
 ----
 
@@ -30,7 +30,7 @@ image:./img/PushMessage.jpg[iOS Push Notification]
 
 == Custom Dialog
 
-While the application is running, the above described feature is _NOT_ available. However, a different callback can be implemented on the _AppDelegate_ class:
+While the application is running in foreground, the above described feature is _NOT_ available. However, a different callback can be implemented on the _AppDelegate_ class:
 
 [source,c]
 ----
@@ -59,6 +59,59 @@ The _application didReceiveRemoteNotification:_ method receives a _NSDictionary_
 The custom Dialog:
 
 image:./img/CustomDialog.jpg[Custom Dialog]
+
+=== Custom Keys
+
+Besides reading the standard keys, like +alert+ the UnifiedPush Server supports custom keys. In the above +curl+ we used the +customKey+, which could have an application specific meaning. Reading the value of your own keys is as simple as in the above snippet about the custom dialog:
+
+[source,c]
+----
+NSString *customValue = [userInfo valueForKeyPath:@"customKey"];
+----
+
+Now the evaluated value can be used inside of the iOS application.
+
+== iOS 7
+
+In iOS 7 there is a new callback which, in addition to the normal foreground processing, allows the application to process messages while it is running in the background.
+
+_Note:_ *If your application has _no_ need for background processing, using the above method is recommended.*
+
+[source,c]
+----
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+
+    if (application.applicationState == UIApplicationStateBackground) {
+        // perform tasks that are best suited for background processing,
+        // such as download data that is related to the push notification
+        
+        ...
+        
+        // afterwards it is required to invoke the given block:
+        completionHandler(UIBackgroundFetchResultNewData); // download of data did succeed
+    } else {
+        // foreground specific tasks
+    }
+}
+----
+
+Using this method, the iOS platform processes the notification and launches the application in the background. This helps to shrink the time between seeing a push notification and displaying the actual data in the iOS application, as the download of the data for the push notification (if really needed) starts in the background as well.
+
+=== Enabling Background Notifications
+
+In order to get background processing for push notifications to work you have to open your Applications' +Info.plist+ file:
+
+image:./img/InfoPlist.png[Info.plist file of the Application]
+
+and include the following XML:
+
+[source,c]
+----
+<key>UIBackgroundModes</key>
+<array>
+    <string>remote-notification</string>
+</array>
+----
 
 
 == You are done
