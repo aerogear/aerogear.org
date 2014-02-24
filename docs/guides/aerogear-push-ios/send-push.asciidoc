@@ -122,7 +122,7 @@ To ensure that your message is really received by our application when it is in 
 
 curl -3 -u "{pushApplicationID}:{masterSecret}"
    -v -H "Accept: application/json" -H "Content-type: application/json" 
-   -X POST -d '{"message": {"content-available":true, "alert":"Hello AeroGear Unified Push!", "badge":1, "customKey":"some value"}}'
+   -X POST -d '{"message": {"content-available":true, "customKey":"some value"}}'
    https://SERVER:PORT/CONTEXT/rest/sender
 ----
 
