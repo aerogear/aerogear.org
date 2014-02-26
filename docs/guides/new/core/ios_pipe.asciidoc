@@ -1,0 +1,224 @@
+---
+layout: core
+title: AeroGear iOS API Cookbook
+---
+
+== AeroGear Pipes on iOS
+
+=== Creating a pipeline and a pipe object
+
+To create a pipeline, you need to use the AGPipeline class. Below is an example: 
+
+[source,c]
+----
+// NSURL object:
+NSURL* serverURL = [NSURL URLWithString:@"http://todo-aerogear.rhcloud.com/todo-server/"];
+
+// create the 'todo' pipeline, which points to the baseURL of the REST application
+AGPipeline* todo = [AGPipeline pipelineWithBaseURL:serverURL];
+
+// Add a REST pipe for the 'projects' endpoint
+id<AGPipe> projects = [todo pipe:^(id<AGPipeConfig> config) {
+    [config setName:@"projects"];
+     // this is the default, can be emitted
+    [config setType:@"REST"];
+}];
+----
+
+In the example above the 'projects' pipe points to an RESTful endpoint (http://todo-aerogear.rhcloud.com/todo-server/projects). However, technical details like RESTful APIs (e.g. HTTP PUT) are not exposed on the AGPipeline and AGPipe APIs. Below is shown how to get access to an actual pipe, from the AGPipeline object:
+
+[source,c]
+----
+// get access to the 'projects' pipe
+id<AGPipe> projects = [todo pipeWithName:@"projects"];
+----
+
+=== Read a specific object
+
+The 'read:id' method allows you to fetch the object previously saved. The <<noteid, id>> of the object is used as the parameter.
+
+[source,c]
+----
+// read an object with id of 1
+[projects read:@"1" success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+----
+
+In this case, where we have a RESTful pipe the API issues a HTTP GET request.
+
+=== Read all objects from the server
+
+The 'read' method allows to (currently) read _all_ object from the server, of the underlying AGPipe:
+
+[source,c]
+----
+[projects read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+----
+
+Since we are pointing to a RESTful endpoint, the API issues a HTTP GET request. 
+
+=== Save object 
+
+The AGPipe offers an API to store objects on a _remote_ server resource. *Currently* the objects are _just_ simple map objects. In the future we are looking to support more advanced (complex) frameworks, like Core Data. The 'save' method is described below:
+
+[source,c]
+----
+// create a dictionary and set some key/value data on it:
+NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
+[projectEntity setValue:@"Hello World" forKey:@"title"];
+// add other properties, like style etc ...
+
+// save the 'new' project:
+[projects save:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"CREATE RESPONSE\n%@", [responseObject description]);
+    
+    // get the id of the new project, from the JSON response...
+    id resourceId = [responseObject valueForKey:@"id"];
+
+    // and update the 'object', so that it knows its ID...
+    [projectEntity setValue:[resourceId stringValue] forKey:@"id"];
+    
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];
+----
+
+Above the _save_ function stores the given NSDictionary on the server. In this case, where we have a RESTful pipe the API issues a HTTP POST request.
+
+[[noteid]]
+NOTE: Upon success, we set the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html#//api/name/recordId[recordId] property on the object from the server response. This is a required step cause this property is used by Pipe's <<update, update>> and <<remove, remove>> methods to perform operations on the object. By default, the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe] is configured to use the name _"id"_, but if your RESTful resource uses a different name, you can easily override it using the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html#//api/name/recordId[recordId] configuration option when constructing the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe].
+
+[[update]]
+=== Update object
+
+The 'save' method is also responsible for updating an 'object'. Before performing 'save', ensure that the object you are trying to save, has the <<noteid, recordId>> property set.
+
+[source,c]
+----
+// change the title of the previous project 'object':
+[projectEntity setValue:@"Hello Update World!" forKey:@"title"];
+
+// and now update it on the server
+[projects save:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"UPDATE RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"UPDATE: An error occured! \n%@", error);
+}];
+----
+
+In this case, where we have a RESTful pipe the API issues a HTTP PUT request.
+
+[[remove]]
+=== Remove object
+
+The AGPipe also contains a 'remove' method to delete the object on the server. As in the case of 'update', ensure that the <<noteid, recordId>> property is set, so that it knows which resource to delete.
+
+[source,c]
+----
+// Now, just remove the project:
+[projects remove:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"DELETE RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"DELETE: An error occured! \n%@", error);
+}];
+----
+
+In this case, where we have a RESTful pipe the API issues a HTTP DELETE request.
+
+== Multipart Upload
+
+Support for multipart upload is also provided. The types of data that can be uploaded are local files, instances of NSData and NSInputStream. 
+Let's see how the upload mechanism works with an example:
+
+[source,c]
+----
+// a multipart that contains a file
+NSURL *file1 = <path to a local file>
+AGFilePart *filePart = [[AGFilePart alloc]initWithFileURL:file1 name:@"myfile"];  // 1
+
+// a multipart that contains an NSData object
+NSData *data1 = [@"Lorem ipsum dolor sit amet.." dataUsingEncoding:NSUTF8StringEncoding]; 
+AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:data1    // 2
+                                                               name:@"data1"
+                                                            fileName:@"data1.txt" mimeType:@"text/plain"];
+
+// set up payload
+NSDictionary *dict = @{@"somekey": @"somevalue",  // 3
+                       @"another_key": @"some_other_key",
+                       @"file1":filePart,
+                       @"file2":dataPart};
+
+// set an (optional) progress block  // 4
+[[apiClient uploadPipe] setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+    NSLog(@"UPLOADPIPE Sent bytesWritten=%d totalBytesWritten=%qi of totalBytesExpectedToWrite=%qi bytes", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+}];
+ 
+// upload data
+[[apiClient uploadPipe] save:dict success:^(id responseObject) {
+    NSLog(@"Successfully uploaded!");
+
+} failure:^(NSError *error) {
+    NSLog(@"An error has occured during upload! \n%@", error);
+}];
+----
+
+An link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L46[AGFilePart] [1] and link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L64[AGFileDataPart] [2] objects are used to attach the data we want to upload. The former is initialized to point to a local file whereas the latter point to an NSData object respectively. Not shown in the example above, but an link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L86[AGStreamPart] can be also used to read the data from a NSInputStream directly.
+
+NOTE: For NSData we need to explicitly specify both the _'filename'_ and the _'MIME type'_, since they can not be automatically determined as with the case of a file.
+
+After initialization of the objects, we simply attach them to the payload [3], setting an (optional) progress block [4] so we can get notified during the upload.
+
+NOTE: Prior to version 1.4 of the library, multipart upload was supported by the means of attaching a __NSURL__ object directly on the payload. The method is still supported, but it is now deprecated and will be removed in the future versions of the library.
+
+=== Timeout
+
+== Time out and Cancel pending operations
+
+=== Timeout
+During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an operation to complete. If the time interval is exceeded with no response from the server, then the _failure_ callback is executed with an error code set to _NSURLErrorTimedOut_.
+
+From the todo example above:
+
+[source,c]
+----
+id<AGPipe> projects = [todo pipe:^(id<AGPipeConfig> config) {
+    ... 
+    [config setTimeout:20];  // set the time interval to 20 secs
+}];
+----
+
+NOTE: If you are running on iOS versions < 6 and a timeout occurs on a pipe's _save_ operation, the error code is set to _NSURLErrorCancelled_.
+
+=== Cancel
+At any time after starting your operations, you can call 'cancel' on the Pipe object to cancel all running Pipe operations. Doing so will invoke the pipe's 'failure' block with an error code set to 'NSURLErrorCancelled'. You can then check this code in order to perform your "cancellation" logic.
+
+[source,c]
+----
+[projects read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+
+ // cancel the request
+[projects cancel];
+----

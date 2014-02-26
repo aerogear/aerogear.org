@@ -1,0 +1,31 @@
+---
+layout: base
+---
+
+<div class="section core">
+  <div class="section-strip"/>
+    <div class="basic">
+      {{ content }}
+    </div>
+</div>
+
+<script>
+  $('.tab-content').children().each(function() {
+    $( this ).attr('class', 'tab-pane');
+  });
+  
+  $('.tab-pane:first-child').addClass('active');
+
+  $('.tab-pane code.java').parent().parent().parent().each(function( index ) {
+    $( this ).attr('id', 'java' + index);
+  });
+
+  $('.tab-pane code.ios').parent().parent().parent().each(function( index ) {
+    $( this ).attr('id', 'ios' + index);
+  });
+
+  $('.tab-pane code.javascript').parent().parent().parent().each(function( index ) {
+    $( this ).attr('id', 'javascript' + index);
+  });
+
+</script>
