@@ -42,15 +42,27 @@ A Pipeline object represents a 'collection' of server connections (aka Pipes). I
   ----
   [source,ios]
   ----
- *  AGPipeline* pipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://www.server.com/"];];
- *  id<AGPipe> carsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
- *      [config setName:@"cars"];
- *      [config setType:@"REST"];
- *  }];
+   AGPipeline* pipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://www.server.com/"];];
+   id<AGPipe> carsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
+       [config setName:@"cars"];
+       [config setType:@"REST"];
+   }];
   ----
- * [source,javascript]
+  [source,javascript]
   ----
- * TODO
+ * var memberPipe  = AeroGear.Pipeline([{
+ *     name: "members",
+ *     settings: {
+ *         baseURL: "rest/"
+ *     }
+ * }  ]).pipes.members;
+ *
+ * memberPipe.read({
+ *     success: function( data ) {
+ *         ...
+ *         $( "#members" ).html( buildMemberRows() );
+ *     }
+ * });
   ----
 
 Read more on link:/docs/guides/new/core/android_pipe[*Pipes on Android*]
