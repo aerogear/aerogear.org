@@ -1,0 +1,31 @@
+---
+layout: basic
+title: Send a Push Notification
+---
+
+Now that we have the sample application running, it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message.
+
+== Simple Sender
+
+A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the successful registration of the _Push Application_. These ID's are used for sending a _broadcast_ message to all _registered_ devices (installations). Now, on a command line issue the following _CURL_ command:
+
+[source,c]
+----
+curl -3 -u "{pushApplicationID}:{masterSecret}"
+   -v -H "Accept: application/json" -H "Content-type: application/json"
+   -X POST -d '{"message": {"alert":"Push Notification"}}'
+   https://SERVER:PORT/CONTEXT/rest/sender
+----
+
+If all goes well, you should see the message payload being displayed on screen:
+
+image::./img/notif_success.png[Message Receiced-Active]
+
+== You are done
+
+That's all you need to use the _AeroGear_ project for sending and receiving _Push Notifications_ from a Chrome Packaged Application.
+
+Last-Minute Notes
+-----------------
+
+For a more information about GCM for Chrome, check out link:http://developer.chrome.com/apps/cloudMessaging[GCM Advanced Topics]
