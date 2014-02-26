@@ -1,0 +1,91 @@
+---
+layout: basic
+title: The AeroGear UnifiedPush Server
+---
+
+The AeroGear UnifiedPush Server
+-------------------------------
+
+With all the Google work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to CGM for a later message sending.
+
+AeroGear Unified Push Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The _AeroGear UnifiedPush Server_ defines a logical _abstraction_ for Mobile Applications that have support for different Push Networks. Its _Push Applications_ can have different "Variants". For this tutorial we'll need to create a _Push Application_ which will contain one Chrome Packaged App Variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
+
+For the purpose of the guide, we will fall back to the command line and the _CURL_ tool to perform the registrations with the server. In the near feature, a tutorial using Push Administration console will be provided (currently in the works).
+
+=== Login to the server
+
+Prior to perform any work with the server, we need to login first. A temporary user 'admin:123' has already been configured, but for security reasons we need to change the password at first login.
+
+Let's first login to the server:
+
+[source,c]
+----
+curl -3 -v -b cookies.txt -c cookies.txt
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST -d '{"loginName": "admin", "password":"123"}'
+  https://SERVER:PORT/CONTEXT/rest/auth/login
+----
+
+The server would respond with a 'HTTP/1.1 403 Forbidden' status with a 'Credential has expired' message. We can now update user's password:
+
+[NOTE]
+To _update_ the initial password, you need to specify the old 'password' and new password ('newPassword').
+
+[source,c]
+----
+curl -3 -v -b cookies.txt -c cookies.txt
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X PUT -d '{"loginName": "admin", "password":"123", "newPassword":"SOME_NEW_PASSWORD"}'
+  https://SERVER:PORT/CONTEXT/rest/auth/update
+----
+
+We are now ready to login:
+
+[source,c]
+----
+curl -3 -v -b cookies.txt -c cookies.txt
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST -d '{"loginName": "admin", "password":"SOME_NEW_PASSWORD"}'
+  https://SERVER:PORT/CONTEXT/rest/auth/login
+----
+
+The server would respond with a 'HTTP/1.1 200 OK' status, which means that the login was succeeded. If not, check if you typed correctly the command and if the server is correctly setup.
+
+=== Register a Push Application
+
+Now that we are logged in, let's create a new _Push Application_ by executing the following _CURL_ command:
+
+[source,c]
+----
+curl -3 -v -b cookies.txt -c cookies.txt
+  -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST -d '{"name" : "AeroGear-Chrome-Push", "description" :  "My first Chrome Push App, that uses AeroGear" }'
+  https://SERVER:PORT/CONTEXT/rest/applications
+----
+
+The response returns a _pushApplicationID_ and a _masterSecret_. Make a note on these ID's cause we will use them later on.
+
+=== Register an Chrome Packaged App Variant
+
+Time to register our Chrome Packaged App variant. Prior to execute the following _CURL_ command, replace in the URL the _PUSH_ID_ with the _pushApplicationID_ you received earlier and change the _clientId_ and _clientSecret_ parameters to the Google API Client ID and Client Secret you obtained earlier from the Google API console.  Also, update the _refreshToken_ parameter with the refresh token you obtained from the OAuth2 Playground
+
+[source,c]
+----
+curl -3 -v -b cookies.txt -c cookies.txt
+  -v -H "Accept: application/json" -H "Content-type: application/json"
+  -X POST
+  -d '{
+        "clientId" : "CLIENT_ID",
+        "clientSecret" : "CLIENT_SECRET",
+        "refreshToken" : "REFRESH_TOKEN"
+      }'
+
+  https://SERVER:PORT/CONTEXT/rest/applications/{PUSH_ID}/chrome
+----
+
+The server will respond with a _variantID_ and a _secret_, that will be both used later on when registering your installation through the JS client SDK so please make a note on them too.
+
+The server is now configured. Time to link:../chrome-app[create a Chrome Packaged Application] that will use the AeroGear JS library to connect to the UnifiedPush server and start receiving notifications.

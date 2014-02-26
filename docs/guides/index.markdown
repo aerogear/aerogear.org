@@ -33,6 +33,7 @@ title: Guides
 * [Tutorial: Apache Cordova and iOS Push Notifications](aerogear-push-cordova-ios)
 * [Tutorial: JS Push Notifications](aerogear-push-js)
 * [Tutorial: Android Push Notifications](aerogear-push-android)
+* [Tutorial: Chrome Packaged Apps Push Notifications](aerogear-push-chrome)
 * [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
 #### User Guides
