@@ -32,7 +32,9 @@ title: AeroGear Android User Guide
 ## Projects using AeroGear on Android
 * [call4paperz4android](https://github.com/danielpassos/call4paperz4android)
 * [AGReddit](http://github.com/secondsun/AGReddit)
+* [DevNexus Android App](http://github.com/secondsun/DevnexusAndroid) [Google Play Link](https://play.google.com/store/apps/details?id=org.devnexus)
 
 ## Presentations about AeroGear on Android
 * [AeroGear Android 1.0.0 ](http://www.rvl.io/secondsun/aerogear-android-1)
 * [AeroGear Android - The mobile developer's utility belt](http://www.slideshare.net/danielpassos/mobileconf-2013-aerogear-android)
+* [Let's Build a Modern Android App](https://github.com/secondsun/android_app_workshop)
