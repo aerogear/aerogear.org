@@ -61,18 +61,18 @@ chrome.app.runtime.onLaunched.addListener(function() {
 // This will happen when the app is first Installed
 chrome.runtime.onInstalled.addListener(function() {
 
-    // First we need to get the channelID and then send it to the Unified Push Server
+    // First we need to get the channelID and then send it to the UnifiedPush Server
     // This code could also go in the 'onLaunched' method
 
     chrome.pushMessaging.getChannelId( true, function(channelId) {
         /*
-            Set our Variant ID and Secret and the location of the Unified Push Server
+            Set our Variant ID and Secret and the location of the UnifiedPush Server
         */
         var variantId = "VARIANT_ID",
             variantSecret = "VARIANT_SECRET",
             pushServerURL = "http://localhost:8080/ag-push/rest/registry/device";
 
-        // Once we have the channelID we can then register with the Unified Push Server using
+        // Once we have the channelID we can then register with the UnifiedPush Server using
         // the AeroGear.js library
         var client = AeroGear.UnifiedPushClient(
                 variantId,
@@ -85,14 +85,14 @@ chrome.runtime.onInstalled.addListener(function() {
             deviceToken: channelId.channelId
         };
 
-        // Register with the Unified Push Server
+        // Register with the UnifiedPush Server
         client.registerWithPushServer( settings );
 
     });
 });
 ----
 
-The above code is responsible for registering with the Unified Push Server once the application is installed.
+The above code is responsible for registering with the UnifiedPush Server once the application is installed.
 
 [NOTE]_To learn more about the Chrome App Lifcycle, link:http://developer.chrome.com/apps/app_lifecycle[go here]_
 
