@@ -220,12 +220,18 @@ Sometimes you will have a simple result format, but your data will be surrounded
 }
 ----
 
-In this example you are interested in the data object's "children" collection. Instead of writing code using GSON to fetch it, you can instead use `PipeConfig.setDataRoot`.
+In this example you are interested in the data object's "children" collection. Instead of writing code using GSON to fetch it, you can instead configure a `GsonResponseParser` and `MarshallingConfig`.
 
 [source, java]
 ----
+MarshallingConfig marshallingConfig = new MarshallingConfig();
+marshallingConfig.setDataRoot("data.children")
+
+ResponseParser responseParser = new GsonResponseParser();
+responseParser.setMarshallingConfig(marshallingConfig);
+
 PipeConfig pipeConfig = new PipeConfig(serverURL, MyModel.class);
-pipeConfig.setDataRoot("data.children")
+pipeConfig.setResponseParser(responseParser);
 ----
 
 === Multipart Upload
@@ -265,4 +271,4 @@ LoaderPipe<Developer> pipe = pipeline.get("developer", this);
 pipe.save(developerInstance, myCallback);
 ----
 
-_Feel free to create new Handlers, RequestBuilders, ResponseParsers and send to the project ;)_
+_Feel free to create new Handlers, RequestBuilders, ResponseParsers and send them to the project ;)_

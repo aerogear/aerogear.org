@@ -49,11 +49,18 @@ void onCreate() {
      pageConfig.setNextIdentifier("data.after");
      pageConfig.setPreviousIdentifier("data.before");
  
-     PipeConfig config = new PipeConfig(BASE_URL, Data.class);//Data is just an example type
-     config.setPageConfig(pageConfig);
-     config.setDataRoot("data.children")
+     MarshallingConfig marshallingConfig = new MarshallingConfig();
+     marshallingConfig.setDataRoot("data.children")
 
-     pipeline.pipe(Data.class, config);
+     ResponseParser responseParser = new GsonResponseParser();
+     responseParser.setMarshallingConfig(marshallingConfig);
+
+     PipeConfig pipeConfig = new PipeConfig(BASE_URL, Data.class);//Data is just an example type
+     pipeConfig.setResponseParser(responseParser);
+
+     pipeConfig.setPageConfig(pageConfig);
+
+     pipeline.pipe(Data.class, pipeConfig);
 }
 
 ----
