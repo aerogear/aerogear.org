@@ -21,7 +21,7 @@ body
  * These selection rule sets have to be separate.
  * Customize the background color to match your design.
  */
-\::-moz-selection, ::selection
+::-moz-selection, ::selection
   background: #b3d4fc
   text-shadow: none
 
@@ -32,8 +32,9 @@ hr
   display: block
   height: 1px
   border: 0
-  border-top: 1px solid #ccc
-  margin: 1em 0
+  border-top: 1px solid rgba(204, 204, 204, 0.29)
+  margin-top: 2em
+  margin-bottom: 0.75em
   padding: 0
 
 /*
@@ -108,6 +109,9 @@ $seperator-color: #121212
 $section-text-color: #ebebeb
 $code: #222
 
+/* =================== Customs Mixins ============================================================================
+ */
+
 @mixin border-box
   -moz-box-sizing: border-box
   -webkit-box-sizing: border-box
@@ -128,7 +132,65 @@ $break-tablet:848px
     @media only screen and (min-width: $break-tablet)
       @content
 
+
+
 $size-ref:1em
+
+$section-color:#323232
+$push-color:#C652BB
+$core-color:#E17408
+$security-color:#6CC319
+$sync-color:#3F95F1
+$seperator-color:#121212
+$section-text-color:#ebebeb
+$code: #222
+
+@mixin color-with($feature)
+  @if $feature == push
+    div.push
+      a
+        color: $push-color
+        text-decoration: none
+      strong
+        font-weight: bold
+      a:hover
+        text-decoration: underline
+      .section-strip
+        border-top-color: $push-color
+  @if $feature == sync
+    div.sync
+      a
+        color: $sync-color
+        text-decoration: none
+      strong
+        font-weight: bold
+      a:hover
+        text-decoration: underline
+      .section-strip
+        border-top-color: $sync-color
+  @if $feature == core
+    div.core
+      a
+        color: $core-color
+        text-decoration: none
+      strong
+        font-weight: bold
+      a:hover
+        text-decoration: underline
+      .section-strip
+        border-top-color: $core-color
+  @if $feature == security
+    div.security
+      a
+        color: $security-color
+        text-decoration: none
+      strong
+        font-weight: bold
+      a:hover
+        text-decoration: underline
+      .section-strip
+        border-top-color: $security-color
+
 
 /* =================== Standard elements ============================================================================
  */
@@ -268,57 +330,38 @@ a.news
   &:hover
     text-decoration: underline
 
-/* =================== Modules: iOS, JS, Cordova, Android sections ==================================================
+/* =================== Core, Push, Security section =====================================================================
  */
-.modules
-  text-align: center
-  p, h3
-    margin: 0 auto
-  .module
-    text-align: center
-    float: none
-    display: inline-block
-    margin-bottom: 1.4em
-    text-decoration: none
-
-.module
-  @include respond-to(phone)
-    width:  35%
-  img
-    width: 6em
-    padding: 5px
-  p
-    color: $news-text-color
-    text-align: center
-    font-size: 0.9em
-  &:hover img, &:active img
-    border: 5px $line-filling-color solid
-    padding: 0
-    border-radius: 4px
-  &.ios h3
-    color: #214067
-  &.android h3
-    color: #718927
-  &.web h3
-    color: #be420c
-  &.hybrid h3
-    color: #60625e
-
-
-$section-color:#323232
-$core-color:#df7220
-$seperator-color:#121212
-$section-text-color:#ebebeb
-$code: #222
 
 div.section
   color: $section-text-color
   background-color: $section-color
   border-top: $seperator-color solid 16px
-  .sect1 h2
-    background: url('/img/example-icon.png') no-repeat left
-    margin: -40px
-    padding: 40px
+  i
+    color: grey
+  &.core .sect1 h2
+    @include respond-to(desktop)
+      background: url('/img/ag-core.png') no-repeat left
+      margin: -40px
+      padding: 40px
+    color: $section-text-color
+  &.push .sect1 h2
+    @include respond-to(desktop)
+      background: url('/img/ag-push.png') no-repeat left
+      margin: -40px
+      padding: 40px
+    color: $section-text-color
+  &.sync .sect1 h2
+    @include respond-to(desktop)
+      background: url('/img/ag-sync.png') no-repeat left
+      margin: -40px
+      padding: 40px
+    color: $section-text-color
+  &.security .sect1 h2
+    @include respond-to(desktop)
+      background: url('/img/ag-security.png') no-repeat left
+      margin: -40px
+      padding: 40px
     color: $section-text-color
   .sect1 h3
     text-transform: uppercase
@@ -328,18 +371,14 @@ div.section
     border: none
   .hljs
     background-color: $code
-    
-div.core  
-  a
-    color: $core-color
-    text-decoration: none
-  strong
-    font-weight: normal
-  a:hover
-    text-decoration: underline
-  .section-strip
-    border-top-color: $core-color
-    
+
+
+@include color-with(core)
+
+@include color-with(push)
+
+@include color-with(security)
+
 .section-strip
   border-top-width: 4px
   border-top-style: solid
@@ -416,25 +455,6 @@ div.core
   margin-right: 0
   margin-top: 0
 
-/* =================== Bringing mobile together =====================================================================
- */
-.start-header
-  margin-top: 6em
-  text-align: center
-  margin-bottom: 0.8em
-  .start-title
-    color: $gear_color
-    font-weight: 700
-    font-size: 2em
-    margin-bottom: 0.8em
-    letter-spacing: -1px
-  p
-    font-size: 1em
-    margin: 0 auto
-    text-align: center
-  strong
-    font-style: italic
-
 /* =================== Main page content: features ==================================================================
  */
 .features
@@ -442,11 +462,12 @@ div.core
     @include border-box
   h3
     margin-top: 0
+    color: $code
     @include respond-to(phone)
       margin: 0 0.5em
 
 .feature
-  margin: 3em auto
+  margin: 2em auto
   @include respond-to(desktop)
     max-width: 960px
   @include respond-to(tablet)
@@ -457,19 +478,6 @@ div.core
       margin: 0.75em 0
       @include respond-to(phone)
         margin: 0.75em 1em
-  .illustration
-    float: right
-    width: 18.75em
-    text-align: center
-    img
-      border-left: 1px $line-filling-color solid
-      @include respond-to(phone)
-        display: none
-    &.left
-      float: left
-      img
-        border-right: 1px $line-filling-color solid
-        border-left: none
 
 /* =================== Footer =======================================================================================
  */
@@ -629,23 +637,33 @@ a#slide-menu-button:hover
 .column_base
   float: left
   display: inline-block
+
+.column
+  @extend .column_base
+  width: 45%
   @include respond-to(phone)
     width: 100%
     float: none
     margin-right: 1%
     padding-left: 0.5%
 
-.column
-  @extend .column_base
-  width: 45%
-
 .column3
   @extend .column_base
   width: 30%
+  @include respond-to(phone)
+    width: 100%
+    float: none
+    margin-right: 1%
+    padding-left: 0.5%
 
 .column4
   @extend .column_base
   width: 23%
+  @include respond-to(phone)
+    width: 100%
+    float: none
+    margin-right: 1%
+    padding-left: 0.5%
 
 @include respond-to(phone)
   .column pre

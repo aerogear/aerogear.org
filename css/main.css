@@ -28,8 +28,9 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #cccccc;
-  margin: 1em 0;
+  border-top: 1px solid rgba(204, 204, 204, 0.29);
+  margin-top: 2em;
+  margin-bottom: 0.75em;
   padding: 0; }
 
 /* Remove the gap between images and the bottom of their containers: h5bp.com/i/440
@@ -76,6 +77,8 @@ textarea {
  */
 /*white theme */
 /*Dracula theme */
+/* =================== Customs Mixins ============================================================================
+ */
 /* =================== Standard elements ============================================================================
  */
 a {
@@ -218,51 +221,42 @@ a.news {
   a.news:hover {
     text-decoration: underline; }
 
-/* =================== Modules: iOS, JS, Cordova, Android sections ==================================================
+/* =================== Core, Push, Security section =====================================================================
  */
-.modules {
-  text-align: center; }
-  .modules p, .modules h3 {
-    margin: 0 auto; }
-  .modules .module {
-    text-align: center;
-    float: none;
-    display: inline-block;
-    margin-bottom: 1.4em;
-    text-decoration: none; }
-
-@media only screen and (max-width: 656px) {
-  .module {
-    width: 35%; } }
-.module img {
-  width: 6em;
-  padding: 5px; }
-.module p {
-  color: #878787;
-  text-align: center;
-  font-size: 0.9em; }
-.module:hover img, .module:active img {
-  border: 5px #dadada solid;
-  padding: 0;
-  border-radius: 4px; }
-.module.ios h3 {
-  color: #214067; }
-.module.android h3 {
-  color: #718927; }
-.module.web h3 {
-  color: #be420c; }
-.module.hybrid h3 {
-  color: #60625e; }
-
 div.section {
   color: #ebebeb;
   background-color: #323232;
   border-top: #121212 solid 16px; }
-  div.section .sect1 h2 {
-    background: url("/img/example-icon.png") no-repeat left;
-    margin: -40px;
-    padding: 40px;
+  div.section i {
+    color: grey; }
+  div.section.core .sect1 h2 {
     color: #ebebeb; }
+    @media only screen and (min-width: 848px) {
+      div.section.core .sect1 h2 {
+        background: url("/img/ag-core.png") no-repeat left;
+        margin: -40px;
+        padding: 40px; } }
+  div.section.push .sect1 h2 {
+    color: #ebebeb; }
+    @media only screen and (min-width: 848px) {
+      div.section.push .sect1 h2 {
+        background: url("/img/ag-push.png") no-repeat left;
+        margin: -40px;
+        padding: 40px; } }
+  div.section.sync .sect1 h2 {
+    color: #ebebeb; }
+    @media only screen and (min-width: 848px) {
+      div.section.sync .sect1 h2 {
+        background: url("/img/ag-sync.png") no-repeat left;
+        margin: -40px;
+        padding: 40px; } }
+  div.section.security .sect1 h2 {
+    color: #ebebeb; }
+    @media only screen and (min-width: 848px) {
+      div.section.security .sect1 h2 {
+        background: url("/img/ag-security.png") no-repeat left;
+        margin: -40px;
+        padding: 40px; } }
   div.section .sect1 h3 {
     text-transform: uppercase;
     color: #ebebeb; }
@@ -273,14 +267,34 @@ div.section {
     background-color: #222222; }
 
 div.core a {
-  color: #df7220;
+  color: #e17408;
   text-decoration: none; }
 div.core strong {
-  font-weight: normal; }
+  font-weight: bold; }
 div.core a:hover {
   text-decoration: underline; }
 div.core .section-strip {
-  border-top-color: #df7220; }
+  border-top-color: #e17408; }
+
+div.push a {
+  color: #c652bb;
+  text-decoration: none; }
+div.push strong {
+  font-weight: bold; }
+div.push a:hover {
+  text-decoration: underline; }
+div.push .section-strip {
+  border-top-color: #c652bb; }
+
+div.security a {
+  color: #6cc319;
+  text-decoration: none; }
+div.security strong {
+  font-weight: bold; }
+div.security a:hover {
+  text-decoration: underline; }
+div.security .section-strip {
+  border-top-color: #6cc319; }
 
 .section-strip {
   border-top-width: 4px;
@@ -356,25 +370,6 @@ div.core .section-strip {
   margin-right: 0;
   margin-top: 0; }
 
-/* =================== Bringing mobile together =====================================================================
- */
-.start-header {
-  margin-top: 6em;
-  text-align: center;
-  margin-bottom: 0.8em; }
-  .start-header .start-title {
-    color: #669eb2;
-    font-weight: 700;
-    font-size: 2em;
-    margin-bottom: 0.8em;
-    letter-spacing: -1px; }
-  .start-header p {
-    font-size: 1em;
-    margin: 0 auto;
-    text-align: center; }
-  .start-header strong {
-    font-style: italic; }
-
 /* =================== Main page content: features ==================================================================
  */
 .features p {
@@ -383,13 +378,14 @@ div.core .section-strip {
   -o-box-sizing: border-box;
   box-sizing: border-box; }
 .features h3 {
-  margin-top: 0; }
+  margin-top: 0;
+  color: #222222; }
   @media only screen and (max-width: 656px) {
     .features h3 {
       margin: 0 0.5em; } }
 
 .feature {
-  margin: 3em auto; }
+  margin: 2em auto; }
   @media only screen and (min-width: 848px) {
     .feature {
       max-width: 960px; } }
@@ -403,20 +399,6 @@ div.core .section-strip {
       @media only screen and (max-width: 656px) {
         .feature .description p {
           margin: 0.75em 1em; } }
-  .feature .illustration {
-    float: right;
-    width: 18.75em;
-    text-align: center; }
-    .feature .illustration img {
-      border-left: 1px #dadada solid; }
-      @media only screen and (max-width: 656px) {
-        .feature .illustration img {
-          display: none; } }
-    .feature .illustration.left {
-      float: left; }
-      .feature .illustration.left img {
-        border-right: 1px #dadada solid;
-        border-left: none; }
 
 /* =================== Footer =======================================================================================
  */
@@ -590,21 +572,33 @@ a#slide-menu-button:hover {
 .column_base, .column, .column3, .column4 {
   float: left;
   display: inline-block; }
+
+.column {
+  width: 45%; }
   @media only screen and (max-width: 656px) {
-    .column_base, .column, .column3, .column4 {
+    .column {
       width: 100%;
       float: none;
       margin-right: 1%;
       padding-left: 0.5%; } }
 
-.column {
-  width: 45%; }
-
 .column3 {
   width: 30%; }
+  @media only screen and (max-width: 656px) {
+    .column3 {
+      width: 100%;
+      float: none;
+      margin-right: 1%;
+      padding-left: 0.5%; } }
 
 .column4 {
   width: 23%; }
+  @media only screen and (max-width: 656px) {
+    .column4 {
+      width: 100%;
+      float: none;
+      margin-right: 1%;
+      padding-left: 0.5%; } }
 
 @media only screen and (max-width: 656px) {
   .column pre {
