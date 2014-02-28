@@ -19,29 +19,27 @@ title: Open Source Libraries for Mobile Connectivity
 </div>
 
 <div class="section core">
-        <div class="section-strip"></div>
-        <div class="basic sect1">
-            <h2>AeroGear <a href="">Core</a></h2>
-            <p><i>Cross-platform APIs for all your common client-server infrastructure tasks.</i></p>
-            <p><b>Authentication, Authorization, DataStores, Pipes and Pagination</b> APIs cover
-                all bases for day-to-day cross-platform development.</p>
-            <hr/>
-            <!--<div>-->
-            <div class="column">
-                <p>SERVER</p>
-                <p>AeroGear Jaxr.... Server Component<br/>
-                <i>JavaEE addin or standalone</i></p>
-                <a href="">Get it</a> | <a href="">Setup Howto</a>
-            </div>
-            <div class="column">
-                <p>CLIENT</p>
-                <p>AeroGear.Core<br/>
+    <div class="section-strip"></div>
+    <div class="basic sect1">
+        <h2>AeroGear <a href="">Core</a></h2>
+        <p><i>Cross-platform APIs for all your common client-server infrastructure tasks.</i></p>
+        <p><b>Authentication, Authorization, DataStores, Pipes and Pagination</b> APIs cover
+            all bases for day-to-day cross-platform development.</p>
+        <hr/>
+        <div class="column">
+            <p>SERVER</p>
+            <p>Fully JAX-RS compliant<br/>
+                <i>Use your REST endpoint</i></p>
+            <a href="">Example</a>
+        </div>
+        <div class="column">
+            <p>CLIENT</p>
+            <p>AeroGear.Core<br/>
                 <i>Android, iOS an JavaScript APIs</i></p>
-                <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
-            </div>
-            <div class="clearfix"></div><br/> <br/>
-            </div>
-        <!--</div>-->
+            <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
+        </div>
+        <div class="clearfix"></div><br/> <br/>
+    </div>
 </div>
 
 
@@ -53,25 +51,31 @@ title: Open Source Libraries for Mobile Connectivity
         <p>A unified API lets you send push notifications from the <b>UnifiedPush Server</b> via <b>Google Cloud Messaging</b>,
             <b>Apple Push Notification Service</b> or <b>SimplePush</b> to any mobile device.</p>
         <hr/>
-        <!--<div>-->
-            <div class="column">
-                <p>SERVER</p>
-                <p>AeroGear UnifiedPush Server Component<br/>
+        <div class="column">
+            <p>SERVER</p>
+            <p>AeroGear UnifiedPush Server Component<br/>
                 <i>Standalone</i></p>
-                <a href="">Get it</a> | <a href="">Setup Howto</a><br/>
-
-                <p>AeroGear SimplePush Server Component<br/>
+            <a href="">Get it</a> | <a href="">Setup Howto</a><br/><br/><br/> <br/>
+            <br/><br/>
+            <p>AeroGear SimplePush Server Component<br/>
                 <i>Standalone</i></p>
-                <a href="">Get it</a> | <a href="">Setup Howto</a>
-            </div>
-            <div class="column">
-                <p>CLIENT</p>
-                <p>AeroGear.Push<br/>
+            <a href="">Get it</a> | <a href="">Setup Howto</a>
+        </div>
+        <div class="column">
+            <p>CLIENT</p>
+            <p>AeroGear.UnifiedPush<br/>
                 <i>Android, iOS an JavaScript APIs</i></p>
-                <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
-            </div>
-            <div class="clearfix"></div><br/> <br/>
-        <!--</div>-->
+            <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a><br/>
+
+            <p>AeroGear.UnifiedPush.Registration<br/>
+                <i>Android, iOS an JavaScript APIs</i></p>
+            <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a><br/>
+
+            <p>AeroGear.SimplePush<br/>
+                <i>Android, iOS an JavaScript APIs</i></p>
+            <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
+        </div>
+        <div class="clearfix"></div><br/> <br/>
     </div>
 </div>
 
@@ -81,26 +85,27 @@ title: Open Source Libraries for Mobile Connectivity
     <div class="basic sect1">
         <h2>AeroGear <a href="">Security</a></h2>
         <p><i>Integrate with your existing security and authentication infrastructure.</i></p>
-        <p>A small set of classes to provide integration with security providers written in Java, like <b>PicketLink</b>.</p>
+        <p>A small set of classes to provide integration with security providers written in Java, like <b>Shiro</b> or <b>PicketLink</b>.</p>
         <hr/>
-        <!--<div>-->
-            <div class="column">
-                <p>SERVER</p>
-                <p>AeroGear Security Server Component<br/>
-                    <i>Used with AeroGear Controller</i></p>
-                <a href="">Get it</a> | <a href="">Setup Howto</a>
-            </div>
-            <div class="column">
-                <p>CLIENT</p>
-                <p>AeroGear.Security.OneTimePassword<br/>
-                    <i>Android, iOS an JavaScript APIs</i></p>
-                <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a><br/>
-                <p>AeroGear.Security.Crypto<br/>
-                    <i>Android, iOS an JavaScript APIs</i></p>
-                <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
-            </div>
-            <div class="clearfix"></div><br/> <br/>
-        <!--</div>-->
+        <div class="column">
+            <p>SERVER</p>
+            <p>AeroGear Security Server Component<br/>
+                <i>Provides Shiro and PicketLink adapters</i></p>
+            <a href="">Get it</a> | <a href="">Setup Howto</a><br/>
+            <p>AeroGear Crypto Server Component<br/>
+                <i>Java API to provide an easy way to use cryptography interfaces</i></p>
+            <a href="">Get it</a> | <a href="">Setup Howto</a><br/>
+        </div>
+        <div class="column">
+            <p>CLIENT</p>
+            <p>AeroGear.Security.OneTimePassword<br/>
+                <i>Android, iOS an JavaScript APIs</i></p>
+            <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a><br/>
+            <p>AeroGear.Security.Crypto<br/>
+                <i>Android, iOS an JavaScript APIs</i></p>
+            <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
+        </div>
+        <div class="clearfix"></div><br/> <br/>
     </div>
 </div>
 
