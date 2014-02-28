@@ -75,14 +75,17 @@ textarea {
 
 /* =================== Pre-processors: mixins definition, color etc ==================================================
  */
-/*white theme */
-/*Dracula theme */
+/* Code snipet tab */
 /* =================== Customs Mixins ============================================================================
  */
 /* =================== Standard elements ============================================================================
  */
 a {
-  color: #669eb2; }
+  color: #e17408;
+  text-decoration: none; }
+  a:hover {
+    opacity: 0.61;
+    text-decoration: underline; }
   @media only screen and (max-width: 656px) {
     a.fixed {
       display: none !important; } }
