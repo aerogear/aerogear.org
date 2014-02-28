@@ -3,58 +3,119 @@ layout: base
 title: Open Source Libraries for Mobile Connectivity
 ---
 
-<div class="start-header" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-    <div class="start-title">Bringing Mobile and Enterprise Together!</div>
-    <p>Libraries to <strong>simplify</strong> and <strong>unify</strong> mobile development across different platforms.</p>
+<div class="features">
+  <div class="feature">
+    <div class="description">
+    <h3>The AeroGear Project</h3>
+    <p><i>We aim to make cross-platform mobile development for the enterprise easy.</i></p>
+    <p>Mobile client-server communication is difficult and boring. Platforms use different methods and APIs. Data needs to
+    be protected both offline on the device and in transit in the enterprise, but connections are unstable, people can
+    be disconnected or roaming.</p>
+    <p>AeroGear provides a set of flexible and extensible libraries, as well as server side components, to simply mobile
+    development across platforms and cut common repetitive infrastructure tasks.</p>
+    </div>
+    <img src="img/platforms.png" alt="platforms" width="90%">
+  </div>
 </div>
 
-<div>
-    <div class="modules">
-        <a href="/javascript/" class="module web">
-            <img src="img/js-logo.png" alt="Web">
-            <h3>Web</h3><p>Javascript</p>
-        </a>
-        <a href="/ios/" class="module ios">
-            <img src="img/ios-logo.png" alt="iOS">
-            <h3>iOS</h3><p>Objective-C</p>
-        </a>
-        <a href="/android/" class="module android">
-            <img src="img/library_android.png" alt="Android">
-            <h3>Android</h3><p>Java</p>
-        </a>
-        <a href="/cordova/" class="module hybrid">
-            <img src="img/cordova-logo.png" alt="Hybrid">
-            <h3>Hybrid</h3><p>Cordova</p>
-        </a>
-    </div>
+<div class="section core">
+        <div class="section-strip"></div>
+        <div class="basic sect1">
+            <h2>AeroGear <a href="">Core</a></h2>
+            <p><i>Cross-platform APIs for all your common client-server infrastructure tasks.</i></p>
+            <p><b>Authentication, Authorization, DataStores, Pipes and Pagination</b> APIs cover
+                all bases for day-to-day cross-platform development.</p>
+            <hr/>
+            <!--<div>-->
+            <div class="column">
+                <p>SERVER</p>
+                <p>AeroGear Jaxr.... Server Component<br/>
+                <i>JavaEE addin or standalone</i></p>
+                <a href="">Get it</a> | <a href="">Setup Howto</a>
+            </div>
+            <div class="column">
+                <p>CLIENT</p>
+                <p>AeroGear.Core<br/>
+                <i>Android, iOS an JavaScript APIs</i></p>
+                <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
+            </div>
+            <div class="clearfix"></div><br/> <br/>
+            </div>
+        <!--</div>-->
+</div>
 
-    <div class="features">
-        <div class="feature">
-            <div class="description">
-                <div class="illustration"><img src="img/feature_1.png" alt=""></div>
-                <h3>Unify mobile development</h3>
-                <p>AeroGear provides flexible and extensible libraries to simplify mobile development across platforms and cut common repetitive infrastructure tasks. Integrate with the most exotic of endpoints.</p>
-                <p><a href="/download/">Learn more</a></p>
+
+<div class="section push">
+    <div class="section-strip"></div>
+    <div class="basic sect1">
+        <h2>AeroGear <a href="">Push</a></h2>
+        <p><i>Send push notifications to any device, regardless of platform or network.</i></p>
+        <p>A unified API lets you send push notifications from the <b>UnifiedPush Server</b> via <b>Google Cloud Messaging</b>,
+            <b>Apple Push Notification Service</b> or <b>SimplePush</b> to any mobile device.</p>
+        <hr/>
+        <!--<div>-->
+            <div class="column">
+                <p>SERVER</p>
+                <p>AeroGear UnifiedPush Server Component<br/>
+                <i>Standalone</i></p>
+                <a href="">Get it</a> | <a href="">Setup Howto</a><br/>
+
+                <p>AeroGear SimplePush Server Component<br/>
+                <i>Standalone</i></p>
+                <a href="">Get it</a> | <a href="">Setup Howto</a>
             </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="feature">
-            <div class="description">
-                <div class="illustration left"><img src="img/feature_2.png" alt=""></div>
-                <h3>AeroGear Push</h3>
-                <p>AeroGear provides support for different push notification technologies like Google Cloud Messaging, Apple's APNs or Mozilla's SimplePush.</p>
-                <p><a href="/push/">Learn more</a></p>
+            <div class="column">
+                <p>CLIENT</p>
+                <p>AeroGear.Push<br/>
+                <i>Android, iOS an JavaScript APIs</i></p>
+                <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
             </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="feature">
-            <div class="description">
-                <div class="illustration"><img src="img/feature_4.png" alt=""></div>
-                <h3>Mobility and security, both</h3>
-                <p>Integrate with your existing enterprise environment. AeroGear provides Two-Factor Authentication and One-Time-Password features to improve your application's security.</p>
-                <p><a href="/docs/guides/aerogear-security/">Learn about AeroGear Security</a></p>
+            <div class="clearfix"></div><br/> <br/>
+        <!--</div>-->
+    </div>
+</div>
+
+
+<div class="section security">
+    <div class="section-strip"></div>
+    <div class="basic sect1">
+        <h2>AeroGear <a href="">Security</a></h2>
+        <p><i>Integrate with your existing security and authentication infrastructure.</i></p>
+        <p>A small set of classes to provide integration with security providers written in Java, like <b>PicketLink</b>.</p>
+        <hr/>
+        <!--<div>-->
+            <div class="column">
+                <p>SERVER</p>
+                <p>AeroGear Security Server Component<br/>
+                    <i>Used with AeroGear Controller</i></p>
+                <a href="">Get it</a> | <a href="">Setup Howto</a>
             </div>
-            <div class="clearfix"></div>
+            <div class="column">
+                <p>CLIENT</p>
+                <p>AeroGear.Security.OneTimePassword<br/>
+                    <i>Android, iOS an JavaScript APIs</i></p>
+                <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a><br/>
+                <p>AeroGear.Security.Crypto<br/>
+                    <i>Android, iOS an JavaScript APIs</i></p>
+                <a href="">Get it</a> | <a href="">Example</a> | <a href="">API Documentation</a>
+            </div>
+            <div class="clearfix"></div><br/> <br/>
+        <!--</div>-->
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature">
+        <div class="description">
+            <h3>Contributing</h3>
+            <p>AeroGear is an Open Source project licensed under the <a heref="">Apache License, v2.0</a>.</p>
+            <p><a href="">Source code</a> is available on github. Want to help out? First off,
+            <a href="">join your mailing list</a> and IRC channel (<i>#aerogear</i> on <i>irc.freenode.net</i>).
+            We've also written a <a href="">page to help you get started</a></p><br/>
+            <h3>Reporting problems</h3>
+            <p>If you run into a problem, please let us know in our <a href="">issue tracker</a>.</p><br/><br/>
         </div>
     </div>
 </div>
+
+
