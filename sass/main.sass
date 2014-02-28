@@ -94,15 +94,7 @@ $menu-text-color:#7F7F7F
 $heading-color:#ffffff
 $footer-color: #121212
 
-/*white theme*/
-//$tab-border-color: $line-filling-color
-//$section-color: $background-color
-//$core-color:#df7220
-//$seperator-color:$line-filling-color
-//$section-text-color: $main-text-color
-//$code: $filling-color
-
-/*Dracula theme*/
+/* Code snipet tab */
 $tab-border-color: #323232
 $section-color: #323232
 $core-color: #df7220
@@ -197,7 +189,11 @@ $code: #222
  */
 
 a
-  color: $gear_color
+  color: $core-color
+  text-decoration: none
+  &:hover
+    opacity: 0.61
+    text-decoration: underline
   @include respond-to(phone)
     &.fixed
       display: none !important
