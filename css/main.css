@@ -288,6 +288,14 @@ div.push a:hover {
   text-decoration: underline; }
 div.push .section-strip {
   border-top-color: #c652bb; }
+div.push .padding-push {
+  margin-bottom: 5.7em; }
+  @media only screen and (max-width: 656px) {
+    div.push .padding-push {
+      display: none; } }
+  @media only screen and (min-width: 657px) and (max-width: 847px) {
+    div.push .padding-push {
+      margin-bottom: 4.2em; } }
 
 div.security a {
   color: #6cc319;
