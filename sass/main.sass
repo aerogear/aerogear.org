@@ -149,6 +149,12 @@ $code: #222
         text-decoration: underline
       .section-strip
         border-top-color: $push-color
+      .padding-push
+        margin-bottom: 5.7em
+        @include respond-to(phone)
+          display: none
+        @include respond-to(tablet)
+          margin-bottom: 4.2em
   @if $feature == sync
     div.sync
       a
