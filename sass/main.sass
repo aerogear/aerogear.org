@@ -92,6 +92,7 @@ $line-filling-color:#dadada
 $news-text-color: #878787
 $menu-text-color:#7F7F7F
 $heading-color:#ffffff
+$footer-color: #121212
 
 /* Code snipet tab */
 $tab-border-color: #323232
@@ -488,17 +489,9 @@ div.section
  */
 footer
   clear: both
-  background-color: $filling-color
-  border-top: 1px $line-filling-color solid !important
-  padding: 0 2.5em
-  margin-top: 1.25em
+  background-color: $footer-color
+  padding: 4em 2.5em 4em
   text-align: center
-  h3
-    margin-top: 0.5em
-  a
-    text-decoration: none
-    &:hover
-      text-decoration: underline
   .column
     float: left
     min-width: 10em
@@ -508,27 +501,13 @@ footer
       float: left
       padding-right: 0
       margin-right: 0
-  h3
-    margin-bottom: 15px
-    color: #555 !important
-    &.twitter-notFound
-      font-size: 1.25em
-      text-align: left
-  p, ul
-    margin: 0
 
 /* =================== Logos in Footer ==============================================================================
  */
 .logos
-  clear: both
-  padding: 0.5em
-  p
-    font-size: 0.75em
-    text-align: center
-    max-width: 100%
   img
-    margin: 0.5em 0
-
+    margin: 0 1.5em
+      
 /* =============== Side Navigation: hidden for desktop ==============================================================
  */
 
