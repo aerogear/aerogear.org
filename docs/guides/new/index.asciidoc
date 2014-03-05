@@ -1,5 +1,5 @@
 ---
-layout: core
+layout: core-bc
 title: Aerogear Core
 ---
 == AeroGear Core
