@@ -383,6 +383,10 @@ div.security .section-strip {
 
 /* =================== Main page content: features ==================================================================
  */
+.platform {
+  margin: auto;
+  max-width: 40em; }
+
 .features p {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
