@@ -1,0 +1,79 @@
+---
+layout: core
+---
+
+<style>
+
+  #toc li.toc-active:before { 
+      content: "";
+      border-color: #df7220;
+      border-style: solid;
+      height: 0;
+      width: 0;
+      left: -1em;
+      top: 1.4em;
+      position: relative;
+  }
+  
+  #toc {
+    position: fixed;
+    padding-top: 2em;
+  }
+  
+  #toc ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+  }
+
+  #toc li {
+      padding: 5px 10px;
+  }
+
+  #toc a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+  }
+
+  #toc .toc-h2 {
+      padding-left: 10px;
+  }
+
+  #toc .toc-h3 {
+      padding-left: 20px;
+  }
+
+  .content-column {
+    display: table-cell;
+    padding-top: 2em;
+    padding-right: 2em;
+  }
+  
+  .breadcrumb {
+    background-color: #222;
+    display: table-cell;
+    padding-right: 15em;
+    padding-left: 3em;    
+  }
+  .basic {
+    margin-top: 0;
+  }
+</style>
+
+<div class="row">
+  <div class="content-column">
+    {{ content }}
+  </div>
+  <div class="breadcrumb">
+    <div id="toc">
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+
+
+<script src="/js/libs/jquery.toc.min.js"></script>
+<script>
+  $('#toc').toc({'highlightOffset': 180});
+</script>
