@@ -457,6 +457,44 @@ div.section
   padding: 20px
   margin-right: 0
   margin-top: 0
+  
+/* =================== Toc =====================================================================
+ */
+.core #toc li.toc-active:before
+  border-color: $core-color
+
+#toc 
+  position: fixed
+  padding-top: 2em
+
+  li.toc-active:before
+    content: ""
+    border-color: $core-color
+    border-style: solid
+    height: 0
+    width: 0
+    left: -1em
+    top: 1.4em
+    position: relative  
+      
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+
+  li 
+    padding: 5px 10px
+
+  a 
+    color: #fff
+    text-decoration: none
+    display: block
+
+  .toc-h2 
+    padding-left: 10px
+
+  .toc-h3 
+    padding-left: 20px
 
 /* =================== Main page content: features ==================================================================
  */

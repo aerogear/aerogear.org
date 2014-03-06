@@ -381,6 +381,38 @@ div.security .section-strip {
   margin-right: 0;
   margin-top: 0; }
 
+/* =================== Toc =====================================================================
+ */
+.core #toc li.toc-active:before {
+  border-color: #e17408; }
+
+#toc {
+  position: fixed;
+  padding-top: 2em; }
+  #toc li.toc-active:before {
+    content: "";
+    border-color: #e17408;
+    border-style: solid;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 1.4em;
+    position: relative; }
+  #toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  #toc li {
+    padding: 5px 10px; }
+  #toc a {
+    color: white;
+    text-decoration: none;
+    display: block; }
+  #toc .toc-h2 {
+    padding-left: 10px; }
+  #toc .toc-h3 {
+    padding-left: 20px; }
+
 /* =================== Main page content: features ==================================================================
  */
 .platform {
