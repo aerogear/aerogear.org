@@ -78,10 +78,10 @@ External References
 
 * *AFNetworking 2.x*: upgrade
 
-* *Crypto*: clean-up
+* *Crypto*:
+** Symmetric Crypto interface move to use NaCl instead of common crypto link:https://issues.jboss.org/browse/AGIOS-172[AGIOS-172]
 ** Refactor EncryptionServices link:https://issues.jboss.org/browse/AGIOS-169[AGIOS-169]
 ** Refactor Cookbook recipes link:https://issues.jboss.org/browse/AGIOS-163[AGIOS-163]
-
 
 1.6.0 (Mid June 2014)
 ~~~~~~~~~~~~~~~~~~~~~
@@ -92,15 +92,14 @@ External References
 ** Deauthorize for OAuth2 link:https://issues.jboss.org/browse/AGIOS-146[AGIOS-146]
 ** Refresh token handling for OAuth2 link:https://issues.jboss.org/browse/AGIOS-145[AGIOS-145]
 ** OAuht2 mock unit test when requesting authz link:https://issues.jboss.org/browse/AGIOS-144[AGIOS-144]
-** Cookbook recipe update
-** KeyCloak integration (ask Christos ???)
+** Cookbook recipe update link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126], link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127], link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128]
+** KeyCloak integration link:https://issues.jboss.org/browse/AGIOS-178[AGIOS-178]
 
 * *Offline & Crypto*
-** Offline Authentication
-** Encrypted Cache
+** Offline Authentication link:https://issues.jboss.org/browse/AGIOS-176[AGIOS-176]
+** Encrypted Cache link:https://issues.jboss.org/browse/AGIOS-177[AGIOS-177]
 ** Apple's keychain wrapper interface link:https://issues.jboss.org/browse/AGIOS-103[AGIOS-103]
 ** Refactor of AGPasswordKeyService to be compliant with the Spec link:https://issues.jboss.org/browse/AGIOS-171[AGIOS-171]
-** Symmetric Crypto interface move to use NaCl instead of common crypto link:https://issues.jboss.org/browse/AGIOS-172[AGIOS-172]
 
 * *Documentation*
 ** Refactoring aerogear.org link:https://issues.jboss.org/browse/AGIOS-155[AGIOS-155] link:https://issues.jboss.org/browse/AGIOS-156[AGIOS-156] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1402[AEROGEAR-1402]
