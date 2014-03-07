@@ -21,8 +21,8 @@ External References
 ** Released as needed
 ** If not critical, can be wrapped into a 1.x release
 
-1.1.0 (Mid June)
-~~~~~~~~~~~~~~~~
+1.1.0 (Released June 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Library*
 ** link:https://issues.jboss.org/browse/AGIOS-4[AGIOS-4]: Add HTTP basic authentication support on AeroGear iOS
 ** link:https://issues.jboss.org/browse/AGIOS-5[AGIOS-5]: Add HTTP digest authentication support on AeroGear iOS
@@ -36,16 +36,16 @@ External References
 ** link:https://issues.jboss.org/browse/AGIOS-8[AGIOS-8]: Evaluate ARGenericTableViewController for use in the TODO app
 
 
-1.2.0 (Mid August)
-~~~~~~~~~~~~~~~~~~
+1.2.0 (Released August 2013)
+~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
 * *Unified Push*
 ** link:https://issues.jboss.org/browse/AGIOS-22[AGIOS-22]: Add SDK for Push: Device registration
 ** link:https://issues.jboss.org/browse/AGIOS-23[AGIOS-23]: Demo app for Push SDK
 ** link:https://issues.jboss.org/browse/AGIOS-24[AGIOS-24]: Tutorial/Guide for Push Notifications on iOS
 
 
-1.3.0 (Mid November)
-~~~~~~~~~~~~~~~~~~~
+1.3.0 (Released November 2013)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Pipeline*
 ** link:https://issues.jboss.org/browse/AGIOS-15[AGIOS-15]: Multipart support
 * *Crypto* 
@@ -59,26 +59,58 @@ External References
 ** link:https://issues.jboss.org/browse/AGIOS-25[AGIOS-25]: SQLite support
 ** perhaps... better CoreData integration, see link:https://issues.jboss.org/browse/AGIOS-14[AGIOS-14]
 
-1.4.0 (Mid January)
-~~~~~~~~~~~~~~~~~~~
-* *Crypto* 
+1.4.0 (Released February 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *Crypto*: Asymmetric support, Digital signature
 ** Assymmetric encryption interface
 ** Digital signatures support interface
 ** Hashing functions wrapper interface
-** Apple's keychain wrapper interface
 ** Message authentication support
 ** SQLite Encryption store variant
 *** Epic that groups on-going iOS security work can be found link:https://issues.jboss.org/browse/AGIOS-87[here]
-* *Data Sync*
-** see link:https://issues.jboss.org/browse/AEROGEAR-830[AEROGEAR-830] and linked JIRAs
+* *OAuth2*
+** Initial version (without revoke, token renewal)
+** associated cookbook example GoogleDrive
 
-1.5.0 (Mid March)
-~~~~~~~~~~~~~~~~~
-* *Notifications*
-** inspired by the JS module
-** STOMP support
-** MQTT support
-** integration with _Data Sync_ and _Offline_
+1.5.0 (Mid March 2014)
+~~~~~~~~~~~~~~~~~~~~~~
+* *iOS7* AeroGear to support iOS7 only
+
+* *AFNetworking 2.x*: upgrade
+
+* *Crypto*: clean-up
+** Apple's keychain wrapper interface link:https://issues.jboss.org/browse/AGIOS-103[AGIOS-103]
+** Refactor of AGPasswordKeyService to be compliant with the Spec link:https://issues.jboss.org/browse/AGIOS-171[AGIOS-171]
+** Refactor EncryptionServices link:https://issues.jboss.org/browse/AGIOS-169[AGIOS-169]
+** Symmetric Crypto interface move to use NaCl instead of common crypto link:https://issues.jboss.org/browse/AGIOS-172[AGIOS-172]
+** Refactor Cookbook recipes link:https://issues.jboss.org/browse/AGIOS-163[AGIOS-163]
+
+
+1.6.0 (Mid June 2014)
+~~~~~~~~~~~~~~~~~~~~~
+* *OAuth2* adapter enhancements
+** Deauthorize for OAuth2 link:https://issues.jboss.org/browse/AGIOS-146[AGIOS-146]
+** Refresh token handling for OAuth2 link:https://issues.jboss.org/browse/AGIOS-145[AGIOS-145]
+** OAuht2 mock unit test when requesting authz link:https://issues.jboss.org/browse/AGIOS-144[AGIOS-144]
+** Cookbook recipe update
+** KeyCloak integration (ask Christos ???)
+
+* *Offline*
+** Offline Authentication
+** Encrypted Cache
+ask Christos: taken from Android roadmap
+
+* *Object serialization*
+** Pluggable 'serializers' for Pipe link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
+
+* *Sync* link:https://issues.jboss.org/browse/AGIOS-101[AGIOS-101] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1374[AGEROGEAR-1374]
+** Data model API link:https://issues.jboss.org/browse/AEROGEAR-1408[AEROGEAR-1408]
+** Conflict resolution lib link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
+
+* *Documentation*
+** Refactoring aerogear.org link:https://issues.jboss.org/browse/AGIOS-155[AGIOS-155] link:https://issues.jboss.org/browse/AGIOS-156[AGIOS-156] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1402[AEROGEAR-1402]
+** Cookbook examples link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128] link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127]
+link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126] link:https://issues.jboss.org/browse/AGIOS-150[AGIOS-150]
 
 2.0.0 Release
 ~~~~~~~~~~~~~
@@ -86,13 +118,15 @@ External References
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
+* *Notifications*
+** inspired by the JS module
+** STOMP support
+** MQTT support
+** integration with _Data Sync_ and _Offline_
+
 * Web 2.0 features
-** AFNetworking 2.x upgrade
 ** SSE (Server Sent Event)
 ** "real time web"
 * *Social*
-** Auth
-*** Login via Facebook, G+, Twitter
-*** AeroGear.Auth adapter or separate
 ** Common API
 *** Posting, Profile Info, Friend List, etc.
