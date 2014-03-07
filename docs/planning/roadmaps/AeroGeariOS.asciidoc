@@ -79,15 +79,15 @@ External References
 * *AFNetworking 2.x*: upgrade
 
 * *Crypto*: clean-up
-** Apple's keychain wrapper interface link:https://issues.jboss.org/browse/AGIOS-103[AGIOS-103]
-** Refactor of AGPasswordKeyService to be compliant with the Spec link:https://issues.jboss.org/browse/AGIOS-171[AGIOS-171]
 ** Refactor EncryptionServices link:https://issues.jboss.org/browse/AGIOS-169[AGIOS-169]
-** Symmetric Crypto interface move to use NaCl instead of common crypto link:https://issues.jboss.org/browse/AGIOS-172[AGIOS-172]
 ** Refactor Cookbook recipes link:https://issues.jboss.org/browse/AGIOS-163[AGIOS-163]
 
 
 1.6.0 (Mid June 2014)
 ~~~~~~~~~~~~~~~~~~~~~
+* *Object serialization*
+** Pluggable 'serializers' for Pipe link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
+
 * *OAuth2* adapter enhancements
 ** Deauthorize for OAuth2 link:https://issues.jboss.org/browse/AGIOS-146[AGIOS-146]
 ** Refresh token handling for OAuth2 link:https://issues.jboss.org/browse/AGIOS-145[AGIOS-145]
@@ -95,22 +95,23 @@ External References
 ** Cookbook recipe update
 ** KeyCloak integration (ask Christos ???)
 
-* *Offline*
+* *Offline & Crypto*
 ** Offline Authentication
 ** Encrypted Cache
-ask Christos: taken from Android roadmap
-
-* *Object serialization*
-** Pluggable 'serializers' for Pipe link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
-
-* *Sync* link:https://issues.jboss.org/browse/AGIOS-101[AGIOS-101] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1374[AGEROGEAR-1374]
-** Data model API link:https://issues.jboss.org/browse/AEROGEAR-1408[AEROGEAR-1408]
-** Conflict resolution lib link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
+** Apple's keychain wrapper interface link:https://issues.jboss.org/browse/AGIOS-103[AGIOS-103]
+** Refactor of AGPasswordKeyService to be compliant with the Spec link:https://issues.jboss.org/browse/AGIOS-171[AGIOS-171]
+** Symmetric Crypto interface move to use NaCl instead of common crypto link:https://issues.jboss.org/browse/AGIOS-172[AGIOS-172]
 
 * *Documentation*
 ** Refactoring aerogear.org link:https://issues.jboss.org/browse/AGIOS-155[AGIOS-155] link:https://issues.jboss.org/browse/AGIOS-156[AGIOS-156] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1402[AEROGEAR-1402]
 ** Cookbook examples link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128] link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127]
 link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126] link:https://issues.jboss.org/browse/AGIOS-150[AGIOS-150]
+
+1.7.0 (Mid August 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~
+* *Sync* link:https://issues.jboss.org/browse/AGIOS-101[AGIOS-101] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1374[AGEROGEAR-1374]
+** Data model API link:https://issues.jboss.org/browse/AEROGEAR-1408[AEROGEAR-1408]
+** Conflict resolution lib link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
 
 2.0.0 Release
 ~~~~~~~~~~~~~
