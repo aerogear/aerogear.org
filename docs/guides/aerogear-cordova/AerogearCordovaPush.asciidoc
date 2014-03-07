@@ -6,7 +6,7 @@ title: AeroGear Cordova Push
 == AeroGear Cordova Push Plugin
 
 The AeroGear Cordova Push Plugin is an extension of the standard Cordova Push Plugin the difference is that it's
-that it supports AeroGears Unified Push better and that makes that there is less boiler plate to take care of in
+that it supports AeroGears UnifiedPush better and that makes that there is less boiler plate to take care of in
 your javascript.
 
 Before we start please install link:https://github.com/apache/cordova-cli/[Apache Cordova CLI], which is the command
@@ -17,44 +17,175 @@ Also have a the message accounts setup and configured in the UnifiedPush Server
 * link:/docs/guides/aerogear-push-cordova-android/[Setup for android]
 * link:/docs/guides/aerogear-push-cordova-ios/[Setup for ios]
 
-=== Example
+## Getting Started 
+If you haven't used https://github.com/apache/cordova-cli[Cordova CLI] before, be sure to check out the http://cordova.apache.org/docs/en/3.0.0/guide_cli_index.md.html[CLI Guide], as it explains how to install the CLI tool. Once you're familiar with that process, you may proceed with the following commands:
 
-Now let's see how to receive push notifications, first create a new project with cordova and install the plugin
+### Create the App
+Create a new app by executing:
 
-[source,c]
+[source,bash]
 ----
-cordova create <app name>
-cd <app name>
-cordova platform add android
-cordova platform add ios
-cordova plugin add https://github.com/aerogear/aerogear-pushplugin-cordova.git
+$ cordova create <project-name> [app-id] [app-name]
 ----
 
-This plugin will take care of all the platform depended things so you don't have to worry about that in your javascript code.
-First call register to register this device to the Unified Push server with the specified variant.
+### Add platform(s)
+Specify a set of target platforms by executing:
+
+[source,bash]
+----
+$ cordova platform add <platform>
+----
+
+The available _platform_ values are _ios_ and _android_.
+
+### Install the plugin
+Install the aerogear-pushplugin-cordova plugin by executing:
+
+[source,bash]
+----
+$ cordova plugin add https://github.com/aerogear/aerogear-pushplugin-cordova.git
+----
+
+Done! Your project now contains the AeroGear PushPlugin. For an integration with the _UnifiedPush Server_ open the `www` folder in your text editor and apply the code from the example below. Afterwards you can execute the project with `cordova run <platform>`.
+
+### Sample Example
+The below JavaScript code registers a device in the AeroGear UnifiedPush Server devices registry:
 
 [source,javascript]
 ----
-var aeroConfig = {
-  senderID: "<senderID>",
-  pushServerURL: "<pushServerURL>",
-  variantID: "<variantID>",
-  variantSecret: "<variantSecret>"
+var pushConfig = {
+    // senderID is only used in the Android/GCM case
+    senderID: "<senderID e.g Google Project ID only for android>",
+    pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+    variantID: "<variantID e.g. 1234456-234320>",
+    variantSecret: "<variantSecret e.g. 1234456-234320>",
+    alias: "<alias e.g. a username or an email address optional>"
 }
 
+//badge and sound are iOS specific, and ignored on Android
 push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
-    "alert": "true", "ecb": "onNotification", aeroConfig: aeroConfig});
-
+    "ecb": "onNotification", pushConfig: pushConfig});
 ----
 
-In the code above we see that a string _onNotification_ is passed this is the name of the callback function that is going
-to get invoked when a message is received. The most basic implementation of this function is the following:
+'ecb' (event callback) is a string that will get executed by the plugin when a new message arrives. Be sure to make this a
+function that is reachable with the right context e.g define it in _global scope_ or have the right prefix
+on it. In our example we define onNotification in global scope.
+
+Start receiving messages:
 
 [source,javascript]
 ----
-function onNotification(e) {
-    alert(e.alert);
+function onNotification(event) {
+    alert(event.alert);
 }
 ----
 
-Now an alert like this doesn't look very nice you proberly want to do something else.
+The passed in 'event' object contains:
+
+* alert the alert message send 
+* coldstart was the app running when the message was received
+* badge the number to display on the icon ios specific
+* any custom set properties are available under e.payload ( e.g `alert(e.payload.foo);` )
+
+Also have a look here for link:/docs/specs/aerogear-push-messages/[more information about the message] sending and properties
+
+To unregister:
+
+[source,javascript]
+----
+push.unregister(successHandler, errorHandler);
+
+function successHandler() {
+    console.log('success')
+}
+
+function errorHandler(message) {
+    console.log('error ' + message);
+}
+----
+
+Full example (https://github.com/aerogear/aerogear-pushplugin-cordova/blob/master/example/index.html[index.html]):
+
+[source,html]
+----
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Demo</title>
+</head>
+<body>
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>
+
+<script type="text/javascript">
+
+  function onDeviceReady() {
+    var pushConfig = {
+      senderID: "<senderID>",
+      pushServerURL: "<pushServerURL>",
+      variantID: "<variantID>",
+      variantSecret: "<variantSecret>",
+      alias: "<alias>"
+    }
+
+    var statusList = $("#app-status-ul");
+    statusList.append('<li>deviceready event received</li>');
+
+    try {
+      statusList.append('<li>registering </li>');
+      push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
+        "ecb": "onNotification", pushConfig: pushConfig});
+    } catch (err) {
+      txt = "There was an error on this page.\n\n";
+      txt += "Error description: " + err.message + "\n\n";
+      alert(txt);
+    }
+  }
+
+  function onNotification(e) {
+    var statusList = $("#app-status-ul");
+
+    // if the notification contains a sound, play it.
+    if (e.sound) {
+      //install the media plugin to use this
+      var media = new Media("/android_asset/www/" + e.sound);
+      media.play();
+    }
+
+    if (e.coldstart) {
+      statusList.append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+    }
+
+    statusList.append('<li>MESSAGE -> MSG: ' + e.alert + '</li>');
+
+    //only on ios
+    if (e.badge) {
+      push.setApplicationIconBadgeNumber(successHandler, e.badge);
+    }
+  }
+
+  function successHandler(result) {
+    $("#app-status-ul").append('<li>success:' + result + '</li>');
+  }
+
+  function errorHandler(error) {
+    $("#app-status-ul").append('<li>error:' + error + '</li>');
+  }
+
+  document.addEventListener('deviceready', onDeviceReady, true);
+
+</script>
+<div id="home">
+  <div id="app-status-div">
+    <ul id="app-status-ul">
+      <li>AeroGear PushPlugin UnifiedPush Demo</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
+----
+
+## Documentation
+* link:/docs/specs/aerogear-cordova/index.html[AeroGear Push plugin API doc]
