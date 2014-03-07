@@ -37,7 +37,7 @@ External References
 
 
 1.2.0 (Released August 2013)
-~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Unified Push*
 ** link:https://issues.jboss.org/browse/AGIOS-22[AGIOS-22]: Add SDK for Push: Device registration
 ** link:https://issues.jboss.org/browse/AGIOS-23[AGIOS-23]: Demo app for Push SDK
