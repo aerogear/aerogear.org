@@ -496,6 +496,21 @@ div.section
   .toc-h3 
     padding-left: 20px
 
+.content-column 
+  @include respond-to(desktop)
+    display: table-cell
+    padding-top: 2em
+    padding-right: 2em
+    .basic 
+      margin-top: 0
+
+.breadcrumb 
+  @include respond-to(desktop)
+    background-color: $code
+    display: table-cell
+    padding-right: 15em
+    padding-left: 3em  
+
 /* =================== Main page content: features ==================================================================
  */
 .platform

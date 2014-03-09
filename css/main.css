@@ -413,6 +413,21 @@ div.security .section-strip {
   #toc .toc-h3 {
     padding-left: 20px; }
 
+@media only screen and (min-width: 848px) {
+  .content-column {
+    display: table-cell;
+    padding-top: 2em;
+    padding-right: 2em; }
+    .content-column .basic {
+      margin-top: 0; } }
+
+@media only screen and (min-width: 848px) {
+  .breadcrumb {
+    background-color: #222222;
+    display: table-cell;
+    padding-right: 15em;
+    padding-left: 3em; } }
+
 /* =================== Main page content: features ==================================================================
  */
 .platform {
