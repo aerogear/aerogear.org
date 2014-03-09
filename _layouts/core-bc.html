@@ -34,5 +34,11 @@ layout: core
 
 <script src="/js/libs/jquery.toc.min.js"></script>
 <script>
-  $('#toc').toc();
+  $('#toc').toc({ headerText: function (i, heading, $heading) {
+    var aerogear = 'AeroGear', text = $heading.text();
+    if (text.slice(0, aerogear.length) == aerogear) {
+      return text.replace(' ', '.');
+    }
+    return text;
+  }});
 </script>
