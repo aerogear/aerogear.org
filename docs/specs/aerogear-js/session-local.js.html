@@ -49,7 +49,6 @@
     @mixes AeroGear.DataManager.adapters.Memory
     @param {String} storeName - the name used to reference this particular store
     @param {Object} [settings={}] - the settings to be passed to the adapter
-    @param {Boolean} [settings.async=false] -  If true, all operations will be simulated as asynchronous and return a promise. This is a compatibility option for the Memory and SessionLocal adapters only for 1.3.0 and will be removed in the 1.4.0 release
     @param {String} [settings.recordId="id"] - the name of the field used to uniquely identify a "record" in the data
     @param {String} [settings.storageType="sessionStorage"] - the type of store can either be sessionStorage or localStorage
     @param {Object} [settings.crypto] - the crypto settings to be passed to the adapter
@@ -57,10 +56,10 @@
     @param {Object} [settings.crypto.options] - the specific options for the AeroGear.Crypto encrypt/decrypt methods
     @returns {Object} The created store
     @example
-//Create an empty DataManager
+// Create an empty DataManager
 var dm = AeroGear.DataManager();
 
-//Add a custom SessionLocal store using local storage as its storage type
+// Add a custom SessionLocal store using local storage as its storage type
 dm.add( "newStore", {
     recordId: "customID",
     storageType: "localStorage"
@@ -113,7 +112,11 @@ AeroGear.DataManager.adapters.SessionLocal = function( storeName, settings ) {
     Determine if this adapter is supported in the current environment
 */
 AeroGear.DataManager.adapters.SessionLocal.isValid = function() {
-    return !!(window.localStorage && window.sessionStorage);
+    try {
+        return !!(window.localStorage && window.sessionStorage);
+    } catch( error ){
+        return false;
+    }
 };
 
 // Inherit from the Memory adapter
@@ -129,7 +132,6 @@ AeroGear.DataManager.adapters.SessionLocal.prototype = Object.create( new AeroGe
         @param {AeroGear~errorCallbackStorage} [options.error] - A callback to be executed when an error is thrown trying to save data to the store. The most likely error is when the localStorage is full. The callback is passed the error object and the data that was attempted to be saved as arguments.
         @param {AeroGear~success} [options.success] - A callback to be called if the save was successful. This probably isn't necessary since the save is synchronous but is provided for API symmetry.
         @returns {Object} A jQuery.Deferred promise
-        @returns {Array} @deprecated Returns the updated data from the store
         @example
 var dm = AeroGear.DataManager([{ name: "tasks", type: "SessionLocal" }]).stores[ 0 ];
 
@@ -140,7 +142,7 @@ dm.save({
     ...
 });
 
-//Store an array of new Tasks
+// Store an array of new Tasks
 dm.save([
     {
         title: "Task2",
@@ -164,16 +166,11 @@ dm.save( toUpdate );
             var newData,
                 deferred = jQuery.Deferred(),
                 reset = options && options.reset ? options.reset : false,
-                oldData = window[ this.getStoreType() ].getItem( this.getStoreKey() ),
-                async = this.getAsync(); //added in 1.3.0,  will be removed in 1.4.0
+                oldData = window[ this.getStoreType() ].getItem( this.getStoreKey() );
 
-            if( async ) {
-                AeroGear.DataManager.adapters.Memory.prototype.save.apply( this, [ arguments[ 0 ], { reset: reset, async: async } ] ).then( function( data ) {
-                    newData = data;
-                });
-            } else {
-                newData = AeroGear.DataManager.adapters.Memory.prototype.save.apply( this, [ arguments[ 0 ], { reset: reset } ] );
-            }
+            AeroGear.DataManager.adapters.Memory.prototype.save.apply( this, [ arguments[ 0 ], { reset: reset } ] ).then( function( data ) {
+                newData = data;
+            });
 
             deferred.always( this.always );
 
@@ -186,25 +183,19 @@ dm.save( toUpdate );
             } catch( error ) {
                 oldData = oldData ? JSON.parse( oldData ) : [];
 
-                if( async ) {
-                    AeroGear.DataManager.adapters.Memory.prototype.save.apply( this, [ oldData, { reset: reset, async: async } ] ).then( function( data ) {
-                        newData = data;
-                    });
-                } else {
-                    newData = AeroGear.DataManager.adapters.Memory.prototype.save.apply( this, [ oldData, { reset: reset } ] );
-                }
+                AeroGear.DataManager.adapters.Memory.prototype.save.apply( this, [ oldData, { reset: reset } ] ).then( function( data ) {
+                    newData = data;
+                });
 
                 if ( options && options.error ) {
-                    return async ? deferred.reject( data, "error", options ? options.error : undefined ) : options.error( error, data );
+                    return deferred.reject( data, "error", options ? options.error : undefined );
                 } else {
-                    if( async ) {
-                        deferred.reject();
-                    }
+                    deferred.reject();
                     throw error;
                 }
             }
 
-            return async ? deferred.resolve( newData, "success", options ? options.success : undefined ) : newData;
+            return deferred.resolve( newData, "success", options ? options.success : undefined );
         }, enumerable: true, configurable: true, writable: true
     },
     /**
@@ -215,7 +206,6 @@ dm.save( toUpdate );
         @param {Object} [options] - The options to be passed to the save method
         @param {AeroGear~successrCallbackStorage} [options.success] - A callback to be called if the remove was successful. This probably isn't necessary since the remove is synchronous but is provided for API symmetry.
         @returns {Object} A jQuery.Deferred promise
-        @returns {Array} @deprecated Returns the updated data from the store
         @example
 var dm = AeroGear.DataManager([{ name: "tasks", type: "SessionLocal" }]).stores[ 0 ];
 
@@ -234,13 +224,17 @@ dm.save({
     title: "And Another Created Task"
 });
 
-// Remove a particular item from the store by its id
-var toRemove = dm.read()[ 0 ];
-dm.remove( toRemove.id );
+// Delete a record
+dm.remove( 1, {
+    success: function( data ) { ... },
+    error: function( error ) { ... }
+});
 
-// Remove an item from the store using the data object
-toRemove = dm.read()[ 0 ];
-dm.remove( toRemove );
+// Remove all data
+dm.remove( undefined, {
+    success: function( data ) { ... },
+    error: function( error ) { ... }
+});
 
 // Delete all remaining data from the store
 dm.remove();
@@ -249,26 +243,17 @@ dm.remove();
         value: function( toRemove, options ) {
             // Call the super method
             var newData,
-                deferred = jQuery.Deferred(),
-                async = this.getAsync();  //added in 1.3.0,  will be removed in 1.4.0;
+                deferred = jQuery.Deferred();
 
-            if( async ) {
-                AeroGear.DataManager.adapters.Memory.prototype.remove.apply( this, [ arguments[ 0 ], { async: true } ] ).then( function( data ) {
-                    newData = data;
-                });
-            } else {
-                newData = AeroGear.DataManager.adapters.Memory.prototype.remove.apply( this, arguments );
-            }
+            AeroGear.DataManager.adapters.Memory.prototype.remove.apply( this, arguments ).then( function( data ) {
+                newData = data;
+            });
 
             // Sync changes to persistent store
             window[ this.getStoreType() ].setItem( this.getStoreKey(), JSON.stringify( this.encrypt( newData ) ) );
 
-            if( async ) {
-                deferred.always( this.always );
-                return deferred.resolve( newData, status, options ? options.success : undefined );
-            } else {
-                return newData;
-            }
+            deferred.always( this.always );
+            return deferred.resolve( newData, status, options ? options.success : undefined );
         }, enumerable: true, configurable: true, writable: true
     }
 });
@@ -287,13 +272,13 @@ AeroGear.DataManager.validateAdapter( "SessionLocal", AeroGear.DataManager.adapt
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Dec 11 2013 09:53:30 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

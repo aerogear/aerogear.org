@@ -64,14 +64,14 @@ var dm2 = AeroGear.DataManager( "tasks" );
 // Create multiple stores using the default adapter
 var dm3 = AeroGear.DataManager( [ "tasks", "projects" ] );
 
-//Create a custom store
+// Create a custom store
 var dm3 = AeroGear.DataManager({
     name: "mySessionStorage",
     type: "SessionLocal",
     id: "customID"
 });
 
-//Create multiple custom stores
+// Create multiple custom stores
 var dm4 = AeroGear.DataManager([
     {
         name: "mySessionStorage",
@@ -116,7 +116,7 @@ AeroGear.DataManager = function( config ) {
                     if( !( type in AeroGear.DataManager.validAdapters ) ) {
                         for( i = 0; i &lt; preferred.length; i++ ) {
                             if( preferred[ i ] in AeroGear.DataManager.validAdapters ) {
-                                //For Deprecation purposes in 1.3.0  will be removed in 1.4.0
+                                // For Deprecation purposes in 1.3.0  will be removed in 1.4.0
                                 if( type === "IndexedDB" || type === "WebSQL" ) {
                                     value.settings = AeroGear.extend( value.settings || {}, { async: true } );
                                 }
@@ -133,11 +133,11 @@ AeroGear.DataManager = function( config ) {
         AeroGear.Core.call( this );
         this.add( config );
 
-        //Put back DataManager.add
+        // Put back DataManager.add
         this.add = this._add;
     };
 
-    //Save a reference to DataManager.add to put back later
+    // Save a reference to DataManager.add to put back later
     this._add = this.add;
 
     /**
@@ -151,11 +151,11 @@ AeroGear.DataManager = function( config ) {
         AeroGear.Core.call( this );
         this.remove( config );
 
-        //Put back DataManager.remove
+        // Put back DataManager.remove
         this.remove = this._remove;
     };
 
-    //Save a reference to DataManager.remove to put back later
+    // Save a reference to DataManager.remove to put back later
     this._remove = this.remove;
 
     this.lib = "DataManager";
@@ -215,13 +215,13 @@ AeroGear.DataManager.STATUS_REMOVED = 0;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Dec 11 2013 09:53:30 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

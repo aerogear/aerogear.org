@@ -190,45 +190,6 @@
 	
         <tr>
             
-                <td class="name"><code>async</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">If true, all operations will be simulated as asynchronous and return a promise. This is a compatibility option for the Memory and SessionLocal adapters only for 1.3.0 and will be removed in the 1.4.0 release</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
                 <td class="name"><code>recordId</code></td>
             
             
@@ -298,7 +259,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line35">line 35</a>
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line34">line 34</a>
     </li></ul></dd>
     
     
@@ -345,10 +306,10 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>//Create an empty DataManager
+    <pre class="prettyprint"><code>// Create an empty DataManager
 var dm = AeroGear.DataManager();
 
-//Add a custom memory store
+// Add a custom memory store
 dm.add( "newStore", {
     recordId: "customID"
 });</code></pre>
@@ -420,7 +381,7 @@ dm.add( "newStore", {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line150">line 150</a>
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line138">line 138</a>
     </li></ul></dd>
     
     
@@ -526,7 +487,7 @@ dm.add( "newStore", {
                 </td>
             
             
-            <td class="description last">An object containing key value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.</td>
+            <td class="description last">An object containing key/value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.</td>
         </tr>
 	
 	
@@ -693,7 +654,7 @@ dm.add( "newStore", {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line365">line 365</a>
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line355">line 355</a>
     </li></ul></dd>
     
     
@@ -715,8 +676,8 @@ dm.add( "newStore", {
     
     
     <h5>Returns:</h5>
-    <ul>
-            <li>
+    
+            
 <div class="param-desc">
     A jQuery.Deferred promise
 </div>
@@ -734,28 +695,8 @@ dm.add( "newStore", {
 
 	</dd>
 </dl>
-</li>
+
         
-            <li>
-<div class="param-desc">
-    @deprecated Returns a filtered array of data objects based on the contents of the store's data object and the filter parameters. This method only returns a copy of the data and leaves the original data object intact.
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Array</span>
-
-
-	</dd>
-</dl>
-</li>
-        </ul>
     
     
         <h5>Example</h5>
@@ -764,17 +705,28 @@ dm.add( "newStore", {
 
 // An object can be passed to filter the data
 // This would return all records with a user named 'admin' **AND** a date of '2012-08-01'
-var filteredData = dm.filter({
-    date: "2012-08-01",
-    user: "admin"
-});
+dm.stores.tasks.filter({
+        date: "2012-08-01",
+        user: "admin"
+    },
+    {
+        success: function( data ) { ... },
+        error: function( error ) { ... }
+    }
+);
 
 // The matchAny parameter changes the search to an OR operation
 // This would return all records with a user named 'admin' **OR** a date of '2012-08-01'
-var filteredData = dm.filter({
-    date: "2012-08-01",
-    user: "admin"
-}, true);</code></pre>
+dm.stores.tasks.filter({
+        date: "2012-08-01",
+        user: "admin"
+    },
+    true,
+    {
+        success: function( data ) { ... },
+        error: function( error ) { ... }
+    }
+);</code></pre>
 
     
 </dd>
@@ -993,7 +945,7 @@ var filteredData = dm.filter({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line170">line 170</a>
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line163">line 163</a>
     </li></ul></dd>
     
     
@@ -1015,8 +967,8 @@ var filteredData = dm.filter({
     
     
     <h5>Returns:</h5>
-    <ul>
-            <li>
+    
+            
 <div class="param-desc">
     A jQuery.Deferred promise
 </div>
@@ -1034,28 +986,8 @@ var filteredData = dm.filter({
 
 	</dd>
 </dl>
-</li>
+
         
-            <li>
-<div class="param-desc">
-    @deprecated Returns data from the store, optionally filtered by an id
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Array</span>
-
-
-	</dd>
-</dl>
-</li>
-        </ul>
     
     
         <h5>Example</h5>
@@ -1063,10 +995,16 @@ var filteredData = dm.filter({
     <pre class="prettyprint"><code>var dm = AeroGear.DataManager( "tasks" ).stores[ 0 ];
 
 // Get an array of all data in the store
-var allData = dm.read();
+dm.read()
+    .then( function( data ) {
+        console.log( data );
+    });
 
-//Read a specific piece of data based on an id
-var justOne = dm.read( 12345 );</code></pre>
+// Read a specific piece of data based on an id
+dm.read( 12345 )
+    .then( function( data ) {
+        console.log( data );
+    });</code></pre>
 
     
 </dd>
@@ -1286,7 +1224,7 @@ var justOne = dm.read( 12345 );</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line304">line 304</a>
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line285">line 285</a>
     </li></ul></dd>
     
     
@@ -1308,8 +1246,8 @@ var justOne = dm.read( 12345 );</code></pre>
     
     
     <h5>Returns:</h5>
-    <ul>
-            <li>
+    
+            
 <div class="param-desc">
     A jQuery.Deferred promise
 </div>
@@ -1327,28 +1265,8 @@ var justOne = dm.read( 12345 );</code></pre>
 
 	</dd>
 </dl>
-</li>
+
         
-            <li>
-<div class="param-desc">
-    @deprecated Returns the updated data from the store
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Array</span>
-
-
-	</dd>
-</dl>
-</li>
-        </ul>
     
     
         <h5>Example</h5>
@@ -1370,13 +1288,17 @@ dm.save({
     title: "And Another Created Task"
 });
 
-// Remove a particular item from the store by its id
-var toRemove = dm.read()[ 0 ];
-dm.remove( toRemove.id );
+// Delete a record
+dm.remove( 1, {
+    success: function( data ) { ... },
+    error: function( error ) { ... }
+});
 
-// Remove an item from the store using the data object
-toRemove = dm.read()[ 0 ];
-dm.remove( toRemove );
+// Remove all data
+dm.remove( undefined, {
+    success: function( data ) { ... },
+    error: function( error ) { ... }
+});
 
 // Delete all remaining data from the store
 dm.remove();</code></pre>
@@ -1629,7 +1551,7 @@ dm.remove();</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line231">line 231</a>
+        <a href="memory.js.html">data-manager/adapters/memory.js</a>, <a href="memory.js.html#line214">line 214</a>
     </li></ul></dd>
     
     
@@ -1651,8 +1573,8 @@ dm.remove();</code></pre>
     
     
     <h5>Returns:</h5>
-    <ul>
-            <li>
+    
+            
 <div class="param-desc">
     A jQuery.Deferred promise
 </div>
@@ -1670,28 +1592,8 @@ dm.remove();</code></pre>
 
 	</dd>
 </dl>
-</li>
+
         
-            <li>
-<div class="param-desc">
-    @deprecated Returns the updated data from the store
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Array</span>
-
-
-	</dd>
-</dl>
-</li>
-        </ul>
     
     
         <h5>Example</h5>
@@ -1705,7 +1607,7 @@ dm.save({
     ...
 });
 
-//Store an array of new Tasks
+// Store an array of new Tasks
 dm.save([
     {
         title: "Task2",
@@ -1742,13 +1644,13 @@ dm.save( toUpdate );</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Dec 11 2013 09:53:30 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

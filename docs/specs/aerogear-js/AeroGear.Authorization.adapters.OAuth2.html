@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Adapter: SessionLocal</h1>
+    <h1 class="page-title">Adapter: OAuth2</h1>
     
     
 
@@ -28,9 +28,9 @@
     
 <header>
     <h2>
-        <span class="ancestors"><a href="AeroGear.html">AeroGear</a><a href="AeroGear.DataManager.html">.DataManager</a><a href="AeroGear.DataManager.html#adapters">.adapters</a>.</span>
+        <span class="ancestors"><a href="AeroGear.html">AeroGear</a><a href="AeroGear.Authorization.html">.Authorization</a><a href="AeroGear.Authorization.html#adapters">.adapters</a>.</span>
     
-    SessionLocal
+    OAuth2
     </h2>
     
 </header>  
@@ -42,20 +42,683 @@
     
         
 <dt>
-    <h4 class="name" id="SessionLocal"><span class="type-signature"></span>new SessionLocal<span class="signature">(storeName, <span class="optional">settings</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="OAuth2"><span class="type-signature"></span>new OAuth2<span class="signature">(name, settings={})</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
 <dd>
     
     
-    <h5>Status: <span class="labelStable">Stable</span></h5>
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
     
 
     
     <div class="description">
-        The SessionLocal adapter extends the Memory adapter to store data in either session or local storage which makes it a little more persistent than memory
-    This constructor is instantiated when the "DataManager.add()" method is called
+        The OAuth2 adapter is the default type used when creating a new authorization module. It uses jQuery.ajax to communicate with the server.
+    While this library can be used "standalone", we recommend using it with Pipeline to get the most benefit
+    This constructor is instantiated when the "Authorizer.add()" method is called
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the name used to reference this particular authz module</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings={}</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the settings to be passed to the adapter</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.clientId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the client id/ app Id of the protected service</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.redirectURL</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the URL to redirect to</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.authEndpoint</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the endpoint for authorization</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.validationEndpoint</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the optional endpoint to validate your token.  Not in the Spec, but recommend for use with Google's API's</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.scopes</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">a space separated list of "scopes" or things you want to access</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="oauth2.js.html">authorization/adapters/oauth2.js</a>, <a href="oauth2.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The created authz module
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    // Create an empty Authenticator
+    var authz = AeroGear.Authorization();
+
+    authz.add({
+        name: "coolThing",
+        settings: {
+            clientId: "12345",
+            redirectURL: "http://localhost:3000/redirector.html",
+            authEndpoint: "http://localhost:3000/v1/authz",
+            scopes: "userinfo coolstuff"
+        }
+    });</code></pre>
+
+    
+</dd>
+
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="execute"><span class="type-signature"></span>execute<span class="signature">(options={})</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    <div class="description">
+        Read a secure endpoint - To be used with the Pipe.read() method
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options={}</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Options to pass to the enroll method</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options.url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the endpoint to access</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options.error</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="AeroGear.html#errorCallbackREST">AeroGear~errorCallbackREST</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">callback to be executed if the AJAX request results in an error</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options.success</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="AeroGear.html#successCallbackREST">AeroGear~successCallbackREST</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">callback to be executed if the AJAX request results in success</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="oauth2.js.html">authorization/adapters/oauth2.js</a>, <a href="oauth2.js.html#line316">line 316</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The jqXHR created by jQuery.ajax - IF an error is returned,  the authentication URL will be appended to the response object
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    // Create the Authorizer
+    var authz = AeroGear.Authorization(),
+    pipe;
+
+    authz.add({
+    name: "coolThing",
+    settings: {
+        clientId: "12345",
+        redirectURL: "http://localhost:3000/redirector.html",
+        authEndpoint: "http://localhost:3000/v1/authz",
+        scopes: "userinfo coolstuff"
+    }
+    });
+
+    // Create a new Pipeline with an authorizer
+    pipe = AeroGear.Pipeline( { authorizer: authz.services.coolThing } );
+
+    // Add a pipe
+    pipe.add([
+    {
+        name: "cal",
+        settings: {
+            baseURL: "http://localhost:3000/",
+            endpoint: "v1/userinfo"
+        }
+    }
+    ]);
+
+    // Make the call. OAuth2.read() will be called by Pipe.Read
+    pipe.pipes.cal.read({
+        success:function( response ) {
+            ....
+        },
+        error: function( error ) {
+            ....
+        }
+    });</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="validate"><span class="type-signature"></span>validate<span class="signature">(queryString, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    <div class="description">
+        Validate the Authorization endpoints - Takes the querystring that is returned after the "dance" unparsed.
     </div>
     
 
@@ -93,7 +756,7 @@
 	
         <tr>
             
-                <td class="name"><code>storeName</code></td>
+                <td class="name"><code>queryString</code></td>
             
             
             <td class="type">
@@ -121,14 +784,14 @@
                 </td>
             
             
-            <td class="description last">the name used to reference this particular store</td>
+            <td class="description last">The returned query string to be parsed</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>settings</code></td>
+                <td class="name"><code>options</code></td>
             
             
             <td class="type">
@@ -160,145 +823,7 @@
                 </td>
             
             
-            <td class="description last">the settings to be passed to the adapter
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>recordId</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    "id"
-                
-                </td>
-            
-            
-            <td class="description last">the name of the field used to uniquely identify a "record" in the data</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>storageType</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    "sessionStorage"
-                
-                </td>
-            
-            
-            <td class="description last">the type of store can either be sessionStorage or localStorage</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>crypto</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">the crypto settings to be passed to the adapter
+            <td class="description last">Options to pass to the enroll method
                 <h6>Properties</h6>
                 
 
@@ -322,717 +847,6 @@
 	</thead>
 	
 	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>agcrypto</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">the AeroGear.Crypto object to be used</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">the specific options for the AeroGear.Crypto encrypt/decrypt methods</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session-local.js.html">data-manager/adapters/session-local.js</a>, <a href="session-local.js.html#line40">line 40</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    The created store
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="prettyprint"><code>// Create an empty DataManager
-var dm = AeroGear.DataManager();
-
-// Add a custom SessionLocal store using local storage as its storage type
-dm.add( "newStore", {
-    recordId: "customID",
-    storageType: "localStorage"
-});</code></pre>
-
-    
-</dd>
-
-    
-    </div>
-    
-    
-    
-    
-        <h3 class="subsection-title">Mixes In</h3>
-        
-        <ul>
-            <li><a href="AeroGear.DataManager.adapters.Memory.html">AeroGear.DataManager.adapters.Memory</a></li>
-        </ul>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <h3 class="subsection-title">Methods</h3>
-        
-        <dl>
-            
-<dt>
-    <h4 class="name" id="isValid"><span class="type-signature">&lt;static> </span>isValid<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-
-    
-    <div class="description">
-        Determine if this adapter is supported in the current environment
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session-local.js.html">data-manager/adapters/session-local.js</a>, <a href="session-local.js.html#line86">line 86</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="remove"><span class="type-signature">&lt;static> </span>remove<span class="signature">(toRemove, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-
-    
-    <div class="description">
-        Removes data from the store
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>toRemove</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Object</span>
-|
-
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">A variety of objects can be passed to remove to specify the item or if nothing is provided, all data is removed</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">The options to be passed to the save method
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>success</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~successrCallbackStorage</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">A callback to be called if the remove was successful. This probably isn't necessary since the remove is synchronous but is provided for API symmetry.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session-local.js.html">data-manager/adapters/session-local.js</a>, <a href="session-local.js.html#line214">line 214</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    A jQuery.Deferred promise
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="prettyprint"><code>var dm = AeroGear.DataManager([{ name: "tasks", type: "SessionLocal" }]).stores[ 0 ];
-
-// Store a new task
-dm.save({
-    title: "Created Task"
-});
-
-// Store another new task
-dm.save({
-    title: "Another Created Task"
-});
-
-// Store one more new task
-dm.save({
-    title: "And Another Created Task"
-});
-
-// Delete a record
-dm.remove( 1, {
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});
-
-// Remove all data
-dm.remove( undefined, {
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});
-
-// Delete all remaining data from the store
-dm.remove();</code></pre>
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="save"><span class="type-signature">&lt;static> </span>save<span class="signature">(data, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-
-    
-    <div class="description">
-        Saves data to the store, optionally clearing and resetting the data
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-|
-
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">An object or array of objects representing the data to be saved to the server. When doing an update, one of the key/value pairs in the object to update must be the `recordId` you set during creation of the store representing the unique identifier for a "record" in the data set.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">The options to be passed to the save method
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>reset</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">If true, this will empty the current data and set it to the data being saved</td>
-        </tr>
-	
 	
 	
         <tr>
@@ -1043,7 +857,7 @@ dm.remove();</code></pre>
             <td class="type">
             
                 
-<span class="param-type"><a href="AeroGear.html#errorCallbackStorage">AeroGear~errorCallbackStorage</a></span>
+<span class="param-type"><a href="AeroGear.html#errorCallbackREST">AeroGear~errorCallbackREST</a></span>
 
 
             
@@ -1063,7 +877,7 @@ dm.remove();</code></pre>
             
             
             
-            <td class="description last">A callback to be executed when an error is thrown trying to save data to the store. The most likely error is when the localStorage is full. The callback is passed the error object and the data that was attempted to be saved as arguments.</td>
+            <td class="description last">callback to be executed if the AJAX request results in an error</td>
         </tr>
 	
 	
@@ -1076,7 +890,7 @@ dm.remove();</code></pre>
             <td class="type">
             
                 
-<span class="param-type">AeroGear~success</span>
+<span class="param-type"><a href="AeroGear.html#successCallbackREST">AeroGear~successCallbackREST</a></span>
 
 
             
@@ -1096,7 +910,7 @@ dm.remove();</code></pre>
             
             
             
-            <td class="description last">A callback to be called if the save was successful. This probably isn't necessary since the save is synchronous but is provided for API symmetry.</td>
+            <td class="description last">callback to be executed if the AJAX request results in success</td>
         </tr>
 	
 	
@@ -1133,7 +947,7 @@ dm.remove();</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session-local.js.html">data-manager/adapters/session-local.js</a>, <a href="session-local.js.html#line135">line 135</a>
+        <a href="oauth2.js.html">authorization/adapters/oauth2.js</a>, <a href="oauth2.js.html#line214">line 214</a>
     </li></ul></dd>
     
     
@@ -1158,7 +972,7 @@ dm.remove();</code></pre>
     
             
 <div class="param-desc">
-    A jQuery.Deferred promise
+    The jqXHR created by jQuery.ajax
 </div>
 
 
@@ -1180,32 +994,63 @@ dm.remove();</code></pre>
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var dm = AeroGear.DataManager([{ name: "tasks", type: "SessionLocal" }]).stores[ 0 ];
+    <pre class="prettyprint"><code>    // Create the Authorizer
+    var authz = AeroGear.Authorization(),
+        pipe;
 
-// Store a new task
-dm.save({
-    title: "Created Task",
-    date: "2012-07-13",
-    ...
-});
+    authz.add({
+        name: "coolThing",
+        settings: {
+            clientId: "12345",
+            redirectURL: "http://localhost:3000/redirector.html",
+            authEndpoint: "http://localhost:3000/v1/authz",
+            scopes: "userinfo coolstuff"
+        }
+    });
 
-// Store an array of new Tasks
-dm.save([
+    // Create a new Pipeline with an authorizer
+    pipe = AeroGear.Pipeline( { authorizer: authz.services.coolThing } );
+
+    // Add a pipe
+    pipe.add([
     {
-        title: "Task2",
-        date: "2012-07-13"
-    },
-    {
-        title: "Task3",
-        date: "2012-07-13"
-        ...
+        name: "cal",
+        settings: {
+            baseURL: "http://localhost:3000/",
+            endpoint: "v1/userinfo"
+        }
     }
-]);
+    ]);
 
-// Update an existing piece of data
-var toUpdate = dm.read()[ 0 ];
-toUpdate.data.title = "Updated Task";
-dm.save( toUpdate );</code></pre>
+    // Make the call. OAuth2.read() will be called by Pipe.Read
+    pipe.pipes.cal.read({
+        success:function( response ) {
+            ....
+        },
+        error: function( error ) {
+            // an error happened, so take the authURL and do the "OAuth2 Dance",
+        }
+    });
+
+    // After a successful response from the "OAuth2 Dance", validate that the query string is valid, If all is well, the access_token will be stored.
+    authz.services.coolThing.validate( responseFromAuthEndpoint, {
+        success: function( response ){
+            ...
+        },
+        error: function( error ) {
+            ...
+        }
+    });
+
+    // Make pipe.read calls
+    pipe.pipes.cal.read({
+        success:function( response ) {
+            // Should be success calls
+        },
+        error: function( error ) {
+            ....
+        }
+    });</code></pre>
 
     
 </dd>
