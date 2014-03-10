@@ -216,7 +216,7 @@ AeroGear.Notifier.adapters.stompws = function( clientName, settings ) {
     }
 };
 
-//Public Methods
+// Public Methods
 /**
     Connect the client to the messaging service
     @param {Object} [options={}] - Options to pass to the connect method
@@ -324,11 +324,11 @@ AeroGear.Notifier.adapters.stompws.prototype.connect = function( options ) {
     @param {Function} [onDisconnect] - callback to be executed when a connection is terminated
     @example
     // Disconnect from the messaging service and pass a function to be called after disconnecting
-    notifier.clients.client2.disconnect({
-        onDisconnect: function() {
+    notifier.clients.client2.disconnect(
+        function() {
             console.log( "connected" );
         }
-    });
+    );
 
  */
 AeroGear.Notifier.adapters.stompws.prototype.disconnect = function( onDisconnect ) {
@@ -361,7 +361,7 @@ AeroGear.Notifier.adapters.stompws.prototype.disconnect = function( onDisconnect
         callback: function(){ ... }
     });
 
-    //Subscribe to multiple channels
+    // Subscribe to multiple channels
     notifier.clients.client2.subscribe([
         {
             address: "channelAddress1",
@@ -395,6 +395,30 @@ AeroGear.Notifier.adapters.stompws.prototype.subscribe = function( channels, res
 };
 
 /**
+    Set the client's debug property. Used to see the data being sent and received.
+    @param {Function} [onData] - callback to be executed when data is sent and received
+    @example
+    // Log data being sent and received
+    notifier.clients.client2.debug(
+        function(data) {
+            console.log( data );
+        }
+    );
+ */
+AeroGear.Notifier.adapters.stompws.prototype.debug = function( onData ) {
+    var client = this.getClient(),
+        debug = function() {
+            if ( onData ) {
+                onData.apply( this, arguments );
+            }
+        };
+
+    if ( client ) {
+        client.debug = debug;
+    }
+};
+
+/**
     Unsubscribe this client from a channel
     @param {Object|Array} channels - a channel object or a set of channel objects to which this client nolonger wishes to subscribe
     @example
@@ -404,7 +428,7 @@ AeroGear.Notifier.adapters.stompws.prototype.subscribe = function( channels, res
         callback: function(){ ... }
     });
 
-    //Unsubscribe from multiple channels
+    // Unsubscribe from multiple channels
     notifier.clients.client2.unsubscribe([
         {
             address: "channelAddress1",
@@ -417,11 +441,12 @@ AeroGear.Notifier.adapters.stompws.prototype.subscribe = function( channels, res
     ]);
  */
 AeroGear.Notifier.adapters.stompws.prototype.unsubscribe = function( channels ) {
-    var client = this.getClient();
+    var client = this.getClient(),
+        thisChannels = this.getChannels();
 
     channels = AeroGear.isArray( channels ) ? channels : [ channels ];
     for ( var i = 0; i &lt; channels.length; i++ ) {
-        client.unsubscribe( channels[ i ].id );
+        client.unsubscribe( channels[ i ].id || thisChannels[ this.getChannelIndex( channels[ i ].address ) ].id );
         this.removeChannel( channels[ i ] );
     }
 };
@@ -466,13 +491,13 @@ AeroGear.Notifier.adapters.stompws.prototype.send = function( channel, message )
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Dec 11 2013 09:53:30 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

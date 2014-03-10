@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Module: Pipeline</h1>
+    <h1 class="page-title">Module: Authorization</h1>
     
     
 
@@ -30,7 +30,7 @@
     <h2>
         <span class="ancestors"><a href="AeroGear.html">AeroGear</a>.</span>
     
-    Pipeline
+    Authorization
     </h2>
     
 </header>  
@@ -42,19 +42,19 @@
     
         
 <dt>
-    <h4 class="name" id="Pipeline"><span class="type-signature"></span>new Pipeline<span class="signature">(<span class="optional">config</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="Authorization"><span class="type-signature"></span>new Authorization<span class="signature">(<span class="optional">config</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
 <dd>
     
     
-    <h5>Status: <span class="labelStable">Stable</span></h5>
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
     
 
     
     <div class="description">
-        The AeroGear.Pipeline provides a persistence API that is protocol agnostic and does not depend on any certain data model. Through the use of adapters, this library provides common methods like read, save and delete that will just work.
+        The AeroGear.Authorization namespace provides an authentication API.
     </div>
     
 
@@ -79,8 +79,6 @@
 		<th>Argument</th>
 		
 		
-		
-		<th>Default</th>
 		
 		
 		<th class="last">Description</th>
@@ -123,12 +121,8 @@
             
             
             
-                <td class="default">
-                
-                </td>
             
-            
-            <td class="description last">A configuration for the pipe(s) being created along with the Pipeline. If an object or array containing objects is used, the objects can have the following properties:
+            <td class="description last">A configuration for the service(s) being created along with the authorizer. If an object or array containing objects is used, the objects can have the following properties:
                 <h6>Properties</h6>
                 
 
@@ -186,7 +180,7 @@
                 </td>
             
             
-            <td class="description last">the name that the pipe will later be referenced by</td>
+            <td class="description last">the name that the module will later be referenced by</td>
         </tr>
 	
 	
@@ -220,103 +214,19 @@
             
                 <td class="default">
                 
-                    "Rest"
+                    "OAuth2"
                 
                 </td>
             
             
-            <td class="description last">the type of pipe as determined by the adapter used</td>
+            <td class="description last">the type of module as determined by the adapter used</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>authenticator</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    null
-                
-                </td>
-            
-            
-            <td class="description last">the AeroGear.auth object used to pass credentials to a secure endpoint</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>settings.authorizer</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    null
-                
-                </td>
-            
-            
-            <td class="description last">the AeroGear.authz object used to pass credentials to a secure endpoint</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>config.settings</code></td>
+                <td class="name"><code>settings</code></td>
             
             
             <td class="type">
@@ -354,6 +264,12 @@
 	
 	</tbody>
 </table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
     
     
     
@@ -379,7 +295,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.pipeline.js.html">pipeline/aerogear.pipeline.js</a>, <a href="aerogear.pipeline.js.html#line65">line 65</a>
+        <a href="aerogear.authz.js.html">authorization/aerogear.authz.js</a>, <a href="aerogear.authz.js.html#line29">line 29</a>
     </li></ul></dd>
     
     
@@ -404,7 +320,7 @@
     
             
 <div class="param-desc">
-    pipeline - The created Pipeline containing any pipes that may have been created
+    The created authorizer containing any authz services that may have been created
 </div>
 
 
@@ -426,41 +342,8 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>// Create an empty Pipeline
-var pl = AeroGear.Pipeline();
-
-// Create a single pipe using the default adapter
-var pl2 = AeroGear.Pipeline( "tasks" );
-
-// Create multiple pipes using the default adapter
-var pl3 = AeroGear.Pipeline( [ "tasks", "projects" ] );
-
-// Create a new REST pipe with a custom ID using an object
-var pl4 = AeroGear.Pipeline({
-    name: "customPipe",
-    type: "rest",
-    settings: {
-        recordId: "CustomID"
-    }
-});
-
-// Create multiple REST pipes using objects
-var pl5 = AeroGear.Pipeline([
-    {
-        name: "customPipe",
-        type: "rest",
-        settings: {
-            recordId: "CustomID"
-        }
-    },
-    {
-        name: "customPipe2",
-        type: "rest",
-        settings: {
-            recordId: "CustomID"
-        }
-    }
-]);</code></pre>
+    <pre class="prettyprint"><code>    // Create an empty authorizer
+    var authz = AeroGear.Authorization();</code></pre>
 
     
 </dd>
@@ -468,12 +351,6 @@ var pl5 = AeroGear.Pipeline([
     
     </div>
     
-    
-        <h3 class="subsection-title">Extends</h3>
-        
-        <ul>
-            <li>AeroGear.Core</li>
-        </ul>
     
     
     
@@ -497,7 +374,7 @@ var pl5 = AeroGear.Pipeline([
 <dd>
     
     <div class="description">
-        The adapters object is provided so that adapters can be added to the AeroGear.Pipeline namespace dynamically and still be accessible to the add method
+        The adapters object is provided so that adapters can be added to the AeroGear.Authorization namespace dynamically and still be accessible to the add method
     </div>
     
     
@@ -526,7 +403,7 @@ var pl5 = AeroGear.Pipeline([
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.pipeline.js.html">pipeline/aerogear.pipeline.js</a>, <a href="aerogear.pipeline.js.html#line98">line 98</a>
+        <a href="aerogear.authz.js.html">authorization/aerogear.authz.js</a>, <a href="aerogear.authz.js.html#line59">line 59</a>
     </li></ul></dd>
     
     
@@ -551,7 +428,7 @@ var pl5 = AeroGear.Pipeline([
 <dd>
     
     <div class="description">
-        The name used to reference the collection of pipe instances created from the adapters
+        The name used to reference the collection of service instances created from the adapters
     </div>
     
     
@@ -588,14 +465,14 @@ var pl5 = AeroGear.Pipeline([
     
     <dt class="tag-default">Default Value:</dt>
     <dd class="tag-default"><ul class="dummy">
-            <li>pipes</li>
+            <li>services</li>
         </ul></dd>
     
     
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.pipeline.js.html">pipeline/aerogear.pipeline.js</a>, <a href="aerogear.pipeline.js.html#line86">line 86</a>
+        <a href="aerogear.authz.js.html">authorization/aerogear.authz.js</a>, <a href="aerogear.authz.js.html#line47">line 47</a>
     </li></ul></dd>
     
     
@@ -634,7 +511,7 @@ var pl5 = AeroGear.Pipeline([
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:32 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

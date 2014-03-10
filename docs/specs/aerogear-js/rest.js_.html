@@ -48,7 +48,6 @@
     @constructs AeroGear.Pipeline.adapters.Rest
     @param {String} pipeName - the name used to reference this particular pipe
     @param {Object} [settings={}] - the settings to be passed to the adapter
-    @param {Object} [settings.authenticator=null] - @deprecated the AeroGear.auth object used to pass credentials to a secure endpoint
     @param {String} [settings.baseURL] - defines the base URL to use for an endpoint
     @param {String} [settings.contentType="application/json"] - the default type of content being sent to the server
     @param {String} [settings.dataType="json"] - the default type of data expected to be returned from the server
@@ -63,17 +62,17 @@
     @param {Object} [settings.xhrFields] - specify extra xhr options, like the withCredentials flag
     @returns {Object} The created pipe
     @example
-    //Create an empty pipeline
+    // Create an empty pipeline
     var pipeline = AeroGear.Pipeline();
 
-    //Add a new Pipe with a custom baseURL, custom endpoint and default paging turned on
+    // Add a new Pipe with a custom baseURL, custom endpoint and default paging turned on
     pipeline.add( "customPipe", {
         baseURL: "http://customURL.com",
         endpoint: "customendpoint",
         pageConfig: true
     });
 
-    //Add a new Pipe with a custom paging options
+    // Add a new Pipe with a custom paging options
     pipeline.add( "customPipe", {
         pageConfig: {
             metadataLocation: "header",
@@ -101,7 +100,7 @@ AeroGear.Pipeline.adapters.Rest = function( pipeName, settings ) {
             xhrFields: settings.xhrFields
         },
         recordId = settings.recordId || "id",
-        authenticator = settings.authenticator || null,
+        authorizer = settings.authorizer || null,
         type = "Rest",
         pageConfig = settings.pageConfig,
         timeout = settings.timeout ? settings.timeout * 1000 : 60000;
@@ -123,8 +122,8 @@ AeroGear.Pipeline.adapters.Rest = function( pipeName, settings ) {
         @augments Rest
         @returns {AeroGear.Authenticator}
      */
-    this.getAuthenticator = function() {
-        return authenticator;
+    this.getAuthorizer = function() {
+        return authorizer;
     };
 
     /**
@@ -291,7 +290,7 @@ var filteredData = myPipe.read({
 });
 
     @example
-//JSONP - Default JSONP call to a JSONP server
+// JSONP - Default JSONP call to a JSONP server
 myPipe.read({
     jsonp: true,
     success: function( data ){
@@ -299,7 +298,7 @@ myPipe.read({
     }
 });
 
-//JSONP - JSONP call with a changed callback parameter
+// JSONP - JSONP call with a changed callback parameter
 myPipe.read({
     jsonp: {
         callback: "jsonp"
@@ -310,7 +309,7 @@ myPipe.read({
 });
 
     @example
-//Paging - using the default weblinking protocal
+// Paging - using the default weblinking protocal
 var defaultPagingPipe = AeroGear.Pipeline([{
     name: "webLinking",
     settings: {
@@ -319,9 +318,9 @@ var defaultPagingPipe = AeroGear.Pipeline([{
     }
 }]).pipes[0];
 
-//Get a limit of 2 pieces of data from the server, starting from the first page
-//Calling the "next" function will get the next 2 pieces of data, if available.
-//Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
+// Get a limit of 2 pieces of data from the server, starting from the first page
+// Calling the "next" function will get the next 2 pieces of data, if available.
+// Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
 defaultPagingPipe.read({
     offsetValue: 1,
     limitValue: 2,
@@ -337,7 +336,7 @@ defaultPagingPipe.read({
     }
 });
 
-//Create a new Pipe with a custom paging options
+// Create a new Pipe with a custom paging options
 var customPagingPipe = AeroGear.Pipeline([{
     name: "customPipe",
     settings: {
@@ -349,7 +348,7 @@ var customPagingPipe = AeroGear.Pipeline([{
     }
 }]).pipes[0];
 
-//Even with custom options, you use "next" and "previous" the same way
+// Even with custom options, you use "next" and "previous" the same way
 customPagingPipe.read({
     offsetValue: 1,
     limitValue: 2,
@@ -450,7 +449,11 @@ AeroGear.Pipeline.adapters.Rest.prototype.read = function( options ) {
         }
     }
 
-    return jQuery.ajax( jQuery.extend( {}, this.getAjaxSettings(), extraOptions ) );
+    if( !this.getAuthorizer() ) {
+        return jQuery.ajax( jQuery.extend( {}, this.getAjaxSettings(), extraOptions ) );
+    } else {
+        return this.getAuthorizer().execute( jQuery.extend( {}, options, extraOptions ) );
+    }
 };
 
 /**
@@ -547,7 +550,7 @@ AeroGear.Pipeline.adapters.Rest.prototype.save = function( data, options ) {
             formData.append( key, data[ key ] );
 
             if( data[ key ] instanceof File || data[ key ] instanceof Blob ) {
-                //Options to tell jQuery not to process data or worry about content-type.
+                // Options to tell jQuery not to process data or worry about content-type.
                 extraOptions.contentType = false;
                 extraOptions.processData = false;
             }
@@ -575,7 +578,11 @@ AeroGear.Pipeline.adapters.Rest.prototype.save = function( data, options ) {
         extraOptions.data = JSON.stringify( extraOptions.data );
     }
 
-    return jQuery.ajax( jQuery.extend( {}, this.getAjaxSettings(), extraOptions ) );
+    if( !this.getAuthorizer() ) {
+        return jQuery.ajax( jQuery.extend( {}, this.getAjaxSettings(), extraOptions ) );
+    } else {
+        return this.getAuthorizer().execute( jQuery.extend( {}, options, extraOptions ) );
+    }
 };
 
 /**
@@ -661,7 +668,11 @@ AeroGear.Pipeline.adapters.Rest.prototype.remove = function( toRemove, options )
         timeout: this.getTimeout()
     };
 
-    return jQuery.ajax( jQuery.extend( {}, ajaxSettings, extraOptions ) );
+    if( !this.getAuthorizer() ) {
+        return jQuery.ajax( jQuery.extend( {}, this.getAjaxSettings(), extraOptions ) );
+    } else {
+        return this.getAuthorizer().execute( jQuery.extend( {}, options, extraOptions ) );
+    }
 };
 </code></pre>
         </article>
@@ -673,13 +684,13 @@ AeroGear.Pipeline.adapters.Rest.prototype.remove = function( toRemove, options )
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Dec 11 2013 09:53:30 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

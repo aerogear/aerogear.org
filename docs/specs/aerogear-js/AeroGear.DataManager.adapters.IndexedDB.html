@@ -475,10 +475,10 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    //Create an empty DataManager
+    <pre class="prettyprint"><code>    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store
+    // Add an IndexedDB store
     dm.add({
         name: "newStore",
         storageType: "IndexedDB"
@@ -647,10 +647,10 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    //Create an empty DataManager
+    <pre class="prettyprint"><code>    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store and then delete a record
+    // Add an IndexedDB store and then delete a record
     dm.add({
         name: "newStore",
         storageType: "IndexedDB"
@@ -736,7 +736,7 @@
             
             
             
-            <td class="description last">An object containing key value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.</td>
+            <td class="description last">An object containing key/value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.</td>
         </tr>
 	
 	
@@ -835,7 +835,7 @@
             
             
             
-            <td class="description last">a callback to be calledd after an error filtering of an IndexedDB</td>
+            <td class="description last">a callback to be called after an error filtering of an IndexedDB</td>
         </tr>
 	
 	
@@ -913,10 +913,10 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    //Create an empty DataManager
+    <pre class="prettyprint"><code>    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store
+    // Add an IndexedDB store
     dm.add({
         name: "newStore",
         storageType: "IndexedDB"
@@ -1170,10 +1170,10 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    //Create an empty DataManager
+    <pre class="prettyprint"><code>    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store
+    // Add an IndexedDB store
     dm.add({
         name: "newStore",
         storageType: "IndexedDB"
@@ -1481,10 +1481,10 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    //Create an empty DataManager
+    <pre class="prettyprint"><code>    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store
+    // Add an IndexedDB store
     dm.add({
         name: "newStore",
         storageType: "IndexedDB"
@@ -1500,7 +1500,7 @@
         error: function( error ) { ... }
     });
 
-    //read a record with a particular id
+    // read a record with a particular id
     dm.stores.test1.read( 5, {
         success: function( data ) { ... },
         error: function( error ) { ... }
@@ -1732,10 +1732,10 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    //Create an empty DataManager
+    <pre class="prettyprint"><code>    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store
+    // Add an IndexedDB store
     dm.add({
         name: "newStore",
         storageType: "IndexedDB"
@@ -1752,7 +1752,7 @@
         error: function( error ) { ... }
     });
 
-    //Remove all data
+    // Remove all data
     dm.stores.newStore.remove( undefined, {
         success: function( data ) { ... },
         error: function( error ) { ... }
@@ -2086,10 +2086,10 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    //Create an empty DataManager
+    <pre class="prettyprint"><code>    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store
+    // Add an IndexedDB store
     dm.add({
         name: "newStore",
         storageType: "IndexedDB"
@@ -2105,7 +2105,7 @@
         error: function( error ) { ... }
     });
 
-    //Save multiple Records
+    // Save multiple Records
     dm.stores.newStore.save(
         [
             { "id": 3, "name": "Grace", "type": "Little Person" },
@@ -2136,13 +2136,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Dec 11 2013 09:53:30 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

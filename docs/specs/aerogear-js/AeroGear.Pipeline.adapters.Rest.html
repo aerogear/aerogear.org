@@ -190,45 +190,6 @@
 	
         <tr>
             
-                <td class="name"><code>authenticator</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    null
-                
-                </td>
-            
-            
-            <td class="description last">@deprecated the AeroGear.auth object used to pass credentials to a secure endpoint</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
                 <td class="name"><code>baseURL</code></td>
             
             
@@ -751,7 +712,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, <a href="rest.js_.html#line58">line 58</a>
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, <a href="rest.js_.html#line57">line 57</a>
     </li></ul></dd>
     
     
@@ -798,17 +759,17 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    //Create an empty pipeline
+    <pre class="prettyprint"><code>    // Create an empty pipeline
     var pipeline = AeroGear.Pipeline();
 
-    //Add a new Pipe with a custom baseURL, custom endpoint and default paging turned on
+    // Add a new Pipe with a custom baseURL, custom endpoint and default paging turned on
     pipeline.add( "customPipe", {
         baseURL: "http://customURL.com",
         endpoint: "customendpoint",
         pageConfig: true
     });
 
-    //Add a new Pipe with a custom paging options
+    // Add a new Pipe with a custom paging options
     pipeline.add( "customPipe", {
         pageConfig: {
             metadataLocation: "header",
@@ -1451,7 +1412,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, <a href="rest.js_.html#line340">line 340</a>
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, <a href="rest.js_.html#line339">line 339</a>
     </li></ul></dd>
     
     
@@ -1516,7 +1477,7 @@ var filteredData = myPipe.read({
 
     </code></pre>
 
-    <pre class="prettyprint"><code>//JSONP - Default JSONP call to a JSONP server
+    <pre class="prettyprint"><code>// JSONP - Default JSONP call to a JSONP server
 myPipe.read({
     jsonp: true,
     success: function( data ){
@@ -1524,7 +1485,7 @@ myPipe.read({
     }
 });
 
-//JSONP - JSONP call with a changed callback parameter
+// JSONP - JSONP call with a changed callback parameter
 myPipe.read({
     jsonp: {
         callback: "jsonp"
@@ -1536,7 +1497,7 @@ myPipe.read({
 
     </code></pre>
 
-    <pre class="prettyprint"><code>//Paging - using the default weblinking protocal
+    <pre class="prettyprint"><code>// Paging - using the default weblinking protocal
 var defaultPagingPipe = AeroGear.Pipeline([{
     name: "webLinking",
     settings: {
@@ -1545,9 +1506,9 @@ var defaultPagingPipe = AeroGear.Pipeline([{
     }
 }]).pipes[0];
 
-//Get a limit of 2 pieces of data from the server, starting from the first page
-//Calling the "next" function will get the next 2 pieces of data, if available.
-//Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
+// Get a limit of 2 pieces of data from the server, starting from the first page
+// Calling the "next" function will get the next 2 pieces of data, if available.
+// Similarily, calling the "previous" function will get the previous 2 pieces of data, if available
 defaultPagingPipe.read({
     offsetValue: 1,
     limitValue: 2,
@@ -1563,7 +1524,7 @@ defaultPagingPipe.read({
     }
 });
 
-//Create a new Pipe with a custom paging options
+// Create a new Pipe with a custom paging options
 var customPagingPipe = AeroGear.Pipeline([{
     name: "customPipe",
     settings: {
@@ -1575,7 +1536,7 @@ var customPagingPipe = AeroGear.Pipeline([{
     }
 }]).pipes[0];
 
-//Even with custom options, you use "next" and "previous" the same way
+// Even with custom options, you use "next" and "previous" the same way
 customPagingPipe.read({
     offsetValue: 1,
     limitValue: 2,
@@ -1907,7 +1868,7 @@ customPagingPipe.read({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, <a href="rest.js_.html#line589">line 589</a>
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, <a href="rest.js_.html#line596">line 596</a>
     </li></ul></dd>
     
     
@@ -2324,7 +2285,7 @@ customPagingPipe.read({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, <a href="rest.js_.html#line470">line 470</a>
+        <a href="rest.js_.html">pipeline/adapters/rest.js</a>, <a href="rest.js_.html#line473">line 473</a>
     </li></ul></dd>
     
     
@@ -2421,13 +2382,13 @@ customPagingPipe.read({
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Dec 11 2013 09:53:30 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:32 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

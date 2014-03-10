@@ -55,10 +55,10 @@
     @param {Object} [settings.crypto.options] - the specific options for the AeroGear.Crypto encrypt/decrypt methods
     @returns {Object} The created store
     @example
-    //Create an empty DataManager
+    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an WebSQL store
+    // Add an WebSQL store
     dm.add({
         name: "newStore",
         storageType: "WebSQL"
@@ -137,7 +137,7 @@ AeroGear.DataManager.adapters.WebSQL = function( storeName, settings ) {
 
         if( !database ) {
             if( !auto ) {
-                //hasn't been opened yet
+                // hasn't been opened yet
                 throw "Database not opened";
             } else {
                 this.open().always( function( value, status ) {
@@ -169,10 +169,10 @@ AeroGear.DataManager.adapters.WebSQL.isValid = function() {
     @param {AeroGear~errorCallbackWEBSQL} [settings.error] - a callback to be called when there is an error opening a WebSQL DB
     @return {Object} A jQuery.Deferred promise
     @example
-    //Create an empty DataManager
+    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an WebSQL store
+    // Add an WebSQL store
     dm.add({
         name: "newStore",
         storageType: "WebSQL"
@@ -194,7 +194,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.open = function( options ) {
         storeName = this.getStoreName(),
         deferred = jQuery.Deferred();
 
-    //Do some creation and such
+    // Do some creation and such
     database = window.openDatabase( storeName, version, "AeroGear WebSQL Store", databaseSize );
 
     error = function( transaction, error ) {
@@ -207,7 +207,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.open = function( options ) {
     };
 
     database.transaction( function( transaction ) {
-        transaction.executeSql( "CREATE TABLE IF NOT EXISTS " + storeName + " ( " + recordId + " REAL UNIQUE, json)", [], success, error );
+        transaction.executeSql( "CREATE TABLE IF NOT EXISTS '" + storeName + "' ( " + recordId + " REAL UNIQUE, json)", [], success, error );
     });
 
     deferred.always( this.always );
@@ -222,10 +222,10 @@ AeroGear.DataManager.adapters.WebSQL.prototype.open = function( options ) {
     @param {AeroGear~errorCallbackWEBSQL} [options.error] - a callback to be called when there is an error reading a WebSQL DB
     @return {Object} A jQuery.Deferred promise
     @example
-    //Create an empty DataManager
+    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an WebSQL store
+    // Add an WebSQL store
     dm.add({
         name: "newStore",
         storageType: "WebSQL"
@@ -241,7 +241,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.open = function( options ) {
         error: function( error ) { ... }
     });
 
-    //read a record with a particular id
+    // read a record with a particular id
     dm.stores.test1.read( 5, {
         success: function( data ) { ... },
         error: function( error ) { ... }
@@ -254,6 +254,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.read = function( id, options ) {
     var success, error, sql, _read,
         that = this,
         data = [],
+        params = [],
         storeName = this.getStoreName(),
         database = this.getDatabase(),
         deferred = jQuery.Deferred(),
@@ -272,14 +273,15 @@ AeroGear.DataManager.adapters.WebSQL.prototype.read = function( id, options ) {
             deferred.resolve( that.decrypt( data ), "success", options.success );
         };
 
-        sql = "SELECT * FROM " + storeName;
+        sql = "SELECT * FROM '" + storeName + "'";
 
         if( id ) {
-            sql += " WHERE ID = " + id;
+            sql += " WHERE ID = ?";
+            params = [ id ];
         }
 
         database.transaction( function( transaction ) {
-            transaction.executeSql( sql, [], success, error );
+            transaction.executeSql( sql, params, success, error );
         });
     };
 
@@ -298,10 +300,10 @@ AeroGear.DataManager.adapters.WebSQL.prototype.read = function( id, options ) {
     @param {AeroGear~errorCallbackWEBSQL} [options.error] - a callback to be called when there is an error saving records to a WebSQL DB
     @return {Object} A jQuery.Deferred promise
     @example
-    //Create an empty DataManager
+    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an WebSQL store
+    // Add an WebSQL store
     dm.add({
         name: "newStore",
         storageType: "WebSQL"
@@ -317,7 +319,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.read = function( id, options ) {
         error: function( error ) { ... }
     });
 
-    //Save multiple Records
+    // Save multiple Records
     dm.stores.newStore.save(
         [
             { "id": 3, "name": "Grace", "type": "Little Person" },
@@ -342,11 +344,11 @@ AeroGear.DataManager.adapters.WebSQL.prototype.save = function( data, options ) 
 
     _save = function( database ) {
         error = function( transaction, error ) {
-        deferred.reject( error, "error", options.error );
-    };
+            deferred.reject( error, "error", options.error );
+        };
 
-    success = function( transaction, result ) {
-        that.read().done( function( result, status ) {
+        success = function( transaction, result ) {
+            that.read().done( function( result, status ) {
                 if( status === "success" ) {
                     deferred.resolve( result, status, options.success );
                 } else {
@@ -360,11 +362,11 @@ AeroGear.DataManager.adapters.WebSQL.prototype.save = function( data, options ) 
         database.transaction( function( transaction ) {
             if( options.reset ) {
                 transaction.executeSql( "DROP TABLE " + storeName );
-                transaction.executeSql( "CREATE TABLE IF NOT EXISTS " + storeName + " ( " + recordId + " REAL UNIQUE, json)" );
+                transaction.executeSql( "CREATE TABLE IF NOT EXISTS '" + storeName + "' ( " + recordId + " REAL UNIQUE, json)" );
             }
             data.forEach( function( value ) {
                 value = that.encrypt( value );
-                transaction.executeSql( "INSERT OR REPLACE INTO " + storeName + " ( id, json ) VALUES ( ?, ? ) ", [ value[ recordId ], JSON.stringify( value ) ] );
+                transaction.executeSql( "INSERT OR REPLACE INTO '" + storeName + "' ( id, json ) VALUES ( ?, ? ) ", [ value[ recordId ], JSON.stringify( value ) ] );
             });
         }, error, success );
     };
@@ -382,10 +384,10 @@ AeroGear.DataManager.adapters.WebSQL.prototype.save = function( data, options ) 
     @param {AeroGear~errorCallbackWEBSQL} [options.error] - a callback to be called when there is an error removing a record from a WebSQL DB
     @return {Object} A jQuery.Deferred promise
     @example
-    //Create an empty DataManager
+    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store
+    // Add an IndexedDB store
     dm.add({
         name: "newStore",
         storageType: "WebSQL"
@@ -402,7 +404,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.save = function( data, options ) 
         error: function( error ) { ... }
     });
 
-    //Remove all data
+    // Remove all data
     dm.stores.newStore.remove( undefined, {
         success: function( data ) { ... },
         error: function( error ) { ... }
@@ -434,10 +436,10 @@ AeroGear.DataManager.adapters.WebSQL.prototype.remove = function( toRemove, opti
             });
         };
 
-        sql = "DELETE FROM " + storeName;
+        sql = "DELETE FROM '" + storeName + "'";
 
         if( !toRemove ) {
-            //remove all
+            // remove all
             database.transaction( function( transaction ) {
                 transaction.executeSql( sql, [], success, error );
             });
@@ -465,16 +467,16 @@ AeroGear.DataManager.adapters.WebSQL.prototype.remove = function( toRemove, opti
 
 /**
     Filter the current store's data
-    @param {Object} [filterParameters] - An object containing key value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.
+    @param {Object} [filterParameters] - An object containing key/value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.
     @param {Boolean} [matchAny] - When true, an item is included in the output if any of the filter parameters is matched.
     @param {AeroGear~successCallbackWEBSQL} [options.success] - a callback to be called after a successful filtering of a WebSQL DB
     @param {AeroGear~errorCallbackWEBSQL} [options.error] - a callback to be calledd after an error filtering a WebSQL DB
     @return {Object} A jQuery.Deferred promise
     @example
-    //Create an empty DataManager
+    // Create an empty DataManager
     var dm = AeroGear.DataManager();
 
-    //Add an IndexedDB store
+    // Add an IndexedDB store
     dm.add({
         name: "newStore",
         storageType: "WebSQL"
@@ -532,13 +534,13 @@ AeroGear.DataManager.validateAdapter( "WebSQL", AeroGear.DataManager.adapters.We
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Dec 11 2013 09:53:30 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>
