@@ -391,13 +391,9 @@ div.security .section-strip {
   padding-top: 2em; }
   #toc li.toc-active:before {
     content: "";
-    border-color: #e17408;
-    border-style: solid;
-    height: 0;
-    width: 0;
-    left: -1em;
-    top: 1.4em;
-    position: relative; }
+    border-left: 4px solid;
+    padding-right: 10px;
+    margin-left: -14px; }
   #toc ul {
     margin: 0;
     padding: 0;
@@ -407,7 +403,7 @@ div.security .section-strip {
   #toc a {
     color: white;
     text-decoration: none;
-    display: block; }
+    display: inline; }
   #toc .toc-h2 {
     padding-left: 10px; }
   #toc .toc-h3 {
