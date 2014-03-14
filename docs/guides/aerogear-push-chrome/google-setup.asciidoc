@@ -1,4 +1,3 @@
-
 ---
 layout: basic
 title: Google setup
