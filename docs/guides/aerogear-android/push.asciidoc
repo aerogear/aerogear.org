@@ -3,7 +3,7 @@ layout: basic
 title: AeroGear Android Push
 ---
 
-== AeroGear Push APIs for Android
+== Push
 
 AeroGear for Android provides support for integrating with push services. Currently only Google's Cloud Messaging (GCM) with the AeroGear Unified Push Server is supported, but we are planning to add support for Mozilla's Simple Push, MQTT, and standalone GCM soon.
 
@@ -15,7 +15,7 @@ Push messaging is a mechanism for sending data to mobile clients from a remote s
 
 On Android messages that GCM receives from an application server are sent to the Android device over an XMPP connection managed by the operating system.  These messages are then extracted and passed to applications via a BroadcastReceiver.  Android applications can register to receive push notifications by declaring a receiver in their AndroidManifest.xml files.
 
-=== Push API overview
+=== API overview
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html[Registrations]
  : Similar to PipeLine, this class acts as a factory and registry of *PushRegistrars*.  Additionally this class provides static methods to register a MessageHandler to be informed of a push message.
