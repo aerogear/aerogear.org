@@ -124,13 +124,13 @@ If you no longer wish to receive Push notifications, you may unregister.
 registrar.unregister(getApplicationContext(), new Callback<Void>() {
     @Override
     public void onSuccess(Void ignore) {
-        Toast.makeText(getApplicationContext(), "Register successful", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Unregistration succeeded", Toast.LENGTH_LONG).show();
         Log.i(TAG, "SUCCESS");
     }
 
     @Override
     public void onFailure(Exception exception) {
-        Toast.makeText(getApplicationContext(), "Register failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Unregistration failed", Toast.LENGTH_LONG).show();
         Log.e(TAG, exception.getMessage(), exception);
     }
 });
