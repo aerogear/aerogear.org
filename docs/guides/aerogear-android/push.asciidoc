@@ -57,7 +57,7 @@ To enable the permissions (necessary for Android < 4.2 ie 95% of Android devices
 <uses-permission android:name="[PUT YOUR APP PACKAGE HERE]" />
 ----
  
-and add this element as a child of the application element to register the default agdroid broadcast receiver. It'll receive all messages and dispatch the message to registered handlers.
+and add this element as a child of the application element to register the default AeroGear Android broadcast receiver. It will receive all messages and dispatch the message to registered handlers.
 
 [source, xml]
 ----
