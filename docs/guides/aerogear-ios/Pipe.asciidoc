@@ -2,7 +2,7 @@
 layout: basic 
 title: Pipe and Pipeline
 ---
-
+// tag::pipe[]
 == Pipe and Pipeline
 
 A Pipe object represents a server connection. An object of this class is responsible to communicate with the server in order to perform read/write operations.
@@ -224,3 +224,5 @@ At any time after starting your operations, you can call 'cancel' on the Pipe ob
  // cancel the request
 [projects cancel];
 ----
+
+// end::pipe[]

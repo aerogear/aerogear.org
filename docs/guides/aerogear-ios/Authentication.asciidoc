@@ -2,7 +2,7 @@
 layout: basic
 title: Authentication and User enrollment
 ---
-
+// tag::auth[]
 == Authentication and User enrollment
 
 An Authenticator manages different authentication module implementations. It is basically a factory that hides the concrete instantiation of a specific Authentication Module implementation. The class offers simple APIs to add, remove, or get access to a 'authentication module'.
@@ -132,3 +132,5 @@ NOTE: Care should be taken when specifying the persistence type param when const
 === Time out and Cancel pending operations
 
 As with the case of Pipe, configured timeout interval (in the config object) and cancel operation in _AGAuthenticationModule_ is supported too.
+
+// end::auth[]
