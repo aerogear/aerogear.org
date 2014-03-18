@@ -2,7 +2,7 @@
 layout: basic
 title: Pagination
 ---
-
+// tag::pagination[]
 == Pagination
 
 The library has built-in paging support, enabling the scrolling to either forward or backwards through a result set returned from the server. Paging metadata located in the server response (either in the headers via link:http://tools.ietf.org/html/rfc5988[WebLinking RFC] or custom headers, or in the body) are used to identify the next or the previous result set. For example, the Twitter search paging metadata is located in the link:https://dev.twitter.com/docs/api/1/get/search[body] of the response signifying the next or previous result set. The location of this metadata as well as naming, is fully configurable during the creation of the pipe, thus enabling greater flexibility in supporting several different paging strategies.
@@ -91,3 +91,5 @@ CAUTION: Without valid paging parameters the used service API may simply return 
  
 Further, moving beyond last or first page is left on the behaviour of the specific server implementation, that is the library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by respondng with an http error response, or simply return an empty list. The user is responsible to cater for exception cases like this.
 ====
+
+ // end::pagination[]

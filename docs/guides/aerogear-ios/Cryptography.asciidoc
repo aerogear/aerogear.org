@@ -2,7 +2,7 @@
 layout: basic
 title: Cryptography support
 ---
-
+// tag::crypto[]
 == Cryptography support
 
 Since 1.3.0 release of the library, we've built on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-ios[aerogear-crypto-ios]
@@ -135,3 +135,4 @@ In [9] we attempt to read data from the store. If that fails, then user supplied
 
 If you want to see it all together, give a try to link:https://github.com/aerogear/aerogear-crypto-ios-demo[AeroGear Crypto Password] app.
 This application shows you how using encrypted storage you can store in a central point all your passwords.
+// end::crypto[]
