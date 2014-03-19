@@ -91,7 +91,7 @@ You can also add a default message handler to the receiver in AndroidManifest.xm
 
 ==== Registering with GCM and Unified Push Server
 
-This code example demonstrates how to create a PushConfig, provide values required to register the application with GCM and Unified Push, and perform the registration.
+This code example demonstrates how to create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushConfig.html[PushConfig], provide values required to register the application with GCM and Unified Push, and perform the registration.
 
 [source,java]
 ----
@@ -139,9 +139,9 @@ registrar.unregister(getApplicationContext(), new Callback<Void>() {
 
 ==== Handling messages
 
-Currently, push messages are received by an instance of AeroGearGCMMessageReceiver. They are processed and passed to Registrations via the protected notifyHandlers method.  
+Currently, push messages are received by an instance of link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver]. They are processed and passed to link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html[Registrations] via notifyHandlers method.
 
-Classes which implement MessageHandler can ask that their methods be called on either the UI thread using Registrations:registerMainThreadHandler or on a background thread using Registrations:registerBackgroundThreadHandler. UI threads are most useful for Activities and Fragments, background threads are most useful for everything else.
+Classes which implement MessageHandler can ask that their methods be called on either the UI thread using link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#registerMainThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)[Registrations.registerMainThreadHandler] or on a background thread using link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#registerBackgroundThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)[Registrations:registerBackgroundThreadHandler]. UI threads are most useful for Activities and Fragments, background threads are most useful for everything else.
 
 In an Activity you MUST remove the handler when the Activity goes into the background and MUST reenable it when it comes into the foreground.
 
