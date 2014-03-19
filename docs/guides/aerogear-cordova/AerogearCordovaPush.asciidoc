@@ -54,22 +54,36 @@ The below JavaScript code registers a device in the AeroGear UnifiedPush Server 
 [source,javascript]
 ----
 var pushConfig = {
-    // senderID is only used in the Android/GCM case
-    senderID: "<senderID e.g Google Project ID only for android>",
     pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
-    variantID: "<variantID e.g. 1234456-234320>",
-    variantSecret: "<variantSecret e.g. 1234456-234320>",
-    alias: "<alias e.g. a username or an email address optional>"
-}
+    alias: "<alias e.g. a username or an email address optional>",
+    android: {
+      senderID: "<senderID e.g Google Project ID only for android>",
+      variantID: "<variantID e.g. 1234456-234320>",
+      variantSecret: "<variantSecret e.g. 1234456-234320>"
+    },
+    ios: {
+      variantID: "<variantID e.g. 1234456-234320>",
+      variantSecret: "<variantSecret e.g. 1234456-234320>"
+    }
+};
 
-//badge and sound are iOS specific, and ignored on Android
-push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
-    "ecb": "onNotification", pushConfig: pushConfig});
+push.register(onNotification, successHandler, errorHandler, pushConfig);
 ----
 
-'ecb' (event callback) is a string that will get executed by the plugin when a new message arrives. Be sure to make this a
-function that is reachable with the right context e.g define it in _global scope_ or have the right prefix
-on it. In our example we define onNotification in global scope.
+The onNotification callback will get executed by the plugin when a new message arrives. If you are only targeting one
+platform you can simplfy the config above by:
+
+[source,javascript]
+----
+var pushConfig = {
+    pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+    alias: "<alias e.g. a username or an email address optional>",
+    variantID: "<ios variantID e.g. 1234456-234320>",
+    variantSecret: "<ios variantSecret e.g. 1234456-234320>"
+};
+
+push.register(onNotification, successHandler, errorHandler, pushConfig);
+----
 
 Start receiving messages:
 
@@ -89,7 +103,7 @@ The passed in 'event' object contains:
 
 Also have a look here for link:/docs/specs/aerogear-push-messages/[more information about the message] sending and properties
 
-To unregister:
+To unregister (only availble on Android):
 
 [source,javascript]
 ----
@@ -122,11 +136,17 @@ Full example (https://github.com/aerogear/aerogear-pushplugin-cordova/blob/maste
 
   function onDeviceReady() {
     var pushConfig = {
-      senderID: "<senderID>",
-      pushServerURL: "<pushServerURL>",
-      variantID: "<variantID>",
-      variantSecret: "<variantSecret>",
-      alias: "<alias>"
+        pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+        alias: "<alias e.g. a username or an email address optional>",
+        android: {
+          senderID: "<senderID e.g Google Project ID only for android>",
+          variantID: "<variantID e.g. 1234456-234320>",
+          variantSecret: "<variantSecret e.g. 1234456-234320>"
+        },
+        ios: {
+          variantID: "<variantID e.g. 1234456-234320>",
+          variantSecret: "<variantSecret e.g. 1234456-234320>"
+        }
     }
 
     var statusList = $("#app-status-ul");
@@ -134,8 +154,7 @@ Full example (https://github.com/aerogear/aerogear-pushplugin-cordova/blob/maste
 
     try {
       statusList.append('<li>registering </li>');
-      push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
-        "ecb": "onNotification", pushConfig: pushConfig});
+      push.register(onNotification, successHandler, errorHandler, pushConfig);
     } catch (err) {
       txt = "There was an error on this page.\n\n";
       txt += "Error description: " + err.message + "\n\n";
@@ -147,7 +166,7 @@ Full example (https://github.com/aerogear/aerogear-pushplugin-cordova/blob/maste
     var statusList = $("#app-status-ul");
 
     // if the notification contains a sound, play it.
-    if (e.sound) {
+    if (e.sound && (typeof Media != 'undefined')) {
       //install the media plugin to use this
       var media = new Media("/android_asset/www/" + e.sound);
       media.play();
@@ -165,8 +184,8 @@ Full example (https://github.com/aerogear/aerogear-pushplugin-cordova/blob/maste
     }
   }
 
-  function successHandler(result) {
-    $("#app-status-ul").append('<li>success:' + result + '</li>');
+  function successHandler() {
+    $("#app-status-ul").append('<li>success</li>');
   }
 
   function errorHandler(error) {
