@@ -141,7 +141,7 @@ registrar.unregister(getApplicationContext(), new Callback<Void>() {
 
 Currently, push messages are received by an instance of AeroGearGCMMessageReceiver. They are processed and passed to Registrations via the protected notifyHandlers method.  
 
-Classes which implement MessageHandler can ask that their methods be called on either the UI thread or on a background thread.  UI threads are most useful for Activities and Fragments, background threads are most useful for everything else.
+Classes which implement MessageHandler can ask that their methods be called on either the UI thread using Registrations:registerMainThreadHandler or on a background thread using Registrations:registerBackgroundThreadHandler. UI threads are most useful for Activities and Fragments, background threads are most useful for everything else.
 
 In an Activity you MUST remove the handler when the Activity goes into the background and MUST reenable it when it comes into the foreground.
 
