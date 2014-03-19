@@ -79,7 +79,7 @@ link:https://issues.jboss.org/issues/?filter=12320567[1.3.1 (Released on Decembe
 ** link:https://issues.jboss.org/browse/AGDROID-139[AGDROID-139]: API Wrappers for Keystore
 ** link:https://issues.jboss.org/browse/AGDROID-129[AGDROID-129]: Generate key from passphrase
 
-link:https://issues.jboss.org/issues/?filter=12320506[1.4 (Mid March)]
+link:https://issues.jboss.org/issues/?filter=12320506[1.4 (Mid April)]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Documentation
@@ -92,12 +92,12 @@ link:https://issues.jboss.org/issues/?filter=12320506[1.4 (Mid March)]
 * Tests
 ** link:https://issues.jboss.org/browse/AGDROID-215[AGDROID-215]: New backend app to use on integration-tests and example apps
 
-link:https://issues.jboss.org/issues/?filter=12320857[1.5 (Mid June)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 * Authentication
 ** link:https://issues.jboss.org/browse/AGDROID-225[AGDROID-225]: OAuth2
 ** link:https://issues.jboss.org/browse/AGDROID-222[AGDROID-222]: Keycloak integration
+
+link:https://issues.jboss.org/issues/?filter=12320857[1.5 (Mid June)]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Offline
 ** link:https://issues.jboss.org/browse/AGDROID-223[AGDROID-223]: Offline Authentication
