@@ -6,6 +6,7 @@ title: AeroGear iOS API Cookbook
 == AeroGear iOS API Cookbook
 
 The goal of this guide is to introduce you to the current available AeroGear iOS Core APIs.
+
 :sourcedir: docs/guides/aerogear-ios
 
 include::{sourcedir}/Pipe.asciidoc[tags=pipe]
