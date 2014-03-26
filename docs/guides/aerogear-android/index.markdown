@@ -11,7 +11,7 @@ title: AeroGear Android User Guide
 * [Pipe](pipe)
 * [Pagination](AerogearAndroidPagination)
 * [Authentication](AerogearAndroidAuthentication)
-* [Store](AerogearAndroidDataStore)
+* [Store](store)
 * [Push Messaging](push)
 
 ## Example apps
