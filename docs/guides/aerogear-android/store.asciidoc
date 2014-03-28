@@ -10,7 +10,7 @@ AeroGear Android provides a simple data storage API.  This API is useful for cac
 === API Overview  
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*] 
- : A factory and provider of link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*] implementations.  It behaves similarly to link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Pipeline.html[*Pipeline*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*]. Since link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*] implementations are synchronous, it does not have nor provide Loader wrappers.
+ : A factory and provider of different link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*] implementations.  It behaves similarly to link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Pipeline.html[*Pipeline*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*]. Since link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*] implementations are synchronous, it does not have nor provide Loader wrappers.
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*]
  : An interface which different store implementations implement.
@@ -19,17 +19,18 @@ link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/St
 : An enum class with values link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreTypes.html#MEMORY[*MEMORY*] and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreTypes.html#SQL[*SQL*]. 
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/SQLStore.html[*SQLStore*]  
-: A Store implementation which writes to a backing SQLLite database.  
+: A concrete Store implementation which writes to a backing SQLite database.  
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/MemoryStorage.html[*MemoryStore*]
-: A Store implementation which is backed by a HashMap in memory.
+: A concrete Store implementation which is backed by a HashMap in memory.
 
 === How to use it
 
-==== Creating a Memory Store
+==== Creating a Store
 
-To create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/MemoryStorage.html[*MemoryStore*] we can use a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreConfig.html[*StoreConfig*] bean and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*]. A Memory store will go away when the application is removed from memory and is best used for short term caching.  
+To create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/Store.html[*Store*], invoke link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*] store factory method, passing along a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreConfig.html[*StoreConfig*] object, with the type set to either StoreTypes.MEMORY for an in-memory backed store, or StoreTypes.SQL for an sqlite backed store. A name should be also provided to distinquish between different stores that this link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*] can hold.
 
+.MemoryStore
 [source,java]
 ----
 StoreConfig memoryStoreConfig = new StoreConfig(MyModel.class);  
@@ -40,10 +41,9 @@ DataManager dataManager = new DataManager();
 Store store = dataManager.store("memoryStore", memoryStoreConfig);    
 ----
 
-==== Creating a SQLStore
+Note: A Memory store will go away when the application is removed from memory and is best suited for short term caching.
 
-To create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/SQLStore.html[*SQLStore*] we can use a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/StoreConfig.html[*StoreConfig*] bean and link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*]. A SQL store needs to be opened using the `open` method. `Open` takes a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*Callback*] which is called after the database is ready for writing.
-
+.SQLStore
 [source,java]
 ----
 StoreConfig sqlStoreConfig = new StoreConfig(MyModel.class);  
@@ -55,7 +55,7 @@ Store store = dataManager.store("sqlStore", sqlStoreConfig);
 ((SQLStore))store).open(/*callback*/);  
 ----
 
-Both Store types implement the same interface. In the case of a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/SQLStore.html[*SQLStore*] you will need to make sure open has been called before you use any of these methods however.
+Note: for an SQLStore you will need to make sure that 'open' has been called before you can access it.
 
 ==== Object ID's
 
@@ -69,7 +69,7 @@ private UUID id
 
 The Store implementation will use an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/IdGenerator.html[*IdGenerator*] object to generate an id when you save the object. By default the Store will use link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/datamanager/DefaultIdGenerator.html[DefaultIdGenerator] to create a new UUID value for your id field. If you are not using a UUID to represent your id field, you need to implement your own link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/IdGenerator.html[*IdGenerator*]
 
-Your link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/IdGenerator.html[*IdGenerator*] which can be used for all your link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*] stores
+To share the same link:/docs/specs/aerogear-android/org/jboss/aerogear/android/datamanager/IdGenerator.html[*IdGenerator*] between the different store instances, apply it during the construction of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/DataManager.html[*DataManager*]
 
 [source,java]
 ----
@@ -88,7 +88,7 @@ PS: AeroGear does not control the id value. This is delegated to IdGenerator, so
 
 ==== Saving Data  
 
-The method save is used to insert a new or update record. The Store will search for @RecordId and check if the field with this annotation is null
+The method save is used to insert a new record or update an existing one. To distinquish between the two, the @RecordId annotation will be scanned on the model class and if the field with this annotation is found to be null, a new record will be inserted otherwise an update will be applied.
 
 [source,java]
 ----
@@ -124,9 +124,7 @@ Take a look at the complete example in our link:https://github.com/aerogear/aero
 
 ==== Encrypted Stores
 
-If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. 
-
-The Encrypted Store will be use link:https://github.com/aerogear/aerogear-crypto-java[aerogear-crypto-java] to encrypt/decrypt your data.
+If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support, building on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-java[aerogear-crypto-java], encrypted variants of both memory (StoreTypes.ENCRYPTED_MEMORY) and SQLite (StoreTypes.ENCRYPTED_SQL) are provided.
 
 [source,java]
 ----
@@ -138,5 +136,4 @@ Store store = (EncryptedSQLStore<MyModel>) dataManager.encryptedStore("cryptoSto
 		storeConfig, "Your passphrase", MyModel.class);
 ----
 
-If you want to see it all together, give a try to link:https://github.com/aerogear/aerogear-crypto-android-demo[AeroGear Crypto Demo app]. This application shows you how using encrypted storage you can store in a central point all your passwords.
-
+If you want to see it all together, give a try to link:https://github.com/aerogear/aerogear-crypto-android-demo[AeroGear Crypto Demo app]. The application demonstrates how you can use encrypted storage to store in a central point all your passwords.
