@@ -21,9 +21,9 @@ This guide will go in depth on these two topics; however, we will also discuss b
 
 Interaction with Authentication services is mediated using classes which implement the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] interface, register themselves with the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] factory class, and apply themselves to a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] using link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*].
 
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] wraps up URL fields for enrolling, logging in, and logging out and defines the methods which call these URLs.  Once a login has been succesfully completed, it also provides an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthorizationFields.html[*AuthorizationFields*] object which encapuslates the necessary parameteres for applying authorization to a request via a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] wraps up URL fields for enrolling, logging in, and logging out and defines the methods which call these URLs.  Once a login has been successfully completed, it also provides an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthorizationFields.html[*AuthorizationFields*] object which encapsulates the necessary parameters for applying authorization to a request via a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].
 
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] is a manager and a factory. It can consume an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationConfig.html[*AuthenticationConfig*] object and instanciate a module tuned to work with a based server, or you can create a custom link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] and register it with then link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*].  link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] also supplies getters which can wrap any link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] in a proxy which delegates calls to the server to an Android Loader.
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] is a manager and a factory. It can consume an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationConfig.html[*AuthenticationConfig*] object and instantiate an appropriate built-in module tuned to work with a specific server configuration, or you can provide your own custom link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] and register it with then Authenticator. We will see an example of a custom authentication module later in the guide, where we will build a custom authentication module that goes against the popular Reddit web service.
 
 *AbstractAuthenticationModule* is a convenience class for integrating with non AeroGear REST services.  It is also useful for when you want to only support a subset of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*]'s functionality, and it configures a THREAD_POOL_EXECUTOR for you to delegate your network calls to.  
 
@@ -57,7 +57,7 @@ While the application is not logged in, link:/docs/specs/aerogear-android/org/jb
 authenticationModule.login("myUsername", "myPassword", myCallback);
 ----
 
-By default the authenticator will send a Json using the default keys (_loginName_ and _password_). If your server expected a diferent keys you can use a map to send it.
+By default the authenticator will send a Json using the default keys (_loginName_ and _password_). If server expects different keys you can use a map to send it.
 
 .loginWithCustomKeys
 [source,java]
@@ -89,7 +89,7 @@ authenticationModule.enroll(userData, myCallback);
 
 ==== Authentication Types
 
-For now we support 3 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/AuthTypes.html[*authentication types*].
+For now we support three link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/AuthTypes.html[*authentication types*].
 
 * AG_SECURITY (Login/Password)
 * HTTP_BASIC
@@ -112,7 +112,9 @@ Take a look at the complete example in our link:https://github.com/aerogear/aero
 
 AeroGear Android\'s Authentication API provides a framework for supporting many other RESTful services. Obviously this guide cannot cover all of them, but we will review custom authentication with one third party service, link:http://www.reddit.com[Reddit].
 
-To retrieve the tokens Reddit requires for accessing a user\'s data we must log in as that user.  Reddit\'s login service consumes a HTTP POST at the URL http://www.reddit.com/api/login/%username with the Content-Type of application/x-www-form-urlencoded.  The request body is required to also the parameters `user`, `passwd`, and `api_type`.  It returns a JSON response with parameters "json.data.modhash" and "json.data.cookie".  These parameters are extracted as part of the `login` method and passed to the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementation from the `getAuthorizationFields` method.
+To retrieve the tokens Reddit requires for accessing a user\'s data we must log in as that user.  Reddit\'s login service consumes a HTTP POST at the URL http://www.reddit.com/api/login/%username with the Content-Type of application/x-www-form-urlencoded.  The request body is required to also include the parameters `user`, `passwd`, and `api_type`.  It returns a JSON response with parameters "json.data.modhash" and "json.data.cookie".  These parameters are extracted as part of the `login` method and passed to the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementation from the `getAuthorizationFields` method.
+
+Every Pipe request against the Reddit service from now on, will include these authorisation parameters as part of the request.
 
 ==== RedditAuthenticationModule
 
