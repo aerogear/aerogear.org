@@ -166,7 +166,7 @@ External References
     ** AGSEC-135: Allow password to be decrypted and displayed on the screen
 
 
-1.4.0 (End Mar, 2014)
+1.4.0 (End Apr, 2014)
 ~~~~~~~~~~~~~~~~~~~~~
 
 * AGSEC-2: Secure storage and cache documentation
@@ -195,7 +195,7 @@ External References
 
     ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
 
-1.5.0 (End Apr, 2014)
+1.5.0 (Mid Jun, 2014)
 ~~~~~~~~~~~~~~~~~~~~~
 
 * AGSEC-17: Mobile devices blacklist support
@@ -213,7 +213,7 @@ External References
 * AGSEC-138: Hold the fort
 
 
-2.0.0 (End May, 2014)
+2.0.0 (Mid Jul, 2014)
 ~~~~~~~~~~~~~~~~~~~~~
 
 * AGSEC-3: Url and Forms that perform important operations must be protected by random tokens (hidden nonce values)
