@@ -45,6 +45,14 @@
 	
 	<option value="//api/name/dump">&nbsp;&nbsp;&nbsp;&nbsp;- dump</option>
 	
+	<option value="//api/name/filter:">&nbsp;&nbsp;&nbsp;&nbsp;- filter:</option>
+	
+	<option value="//api/name/read:">&nbsp;&nbsp;&nbsp;&nbsp;- read:</option>
+	
+	<option value="//api/name/readAll">&nbsp;&nbsp;&nbsp;&nbsp;- readAll</option>
+	
+	<option value="//api/name/save:error:">&nbsp;&nbsp;&nbsp;&nbsp;- save:error:</option>
+	
 	<option value="//api/name/save:forKey:">&nbsp;&nbsp;&nbsp;&nbsp;- save:forKey:</option>
 	
 	
@@ -76,6 +84,14 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dump">dump</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/filter:">filter:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:">read:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readAll">readAll</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save:error:">save:error:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save:forKey:">save:forKey:</a></span></li>
 	
@@ -131,7 +147,7 @@
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
@@ -143,6 +159,38 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/dump">&ndash;&nbsp;dump</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/readAll">&ndash;&nbsp;readAll</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/read:">&ndash;&nbsp;read:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/filter:">&ndash;&nbsp;filter:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/save:error:">&ndash;&nbsp;save:error:</a></code>
 	</span>
 	
 	
@@ -208,6 +256,228 @@ later retrieval.</p>
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGEncryptedMemoryStorage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/filter:" title="filter:"></a>
+	<h3 class="subsubtitle method-title">filter:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads all, based on a filter, from the underlying storage system.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)filter:(NSPredicate *)<em>predicate</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>predicate</em></dt>
+			<dd><p>The NSPredicate to apply to the data from the underlying storage system.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A collection (NSArray), containing all stored objects, matching the given predicate.
+This method only returns a copy of the data and leaves the underlying storage system intact.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads all, based on a filter, from the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/read:" title="read:"></a>
+	<h3 class="subsubtitle method-title">read:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads a specific object/record from the underlying storage system.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)read:(id)<em>recordId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordId</em></dt>
+			<dd><p>id from the desired object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The object (or nil) read from the underlying storage.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads a specific object/record from the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/readAll" title="readAll"></a>
+	<h3 class="subsubtitle method-title">readAll</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads all the data from the underlying storage system.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)readAll</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A collection (NSArray), containing all stored objects.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads all the data from the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/save:error:" title="save:error:"></a>
+	<h3 class="subsubtitle method-title">save:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Saves the given object in the underlying storage system.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)save:(id)<em>data</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>A mutable dictionary representing key/value, dictionary must be mutable as
+id is optional and can be added after being saved. Data can also be a collection (e.g. NSArray) of
+mutable dictionary. This parameter is the object being persisted.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error object containing details of why the save failed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the operation succeeds, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Saves the given object in the underlying storage system.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGStore.h</code><br />
 	</div>				
 	
 	
@@ -288,7 +558,7 @@ the key that this EncryptedMemory storage was initialized in.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-03-31)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
