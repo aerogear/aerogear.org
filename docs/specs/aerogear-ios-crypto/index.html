@@ -34,41 +34,26 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>aerogear-crypto-ios</h1>
+						<h1>aerogear-crypto-ios <a href="https://travis-ci.org/aerogear/aerogear-crypto-ios"><img src="https://travis-ci.org/aerogear/aerogear-crypto-ios.png" alt="Build Status" /></a></h1>
 
 <h2>Project Aim</h2>
 
 <p><em>&ldquo;Crypto for Humans&rdquo;</em></p>
 
-<p>The aim of the project is to provide useful and easy to use API interfaces for performing advanced cryptographic techniques in the iOS platform. We base our work on the existing <a href="http://tinyurl.com/n6zf3le">Security and CommonCrypto</a> services  already provided by the platform, but we strive to provide a friendlier interface around those services. Anyone who has tried to use those frameworks directly can understand the pain of using them (conversion of CF data types to Obj-C anyone?), let alone using them correctly. We understand that applying good cryptographic techniques is not an easy task and requires deep knowledge of the underlying concepts. But we <em>strongly</em> believe a &ldquo;friendlier&rdquo; developer interface can ease the pain.</p>
+<p>The aim of the project is to provide useful and easy to use API interfaces for performing advanced cryptographic techniques in the iOS platform. Anyone who has tried to use the underlying crypto functionality APIs provided by the iOS, or to integrate with external crypto libraries like OpenSSL, can understand how frustrated the experience can be. The reasons for this are twofold. Firstly, all crypto libraries offer a variety of cryptographic primitives and you need to make a lot of decisions about which specific pieces to use. And if your decisions are wrong, the end-result will be an insecure system. Secondly, most libraries are written using the C language (and for a good reason), but this results in cumbersome usage for an obj-c developer (with potentially adverse and dangerous consequences for the unfamiliar).</p>
+
+<p>By leveraging the state-of-the-art <a href="http://nacl.cr.yp.to">NaCl</a> encryption library, which provides extremely powerful cryptographic primitives so the developer doesn&rsquo;t need to worry on choosing the &ldquo;right&rdquo; one and offering an easy-to-use interfaces around the platform&rsquo;s build-in Security and CommonCrypto services, we believe Crypto can be transformed from a frustrating experience to an enjoyable one.</p>
+
+<p>We understand that applying good cryptographic techniques is not an easy task and requires deep knowledge of the underlying concepts. But we strongly believe a &ldquo;friendlier&rdquo; developer interface can ease that pain.</p>
 
 <p>The project shares the same vision with our sibling AeroGear project <a href="https://github.com/aerogear/aerogear-crypto-java">AeroGear-Crypto-Java</a>. If you are a Java developer, we strongly recommend to look at the project.</p>
 
-<p>The project is also the base of providing cryptographic services to <a href="http://www.aerogear.org">AeroGear-IOS</a> library project.</p>
+<p>The project is also the base for providing cryptographic services to <a href="http://www.aerogear.org">AeroGear-IOS</a> library project.</p>
 
-<h2>Project Status</h2>
-
-<p>Currently we are in our initial stages, setting the ground for the next items to come. In particular, the following services are currently provided:</p>
+<h2>Requirements</h2>
 
 <ul>
-<li>A <a href="http://en.wikipedia.org/wiki/Symmetric-key_algorithm">Symmetric encryption</a> interface</li>
-<li>Password based key generation using <a href="http://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a></li>
-<li>Generation of Cryptographically secure <a href="http://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator">random numbers</a>.</li>
-</ul>
-
-
-<p>Currently the <a href="https://github.com/aerogear/aerogear-ios">AeroGear-iOS</a> library is already using it to provide initial versions of an encrypted memory and Property List versions of it&rsquo;s data stores interface. Have a look at the Cryptography support section <a href="http://aerogear.org/docs/guides/iOSCookbook/">here</a> for a brief guide of example usage of the API. The page would be continuously enhanced as more items are added into the library.</p>
-
-<h2>Ongoing work</h2>
-
-<p>Work is under way to provide the following features:</p>
-
-<ul>
-<li>An Asymmetric encryption interface</li>
-<li>Digital signatures support interface</li>
-<li>Hashing functions wrapper interface</li>
-<li>Apple&rsquo;s keychain wrapper interface</li>
-<li>Message authentication support</li>
+<li>iOS 7 or higher</li>
 </ul>
 
 
@@ -78,8 +63,103 @@
 
 <h4>Podfile</h4>
 
-<pre><code>pod "AeroGear-Crypto", '0.1.0'
+<pre><code>pod "AeroGear-Crypto", '0.2.3'
 </code></pre>
+
+<h2>Project Status</h2>
+
+<p>The following services are currently provided:</p>
+
+<ul>
+<li>A <a href="http://nacl.cr.yp.to/secretbox.html">Symmetric encryption</a> interface</li>
+<li>An <a href="http://nacl.cr.yp.to/box.html">Asymmetric encryption interface</a></li>
+<li>Password based key generation using <a href="http://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a></li>
+<li>Generation of Cryptographically secure <a href="http://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator">random numbers</a>.</li>
+<li><a href="http://ed25519.cr.yp.to">Digital signatures</a> support interface</li>
+<li><a href="http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf">Hashing functions</a> interface</li>
+</ul>
+
+
+<h2>Getting started</h2>
+
+<h3>Password based key derivation</h3>
+
+<pre><code>AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
+NSData *rawKey = [pbkdf2 deriveKey:@"passphrase"];
+</code></pre>
+
+<h3>Symmetric encryption</h3>
+
+<pre><code>//Generate the key
+AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
+NSData *privateKey = [pbkdf2 deriveKey:@"passphrase"];
+
+//Initializes the secret box
+AGSecretBox *secretBox = [[AGSecretBox alloc] initWithKey:privateKey];
+
+//Encryption
+NSData *nonce = [AGRandomGenerator randomBytes:32];
+NSData *dataToEncrypt = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
+
+NSData *cipherData = [secretBox encrypt:dataToEncrypt nonce:nonce];
+
+//Decryption
+AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:privateKey];
+NSData *message = [secretBox decrypt:cipherData nonce:nonce];
+</code></pre>
+
+<h3>Asymmetric encryption</h3>
+
+<pre><code>//Create a new key pair
+AGKeyPair *keyPairBob = [[AGKeyPair alloc] init];
+AGKeyPair *keyPairAlice = [[AGKeyPair alloc] init];
+
+//Initializes the crypto box
+AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:keyPairAlice.publicKey privateKey:keyPairBob.privateKey];
+
+NSData *nonce = [AGRandomGenerator randomBytes:32];
+NSData *dataToEncrypt = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
+
+NSData *cipherData = [cryptoBox encrypt:dataToEncrypt nonce:nonce];
+
+//Create a new box to test end to end asymmetric encryption
+AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:keyPairBob.publicKey privateKey:keyPairAlice.privateKey];
+
+NSData *message = [pandora decrypt:cipherData nonce:nonce];
+</code></pre>
+
+<h3>Hashing functions</h3>
+
+<pre><code>// create an SHA256 hash
+AGHash *agHash = [[AGHash alloc] init:CC_SHA256_DIGEST_LENGTH];
+NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
+
+// create an SHA512 hash
+AGHash *agHash = [[AGHash alloc] init:CC_SHA512_DIGEST_LENGTH];
+NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
+</code></pre>
+
+<h3>Digital Signatures</h3>
+
+<pre><code>NSData *message = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
+
+AGSigningKey *signingKey = [[AGSigningKey alloc] init];
+AGVerifyKey *verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
+// sign the message
+NSData *signedMessage = [signingKey sign:message];
+
+// should detect corrupted signature
+NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
+BOOL isValid = [verifyKey verify:message signature:signedMessage];
+
+// isValid should be YES
+BOOL isValid = [verifyKey verify:message signature:corruptedSignature];
+// isValid should be NO
+</code></pre>
+
+<h3>Generation of Cryptographically secure Random Numbers</h3>
+
+<p>   NSData *random = [AGRandomGenerator randomBytes:<length>];</p>
 
 <h2>Join us</h2>
 
@@ -98,16 +178,39 @@
 							
 							<li><a href="Classes/AGCryptoBox.html">AGCryptoBox</a></li>
 							
+							<li><a href="Classes/AGHash.html">AGHash</a></li>
+							
+							<li><a href="Classes/AGKeyPair.html">AGKeyPair</a></li>
+							
 							<li><a href="Classes/AGPBKDF2.html">AGPBKDF2</a></li>
 							
 							<li><a href="Classes/AGRandomGenerator.html">AGRandomGenerator</a></li>
 							
-							<li><a href="Classes/AGSymmetricCryptoEngine.html">AGSymmetricCryptoEngine</a></li>
+							<li><a href="Classes/AGSecretBox.html">AGSecretBox</a></li>
+							
+							<li><a href="Classes/AGSigningKey.html">AGSigningKey</a></li>
+							
+							<li><a href="Classes/AGUtil.html">AGUtil</a></li>
+							
+							<li><a href="Classes/AGVerifyKey.html">AGVerifyKey</a></li>
 							
 						</ul>
 					</div>
 					
 					
+						
+					<div class="index-column">
+						
+                        
+						<h2 class="index-title">Constant References</h2>
+						<ul>
+                        
+                        <li><a href="Constants/AGCryptoErrorCodes.html">AGCryptoErrorCodes</a></li>
+                        
+						</ul>
+						
+						
+					</div>
 					
 				</div>
 				<div class="main-navigation navigation-bottom">
@@ -116,7 +219,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-11-19)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-03-31)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
