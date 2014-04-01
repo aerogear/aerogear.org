@@ -6,7 +6,7 @@ title: AeroGear Data Sync
 
 # References
 
-- [Jira](https://issues.jboss.org/browse/AEROGEAR/component/12318941)
+- [Jira](https://issues.jboss.org/browse/AEROGEAR-1374)
 - [CouchDB data model](http://wiki.apache.org/couchdb/EntityRelationship)
 
 # Features
@@ -82,6 +82,9 @@ Since we know about the future-looking ideas on v2.0, it would be really nice fo
 - [Client API Proposals](aerogear-sync-client-api)
 - [Server API Proposals](aerogear-sync-server-api)
 
+# AeroGear Data Sync 0.0.1
+
+- [AEROGEAR-1462](https://issues.jboss.org/browse/AEROGEAR-1462) - Send/Receive Updates
 
 # AeroGear.next
 
