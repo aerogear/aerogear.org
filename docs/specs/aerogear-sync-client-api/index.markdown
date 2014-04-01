@@ -193,6 +193,42 @@ SYNC_MESSAGE_KEY
 : This is a key which should be present in the alarm intent.  It will be used by the Receiver to route update messages to the correct synchronizer.
 
 
+## Periodic Read Only Update
+
+Use cases where caching data is useful and where it should be transparent and long lived are covered by this.
+
+### Usage proposal: Reading a schedule (Android)
+
+
+    PipeConfig pipeConfig = buildConfig()
+  
+    SyncConfig syncConfig = new SyncConfig();
+    syncConfig.setType(SyncTypes.PeriodicReadOnly);
+    syncConfig.setExpiresIn(SyncConfig.24_HOURS);
+  
+    pipeConfig.setSync(syncConfig);
+  
+    Pipe<Schedule> schedulePipe = pipeline.pipe(pipeConfig);
+  
+    schedulePipe.read(/*call back*/);
+    /*
+    This will check a SQL Store, notice there is no data, fetch the data, and store metadata about when it was fetched.
+    */
+  
+    //12 Hours later
+    schedulePipe.read(/*call back*/);
+    /*
+    This will check a SQL Store, notice there is data, notice it is inside of the expires time, and return it.
+    No call to the remote source will be made.
+    */
+  
+    //36 Hours later
+    schedulePipe.read(/*call back*/);
+    /*
+    This will check a SQL Store, notice there is data, notice it is stale, and refetch and refresh the data.
+    */
+
+
 ## Topics not addressed
  
 * Data life cycle
