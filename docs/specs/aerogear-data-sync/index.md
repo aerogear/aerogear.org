@@ -4,42 +4,12 @@ title: AeroGear Data Sync
 ---
 # Status: Experimental
 
-# Goals
-
-- TBD
-
 # References
 
+- [Jira](https://issues.jboss.org/browse/AEROGEAR/component/12318941)
 - [CouchDB data model](http://wiki.apache.org/couchdb/EntityRelationship)
 
-# Implementation
-
-- [AeroGear Sync Server](https://github.com/aerogear/aerogear-sync-server)
-
-# Scenarios
-
-- TBD
-
-# API specification
-
-This document defines a common API for each mobile platform to make sure that everyone will be speaking about the same domain/vocabulary. 
-
-## Levels
-
-As soon as we have a rough data-model defined, we can start dabbling around different API levels to be served:
-
-- level 0: explodes when there's a conflict
-- level 1: semi-automatic conflict resolution via something like google's diff-match-patch
-- level 2: business rules determine who wins a conflicting update (supervisor wins over normal user)
-
-All those proposed API operations should be serializable, meaning I can potentially keep doing changes offline then just replying them to the server when online.
-
-## Data model
-* [Data Format](aerogear-sync-data-format)
-
-## Consistency
-
-These are the most basic parts of sync I can think of that our system should be able to do/manage.  Our internal representation of the client documents and collections should make implementing this automatically and without user intervention as simple as possible
+# Features
 
 * Detect Change
 
@@ -65,23 +35,53 @@ These are the most basic parts of sync I can think of that our system should be 
 
     There must be a mechanism for resolving a conflict.  The CAN be done automatically using default resolvers provided by AeroGear, by using a resolver provided by the developer/user, or by the app user selecting the correct merge.  This will possibly generate a new sync message.
 
-### JS
 
-volunteers needed ;)
+# Scenarios
 
-### Java
+| Use Case      | Push/Poll 	| Realtime 	| Server | APIs Used 
+| ------------- |:-----------:| --:| ---------:| -------:|
+| Periodic Read Only Update | Poll | N | Any legacy | Pipelines, Authentication, Stores 
+| Real Time Read Only Update | Push | Y(ish) | Legacy + Updates for Unified Push | Unified Push, Store 
+| Simple Settings Sync | Push | Y(ish) | Legacy + Updates for Unified Push + Updates for conflict mgmt | Pipelines, Authentication, UnifiedPush, Store
+| Real Time Text Sync | Push | Y | Needs lots of custom code, vert.x realtime component | UnifiedPush, Store 
 
-volunteers needed ;)
 
-### Objective-C
+# API specification
 
-volunteers needed ;)
+This document defines a common API for each mobile platform to make sure that everyone will be speaking about the same domain/vocabulary. 
+
+## Levels
+
+As soon as we have a rough data-model defined, we can start dabbling around different API levels to be served:
+
+- level 0: explodes when there's a conflict
+- level 1: semi-automatic conflict resolution via something like google's diff-match-patch
+- level 2: business rules determine who wins a conflicting update (supervisor wins over normal user)
+
+All those proposed API operations should be serializable, meaning I can potentially keep doing changes offline then just replying them to the server when online.
+
+## Data model
+
+This data model is defined in JavaScript Object Notation (JSON) and specifies the application protocol for AeroGear Data Sync.
+
+
+| Name | Type        | Required    | Description
+| ------------- |:-----------:|:-----------:|:-----------:|
+| id            | String      | N           | Global identifier for the object |  
+| rev           | String      | N           | Revision of the object. When a object gets updated the revision will be incremented  |  
+| content       | String      | Y           | This is the sync data for the application. It may be a diff, a whole object, etc.     |  
 
 ## Transport
 
 Since we know about the future-looking ideas on v2.0, it would be really nice for us to specify a very simple/dumb JSON-based protocol for those change messages. Something that could accomodate both the full document updates and the OT/EC incremental bits too. 
 
 - TBD 
+
+# Implementation reference
+
+- [Client API Proposals](aerogear-sync-client-api)
+- [Server API Proposals](aerogear-sync-server-api)
+
 
 # AeroGear.next
 
@@ -90,6 +90,31 @@ Since we know about the future-looking ideas on v2.0, it would be really nice fo
 - Advanced levels of the API
     - level 3: real-time updates via diff-match-patch
     - level 4: real-time updates via OT/EC
+
+## Reference (Open Source) Products:
+
+- Wave-in-a-box
+
+- CouchDB
+
+- Google Drive RealtimeAPI
+
+- [diff-merge-patch algorithm](http://code.google.com/p/google-diff-match-patch/)
+
+- [Summers' Realtime Sync Demo](http://www.youtube.com/watch?v=WEkZGbVk4Lc)
+
+- [Summers' Devnexus Sync Demo](https://plus.google.com/103442292643366117394/posts/HGVHwtPArPW)
+
+- Google Android Sync Architecture
+
+
+# Questions for consideration:
+
+How will save/delete work?
+How will readWithFilter work?
+What happens if we have stale data and no internet connection?
+Should we include a job which fetches data in the background instead of checking when the call is made?
+
 
 # Appendix Use Cases:
 
@@ -165,21 +190,6 @@ Now they start finding expired fire extinguishers and start to add them to the r
 
 Census system - we have mobile apps focused on offline data collection. We have the previous year's info that needs to be updated on the server. The interviewee needs to take a call, then asks the interviewer to come back later. This results in two sets of changes for the same document, stacked together, which should work flawlessly.
 
-## Reference (Open Source) Products:
-
-- Wave-in-a-box
-
-- CouchDB
-
-- Google Drive RealtimeAPI
-
-- [diff-merge-patch algorithm](http://code.google.com/p/google-diff-match-patch/)
-
-- [Summers' Realtime Sync Demo](http://www.youtube.com/watch?v=WEkZGbVk4Lc)
-
-- [Summers' Devnexus Sync Demo](https://plus.google.com/103442292643366117394/posts/HGVHwtPArPW)
-
-- Google Android Sync Architecture
 
 
 
