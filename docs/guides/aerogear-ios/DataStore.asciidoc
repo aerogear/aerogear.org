@@ -2,7 +2,7 @@
 layout: basic
 title: Store and DataManager
 ---
-
+// tag::store[]
 == Store and DataManager
 
 A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage (note that encrypted variants of these stores are also available, check the <<crypto, Cryptography support>> section below).
@@ -169,4 +169,6 @@ A simple _Property list_ storage system is part of the library as well that uses
 NOTE
 You must adhere to the rules governing the serialization of data types for each respective plist type.
    
-The 'read', 'reset' or 'remove' API behave the same, as on the default ("in memory") store. 
+The 'read', 'reset' or 'remove' API behave the same, as on the default ("in memory") store.
+
+// end::store[]
