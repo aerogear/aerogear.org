@@ -24,7 +24,6 @@ title: Specifications
 * [AeroGear Security 1.2.1](aerogear-security)
 * [AeroGear Security PicketLink 1.2.1](aerogear-security-picketlink)
 * [AeroGear Security Shiro 0.1.0](aerogear-security-shiro)
-* [REST API](aerogear-rest-api)
 * [AeroGear Security OTP](aerogear-security-otp)
 
 #### UnifiedPush Specifications
