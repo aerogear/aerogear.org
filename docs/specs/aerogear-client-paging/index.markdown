@@ -6,7 +6,7 @@ title: AeroGear Client Paging
 
 # Client Paging
 
-This document describes the client side interfaces which a developer can use to Page through data obtained from remote rest services.  This document describes both how to interact with the Aerogear-Controller based paging as well how to extend the client libraries and APIs to support most other restful services.
+This document describes the client side interfaces which a developer can use to Page through data obtained from remote rest services.  This document describes both how to interact with paging enabled applications as well how to extend the client libraries and APIs to support most other restful services.
 
 At a high level, Paging is supported through the Pipe's `read` method (see the platform API doc, for specific details).
 
@@ -14,7 +14,7 @@ At a high level, Paging is supported through the Pipe's `read` method (see the p
 
 In order to start a paging request, the API needs to accept a configuration setting, which sets the offset of the first element that should be included in the returned collection (`offset`) and the number of results that should be listed on a page (`limit`). The different platform SDKs may support different ways to apply the _paging configuration_ (see the platform API doc, for specific details).
 
-The actual Pipe implementation will be responsible for processing a request along with any paging data and sending the appropriate headers, data, and query parameters to the server (see [Server API spec](https://gist.github.com/4537431)).  Once the response has been received, the Pipe implementation will provide the result to the supplied callback (see the platform API doc, for specific details).
+The actual Pipe implementation will be responsible for processing a request along with any paging data and sending the appropriate headers, data, and query parameters to the server application.  Once the response has been received, the Pipe implementation will provide the result to the supplied callback (see the platform API doc, for specific details).
 
 
 ***
@@ -35,8 +35,6 @@ An object to apply general information about a (paging) request.
 
 - _nextIdentifier_: String, the `next` identifier name (default: `next`) 
 - _previousIdentifier_: String, the `previous` identifier name (default: `previous`) 
-
-_NOTE:_ The AeroGear-Controller uses the [Web Linking](http://tools.ietf.org/html/draft-nottingham-http-link-header-10) API for this.
 
 
 #### Request- and Pipe- level
