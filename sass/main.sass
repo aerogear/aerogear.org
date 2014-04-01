@@ -457,6 +457,55 @@ div.section
   padding: 20px
   margin-right: 0
   margin-top: 0
+  
+/* =================== Toc =====================================================================
+ */
+.core #toc li.toc-active:before
+  border-color: $core-color
+
+#toc 
+  position: fixed
+  padding-top: 2em
+
+  li.toc-active:before
+    content: ""
+    border-left: 4px solid
+    padding-right: 10px
+    margin-left: -14px
+      
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+
+  li 
+    padding: 5px 10px
+
+  a 
+    color: #fff
+    text-decoration: none
+    display: inline
+
+  .toc-h2 
+    padding-left: 10px
+
+  .toc-h3 
+    padding-left: 20px
+
+.content-column 
+  @include respond-to(desktop)
+    display: table-cell
+    padding-top: 2em
+    padding-right: 2em
+    .basic 
+      margin-top: 0
+
+.breadcrumb 
+  @include respond-to(desktop)
+    background-color: $code
+    display: table-cell
+    padding-right: 15em
+    padding-left: 3em  
 
 /* =================== Main page content: features ==================================================================
  */
