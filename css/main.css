@@ -230,6 +230,8 @@ div.section {
   color: #ebebeb;
   background-color: #323232;
   border-top: #121212 solid 16px; }
+  div.section.stick-to-menu {
+    border-top: 0px; }
   div.section i {
     color: grey; }
   div.section.core .sect1 h2 {
@@ -268,6 +270,22 @@ div.section {
     border: none; }
   div.section .hljs {
     background-color: #222222; }
+
+/* =================== GET IT pages =====================================================================
+ */
+div.section.core .sect2 object {
+  display: none;
+  color: #ebebeb; }
+  @media only screen and (min-width: 848px) {
+    div.section.core .sect2 object {
+      display: inline-block;
+      margin-left: -40px;
+      margin-top: 20px; } }
+div.section.core .sect2 h2 {
+  color: #ebebeb; }
+  @media only screen and (min-width: 848px) {
+    div.section.core .sect2 h2 {
+      margin-top: -40px; } }
 
 div.core a {
   color: #e17408;
@@ -310,6 +328,39 @@ div.security .section-strip {
 .section-strip {
   border-top-width: 4px;
   border-top-style: solid; }
+
+.rounded-box {
+  background-color: black;
+  margin-right: 5px;
+  padding: 1.5em 0.1em;
+  text-align: center;
+  border-radius: 15px; }
+  @media only screen and (max-width: 656px) {
+    .rounded-box {
+      margin-bottom: 1em; } }
+
+.center-text {
+  text-align: center; }
+
+/* =================== Contextual coloring of SVG images =====================================================================
+ */
+.core .drawing {
+  stroke: #e17408; }
+
+.core .filling {
+  fill: #e17408; }
+
+.push .drawing {
+  stroke: #c652bb; }
+
+.push .filling {
+  fill: #c652bb; }
+
+.security .drawing {
+  stroke: #6cc319; }
+
+.security .filling {
+  fill: #6cc319; }
 
 /* =================== Code tabs =====================================================================
  */
@@ -426,10 +477,6 @@ div.security .section-strip {
 
 /* =================== Main page content: features ==================================================================
  */
-.platform {
-  margin: auto;
-  max-width: 40em; }
-
 .features p {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -618,7 +665,7 @@ a#slide-menu-button:hover {
       padding-left: 0.5%; } }
 
 .column3 {
-  width: 30%; }
+  width: 31.9%; }
   @media only screen and (max-width: 656px) {
     .column3 {
       width: 100%;
@@ -761,13 +808,11 @@ pre {
  * ==================================================================================================================
  */
 @media print {
-  * {
-    background: transparent !important;
-    color: black !important;
-    /* Black prints faster: h5bp.com/s */
-    box-shadow: none !important;
-    text-shadow: none !important; }
-
+  background: transparent !important;
+    background-color: black !important;
+  /* Black prints faster: h5bp.com/s */
+    background-box-shadow: none !important;
+    background-text-shadow: none !important;
   a {
     text-decoration: underline; }
     a:visited {
@@ -791,9 +836,9 @@ pre {
     page-break-inside: avoid; }
 
   thead {
-    display: table-header-group;
-    /* h5bp.com/t  */ }
+    display: table-header-group; }
 
+  /* h5bp.com/t  */
   tr {
     page-break-inside: avoid; }
 
@@ -801,9 +846,8 @@ pre {
     page-break-inside: avoid;
     max-width: 100% !important; }
 
-  @page {
-    margin: 0.5cm; }
-
+  @page;
+  margin: 0.5cm;
   p, h2, h3 {
     orphans: 3;
     widows: 3; }

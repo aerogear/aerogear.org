@@ -1,0 +1,190 @@
+---
+layout: base
+title: Open Source Libraries for Mobile Connectivity
+---
+
+<div class="section stick-to-menu core">
+    <div class="section-strip"></div>
+    <div class="basic sect2">
+        <object id="get-it">Your browser does not support SVG</object>
+        <h2>Get AeroGear Core</h2>
+        <p><i>Cross-platform APIs for all your common client-server infrastructure tasks.</i></p>
+        <p><b>Authentication, Authorization, DataStores, Pipes and Pagination</b> APIs cover
+            all bases for day-to-day cross-platform development.</p>
+        <p>CLIENT<br/>
+        <i>Android, iOS, JavaScript APIs and Cordova plugins.</i></p>
+        <div class="column3 rounded-box">
+            AeroGear.Core<br/>
+            <i>v1.3.1 for Android</i> <br/>
+            <a href="https://github.com/aerogear/aerogear-android/archive/1.3.1.zip">zip</a> | <a href="https://github.com/aerogear/aerogear-android">source</a>
+        </div>
+        <div class="column3 rounded-box">
+            AeroGear.Core<br/>
+            <i>v1.4.0 for iOS</i><br/>
+            <a href="https://github.com/aerogear/aerogear-ios/zipball/1.4.0" target="_blank">zip</a> | <a href="https://github.com/aerogear/aerogear-ios">source</a>
+        </div>
+        <div class="column3 rounded-box">
+            AeroGear.Core<br/>
+            <i>v1.3.2 for JavaScript</i><br/>
+            <a href="https://github.com/aerogear/aerogear-js-dist/archive/1.3.2.zip" target="_blank">zip</a> | <a href="https://github.com/aerogear/aerogear-js">source</a> | <a href="custom/"> custom builder</a>
+        </div>
+        <div class="clearfix"></div>
+        <hr/>
+        <p>SERVER<br/>
+        <i>Any RESTful end points. Choose your weapon: JAX-RS, node.js REST etc...</i></p>
+        <p>You can use AeroGear.Core client libraries with any REST end points.</p>
+        <div class="rounded-box">
+            REST Server<br/>
+            <a href="">Example</a>
+        </div>
+
+        <div class="clearfix"></div><br/> <br/>
+    </div>
+</div>
+
+<div class="section core">
+    <div class="section-strip"></div>
+    <div class="basic sect2">
+        <object id="set-it-up" >Your browser does not support SVG</object>
+
+
+        <h2>Setting up AeroGear Core</h2>
+        <p>CLIENT</p>
+        <p><i>1. Get your environment ready</i></p>
+        <p>Depending on which platforms you target, you have different pre-requisites.</p>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href='#java0' data-toggle='tab'>Java</a></li>
+            <li ><a href='#ios0' data-toggle='tab'>iOS</a></li>
+            <li ><a href='#javascript0' data-toggle='tab'>JavaScript</a></li>
+            <li ><a href='#cordova0' data-toggle='tab'>Cordova</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="listingblock">
+                <div class="content">
+                    <pre><code class="java">
+You need <a href="https://github.com/mosabua/maven-android-sdk-deployer">Android Maven SDK Deployer</a> installed and configured.
+Read more on <a href="../docs/guides/GetStartedAndroid">Get started with android</a> | <a href="../docs/guides/GetStartedAndroidEclipse">Eclipse</a> | <a href="../docs/guides/GetStartedAndroidIntellij">Intellij</a> | <a href="../docs/guides/GettingStartedAndroidNetbeans">Netbeans</a>
+
+                    </code></pre>
+                </div>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+                    <pre><code class="ios">
+You need XCode IDE installed on your machine. If not, you can download it from the <a href="https://developer.apple.com/xcode/">Apple developer web site</a>.
+Read more on <a href="../docs/guides/GetStartedwithAeroGearandXcode">Set up AeroGear and Xcode</a> | <a href="../docs/guides/GetStartedwithAeroGearandXcodeTemplate">AeroGear Xcode Template</a>
+
+                    </code></pre>
+                </div>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+                    <pre><code class="javascript">
+You need an HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+.
+Read more on <a href="../docs/guides/GetStartedAeroGearJS">Set up AeroGear and JS</a>
+                    </code></pre>
+                </div>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+                    <pre><code class="cordova">
+You need to install CordovaLib, Cordova Framework and Cordova XCode templates. Download <a href="https://github.com/phonegap/phonegap/zipball/2.0.0" target="_blank">Apache Cordova 2.0.0</a> and unzip.
+Read more on <a href="../docs/guides/aerogear-cordova/CordovaSetup">Setting up</a> | <a href="../docs/guides/aerogear-cordova/HTML5ToHybridWithCordova">Going Hybrid</a>
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p><i>2. Get AeroGear</i></p>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href='#java1' data-toggle='tab'>Java</a></li>
+            <li ><a href='#ios1' data-toggle='tab'>iOS</a></li>
+            <li ><a href='#javascript1' data-toggle='tab'>JavaScript</a></li>
+            <li ><a href='#cordova1' data-toggle='tab'>Cordova</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="listingblock">
+                <div class="content">
+                    <pre><code class="java">
+If you use maven
+<dependency>
+  <groupId>org.jboss.aerogear</groupId>
+  <artifactId>aerogear-android</artifactId>
+  <version>1.3.1</version>
+  <type>apklib</type>
+</dependency>
+If you use gradle (as experimental)
+dependencies {
+  compile 'org.jboss.aerogear:aerogear-android:1.3.1'
+}
+</code></pre>
+                </div>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+                    <pre><code class="ios">
+If you use CocoaPods in your Podfile:
+xcodeproj 'YourProject.xcodeproj'
+platform :ios, '7.0'
+pod 'AeroGear', '1.4.0'
+                     </code></pre>
+                </div>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+                    <pre><code class="javascript">
+If you use bower: TODO
+</code></pre>
+                </div>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+                    <pre><code class="cordova">
+TODO
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+        <p>SERVER</p>
+        <p><i>Refer to your choosen server user guide</i></p>
+        <br/><br/>
+        <p class="center-text">Done? Checkout <a href="">the examples</a><p>
+        <br/><br/>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $("#set-it-up").load("/img/page-setup.svg");
+    $("#get-it").load("/img/page-downloads.svg");
+</script>
+
+
+<script>
+    $('.tab-content').children().each(function() {
+        $( this ).attr('class', 'tab-pane');
+    });
+
+    $('.tab-pane:first-child').addClass('active');
+
+    $('.tab-pane code.java').parent().parent().parent().each(function( index ) {
+        $( this ).attr('id', 'java' + index);
+    });
+
+    $('.tab-pane code.ios').parent().parent().parent().each(function( index ) {
+        $( this ).attr('id', 'ios' + index);
+    });
+
+    $('.tab-pane code.javascript').parent().parent().parent().each(function( index ) {
+        $( this ).attr('id', 'javascript' + index);
+    });
+
+    $('.tab-pane code.cordova').parent().parent().parent().each(function( index ) {
+        $( this ).attr('id', 'cordova' + index);
+    });
+
+</script>

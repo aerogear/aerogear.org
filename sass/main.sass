@@ -190,6 +190,28 @@ $code: #222
       .section-strip
         border-top-color: $security-color
 
+@mixin color-svg-with($feature)
+  @if $feature == push
+    .push
+      .drawing
+        stroke: $push-color
+    .push
+      .filling
+        fill: $push-color
+  @if $feature == core
+    .core
+      .drawing
+        stroke: $core-color
+    .core
+      .filling
+        fill: $core-color
+  @if $feature == security
+    .security
+      .drawing
+        stroke: $security-color
+    .security
+      .filling
+        fill: $security-color
 
 /* =================== Standard elements ============================================================================
  */
@@ -333,6 +355,7 @@ a.news
   &:hover
     text-decoration: underline
 
+
 /* =================== Core, Push, Security section =====================================================================
  */
 
@@ -340,6 +363,8 @@ div.section
   color: $section-text-color
   background-color: $section-color
   border-top: $seperator-color solid 16px
+  &.stick-to-menu
+    border-top: 0px
   i
     color: grey
   &.core .sect1 h2
@@ -375,6 +400,21 @@ div.section
   .hljs
     background-color: $code
 
+/* =================== GET IT pages =====================================================================
+ */
+
+div.section
+  &.core .sect2 object
+    display: none
+    @include respond-to(desktop)
+      display: inline-block
+      margin-left: -40px
+      margin-top: 20px
+    color: $section-text-color
+  &.core .sect2 h2
+    color: $section-text-color
+    @include respond-to(desktop)
+      margin-top: -40px
 
 @include color-with(core)
 
@@ -386,70 +426,90 @@ div.section
   border-top-width: 4px
   border-top-style: solid
 
+.rounded-box
+  background-color: black
+  margin-right: 5px
+  padding: 1.5em 0.1em
+  text-align: center
+  border-radius: 15px
+  @include respond-to(phone)
+    margin-bottom: 1em
+
+.center-text
+  text-align: center
+/* =================== Contextual coloring of SVG images =====================================================================
+ */
+
+@include color-svg-with(core)
+
+@include color-svg-with(push)
+
+@include color-svg-with(security)
+
 /* =================== Code tabs =====================================================================
  */    
 .nav .nav-tabs
   margin-right: 5%
   border: 0
 
-.nav 
-  margin-bottom: 0 
-  padding-left: 0 
-  list-style: none 
+.nav
+  margin-bottom: 0
+  padding-left: 0
+  list-style: none
 
 .nav:before,
-.nav:after 
-  content: " " 
-  display: table 
+.nav:after
+  content: " "
+  display: table
 
-.nav:after 
-  clear: both 
+.nav:after
+  clear: both
 
-.nav > li 
-  position: relative 
-  display: block 
+.nav > li
+  position: relative
+  display: block
 
-.nav > li > a 
-  position: relative 
-  display: block 
-  padding: 10px 15px 
+.nav > li > a
+  position: relative
+  display: block
+  padding: 10px 15px
 
 .nav > li > a:hover,
-.nav > li > a:focus 
-  text-decoration: none 
-  background-color: $code 
+.nav > li > a:focus
+  text-decoration: none
+  background-color: $code
 
-.nav-tabs   
-  border-bottom: 1px solid $section-color 
+.nav-tabs
+  border-bottom: 1px solid $section-color
   margin: 0 0.5em
- 
-.nav-tabs > li  
-  float: right 
-  margin-bottom: -1px 
- 
-.nav-tabs > li > a  
-  margin-right: 2px 
-  line-height: 1.428571429 
-  border: 1px solid transparent 
-  border-radius: 4px 4px 0 0 
+
+.nav-tabs > li
+  float: right
+  margin-bottom: -1px
+
+.nav-tabs > li > a
+  margin-right: 2px
+  line-height: 1.428571429
+  border: 1px solid transparent
+  border-radius: 4px 4px 0 0
   color: $section-text-color
- 
-.nav-tabs > li > a:hover  
-  border-color: $section-color $section-color $seperator-color 
- 
+
+.nav-tabs > li > a:hover
+  border-color: $section-color $section-color $seperator-color
+
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus  
-  background-color: $code 
-  border: 1px solid $section-color 
-  border-bottom-color: transparent 
-  cursor: default     
+.nav-tabs > li.active > a:focus
+  background-color: $code
+  border: 1px solid $section-color
+  border-bottom-color: transparent
+  cursor: default
 
-.tab-content > .tab-pane 
+.tab-content > .tab-pane
   @include respond-to(desktop)
   display: none
 
-.tab-content > .active 
+.tab-content > .active
   @include respond-to(desktop)
   display: block
 
@@ -509,9 +569,6 @@ div.section
 
 /* =================== Main page content: features ==================================================================
  */
-.platform
-  margin: auto
-  max-width: 40em
 .features
   p
     @include border-box
@@ -682,7 +739,7 @@ a#slide-menu-button:hover
 
 .column3
   @extend .column_base
-  width: 30%
+  width: 31.9%
   @include respond-to(phone)
     width: 100%
     float: none
@@ -835,7 +892,7 @@ pre
  */
 @media print
   *
-    background: transparent !important
+  background: transparent !important
     color: #000 !important
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important
@@ -861,14 +918,14 @@ pre
     page-break-inside: avoid
   thead
     display: table-header-group
-    /* h5bp.com/t  */
+  /* h5bp.com/t  */
   tr
     page-break-inside: avoid
   img
     page-break-inside: avoid
     max-width: 100% !important
   @page
-    margin: 0.5cm
+  margin: 0.5cm
 
   p, h2, h3
     orphans: 3
