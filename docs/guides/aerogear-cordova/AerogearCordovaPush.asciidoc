@@ -103,7 +103,7 @@ The passed in 'event' object contains:
 
 Also have a look here for link:/docs/specs/aerogear-push-messages/[more information about the message] sending and properties
 
-To unregister (only availble on Android):
+To unregister (only available on Android):
 
 [source,javascript]
 ----
