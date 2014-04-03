@@ -70,8 +70,20 @@ New Features
 * *JS Cookbook*
 ** Recipes for common usages
 
-1.5.0 (Early June)
-~~~~~~~~~~~~~~~~~~~
+1.5.0 (Early May)
+~~~~~~~~~~~~~~~~~
+New Features
+~~~~~~~~~~~~
+* *MQTT WS Adapter*
+* *UnifiedPushClient updates*
+** Remove jQuery Requirement
+** Add ES6 promises( polyfill where needed )
+* *Code Cleanup*
+** Remove duplicated methods in Notifier
+* *More Cookbook Examples*
+
+1.6.0 (Mid July)
+~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
 * *Data Sync*
@@ -79,8 +91,8 @@ New Features
 ** Possibly use Notifier for communication / data transfer
 ** Investigate PouchDB as provider or inspiration
 
-1.6.0
-~~~~~
+1.7.0 (Late September)
+~~~~~~~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
 * *Offline*
@@ -98,6 +110,9 @@ New Features
 * *Remove jQuery Requirements*
 ** Ajax & Promises
 ** JSON only
+* *ES6 Modules*
+** transpile to ES5
+* *Polymer Components*
 * *Social*
 ** Auth
 *** Login via Facebook, G+, Twitter?
