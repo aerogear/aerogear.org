@@ -21,7 +21,7 @@ title: AeroGear Data Sync
 
 * Receive Update
 
-    When a client updates it data and successfully syncs to the remote server, the remote server will notify all of the relevant clients. The client must automatically and without user intervention receive this update and either act on it or store it for later processing.
+    When a client updates its data and successfully syncs to the remote server, the remote server will notify all of the relevant clients. The client must automatically and without user intervention receive this update and either act on it or store it for later processing.
 
 * Apply Update
 
@@ -79,8 +79,8 @@ Since we know about the future-looking ideas on v2.0, it would be really nice fo
 
 # Implementation reference
 
-- [Client API Proposals](aerogear-sync-client-api)
-- [Server API Proposals](aerogear-sync-server-api)
+- [Client API Proposals](../aerogear-sync-client-api)
+- [Server API Proposals](../aerogear-sync-server-api)
 
 # AeroGear Data Sync 0.0.1
 
