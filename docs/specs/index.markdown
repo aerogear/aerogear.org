@@ -33,3 +33,8 @@ title: Specifications
 * [AeroGear UnifiedPush Java Client](aerogear-unifiedpush-java-client)
 * [AeroGear UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
 * [AeroGear UnifiedPush User Management](aerogear-unifiedpush-user-management)
+
+#### Sync Specifications
+* [Data Sync Specification](aerogear-data-sync)
+    * [Client API Proposals](aerogear-sync-client-api)
+    * [Server API Proposals](aerogear-sync-server-api)
