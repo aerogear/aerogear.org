@@ -5,7 +5,7 @@ title: AeroGear Android User Guide
 
 # AeroGear Android User Guides
 
-* [How to build AeroGear Android library](HowToBuildAeroGearAndroidLibrary)
+* [How to build AeroGear Android library](how-to-build-aerogear-android)
 
 ## Usage Guides
 * [Pipe](pipe)
