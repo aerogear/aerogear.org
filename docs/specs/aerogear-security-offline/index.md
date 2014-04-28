@@ -31,7 +31,7 @@ By default we chose [LRU (*Least Recently Used*)](http://en.wikipedia.org/wiki/C
 
 ### Policy
 
-First the API will attempt to retrieve data from the cache — if of course, data was previously cached — otherwise, a request will be sent to the remote resource. All the cached resources will stay in memory while the application is opened. Once the application is closedi, objects lying in the memory must be persisted in the filesystem.
+First the API will attempt to retrieve data from the cache — if of course, data was previously cached — otherwise, a request will be sent to the remote resource. All the cached resources will stay in memory while the application is opened. Once the application is closed, objects lying in the memory must be persisted in the file system.
 
 ![](http://photon.abstractj.org/cdraw_432439_pixels_20140428_164816_20140428_164819.jpg)
 
