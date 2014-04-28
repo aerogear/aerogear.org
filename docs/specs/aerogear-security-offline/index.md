@@ -3,7 +3,7 @@ layout: basic
 title: Offline Storage Specification (OSS)
 ---
 
-# Status: Experimental
+# Status: Experimental (0.0.1)
 
 **Note**: This document is a working progress if you strongly disagree with something, feel free to discuss.
 
@@ -19,9 +19,50 @@ title: Offline Storage Specification (OSS)
 
 # Introduction
 
-Offline storage is still a challenging subject for mobile development, because it is a wild environment where developers do not have any control over it, users can have their devices stolen, borrowed by someone or infected with whatever kind of malware available.  There is no magic, most part of the time you can just hope for the best and try to conciliate security and usability instead of put them under glass.
+Offline storage is still a challenging subject for mobile development, because it is a wild environment where developers do not have any control over it, users can have their devices stolen, borrowed by someone or infected with whatever kind of malware available. There is no magic, most part of the time you can just hope for the best and try to conciliate security and usability instead of put them under glass.
 
-The [previous release](https://issues.jboss.org/browse/AGSEC-156?jql=fixVersion%20%3D%20%221.3.0%22%20AND%20project%20%3D%20AGSEC) our major concern was to lay the groundwork for future growth. This documentation will discuss: offline authentication, encrypted cache, how to protect the local storage and some possibilities for data sync.
+The [previous release](https://issues.jboss.org/browse/AGSEC-156?jql=fixVersion%20%3D%20%221.3.0%22%20AND%20project%20%3D%20AGSEC) our major concern was to lay the groundwork for future growth. This documentation will discuss: caching and offline storage, how to protect both and some possibilities for data sync.
+
+## Caching
+
+Sometimes we just need to make use of caching mechanism for the temporally storage of some information like documents, images or presentations which doesn't mean they are not significant or critical, we never know what type of file will be there. 
+
+By default we chose [LRU (*Least Recently Used*)](http://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) as our caching mechanism. Based on the state of data that have been used recently, the API will take into consideration that most frequent used data will probably be used again in the future.
+
+### Policy
+
+First the API will attempt to retrieve data from the cache — if of course, data was previously cached — otherwise, a request will be sent to the remote resource. All the cached resources will stay in memory while the application is opened. Once the application is closedi, objects lying in the memory must be persisted in the filesystem.
+
+![](http://photon.abstractj.org/cdraw_432439_pixels_20140428_164816_20140428_164819.jpg)
+
+Each and every idea will be evaluated to make sure that it works in every platform, including: iOS, Android and JavaScript.
+
+### Configuration
+
+The initial configuration will come in two flavors combined for better performance: memory (faster) and disk (slowly). Developers will be allowed to choose, althought by default it will come like described in the previous section.
+
+### Implementation details
+
+Each platform has its own specific implementation details. All we can do is our best to keep the symmetry between the APIs, but behind the scenes is almost impossible to have identical technical details.
+
+#### Android
+
+Android already implements its own [LruCache](http://developer.android.com/reference/android/util/LruCache.html). The missing bits are related with the caching policy and testing to make sure that performance won't be a problem. 
+
+As a PoC to validate some concepts the following projects were created: [AeroGear Android Offline](https://github.com/danielpassos/aerogear-android-offline) and [AeroGear Android Offline Demo](https://github.com/danielpassos/aerogear-android-offline-demo).
+
+- Related Jiras:
+
+    * [AGDROID-238](https://issues.jboss.org/browse/AGDROID-238)
+
+#### iOS
+
+#### JavaScript
+
+## Encrypted Storage
+
+The API should allow the local storage to be self-encrypted, by that we mean once **KeyStore/KeyChain** is opened, any data inserted was supposed to be properly encrypted.
+
 
 ## Offline Authentication
  
@@ -40,23 +81,11 @@ On the bright side the solution is simple at first glance, the application reque
 5. Application retrieve the private key from the *KeyStore/KeyChain* if credentials are valid, otherwise display an error message
 6. Once the private key was retrieved we are able to encrypt the local storage
 
-## Encrypted Storage
-
-The API should allow the local storage to be self-encrypted, by that we mean once **KeyStore/KeyChain** is opened, any data inserted was supposed to be properly encrypted.
-
 ### Remote storage
 
 If the data must be kept in another infrastructure, the server should never have access to user's data, instead, the application should send the data encrypted as well the public keys for data sync. Once some data is added on the server side, it should be encrypted with the public key provided and sent back to the client.
 
 **Note:** To not lose our focus here, *offline storage*, anything related with *data sync* will be proposed in a separated document 
-
-## Encrypted Cache
-
-Sometimes we just need to make use of caching mechanism for the temporally storage of some information like documents, images or presentations which doesn't mean they are not significant or critical, we never know what type of file will be there. 
-
-Into this iteration we chose [LRU (*Least Recently Used*)](http://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) as our caching mechanisms based on the state of data that have been used recently, in other words, if the data have not been used for decades it will probably remain unused for a long time. 
-
-The approach for encrypting cache must be very similar to the local storage.
 
 # API symmetry
 
