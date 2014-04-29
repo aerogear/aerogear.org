@@ -55,9 +55,53 @@ As a PoC to validate some concepts the following projects were created: [AeroGea
 
     * [AGDROID-238](https://issues.jboss.org/browse/AGDROID-238)
 
+
+#### API overview
+
+CacheManager : A factory and provider of different Cache implementations. ...
+
+Cache : An interface which different cache implementations implement.
+
+CacheTypes : An enum class with values MEMORY and DISK.
+
+CacheConfig: ...
+
+MemoryCache : ...
+
+DiskCache : ...
+
+#### How to use it
+
+##### Creating
+
+```
+```
+
+##### Caching
+
+```
+myCache.add("someKey", "someValue");
+```
+
+##### Retrieval
+
+```
+myCache.get("someKey");
+```
+
+##### Removing
+
+```
+myCache.remove("someKey");
+```
+
 #### iOS
 
+Core data + put your storage here
+
 #### JavaScript
+
+AppCache or Server
 
 ## Encrypted Storage
 
