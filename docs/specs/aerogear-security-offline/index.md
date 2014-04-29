@@ -75,24 +75,37 @@ DiskCache : ...
 ##### Creating
 
 ```
+Cache cache = new MemoryCache<String, File>();
+cache.init(new CallBack() ) {
+    @Override
+    public void onSuccess(Object data) {
+        //do something amazing
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        //name the names responsible for this
+    }
+}
 ```
 
 ##### Caching
 
 ```
-myCache.add("someKey", "someValue");
+File file = //some file coming from Universe
+cache.add(fileDownloaded.getName(), fileDownloaded);
 ```
 
 ##### Retrieval
 
 ```
-myCache.get("someKey");
+myCache.get(fileDownloaded.getName());
 ```
 
 ##### Removing
 
 ```
-myCache.remove("someKey");
+myCache.remove(fileDownloaded.getName());
 ```
 
 #### iOS
