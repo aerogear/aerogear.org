@@ -71,10 +71,15 @@ As a PoC to validate some concepts the following projects were created: [AeroGea
 ##### Creating
 
 ```
-Cache cache = new MemoryCache<String, File>();
-cache.init(new CallBack() ) {
+CacheConfig cacheConfig = new CacheConfig();
+cacheConfig.setCacheType(CacheTypes.MEMORY);
+
+CacheManager cacheManager = new CacheManager();
+Cache<String, File> cache = cacheManager.cache("fileMemoryCache", cacheConfig);
+
+cache.init(new Callback<Cache>() {
     @Override
-    public void onSuccess(Object data) {
+    public void onSuccess(Cache cache) {
         //do something amazing
     }
 
@@ -82,7 +87,7 @@ cache.init(new CallBack() ) {
     public void onFailure(Exception e) {
         //name the names responsible for this
     }
-}
+});
 ```
 
 ##### Caching
