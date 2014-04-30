@@ -39,7 +39,7 @@ Each and every idea will be evaluated to make sure that it works in every platfo
 
 ### Configuration
 
-The initial configuration will come in two flavors combined for better performance: memory (faster) and disk (slowly). Developers will be allowed to choose, althought by default it will come like described in the previous section.
+The initial configuration will come in two flavors combined for better performance: memory (faster) and disk (slowly). Developers will be allowed to choose, although by default it will come like described in the previous section.
 
 ### Implementation details
 
@@ -126,7 +126,7 @@ cache.init(new Callback<Cache>() {
 
 ##### Caching
 
-Include a new file is suppsed to be dead simple, just invoke *put* to save or update the data with and *key* and *file* as argument. Behind the scenes file will be added to the cache previously created.
+Include a new file is supposed to be dead simple, just invoke *put* to save or update the data with and *key* and *file* as argument. Behind the scenes file will be added to the cache previously created.
 
 ```
 File file = //some file coming from Universe
@@ -157,7 +157,7 @@ myCache.remove(fileDownloaded.getName());
 TBD
 
 - Some ideas from Christos
-  * Core data plus adapters
+  * Core data plus the implementation of adapters for Memory and Disk.
 
 #### JavaScript
 
@@ -169,6 +169,15 @@ JavaScript is a completely different environment from native platforms, implemen
 
 The API should allow the local storage to be self-encrypted, by that we mean once **KeyStore/KeyChain** is opened, any data inserted was supposed to be properly encrypted.
 
+## Offline storage
+
+AeroGear already comes with several options for offline storage, thankfuly to our team. Here comes some options
+
+- Android: Memory, SQLite
+- iOS: Memory, SQLite
+- JavaScript: Memory, Session Local, Indexed DB and WebSQL
+
+All the storage mechanisms already support encryption with *AES-GCM* using KDF functions to generate password based keys.
 
 ## Offline Authentication
 
