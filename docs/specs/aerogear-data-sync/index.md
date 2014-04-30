@@ -50,17 +50,15 @@ title: AeroGear Data Sync
 
 This document defines a common API for each mobile platform to make sure that everyone will be speaking about the same domain/vocabulary. 
 
-## Levels
+## Sync strategies
 
-As soon as we have a rough data-model defined, we can start dabbling around different API levels to be served:
+We will have two synchronization strategies.  A document-revision strategy and a merge shadow strategy.  These strategies will be implemented by **Repository** classes *TODO define repository Class*.
 
-- level 0: explodes when there's a conflict
-- level 1: semi-automatic conflict resolution via something like google's diff-match-patch
-- level 2: business rules determine who wins a conflicting update (supervisor wins over normal user)
+### Document-revision Strategy
 
-All those proposed API operations should be serializable, meaning I can potentially keep doing changes offline then just replying them to the server when online.
+The document revision startegey is based on maintaining relevant metadata abotu document revision and keeping it in lockstep with a server which fufills the stratgey contrcat.
 
-## Data model
+#### Data model
 
 This data model is defined in JavaScript Object Notation (JSON) and specifies the application protocol for AeroGear Data Sync.
 
@@ -69,13 +67,42 @@ This data model is defined in JavaScript Object Notation (JSON) and specifies th
 | ------------- |:-----------:|:-----------:|:-----------:|
 | id            | String      | N           | Global identifier for the object |  
 | rev           | String      | N           | Revision of the object. When a object gets updated the revision will be incremented  |  
+| parent-rev    | String      | N           | Revision of the content which is edited.  It will be checked to make sure that the merge is conflict free.  |  
 | content       | String      | Y           | This is the sync data for the application. It may be a diff, a whole object, etc.     |  
 
-## Transport
+#### Transport
 
-Since we know about the future-looking ideas on v2.0, it would be really nice for us to specify a very simple/dumb JSON-based protocol for those change messages. Something that could accomodate both the full document updates and the OT/EC incremental bits too. 
+We will submit documents as JSON.  The server will respond with an appropriate error code and body in json format.  All communication is UTF-8 encoded.
 
-- TBD 
+#### Usage / Lifecycle
+
+- [Google Drawing Example](https://docs.google.com/drawings/d/1E4NDEh3NQCdoEHNNHba4TR2akNrppvV5zDlk5nfzz08/edit)
+
+The general usage flow is the use will create or edit content, attach the appropriate document metadata, and submit it to a server.  The content will be included in all of the requests and omitted from all responses except where otherwise noted.
+
+ * New Data:  The id, rev, and parent rev fields will be empty strings.  The server will return 200 OK and the body will contain the document ID, document revsion, and an empty parent revision.  This will be saved on the client.
+ * Edited Data, no Conflict:  The id field will be the cannoical id field form the server.  The rev field will be an empty string.  The parent-rev field will be the value of the rev field of the data before it was edited.  The server will return 200 OK and include the new revision value.  This will be saved on the clients side.
+ * Edited data, with Conflict:  The request is the same as with an Edit, but the response from the server will be 409 Conflict with a body of the current server document.  It will be the clients responsibility to correct its Edited document and resubmit.
+ * Updating local data:  The client may, at any time, fetch the document from the server and replace its content.
+ * Receiving notification of updates from the server:  TBD
+
+### Merge Shadow strategy
+
+The Merge shadow strategy does not use document metadata to manage state.  Instead it generates diffs between edited and synced data and submits those to its peers semi regularly.
+
+ * See [diff-merge-patch algorithm](http://code.google.com/p/google-diff-match-patch/)
+
+#### Data model
+
+ - TBD 
+ 
+#### Transport
+
+ - TBD, currently looking at a 1995 Toyota Camery full of 1 TB tapes.
+ 
+#### Usage / Lifecycle
+
+ - TBD
 
 # Implementation reference
 
