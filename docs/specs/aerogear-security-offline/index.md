@@ -154,7 +154,7 @@ myCache.remove(fileDownloaded.getName());
 
 #### iOS
 
-TBD
+##### TBD
 
 - Some ideas from Christos
   * Core data plus the implementation of adapters for Memory and Disk.
@@ -163,7 +163,7 @@ TBD
 
 AppCache or Server
 
-JavaScript is a completely different environment from native platforms, implement caching on the client side would be silly once we have solutions already implemented for years. Developers willing to cache data with JavaScript, must stick Server Caching or AppCache, even if it's [a douchebag](http://alistapart.com/article/application-cache-is-a-douchebag).
+JavaScript is a completely different environment from native platforms. Implement caching on the client side would be silly once we have solutions already implemented for years. Developers willing to cache data with JavaScript, must stick Server Caching or AppCache — even if it's [a douchebag](http://alistapart.com/article/application-cache-is-a-douchebag).
 
 ## Encrypted Storage
 
@@ -181,11 +181,11 @@ All the storage mechanisms already support encryption with *AES-GCM* using KDF f
 
 ## Offline Authentication
 
-Server-side authentication is easy compared to offline, because we don't need to worry about how the password will be kept on the server. When the device goes offline one critical problem will emerge: users will lost their access to the application.
+Server-side authentication is easy compared to offline, because we don't need to worry about how the password will be kept on the server. When the device goes offline some critical problem will emerge like users will losing their access to the application, sensitive data being exposed to attackers or data loss.
 
-On the bright side the solution is simple at first glance, the application requests users to enter their credentials at the first time the application is started,  but the password **can't** be kept on device, because that would represent a risk if device is stolen, lost, borrowed or infected with malware. The proposed solution is to make use of cryptographic functions in an attempt to slow down an adversary in case of the user's device is compromised.
+On the bright side the solution in theory is simple at first glance. The application requests users to enter their credentials at the first time the application is started, but the password **can't** be kept on device, because that would represent a risk if device is stolen, lost, borrowed or infected with malware. The proposed solution is to make use of cryptographic functions in an attempt to slow down an adversary in case of the user's device is compromised.
 
-![](http://photon.abstractj.org/offline_authentication.jpg_20140207_120553.jpg)
+![](http://photon.abstractj.org/cdraw_287509_pixels_20140430_182037_20140430_182039.jpg)
 
  A detailed explanation about the workflow:
 
