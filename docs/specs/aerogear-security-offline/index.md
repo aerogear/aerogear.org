@@ -80,6 +80,8 @@ public class MyCacheConfig extends CacheConfig<MyCacheConfig> {
 }
 ```
 
+Otherwise, people just willing to cache their resources can stick to defaults.
+
 ```
 CacheManager cacheManager = new CacheManager();
 
@@ -99,6 +101,8 @@ cache.init(new Callback<Cache>() {
 });
 
 ```
+Or specify some of the caching types existent on AeroGear.
+
 ```
 //Inform an specific caching configuration
 CacheConfig cacheConfig = new CacheConfig(CacheTypes.MEMORY);
