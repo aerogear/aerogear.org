@@ -101,6 +101,7 @@ cache.init(new Callback<Cache>() {
 });
 
 ```
+
 Or specify some of the caching types existent on AeroGear.
 
 ```
@@ -120,16 +121,23 @@ cache.init(new Callback<Cache>() {
         //name the names responsible for this
     }
 });
+
 ```
 
 ##### Caching
 
+Include a new file is suppsed to be dead simple, just invoke *put* to save or update the data with and *key* and *file* as argument. Behind the scenes file will be added to the cache previously created.
+
 ```
 File file = //some file coming from Universe
-cache.add(fileDownloaded.getName(), fileDownloaded);
+cache.put(fileDownloaded.getName(), fileDownloaded);
 ```
 
 ##### Retrieval
+
+Before sending any requests to the server, might be interesting to check if the data already exists locally. This method only allows to retrieve the data based on the *key* provided.
+
+**Note**: Maybe to the next releases we can implement some policies to automatically check the cache before sending requests to the server.
 
 ```
 myCache.get(fileDownloaded.getName());
@@ -137,17 +145,25 @@ myCache.get(fileDownloaded.getName());
 
 ##### Removing
 
+The removal of local cache on logout is not planned for this release, but is possible to include on the list of policies to the further release, The current API will only allow developers to purge objects from disk, providing the equivalent *key*.
+
 ```
 myCache.remove(fileDownloaded.getName());
 ```
 
+
 #### iOS
 
-Core data + put your storage here
+TBD
+
+- Some ideas from Christos
+  * Core data plus adapters
 
 #### JavaScript
 
 AppCache or Server
+
+JavaScript is a completely different environment from native platforms, implement caching on the client side would be silly once we have solutions already implemented for years. Developers willing to cache data with JavaScript, must stick Server Caching or AppCache, even if it's [a douchebag](http://alistapart.com/article/application-cache-is-a-douchebag).
 
 ## Encrypted Storage
 
