@@ -70,11 +70,39 @@ As a PoC to validate some concepts the following projects were created: [AeroGea
 
 ##### Creating
 
-```
-CacheConfig cacheConfig = new CacheConfig();
-cacheConfig.setCacheType(CacheTypes.MEMORY);
+Developers can implement their own *caching configuration* strategy if they want to. Into this way we give freedom to use whatever library is available outside.
 
+```
+public class MyCacheConfig extends CacheConfig<MyCacheConfig> {
+    public <K, V> MyCrazyCache<K, V> createMyCrazyCache() {
+        return new MyCrazyCache<String, URL>()
+    }
+}
+```
+
+```
 CacheManager cacheManager = new CacheManager();
+
+//Internally instantiates a default cache config in Memory
+Cache<String, File> cache = cacheManager.cache("fileMemoryCache");
+
+cache.init(new Callback<Cache>() {
+    @Override
+    public void onSuccess(Cache cache) {
+        //do something amazing
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        //name the names responsible for this
+    }
+});
+
+```
+```
+//Inform an specific caching configuration
+CacheConfig cacheConfig = new CacheConfig(CacheTypes.MEMORY);
+
 Cache<String, File> cache = cacheManager.cache("fileMemoryCache", cacheConfig);
 
 cache.init(new Callback<Cache>() {
