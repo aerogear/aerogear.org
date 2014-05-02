@@ -185,16 +185,17 @@ Server-side authentication is easy compared to offline, because we don't need to
 
 On the bright side the solution in theory is simple at first glance. The application requests users to enter their credentials at the first time the application is started, but the password **can't** be kept on device, because that would represent a risk if device is stolen, lost, borrowed or infected with malware. The proposed solution is to make use of cryptographic functions in an attempt to slow down an adversary in case of the user's device is compromised.
 
-![](http://photon.abstractj.org/cdraw_287509_pixels_20140430_182037_20140430_182039.jpg)
+### Password registration
 
- A detailed explanation about the workflow:
+![](http://photon.abstractj.org/cdraw_368448_pixels_20140502_162611_20140502_162614.jpg)
 
-1. Application requires username/password
-2. User provide the password registered into the application
-3. Application run *KDF* function over the credentials provided and pass as parameter to *KeyStore/KeyChain*
-4. *KeyStore/KeyChain* validates that credential provided
-5. Application retrieve the private key from the *KeyStore/KeyChain* if credentials are valid, otherwise display an error message
-6. Once the private key was retrieved we are able to encrypt the local storage
+### Offline authentication
+
+![](http://photon.abstractj.org/cdraw_284352_pixels_20140502_163240_20140502_163242.jpg)
+
+### Data encryption
+
+![](http://photon.abstractj.org/cdraw_343526_pixels_20140502_163918_20140502_163920.jpg)
 
 ### Remote storage
 
