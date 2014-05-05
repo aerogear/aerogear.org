@@ -3,9 +3,9 @@ layout: basic
 title: Offline Storage Specification (OSS)
 ---
 
-# Status: Experimental
+# Status: Experimental (0.0.1)
 
-**Note**: This document is a working progress if you strongly disagree with something, feel free to discuss.
+**Note**: This document is a working progress if you strongly disagree with something, feedback is welcome.
 
 # Authors
 
@@ -19,48 +19,187 @@ title: Offline Storage Specification (OSS)
 
 # Introduction
 
-Offline storage is still a challenging subject for mobile development, because it is a wild environment where developers do not have any control over it, users can have their devices stolen, borrowed by someone or infected with whatever kind of malware available.  There is no magic, most part of the time you can just hope for the best and try to conciliate security and usability instead of put them under glass.
+Offline storage is still a challenging subject for mobile development, because it's a wild environment where developers don't have any control over it. Users can have their devices stolen, borrowed by someone or infected with whatever kind of malware is available. There is no magic, most part of the time you can just hope for the best and try to conciliate security and usability.
 
-The [previous release](https://issues.jboss.org/browse/AGSEC-156?jql=fixVersion%20%3D%20%221.3.0%22%20AND%20project%20%3D%20AGSEC) our major concern was to lay the groundwork for future growth. This documentation will discuss: offline authentication, encrypted cache, how to protect the local storage and some possibilities for data sync.
+The [previous release](https://issues.jboss.org/browse/AGSEC-156?jql=fixVersion%20%3D%20%221.3.0%22%20AND%20project%20%3D%20AGSEC) our major concern was to create the bare minimum of code needed for future growth. This documentation will discuss: caching and offline storage, how to protect both and some possibilities for data sync.
 
-## Offline Authentication
- 
-Server-side authentication is easy compared to offline, because we don't need to worry about how the password will be kept on the server. When the device goes offline one critical problem will emerge: users will lost their access to the application.
+## Caching
 
-On the bright side the solution is simple at first glance, the application requests users to enter their credentials at the first time the application is started,  but the password **can't** be kept on device, because that would represent a risk if device is stolen, lost, borrowed or infected with malware. The proposed solution is to make use of cryptographic functions in an attempt to slow down an adversary in case of the user's device is compromised.
+Temporally store information like documents, images or presentations — sometimes is required to improve the user experience. That doesn't mean they are less significant or critical, we never know which kind of file will be there.
 
-![](http://photon.abstractj.org/offline_authentication.jpg_20140207_120553.jpg)
- 
- A detailed explanation about the workflow:
- 
-1. Application requires username/password 
-2. User provide the password registered into the application 
-3. Application run *KDF* function over the credentials provided and pass as parameter to *KeyStore/KeyChain*
-4. *KeyStore/KeyChain* validates that credential provided
-5. Application retrieve the private key from the *KeyStore/KeyChain* if credentials are valid, otherwise display an error message
-6. Once the private key was retrieved we are able to encrypt the local storage
+By default we chose [LRU (*Least Recently Used*)](http://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) as our caching mechanism. Based on the state of data that have been used recently. The API knows that most frequent used data will probably be used again in the future.
+
+### Policy
+
+The API will attempt to retrieve data from the cache — if of course, data was previously cached — otherwise, a request is sent to the remote resource. All the cached resources stay in memory while the application is opened. Once the application is closed, objects in memory must be persisted to the file system.
+
+![](http://photon.abstractj.org/cdraw_429439_pixels_20140505_115014_20140505_115017.jpg)
+
+Each and every idea will be evaluated to make sure that it works in every platform, including: iOS, Android and JavaScript.
+
+### Configuration
+
+The initial configuration will come in two flavors combined for better performance: memory (faster) and disk (slowly). Developers will be allowed to choose, although by default it will come like was described at policy section.
+
+### Implementation details
+
+Each platform has its own specific implementation details. All we can do is our best to keep the symmetry between APIs, but behind the scenes is almost impossible to have identical technical details.
+
+#### Android
+
+Android already implements its own [LruCache](http://developer.android.com/reference/android/util/LruCache.html). The missing bits are related with the caching policy and testing to make sure that performance won't be a problem.
+
+A PoC to validate some concepts was created: [AeroGear Android Offline](https://github.com/danielpassos/aerogear-android-offline) and [AeroGear Android Offline Demo](https://github.com/danielpassos/aerogear-android-offline-demo).
+
+- Related Jiras:
+
+    * [AGDROID-238](https://issues.jboss.org/browse/AGDROID-238)
+
+
+#### API overview
+
+- CacheManager: A factory and provider for different cache implementations.
+
+- Cache: Interface for multiple caching support like memory and disk.
+
+- CacheTypes: Enum types with values MEMORY and DISK.
+
+- CacheConfig: Caching configuration parameters like size, type and encryption
+
+#### How to use it
+
+##### Creating
+
+Developers can implement their own *caching configuration* strategy if they want to. This way users are free to choose whatever library best fits
+their needs.
+
+    public class MyCacheConfig extends CacheConfig<MyCacheConfig> {
+        public <K, V> MyCrazyCache<K, V> createMyCrazyCache() {
+            return new MyCrazyCache<String, URL>()
+        }
+    }
+
+Otherwise, people just willing to cache their resources can stick with defaults.
+
+    CacheManager cacheManager = new CacheManager();
+
+    //Internally instantiates a default cache config in Memory
+    Cache<String, File> cache = cacheManager.cache("fileMemoryCache");
+
+    cache.init(new Callback<Cache>() {
+        @Override
+        public void onSuccess(Cache cache) {
+            //do something amazing
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+            //name the names responsible for this
+        }
+    });
+
+
+Or specify some of the caching types already existent.
+
+    //Inform an specific caching configuration
+    CacheConfig cacheConfig = new CacheConfig(CacheTypes.MEMORY);
+
+    Cache<String, File> cache = cacheManager.cache("fileMemoryCache", cacheConfig);
+
+    cache.init(new Callback<Cache>() {
+        @Override
+        public void onSuccess(Cache cache) {
+            //do something amazing
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+            //name the names responsible for this
+        }
+    });
+
+
+##### Caching
+
+Include a new file is supposed to be dead simple, just invoke *put* to save or update the data with *key* name and *file* as argument. Behind the scenes file will be added to the cache previously initialized.
+
+    File file = //some file coming from Universe
+    cache.put(fileDownloaded.getName(), fileDownloaded);
+
+##### Retrieval
+
+Before sending any requests to the server, might be interesting to check if the data already exists locally. This method allows to retrieve the data based on the *key* provided.
+
+**Note**: Maybe for the next releases we could implement some additional policies like automatically check the cache before sending requests to the server.
+
+    myCache.get(fileDownloaded.getName());
+
+##### Removing
+
+The removal of local cache on logout is not planned for this release, but is possible to include on the list of policies for further release. The current API allows developers to purge objects from disk, once the equivalent *key* is provided.
+
+    myCache.remove(fileDownloaded.getName());
+
+
+#### iOS
+
+##### TBD
+
+- Some ideas from Christos
+  * Core data plus the implementation of adapters for Memory and Disk.
+
+#### JavaScript
+
+##### AppCache or Server
+
+JavaScript is a completely different environment from native platforms. Implementing caching on the client side would be silly since solutions for caching have existed for years. Developers willing to cache data with JavaScript, must stick with Server Caching or AppCache — even if it's [a douchebag](http://alistapart.com/article/application-cache-is-a-douchebag).
 
 ## Encrypted Storage
 
-The API should allow the local storage to be self-encrypted, by that we mean once **KeyStore/KeyChain** is opened, any data inserted was supposed to be properly encrypted.
+The API must allow the local storage to be self-encrypted, by that we mean once **KeyStore/KeyChain** is opened, any data inserted was supposed to be properly encrypted.
+
+## Offline storage
+
+AeroGear already comes with several options for offline storage, thankfully to our team. Here comes some options:
+
+- Android: Memory, SQLite
+- iOS: Memory, SQLite
+- JavaScript: Memory, Session Local, Indexed DB and WebSQL
+
+All the storage mechanisms already support password-based encryption with *AES-GCM*.
+
+## Offline Authentication
+
+Server-side authentication is easy compared to offline, because we don't need to worry about how passwords will be kept on the server (from the client- side perspective). When the device goes offline some critical problem will emerge like users will lose their access to the application, sensitive data being exposed to attackers or data loss.
+
+On the bright side the solution in theory is simple at first glance. The application requests users to provide their
+credentials the first time the application is started, but the password **can't** be kept on device. That would represent a risk if device is stolen, lost, borrowed or infected with malware.
+
+The proposed solution is to make use of cryptographic functions in an attempt to slow down an adversary in case the user's device is compromised.
+
+### Password registration
+
+![](http://photon.abstractj.org/cdraw_368448_pixels_20140502_162611_20140502_162614.jpg)
+
+### Offline authentication
+
+![](http://photon.abstractj.org/cdraw_284352_pixels_20140502_163240_20140502_163242.jpg)
+
+## Data encryption
+
+### Storage
+
+![](http://photon.abstractj.org/cdraw_343526_pixels_20140502_163918_20140502_163920.jpg)
 
 ### Remote storage
 
-If the data must be kept in another infrastructure, the server should never have access to user's data, instead, the application should send the data encrypted as well the public keys for data sync. Once some data is added on the server side, it should be encrypted with the public key provided and sent back to the client.
+If the data must be stored in another infrastructure, the server should never have access to user's data, instead, the application must send the data encrypted as well the public keys for data sync. Once some data is added on the server side, it should be encrypted with the public key provided and sent back to the client.
 
-**Note:** To not lose our focus here, *offline storage*, anything related with *data sync* will be proposed in a separated document 
+**Note:** To not lose our focus here, *offline storage*, anything related with *data sync* will be proposed in a separated document
 
-## Encrypted Cache
+## API symmetry
 
-Sometimes we just need to make use of caching mechanism for the temporally storage of some information like documents, images or presentations which doesn't mean they are not significant or critical, we never know what type of file will be there. 
-
-Into this iteration we chose [LRU (*Least Recently Used*)](http://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) as our caching mechanisms based on the state of data that have been used recently, in other words, if the data have not been used for decades it will probably remain unused for a long time. 
-
-The approach for encrypting cache must be very similar to the local storage.
-
-# API symmetry
-
-## Android
+### Android
 
 The Android platform make use of [AeroGear Crypto](https://github.com/aerogear/aerogear-crypto-java) plus the [support added for the KeyStore management](https://github.com/aerogear/aerogear-android/blob/247009a1a729952bae964e34551c7cb92846a132/src/org/jboss/aerogear/android/impl/security/PasswordEncryptionServices.java#L74)  AeroGear Android providing an easy to use functionality to extract the private and public key.
 
@@ -77,40 +216,38 @@ The Android platform make use of [AeroGear Crypto](https://github.com/aerogear/a
     } catch (RuntimeException e) {
             Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
     }
-                
-For caching functionalities, the plan is to provide [LruCache](http://developer.android.com/reference/android/support/v4/util/LruCache.html) as alternative.
 
-## JavaScript
+### JavaScript
 
 - It must be discussed, about how the encrypted cache should work in scenarios where passwords are not provided.
 TBD
 
-## iOS
+### iOS
 
-The iOS platform will make use of [AeroGear Crypto iOS](https://github.com/aerogear/aerogear-crypto-ios) library for the generation of public/private keys and encryption. Further, since the keychain in iOS can be compromised, the key pairs generated would be further encrypted using the key generated by the KDF passphrase and stored using an appropriate protection class (_kSecAttrAccessibleWhenUnlockedThisDeviceOnly_).    
+The iOS platform will make use of [AeroGear Crypto iOS](https://github.com/aerogear/aerogear-crypto-ios) library for the generation of public/private keys and encryption. Further, since the Keychain in iOS can be compromised, the key pairs generated would be further encrypted using the key generated by the KDF passphrase and stored using an appropriate protection class (_kSecAttrAccessibleWhenUnlockedThisDeviceOnly_).
 
 
 	AGKeyManager *keyManager = [AGKeyManager manager];
-	
+
 	AGPasswordProtectedKeychainCryptoConfig *keychainCryptoConfig = [[AGPasswordProtectedKeychainCryptoConfig alloc] init];
     [keychainCryptoConfig setAlias:@"offline"];
-	
+
     //Derive the password with a KDF function
     [keychainCryptoConfig setPassword:password.text];
-    
+
      // initialize the encryption service passing the config
     id<AGEncryptionService> encryptionService = [keyManager encryptionService:keychainCryptoConfig];
 
 For caching functionalities, research the feasibility of using [NSCache](https://github.com/gnustep/gnustep-base/blob/master/Source/NSCache.m#L195)
- 
 
-# Demo application
+
+## Demo application
 
 - https://github.com/danielpassos/aerogear-offline-android-demo/
 
-# Planned Jiras
+## Planned Jiras
 
-## Offline Storage
+### Offline Storage
 component: offline, crypto, storage
 
 - AGSEC-XXX: Queries on encrypted database
@@ -121,7 +258,7 @@ component: offline, crypto, storage
 
 *Description*: Investigate if is possible to derive the key based on device unlock or PIN
 
-## Encrypted Cache
+### Encrypted Cache
 component: offline, crypto, cache
 
 - AGSEC-XXX: R&D about LRU
@@ -136,7 +273,7 @@ component: offline, crypto, cache
 
 *Description*: Allow developers to choose when they want their cache encrypted
 
-## Remote Storage
+### Remote Storage
 component: crypto, sync
 
 - AGSEC-XXX: Device registration
@@ -145,7 +282,7 @@ component: crypto, sync
 
 - AGSEC-XXX: Revoke capability
 
-*Description*: Adds the ability to revoke the key stored on device using another authorized device 
+*Description*: Adds the ability to revoke the key stored on device using another authorized device
 
 - AGSEC-XXX: Remote wipe a mobile device
 
