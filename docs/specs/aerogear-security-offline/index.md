@@ -31,7 +31,7 @@ By default we chose [LRU (*Least Recently Used*)](http://en.wikipedia.org/wiki/C
 
 ### Policy
 
-The API will attempt to retrieve data from the cache — if of course, data was previously cached — otherwise, a request is sent to the remote resource. All the cached resources stay in memory while the application is opened. Once the application it's closed, objects lying in the memory must be persisted in the file system.
+The API will attempt to retrieve data from the cache — if of course, data was previously cached — otherwise, a request is sent to the remote resource. All the cached resources stay in memory while the application is opened. Once the application is closed, objects in memory must be persisted to the file system.
 
 ![](http://photon.abstractj.org/cdraw_432439_pixels_20140428_164816_20140428_164819.jpg)
 
@@ -70,7 +70,8 @@ A PoC to validate some concepts was created: [AeroGear Android Offline](https://
 
 ##### Creating
 
-Developers can implement their own *caching configuration* strategy if they want to. Into this way we give freedom to use whatever library is available outside.
+Developers can implement their own *caching configuration* strategy if they want to. This way users are free to choose whatever library best fits
+their needs.
 
 ```
 public class MyCacheConfig extends CacheConfig<MyCacheConfig> {
@@ -80,7 +81,7 @@ public class MyCacheConfig extends CacheConfig<MyCacheConfig> {
 }
 ```
 
-Otherwise, people just willing to cache their resources can stick to defaults.
+Otherwise, people just willing to cache their resources can stick with defaults.
 
 ```
 CacheManager cacheManager = new CacheManager();
@@ -163,7 +164,7 @@ myCache.remove(fileDownloaded.getName());
 
 ##### AppCache or Server
 
-JavaScript is a completely different environment from native platforms. Implement caching on the client side would be silly once we have solutions already implemented for years. Developers willing to cache data with JavaScript, must stick Server Caching or AppCache — even if it's [a douchebag](http://alistapart.com/article/application-cache-is-a-douchebag).
+JavaScript is a completely different environment from native platforms. Implementing caching on the client side would be silly since solutions for caching have existed for years. Developers willing to cache data with JavaScript, must stick with Server Caching or AppCache — even if it's [a douchebag](http://alistapart.com/article/application-cache-is-a-douchebag).
 
 ## Encrypted Storage
 
@@ -171,7 +172,7 @@ The API must allow the local storage to be self-encrypted, by that we mean once 
 
 ## Offline storage
 
-AeroGear already comes with several options for offline storage, thankfuly to our team. Here comes some options:
+AeroGear already comes with several options for offline storage, thankfully to our team. Here comes some options:
 
 - Android: Memory, SQLite
 - iOS: Memory, SQLite
@@ -181,11 +182,12 @@ All the storage mechanisms already support password-based encryption with *AES-G
 
 ## Offline Authentication
 
-Server-side authentication is easy compared to offline, because we don't need to worry about how passwords will be kept on the server (from the client- side perspective). When the device goes offline some critical problem will emerge like users will losing their access to the application, sensitive data being exposed to attackers or data loss.
+Server-side authentication is easy compared to offline, because we don't need to worry about how passwords will be kept on the server (from the client- side perspective). When the device goes offline some critical problem will emerge like users will lose their access to the application, sensitive data being exposed to attackers or data loss.
 
-On the bright side the solution in theory is simple at first glance. The application requests users to provide their credentials at the first time the application is started, but the password **can't** be kept on device. That would represent a risk if device is stolen, lost, borrowed or infected with malware.
+On the bright side the solution in theory is simple at first glance. The application requests users to provide their
+credentials the first time the application is started, but the password **can't** be kept on device. That would represent a risk if device is stolen, lost, borrowed or infected with malware.
 
-The proposed solution is to make use of cryptographic functions in an attempt to slow down an adversary in case of the user's device is compromised.
+The proposed solution is to make use of cryptographic functions in an attempt to slow down an adversary in case the user's device is compromised.
 
 ### Password registration
 
