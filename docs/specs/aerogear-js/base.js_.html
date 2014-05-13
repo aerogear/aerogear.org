@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Source: data-manager/adapters/base.js</h1>
+    <h1 class="page-title">Source: notifier/adapters/base.js</h1>
     
     
 
@@ -42,105 +42,138 @@
 * limitations under the License.
 */
 /**
-    The Base adapter that all other adapters will extend from.
+    The Base Notifier adapter that all other Notifier adapters( except SimplePush ) will extend from.
     Not to be Instantiated directly
- */
-AeroGear.DataManager.adapters.base = function( storeName, settings ) {
-    if ( this instanceof AeroGear.DataManager.adapters.base ) {
-        throw "Invalid instantiation of base class AeroGear.DataManager.adapters.base";
+*/
+
+AeroGear.Notifier.adapters.base = function( clientName, settings ) {
+    if ( this instanceof AeroGear.Notifier.adapters.base ) {
+        throw "Invalid instantiation of base class AeroGear.Notifier.adapters.base";
     }
 
     settings = settings || {};
 
-    // Private Instance vars
-    var data = null,
-        recordId = settings.recordId ? settings.recordId : "id",
-        crypto = settings.crypto || {},
-        cryptoOptions = crypto.options || {};
+    var connectURL = settings.connectURL || "",
+        channels = settings.channels || [],
+        autoConnect = !!settings.autoConnect || channels.length,
+        state = AeroGear.Notifier.CONNECTING,
+        name = clientName,
+        client = null;
 
-    // Privileged Methods
+    // Privileged methods
     /**
-        Returns the value of the private data var
+        Returns the value of the private connectURL var
         @private
-        @augments base
-        @returns {Array}
+        @augments AeroGear.Notifier.adapters.base
      */
-    this.getData = function() {
-        return data || [];
+    this.getConnectURL = function() {
+        return connectURL;
     };
 
     /**
-        Sets the value of the private data var
+        Set the value of the private connectURL var
         @private
-        @augments base
+        @augments AeroGear.Notifier.adapters.base
+        @param {String} url - New connectURL for this client
      */
-    this.setData = function( newData ) {
-        data = newData;
-    };
-    /**
-        Returns the value of the private recordId var
-        @private
-        @augments base
-        @returns {String}
-     */
-    this.getRecordId = function() {
-        return recordId;
+    this.setConnectURL = function( url ) {
+        connectURL = url;
     };
 
     /**
-        A Function for a jQuery.Deferred to always call
+        Returns the value of the private channels var
         @private
-        @augments base
+        @augments AeroGear.Notifier.adapters.base
      */
-    this.always = function( value, status, callback ) {
-        if( callback ) {
-            callback.call( this, value, status );
+    this.getChannels = function() {
+        return channels;
+    };
+
+    /**
+        Adds a channel to the set
+        @param {Object} channel - The channel object to add to the set
+        @private
+        @augments AeroGear.Notifier.adapters.base
+     */
+    this.addChannel = function( channel ) {
+        channels.push( channel );
+    };
+
+    /**
+        Check if subscribed to a channel
+        @param {String} address - The address of the channel object to search for in the set
+        @private
+        @augments AeroGear.Notifier.adapters.base
+     */
+    this.getChannelIndex = function( address ) {
+        for ( var i = 0; i &lt; channels.length; i++ ) {
+            if ( channels[ i ].address === address ) {
+                return i;
+            }
+        }
+        return -1;
+    };
+
+    /**
+        Removes a channel from the set
+        @param {Object} channel - The channel object to remove from the set
+        @private
+        @augments AeroGear.Notifier.adapters.base
+     */
+    this.removeChannel = function( channel ) {
+        var index = this.getChannelIndex( channel.address );
+        if ( index >= 0 ) {
+            channels.splice( index, 1 );
         }
     };
 
     /**
-        Encrypt data being saved or updated if applicable
+        Returns the value of the private state var
         @private
-        @augments base
+        @augments AeroGear.Notifier.adapters.base
      */
-    this.encrypt = function( data ) {
-        var content;
-
-        if( crypto.agcrypto ) {
-            cryptoOptions.data = sjcl.codec.utf8String.toBits( JSON.stringify( data ) );
-            content = {
-                id: data[ recordId ],
-                data: crypto.agcrypto.encrypt( cryptoOptions )
-            };
-            window.localStorage.setItem( "ag-" + storeName + "-IV", JSON.stringify( { id: crypto.agcrypto.getIV() } ) );
-            return content;
-        }
-
-        return data;
+    this.getState = function() {
+        return state;
     };
 
     /**
-        Decrypt data being read if applicable
+        Sets the value of the private state var
         @private
-        @augments base
+        @augments AeroGear.Notifier.adapters.base
      */
-    this.decrypt = function( data, isSessionLocal ) {
-        var content, IV;
-
-        if( crypto.agcrypto ) {
-            IV = JSON.parse( window.localStorage.getItem( "ag-" + storeName + "-IV" ) ) || {};
-            cryptoOptions.IV = IV.id;
-            data = Array.isArray( data ) ? data : [ data ];
-            content = data.map( function( value ) {
-                cryptoOptions.data = value.data;
-                return JSON.parse( sjcl.codec.utf8String.fromBits( crypto.agcrypto.decrypt( cryptoOptions ) ) );
-            });
-
-            return isSessionLocal ? content[ 0 ] : content;
-        }
-
-        return data;
+    this.setState = function( newState ) {
+        state = newState;
     };
+
+    /**
+        Returns the value of the private client var
+        @private
+        @augments AeroGear.Notifier.adapters.base
+     */
+    this.getClient = function() {
+        return client;
+    };
+
+    /**
+        Sets the value of the private client var
+        @private
+        @augments AeroGear.Notifier.adapters.base
+     */
+    this.setClient = function( newClient ) {
+        client = newClient;
+    };
+
+    // Handle auto-connect.
+    // for stompws ONLY - If Login or Password are needed, autoConnect won't happen
+    if ( ( autoConnect || channels.length ) && ( !settings.login && !settings.password ) ) {
+        this.connect({
+            url: connectURL,
+            onConnect: settings.onConnect,
+            onDisconnect: settings.onDisconnect, // for Vertx
+            onConnectError: settings.onConnectError,
+            onMessage: settings.onMessage // for mqttws
+        });
+    }
 };
 </code></pre>
         </article>
