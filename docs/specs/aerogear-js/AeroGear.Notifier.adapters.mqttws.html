@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Adapter: WebSQL</h1>
+    <h1 class="page-title">Adapter: mqttws</h1>
     
     
 
@@ -28,9 +28,9 @@
     
 <header>
     <h2>
-        <span class="ancestors"><a href="AeroGear.html">AeroGear</a><a href="AeroGear.DataManager.html">.DataManager</a><a href="AeroGear.DataManager.html#adapters">.adapters</a>.</span>
+        <span class="ancestors"><a href="AeroGear.html">AeroGear</a><a href="AeroGear.Notifier.html">.Notifier</a><a href="AeroGear.Notifier.html#adapters">.adapters</a>.</span>
     
-    WebSQL
+    mqttws
     </h2>
     
 </header>  
@@ -42,7 +42,7 @@
     
         
 <dt>
-    <h4 class="name" id="WebSQL"><span class="type-signature"></span>new WebSQL<span class="signature">(storeName, <span class="optional">settings</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="mqttws"><span class="type-signature"></span>new mqttws<span class="signature">(clientName, <span class="optional">settings</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
@@ -54,8 +54,7 @@
 
     
     <div class="description">
-        The WebSQL adapter stores data in a WebSQL database for more persistent client side storage
-    This constructor is instantiated when the "DataManager.add()" method is called
+        The mqttws adapter uses MQTT over WebSockets for messaging.
     </div>
     
 
@@ -93,7 +92,7 @@
 	
         <tr>
             
-                <td class="name"><code>storeName</code></td>
+                <td class="name"><code>clientName</code></td>
             
             
             <td class="type">
@@ -121,7 +120,7 @@
                 </td>
             
             
-            <td class="description last">the name used to reference this particular store</td>
+            <td class="description last">The name used to reference this particular notifier client</td>
         </tr>
 	
 	
@@ -160,7 +159,7 @@
                 </td>
             
             
-            <td class="description last">the settings to be passed to the adapter
+            <td class="description last">The settings to be passed to the adapter
                 <h6>Properties</h6>
                 
 
@@ -190,46 +189,7 @@
 	
         <tr>
             
-                <td class="name"><code>recordId</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    "id"
-                
-                </td>
-            
-            
-            <td class="description last">the name of the field used to uniquely identify a "record" in the data</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>auto</code></td>
+                <td class="name"><code>autoConnect</code></td>
             
             
             <td class="type">
@@ -261,20 +221,59 @@
                 </td>
             
             
-            <td class="description last">set to 'true' to enable 'auto-connect' for read/remove/save/filter</td>
+            <td class="description last">Automatically connect the client to the connectURL on creation. This option is ignored and a connection is automatically established if channels are provided as the connection is necessary prior to channel subscription</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>crypto</code></td>
+                <td class="name"><code>connectURL</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    ""
+                
+                </td>
+            
+            
+            <td class="description last">Defines the URL for connecting to the messaging service</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onConnect</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Function</span>
 
 
             
@@ -298,41 +297,20 @@
                 </td>
             
             
-            <td class="description last">the crypto settings to be passed to the adapter
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+            <td class="description last">Callback to be executed when a connection is established if autoConnect === true</td>
+        </tr>
 	
-	<tbody>
 	
 	
         <tr>
             
-                <td class="name"><code>agcrypto</code></td>
+                <td class="name"><code>onConnectError</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">Function</span>
 
 
             
@@ -351,21 +329,25 @@
             
             
             
+                <td class="default">
+                
+                </td>
             
-            <td class="description last">the AeroGear.Crypto object to be used</td>
+            
+            <td class="description last">Callback to be executed when connecting to a service is unsuccessful if autoConnect === true</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>onMessage</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">Function</span>
 
 
             
@@ -384,14 +366,51 @@
             
             
             
+                <td class="default">
+                
+                </td>
             
-            <td class="description last">the specific options for the AeroGear.Crypto encrypt/decrypt methods</td>
+            
+            <td class="description last">Callback to be executed when a message is received</td>
         </tr>
 	
 	
-	</tbody>
-</table>
+	
+        <tr>
+            
+                <td class="name"><code>channels</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
             </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    []
+                
+                </td>
+            
+            
+            <td class="description last">A set of channel objects to which this client can subscribe. Each object should have a String address</td>
         </tr>
 	
 	
@@ -428,7 +447,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="websql.js.html">data-manager/adapters/websql.js</a>, <a href="websql.js.html#line40">line 40</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line57">line 57</a>
     </li></ul></dd>
     
     
@@ -453,7 +472,7 @@
     
             
 <div class="param-desc">
-    The created store
+    The created notifier client
 </div>
 
 
@@ -475,13 +494,31 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    // Create an empty DataManager
-    var dm = AeroGear.DataManager();
+    <pre class="prettyprint"><code>    // Create an empty Notifier
+    var notifier = AeroGear.Notifier();
 
-    // Add an WebSQL store
-    dm.add({
-        name: "newStore",
-        type: "WebSQL"
+    // Create a channel object and the channel callback function
+    var channelObject = {
+        address: "org.aerogear.messaging.global"
+    };
+
+    // Add an mqttws client with all the settings
+    notifier.add({
+        name: "client1",
+        settings: {
+            autoConnect: true,
+            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            onConnect: function() {
+                console.log( "connected" );
+            },
+            onConnectError: function() {
+                console.log( "connection error" );
+            },
+            onMessage: function ( message ) {
+                console.log( message.destinationName + " " + message.payloadString );
+            },
+            channels: [ channelObject ]
+        }
     });</code></pre>
 
     
@@ -508,7 +545,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="isValid"><span class="type-signature">&lt;static> </span>isValid<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="connect"><span class="type-signature"></span>connect<span class="signature">(<span class="optional">options</span>)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -518,78 +555,7 @@
 
     
     <div class="description">
-        Determine if this adapter is supported in the current environment
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="websql.js.html">data-manager/adapters/websql.js</a>, <a href="websql.js.html#line133">line 133</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="filter"><span class="type-signature"></span>filter<span class="signature">(<span class="optional">filterParameters</span>, <span class="optional">matchAny</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-
-    
-    <div class="description">
-        Filter the current store's data
+        Connect the client to the messaging service
     </div>
     
 
@@ -615,6 +581,8 @@
 		
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -625,7 +593,7 @@
 	
         <tr>
             
-                <td class="name"><code>filterParameters</code></td>
+                <td class="name"><code>options</code></td>
             
             
             <td class="type">
@@ -650,15 +618,240 @@
             
             
             
+                <td class="default">
+                
+                    {}
+                
+                </td>
             
-            <td class="description last">An object containing key/value pairs on which to filter the store's data. To filter a single parameter on multiple values, the value can be an object containing a data key with an Array of values to filter on and its own matchAny key that will override the global matchAny for that specific filter parameter.</td>
+            
+            <td class="description last">Options to pass to the connect method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">The URL for the messaging service. This url will override and reset any connectURL specified when the client was created</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>matchAny</code></td>
+                <td class="name"><code>timeout</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">If the connect has not succeeded within this number of seconds, it is deemed to have failed</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>login</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Authentication login name for this connection</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Authentication password for this connection</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>keepAliveInterval</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">The server disconnects this client if there is no activity for this number of seconds</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>willMessage</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Messaging.Message</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Sent by the server when the client disconnects abnormally</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>cleanSession</code></td>
             
             
             <td class="type">
@@ -684,20 +877,20 @@
             
             
             
-            <td class="description last">When true, an item is included in the output if any of the filter parameters is matched.</td>
+            <td class="description last">If true(default) the client and server persistent state is deleted on successful connect</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>options.success</code></td>
+                <td class="name"><code>useSSL</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">AeroGear~successCallbackWEBSQL</span>
+<span class="param-type">Boolean</span>
 
 
             
@@ -717,20 +910,20 @@
             
             
             
-            <td class="description last">a callback to be called after a successful filtering of a WebSQL DB</td>
+            <td class="description last">If present and true, use an SSL Websocket connection</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>options.error</code></td>
+                <td class="name"><code>onConnect</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">AeroGear~errorCallbackWEBSQL</span>
+<span class="param-type">Function</span>
 
 
             
@@ -750,7 +943,83 @@
             
             
             
-            <td class="description last">a callback to be calledd after an error filtering a WebSQL DB</td>
+            <td class="description last">Callback to be executed when a connection is established</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onConnectError</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Callback to be executed when connecting to a service is unsuccessful</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.onMessage</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">Callback to be executed when a message is received</td>
         </tr>
 	
 	
@@ -781,7 +1050,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="websql.js.html">data-manager/adapters/websql.js</a>, <a href="websql.js.html#line467">line 467</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line184">line 184</a>
     </li></ul></dd>
     
     
@@ -802,50 +1071,32 @@
     
     
     
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    A jQuery.Deferred promise
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
     
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    // Create an empty DataManager
-    var dm = AeroGear.DataManager();
+    <pre class="prettyprint"><code>    // Create an empty Notifier
+    var notifier = AeroGear.Notifier();
 
-    // Add an IndexedDB store
-    dm.add({
-        name: "newStore",
-        type: "WebSQL"
+    // Add an mqtt client
+    notifier.add({
+        name: "client1",
+        settings: {
+            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            onConnect: function() {
+                console.log( "connected" );
+            },
+            onConnectError: function() {
+                console.log( "connection error" );
+            },
+            onMessage: function ( message ) {
+                console.log( message.destinationName + " " + message.payloadString );
+            }
+        }
     });
 
-    dm.stores.newStore.open({
-        success: function() { ... },
-        error: function() { ... }
-    });
-
-    dm.stores.test1.filter( { "name": "Lucas" }, true, {
-        success: function( data ) { ... },
-        error: function( error ) { ... }
-    });</code></pre>
+    // Connect to the vertx messaging service
+    notifier.clients.client1.connect();</code></pre>
 
     
 </dd>
@@ -853,7 +1104,7 @@
         
             
 <dt>
-    <h4 class="name" id="open"><span class="type-signature"></span>open<span class="signature">(<span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="disconnect"><span class="type-signature"></span>disconnect<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -863,7 +1114,107 @@
 
     
     <div class="description">
-        Open the Database
+        Disconnect the client from the messaging service
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line253">line 253</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    // Create an empty Notifier
+    var notifier = AeroGear.Notifier();
+
+    // Add an mqtt client
+    notifier.add({
+        name: "client1",
+        settings: {
+            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            onConnect: function() {
+                console.log( "connected" );
+            },
+            onConnectError: function() {
+                console.log( "connection error" );
+            },
+            onMessage: function( message ) {
+                console.log( message.destinationName + " " + message.payloadString );
+            }
+        }
+    });
+
+    // Connect to the vertx messaging service
+    notifier.clients.client1.connect();
+
+    // Disconnect from the vertx messaging service
+    notifier.clients.client1.disconnect();</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(channel, <span class="optional">message</span>, <span class="optional">sendOptions</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    <div class="description">
+        Send a message to a particular channel
     </div>
     
 
@@ -901,268 +1252,13 @@
 	
         <tr>
             
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-            
-            <td class="description last">options</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>settings.success</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~successCallbackWEBSQL</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">a callback to be called when after successful opening of a WebSQL DB</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>settings.error</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~errorCallbackWEBSQL</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">a callback to be called when there is an error opening a WebSQL DB</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="websql.js.html">data-manager/adapters/websql.js</a>, <a href="websql.js.html#line158">line 158</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    A jQuery.Deferred promise
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="prettyprint"><code>    // Create an empty DataManager
-    var dm = AeroGear.DataManager();
-
-    // Add an WebSQL store
-    dm.add({
-        name: "newStore",
-        type: "WebSQL"
-    });
-
-    dm.stores.newStore.open({
-        success: function() { ... },
-        error: function() { ... }
-    });</code></pre>
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="read"><span class="type-signature"></span>read<span class="signature">(<span class="optional">id</span>, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-
-    
-    <div class="description">
-        Read data from a store
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>channel</code></td>
             
             
             <td class="type">
             
                 
 <span class="param-type">String</span>
-|
-
-<span class="param-type">Number</span>
 
 
             
@@ -1170,8 +1266,6 @@
             
             
                 <td class="attributes">
-                
-                    &lt;optional><br>
                 
                     
                 
@@ -1186,294 +1280,14 @@
                 </td>
             
             
-            <td class="description last">Usually a String or Number representing a single "record" in the data set or if no id is specified, all data is returned</td>
+            <td class="description last">The channel to which to send the message</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-            
-            <td class="description last">additional options
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>success</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~successCallbackWEBSQL</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">a callback to be called after successfully reading a WebSQL DB</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>error</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~errorCallbackWEBSQL</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">a callback to be called when there is an error reading a WebSQL DB</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="websql.js.html">data-manager/adapters/websql.js</a>, <a href="websql.js.html#line223">line 223</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    A jQuery.Deferred promise
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="prettyprint"><code>    // Create an empty DataManager
-    var dm = AeroGear.DataManager();
-
-    // Add an WebSQL store
-    dm.add({
-        name: "newStore",
-        type: "WebSQL"
-    });
-
-    dm.stores.newStore.open({
-        success: function() { ... },
-        error: function() { ... }
-    });
-
-    dm.stores.test1.read( undefined, {
-        success: function( data ) { ... },
-        error: function( error ) { ... }
-    });
-
-    // read a record with a particular id
-    dm.stores.test1.read( 5, {
-        success: function( data ) { ... },
-        error: function( error ) { ... }
-    });</code></pre>
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(toRemove)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-
-    
-    <div class="description">
-        Removes data from the store
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>toRemove</code></td>
+                <td class="name"><code>message</code></td>
             
             
             <td class="type">
@@ -1483,40 +1297,6 @@
 |
 
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">A variety of objects can be passed to remove to specify the item or if nothing is provided, all data is removed</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>options.success</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~successCallbackWEBSQL</span>
 
 
             
@@ -1535,21 +1315,27 @@
             
             
             
+                <td class="default">
+                
+                    ""
+                
+                </td>
             
-            <td class="description last">a callback to be called after successfully removing a record from a WebSQL DB</td>
+            
+            <td class="description last">The message object to send</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>options.error</code></td>
+                <td class="name"><code>sendOptions</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">AeroGear~errorCallbackWEBSQL</span>
+<span class="param-type">Object</span>
 
 
             
@@ -1568,8 +1354,12 @@
             
             
             
+                <td class="default">
+                
+                </td>
             
-            <td class="description last">a callback to be called when there is an error removing a record from a WebSQL DB</td>
+            
+            <td class="description last">The send options to send</td>
         </tr>
 	
 	
@@ -1600,7 +1390,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="websql.js.html">data-manager/adapters/websql.js</a>, <a href="websql.js.html#line386">line 386</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line390">line 390</a>
     </li></ul></dd>
     
     
@@ -1621,57 +1411,15 @@
     
     
     
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    A jQuery.Deferred promise
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
     
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    // Create an empty DataManager
-    var dm = AeroGear.DataManager();
+    <pre class="prettyprint"><code>    // Send an empty message to a channel
+    notifier.clients.client1.send( "test.address" );
 
-    // Add an IndexedDB store
-    dm.add({
-        name: "newStore",
-        type: "WebSQL"
-    });
-
-    dm.stores.newStore.open({
-        success: function() { ... },
-        error: function() { ... }
-    });
-
-    // Delete a record
-    dm.stores.newStore.remove( 1, {
-        success: function( data ) { ... },
-        error: function( error ) { ... }
-    });
-
-    // Remove all data
-    dm.stores.newStore.remove( undefined, {
-        success: function( data ) { ... },
-        error: function( error ) { ... }
-    });</code></pre>
+    // Send a "Hello" message to a channel
+    notifier.clients.client1.send( "test.address", "Hello" );</code></pre>
 
     
 </dd>
@@ -1679,7 +1427,7 @@
         
             
 <dt>
-    <h4 class="name" id="save"><span class="type-signature"></span>save<span class="signature">(data, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="subscribe"><span class="type-signature"></span>subscribe<span class="signature">(channels, <span class="optional">reset</span>)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -1689,7 +1437,7 @@
 
     
     <div class="description">
-        Saves data to the store, optionally clearing and resetting the data
+        Subscribe this client to a new channel
     </div>
     
 
@@ -1715,8 +1463,6 @@
 		
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -1727,7 +1473,7 @@
 	
         <tr>
             
-                <td class="name"><code>data</code></td>
+                <td class="name"><code>channels</code></td>
             
             
             <td class="type">
@@ -1753,74 +1499,10 @@
             
             
             
-                <td class="default">
-                
-                </td>
             
-            
-            <td class="description last">An object or array of objects representing the data to be saved to the server. When doing an update, one of the key/value pairs in the object to update must be the `recordId` you set during creation of the store representing the unique identifier for a "record" in the data set.</td>
+            <td class="description last">A channel object or array of channel objects to which this client can subscribe. Each object should have a String address as well as an optional subscribeOptions object which is used to control the subscription</td>
         </tr>
 	
-	
-	
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-            
-            <td class="description last">additional options
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
 	
 	
         <tr>
@@ -1851,79 +1533,7 @@
             
             
             
-            <td class="description last">If true, this will empty the current data and set it to the data being saved</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>success</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~successCallbackWEBSQL</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">a callback to be called after successfully saving records to a WebSQL DB</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>error</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~errorCallbackWEBSQL</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">a callback to be called when there is an error saving records to a WebSQL DB</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+            <td class="description last">If true, remove all channels from the set and replace with the supplied channel(s)</td>
         </tr>
 	
 	
@@ -1954,7 +1564,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="websql.js.html">data-manager/adapters/websql.js</a>, <a href="websql.js.html#line306">line 306</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line323">line 323</a>
     </li></ul></dd>
     
     
@@ -1975,62 +1585,218 @@
     
     
     
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    A jQuery.Deferred promise
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Object</span>
-
-
-	</dd>
-</dl>
-
-        
     
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>    // Create an empty DataManager
-    var dm = AeroGear.DataManager();
+    <pre class="prettyprint"><code>    // Create an empty Notifier
+    var notifier = AeroGear.Notifier();
 
-    // Add an WebSQL store
-    dm.add({
-        name: "newStore",
-        type: "WebSQL"
-    });
-
-    dm.stores.newStore.open({
-        success: function() { ... },
-        error: function() { ... }
-    });
-
-    dm.stores.newStore.save( { "id": 3, "name": "Grace", "type": "Little Person" }, {
-        success: function( data ) { ... },
-        error: function( error ) { ... }
-    });
-
-    // Save multiple Records
-    dm.stores.newStore.save(
-        [
-            { "id": 3, "name": "Grace", "type": "Little Person" },
-            { "id": 4, "name": "Graeham", "type": "Really Little Person" }
-        ],
-        {
-            success: function( data ) { ... },
-            error: function( error ) { ... }
+    // Create a channel object and the channel callback function
+    var channelObject = {
+        address: "org.aerogear.messaging.global",
+        subscribeOptions: {
+            qos: 2,
+            onSuccess: function() {
+                console.log( 'Subscription was successful' );
+            },
+            onFailure: function() {
+                console.log( 'Subscription failed' );
+            },
+            timeout: 60
         }
-    );</code></pre>
+    };
+
+    // Add a mqtt client with autoConnect === true and no channels
+    notifier.add({
+        name: "client1",
+        settings: {
+            autoConnect: true,
+            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            onConnect: function() {
+                console.log( "connected" );
+            },
+            onConnectError: function() {
+                console.log( "connection error" );
+            },
+            onMessage: function( message ) {
+                console.log( message.destinationName + " " + message.payloadString );
+            }
+        }
+    });
+
+    // Subscribe to a channel
+    notifier.clients.client1.subscribe( channelObject );
+
+    // Subscribe to multiple channels at once
+    notifier.clients.client1.subscribe([
+        {
+            address: "newChannel",
+            subscribeOptions: {...}
+        },
+        {
+            address: "anotherChannel",
+            subscribeOptions: { ... }
+        }
+    ]);
+
+    // Subscribe to a channel, but first unsubscribe from all currently subscribed channels by adding the reset parameter
+    notifier.clients.client1.subscribe({
+            address: "newChannel",
+            subscribeOptions: { ... }
+        }, true );</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="unsubscribe"><span class="type-signature"></span>unsubscribe<span class="signature">(channels)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    <div class="description">
+        Unsubscribe this client from a channel
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>channels</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A channel object or a set of channel objects to which this client nolonger wishes to subscribe. Each object should have a String address and an optional unsubscribeOptions object</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line368">line 368</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>    // Unsubscribe from a previously subscribed channel
+    notifier.clients.client1.unsubscribe(
+        {
+            address: "org.aerogear.messaging.global",
+            unsubscribeOptions: {
+                onSuccess: function() {
+                    console.log( 'Unusubscribe was successful' );
+                },
+                onFailure: function() {
+                    console.log( 'Unsubscribe failed' );
+                },
+                timeout: 20
+            }
+        }
+    );
+
+    // Unsubscribe from multiple channels
+    notifier.clients.client1.unsubscribe([
+        {
+            address: "newChannel",
+            unsubscribeOptions: { ... }
+        },
+        {
+            address: "anotherChannel"
+        }
+    ]);</code></pre>
 
     
 </dd>

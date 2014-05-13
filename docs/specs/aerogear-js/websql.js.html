@@ -61,7 +61,7 @@
     // Add an WebSQL store
     dm.add({
         name: "newStore",
-        storageType: "WebSQL"
+        type: "WebSQL"
     });
 
  */
@@ -175,7 +175,7 @@ AeroGear.DataManager.adapters.WebSQL.isValid = function() {
     // Add an WebSQL store
     dm.add({
         name: "newStore",
-        storageType: "WebSQL"
+        type: "WebSQL"
     });
 
     dm.stores.newStore.open({
@@ -228,7 +228,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.open = function( options ) {
     // Add an WebSQL store
     dm.add({
         name: "newStore",
-        storageType: "WebSQL"
+        type: "WebSQL"
     });
 
     dm.stores.newStore.open({
@@ -306,7 +306,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.read = function( id, options ) {
     // Add an WebSQL store
     dm.add({
         name: "newStore",
-        storageType: "WebSQL"
+        type: "WebSQL"
     });
 
     dm.stores.newStore.open({
@@ -357,7 +357,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.save = function( data, options ) 
             });
         };
 
-        data = AeroGear.isArray( data ) ? data : [ data ];
+        data = Array.isArray( data ) ? data : [ data ];
 
         database.transaction( function( transaction ) {
             if( options.reset ) {
@@ -390,7 +390,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.save = function( data, options ) 
     // Add an IndexedDB store
     dm.add({
         name: "newStore",
-        storageType: "WebSQL"
+        type: "WebSQL"
     });
 
     dm.stores.newStore.open({
@@ -444,7 +444,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.remove = function( toRemove, opti
                 transaction.executeSql( sql, [], success, error );
             });
         } else {
-            toRemove = AeroGear.isArray( toRemove ) ? toRemove: [ toRemove ];
+            toRemove = Array.isArray( toRemove ) ? toRemove: [ toRemove ];
             database.transaction( function( transaction ) {
                 for( i; i &lt; toRemove.length; i++ ) {
                     if ( typeof toRemove[ i ] === "string" || typeof toRemove[ i ] === "number" ) {
@@ -479,7 +479,7 @@ AeroGear.DataManager.adapters.WebSQL.prototype.remove = function( toRemove, opti
     // Add an IndexedDB store
     dm.add({
         name: "newStore",
-        storageType: "WebSQL"
+        type: "WebSQL"
     });
 
     dm.stores.newStore.open({
@@ -534,13 +534,13 @@ AeroGear.DataManager.validateAdapter( "WebSQL", AeroGear.DataManager.adapters.We
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue May 13 2014 11:31:59 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -55,8 +55,11 @@
 var dm = AeroGear.DataManager();
 
 // Add a custom memory store
-dm.add( "newStore", {
-    recordId: "customID"
+dm.add({
+    name: "newStore",
+    settings: {
+        recordId: "customID"
+    }
 });
  */
 AeroGear.DataManager.adapters.Memory = function( storeName, settings ) {
@@ -100,17 +103,6 @@ AeroGear.DataManager.adapters.Memory = function( storeName, settings ) {
      */
     this.removeDataRecord = function( index ) {
         this.getData().splice( index, 1 );
-    };
-
-    /**
-        A Function for a jQuery.Deferred to always call
-        @private
-        @augments Memory
-     */
-    this.always = function( value, status, callback ) {
-        if( callback ) {
-            callback.call( this, value, status );
-        }
     };
 
     /**
@@ -243,7 +235,7 @@ AeroGear.DataManager.adapters.Memory.prototype.save = function( data, options ) 
     var itemFound = false,
         deferred = jQuery.Deferred();
 
-    data = AeroGear.isArray( data ) ? data : [ data ];
+    data = Array.isArray( data ) ? data : [ data ];
 
     if ( options && options.reset ) {
         this.setData( data );
@@ -321,7 +313,7 @@ AeroGear.DataManager.adapters.Memory.prototype.remove = function( toRemove, opti
         this.emptyData();
         return deferred.resolve( this.getData(), "success", options ? options.success : undefined );
     } else {
-        toRemove = AeroGear.isArray( toRemove ) ? toRemove : [ toRemove ];
+        toRemove = Array.isArray( toRemove ) ? toRemove : [ toRemove ];
     }
 
     for ( var i = 0; i &lt; toRemove.length; i++ ) {
@@ -404,7 +396,7 @@ AeroGear.DataManager.adapters.Memory.prototype.filter = function( filterParamete
                 paramResult = filterObj.matchAny ? false : true;
 
                 for ( j = 0; j &lt; filterObj.data.length; j++ ) {
-                    if( AeroGear.isArray( value[ keys[ key ] ] ) ) {
+                    if( Array.isArray( value[ keys[ key ] ] ) ) {
                         if( value[ keys [ key ] ].length ) {
                             if( jQuery( value[ keys ] ).not( filterObj.data ).length === 0 && jQuery( filterObj.data ).not( value[ keys ] ).length === 0 ) {
                                 paramResult = true;
@@ -464,7 +456,7 @@ AeroGear.DataManager.adapters.Memory.prototype.filter = function( filterParamete
                 }
             } else {
                 // Filter on parameter value
-                if( AeroGear.isArray( value[ keys[ key ] ] ) ) {
+                if( Array.isArray( value[ keys[ key ] ] ) ) {
                     paramResult = matchAny ? false: true;
 
                     if( value[ keys[ key ] ].length ) {
@@ -523,13 +515,13 @@ AeroGear.DataManager.validateAdapter( "Memory", AeroGear.DataManager.adapters.Me
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Mar 07 2014 09:29:31 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue May 13 2014 11:31:59 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
