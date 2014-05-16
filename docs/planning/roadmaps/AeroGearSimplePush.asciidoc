@@ -10,7 +10,7 @@ AeroGear SimplePush Server Roadmap
 * link:https://github.com/aerogear/aerogear-simplepush-server/[Github Repo]
 * link:https://issues.jboss.org/browse/AGSMPLPUSH/[JIRA]
 
-=== link:https://issues.jboss.org/browse/AGSMPLPUSH-55?jql=project%20%3D%20AGSMPLPUSH%20AND%20fixVersion%20%3D%20%220.11.0%22[0.11.0 (May, 2014)]
+=== link:https://issues.jboss.org/browse/AGSMPLPUSH-55?jql=project%20%3D%20AGSMPLPUSH%20AND%20fixVersion%20%3D%20%220.11.0%22[0.11.0 (Released May, 2014)]
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-50[AGSMPLPUSH-50]: Revisit SockJS session handling.
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-51[AGSMPLPUSH-51]: Buffer leaks in SockJS transports.
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-52[AGSMPLPUSH-52]: Remove synchronization in SockJsSession.
