@@ -52,7 +52,7 @@ This document defines a common API for each mobile platform to make sure that ev
 
 ## Sync strategies
 
-We will have two synchronization strategies.  A document-revision strategy and a merge shadow strategy.  These strategies will be implemented by **Repository** classes *TODO define repository Class*.
+We will have two synchronization strategies.  A document-revision strategy and a merge shadow strategy.  These strategies will be implemented by **[Repository](https://github.com/secondsun/aerogear-android-sync/blob/master/android/src/org/jboss/aerogear/android/sync/Repository.java)** classes. 
 
 ### Document-revision Strategy
 
@@ -98,11 +98,24 @@ The Merge shadow strategy does not use document metadata to manage state.  Inste
  
 #### Transport
 
- - TBD, currently looking at a 1995 Toyota Camery full of 1 TB tapes.
+ - TBD
  
 #### Usage / Lifecycle
 
  - TBD
+
+## DataSyncronizer
+
+The **DataSynchronizer** is responsible for contacting a remote store, pulling updates, passing remote updates to the local **Repository**, and sending local updates to the remote store.
+
+### Usage
+
+ * `read : *objectID*, *callback*` : this method will fetch from a remote store the object with the given objectID.  If the read is successful, the synchronizer will attempt to update the local **Repository** for the object.  It will then pass the object to the *callback* success method.
+ 
+ * `save : *objectContent*, *callback*` : this method will save the local *data* to a remote store.  This method will be responsible for handling recoverable errors and updating local data if necessary.  In the case of a diff-merge-path style syncronization strategy, an unsuccessful POST could return a diff which, if sucessfully applied, would allow for a successful POST.  In this case, the save would be retried and *callback*'s success method would be called.
+ 
+### Notes
+This is based on lohlmquist's [poc](https://github.com/lholmquist/ag-js-ds-poc/blob/master/aerogear.custom.js)
 
 # Implementation reference
 
