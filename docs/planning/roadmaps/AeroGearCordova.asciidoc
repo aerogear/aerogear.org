@@ -30,7 +30,7 @@ push-0.6.0 (End May)
 * bug fixes
 * grunt build for executing tests
 
-push-0.7.0 (July)
+push-1.0.0 (July)
 ~~~~~~~~~~~~~~~~~
 * background notification
 
