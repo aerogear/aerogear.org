@@ -35,7 +35,7 @@ push-1.0.0 (July)
 * background notification
 
 otp-0.7.0 (November)
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 * update libs to version v1.0.1
 * OAuth support
 
