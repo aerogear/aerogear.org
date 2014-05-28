@@ -76,6 +76,10 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321883[JIRA
 
 0.12.0 (early June 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~
+* *iOS push packaging*
+** link:https://issues.jboss.org/browse/AGIOS-183[Static lib and framework]
+** link:https://issues.jboss.org/browse/AGIOS-186[Package documentation]
+** link:https://issues.jboss.org/browse/AGIOS-20[Package in dmg]
 * *Metrics*
 ** link:https://issues.jboss.org/browse/AGPUSH-116[Analytics / Metrics]
 * *Quickstarts*
