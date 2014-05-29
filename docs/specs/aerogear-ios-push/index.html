@@ -40,42 +40,144 @@
 
 <p>A small and handy library that helps to register iOS applications with the <a href="https://github.com/aerogear/aerogear-unified-push-server">AeroGear UnifiedPush Server</a>.</p>
 
+<h2>Building the library</h2>
+
+<p>To build the library simply run the build script:</p>
+
+<pre><code>build.sh
+</code></pre>
+
+<p>The build script will generate a buid folder containing an universal static lib and a framework, sources and documentation are also packaged.</p>
+
+<p><strong>NOTE</strong> on 64 bits architecture: From Xcode 5.1 release inwards, Apple changes the &ldquo;Standard Architectures&rdquo; to also include the arm64 architecture. See &ldquo;Building&rdquo; section on the <a href="[https://developer.apple.com/library/mac/releasenotes/DeveloperTools/RN-Xcode/xc5](https://developer.apple.com/library/mac/releasenotes/DeveloperTools/RN-Xcode/xc5">Xcode 5.1 release notes</a>_release_notes/xc5_release_notes.html#//apple_ref/doc/uid/TP40001051-CH2-SW2). When building with Xcode 5.0, the built library will not support 64 bits architecture. <strong>We recommend you to build with Xcode 5.1+</strong></p>
+
+<h2>Adding the library to your project</h2>
+
+<p>You have different options to add aerogear-push-registration library to your project.</p>
+
+<h3>Approach 1: use CocoaPods</h3>
+
+<p>The library is available on <a href="http://cocoapods.org/?q=aerogear-Push">CocoaPods</a>, just include it in your &lsquo;Podfile&rsquo;:</p>
+
+<pre><code>pod 'AeroGear-Push'
+</code></pre>
+
+<p><strong>Before</strong>, you can run the app, you need to run the following command:</p>
+
+<pre><code>pod install
+</code></pre>
+
+<p>After that you just need to open the <code>YourProject.xcworkspace</code> file in XCode and you&rsquo;re all set.</p>
+
+<h3>Approach 2: use static lib</h3>
+
+<ul>
+<li>step 1: copy lib</li>
+</ul>
+
+
+<p>After you have built the library (see &ldquo;Building the library&rdquo; section), from <a href="https://github.com/aerogear/aerogear-push-ios-registration">aerogear-push-ios-registration</a> directory, run the copy command:</p>
+
+<pre><code>cp -R build/AeroGearPush-iphoneuniversal/* ../&lt;YourProjectFolder&gt;
+</code></pre>
+
+<ul>
+<li>step 2: header search</li>
+</ul>
+
+
+<p>Go to <YourProject> root node in the project navigator, and select the <YourProject> target. Select Build Settings, and locate the Header Search Paths setting in the list. Double click on the Header Search Paths item, and a popover will appear. Click the + button, and enter the following:</p>
+
+<pre><code>$SOURCE_ROOT/include
+</code></pre>
+
+<ul>
+<li>step 3: add library</li>
+</ul>
+
+
+<p>Select the Build Phases tab, and expand the Link Binary With Libraries section and add <strong>libpush-sdk-X.X.X.a</strong></p>
+
+<ul>
+<li>step 4: add linker flag</li>
+</ul>
+
+
+<p>Click on the Build Settings tab, and locate the Other linker Flags setting and add <strong>-ObjC</strong></p>
+
+<p><strong>NOTE</strong>: Please refer to the 64 bits note above.</p>
+
+<h3>Approach 3: use framework</h3>
+
+<ul>
+<li>step 1: copy framework</li>
+</ul>
+
+
+<p>After you have built the framework (see &ldquo;Building the library&rdquo; section), from <a href="https://github.com/aerogear/aerogear-push-ios-registration">aerogear-push-ios-registration</a> directory, run the copy command:</p>
+
+<pre><code>cp -R build/AeroGearPush-framework/AeroGearPush.framework ../&lt;YourProjectFolder&gt;
+</code></pre>
+
+<ul>
+<li>step 2: add framework to Build Phases</li>
+</ul>
+
+
+<p>Go to <YourProject> targets. In Build Phases / Link Binary With Libraries add AeroGearPush.framework</p>
+
+<ul>
+<li>step 3: angle bracket your import</li>
+</ul>
+
+
+<pre><code>#import &lt;AeroGearPush/AeroGearPush.h&gt;
+</code></pre>
+
+<p>You can use <a href="https://github.com/aerogear/aerogear-push-helloworld">aerogear-push-helloworld</a> as an example of project using aerogear-push-ios-registration as a framework dependency.</p>
+
+<p><strong>NOTE</strong>: Please refer to the 64 bits note above.</p>
+
 <h2>Example Usage</h2>
 
-<pre><code>- (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+<p>```ObjC
+- (void)application:(UIApplication <em>)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData </em>)deviceToken {</p>
 
-  AGDeviceRegistration *registration = 
+<p>  <a href="Classes/AGDeviceRegistration.html">AGDeviceRegistration</a> *registration =
     [[AGDeviceRegistration alloc] initWithServerURL:
-       [NSURL URLWithString:@"http://YOUR_SERVER/ag-push/"]];
+       [NSURL URLWithString:@&ldquo;<a href="http://YOUR">http://YOUR</a>_SERVER/ag-push/&rdquo;]];</p>
 
-  [registration registerWithClientInfo:^(id&lt;AGClientDeviceInformation&gt; clientInfo) {
+<p>  [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {</p>
 
-    [clientInfo setDeviceToken:deviceToken];
-    [clientInfo setVariantID:@"YOUR IOS VARIANT ID"];
-    [clientInfo setVariantSecret:@"YOUR IOS VARIANT SECRET"];
+<pre><code>[clientInfo setDeviceToken:deviceToken];
+[clientInfo setVariantID:@"YOUR IOS VARIANT ID"];
+[clientInfo setVariantSecret:@"YOUR IOS VARIANT SECRET"];
 
-    // --optional config--
-    UIDevice *currentDevice = [UIDevice currentDevice];
-    [clientInfo setOperatingSystem:[currentDevice systemName]];
-    [clientInfo setOsVersion:[currentDevice systemVersion]];
-    [clientInfo setDeviceType: [currentDevice model]];
-    } success:^() {
-      NSLog(@"PushEE registration worked");
-    } failure:^(NSError *error) {
-      NSLog(@"PushEE registration Error: %@", error);
-  }];
-}
+// --optional config--
+UIDevice *currentDevice = [UIDevice currentDevice];
+[clientInfo setOperatingSystem:[currentDevice systemName]];
+[clientInfo setOsVersion:[currentDevice systemVersion]];
+[clientInfo setDeviceType: [currentDevice model]];
+} success:^() {
+  NSLog(@"UnifiedPush Server registration worked");
+} failure:^(NSError *error) {
+  NSLog(@"UnifiedPush Server registration Error: %@", error);
 </code></pre>
+
+<p>  }];
+}
+```</p>
 
 <h2>Receiving Remote Notifications</h2>
 
-<p>There are no extra hooks for receving notifications with the AeroGear library. You can use the existing delegate for receiving remote notifications while the application is running, like:</p>
+<p>There are no extra hooks for receiving notifications with the AeroGear library. You can use the existing delegate for receiving remote notifications while the application is running, like:</p>
 
-<pre><code>- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+<p><code>ObjC
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
   // extract desired value from the dictionary...
 }
-</code></pre>
+</code></p>
 
 <h2>AeroGear UnifiedPush Server</h2>
 
@@ -121,7 +223,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-14)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-05-29)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
