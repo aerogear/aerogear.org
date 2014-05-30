@@ -195,6 +195,8 @@ External References
 
     ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
 
+* AGSEC-180: OAuth2 integration
+
 1.5.0 (Mid Aug, 2014)
 ~~~~~~~~~~~~~~~~~~~~~
 
