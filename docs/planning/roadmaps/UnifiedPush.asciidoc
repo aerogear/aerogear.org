@@ -76,6 +76,10 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321883[JIRA
 
 0.12.0 (early June 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~
+* *iOS Push client-sdk 0.9.1*
+** link:https://issues.jboss.org/browse/AGIOS-183[Static lib and framework]
+** link:https://issues.jboss.org/browse/AGIOS-186[Package documentation]
+** link:https://issues.jboss.org/browse/AGIOS-20[Package in dmg]
 * *Metrics*
 ** link:https://issues.jboss.org/browse/AGPUSH-116[Analytics / Metrics]
 * *Quickstarts*
@@ -87,6 +91,7 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323753[JIRA
 1.0.0 (early July 2014)
 ~~~~~~~~~~~~~~~~~~~~~~
 * *Final Release*
+* *iOS Push client-sdk 1.0.0*
 * *critical fixes and stabilization*
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323754[JIRA: Push 1.0.0]
