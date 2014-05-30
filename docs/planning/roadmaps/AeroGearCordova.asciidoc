@@ -37,7 +37,7 @@ push-1.0.0 (July)
 otp-0.7.0 (November)
 ~~~~~~~~~~~~~~~~~~~~
 * update libs to version v1.0.1
-* OAuth support
+* OAuth2 support
 
 crypto-0.5.0 (August)
 ~~~~~~~~~~~~~~~~~~~~~
