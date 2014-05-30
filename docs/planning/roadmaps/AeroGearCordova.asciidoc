@@ -15,29 +15,34 @@ Cordova plugins:
 
 * link:https://github.com/aerogear/aerogear-pushplugin-cordova/[Push Github Repo]
 * link:https://github.com/aerogear/aerogear-otp-cordova/[OTP Github Repo]
+* link:https://github.com/aerogear/aerogear-geo-cordova/[Geo Github Repo]
+* link:https://github.com/aerogear/aerogear-crypto-cordova/[Crypto Github Repo]
 * link:https://github.com/aerogear/aerogear-aerodoc-cordova/[Demo Github Repo]
 
-1.3.0 (Mid October)
+push-0.5.0 (April)
+~~~~~~~~~~~~~~~~~~
+* support for Xcode 5.1 (64 bit)
+* simplyfied the API
+
+push-0.6.0 (End May)
 ~~~~~~~~~~~~~~~~~~~
-* *Plugin to support AeroGear API*
-* AeroGear Push Plugin for Unified Push
-* AeroGear OTP Plugin Two Factor Authentication
+* updated dependencies
+* bug fixes
+* grunt build for executing tests
 
-1.4.0 (Mid January)
-~~~~~~~~~~~~~~~~~~~
-* *More Plugins*
-* Security Plugin maybe
-* Geo data pluing maybe
+push-1.0.0 (July)
+~~~~~~~~~~~~~~~~~
+* background notification
 
-2.0.0 Release
-~~~~~~~~~~~~~
-* Tie up any loose ends
+otp-0.7.0 (November)
+~~~~~~~~~~~~~~~~~~~~
+* update libs to version v1.0.1
+* OAuth2 support
 
-2.x Release(s)
-~~~~~~~~~~~~~~
-* *Social*
-** Auth
-*** Login via Facebook, G+, Twitter
-*** AeroGear.Auth adapter or separate
-** Common API
-*** Posting, Profile Info, Friend List, etc.
+crypto-0.5.0 (August)
+~~~~~~~~~~~~~~~~~~~~~
+* remove jquery dependency
+
+2.x releases
+~~~~~~~~~~~~
+* Integration with Data Sync and Offline
