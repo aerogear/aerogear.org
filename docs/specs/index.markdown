@@ -30,7 +30,7 @@ title: Specifications
 * [AeroGear UnifiedPush Client Registration](aerogear-client-push)
 * [AeroGear UnifiedPush Messages](aerogear-push-messages)
 * [AeroGear UnifiedPush RESTful APIs](aerogear-push-rest)
-* [AeroGear UnifiedPush Java Client](aerogear-unifiedpush-java-client)
+* [AeroGear UnifiedPush Java Client - Version 0.7.0](aerogear-unifiedpush-java-client)
 * [AeroGear UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
 * [AeroGear UnifiedPush User Management](aerogear-unifiedpush-user-management)
 
