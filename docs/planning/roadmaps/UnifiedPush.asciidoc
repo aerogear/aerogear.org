@@ -60,8 +60,24 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12324188[JIRA
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12324590[JIRA: Push 0.10.2]
 
-0.11.0 (early May 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~
+0.10.3 (_Released_ 16/May/14)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *GCM error-handling*
+* *Push Cartridge Update*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12324590[JIRA: Push 0.10.3]
+
+0.10.4 (_Released_ 05/Jun/14)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *Java-APNs update*
+* *APNs max-date fix*
+* *GCM pagination*
+* *Push Cartridge Update*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12324590[JIRA: Push 0.10.4]
+
+0.11.0 (mid June 2014)
+~~~~~~~~~~~~~~~~~~~~~~
 * *Modularize codebase*
 ** link:https://issues.jboss.org/browse/AGPUSH-544[Modularize UPS codebase]
 * *Keycloak*
@@ -69,46 +85,70 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12324590[JIRA
 * *Admin UI*
 ** link:https://issues.jboss.org/browse/AGPUSH-573[Admin UI overhaul]
 ** other polishing
+* *Metrics: server integration*
+** link:https://issues.jboss.org/browse/AGPUSH-116[Analytics / Metrics]
+* *Dashboard: server integration*
+** link:https://issues.jboss.org/browse/AGPUSH-645[Dashboard Server-Side implementation]
 * *Hello World Examples*
 ** link:https://issues.jboss.org/browse/AGPUSH-588[Push Hello World Examples]
+* *Client Push SDKs*
+** *Android Push library 0.2.0*
+** *Cordova Push library 0.6.0*
+** *iOS Push client-sdk 0.9.1*
+* *Release to Maven Central* 
+
+_Note:_ OpenShift update will be in the next release
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321883[JIRA: Push 0.11.0]
 
-0.12.0 (early June 2014)
-~~~~~~~~~~~~~~~~~~~~~~~
-* *iOS Push client-sdk 0.9.1*
-** link:https://issues.jboss.org/browse/AGIOS-183[Static lib and framework]
-** link:https://issues.jboss.org/browse/AGIOS-186[Package documentation]
-** link:https://issues.jboss.org/browse/AGIOS-20[Package in dmg]
-* *Metrics*
+1.0.0-Beta1 (early July 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *OpenShift Online Cartridge Update*
+* *Metrics: client integration*
 ** link:https://issues.jboss.org/browse/AGPUSH-116[Analytics / Metrics]
+* *Dashboard: client integration*
+** link:https://issues.jboss.org/browse/AGPUSH-648[Dashboard Client-Side implementation]
 * *Quickstarts*
 ** link:https://issues.jboss.org/browse/AGPUSH-596[Server and Push Integration Quickstart]
 ** link:https://issues.jboss.org/browse/AGPUSH-604[Push Client Quickstart]
 
-Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323753[JIRA: Push 0.12.0]
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323753[JIRA: Push 1.0.0-Beta1]
 
-1.0.0 (early July 2014)
-~~~~~~~~~~~~~~~~~~~~~~
+1.0.0-Beta2 (mid July 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *link:https://issues.jboss.org/browse/AGPUSH-660[WildFly 8.x*]
+* *Client Push SDKs*
+** *Android Push client-sdk 1.0.0*
+** *Cordova Push client-sdk 1.0.0*
+** *iOS Push client-sdk 1.0.0*
+* *critical fixes and stabilization*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325092[JIRA: Push 1.0.0-Beta2]
+
+1.0.0-Final (early August 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Final Release*
-* *iOS Push client-sdk 1.0.0*
 * *critical fixes and stabilization*
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323754[JIRA: Push 1.0.0]
 
-1.x Release(s)
-~~~~~~~~~~~~~~
-There might be different 1.x.y release, things that come to mind are:
+1.0.x Release(s)
+~~~~~~~~~~~~~~~~
+There might be different 1.0.x releases, which focus on 1.0.0 improvements and fixes
 
-** link:https://issues.jboss.org/browse/AGPUSH-116[Analytics]
-** link:https://issues.jboss.org/browse/AGPUSH-457[Kindle notifications]
-** link:https://issues.jboss.org/browse/AGPUSH-37[RHQ Plugin]
+1.1.x Release(s)
+~~~~~~~~~~~~~~~~
+New features, such as:
 
-Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321884[JIRA: Push (future)]
+** More analytics
+** More mobile network (Windows, Kindle, etc)
+** JavaEE7 updates (focus on WildFly / Undertow, ConcurrencyUtils, etc)
+** Alternative Datastores (like Mongo)
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
 Evaluating new and different runtimes like:
 
+* *Pure Undertow*
 * *Netty*
 * *vert.x*
