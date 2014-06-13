@@ -72,7 +72,7 @@ External References
 ** Initial version (without revoke, token renewal)
 ** associated cookbook example GoogleDrive
 
-1.5.0 (Mid March 2014)
+1.5.0 (Released March 2014)
 ~~~~~~~~~~~~~~~~~~~~~~
 * *iOS7* AeroGear to support iOS7 only
 
@@ -85,15 +85,35 @@ External References
 
 1.6.0 (Mid June 2014)
 ~~~~~~~~~~~~~~~~~~~~~
-* *Object serialization*
-** Pluggable 'serializers' for Pipe link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
+Associated JIRA link:https://issues.jboss.org/browse/AGIOS-203?filter=12321874[iOS 1.6 release]
 
-* *OAuth2* adapter enhancements
+* *OAuth2* adapter enhancements link:https://issues.jboss.org/browse/AGIOS-188[AGIOS-188]
 ** Deauthorize for OAuth2 link:https://issues.jboss.org/browse/AGIOS-146[AGIOS-146]
 ** Refresh token handling for OAuth2 link:https://issues.jboss.org/browse/AGIOS-145[AGIOS-145]
 ** OAuht2 mock unit test when requesting authz link:https://issues.jboss.org/browse/AGIOS-144[AGIOS-144]
+** AccountManager link:https://issues.jboss.org/browse/AGIOS-190[AGIOS-190]
+** Fluid refresh link:https://issues.jboss.org/browse/AGIOS-195[AGIOS-195]
+** Social Facebook support link:https://issues.jboss.org/browse/AGIOS-202[AGIOS-202]
+** KeyCloak integration link:https://issues.jboss.org/browse/AGIOS-178[AGIOS-178], link:https://issues.jboss.org/browse/AGIOS-198[AGIOS-198]
+
+
+1.7.0 (September 2014)
+~~~~~~~~~~~~~~~~~~~~~~
+
+* *iOS8 support*
+
+* *Object serialization*
+** Pluggable 'serializers' for Pipe link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
+
+* *Sync* link:https://issues.jboss.org/browse/AGIOS-101[AGIOS-101] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1374[AGEROGEAR-1374]
+** Data model API link:https://issues.jboss.org/browse/AEROGEAR-1408[AEROGEAR-1408]
+** Conflict resolution lib link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
 ** Cookbook recipe update link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126], link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127], link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128]
-** KeyCloak integration link:https://issues.jboss.org/browse/AGIOS-178[AGIOS-178]
+
+* *Documentation*
+** Refactoring aerogear.org link:https://issues.jboss.org/browse/AGIOS-155[AGIOS-155] link:https://issues.jboss.org/browse/AGIOS-156[AGIOS-156] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1402[AEROGEAR-1402]
+** Cookbook examples link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128] link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127]
+link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126] link:https://issues.jboss.org/browse/AGIOS-150[AGIOS-150]
 
 * *Offline & Crypto*
 ** Offline Authentication link:https://issues.jboss.org/browse/AGIOS-176[AGIOS-176]
@@ -101,23 +121,16 @@ External References
 ** Apple's keychain wrapper interface link:https://issues.jboss.org/browse/AGIOS-103[AGIOS-103]
 ** Refactor of AGPasswordKeyService to be compliant with the Spec link:https://issues.jboss.org/browse/AGIOS-171[AGIOS-171]
 
-* *Documentation*
-** Refactoring aerogear.org link:https://issues.jboss.org/browse/AGIOS-155[AGIOS-155] link:https://issues.jboss.org/browse/AGIOS-156[AGIOS-156] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1402[AEROGEAR-1402]
-** Cookbook examples link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128] link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127]
-link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126] link:https://issues.jboss.org/browse/AGIOS-150[AGIOS-150]
-
-1.7.0 (Mid August 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~
-* *Sync* link:https://issues.jboss.org/browse/AGIOS-101[AGIOS-101] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1374[AGEROGEAR-1374]
-** Data model API link:https://issues.jboss.org/browse/AEROGEAR-1408[AEROGEAR-1408]
-** Conflict resolution lib link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
-
 2.0.0 Release
 ~~~~~~~~~~~~~
+
+* *Modularization* link:https://issues.jboss.org/browse/AGIOS-187[AGIOS-187]
+
 * Tie up any loose ends
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
+ 
 * *Notifications*
 ** inspired by the JS module
 ** STOMP support
