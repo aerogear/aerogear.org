@@ -13,6 +13,7 @@ title: AeroGear iOS User Guide
 * [Pipe and Pipeline](Pipe)
 * [Pagination](Pagination)
 * [Authentication and User enrollment](Authentication)
+* [Authorization (OAuth2)](Authorization)
 * [Store and DataManager](DataStore)
 * [Cryptography support](Cryptography)
 
