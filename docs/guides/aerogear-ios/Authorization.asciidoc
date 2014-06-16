@@ -31,7 +31,7 @@ _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
 
 === Creating an Account Manager
 
-When authorizing a client OAuth2 application, you often want the user to grant access for your app only once in the app life time. This is the whole purpose of AccountManager. With this guy, you can create multiple accounts and store them in an AGStore. It's up to you to choose you store. We recommend you to use an encrypted storage for storing authorization tokens, but be aware that encryption required the user to enter a password.
+When authorizing a client OAuth2 application, you often want the user to grant access for your app only once in the app lifetime. This is the whole purpose of AccountManager. With this guy, you can create multiple accounts and store them in an AGStore. It's up to you to choose you store. We recommend you to use an encrypted storage for storing authorization tokens, but be aware that encryption requires the user to enter a password.
 
 Here is how you do it:
 [source,c]
@@ -68,13 +68,13 @@ Here is how you do it:
 
 In [1] you create an encryption service to be used with the encrypted database.
 
-In [2] create a encrypted storage passing the encryption database.
+In [2] you create an encrypted storage passing the encryption service.
 
-Last [3] create an account Manager injection the created database. You can then create an authz module using the same code as seen with Authorizer.
+Last [3] create an AccountManager by injecting the created database. You can then create an authz module using the same code as seen with Authorizer above.
 
 === Pass AGAuthzModule to a pipe
 
-Authorization module seamlessy integrates with Pipe, all you need to do is [5] inject your Authz Modile into the Pipe. 
+Authorization module seamlessly integrates with Pipe, all you need to do is [5] inject your Authz Module into the Pipe. 
 
 [source,c]
 ----
@@ -90,7 +90,7 @@ AGPipeline *_fbPipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@
 
 === Grant access is implicit by default
 
-You may ask when does Authz module ask for authorization? Basically each time you do a CRUD operation on Pipe, tokens are checked. If there are no token you will be prompt. If the tokens are expired, a refresh token is done under the hood. So basically, once you've done all the configuration, you can use the Pipe as usual.
+You may ask when does Authz module ask for authorization? Basically each time you do a CRUD operation on Pipe, tokens are checked. If there are no tokens available you will be prompted. If the tokens are expired, a refresh token action is performed under the hood. Once you've done all the configuration, you can use the Pipe as usual.
 
 === Grant access explicitly 
 
