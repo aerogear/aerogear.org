@@ -16,7 +16,7 @@ AeroGear SimplePush Server Roadmap
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-52[AGSMPLPUSH-52]: Remove synchronization in SockJsSession.
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-54[AGSMPLPUSH-54]: Support notification with no version in the PUT request body.
 
-=== link:https://issues.jboss.org/browse/AGSMPLPUSH-25?jql=project%20%3D%20AGSMPLPUSH%20AND%20fixVersion%20%3D%20%220.12.0%22%20AND%20status%20%3D%20Open%20ORDER%20BY%20priority%20DESC[0.12.0 (June, 2014)]
+=== link:https://issues.jboss.org/browse/AGSMPLPUSH-25?jql=project%20%3D%20AGSMPLPUSH%20AND%20fixVersion%20%3D%20%220.12.0%22%20AND%20status%20%3D%20Open%20ORDER%20BY%20priority%20DESC[0.12.0 (July, 2014)]
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-25[AGSMPLPUSH-25]: Verify that we include the latest changes from the SimplePush specification.
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-4[AGSMPLPUSH-4]: Enable batch notifications for SimplePush server.
 
