@@ -3,9 +3,12 @@ layout: basic
 title: AeroGear Data Sync
 ---
 
-# Status: Experimental
+Status: Experimental
+--------------------
 
-# AeroGear Data Sync Use Cases
+AeroGear Data Sync Use Cases
+----------------------------
+
 [options="header" cols="^,^,^,^,^"]
 |=============================================================================
 | Use Case 	| Push/Poll 	| Realtime 	| Server 	| APIs Used 
@@ -15,11 +18,12 @@ title: AeroGear Data Sync
 | Real Time Text Sync | Push | Y | Needs lots of custom code, vert.x realtime component | UnifiedPush, Store 
 |=============================================================================
 
-## Periodic Read Only Update
-
+Periodic Read Only Update
+~~~~~~~~~~~~~~~~~~~~~~~~~
 Use cases where caching data is useful and where it should be transparent and long lived are covered by this.
 
-### Usage proposal: Reading a schedule (Android)
+Usage proposal: Reading a schedule (Android)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ```java
 
@@ -57,7 +61,8 @@ Use cases where caching data is useful and where it should be transparent and lo
 ```
 
 
-# Questions for consideration:
+Questions for consideration:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 How will save/delete work?
 How will readWithFilter work?
