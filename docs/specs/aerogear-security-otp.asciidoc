@@ -1,9 +1,9 @@
 ---
 layout: basic
-title: AeroGear Security OTP Specification 
+title: AeroGear Security OTP Specification
 ---
 
-AeroGear Security OTP Specification 
+AeroGear Security OTP Specification
 -----------------------------------
 
 This is a initial proposal on having a two factor authentication layer
@@ -16,7 +16,6 @@ References
 * http://tools.ietf.org/html/rfc4226[RFC 4226 - HOTP specification]
 * http://tools.ietf.org/html/rfc2898[RFC 2898 - Password-Based
 Cryptography Specification]
-* https://github.com/picketlink/picketlink[PicketLink]
 
 Scenarios - v0.0.1
 ~~~~~~~~~~~~~~~~~~
