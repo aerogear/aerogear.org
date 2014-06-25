@@ -19,9 +19,6 @@ title: Specifications
 * [AeroGear Security Crypto](aerogear-crypto)
 * [AeroGear Cordova](aerogear-cordova)
 
-#### Server Side Specifications
-* [AeroGear Security OTP](aerogear-security-otp)
-
 #### UnifiedPush Specifications
 * [AeroGear UnifiedPush Server](aerogear-server-push)
 * [AeroGear UnifiedPush Client Registration](aerogear-client-push)
