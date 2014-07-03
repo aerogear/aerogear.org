@@ -1,13 +1,13 @@
-android
-com.google.android.gms
-org.jboss.aerogear
 org.jboss.aerogear.android
 org.jboss.aerogear.android.authentication
 org.jboss.aerogear.android.authentication.impl
 org.jboss.aerogear.android.authentication.impl.loader
 org.jboss.aerogear.android.authentication.impl.loader.support
+org.jboss.aerogear.android.authorization
 org.jboss.aerogear.android.datamanager
 org.jboss.aerogear.android.http
+org.jboss.aerogear.android.impl.authz
+org.jboss.aerogear.android.impl.authz.oauth2
 org.jboss.aerogear.android.impl.core
 org.jboss.aerogear.android.impl.crypto
 org.jboss.aerogear.android.impl.datamanager
