@@ -12,7 +12,7 @@ title: Specifications
 * [AeroGear-Push iOS 0.9.1](aerogear-ios-push)
 * [AeroGear-OTP iOS 1.0.0](aerogear-otp-ios)
 * [AeroGear-Crypto iOS 0.2.3](aerogear-ios-crypto)
-* [AeroGear Android 1.3.1](aerogear-android)
+* [AeroGear Android 1.4.0](aerogear-android)
 * [Pipe API](aerogear-client-pipe)
 * [Paging API](aerogear-client-paging)
 * [Paging API usage examples](aerogear-client-paging-usage)
