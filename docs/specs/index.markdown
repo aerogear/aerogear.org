@@ -19,7 +19,7 @@ title: Specifications
 * [AeroGear Security Crypto](aerogear-crypto)
 * [AeroGear Cordova](aerogear-cordova)
 
-#### UnifiedPush Specifications
+#### Push Specifications
 * [AeroGear UnifiedPush Server](aerogear-server-push)
 * [AeroGear UnifiedPush Client Registration](aerogear-client-push)
 * [AeroGear UnifiedPush Messages](aerogear-push-messages)
@@ -27,6 +27,7 @@ title: Specifications
 * [AeroGear UnifiedPush Java Client - Version 0.7.0](aerogear-unifiedpush-java-client)
 * [AeroGear UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
 * [AeroGear UnifiedPush User Management](aerogear-unifiedpush-user-management)
+* [AeroGear SimplePush Java Client](aerogear-simplepush-java-client)
 
 #### Sync Specifications
 * [Data Sync Specification](aerogear-data-sync)
