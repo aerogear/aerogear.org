@@ -14,8 +14,8 @@ line tool to build, deploy and manage Cordova-based applications.
 
 Also have a the message accounts setup and configured in the UnifiedPush Server
 
-* link:/docs/guides/aerogear-push-cordova-android/[Setup for android]
-* link:/docs/guides/aerogear-push-cordova-ios/[Setup for ios]
+* link:/docs/guides/aerogear-push-cordova-android/google-setup/[Setup for android]
+* link:/docs/guides/aerogear-push-cordova-ios/app-id-ssl-certificate-apns/[Setup for ios]
 
 ## Getting Started 
 If you haven't used https://github.com/apache/cordova-cli[Cordova CLI] before, be sure to check out the http://cordova.apache.org/docs/en/3.0.0/guide_cli_index.md.html[CLI Guide], as it explains how to install the CLI tool. Once you're familiar with that process, you may proceed with the following commands:
