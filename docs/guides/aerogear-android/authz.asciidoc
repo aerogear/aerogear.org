@@ -1,0 +1,97 @@
+---
+layout: basic
+title: Android Authorization (OAuth2)
+---
+
+== OAuth2 Authorization
+
+This guide will walk developers through the AeroGear Android Authorization APIs and demonstrate how to integrate with Google's Drive API.
+
+In general, the Authorization framework is a system of *AuthzModules* which coordinate with an *AuthzService* to supply valid tokens to *Pipe* instances.  Currently the Authz APIs support link:http://tools.ietf.org/html/rfc6749[OAuth2].
+
+== Instantiating an OAuth2AuthzModule
+
+Much like the rest of AeroGear, the Authz framework provides a factory class and configuration object *Authorizer* and *AuthzConfig* respectively.
+
+This code example will use Google's APIs.  An explanation of setting up the remote components is beyond the scope of this document.
+
+[source,java]
+----
+AuthzConfig authzConfig = new AuthzConfig(new URL(Constants.AUTHZ_URL), "restMod");
+            authzConfig.setAuthzEndpoint(AUTHZ_ENDPOINT);
+            authzConfig.setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT);
+            authzConfig.setAccountId(AUTHZ_ACCOOUNT_ID);
+            authzConfig.setClientId(AUTHZ_CLIENT_ID);
+            authzConfig.setClientSecret(AUTHZ_CLIENT_SECRET);
+            authzConfig.setRedirectURL(AUTHZ_REDIRECT_URL);
+            
+            //The offline access type causes google's APIs to provide a refresh token
+            authzConfig.getAdditionalAuthorizationParams().add(Pair.create("access_type", "offline"));
+            
+            //approval_prompt will cause Google's services to re-request authorization if the scopes change
+            authzConfig.getAdditionalAuthorizationParams().add(Pair.create("approval_prompt", "force"));
+            authzConfig.setScopes(new ArrayList<String>() {{"{{"}}
+                add("https://www.googleapis.com/auth/drive");
+            }});
+
+final OAuth2AuthzModule module = new Authorizer().authz(authzConfig);
+----
+
+== Using AuthzModule and AuthzService
+
+The OAuth2AuthzModule utilizes an AuthzService to manage the lifecycle of tokens.  Currently the service stores tokens in memory and should be managed at the application level.  In the future we will implement an encrypted offline storage mechanism which will allow the AuthzModule to manage the service without a loss of state.  link:https://issues.jboss.org/browse/AGDROID-241[See JIRA]
+
+To use the service we must declare it in **AndroidManifest.xml**
+
+```xml
+     <service android:name="org.jboss.aerogear.android.impl.authz.AuthzService"/>
+```
+
+Then to fetch a token : 
+```java
+    authzModule.requestAccess((Activity) this, new Callback<String>() {
+                @Override
+                public void onSuccess(String token) {
+                    doSomething(token);
+                }
+
+
+                @Override
+                public void onFailure(Exception e) {
+                    handleError(e);
+                }
+            });
+```
+
+*requestAccess* consumes an Activity and Callback method.  It will bind to the AuthzService (starting it if necessary) and fetch tokens.  If this is the first time a request has been made, it will display a WebView fragment and embed an HTML form to interact with the remote Authentication services and fetch the required tokens.  Otherwise it will return the access token to the callback.
+
+== Pipes and AuthzModule
+
+You can provide to a *PipeConfig* object an *AuthzModule* instance.  Assuming that *requestAccess* has been successfully called, the *Pipe* instance created by that configuration will correctly incorporate the authz tokens in your requests.  It will also refresh any expired tokens if authorization fails and retry the request before failing.
+
+```java
+    Pipeline pipeline = new Pipeline(googleDriveURL);
+
+    PipeConfig pipeConfig = new PipeConfig(googleDriveURL, Files.class);
+    pipeConfig.setAuthzModule(authzModule);
+    
+    pipeline.pipe(Files.class, pipeConfig);
+
+    Pipe<Files> documentsPipe = pipeline.get("files", this);
+
+    documentsPipe.read(new Callback<List<Files>>() {
+        @Override
+        public void onSuccess(final List<Files> files) {
+            showFiles(files);
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+            handleError(e);
+        }
+    });
+```
+
+== Example application
+
+A Drive demo application has been provided at link:https://github.com/secondsun/aerogear-android-oauth2-demo/tree/migrate[GitHub].  The sample application includes instructions on configuring Google's services to gain the correct credentials.
