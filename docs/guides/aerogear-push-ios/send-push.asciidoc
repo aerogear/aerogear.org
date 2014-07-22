@@ -125,7 +125,85 @@ curl -3 -u "{pushApplicationID}:{masterSecret}"
    -X POST -d '{"message": {"content-available":true, "customKey":"some value"}}'
    https://SERVER:PORT/CONTEXT/rest/sender
 ----
+== iOS 8
 
+iOS 8 provides interactive notifications. If you want to write interactive notifications, here are the steps to follow:
+
+* add extra payload +"action-category"+ in server side notification
+* add category in your client app with the same name as the one in payload 
+* add action button logic
+
+If you want a complete exemple to demo interactive notification refer to link:https://github.com/aerogear/aerogear-aerodoc-ios/[AeroDoc].
+
+=== Sending interactive notifications : extra payload
+
+All you need to do is include +"action-category":"YOUR_ACTION_NAME"+ into your JSON payload, like:
+
+[source,c]
+----
+
+curl -3 -u "{pushApplicationID}:{masterSecret}"
+   -v -H "Accept: application/json" -H "Content-type: application/json" 
+   -X POST -d '{"message": {"action-category":"YOUR_CATEGORY_NAME", "customKey":"some value"}}'
+   https://SERVER:PORT/CONTEXT/rest/sender
+----
+
+=== Receiving interactive notifications : add category
+When registering for remote notification, provide a category. To define a category, add all associated actions. Here we demo only action but you can define a list. 
+
+Depending on your notification setup, you can display a limited among of actions. Using _UIUserNotificationActionContextMinimal_ you can define which actions should be displayed in priority when space is limited.
+
+[source,c]
+----
+- (UIMutableUserNotificationCategory*)registerActions {
+    UIMutableUserNotificationAction* action = [[UIMutableUserNotificationAction alloc] init];
+    action.identifier = @"YOUR_ACTION_NAME";
+    action.title = @"YOUR_ACTION_NAME";
+    action.activationMode = UIUserNotificationActivationModeForeground;
+    action.destructive = false;
+    action.authenticationRequired = false;
+    
+    UIMutableUserNotificationCategory* category = [[UIMutableUserNotificationCategory alloc] init];
+    category.identifier = @"YOUR_CATEGORY_NAME";
+    [category setActions:@[action] forContext: UIUserNotificationActionContextDefault];
+    return category;
+}
+----
+
+Once all actions are defined and wrapped into a category, add category to _UIUserNotificationSettings_ as shown below:
+
+[source,c]
+----
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+#ifdef __IPHONE_8_0
+    UIUserNotificationCategory* category = [self registerActions];
+    NSMutableSet* categories = [NSMutableSet set];
+    [categories addObject:category];
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:categories];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif
+----
+
+=== Dealing with interactive notifications : add action
+
+When an action has been selected in the interactive push notification, the callback _application:handleActionWithIdentifier:forRemoteNotification:completionHandler:_ is called. To implement your action you need to check on which action was chosen:
+
+[source,c]
+----
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler {
+    if([identifier isEqualToString: @"YOUR_ACTION_NAME"]) {
+      ...
+      ...
+    }
+    completionHandler();
+}
+#endif
+----
 
 == You are done
 

@@ -43,14 +43,29 @@ Now it is time to look at the code: Open the link:https://github.com/aerogear/ae
 
 [source,c]
 ----
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
 // Let the device know we want to receive push notifications
  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 ...
 ...
+...
+----
+
+__Note:__ that since iOS8 _registerForRemoteNotificationTypes_ has been removed in favor of _registerUserNotificationSettings_. For remote push notification you will need the extra step to call _registerForRemoteNotifications_. If you want to offer support for both iOS7 and iOS8, follow this code snippet:
+
+[source,c]
+----
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+#ifdef __IPHONE_8_0
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif
 ...
 ----
 

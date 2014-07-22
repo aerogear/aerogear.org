@@ -23,6 +23,7 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
              "sound":"default",
              "badge":7,
              "content-available" : true,
+             "action-category" : "some_category",
              "someKey":"some value",
              "anotherCustomKey":"some other value"
            },
@@ -52,6 +53,8 @@ If the JSON map contains one of the following reserved keywords, Apple specific 
 * ```alert``` (triggers a dialog, displaying the value - no iOS API needs to be invoked by the app developer)
 * ```sound``` (plays a given sound  - no iOS API needs to be invoked by the app developer)
 * ```badge``` (sets the value of the badge icon - no iOS API needs to be invoked by the app developer)
+* ```content-available``` (iOS7 feature for submitting silent iOS notifications)
+* ```action-category``` (iOS8 feature for interactive notifications)
 
 ##### Android special keys
 
