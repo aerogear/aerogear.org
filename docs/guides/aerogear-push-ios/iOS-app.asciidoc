@@ -53,7 +53,7 @@ Now it is time to look at the code: Open the link:https://github.com/aerogear/ae
 ...
 ----
 
-__Note:__ that since iOS8 _registerForRemoteNotificationTypes_ has been removed in favor of _registerUserNotificationSettings_. For remote push notification you will need the extra step to call _registerForRemoteNotifications_. If you want to offer support for both iOS7 and iOS8, follow this code snippet:
+__Note:__ Since iOS8 _registerForRemoteNotificationTypes_ has been removed in favor of _registerUserNotificationSettings_. Besides, for remote push notification you will need the extra step to call _registerForRemoteNotifications_. If you want to offer support for both iOS7 and iOS8, you can use this code snippet:
 
 [source,c]
 ----
@@ -95,7 +95,7 @@ Now let's look at the important code section:
     AGDeviceRegistration *registration =    // [1]
     
         // WARNING: make sure, you start JBoss with the -b 0.0.0.0 option, to bind on all interfaces
-        // from the iPhone, you can NOT use localhost :)
+        // from the iPhone, you can NOT use localhost 
         [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"http://192.168.0.102:8080/ag-push/"]];  
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {   // [2]

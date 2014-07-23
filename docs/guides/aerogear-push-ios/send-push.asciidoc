@@ -127,13 +127,13 @@ curl -3 -u "{pushApplicationID}:{masterSecret}"
 ----
 == iOS 8
 
-iOS 8 provides interactive notifications. If you want to write interactive notifications, here are the steps to follow:
+iOS 8 provides support for interactive notifications. To utilise it, follow these steps:
 
 * add extra payload +"action-category"+ in server side notification
 * add category in your client app with the same name as the one in payload 
 * add action button logic
 
-If you want a complete exemple to demo interactive notification refer to link:https://github.com/aerogear/aerogear-aerodoc-ios/[AeroDoc].
+If you want a complete example that demo's interactive notification refer to link:https://github.com/aerogear/aerogear-aerodoc-ios/[AeroDoc].
 
 === Sending interactive notifications : extra payload
 
@@ -148,7 +148,7 @@ curl -3 -u "{pushApplicationID}:{masterSecret}"
    https://SERVER:PORT/CONTEXT/rest/sender
 ----
 
-_Note:_ APNs interactive notification adds +category+ to its payload to associate a group of actions to a category of notification. As UPS already uses +categories+ payload for a different purpose, 'action-category' payload is the property used for linking actions to an interactive notification category.
+_Note:_ APNs interactive notification adds +category+ to its payload to associate a group of actions to a category of notification. As UPS already uses the name 'categories' in its payload but for a different purpose, the name 'action-category' was chosen instead.
 
 === Receiving interactive notifications : add category
 When registering for remote notification, provide a category. To define a category, add all associated actions. Here we demo only action but you can define a list. 
