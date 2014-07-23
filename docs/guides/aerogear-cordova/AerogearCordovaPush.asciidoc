@@ -9,10 +9,11 @@ The AeroGear Cordova Push Plugin is an extension of the standard Cordova Push Pl
 that it supports AeroGears UnifiedPush better and that makes that there is less boiler plate to take care of in
 your javascript.
 
+## Prerequisites 
 Before we start please install link:https://github.com/apache/cordova-cli/[Apache Cordova CLI], which is the command
 line tool to build, deploy and manage Cordova-based applications.
 
-Also have a the message accounts setup and configured in the UnifiedPush Server
+Have an instance of the Unified Push server running and use the following links to setup android and/or iOS messaging accounts
 
 * link:/docs/guides/aerogear-push-android/google-setup/[Setup for android]
 * link:/docs/guides/aerogear-push-ios/app-id-ssl-certificate-apns/[Setup for ios]
