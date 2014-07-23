@@ -99,33 +99,39 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12324590[JIRA
 ** *Android Push library 0.2.0*
 ** *Cordova Push library 0.6.0*
 ** *iOS Push client-sdk 0.9.1*
-* *Release to Maven Central* 
+* *Release to Maven Central*
 
 _Note:_ OpenShift update will be in the next release
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12321883[JIRA: Push 0.11.0]
 
-1.0.0-Beta1 (mid July 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.0.0-Beta1 (late July 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *OpenShift Online Cartridge Update*
+* *Hello World Examples, Version 1.0.0-Beta1*
+* *CRUD Quickstarts, Version 1.0.0-Beta1*
 * *critical fixes and stabilization*
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323753[JIRA: Push 1.0.0-Beta1]
 
-1.0.0-Beta2 (end July 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.0.0-Beta2 (early August 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *link:https://issues.jboss.org/browse/AGPUSH-660[WildFly 8.x*]
-* *Client Push SDKs*
-** *Android Push client-sdk 1.0.0*
-** *Cordova Push client-sdk 1.0.0*
-** *iOS Push client-sdk 1.0.0*
+* *Hello World Examples, Version 1.0.0-Beta2*
+* *CRUD Quickstarts, Version 1.0.0-Beta2*
 * *critical fixes and stabilization*
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325092[JIRA: Push 1.0.0-Beta2]
 
-1.0.0-Final (early August 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.0.0-Final (mid August 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Final Release*
+* *Client Push SDKs*
+** *Android Push client-sdk 1.0.0*
+** *Cordova Push client-sdk 1.0.0*
+** *iOS Push client-sdk 1.0.0*
+* *Hello World Examples, Version 1.0.0-Final*
+* *CRUD Quickstarts, Version 1.0.0-Final*
 * *critical fixes and stabilization*
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323754[JIRA: Push 1.0.0]
