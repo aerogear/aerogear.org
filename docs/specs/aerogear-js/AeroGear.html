@@ -421,6 +421,587 @@
         
             
 <dt>
+    <h4 class="name" id="ajax"><span class="type-signature">&lt;static> </span>ajax<span class="signature">(<span class="optional">settings</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        The AeroGear.ajax is used to perform Ajax requests.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">the settings to configure the request
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">the url to send the request to</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    "GET"
+                
+                </td>
+            
+            
+            <td class="description last">the type of the request</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dataType</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    "json"
+                
+                </td>
+            
+            
+            <td class="description last">the data type of the recipient's response</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>accept</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    "application/json"
+                
+                </td>
+            
+            
+            <td class="description last">the media types which are acceptable for the recipient's response</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>contentType</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    "application/json"
+                
+                </td>
+            
+            
+            <td class="description last">the media type of the entity-body sent to the recipient</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>headers</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">the HTTP request headers</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options.success</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">AeroGear~successCallback</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">callback to be executed if the AJAX request results in success</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options.error</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">AeroGear~errorCallback</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">callback to be executed if the AJAX request results in error</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.params</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">contains query parameters to be added in URL in case of GET request or in request body in case of POST and application/x-www-form-urlencoded content type</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">the data to be sent to the recipient</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.ajax.js.html">aerogear.ajax.js</a>, <a href="aerogear.ajax.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    An ES6 Promise
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        var es6promise = AeroGear.ajax({
+            type: "GET",
+            params: {
+                param1: "val1"
+            },
+            url: "http://SERVER:PORT/CONTEXT"
+        });</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="remove"><span class="type-signature">&lt;static> </span>remove<span class="signature">(config)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
@@ -841,7 +1422,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line149">line 149</a>
+        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line151">line 151</a>
     </li></ul></dd>
     
     
@@ -1006,7 +1587,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line150">line 150</a>
+        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line152">line 152</a>
     </li></ul></dd>
     
     
@@ -1151,7 +1732,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line153">line 153</a>
+        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line155">line 155</a>
     </li></ul></dd>
     
     
@@ -1270,7 +1851,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line152">line 152</a>
+        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line154">line 154</a>
     </li></ul></dd>
     
     
@@ -1435,7 +2016,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line151">line 151</a>
+        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line153">line 153</a>
     </li></ul></dd>
     
     
@@ -1554,7 +2135,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line154">line 154</a>
+        <a href="aerogear.core.js.html">aerogear.core.js</a>, <a href="aerogear.core.js.html#line156">line 156</a>
     </li></ul></dd>
     
     
@@ -1599,7 +2180,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue May 13 2014 11:31:59 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Jul 21 2014 12:24:30 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

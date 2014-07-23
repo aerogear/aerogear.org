@@ -343,28 +343,28 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>// Create an empty Authenticator
-var auth = AeroGear.Auth();
+    <pre class="prettyprint"><code>        // Create an empty Authenticator
+        var auth = AeroGear.Auth();
 
-// Add a custom REST module to it
-auth.add( {
-    name: "module1",
-    settings: {
-        baseURL: "http://customURL.com"
-    }
-});
+        // Add a custom REST module
+        auth.add( {
+            name: "module1",
+            settings: {
+                baseURL: "http://customURL.com"
+            }
+        });
 
-// Add a custom REST module to it with custom security endpoints
-auth.add( {
-    name: "module2",
-    settings: {
-        endpoints: {
-            enroll: "register",
-            login: "go",
-            logout: "leave"
-        }
-    }
-});</code></pre>
+        // Add a custom REST module with custom security endpoints
+        auth.add( {
+            name: "module2",
+            settings: {
+                endpoints: {
+                    enroll: "register",
+                    login: "go",
+                    logout: "leave"
+                }
+            }
+        });</code></pre>
 
     
 </dd>
@@ -841,30 +841,30 @@ auth.add( {
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var auth = AeroGear.Auth( "userAuth" ).modules.userAuth,
-    data = { userName: "user", password: "abc123", name: "John" };
+    <pre class="prettyprint"><code>        var auth = AeroGear.Auth( "userAuth" ).modules.userAuth,
+            data = { userName: "user", password: "abc123", name: "John" };
 
-// Enroll a new user
-auth.enroll( data );
+        // Enroll a new user
+        auth.enroll( data );
 
-// Add a custom REST module to it with custom security endpoints
-var custom = AeroGear.Auth({
-    name: "customModule",
-    settings: {
-        endpoints: {
-            enroll: "register",
-            login: "go",
-            logout: "leave"
-        }
-    }
-}).modules.customModule,
-data = { userName: "user", password: "abc123", name: "John" };
+        // Add a custom REST module with custom security endpoints
+        var custom = AeroGear.Auth({
+            name: "customModule",
+            settings: {
+                endpoints: {
+                    enroll: "register",
+                    login: "go",
+                    logout: "leave"
+                }
+            }
+        }).modules.customModule,
+        data = { userName: "user", password: "abc123", name: "John" };
 
-custom.enroll( data, {
-    baseURL: "http://customurl/",
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});</code></pre>
+        custom.enroll( data, {
+            baseURL: "http://customurl/",
+            success: function( data ) { ... },
+            error: function( error ) { ... }
+        });</code></pre>
 
     
 </dd>
@@ -1290,30 +1290,30 @@ custom.enroll( data, {
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var auth = AeroGear.Auth( "userAuth" ).modules.userAuth,
-    data = { userName: "user", password: "abc123" };
+    <pre class="prettyprint"><code>        var auth = AeroGear.Auth( "userAuth" ).modules.userAuth,
+            data = { userName: "user", password: "abc123" };
 
-// Enroll a new user
-auth.login( data );
+        // Enroll a new user
+        auth.login( data );
 
-// Add a custom REST module to it with custom security endpoints
-var custom = AeroGear.Auth({
-    name: "customModule",
-    settings: {
-        endpoints: {
-            enroll: "register",
-            login: "go",
-            logout: "leave"
-        }
-    }
-}).modules.customModule,
-data = { userName: "user", password: "abc123", name: "John" };
+        // Add a custom REST module with custom security endpoints
+        var custom = AeroGear.Auth({
+            name: "customModule",
+            settings: {
+                endpoints: {
+                    enroll: "register",
+                    login: "go",
+                    logout: "leave"
+                }
+            }
+        }).modules.customModule,
+        data = { userName: "user", password: "abc123", name: "John" };
 
-custom.login( data, {
-    baseURL: "http://customurl/",
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});</code></pre>
+        custom.login( data, {
+            baseURL: "http://customurl/",
+            success: function( data ) { ... },
+            error: function( error ) { ... }
+        });</code></pre>
 
     
 </dd>
@@ -1638,29 +1638,29 @@ custom.login( data, {
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var auth = AeroGear.Auth( "userAuth" ).modules.userAuth;
+    <pre class="prettyprint"><code>        var auth = AeroGear.Auth( "userAuth" ).modules.userAuth;
 
-// Enroll a new user
-auth.logout();
+        // Enroll a new user
+        auth.logout();
 
-    // Add a custom REST module to it with custom security endpoints
-var custom = AeroGear.Auth({
-    name: "customModule",
-    settings: {
-        endpoints: {
-            enroll: "register",
-            login: "go",
-            logout: "leave"
-        }
-    }
-}).modules.customModule,
-data = { userName: "user", password: "abc123", name: "John" };
+        // Add a custom REST module with custom security endpoints
+        var custom = AeroGear.Auth({
+            name: "customModule",
+            settings: {
+                endpoints: {
+                    enroll: "register",
+                    login: "go",
+                    logout: "leave"
+                }
+            }
+        }).modules.customModule,
+        data = { userName: "user", password: "abc123", name: "John" };
 
-custom.logout({
-    baseURL: "http://customurl/",
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});</code></pre>
+        custom.logout({
+            baseURL: "http://customurl/",
+            success: function( data ) { ... },
+            error: function( error ) { ... }
+        });</code></pre>
 
     
 </dd>
@@ -1687,7 +1687,7 @@ custom.logout({
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue May 13 2014 11:31:59 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Jul 21 2014 12:24:30 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
