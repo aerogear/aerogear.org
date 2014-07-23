@@ -137,7 +137,7 @@ If you want a complete exemple to demo interactive notification refer to link:ht
 
 === Sending interactive notifications : extra payload
 
-All you need to do is include +"action-category":"YOUR_ACTION_NAME"+ into your JSON payload, like:
+All you need to do is include +"action-category":"YOUR_ACTION_NAME"+ into your JSON payload like:
 
 [source,c]
 ----
@@ -147,6 +147,8 @@ curl -3 -u "{pushApplicationID}:{masterSecret}"
    -X POST -d '{"message": {"action-category":"YOUR_CATEGORY_NAME", "customKey":"some value"}}'
    https://SERVER:PORT/CONTEXT/rest/sender
 ----
+
+_Note:_ APNs interactive notification adds +category+ to its payload to associate a group of actions to a category of notification. As UPS already uses +categories+ payload for a different purpose, 'action-category' payload is the property used for linking actions to an interactive notification category.
 
 === Receiving interactive notifications : add category
 When registering for remote notification, provide a category. To define a category, add all associated actions. Here we demo only action but you can define a list. 
