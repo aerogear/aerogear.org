@@ -153,7 +153,7 @@ _Note:_ APNs interactive notification adds +category+ to its payload to associat
 === Receiving interactive notifications : add category
 When registering for remote notification, provide a category. To define a category, add all associated actions. Here we demo only action but you can define a list. 
 
-Depending on your notification setup, you can display a limited among of actions. Using _UIUserNotificationActionContextMinimal_ you can define which actions should be displayed in priority when space is limited.
+Depending on your notification setup, the list of visible actions can be limited. Using _UIUserNotificationActionContextMinimal_ you can define which actions should be displayed in priority when space is limited.
 
 [source,c]
 ----
