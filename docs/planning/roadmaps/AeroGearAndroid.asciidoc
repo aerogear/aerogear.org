@@ -93,8 +93,8 @@ link:https://issues.jboss.org/issues/?filter=12320506[1.4 (Released on July 01, 
 * OAuth2
 ** link:https://issues.jboss.org/browse/AGDROID-266[AGDROID-266]: Create Oauth2 Authorization module
 
-link:https://issues.jboss.org/issues/?filter=12320508[2.0 (Mid Setember)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+link:https://issues.jboss.org/issues/?filter=12320508[2.0 (Mid September)]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * link:https://issues.jboss.org/browse/AGDROID-192[AGDROID-192]: Remove deprecated APIs
 * link:https://issues.jboss.org/browse/AGDROID-236[AGDROID-236]: Modularizing the Android Library
