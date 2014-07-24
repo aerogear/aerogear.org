@@ -24,20 +24,17 @@ title: Guides
 * [Cordova Setup](aerogear-cordova/CordovaSetup)
 * [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](aerogear-cordova/HTML5ToHybridWithCordova)
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](aerogear-cordova/CordovaAndroidDevJBDS)
-* [Tutorial: iOS Push Notifications](aerogear-push-ios)
-* [Tutorial: JS Push Notifications](aerogear-push-js)
-* [Tutorial: Android Push Notifications](aerogear-push-android)
-* [Tutorial: Chrome Packaged Apps Push Notifications](aerogear-push-chrome)
-* [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
 #### User Guides
 
-* [AeroGear UnifiedPush Administration Console User Guide](AdminConsoleGuide)
 * [AeroGear Android User Guide](aerogear-android)
 * [AeroGear iOS API Cookbook](iOSCookbook)
 * [AeroGear Two-Factor Authentication with OTP](AeroGear-OTP)
 * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](aerogear-cordova/AerogearCordovaOTP)
-* [AeroGear Cordova PushPlugin](aerogear-cordova/AerogearCordovaPush)
+
+#### UnifiedPush Server
+
+* [AeroGear UnifiedPush Server resources](../unifiedpush)
 
 
 #### Contributing to AeroGear
