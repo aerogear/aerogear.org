@@ -7,7 +7,7 @@ title: Road Map
 
 ## User and reference guides
 
-* [AeroGear UnifiedPush Administration Console User Guide](AdminConsoleGuide)
+* [UnifiedPush Server User Guide](ups_userguide)
 * [AeroGear Cordova PushPlugin](../guides/aerogear-cordova/AerogearCordovaPush)
 
 
