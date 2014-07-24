@@ -84,7 +84,7 @@ External References
 ** Refactor Cookbook recipes link:https://issues.jboss.org/browse/AGIOS-163[AGIOS-163]
 
 1.6.0 (Released June 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Associated JIRA link:https://issues.jboss.org/browse/AGIOS-203?filter=12321874[iOS 1.6 release]
 
