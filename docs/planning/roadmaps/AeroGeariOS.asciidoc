@@ -37,7 +37,7 @@ External References
 
 
 1.2.0 (Released August 2013)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Unified Push*
 ** link:https://issues.jboss.org/browse/AGIOS-22[AGIOS-22]: Add SDK for Push: Device registration
 ** link:https://issues.jboss.org/browse/AGIOS-23[AGIOS-23]: Demo app for Push SDK
@@ -73,7 +73,7 @@ External References
 ** associated cookbook example GoogleDrive
 
 1.5.0 (Released March 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *iOS7* AeroGear to support iOS7 only
 
 * *AFNetworking 2.x*: upgrade
