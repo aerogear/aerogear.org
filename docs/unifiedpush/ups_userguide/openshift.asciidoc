@@ -1,0 +1,6 @@
+---
+layout: basic
+title: UnifiedPush Server - Running on OpenShift
+---
+
+AeroGear provides an UnifiedPush Server cartridge to make it easy to get it running on OpenShift. If you don't already have an account or don't know how to create applications go to https://www.openshift.com/ first. You can create the UnifiedPush Server instance either with the web tool or the command line tool, both approaches are described below.
