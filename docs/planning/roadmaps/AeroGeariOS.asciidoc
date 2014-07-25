@@ -37,7 +37,7 @@ External References
 
 
 1.2.0 (Released August 2013)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Unified Push*
 ** link:https://issues.jboss.org/browse/AGIOS-22[AGIOS-22]: Add SDK for Push: Device registration
 ** link:https://issues.jboss.org/browse/AGIOS-23[AGIOS-23]: Demo app for Push SDK
@@ -73,7 +73,7 @@ External References
 ** associated cookbook example GoogleDrive
 
 1.5.0 (Released March 2014)
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *iOS7* AeroGear to support iOS7 only
 
 * *AFNetworking 2.x*: upgrade
@@ -83,8 +83,9 @@ External References
 ** Refactor EncryptionServices link:https://issues.jboss.org/browse/AGIOS-169[AGIOS-169]
 ** Refactor Cookbook recipes link:https://issues.jboss.org/browse/AGIOS-163[AGIOS-163]
 
-1.6.0 (Mid June 2014)
-~~~~~~~~~~~~~~~~~~~~~
+1.6.0 (Released June 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Associated JIRA link:https://issues.jboss.org/browse/AGIOS-203?filter=12321874[iOS 1.6 release]
 
 * *OAuth2* adapter enhancements link:https://issues.jboss.org/browse/AGIOS-188[AGIOS-188]
@@ -97,23 +98,37 @@ Associated JIRA link:https://issues.jboss.org/browse/AGIOS-203?filter=12321874[i
 ** KeyCloak integration link:https://issues.jboss.org/browse/AGIOS-178[AGIOS-178], link:https://issues.jboss.org/browse/AGIOS-198[AGIOS-198]
 
 
-1.7.0 (September 2014)
+1.7.0 (end of July 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~
+link:https://issues.jboss.org/issues/?filter=12321979[JIRAs for 1.7.0 release]
+
+* *iOS8 Push lib support* 
+
+** iOS8 interactive notification link:https://issues.jboss.org/browse/AGIOS-210[Epic AGIOS-210]
+
+* *Swift* 
+** Pub libs and demo in Swift https://issues.jboss.org/browse/AGIOS-217[Epic AGIOS-217]
+
+2.0.0 (September 2014)
 ~~~~~~~~~~~~~~~~~~~~~~
+link:https://issues.jboss.org/issues/?filter=12322013[JIRAs for 2.0.0 release]
 
-* *iOS8 support*
+* *modularization* link:https://issues.jboss.org/browse/AGIOS-187[AGIOS-187]
 
-* *Object serialization*
-** Pluggable 'serializers' for Pipe link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
+* *http revisited*
+** http module to replace pipes link:https://issues.jboss.org/browse/AGIOS-227[AGIOS-227]
+** OAuth2 module link:https://issues.jboss.org/browse/AGIOS-231[AGIOS-231]
+** Object serialization: pluggable 'serializers' for http module link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
+* *store revisited*
+** incremental store to replace store
+
+2.1.0 (October 2014)
+~~~~~~~~~~~~~~~~~~~~
 
 * *Sync* link:https://issues.jboss.org/browse/AGIOS-101[AGIOS-101] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1374[AGEROGEAR-1374]
 ** Data model API link:https://issues.jboss.org/browse/AEROGEAR-1408[AEROGEAR-1408]
 ** Conflict resolution lib link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
 ** Cookbook recipe update link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126], link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127], link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128]
-
-* *Documentation*
-** Refactoring aerogear.org link:https://issues.jboss.org/browse/AGIOS-155[AGIOS-155] link:https://issues.jboss.org/browse/AGIOS-156[AGIOS-156] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1402[AEROGEAR-1402]
-** Cookbook examples link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128] link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127]
-link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126] link:https://issues.jboss.org/browse/AGIOS-150[AGIOS-150]
 
 * *Offline & Crypto*
 ** Offline Authentication link:https://issues.jboss.org/browse/AGIOS-176[AGIOS-176]
@@ -121,16 +136,14 @@ link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126] link:https://issues.jb
 ** Apple's keychain wrapper interface link:https://issues.jboss.org/browse/AGIOS-103[AGIOS-103]
 ** Refactor of AGPasswordKeyService to be compliant with the Spec link:https://issues.jboss.org/browse/AGIOS-171[AGIOS-171]
 
-2.0.0 Release
-~~~~~~~~~~~~~
-
-* *Modularization* link:https://issues.jboss.org/browse/AGIOS-187[AGIOS-187]
-
-* Tie up any loose ends
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
- 
+* *Documentation*
+** Refactoring aerogear.org link:https://issues.jboss.org/browse/AGIOS-155[AGIOS-155] link:https://issues.jboss.org/browse/AGIOS-156[AGIOS-156] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1402[AEROGEAR-1402]
+** Cookbook examples link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128] link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127]
+link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126] link:https://issues.jboss.org/browse/AGIOS-150[AGIOS-150]
+
 * *Notifications*
 ** inspired by the JS module
 ** STOMP support

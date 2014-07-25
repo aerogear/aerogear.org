@@ -79,39 +79,38 @@ link:https://issues.jboss.org/issues/?filter=12320567[1.3.1 (Released on Decembe
 ** link:https://issues.jboss.org/browse/AGDROID-139[AGDROID-139]: API Wrappers for Keystore
 ** link:https://issues.jboss.org/browse/AGDROID-129[AGDROID-129]: Generate key from passphrase
 
-link:https://issues.jboss.org/issues/?filter=12320506[1.4 (Mid April)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+link:https://issues.jboss.org/issues/?filter=12320506[1.4 (Released on July 01, 2014)]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Documentation
 ** link:https://issues.jboss.org/browse/AGDROID-155[AGDROID-155]: Review/update usage guides on aerogear.org
-** link:https://issues.jboss.org/browse/AGDROID-154[AGDROID-154]: Review/update getting started guides on aerogear.org
    
-* Example apps
-** Update/review all example apps 
+* Push
+** link:https://issues.jboss.org/browse/AGDROID-237[AGDROID-237]: Modularize Push
+** link:https://issues.jboss.org/browse/AGPUSH-604[AGPUSH-604]: Android Quickstart Client
+** link:https://issues.jboss.org/browse/AGPUSH-588[AGPUSH-588]: Android Hello World Client
 
-* Tests
-** link:https://issues.jboss.org/browse/AGDROID-215[AGDROID-215]: New backend app to use on integration-tests and example apps
+* OAuth2
+** link:https://issues.jboss.org/browse/AGDROID-266[AGDROID-266]: Create Oauth2 Authorization module
 
-* Authentication
-** link:https://issues.jboss.org/browse/AGDROID-225[AGDROID-225]: OAuth2
-** link:https://issues.jboss.org/browse/AGDROID-222[AGDROID-222]: Keycloak integration
+link:https://issues.jboss.org/issues/?filter=12320508[2.0 (Mid September)]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-link:https://issues.jboss.org/issues/?filter=12320857[1.5 (Mid June)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* link:https://issues.jboss.org/browse/AGDROID-192[AGDROID-192]: Remove deprecated APIs
+* link:https://issues.jboss.org/browse/AGDROID-236[AGDROID-236]: Modularizing the Android Library
+* link:https://issues.jboss.org/browse/AGDROID-259[AGDROID-259]: Replace factory by registration
+
+link:https://issues.jboss.org/issues/?filter=12320508[2.1 (Mid November)]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Offline
 ** link:https://issues.jboss.org/browse/AGDROID-223[AGDROID-223]: Offline Authentication
 ** link:https://issues.jboss.org/browse/AGDROID-224[AGDROID-224]: Encrypted Cache
 
-link:https://issues.jboss.org/issues/?filter=12320508[2.0]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* Remove deprecated APIs
-* Modularizing the Android Library
-
 Future
 ~~~~~~
 
+* DataSync
 * Accounts Integration
 * Notifications
 * Analytics and Monitoring/measuring
