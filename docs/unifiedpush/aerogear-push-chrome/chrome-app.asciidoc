@@ -6,9 +6,6 @@ title: Your first Chrome/Push App
 == Your first Chrome/Push App
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercise AeroGear's Chrome Push library support.
 
-[NOTE]
-We assume
-
 Let's get started!
 
 == Creating the application
@@ -18,9 +15,9 @@ Here is an example of what the directory structure will look like
 
 image::./img/app_1.png[App Structure]
 
-You can download AeroGear.js link:https://github.com/aerogear/aerogear-js-dist/archive/1.3.2.zip[here] and the jQuery library link:http://jquery.com/download/[here]
+You can download AeroGear.js link:https://github.com/aerogear/aerogear-js-dist/releases/latest[here] and the jQuery library link:http://jquery.com/download/[here]
 
-All the other files we will create.
+We will create the remaining files.
 
 The first thing we need to do is create a manifest.json file and add the _pushMessaging_ permission:
 
@@ -70,7 +67,7 @@ chrome.runtime.onInstalled.addListener(function() {
         */
         var variantId = "VARIANT_ID",
             variantSecret = "VARIANT_SECRET",
-            pushServerURL = "http://localhost:8080/ag-push/rest/registry/device";
+            pushServerURL = "http://localhost:8080/ag-push";
 
         // Once we have the channelID we can then register with the UnifiedPush Server using
         // the AeroGear.js library

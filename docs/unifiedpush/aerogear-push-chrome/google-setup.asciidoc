@@ -26,7 +26,7 @@ image::./img/gcc_2.png[New Project Name]
 
 image::./img/gcc_3.png[Project Number]
 
-Now you need to enable the _Google Cloud Messaging Chrome APIs. To do that, navigate to +APIs & auth+ > +APIs+ and scroll down to the _Google Cloud Messaging Chrome item, which you need to turn on:
+Now you need to enable the _Google Cloud Messaging Chrome APIs_. To do that, navigate to +APIs & auth+ > +APIs+ and scroll down to the _Google Cloud Messaging for Chrome_ item, which you need to turn on:
 
 image::./img/gcc_4.png[Project Number]
 
@@ -38,7 +38,7 @@ image::./img/gcc_5.png[Project Number]
 
 Now just click the +Create Client ID+ button
 
-On the last screen we are finally get to see the actual value of the generated Client ID and Client Key, which we will use later:
+On the last screen we finally get to see the actual value of the generated Client ID and Client Key, which we will use later:
 
 image::./img/gcc_6.png["Project Number",border="1"]
 
