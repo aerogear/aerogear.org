@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>JSDoc: Class: Push</title>
-    
+
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
@@ -16,35 +16,35 @@
 <body>
 
 <div id="main">
-    
+
     <h1 class="page-title">Class: Push</h1>
-    
+
     
 
 
 
 <section>
-    
+
 <header>
     <h2>
     Push
     </h2>
     
-</header>  
+</header>
 
 <article>
     <div class="container-overview">
     
-    
+
     
         
 <dt>
     <h4 class="name" id="Push"><span class="type-signature"></span>new Push<span class="signature">()</span><span class="type-signature"></span></h4>
-    
+
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         This is a global variable called push exposed by cordova
@@ -52,86 +52,88 @@
     
 
     
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
+
     
 
     
+
     
+<dl class="details">
     
+
     
+
     
+
     
+
     
+
     
+
     
+
     
+
     
-    
+
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line24">line 24</a>
     </li></ul></dd>
     
+
     
+
     
-    
-    
-    
+
     
 </dl>
 
+
     
+
     
 
     
 
     
+
     
+
     
-    
-    
-    
+
     
 </dd>
 
     
     </div>
+
     
+
     
+
     
+
     
+
     
+
     
-    
-    
-    
-    
-    
-    
-    
+
     
         <h3 class="subsection-title">Methods</h3>
-        
+
         <dl>
             
 <dt>
-    <h4 class="name" id="register"><span class="type-signature"></span>register<span class="signature">(success, <span class="optional">error</span>, options)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
+    <h4 class="name" id="register"><span class="type-signature"></span>register<span class="signature">(onNotification, successCallback, <span class="optional">errorCallback</span>, options)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         Registers the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
@@ -139,40 +141,40 @@
     
 
     
+
     
-    
-    
+
     
         <h5>Parameters:</h5>
         
 
 <table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
         <tr>
             
-                <td class="name"><code>success</code></td>
+                <td class="name"><code>onNotification</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -181,29 +183,29 @@
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
-            <td class="description last">callback to be executed if the request results in success</td>
+
+            <td class="description last">callback to be executed if a message arrives</td>
         </tr>
-	
-	
-	
+
+    
+
         <tr>
             
-                <td class="name"><code>error</code></td>
+                <td class="name"><code>successCallback</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -212,31 +214,62 @@
 
             
             </td>
+
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">callback to be executed when register is succesful</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>errorCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
             
                 <td class="attributes">
                 
                     &lt;optional><br>
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
+
             <td class="description last">callback to be executed if the request results in error</td>
         </tr>
-	
-	
-	
+
+    
+
         <tr>
             
                 <td class="name"><code>options</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -245,238 +278,50 @@
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
-            
-            
-            
-            <td class="description last">object to hold all registiation options
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>ecb</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
 
             
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">callback to be executed if a message arrives type of this is string easiest is to point to a function in _global scope_!</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>badge</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
 
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">ios specific - enable badge in message registation</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>sound</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">ios specific - enable sound in message registation</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>alert</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">ios specific - enable alert messages in message registation</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>pushConfig</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Array</span>
-|
-
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
             <td class="description last">A configuration for the Unified Push server, so that it can register this device. If an object or array containing objects is used, the objects can have the following properties:
                 <h6>Properties</h6>
                 
 
 <table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
         <tr>
             
                 <td class="name"><code>senderId</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -485,31 +330,31 @@
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
                     &lt;optional><br>
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
+
             <td class="description last">android specific - the id representing the Google project ID</td>
         </tr>
-	
-	
-	
+
+    
+
         <tr>
             
                 <td class="name"><code>variantID</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -518,29 +363,29 @@
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
+
             <td class="description last">the id representing the mobile application variant</td>
         </tr>
-	
-	
-	
+
+    
+
         <tr>
             
                 <td class="name"><code>variantSecret</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -549,29 +394,29 @@
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
+
             <td class="description last">the secret for the mobile application variant</td>
         </tr>
-	
-	
-	
+
+    
+
         <tr>
             
                 <td class="name"><code>pushServerURL</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -580,29 +425,29 @@
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
+
             <td class="description last">the location of the UnifiedPush server e.g. http(s)//host:port/context</td>
         </tr>
-	
-	
-	
+
+    
+
         <tr>
             
                 <td class="name"><code>alias</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -611,84 +456,332 @@
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
                     &lt;optional><br>
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
+
             <td class="description last">Application specific alias to identify users with the system. Common use case would be an email address or a username.</td>
         </tr>
-	
-	
-	</tbody>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ios</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Holder of the ios specific values variantID and variantSecret
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>variantID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the id representing the mobile application variant for iOS</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>variantSecret</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the secret for the mobile application variant for iOS</td>
+        </tr>
+
+    
+    </tbody>
 </table>
             </td>
         </tr>
-	
-	
-	</tbody>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>android</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Holder of the android specific values variantID and variantSecret
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>variantID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the id representing the mobile application variant for android</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>variantSecret</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the secret for the mobile application variant for android</td>
+        </tr>
+
+    
+    </tbody>
 </table>
             </td>
         </tr>
-	
-	
-	</tbody>
+
+    
+    </tbody>
+</table>
+            </td>
+        </tr>
+
+    
+    </tbody>
 </table>
     
-    
+
     
 <dl class="details">
     
-        
-    
-    
+
     
 
     
+
     
+
     
+
     
+
     
+
     
+
     
-    
-    
-    
-    
-    
+
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line55">line 55</a>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line80">line 80</a>
     </li></ul></dd>
     
+
     
+
     
-    
-    
-    
+
     
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -696,32 +789,50 @@
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">void</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
         
+
     
-    
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
     <pre class="prettyprint"><code>var pushConfig = {
-    senderID: "&lt;senderID>",
-    pushServerURL: "&lt;pushServerURL>",
-    variantID: "&lt;variantID>",
-    variantSecret: "&lt;variantSecret>",
-    alias: "&lt;alias>"
+    pushServerURL: "&lt;pushServerURL e.g http(s)//host:port/context >",
+    senderID: "&lt;senderID e.g Google Project ID>",
+    variantID: "&lt;variantID e.g. 1234456-234320>",
+    variantSecret: "&lt;variantSecret e.g. 1234456-234320>"
+    alias: "&lt;alias e.g. a username or an email address optional>",
 }
 
-push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
-    "alert": "true", "ecb": "onNotification", pushConfig: pushConfig});</code></pre>
+push.register(onNotification, errorHandler, pushConfig);
+
+</code></pre>
+
+    <pre class="prettyprint"><code>//combined android and ios configuration
+var pushConfig = {
+    pushServerURL: "&lt;pushServerURL e.g http(s)//host:port/context >",
+    alias: "&lt;alias e.g. a username or an email address optional>",
+    android: {
+      senderID: "&lt;senderID e.g Google Project ID>",
+      variantID: "&lt;variantID e.g. 1234456-234320>",
+      variantSecret: "&lt;variantSecret e.g. 1234456-234320>"
+    },
+    ios: {
+      variantID: "&lt;variantID e.g. 1234456-234320>",
+      variantSecret: "&lt;variantSecret e.g. 1234456-234320>"
+    }
+};
+
+push.register(onNotification, errorHandler, pushConfig);</code></pre>
 
     
 </dd>
@@ -730,11 +841,11 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
             
 <dt>
     <h4 class="name" id="setApplicationIconBadgeNumber"><span class="type-signature"></span>setApplicationIconBadgeNumber<span class="signature">(success, <span class="optional">badge</span>)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
+
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         Call this to set the application icon badge -- ios specific
@@ -742,40 +853,40 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
     
 
     
+
     
-    
-    
+
     
         <h5>Parameters:</h5>
         
 
 <table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
         <tr>
             
                 <td class="name"><code>success</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -784,29 +895,29 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
+
             <td class="description last">callback to be executed if the request results in success</td>
         </tr>
-	
-	
-	
+
+    
+
         <tr>
             
                 <td class="name"><code>badge</code></td>
             
-            
+
             <td class="type">
             
                 
@@ -818,72 +929,74 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
 
             
             </td>
-            
+
             
                 <td class="attributes">
                 
                     &lt;optional><br>
                 
-                    
+
                 
-                    
+
                 
                 </td>
             
+
             
-            
-            
+
             <td class="description last">the badge number to set on the application icon</td>
         </tr>
-	
-	
-	</tbody>
+
+    
+    </tbody>
 </table>
     
-    
+
     
 <dl class="details">
     
-        
-    
-    
+
     
 
     
+
     
+
     
+
     
+
     
+
     
+
     
-    
-    
-    
-    
-    
+
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line104">line 104</a>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line131">line 131</a>
     </li></ul></dd>
     
+
     
+
     
-    
-    
-    
+
     
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -891,19 +1004,19 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">void</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
         
-    
+
     
         <h5>Example</h5>
         
@@ -915,158 +1028,117 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
         
             
 <dt>
-    <h4 class="name" id="unregister"><span class="type-signature"></span>unregister<span class="signature">(success, <span class="optional">error</span>)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
+    <h4 class="name" id="setContentAvailable"><span class="type-signature"></span>setContentAvailable<span class="signature">(dataType)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
-        Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+        Call this function to tell the OS if there was data or not so it can schedule the next fetch operation
     </div>
     
 
     
+
     
-    
-    
+
     
         <h5>Parameters:</h5>
         
 
 <table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
         <tr>
             
-                <td class="name"><code>success</code></td>
+                <td class="name"><code>dataType</code></td>
             
-            
+
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">int</span>
 
 
             
             </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">callback to be executed if the request results in success</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>error</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
 
             
-            </td>
+
             
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">callback to be executed if the request results in error</td>
+
+            <td class="description last">one of the BackgroundFetchResults or 0 new data 1 no data or 2 failed</td>
         </tr>
-	
-	
-	</tbody>
+
+    
+    </tbody>
 </table>
     
-    
+
     
 <dl class="details">
     
-        
-    
-    
+
     
 
     
+
     
+
     
+
     
+
     
+
     
+
     
-    
-    
-    
-    
-    
+
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line79">line 79</a>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line147">line 147</a>
     </li></ul></dd>
     
+
     
+
     
-    
-    
-    
+
     
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -1074,19 +1146,199 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">void</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
         
+
     
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="unregister"><span class="type-signature"></span>unregister<span class="signature">(success, <span class="optional">error</span>)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>success</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">callback to be executed if the request results in success</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">callback to be executed if the request results in error</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line106">line 106</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+        
+
     
         <h5>Example</h5>
         
@@ -1097,13 +1349,13 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
 
         </dl>
     
+
     
-    
-    
+
     
 </article>
 
-</section>  
+</section>
 
 
 
@@ -1111,13 +1363,13 @@ push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AeroGear.Crypto.html">Crypto</a></li><li><a href="AeroGear.Crypto_KeyPair.html">KeyPair</a></li><li><a href="AeroGear.Totp.html">Totp</a></li><li><a href="Push.html">Push</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AeroGear.Crypto.html">Crypto</a></li><li><a href="AeroGear.Crypto_KeyPair.html">KeyPair</a></li><li><a href="AeroGear.Totp.html">Totp</a></li><li><a href="geofencing.html">geofencing</a></li><li><a href="Push.html">Push</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha3</a> on Wed Feb 26 2014 14:39:29 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Sat Jul 26 2014 15:37:23 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>
