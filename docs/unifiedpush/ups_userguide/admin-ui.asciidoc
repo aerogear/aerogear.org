@@ -3,4 +3,17 @@ layout: basic
 title: UnifiedPush Server - Using the Admin UI
 ---
 
-The UnifiedPush Server.....
+Using the Admin UI
+------------------
+
+The UnifiedPush Server can be accessed via its RESTful endpoints, as well over an administrative user interface. Once you have the UnifiedPush Server running, whether on link:../openshift[Openshift] or link:../server-installation[standalone], it is time to open the _AdminUI_, by accessing +http(s)://SERVER:PORT/ag-push+ in your browser. You are prompted by a login dialog:
+
+image::./img/login.png[Login to the UnifiedPush Server]
+
+The default credentials are +admin+/+123+. On the very first login you are asked to update the password. It is a wise idea to change it to something completely different:
+
+image::img/update_password.png[Update Password]
+
+After applying the new password you are able to use the AdminUI of the UnifiedPush Server:
+
+image::./img/landing_page.png[The Dashboard]
