@@ -5,7 +5,7 @@ title: Getting Started with Java Sender client API
 
 == Getting Started with Java Sender client API
 
-AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit this link:http://aerogear.org/docs/specs/aerogear-server-push/[page] to get a general overview and also the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
+AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
 
 === Installation
 
@@ -14,7 +14,7 @@ The library can be downloaded through the project link:https://github.com/aeroge
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>unifiedpush-java-client</artifactId>
-            <version>0.6.0</version>
+            <version>0.8.0</version>
         </dependency>
 
         <!-- RestEasy's Jackson Plugin -->
@@ -59,7 +59,7 @@ Let's start now with a simple example where the notification is send to all mobi
 
 [source,java]
 ----
-JavaSender sender = new SenderClient("http://localhost:8080/ag-push");       // [1]
+JavaSender sender = new SenderClient.Builder("http://localhost:8080/ag-push").build();       // [1]
 
 UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()                 // [2]
                 .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")  
@@ -86,7 +86,13 @@ sender.send(unifiedMessage, new MessageResponseCallback() {      // [5]
           });
 ----
 
-In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. In [2], we access the builder object and we use it to fill in the parameters. The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. An optional _timeToLive_ [3] (in seconds) can be added on the notification payload, instructing the remote provider to drop the notification in case the device is unable to receive it (e.g. offline) for a period longer than the seconds specified. Further, support is provided with the help of the _attribute_ param [4], to attach on the notification arbitary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
+In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. If the hostname changes, you will need to create a new instance of the client.
+
+In [2], we access the builder object and we use it to fill in the parameters. The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. 
+
+An optional _timeToLive_ [3] (in seconds) can be added on the notification payload, instructing the remote provider to drop the notification in case the device is unable to receive it (e.g. offline) for a period longer than the seconds specified. 
+
+Further, support is provided with the help of the _attribute_ param [4], to attach on the notification arbitary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
 
 Once the notication payload is constructed, we invoke the send method [5] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
 
@@ -114,17 +120,59 @@ To narrow down the list of the recipients, you are given the following options: 
 ----
    .categories("someCategory", "otherCategory");
 ----
-- narrow down SimplePush clients: (NOTE: you must explicitely set the 'deviceType' to be "'web'" as above)
+- narrow down SimplePush clients:
 [source,java]
 ----
-   .simplePush(<# a 'Map' containing a list of channels with their respective versions e.g. "mail:123, "foo:123" etc #>);
+   .simplePush("version");
 ----
 
-NOTE: All these query criterias are optional. If no criterias are passed it will act as a broadcast send, where all clients are notified.
+NOTE:  All these query criterias are optional. If no criterias are passed it will act as a broadcast send, where all clients are notified.
 
-As you realize from the list, the Sender API offers _tremendous_ flexiblity in supporting even the most complex schenarios. You can mix and match options to target a specific mobile audience. 
+As you realize from the list, the Sender API offers _tremendous_ flexiblity in supporting even the most complex scenarios. You can mix and match options to target a specific mobile audience. 
 
 Once the UnifiedMessage is build with your desired criterias, simply call the _send_ method on the JavaSender to send the notification.
+
+=== iOS specific payload
+
+For iOS, you are given the following options: (shown with the respective builder method)
+
+- An iOS specific argument to send notifications to Newsstand applications and submitting silent iOS notifications (iOS7)
+[source,java]
+----
+   .contentAvailable()
+----
+
+- An iOS specific argument to pass an Action Category for interactive notifications (iOS8)
+[source,java]
+----
+   .actionCategory("acceptLead")
+----
+
+=== Connect via a Proxy
+
+If your infrastructure is behind a proxy, you can specify this while creating an instance of your SenderClient : 
+[source,java]
+----
+JavaSender defaultJavaSender = new SenderClient.Builder()
+                .rootServerURL("http://localhost:8080/ag-push")
+                .proxy("proxy.example.com", 8080)
+                .proxyUser("proxyuser")
+                .proxyPassword("password")
+                .proxyType(Proxy.Type.HTTP)
+                .build();
+----
+
+=== Use a custom Trustore
+
+If your infrastructure uses a custom TrustStore, you can specify this while creating an instance of your SenderClient : 
+
+[source,java]
+----
+JavaSender defaultJavaSender = new SenderClient.Builder()
+                .rootServerURL("https://localhost:8080/ag-push")
+                .customTrustStore("setup/aerogear.truststore", "jks", "aerogear")
+                .build();
+----
 
 
 === Integrating with Java EE
@@ -146,7 +194,7 @@ public class Resources {
     @ApplicationScoped
     public SenderClient getSenderClient() {
        // initialize to point to the hostname of the running UnifiedPush server
-       return new SenderClient("http://localhost:8080/ag-push/");
+       return  new SenderClient.Builder("http://localhost:8080/ag-push").build();
     }
 }
 ----
