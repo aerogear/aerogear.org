@@ -6,14 +6,17 @@ title: UnifiedPush Server User Guide
 # UnifiedPush Server User Guide
 
 * [Overview](overview)
-  * About the UnifiedPush Server
-  * Use-cases and scenarios
-  * Useful Terminology
-  * How the UnifiedPush Server Works
+  * [About the UnifiedPush Server](overview#_about_the_unifiedpush_server)
+  * [Use-cases and scenarios](overview#_use_cases_and_scenarios)
+  * [Useful Terminology](overview#_useful_terminology)
+  * [How the UnifiedPush Server Works](overview#_how_the_unifiedpush_server_works)
 * [Installation and configuration](server-installation)
-  * The WAR file distribution
-    * setup and configure a database
-    * deploy the WAR files
+  * [Database configuration](server-installation/#_database_configuration)
+    * [H2 database configuration](server-installation/#_h2_database_configuration)
+    * [MySQL database configuration](server-installation/#_mysql_database_configuration)
+    * [Postgres database configuration](server-installation/#_postgres_database_configuration)
+  * [Deploy the UnifiedPush Server](server-installation/#_deploy_the_unifiedpush_server)
+    * [JBoss Application Server](server-installation/#_jboss_application_server)
 * [Running on OpenShift](openshift)
   * create an instance using OpenShift's Web UI
   * create an instance using OpenShift's command line interface
