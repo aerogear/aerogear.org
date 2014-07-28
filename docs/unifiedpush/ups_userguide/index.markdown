@@ -18,8 +18,8 @@ title: UnifiedPush Server User Guide
   * [Deploy the UnifiedPush Server](server-installation/#_deploy_the_unifiedpush_server)
     * [JBoss Application Server](server-installation/#_jboss_application_server)
 * [Running on OpenShift](openshift)
-  * create an instance using OpenShift's Web UI
-  * create an instance using OpenShift's command line interface
+  * [Create an instance using OpenShift's Web UI](openshift/#_create_an_instance_using_openshift_s_web_ui)
+  * [Create an instance using OpenShift's command line interface](openshift/#_create_an_instance_using_openshift_s_command_line_interface)
 * [Using the Admin UI](admin-ui)
   * Administering the UnifiedPush Server Console
   * Configuring and managing applications that use the UnifiedPush Server
