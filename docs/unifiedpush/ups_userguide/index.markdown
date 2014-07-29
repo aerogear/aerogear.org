@@ -27,4 +27,4 @@ title: UnifiedPush Server User Guide
   * Sending Push Notifications
   * Preparing backends to send Push Notifications
 * [Next steps](next)
-  * TBD: Links to tutorials and specs (some specs might go away)
+  * Contains links to detailed client and server Push tutorials and demos
