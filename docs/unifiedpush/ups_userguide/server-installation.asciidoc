@@ -2,6 +2,8 @@
 layout: basic
 title: UnifiedPush Server - Installation and configuration
 ---
+:toc:
+toc::[]
 
 Installation and configuration
 ------------------------------

@@ -2,6 +2,9 @@
 layout: basic
 title: UnifiedPush Server - Using the Admin UI
 ---
+:toc:
+toc::[]
+
 
 Using the Admin UI
 ------------------
