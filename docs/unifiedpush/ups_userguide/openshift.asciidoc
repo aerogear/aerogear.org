@@ -2,6 +2,8 @@
 layout: basic
 title: UnifiedPush Server - Running on OpenShift
 ---
+:toc:
+toc::[]
 
 Running the UnifiedPush Server on OpenShift
 -------------------------------------------
