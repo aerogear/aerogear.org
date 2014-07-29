@@ -31,7 +31,7 @@ These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting
 
 First, we need to create a new project. In a terminal, change into the kitchensink-cordova directory. Now, run Cordova to generate a project:
 
-    $CORDOVA_HOME/lib/ios/bin/create ios org.jboss.as.quickstarts.kitchensinkcordova KitchensinkCordova
+    cordova create ios org.jboss.as.quickstarts.kitchensinkcordova KitchensinkCordova
 
 Now, we need to create the symbolic link from `shared/www` to `ios/www`. First we remove the generated `www` folder then we create the symbolic link:
 

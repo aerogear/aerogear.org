@@ -1,14 +1,9 @@
 ---
 layout: basic
-title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5
+title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
 ---
 
-== Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5
-
-[NOTE]
-==============================
-Android is not yet a tested plug-in in JBDS 5, it will be for JBDS 6
-==============================
+== Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
 
 .By the end of this tutorial, you will have:
 * Setup your development environment
@@ -24,286 +19,51 @@ First make sure that you have a JDK installed on your machine.  JDK 1.6+ is reco
 
 TIP: To find your JDK version run "java -version" from a command prompt
 
-Download and Unzip PhoneGap/Apache Cordova 2.0.0.  link:http://phonegap.com/download[Download Here]
-
-_Make sure to remember where you unzipped it - you will be pulling several files into your Eclipse-based project throughout this tutorial._
-
 Download & Install JBoss Developer Studio.  link:https://devstudio.jboss.com/earlyaccess/[Download Here]
-
-_Note: This link points to JBDS Early Access of JDBS 6.  The User experience should be the same_
 
 Download and Unzip the Android SDK. link:http://developer.android.com/sdk/index.html[Download Here]
 
-_Again, make sure to remember where you unzipped it._
+_Note: make sure to remember where you unzipped it._
 
-Now install the Android (ADT) Plug-Ins into JBDS/Eclipse
-Click Help > Install New Software
+=== Project Setup
 
-image:../img/ss_install_software.png[]
+Now that your system is setup, lets create a new Cordova Project by clicking File -> New -> Other  (or Cntrl/Command N).
 
-Next, Enter this url: https://dl-ssl.google.com/android/eclipse/ in the "Work with" box and click enter
+In the "Select a wizard" dialog, select "Hybrid Mobile (Cordova) Application Project", then click "Next".
 
-image:../img/ss_install_software_dt_0.png[]
+image:img/1-start-wizard.png[]
 
-Then, Check Developer Tools
+Enter the "Project Name", "Name" and "ID".  We will use `example` for name and `org.example` for "ID", in the screen below:
 
-image:../img/ss_install_software_dt_1.png[]
+image:img/2-create-project.png[]
 
-You will be prompted to restart Eclipse, please do so.
+Press `Next` then you have the option to select what engine to use. In this example we use the latest:
 
-When JBDS/Eclipse restarts you should notice at least two new icons in your toolbar - image:../img/ss_install_software_dt_icon.png[]
-the leftmost one is the Android SDK Manager.  Click on the SDK Manager to see if it launches correctly, make sure that your Android OS version, for your real-world device is listed as “Installed”.  This will be covered again later in this tutorial.
+image:img/3-engine.png[]
 
-=== Project Setup - Part 1
+Pressing `Next` again will present the option to install some plugins, plugins can be used to use native features of the device, we don't need any for this tutorial.
 
-Now that your system is setup, lets create a new Android Project by clicking File -> New -> Other  (or Cntrl/Command N).
+image:img/4-plugins.png[]
 
-In the "Select a wizard" dialog, select "Android Application Project", then click "Next".
+Click `Finish` to exit the wizard.
 
-image:../img/ss_project_setup_0.png[]
+Your screen will look like the following:
 
-Enter the "Application Name", "Project Name" and "Package Name".  We will use AndroidHelloWorld.  Your setup should look similar to the screen shot below
+image:img/5-project.png[]
 
-image:../img/ss_project_setup_1.png[]
+Here you can find the settings we entered before, this is a editor for the config.xml in the www folder. Also in this generated www folder there is a example project you can run this on an android or ios device, but JDBS also has a special Cordova Simulator (CordovaSim) this together with live reload enables fast mobile development.
 
-NOTE: Build SDK and Minimum Required SDK should be set based on your actual Android phone - the physical device.  In addition, these drop boxes are populated based on the Android SDK Manager - “installed” options.   If your real-world device Android OS is not listed here, simply take the defaults for now.  It is possible to switch these settings back to your real target platform, however, it might be best for you to start your project over again - just for the learning experience.
-
-
-Next, We Will keep the defaults on the "Configure Launcher Icon" dialog, so click "Next".
-
-image:../img/ss_project_setup_2.png[]
-
-
-Then, make sure that "Blank Activity" is selected on the "Create Activity" dialog, then click "Next".
-
-image:../img/ss_project_setup_3.png[]
-
-
-Lastly, we will keep the defaults on the "New Activity" dialog, so just click "Finish".
-
-image:../img/ss_project_setup_4.png[]
-
-=== Project Setup - Part 2
-
-Now that we have our shell, we need to add a few more files and directories before we can get down to coding.  So hang in there.
-
-First, under the "assets" directory we need to create a new folder called "www".  The easiest way to do this is to "Right-Click" the "assets" directory and select "New Folder".  Then, in the dialog box type "www" and click "Finish".
-
-image:../img/ss_project_setup_5.png[]
-
-image:../img/ss_project_setup_6.png[]
-
-image:../img/ss_project_setup_7.png[]
-
-TIP: Think of "www" as the equivalent of "webapp" in a Maven project.
-
-Next, we will need to add the cordova-2.0.0.jar to our libs directory.  This can be done by just dragging & dropping the jar file (hope you didn't forget where you downloaded it) into Eclipse/JBDS and when prompted, select copy files and click "Ok".
-
-image:../img/ss_project_setup_8.png[]
-
-image:../img/ss_project_setup_9.png[]
-
-image:../img/ss_project_setup_10.png[]
-
-Once the "cordova-2.0.0.jar" is in the "lib" directory, "Right-Click" it and select Build Path -> Add to Build Path.
-
-image:../img/ss_project_setup_11.png[]
-
-Next, under "www" add a "js" folder then "libs" folder so we can add the "cordova-2.0.0.js" to libs by dragging & dropping it the same way we did the .jar file.
-
-image:../img/ss_project_setup_12.png[]
-
-We also need to bring in the "XML" folder with its config.xml into the "res" directory, also by dragging & dropping the same way we did for the previous to files.
-
-image:../img/ss_project_setup_13.png[]
-
-image:../img/ss_project_setup_14.png[]
-
-
-Now that our folders and libraries and setup, it's time to start creating our content.
-
-First we need to create an "index.html".  To do this, right-click the "www" folder, then choose New -> Other
-
-image:../img/ss_project_setup_15.png[]
-
-Then, select "HTML File" and click "Next"
-
-image:../img/ss_project_setup_16.png[]
-
-Then, name it "index.html" and click "Next"
-
-image:../img/ss_project_setup_17.png[]
-
-Finally, select the HTML 5 Template and click "Finish"
-
-image:../img/ss_project_setup_18.png[]
-
-
-Open the new index.html file if isn't already open.  We are going to add in a reference to cordova-2.0.0.js into the HEAD section of the HTML.
-
-  <script type="text/javascript" charset="utf-8" src="js/libs/cordova-2.0.0.js"></script>
-
-and a hello message in the BODY
-
-  <h1>Hello Apache Cordova</h1>
-
-Your "index.html" file should look similar to this:
-image:../img/ss_project_setup_19.png[]
-
-
-Next, we need to edit the "MainActivity.java".  We need to change "extends Activity" to be "extends DroidGap"
-
-This will initially give you a ton of red in the editor as DroidGap has not yet been imported.  To import it, click on the red X beside the public class MainActivity line and you will be prompted to import DroidGap.
-
-Then select "Import DroidGap (org.apache.cordova)"
-
-image:../img/ss_project_setup_21.png[]
-
-Comment out
-
-  setContentView(…
-
-and enter the following line:
-
-  super.loadUrl("file:///android_asset/www/index.html");
-
-image:../img/ss_project_setup_23.png[]
-
-
-Now we need to edit the "AndroidManifest.xml"
-
-image:../img/ss_project_setup_24.png[]
-
-
-With the file open, we need to insert the following between the "uses-sdk" and "application" tags.
-
-  <supports-screens
-    android:largeScreens="true"
-    android:normalScreens="true"
-    android:smallScreens="true"
-    android:resizeable="true"
-    android:anyDensity="true" />
-
-And then the following:
-
-  <uses-permission android:name="android.permission.VIBRATE" />
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.RECEIVE_SMS" />
-  <uses-permission android:name="android.permission.RECORD_AUDIO" />
-  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-  <uses-permission android:name="android.permission.READ_CONTACTS" />
-  <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
-  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-  <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-
-NOTE: Your current “hello world” style application does not yet require any of these permissions but it may eventually.  In a production release, you should remove permissions that are not needed for security purposes.
-
-
-The result should look like the following screenshot:
-
-image:../img/ss_project_setup_25.png[]
-
-
-Now, locate the <activity> tag and add the following attribute:
-
-  android:configChanges = "orientation|keyboardHidden"
-
-image:../img/ss_project_setup_26.png[]
-
-=== Run Configuration Setup
-
-==== Now lets setup a run configuration.
-
-Under the JBDS/Eclipse Run menu, select Run Configurations…
-
-image:../img/ss_project_setup_27.png[]
-
-Add a New Configuration for Android Application and name it "AndroidHelloWorld"
-
-image:../img/ss_project_setup_28.png[]
-
-Now, select the AndroidHelloWorld project using the Browse button
-
-image:../img/ss_project_setup_29.png[]
-
-And on the Target tab, select “Always prompt to pick device”
-
-image:../img/ss_project_setup_30.png[]
-
-TIP: This setup will make it easier for you to switch back and forth between the Android Emulator (AVDs) and a real device plugged in via USB.
-
-
-Then select Apply.
-
-You can now close the Run Configurations Dialog
-
-
-=== Android SDK Manager
-
-The Android Developer site provides a link:http://developer.android.com/sdk/installing/index.html[step-by-step guide] to set up your environment.
-
-==== Troubleshooting Fedora/Red Hat Enterprise Linux
-
-
-If you have 64-bit systems, you will need to install some 32bit packages, because Android SDK is 32bit
-
-`# sudo yum install glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686`
-
-=== Setup AVD
-
-Once the SDK has been installed, lets head back over to JBDS and create an Android Virtual Device or AVD
-
-"Right-click" on the project and select "Run As -> Android Application"
-
-image:../img/ss_avd_setup_0.png[]
-
-The "Android Device Chooser" dialog will appear.  This will allow you to select between any real world devices that are plugged into your laptop/machine OR AVD/emulators.
-
-image:../img/avd.png[]
-
-If this is your first time, then most likely this dialog will be blank.  If you already have and AVD created, then you can skip the setup steps.
-
-Click on New...
-
-image::../img/avd_new.png[New AVD]
-
-And then create the new AVD, giving it a name of your choice. You should have installed an Android 2.x or 4.0 SDK through the SDK manager (as part of the step-by-step guide above).
-
-Once an AVD has been created, you can close the Android SDK Manager and return to Android Device Chooser.  Then, select "Refresh" to see the newly added AVD, make sure "Launch a new Android Virtual Device" is selected, highlight the AVD you wish to launch and select "Ok"
-
-==== Launching the AVD
-
-The "default" end-user experience is typically displayed in the emulator.  _You will need to manually bypass the lock screen._
-
-Once the Android OS has fully loaded, it will then run your application.  _This takes a while, on a slower computer likely several minutes._
-
-image:../img/ss_avd_setup_1.png[]
-
-The Android Developer site has a good tutorial about setting up your "Real Device" here: http://developer.androidcom/tools/device.html
-
-Once your device is setup, and you run the Android Device Chooser (Run As Android Application), you should see your actual device listed.  Highlight it and select "OK".
-
-
-TIP: If you are prompted for something called “LogCat” do say yes.  It is a valuable tool for understanding what might be going wrong/right with your deployment to the real device.
-
-
-And that’s Hello World
-
-NOTE: I have seen the run operation fail at times, simply try again.   In one case, the LogCat message indicated that I needed to restart Eclipse just to get things running and after a quick restart (File - Restart) it was back to normal.
-
-
+image:img/6-cordova-sim.png[]
 
 === Building An App
 
+First let's delete the generated demo by removing everything in the www directory except config.xml
+
+image:img/7-delete-example.png[]
+
 Now lets make it more interesting by adding some jQuery Mobile functionality.  Right-click on "www" and select "New Other", then select "HTML File".
 
-image:../img/ss_build_0.png[]
+image:img/ss_build_0.png[]
 
 
 Name it "mobile.html" and select "Next"
@@ -314,9 +74,7 @@ Select "HTML5 jQuery Mobile Page" and select "Finish"
 
 image:../img/ss_build_2.png[]
 
-This will be our new "landing" page, but first we need to open MainActivity.java and change the reference to index.html to mobile.html
-
-  super.loadUrl("file:///android_asset/www/mobile.html");
+This will be our new "landing" page, so be sure to name it index.html
 
 Once that is complete, Save and Run
 
@@ -373,7 +131,7 @@ Time to add in some Apache Cordova Magic. First up, we will add in some "Geoloca
 
 First, add the reference to cordova.js before the script tag for on(“pageinit”…)
 
-  <script type="text/javascript" charset="utf-8" src="js/libs/cordova-2.0.0.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/libs/cordova.js"></script>
 
 
 
@@ -433,7 +191,7 @@ The result:
 image:../img/ss_build_7.png[]
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Geolocation check out the API docs at:
-http://docs.phonegap.com/en/2.0.0/cordova_geolocation_geolocation.md.html#Geolocation
+https://github.com/apache/cordova-plugin-geolocation/blob/master/doc/index.md
 
 ==== Accelerometer
 
@@ -488,7 +246,7 @@ Finally, Run It
 image:../img/ss_accel_2.png[]
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Accelerometer check out the API docs at:
-http://docs.phonegap.com/en/2.0.0/cordova_accelerometer_accelerometer.md.html#Accelerometer
+https://github.com/apache/cordova-plugin-device-motion/blob/master/doc/index.md
 
 ==== Data & REST
 
@@ -532,7 +290,7 @@ And if you wish to be more adventurous, wrap this logic in a check for Wifi vs 3
   var networkState = navigator.network.connection.type;
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Connectivity check out the API docs at:
-http://docs.phonegap.com/en/2.0.0/cordova_connection_connection.md.html#Connection
+https://github.com/apache/cordova-plugin-network-information/blob/master/doc/index.md
 
 
 === Tips & Tricks:
