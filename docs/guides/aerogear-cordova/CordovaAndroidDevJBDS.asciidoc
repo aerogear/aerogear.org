@@ -1,14 +1,9 @@
 ---
 layout: basic
-title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5
+title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
 ---
 
-== Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5
-
-[NOTE]
-==============================
-Android is not yet a tested plug-in in JBDS 5, it will be for JBDS 6
-==============================
+== Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
 
 .By the end of this tutorial, you will have:
 * Setup your development environment
@@ -25,8 +20,6 @@ First make sure that you have a JDK installed on your machine.  JDK 1.6+ is reco
 TIP: To find your JDK version run "java -version" from a command prompt
 
 Download & Install JBoss Developer Studio.  link:https://devstudio.jboss.com/earlyaccess/[Download Here]
-
-_Note: This link points to JBDS Early Access of JDBS 6.  The User experience should be the same_
 
 Download and Unzip the Android SDK. link:http://developer.android.com/sdk/index.html[Download Here]
 
@@ -48,7 +41,7 @@ Press `Next` then you have the option to select what engine to use. In this exam
 
 image:img/3-engine.png[]
 
-Pressing `Next` again will prestent the option to install some plugins, plugins can be used to use native features of the device, we don't need any for this tutorial.
+Pressing `Next` again will present the option to install some plugins, plugins can be used to use native features of the device, we don't need any for this tutorial.
 
 image:img/4-plugins.png[]
 
@@ -58,7 +51,7 @@ Your screen will look like the following:
 
 image:img/5-project.png[]
 
-Here you can find the settings we entered before this is a editor for the config.xml in the www. Also in this generated www is a example project you can run this on an android or ios device, but JDBS also has a special Cordova Simulator (CordovaSim) this toghter with live reload enables fast mobile development.
+Here you can find the settings we entered before, this is a editor for the config.xml in the www folder. Also in this generated www folder there is a example project you can run this on an android or ios device, but JDBS also has a special Cordova Simulator (CordovaSim) this together with live reload enables fast mobile development.
 
 image:img/6-cordova-sim.png[]
 
@@ -138,7 +131,7 @@ Time to add in some Apache Cordova Magic. First up, we will add in some "Geoloca
 
 First, add the reference to cordova.js before the script tag for on(“pageinit”…)
 
-  <script type="text/javascript" charset="utf-8" src="js/libs/cordova-2.0.0.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/libs/cordova.js"></script>
 
 
 
@@ -198,7 +191,7 @@ The result:
 image:../img/ss_build_7.png[]
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Geolocation check out the API docs at:
-http://docs.phonegap.com/en/2.0.0/cordova_geolocation_geolocation.md.html#Geolocation
+https://github.com/apache/cordova-plugin-geolocation/blob/master/doc/index.md
 
 ==== Accelerometer
 
@@ -253,7 +246,7 @@ Finally, Run It
 image:../img/ss_accel_2.png[]
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Accelerometer check out the API docs at:
-http://docs.phonegap.com/en/2.0.0/cordova_accelerometer_accelerometer.md.html#Accelerometer
+https://github.com/apache/cordova-plugin-device-motion/blob/master/doc/index.md
 
 ==== Data & REST
 
@@ -297,7 +290,7 @@ And if you wish to be more adventurous, wrap this logic in a check for Wifi vs 3
   var networkState = navigator.network.connection.type;
 
 NOTE: For more information on how Apache Cordova/Phonegap addresses Connectivity check out the API docs at:
-http://docs.phonegap.com/en/2.0.0/cordova_connection_connection.md.html#Connection
+https://github.com/apache/cordova-plugin-network-information/blob/master/doc/index.md
 
 
 === Tips & Tricks:
