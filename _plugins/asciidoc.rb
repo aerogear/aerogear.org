@@ -12,7 +12,7 @@ module Jekyll
     end
 
     def convert(content)
-      Asciidoctor.load(content, :safe => 0, :attributes => {'imagesdir' => '../', 'allow-uri-read' => true}).render
+      Asciidoctor.load(content, :safe => 0, :attributes => {'imagesdir' => '../', 'allow-uri-read' => true, 'icons' => 'font'}).render
     end
   end
 end
