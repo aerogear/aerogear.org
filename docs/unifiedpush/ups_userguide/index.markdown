@@ -20,11 +20,17 @@ title: UnifiedPush Server User Guide
 * [Running on OpenShift](openshift)
   * [Create an instance using OpenShift's Web UI](openshift/#_create_an_instance_using_openshift_s_web_ui)
   * [Create an instance using OpenShift's command line interface](openshift/#_create_an_instance_using_openshift_s_command_line_interface)
+* [Administration of the UnifiedPush Server](server-administration)
+  * Explaining the Keycloak features... TDB
 * [Using the Admin UI](admin-ui)
-  * Administering the UnifiedPush Server Console
-  * Configuring and managing applications that use the UnifiedPush Server
-  * Preparing mobile devices to be connected with the UnifiedPush Server
-  * Sending Push Notifications
-  * Preparing backends to send Push Notifications
+  * [Login and landing page](admin-ui/#_login_and_landing_page)
+  * [Account Management](admin-ui/#_account_management)
+  * [Create and Manage PushApplication](admin-ui/#_create_and_manage_pushapplication)
+  * [Create and Manage Variants](admin-ui/#_create_and_manage_variants)
+  * [Managing registered device](admin-ui/#_managing_registered_device)
+  * [Sending a Push Notification](admin-ui/#_sending_a_push_notification)
+    * [Sending a Push Notification from code](admin-ui/#_sending_a_push_notification_from_code)
+  * [Dashboard](admin-ui/#_dashboard)
+
 * [Next steps](next)
   * Contains links to detailed client and server Push tutorials and demos
