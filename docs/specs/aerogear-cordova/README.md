@@ -21,7 +21,7 @@ The AeroGear.Crypto namespace provides a way to encrypt and decrypt data, there 
 
 See the [AeroGear.Crypto API docs](AeroGear.Crypto.html) for more info.
 
-## Crypto Plugin
+## Geofencing Plugin
 - - -
 
 There is a global variable named geofencing exported by Cordova that one can use to register the device for receiving geofencing events.
