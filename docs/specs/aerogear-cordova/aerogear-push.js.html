@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>JSDoc: Source: aerogear-push.js</title>
-    
+
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
@@ -16,9 +16,9 @@
 <body>
 
 <div id="main">
-    
+
     <h1 class="page-title">Source: aerogear-push.js</h1>
-    
+
     
 
 
@@ -41,105 +41,146 @@
 * limitations under the License.
 */
 
-    var exec = require("cordova/exec");
+var exec = require("cordova/exec");
 
-    /**
-     * This is a global variable called push exposed by cordova
-     * @status Stable
-     * @constructs Push
-    */    
-    var Push = function(){};
+/**
+ * This is a global variable called push exposed by cordova
+ * @status Stable
+ * @constructs Push
+ */
+function Push(){
+    this.FetchResult = {
+        NewData: 0,
+        NoData: 1,
+        Failed: 2
+    }
+}
 
-    /**
-        Registers the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
-        @param {Function} success - callback to be executed if the request results in success
-        @param {Function} [error] - callback to be executed if the request results in error
-        @param {Object} options - object to hold all registiation options
-        @param {String} options.ecb - callback to be executed if a message arrives type of this is string easiest is to point to a function in _global scope_!
-        @param {String} [options.badge] - ios specific - enable badge in message registation
-        @param {String} [options.sound] - ios specific - enable sound in message registation
-        @param {String} [options.alert] - ios specific - enable alert messages in message registation
-        @param {String|Array|Object} options.pushConfig - A configuration for the Unified Push server, so that it can register this device. If an object or array containing objects is used, the objects can have the following properties:
-        @param {String} [options.pushConfig.senderId] - android specific - the id representing the Google project ID
-        @param {String} options.pushConfig.variantID - the id representing the mobile application variant
-        @param {String} options.pushConfig.variantSecret - the secret for the mobile application variant
-        @param {String} options.pushConfig.pushServerURL - the location of the UnifiedPush server e.g. http(s)//host:port/context
-        @param {String} [options.pushConfig.alias] - Application specific alias to identify users with the system. Common use case would be an email address or a username.
-        @returns {void}
-        @example
+/**
+    Registers the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+    @param {Function} onNotification - callback to be executed if a message arrives
+    @param {Function} successCallback - callback to be executed when register is succesful
+    @param {Function} [errorCallback] - callback to be executed if the request results in error
+    @param {Object} options - A configuration for the Unified Push server, so that it can register this device. If an object or array containing objects is used, the objects can have the following properties:
+    @param {String} [options.senderId] - android specific - the id representing the Google project ID
+    @param {String} options.variantID - the id representing the mobile application variant
+    @param {String} options.variantSecret - the secret for the mobile application variant
+    @param {String} options.pushServerURL - the location of the UnifiedPush server e.g. http(s)//host:port/context
+    @param {String} [options.alias] - Application specific alias to identify users with the system. Common use case would be an email address or a username.
+    @param {Object} [options.ios] - Holder of the ios specific values variantID and variantSecret
+    @param {String} [options.ios.variantID] - the id representing the mobile application variant for iOS
+    @param {String} [options.ios.variantSecret] - the secret for the mobile application variant for iOS
+    @param {Object} [options.android] - Holder of the android specific values variantID and variantSecret
+    @param {String} [options.android.variantID] - the id representing the mobile application variant for android
+    @param {String} [options.android.variantSecret] - the secret for the mobile application variant for android
+    @returns {void}
+    @example
 
-        var pushConfig = {
-            senderID: "&lt;senderID>",
-            pushServerURL: "&lt;pushServerURL>",
-            variantID: "&lt;variantID>",
-            variantSecret: "&lt;variantSecret>",
-            alias: "&lt;alias>"
+    var pushConfig = {
+        pushServerURL: "&lt;pushServerURL e.g http(s)//host:port/context >",
+        senderID: "&lt;senderID e.g Google Project ID>",
+        variantID: "&lt;variantID e.g. 1234456-234320>",
+        variantSecret: "&lt;variantSecret e.g. 1234456-234320>"
+        alias: "&lt;alias e.g. a username or an email address optional>",
+    }
+
+    push.register(onNotification, errorHandler, pushConfig);
+
+    @example
+    //combined android and ios configuration
+    var pushConfig = {
+        pushServerURL: "&lt;pushServerURL e.g http(s)//host:port/context >",
+        alias: "&lt;alias e.g. a username or an email address optional>",
+        android: {
+          senderID: "&lt;senderID e.g Google Project ID>",
+          variantID: "&lt;variantID e.g. 1234456-234320>",
+          variantSecret: "&lt;variantSecret e.g. 1234456-234320>"
+        },
+        ios: {
+          variantID: "&lt;variantID e.g. 1234456-234320>",
+          variantSecret: "&lt;variantSecret e.g. 1234456-234320>"
         }
-
-        push.register(successHandler, errorHandler, {"badge": "true", "sound": "true",
-            "alert": "true", "ecb": "onNotification", pushConfig: pushConfig});
-    */
-    Push.prototype.register = function (successCallback, errorCallback, options) {
-        if (errorCallback == null) {
-            errorCallback = function () {
-            }
-        }
-
-        if (typeof successCallback != "function") {
-            console.log("Push.register failure: success callback parameter must be a function");
-            return;
-        }
-
-        cordova.exec(successCallback, errorCallback, "PushPlugin", "register", [options]);
     };
 
-    /**
-        Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
-        @status Stable
-        @param {Function} success - callback to be executed if the request results in success
-        @param {Function} [error] - callback to be executed if the request results in error
-        @returns {void}
-        @example
-
-        push.unregister(successHandler, errorHandler);
-    */
-    Push.prototype.unregister = function (successCallback, errorCallback) {
-        if (errorCallback == null) {
-            errorCallback = function () {
-            }
+    push.register(onNotification, errorHandler, pushConfig);
+*/
+Push.prototype.register = function (onNotification, successCallback, errorCallback, options) {
+    this.successCallback = successCallback;
+    
+    if (errorCallback == null) {
+        errorCallback = function () {
         }
+    }
 
-        if (typeof successCallback != "function") {
-            console.log("Push.unregister failure: success callback parameter must be a function");
-            return;
+    if (typeof onNotification != "function") {
+        console.log("Push.register failure: onNotification callback parameter must be a function");
+        return;
+    }
+
+    cordova.exec(onNotification, errorCallback, "PushPlugin", "register", [options]);
+};
+
+/**
+    Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+    @status Stable
+    @param {Function} success - callback to be executed if the request results in success
+    @param {Function} [error] - callback to be executed if the request results in error
+    @returns {void}
+    @example
+
+    push.unregister(successHandler, errorHandler);
+*/
+Push.prototype.unregister = function (successCallback, errorCallback) {
+    if (errorCallback == null) {
+        errorCallback = function () {
         }
+    }
 
-        cordova.exec(successCallback, errorCallback, "PushPlugin", "unregister", []);
-    };
+    if (typeof successCallback != "function") {
+        console.log("Push.unregister failure: success callback parameter must be a function");
+        return;
+    }
+
+    cordova.exec(successCallback, errorCallback, "PushPlugin", "unregister", []);
+};
 
 
-    /**
-        Call this to set the application icon badge -- ios specific
-        @status Stable
-        @param {Function} success - callback to be executed if the request results in success
-        @param {String|Number} [badge] - the badge number to set on the application icon
-        @returns {void}
-        @example
+/**
+    Call this to set the application icon badge -- ios specific
+    @status Stable
+    @param {Function} success - callback to be executed if the request results in success
+    @param {String|Number} [badge] - the badge number to set on the application icon
+    @returns {void}
+    @example
 
-        push.setApplicationIconBadgeNumber(successHandler, errorHandler);
-    */
-    Push.prototype.setApplicationIconBadgeNumber = function (successCallback, badge) {
-        if (typeof successCallback != "function") {
-            console.log("Push.setApplicationIconBadgeNumber failure: success callback parameter must be a function");
-            return;
-        }
+    push.setApplicationIconBadgeNumber(successHandler, errorHandler);
+*/
+Push.prototype.setApplicationIconBadgeNumber = function (successCallback, badge) {
+    if (typeof successCallback != "function") {
+        console.log("Push.setApplicationIconBadgeNumber failure: success callback parameter must be a function");
+        return;
+    }
 
-        cordova.exec(successCallback, successCallback, "PushPlugin", "setApplicationIconBadgeNumber", [
-            {badge: badge}
-        ]);
-    };
+    cordova.exec(successCallback, successCallback, "PushPlugin", "setApplicationIconBadgeNumber", [
+        {badge: badge}
+    ]);
+};
 
-    module.exports = new Push();
+/**
+ * Call this function to tell the OS if there was data or not so it can schedule the next fetch operation
+ * @param {int} dataType - one of the BackgroundFetchResults or 0 new data 1 no data or 2 failed
+ * @returns {void}
+ */
+Push.prototype.setContentAvailable = function(dataType) {
+    return exec(null, null, "PushPlugin", "setContentAvailable", [{type: dataType}]);
+};
+
+var push = new Push();
+if (Object.freeze) {
+    Object.freeze(push.FetchResult);
+}
+
+module.exports = push;
 </code></pre>
         </article>
     </section>
@@ -150,13 +191,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AeroGear.Crypto.html">Crypto</a></li><li><a href="AeroGear.Crypto_KeyPair.html">KeyPair</a></li><li><a href="AeroGear.Totp.html">Totp</a></li><li><a href="Push.html">Push</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AeroGear.Crypto.html">Crypto</a></li><li><a href="AeroGear.Crypto_KeyPair.html">KeyPair</a></li><li><a href="AeroGear.Totp.html">Totp</a></li><li><a href="geofencing.html">geofencing</a></li><li><a href="Push.html">Push</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha3</a> on Wed Feb 26 2014 14:39:29 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Sat Jul 26 2014 15:37:23 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -20,3 +20,10 @@ See the [AeroGear.Totp API docs](AeroGear.Totp.html) for more info.
 The AeroGear.Crypto namespace provides a way to encrypt and decrypt data, there is also a JS version of this, but this version delegates to the native libraries for increased speed and security.
 
 See the [AeroGear.Crypto API docs](AeroGear.Crypto.html) for more info.
+
+## Geofencing Plugin
+- - -
+
+There is a global variable named geofencing exported by Cordova that one can use to register the device for receiving geofencing events.
+
+See the [Geofencing docs](geofencing.html) for more info.
