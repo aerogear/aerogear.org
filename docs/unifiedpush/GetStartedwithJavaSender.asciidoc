@@ -92,9 +92,9 @@ In [2], we access the builder object and we use it to fill in the parameters. Th
 
 An optional _timeToLive_ [3] (in seconds) can be added on the notification payload, instructing the remote provider to drop the notification in case the device is unable to receive it (e.g. offline) for a period longer than the seconds specified. 
 
-Further, support is provided with the help of the _attribute_ param [4], to attach on the notification arbitary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
+Further, support is provided with the help of the _attribute_ param [4], to attach on the notification arbitrary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
 
-Once the notication payload is constructed, we invoke the send method [5] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
+Once the notification payload is constructed, we invoke the send method [5] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
 
 === Selected send
 
@@ -128,7 +128,7 @@ To narrow down the list of the recipients, you are given the following options: 
 
 NOTE:  All these query criterias are optional. If no criterias are passed it will act as a broadcast send, where all clients are notified.
 
-As you realize from the list, the Sender API offers _tremendous_ flexiblity in supporting even the most complex scenarios. You can mix and match options to target a specific mobile audience. 
+As you realize from the list, the Sender API offers _tremendous_ flexibility in supporting even the most complex scenarios. You can mix and match options to target a specific mobile audience. 
 
 Once the UnifiedMessage is build with your desired criterias, simply call the _send_ method on the JavaSender to send the notification.
 
