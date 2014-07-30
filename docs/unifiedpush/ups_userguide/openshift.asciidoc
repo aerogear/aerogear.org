@@ -34,6 +34,13 @@ Replace <APPLICATION NAME> with the name you want (for example unifiedpush).
 
 Once the instance is created the rhc tool outputs details about it. Open the returned URL in a browser to open the UnifiedPush Server's homepage.
 
+Documentation on rhc
+^^^^^^^^^^^^^^^^^^^^
+
+If you are interested to learn more about +rhc+, checkout the following resources:
+* link:https://www.openshift.com/blogs/using-rhc-to-manage-paas-apps[How to Manage Apps in the Cloud with RHC]
+* link:https://access.redhat.com/documentation/en-US/OpenShift/2.0/html-single/User_Guide/index.html[OpenShift Online - User Guide]
+
 Next Steps
 ~~~~~~~~~~
 Now it is time to make yourself familiar with the link:../admin-ui[Admin UI].
