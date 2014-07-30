@@ -14,7 +14,7 @@ title: UnifiedPush Server User Guide
   * [Database configuration](server-installation/#_database_configuration)
     * [H2 database configuration](server-installation/#_h2_database_configuration)
     * [MySQL database configuration](server-installation/#_mysql_database_configuration)
-    * [PostgreSQL database configuration](server-installation/#_postgres_database_configuration)
+    * [PostgreSQL database configuration](server-installation/#_postgresql_database_configuration)
   * [Deploy the UnifiedPush Server](server-installation/#_deploy_the_unifiedpush_server)
     * [JBoss Application Server](server-installation/#_jboss_application_server)
 * [Running on OpenShift](openshift)
