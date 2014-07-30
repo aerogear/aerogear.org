@@ -20,6 +20,7 @@ title: UnifiedPush Server User Guide
 * [Running on OpenShift](openshift)
   * [Create an instance using OpenShift's Web UI](openshift/#_create_an_instance_using_openshift_s_web_ui)
   * [Create an instance using OpenShift's command line interface](openshift/#_create_an_instance_using_openshift_s_command_line_interface)
+    * [Documentation on rhc](openshift/#_documentation_on_rhc)
 * [Administration of the UnifiedPush Server](server-administration)
   * Explaining the Keycloak features... TDB
 * [Using the Admin UI](admin-ui)
