@@ -8,7 +8,7 @@ toc::[]
 Installation and configuration
 ------------------------------
 
-The UnifiedPush Server comes with two WAR files (+auth-server.war+ and +ag-push.war+) you need to install on your favorite JavaEE container. We currently only support JBoss AS 7.1.1 and JBoss EAP 6.x. Download the servers from link:http://jbossas.jboss.org/downloads/[here].
+The UnifiedPush Server comes with two WAR files (+auth-server.war+ and +ag-push.war+) that need to be installed on your favorite JavaEE container. We currently only support JBoss AS 7.1.1 and JBoss EAP 6.x. Download the servers from link:http://jbossas.jboss.org/downloads/[here].
 
 Database configuration
 ~~~~~~~~~~~~~~~~~~~~~~
