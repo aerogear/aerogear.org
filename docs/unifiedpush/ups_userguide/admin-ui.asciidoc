@@ -37,11 +37,11 @@ This brings you to the page where you can configure details about your account. 
 
 image::./img/account_management_details.png[Account Details]
 
-The next section allows you to update your current password. __Reminder:__ It is a bad idea go back to the initial default password...
+The next section allows you to update your current password. __Reminder:__ It is a bad idea to go back to the initial default password...
 
 image::./img/account_management_password.png[Password Details]
 
-It is also possible to use the link:http://code.google.com/p/google-authenticator/[Google Authenticator app] as an additional security mechanism for you login:
+It is also possible to use the link:http://code.google.com/p/google-authenticator/[Google Authenticator app] as an additional security mechanism for your login:
 
 image::./img/account_management_authenticator.png[Setup an authenticator]
 
@@ -85,7 +85,7 @@ image::./img/applications_variant_create.png[Create a new Variant]
 
 In this example we are creating an iOS Variant and giving it a name. Besides the name, each supported variant type contains some platform specific properties, such as a Google API key (Android) or passphrase and certificate (Apple). In this case we upload the require certificate and its passphrase for Apple's Push Notification Service.
 
-NOTE: If you are not familiar with the details of your desired mobile platform, click link:../../../unifiedpush/aerogear-push-ios/[here] for Apple's Push Notification Service or link:../../../unifiedpush/aerogear-push-android/[here] Google's Cloud Messaging.
+NOTE: If you are not familiar with the details of your desired mobile platform, click link:../../../unifiedpush/aerogear-push-ios/[here] for Apple's Push Notification Service or link:../../../unifiedpush/aerogear-push-android/[here] for Google's Cloud Messaging.
 
 After finishing the above dialog you are returned to the details page of the PushApplication, containing a list of existing Variants:
 
@@ -174,7 +174,7 @@ In the details you will see the payload of the message as well as the IP address
 
 image::./img/dashboard_activity_full_message.png[The entire Push Notification payload]
 
-Here you are also able to see which supported SDK the message submitted. In this example the message was sent from the Console of the UnifiedPush Server.
+Here you are also able to see which supported SDK was used to send the message. In this example the message was sent from the Console of the UnifiedPush Server.
 
 
 Next Steps
