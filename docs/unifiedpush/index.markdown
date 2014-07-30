@@ -1,20 +1,20 @@
 ---
 layout: basic
-title: Road Map
+title: UnifiedPush Server
 ---
 
 # Learn about the UnifiedPush Server!
 
 ## User and reference guides
 
-* [AeroGear UnifiedPush Administration Console User Guide](AdminConsoleGuide)
+* [UnifiedPush Server User Guide](ups_userguide)
 * [AeroGear Cordova PushPlugin](../guides/aerogear-cordova/AerogearCordovaPush)
 
 
 ## Tutorials
 
-* [Tutorial: iOS Push Notifications](aerogear-push-ios)
-* [Tutorial: JS Push Notifications](aerogear-push-js)
 * [Tutorial: Android Push Notifications](aerogear-push-android)
+* [Tutorial: iOS Push Notifications](aerogear-push-ios)
+* [Tutorial: JavaScript Push Notifications](aerogear-push-js)
 * [Tutorial: Chrome Packaged Apps Push Notifications](aerogear-push-chrome)
 * [Getting Started with the Java Sender API](GetStartedwithJavaSender)

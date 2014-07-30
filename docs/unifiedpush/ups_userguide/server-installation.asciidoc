@@ -1,0 +1,176 @@
+---
+layout: basic
+title: UnifiedPush Server - Installation and configuration
+---
+:toc:
+toc::[]
+
+Installation and configuration
+------------------------------
+
+The UnifiedPush Server comes with two WAR files (+auth-server.war+ and +ag-push.war+) that need to be installed on your favorite JavaEE container. We currently only support JBoss AS 7.1.1 and JBoss EAP 6.x. Download the servers from link:http://jbossas.jboss.org/downloads/[here].
+
+Database configuration
+~~~~~~~~~~~~~~~~~~~~~~
+
+The UnifiedPush Server also requires a datasource with +java:jboss/datasources/UnifiedPushDS+ as its JNDI name. You are free to use the Database of your choice (e.g. MariaDB, MySQL or PostgreSQL). However for your convenience we have a few scripts for some databases to help with the configuration.
+
+H2 database configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The H2 database is included in both WildFly and JBossAS and getting started is very simple. There are two ways to setup the H2 instance to be used by the UnifiedPush Server.
+
+H2 command line interface script
+++++++++++++++++++++++++++++++++
+
+Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/h2-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+
+[source,c]
+----
+/Path/to/JBossAS/bin/standalone.sh
+----
+
+Now invoke the +jboss-cli.sh+ script, passing in the previous download:
+
+[source,c]
+----
+/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/h2-database-config.cli
+----
+
+The script will add the +UnifiedPushDS+ datasource, inside of the application server, located at +${jboss.server.data.dir}/unifiedpush+.
+
+H2 deployable datasource
+++++++++++++++++++++++++
+
+Another option is to simply download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/unifiedpush-h2-ds.xml[unifiedpush-h2-ds.xml] file and copy it into the +deployments+ folder of the application server.
+
+MySQL database configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For using MySQL a few more steps are required.
+
+Create a database and database user
++++++++++++++++++++++++++++++++++++
+
+[source,c]
+----
+$ mysql -u <user-name>
+mysql> create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
+mysql> create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
+mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';
+----
+
+Add a datasource for the UnifiedPush database
++++++++++++++++++++++++++++++++++++++++++++++
+
+The module for MySQL can be found in +src/main/resources/modules/com/mysql+ of the link:https://github.com/aerogear/aerogear-unifiedpush-server/tree/master/databases[databases folder]. Now copy this module to JBoss AS modules directory:
+
+[source,c]
+----
+cp -r src/main/resources/modules/com /Path/to/JBossAS/modules/
+----
+We also need the mysql driver copied to this module:
+
+[source,c]
+----
+mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=/Path/to/JBossAS/modules/com/mysql/jdbc/main/
+----
+Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/mysql-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+
+[source,c]
+----
+/Path/to/JBossAS/bin/standalone.sh
+----
+
+Now invoke the +jboss-cli.sh+ script, passing in the previous download:
+
+[source,c]
+----
+/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/mysql-database-config.cli
+----
+The above script will add the mysql driver and the +UnifiedPushDS+ datasource.
+
+If you inspect the server console output you should see the following message:
+
+[source,c]
+----
+14:41:57,790 INFO  [org.jboss.as.connector.subsystems.datasources] (management-handler-thread - 1) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+14:41:57,794 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:jboss/datasources/UnifiedPushDS]
+----
+
+PostgreSQL database configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For using PostgreSQL a few more steps are required.
+
+Create a database and database user
++++++++++++++++++++++++++++++++++++
+
+[source,c]
+----
+$ psql -U <user-name>
+psql> create database unifiedpush;
+psql> create user unifiedpush with password 'unifiedpush';
+psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
+----
+
+Add a datasource for the UnifiedPush database
++++++++++++++++++++++++++++++++++++++++++++++
+
+The module for PostgreSQL can be found in +src/main/resources/modules/org/postgresql+ of the link:https://github.com/aerogear/aerogear-unifiedpush-server/tree/master/databases[databases folder]. Now copy this module to JBoss AS modules directory:
+
+[source,c]
+----
+cp -r src/main/resources/modules/org /Path/to/JBossAS/modules/
+----
+We also need the PostgreSQL driver copied to this module:
+
+[source,c]
+----
+mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=/Path/to/JBossAS/modules/org/postgresql/main/
+----
+
+Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+
+[source,c]
+----
+/Path/to/JBossAS/bin/standalone.sh
+----
+Finally, run the following command line interface script:
+
+[source,c]
+----
+/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/postgresql-database-config.cli
+----
+
+The above script will add the postgresql driver and the +UnifiedPushDS+ datasource.
+
+If you inspect the server console output you should see the following message:
+
+[source,c]
+----
+14:41:57,790 INFO  [org.jboss.as.connector.subsystems.datasources] (management-handler-thread - 1) JBAS010404: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.2)
+14:41:57,794 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:jboss/datasources/UnifiedPushDS]
+----
+
+
+Deploy the UnifiedPush Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+At this point you have a running server, including a connected database.
+
+JBoss Application Server
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The deployment is pretty simple: Copy both WAR files (+auth-server.war+ and +ag-push.war+) into the +deployments+ folder of the application server.
+
+
+WildFly
+^^^^^^^
+SOON.... content will go here.
+
+
+
+
+
+If you want to learn how to run the UnifiedPush Server on Openshift you might want to read the link:../openshift[Running on Openshift] guide. If not the next step would be making yourself familiar with the link:../admin-ui[Admin UI].

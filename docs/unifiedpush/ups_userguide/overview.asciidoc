@@ -1,0 +1,69 @@
+---
+layout: basic
+title: UnifiedPush Server - Overview
+---
+:toc:
+toc::[]
+
+Overview
+--------
+
+The AeroGear UnifiedPush Server is a server that allows sending native push messages to different mobile operating systems. Currently the server supports link:https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9[Apple’s APNs], link:http://developer.android.com/google/gcm/index.html[Google Cloud Messaging] and link:https://wiki.mozilla.org/WebAPI/SimplePush[Mozilla’s Simple Push].
+
+About the UnifiedPush Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The AeroGear UnifiedPush Server offers an unified Notification Service API to the above mentioned Push Network Services. When a push message request is sent to the UnifiedPush Server, it is internally translated into the format of these 3rd party networks. This gives a server the ability to send Push Notifications to different mobile platforms. When using the UnifiedPush Server, please keep in mind that Push Notifications is a signalling mechanism and that it is not suitable to be used as a data carrying system (e.g. use in a chat application).
+
+Use-cases and scenarios
+~~~~~~~~~~~~~~~~~~~~~~~
+Different use-cases and scenarios are supported. Below are a few to give an idea how the UnifiedPush Server can be used:
+
+* MyWarehouseInc-backend can send _notification messages_ to different groups (e.g. discounts for only iOS (or only Android) users)
+* MyInsuranceCorp-backend can send “notification messages” to different variants of its mobile Applications:
+  ** App for the Customers
+  ** App for the employed Sales Agents
+* Publishing Company:
+  ** MyPublishing-Company-backend sends update “notification messages” to all of its apps (free and premium - regardless of the mobile OS)
+  ** Targeting: Sending push messages to different groups of users. For instance, availability of “advanced content” is only notified to the paying customers (e.g. those that run the premium app).
+* A company has different backends (small/simple apps for different tasks) - and these different backends could be able to reach all (or some) of the company’s mobile apps.
+
+**__Motivation:__** Easy use of Push Notifications for any (JBoss/AeroGear powered) mobile application, that is backed by JBoss technology (e.g. LiveOak, Drools, etc.).
+
+Useful Terminology
+~~~~~~~~~~~~~~~~~~
+Before we get into details, it’s important that we have a good lexicon.
+
+PushApplication
+^^^^^^^^^^^^^^^
+A logical construct that represents an overall mobile application (e.g. Mobile HR).
+
+Variant
+^^^^^^^
+A variant of the PushApplication, representing a specific mobile platform, like iOS or Android, or even more fine grain differentiation like iPad or iPhone. There can be multiple variants for a single PushApplication (e.g. HR Android, HR iPad, HR iPhone free or HR iPhone premium). Each supported variant type contains some platform specific properties, such as a Google API key (Android) or passphrase and certificate (Apple).
+
+Installation
+^^^^^^^^^^^^
+Represents an actual device, registered with the UnifiedPush Server. User1 running _HR Android_ app, while User2 runs _HR iPhone premium_ on his phone.
+
+Push Notification Message
+^^^^^^^^^^^^^^^^^^^^^^^^^
+A simple message to be send to a PushApplication.
+
+Sender Endpoint API
+^^^^^^^^^^^^^^^^^^^
+A RESTful API that receives Push Notification Message requests for a PushApplication or some of its different Variants. The Server translate this request into the platform specific details and delivers the payload to the 3rd party cloud provides, which eventually might deliver the message to the physical device.
+
+How the UnifiedPush Server Works
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The AeroGear UnifiedPush Server can be seen as a _broker_ that distributes push messages to different 3rd party Push Networks. The graphic below gives a little overview:
+
+image::./img/aerogear_unified_push_server.png[How it works]
+
+1. One PushApplication and at least one variant for a certain mobile platform needs to be created (SEE ADMIN_GUIDE).
+2. The credentials from the actual variant overview of the AdminUI are used on the mobile application, on the device, to ensure it registers with the UnifiedPush Server for message delivery (SEE TUTORIALS).
+3. Sending a message can happen on different ways: The AdminUI can be used to send a (test) message to the registered devices. However, in a real-world scenario the Push Notification Message request is triggered from a backend application, which is sending its requests against the _Sender API_. Different SDKs for different languages are supported (SEE TUTORIALS).
+4. The request in 3.) is translated into the platform specific details of the supported Push Networks. The Dashboard of the AdminUI gives a status report if a message could be sent to the 3rd party.
+5. The UnifiedPush Server is _not_ directly delivering the message to the mobile device. This is done by the used Push Network. __Note:__ There can be good amount of latency in the actual delivery. Most Push Networks, such as APNs or GCM are not even guaranteeing a delivery to the phone at all.
+
+Now that you are familiar with the basics of the UnifiedPush Server it is time for the link:../server-installation[Installation and configuration] part!

@@ -1,0 +1,46 @@
+---
+layout: basic
+title: UnifiedPush Server - Running on OpenShift
+---
+:toc:
+toc::[]
+
+Running the UnifiedPush Server on OpenShift
+-------------------------------------------
+
+AeroGear provides an UnifiedPush Server cartridge to make it easy to get it running on OpenShift. If you don't already have an account or don't know how to create applications go to https://www.openshift.com/ first. You can create the UnifiedPush Server instance either with the web tool or the command line tool, both approaches are described below.
+
+
+WARNING: It's important that immediately after creating an UnifiedPush Server instance you open the AdminUI and login to reset the password. If this is not done anyone can easily gain admin rights to your UnifiedPush Server instance.
+
+Create an instance using OpenShift's Web UI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Open link:https://openshift.redhat.com/app/console/applications[Openshift's Application overview page] and click on +Add Application+. Find our +AeroGear Push+ cartridge and click on it. Fill in the following form and click on +Create Application+. This creates an UnifiedPush Server instance with a configured _MySQL 5.5_ database. Click on +Continue to the application overview page+.
+Under the list of applications you should find your new UnifiedPush Server instance and the status should be _Started_. Click on it to open the UnifiedPush Server's homepage.
+
+
+Create an instance using OpenShift's command line interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Make sure the link:https://www.openshift.com/developers/rhc-client-tools-install[OpenShift Client tools ] are correctly installed and run the following command from a terminal:
+
+[source,c]
+----
+rhc app create --no-git <APPLICATION NAME> https://cartreflect-claytondev.rhcloud.com/reflect?github=aerogear/openshift-origin-cartridge-aerogear-push
+----
+Replace <APPLICATION NAME> with the name you want (for example unifiedpush).
+
+
+Once the instance is created the rhc tool outputs details about it. Open the returned URL in a browser to open the UnifiedPush Server's homepage.
+
+Documentation on rhc
+^^^^^^^^^^^^^^^^^^^^
+
+If you are interested to learn more about +rhc+, checkout the following resources:
+* link:https://www.openshift.com/blogs/using-rhc-to-manage-paas-apps[How to Manage Apps in the Cloud with RHC]
+* link:https://access.redhat.com/documentation/en-US/OpenShift/2.0/html-single/User_Guide/index.html[OpenShift Online - User Guide]
+
+Next Steps
+~~~~~~~~~~
+Now it is time to make yourself familiar with the link:../admin-ui[Admin UI].

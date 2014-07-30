@@ -1,0 +1,54 @@
+---
+layout: basic
+title: UnifiedPush Server - Next steps
+---
+
+Next steps
+----------
+
+Now that you are familiar with the UnifiedPush Server it is time to checkout out our tutorials to get Push Notification working with our mobile clients and existing backends!
+
+Client Integration Tutorials
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Different type of client technologies are supported with the Server
+
+Native Clients
+^^^^^^^^^^^^^^
+* link:../../aerogear-push-android[Android and GCM integration]
+* link:../../aerogear-push-ios[iOS and APNs integration]
+* link:../../aerogear-push-js[FirefoxOS with SimplePush and JavaScript]
+
+Hybrid Clients
+^^^^^^^^^^^^^^
+* link:../../../guides/aerogear-cordova/AeroGearCordovaPush[Apache Cordova for APNs and GCM]
+* link:../../aerogear-push-chrome[Chrome Packaged Apps]
+
+
+
+Server Integration Tutorials
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For the backend integration of your server we have a few different tutorials as well:
+
+* link:../../GetStartedwithJavaSender[Java Integration]
+* Node.js Integration (LINK?)
+
+
+Quickstarts
+~~~~~~~~~~~
+
+* link:https://github.com/aerogear/aerogear-push-helloworld/releases/latest[HelloWorld for Android, Cordova and iOS]
+* link:https://github.com/aerogear/aerogear-push-quickstarts/releases/latest[MobileContacts for Android, Cordova and iOS + JAX-RS and Fabric8]
+* link:https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart[SimplePush and UnifiedPush]
+
+
+More demos
+~~~~~~~~~~
+
+* AeroDoc Showcase (includes cases like Geolocation, via Hibernate Search)
+** link:https://github.com/aerogear/aerogear-aerodoc-backend[JavaEE Backend Application]
+** link:https://github.com/aerogear/aerogear-aerodoc-android[Android client]
+** link:https://github.com/aerogear/aerogear-aerodoc-ios[iOS client]
+** link:https://github.com/aerogear/aerogear-aerodoc-cordova[Apache Cordova client]
+** FirefoxOS client ?
