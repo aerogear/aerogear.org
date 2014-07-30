@@ -33,7 +33,7 @@ To manage some details on your account, you can need to click on the +username+ 
 
 image::./img/account_management_start.png[Go to the Account Management page]
 
-This brings you the a page that where you can configure details about your account. The first option allows you to provide additional information like your name or your email address:
+This brings you the page that where you can configure details about your account. The first option allows you to provide additional information like your name or your email address:
 
 image::./img/account_management_details.png[Account Details]
 
@@ -160,9 +160,9 @@ The Dashboard is a nice way to learn what's going on in the UnifiedPush Server. 
 
 image::./img/dashboard.png[Dashboard Overview]
 
-The Dashboard also has a +Warning+ and a +Most Active+ section. The +Warning+ aera informs you if a problem occurred, while sending out the Push Notifications to the 3rd party Services. Clicking on an entry in that list provides you more details about the potential failure.
+The Dashboard also has a +Warning+ and a +Most Active+ section. The +Warning+ area informs you if a problem occurred, while sending out the Push Notifications to the 3rd party Services. Clicking on an entry in that list provides you more details about the potential failure.
 
-The +Most Active+ section shows a recent list of PushApplications did submit Push Notification requests. Clicking on a PushApplication presents a list of all Push Notifications that have been sent out (in the last 30 days):
+The +Most Active+ section shows a recent list of PushApplications that have submitted Push Notification requests. Clicking on a PushApplication presents a list of all Push Notifications that have been sent out (in the last 30 days):
 
 image::./img/dashboard_activity.png[Push Notification Activity  List]
 

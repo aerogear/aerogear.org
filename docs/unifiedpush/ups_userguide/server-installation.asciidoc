@@ -136,7 +136,7 @@ Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpus
 ----
 /Path/to/JBossAS/bin/standalone.sh
 ----
-Finally, run the follwing command line interface script:
+Finally, run the following command line interface script:
 
 [source,c]
 ----
