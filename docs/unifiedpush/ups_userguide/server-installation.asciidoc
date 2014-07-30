@@ -13,7 +13,7 @@ The UnifiedPush Server comes with two WAR files (+auth-server.war+ and +ag-push.
 Database configuration
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The UnifiedPush Server also requires a datasource with +java:jboss/datasources/UnifiedPushDS+ as its JNDI name. You are free to use the Database of your choice (e.g. MariaDB, MySQL or Postgres). However for your convenience we have a few scripts for some databases to help with the configuration.
+The UnifiedPush Server also requires a datasource with +java:jboss/datasources/UnifiedPushDS+ as its JNDI name. You are free to use the Database of your choice (e.g. MariaDB, MySQL or PostgreSQL). However for your convenience we have a few scripts for some databases to help with the configuration.
 
 H2 database configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,8 +98,8 @@ If you inspect the server console output you should see the following message:
 14:41:57,794 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:jboss/datasources/UnifiedPushDS]
 ----
 
-Postgres database configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PostgreSQL database configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For using PostgreSQL a few more steps are required.
 
