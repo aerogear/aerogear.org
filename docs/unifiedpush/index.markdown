@@ -18,3 +18,7 @@ title: UnifiedPush Server
 * [Tutorial: JavaScript Push Notifications](aerogear-push-js)
 * [Tutorial: Chrome Packaged Apps Push Notifications](aerogear-push-chrome)
 * [Getting Started with the Java Sender API](GetStartedwithJavaSender)
+
+## Troubleshooting
+
+* [iOS](aerogear-push-ios/troubleshooting)
