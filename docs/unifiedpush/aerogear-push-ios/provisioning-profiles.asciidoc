@@ -32,7 +32,7 @@ Give it a Profile Name and generate it:
 
 image::./img/ProfileName.png[Give the Profile a Name]
 
-Now download the Profile and open the file. It will be added to Xcode's Organizer:
+Now download the Profile and open the file. Go to Xcode -> preferences... menu, select the "Account" tab, on the right bottom corner click "View details..." and you should see your provisioning profile:
 
 image::./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profile]
 
@@ -61,7 +61,7 @@ Give it a Profile Name and generate it:
 
 image::./img/ProfileNameProd.png[Give the Distribution Profile a Name]
 
-Now download the Profile and open the file. It will be added to Xcode's Organizer:
+Now download the Profile and open the file. Go to Xcode -> preferences... menu, select the "Account" tab, on the right bottom corner click "View details..." and you should see your provisioning profile:
 
 image::./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profile]
 
