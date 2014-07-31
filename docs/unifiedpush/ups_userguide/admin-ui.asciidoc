@@ -149,7 +149,7 @@ WARNING: Due to security reasons the +Application ID+ and the +Master Secret+ sh
 
 For our supported SDKs the UnifiedPush Server has a feature to generate code snippets for the backend part as well. In the above screen, click on the +Example implementation+ link to get the code snippets:
 
-image::./img/sendJava_code.png[The Java Sender code]
+image::./img/sendJava_Code.png[The Java Sender code]
 
 The above Java code can be used in any JavaSE or JavaEE application that needs to send Push Notification requests.
 
