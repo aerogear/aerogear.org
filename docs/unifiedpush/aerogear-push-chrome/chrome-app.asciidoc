@@ -91,6 +91,9 @@ chrome.runtime.onInstalled.addListener(function() {
 
 The above code is responsible for registering with the UnifiedPush Server once the application is installed.
 
+[NOTE]
+_You can use the example implementation from the UnifiedPush server for the chrome.pushMessaging.getChannelId method_
+
 [NOTE]_To learn more about the Chrome App Lifcycle, link:http://developer.chrome.com/apps/app_lifecycle[go here]_
 
 With the "background" code out of the way, let now lets create a basic HTML page and call it index.html

@@ -7,15 +7,9 @@ Now that we have the sample application running, it is time to use the _AeroGear
 
 == Simple Sender
 
-A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the successful registration of the _Push Application_. These ID's are used for sending a _broadcast_ message to all _registered_ devices (installations). Now, on a command line issue the following _CURL_ command:
+We can use the UnifiedPush Server's _Send_ functionality to easily send a message
 
-[source,c]
-----
-curl -3 -u "{pushApplicationID}:{masterSecret}"
-   -v -H "Accept: application/json" -H "Content-type: application/json"
-   -X POST -d '{"message": {"alert":"Push Notification"}}'
-   https://SERVER:PORT/CONTEXT/rest/sender
-----
+image::./img/send_notification.png[Send Message]
 
 If all goes well, you should see the message payload being displayed on screen:
 
