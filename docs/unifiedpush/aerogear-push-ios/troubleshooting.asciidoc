@@ -1,0 +1,88 @@
+---
+layout: basic
+title: iOS Troubleshooting
+---
+
+iOS Troubleshooting
+-------------------
+This troubleshooting guide takes as a pre-requesite that you have carefully followed the instructions in the link:../index.html[iOS tutotial].
+
+Something goes wrong, you have the symptoms and you would like to know how to fix it.  Follow the guide of frequently asked questions below and if you still can't find an answer to your problem, don't hesitate to ask our link:http://aerogear-dev.1069024.n5.nabble.com/[mailing list].
+
+### Question: APNs error
+
+*Problem description*
+
+You have implemented application:didFailToRegisterForRemoteNotificationsWithError:. When launching the app, you get the eror no valid 'aps-environment':
+[source,c]
+----
+Domain=NSCocoaErrorDomain Code=3000 "no valid 'aps-environment' entitlement string found for application" UserInfo=0x1555edc0 {NSLocalizedDescription=no valid 'aps-environment' entitlement string found for application}
+----
+
+*Answer*
+
+Your Bundle ID name should match with the Bundle ID as created on Apple's developer portal. Please refer to [Apple App ID and SSL certificate for APNs](app-id-sll-certificate-apns.asciidoc) documentation for more details on configuration.
+
+### Question: My registration to UPS never happens
+
+*Problem description*
+
+The success callback application:didRegisterForRemoteNotificationsWithDeviceToken: is never called.
+
+*Answer*
+
+* implement application:didFailToRegisterForRemoteNotificationsWithError: to track any issue with APN registration. In the body of the method, print an error message as shown below:
+[source,c]
+----
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    // something went wrong, while talking to APNs
+    // for now we simply log the error
+    NSLog(@"APNs Error: %@", error);
+}
+----
+If you do enter the failure callback then your problem is similar to link:#_question_apns_error[APNs error]
+
+* If you do not enter the error callback, check you actually _did_ register for remote notifications. Note: with iOS8, your remote registration to APNs is splitted into 2 methods call. See code snippet in link:#_question_compilation_error_in_xcode6[Compilation error in Xcode6]
+
+### Question: My registration fails because of nil deviceID
+
+*Problem description*
+
+UPS registration fails with the following error:
+
+[source,c]
+----
+assertion failed: 'token' should be set: file /.../aerogear-push-ios-registration/push-sdk-swift/AGDeviceRegistration.swift, line 75
+----
+
+*Answer*
+
+In application like link:https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-ios-client[Contacts app] where UPS registration does not happen in AppDelegate but later in the flow, at Login, we save deviceID in NSUserDefaults within application:didRegisterForRemoteNotificationsWithDeviceToken. However, if the method application:didRegisterForRemoteNotificationsWithDeviceToken: is not called, deviceID is nil causing UPS registration to fail.
+
+To solve the problem, refer to link:#_question_my_registration_to_ups_never_happens[My registration to UPS never happens]
+
+### Question: Compilation error in Xcode6
+
+*Problem description*
+
+When trying to run my Xcode5 app in Xcode6, I run into compilation error.
+
+*Answer*
+
+Since iO8, registerForRemoteNotificationTypes has been deprecated in favour of registerUserNotificationSettings: with registerForRemoteNotifications. The API unifies notification settings whether it's a remote or user notification. If you want to be able to run either using Xcode5 or Xcode6 on iOS7 or iOS8, use the macro as shown below:
+
+[source,c]
+----
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif
+----
