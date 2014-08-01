@@ -6,7 +6,7 @@ title: iOS Troubleshooting
 iOS Troubleshooting
 -------------------
 
-Something get wrong, you get the symptoms and you would like to know what to do next to fix it. Follow the guide of frequently asked questions below, if you can't find an answer to your problem, ask the mailing list.
+Something goes wrong, you have the symptoms and you would like to know how to fix it.  Follow the guide of frequently asked questions below and if you still can't find an answer to your problem, don't hesitate to ask our [mailing list][http://aerogear-dev.1069024.n5.nabble.com/].
 
 ### Question: APNs error
 
@@ -20,7 +20,7 @@ Domain=NSCocoaErrorDomain Code=3000 "no valid 'aps-environment' entitlement stri
 
 *Answer*
 
-Your bundle id should match the one use in app_id. Please refer to [Apple App ID and SSL certificate for APNs](app-id-sll-certificate-apns.asciidoc) documentation for more details on configuration.
+Your Bundle ID name should match with the Bundle ID as created on Apple's developer portal. Please refer to [Apple App ID and SSL certificate for APNs](app-id-sll-certificate-apns.asciidoc) documentation for more details on configuration.
 
 ### Question: My registration to UPS never happens
 
@@ -56,7 +56,7 @@ assertion failed: 'token' should be set: file /.../aerogear-push-ios-registratio
 
 *Answer*
 
-In application like link:https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-ios-client[Contacts app] where UPS registration does not happen in AppDelegate but later in the flow, at Login, we save deviseID in NSUserDefaults within application:didRegisterForRemoteNotificationsWithDeviceToken. However, if the method application:didRegisterForRemoteNotificationsWithDeviceToken: is not called, deviceID is nil causing UPS resgistration to fail.
+In application like link:https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-ios-client[Contacts app] where UPS registration does not happen in AppDelegate but later in the flow, at Login, we save deviceID in NSUserDefaults within application:didRegisterForRemoteNotificationsWithDeviceToken. However, if the method application:didRegisterForRemoteNotificationsWithDeviceToken: is not called, deviceID is nil causing UPS registration to fail.
 
 To solve the problem, refer to link:#_question_my_registration_to_ups_never_happens[My registration to UPS never happens]
 
