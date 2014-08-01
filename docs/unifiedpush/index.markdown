@@ -22,3 +22,9 @@ title: UnifiedPush Server
 ## Troubleshooting
 
 * [iOS](aerogear-push-ios/troubleshooting)
+
+## API documentation
+
+* [UnifiedPush Server: RESTful API ](../specs/aerogear-unifiedpush-rest/overview-index.html)
+* [UnifiedPush Java Client](../specs/aerogear-unifiedpush-java-client)
+* [UnifiedPush Node.js Client](../specs/aerogear-unifiedpush-nodejs-client)
