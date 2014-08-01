@@ -22,15 +22,6 @@ The library can be downloaded through the project link:https://github.com/aeroge
             <version>0.8.0</version>
         </dependency>
 
-        <!-- RestEasy's Jackson Plugin -->
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jackson-provider</artifactId>
-            <version>2.3.2.Final</version>
-        </dependency>
-
-NOTE: The 'RestEasy Jackson Plugin' dependency is needed only if you are using the library as part of a standalone Java application. If you are running on an evironment that already provides the functionality (e.g. an application running inside the 'JBoss' application server) it can be omitted.
-
 === API Overview
 
 The API is straightforward to use and consists of the following methods:
