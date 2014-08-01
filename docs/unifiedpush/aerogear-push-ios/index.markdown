@@ -12,3 +12,7 @@ The following step-by-step guides, give you an introduction on how to use the Ae
 1. [The AeroGear UnifiedPush Server](unified-push-server)
 1. [Your first iOS/Push App](iOS-app)
 1. [Finally: Send a Push Notification](send-push)
+
+### Troubleshooting
+
+* [Having issues with getting it to run?](troubleshooting)
