@@ -5,11 +5,17 @@ title: UnifiedPush Server
 
 # Learn about the UnifiedPush Server!
 
-## User and reference guides
+In several tutorials and guides you can learn all about the UnifiedPush Server.
+
+## UnifiedPush Server guides
 
 * [UnifiedPush Server User Guide](ups_userguide)
-* [AeroGear Cordova PushPlugin](../guides/aerogear-cordova/AerogearCordovaPush)
+* [Push Notification Message Format](push-message-format)
+* [Client Registration details](client-registration)
 
+## Client guides
+
+* [AeroGear Cordova PushPlugin](../guides/aerogear-cordova/AerogearCordovaPush)
 
 ## Tutorials
 

@@ -23,8 +23,6 @@ title: Specifications
 * [AeroGear UnifiedPush RESTful APIs](aerogear-unifiedpush-rest/overview-index.html)
 * [AeroGear UnifiedPush Java Client - Version 0.8.0](aerogear-unifiedpush-java-client)
 * [AeroGear UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
-* [AeroGear UnifiedPush Client Registration](aerogear-client-push)
-* [AeroGear UnifiedPush Messages](aerogear-push-messages)
 * [AeroGear SimplePush Java Client](aerogear-simplepush-java-client)
 
 #### Sync Specifications
