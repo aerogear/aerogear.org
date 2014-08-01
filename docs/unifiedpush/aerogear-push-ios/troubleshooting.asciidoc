@@ -5,8 +5,9 @@ title: iOS Troubleshooting
 
 iOS Troubleshooting
 -------------------
+This troubleshooting guide takes as a pre-requesite that you have carefully followed the instructions in the link:../index.html[iOS tutotial].
 
-Something goes wrong, you have the symptoms and you would like to know how to fix it.  Follow the guide of frequently asked questions below and if you still can't find an answer to your problem, don't hesitate to ask our [mailing list][http://aerogear-dev.1069024.n5.nabble.com/].
+Something goes wrong, you have the symptoms and you would like to know how to fix it.  Follow the guide of frequently asked questions below and if you still can't find an answer to your problem, don't hesitate to ask our link:http://aerogear-dev.1069024.n5.nabble.com/[mailing list].
 
 ### Question: APNs error
 
