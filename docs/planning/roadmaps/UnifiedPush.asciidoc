@@ -120,6 +120,7 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323753[JIRA
 * *Hello World Examples, Version 1.0.0-Beta2*
 * *CRUD Quickstarts, Version 1.0.0-Beta2*
 * *critical fixes and stabilization*
+* *consumption of Keycloak-beta4*
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325092[JIRA: Push 1.0.0-Beta2]
 
@@ -136,9 +137,31 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325092[JIRA
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323754[JIRA: Push 1.0.0]
 
+
+1.0.1 (early September 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *consumption of Keycloak 1.0-RC1*
+* *critical fixes and stabilization, as needed*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325080[JIRA: Push 1.0.1]
+
+1.0.2 (mid September 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *consumption of Keycloak 1.0.Final*
+* *critical fixes and stabilization, as needed*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325081[JIRA: Push 1.0.2]
+
+1.0.3 (late September 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *critical fixes and stabilization, as needed*
+
+Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325082[JIRA: Push 1.0.3]
+
+
 1.0.x Release(s)
 ~~~~~~~~~~~~~~~~
-There might be different 1.0.x releases, which focus on 1.0.0 improvements and fixes
+There might more 1.0.x releases. Their main goal is improvements and fixes for the 1.0.0.Final release!
 
 1.1.x Release(s)
 ~~~~~~~~~~~~~~~~
