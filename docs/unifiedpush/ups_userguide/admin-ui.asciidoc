@@ -37,7 +37,9 @@ This brings you to the page where you can configure details about your account. 
 
 image::./img/account_management_details.png[Account Details]
 
-The next section allows you to update your current password. __Reminder:__ It is a bad idea to go back to the initial default password...
+The next section allows you to update your current password. 
+
+IMPORTANT: Please make sure to pick a _**strong password**_, see the +admin+ user as the +root+ on your machine...
 
 image::./img/account_management_password.png[Password Details]
 
@@ -45,7 +47,7 @@ It is also possible to use the link:http://code.google.com/p/google-authenticato
 
 image::./img/account_management_authenticator.png[Setup an authenticator]
 
-Last but not least there is an overview of all OAuth client sessions that are currently active. If the session is connected via a browser the only information that is collected is the IP address:
+Last but not least there is an overview of all OAuth client sessions that are currently active. If the session is connected via a browser the only information that is presented in the table below is the IP address of the client:
 
 image::./img/account_management_sessions.png[List of OAuth client sessions]
 
