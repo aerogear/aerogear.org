@@ -65,9 +65,10 @@ UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()                 // 
                 .badge("1")
                 .timeToLive(3600)  // [3]                                       
                 .attribute("some_key", "with_value")  // [4]
+                .attribute("title", "A Cool Title") // [5]
                 .build();
 
-sender.send(unifiedMessage, new MessageResponseCallback() {      // [5]
+sender.send(unifiedMessage, new MessageResponseCallback() {      // [6]
 
             @Override
             public void onComplete(int statusCode) {
@@ -90,7 +91,9 @@ An optional _timeToLive_ [3] (in seconds) can be added on the notification paylo
 
 Further, support is provided with the help of the _attribute_ param [4], to attach on the notification arbitrary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
 
-Once the notification payload is constructed, we invoke the send method [5] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
+The optional _title_ attribute [5], is an Android specific attribute that will be used when displaying the notification in the notification panel. The default will be the cordova appName.  
+
+Once the notification payload is constructed, we invoke the send method [6] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
 
 === Selected send
 
