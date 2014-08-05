@@ -60,6 +60,9 @@ If the JSON map contains one of the following reserved keywords, Apple specific 
 
 None! The JSON map is submitted as it is, directly to the device. There are no Android specific keywords.
 
+##### Cordova Android special keys
+
+To make the user experiance the same on ios and android, for cordova users, we use the iOS alert 'key' on android as well to generate a notification for you. And we've introduced a 'title' that can optionally be used for the title of this notification, if none is specified the application name will be used like on iOS.
 
 #### SimplePush Object
 
