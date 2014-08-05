@@ -62,7 +62,7 @@ None! The JSON map is submitted as it is, directly to the device. There are no A
 
 ##### Cordova Android special keys
 
-To make the user experience the same on ios and android, for cordova users, we use the iOS alert 'key' on android as well to generate a notification for you. And we've introduced a 'title' that can optionally be used for the title of this notification, if none is specified the application name will be used like on iOS.
+To make the user experience the same on iOS and Android, for cordova users, we use the iOS alert 'key' on Android as well to generate a notification for you. And we've introduced a 'title' that can optionally be used for the title of this notification, if none is specified the application name will be used like on iOS.
 
 #### SimplePush Object
 
