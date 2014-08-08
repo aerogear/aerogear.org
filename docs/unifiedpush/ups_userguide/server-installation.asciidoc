@@ -8,7 +8,7 @@ toc::[]
 Installation and configuration
 ------------------------------
 
-The UnifiedPush Server comes with two WAR files (+auth-server.war+ and +ag-push.war+) that need to be installed on your favorite JavaEE container. We currently only support JBoss AS 7.1.1 and JBoss EAP 6.x. Download the servers from link:http://jbossas.jboss.org/downloads/[here].
+The UnifiedPush Server comes with two WAR files that need to be installed on your favorite JavaEE container. We currently support link:http://wildfly.org/downloads/[WildFly 8.x] and link:http://jbossas.jboss.org/downloads/[JBoss EAP 6.3].
 
 Database configuration
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -34,10 +34,12 @@ Now invoke the +jboss-cli.sh+ script, passing in the previous download:
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/h2-database-config.cli
+/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/h2-database-config-wildfly.cli
 ----
 
-The script will add the +UnifiedPushDS+ datasource, inside of the application server, located at +${jboss.server.data.dir}/unifiedpush+.
+NOTE: On JBoss EAP 6.3 you need to use the +h2-database-config.cli+ script instead.
+
+The script will add the +UnifiedPushDS+ datasource, inside of the application server, located at +${server.data.dir}/unifiedpush+.
 
 H2 deployable datasource
 ++++++++++++++++++++++++
@@ -86,8 +88,11 @@ Now invoke the +jboss-cli.sh+ script, passing in the previous download:
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/mysql-database-config.cli
+/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/mysql-database-config-wildfly.cli
 ----
+
+NOTE: On JBoss EAP 6.3 you need to use the +mysql-database-config.cli+ script instead.
+
 The above script will add the mysql driver and the +UnifiedPushDS+ datasource.
 
 If you inspect the server console output you should see the following message:
@@ -140,8 +145,10 @@ Finally, run the following command line interface script:
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/postgresql-database-config.cli
+/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/postgresql-database-config-wildfly.cli
 ----
+
+NOTE: On JBoss EAP 6.3 you need to use the +postgresql-database-config.cli+ script instead.
 
 The above script will add the postgresql driver and the +UnifiedPushDS+ datasource.
 
@@ -159,18 +166,18 @@ Deploy the UnifiedPush Server
 
 At this point you have a running server, including a connected database.
 
+WildFly
+^^^^^^^
+
+The deployment is pretty simple: Copy the +unifiedpush-auth-server.war+ and +unifiedpush-server-wildfly.war+ files into the +deployments+ folder of the application server.
+
 JBoss Application Server
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The deployment is pretty simple: Copy both WAR files (+auth-server.war+ and +ag-push.war+) into the +deployments+ folder of the application server.
+The deployment is pretty simple: Copy the +unifiedpush-auth-server.war+ and +unifiedpush-server-as7.war+ files into the +deployments+ folder of the application server.
 
 
-WildFly
-^^^^^^^
-SOON.... content will go here.
+NOTE: If you want to learn how to run the UnifiedPush Server on Openshift you might want to read the link:../openshift[Running on Openshift] guide.
 
 
-
-
-
-If you want to learn how to run the UnifiedPush Server on Openshift you might want to read the link:../openshift[Running on Openshift] guide. If not the next step would be making yourself familiar with the link:../admin-ui[Admin UI].
+The next step in this guide makes yourself familiar with the link:../admin-ui[Admin UI].
