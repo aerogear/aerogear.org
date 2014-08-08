@@ -93,7 +93,7 @@ Further, support is provided with the help of the _attribute_ param [4], to atta
 
 The optional _title_ attribute [5], is a cordova Android specific attribute that will be used when displaying the notification in the notification panel. The default will be the cordova appName.  
 
-Once the notification payload is constructed, we invoke the send method [6] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-push-rest/Sender/[server documentation] for a list of valid responses.
+Once the notification payload is constructed, we invoke the send method [6] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-unifiedpush-rest/sender/index.html[server documentation] for a list of valid responses.
 
 === Selected send
 
