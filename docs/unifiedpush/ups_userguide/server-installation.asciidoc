@@ -23,7 +23,9 @@ The H2 database is included in both WildFly and JBossAS and getting started is v
 H2 command line interface script
 ++++++++++++++++++++++++++++++++
 
-Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/h2-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/h2-database-config-wildfly.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+
+NOTE: On JBoss EAP 6.3 you need to use the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/h2-database-config.cli[h2-database-config.cli] script instead.
 
 [source,c]
 ----
@@ -36,8 +38,6 @@ Now invoke the +jboss-cli.sh+ script, passing in the previous download:
 ----
 /Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/h2-database-config-wildfly.cli
 ----
-
-NOTE: On JBoss EAP 6.3 you need to use the +h2-database-config.cli+ script instead.
 
 The script will add the +UnifiedPushDS+ datasource, inside of the application server, located at +${server.data.dir}/unifiedpush+.
 
@@ -77,7 +77,9 @@ We also need the mysql driver copied to this module:
 ----
 mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=/Path/to/JBossAS/modules/com/mysql/jdbc/main/
 ----
-Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/mysql-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/mysql-database-config-wildfly.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+
+NOTE: On JBoss EAP 6.3 you need to use the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/mysql-database-config.cli[mysql-database-config.cli] script instead.
 
 [source,c]
 ----
@@ -90,8 +92,6 @@ Now invoke the +jboss-cli.sh+ script, passing in the previous download:
 ----
 /Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/mysql-database-config-wildfly.cli
 ----
-
-NOTE: On JBoss EAP 6.3 you need to use the +mysql-database-config.cli+ script instead.
 
 The above script will add the mysql driver and the +UnifiedPushDS+ datasource.
 
@@ -135,7 +135,9 @@ We also need the PostgreSQL driver copied to this module:
 mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=/Path/to/JBossAS/modules/org/postgresql/main/
 ----
 
-Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config-wildfly.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+
+NOTE: On JBoss EAP 6.3 you need to use the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config.cli[postgresql-database-config.cli] script instead.
 
 [source,c]
 ----
@@ -147,8 +149,6 @@ Finally, run the following command line interface script:
 ----
 /Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/postgresql-database-config-wildfly.cli
 ----
-
-NOTE: On JBoss EAP 6.3 you need to use the +postgresql-database-config.cli+ script instead.
 
 The above script will add the postgresql driver and the +UnifiedPushDS+ datasource.
 
