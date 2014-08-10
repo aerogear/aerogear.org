@@ -21,8 +21,6 @@ title: UnifiedPush Server User Guide
   * [Create an instance using OpenShift's Web UI](openshift/#_create_an_instance_using_openshift_s_web_ui)
   * [Create an instance using OpenShift's command line interface](openshift/#_create_an_instance_using_openshift_s_command_line_interface)
     * [Documentation on rhc](openshift/#_documentation_on_rhc)
-* [Administration of the UnifiedPush Server](server-administration)
-  * Explaining the Keycloak features... TDB
 * [Using the Admin UI](admin-ui)
   * [Login and landing page](admin-ui/#_login_and_landing_page)
   * [Account Management](admin-ui/#_account_management)
@@ -32,6 +30,10 @@ title: UnifiedPush Server User Guide
   * [Sending a Push Notification](admin-ui/#_sending_a_push_notification)
     * [Sending a Push Notification from code](admin-ui/#_sending_a_push_notification_from_code)
   * [Dashboard](admin-ui/#_dashboard)
+* [Administration of the UnifiedPush Server](server-administration)
+  * [Login and Settings](server-administration/#_login_and_settings)
+  * [User Management](server-administration/#_user_management)
+  * [Active Sessions](server-administration/#_active_sessions)
 
 * [Next steps](next)
   * Contains links to detailed client and server Push tutorials and demos
