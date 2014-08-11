@@ -9,7 +9,7 @@ toc::[]
 Administration of the UnifiedPush Server
 ----------------------------------------
 
-The UnifiedPush Server is protected by the link:http://keycloak.org[Keycloak SSO server]. This document explains a few features of the **Keycloak Admin Console** to perform some administrative configurations around the UnifiedPush Server and its users.
+The UnifiedPush Server is protected by the link:http://keycloak.org[Keycloak SSO server]. This document explains a few features from the **Keycloak Admin Console** to perform some administrative configurations around the UnifiedPush Server and its users.
 
 Login and Settings
 ~~~~~~~~~~~~~~~~~~
