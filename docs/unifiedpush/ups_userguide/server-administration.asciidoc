@@ -22,7 +22,7 @@ After a successful login, using your admin account, you see an overview of gener
 
 image::./img/kc/LandingPage_KC_Admin.png[General Settings]
 
-WARNING: Do _**not**_ disable, rename or even delete the +aerogear+ realm. This will make the UnifiedPush Server _unsuable_.
+WARNING: Do _**not**_ disable, rename or even delete the +aerogear+ realm. This will make the UnifiedPush Server _unusable_.
 
 Besides the general overview, the _Keycloak Admin Console_ offers various configuration settings, such as _Login_, _Roles_, _Default Roles_, _Credentials_, _Keys_, _Email_, _Themes_ or
 _Cache Config_.
@@ -60,7 +60,7 @@ In this dialog you provide the information such as email or first and last name.
 
 NOTE: Please ensure you keep the user enabled, otherwise a login is not possible.
 
-Once you click +Save+, the screen reloads and the uniqure user ID is visible:
+Once you click +Save+, the screen reloads and the unique user ID is visible:
 
 image::./img/kc/User_added.png[Added new User]
 
@@ -68,7 +68,7 @@ Next you can give the new user a temporary password. This option is provided in 
 
 image::./img/kc/User_tmp_password.png[Provide a temporary password]
 
-Once you entered the initial (or temporary) passoword, you need to confirm the _reset_:
+Once you entered the initial (or temporary) password, you need to confirm the _reset_:
 
 image::./img/kc/User_tmp_password_confirm.png[Confirm temporary password]
 
@@ -117,7 +117,7 @@ By default +Brute Force Protection+ is disabled. You can enable it, using the hi
 
 image::./img/kc/Session_Enable_BruteForce.png[Enable Brute Force]
 
-With _Brute Force Protection_ enabled your UnifiedPush Server gains more security features. The above form gives options to configure different times and options for attemps to perform a login, and how often.
+With _Brute Force Protection_ enabled your UnifiedPush Server gains more security features. The above form gives options to configure different times and options for attempts to perform a login, and how often.
 
 Next Steps
 ~~~~~~~~~~
