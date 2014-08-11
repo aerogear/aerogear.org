@@ -119,6 +119,11 @@ image::./img/kc/Session_Enable_BruteForce.png[Enable Brute Force]
 
 With _Brute Force Protection_ enabled your UnifiedPush Server gains more security features. The above form gives options to configure different times and options for attempts to perform a login, and how often.
 
+SSL by default
+~~~~~~~~~~~~~~
+
+By default the option "Require SSL" on Keycloak is enabled to make sure that UnifiedPush will run under SSL, except for *localhost* and *Docker* images. If you are deploying UPS on non-SSL environment, an exception like "*request scheme: http ssl required*" is expected.
+
 Next Steps
 ~~~~~~~~~~
 
