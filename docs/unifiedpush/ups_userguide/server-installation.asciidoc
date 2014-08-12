@@ -30,16 +30,14 @@ Download the latest copies of these files using the following links:
 
 [[gendbds]]
 === Generate the UnifiedPush Database and Datasource
-The UnifiedPush Server requires an accompanying database in which to store push application, variant and installation details. You can use the database of your choice but the coresponding datasource added to the application server must have JNDI name +java:jboss/datasources/UnifiedPushDS+.
+The UnifiedPush Server requires an accompanying database in which to store push application, variant and installation details. You can use the database of your choice but the corresponding datasource added to the application server must have JNDI name +java:jboss/datasources/UnifiedPushDS+.
 
 Information is provided here for generating UnifiedPush datasources for several database types. Note that if the intended application server has not previously been used with the chosen database type, additional configuration must also be completed in order to enable the application server to connect to the database. As detailed here, sources and scripts are available to assist with all these processes.  
 
 ==== H2 Database
 A H2 database is embedded in WildFly and JBoss AS. As demonstrated here, it is simple to configure H2 for use with the UnifiedPush Server with the aid of some provided scripts.
 
-WARNING: The H2 data storage is not persistent and, though it can be used for development purposes, it is not recommended for production use.
-
-To add the UnifiedPush datasource for the H2 database to the application server, download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/unifiedpush-h2-ds.xml[unifiedpush-h2-ds.xml] file and move it to the +/path/to/SERVER_HOME/standalone/deployments+ folder.
+To add the UnifiedPush datasource for the H2 database to the application server, download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/unifiedpush-h2-ds.xml[unifiedpush-h2-ds.xml] file and move it to the +/path/to/SERVER_HOME/standalone/deployments+ folder. The UnifiedPush data will be stored in +/path/to/SERVER_HOME/standalone/data/unifiedpush+.
 
 Alternatively, you can create the UnifiedPush datasource from scratch and add it to the application server as follows:
 
@@ -168,8 +166,8 @@ $ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-con
 
 [[deploy]]
 === Deploy the UnifiedPush Server
-After the application server is configured for the UnifiedPush datasource, the +unifiedpush-server.war+ and +unifiedpush-auth-server.war+ files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server. 
+After the application server is configured for the UnifiedPush datasource, the two UnifiedPush Server application +.war+ files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server.
 
-To deploy the UnifiedPush Server, copy the application server +unifiedpush-server.war+ variant and +unifiedpush-auth-server.war+ files to the +/path/to/SERVER_HOME/standalone/deployments+ directory. This can be done either before or after starting the application server.
+To deploy the UnifiedPush Server, copy the two +.war+ files to +/path/to/SERVER_HOME/standalone/deployments/+. This can be done either before or after starting the application server.
 
 After deployment with the application server running, the UnifiedPush Server Console can be accessed at link:http://localhost:8080/ag-push/[]. For information about using the Console, see link:../admin-ui[Using the Amdin UI].
