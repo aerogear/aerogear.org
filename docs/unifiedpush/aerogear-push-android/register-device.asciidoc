@@ -21,67 +21,48 @@ Prior to perform any work with the server, we need to login first. A temporary u
 
 Let's first login to the server:
 
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt
-  -H "Accept: application/json" -H "Content-type: application/json"
-  -X POST -d '{"loginName": "admin", "password":"123"}'
-  https://SERVER:PORT/CONTEXT/rest/auth/login
-----
+image::./img/login_01.png[New login]
 
-The server would respond with a 'HTTP/1.1 403 Forbidden' status with a 'Credential has expired' message. We can now update user's password:
+We now must update admin user's password:
 
-[NOTE]
-To _update_ the initial password, you need to specify the old 'password' and new password ('newPassword').
+image::./img/login_02.png[Change Password]
 
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt
-  -H "Accept: application/json" -H "Content-type: application/json"
-  -X PUT -d '{"loginName": "admin", "password":"123", "newPassword":"SOME_NEW_PASSWORD"}'
-  https://SERVER:PORT/CONTEXT/rest/auth/update
-----
+We are now logged in:
 
-We are now ready to login:
-
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt
-  -H "Accept: application/json" -H "Content-type: application/json"
-  -X POST -d '{"loginName": "admin", "password":"SOME_NEW_PASSWORD"}'
-  https://SERVER:PORT/CONTEXT/rest/auth/login
-----
-
-The server would respond with a 'HTTP/1.1 200 OK' status, which means that the login was succeeded. If not, check if you typed correctly the command and if the server is correctly setup. 
+image::./img/login_03.png[Homescreen]
 
 === Register a Push Application 
 
-Now that we are logged in, let's create a new _Push Application_ by executing the following _CURL_ command:
+Now that we are logged in, let's create a new _Push Application_.  Click on the **Applications** tab to bring up the Applications screen.
 
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt 
-  -H "Accept: application/json" -H "Content-type: application/json"
-  -X POST -d '{"name" : "AeroGear-Android-Push", "description" :  "My first Android Push App, that uses AeroGear" }'
-  https://SERVER:PORT/CONTEXT/rest/applications
-----
+image::./img/application_01.png[Application home]
+
+
+Click **Create Application** to bring up the application dialog.
+
+image::./img/application_02.png[Application dialog]
+
+Click **Create** in the dialog to create your application.
+
+image::./img/application_03.png[Application created]
  
-The response returns a _pushApplicationID_ and a _masterSecret_. Make a note on these ID's cause we will use them later on.
 
 === Register an Android Variant
 
-Time to register our Android variant. Prior to execute the following _CURL_ command, replace in the URL the _PUSH_ID_ with the _pushApplicationID_ you received earlier and change the _googleKey_ parameter to the Google API key you obtained earlier from the Google API console.
+From your application's card, click **No Variants** to add a variant.
 
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt
-  -v -H "Accept: application/json" -H "Content-type: application/json"
-  -X POST
-  -d '{"googleKey" : "IDDASDASDSA"}'
+image::./img/variant_01.png[Variant home]
 
-  https://SERVER:PORT/CONTEXT/rest/applications/{PUSH_ID}/android
-----
+Click the **Add Variant** button. And fill out the Android options.  You will want to use the **Client ID** and **Project Number** from the *Google API Console* in their appropriate fields.
 
-The server would responsd with _variantID_ and a _secret_, that will be both used later on when registering your installation through the Android client SDK so please make a note on them too.
+image::./img/variant_02.png[Android Variant Options]
+
+Click **Add** and your variant will be created.
+
+image::./img/variant_03.png[Android Variant Created]
+
+Expand the variant card and make note of the **Variant ID** and **Secret** fields. Both will be used later when registering your installation through the Android client SDK.
+
+image::./img/variant_04.png[Android Variant Details]
 
 The server is now configured. Time to link:../android-app[create an Android application] that will use the AeroGear Android library to connect to the UnifiedPush server and start receiving notifications.
