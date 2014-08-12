@@ -16,6 +16,7 @@ title: UnifiedPush Server User Guide
     * [MySQL database configuration](server-installation/#_mysql_database_configuration)
     * [PostgreSQL database configuration](server-installation/#_postgresql_database_configuration)
   * [Deploy the UnifiedPush Server](server-installation/#_deploy_the_unifiedpush_server)
+    * [WildFly Server](server-installation/#_wildfly)
     * [JBoss Application Server](server-installation/#_jboss_application_server)
 * [Running on OpenShift](openshift)
   * [Create an instance using OpenShift's Web UI](openshift/#_create_an_instance_using_openshift_s_web_ui)
