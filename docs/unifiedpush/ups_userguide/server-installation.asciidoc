@@ -8,7 +8,7 @@ toc::[]
 Installation and configuration
 ------------------------------
 
-The UnifiedPush Server comes with two WAR files that need to be installed on your favorite JavaEE container. We currently support link:http://wildfly.org/downloads/[WildFly 8.x] and link:http://jbossas.jboss.org/downloads/[JBoss EAP 6.3].
+The UnifiedPush Server comes with two WAR files that need to be installed on your favorite JavaEE container. We currently support link:http://wildfly.org/downloads/[WildFly 8.x] and link:http://SERVER_HOME.jboss.org/downloads/[JBoss EAP 6.3].
 
 Database configuration
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -29,14 +29,14 @@ NOTE: On JBoss EAP 6.3 you need to use the link:https://raw.githubusercontent.co
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/standalone.sh
+/path/to/SERVER_HOME/bin/standalone.sh
 ----
 
 Now invoke the +jboss-cli.sh+ script, passing in the previous download:
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/h2-database-config-wildfly.cli
+/path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/h2-database-config-wildfly.cli
 ----
 
 The script will add the +UnifiedPushDS+ datasource, inside of the application server, located at +${server.data.dir}/unifiedpush+.
@@ -69,13 +69,13 @@ The module for MySQL can be found in +src/main/resources/modules/com/mysql+ of t
 
 [source,c]
 ----
-cp -r src/main/resources/modules/com /Path/to/JBossAS/modules/
+cp -r src/main/resources/modules/com /path/to/SERVER_HOME/modules/
 ----
 We also need the mysql driver copied to this module:
 
 [source,c]
 ----
-mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=/Path/to/JBossAS/modules/com/mysql/jdbc/main/
+mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/
 ----
 Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/mysql-database-config-wildfly.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
 
@@ -83,14 +83,14 @@ NOTE: On JBoss EAP 6.3 you need to use the link:https://raw.githubusercontent.co
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/standalone.sh
+/path/to/SERVER_HOME/bin/standalone.sh
 ----
 
 Now invoke the +jboss-cli.sh+ script, passing in the previous download:
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/mysql-database-config-wildfly.cli
+/path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config-wildfly.cli
 ----
 
 The above script will add the mysql driver and the +UnifiedPushDS+ datasource.
@@ -126,13 +126,13 @@ The module for PostgreSQL can be found in +src/main/resources/modules/org/postgr
 
 [source,c]
 ----
-cp -r src/main/resources/modules/org /Path/to/JBossAS/modules/
+cp -r src/main/resources/modules/org /path/to/SERVER_HOME/modules/
 ----
 We also need the PostgreSQL driver copied to this module:
 
 [source,c]
 ----
-mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=/Path/to/JBossAS/modules/org/postgresql/main/
+mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=/path/to/SERVER_HOME/modules/org/postgresql/main/
 ----
 
 Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config-wildfly.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
@@ -141,13 +141,13 @@ NOTE: On JBoss EAP 6.3 you need to use the link:https://raw.githubusercontent.co
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/standalone.sh
+/path/to/SERVER_HOME/bin/standalone.sh
 ----
 Finally, run the following command line interface script:
 
 [source,c]
 ----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/postgresql-database-config-wildfly.cli
+/path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config-wildfly.cli
 ----
 
 The above script will add the postgresql driver and the +UnifiedPushDS+ datasource.
