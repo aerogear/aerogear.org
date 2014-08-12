@@ -1,0 +1,54 @@
+---
+layout: basic
+title: UnifiedPush Server - Installation and configuration
+---
+:toc:
+toc::[]
+
+Debugging the UnifiedPush Server
+---------------------------------
+
+There are several ways to learn more about _"What's going on"_ inside the UnifiedPush Server
+
+Enable Logging
+~~~~~~~~~~~~~~
+
+The UnifiedPush Server internally uses +java.util.logging+ as its logging framework.
+
+
+WildFly and JBoss AS
+^^^^^^^^^^^^^^^^^^^^
+
+To enable detailed logging for the UnifiedPush Server, open the +$SERVER_HOME/standalone/configuration/standalone.xml+ file of the server and navigate to the _logging_ subsystem. Inside of the +<subsystem>+ element you need to add the following XML snippet:
+
+[source,xml]
+----
+<console-handler name="AEROGEAR">
+    <formatter>
+        <pattern-formatter pattern="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
+    </formatter>
+</console-handler>
+<logger category="org.jboss.aerogear.unifiedpush" use-parent-handlers="false">
+    <level name="FINEST"/>
+    <handlers>
+        <handler name="AEROGEAR"/>
+    </handlers>
+</logger>
+----
+
+Once done save the file and start the server. At this point all log levels from the UnifiedPush Server are enabled. To verify this, you can send a Push Notification from the Admin Console. The console should print a message like:
+
+[source,shell]
+----
+17:30:50,571 FINE  [org.jboss.aerogear.unifiedpush.rest.sender.PushNotificationSenderEndpoint]
+   (http--127.0.0.1-8080-1) Message sent by: 'AeroGear UnifiedPush Console'
+----
+
+Dashboard of the AdminUI
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The AdminUI contains a _Dashboard_ which provides a number of valuable information as well:
+
+* The +Most Active+ section shows a recent list of PushApplications that have submitted Push Notification requests. Learn more link:../admin-ui/#_dashboard_most_active[here].
+
+* The +Warnings+ section shows of a list of recent problems that occured. Learn more link:../admin-ui/_dashboard_warnings[here]
