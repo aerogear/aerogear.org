@@ -141,6 +141,12 @@ psql> create database unifiedpush;
 psql> create user unifiedpush with password 'unifiedpush';
 psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
 ----
+.  Depending on your PostgreSQL configuration, the following line may need to be added to the $POSTGRES_HOME/data/pg_hba.conf file.
++
+[source,c]
+----
+host    all             unifiedpush     127.0.0.1/32            md5
+----
 . Download the UnifiedPush datasource configuration script for PostgreSQL, +postgresql-database-config.cli+, for link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config-wildfly.cli[WildFly] or link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config.cli[JBoss AS].
 . Start the application server
 +
