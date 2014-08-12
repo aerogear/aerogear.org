@@ -141,7 +141,7 @@ psql> create database unifiedpush;
 psql> create user unifiedpush with password 'unifiedpush';
 psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
 ----
-.  Depending on your PostgreSQL configuration, the following line may need to be added to the $POSTGRES_HOME/data/pg_hba.conf file.
+. If necessary, enable UnifiedPush Server access to the PostgreSQL database by adding the following lines to your +$POSTGRES_HOME/data/pg_hba.conf+ file
 +
 [source,c]
 ----
