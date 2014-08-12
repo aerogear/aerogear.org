@@ -7,26 +7,13 @@ Now you have the Sample App running on your phone, so it is time to use the _Aer
 
 == Simple Sender
 
-A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the successful registration of the _Push Application_. These ID's  are used for sending a _broadcast_ message to all _registered_ devices (installations). Now, on a command line issue the following _CURL_ command:
+Login to the administration console of the UnifiedPush server and click on the "Send Push" icon in the navigation menu. Select the application that you created and write a message in the text field. Once done, hit the 'Send Push Notification'.
 
-[source,c]
-----
-curl -3 -u "{pushApplicationID}:{masterSecret}"
-   -v -H "Accept: application/json" -H "Content-type: application/json" 
-   -X POST -d '{"message": {"alert":"Hello AeroGear Unified Push!", "badge":1, "customKey":"some value"}}'
-   https://SERVER:PORT/CONTEXT/rest/sender
-----
+image:./img/send_notification.png[Send Notification]
 
-The payload is simply a JSON map. You can send different key/value pairs, but be sure it is not too long, otherwise Apple does _NOT_ deliver the message to your phone. The _alert_ key is recognized by the _AeroGear UnifiedPush Server_ and translated into an APNs specific _alert_.
+When the application is inactive, and a Push Notification containing the alert key is received by the device, a Popup will show up, which displays the value of the alert key:
 
-
-When the application is inactive, and a _Push Notification_ containing the _alert_ key is received by the device, a _Popup_ will show up, which displays the value of the _alert_ key:
-
-image:./img/PushMessage.jpg[iOS Push Notification]
-
-
-**NOTE:** No custom code for this feature is required. It's build-in to _iOS Platform_.
-
+image:./img/PushMessage.png[Send Notification]
 
 == Custom Dialog
 
@@ -58,7 +45,7 @@ The _application didReceiveRemoteNotification:_ method receives a _NSDictionary_
 
 The custom Dialog:
 
-image:./img/CustomDialog.jpg[Custom Dialog]
+image:./img/CustomDialog.png[Custom Dialog]
 
 === Custom Keys
 
@@ -81,17 +68,11 @@ _Note:_ *If your application has _no_ need for background processing, using the 
 ----
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
-    if (application.applicationState == UIApplicationStateBackground) {
-        // perform tasks that are best suited for background processing,
-        // such as download data that is related to the push notification
-        
-        ...
-        
-        // afterwards it is required to invoke the given block:
-        completionHandler(UIBackgroundFetchResultNewData); // download of data did succeed
-    } else {
-        // foreground specific tasks
-    }
+    // 'userInfo' contains information related to the remote notification.
+
+    // should always be called at the end of processing so
+    // the system can take a UI snapshot of the application.
+    completionHandler(UIBackgroundFetchResultNewData);
 }
 ----
 
@@ -178,13 +159,18 @@ Once all actions are defined and wrapped into a category, add category to _UIUse
 ----
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-#ifdef __IPHONE_8_0
+// when running under iOS 8 we will use the new API for APNS registration
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+  if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {    
     UIUserNotificationCategory* category = [self registerActions];
     NSMutableSet* categories = [NSMutableSet set];
     [categories addObject:category];
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:categories];
     [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+} else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }    
 #else
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 #endif
@@ -196,7 +182,7 @@ When an action has been selected in the interactive push notification, the callb
 
 [source,c]
 ----
-#ifdef __IPHONE_8_0
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler {
     if([identifier isEqualToString: @"YOUR_ACTION_NAME"]) {
       ...

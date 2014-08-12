@@ -33,6 +33,9 @@ Once the project is opened in Xcode, you need to change the *Bundle ID*, since i
 
 image:./img/bundleIDchange.png[Change the Bundle Identifier]
 
+Further, ensure that the correct *Provisioning profile* is set on the application:
+
+image:./img/provisioning_profile.png[Provisioning Profile]
 
 
 Setting up the iOS Variant ID
@@ -59,12 +62,18 @@ __Note:__ Since iOS8 _registerForRemoteNotificationTypes_ has been removed in fa
 ----
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-#ifdef __IPHONE_8_0
-    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
+// when running under iOS 8 we will use the new API for APNS registration
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
 #else
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+
 #endif
 ...
 ----
@@ -72,7 +81,7 @@ __Note:__ Since iOS8 _registerForRemoteNotificationTypes_ has been removed in fa
 Once the application is started the _FIRST_ time, it generates the following dialog, where the user has to agree that the application _may_ receive "Push Notification Messages":
 
 
-image:./img/PushDialog.jpg[iOS Push Dialoag]
+image:./img/PushDialog.png[iOS Push Dialoag]
 
 Once the user agrees, Push Messages can be received by the app!
 
