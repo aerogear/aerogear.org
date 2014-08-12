@@ -37,7 +37,7 @@ This brings you to the page where you can configure details about your account. 
 
 image::./img/account_management_details.png[Account Details]
 
-The next section allows you to update your current password. 
+The next section allows you to update your current password.
 
 IMPORTANT: Please make sure to pick a _**strong password**_, see the +admin+ user as the +root+ on your machine...
 
@@ -182,4 +182,5 @@ Here you are also able to see which supported SDK was used to send the message. 
 Next Steps
 ~~~~~~~~~~
 
-Now that you are familiar with the AdminUI of the UnifiedPush Server it is time to get some mobile development started. You can find a list of different tutorials and guides link:../next[here].
+Now that you are familiar with the AdminUI of the UnifiedPush Server, you can learn about its Administrative UI link:../server-administration[here].
+If you want to dive straight into some mobile development, you can find a list of different tutorials and guides link:../next[here].

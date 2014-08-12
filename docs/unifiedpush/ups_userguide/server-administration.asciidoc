@@ -9,4 +9,122 @@ toc::[]
 Administration of the UnifiedPush Server
 ----------------------------------------
 
-TDB.....
+The UnifiedPush Server is protected by the link:http://keycloak.org[Keycloak SSO server]. This document explains a few features from the **Keycloak Admin Console** to perform some administrative configurations around the UnifiedPush Server and its users.
+
+Login and Settings
+~~~~~~~~~~~~~~~~~~
+
+After exploring the UnifiedPush Server's AdminUI it is time to become familiar with the _Keycloak Admin Console_, which is located at:
+
++http(s)://SERVER:PORT/auth/admin/aerogear/console/index.html+
+
+After a successful login, using your admin account, you see an overview of general settings:
+
+image::./img/kc/LandingPage_KC_Admin.png[General Settings]
+
+WARNING: Do _**not**_ disable, rename or even delete the +aerogear+ realm. This will make the UnifiedPush Server _unusable_.
+
+Besides the general overview, the _Keycloak Admin Console_ offers various configuration settings, such as _Login_, _Roles_, _Default Roles_, _Credentials_, _Keys_, _Email_, _Themes_ or
+_Cache Config_.
+
+NOTE: In this guide we cover only those that are relevant for the UnifiedPush Server
+
+For instance, in the _Login Settings_ you can tweak the actual login to the UnifiedPush Server, like enabling a _Remember Me_ checkbox:
+
+image::./img/kc/RememberMe_enabling.png[Enable RememberMe]
+
+This will result in a slightly different login screen for the UnifiedPush Server, where a _Remember Me_ checkbox is presented underneath the +password+ field:
+
+image::./img/kc/RememberMe_enabled_UPS.png[Active RememberMe function]
+
+Another item that could be configured is the _Forgot password_ function, if one of your users (link:#_user_management[see below]) forgot its password. However, this requires configuration details for your own SMTP server, to enable Keycloak sending emails to your users:
+
+image::./img/kc/EmailSettings.png[Email Server Settings]
+
+User Management
+~~~~~~~~~~~~~~~
+
+To add new users that are allowed to use the UnifiedPush Server, you need to go to the +Users+ section of the _Keycloak Admin Console_:
+
+image::./img/kc/User_overview.png[User Management Overview]
+
+To see a list of all existing users of the UnifiedPush Server, click on the +View all users+ link:
+
+image::./img/kc/Users_list.png[List of existing Users]
+
+However, for adding a new user, you need to click the +Add User+ button in the above screen, which brings you to the _Add User_ form:
+
+image::./img/kc/User_add.png[Add new User]
+
+In this dialog you provide the information such as email or first and last name. However, the username is a mandatory field.
+
+NOTE: Please ensure you keep the user enabled, otherwise a login is not possible.
+
+Once you click +Save+, the screen reloads and the unique user ID is visible:
+
+image::./img/kc/User_added.png[Added new User]
+
+Next you can give the new user a temporary password. This option is provided in the +Credentials+ option:
+
+image::./img/kc/User_tmp_password.png[Provide a temporary password]
+
+Once you entered the initial (or temporary) password, you need to confirm the _reset_:
+
+image::./img/kc/User_tmp_password_confirm.png[Confirm temporary password]
+
+NOTE: The password of any user can be resetted all the time, using this feature. Afterwards the user is asked to update the password you used in the above dialog!
+
+On the +Role Mappings+ option you must assign the required role to the new created user:
+
+image::./img/kc/User_role_config.png[Select the required admin role]
+
+The only available and required role is the +admin+ role, which you need to select on the +Available Roles+ list. Once selected, shuffle it over to the +Assigned Roles+ list:
+
+image::./img/kc/User_role_configured.png[Configured role settings]
+
+NOTE: Using the shuffle component automatically saves the selection!
+
+At this point the new user is able to use the UnifiedPush Server.
+
+In the +Sessions+ option you can monitor the active sessions of a specific user:
+
+image::./img/kc/User_sessions_overview.png[Active sessions of a specific user]
+
+This dialog allows you to +logout+ a specific session of the user, or all using the +Logout All Sessions+ button above the table.
+
+Active Sessions
+~~~~~~~~~~~~~~~
+
+In the +Sessions and Tokens+ section of the _Keycloak Admin Console_ you can monitor all active session against the UnifiedPush Server's realm, as well as providing configurations around access tokens or timeouts.
+
+The +Realm Sessions+ option allows you to perform a logout for _all_ active sessions:
+
+image::./img/kc/Session_Tokens_overview.png[All active sessions]
+
+On the +Timeout Settings+ option you can override the default settings for session timeouts or different token lifespans:
+
+image::./img/kc/Session_Timeout_Settings.png[Timeout configuration]
+
+NOTE: For security reasons the default timeout values for the UnifiedPush Server are pretty conservative. Becareful when increasing them!
+
+On the +Revocation Policies+ section, you can specify the _Not-before_ revocation policies per realm, application, or user, and _push_ this value to the client adapters that have a
+admin url set up:
+
+image::./img/kc/Session_Revocation_Policies.png[Revocation Policies]
+
+
+By default +Brute Force Protection+ is disabled. You can enable it, using the highlighted button:
+
+image::./img/kc/Session_Enable_BruteForce.png[Enable Brute Force]
+
+With _Brute Force Protection_ enabled your UnifiedPush Server gains more security features. The above form gives options to configure different times and options for attempts to perform a login, and how often.
+
+SSL by default
+~~~~~~~~~~~~~~
+
+By default the option "Require SSL" on Keycloak is enabled to make sure that UnifiedPush will run under SSL, except for *localhost* and *Docker* images. If you are deploying UPS on non-SSL environment, an exception like "*request scheme: http ssl required*" is expected.
+
+Next Steps
+~~~~~~~~~~
+
+Now that you are familiar with the two admin user interfaces of the UnifiedPush Server, it is time to get some mobile development started! You can find a list of different tutorials and guides link:../next[here].
