@@ -5,107 +5,137 @@ title: UnifiedPush Server - Installation and configuration
 :toc:
 toc::[]
 
-Installation and configuration
-------------------------------
 
-The UnifiedPush Server comes with two WAR files (+auth-server.war+ and +ag-push.war+) that need to be installed on your favorite JavaEE container. We currently only support JBoss AS 7.1.1 and JBoss EAP 6.x. Download the servers from link:http://jbossas.jboss.org/downloads/[here].
+== Install and Configure the UnifiedPush Server
+Getting the UnifiedPush Server up and running with an on-premise application server is a three-step setup process:
 
-Database configuration
-~~~~~~~~~~~~~~~~~~~~~~
+. <<getfiles,Get the UnifiedPush Server application files>>
+. <<gendbds,Generate the UnifiedPush database and datasource>>
+. <<deploy,Deploy the UnifiedPush Server>>
 
-The UnifiedPush Server also requires a datasource with +java:jboss/datasources/UnifiedPushDS+ as its JNDI name. You are free to use the Database of your choice (e.g. MariaDB, MySQL or PostgreSQL). However for your convenience we have a few scripts for some databases to help with the configuration.
+Each of these steps is detailed here, with instructions and useful scripts provided for a variety of databases (H2, MySQL, PostgreSQL) and application servers (link:http://jbossas.jboss.org/downloads/[JBoss AS 7], link:http://wildfly.org/downloads/[WildFly 8]).
 
-H2 database configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^
+NOTE: You can also link:openshift/[run the UnifiedPush Server in the cloud with OpenShift] but this requires a different setup process.
 
-The H2 database is included in both WildFly and JBossAS and getting started is very simple. There are two ways to setup the H2 instance to be used by the UnifiedPush Server.
+[[getfiles]]
+=== Get the UnifiedPush Server Application Files
+The UnifiedPush Server application is provided in two files: +unifiedpush-server.war+* and +unifiedpush-auth-server.war+. These files contain the core functionality and authentication components of the UnifiedPush Server. Both files are necessary to achieve a working UnifiedPush Server application.
 
-H2 command line interface script
-++++++++++++++++++++++++++++++++
+Download the latest copies of these files using the following links:
 
-Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/h2-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
+* link:http://search.maven.org/#browse%7C1148786796[Download Core Server] - *variants are provided for different application servers:
+** For WildFly, +unifiedpush-server-wildfly.war+
+** For JBoss AS, +unifiedpush-server-as7.war+
+* link:http://search.maven.org/#browse%7C-1163172089[Download Authentication Server]
 
+[[gendbds]]
+=== Generate the UnifiedPush Database and Datasource
+The UnifiedPush Server requires an accompanying database in which to store push application, variant and installation details. You can use the database of your choice but the coresponding datasource added to the application server must have JNDI name +java:jboss/datasources/UnifiedPushDS+.
+
+Information is provided here for generating UnifiedPush datasources for several database types. Note that if the intended application server has not previously been used with the chosen database type, additional configuration must also be completed in order to enable the application server to connect to the database. As detailed here, sources and scripts are available to assist with all these processes.  
+
+==== H2 Database
+A H2 database is embedded in WildFly and JBoss AS. As demonstrated here, it is simple to configure H2 for use with the UnifiedPush Server with the aid of some provided scripts.
+
+WARNING: The H2 data storage is not persistent and, though it can be used for development purposes, it is not recommended for production use.
+
+To add the UnifiedPush datasource for the H2 database to the application server, download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/unifiedpush-h2-ds.xml[unifiedpush-h2-ds.xml] file and move it to the +/path/to/SERVER_HOME/standalone/deployments+ folder.
+
+Alternatively, you can create the UnifiedPush datasource from scratch and add it to the application server as follows:
+
+. Download the UnifiedPush datasource configuration script for H2, +h2-database-config.cli+, for link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/h2-database-config-wildfly.cli[WildFly] or link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/h2-database-config.cli[JBoss AS].
+. Start the application server
++
 [source,c]
 ----
-/Path/to/JBossAS/bin/standalone.sh
+$ ./path/to/SERVER_HOME/bin/standalone.sh
 ----
-
-Now invoke the +jboss-cli.sh+ script, passing in the previous download:
-
+. Create and add the UnifiedPush datasource for the H2 database using the application server CLI and downloaded configuration script
++
+For WildFly:
++
 [source,c]
 ----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/h2-database-config.cli
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/h2-database-config-wildfly.cli
+----
++
+For JBoss AS:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/h2-database-config.cli
 ----
 
-The script will add the +UnifiedPushDS+ datasource, inside of the application server, located at +${jboss.server.data.dir}/unifiedpush+.
+==== MySQL Database
+You can use a link:http://www.mysql.com/[MySQL] database with the UnifiedPush Server. As demonstrated here, the application server must first be configured for MySQL and the UnifiedPush MySQL database must exist before the application server can be configured with the associated UnifiedPush datasource.
 
-H2 deployable datasource
-++++++++++++++++++++++++
+To complete these prerequisite processes and configure the application server for the UnifiedPush MySQL database, complete the following steps:
 
-Another option is to simply download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/unifiedpush-h2-ds.xml[unifiedpush-h2-ds.xml] file and copy it into the +deployments+ folder of the application server.
-
-MySQL database configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For using MySQL a few more steps are required.
-
-Create a database and database user
-+++++++++++++++++++++++++++++++++++
-
+. Download the  link:https://github.com/aerogear/aerogear-unifiedpush-server/tree/master/databases/src/main/resources/modules/[+com+ directory], which contains a MySQL module.
+. Copy the downloaded +com+ directory to the application server modules directory
++
+[source,c]
+----
+$ cp -r /path/to/com /path/to/SERVER_HOME/modules/
+---- 
+. Add the MySQL JDBC driver to the application server +mysql+ module
++
+[source,c]
+----
+$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/
+---- 
+. Create the UnifiedPush MySQL database
++
 [source,c]
 ----
 $ mysql -u <user-name>
 mysql> create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
 mysql> create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
-mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';
+mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';h
 ----
-
-Add a datasource for the UnifiedPush database
-+++++++++++++++++++++++++++++++++++++++++++++
-
-The module for MySQL can be found in +src/main/resources/modules/com/mysql+ of the link:https://github.com/aerogear/aerogear-unifiedpush-server/tree/master/databases[databases folder]. Now copy this module to JBoss AS modules directory:
-
+. Download the UnifiedPush datasource configuration script for MySQL, +mysql-database-config.cli+, for link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/mysql-database-config-wildfly.cli[WildFly] or link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/mysql-database-config.cli[JBoss AS].
+. Start the application server
++
 [source,c]
 ----
-cp -r src/main/resources/modules/com /Path/to/JBossAS/modules/
+$ ./path/to/SERVER_HOME/bin/standalone.sh
 ----
-We also need the mysql driver copied to this module:
-
+. Configure the application server to use the MySQL driver and create and add the UnifiedPush datasource for the MySQL database using the application server CLI and downloaded configuration script
++
+For WildFly:
++
 [source,c]
 ----
-mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=/Path/to/JBossAS/modules/com/mysql/jdbc/main/
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config-wildfly.cli
 ----
-Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/mysql-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
-
++
+For JBoss AS:
++
 [source,c]
 ----
-/Path/to/JBossAS/bin/standalone.sh
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config.cli
 ----
 
-Now invoke the +jboss-cli.sh+ script, passing in the previous download:
+==== PostgreSQL Database
+You can use a link:http://www.postgresql.org/[PostgreSQL] database with the UnifiedPush Server. As demonstrated here, the application server must first be configured for PostgreSQL and the UnifiedPush PostgreSQL database must exist before the application server can be configured with the associated UnifiedPush datasource.
 
+To complete these prerequisite processes and configure the application server for the UnifiedPush PostgreSQL database, complete the following steps:
+
+. Download the  link:https://github.com/aerogear/aerogear-unifiedpush-server/tree/master/databases/src/main/resources/modules/[+org+ directory], which contains a PostgreSQL module.
+. Copy the downloaded +org+ directory to the application server modules directory
++
 [source,c]
 ----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/mysql-database-config.cli
-----
-The above script will add the mysql driver and the +UnifiedPushDS+ datasource.
-
-If you inspect the server console output you should see the following message:
-
+$ cp -r /path/to/org /path/to/SERVER_HOME/modules/
+---- 
+. Add the PostgreSQL JDBC driver to the application server +postgresql+ module
++
 [source,c]
 ----
-14:41:57,790 INFO  [org.jboss.as.connector.subsystems.datasources] (management-handler-thread - 1) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
-14:41:57,794 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:jboss/datasources/UnifiedPushDS]
-----
-
-PostgreSQL database configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For using PostgreSQL a few more steps are required.
-
-Create a database and database user
-+++++++++++++++++++++++++++++++++++
-
+$ mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=/Path/to/JBossAS/modules/org/postgresql/main/
+---- 
+. Create the UnifiedPush PostgreSQL database
++
 [source,c]
 ----
 $ psql -U <user-name>
@@ -113,64 +143,33 @@ psql> create database unifiedpush;
 psql> create user unifiedpush with password 'unifiedpush';
 psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
 ----
-
-Add a datasource for the UnifiedPush database
-+++++++++++++++++++++++++++++++++++++++++++++
-
-The module for PostgreSQL can be found in +src/main/resources/modules/org/postgresql+ of the link:https://github.com/aerogear/aerogear-unifiedpush-server/tree/master/databases[databases folder]. Now copy this module to JBoss AS modules directory:
-
+. Download the UnifiedPush datasource configuration script for PostgreSQL, +postgresql-database-config.cli+, for link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config-wildfly.cli[WildFly] or link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config.cli[JBoss AS].
+. Start the application server
++
 [source,c]
 ----
-cp -r src/main/resources/modules/org /Path/to/JBossAS/modules/
+$ ./path/to/SERVER_HOME/bin/standalone.sh
 ----
-We also need the PostgreSQL driver copied to this module:
-
+. Configure the application server to use the PostgreSQL driver and create and add the UnifiedPush datasource for the PostgreSQL database using the application server CLI and downloaded configuration script
++
+For WildFly:
++
 [source,c]
 ----
-mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=/Path/to/JBossAS/modules/org/postgresql/main/
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config-wildfly.cli
 ----
-
-Download the link:https://raw.githubusercontent.com/aerogear/aerogear-unifiedpush-server/master/databases/postgresql-database-config.cli[this cli file] and afterwards start the server using its +standalone.sh+ script:
-
++
+For JBoss AS:
++
 [source,c]
 ----
-/Path/to/JBossAS/bin/standalone.sh
-----
-Finally, run the following command line interface script:
-
-[source,c]
-----
-/Path/to/JBossAS/bin/jboss-cli.sh --file=/Path/to/postgresql-database-config.cli
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config.cli
 ----
 
-The above script will add the postgresql driver and the +UnifiedPushDS+ datasource.
+[[deploy]]
+=== Deploy the UnifiedPush Server
+After the application server is configured for the UnifiedPush datasource, the +unifiedpush-server.war+ and +unifiedpush-auth-server.war+ files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server. 
 
-If you inspect the server console output you should see the following message:
+To deploy the UnifiedPush Server, copy the application server +unifiedpush-server.war+ variant and +unifiedpush-auth-server.war+ files to the +/path/to/SERVER_HOME/standalone/deployments+ directory. This can be done either before or after starting the application server.
 
-[source,c]
-----
-14:41:57,790 INFO  [org.jboss.as.connector.subsystems.datasources] (management-handler-thread - 1) JBAS010404: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.2)
-14:41:57,794 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:jboss/datasources/UnifiedPushDS]
-----
-
-
-Deploy the UnifiedPush Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-At this point you have a running server, including a connected database.
-
-JBoss Application Server
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-The deployment is pretty simple: Copy both WAR files (+auth-server.war+ and +ag-push.war+) into the +deployments+ folder of the application server.
-
-
-WildFly
-^^^^^^^
-SOON.... content will go here.
-
-
-
-
-
-If you want to learn how to run the UnifiedPush Server on Openshift you might want to read the link:../openshift[Running on Openshift] guide. If not the next step would be making yourself familiar with the link:../admin-ui[Admin UI].
+After deployment with the application server running, the UnifiedPush Server Console can be accessed at link:http://localhost:8080/ag-push/[]. For information about using the Console, see link:../admin-ui[Using the Amdin UI].
