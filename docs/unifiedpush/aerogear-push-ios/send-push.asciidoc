@@ -49,7 +49,7 @@ image:./img/CustomDialog.png[Custom Dialog]
 
 === Custom Keys
 
-Besides reading the standard keys, like +alert+ the UnifiedPush Server supports custom keys. In the above +curl+ we used the +customKey+, which could have an application specific meaning. Reading the value of your own keys is as simple as in the above snippet about the custom dialog:
+Besides reading the standard keys, like +alert+ the UnifiedPush Server supports custom keys, which could have an application specific meaning. Reading the value of your own keys is as simple as in the above snippet about the custom dialog:
 
 [source,c]
 ----
@@ -96,16 +96,10 @@ and include the following XML:
 
 === Sending Notifications for Background Processing
 
-To ensure that your message is really received by our application when it is in background mode, you need to include +"content-available":true+ into your JSON payload, like:
+To ensure that your message is really received by our application when it is in background mode, you need to include the "content-available" flag into your message payload.
 
-[source,c]
-----
+NOTE: If you are using the link:http://aerogear.org/docs/unifiedpush/GetStartedwithJavaSender/[Java Sender] to send push notifications on the server side, simply call _".contentAvailable()"_ when building the message payload. Check the documentation link:http://aerogear.org/docs/unifiedpush/GetStartedwithJavaSender/#_ios_specific_payload[here]  for more details.
 
-curl -3 -u "{pushApplicationID}:{masterSecret}"
-   -v -H "Accept: application/json" -H "Content-type: application/json" 
-   -X POST -d '{"message": {"content-available":true, "customKey":"some value"}}'
-   https://SERVER:PORT/CONTEXT/rest/sender
-----
 == iOS 8
 
 iOS 8 provides support for interactive notifications. To utilise it, follow these steps:
@@ -118,16 +112,9 @@ If you want a complete example that demo's interactive notification refer to lin
 
 === Sending interactive notifications : extra payload
 
-All you need to do is include +"action-category":"YOUR_ACTION_NAME"+ into your JSON payload like:
+All you need to do is include +"action-category":"YOUR_ACTION_NAME"+ into your message payload
 
-[source,c]
-----
-
-curl -3 -u "{pushApplicationID}:{masterSecret}"
-   -v -H "Accept: application/json" -H "Content-type: application/json" 
-   -X POST -d '{"message": {"action-category":"YOUR_CATEGORY_NAME", "customKey":"some value"}}'
-   https://SERVER:PORT/CONTEXT/rest/sender
-----
+NOTE: If you are using the link:http://aerogear.org/docs/unifiedpush/GetStartedwithJavaSender/[Java Sender] to send push notifications on the server side, simply call _".actionCategory()"_ when building the message payload. Check the documentation link:http://aerogear.org/docs/unifiedpush/GetStartedwithJavaSender/#_ios_specific_payload[here]  for more details.
 
 _Note:_ APNs interactive notification adds +category+ to its payload to associate a group of actions to a category of notification. As UPS already uses the name 'categories' in its payload but for a different purpose, the name 'action-category' was chosen instead.
 
