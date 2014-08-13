@@ -80,7 +80,8 @@ $ cp -r /path/to/com /path/to/SERVER_HOME/modules/
 +
 [source,c]
 ----
-$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/
+$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 \
+-DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/
 ---- 
 . Create the UnifiedPush MySQL database
 +
@@ -130,7 +131,8 @@ $ cp -r /path/to/org /path/to/SERVER_HOME/modules/
 +
 [source,c]
 ----
-$ mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=/Path/to/JBossAS/modules/org/postgresql/main/
+$ mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 \
+-DoutputDirectory=/Path/to/JBossAS/modules/org/postgresql/main/
 ---- 
 . Create the UnifiedPush PostgreSQL database
 +
