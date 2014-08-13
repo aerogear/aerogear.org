@@ -47,7 +47,7 @@ Represents an actual device, registered with the UnifiedPush Server. User1 runni
 
 Push Notification Message
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-A simple message to be send to a PushApplication.
+A simple message to be sent to a PushApplication.
 
 Sender Endpoint API
 ^^^^^^^^^^^^^^^^^^^

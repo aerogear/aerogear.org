@@ -136,14 +136,14 @@ NOTE: It is possible to filter the list of receivers, using +Alias+, +Device Typ
 
 If all goes well, your message will be delivered by the 3rd party Push Network to your device:
 
-image::../../../docs/unifiedpush/aerogear-push-ios/img/PushMessage.jpg[You got a notification!]
+image::../../../docs/unifiedpush/aerogear-push-ios/img/PushMessage.png[You got a notification!]
 
 Sending a Push Notification from code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-While sending a Push Notification from the AdminUI is a nice feature, in a real world scenario, the Push Notification is triggered by a backend, as explained link:../next/#_server_integration_tutorials[here].
+While sending a Push Notification from the AdminUI is a nice feature, in a real world scenario, the Push Notification is triggered by a backend, as explained in link:../next/#_server_integration_tutorials[Server Integration Tutorials].
 
-The UnifiedPush Server comes with APIs for Java, Node.js and PHP. Due to its RESTful architecture any backend, written in any language that supports HTTP, can send Push Notification requests to it. On the details page of a PushApplication you find the required +Server URL+ and credentials (+Application ID+ and +Master Secret+).
+The UnifiedPush Server comes with APIs for link:../../../unifiedpush/GetStartedwithJavaSender/[Java], link:https://github.com/aerogear/aerogear-unifiedpush-nodejs-client#examples[Node.js]. Due to its RESTful architecture any backend, written in any language that supports HTTP, can link:../../../specs/aerogear-unifiedpush-rest/sender/index.html[send Push Notification requests] to it. On the details page of a PushApplication you find the required +Server URL+ and credentials (+Application ID+ and +Master Secret+).
 
 image::./img/sendJava_link.png[Link to code snippets]
 

@@ -32,7 +32,8 @@ Server Integration Tutorials
 For the backend integration of your server we have a few different tutorials as well:
 
 * link:../../GetStartedwithJavaSender[Java Integration]
-* Node.js Integration (LINK?)
+* link:https://github.com/aerogear/aerogear-unifiedpush-nodejs-client#examples[Node.js Integration]
+* link:../../../specs/aerogear-unifiedpush-rest/sender/index.html[REST API]
 
 
 Quickstarts

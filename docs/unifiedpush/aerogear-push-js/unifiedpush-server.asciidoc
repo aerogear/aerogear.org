@@ -25,7 +25,7 @@ cd aerogear-unifiedpush-server
 mvn package jboss-as:deploy
 ----
 
-This will deploy the UnifiedPush server on your running JBoss installation, ready to accept connections. Now it's time to perform the initial registrations with the server. For the purpose of the guide, we will fail back on the command line and the _curl_ tool, but in near feature this won't be needed cause a Push Administration console would be used instead (currently in the works). 
+This will deploy the UnifiedPush server on your running JBoss installation, ready to accept connections. Now it's time to perform the initial registrations with the server. For the purpose of the guide, we will fall back on the command line and the _curl_ tool, but in near feature this won't be needed cause a Push Administration console would be used instead (currently in the works). 
 
 [NOTE]
 Changes are persisted and subsequent executions of the JBoss server (e.g. restart) will rememeber those registrations. At any point you can query the server for the current running environment (after you have logged in) by executing the following in the command line:
