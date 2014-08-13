@@ -162,7 +162,12 @@ The Dashboard is a nice way to learn what's going on in the UnifiedPush Server. 
 
 image::./img/dashboard.png[Dashboard Overview]
 
-The Dashboard also has a +Warning+ and a +Most Active+ section. The +Warning+ area informs you if a problem occurred, while sending out the Push Notifications to the 3rd party Services. Clicking on an entry in that list provides you more details about the potential failure.
+The Dashboard also has a +Warnings+ and a +Most Active+ section. The +Warnings+ area informs you if a problem occurred, while sending out the Push Notifications to the 3rd party Services. Clicking on an entry in that list provides you more details about the potential failure.
+
+The metadata is deleted after 30 days, using a nightly job within the UnifiedPush Server.
+
+Dashboard - Most Active
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The +Most Active+ section shows a recent list of PushApplications that have submitted Push Notification requests. Clicking on a PushApplication presents a list of all Push Notifications that have been sent out (in the last 30 days):
 
@@ -178,6 +183,18 @@ image::./img/dashboard_activity_full_message.png[The entire Push Notification pa
 
 Here you are also able to see which supported SDK was used to send the message. In this example the message was sent from the Console of the UnifiedPush Server.
 
+Dashboard - Warnings
+^^^^^^^^^^^^^^^^^^^^
+
+The +Warnings+ section shows of a list of recent problems that occured, while sending out the Push Notifications to the 3rd party Services. Clicking on the +Activity+ for a variant shows the recent send activity:
+
+image::./img/dashboard_warnings.png[Warnings]
+
+In case of a problem the _Status_ is presented as +Failed+. To learn more about the details of the failure, open the Push Notification:
+
+image::./img/dashboard_warnings_details.png[Warnings Details]
+
+The +Reason+ underneath the actual _Push Notification_ tries to give more information about the failure reason. If the information in the AdminUI is not enough, you might need to link:../ups-debugging/##_enable_logging[enable logging].
 
 Next Steps
 ~~~~~~~~~~

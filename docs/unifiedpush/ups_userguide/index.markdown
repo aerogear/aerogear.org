@@ -34,6 +34,9 @@ title: UnifiedPush Server User Guide
   * [Login and Settings](server-administration/#_login_and_settings)
   * [User Management](server-administration/#_user_management)
   * [Active Sessions](server-administration/#_active_sessions)
+* [Debugging the UnifiedPush Server](ups-debugging)
+  * [Enable Logging](ups-debugging/#_enable_logging)
+  * [Dashboard of the AdminUI](ups-debugging/#_dashboard_of_the_adminui)
 
 * [Next steps](next)
   * Contains links to detailed client and server Push tutorials and demos
