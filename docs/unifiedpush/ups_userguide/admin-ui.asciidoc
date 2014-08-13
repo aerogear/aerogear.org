@@ -136,7 +136,7 @@ NOTE: It is possible to filter the list of receivers, using +Alias+, +Device Typ
 
 If all goes well, your message will be delivered by the 3rd party Push Network to your device:
 
-image::../../../docs/unifiedpush/aerogear-push-ios/img/PushMessage.jpg[You got a notification!]
+image::../../../docs/unifiedpush/aerogear-push-ios/img/PushMessage.png[You got a notification!]
 
 Sending a Push Notification from code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
