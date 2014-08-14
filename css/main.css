@@ -193,7 +193,6 @@ li > p {
 /* =================== Nav bar ====================================================================================== */
 #main-header nav {
     display: inline-block;
-    position: absolute;
     right: 0;
     top: 110px;
     background-color: #f2f2f2;
