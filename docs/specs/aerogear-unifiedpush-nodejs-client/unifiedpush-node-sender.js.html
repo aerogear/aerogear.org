@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AeroGear Node.js Sender Client API Documentation</title>
+    <title>AeroGear UnifiedPush Node.js Sender API Documentation</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -18,7 +18,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: aerogear-sender-client.js</h1>
+    <h1 class="page-title">Source: unifiedpush-node-sender.js</h1>
 
 
 
@@ -48,7 +48,20 @@ var http = require( "http" ),
     util = require( "util" ),
     events = require( "events" );
 
-function send( serverSettings, message ) {
+function doEvent( status, message, callback ) {
+    if( !callback || typeof callback !== "function" ) {
+        this.emit( status, message );
+        return;
+    }
+
+    if( status === "error" ) {
+        callback( message );
+    } else {
+        callback( null, message );
+    }
+}
+
+function send( serverSettings, message, callback ) {
     // we stash the 'https' module on a local variable, IF the server is deployed using SSL.
     // Otherwise the 'http' module is stashed
     var caller = (serverSettings.protocol === "https:") ? https : http,
@@ -56,11 +69,11 @@ function send( serverSettings, message ) {
         req = caller.request( serverSettings, function( res ) {
 
             if( res.statusCode >= 400 ) {
-                that.emit( "error", res.statusCode );
+                doEvent.call( that, "error", res.statusCode, callback );
             } else if( res.statusCode === 301 || res.statusCode === 302 || res.statusCode === 303 ) {
                 //Moved Status,  Need to resend
                 if( !res.headers.location ) {
-                    that.emit( "error", "redirect url is not available" );
+                    doEvent.call( that, "error", "redirect url is not available", callback );
                 } else {
                     var url = urlParser.parse( res.headers.location );
 
@@ -70,18 +83,18 @@ function send( serverSettings, message ) {
                     serverSettings.port = url.port;
                     serverSettings.path = url.pathname;
 
-                    send.call( that, serverSettings, message );
+                    send.call( that, serverSettings, message, callback );
                 }
             } else {
                 res.setEncoding('utf8');
                 res.on( "data", function ( chunk ) {
-                    that.emit( "success", chunk );
+                    doEvent.call( that, "success", chunk, callback );
                 });
             }
         });
 
     req.on( "error", function( error ) {
-        that.emit( "error", "problem with request: " + error.message );
+        doEvent.call( that, "error", "problem with request: " + error.message, callback );
     });
 
     // write data to request body
@@ -96,12 +109,18 @@ function createServerSettings( url, settings ) {
         path: url.pathname,
         headers: {
             "Accept": "application/json",
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "aerogear-sender": "AeroGear Node.js Sender"
         },
         auth: settings.applicationID + ":" + settings.masterSecret,
         method: "POST"
     };
     return serverSettings;
+}
+
+function camelToDash( str ) {
+    return str.replace( /\W+/g, "-" )
+        .replace( /([a-z\d])([A-Z])/g, "$1-$2" ).toLowerCase();
 }
 
 var AeroGear = {};
@@ -123,7 +142,8 @@ AeroGear.Sender = function( url ) {
 
     events.EventEmitter.call( this );
 
-    url += "/rest/sender/";
+    url = url.substr(-1) === '/' ? url : url + '/';
+    url += "rest/sender/";
 
     this.getUrl = function() {
         return url;
@@ -139,12 +159,14 @@ exports.AeroGear = AeroGear;
     The send Method
     @param {Object} message={} - the message to be passed
     @param {String} [message.alert]
+    @param {String} [message.actionCategory]
     @param {String} [message.sound]
     @param {String} [message.badge]
+    @param {Boolean} [message.contentAvailable]
     @param {Object} settings={} - the settings to be passed
     @param {String} settings.applicationID - The Application ID
     @param {String} settings.masterSecret - The Master Secret
-    @param {String} [settings.simple-push] - simplePush version number
+    @param {String} [settings.simplePush] - simplePush version number
     @param {Number} [settings.ttl] - the time to live in seconds. This value is supported by APNs and GCM Only
     @param {Object} [settings.criteria={}] - the criteria to select
     @param {Array} [settings.criteria.alias] - a list of email or name strings
@@ -154,14 +176,15 @@ exports.AeroGear = AeroGear;
     @returns {Object} itself
 
  */
-AeroGear.Sender.prototype.send = function( message, settings ) {
+AeroGear.Sender.prototype.send = function( message, settings, callback ) {
 
     settings = settings || {};
 
     if( !settings.applicationID || !settings.masterSecret ) {
         throw "UnifiedPushSenderError";
     }
-    var serverSettings, setting, crit,
+
+    var serverSettings, setting, crit, key,
         url = urlParser.parse( this.getUrl() ),
         newMessage = {};
 
@@ -172,9 +195,19 @@ AeroGear.Sender.prototype.send = function( message, settings ) {
                 for( crit in settings.criteria ) {
                     newMessage[ crit ] = settings.criteria[ crit ];
                 }
+            } else if( setting === "simplePush" ) {
+                newMessage[ "simple-push" ] = settings[setting];
+                delete settings[setting];
             } else {
                 newMessage[ setting ] = settings[ setting ];
             }
+        }
+    }
+
+    for( key in message ) {
+        if( key === "actionCategory" || key === "contentAvailable" ) {
+            message[camelToDash(key)] = message[key];
+            delete message[key];
         }
     }
 
@@ -182,7 +215,7 @@ AeroGear.Sender.prototype.send = function( message, settings ) {
 
     serverSettings = createServerSettings( url, settings );
 
-    send.call( this, serverSettings, newMessage );
+    send.call( this, serverSettings, newMessage, callback );
 
     return this;
 };
@@ -196,13 +229,13 @@ AeroGear.Sender.prototype.send = function( message, settings ) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="AeroGear.Sender.html">AeroGear.Sender</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="AeroGear.Sender.html">AeroGear.Sender</a></li></ul><h3>Adapters</h3><ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Nov 18 2013 12:12:44 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 14 2014 08:43:07 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
