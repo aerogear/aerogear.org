@@ -9,12 +9,15 @@
 
     <meta name="viewport" content="initial-scale=1.0">
 
+    <link href="http://static.jboss.org/css/tabzilla.css" media="screen" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico"/>
     <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.atom"/>
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
+    <script src="http://static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js"></script>
+    <script src="http://static.jboss.org/js/_jbossorg-tabzilla.js"></script>
     <script src="/js/libs/highlight.min.js"></script>
     <script type="text/javascript">
         hljs.initHighlightingOnLoad();
@@ -38,6 +41,15 @@
     </script>
 </head>
 <body>
+<div class="dropup">
+    <div id="ajbossproject">A JBoss Project</div> <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
+    <script>
+        window.addEventListener('load', function() {
+            renderTabzilla("aerogear", "aerogear", false );
+        }, false);
+    </script>
+</div>
+
 <div id="sideNav" class="hidden">
     <nav class="site">
         <ul>
@@ -93,13 +105,18 @@
         <a href="https://www.twitter.com/aerogears"><div class="social twitter"></div></a>
         <div class="clearfix"></div>
         <div class="logos">
-            <p>AeroGear is a <a href="http://www.jboss.org/">JBoss Community</a> project and its development is
-                sponsored by <a href="http://www.redhat.com/">Red Hat, Inc</a>. Project code is released under the <a
-                        href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License, v2.0</a>.
-            </p>
-            <p><a href="http://www.jboss.org/"><img src="/img/jboss_community.png" alt="JBoss Community"></a> <a
-                    href="http://www.redhat.com/"><img src="/img/red_hat.png" alt="Red Hat"></a></p>
-            <p>Copyright &copy; 2012, Red Hat, Inc.</p>
+
+
+        <div class="container" id="companyfooter">
+          <div class="redhatlogo" style="text-align:center;">
+              <div id="logospacer"></div>
+              <a href="http://www.redhat.com/">
+                <img src="http://static.jboss.org/theme/images/common/redhat_logo.png">
+              </a>
+          </div>
+        </div>
+
+
         </div>
     </footer>
 </div>
