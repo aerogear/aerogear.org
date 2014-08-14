@@ -1,105 +1,34 @@
 ---
 layout: basic
-title: AeroGear UnifiedPush Server
+title: The UnifiedPush Server
 ---
 
 The AeroGear UnifiedPush Server
---------------------------------
+-------------------------------
 
-The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain the _SimplePush_ variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here]. 
+The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain the _SimplePush_ variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
 
-=== Requirements
+:pushplatform: SimplePush
+include::docs/unifiedpush/include--register-app.asciidoc[]
 
-Please ensure that you already have installed the following components:
+Time to register our SimplePush Variant. Click on the **Add Variant** button
 
-* JBoss Application Server 7.1.1 or later (e.g. WildFly)
-* Maven
+image::./img/add_variant.png[Add Variant]
 
-=== Setup
+Fill in a _name_ and a _description_ and choose the _SimplePush_ option from the list of available variant types.
 
-Download the server from the project's link:https://github.com/aerogear/aerogear-unifiedpush-server[github page]. First, start your JBoss Application server and make sure you have a _PushEEDS_ datasource installed. The link:https://github.com/aerogear/aerogear-unifiedpush-server#database-configuration[README] has details how to use MySQL or H2 as your database. Once the setup is done, simple execute on the command line the following: 
+Once finish editing, click the **Add** button and the variant will be created on server.
 
-[source,c]
-----
-cd aerogear-unifiedpush-server
-mvn package jboss-as:deploy
-----
+image::./img/variant_created.png[Variant Created]
 
-This will deploy the UnifiedPush server on your running JBoss installation, ready to accept connections. Now it's time to perform the initial registrations with the server. For the purpose of the guide, we will fall back on the command line and the _curl_ tool, but in near feature this won't be needed cause a Push Administration console would be used instead (currently in the works). 
+Notice an _Example Installation_ link which, when clicked, reveals a screen with source code examples for the registration to the UPS, with the settings preconfigured automatically based on the current environment. A handy feature that you can refer when creating your own applications to easy the setup process.
 
-[NOTE]
-Changes are persisted and subsequent executions of the JBoss server (e.g. restart) will rememeber those registrations. At any point you can query the server for the current running environment (after you have logged in) by executing the following in the command line:
+image::./img/example_impl.png[Example Implementation]
 
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt -H "Accept: application/json" https://SERVER:PORT/CONTEXT/rest/applications
-----
 
-=== Login to the server
+Web App
+~~~~~~~
 
-Prior to perform any work with the server, we need to login first. A temporary user 'admin:123' has already been configured, but for security reasons we need to change the password at first login. 
+That's all. That was really simple, wasn't it?
 
-Let's first login to the server:
-
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt
-  -H "Accept: application/json" -H "Content-type: application/json"
-  -X POST -d '{"loginName": "admin", "password":"123"}'
-  https://SERVER:PORT/CONTEXT/rest/auth/login
-----
-
-The server would respond with a 'HTTP/1.1 403 Forbidden' status with a 'Credential has expired' message. We can now update user's password:
-
-[NOTE]
-To _update_ the initial password, you need to specify the old 'password' and new password ('newPassword').
-
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt
-  -H "Accept: application/json" -H "Content-type: application/json"
-  -X PUT -d '{"loginName": "admin", "password":"123", "newPassword":"SOMENEWPASSWORD"}'
-  https://SERVER:PORT/CONTEXT/rest/auth/update
-----
-
-We are now ready to login:
-
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt
-  -H "Accept: application/json" -H "Content-type: application/json"
-  -X POST -d '{"loginName": "admin", "password":"SOMENEWPASSWORD"}'
-  https://SERVER:PORT/CONTEXT/rest/auth/login
-----
-
-The server would respond with a 'HTTP/1.1 200 OK' status, which means that the login was succeeded. If not, check if you typed correctly the command and if the server is correctly setup. 
-
-=== Register a Push Application 
-
-Now that we are logged in, let's create a new _Push Application_ by executing the following _curl_ command:
-
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt 
-	-H "Accept: application/json" -H "Content-type: application/json"
-	-X POST -d '{"name" : "AeroGear-SimplePush-App", "description" :  "My first SimplePush Push App, that uses AeroGear" }'
-	https://SERVER:PORT/CONTEXT/rest/applications
-----
- 
-The response returns a _pushApplicationID_ and a _masterSecret_. Make a note on these ID's cause we will use them later on.
-
-=== Register a SimplePush Variant
-
-Time to register our SimplePush Variant. Execute the following _curl_ command, replace in the URL the _PUSH_ID_ with the _pushApplicationID_ you received earlier:
-
-[source,c]
-----
-curl -3 -v -b cookies.txt -c cookies.txt 
-  -v -H "Accept: application/json" -H "Content-type: application/json"
-  -X POST -d '{"name" : "My SimplePush Variant"}'
-  https://SERVER:PORT/CONTEXT/rest/applications/{PUSH_ID}/simplePush
-----
-
-The response returns a _variantID_ and a _secret_, that will be both used later on when registering your installation through the JavaScript client SDK so please make a note on them too.
-
-That's all. Now, let's move to create a very simple link:../web-app[web application] that will receive notifications.
+Now, let's move to create a very simple link:../web-app[web application] that will receive notifications.

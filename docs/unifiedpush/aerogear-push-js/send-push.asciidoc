@@ -5,25 +5,13 @@ title: Sending messages
 
 == Sending messages
 
-Now that we have the web application running and we have registered the 'mail' endpoint on the UnifiedPush server, it's time to send notifications. A bit earlier you received a _pushApplicationID_ and a _masterSecret_ after the successful registration of the Push Application. These ID’s are used for sending a message to all registered SimplePush installations, per channel.
+Now you have the Sample App running on your phone, so it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message to your device!
 
-On a command line issue the following _CURL_ command:
+== Simple Sender
 
-[source,c]
-----
-curl -3 -u "{PushApplicationID}:{MasterSecret}"
-   -v -H "Accept: application/json" -H "Content-type: application/json"
-   -X POST
-   -d '{"simple-push": "version=123"}
-   }'
+Login to the administration console of the UnifiedPush server and click on the "Send Push" icon in the navigation menu. Select the application that you created and write a message in the text field. Once done, hit the 'Send Push Notification'.
 
-https://SERVER:PORT/CONTEXT/rest/sender
-----
-
-Notice the _simple-push_ object in the payload. It contains a version number. The AeroGear UnifiedPush Server will perform an HTTP PUT update on the SimplePush server. This will cause the SimplePush server to send the push notification to all connected web clients, that belong to the used PushApplication.
-
-[NOTE]
-If you want to send another push notification to that endpoint, make sure you are increasing the version number (e.g. version=124 or version=125 in this case)! Using the same version for that given endpoint does not cause a push notification to be sent to the client.
+image:../aerogear-push-ios/img/send_notification.png[Send Notification]
 
 You should see again the 'mail' notification being received:
 
