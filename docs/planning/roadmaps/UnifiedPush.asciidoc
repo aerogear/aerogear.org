@@ -117,6 +117,7 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323753[JIRA
 1.0.0-Beta2 (_Released_ 15/Aug/14)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *link:https://issues.jboss.org/browse/AGPUSH-660[WildFly 8.x*]
+* *Documentation and UnifiedPush Guide*
 * *Hello World Examples, Version 1.0.0-Beta2*
 * *CRUD Quickstarts, Version 1.0.0-Beta2*
 * *critical fixes and stabilization*
