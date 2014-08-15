@@ -15,12 +15,15 @@ Prior to run the application, let's do a walkthrough of the code involved. On to
 ----
 var variantId = "<Your-Variant-ID>";
 var variantSecret = "<Your-Variant-Secret>";
-var simplePushUrl = "<URL of the running SimplePush server>";
 var unifiedPushUrl = "<URL of the running UnifiedPush server>";
+var simplePushUrl = "<URL of the running SimplePush server>";
 ----
 
 [NOTE]
 Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are common source of problem, so please revisit them if you are experiencing problems.
+
+[NOTE]
+If you are unsure, you can always look at the Example from the AdminUI as link:../unified-push-server[described in previous chapter].
 
 Next our UnifiedPush client object is created passing along the configuration params we declared earlier. The object would be used, as we will see later, to register the received endpoints from the SimplePush server to the UnifiedPush server.
 

@@ -8,34 +8,8 @@ The AeroGear UnifiedPush Server
 
 With all the Google work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to CGM for a later message sending.
 
-AeroGear Unified Push Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The _AeroGear UnifiedPush Server_ defines a logical _abstraction_ for Mobile Applications that have support for different Push Networks. Its _Push Applications_ can have different "Variants". For this tutorial we'll need to create a _Push Application_ which will contain one Android Variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
-
-For the purpose of the guide, we will be using the AdminUI console and assume that you have already link:http://aerogear.org/docs/unifiedpush/ups_userguide/server-installation/[installed] and link:http://aerogear.org/docs/unifiedpush/ups_userguide/admin-ui/[logged in] in the UnifiedPush Administration console.
-
-=== Register a Push Application 
-
-Now that we are logged in, let's create a new _Push Application_.  Click on the **Applications** tab to bring up the Applications screen.
-
-image::./img/application_01.png[Application home]
-
-
-Click **Create Application** to bring up the application dialog.
-
-image::./img/application_02.png[Application dialog]
-
-Click **Create** in the dialog to create your application.
-
-image::./img/application_03.png[Application created]
- 
-
-=== Register an Android Variant
-
-From your application's card, click **No Variants** to add a variant.
-
-image::./img/variant_01.png[Variant home]
+:pushplatform: Android
+include::docs/unifiedpush/include--register-app.asciidoc[]
 
 Click the **Add Variant** button. And fill out the Android options.  You will want to use the **Client ID** and **Project Number** from the *Google API Console* in their appropriate fields.
 

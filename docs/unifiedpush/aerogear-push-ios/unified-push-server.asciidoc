@@ -6,44 +6,20 @@ title: The UnifiedPush Server
 The UnifiedPush Server
 -----------------------
 
-
 With all the Apple work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unifiedpush-server[UnifiedPush Server], so that it can be used to connect to APNs for a later message sending.
 
-AeroGear UnifiedPush Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain two _Variants_ (one for {pushplatform} _Development_ and one for {pushplatform} _Production_ app). Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/unifiedpush/ups_userguide/overview/[here].
 
-The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain two _Variants_ (one for iOS _Development_ and one for iOS _Production_ app). Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/unifiedpush/ups_userguide/overview/[here].
+:pushplatform: iOS
+include::docs/unifiedpush/include--register-app.asciidoc[]
 
-For the purpose of the guide, we will be using the AdminUI console and assume that you have already link:http://aerogear.org/docs/unifiedpush/ups_userguide/server-installation/[installed] and link:http://aerogear.org/docs/unifiedpush/ups_userguide/admin-ui/[logged in] in the UnifiedPush Administration console.
-
-=== Register a Push Application 
-
-Now that we are logged in, let's create a new _Push Application_.
-
-In the Navigation panel, the Applications icon brings you to the management section for PushApplications:
-
-image::./img/applications_start.png[Manage your PushApplications]
-
-Now click the Create Application button which brings up a dialog to provide a name and an optional description:
-
-image::./img/application_create.png[Create Application]
-
-Now that we have our new application, you will notice that we have no variants. Time to create one. Click on the "No variants" icon to get started
-
-image::./img/application_created.png[Created Application]
-
-
-=== Register an iOS Variant
-
-image::./img/variant_home.png[Variant Home]
-
-Time to register our iOS Variant. Click on the _Add Variant_ button
+Time to register our iOS Variant. Click on the **Add Variant** button
 
 image::./img/add_variant.png[Add Variant]
 
 Fill in a _name_ and a _description_ and choose the iOS option from the list of available variant types. Doing so, will reveal a new dialog to upload the SSL Certificate we created earlier, as well as the the options to enter the _Passphrase_  and the choice between _Production_ and _Development_ variant.
 
-Once finish editing, click the _Add_ button and the variant will be created on server.
+Once finish editing, click the **Add** button and the variant will be created on server.
 
 image::./img/variant_created.png[Variant Created]
 
