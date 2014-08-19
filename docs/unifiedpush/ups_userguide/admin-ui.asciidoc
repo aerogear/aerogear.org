@@ -132,7 +132,7 @@ image::./img/send_push_payload.png[Enter the payload]
 
 To deliver the message click the +Send Push Notification+ button.
 
-NOTE: It is possible to filter the list of receivers, using +Alias+, +Device Types+ and +Category+. Read _THIS TUTORIAL_ for more details.....
+NOTE: It is possible to filter the list of receivers, using +Alias+, +Device Types+ and +Category+. Read the link:..next/#_server_integration_tutorials[Server Integration Tutorials] for more details.
 
 If all goes well, your message will be delivered by the 3rd party Push Network to your device:
 
