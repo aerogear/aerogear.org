@@ -130,9 +130,9 @@ Now let's look at the important code section:
         // successfully registered!
 
     } failure:^(NSError *error) {
-        // did receive an HTTP error from the PushEE server ???
+        // did receive an HTTP error from the UPS server ???
         // Let's log it for now:
-        NSLog(@"PushEE registration Error: %@", error);
+        NSLog(@"UPS registration Error: %@", error);
     }];
 }
 ----
