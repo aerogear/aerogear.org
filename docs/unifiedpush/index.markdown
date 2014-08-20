@@ -28,8 +28,8 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 ## Troubleshooting
 
 * [Android](aerogear-push-android/troubleshooting)
+* [Cordova](aerogear-push-cordova/troubleshooting)
 * [iOS](aerogear-push-ios/troubleshooting)
-* [cordova](aerogear-push-cordova/troubleshooting)
 
 ## API documentation
 
