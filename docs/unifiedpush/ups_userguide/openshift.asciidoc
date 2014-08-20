@@ -38,6 +38,7 @@ Documentation on rhc
 ^^^^^^^^^^^^^^^^^^^^
 
 If you are interested to learn more about +rhc+, checkout the following resources:
+
 * link:https://www.openshift.com/blogs/using-rhc-to-manage-paas-apps[How to Manage Apps in the Cloud with RHC]
 * link:https://access.redhat.com/documentation/en-US/OpenShift/2.0/html-single/User_Guide/index.html[OpenShift Online - User Guide]
 

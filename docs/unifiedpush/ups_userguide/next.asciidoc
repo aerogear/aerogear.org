@@ -2,6 +2,8 @@
 layout: basic
 title: UnifiedPush Server - Next steps
 ---
+:toc:
+toc::[]
 
 Next steps
 ----------
