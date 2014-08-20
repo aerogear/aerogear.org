@@ -17,7 +17,7 @@ When you call `PushRegistrar.register` onFailure is called with the exception me
 
 *Answer*
 
-There are several causes for this issue.  The easiest solution is that the GCM registration service is had an error and you should retry at a later date.  However, there are also several code/environment issues to check.
+There are several causes for this issue.  The easiest solution is that the GCM registration service had an error and you should retry at a later date.  However, there are also several code/environment issues to check.
 
 . You do not have Google Play Services installed on your device. +
 If you are running an emulator, make sure you are using a Google APIs Target higher than Android 4.2. If you are using a device, make sure you are using a Google experience device and not an Amazon Fire or AOSP device.
