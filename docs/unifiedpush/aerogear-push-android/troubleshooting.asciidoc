@@ -7,7 +7,7 @@ Android Troubleshooting
 -----------------------
 This troubleshooting guide takes as a pre-requesite that you have carefully followed the instructions in the link:../index.html[Android tutotial].
 
-We've documented some of the common configuration failures in this guide.  If you are having issues which we don't cover or otherwise need help, feel free to post to our link:http://aerogear-dev.1069024.n5.nabble.com/[mailing list].
+We've documented some of the common configuration failures in this guide.  If you are having issues which we don't cover or otherwise need help, feel free to post to our link:link:https://lists.jboss.org/mailman/listinfo/aerogear-users/[user list].
 
 ### Issue: Registration fails with the error "SERVICE_NOT_AVAILABLE"
 
@@ -17,7 +17,7 @@ When you call `PushRegistrar.register` onFailure is called with the exception me
 
 *Answer*
 
-There are several causes for this issue.  The easiest solution is that the GCM registration service is had an error and you should retry at a later date.  However, there are also several code/environment issues to check.
+There are several causes for this issue.  The easiest solution is that the GCM registration service had an error and you should retry at a later date.  However, there are also several code/environment issues to check.
 
 . You do not have Google Play Services installed on your device. +
 If you are running an emulator, make sure you are using a Google APIs Target higher than Android 4.2. If you are using a device, make sure you are using a Google experience device and not an Amazon Fire or AOSP device.
