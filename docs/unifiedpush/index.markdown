@@ -30,6 +30,7 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 * [Android](aerogear-push-android/troubleshooting)
 * [Cordova](aerogear-push-cordova/troubleshooting)
 * [iOS](aerogear-push-ios/troubleshooting)
+* [UnifiedPush Server - Enable Logging](ups_userguide/ups-debugging/#_enable_logging)
 
 ## API documentation
 
