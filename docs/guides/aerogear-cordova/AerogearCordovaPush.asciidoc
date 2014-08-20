@@ -18,7 +18,20 @@ Make sure you have the 3rd party configuration, required by GCM or APNs:
 * link:/docs/unifiedpush/aerogear-push-ios/app-id-ssl-certificate-apns/[Setup for ios]
 
 ## Getting Started
-If you haven't used https://github.com/apache/cordova-cli[Cordova CLI] before, be sure to check out the http://cordova.apache.org/docs/en/3.0.0/guide_cli_index.md.html[CLI Guide], as it explains how to install the CLI tool. Once you're familiar with that process, you may proceed with the following commands:
+
+The Cordova command line tooling is based on node.js so first you'll need to http://nodejs.org/download/[install node] then you can install Cordova by executing:
+
+[source,bash]
+----
+$ npm install -g Cordova
+----
+
+To deploy on iOS you need to install the ios-deploy package as well
+
+[source,bash]
+----
+$ npm install -g ios-deploy
+----
 
 ### Create the App
 Create a new app by executing:
@@ -40,6 +53,13 @@ The available _platform_ values are _ios_ and _android_.
 
 ### Install the plugin
 Install the aerogear-pushplugin-cordova plugin by executing:
+
+[source,bash]
+----
+$ cordova plugin add org.jboss.aerogear.cordova.push
+----
+
+or if you want the latest and greatest development version you can install the version from the git repo like so:
 
 [source,bash]
 ----
