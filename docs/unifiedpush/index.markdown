@@ -29,6 +29,7 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 
 * [Android](aerogear-push-android/troubleshooting)
 * [iOS](aerogear-push-ios/troubleshooting)
+* [Android](aerogear-push-android/troubleshooting)
 
 ## API documentation
 
