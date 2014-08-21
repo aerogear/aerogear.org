@@ -113,8 +113,8 @@ The algorithm that the server should use is still not decided. +
 Current candidates are Operational Transformation (OT) and Differential Synchronization (DS)
 ============================
 
-AeroGear
-^^^^^^^^
+SyncServer
+^^^^^^^^^^^
 * link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] Implement Server Sync Engine + 
 
 Android
