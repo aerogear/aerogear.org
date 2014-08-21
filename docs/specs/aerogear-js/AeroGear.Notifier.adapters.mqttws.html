@@ -507,7 +507,7 @@
         name: "client1",
         settings: {
             autoConnect: true,
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -680,6 +680,39 @@
             
             
             <td class="description last">The URL for the messaging service. This url will override and reset any connectURL specified when the client was created</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>mqttVersion</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">The MQTT protocol version. Should be 3 or 4.</td>
         </tr>
 	
 	
@@ -1050,7 +1083,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line184">line 184</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line190">line 190</a>
     </li></ul></dd>
     
     
@@ -1082,7 +1115,7 @@
     notifier.add({
         name: "client1",
         settings: {
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -1147,7 +1180,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line253">line 253</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line259">line 259</a>
     </li></ul></dd>
     
     
@@ -1179,7 +1212,7 @@
     notifier.add({
         name: "client1",
         settings: {
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -1390,7 +1423,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line390">line 390</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line396">line 396</a>
     </li></ul></dd>
     
     
@@ -1564,7 +1597,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line323">line 323</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line329">line 329</a>
     </li></ul></dd>
     
     
@@ -1612,7 +1645,7 @@
         name: "client1",
         settings: {
             autoConnect: true,
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -1746,7 +1779,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line368">line 368</a>
+        <a href="mqttws.js.html">notifier/adapters/mqttws.js</a>, <a href="mqttws.js.html#line374">line 374</a>
     </li></ul></dd>
     
     
@@ -1817,13 +1850,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Jul 21 2014 12:24:31 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 21 2014 12:00:29 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
