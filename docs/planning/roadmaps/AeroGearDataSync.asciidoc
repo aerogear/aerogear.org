@@ -30,10 +30,6 @@ Android
 The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
 Callback functions should be _success_, _conflict_, and _error_.
 
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _DiffMatchPatch conflict resolver_ + 
-A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
-configurable to allow for auto-merging.
-
 
 iOS
 ^^^
@@ -42,9 +38,6 @@ iOS
 The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
 Callback functions should be _success_, _conflict_, and _error_.
 
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _DiffMatchPatch conflict resolver_ + 
-A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
-configurable to allow for auto-merging.
 
 JavaScript
 ^^^^^^^^^^  
@@ -53,25 +46,44 @@ JavaScript
 The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
 Callback functions should be _success_, _conflict_, and _error_.
 
+
+0.2.0 (Jan, 2015) 
+~~~~~~~~~~~~~~~~~
+This version is an extension of version 0.1.0 where the addition of a DiffMatchPatch resolver for 
+each client platform.
+
+Android
+^^^^^^^
+
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _DiffMatchPatch conflict resolver_ + 
+A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
+configurable to allow for auto-merging.
+
+iOS
+^^^
+
+* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _DiffMatchPatch conflict resolver_ + 
+A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
+configurable to allow for auto-merging.
+
+
+JavaScript
+^^^^^^^^^^
+
 * link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _DiffMatchPatch conflict resolver_ + 
 A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
 configurable to allow for auto-merging.
 
-0.2.0 (Dec, 2014) 
+0.3.0 (Apr, 2015) 
 ~~~~~~~~~~~~~~~~~
-This version is the first that does _Data Sync_. In this version all interaction is initiated by 
-the client in a typical request/response manner. + 
-
-This version introduces a message protocol between the client and server.  This requires more 
-changes to the server side as it must conform to the message format defined, but is still an 
-extension of the first version with regards to the server in that it is still dependant on 
-the conflict detection. 
+This version introduces a message protocol between the client and server where the server can push 
+updates to the client.  
+This requires more changes to the server side as it must conform to the message format defined.
 
 AeroGear
 ^^^^^^^^
 [[aerogear-msg-format]]
 * link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] Define message format for passing messages between client and server.  +
-Define the metadata required to 
 
 Android
 ^^^^^^^
@@ -80,7 +92,6 @@ Android
 When sending data to the server the client library must package the data according to the defined
 message format as specified in <<aerogear-msg-format,AEROGEAR-XXX>>.
 
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] Conflict resolution handling.
 
 iOS
 ^^^
@@ -89,22 +100,9 @@ iOS
 When sending data to the server the client library must package the data according to the defined
 message format as specified in <<aerogear-msg-format,AEROGEAR-XXX>>.
 
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] Conflict resolution handling.
-
 JavaScript
 ^^^^^^^^^^
 
 * link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Implement message format handling + 
 When sending data to the server the client library must package the data according to the defined
 message format as specified in <<aerogear-msg-format,AEROGEAR-XXX>>.
-
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Conflict resolution handling.
-
-
-
-0.3.0 (Apr, 2015) 
-~~~~~~~~~~~~~~~~~
-"Real-time" syc
-
-
-
