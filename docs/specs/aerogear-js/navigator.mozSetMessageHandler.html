@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Namespace: navigator</h1>
+    <h1 class="page-title">Module: mozSetMessageHandler</h1>
     
     
 
@@ -28,7 +28,7 @@
     
 <header>
     <h2>
-    navigator
+    mozSetMessageHandler
     </h2>
     
 </header>  
@@ -39,10 +39,101 @@
     
     
         
-            <div class="description">The window.navigator object</div>
+<dt>
+    <h4 class="name" id="mozSetMessageHandler"><span class="type-signature"></span>new mozSetMessageHandler<span class="signature">(messageType, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <h5>Status: <span class="labelExperimental">Experimental</span></h5>
+    
+
+    
+    <div class="description">
+        Add the setMessageHandler/mozSetMessageHandler function to the global navigator object
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
         
-        
-        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>messageType</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">a name or category to give the messages being received and in this implementation, likely 'push'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the function to be called when a message of this type is received</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
 <dl class="details">
     
         
@@ -65,7 +156,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.simplepush.js.html">simplepush/aerogear.simplepush.js</a>, <a href="aerogear.simplepush.js.html#line68">line 68</a>
+        <a href="aerogear.simplepush.js.html">simplepush/aerogear.simplepush.js</a>, <a href="aerogear.simplepush.js.html#line157">line 157</a>
     </li></ul></dd>
     
     
@@ -76,8 +167,37 @@
     
 </dl>
 
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
         
-        
+    <pre class="prettyprint"><code>                        navigator.setMessageHandler( "push", function( message ) {
+                            if ( message.channelID === mailEndpoint.channelID ) {
+                                console.log("Mail Message Received");
+                            }
+                        });
+
+                        or
+                        // Mozilla's spec currently has the 'moz' prefix
+                        navigator.mozSetMessageHandler( "push", function( message ) {
+                            if ( message.channelID === mailEndpoint.channelID ) {
+                                console.log("Mail Message Received");
+                            }
+                        });</code></pre>
+
+    
+</dd>
+
     
     </div>
     
@@ -87,13 +207,6 @@
     
     
     
-    
-        <h3 class="subsection-title">Modules</h3>
-        
-        <dl>
-            <dt><a href="navigator.push.html">push</a></dt>
-            <dd></dd>
-        </dl>
     
     
     
