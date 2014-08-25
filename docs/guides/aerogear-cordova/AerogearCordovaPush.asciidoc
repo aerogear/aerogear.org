@@ -123,6 +123,22 @@ The passed in 'event' object contains:
 
 Also have a look here for link:/docs/specs/aerogear-push-messages/[more information about the message] sending and properties
 
+=== iOS background notification
+Sending notifications that contain 'content-availble' on iOS will call the javacript first before launching the app, this will enable you to update the UI or do a silent push (e.g. without an alert) to update the content of your app without the user noticing.  After fetching the content you'll have to 'inform' the os about the result by calling setContentAvailable with either NewData, NoData or Failed link:/docs/specs/aerogear-cordova/Push.html#setContentAvailable[AeroGear Push plugin API]
+
+[source, javascript]
+----
+function onNotification(event) {
+
+  if (event['content-available'] === 1) {
+    if (!event.foreground) {
+      // fetch content
+      push.setContentAvailable(push.FetchResult.NewData);
+    }
+  }
+}
+----
+
 To unregister (only available on Android):
 
 [source,javascript]
