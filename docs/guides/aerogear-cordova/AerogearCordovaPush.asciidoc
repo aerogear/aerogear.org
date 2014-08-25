@@ -105,7 +105,7 @@ var pushConfig = {
 push.register(onNotification, successHandler, errorHandler, pushConfig);
 ----
 
-Start receiving messages:
+== Start receiving messages:
 
 [source,javascript]
 ----
@@ -139,7 +139,7 @@ function onNotification(event) {
 }
 ----
 
-To unregister (only available on Android):
+== To unregister (only available on Android):
 
 [source,javascript]
 ----
