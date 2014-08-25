@@ -49,7 +49,7 @@ The API should be able to detect a 409 Conflict and allow the user to take actio
 Callback functions should be _success_, _conflict_, and _error_.
 
 
-0.2.0 (Nov, 2015) Conflict resolvers
+0.2.0 (Nov, 2014) Conflict resolvers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This version is an extension of version 0.1.0 where the addition of a DiffMatchPatch resolver for 
 each client platform.
