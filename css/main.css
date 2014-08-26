@@ -193,13 +193,11 @@ li > p {
 /* =================== Nav bar ====================================================================================== */
 #main-header nav {
     display: inline-block;
-    position: absolute;
-    right: 0;
-    top: 110px;
     background-color: #f2f2f2;
     border-top: 1px solid #dadada;
     border-bottom: 1px solid #dadada;
     width: 100%;
+    margin-top: 1.2em;
 }
 
 #main-header ul {
@@ -318,7 +316,7 @@ a.news:hover {
 
 /* =================== Bringing mobile together ===================================================================== */
 .start-header {
-    margin-top: 6em;
+    margin-top: 1.2em;
     text-align: center;
     margin-bottom: 0.8em;
 }
@@ -675,6 +673,10 @@ pre {
 
     .features h3 {
         margin: 0 0.5em;
+    }
+
+    .rht-branding-visible {
+        display: none !important;
     }
 
     /* =============== Side Navigation: accessible with swipe ======================================================= */
