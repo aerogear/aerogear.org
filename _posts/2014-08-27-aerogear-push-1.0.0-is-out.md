@@ -38,7 +38,7 @@ The 1.0.0 release of the UnifiedPush Server is also backed by various Docker ima
 On the client side we have tiny SDKs which help to register the device from within your app with the UnifiedPush Server. Below is a list of supported platforms
 
 * [Apache Cordova Push Plugin 1.0.0](http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.push)
-* Android Push 1.0.0 -> LINK
+* [Android Push 1.0.0](http://search.maven.org/#browse%7C1791667920)
 * [iOS Push](http://cocoapods.org/?q=AeroGear-Push)
 * [JavaScript/FirefoxOS, part of AeroGear.js 1.5.2](https://github.com/aerogear/aerogear-js-dist/releases/tag/1.5.2)
 
