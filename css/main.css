@@ -675,6 +675,10 @@ pre {
         margin: 0 0.5em;
     }
 
+    .rht-branding-visible {
+        display: none !important;
+    }
+
     /* =============== Side Navigation: accessible with swipe ======================================================= */
 
     #main-header nav ul {
