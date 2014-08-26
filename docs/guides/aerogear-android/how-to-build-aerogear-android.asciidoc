@@ -15,14 +15,14 @@ title: How to build AeroGear Android
 
 === Building
 
-AeroGear's Android libraries are built as apklib projects using Maven, but Google doesn't ship all the needed libraries to maven central. You need locally deploy them using the link:https://github.com/mosabua/maven-android-sdk-deployer[maven-android-sdk-deployer].
+AeroGear's Android libraries are built as apklib projects using Maven, but Google does not ship all the required libraries to Maven Central. You must locally deploy them using the link:https://github.com/mosabua/maven-android-sdk-deployer[maven-android-sdk-deployer].
 
 ==== Checkout maven-android-sdk-deployer
 ```
 git clone git://github.com/mosabua/maven-android-sdk-deployer.git
 ```
 
-==== Install android platform
+==== Install Android platform
 ```
 cd $PWD/maven-android-sdk-deployer/platforms/android-19
 mvn install -N --quiet
