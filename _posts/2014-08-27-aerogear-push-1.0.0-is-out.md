@@ -31,7 +31,7 @@ The 1.0.0 release of the UnifiedPush Server is available on [Openshift](https://
 
 ### Docker
 
-The 1.0.0 release of the UnifiedPush Server is also backed by various Docker images.......
+The 1.0.0 release of the UnifiedPush Server is also backed by various Docker images for [WildFly](https://registry.hub.docker.com/u/abstractj/unifiedpush-wildfly/) and [AS7](https://registry.hub.docker.com/u/abstractj/unifiedpush-as7/).
 
 ## Client SDKs
 
