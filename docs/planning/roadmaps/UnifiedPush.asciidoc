@@ -125,8 +125,8 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323753[JIRA
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325092[JIRA: Push 1.0.0-Beta2]
 
-1.0.0-Final (26. August 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.0.0-Final (_Released_ 27/Aug/14)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Final Release*
 * *Client Push SDKs*
 ** *Android Push client-sdk 1.0.0*
@@ -139,26 +139,12 @@ Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325092[JIRA
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12323754[JIRA: Push 1.0.0]
 
 
-1.0.1 (early September 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* *consumption of Keycloak 1.0-RC1*
+1.0.1 (mid/late September 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* *consumption of latest Keycloak release*
 * *critical fixes and stabilization, as needed*
 
 Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325080[JIRA: Push 1.0.1]
-
-1.0.2 (mid September 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-* *consumption of Keycloak 1.0.Final*
-* *critical fixes and stabilization, as needed*
-
-Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325081[JIRA: Push 1.0.2]
-
-1.0.3 (late September 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* *critical fixes and stabilization, as needed*
-
-Details: link:https://issues.jboss.org/browse/AGPUSH/fixforversion/12325082[JIRA: Push 1.0.3]
-
 
 1.0.x Release(s)
 ~~~~~~~~~~~~~~~~
