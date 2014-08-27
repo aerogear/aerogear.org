@@ -19,7 +19,7 @@ The library can be downloaded through the project link:https://github.com/aeroge
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>unifiedpush-java-client</artifactId>
-            <version>0.8.0</version>
+            <version>1.0.0</version>
         </dependency>
 
 === API Overview
