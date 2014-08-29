@@ -30,8 +30,14 @@ push-0.6.0 (End May)
 * bug fixes
 * grunt build for executing tests
 
-push-1.0.0 (July)
-~~~~~~~~~~~~~~~~~
+push-0.7.0 (August)
+~~~~~~~~~~~~~~~~~~~
+* iOS 8 support
+* GCM content title support for Android
+* android binaries no longer installed on other platforms
+
+push-1.0.0 (August)
+~~~~~~~~~~~~~~~~~~~
 * background notification
 
 otp-0.7.0 (November)
