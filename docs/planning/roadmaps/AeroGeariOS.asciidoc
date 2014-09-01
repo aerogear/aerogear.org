@@ -111,7 +111,7 @@ link:https://issues.jboss.org/issues/?filter=12321979[JIRAs for 1.7.0 release]
 
 2.0.0 (26th September 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-link:https://issues.jboss.org/browse/AGIOS-245?jql=project%20%3D%20AGIOS%20AND%20fixVersion%20%3D%202.0.0[JIRAs for 2.0.0 release]
+link:https://issues.jboss.org/browse/AGIOS/fixforversion/12321918[JIRAs for 2.0.0 release]
 
 * *modularization* link:https://issues.jboss.org/browse/AGIOS-187[AGIOS-187]
 
