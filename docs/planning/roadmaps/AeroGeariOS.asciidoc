@@ -141,9 +141,8 @@ link:https://issues.jboss.org/browse/AGIOS/fixforversion/12321918[JIRAs for 2.0.
 2.2.0 (November 2014)
 ~~~~~~~~~~~~~~~~~~~~~
 * *Sync* link:https://issues.jboss.org/browse/AGIOS-101[AGIOS-101] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1374[AGEROGEAR-1374]
-** Data model API link:https://issues.jboss.org/browse/AEROGEAR-1408[AEROGEAR-1408]
 ** Conflict resolution lib link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
-** Cookbook recipe update link:https://issues.jboss.org/browse/AGIOS-126[AGIOS-126], link:https://issues.jboss.org/browse/AGIOS-127[AGIOS-127], link:https://issues.jboss.org/browse/AGIOS-128[AGIOS-128]
+** Cookbook recipe: create demo app for sync
 
 
 2.x Release(s)
