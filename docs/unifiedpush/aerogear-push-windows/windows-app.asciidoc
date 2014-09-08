@@ -19,7 +19,7 @@ image::./img/visual-studio-main.png[Visual Studio Main Screen]
 
 Now it's time to add the aerogear nuget package, right click on project in the 'Solution Explorer' and select 'Manage NuGet Packages' select online and nuget.org and search for aerogear and install to add the dependency.
 
-image::./img/newget.png[NuGet Package]
+image::./img/nuget.png[NuGet Package]
 
 Open `MainPage.xaml` from the `Solution Explorer` and add a `ListView` to the `Grid`
 
