@@ -226,7 +226,7 @@ namespace PushApplication
 
 In the 'HandleNotification' callback method [3] we simple extract the message payload and add it to the `messageList`.
 
-We are now ready to run the application. Right-click on your project, click 'Debug As' -> 'Android Application' and from the 'Android Device Chooser' dialog, choose either an emulator or a device. After a few seconds you will be presented with the following screen:
+We are now ready to run the application.
 
 image::./img/app-main-screen.png[Push Application Main Screen]
 
