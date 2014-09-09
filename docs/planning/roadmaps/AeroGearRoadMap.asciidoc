@@ -36,8 +36,12 @@ title: RoadMap
 
 === AeroGear 1.3.0 (Late January)
 
-*	Offline/Sync
+*	link:/docs/planning/roadmaps/AeroGearConflictResolution[Conflict Resolution]  
 
-=== AeroGear 2.0.0 (Mid March)
+=== AeroGear 1.4.0 (Late March)
+
+*	Offline/link:/docs/planning/roadmaps/AeroGearDataSync[Sync]  
+
+=== AeroGear 2.0.0 (Mid May)
 
 

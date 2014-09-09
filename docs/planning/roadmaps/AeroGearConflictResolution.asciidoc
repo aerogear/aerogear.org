@@ -1,0 +1,85 @@
+---
+layout: basic
+title: AeroGear Conflict Resolution
+---
+
+AeroGear Conflict Resolution Roadmap
+====================================
+:Author: Daniel Bevenius
+
+References
+----------
+
+* link:/docs/specs/aerogear-conflict-resolution/[AeroGear Conflict Resolution Specification]  
+
+
+0.1.0 (Oct, 2014) Revision control     
+----------------------------------
+This goal of this version is to require minimal changes to existing servers and no special message format 
+required between the client and the server.
+
+AeroGear
+~~~~~~~~
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side contract for conflict detection/handling_. +
+The only requirements on the server side is that it be able to detect when a conflict occurs and return a
+HTTP 409 Conflict in response. The body/payload of the response must contains the server latest version of the 
+data.
+
+Android
+~~~~~~~
+[[android-resolver]]
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Conflict resolution handling_ + 
+The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
+Callback functions should be _success_, _conflict_, and _error_.
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _DiffMatchPatch conflict resolver_ + 
+A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
+configurable to allow for auto-merging.
+
+
+iOS
+~~~
+[[ios-resolver]]
+* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX]  _Conflict resolution handling_ + 
+The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
+Callback functions should be _success_, _conflict_, and _error_.
+* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _DiffMatchPatch conflict resolver_ + 
+A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
+configurable to allow for auto-merging.
+
+
+JavaScript
+~~~~~~~~~~
+
+[[js-resolver]]
+* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX]  _Conflict resolution handling_ + 
+The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
+Callback functions should be _success_, _conflict_, and _error_.
+* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _DiffMatchPatch conflict resolver_ + 
+A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
+configurable to allow for auto-merging.
+
+0.2.0 (Jan, 2015) Server push
+-----------------------------
+This version extends upon 0.2.0 to add support for the server to reach out and notify the client that there 
+is a newer version available. 
+
+AeroGear
+~~~~~~~~
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] Document server side requirements for adding server side notification support + 
+UnifiedPush Server is an option for sending from the server side.
+
+Android
+~~~~~~~
+
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] Provide MessageHandler that is capable of delegeting to a configured <<android-resolver, Resolver>> 
+
+iOS
+~~~
+
+* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] Provide something that is capable of delegeting to a configured <<ios-resolver, Resolver>> 
+
+JavaScript
+~~~~~~~~~~
+
+* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Provide Notifier that is capable of delegeting to a configured <<js-resolver, Resolver>> 
+
