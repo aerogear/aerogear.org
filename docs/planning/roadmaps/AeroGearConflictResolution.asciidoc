@@ -58,28 +58,73 @@ Callback functions should be _success_, _conflict_, and _error_.
 A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
 configurable to allow for auto-merging.
 
-0.2.0 (Jan, 2015) Server push
------------------------------
-This version extends upon 0.2.0 to add support for the server to reach out and notify the client that there 
-is a newer version available. 
+0.2.0 (Dec, 2015) Partial Updates, SPDY
+---------------------------------------
+
+This version brings support for efficient data exchange where minimal set of object modifications is sent in a request to server and in response from server (using json-merge-patch format). +
+
+SPDY can be used as an efficient mean of communication.
+
 
 AeroGear
 ~~~~~~~~
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] Document server side requirements for adding server side notification support + 
-UnifiedPush Server is an option for sending from the server side.
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side contract for partial updates_. +
+The requirement of the server is to use HTTP PATCH method together with ETag header and partially updated content. The server understands HTTP PATCH requests with IETF link:http://tools.ietf.org/html/rfc6902[JSON Patch] and link:http://tools.ietf.org/html/draft-ietf-appsawg-json-merge-patch-07[JSON Merge Patch] (draft) formats, where the appropriate format is specified by Content-type header defined by given format. The server supports automatic conflict resolution mode. The server uses appropriate response status codes and response body in case of merge with no conflict (200 OK, no response), resolved conflict (200 OK, response in format json-patch or json-merge-patch as specified by Accept header) or unresolvable conflict (409 Conflict, full response). +
+The server is required to support HTTP HEAD method together with ETag header and respond 304 Not Modified if there is no conflict. +
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side contract for optional usage of SPDY_. +
+The server can support SPDY to allow for efficient synchronization with multiple endpoints.
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Epic for testing reference servers for Partial Updates_. +
+The reference containers are checked for conformance of Partial Updates feature.
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Epic for testing support of SPDY in reference containers_. +
+The reference containers are checked for proper support of SPDY. The support should be documented or implemented as required.
+
+Android
+~~~~~~~
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Partial Updates for Android_
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _SPDY support for Android_
+
+
+iOS
+~~~
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Partial Updates for iOS_
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _SPDY support for iOS_
+
+
+JavaScript
+~~~~~~~~~~
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Partial Updates for JavaScript_
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _SPDY support for JavaScript_
+
+
+0.3.0 (Feb, 2015) Server push, Batch updates
+--------------------------------------------
+
+This version extends upon 0.2.0 to add support for the server to reach out and notify the client that there 
+is a newer version available. The server may choose a most appropriate communication channel that will be used for notifying a client about a change, such as WebSocket or Push Notification. Specifically server is encouraged to reuse any existing real-time communication channel between the client and the server, such as WebSocket or Server-Sent Events. +
+
+Client SDKs and Server API conforms to Batch API that will be designed for this purpose. The API reuses contracts established for Partial Updates feature. As this behavior is not formally specified by any existing standard, existing implementations should be considered.
+
+AeroGear
+~~~~~~~~
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side requirements for adding server side notification support_
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document Batch API_
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Epic for implementing notification about a change on reference servers_
+* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Epic for implementing Batch API on reference servers_
 
 Android
 ~~~~~~~
 
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] Provide MessageHandler that is capable of delegeting to a configured <<android-resolver, Resolver>> 
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Provide MessageHandler that is capable of delegeting to a configured <<android-resolver, Resolver>>_
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Implement Batch API on Android_
 
 iOS
 ~~~
 
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] Provide something that is capable of delegeting to a configured <<ios-resolver, Resolver>> 
+* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Provide Notifier that is capable of delegeting to a configured <<ios-resolver, Resolver>>_
+* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Implement Batch API on iOS_
 
 JavaScript
 ~~~~~~~~~~
 
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Provide Notifier that is capable of delegeting to a configured <<js-resolver, Resolver>> 
-
+* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Provide Notifier that is capable of delegeting to a configured <<js-resolver, Resolver>>_
+* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Implement Batch API in JavaScript_
