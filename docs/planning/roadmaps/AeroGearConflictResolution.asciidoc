@@ -63,7 +63,9 @@ configurable to allow for auto-merging.
 -----------------------------
 This version extends upon *0.1.0* to add support for the server to reach out and notify the client that there 
 is a newer version available. This version requires that the server be updated to enable the sending of notifications when
-data is updated, but there are no additional requirements apart from the requirements specified in *0.1.0*.
+data is updated, but there are no additional requirements apart from the requirements specified in *0.1.0*. +
+
+The server may choose the most appropriate communication channel to use for notifying a client about a change, such as WebSocket or Push Notification. Specifically, the server is encouraged to reuse any existing real-time communication channel between the client and the server, such as WebSocket or Server-Sent Events.
 
 AeroGear
 ~~~~~~~~
@@ -86,9 +88,7 @@ JavaScript
 ---------------------------------
 
 This version introduces a message protocol between the client and server. This enables efficient data exchange where minimal set of object modifications are sent 
-between the client and server. The message format used is the link:http://tools.ietf.org/html/draft-ietf-appsawg-json-merge-patch-07[json-merge-patch] format.
-
-The server may choose the most appropriate communication channel to use for notifying a client about a change, such as WebSocket or Push Notification. Specifically, the server is encouraged to reuse any existing real-time communication channel between the client and the server, such as WebSocket or Server-Sent Events. +
+between the client and server.
 
 AeroGear
 ~~~~~~~~
