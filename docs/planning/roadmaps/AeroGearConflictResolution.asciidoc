@@ -59,20 +59,39 @@ A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. T
 configurable to allow for auto-merging.
 
 
-
-
-0.2.0 (Dec, 2014) Server push, Partial updates
-----------------------------------------------
-
-This version extends upon 0.2.0 to add support for the server to reach out and notify the client that there 
-is a newer version available. The server may choose a most appropriate communication channel that will be used for notifying a client about a change, such as WebSocket or Push Notification. Specifically server is encouraged to reuse any existing real-time communication channel between the client and the server, such as WebSocket or Server-Sent Events. +
-
-This version brings support for efficient data exchange where minimal set of object modifications is sent in a request to server and in response from server (using json-merge-patch format).
-
+0.2.0 (Nov, 2014) Server push
+-----------------------------
+This version extends upon *0.1.0* to add support for the server to reach out and notify the client that there 
+is a newer version available. This version requires that the server be updated to enable the sending of notifications when
+data is updated, but there are no additional requirements apart from the requirements specified in *0.1.0*.
 
 AeroGear
 ~~~~~~~~
 * link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side requirements for adding server side notification support_
+UnifiedPush Server is an option for sending from the server side.
+
+Android
+~~~~~~~
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Provide Notification handler that is capable of delegeting to a configured <<android-resolver, Resolver>>_
+
+iOS
+~~~
+* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Provide Notification handler that is capable of delegeting to a configured <<ios-resolver, Resolver>>_
+
+JavaScript
+~~~~~~~~~~
+* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Provide Notification handler that is capable of delegeting to a configured <<js-resolver, Resolver>>_
+
+0.3.0 (Dec, 2014) Partial updates
+---------------------------------
+
+This version introduces a message protocol between the client and server. This enables efficient data exchange where minimal set of object modifications are sent 
+between the client and server. The message format used is the link:http://tools.ietf.org/html/draft-ietf-appsawg-json-merge-patch-07[json-merge-patch] format.
+
+The server may choose the most appropriate communication channel to use for notifying a client about a change, such as WebSocket or Push Notification. Specifically, the server is encouraged to reuse any existing real-time communication channel between the client and the server, such as WebSocket or Server-Sent Events. +
+
+AeroGear
+~~~~~~~~
 * link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side contract for partial updates_. +
 The requirement of the server is to use HTTP PATCH method together with ETag header and partially updated content. The server understands HTTP PATCH requests with IETF link:http://tools.ietf.org/html/rfc6902[JSON Patch] and link:http://tools.ietf.org/html/draft-ietf-appsawg-json-merge-patch-07[JSON Merge Patch] (draft) formats, where the appropriate format is specified by Content-type header defined by given format. The server supports automatic conflict resolution mode. The server uses appropriate response status codes and response body in case of merge with no conflict (200 OK, no response), resolved conflict (200 OK, response in format json-patch or json-merge-patch as specified by Accept header) or unresolvable conflict (409 Conflict, full response). +
 The server is required to support HTTP HEAD method together with ETag header and respond 304 Not Modified if there is no conflict. +
@@ -82,30 +101,25 @@ The reference containers are checked for conformance of Partial Updates feature.
 
 Android
 ~~~~~~~
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Provide MessageHandler that is capable of delegeting to a configured <<android-resolver, Resolver>>_
 * link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Partial Updates for Android_
 
 
 iOS
 ~~~
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Provide Notifier that is capable of delegeting to a configured <<ios-resolver, Resolver>>_
 * link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Partial Updates for iOS_
 
 
 JavaScript
 ~~~~~~~~~~
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Provide Notifier that is capable of delegeting to a configured <<js-resolver, Resolver>>_
 * link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Partial Updates for JavaScript_
 
 
-
-
-0.3.0 (Feb, 2015) Data Persistence / Offline, SPDY
+0.4.0 (Feb, 2015) Data Persistence / Offline, SPDY
 --------------------------------------------------
 
 The DataManager automatically stores data retrieved from server endpoint. Client SDKs provide a way how to connect DataManager with Pipeline and Resolver to allow for automatic updates and offline mode.
 
-SPDY can be used as an efficient mean of communication.
+SPDY can be used as an efficient means of communication.
 
 
 
@@ -134,7 +148,7 @@ JavaScript
 
 
 
-0.4.0 (Apr, 2015) Batch Updates
+0.5.0 (Apr, 2015) Batch Updates
 -------------------------------
 
 Client SDKs and Server API conforms to Batch API that will be designed for this purpose. The API reuses contracts established for Partial Updates feature. As this behavior is not formally specified by any existing standard, existing implementations should be considered.
