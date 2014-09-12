@@ -38,7 +38,7 @@ image::./img/AppID_3.png[Overview]
 
 Click the Edit button and scroll down to the Push Notifications section. Here we are asked to generate a _Development_ and a _Production_ certificate that will be used by the UnifiedPush server when contacting the Apple Push Notification service to send messages. If you plan to distribute your app in the App Store, you are required to generate a Production certificate. In this guide we will generate both Certificates and register them with the UnifiedPush server.
 
-Let's start first by generating the _Development Certificate_. Click the _Generate_ button on the _Development SSL Certificate_ section:
+Let's start first by generating the _Development Certificate_. Click the _Create Certificate..._ button on the _Development SSL Certificate_ section:
 
 image::./img/SSLCert.png[SSL Certificate]
  
