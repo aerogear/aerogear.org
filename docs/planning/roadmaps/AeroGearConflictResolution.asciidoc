@@ -151,7 +151,7 @@ JavaScript
 0.5.0 (Apr, 2015) Batch Updates
 -------------------------------
 
-Client SDKs and Server API conforms to Batch API that will be designed for this purpose. The API reuses contracts established for Partial Updates feature. As this behavior is not formally specified by any existing standard, existing implementations should be considered.
+Client SDKs and Server API conforms to Batch API that will be designed for this purpose. The API reuses contracts established by Partial Updates feature. The link:http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html#_Toc372793748[OData Batch] format can be considered as a template format.
 
 AeroGear
 ~~~~~~~~
