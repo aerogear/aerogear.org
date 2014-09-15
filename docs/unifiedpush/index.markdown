@@ -22,6 +22,7 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 * [Tutorial: Android Push Notifications](aerogear-push-android)
 * [Tutorial: iOS Push Notifications](aerogear-push-ios)
 * [Tutorial: JavaScript Push Notifications](aerogear-push-js)
+* [Tutorial: Windows Push Notifications](aerogear-push-windows)
 * [Tutorial: Chrome Packaged Apps Push Notifications](aerogear-push-chrome)
 * [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
