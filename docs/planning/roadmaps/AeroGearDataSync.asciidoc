@@ -20,7 +20,7 @@ Current candidates are Operational Transformation (OT) and Differential Synchron
 ============================
 
 SyncServer
-^^^^^^^^^^^
+~~~~~~~~~~
 * link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] Implement Server Sync Engine + 
 
 Android
