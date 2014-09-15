@@ -24,7 +24,7 @@ title: AeroGear Android User Guide
 
 ## JavaDoc documentation
 * [AeroGear Android 1.4.0](/docs/specs/aerogear-android/)
-* [AeroGear Android Push 0.2](/docs/specs/aerogear-android-push/)
+* [AeroGear Android Push 1.0.0](/docs/specs/aerogear-android-push/)
 
 ## Projects using AeroGear on Android
 * [call4paperz4android](https://github.com/danielpassos/call4paperz4android)
