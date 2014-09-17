@@ -20,7 +20,7 @@ The 1.0.1 release of the UnifiedPush Server is available on [Openshift](https://
 
 ### Cordova Plugin
 
-The [Apache Cordova Push Plugin 1.0.1](http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.push) contains an important fixe for the Android Platform.
+The [Apache Cordova Push Plugin 1.0.1](http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.push) contains an important fix for the Android Platform.
 
   
 
