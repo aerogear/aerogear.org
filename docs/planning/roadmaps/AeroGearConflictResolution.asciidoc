@@ -7,20 +7,15 @@ AeroGear Conflict Resolution Roadmap
 ====================================
 :Author: Daniel Bevenius
 
-References
-----------
 
-* link:/docs/specs/aerogear-conflict-resolution/[AeroGear Conflict Resolution Specification]  
-
-
-0.1.0 (Oct, 2014) Revision control     
-----------------------------------
+0.1.0 (Oct, 2014) link:https://issues.jboss.org/browse/AEROGEAR-1425[Revision control]     
+--------------------------------------------------------------------------------------
 This goal of this version is to require minimal changes to existing servers and no special message format 
 required between the client and the server.
 
 AeroGear
 ~~~~~~~~
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side contract for conflict detection/handling_. +
+* link:https://issues.jboss.org/browse/AEROGEAR-1428[AEROGEAR-1428] _Document server side contract for conflict detection/handling_. +
 The only requirements on the server side is that it be able to detect when a conflict occurs and return a
 HTTP 409 Conflict in response. The body/payload of the response must contains the server latest version of the 
 data.
@@ -28,10 +23,10 @@ data.
 Android
 ~~~~~~~
 [[android-resolver]]
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Conflict resolution handling_ + 
+* link:https://issues.jboss.org/browse/AGDROID-284[AGDROID-284] _Conflict resolution handling_ + 
 The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
 Callback functions should be _success_, _conflict_, and _error_.
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _DiffMatchPatch conflict resolver_ + 
+* link:https://issues.jboss.org/browse/AGDROID-285[AGDROID-285] _DiffMatchPatch conflict resolver_ + 
 A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
 configurable to allow for auto-merging.
 
@@ -39,10 +34,10 @@ configurable to allow for auto-merging.
 iOS
 ~~~
 [[ios-resolver]]
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX]  _Conflict resolution handling_ + 
+* link:https://issues.jboss.org/browse/AGIOS-266[AGIOS-266]  _Conflict resolution handling_ + 
 The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
 Callback functions should be _success_, _conflict_, and _error_.
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _DiffMatchPatch conflict resolver_ + 
+* link:https://issues.jboss.org/browse/AGIOS-267[AGIOS-267] _DiffMatchPatch conflict resolver_ + 
 A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
 configurable to allow for auto-merging.
 
@@ -51,16 +46,16 @@ JavaScript
 ~~~~~~~~~~
 
 [[js-resolver]]
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX]  _Conflict resolution handling_ + 
+* link:https://issues.jboss.org/browse/AGJS-214[AGJS-214]  _Conflict resolution handling_ + 
 The API should be able to detect a 409 Conflict and allow the user to take action using callbacks. + 
 Callback functions should be _success_, _conflict_, and _error_.
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _DiffMatchPatch conflict resolver_ + 
+* link:https://issues.jboss.org/browse/AGJS-215[AGJS-215] _DiffMatchPatch conflict resolver_ + 
 A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. This resolver should be 
 configurable to allow for auto-merging.
 
 
-0.2.0 (Nov, 2014) Server push
------------------------------
+0.2.0 (Nov, 2014) link:https://issues.jboss.org/browse/AEROGEAR-1495[Server push]
+---------------------------------------------------------------------------------
 This version extends upon *0.1.0* to add support for the server to reach out and notify the client that there 
 is a newer version available. This version requires that the server be updated to enable the sending of notifications when
 data is updated, but there are no additional requirements apart from the requirements specified in *0.1.0*. +
@@ -69,53 +64,53 @@ The server may choose the most appropriate communication channel to use for noti
 
 AeroGear
 ~~~~~~~~
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side requirements for adding server side notification support_
+* link:https://issues.jboss.org/browse/AEROGEAR-1496[AEROGEAR-1496] _Document server side requirements for adding server side notification support_
 UnifiedPush Server is an option for sending from the server side.
 
 Android
 ~~~~~~~
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Provide Notification handler that is capable of delegeting to a configured <<android-resolver, Resolver>>_
+* link:https://issues.jboss.org/browse/AGDROID-286[AGDROID-286] _Provide Notification handler that is capable of delegeting to a configured <<android-resolver, Conflict Resolver>>_
 
 iOS
 ~~~
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Provide Notification handler that is capable of delegeting to a configured <<ios-resolver, Resolver>>_
+* link:https://issues.jboss.org/browse/AGIOS-268[AGIOS-268] _Provide Notification handler that is capable of delegeting to a configured <<ios-resolver, Conflict Resolver>>_
 
 JavaScript
 ~~~~~~~~~~
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Provide Notification handler that is capable of delegeting to a configured <<js-resolver, Resolver>>_
+* link:https://issues.jboss.org/browse/AGJS-216[AGJS-216] _Provide Notification handler that is capable of delegeting to a configured <<js-resolver, Conflict Resolver>>_
 
-0.3.0 (Dec, 2014) Partial updates
----------------------------------
+0.3.0 (Dec, 2014) link:https://issues.jboss.org/browse/AEROGEAR-1497[Partial updates]
+-------------------------------------------------------------------------------------
 
 This version introduces a message protocol between the client and server. This enables efficient data exchange where minimal set of object modifications are sent 
 between the client and server.
 
 AeroGear
 ~~~~~~~~
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side contract for partial updates_. +
+* link:https://issues.jboss.org/browse/AEROGEAR-1498[AEROGEAR-1498] _Document server side contract for partial updates_. +
 The requirement of the server is to use HTTP PATCH method together with ETag header and partially updated content. The server understands HTTP PATCH requests with IETF link:http://tools.ietf.org/html/rfc6902[JSON Patch] and link:http://tools.ietf.org/html/draft-ietf-appsawg-json-merge-patch-07[JSON Merge Patch] (draft) formats, where the appropriate format is specified by Content-type header defined by given format. The server supports automatic conflict resolution mode. The server uses appropriate response status codes and response body in case of merge with no conflict (200 OK, no response), resolved conflict (200 OK, response in format json-patch or json-merge-patch as specified by Accept header) or unresolvable conflict (409 Conflict, full response). +
 The server is required to support HTTP HEAD method together with ETag header and respond 304 Not Modified if there is no conflict. +
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Epic for implementing notification about a change on reference servers_
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Epic for testing reference servers for Partial Updates_. +
+* link:https://issues.jboss.org/browse/AEROGEAR-1499[AEROGEAR-1499] _Epic for implementing notification about a change on reference servers_
+* link:https://issues.jboss.org/browse/AEROGEAR-1501[AEROGEAR-1501] _Epic for testing reference servers for Partial Updates_. +
 The reference containers are checked for conformance of Partial Updates feature.
 
 Android
 ~~~~~~~
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Partial Updates for Android_
+* link:https://issues.jboss.org/browse/AGDROID-287[AGDROID-287] _Partial Updates for Android_
 
 
 iOS
 ~~~
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Partial Updates for iOS_
+* link:https://issues.jboss.org/browse/AGIOS-269[AGIOS-269] _Partial Updates for iOS_
 
 
 JavaScript
 ~~~~~~~~~~
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Partial Updates for JavaScript_
+* link:https://issues.jboss.org/browse/AGJS-217[AGJS-217] _Partial Updates for JavaScript_
 
 
-0.4.0 (Feb, 2015) Data Persistence / Offline, SPDY
---------------------------------------------------
+0.4.0 (Feb, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1500[Data Persistence / Offline, SPDY]
+------------------------------------------------------------------------------------------------------
 
 The DataManager automatically stores data retrieved from server endpoint. Client SDKs provide a way how to connect DataManager with Pipeline and Resolver to allow for automatic updates and offline mode.
 
@@ -125,50 +120,47 @@ SPDY can be used as an efficient means of communication.
 
 AeroGear
 ~~~~~~~~
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document server side contract for optional usage of SPDY_. +
+* link:https://issues.jboss.org/browse/AEROGEAR-1505[AEROGEAR-1505] _Document server side contract for optional usage of SPDY_. +
 The server can support SPDY to allow for efficient synchronization with multiple endpoints.
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Epic for testing support of SPDY in reference containers_. +
+* link:https://issues.jboss.org/browse/AEROGEAR-1506[AEROGEAR-1506] _Epic for testing support of SPDY in reference containers_. +
 The reference containers are checked for proper support of SPDY. The support should be documented or implemented as required.
 
 Android
 ~~~~~~~
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Data Persistence / Offline support for Android_
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _SPDY support for Android_
+* link:https://issues.jboss.org/browse/AGDROID-288[AGDROID-288] _Data Persistence / Offline support for Android_
+* link:https://issues.jboss.org/browse/AGDROID-289[AGDROID-298] _SPDY support for Android_
 
 iOS
 ~~~
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Data Persistence / Offline support for iOS_
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _SPDY support for iOS_
+* link:https://issues.jboss.org/browse/AGIOS-270[AGIOS-270] _Data Persistence / Offline support for iOS_
+* link:https://issues.jboss.org/browse/AGIOS-271[AGIOS-271] _SPDY support for iOS_
 
 JavaScript
 ~~~~~~~~~~
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Data Persistence / Offline support for JavaScript_
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _SPDY support for JavaScript_
+* link:https://issues.jboss.org/browse/AGJS-218[AGJS-218] _Data Persistence / Offline support for JavaScript_
 
 
-
-
-0.5.0 (Apr, 2015) Batch Updates
--------------------------------
+0.5.0 (Apr, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1510[Batch Updates]
+-----------------------------------------------------------------------------------
 
 Client SDKs and Server API conforms to Batch API that will be designed for this purpose. The API reuses contracts established by Partial Updates feature. The link:http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html#_Toc372793748[OData Batch] format can be considered as a template format.
 
 AeroGear
 ~~~~~~~~
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Document Batch API_
-* link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] _Epic for implementing Batch API on reference servers_
+* link:https://issues.jboss.org/browse/AEROGEAR-1511[AEROGEAR-1511] _Document Batch API_
+* link:https://issues.jboss.org/browse/AEROGEAR-1512[AEROGEAR-1512] _Epic for implementing Batch API on reference servers_
 
 Android
 ~~~~~~~
 
-* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] _Implement Batch API on Android_
+* link:https://issues.jboss.org/browse/AGDROID-290[AGDROID-290] _Implement Batch API on Android_
 
 iOS
 ~~~
 
-* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] _Implement Batch API on iOS_
+* link:https://issues.jboss.org/browse/AGIOS-272[AGIOS-272] _Implement Batch API on iOS_
 
 JavaScript
 ~~~~~~~~~~
 
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] _Implement Batch API in JavaScript_
+* link:https://issues.jboss.org/browse/AGJS-219[AGJS-219] _Implement Batch API in JavaScript_
