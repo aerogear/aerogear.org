@@ -15,10 +15,7 @@ title: Guides
 * [Get Started With AeroGear.js](GetStartedAeroGearJS.html)
 * [Get Started With HTML5 Mobile Web Development](GetStartedHTML5MobileWeb)
 * [Get Started with Hybrid Application Frameworks](aerogear-cordova/HybridApplicationFrameworks)
-* [Get Started With Android Development on the Command Line](GetStartedAndroid)
-* [Get Started With Android Development in Eclipse](GetStartedAndroidEclipse)
-* [Get Started With Android Development in Intellij](GetStartedAndroidIntellij)
-* [Get Started With Android Development in NetBeans](GettingStartedAndroidNetbeans)
+* [How to build AeroGear Android library](aerogear-android/HowToBuildAeroGearAndroidLibrary)
 * [Get Started with iOS and Xcode](GetStartedwithAeroGearandXcode)
 * [Get Started with iOS and AeroGear Xcode Template](GetStartedwithAeroGearandXcodeTemplate)
 * [Deploying HTML5 Applications to Openshift](HTML5AppsToOpenshift)
@@ -27,23 +24,17 @@ title: Guides
 * [Cordova Setup](aerogear-cordova/CordovaSetup)
 * [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](aerogear-cordova/HTML5ToHybridWithCordova)
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](aerogear-cordova/CordovaAndroidDevJBDS)
-* [Tutorial: iOS Push Notifications](aerogear-push-ios)
-* [Tutorial: Apache Cordova and Android Push Notifications](aerogear-push-cordova-android)
-* [Tutorial: Apache Cordova and iOS Push Notifications](aerogear-push-cordova-ios)
-* [Tutorial: JS Push Notifications](aerogear-push-js)
-* [Tutorial: Android Push Notifications](aerogear-push-android)
-* [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
 #### User Guides
 
-* [AeroGear UnifiedPush Administration Console User Guide](AdminConsoleGuide)
-* [AeroGear Controller User Guide](aerogear-controller)
-* [AeroGear Security User Guide](aerogear-security)
 * [AeroGear Android User Guide](aerogear-android)
 * [AeroGear iOS API Cookbook](iOSCookbook)
 * [AeroGear Two-Factor Authentication with OTP](AeroGear-OTP)
 * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](aerogear-cordova/AerogearCordovaOTP)
-* [AeroGear Cordova PushPlugin](aerogear-cordova/AerogearCordovaPush)
+
+#### UnifiedPush Server
+
+* [AeroGear UnifiedPush Server resources](../unifiedpush)
 
 
 #### Contributing to AeroGear

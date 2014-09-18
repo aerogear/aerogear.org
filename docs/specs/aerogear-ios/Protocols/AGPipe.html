@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGPipe Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -63,6 +62,8 @@
 	
 	<option value="//api/name/save:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- save:success:failure:</option>
 	
+	<option value="//api/name/setUploadProgressBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- setUploadProgressBlock:</option>
+	
 	
 	
 </select>
@@ -111,6 +112,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save:success:failure:">save:success:failure:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setUploadProgressBlock:">setUploadProgressBlock:</a></span></li>
+	
 </ul></li>
 
 
@@ -142,19 +145,23 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>AGPipe represents a server connection. An object of this class is responsible to communicate with the server in order to perform read/write operations.</p>
+						<p>AGPipe represents a server connection. An object of this class is responsible to communicate with the server in order
+to perform read/write operations.</p>
 
 <h2>Save data</h2>
 
-<p>To store newly created objects on a <em>remote</em> server resource you use the <code>save</code> method. Currently the objects are <em>just</em> simple map objects but in the future we are looking to support more advanced(complex) frameworks, like <em>Core Data</em>.</p>
+<p>To store newly created objects on a <em>remote</em> server resource you use the <code>save</code> method. Currently the objects are
+<em>just</em> simple map objects but in the future we are looking to support more advanced(complex) frameworks,
+like <em>Core Data</em>.</p>
 
-<p>  In the example below, the <code>save</code> function stores the given NSDictionary on the server, in this case on a RESTful resource. As arguments it accepts simple blocks that are invoked on <em>success</em> or in case of an <em>failure</em>.</p>
+<p>  In the example below, the <code>save</code> function stores the given NSDictionary on the server, in this case on a RESTful
+  resource. As arguments it accepts simple blocks that are invoked on <em>success</em> or in case of an <em>failure</em>.</p>
 
 <pre><code>// create a dictionary and set some key/value data on it:
 NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
@@ -174,13 +181,14 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 
 } failure:^(NSError *error) {
     // when an error occurs... at least log it to the console..
-    NSLog(@"SAVE: An error occured! \n%@", error);
+    NSLog(@"SAVE: An error occurred! \n%@", error);
 }];
 </code></pre>
 
 <h2>Update data</h2>
 
-<p>The <code>save</code> method is also responsible for updating an &lsquo;object&rsquo;. However this happens <strong>only</strong> when there is an &lsquo;id&rsquo; property/field available:</p>
+<p>The <code>save</code> method is also responsible for updating an &lsquo;object&rsquo;. However this happens <strong>only</strong> when there is an &lsquo;id&rsquo;
+property/field available:</p>
 
 <pre><code>// change the title of the previous project 'object':
 [projectEntity setValue:@"Hello Update World!" forKey:@"title"];
@@ -191,13 +199,14 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
     NSLog(@"UPDATE RESPONSE\n%@", [responseObject description]);
 } failure:^(NSError *error) {
     // when an error occurs... at least log it to the console..
-    NSLog(@"UPDATE: An error occured! \n%@", error);
+    NSLog(@"UPDATE: An error occurred! \n%@", error);
 }];
 </code></pre>
 
 <h2>Remove data</h2>
 
-<p>The AGPipe also contains a <code>remove</code> method to delete the data on the server. It takes the map object which <strong>must</strong> have an &lsquo;id&rsquo; property/field set, so that it knows which resource to delete:</p>
+<p>The AGPipe also contains a <code>remove</code> method to delete the data on the server. It takes the map object which <strong>must</strong>
+have an &lsquo;id&rsquo; property/field set, so that it knows which resource to delete:</p>
 
 <pre><code>// Now, just remove the project:
 [projects remove:projectEntity success:^(id responseObject) {
@@ -205,13 +214,13 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
     NSLog(@"DELETE RESPONSE\n%@", [responseObject description]);
 } failure:^(NSError *error) {
     // when an error occurs... at least log it to the console..
-    NSLog(@"DELETE: An error occured! \n%@", error);
+    NSLog(@"DELETE: An error occurred! \n%@", error);
 }];
 </code></pre>
 
 <p>In this case, where we have a RESTful pipe, the API issues an HTTP DELETE request.</p>
 
-<h2>Read all data from the server</h2>
+<p>  ## Read all data from the server</p>
 
 <p>The <code>read</code> method allows to (currently) read <em>all</em> data from the server, of the underlying AGPipe:</p>
 
@@ -221,10 +230,11 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 } failure:^(NSError *error) {
     // when an error occurs... at least log it to the console..
     NSLog(@"Read: An error occured! \n%@", error);
-}];
+}];                             r
 </code></pre>
 
-<p>Since we are pointing to a RESTful endpoint, the API issues a HTTP GET request. The JSON output of the above NSLog() call looks like this:</p>
+<p>Since we are pointing to a RESTful endpoint, the API issues a HTTP GET request. The JSON output of the above NSLog()
+call looks like this:</p>
 
 <pre><code>(
         {
@@ -246,11 +256,60 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 
 <p>Of course the <em>collection</em> behind the responseObject can be stored to a variable..</p>
 
+<h2>Upload files</h2>
+
+<p>Support for multipart upload is also provided. The types of data that can be uploaded are local files, instances of NSData and NSInputStream.
+Let&rsquo;s see how the upload mechanism works with an example:</p>
+
+<pre><code> // a multipart that contains a file
+ NSURL *file1 = &lt;path to a local file&gt;
+ AGFilePart *filePart = [[AGFilePart alloc]initWithFileURL:file1 name:@"myfile"];
+
+ // a multipart that contains an NSData object
+ NSData *data1 = [@"Lorem ipsum dolor sit amet.." dataUsingEncoding:NSUTF8StringEncoding];
+ AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:data1
+                                                                name:@"data1"
+                                                        fileName:@"data1.txt" mimeType:@"text/plain"];
+
+ // set up payload
+ NSDictionary *dict = @{@"somekey": @"somevalue",
+                        @"another_key": @"some_other_key",
+                        @"file1":filePart,
+                        @"file2":dataPart};
+
+ // set an (optional) progress block
+ [[apiClient uploadPipe] setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten,
+                            long long totalBytesExpectedToWrite) {
+
+    NSLog(@"UPLOADPIPE Sent bytesWritten=%d totalBytesWritten=%qi of 
+            totalBytesExpectedToWrite=%qi bytes", bytesWritten, totalBytesWritten,
+            totalBytesExpectedToWrite);
+ }];
+
+ // upload data
+ [[apiClient uploadPipe] save:dict success:^(id responseObject) {
+    NSLog(@"Successfully uploaded!");
+
+ } failure:^(NSError *error) {
+    NSLog(@"An error has occured during upload! \n%@", error);
+ }];
+</code></pre>
+
+<p>An <em><a href="../Classes/AGFilePart.html">AGFilePart</a></em> and <em><a href="../Classes/AGFileDataPart.html">AGFileDataPart</a></em> objects are used to attach the data we want to upload. The former is initialized to point to a local file whereas the latter point to an NSData object respectively. Not shown in the example above, but an <em><a href="../Classes/AGStreamPart.html">AGStreamPart</a></em> can be also used to read the data from a NSInputStream directly.</p>
+
+<p>NOTE: For NSData we need to explicitly specify both the <em>&lsquo;filename&rsquo;</em> and the <em>&lsquo;MIME type&rsquo;</em>, since they can not be automatically determined as with the case of a file.</p>
+
+<p>After initialization of the objects, we simply attach them to the payload, setting an (optional) progress block so we can get notified during the upload.</p>
+
+<p>NOTE: Prior to version 1.4 of the library, multipart upload was supported by the means of attaching an <em>NSURL</em> object directly on the payload. The method is still supported, but it is now deprecated and will be removed in the future versions of the library.</p>
+
 <h2>Time out and Cancel pending operations</h2>
 
 <h3>Timeout</h3>
 
-<p>During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an operation to complete. If the time interval is exceeded with no response from the server, then the <em>failure</em> callback is executed.</p>
+<p>During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an
+operation to complete. If the time interval is exceeded with no response from the server, then the <em>failure</em> callback
+is executed with an error code set to <em>NSURLErrorTimedOut</em>.</p>
 
 <p>From the todo example above:</p>
 
@@ -259,20 +318,25 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 }];
 </code></pre>
 
+<p>Note: If you are running on iOS versions &lt; 6 and a timeout occurs on a pipe&rsquo;s <em>save</em> operation, the error code is set
+to <em>NSURLErrorCancelled</em>.</p>
+
 <h3>Cancel</h3>
 
-<p>At any time after starting your operations, you can call <code>cancel</code> on the Pipe object to cancel all running Pipe operations. Any registered callbacks on the pipe are NOT executed so it is your responsibility to provide any neccessary cleanups after calling this method.</p>
+<p>At any time after starting your operations, you can call <code>cancel</code> on the Pipe object to <a href="#//api/name/cancel">cancel</a> all running Pipe
+operations. Doing so will invoke the pipe&rsquo;s <em>failure</em> block with an error code set to  <em>NSURLErrorCancelled</em>. You can
+then check this code in order to perform your &lsquo;cancellation&rsquo; logic .</p>
 
 <pre><code>[projects read:^(id responseObject) {
     // LOG the JSON response, returned from the server:
     NSLog(@"READ RESPONSE\n%@", [responseObject description]);
 } failure:^(NSError *error) {
     // when an error occurs... at least log it to the console..
-    NSLog(@"Read: An error occured! \n%@", error);
+    NSLog(@"Read: An error occurred! \n%@", error);
 }];
 
-// cancel operations. NOTE that no 'success' or 'failure' callbacks are executed after this.
-[projects cancel]; 
+// cancel the request
+[projects cancel];
 </code></pre>
 					</div>
 					
@@ -292,57 +356,54 @@ NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
-		<span class="tooltip"><p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/URL">&nbsp;&nbsp;URL</a></code>
-		<span class="tooltip"><p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/read:failure:">&ndash;&nbsp;read:failure:</a></code>
-		<span class="tooltip"><p>Reads all the data from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/read:success:failure:">&ndash;&nbsp;read:success:failure:</a></code>
-		<span class="tooltip"><p>Read specific object from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/readWithParams:success:failure:">&ndash;&nbsp;readWithParams:success:failure:</a></code>
-		<span class="tooltip"><p>Reads all the data that matches a given parameter provider from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/save:success:failure:">&ndash;&nbsp;save:success:failure:</a></code>
-		<span class="tooltip"><p>Saves (or updates) a given object from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:success:failure:">&ndash;&nbsp;remove:success:failure:</a></code>
-		<span class="tooltip"><p>Removes an object from the underlying server connection.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
-		<span class="tooltip"><p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setUploadProgressBlock:">&ndash;&nbsp;setUploadProgressBlock:</a></code>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -458,8 +519,8 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p>
+		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p>
 	</div>		
 	
     
@@ -476,8 +537,8 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p>
+		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p>
 
 <p>Note: Calling cancel has no effect on the server, so if you do a save or remove and then
 call cancel, that action will still take place on the the server.</p>
@@ -526,7 +587,7 @@ data of request.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
-or that finishes successfully, but encountered an error while parsing the resonse data.
+or that finishes successfully, but encountered an error while parsing the response data.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the network or parsing error that occurred.</p></dd>
 		</dl>
@@ -592,7 +653,7 @@ data of request.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
-or that finishes successfully, but encountered an error while parsing the resonse data.
+or that finishes successfully, but encountered an error while parsing the response data.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the network or parsing error that occurred.</p></dd>
 		</dl>
@@ -780,7 +841,9 @@ the network or parsing error that occurred.</p></dd>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>object</em></dt>
-			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update.</p></dd>
+			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update. If the map contains values
+of NSURL objects that point to local files, a multi-part request will be constructed to upload the
+files to the server. To track progress of the upload, call <a href="#//api/name/setUploadProgressBlock:">[AGPipe setUploadProgressBlock:]</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -825,9 +888,66 @@ the network or parsing error that occurred.</p></dd>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/setUploadProgressBlock:" title="setUploadProgressBlock:"></a>
+	<h3 class="subsubtitle method-title">setUploadProgressBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets a progress status callback that is invoked during uploading of a file(s).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setUploadProgressBlock:(void ( ^ ) ( NSURLSession *session , NSURLSessionTask *task , int64_t bytesSent , int64_t totalBytesSent , int64_t totalBytesExpectedToSend ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block accepts five arguments: the session, the task, the number of bytes written in the latest write,
+the total bytes written for this connection, and the total bytes expected to be written during
+the request determined by the length of the HTTP body.</p>
+
+<p>NOTE. The block can be called several times and is NOT executed on the main thread.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sets a progress status callback that is invoked during uploading of a file(s).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -838,9 +958,9 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-08-13)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-06-19)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

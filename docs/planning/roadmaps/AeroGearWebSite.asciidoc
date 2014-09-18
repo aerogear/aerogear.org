@@ -1,0 +1,94 @@
+---
+layout: basic
+title: AeroGear Web Site Roadmap
+---
+
+AeroGear Web Site Roadmap
+=========================
+:Author: Corinne Krych
+
+About this document
+-------------------
+
+This document extract most of the suggestions from ML threads, split them in small JIRA tickets in an attempt to organize them.
+
+As AeroGear enhanced its features, we need to make sure information is easeliy found by first time users but also, information, tutorial (per platforms) is available to developer to dig in further.
+
+
+Initial AG 'per features' design was drafted by hbons in this link:http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-Website-restructure-td5246.html;cid=1389091451229-905[ML thread]. Feedback an further idea were talked upon on this link:http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-Fwd-Website-restructure-td5837.html[ML thread]. AergoGear web site revamp will require some drastic changes in documentation structure. Some pages will need refactoring in order to present the information 'per features'.
+
+External References
+-------------------
+
+* link:https://github.com/aerogear/aerogear.org/[Github Repo]
+* link:https://issues.jboss.org/browse/AEROGEAR-1402/[Epic AEROGEAR-1402]
+* link:https://raw2.github.com/hbons/aerogear-design/master/website-restructure/aerogear-project.png[Latest Mockup] 
+
+The web site articulates into 4 layers: HOME page, GET IT page and EXAMPLE page. Soon to come PLATFORM EXAMPLE page.
+
+0.1.0 New Layout (End March 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* link:http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-aerogear-org-revamp-where-to-fit-in-platform-example-page-td6250.html[In ML thread] How to navigate from EXAMPLE page to PLATFORM EXAMPLE page
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1403[AEROGEAR-1403]: Provide CSS colors, asciidoc plugin for EXAMPLES pages
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1432[AEROGEAR-1432]: horizontal menu, parametrize color as home main Page is white and grey and Get it and Examples are black tone
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1433[AEROGEAR-1433]: Right side menu, where we are. Not displayed in mobile media format
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1434[AEROGEAR-1434]: footer
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1435[AEROGEAR-1435]: asciidoc source included for PLATFORM EXAMPLE to display code snippet from cookbook. As suggested by Karel in link:http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-Fwd-Website-restructure-tp5837p5948.html;cid=1389091451229-905[ML thread] we can use link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[asciidoctor features] (section "Code block sourced from file relative to source directory).
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1436[AEROGEAR-1436]: HOME page: layout should break down into features: Core/Security/Push/Sync
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1437[AEROGEAR-1437] GET IT page for AG Core
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1438[AEROGEAR-1438] EXAMPLE page for AG Core: split into subsections Pipes/Paging/Store extract documentation from android/ios or js to give definition and a general overview.
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1439[AGIOS-164] iOS PLATFORM EXAMPLE AG Core - Pipe: detailled example adopt "tutorial" approach. It would ideally link to cookbook github repo for full source code. But it can contain code snipet + explanation
+
+* link:https://issues.jboss.org/browse/AGDROID-208[AGDOID-208] Android PLATFORM EXAMPLE AG Core - Pipe
+
+* link:https://issues.jboss.org/browse/AGJS-141[AGJS-141] JS PLATFORM EXAMPLE AG Core - Pipe
+
+* link:https://issues.jboss.org/browse/AEROGEAR-1440[AEROGEAR-1440] People page, as discussed in ML, People link will display list of contributors
+
+* News / Twitter / Blog link: need any enhancement?
+
+
+0.2.0 GET IT/ EXAMPLE pages ( Mid April)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* GET IT page for AG Security
+
+* GET IT page for  AG Push
+
+* GET IT page for  AG Sync
+
+* EXAMPLE page for AG Security: split into subsections TBD 
+
+* EXAMPLE page for AG Push: split into subsections TBD
+
+* EXAMPLE page for AG Sync: under construction
+
+* iOS PLAFTOM EXAMPLE AG Core - Store
+etc...
+
+
+0.3.0 PLATFORM EXAMPLE pages ( Mid May)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* PLAFTOM EXAMPLE AG Core - Store
+
+* PLAFTOM EXAMPLE AG Security - Encryption
+
+* PLAFTOM EXAMPLE AG Security - Auth
+
+* PLAFTOM EXAMPLE AG Security - OTP
+
+* PLAFTOM EXAMPLE AG Security - OAuth2?
+
+* create more JIRA for Push / Sync etc...
+

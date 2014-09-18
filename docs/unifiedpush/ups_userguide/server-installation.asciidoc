@@ -1,0 +1,175 @@
+---
+layout: basic
+title: UnifiedPush Server - Installation and configuration
+---
+:toc:
+toc::[]
+
+
+== Install and Configure the UnifiedPush Server
+Getting the UnifiedPush Server up and running with an on-premise application server is a three-step setup process:
+
+. <<getfiles,Get the UnifiedPush Server application files>>
+. <<gendbds,Generate the UnifiedPush database and datasource>>
+. <<deploy,Deploy the UnifiedPush Server>>
+
+Each of these steps is detailed here, with instructions and useful scripts provided for a variety of databases (H2, MySQL, PostgreSQL) and application servers (link:http://jbossas.jboss.org/downloads/[JBoss AS 7], link:http://wildfly.org/downloads/[WildFly 8]).
+
+NOTE: You can also link:openshift/[run the UnifiedPush Server in the cloud with OpenShift] but this requires a different setup process.
+
+[[getfiles]]
+=== Get the UnifiedPush Server Application Files
+The UnifiedPush Server application is provided in two files: +unifiedpush-server.war+* and +unifiedpush-auth-server.war+. These files contain the core functionality and authentication components of the UnifiedPush Server. Both files are necessary to achieve a working UnifiedPush Server application.
+
+Download the latest copies of these files using the following links:
+
+* link:https://github.com/aerogear/aerogear-unifiedpush-server/releases/latest[Download UnifiedPush Server Release Bundle] - *variants are provided for different application servers:
+** For WildFly, +unifiedpush-server-wildfly.war+
+** For JBoss AS, +unifiedpush-server-as7.war+
+
+[[gendbds]]
+=== Generate the UnifiedPush Database and Datasource
+The UnifiedPush Server requires an accompanying database in which to store push application, variant and installation details. You can use the database of your choice but the corresponding datasource added to the application server must have JNDI name +java:jboss/datasources/UnifiedPushDS+.
+
+Information is provided here for generating UnifiedPush datasources for several database types. Note that if the intended application server has not previously been used with the chosen database type, additional configuration must also be completed in order to enable the application server to connect to the database. As detailed here, sources and scripts are available to assist with all these processes.
+
+==== H2 Database
+A H2 database is embedded in WildFly and JBoss AS. As demonstrated here, it is simple to configure H2 for use with the UnifiedPush Server with the aid of some provided scripts.
+
+To add the UnifiedPush datasource for the H2 database to the application server, use the +unifiedpush-h2-ds.xml+ file from the +databases+ folder of the release bundle and move it to the +/path/to/SERVER_HOME/standalone/deployments+ folder. The UnifiedPush data will be stored in +/path/to/SERVER_HOME/standalone/data/unifiedpush+.
+
+Alternatively, you can create the UnifiedPush datasource from scratch and add it to the application server as follows:
+
+. Start the application server
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/standalone.sh
+----
+. Create and add the UnifiedPush datasource for the H2 database using the application server CLI and downloaded configuration script, located in the +databases+ directory of the release bundle
++
+For WildFly:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/h2-database-config-wildfly.cli
+----
++
+For JBoss AS:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/h2-database-config.cli
+----
+
+==== MySQL Database
+You can use a link:http://www.mysql.com/[MySQL] database with the UnifiedPush Server. As demonstrated here, the application server must first be configured for MySQL and the UnifiedPush MySQL database must exist before the application server can be configured with the associated UnifiedPush datasource.
+
+To complete these prerequisite processes and configure the application server for the UnifiedPush MySQL database, complete the following steps:
+
+. Copy the MySQL module, located in the +databases/src/main/resources/modules/com+ directory of the release bundle, to the application server modules directory
++
+[source,c]
+----
+$ cp -r /path/to/com /path/to/SERVER_HOME/modules/
+----
+. Add the MySQL JDBC driver to the application server +mysql+ module
++
+[source,c]
+----
+$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 \
+-DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/
+----
+. Create the UnifiedPush MySQL database
++
+[source,c]
+----
+$ mysql -u <user-name>
+mysql> create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
+mysql> create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
+mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';h
+----
+. Start the application server
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/standalone.sh
+----
+. Configure the application server to use the MySQL driver and create and add the UnifiedPush datasource for the MySQL database using the application server CLI and downloaded configuration script, located in the +databases+ directory of the release bundle
++
+For WildFly:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config-wildfly.cli
+----
++
+For JBoss AS:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config.cli
+----
+
+==== PostgreSQL Database
+You can use a link:http://www.postgresql.org/[PostgreSQL] database with the UnifiedPush Server. As demonstrated here, the application server must first be configured for PostgreSQL and the UnifiedPush PostgreSQL database must exist before the application server can be configured with the associated UnifiedPush datasource.
+
+To complete these prerequisite processes and configure the application server for the UnifiedPush PostgreSQL database, complete the following steps:
+
+. Copy the PostgreSQL module, located in the +databases/src/main/resources/modules/org+ directory of the release bundle, to the application server modules directory
++
+[source,c]
+----
+$ cp -r /path/to/org /path/to/SERVER_HOME/modules/
+----
+. Add the PostgreSQL JDBC driver to the application server +postgresql+ module
++
+[source,c]
+----
+$ mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 \
+-DoutputDirectory=/Path/to/JBossAS/modules/org/postgresql/main/
+----
+. Create the UnifiedPush PostgreSQL database
++
+[source,c]
+----
+$ psql -U <user-name>
+psql> create database unifiedpush;
+psql> create user unifiedpush with password 'unifiedpush';
+psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
+----
+. If necessary, enable UnifiedPush Server access to the PostgreSQL database by adding the following lines to your +$POSTGRES_HOME/data/pg_hba.conf+ file
++
+[source,c]
+----
+host    all             unifiedpush     127.0.0.1/32            md5
+----
+. Start the application server
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/standalone.sh
+----
+. Configure the application server to use the PostgreSQL driver and create and add the UnifiedPush datasource for the PostgreSQL database using the application server CLI and downloaded configuration script, located in the +databases+ directory of the release bundle
++
+For WildFly:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config-wildfly.cli
+----
++
+For JBoss AS:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config.cli
+----
+
+[[deploy]]
+=== Deploy the UnifiedPush Server
+After the application server is configured for the UnifiedPush datasource, the two UnifiedPush Server application +.war+ files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server.
+
+To deploy the UnifiedPush Server, copy the two +.war+ files to +/path/to/SERVER_HOME/standalone/deployments/+. This can be done either before or after starting the application server.
+
+After deployment with the application server running, the UnifiedPush Server Console can be accessed at link:http://localhost:8080/ag-push/[]. For information about using the Console, see link:../admin-ui[Using the Amdin UI].

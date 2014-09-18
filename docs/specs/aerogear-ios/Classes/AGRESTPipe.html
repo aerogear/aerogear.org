@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGRESTPipe Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -56,6 +55,8 @@
 	
 	<option value="//api/name/save:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- save:success:failure:</option>
 	
+	<option value="//api/name/setUploadProgressBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- setUploadProgressBlock:</option>
+	
 	
 	
 </select>
@@ -96,6 +97,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save:success:failure:">save:success:failure:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setUploadProgressBlock:">setUploadProgressBlock:</a></span></li>
+	
 </ul></li>
 
 
@@ -130,15 +133,17 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>An internal <a href="../Protocols/AGPipe.html">AGPipe</a> implementation that uses REST as the communication transport.</p>
 
-<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned automatically when a Pipe with default configuration is constructed or with the <em>type</em> config option set to <em>&ldquo;REST&rdquo;</em>. See <a href="../Classes/AGPipeline.html">AGPipeline</a> and <a href="../Protocols/AGPipe.html">AGPipe</a> class documentation for more information.</p>
+<p><em>IMPORTANT:</em> Users are not required to instantiate this class directly, instead an instance of this class is returned
+automatically when a Pipe with default configuration is constructed or with the <em>type</em> config option set to <em>&ldquo;REST&rdquo;</em>.
+See <a href="../Classes/AGPipeline.html">AGPipeline</a> and <a href="../Protocols/AGPipe.html">AGPipe</a> class documentation for more information.</p>
 					</div>
 					
 					
@@ -157,43 +162,42 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/read:success:failure:">&ndash;&nbsp;read:success:failure:</a></code>
-		<span class="tooltip"><p>Read specific object from the underlying server connection.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/read:failure:">&ndash;&nbsp;read:failure:</a></code>
-		<span class="tooltip"><p>Reads all the data from the underlying server connection.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/readWithParams:success:failure:">&ndash;&nbsp;readWithParams:success:failure:</a></code>
-		<span class="tooltip"><p>Reads all the data that matches a given parameter provider from the underlying server connection.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/save:success:failure:">&ndash;&nbsp;save:success:failure:</a></code>
-		<span class="tooltip"><p>Saves (or updates) a given object from the underlying server connection.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/remove:success:failure:">&ndash;&nbsp;remove:success:failure:</a></code>
-		<span class="tooltip"><p>Removes an object from the underlying server connection.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
-		<span class="tooltip"><p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setUploadProgressBlock:">&ndash;&nbsp;setUploadProgressBlock:</a></code>
 	</span>
 	
 	
@@ -221,8 +225,8 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p>
+		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p>
 	</div>		
 	
     
@@ -239,8 +243,8 @@ It is your responsibility to provide any neccessary cleanups after calling this 
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Cancel all running pipe operations. Any registered callbacks on the pipe are NOT executed.
-It is your responsibility to provide any neccessary cleanups after calling this method.</p>
+		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p>
 
 <p>Note: Calling cancel has no effect on the server, so if you do a save or remove and then
 call cancel, that action will still take place on the the server.</p>
@@ -289,7 +293,7 @@ data of request.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
-or that finishes successfully, but encountered an error while parsing the resonse data.
+or that finishes successfully, but encountered an error while parsing the response data.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the network or parsing error that occurred.</p></dd>
 		</dl>
@@ -355,7 +359,7 @@ data of request.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
-or that finishes successfully, but encountered an error while parsing the resonse data.
+or that finishes successfully, but encountered an error while parsing the response data.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the network or parsing error that occurred.</p></dd>
 		</dl>
@@ -543,7 +547,9 @@ the network or parsing error that occurred.</p></dd>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>object</em></dt>
-			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update.</p></dd>
+			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update. If the map contains values
+of NSURL objects that point to local files, a multi-part request will be constructed to upload the
+files to the server. To track progress of the upload, call <a href="#//api/name/setUploadProgressBlock:">[AGPipe setUploadProgressBlock:]</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -588,9 +594,66 @@ the network or parsing error that occurred.</p></dd>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/setUploadProgressBlock:" title="setUploadProgressBlock:"></a>
+	<h3 class="subsubtitle method-title">setUploadProgressBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets a progress status callback that is invoked during uploading of a file(s).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setUploadProgressBlock:(void ( ^ ) ( NSURLSession *session , NSURLSessionTask *task , int64_t bytesSent , int64_t totalBytesSent , int64_t totalBytesExpectedToSend ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block accepts five arguments: the session, the task, the number of bytes written in the latest write,
+the total bytes written for this connection, and the total bytes expected to be written during
+the request determined by the length of the HTTP body.</p>
+
+<p>NOTE. The block can be called several times and is NOT executed on the main thread.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sets a progress status callback that is invoked during uploading of a file(s).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -601,9 +664,9 @@ the network or parsing error that occurred.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-08-13)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-06-19)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

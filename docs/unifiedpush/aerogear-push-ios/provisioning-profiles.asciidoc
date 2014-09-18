@@ -1,0 +1,73 @@
+---
+layout: basic
+title: Creating a Provisioning Profile
+---
+
+Creating a Provisioning Profile
+-------------------------------
+
+Now that you have created an App ID and you got your SSL certificate, it's time to create a _Provisioning Profile_
+
+Development Provisioning Profile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the _Provisioning Portal_ you need to create an _iOS App Development_ provisioning profile, so that you can test the Push Notifications on your own iOS devices:
+
+image::./img/Provisioning_profile_1.png[Development Profile]
+
+
+Now, select the _App ID_, that you created earlier:
+
+image::./img/Select_APP_ID.png[Select App ID]
+
+Select your Developer Certificate:
+
+image::./img/DevCert.png[Select Developer Cert]
+
+Select a _Test_ Device, this is usually your phone, which is already known by Xcode:
+
+image::./img/TestDevice.png[Choose Test Devices]
+
+Give it a Profile Name and generate it:
+
+image::./img/ProfileName.png[Give the Profile a Name]
+
+Now download the Profile and open the file. Go to Xcode -> preferences... menu, select the "Account" tab, on the right bottom corner click "View details..." and you should see your provisioning profile:
+
+image::./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profile]
+
+
+
+Distribution Provisioning Profile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to test Push Notifications on a *production environment*, you need to create an _iOS App Distribution_ provisioning profile in the _Provisioning Portal_.
+
+image::./img/Provisioning_profile_2.png[Distribution Profile]
+
+Now, select the _App ID_, that you created earlier:
+
+image::./img/Select_APP_ID.png[Select App ID]
+
+Select your Developer Certificate:
+
+image::./img/DevCert.png[Select Developer Cert]
+
+You still need a _test device_ to try your _production_ app with your _distribution provisioning profile_. Select a _Test_ Device, this is usually your phone, which is already known by Xcode:
+
+image::./img/TestDevice.png[Choose Test Devices]
+
+Give it a Profile Name and generate it:
+
+image::./img/ProfileNameProd.png[Give the Distribution Profile a Name]
+
+Now download the Profile and open the file. Go to Xcode -> preferences... menu, select the "Account" tab, on the right bottom corner click "View details..." and you should see your provisioning profile:
+
+image::./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profile]
+
+
+UnifiedPush Server
+~~~~~~~~~~~~~~~~~~~
+
+Now, after managing all the Apple certificates, let's setup the link:../unified-push-server[UnifiedPush Server]
+

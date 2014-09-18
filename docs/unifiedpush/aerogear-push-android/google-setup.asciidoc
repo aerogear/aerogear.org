@@ -1,0 +1,46 @@
+---
+layout: basic
+title: Google setup
+---
+
+Google Related Setup
+--------------------
+
+Before the Android application is able to receive the notifications, you must authenticate yourself with Google as a developer. Luckily this is both easy and free to do, and doesn't require much set-up. Like iOS, you are only able to test out your push notifications in a real device.
+
+Registering with Google
+~~~~~~~~~~~~~~~~~~~~~~~
+
+First, we must authenticate with Google. Google offers the Google Cloud Messaging (GCM) platform, formerly known as Cloud to Device Messaging (C2DM). You will need a Google Account for this. Now open the https://cloud.google.com/console[Google Cloud Console].
+
+
+- If you haven't created a project, click ``Create Project'':
+
+image::./img/gcc_1.png[Create New Project]
+
+- Now give the new project a name:
+
+image::./img/gcc_2.png[New Project Name]
+
+- Once the project has been created you will see the overview screen. From there grab the project number (used later as the _Sender ID_):
+
+image::./img/gcc_3.png[Project Number]
+
+Now you need to enable the _Google Cloud Messaging for Android_ APIs. To do that, navigate to +APIs & auth+ > +APIs+ and scroll down to the _Google Cloud Messaging for Android_ item, which you need to turn on:
+
+image::./img/gcc_4.png[Project Number]
+
+Now we need to register our application and state that we are accessing the Google APIs from a _Web Server_, the _AeroGear UnifiedPush Server_ in this case. First go to +APIs & auth+ > +Credentials+ and inside of the _Public API access_ area click the blue *CREATE NEW KEY* button. This launches the following popup, where you select the +Server key+ option:
+
+image::./img/gcc_5.png[Project Number]
+
+On the next screen we just click the blue +Create+ button to create our Server Key:
+
+image::./img/gcc_6.png[Project Number]
+- For extra security, you may whitelist an IP address (or multiple) for the sending server
+
+On the last screen we are finally get to see the actual value of the generated Server Key, which we will use later:
+
+image::./img/gcc_7.png["Project Number",border="1"]
+
+Now that Google is ready to accept and deliver our messages, we are ready to setup the link:../register-device[UnifiedPush server].

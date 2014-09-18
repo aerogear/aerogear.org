@@ -296,7 +296,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js.html">authentication/adapters/rest.js</a>, <a href="rest.js.html#line44">line 44</a>
+        <a href="rest.js.html">authentication/adapters/rest.js</a>, <a href="rest.js.html#line50">line 50</a>
     </li></ul></dd>
     
     
@@ -343,22 +343,28 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>//Create an empty Authenticator
-var auth = AeroGear.Auth();
+    <pre class="prettyprint"><code>        // Create an empty Authenticator
+        var auth = AeroGear.Auth();
 
-//Add a custom REST module to it
-auth.add( "module1", {
-    baseURL: "http://customURL.com"
-});
+        // Add a custom REST module to it
+        auth.add( {
+            name: "module1",
+            settings: {
+                baseURL: "http://customURL.com"
+            }
+        });
 
-//Add a custom REST module to it with custom security endpoints
-auth.add( "module2", {
-    endpoints: {
-        enroll: "register",
-        login: "go",
-        logout: "leave"
-    }
-});</code></pre>
+        // Add a custom REST module to it with custom security endpoints
+        auth.add( {
+            name: "module2",
+            settings: {
+                endpoints: {
+                    enroll: "register",
+                    login: "go",
+                    logout: "leave"
+                }
+            }
+        });</code></pre>
 
     
 </dd>
@@ -626,6 +632,39 @@ auth.add( "module2", {
 	
         <tr>
             
+                <td class="name"><code>xhrFields</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">specify extra xhr options, like the withCredentials flag</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
                 <td class="name"><code>complete</code></td>
             
             
@@ -755,7 +794,7 @@ auth.add( "module2", {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js.html">authentication/adapters/rest.js</a>, <a href="rest.js.html#line159">line 159</a>
+        <a href="rest.js.html">authentication/adapters/rest.js</a>, <a href="rest.js.html#line170">line 170</a>
     </li></ul></dd>
     
     
@@ -802,30 +841,30 @@ auth.add( "module2", {
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var auth = AeroGear.Auth( "userAuth" ).modules[ 0 ],
-    data = { userName: "user", password: "abc123", name: "John" };
+    <pre class="prettyprint"><code>        var auth = AeroGear.Auth( "userAuth" ).modules.userAuth,
+            data = { userName: "user", password: "abc123", name: "John" };
 
-// Enroll a new user
-auth.enroll( data );
+        // Enroll a new user
+        auth.enroll( data );
 
-//Add a custom REST module to it with custom security endpoints
-var custom = AeroGear.Auth({
-    name: "customModule",
-    settings: {
-        endpoints: {
-            enroll: "register",
-            login: "go",
-            logout: "leave"
-        }
-    }
-}).modules[ 0 ],
-data = { userName: "user", password: "abc123", name: "John" };
+        // Add a custom REST module to it with custom security endpoints
+        var custom = AeroGear.Auth({
+            name: "customModule",
+            settings: {
+                endpoints: {
+                    enroll: "register",
+                    login: "go",
+                    logout: "leave"
+                }
+            }
+        }).modules.customModule,
+        data = { userName: "user", password: "abc123", name: "John" };
 
-custom.enroll( data, {
-    baseURL: "http://customurl/",
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});</code></pre>
+        custom.enroll( data, {
+            baseURL: "http://customurl/",
+            success: function( data ) { ... },
+            error: function( error ) { ... }
+        });</code></pre>
 
     
 </dd>
@@ -909,7 +948,7 @@ custom.enroll( data, {
                 </td>
             
             
-            <td class="description last">A set of key value pairs representing the user's credentials</td>
+            <td class="description last">A set of key/value pairs representing the user's credentials</td>
         </tr>
 	
 	
@@ -1204,7 +1243,7 @@ custom.enroll( data, {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js.html">authentication/adapters/rest.js</a>, <a href="rest.js.html#line242">line 242</a>
+        <a href="rest.js.html">authentication/adapters/rest.js</a>, <a href="rest.js.html#line253">line 253</a>
     </li></ul></dd>
     
     
@@ -1251,30 +1290,30 @@ custom.enroll( data, {
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var auth = AeroGear.Auth( "userAuth" ).modules[ 0 ],
-    data = { userName: "user", password: "abc123" };
+    <pre class="prettyprint"><code>        var auth = AeroGear.Auth( "userAuth" ).modules.userAuth,
+            data = { userName: "user", password: "abc123" };
 
-// Enroll a new user
-auth.login( data );
+        // Enroll a new user
+        auth.login( data );
 
-//Add a custom REST module to it with custom security endpoints
-var custom = AeroGear.Auth({
-    name: "customModule",
-    settings: {
-        endpoints: {
-            enroll: "register",
-            login: "go",
-            logout: "leave"
-        }
-    }
-}).modules[ 0 ],
-data = { userName: "user", password: "abc123", name: "John" };
+        // Add a custom REST module to it with custom security endpoints
+        var custom = AeroGear.Auth({
+            name: "customModule",
+            settings: {
+                endpoints: {
+                    enroll: "register",
+                    login: "go",
+                    logout: "leave"
+                }
+            }
+        }).modules.customModule,
+        data = { userName: "user", password: "abc123", name: "John" };
 
-custom.login( data, {
-    baseURL: "http://customurl/",
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});</code></pre>
+        custom.login( data, {
+            baseURL: "http://customurl/",
+            success: function( data ) { ... },
+            error: function( error ) { ... }
+        });</code></pre>
 
     
 </dd>
@@ -1552,7 +1591,7 @@ custom.login( data, {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest.js.html">authentication/adapters/rest.js</a>, <a href="rest.js.html#line321">line 321</a>
+        <a href="rest.js.html">authentication/adapters/rest.js</a>, <a href="rest.js.html#line332">line 332</a>
     </li></ul></dd>
     
     
@@ -1599,29 +1638,29 @@ custom.login( data, {
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var auth = AeroGear.Auth( "userAuth" ).modules[ 0 ];
+    <pre class="prettyprint"><code>        var auth = AeroGear.Auth( "userAuth" ).modules.userAuth;
 
-// Enroll a new user
-auth.logout();
+        // Enroll a new user
+        auth.logout();
 
-    //Add a custom REST module to it with custom security endpoints
-var custom = AeroGear.Auth({
-    name: "customModule",
-    settings: {
-        endpoints: {
-            enroll: "register",
-            login: "go",
-            logout: "leave"
-        }
-    }
-}).modules[ 0 ],
-data = { userName: "user", password: "abc123", name: "John" };
+        // Add a custom REST module to it with custom security endpoints
+        var custom = AeroGear.Auth({
+            name: "customModule",
+            settings: {
+                endpoints: {
+                    enroll: "register",
+                    login: "go",
+                    logout: "leave"
+                }
+            }
+        }).modules.customModule,
+        data = { userName: "user", password: "abc123", name: "John" };
 
-custom.logout({
-    baseURL: "http://customurl/",
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});</code></pre>
+        custom.logout({
+            baseURL: "http://customurl/",
+            success: function( data ) { ... },
+            error: function( error ) { ... }
+        });</code></pre>
 
     
 </dd>
@@ -1642,13 +1681,13 @@ custom.logout({
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Sun Aug 18 2013 19:56:49 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 21 2014 12:00:28 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

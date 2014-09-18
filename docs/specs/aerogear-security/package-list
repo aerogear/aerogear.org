@@ -1,6 +1,0 @@
-org.jboss.aerogear.security.auth
-org.jboss.aerogear.security.authz
-org.jboss.aerogear.security.exception
-org.jboss.aerogear.security.interceptor
-org.jboss.aerogear.security.util
-org.jboss.aerogear.security.web.filter

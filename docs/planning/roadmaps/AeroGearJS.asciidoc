@@ -5,7 +5,7 @@ title: AeroGear JavaScript Library
 
 AeroGear JavaScript Library
 ===========================
-:Author: Kris Borchers
+:Author: Lucas Holmquist
 
 This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.
 
@@ -58,25 +58,50 @@ New Features
 ** IndexedDB/WebSQL Adapter
 *** Feature detection to determine which is available
 *** IE9 supports neither so need to also be able to fall back to localStorage but use same API
+
+1.4.0 (Mid March)
+~~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
 * *Auth*
-** OTP Adapter
 ** OAuth2 Adapter
 *** Customizable Provider
 
-1.4.0 (Mid January)
-~~~~~~~~~~~~~~~~~~~
+* *JS Cookbook*
+** Recipes for common usages
+
+1.5.0 (Early May)
+~~~~~~~~~~~~~~~~~
+New Features
+~~~~~~~~~~~~
+* *MQTT WS Adapter*
+** link:https://issues.jboss.org/browse/AGJS-47[AGJS-47]
+* *UnifiedPushClient updates*
+** Remove jQuery Requirement
+** Add ES6 promises( polyfill where needed )
+***** link:https://issues.jboss.org/browse/AGJS-154[AGJS-154]
+* *Code Cleanup*
+** Remove duplicated methods in Notifier
+**** link:https://issues.jboss.org/browse/AGJS-135[AGJS-135]
+* *More Cookbook Examples*
+** link:https://issues.jboss.org/browse/AGJS-41[AGJS-41]
+
+1.6.0 (Mid July)
+~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
 * *Data Sync*
+** link:https://issues.jboss.org/browse/AGJS-102[AGJS-102]
 ** Utility for keeping data in DataManager synchronized with a persistent server side store
 ** Possibly use Notifier for communication / data transfer
 ** Investigate PouchDB as provider or inspiration
 
-1.5.0 (Early March)
-~~~~~~~~~~~~~~~~~~~
+1.7.0 (Late September)
+~~~~~~~~~~~~~~~~~~~~~~
 New Features
 ^^^^^^^^^^^^
 * *Offline*
+** link:https://issues.jboss.org/browse/AGJS-156[AGJS-156]
 ** Support for using apps offline and detecting status
 ** Simplified App Cache API / Keep eye on new offline APIs
 ** Use DataSync when returning to online status
@@ -88,6 +113,15 @@ New Features
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
+* *Remove jQuery Requirements*
+** Ajax & Promises
+** JSON only
+**** https://issues.jboss.org/browse/AGJS-70[AGJS-70]
+* *ES6 Modules*
+** transpile to ES5
+**** link:https://issues.jboss.org/browse/AGJS-149[AGJS-149]
+* *Polymer Components*
+** link:https://issues.jboss.org/browse/AGJS-131[AGJS-131]
 * *Social*
 ** Auth
 *** Login via Facebook, G+, Twitter?

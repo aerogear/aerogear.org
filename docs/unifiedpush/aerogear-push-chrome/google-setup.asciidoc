@@ -1,0 +1,76 @@
+---
+layout: basic
+title: Google setup
+---
+
+Google Related Setup
+--------------------
+
+Before the Chrome Packaged application is able to receive the notifications, you must authenticate yourself with Google as a developer. Luckily this is both easy and free to do, and doesn't require much set-up.
+
+Registering with Google
+~~~~~~~~~~~~~~~~~~~~~~~
+
+First, we must authenticate with Google. Google offers the Google Cloud Messaging (GCM) for Chrome platform.  You will need a Google Account for this. Now open the https://cloud.google.com/console[Google Cloud Console].
+
+
+- If you haven't created a project, click ``Create Project'':
+
+image::./img/gcc_1.png[Create New Project]
+
+- Now give the new project a name:
+
+image::./img/gcc_2.png[New Project Name]
+
+- Once the project has been created you will see the overview screen:
+
+image::./img/gcc_3.png[Project Number]
+
+Now you need to enable the _Google Cloud Messaging Chrome APIs_. To do that, navigate to +APIs & auth+ > +APIs+ and scroll down to the _Google Cloud Messaging for Chrome_ item, which you need to turn on:
+
+image::./img/gcc_4.png[Project Number]
+
+Now we need to register our application and state that we are accessing the Google APIs from a _Web Application_.  First go to +APIs & auth+ > +Credentials+ and inside of the _OAuth access_ area click the red *CREATE NEW CLIENT ID* button. This launches the following popup, where you select the +Web Application+ option.
+
+You will also need to add a link to the OAuth2 Playground,  https://developers.google.com/oauthplayground, in the _Authorized redirect URI_ section as well as the link to your UnifiedPush Server:
+
+image::./img/gcc_5.png[Project Number]
+
+Now just click the +Create Client ID+ button
+
+On the last screen we finally get to see the actual value of the generated Client ID and Client Key, which we will use later:
+
+image::./img/gcc_6.png["Project Number",border="1"]
+
+You need two types of OAuth 2.0 tokens to authorize each call to the push messaging service: the refresh token and the access token.
+
+The access token authorizes each call to the service; however, this token expires after about an hour. The refresh token is used to 'refresh' the access token over time.
+
+These tokens are scoped to only send messages on behalf of your application or extension and nothing else.
+
+To get the refresh token and initial access token:
+
+Go to the OAuth 2.0 Playground https://developers.google.com/oauthplayground.
+
+image::./img/gcc_7.png["OAuth Playground", border="1"]
+
+Click the  OAuth 2.0 Configuration button in the top right corner and then check the box "Use your own OAuth credentials" and enter the client ID and client secret you received from the Google Cloud Console, and click "Close".
+
+image::./img/gcc_8.png["OAuth Playground Settings", border="1"]
+
+In the "Step 1" section, enter the scope https://www.googleapis.com/auth/gcm_for_chrome into the "Input your own scopes" text box and click "Authorize APIs" button.
+
+image::./img/gcc_9.png["OAuth Playground Settings", border="1"]
+
+You should be redirected to the Google log in page. Login with the same Google Account that you will use to upload your app or extension to the Chrome Web Store.
+
+After successful log in, you are redirected to a page to authorize the scopes. Click "Allow access" button, redirecting you back to the OAuth 2.0 playground.
+
+In "Step 2", click "Exchange authorization code for tokens" button.
+
+image::./img/gcc_11.png["OAuth Playground Refresh Token", border="1"]
+
+
+The refresh token never expires until you explicitly revoke access. You will need this refresh token once we setup the UnifiedPush Server
+
+Now that Google is ready to accept and deliver our messages, we are ready to setup the link:../register-device[UnifiedPush server].

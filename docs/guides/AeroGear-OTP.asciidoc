@@ -46,7 +46,7 @@ In both cases variable "totp" now holds our token which can be send to the remot
 
 Worth noticing is that the Java implementation has the verifier component also implemented, so if you back-end is Java, you can also use the implementation in your server-side back-end to verify totp tokens.
 
-If you are an iOS developer, you can find the library already in the link:http://cocoapods.org/?q=aerogear-otp[coccoapods]. Further a demo application has been created that demos the library in action, so I suggest you have a look. You can find it link:https://github.com/aerogear/aerogear-otp-ios-demo/zipball/1.0.0[here].
+If you are an iOS developer, you can find the library already in the link:http://cocoapods.org/?q=aerogear-otp[coccoapods]. Further a demo application has been created that demos the library in action, so I suggest you have a look. You can find it link:https://github.com/aerogear/aerogear-otp-ios-demo[here].
 
 If you are an Android developer, you can find the library already in maven. Just include it in your project.
 [source, xml]

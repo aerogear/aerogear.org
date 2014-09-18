@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>AGDeviceRegistration Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -26,6 +25,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -47,8 +48,6 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/constructNSError:">&nbsp;&nbsp;&nbsp;&nbsp;- constructNSError:</option>
-	
 	<option value="//api/name/initWithServerURL:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithServerURL:</option>
 	
 	<option value="//api/name/registerWithClientInfo:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- registerWithClientInfo:success:failure:</option>
@@ -62,6 +61,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -84,8 +85,6 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/constructNSError:">constructNSError:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithServerURL:">initWithServerURL:</a></span></li>
 	
@@ -122,6 +121,14 @@
 </tr>
 						</tbody></table></div>
 					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Utility to register an iOS device with the AeroGear UnifiedPush Server.</p>
+					</div>
 					
 					
 					
@@ -133,45 +140,24 @@
 						
 						
 						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithServerURL:">&ndash;&nbsp;initWithServerURL:</a></code>
-		<span class="tooltip"><p>An initializer method to instantiate an AGDeviceRegistration object.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/registerWithClientInfo:success:failure:">&ndash;&nbsp;registerWithClientInfo:success:failure:</a></code>
-		<span class="tooltip"><p>Registers your mobile device to the AeroGear Push server so it can
-start receiving messages.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
-		<span class="tooltip"><p>Convenient method to access a shared instance of the AGDeviceRegistration object.
-Note that this object is initialized only after the initializer initWithServerURL:url
-has been called.</p></span>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/constructNSError:">&ndash;&nbsp;constructNSError:</a></code>
-		<span class="tooltip"><p>Transforms given String into NSError.</p></span>
 	</span>
 	
 	
@@ -249,47 +235,6 @@ has been called.</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/constructNSError:" title="constructNSError:"></a>
-	<h3 class="subsubtitle method-title">constructNSError:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Transforms given String into NSError.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (NSError *)constructNSError:(NSString *)<em>message</em></code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Transforms given String into NSError.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AGDeviceRegistration.m</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/initWithServerURL:" title="initWithServerURL:"></a>
 	<h3 class="subsubtitle method-title">initWithServerURL:</h3>
 	
@@ -301,7 +246,7 @@ has been called.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithServerURL:(NSURL *)<em>url</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithServerURL:(id)<em>url</em></code></div>
 
     
 	
@@ -309,7 +254,7 @@ has been called.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>baseURL</em></dt>
+			<dt><em>url</em></dt>
 			<dd><p>the URL of the AeroGear Push server.</p></dd>
 		</dl>
 		
@@ -358,7 +303,7 @@ start receiving messages.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)registerWithClientInfo:(void ( ^ ) ( id&lt;AGClientDeviceInformation&gt; ))<em>clientInfo</em> success:(void ( ^ ) ( void ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)registerWithClientInfo:(id)<em>clientInfo</em> success:(id)<em>success</em> failure:(id)<em>failure</em></code></div>
 
     
 	
@@ -415,6 +360,11 @@ start receiving messages.</p>
 					</div>
 					
 					
+                    
+                    
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -425,9 +375,9 @@ start receiving messages.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Red Hat. All rights reserved. (Last updated: 2013-08-13)</span><br />
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-08-19)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

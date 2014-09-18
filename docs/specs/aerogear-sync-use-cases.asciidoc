@@ -1,0 +1,70 @@
+---
+layout: basic
+title: AeroGear Data Sync
+---
+
+Status: Experimental
+--------------------
+
+AeroGear Data Sync Use Cases
+----------------------------
+
+[options="header" cols="^,^,^,^,^"]
+|=============================================================================
+| Use Case 	| Push/Poll 	| Realtime 	| Server 	| APIs Used 
+| Periodic Read Only Update | Poll | N | Any legacy | Pipelines, Authentication, Stores 
+| Real Time Read Only Update | Push | Y(ish) | Legacy + Updates for Unified Push | Unified Push, Store 
+| Simple Settings Sync | Push | Y(ish) | Legacy + Updates for Unified Push + Updates for conflict mgmt | Pipelines, Authentication, UnifiedPush, Store 
+| Real Time Text Sync | Push | Y | Needs lots of custom code, vert.x realtime component | UnifiedPush, Store 
+|=============================================================================
+
+Periodic Read Only Update
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Use cases where caching data is useful and where it should be transparent and long lived are covered by this.
+
+Usage proposal: Reading a schedule (Android)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+```java
+
+  PipeConfig pipeConfig = buildConfig()
+  
+  SyncConfig syncConfig = new SyncConfig();
+  syncConfig.setType(SyncTypes.PeriodicReadOnly);
+  syncConfig.setExpiresIn(SyncConfig.24_HOURS);
+  
+  pipeConfig.setSync(syncConfig);
+  
+  Pipe<Schedule> schedulePipe = pipeline.pipe(pipeConfig);
+  
+  schedulePipe.read(/*call back*/);
+  /*
+  This will check a SQL Store, notice there is no data, fetch the data, and store metadata about when it was fetched.
+  */
+  
+  
+  
+  //12 Hours later
+  schedulePipe.read(/*call back*/);
+  /*
+  This will check a SQL Store, notice there is data, notice it is inside of the expires time, and return it.
+  No call to the remote source will be made.
+  */
+  
+  
+  //36 Hours later
+  schedulePipe.read(/*call back*/);
+  /*
+  This will check a SQL Store, notice there is data, notice it is stale, and refetch and refresh the data.
+  */
+  
+```
+
+
+Questions for consideration:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+How will save/delete work?
+How will readWithFilter work?
+What happens if we have stale data and no internet connection?
+Should we include a job which fetches data in the background instead of checking when the call is made?

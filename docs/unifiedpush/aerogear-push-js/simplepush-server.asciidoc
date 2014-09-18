@@ -1,0 +1,46 @@
+---
+layout: basic
+title: AeroGear SimplePush Server
+---
+
+The AeroGear SimplePush Server
+------------------------------
+
+The link:https://github.com/aerogear/aerogear-simplepush-server[AeroGear SimplePush server] is a high performant implementation of the link:https://wiki.mozilla.org/WebAPI/SimplePush/Protocol[SimplePush protocol]. Mozilla provides a link:https://github.com/jrconlin/pushgo[server implementation] based on the Go programming language and link:https://github.com/aerogear/aerogear-js#simplepushclient[AeroGear's JavaScript client] will work just fine against that implementation. We wanted to provide another server option both for security (some companies would like more control over the push environment) and as a way to set up completely internal push networks. For example, a company with an internal app with a need for push notifications, could deploy a SimplePush server on their internal network/VPN and have push messaging capability to their web apps without having to contact an outside server.
+
+AeroGear SimplePush is a Java implementation of the server side part of the specification and two version are provided, one based on link:http://netty.io/[Netty], and one based on link:http://vertx.io[Vert.x]
+
+The SimplePush specification states that secure WebSockets should be used as the transport protocol but for web applications this is not always possible. Older browsers versions may lack WebSocket support, or issues with restrictive proxies in combination with WebSockets can lead to situations where the communication will simply not work. To counter this AeroGear's SimplePush server uses link:https://github.com/sockjs/sockjs-client[SockJS] to provide a fallback strategy. SockJS provides a client side and server side protocol and provides fallback handling in situations where a WebSocket connection cannot be made. AeroGear uses Netty's upcoming SockJS support which takes care of the SockJS handling.
+
+In this guide we will describe the setup of the _Netty_ based implementation which can be used both as a standalone component, or be integrated into JBoss Application Server. Details on how you can integrate the server with the JBoss can be found in link:https://github.com/aerogear/aerogear-simplepush-server/tree/master/wildfly-module[this page] but this guide will use the standalone component.
+
+=== Setup
+
+Download the server from the project's link:https://github.com/aerogear/aerogear-simplepush-server[github page]. Then on the command line issue:
+
+[source,c]
+----
+cd aerogear-simplepush-server
+mvn install -DskipTests=true
+----
+
+We are now ready to run the server. On the command line issue:
+
+[source,c]
+----
+cd server-netty
+mvn exec:java 
+----
+
+This will start the server and by default it will listen on localhost using port 7777. If you want to override those arguments have a look at the link:https://github.com/aerogear/aerogear-simplepush-server/tree/master/server-netty[server documentation] for more details.
+
+On the console you should now see the following:
+
+[source,c]
+----
+....
+[INFO] --- exec-maven-plugin:1.2:java (default-cli) @ aerogear-simplepush-server-netty ---
+SockJS server with options {ACK_INTERVAL=10000, PORT=7777, TOKEN_KEY=yourRandomToken, TLS=false, USERAGENT_REAPER_TIMEOUT=60000, HOST=localhost}
+----
+
+Now that we have the SimplePush server up and running, let's move to the link:../unifiedpush-server[next section] to configure the UnifiedPush server.

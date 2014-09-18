@@ -69,26 +69,40 @@ AeroGear.Core = function() {
         var i,
             current,
             collection = this[ this.collectionName ] || {};
+        this[ this.collectionName ] = collection;
 
         if ( !config ) {
             return this;
         } else if ( typeof config === "string" ) {
             // config is a string so use default adapter type
-            collection[ config ] = AeroGear[ this.lib ].adapters[ this.type ]( config );
-        } else if ( AeroGear.isArray( config ) ) {
+            collection[ config ] = AeroGear[ this.lib ].adapters[ this.type ]( config, this.config );
+        } else if ( Array.isArray( config ) ) {
             // config is an array so loop through each item in the array
             for ( i = 0; i &lt; config.length; i++ ) {
                 current = config[ i ];
 
                 if ( typeof current === "string" ) {
-                    collection[ current ] = AeroGear[ this.lib ].adapters[ this.type ]( current );
+                    collection[ current ] = AeroGear[ this.lib ].adapters[ this.type ]( current, this.config );
                 } else {
-                    collection[ current.name ] = AeroGear[ this.lib ].adapters[ current.type || this.type ]( current.name, current.settings || {} );
+                    if( current.name ) {
+
+                        // Merge the Module( pipeline, datamanger, ... )config with the adapters settings
+                        current.settings = AeroGear.extend( current.settings || {}, this.config );
+
+                        collection[ current.name ] = AeroGear[ this.lib ].adapters[ current.type || this.type ]( current.name, current.settings );
+                    }
                 }
             }
         } else {
+            if( !config.name ) {
+                return this;
+            }
+
+            // Merge the Module( pipeline, datamanger, ... )config with the adapters settings
             // config is an object so use that signature
-            collection[ config.name ] = AeroGear[ this.lib ].adapters[ config.type || this.type ]( config.name, config.settings || {} );
+            config.settings = AeroGear.extend( config.settings || {}, this.config );
+
+            collection[ config.name ] = AeroGear[ this.lib ].adapters[ config.type || this.type ]( config.name, config.settings );
         }
 
         // reset the collection instance
@@ -111,7 +125,7 @@ AeroGear.Core = function() {
         if ( typeof config === "string" ) {
             // config is a string so delete that item by name
             delete collection[ config ];
-        } else if ( AeroGear.isArray( config ) ) {
+        } else if ( Array.isArray( config ) ) {
             // config is an array so loop through each item in the array
             for ( i = 0; i &lt; config.length; i++ ) {
                 current = config[ i ];
@@ -138,10 +152,28 @@ AeroGear.Core = function() {
     Utility function to test if an object is an Array
     @private
     @method
+    @deprecated
     @param {Object} obj - This can be any object to test
 */
 AeroGear.isArray = function( obj ) {
-    return ({}).toString.call( obj ) === "[object Array]";
+    return Array.isArray( obj );
+};
+
+/**
+    Utility function to merge many Objects in one target Object which is the first object in arguments list.
+    @private
+    @method
+*/
+AeroGear.extend = function() {
+    var name, i, source,
+        target = arguments[ 0 ];
+    for( i=1; i&lt;arguments.length; i++ ) {
+        source = arguments[ i ];
+        for( name in source ) {
+            target[ name ] = source[ name ];
+        }
+    }
+    return target;
 };
 
 /**
@@ -164,6 +196,11 @@ AeroGear.isArray = function( obj ) {
     @param {String} textStatus - The text status message returned from the server
     @param {Object} jqXHR - The jQuery specific XHR object
  */
+ /**
+    This callback is executed when an HTTP progress message is returned during a request.
+    @callback AeroGear~progressCallbackREST
+    @param {Object} XMLHttpRequestProgressEvent - The progress event
+ */
 /**
     This callback is executed when an error is encountered saving to local or session storage.
     @callback AeroGear~errorCallbackStorage
@@ -185,13 +222,13 @@ AeroGear.isArray = function( obj ) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Sun Aug 18 2013 19:56:49 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 21 2014 12:00:28 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

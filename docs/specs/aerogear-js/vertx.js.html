@@ -73,7 +73,7 @@
         name: "client1",
         settings: {
             autoConnect: true,
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -95,134 +95,18 @@ AeroGear.Notifier.adapters.vertx = function( clientName, settings ) {
 
     settings = settings || {};
 
+    AeroGear.Notifier.adapters.base.apply( this, arguments );
+
     // Private Instance vars
-    var type = "vertx",
-        name = clientName,
-        channels = settings.channels || [],
-        autoConnect = !!settings.autoConnect || channels.length,
-        connectURL = settings.connectURL || "",
-        state = AeroGear.Notifier.CONNECTING,
-        bus = null;
-
-    // Privileged methods
-    /**
-        Returns the value of the private connectURL var
-        @private
-        @augments vertx
-     */
-    this.getConnectURL = function() {
-        return connectURL;
-    };
-
-    /**
-        Set the value of the private connectURL var
-        @private
-        @augments vertx
-        @param {String} url - New connectURL for this client
-     */
-    this.setConnectURL = function( url ) {
-        connectURL = url;
-    };
-
-    /**
-        Returns the value of the private channels var
-        @private
-        @augments vertx
-     */
-    this.getChannels = function() {
-        return channels;
-    };
-
-    /**
-        Adds a channel to the set
-        @param {Object} channel - The channel object to add to the set
-        @private
-        @augments vertx
-     */
-    this.addChannel = function( channel ) {
-        channels.push( channel );
-    };
-
-    /**
-        Check if subscribed to a channel
-        @param {String} address - The address of the channel object to search for in the set
-        @private
-        @augments vertx
-     */
-    this.getChannelIndex = function( address ) {
-        for ( var i = 0; i &lt; channels.length; i++ ) {
-            if ( channels[ i ].address === address ) {
-                return i;
-            }
-        }
-        return -1;
-    };
-
-    /**
-        Removes a channel from the set
-        @param {Object} channel - The channel object to remove from the set
-        @private
-        @augments vertx
-     */
-    this.removeChannel = function( channel ) {
-        var index = this.getChannelIndex( channel.address );
-        if ( index >= 0 ) {
-            channels.splice( index, 1 );
-        }
-    };
-
-    /**
-        Returns the value of the private state var
-        @private
-        @augments vertx
-     */
-    this.getState = function() {
-        return state;
-    };
-
-    /**
-        Sets the value of the private state var
-        @private
-        @augments vertx
-     */
-    this.setState = function( newState ) {
-        state = newState;
-    };
-
-    /**
-        Returns the value of the private bus var
-        @private
-        @augments vertx
-     */
-    this.getBus = function() {
-        return bus;
-    };
-
-    /**
-        Sets the value of the private bus var
-        @private
-        @augments vertx
-     */
-    this.setBus = function( newBus ) {
-        bus = newBus;
-    };
-
-    // Handle auto-connect
-    if ( autoConnect || channels.length ) {
-        this.connect({
-            url: connectURL,
-            onConnect: settings.onConnect,
-            onDisconnect: settings.onDisconnect,
-            onConnectError: settings.onConnectError
-        });
-    }
+    var type = "vertx";
 };
 
-//Public Methods
+// Public Methods
 /**
     Connect the client to the messaging service
     @param {Object} [options={}] - Options to pass to the connect method
     @param {String} [options.url] - The URL for the messaging service. This url will override and reset any connectURL specified when the client was created.
+    @param {Array} [options.protocols_whitelist] -  A list protocols that may be used by SockJS. By default all available protocols will be used, which is equivalent to supplying: "['websocket', 'xdr-streaming', 'xhr-streaming', 'iframe-eventsource', 'iframe-htmlfile', 'xdr-polling', 'xhr-polling', 'iframe-xhr-polling', 'jsonp-polling']"
     @param {Function} [options.onConnect] - callback to be executed when a connection is established
     @param {Function} [options.onDisconnect] - callback to be executed when a connection is terminated
     @param {Function} [options.onConnectError] - callback to be executed when connecting to a service is unsuccessful
@@ -234,7 +118,7 @@ AeroGear.Notifier.adapters.vertx = function( clientName, settings ) {
     notifier.add({
         name: "client1",
         settings: {
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -254,7 +138,7 @@ AeroGear.Notifier.adapters.vertx = function( clientName, settings ) {
 AeroGear.Notifier.adapters.vertx.prototype.connect = function( options ) {
     options = options || {};
     var that = this,
-        bus = new vertx.EventBus( options.url || this.getConnectURL() );
+        bus = new vertx.EventBus( options.url || this.getConnectURL(), options );
 
     bus.onopen = function() {
         // Make a Copy of the channel array instead of a reference.
@@ -284,7 +168,7 @@ AeroGear.Notifier.adapters.vertx.prototype.connect = function( options ) {
         }
     };
 
-    this.setBus( bus );
+    this.setClient( bus );
 };
 
 /**
@@ -297,7 +181,7 @@ AeroGear.Notifier.adapters.vertx.prototype.connect = function( options ) {
     notifier.add({
         name: "client1",
         settings: {
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -318,7 +202,7 @@ AeroGear.Notifier.adapters.vertx.prototype.connect = function( options ) {
 
  */
 AeroGear.Notifier.adapters.vertx.prototype.disconnect = function() {
-    var bus = this.getBus();
+    var bus = this.getClient();
     if ( this.getState() === AeroGear.Notifier.CONNECTED ) {
         this.setState( AeroGear.Notifier.DISCONNECTING );
         bus.close();
@@ -348,7 +232,7 @@ AeroGear.Notifier.adapters.vertx.prototype.disconnect = function() {
         name: "client1",
         settings: {
             autoConnect: true,
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -361,10 +245,10 @@ AeroGear.Notifier.adapters.vertx.prototype.disconnect = function() {
         }
     });
 
-    //Subscribe to a channel
+    // Subscribe to a channel
     notifierVertx.clients.client1.subscribe( channelObject );
 
-    //Subscribe to multiple channels at once
+    // Subscribe to multiple channels at once
     notifierVertx.clients.client1.subscribe([
         {
             address: "newChannel",
@@ -376,20 +260,20 @@ AeroGear.Notifier.adapters.vertx.prototype.disconnect = function() {
         }
     ]);
 
-    //Subscribe to a channel, but first unsubscribe from all currently subscribed channels by adding the reset parameter
+    // Subscribe to a channel, but first unsubscribe from all currently subscribed channels by adding the reset parameter
     notifierVertx.clients.client1.subscribe({
             address: "newChannel",
             callback: function(){ ... }
         }, true );
  */
 AeroGear.Notifier.adapters.vertx.prototype.subscribe = function( channels, reset ) {
-    var bus = this.getBus();
+    var bus = this.getClient();
 
     if ( reset ) {
         this.unsubscribe( this.getChannels() );
     }
 
-    channels = AeroGear.isArray( channels ) ? channels : [ channels ];
+    channels = Array.isArray( channels ) ? channels : [ channels ];
     for ( var i = 0; i &lt; channels.length; i++ ) {
         this.addChannel( channels[ i ] );
         bus.registerHandler( channels[ i ].address, channels[ i ].callback );
@@ -398,7 +282,7 @@ AeroGear.Notifier.adapters.vertx.prototype.subscribe = function( channels, reset
 
 /**
     Unsubscribe this client from a channel
-    @param {Object|Array} channels - a channel object or a set of channel objects to which this client nolonger wishes to subscribe
+    @param {Object|Array} channels - a channel object or a set of channel objects to which this client nolonger wishes to subscribe. Each object should have a String address and an optional callback which needs to be the same as the callback passed to the subscribe method while subscribing the client to the channel.
     @example
     // Unsubscribe from a previously subscribed channel
     notifierVertx.clients.client1.unsubscribe(
@@ -423,12 +307,13 @@ AeroGear.Notifier.adapters.vertx.prototype.subscribe = function( channels, reset
 
  */
 AeroGear.Notifier.adapters.vertx.prototype.unsubscribe = function( channels ) {
-    var bus = this.getBus();
+    var bus = this.getClient(),
+        thisChannels = this.getChannels();
 
-    channels = AeroGear.isArray( channels ) ? channels : [ channels ];
+    channels = Array.isArray( channels ) ? channels : [ channels ];
     for ( var i = 0; i &lt; channels.length; i++ ) {
+        bus.unregisterHandler( channels[ i ].address, channels[ i ].callback || thisChannels[ this.getChannelIndex( channels[ i ].address ) ].callback );
         this.removeChannel( channels[ i ] );
-        bus.unregisterHandler( channels[ i ].address, channels[ i ].callback );
     }
 };
 
@@ -436,6 +321,7 @@ AeroGear.Notifier.adapters.vertx.prototype.unsubscribe = function( channels ) {
     Send a message to a particular channel
     @param {String} channel - the channel to which to send the message
     @param {String|Object} [message=""] - the message object to send
+    @param {Boolean} [publish=false] - tell vert.x if this is a publish to all subscribed clients
     @example
     // Send an empty message to a channel
     notifier.clients.client1.send( "test.address" );
@@ -446,13 +332,21 @@ AeroGear.Notifier.adapters.vertx.prototype.unsubscribe = function( channels ) {
     // Send a "Hello" message as an object
     notifier.clients.client1.send( "test.address", { "message": "Hello" } );
 
- */
-AeroGear.Notifier.adapters.vertx.prototype.send = function( channel, message ) {
-    var bus = this.getBus();
+    // Send a "Hello" message as an object to all subscribed clients on that channel
+    notifier.clients.client1.send( "test.address", { "message": "Hello" }, true );
 
+
+ */
+AeroGear.Notifier.adapters.vertx.prototype.send = function( channel, message, publish ) {
+    var bus = this.getClient();
+
+    if ( typeof message === Boolean && !publish ) {
+        publish = message;
+        message = "";
+    }
     message = message || "";
 
-    bus.send( channel, message );
+    bus[ publish ? "publish" : "send" ]( channel, message );
 };
 </code></pre>
         </article>
@@ -464,13 +358,13 @@ AeroGear.Notifier.adapters.vertx.prototype.send = function( channel, message ) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Sun Aug 18 2013 19:56:49 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 21 2014 12:00:28 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

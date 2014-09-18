@@ -512,7 +512,7 @@
         name: "client1",
         settings: {
             autoConnect: true,
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -691,6 +691,39 @@
 	
         <tr>
             
+                <td class="name"><code>protocols_whitelist</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">A list protocols that may be used by SockJS. By default all available protocols will be used, which is equivalent to supplying: "['websocket', 'xdr-streaming', 'xhr-streaming', 'iframe-eventsource', 'iframe-htmlfile', 'xdr-polling', 'xhr-polling', 'iframe-xhr-polling', 'jsonp-polling']"</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
                 <td class="name"><code>onConnect</code></td>
             
             
@@ -820,7 +853,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line226">line 226</a>
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line110">line 110</a>
     </li></ul></dd>
     
     
@@ -852,7 +885,7 @@
     notifier.add({
         name: "client1",
         settings: {
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -917,7 +950,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line292">line 292</a>
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line176">line 176</a>
     </li></ul></dd>
     
     
@@ -949,7 +982,7 @@
     notifier.add({
         name: "client1",
         settings: {
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -974,7 +1007,7 @@
         
             
 <dt>
-    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(channel, <span class="optional">message</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(channel, <span class="optional">message</span>, <span class="optional">publish</span>)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -1096,6 +1129,45 @@
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>publish</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">tell vert.x if this is a publish to all subscribed clients</td>
+        </tr>
+	
+	
 	</tbody>
 </table>
     
@@ -1123,7 +1195,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line422">line 422</a>
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line312">line 312</a>
     </li></ul></dd>
     
     
@@ -1155,7 +1227,10 @@
     notifier.clients.client1.send( "test.address", "Hello" );
 
     // Send a "Hello" message as an object
-    notifier.clients.client1.send( "test.address", { "message": "Hello" } );</code></pre>
+    notifier.clients.client1.send( "test.address", { "message": "Hello" } );
+
+    // Send a "Hello" message as an object to all subscribed clients on that channel
+    notifier.clients.client1.send( "test.address", { "message": "Hello" }, true );</code></pre>
 
     
 </dd>
@@ -1300,7 +1375,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line357">line 357</a>
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line241">line 241</a>
     </li></ul></dd>
     
     
@@ -1343,7 +1418,7 @@
         name: "client1",
         settings: {
             autoConnect: true,
-            connectURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + "/eventbus",
+            connectURL: window.location.protocol + '//' + window.location.host + "/eventbus",
             onConnect: function() {
                 console.log( "connected" );
             },
@@ -1356,10 +1431,10 @@
         }
     });
 
-    //Subscribe to a channel
+    // Subscribe to a channel
     notifierVertx.clients.client1.subscribe( channelObject );
 
-    //Subscribe to multiple channels at once
+    // Subscribe to multiple channels at once
     notifierVertx.clients.client1.subscribe([
         {
             address: "newChannel",
@@ -1371,7 +1446,7 @@
         }
     ]);
 
-    //Subscribe to a channel, but first unsubscribe from all currently subscribed channels by adding the reset parameter
+    // Subscribe to a channel, but first unsubscribe from all currently subscribed channels by adding the reset parameter
     notifierVertx.clients.client1.subscribe({
             address: "newChannel",
             callback: function(){ ... }
@@ -1446,7 +1521,7 @@
             
             
             
-            <td class="description last">a channel object or a set of channel objects to which this client nolonger wishes to subscribe</td>
+            <td class="description last">a channel object or a set of channel objects to which this client nolonger wishes to subscribe. Each object should have a String address and an optional callback which needs to be the same as the callback passed to the subscribe method while subscribing the client to the channel.</td>
         </tr>
 	
 	
@@ -1477,7 +1552,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line397">line 397</a>
+        <a href="vertx.js.html">notifier/adapters/vertx.js</a>, <a href="vertx.js.html#line281">line 281</a>
     </li></ul></dd>
     
     
@@ -1541,13 +1616,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.setMessageHandler.html">navigator.setMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Sun Aug 18 2013 19:56:49 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 21 2014 12:00:29 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

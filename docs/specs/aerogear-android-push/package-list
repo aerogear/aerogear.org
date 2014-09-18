@@ -1,0 +1,6 @@
+org.jboss.aerogear.android
+org.jboss.aerogear.android.http
+org.jboss.aerogear.android.impl.http
+org.jboss.aerogear.android.impl.unifiedpush
+org.jboss.aerogear.android.impl.util
+org.jboss.aerogear.android.unifiedpush

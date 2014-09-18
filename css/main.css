@@ -96,31 +96,14 @@ textarea {
 /* =================== custom fonts ================================================================================= */
 @font-face {
     font-family: 'Open Sans';
+    src: url('/font/OpenSans-Regular-webfont.eot');
+    src: url('/font/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/font/OpenSans-Regular-webfont.woff') format('woff'),
+         url('/font/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('/font/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
     font-style: normal;
-    font-weight: 300;
-    src: local('Open Sans Light'), local('OpenSans-Light'),
-    url(/font/DXI1ORHCpsQm3Vp6mXoaTeY5mlVXtdNkpsMpKkrDXP4.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Open Sans Semibold'), local('OpenSans-Semibold'),
-    url(/font/MTP_ySUJH_bn48VBG8sNSuY5mlVXtdNkpsMpKkrDXP4.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 300;
-    src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'),
-    url(/font/PRmiXeptR36kaC0GEAetxnZ4362_PV5aPD5jU0S2ELI.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 600;
-    src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'),
-    url(/font/PRmiXeptR36kaC0GEAetxhyVJL_BP-r1aUfHSUUH87w.woff) format('woff');
+
 }
 
 /* =================== Standard elements ============================================================================ */
@@ -183,6 +166,10 @@ p {
     text-overflow: ellipsis;
 }
 
+li > p {
+    overflow: visible;
+}
+
 .clearfix {
     clear: both;
 }
@@ -206,13 +193,11 @@ p {
 /* =================== Nav bar ====================================================================================== */
 #main-header nav {
     display: inline-block;
-    position: absolute;
-    right: 0;
-    top: 110px;
     background-color: #f2f2f2;
     border-top: 1px solid #dadada;
     border-bottom: 1px solid #dadada;
     width: 100%;
+    margin-top: 1.2em;
 }
 
 #main-header ul {
@@ -331,7 +316,7 @@ a.news:hover {
 
 /* =================== Bringing mobile together ===================================================================== */
 .start-header {
-    margin-top: 6em;
+    margin-top: 1.2em;
     text-align: center;
     margin-bottom: 0.8em;
 }
@@ -339,7 +324,7 @@ a.news:hover {
 .start-header .start-title {
     color: #669eb2;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 1.95em;
     margin-bottom: 0.8em;
     letter-spacing: -1px;
 }
@@ -574,7 +559,7 @@ pre {
     background-color: #f2f2f2;
     border: 1px #dadada dotted;
     font-size: 0.7em;
-    margin-right: 5%;
+    margin-right: 3%;
     padding-left: 2%;
     white-space: pre;
 }
@@ -690,7 +675,15 @@ pre {
         margin: 0 0.5em;
     }
 
+    .rht-branding-visible {
+        display: none !important;
+    }
+
     /* =============== Side Navigation: accessible with swipe ======================================================= */
+
+    #main-header nav ul {
+        padding-left: 0;
+    }
 
     /*
     * Display menu swipe button 'hamburger like' icon
@@ -849,6 +842,22 @@ pre {
     *zoom: 1;
 }
 
+.specTable {
+    border-style:solid;
+    border-width: 1px;
+}
+.specTable th {
+     border-width: 1px;
+    border-style:solid;
+    padding:5px;
+}
+.specTable td {
+     border-width: 1px;
+    border-style:solid;
+    padding:5px;
+    text-align:center;
+}
+
 /* ==================================================================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -936,4 +945,182 @@ pre {
     h3 {
         page-break-after: avoid;
     }
+}
+
+#toc {
+  border-bottom: 3px double #ebebeb;
+  padding-bottom: 1.25em;
+}
+
+#toc > ul {
+  margin-left: 0.25em;
+}
+#toc ul.sectlevel0 > li > a {
+  font-style: italic;
+}
+#toc ul.sectlevel0 ul.sectlevel1 {
+  margin-left: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+#toc ul {
+  list-style-type: none;
+}
+#toctitle {
+  color: #e25027;
+}
+@media only screen and (min-width: 768px) {
+  #toc + .sect1 {
+    width: 75%;
+    border-right: 1px solid #ebebeb;
+  }
+
+  body.toc {
+    padding-left: 15em;
+    padding-right: 0;
+  }
+  #toc.toc {
+    width: 25%;
+    position: fixed;
+    right: 0;
+    box-sizing: border-box;
+    border: 0;
+    z-index: 1000;
+    height: 100%;
+    overflow: auto;
+    top: 0;
+    padding-top: 200px;
+  }
+  #toc.toc #toctitle {
+    margin-top: 0;
+    font-size: 1.2em;
+  }
+  #toc.toc > ul {
+    font-size: .90em;
+  }
+  #toc.toc ul ul {
+    margin-left: 0;
+    padding-left: 1em;
+  }
+  #toc.toc ul.sectlevel0 ul.sectlevel1 {
+    padding-left: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  body.toc.toc-right {
+    padding-left: 0;
+    padding-right: 15em;
+  }
+  body.toc.toc-right #toc.toc {
+    border-right: 0;
+    border-left: 1px solid #ebebeb;
+    left: auto;
+    right: 0;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  #toc + .sect1 {
+    padding: 1em;
+  }
+  body.toc {
+    padding-left: 20em;
+    padding-right: 0;
+  }
+  #toc.toc {
+    width: 20em;
+  }
+  #toc.toc #toctitle {
+    font-size: 1.375em;
+  }
+  #toc.toc > ul {
+    font-size: 0.95em;
+  }
+  #toc.toc ul ul {
+    padding-left: 1.25em;
+  }
+  body.toc.toc-right {
+    padding-left: 0;
+    padding-right: 20em;
+  }
+}
+#content #toc {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d9d9;
+  margin-bottom: 1.25em;
+  padding: 1.25em;
+  background: #f2f2f2;
+  border-width: 0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+#content #toc >:first-child {
+  margin-top: 0;
+}
+#content #toc >:last-child {
+  margin-bottom: 0;
+}
+#content #toc a {
+  text-decoration: none;
+}
+#content #toctitle {
+  font-weight: bold;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  padding-left: 0.125em;
+}
+
+.admonitionblock td.icon [class^="icon-"]:before {
+  font-size: 2.5em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.admonitionblock td.icon .icon-note:before {
+  content: "\f05a";
+  color: #58899d;
+}
+.admonitionblock td.icon .icon-tip:before {
+  content: "\f0eb";
+  text-shadow: 2px 0px 4px rgba(226, 80, 39, 0.8);
+  color: #111;
+}
+.admonitionblock td.icon .icon-warning:before {
+  content: "\f071";
+  color: #bf6900;
+}
+.admonitionblock td.icon .icon-caution:before {
+  content: "\f06d";
+  color: #bf3400;
+}
+.admonitionblock td.icon .icon-important:before {
+  content: "\f06a";
+  color: #bf0000;
+}
+
+.admonitionblock > table {
+  border: 0;
+  background: none;
+  width: 100%;
+  margin-bottom: 1.25em;
+}
+.admonitionblock > table td.icon {
+  text-align: center;
+  width: 80px;
+}
+.admonitionblock > table td.icon img {
+  max-width: none;
+}
+.admonitionblock > table td.icon .title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.admonitionblock > table td.content {
+  padding-left: 1.125em;
+  padding-right: 1.25em;
+  border-left: 1px solid #dddddd;
+  color: #6f6f6f;
+}
+.admonitionblock > table td.content >:last-child >:last-child {
+  margin-bottom: 0;
 }

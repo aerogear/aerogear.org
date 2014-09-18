@@ -1,3 +1,6 @@
 org.jboss.aerogear.unifiedpush
+org.jboss.aerogear.unifiedpush.ca
+org.jboss.aerogear.unifiedpush.http
 org.jboss.aerogear.unifiedpush.message
+org.jboss.aerogear.unifiedpush.model
 org.jboss.aerogear.unifiedpush.utils

@@ -1,0 +1,122 @@
+---
+layout: basic
+title: Authorization (OAuth2)
+---
+// tag::authz[]
+== Authorizer and AccountManager
+An Authorizer manages different authorization module implementations. It is basically a factory that hides the concrete instantiation of a specific AGAuthorizer Module implementation. The class offers simple APIs to add, remove, or get access to a 'authorization module'.
+
+The AuthorizationModule current implementation is based on link:http://tools.ietf.org/html/rfc6749[OAuth2 protocol] and uses REST as the authz transport. Similar to the Pipe, technical details of the underlying system are not exposed.
+
+=== Creating an Authorizer 
+
+To create an Authorizer, you need to use the AGAuthorizer class. Below is an example: 
+
+[source,c]
+----
+// create an authenticator object
+AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+    
+_restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
+    config.name = @"restAuthMod";
+    config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+    config.authzEndpoint = @"/o/oauth2/auth";
+    config.accessTokenEndpoint = @"/o/oauth2/token";
+    config.revokeTokenEndpoint = @"/o/oauth2/revoke";
+    config.clientId = @"XXX";
+    config.redirectURL = @"YYY:/oauth2Callback";
+    config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+}];
+----
+
+=== Creating an Account Manager
+
+When authorizing a client OAuth2 application, you often want the user to grant access for your app only once in the app lifetime. This is the whole purpose of AccountManager. With this guy, you can create multiple accounts and store them in an AGStore. It's up to you to choose you store. We recommend you to use an encrypted storage for storing authorization tokens, but be aware that encryption requires the user to enter a password.
+
+Here is how you do it:
+[source,c]
+----
+    // set up crypto params configuration object
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];
+    [config setSalt:[self salt]];
+    [config setPassphrase:passphrase];
+    
+    // initialize the encryption service passing the config
+    id<AGEncryptionService> encService = [[AGKeyManager manager] keyService:config];        // [1]
+    
+    // access Store Manager
+    AGDataManager *manager = [AGDataManager manager];
+    
+    // create store
+    id<AGStore> store = [manager store:^(id<AGStoreConfig> config) {                        // [2]
+        [config setName:@"OAuthStorage"];
+        // can also be set to "ENCRYPTED_SQLITE" for the encrypted sqlite variant
+        [config setType:@"ENCRYPTED_PLIST"];
+        [config setEncryptionService:encService];
+    }];
+    
+    // initialize account manager with encrypted store backend
+    _acctManager = [AGAccountManager manager:store];                                        // [3]
+
+    // set up facebook authz modules
+    id<AGAuthzModule> facebookAuthzModule = [_acctManager authz:^(id<AGAuthzConfig> config) { // [4]
+        config.name = @"restAuthMod";
+        config.baseURL = [[NSURL alloc] init];
+        ...
+    }];
+----
+
+In [1] you create an encryption service to be used with the encrypted database.
+
+In [2] you create an encrypted storage passing the encryption service.
+
+Last [3] create an AccountManager by injecting the created database. You can then create an authz module using the same code as seen with Authorizer above.
+
+=== Pass AGAuthzModule to a pipe
+
+Authorization module seamlessly integrates with Pipe, all you need to do is [5] inject your Authz Module into the Pipe. 
+
+[source,c]
+----
+// set up our facebook pipeline and pipes
+AGPipeline *_fbPipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"https://graph.facebook.com/me/"]];
+
+[_fbPipeline pipe:^(id<AGPipeConfig> config) {
+    [config setName:@"facebookUploadPipe"];
+    [config setEndpoint:@"photos"];
+    [config setAuthzModule:facebookAuthzModule];                    // [5]
+}];
+----
+
+=== Grant access is implicit by default
+
+You may ask when does Authz module ask for authorization? Basically each time you do a CRUD operation on Pipe, tokens are checked. If there are no tokens available you will be prompted. If the tokens are expired, a refresh token action is performed under the hood. Once you've done all the configuration, you can use the Pipe as usual.
+
+=== Grant access explicitly 
+
+However if you want to trigger when the grant pop-up will happen you should explicitly call **requestAccessSuccess:failure** as shown below:
+
+[source,c]
+----
+[_restAuthzModule requestAccessSuccess:^(id object) {
+    // Do some work here
+} failure:^(NSError *error) {
+    // Deal with failure
+}];
+----
+
+=== Revoke access
+
+You may want to revoke access tokens for you app by calling **revokeAccessSuccess:failure** as shown below:
+
+[source,c]
+----
+[_restAuthzModule revokeAccessSuccess:^(id object) {
+    // Do some work here
+} failure:^(NSError *error) {
+    // Deal with failure
+}]
+----
+
+
+// end::authz[]

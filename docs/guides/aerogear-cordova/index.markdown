@@ -1,5 +1,5 @@
---- 
-layout: basic 
+---
+layout: basic
 title: AeroGear Cordova User Guide
 ---
 
@@ -13,11 +13,9 @@ title: AeroGear Cordova User Guide
 
 ## Tutorials
 * [Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](CordovaAndroidDevJBDS)
-* [Apache Cordova and Android Push Notifications](../aerogear-push-cordova-android)
-* [Apache Cordova and iOS Push Notifications](../aerogear-push-cordova-ios)
 
 
 ## Usage Guides
 * [AeroGear Cordova PushPlugin](AerogearCordovaPush)
 * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](AerogearCordovaOTP)
-
+* [AeroGear Crypto Plugin](AerogearCordovaCrypto)

@@ -5,26 +5,33 @@ title: AeroGear Android User Guide
 
 # AeroGear Android User Guides
 
-## Getting Started Guides
-* [Get Started With Android Development on the Command Line](/docs/guides/GetStartedAndroid/)
-* [Get Started With Android Development in Eclipse](/docs/guides/GetStartedAndroidEclipse/)
-* [Get Started With Android Development in Intellij](/docs/guides/GetStartedAndroidIntellij/)
-* [Get Started With Android Development in NetBeans](/docs/guides/GettingStartedAndroidNetbeans/)
+* [How to build AeroGear Android library](how-to-build-aerogear-android)
 
 ## Usage Guides
-* [Pipes 101](AerogearAndroidPipes101)
-* [Customizing Pipes](AerogearAndroidCustomizingPipes)
+* [Pipe](pipe)
 * [Pagination](AerogearAndroidPagination)
-* [Authentication](AerogearAndroidAuthentication)
-* [Store](AerogearAndroidDataStore)
-* [Push Messaging](AerogearAndroidPush)
+* [Authentication](auth)
+* [Authorization](authz)
+* [Store](store)
+* [Push Messaging](push)
+
+## Example apps
+
+* [Cookbook](https://github.com/aerogear/aerogear-android-cookbook)
+* [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-android)
+* [Crypto Demo](https://github.com/aerogear/aerogear-crypto-android-demo)
+* [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo)
 
 ## JavaDoc documentation
-* [1.2.1 JavaDocs](/docs/specs/aerogear-android/)
+* [AeroGear Android 1.4.0](/docs/specs/aerogear-android/)
+* [AeroGear Android Push 1.0.0](/docs/specs/aerogear-android-push/)
 
 ## Projects using AeroGear on Android
 * [call4paperz4android](https://github.com/danielpassos/call4paperz4android)
 * [AGReddit](http://github.com/secondsun/AGReddit)
+* [DevNexus Android App](http://github.com/secondsun/DevnexusAndroid) [(Google Play Link)](https://play.google.com/store/apps/details?id=org.devnexus)
 
-## Presentations about AreoGear on Android
+## Presentations about AeroGear on Android
 * [AeroGear Android 1.0.0 ](http://www.rvl.io/secondsun/aerogear-android-1)
+* [AeroGear Android - The mobile developer's utility belt](http://www.slideshare.net/danielpassos/mobileconf-2013-aerogear-android)
+* [Let's Build a Modern Android App](https://github.com/secondsun/android_app_workshop)
