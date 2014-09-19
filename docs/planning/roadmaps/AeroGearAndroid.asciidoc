@@ -93,24 +93,37 @@ link:https://issues.jboss.org/issues/?filter=12320506[1.4 (Released on July 01, 
 * OAuth2
 ** link:https://issues.jboss.org/browse/AGDROID-266[AGDROID-266]: Create Oauth2 Authorization module
 
-link:https://issues.jboss.org/issues/?filter=12320508[2.0 (Mid September)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+link:https://issues.jboss.org/issues/?filter=12320508[2.0 alpha (Mid November)]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* link:https://issues.jboss.org/browse/AGDROID-192[AGDROID-192]: Remove deprecated APIs
-* link:https://issues.jboss.org/browse/AGDROID-236[AGDROID-236]: Modularizing the Android Library
+* link:https://issues.jboss.org/browse/AGDROID-236[AGDROID-236]: Modularize the Android Library
+* link:https://issues.jboss.org/browse/AGDROID-273[AGDROID-273]: Modularize integration tests
+* link:https://issues.jboss.org/browse/AGDROID-304[AGDROID-304]: Use Travis Android environment
+* link:https://issues.jboss.org/browse/AGDROID-306[AGDROID-306]: Build library on travis using Java SDK 6, 7 and 8
+* link:https://issues.jboss.org/browse/AGDROID-302[AGDROID-302]: Maven Android Plugin 4 based builds
 * link:https://issues.jboss.org/browse/AGDROID-259[AGDROID-259]: Replace factory by registration
+* link:https://issues.jboss.org/browse/AGDROID-307[AGDROID-307]: Deprecate apklib
+* link:https://issues.jboss.org/browse/AGDROID-308[AGDROID-308]: Change project structure to align with Gradle Project file structure.
+* link:https://issues.jboss.org/browse/AGDROID-192[AGDROID-192]: Remove deprecated APIs
+* link:https://issues.jboss.org/browse/AGDROID-228[AGDROID-228]: GDrive: An example app using oAuth2 with Google Drive
+* link:https://issues.jboss.org/browse/AGDROID-301[AGDROID-301]: Shoot-n-Share Oauth2 demo
+* link:https://issues.jboss.org/browse/AEROGEAR-1425[Data Sync - Revision control]
+** link:https://issues.jboss.org/browse/AGDROID-284[AGDROID-284]: Conflict resolution handling
+** link:https://issues.jboss.org/browse/AGDROID-285[AGDROID-285]: DiffMatchPatch conflict resolver
 
-link:https://issues.jboss.org/issues/?filter=12320508[2.1 (Mid November)]
+
+link:https://issues.jboss.org/issues/?filter=12322371[2.1 (late December)]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Offline
-** link:https://issues.jboss.org/browse/AGDROID-223[AGDROID-223]: Offline Authentication
-** link:https://issues.jboss.org/browse/AGDROID-224[AGDROID-224]: Encrypted Cache
+* link:https://issues.jboss.org/browse/AEROGEAR-1495[Data Sync - Server push]
+** https://issues.jboss.org/browse/AGDROID-286[AGDROID-286]: Provide Notification handler that is capable of delegeting to a configured Conflict Resolver
+
+* link:https://issues.jboss.org/browse/AGDROID-245[AGDROID-245]: Add support for keycloak workflow
 
 Future
 ~~~~~~
 
-* DataSync
+* Offline
 * Accounts Integration
 * Notifications
 * Analytics and Monitoring/measuring
