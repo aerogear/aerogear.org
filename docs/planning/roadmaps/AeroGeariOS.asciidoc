@@ -156,6 +156,11 @@ link:https://issues.jboss.org/browse/AGIOS/fixforversion/12321918[JIRAs for 2.0.
 2.x Release(s)
 ~~~~~~~~~~~~~~
 
+* *Sync*
+* Data Persistence / Offline support for iOS link:https://issues.jboss.org/browse/AGIOS-270[AGIOS-270]
+* SPDY support for iOS link:https://issues.jboss.org/browse/AGIOS-271[AGIOS-271]
+* Implement Batch API on iOS link:https://issues.jboss.org/browse/AGIOS-272[AGIOS-272]
+
 * *Notifications*
 ** inspired by the JS module
 ** STOMP support
