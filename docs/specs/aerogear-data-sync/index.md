@@ -7,13 +7,12 @@ title: AeroGear Data Sync
 # References
 
 - [Jira](https://issues.jboss.org/browse/AEROGEAR-1374)
-- [CouchDB data model](http://wiki.apache.org/couchdb/EntityRelationship)
 
 # Features
 
 * Detect Change
 
-    When a user changes her local data, the system should note the change and generate a sync message to send to the server.  This can be done automatically or manually but SHOULD be done automatically.
+    When a user changes her local data, the system should note the change and generate a sync message to send to the server.  This can be done automatically or manually, but SHOULD be done automatically.
 
 * Send update
 
