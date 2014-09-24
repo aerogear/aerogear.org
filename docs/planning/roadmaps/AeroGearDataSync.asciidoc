@@ -7,8 +7,8 @@ AeroGear DataSync Roadmap
 =========================
 :Author: Daniel Bevenius
 
-0.1.0 (Apr, 2015) Data Sync
----------------------------
+0.1.0 (Apr, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1374[Data Sync]
+-------------------------------------------------------------------------------
 Full _real-time_ data sync where updates are initiated from both the client and server over a bi-directional channel. + 
 This version also supports persistent storage of updates to support offline work. + 
 This version requires both a specific server side sync engine, as well as a client side sync engine. + 
@@ -19,21 +19,39 @@ The algorithm that the server should use is still not decided. +
 Current candidates are Operational Transformation (OT) and Differential Synchronization (DS)
 ============================
 
-SyncServer
-~~~~~~~~~~
+AeroGear
+~~~~~~~~
 * link:https://issues.jboss.org/browse/AEROGEAR-XXX[AEROGEAR-XXX] Implement Server Sync Engine + 
+The server side component of the synchronization protocol (OT or DS).
 
 Android
 ^^^^^^^
 
 * link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] Implement Client Sync Engine + 
+Depending on the chosen implementation (OT or DS) the client sync engine might already be provided. This
+is the case for DS the server is implemented in Java and also provides a client engine. 
+
+* link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] Implement Sync Client + 
+A client facing API for Android users wishing to synchronize data. This would use the ClientSyncEngine to
+handling the synchronizing itself, but can provide/customize the storage of data, choose the most appropriate network transport
+protocol, and implement offline support.
 
 iOS
 ^^^
 
 * link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] Implement Client Sync Engine + 
 
+* link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] Implement Sync Client + 
+A client facing API for iOS users wishing to synchronize data. This would use the ClientSyncEngine to 
+handling the synchronizing itself, but can provide/customize the storage of data, choose the most appropriate network transport
+protocol, and implement offline support.
+
 JavaScript
 ^^^^^^^^^^
 
-* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Implement Client Sync Engine +
+* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Implement ClientSyncEngine +
+
+* link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Implement Sync Client + 
+A client facing API for JavaScript users wishing to synchronize data. This would use the ClientSyncEngine to 
+handling the synchronizing itself, but can provide/customize the storage of data, choose the most appropriate network transport
+protocol, and implement offline support.
