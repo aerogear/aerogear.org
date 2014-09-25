@@ -132,21 +132,34 @@ link:https://issues.jboss.org/browse/AGIOS/fixforversion/12321918[JIRAs for 2.0.
 * *Store revisited*
 ** incremental store to replace store
 
+* *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
+** Conflict resolution handling link:https://issues.jboss.org/browse/AGIOS-266[AGIOS-266]
+** DiffMatchPatch conflict resolver link:https://issues.jboss.org/browse/AGIOS-267[AGIOS-267]
+** Cookbook recipe: create demo app for sync
+
+2.2.0 (November 2014)
+~~~~~~~~~~~~~~~~~~~~~
+* *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1495]
+** Provide Notification handler that is capable of delegeting to a configured Conflict Resolver link:https://issues.jboss.org/browse/AGIOS-268[AGIOS-268]
+
 * *Offline & Crypto*
 ** Offline Authentication link:https://issues.jboss.org/browse/AGIOS-176[AGIOS-176]
 ** Encrypted Cache link:https://issues.jboss.org/browse/AGIOS-177[AGIOS-177]
 ** Apple's keychain wrapper interface link:https://issues.jboss.org/browse/AGIOS-103[AGIOS-103]
 ** Refactor of AGPasswordKeyService to be compliant with the Spec link:https://issues.jboss.org/browse/AGIOS-171[AGIOS-171]
 
-2.2.0 (November 2014)
-~~~~~~~~~~~~~~~~~~~~~
-* *Sync* link:https://issues.jboss.org/browse/AGIOS-101[AGIOS-101] linked to epic link:https://issues.jboss.org/browse/AEROGEAR-1374[AGEROGEAR-1374]
-** Conflict resolution lib link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
-** Cookbook recipe: create demo app for sync
-
+2.3.0 (Dec 2014)
+~~~~~~~~~~~~~~~~
+* *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1497]
+** Partial Updates for iOS link:https://issues.jboss.org/browse/AGIOS-269[AGIOS-269]
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
+
+* *Sync*
+* Data Persistence / Offline support for iOS link:https://issues.jboss.org/browse/AGIOS-270[AGIOS-270]
+* SPDY support for iOS link:https://issues.jboss.org/browse/AGIOS-271[AGIOS-271]
+* Implement Batch API on iOS link:https://issues.jboss.org/browse/AGIOS-272[AGIOS-272]
 
 * *Notifications*
 ** inspired by the JS module
