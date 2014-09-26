@@ -86,40 +86,38 @@ New Features
 * *More Cookbook Examples*
 ** link:https://issues.jboss.org/browse/AGJS-41[AGJS-41]
 
-1.6.0 (Mid July)
-~~~~~~~~~~~~~~~~
-New Features
-^^^^^^^^^^^^
-* *Data Sync*
-** link:https://issues.jboss.org/browse/AGJS-102[AGJS-102]
-** Utility for keeping data in DataManager synchronized with a persistent server side store
-** Possibly use Notifier for communication / data transfer
-** Investigate PouchDB as provider or inspiration
+2.0.0 Release (Late September 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Deprecation of Pipeline
+* Deprecation of the Authentication REST adapter
+* Use of ES6 Promises
+* Tie up loose ends
 
-1.7.0 (Late September)
-~~~~~~~~~~~~~~~~~~~~~~
-New Features
-^^^^^^^^^^^^
+2.1.0 (Mid October 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~
+* Convert to ES6 modules
+** transpile to AMD, CommonJS, Global link:https://issues.jboss.org/browse/AGJS-220[AGJS-220]
+
+* *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
+** Conflict resolution handling link:https://issues.jboss.org/browse/AGJS-214[AGJS-214]
+** DiffMatchPatch conflict resolver link:https://issues.jboss.org/browse/AGJS-215[AGJS-215]
+** Cookbook recipe: create demo app for sync
+
+2.2.0 (Mid November 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+* *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1495[AEROGEAR-1495]
+** Provide Notification handler that is capable of delegating to a configured Conflict Resolver link:https://issues.jboss.org/browse/AGJS-216[AGJS-216]
+
+
+2.x Release(s)
+~~~~~~~~~~~~~~
 * *Offline*
 ** link:https://issues.jboss.org/browse/AGJS-156[AGJS-156]
 ** Support for using apps offline and detecting status
 ** Simplified App Cache API / Keep eye on new offline APIs
 ** Use DataSync when returning to online status
-
-
-2.0.0 Release
-~~~~~~~~~~~~~
-* Tie up any loose ends
-
-2.x Release(s)
-~~~~~~~~~~~~~~
 * *Remove jQuery Requirements*
-** Ajax & Promises
-** JSON only
 **** https://issues.jboss.org/browse/AGJS-70[AGJS-70]
-* *ES6 Modules*
-** transpile to ES5
-**** link:https://issues.jboss.org/browse/AGJS-149[AGJS-149]
 * *Polymer Components*
 ** link:https://issues.jboss.org/browse/AGJS-131[AGJS-131]
 * *Social*
