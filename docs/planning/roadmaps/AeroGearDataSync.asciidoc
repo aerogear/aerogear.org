@@ -24,7 +24,7 @@ AeroGear
 The server side component of the synchronization protocol (OT or DS).
 
 Android
-^^^^^^^
+~~~~~~~
 
 * link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] Implement Client Sync Engine + 
 Depending on the chosen implementation (OT or DS) the client sync engine might already be provided. This
@@ -36,7 +36,7 @@ handling the synchronizing itself, but can provide/customize the storage of data
 protocol.
 
 iOS
-^^^
+~~~
 
 * link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] Implement Client Sync Engine + 
 
@@ -46,7 +46,7 @@ handling the synchronizing itself, but can provide/customize the storage of data
 protocol.
 
 JavaScript
-^^^^^^^^^^
+~~~~~~~~~~
 
 * link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Implement ClientSyncEngine +
 
@@ -60,21 +60,21 @@ protocol.
 This version also supports persistent storage of updates to support offline work. + 
 
 Android
-^^^^^^^
+~~~~~~~
 
 * link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] Implement Offline support for Sync Client + 
 The Sync Client should be able to handle working offline, and when a network connection becomes avialable connect
 and synchronize with the server. 
 
 iOS
-^^^
+~~~
 
 * link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] Implement Offline support for Sync Client + 
 The Sync Client should be able to handle working offline, and when a network connection becomes avialable connect
 and synchronize with the server. 
 
 JavaScript
-^^^^^^^^^^
+~~~~~~~~~~
 
 * link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Implement Offline support for Sync Client + 
 The Sync Client should be able to handle working offline, and when a network connection becomes avialable connect
