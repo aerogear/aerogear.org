@@ -63,19 +63,19 @@ Android
 ~~~~~~~
 
 * link:https://issues.jboss.org/browse/AGDROID-XXX[AGDROID-XXX] Implement Offline support for Sync Client + 
-The Sync Client should be able to handle working offline, and when a network connection becomes avialable connect
+The Sync Client should be able to handle working offline, and when a network connection becomes available connect
 and synchronize with the server. 
 
 iOS
 ~~~
 
 * link:https://issues.jboss.org/browse/AGIOS-XXX[AGIOS-XXX] Implement Offline support for Sync Client + 
-The Sync Client should be able to handle working offline, and when a network connection becomes avialable connect
+The Sync Client should be able to handle working offline, and when a network connection becomes available connect
 and synchronize with the server. 
 
 JavaScript
 ~~~~~~~~~~
 
 * link:https://issues.jboss.org/browse/AGJS-XXX[AGJS-XXX] Implement Offline support for Sync Client + 
-The Sync Client should be able to handle working offline, and when a network connection becomes avialable connect
+The Sync Client should be able to handle working offline, and when a network connection becomes available connect
 and synchronize with the server. 
