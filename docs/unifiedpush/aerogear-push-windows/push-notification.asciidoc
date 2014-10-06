@@ -3,7 +3,7 @@ layout: basic
 title: Send a Push Notification
 ---
 
-CAUTION: this functionality is availble on master
+CAUTION: this functionality is only available on master
 
 Now that we have the sample application running, it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message.
 

@@ -10,7 +10,7 @@ title: AeroGear UnifiedPush Server and Windows applications
 <i class="icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-this functionality is availble on master
+this functionality is only available on master
 </td>
 </tr>
 </tbody></table>
