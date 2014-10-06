@@ -7,13 +7,12 @@ title: AeroGear Data Sync
 # References
 
 - [Jira](https://issues.jboss.org/browse/AEROGEAR-1374)
-- [CouchDB data model](http://wiki.apache.org/couchdb/EntityRelationship)
 
 # Features
 
 * Detect Change
 
-    When a user changes her local data, the system should note the change and generate a sync message to send to the server.  This can be done automatically or manually but SHOULD be done automatically.
+    When a user changes her local data, the system should note the change and generate a sync message to send to the server.  This can be done automatically or manually, but SHOULD be done automatically.
 
 * Send update
 
@@ -21,11 +20,11 @@ title: AeroGear Data Sync
 
 * Receive Update
 
-    When a client updates its data and successfully syncs to the remote server, the remote server will notify all of the relevant clients. The client must automatically and without user intervention receive this update and either act on it or store it for later processing.
+    When a client updates it data and successfully syncs to the remote server, the remote server will notify all of the relevant clients. The client must automatically and without user intervention receive this update and either act on it or store it for later processing.
 
 * Apply Update
 
-    Once a client application has an update message from the server, it can apply the message correctly to the data on it.  This should be done automatically as part of receiving the update, but it may be done manually or may be delayed and automatically executed later.
+    Once a client application has an update message from the server, it can apply the message to correctly update its local data.  This should be done automatically as part of receiving the update, but it may be done manually or may be delayed and automatically executed later.
 
 * Detect Conflict
 
@@ -33,7 +32,7 @@ title: AeroGear Data Sync
 
 * Resolve Conflict
 
-    There must be a mechanism for resolving a conflict.  The CAN be done automatically using default resolvers provided by AeroGear, by using a resolver provided by the developer/user, or by the app user selecting the correct merge.  This will possibly generate a new sync message.
+    There must be a mechanism for resolving a conflict.  This CAN be done automatically using default resolvers provided by AeroGear, by using a resolver provided by the developer/user, or by the app user selecting the correct merge.  This will possibly generate a new sync message.
 
 
 # Scenarios
@@ -52,11 +51,11 @@ This document defines a common API for each mobile platform to make sure that ev
 
 ## Sync strategies
 
-We will have two synchronization strategies.  A document-revision strategy and a merge shadow strategy.  These strategies will be implemented by **[Repository](https://github.com/secondsun/aerogear-android-sync/blob/master/android/src/org/jboss/aerogear/android/sync/Repository.java)** classes. 
+We will have two synchronization strategies.  A document-revision strategy and a merge shadow strategy.  These strategies will be implemented by **Repository** classes *TODO define repository Class*.
 
 ### Document-revision Strategy
 
-The document revision startegey is based on maintaining relevant metadata abotu document revision and keeping it in lockstep with a server which fufills the stratgey contrcat.
+The document revision strategy is based on maintaining relevant metadata about document revision and keeping it in lockstep with a server which fufills the stratgey contract.
 
 #### Data model
 
@@ -78,10 +77,10 @@ We will submit documents as JSON.  The server will respond with an appropriate e
 
 - [Google Drawing Example](https://docs.google.com/drawings/d/1E4NDEh3NQCdoEHNNHba4TR2akNrppvV5zDlk5nfzz08/edit)
 
-The general usage flow is the use will create or edit content, attach the appropriate document metadata, and submit it to a server.  The content will be included in all of the requests and omitted from all responses except where otherwise noted.
+The general usage flow is the user will create or edit content, attach the appropriate document metadata, and submit it to a server.  The content will be included in all of the requests and omitted from all responses except where otherwise noted.
 
  * New Data:  The id, rev, and parent rev fields will be empty strings.  The server will return 200 OK and the body will contain the document ID, document revsion, and an empty parent revision.  This will be saved on the client.
- * Edited Data, no Conflict:  The id field will be the cannoical id field form the server.  The rev field will be an empty string.  The parent-rev field will be the value of the rev field of the data before it was edited.  The server will return 200 OK and include the new revision value.  This will be saved on the clients side.
+ * Edited Data, no Conflict:  The id field will be the cannonical id field from the server.  The rev field will be an empty string.  The parent-rev field will be the value of the rev field of the data before it was edited.  The server will return 200 OK and include the new revision value.  This will be saved on the clients side.
  * Edited data, with Conflict:  The request is the same as with an Edit, but the response from the server will be 409 Conflict with a body of the current server document.  It will be the clients responsibility to correct its Edited document and resubmit.
  * Updating local data:  The client may, at any time, fetch the document from the server and replace its content.
  * Receiving notification of updates from the server:  TBD
@@ -92,35 +91,10 @@ The Merge shadow strategy does not use document metadata to manage state.  Inste
 
  * See [diff-merge-patch algorithm](http://code.google.com/p/google-diff-match-patch/)
 
-#### Data model
-
- - TBD 
- 
-#### Transport
-
- - TBD
- 
-#### Usage / Lifecycle
-
- - TBD
-
-## DataSyncronizer
-
-The **DataSynchronizer** is responsible for contacting a remote store, pulling updates, passing remote updates to the local **Repository**, and sending local updates to the remote store.
-
-### Usage
-
- * `read : *objectID*, *callback*` : this method will fetch from a remote store the object with the given objectID.  If the read is successful, the synchronizer will attempt to update the local **Repository** for the object.  It will then pass the object to the *callback* success method.
- 
- * `save : *objectContent*, *callback*` : this method will save the local *data* to a remote store.  This method will be responsible for handling recoverable errors and updating local data if necessary.  In the case of a diff-merge-path style syncronization strategy, an unsuccessful POST could return a diff which, if sucessfully applied, would allow for a successful POST.  In this case, the save would be retried and *callback*'s success method would be called.
- 
-### Notes
-This is based on lohlmquist's [poc](https://github.com/lholmquist/ag-js-ds-poc/blob/master/aerogear.custom.js)
-
 # Implementation reference
 
-- [Client API Proposals](../aerogear-sync-client-api)
-- [Server API Proposals](../aerogear-sync-server-api)
+- [Client API Proposals](aerogear-sync-client-api)
+- [Server API Proposals](aerogear-sync-server-api)
 
 # AeroGear Data Sync 0.0.1
 
@@ -153,10 +127,10 @@ This is based on lohlmquist's [poc](https://github.com/lholmquist/ag-js-ds-poc/b
 
 # Questions for consideration:
 
-How will save/delete work?
-How will readWithFilter work?
-What happens if we have stale data and no internet connection?
-Should we include a job which fetches data in the background instead of checking when the call is made?
+* How will save/delete work?  
+* How will readWithFilter work?  
+* What happens if we have stale data and no internet connection?  
+* Should we include a job which fetches data in the background instead of checking when the call is made?
 
 
 # Appendix Use Cases:
@@ -202,15 +176,7 @@ per folder
 delete and create operation
 
 
-4.  Email client
-
-       a.  This is an AG-controller which accesses a mail account.
-
-       b.  There are mobile offline and sync enabled clients which connect 
-to this controller.
-
-
-5.  Google Docs clone
+4.  Google Docs clone
 
        a. Operational Transform out the wazzoo
 
