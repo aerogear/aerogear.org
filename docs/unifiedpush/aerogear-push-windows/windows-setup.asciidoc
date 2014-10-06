@@ -3,6 +3,8 @@ layout: basic
 title: Windows setup
 ---
 
+CAUTION: this functionality is availble on master
+
 Windows Setup
 -------------
 
