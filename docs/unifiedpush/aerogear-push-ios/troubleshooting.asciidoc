@@ -15,12 +15,12 @@ Something goes wrong, you have the symptoms and you would like to know how to fi
 
 Running a client app, you run into "No matching provisioning profiles found":
 
-image::./img/no_matching_provisionning_profile.png[No matching provisionning profile]
+image::./img/no_matching_provisionning_profile.png[No matching provisioning profile]
 
 
 *Answer*
 
-* have you changed your computer recently? If yes, if you provisionning profile was deliver in your previous machine, you need to migrate your provisionning profile, please follow link:https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/export_signing_assets.html#//apple_ref/doc/uid/TP40013306-CH8-SW1[Exporting Your Signing Identities and Provisioning Profiles] Apple documentation.
+* have you changed your computer recently? If yes, if you provisioning profile was deliver in your previous machine, you need to migrate your provisioning profile, please follow link:https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/export_signing_assets.html#//apple_ref/doc/uid/TP40013306-CH8-SW1[Exporting Your Signing Identities and Provisioning Profiles] Apple documentation.
 * is it the first time you use this app? have you followed the pre-requisite section on link:../provisioning-profiles[provisioning profile]?
 
 
