@@ -3,16 +3,37 @@ layout: basic
 title: Setting up Xcode
 ---
 
+Code signing, app id, provisioning profile
+------------------------------------------
+
+Let's explain the Apple code signing and provisioning profile approach. It all starts with a developer certificate.
+
+Developer or Distribution certificate
+
+
+As an iOS developer, chances are you have a certificate, a public key, and a private key on your development machine. A certificate is — very broadly speaking — a public key combined with a lot of additional information that was itself signed by Apple Worldwide Developer Relations CA. This is the certificate you need to renew every year.
+
 Code signing
-------------
+~~~~~~~~~~~~
 
 Code signing is a security technology that allows you to certify that an app was created by you.
 All apps running on iOS must be code signed.
 
-Code signing and Provisioning Profile: automatic mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Entitlements
+~~~~~~~~~~~~
 
-Code signing and provisionning profile selection should be in automactic mode by default. Specially if your project is used by multiple iOS developpers, let Xcode find the approciate developer provisionning profile.
+Entitlements specify which resources of the system an app is allowed to use. These entitlements should all be enabled in the developer center’s App ID, and embedded in the provisioning profile. Setting entitlements to enable Push notification is done in link:../app-id-ssl-certificate-apns[Apple App ID and SSL certificate for APNs].
+
+Provisioning profile
+~~~~~~~~~~~~~~~~~~~~
+
+A provisioning profile is a collection of all the components needed to determine if a particular app can run on a particular device. It's a central point where app-id, list all UUID devices where app can run, certificate and entitlements are gathered together.
+
+
+Code signing and Provisioning Profile in Xcode: automatic mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Code signing and provisioning profile selection should be in automactic mode by default. Specially if your project is used by multiple iOS developpers, let Xcode find the approciate developer provisioning profile.
 
 image::./img/code_signing.png[Xcode project settings]
 
