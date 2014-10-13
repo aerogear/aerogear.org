@@ -9,6 +9,21 @@ This troubleshooting guide takes as a pre-requesite that you have carefully foll
 
 Something goes wrong, you have the symptoms and you would like to know how to fix it.  Follow the guide of frequently asked questions below and if you still can't find an answer to your problem, don't hesitate to ask our link:http://aerogear-dev.1069024.n5.nabble.com/[mailing list].
 
+### Question: No matching provisioning profiles found
+
+*Problem description*
+
+Running a client app, you run into "No matching provisioning profiles found":
+
+image::./img/no_matching_provisionning_profile.png[No matching provisionning profile]
+
+
+*Answer*
+
+* have you changed your computer recently? If yes, if you provisionning profile was deliver in your previous machine, you need to migrate your provisionning profile, please follow link:https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/export_signing_assets.html#//apple_ref/doc/uid/TP40013306-CH8-SW1[Exporting Your Signing Identities and Provisioning Profiles] Apple documentation.
+* is it the first time you use this app? have you followed the pre-requisite section on link:../provisioning-profiles[provisioning profile]?
+
+
 ### Question: APNs error
 
 *Problem description*
