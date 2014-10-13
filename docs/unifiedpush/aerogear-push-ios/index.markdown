@@ -9,6 +9,7 @@ The following step-by-step guides, give you an introduction on how to use the Ae
 
 1. [Apple App ID and SSL Certificate for APNs](app-id-ssl-certificate-apns)
 1. [Apple Provisioning Profile](provisioning-profiles)
+1. [Xcode code signing and provisioning profiles](xcode-setup)
 1. [The AeroGear UnifiedPush Server](unified-push-server)
 1. [Your first iOS/Push App](iOS-app)
 1. [Finally: Send a Push Notification](send-push)

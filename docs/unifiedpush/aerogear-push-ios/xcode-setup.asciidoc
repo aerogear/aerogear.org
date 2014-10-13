@@ -1,0 +1,30 @@
+---
+layout: basic
+title: Setting up Xcode
+---
+
+Code signing
+------------
+
+Code signing is a security technology that allows you to certify that an app was created by you.
+All apps running on iOS must be code signed.
+
+Code signing and Provisioning Profile: automatic mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Code signing and provisionning profile selection should be in automactic mode by default. Specially if your project is used by multiple iOS developpers, let Xcode find the approciate developer provisionning profile.
+
+image::./img/code_signing.png[Xcode project settings]
+
+**NOTES:** The Provisioning profile setting is set to 'None' in Xcode 5. And in Xcode 6, the Provisioning profile setting should be set to 'Automatic' by default. Check link:https://developer.apple.com/library/ios/qa/qa1814/_index.html[apple documentation for more details].
+
+Running into "No matching provisioning profiles found" issue?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check out link:../troubleshooting#_question_no_matching_provisioning_profiles_found[iOS trubleshooting guide].
+
+UnifiedPush Server
+------------------
+
+Now, after managing all the Apple certificates, let's setup the link:../unified-push-server[UnifiedPush Server].
+
