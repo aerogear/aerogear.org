@@ -66,8 +66,8 @@ Now download the Profile and open the file. Go to Xcode -> preferences... menu, 
 image::./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profile]
 
 
-UnifiedPush Server
-~~~~~~~~~~~~~~~~~~~
+Settting up Xcode
+~~~~~~~~~~~~~~~~~
 
-Now, after managing all the Apple certificates, let's setup the link:../unified-push-server[UnifiedPush Server]
+Now, let's setup the link:../xcode-setup[Xcode]
 
