@@ -33,7 +33,7 @@ A provisioning profile is a collection of all the components needed to determine
 Code signing and Provisioning Profile in Xcode: automatic mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Code signing and provisioning profile selection should be in automactic mode by default. Specially if your project is used by multiple iOS developpers, let Xcode find the approciate developer provisioning profile.
+Code signing and provisioning profile selection should be in automatic mode by default. Specifically if your project is used by multiple iOS developpers, let Xcode find the appropriate developer provisioning profile.
 
 image::./img/code_signing.png[Xcode project settings]
 
@@ -42,7 +42,7 @@ image::./img/code_signing.png[Xcode project settings]
 Running into "No matching provisioning profiles found" issue?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Check out link:../troubleshooting#_question_no_matching_provisioning_profiles_found[iOS trubleshooting guide].
+Check out link:../troubleshooting#_question_no_matching_provisioning_profiles_found[iOS troubleshooting guide].
 
 UnifiedPush Server
 ------------------
