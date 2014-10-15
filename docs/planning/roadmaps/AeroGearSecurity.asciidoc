@@ -163,74 +163,21 @@ External References
     ** AGSEC-135: Allow password to be decrypted and displayed on the screen
 
 
-1.4.0 (Mid Jun, 2014)
+1.4.0 (Mid Dec, 2014)
 ~~~~~~~~~~~~~~~~~~~~~
 
-* AGSEC-2: Secure storage and cache documentation
-  ** AGSEC-7: Provide a specification about how to properly do key management
-  ** AGSEC-27: Provide a detailed specification and which kind of authentication schemes will be supported
-  ** AGSEC-47: Create a documentation with the overview of AeroGear Security
+* AGSEC-183: UPS user management with Keycloak
+    ** AGPUSH-1036: Include a JPA query on UPS to list all app/variants on UPS
+    ** AGPUSH-1037: Introduce fine grained permissions for this query
+    ** AGPUSH-1038: Tweak PushApplication overview page for admin users
+    ** AGPUSH-1040: Add pagination to the PushApplication overview page
 
-* AGSEC-12: Offline authentication
-
-* AGSEC-55: Various security tasks for the Unified Push server
-
-* AGSEC-125: Manage cryptographic keys and respective owner
-
-* AGSEC-127: Encrypted cache
-
-* AGSEC-143: Provide a server implementation/specification for encrypted storage
-
-* AGSEC-147: Provide easy to use API interface for advanced encryption
-
-    ** AGSEC-116: Asymmetric encryption support (link:http://www.nsa.gov/business/programs/elliptic_curve.shtml[ECC])
-    ** AGSEC-118: Hashing support (link:http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf[SHA])
-    ** AGSEC-119: Message authentication support (link:http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf[GMAC], link:http://csrc.nist.gov/publications/fips/fips198-1/FIPS-198-1_final.pdf[HMAC])
-    ** AGSEC-120: Digital signatures support (link:http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf[ECDSA])
-
-* AGSEC-154: Encrypted storage showcase app
-
-    ** AGSEC-136: Backup the data on to the server (_but do not expose the passwords to the server_)
-
-* AGSEC-180: OAuth2 integration
-
-1.5.0 (Mid Aug, 2014)
-~~~~~~~~~~~~~~~~~~~~~
-
-* AGSEC-17: Mobile devices blacklist support
-
-* AGSEC-128: Key agreement with the server
-
-* AGSEC-129: Key privilege revocation
-
-* AGSEC-130: Key privilege expiration
-
-* AGSEC-131: Data seek and destroy
-
-* AGSEC-137: Performance checks
-
-* AGSEC-138: Hold the fort
+* AGSEC-180: SDKs for OAuth2 plus integration with Keycloak
+    ** AGSEC-184: Include a section at AeroGear Security about OAuth2
+    ** AGSEC-185: Implicit grant flow
+    ** AGSEC-186: Refresh access tokens
+    ** AGSEC-187: Token revocation
+    ** AGSEC-188: Resource owner password credentials grant
+    ** AGSEC-189: Authorization Code Grant
 
 
-2.0.0 (Mid Oct, 2014)
-~~~~~~~~~~~~~~~~~~~~~
-
-* AGSEC-3: Url and Forms that perform important operations must be protected by random tokens (hidden nonce values)
-
-* AGSEC-4: Authentication of RESTful requests per transactions must be provided as alternative on AeroGear Security
-
-* AGSEC-5: Social login
-
-    ** AGSEC-8: Provide a detailed specification about which methods will be supported
-
-* AGSEC-14: HTTP signed requests
-
-* AGSEC-19: Security & privacy policy (geo, user, misc data)
-
-* AGSEC-25: Include rate-limit to incoming requests from the same origin
-
-* AGSEC-74: Add JWT support on AeroGear Security
-
-* AGSEC-88: Add Hawk support to AeroGear iOS library
-
-* Biometric authentication (TBD)
