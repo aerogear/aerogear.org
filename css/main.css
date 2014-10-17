@@ -555,6 +555,12 @@ a#slide-menu-button:hover {
     display: inline-block;
 }
 
+.column5 {
+    width: 18%;
+    float: left;
+    display: inline-block;
+}
+
 pre {
     background-color: #f2f2f2;
     border: 1px #dadada dotted;

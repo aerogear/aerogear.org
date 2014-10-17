@@ -28,7 +28,8 @@ title: Guides
 #### User Guides
 
 * [AeroGear Android User Guide](aerogear-android)
-* [AeroGear iOS API Cookbook](iOSCookbook)
+* [AeroGear iOS 1.X User Guide](aerogear-ios)
+* [AeroGear iOS 2.X User Guide](aerogear-ios-2-X)
 * [AeroGear Two-Factor Authentication with OTP](AeroGear-OTP)
 * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](aerogear-cordova/AerogearCordovaOTP)
 
