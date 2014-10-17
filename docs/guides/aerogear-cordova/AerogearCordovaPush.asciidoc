@@ -72,7 +72,7 @@ Done! Your project now contains the AeroGear PushPlugin. For an integration with
 
 There are two ways to register a device in the AeroGear UnifiedPush Server devices registry : 
 
-* Passing the config parameters directly in th JavaScript code :
+* Passing the config parameters directly in the JavaScript code :
 
 [source,javascript]
 ----
@@ -94,7 +94,7 @@ push.register(onNotification, successHandler, errorHandler, pushConfig);
 
 ----
 
-* Using an external configuration file named _push-config.json_ and placed inside the _www_ folder :
+* Using an external configuration file named _push-config.json_, placed inside the _www_ folder :
 
 [source,json]
 ----
@@ -122,7 +122,7 @@ push.register(onNotification, successHandler, errorHandler);
 
 
 The onNotification callback will get executed by the plugin when a new message arrives. If you are only targeting one
-platform you can simplfy the config (or your push-config.json file) above by:
+platform you can simplfy the config (or your push-config.json file) above like:
 
 [source,javascript]
 ----
