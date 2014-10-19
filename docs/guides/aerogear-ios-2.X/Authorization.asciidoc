@@ -5,12 +5,12 @@ title: Authorization (OAuth2)
 
 == OAuth2Module and OAuth2Session
 
-When writting an OAuth2 application, you often want the user to grant access for your app only once in the app lifetime. OAuth2Module stores access and refresh tokens in OAuth2Session. OAuth2Session is a protocol which is implemented in 2 flavors: 
+When writing an OAuth2 application, you often want the user to grant access for your app only once in the app lifetime. OAuth2Module stores access and refresh tokens in OAuth2Session. OAuth2Session is a protocol which is implemented in 2 flavors: 
 
 - with TrustedPersistantOAuth2Session you store access and refresh tokens permanently in Keychain secure storage,  
 - with UntrustedMemoryOAuth2Session tokens are stores in memory without encryption. 
 
-It's up to you to choose you store, the default one being TrustedPersistantOAuth2Session. 
+It's up to you to choose the store, the default one being TrustedPersistantOAuth2Session. 
 
 == Creating an OAuth2Module
 
@@ -113,7 +113,7 @@ Line [1] we initialize an http object and inject it the OAuth2 module.
 
 In line [2], we actually request access. This method checks if the OAuth2Session (here stored in keychain) contains non-expired access token. If there is no token, it will go through the authorization code grant. If the token is expired (which happens every hour), a refreshed token will be asked transparently without any prompt. 
 
-In the callback method [3], we can check if the request was successfull (check error parameter) and here perform an image upload.
+In the callback method [3], we can check if the request was successful (check error parameter) and here perform an image upload.
 
 === Implicit request access 
 
@@ -135,7 +135,7 @@ In the callback method [3], we can check if the request was successfull (check e
 
 In line [1], inject OAuth2Module in http object. This is an important step this way you link the http object to authorization module.
 
-Then simply do http calls without checking if there is a avalid access token. POST method underneath checks if an OAuth2 module is plugged to http and will make the right call for you:
+Then simply do http calls without checking if there is a valid access token. POST method underneath checks if an OAuth2 module is plugged to http and will make the right call for you:
 
 - either start authz code grant
 - or refresh access code if needed

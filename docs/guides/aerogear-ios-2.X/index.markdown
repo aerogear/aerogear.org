@@ -10,7 +10,7 @@ title: AeroGear iOS 2.0 User Guide
 
 ## Example apps
 
-* [Cookbook/Shoot](https://github.com/aerogear/aerogear-ios-cookbook/shoot)
+* [Cookbook/Shoot](https://github.com/aerogear/aerogear-ios-cookbook/Shoot)
 * [Backend Cookbook Shoot](https://github.com/aerogear/aerogear-backend-cookbook): OAuth2 demo with Google, Facebook and Keycloak
-* [Cookbook/Buddies](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Buddies) to demo http module usage
+* [Cookbook/Buddies](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Buddies) and [Cookbook/Weather](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Weather) to demo http module usage
 
