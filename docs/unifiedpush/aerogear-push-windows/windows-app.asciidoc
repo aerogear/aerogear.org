@@ -3,6 +3,8 @@ layout: basic
 title: Your first Android/Push App
 ---
 
+CAUTION: this functionality is only available on master
+
 == Your first Windows/Push App
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercice AeroGear's Windows Push library support.
 

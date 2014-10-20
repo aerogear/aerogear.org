@@ -3,6 +3,8 @@ layout: basic
 title: The AeroGear UnifiedPush Server
 ---
 
+CAUTION: this functionality is only available on master
+
 The AeroGear UnifiedPush Server
 -------------------------------
 
