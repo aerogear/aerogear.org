@@ -589,7 +589,7 @@ dm.add({
         
             
 <dt>
-    <h4 class="name" id="remove"><span class="type-signature">&lt;static> </span>remove<span class="signature">(toRemove, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="remove"><span class="type-signature">&lt;static> </span>remove<span class="signature">(toRemove)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
@@ -620,8 +620,6 @@ dm.add({
 		
 		<th>Type</th>
 		
-		
-		<th>Argument</th>
 		
 		
 		
@@ -654,111 +652,10 @@ dm.add({
             </td>
             
             
-                <td class="attributes">
-                
-                    
-                
-                    
-                
-                </td>
-            
             
             
             
             <td class="description last">A variety of objects can be passed to remove to specify the item or if nothing is provided, all data is removed</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">The options to be passed to the save method
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>success</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~successrCallbackStorage</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">A callback to be called if the remove was successful. This probably isn't necessary since the remove is synchronous but is provided for API symmetry.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
         </tr>
 	
 	
@@ -789,7 +686,7 @@ dm.add({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session-local.js.html">data-manager/adapters/session-local.js</a>, <a href="session-local.js.html#line218">line 218</a>
+        <a href="session-local.js.html">data-manager/adapters/session-local.js</a>, <a href="session-local.js.html#line199">line 199</a>
     </li></ul></dd>
     
     
@@ -814,7 +711,7 @@ dm.add({
     
             
 <div class="param-desc">
-    A jQuery.Deferred promise
+    A Promise
 </div>
 
 
@@ -836,37 +733,26 @@ dm.add({
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var dm = AeroGear.DataManager([{ name: "tasks", type: "SessionLocal" }]).stores[ 0 ];
+    <pre class="prettyprint"><code>        var dm = AeroGear.DataManager([{ name: "tasks", type: "SessionLocal" }]).stores[ 0 ];
 
-// Store a new task
-dm.save({
-    title: "Created Task"
-});
+        dm.open()
+            .then( function() {
 
-// Store another new task
-dm.save({
-    title: "Another Created Task"
-});
+                // Delete a record
+                dm.remove( 1, )
+                    .then( function( newData ) { ... } )
+                    .catch( function( error ) { ... } );
 
-// Store one more new task
-dm.save({
-    title: "And Another Created Task"
-});
+                // Remove all data
+                dm.remove( undefined )
+                    .then( function( newData ) { ... } )
+                    .catch( function( error ) { ... } );
 
-// Delete a record
-dm.remove( 1, {
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});
-
-// Remove all data
-dm.remove( undefined, {
-    success: function( data ) { ... },
-    error: function( error ) { ... }
-});
-
-// Delete all remaining data from the store
-dm.remove();</code></pre>
+                // Delete all remaining data from the store
+                dm.remove()
+                    .then( function( newData ) { ... } )
+                    .catch( function( error ) { ... } );
+            });</code></pre>
 
     
 </dd>
@@ -1038,72 +924,6 @@ dm.remove();</code></pre>
         </tr>
 	
 	
-	
-        <tr>
-            
-                <td class="name"><code>error</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="AeroGear.html#errorCallbackStorage">AeroGear~errorCallbackStorage</a></span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">A callback to be executed when an error is thrown trying to save data to the store. The most likely error is when the localStorage is full. The callback is passed the error object and the data that was attempted to be saved as arguments.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>success</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">AeroGear~success</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">A callback to be called if the save was successful. This probably isn't necessary since the save is synchronous but is provided for API symmetry.</td>
-        </tr>
-	
-	
 	</tbody>
 </table>
             </td>
@@ -1137,7 +957,7 @@ dm.remove();</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session-local.js.html">data-manager/adapters/session-local.js</a>, <a href="session-local.js.html#line139">line 139</a>
+        <a href="session-local.js.html">data-manager/adapters/session-local.js</a>, <a href="session-local.js.html#line147">line 147</a>
     </li></ul></dd>
     
     
@@ -1162,7 +982,7 @@ dm.remove();</code></pre>
     
             
 <div class="param-desc">
-    A jQuery.Deferred promise
+    A Promise
 </div>
 
 
@@ -1184,32 +1004,42 @@ dm.remove();</code></pre>
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>var dm = AeroGear.DataManager([{ name: "tasks", type: "SessionLocal" }]).stores[ 0 ];
+    <pre class="prettyprint"><code>        var dm = AeroGear.DataManager([{ name: "tasks", type: "SessionLocal" }]).stores[ 0 ];
 
-// Store a new task
-dm.save({
-    title: "Created Task",
-    date: "2012-07-13",
-    ...
-});
+        dm.open()
+            .then( function() {
 
-// Store an array of new Tasks
-dm.save([
-    {
-        title: "Task2",
-        date: "2012-07-13"
-    },
-    {
-        title: "Task3",
-        date: "2012-07-13"
-        ...
-    }
-]);
+                // save one record
+                dm.save({
+                        title: "Created Task",
+                        date: "2012-07-13",
+                        ...
+                    })
+                    .then( function( newData ) { ... } )
+                    .catch( function( error ) { ... } );
 
-// Update an existing piece of data
-var toUpdate = dm.read()[ 0 ];
-toUpdate.data.title = "Updated Task";
-dm.save( toUpdate );</code></pre>
+                // save multiple records
+                dm.save([
+                        {
+                            title: "Task2",
+                            date: "2012-07-13"
+                        },
+                        {
+                            title: "Task3",
+                            date: "2012-07-13"
+                            ...
+                        }
+                    ])
+                    .then( function( newData ) { ... } )
+                    .catch( function( error ) { ... } );
+
+                // Update an existing piece of data
+                var toUpdate = dm.read()[ 0 ];
+                toUpdate.data.title = "Updated Task";
+                dm.save( toUpdate )
+                    .then( function( newData ) { ... } )
+                    .catch( function( error ) { ... } );
+            });</code></pre>
 
     
 </dd>
@@ -1230,13 +1060,13 @@ dm.save( toUpdate );</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 21 2014 12:00:28 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Oct 22 2014 13:50:37 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

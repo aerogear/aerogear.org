@@ -52,11 +52,16 @@
     @param {String} [settings.accept="application/json"] - the media types which are acceptable for the recipient's response
     @param {String} [settings.contentType="application/json"] - the media type of the entity-body sent to the recipient
     @param {Object} [settings.headers] - the HTTP request headers
-    @param {AeroGear~successCallback} [options.success] - callback to be executed if the AJAX request results in success
-    @param {AeroGear~errorCallback} [options.error] - callback to be executed if the AJAX request results in error
     @param {Object} [settings.params] - contains query parameters to be added in URL in case of GET request or in request body in case of POST and application/x-www-form-urlencoded content type
     @param {Object} [settings.data] - the data to be sent to the recipient
-    @returns {Object} An ES6 Promise
+    @returns {Object} An ES6 Promise - the object returned will look like:
+
+    {
+        data: dataOrError, - the data or an error
+        statusText: statusText, - the status of the response
+        agXHR: request - the xhr request object
+    };
+
     @example
 
         var es6promise = AeroGear.ajax({
@@ -78,7 +83,6 @@ AeroGear.ajax = function( settings ) {
             accept = ( settings.accept || "application/json" ).toLowerCase(),
             // TODO: compare contentType by checking if it starts with some value since it might contains the charset as well
             contentType = ( settings.contentType || "application/json" ).toLowerCase(),
-            _oncomplete,
             header,
             name,
             urlEncodedData = [],
@@ -128,52 +132,32 @@ AeroGear.ajax = function( settings ) {
         // Success and 400's
         request.onload = function() {
             var status = ( request.status &lt; 400 ) ? "success" : "error",
-                callbackArgs = that._createCallbackArgs( request, status ),
-                promiseValue = that._createPromiseValue.apply( this, callbackArgs );
+                promiseValue = that._createPromiseValue( request, status );
 
             if( status === "success" ) {
-                resolve( promiseValue );
-            } else {
-                reject( promiseValue );
+                return resolve( promiseValue );
             }
 
-            that._oncomplete( request, status, callbackArgs );
+            return reject( promiseValue );
         };
 
         // Network errors
         request.onerror = function() {
-            var status = "error",
-                callbackArgs = that._createCallbackArgs( request, status );
+            var status = "error";
 
-            reject( that._createPromiseValue.apply( this, callbackArgs ) );
-            that._oncomplete( request, status, callbackArgs );
+            reject( that._createPromiseValue( request, status ) );
         };
 
-        // create callback arguments
-        this._createCallbackArgs = function( request, status ) {
+        // create promise arguments
+        this._createPromiseValue = function( request, status ) {
             var statusText = request.statusText || status,
                 dataOrError = ( responseType === 'text' || responseType === '') ? request.responseText : request.response;
 
-            return [ dataOrError, statusText, request ];
-        };
-
-        // create promise value
-        this._createPromiseValue = function( dataOrError, statusText, request ) {
             return {
                 data: dataOrError,
                 statusText: statusText,
                 agXHR: request
             };
-        };
-
-        this._oncomplete = function( request, status, callbackArgs ) {
-            if( settings[ status ] ) {
-                settings[ status ].apply( this, callbackArgs || that._createCallbackArgs( request, status ) );
-            }
-
-            if( settings.complete ) {
-                settings.complete.call( this, "complete", request );
-            }
         };
 
         request.send( data );
@@ -189,13 +173,13 @@ AeroGear.ajax = function( settings ) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 21 2014 12:00:28 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Oct 22 2014 13:50:36 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
