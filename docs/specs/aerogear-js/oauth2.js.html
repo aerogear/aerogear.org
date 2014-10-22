@@ -42,8 +42,7 @@
 * limitations under the License.
 */
 /**
-    The OAuth2 adapter is the default type used when creating a new authorization module. It uses jQuery.ajax to communicate with the server.
-    While this library can be used "standalone", we recommend using it with Pipeline to get the most benefit
+    The OAuth2 adapter is the default type used when creating a new authorization module. It uses AeroGear.ajax to communicate with the server.
     This constructor is instantiated when the "Authorizer.add()" method is called
     @status Experimental
     @constructs AeroGear.Authorization.adapters.OAuth2
@@ -78,8 +77,7 @@ AeroGear.Authorization.adapters.OAuth2 = function( name, settings ) {
     settings = settings || {};
 
     // Private Instance vars
-    var type = "OAuth2",
-        state = uuid(), //Recommended in the spec,
+    var state = uuid(), //Recommended in the spec,
         clientId = settings.clientId, //Required by the spec
         redirectURL = settings.redirectURL, //optional in the spec, but doesn't make sense without it,
         validationEndpoint = settings.validationEndpoint, //optional,  not in the spec, but recommend to use with Google's API's
@@ -144,13 +142,13 @@ AeroGear.Authorization.adapters.OAuth2 = function( name, settings ) {
     };
 
     /**
-        Returns the value of a custom error message
+        Enrich the error response with authentication endpoint URL and re-throw the error
         @private
         @augments OAuth2
      */
-    this.createError = function( options ) {
-        options = options || {};
-        return AeroGear.extend( options, { authURL: authEndpoint } );
+    this.enrichErrorAndRethrow = function( err ) {
+        err = err || {};
+        throw AeroGear.extend( err, { authURL: authEndpoint } );
     };
 
     /**
@@ -175,14 +173,10 @@ AeroGear.Authorization.adapters.OAuth2 = function( name, settings ) {
 /**
     Validate the Authorization endpoints - Takes the querystring that is returned after the "dance" unparsed.
     @param {String} queryString - The returned query string to be parsed
-    @param {Object} [options={}] - Options to pass to the enroll method
-    @param {AeroGear~errorCallbackREST} [options.error] - callback to be executed if the AJAX request results in an error
-    @param {AeroGear~successCallbackREST} [options.success] - callback to be executed if the AJAX request results in success
-    @returns {Object} The jqXHR created by jQuery.ajax
+    @returns {Object} The ES6 promise (exposes AeroGear.ajax response as a response parameter; if an error is returned, the authentication URL will be appended to the response object)
     @example
     // Create the Authorizer
-    var authz = AeroGear.Authorization(),
-        pipe;
+    var authz = AeroGear.Authorization();
 
     authz.add({
         name: "coolThing",
@@ -194,179 +188,108 @@ AeroGear.Authorization.adapters.OAuth2 = function( name, settings ) {
         }
     });
 
-    // Create a new Pipeline with an authorizer
-    pipe = AeroGear.Pipeline( { authorizer: authz.services.coolThing } );
-
-    // Add a pipe
-    pipe.add([
-    {
-        name: "cal",
-        settings: {
-            baseURL: "http://localhost:3000/",
-            endpoint: "v1/userinfo"
-        }
-    }
-    ]);
-
-    // Make the call. OAuth2.read() will be called by Pipe.Read
-    pipe.pipes.cal.read({
-        success:function( response ) {
-            ....
-        },
-        error: function( error ) {
+    // Make the call.
+    authz.services.coolThing.execute({url: "http://localhost:3000/v1/authz/endpoint", type: "GET"})
+        .then( function( response ){
+            ...
+        })
+        .catch( function( error ) {
             // an error happened, so take the authURL and do the "OAuth2 Dance",
-        }
+        });
     });
 
     // After a successful response from the "OAuth2 Dance", validate that the query string is valid, If all is well, the access_token will be stored.
-    authz.services.coolThing.validate( responseFromAuthEndpoint, {
-        success: function( response ){
+    authz.services.coolThing.validate( responseFromAuthEndpoint )
+        .then( function( response ){
             ...
-        },
-        error: function( error ) {
+        })
+        .catch( function( error ) {
             ...
-        }
-    });
-
-    // Make pipe.read calls
-    pipe.pipes.cal.read({
-        success:function( response ) {
-            // Should be success calls
-        },
-        error: function( error ) {
-            ....
-        }
-    });
+        });
 
  */
-AeroGear.Authorization.adapters.OAuth2.prototype.validate = function( queryString, options ) {
-    options = options || {};
+AeroGear.Authorization.adapters.OAuth2.prototype.validate = function( queryString ) {
 
     var that = this,
         parsedQuery = this.parseQueryString( queryString ),
         state = this.getState(),
-        error,
-        success;
+        promise;
 
-    success = function( response ) {
-        // Perhaps we can use crypt here to be more secure
-        localStorage.setItem( that.getLocalStorageName(), JSON.stringify( { "accessToken": parsedQuery.access_token } ) );
-        if( options.success ) {
-            options.success.apply( this, arguments );
+    promise = new Promise( function( resolve, reject ) {
+
+        // Make sure that the "state" value returned is the same one we sent
+        if( parsedQuery.state !== state ) {
+            // No Good
+            reject( { error: "invalid_request", state: state, error_description: "state's do not match"  } );
+            return;
         }
-    };
 
-    error = function( response ) {
-        if( options.error ) {
-            options.error.call( this, that.createError( response ) );
+        if( that.getValidationEndpoint() ) {
+            AeroGear.ajax({ url: that.getValidationEndpoint() + "?access_token=" + parsedQuery.access_token })
+                .then( function( response ) {
+                    // Must Check the audience field that is returned.  This should be the same as the registered clientID
+                    // This value is a JSON object that is in xhr.response
+                    if( that.getClientId() !== response.agXHR.response.audience ) {
+                        reject( { "error": "invalid_token" } );
+                        return;
+                    }
+                    // Perhaps we can use crypt here to be more secure
+                    localStorage.setItem( that.getLocalStorageName(), JSON.stringify( { "accessToken": parsedQuery.access_token } ) );
+                    resolve( parsedQuery );
+                })
+                .catch( function( err ) {
+                    reject( { "error": "invalid_token" } );
+                });
+        } else {
+            // The Spec does not specify that you need to validate the token
+            reject( parsedQuery );
         }
-    };
+    });
 
-    if( parsedQuery.error ) {
-        error.call( this, parsedQuery  );
-        return;
-    }
-
-    // Make sure that the "state" value returned is the same one we sent
-    if( parsedQuery.state !== state ) {
-        // No Good
-        error.call( this, { error: "invalid_request", state: state, error_description: "state's do not match"  } );
-        return;
-    }
-
-    if( this.getValidationEndpoint() ) {
-        return jQuery.ajax({
-            url: this.getValidationEndpoint() + "?access_token=" + parsedQuery.access_token,
-            success: function( response ) {
-              // Must Check the audience field that is returned.  This should be the same as the registered clientID
-                if( that.getClientId() !== response.audience ) {
-                    error.call( this, { "error": "invalid_token" } );
-                    return ;
-                }
-                success.call( this, parsedQuery );
-            },
-            error: function( err ) {
-                error.call( this, { "error": "invalid_token" } );
-            }
-        });
-    } else {
-        // The Spec does not specify that you need to validate the token
-        success.call( this, parsedQuery );
-    }
+    return promise
+        .catch( this.enrichErrorAndRethrow );
 };
 
 /**
-    Read a secure endpoint - To be used with the Pipe.read() method
-    @param {Object} options={} - Options to pass to the enroll method
-    @param {String} options.url - the endpoint to access
-    @param {AeroGear~errorCallbackREST} [options.error] - callback to be executed if the AJAX request results in an error
-    @param {AeroGear~successCallbackREST} [options.success] - callback to be executed if the AJAX request results in success
-    @returns {Object} The jqXHR created by jQuery.ajax - IF an error is returned,  the authentication URL will be appended to the response object
+    @param {Object} options={} - Options to pass to the execute method
+    @param {String} [options.type="GET"] - the type of the request
+    @param {String} [options.url] - the url of the secured endpoint you want to access
+    @returns {Object} The ES6 promise (exposes AeroGear.ajax response as a response parameter; if an error is returned, the authentication URL will be appended to the response object)
     @example
     // Create the Authorizer
-    var authz = AeroGear.Authorization(),
-    pipe;
+    var authz = AeroGear.Authorization();
 
     authz.add({
-    name: "coolThing",
-    settings: {
-        clientId: "12345",
-        redirectURL: "http://localhost:3000/redirector.html",
-        authEndpoint: "http://localhost:3000/v1/authz",
-        scopes: "userinfo coolstuff"
-    }
-    });
-
-    // Create a new Pipeline with an authorizer
-    pipe = AeroGear.Pipeline( { authorizer: authz.services.coolThing } );
-
-    // Add a pipe
-    pipe.add([
-    {
-        name: "cal",
+        name: "coolThing",
         settings: {
-            baseURL: "http://localhost:3000/",
-            endpoint: "v1/userinfo"
-        }
-    }
-    ]);
-
-    // Make the call. OAuth2.read() will be called by Pipe.Read
-    pipe.pipes.cal.read({
-        success:function( response ) {
-            ....
-        },
-        error: function( error ) {
-            ....
+            clientId: "12345",
+            redirectURL: "http://localhost:3000/redirector.html",
+            authEndpoint: "http://localhost:3000/v1/authz",
+            scopes: "userinfo coolstuff"
         }
     });
+
+
+    // Make the authorization call.
+    authz.services.coolThing.execute()
+        .then( function( response ){
+            ...
+        })
+        .catch( function( error ) {
+            ...
+        });
  */
 AeroGear.Authorization.adapters.OAuth2.prototype.execute = function( options ) {
     options = options || {};
-    var that = this,
-        url = options.url + "?access_token=" + this.getAccessToken(),
-        contentType = "application/x-www-form-urlencoded",
-        success,
-        error;
+    var url = options.url + "?access_token=" + this.getAccessToken(),
+        contentType = "application/x-www-form-urlencoded";
 
-    success = function( response ) {
-        if( options.success ) {
-            options.success.apply( this, arguments );
-        }
-    };
-    error = function( response ) {
-        if( options.error ) {
-            options.error.call( this, that.createError( response ) );
-        }
-    };
-
-    return jQuery.ajax({
-        url: url,
-        type: options.type,
-        contentType: contentType,
-        success: success,
-        error: error
-    });
+    return AeroGear.ajax({
+            url: url,
+            type: options.type,
+            contentType: contentType
+        })
+        .catch( this.enrichErrorAndRethrow );
 };
 </code></pre>
         </article>
@@ -378,13 +301,13 @@ AeroGear.Authorization.adapters.OAuth2.prototype.execute = function( options ) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Auth.html">AeroGear.Auth</a></li><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.Pipeline.html">AeroGear.Pipeline</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Auth.adapters.Rest.html">Auth.adapters.Rest</a></li><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li><li><a href="AeroGear.Pipeline.adapters.Rest.html">Pipeline.adapters.Rest</a></li>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AeroGear.html">AeroGear</a></li><li><a href="navigator.html">navigator</a></li></ul><h3>Modules</h3><ul><li><a href="AeroGear.Authorization.html">AeroGear.Authorization</a></li><li><a href="AeroGear.Crypto.html">AeroGear.Crypto</a></li><li><a href="AeroGear.DataManager.html">AeroGear.DataManager</a></li><li><a href="AeroGear.Notifier.html">AeroGear.Notifier</a></li><li><a href="AeroGear.SimplePushClient.html">AeroGear.SimplePushClient</a></li><li><a href="AeroGear.UnifiedPushClient.html">AeroGear.UnifiedPushClient</a></li><li><a href="navigator.push.html">navigator.push</a></li><li><a href="navigator.mozSetMessageHandler.html">navigator.setMessageHandler/navigator.mozSetMessageHandler</a></li></ul><h3>Adapters</h3><ul><li><a href="AeroGear.Authorization.adapters.OAuth2.html">Authorization.adapters.OAuth2</a></li><li><a href="AeroGear.DataManager.adapters.IndexedDB.html">DataManager.adapters.IndexedDB</a></li><li><a href="AeroGear.DataManager.adapters.Memory.html">DataManager.adapters.Memory</a></li><li><a href="AeroGear.DataManager.adapters.SessionLocal.html">DataManager.adapters.SessionLocal</a></li><li><a href="AeroGear.DataManager.adapters.WebSQL.html">DataManager.adapters.WebSQL</a></li><li><a href="AeroGear.Notifier.adapters.mqttws.html">Notifier.adapters.mqttws</a></li><li><a href="AeroGear.Notifier.adapters.SimplePush.html">Notifier.adapters.SimplePush</a></li><li><a href="AeroGear.Notifier.adapters.stompws.html">Notifier.adapters.stompws</a></li><li><a href="AeroGear.Notifier.adapters.vertx.html">Notifier.adapters.vertx</a></li>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 21 2014 12:00:28 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Oct 22 2014 13:50:36 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
