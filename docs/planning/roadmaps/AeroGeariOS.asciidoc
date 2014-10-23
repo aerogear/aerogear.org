@@ -33,8 +33,10 @@ link:https://issues.jboss.org/browse/AGIOS/fixforversion/12321918[JIRAs for 2.0.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.1.0%20AND%20project%20%3D%20AGIOS[JIRAs for 2.1.0 release]
 
-* *http and OAuth2*
+* *http*
 ** Object serialization link:https://issues.jboss.org/browse/AGIOS-245[AGIOS-245]
+
+* *Authentication*
 ** Basic/Digest auth for aerogear-ios-http link:https://issues.jboss.org/browse/AGIOS-255[AGIOS-255]
 ** OpenID Connect flow link:https://issues.jboss.org/browse/AGIOS-282[AGIOS-282]
 ** OpenID Connect demo app SharedShoot link:https://issues.jboss.org/browse/AGIOS-287[AGIOS-287]
@@ -48,10 +50,11 @@ link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.1.0%20AND%20proje
 link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.2.0%20AND%20project%20%3D%20AGIOS[JIRAs for 2.2.0 release]
 
 * *Store revisited*
-** incremental store to replace store
+** Incremental store to replace store
 
-* *http and OAuth2*
-** bug fixes and left over tickets
+* *http and auth/authz*
+** Resources owner credentials grant link:https://issues.jboss.org/browse/AGIOS-196[AGIOS-196]
+** Add more user roles in Keycloak Shoot-web app demo link:https://issues.jboss.org/browse/AGIOS-286[AGIOS-286]
 
 2.3.0 (Jan 2015)
 ~~~~~~~~~~~~~~~~
