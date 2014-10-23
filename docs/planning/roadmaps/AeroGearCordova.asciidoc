@@ -1,6 +1,6 @@
 ---
 layout: basic
-title: iOS Library 1.0.0
+title: Cordova plugin roadmap
 ---
 
 AeroGear Cordova
@@ -40,10 +40,9 @@ push-1.0.0 (August)
 ~~~~~~~~~~~~~~~~~~~
 * background notification
 
-otp-0.7.0 (November)
+OAuth2-0.0.1 (November)
 ~~~~~~~~~~~~~~~~~~~~
-* update libs to version v1.0.1
-* OAuth2 support
+* New Plugin to support OAuth2
 
 crypto-0.5.0 (August)
 ~~~~~~~~~~~~~~~~~~~~~
