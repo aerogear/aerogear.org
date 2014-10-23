@@ -41,7 +41,7 @@ push-1.0.0 (August)
 * background notification
 
 OAuth2-0.0.1 (November)
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 * New Plugin to support OAuth2
 
 crypto-0.5.0 (August)
