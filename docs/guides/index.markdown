@@ -15,7 +15,6 @@ title: Guides
 * [Get Started With AeroGear.js](GetStartedAeroGearJS.html)
 * [Get Started With HTML5 Mobile Web Development](GetStartedHTML5MobileWeb)
 * [Get Started with Hybrid Application Frameworks](aerogear-cordova/HybridApplicationFrameworks)
-* [How to build AeroGear Android library](aerogear-android/HowToBuildAeroGearAndroidLibrary)
 * [Get Started with iOS and Xcode](GetStartedwithAeroGearandXcode)
 * [Get Started with iOS and AeroGear Xcode Template](GetStartedwithAeroGearandXcodeTemplate)
 * [Deploying HTML5 Applications to Openshift](HTML5AppsToOpenshift)
