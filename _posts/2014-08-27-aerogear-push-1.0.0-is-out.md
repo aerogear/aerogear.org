@@ -44,7 +44,7 @@ On the client side we have tiny SDKs which help to register the device from with
 
 ### iOS 8 and Swift
 
-Since the server is already supporting coming features of iOS8, we are also happy to announce a [Swift branch](https://github.com/aerogear/aerogear-ios-push/tree/swift) of the aerogear-io-push library.
+Since the server is already supporting coming features of iOS8, we are also happy to announce a [Swift branch](https://github.com/aerogear/aerogear-ios-push) of the aerogear-io-push library.
 
 If you want to read more on iOS and Swift side, read Corinne Krych's [code & chat blog](http://corinnekrych.blogspot.fr/2014/08/aerogear-ios8-and-swift-push-happiness.html).
 
