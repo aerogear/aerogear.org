@@ -7,6 +7,7 @@ AeroGear iOS Library
 ====================
 
 This document covers the requirements, use-cases and planned API's for the AeroGear iOS client library.
+For oldest releases please consult link:../ArchivedAeroGeariOS/[archived releases list].
 
 External References
 -------------------
@@ -14,103 +15,8 @@ External References
 * link:https://github.com/aerogear/aerogear-ios/[Github Repo]
 * link:https://issues.jboss.org/browse/AGIOS/[JIRA]
 
-1.0.x Release(s)
-~~~~~~~~~~~~~~~~
-* *Bug Fixes and Minor Feature Additions*
-* *Dates*
-** Released as needed
-** If not critical, can be wrapped into a 1.x release
-
-1.1.0 (Released June 2013)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-* *Library*
-** link:https://issues.jboss.org/browse/AGIOS-4[AGIOS-4]: Add HTTP basic authentication support on AeroGear iOS
-** link:https://issues.jboss.org/browse/AGIOS-5[AGIOS-5]: Add HTTP digest authentication support on AeroGear iOS
-** link:https://issues.jboss.org/browse/AGIOS-1[AGIOS-1]: Add HOTP support to aerogear-otp-ios
-* *Unit Tests*
-** link:https://issues.jboss.org/browse/AGIOS-11[AGIOS-11]: iOS: Evaluate the OHHTTPStubs project
-* *Xcode*
-** link:https://issues.jboss.org/browse/AGIOS-7[AGIOS-7]: Xcode template: include OTP option
-** link:https://issues.jboss.org/browse/AGIOS-10[AGIOS-10]: Update aerogear-ios-xcode template to include Basic/Digest auth options
-* *Demo / Evaluation*
-** link:https://issues.jboss.org/browse/AGIOS-8[AGIOS-8]: Evaluate ARGenericTableViewController for use in the TODO app
-
-
-1.2.0 (Released August 2013)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* *Unified Push*
-** link:https://issues.jboss.org/browse/AGIOS-22[AGIOS-22]: Add SDK for Push: Device registration
-** link:https://issues.jboss.org/browse/AGIOS-23[AGIOS-23]: Demo app for Push SDK
-** link:https://issues.jboss.org/browse/AGIOS-24[AGIOS-24]: Tutorial/Guide for Push Notifications on iOS
-
-
-1.3.0 (Released November 2013)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* *Pipeline*
-** link:https://issues.jboss.org/browse/AGIOS-15[AGIOS-15]: Multipart support
-* *Crypto* 
-** Symmetric encryption interface
-** Password based key generation using AGPBKDF2
-** Encrypted variants of the existing Memory and Property Lists stores
-** Initial work on an Encryption Services API to provide different encryption providers
-*** Epic that groups on-going iOS security work can be found link:https://issues.jboss.org/browse/AGIOS-87[here]
-** DEMO/Docs for Crypto
-* *Offline*
-** link:https://issues.jboss.org/browse/AGIOS-25[AGIOS-25]: SQLite support
-** perhaps... better CoreData integration, see link:https://issues.jboss.org/browse/AGIOS-14[AGIOS-14]
-
-1.4.0 (Released February 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* *Crypto*: Asymmetric support, Digital signature
-** Assymmetric encryption interface
-** Digital signatures support interface
-** Hashing functions wrapper interface
-** Message authentication support
-** SQLite Encryption store variant
-*** Epic that groups on-going iOS security work can be found link:https://issues.jboss.org/browse/AGIOS-87[here]
-* *OAuth2*
-** Initial version (without revoke, token renewal)
-** associated cookbook example GoogleDrive
-
-1.5.0 (Released March 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* *iOS7* AeroGear to support iOS7 only
-
-* *AFNetworking 2.x*: upgrade
-
-* *Crypto*:
-** Symmetric Crypto interface move to use NaCl instead of common crypto link:https://issues.jboss.org/browse/AGIOS-172[AGIOS-172]
-** Refactor EncryptionServices link:https://issues.jboss.org/browse/AGIOS-169[AGIOS-169]
-** Refactor Cookbook recipes link:https://issues.jboss.org/browse/AGIOS-163[AGIOS-163]
-
-1.6.0 (Released June 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Associated JIRA link:https://issues.jboss.org/browse/AGIOS-203?filter=12321874[iOS 1.6 release]
-
-* *OAuth2* adapter enhancements link:https://issues.jboss.org/browse/AGIOS-188[AGIOS-188]
-** Deauthorize for OAuth2 link:https://issues.jboss.org/browse/AGIOS-146[AGIOS-146]
-** Refresh token handling for OAuth2 link:https://issues.jboss.org/browse/AGIOS-145[AGIOS-145]
-** OAuht2 mock unit test when requesting authz link:https://issues.jboss.org/browse/AGIOS-144[AGIOS-144]
-** AccountManager link:https://issues.jboss.org/browse/AGIOS-190[AGIOS-190]
-** Fluid refresh link:https://issues.jboss.org/browse/AGIOS-195[AGIOS-195]
-** Social Facebook support link:https://issues.jboss.org/browse/AGIOS-202[AGIOS-202]
-** KeyCloak integration link:https://issues.jboss.org/browse/AGIOS-178[AGIOS-178], link:https://issues.jboss.org/browse/AGIOS-198[AGIOS-198]
-
-
-1.7.0 (Released 27th August 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-link:https://issues.jboss.org/issues/?filter=12321979[JIRAs for 1.7.0 release]
-
-* *iOS8 Push lib support* 
-
-** iOS8 interactive notification link:https://issues.jboss.org/browse/AGIOS-210[Epic AGIOS-210]
-
-* *Swift* 
-** Pub libs and demo in Swift https://issues.jboss.org/browse/AGIOS-217[Epic AGIOS-217]
-
-2.0.0 (26th September 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.0.0 (Released 20th October 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 link:https://issues.jboss.org/browse/AGIOS/fixforversion/12321918[JIRAs for 2.0.0 release]
 
 * *modularization* link:https://issues.jboss.org/browse/AGIOS-187[AGIOS-187]
@@ -123,35 +29,43 @@ link:https://issues.jboss.org/browse/AGIOS/fixforversion/12321918[JIRAs for 2.0.
 ** Object serialization: pluggable 'serializers' for http module link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
 
 
-2.1.0 (October 2014)
-~~~~~~~~~~~~~~~~~~~~
+2.1.0 (28th November 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.1.0%20AND%20project%20%3D%20AGIOS[JIRAs for 2.1.0 release]
 
-* *http and OAuth2*
-** bugs fixing and left over tickets
+* *http*
+** Object serialization link:https://issues.jboss.org/browse/AGIOS-245[AGIOS-245]
 
-* *Store revisited*
-** incremental store to replace store
+* *Authentication*
+** Basic/Digest auth for aerogear-ios-http link:https://issues.jboss.org/browse/AGIOS-255[AGIOS-255]
+** OpenID Connect flow link:https://issues.jboss.org/browse/AGIOS-282[AGIOS-282]
+** OpenID Connect demo app SharedShoot link:https://issues.jboss.org/browse/AGIOS-287[AGIOS-287]
 
 * *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
-** Conflict resolution handling link:https://issues.jboss.org/browse/AGIOS-266[AGIOS-266]
-** DiffMatchPatch conflict resolver link:https://issues.jboss.org/browse/AGIOS-267[AGIOS-267]
-** Cookbook recipe: create demo app for sync
+** Implement Client Client as described in link:../AeroGearDataSync/[Sync Roadmap]
+** Cookbook demo app for sync link:https://issues.jboss.org/browse/AGIOS-297[AGIOS-297]
 
-2.2.0 (November 2014)
-~~~~~~~~~~~~~~~~~~~~~
-* *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1495]
-** Provide Notification handler that is capable of delegeting to a configured Conflict Resolver link:https://issues.jboss.org/browse/AGIOS-268[AGIOS-268]
+2.2.0 (Dec 2014)
+~~~~~~~~~~~~~~~~
+link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.2.0%20AND%20project%20%3D%20AGIOS[JIRAs for 2.2.0 release]
 
+* *Store revisited*
+** Incremental store to replace store
+
+* *http and auth/authz*
+** Resources owner credentials grant link:https://issues.jboss.org/browse/AGIOS-196[AGIOS-196]
+** Add more user roles in Keycloak Shoot-web app demo link:https://issues.jboss.org/browse/AGIOS-286[AGIOS-286]
+
+2.3.0 (Jan 2015)
+~~~~~~~~~~~~~~~~
 * *Offline & Crypto*
 ** Offline Authentication link:https://issues.jboss.org/browse/AGIOS-176[AGIOS-176]
 ** Encrypted Cache link:https://issues.jboss.org/browse/AGIOS-177[AGIOS-177]
 ** Apple's keychain wrapper interface link:https://issues.jboss.org/browse/AGIOS-103[AGIOS-103]
-** Refactor of AGPasswordKeyService to be compliant with the Spec link:https://issues.jboss.org/browse/AGIOS-171[AGIOS-171]
 
-2.3.0 (Dec 2014)
-~~~~~~~~~~~~~~~~
 * *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1497]
 ** Partial Updates for iOS link:https://issues.jboss.org/browse/AGIOS-269[AGIOS-269]
+
 
 2.x Release(s)
 ~~~~~~~~~~~~~~
