@@ -19,7 +19,7 @@ Symmetric encryption (also called private key encryption) is when the same key i
 - *Encryption key* is a block of bytes of a _specific length_. Key can be derived from password using for example, PBKDF2 algorithm. Must be kept secret.
 - *IV (Initialization Vector)* is a random value that is used to encrypt data. Encryption algorithms usually work on fixed-size blocks, IV defines the first encrypted block.
 
-You can derive the encryption key using a password or passphrase and salt with link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2].
+You can derive the encryption key using a password or passphrase and salt with link:http://aerogear.org/docs/specs/aerogear-ios-crypto/Classes/AGPBKDF2.html[AGPBKDF2].
 
 - *Password* is easy to remember and usually defined by user and must be kept secret. A password is not a key.
 - *Salt* is a random value that is used together with a password to derive an encryption key. A salt value does not need to be kept secret.
@@ -27,7 +27,7 @@ You can derive the encryption key using a password or passphrase and salt with l
 AeroGear-Crypto symmetric encryption is powered by link:http://nacl.cr.yp.to/[NaCl]. Using link:http://cr.yp.to/ecdh/curve25519-20060209.pdf[Curve 25519 algorithms],
 it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.
 
-First of all, to encrypt your data you need an encryption key. Your key can be derived from a PIN, password or passphrase using link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGPBKDF2.html[AGPBKDF2]. 
+First of all, to encrypt your data you need an encryption key. Your key can be derived from a PIN, password or passphrase using link:http://aerogear.org/docs/specs/aerogear-ios-crypto/Classes/AGPBKDF2.html[AGPBKDF2].
 
 [source,c]
 ----
@@ -38,9 +38,9 @@ First of all, to encrypt your data you need an encryption key. Your key can be d
 
 ----
 
-For random generation of key, salt or IV, use link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGRandomGenerator.html[AGRandomGenerator]. By default, AGRandomGenerator generates 16 bytes key, but you can also specify the length if you wish.
+For random generation of key, salt or IV, use link:http://aerogear.org/docs/specs/aerogear-ios-crypto/Classes/AGRandomGenerator.html[AGRandomGenerator]. By default, AGRandomGenerator generates 16 bytes key, but you can also specify the length if you wish.
 
-Once you've got your encryption key, use link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGSecretBox.html[AGSecretBox] to do the actual encryption. Its interface is simple:
+Once you've got your encryption key, use link:http://aerogear.org/docs/specs/aerogear-ios-crypto/Classes/AGSecretBox.html[AGSecretBox] to do the actual encryption. Its interface is simple:
 
 [source,c]
 ----
@@ -54,7 +54,7 @@ Once you've got your encryption key, use link:http://aerogear.org/docs/specs/aer
 
 ----
 
-With link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGSecretBox.html[AGSecretBox], you can encrypt/decrypt data using your encryption key and a randomly generated IV (Initialization Vector) as shown below:
+With link:http://aerogear.org/docs/specs/aerogear-ios-crypto/Classes/AGSecretBox.html[AGSecretBox], you can encrypt/decrypt data using your encryption key and a randomly generated IV (Initialization Vector) as shown below:
 
 [source,c]
 ----
@@ -63,13 +63,13 @@ With link:http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGSecretBox
     // encode string into data
     NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
     NSData* IV = [AGRandomGenerator randomBytes:16];
-    
+
     // init secretbox with a key
     AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:encryptionKey];
 
     // encrypt
     NSData* encryptedData = [secretBox encrypt:dataToEncrypt IV:IV];
-                
+
     // decrypt
     NSData* decryptedData = [secretBox decrypt:encryptedData IV:IV];
 
@@ -89,7 +89,7 @@ Current available implementations are:
 2. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedPropertyListStorage.html[Encrypted Property List] storage implementation.
 3. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptedSQLiteStorage.html[Encrypted SQLite] storage implementation.
 
-Prior to using an encrypted data store variant, we need to obtain an instance of an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptionService.html[EncryptionService] which we will set it as a configuration parameter when we first initialise the store. The store will then use that service to perform encryption and decryption of data. Let's see how this works:
+Prior to using an encrypted data store variant, we need to obtain an instance of an link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGEncryptionService.html[EncryptionService] which we will set it as a configuration parameter when we first initialise the store. The store will then use that service to perform encryption and decryption of data. Let's see how this works:
 
 [source,c]
 ----
@@ -104,7 +104,7 @@ Prior to using an encrypted data store variant, we need to obtain an instance of
 
     // initialize the encryption service passing the config
     id<AGEncryptionService> encService = [[AGKeyManager manager] keyService:config];  // [5]
-    
+
     // access Store Manager
     AGDataManager *manager = [AGDataManager manager];  // 6
 
@@ -114,19 +114,19 @@ Prior to using an encrypted data store variant, we need to obtain an instance of
         [config setType:@"ENCRYPTED_PLIST"];  // 7
         [config setEncryptionService:encService];  // 8
     }];
-    
+
     // ok time to attempt reading..
     NSArray *data = [store readAll]) { // 9
 
-    if (data) 
+    if (data)
         // decryption succeeded!
-    
-    
+
+
 ----
 
-In [1] we initialize a random _salt_ that will be used in the encryption. In [2] we initialize an instance of a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGCryptoConfig.html[CryptoConfig] configuration object to set our crypto params. Here we use an http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPassphraseCryptoConfig.html[PassphraseCryptoConfig] object, that sets the necessary crypto params for the PBKDF2 Encryption Service, mainly the salt [3] and the passphrase [4].
+In [1] we initialize a random _salt_ that will be used in the encryption. In [2] we initialize an instance of a link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGCryptoConfig.html[CryptoConfig] configuration object to set our crypto params. Here we use an http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPassphraseCryptoConfig.html[PassphraseCryptoConfig] object, that sets the necessary crypto params for the PBKDF2 Encryption Service, mainly the salt [3] and the passphrase [4].
 
-Now that we have setup the configuration, it's time to obtain an instance of an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGEncryptionService.html[EncryptionService] and that's exactly what we do in [5]. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGKeyManager.html[KeyManager] parses the configuration and returns an instance of it. Because we passed an http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPassphraseCryptoConfig.html[PassphraseCryptoConfig] object, a PBKDF2 encryption service would be returned.
+Now that we have setup the configuration, it's time to obtain an instance of an link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGEncryptionService.html[EncryptionService] and that's exactly what we do in [5]. link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGKeyManager.html[KeyManager] parses the configuration and returns an instance of it. Because we passed an http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPassphraseCryptoConfig.html[PassphraseCryptoConfig] object, a PBKDF2 encryption service would be returned.
 
 In [6] we initialize our data store (an encrypted plist [7]), setting the encryption service we obtained earlier [8]. Reading and saving operations are done like all the other stores, but this time the data are transparently encrypted/decrypted.
 
