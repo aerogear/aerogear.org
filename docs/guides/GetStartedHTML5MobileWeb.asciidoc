@@ -19,7 +19,6 @@ Prerequisites
 * JBoss Application Server 7.1+
 ** link:https://docs.jboss.org/author/display/AS7/Getting+Started+Developing+Applications+Guide#GettingStartedDevelopingApplicationsGuide-GettingstartedwithJBossAS[Getting started with JBoss AS]
 * JBoss Tools 3.3 (optional)
-** link:https://docs.jboss.org/author/display/AS71/Starting+JBoss+AS+from+Eclipse+with+JBoss+Tools[JBoss Tools and JBoss AS Setup]
 
 Using JBoss tools is optional.  Any IDE that can generate and consume projects from Maven archetypes will work.  Even standard Maven command line tools are fine.
 
@@ -131,7 +130,7 @@ For more information on QUnit tests see http://docs.jquery.com/QUnit
 JBoss Tools
 -----------
 
-With JBoss Tools it is even easier to create, deploy, test, and develop this application than using the command line alone.  The instructions below assume you've already installed link:https://docs.jboss.org/author/display/AS71/Starting+JBoss+AS+from+Eclipse+with+JBoss+Tools[JBoss Tools, and JBoss AS 7] as a server in the IDE.
+With JBoss Tools it is even easier to create, deploy, test, and develop this application than using the command line alone.  The instructions below assume you've already installed as a server in the IDE.
 
 Starting with JBoss Tools 3.3 there is a new splash screen called JBoss Central.  This gives you quick access to loads of JBoss quickstarts, tutorials, news, and more.
 
