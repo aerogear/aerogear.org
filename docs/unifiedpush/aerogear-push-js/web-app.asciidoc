@@ -5,9 +5,9 @@ title: Web Example
 
 == Web Example
 
-Now that we have configured both SimplePush and UnifiedPush servers and have them up and running, it's time to explore a simple web application that will exercise AeroGear JavaScript API support and demonstrate the workflow in action. Start by cloning the example from link:https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart[here]. 
+Now that we have configured both SimplePush and UnifiedPush servers and have them up and running, it's time to explore a simple web application that will exercise AeroGear JavaScript API support and demonstrate the workflow in action. Start by cloning the example from link:https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart[here].
 
-As with the link:http://aerogear.org/docs/guides/aerogear-push-ios/iOS-app/[iOS] and link:http://aerogear.org/docs/guides/aerogear-push-android/android-app/[Android] client SDKs, we need to configure the _variantId_, _variantSecret_ and the _URL's_ of our running servers. Navigate to _js/_ folder and open in your favorite text editor, the _unifiedpush.js_ file. The file contains the main logic of the application and is responsible to register the channels with the SimplePush server, retrieve the endpoints for the update, and then register those endpoints with the UnifiedPush server so that notifications can be received.
+As with the link:http://aerogear.org/docs/unifiedpush/aerogear-push-ios/[iOS] and link:http://aerogear.org/docs/unifiedpush/aerogear-push-android/[Android] client SDKs, we need to configure the _variantId_, _variantSecret_ and the _URL's_ of our running servers. Navigate to _js/_ folder and open in your favorite text editor, the _unifiedpush.js_ file. The file contains the main logic of the application and is responsible to register the channels with the SimplePush server, retrieve the endpoints for the update, and then register those endpoints with the UnifiedPush server so that notifications can be received.
 
 Prior to run the application, let's do a walkthrough of the code involved. On top of the file you will notice the configuration params that you need to change according to your specific configuration:
 
@@ -23,7 +23,7 @@ var simplePushUrl = "<URL of the running SimplePush server>";
 Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are common source of problem, so please revisit them if you are experiencing problems.
 
 [NOTE]
-If you are unsure, you can always look at the Example from the AdminUI as link:../unified-push-server[described in previous chapter].
+If you are unsure, you can always look at the Example from the AdminUI as link:../unifiedpush-server[described in previous chapter].
 
 Next our UnifiedPush client object is created passing along the configuration params we declared earlier. The object would be used, as we will see later, to register the received endpoints from the SimplePush server to the UnifiedPush server.
 
@@ -36,7 +36,7 @@ The code is then similar to our link:https://github.com/aerogear/aerogear-simple
 
 [source,javascript]
 ----
-// if it is the first registration, need to register 
+// if it is the first registration, need to register
 // the 'pushEndpoint' with the UnifiedPush server.
 if ( mailEndpoint ) {
     // assemble the metadata for registration with the UnifiedPush server

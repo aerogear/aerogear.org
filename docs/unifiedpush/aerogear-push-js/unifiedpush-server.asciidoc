@@ -6,7 +6,7 @@ title: The UnifiedPush Server
 The AeroGear UnifiedPush Server
 -------------------------------
 
-The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain the _SimplePush_ variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/specs/aerogear-server-push/[here].
+The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain the _SimplePush_ variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/unifiedpush/[here].
 
 :pushplatform: SimplePush
 include::docs/unifiedpush/include--register-app.asciidoc[]
