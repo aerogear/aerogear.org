@@ -181,7 +181,7 @@ NSDictionary *dict = @{@"somekey": @"somevalue",  // 3
 }];
 ----
 
-An link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L46[AGFilePart] [1] and link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L64[AGFileDataPart] [2] objects are used to attach the data we want to upload. The former is initialized to point to a local file whereas the latter point to an NSData object respectively. Not shown in the example above, but an link:https://github.com/aerogear/aerogear-ios/blob/master/AeroGear-iOS/AeroGear-iOS/core/AGMultipart.h#L86[AGStreamPart] can be also used to read the data from a NSInputStream directly.
+An link:https://github.com/aerogear/aerogear-ios/blob/1.6.x/AeroGear-iOS/core/AGMultipart.h#L46[AGFilePart] [1] and link:https://github.com/aerogear/aerogear-ios/blob/1.6.x/AeroGear-iOS/core/AGMultipart.h#L64[AGFileDataPart] [2] objects are used to attach the data we want to upload. The former is initialized to point to a local file whereas the latter point to an NSData object respectively. Not shown in the example above, but an link:https://github.com/aerogear/aerogear-ios/blob/1.6.x/AeroGear-iOS/core/AGMultipart.h#L86[AGStreamPart] can be also used to read the data from a NSInputStream directly.
 
 NOTE: For NSData we need to explicitly specify both the _'filename'_ and the _'MIME type'_, since they can not be automatically determined as with the case of a file.
 
