@@ -76,7 +76,7 @@ For example:
 
 [source,bash]
 ----
-$JBOSS_HOME/bin/standalone.sh -b 0.0.0.0 
+$JBOSS_HOME/bin/standalone.sh -b 0.0.0.0
 ----
 
 To deploy the application, you first need to produce the project war using the following Maven goal in the project root directory:
@@ -240,7 +240,7 @@ In this article we've shown you how to get started with your own HTML5 based app
 
 * link:../HTML5MobileQuickstartAndDeepDive[HTML5 Mobile Quickstart & Archetype Deep Dive]
 * link:../HTML5AppsToOpenshift[Deploying HTML5 Applications To Openshift]
-* link:../HTML5ToHybridWithCordova[Converting HTML5+REST Apps to Hybrid Apps with Apache Cordova]
+* link:http://aerogear.org/docs/guides/aerogear-cordova/HybridApplicationFrameworks/[Converting HTML5+REST Apps to Hybrid Apps with Apache Cordova]
 
 You can also watch a webinar where Jay Balunas presented a version of the archetype, and discussed some of the inner workings in more detail:
 
