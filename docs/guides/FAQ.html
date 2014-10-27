@@ -33,7 +33,7 @@ myPipeline.add(
     {
         name: "myprojects",
         settings: {
-            baseURL: "https://todo-aerogear.rhcloud.com/todo-server/",
+            baseURL: "https://myserver.rhcloud.com/",
             endPoint: "projects"
         }
      }
@@ -48,7 +48,7 @@ AGPipeline* pipeline = [AGPipeline pipeline];
 // Add a connection/pipe object which is named 'myprojects' and points to a given server (RESTful) endpoint:
 id&lt;AGPipe&gt; projects = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
     [config setName:@"myprojects"];
-    [config setBaseURL:[NSURL URLWithString:@"http://todo-aerogear.rhcloud.com/todo-server/"]];
+    [config setBaseURL:[NSURL URLWithString:@"http://myserver.rhcloud.com/"]];
     [config setEndpoint:@"projects"];
 }];
 
@@ -65,7 +65,7 @@ id&lt;AGPipe&gt; projects = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
     <pre class="highlight"><code class="java"><strong>MyApplication.java</strong>
 
 // creating the Pipeline pointing to the remote application
-Pipeline pipeline = new Pipeline("http://todo-aerogear.rhcloud.com/todo-server");
+Pipeline pipeline = new Pipeline("http://myserver.rhcloud.com/");
 
 // set up the config object for the pipe to point to a given server (RESTful) endpoint:
 PipeConfig config = new PipeConfig(baseURL, Project.class);
@@ -183,7 +183,7 @@ auth.add(
         name: "myAuth",
         settings: {
             agAuth: true,
-            baseURL: "/todo-server/"
+            baseURL: "/"
         }
     }
 );
@@ -205,7 +205,7 @@ AGAuthenticator* authenticator = [AGAuthenticator authenticator];
 // add a new "myAuth" auth module:
 id<AGAuthenticationModule> myMod = [authenticator auth:^(id<AGAuthConfig> config) {
     [config setName:@"myAuth"];
-    [config setBaseURL:[NSURL URLWithString:@"https://todo-aerogear.rhcloud.com/todo-server/"];
+    [config setBaseURL:[NSURL URLWithString:@"https://myserver.rhcloud.com/"];
 }];
 
 // issue a login:
@@ -219,7 +219,7 @@ id<AGAuthenticationModule> myMod = [authenticator auth:^(id<AGAuthConfig> config
    <h5>Android Example</h5>
    <pre class="highlight"><code class="java"><strong>MyApplication.java</strong>
 
-URL baseURL = new URL("http://todo-aerogear.rhcloud.com/todo-server");
+URL baseURL = new URL("http://myserver.rhcloud.com/");
 
 // create an authenticator pointing to the remote application
 Authenticator authenticator = new Authenticator(baseURL);

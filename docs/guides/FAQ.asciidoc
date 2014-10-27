@@ -32,7 +32,7 @@ myPipeline.add(
     {
         name: "myprojects",
         settings: {
-            baseURL: "https://todo-aerogear.rhcloud.com/todo-server/",
+            baseURL: "https://myserver.rhcloud.com/",
             endPoint: "projects"
         }
      }
@@ -69,7 +69,7 @@ datamanager.add("projects");
 // save an object to the 'projects' store:
 datamanager.stores['projects'].save(
                 {
-                    id: "1", 
+                    id: "1",
                     username: "john"
                 }
 );
@@ -101,9 +101,9 @@ var auth = AeroGear.Auth();
 auth.add(
     {
         name: "myAuth",
-        settings: { 
+        settings: {
             agAuth: true,
-            baseURL: "/todo-server/"
+            baseURL: "/"
         }
     }
 );

@@ -1,5 +1,5 @@
---- 
-layout: basic 
+---
+layout: basic
 title: Pipe and Pipeline
 ---
 // tag::pipe[]
@@ -11,12 +11,12 @@ A Pipeline object represents a 'collection' of server connections (aka Pipes). I
 
 === Creating a Pipeline and a Pipe object
 
-To create a pipeline, you need to use the AGPipeline class. Below is an example: 
+To create a pipeline, you need to use the AGPipeline class. Below is an example:
 
 [source,c]
 ----
 // NSURL object:
-NSURL* serverURL = [NSURL URLWithString:@"http://todo-aerogear.rhcloud.com/todo-server/"];
+NSURL* serverURL = [NSURL URLWithString:@"http://myserver.rhcloud.com/"];
 
 // create the 'todo' pipeline, which points to the baseURL of the REST application
 AGPipeline* todo = [AGPipeline pipelineWithBaseURL:serverURL];
@@ -29,7 +29,7 @@ id<AGPipe> projects = [todo pipe:^(id<AGPipeConfig> config) {
 }];
 ----
 
-In the example above the 'projects' pipe points to an RESTful endpoint (http://todo-aerogear.rhcloud.com/todo-server/projects). However, technical details like RESTful APIs (e.g. HTTP PUT) are not exposed on the AGPipeline and AGPipe APIs. Below is shown how to get access to an actual pipe, from the AGPipeline object:
+In the example above the 'projects' pipe points to an RESTful endpoint (http://myserver.rhcloud.com/projects). However, technical details like RESTful APIs (e.g. HTTP PUT) are not exposed on the AGPipeline and AGPipe APIs. Below is shown how to get access to an actual pipe, from the AGPipeline object:
 
 [source,c]
 ----
@@ -70,9 +70,9 @@ The 'read' method allows to (currently) read _all_ object from the server, of th
 }];
 ----
 
-Since we are pointing to a RESTful endpoint, the API issues a HTTP GET request. 
+Since we are pointing to a RESTful endpoint, the API issues a HTTP GET request.
 
-=== Save object 
+=== Save object
 
 The AGPipe offers an API to store objects on a _remote_ server resource. *Currently* the objects are _just_ simple map objects. In the future we are looking to support more advanced (complex) frameworks, like Core Data. The 'save' method is described below:
 
@@ -85,13 +85,13 @@ NSMutableDictionary* projectEntity = [@{@"title": @"Hello World"} mutableCopy];
 [projects save:projectEntity success:^(id responseObject) {
     // LOG the JSON response, returned from the server:
     NSLog(@"CREATE RESPONSE\n%@", [responseObject description]);
-    
+
     // get the id of the new project, from the JSON response...
     id resourceId = [responseObject valueForKey:@"id"];
 
     // and update the 'object', so that it knows its ID...
     [projectEntity setValue:[resourceId stringValue] forKey:@"id"];
-    
+
 } failure:^(NSError *error) {
     // when an error occurs... at least log it to the console..
     NSLog(@"SAVE: An error occured! \n%@", error);
@@ -146,7 +146,7 @@ In this case, where we have a RESTful pipe the API issues a HTTP DELETE request.
 
 == Multipart Upload
 
-Support for multipart upload is also provided. The types of data that can be uploaded are local files, instances of NSData and NSInputStream. 
+Support for multipart upload is also provided. The types of data that can be uploaded are local files, instances of NSData and NSInputStream.
 Let's see how the upload mechanism works with an example:
 
 [source,c]
@@ -156,7 +156,7 @@ NSURL *file1 = <path to a local file>
 AGFilePart *filePart = [[AGFilePart alloc]initWithFileURL:file1 name:@"myfile"];  // 1
 
 // a multipart that contains an NSData object
-NSData *data1 = [@"Lorem ipsum dolor sit amet.." dataUsingEncoding:NSUTF8StringEncoding]; 
+NSData *data1 = [@"Lorem ipsum dolor sit amet.." dataUsingEncoding:NSUTF8StringEncoding];
 AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:data1    // 2
                                                                name:@"data1"
                                                             fileName:@"data1.txt" mimeType:@"text/plain"];
@@ -171,7 +171,7 @@ NSDictionary *dict = @{@"somekey": @"somevalue",  // 3
 [[apiClient uploadPipe] setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
     NSLog(@"UPLOADPIPE Sent bytesWritten=%d totalBytesWritten=%qi of totalBytesExpectedToWrite=%qi bytes", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
 }];
- 
+
 // upload data
 [[apiClient uploadPipe] save:dict success:^(id responseObject) {
     NSLog(@"Successfully uploaded!");
@@ -201,7 +201,7 @@ From the todo example above:
 [source,c]
 ----
 id<AGPipe> projects = [todo pipe:^(id<AGPipeConfig> config) {
-    ... 
+    ...
     [config setTimeout:20];  // set the time interval to 20 secs
 }];
 ----
