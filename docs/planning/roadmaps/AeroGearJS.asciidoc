@@ -127,4 +127,4 @@ New Features
 ** Common API
 *** Posting, Profile Info, Friend List, etc.
 
-And for the overall AeroGear Roadmap, see the link:../AeroGearRoadmap1.0.0[AeroGear Roadmap]
+And for the overall AeroGear Roadmap, see the link:http://aerogear.org/docs/planning/roadmaps/AeroGearRoadMap/[AeroGear Roadmap]
