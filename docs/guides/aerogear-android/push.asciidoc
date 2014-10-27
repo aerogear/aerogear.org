@@ -7,7 +7,7 @@ title: AeroGear Android Push
 
 AeroGear for Android provides support for integrating with push services. Currently only Google's Cloud Messaging (GCM) with the AeroGear Unified Push Server is supported, but we are planning to add support for Mozilla's Simple Push, MQTT, and standalone GCM soon.
 
-This document supplements the link:/docs/guides/aerogear-push-android/[Push Notification Tutorial] by focusing only on the Push API code. The tutorial includes a much fuller look at the Android's place in the push ecosystem.
+This document supplements the link:http://aerogear.org/docs/unifiedpush/aerogear-push-android/[Push Notification Tutorial] by focusing only on the Push API code. The tutorial includes a much fuller look at the Android's place in the push ecosystem.
 
 === Push in a Nutshell
 
@@ -21,7 +21,7 @@ link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registr
  : Similar to PipeLine, this class acts as a factory and registry of *PushRegistrars*.  Additionally this class provides static methods to register a MessageHandler to be informed of a push message.
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar]
- : This is the main class which handles registering and unregistering from a push network.  
+ : This is the main class which handles registering and unregistering from a push network.
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/unifiedpush/PushTypes.html[PushTypes]
  : An enum of types supported by the Push APIs
@@ -41,7 +41,7 @@ http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifi
 
 Before you can use GCM notifications in Android, your application's AndroidManifest.xml must be updated to include both permissions for GCM and a broadcast receiver to handle push messages from the service.
 
-To enable the permissions (necessary for Android < 4.2 ie 95% of Android devices) add these as a child of the manifest element. 
+To enable the permissions (necessary for Android < 4.2 ie 95% of Android devices) add these as a child of the manifest element.
 
 [source, xml]
 ----
@@ -56,7 +56,7 @@ To enable the permissions (necessary for Android < 4.2 ie 95% of Android devices
 
 <uses-permission android:name="[PUT YOUR APP PACKAGE HERE]" />
 ----
- 
+
 and add this element as a child of the application element to register the default AeroGear Android broadcast receiver. It will receive all messages and dispatch the message to registered handlers.
 
 [source, xml]
@@ -68,10 +68,10 @@ and add this element as a child of the application element to register the defau
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
         <category android:name="[PUT YOUR APP PACKAGE HERE]" />
     </intent-filter>
-</receiver> 
+</receiver>
 
 ----
- 
+
 You can also add a default message handler to the receiver in AndroidManifest.xml. If there are currently no handlers registered on the Registrations object it will handle the message.
 
 [source, xml]
@@ -83,9 +83,9 @@ You can also add a default message handler to the receiver in AndroidManifest.xm
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
         <category android:name="[PUT YOUR APP PACKAGE HERE]" />
     </intent-filter>
-    <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY" 
+    <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY"
                android:value="[PUT YOUR CLASS WITH MessageHandler IMPLEMENTATION HERE]" />
-</receiver> 
+</receiver>
 
 ----
 
@@ -153,13 +153,13 @@ public class MainActivity extends Activity implements MessageHandler {
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_main);
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
                 Registrations.registerMainThreadHandler(this);
 	}
-	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
