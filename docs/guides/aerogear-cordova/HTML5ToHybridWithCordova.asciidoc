@@ -73,17 +73,17 @@ Next, open *AppDelegate.m* and add the following code to the beginning of the fi
 
 Finally, we must add an exception in Cordova to allow it to access external urls. Open *Cordova.plist* and add the following url to *ExternalHosts*:
 
-    html5-aerogear.rhcloud.com
+    myserver.rhcloud.com
 
 image:../img/iosCordovapList.png[Cordova pList]
 
-That's it! You should now be ready to see it in action. 
+That's it! You should now be ready to see it in action.
 
 Change the *Target* in the *Scheme* menu to *KitchensinkCordova* and select a device:
 
 image::../img/xcode_kitchensink_simulator.png[]
 
-Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://html5-aerogear.rhcloud.com[html5-aerogear.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the HTML5 kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
+Click the Run button in the upper left corner of XCode and the iOS Simulator should start and you will see the Kitchensink app running. Going to the list page should show you the list of members from http://myserver.rhcloud.com[myserver.rhcloud.com], which is the http://openshift.redhat.com[OpenShift] hosted version of the HTML5 kitchensink quickstart. You can also add to that member list from the add screen of the app and also on that add screen, you will see a note referring to your current network connection. That note is proof that Cordova has given you access to native APIs.
 
 image::../img/network.png[iOS Simulator shoing network connection output]
 
@@ -211,7 +211,7 @@ Now, we need to create the symbolic link from `shared/www` to `android/assets`.
 
 Finally, just like the iOS version, we must add an exception in Cordova to allow it to access our external url.  Open res/xml/config.xml, and add the following line:
 
-    <access origin="html5-aerogear.rhcloud.com"/>
+    <access origin="myserver.rhcloud.com"/>
 
 That's it! You should now be ready to see it in action. Near the upper left corner of Eclipse, there is a button that looks like a little phone with a green Android on the screen, click that and it will launch the Android Virtual Device (AVD) manager.
 

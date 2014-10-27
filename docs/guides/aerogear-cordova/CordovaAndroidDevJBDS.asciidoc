@@ -254,7 +254,7 @@ Apps need data, and a good way to do that on a mobile device is with RESTful cal
 
 In the on pageinit function add the block of jQuery code to retrieve data from a rest endpoint and load it into the UL called listOfItems.  _This UL was part of the original template so it should still be in your HTML body._
 
-  $.getJSON("http://html5-aerogear.rhcloud.com/rest/members", function(members) {
+  $.getJSON("http://myserver.rhcloud.com/rest/members", function(members) {
       // console.log("returned are " + members);
       var listOfMembers = $("#listOfItems");
       listOfMembers.empty();
