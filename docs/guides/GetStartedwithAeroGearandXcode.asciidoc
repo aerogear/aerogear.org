@@ -139,12 +139,12 @@ Now, click on the _"AGViewController.m"_ on the Project Navigator. At the top of
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSURL* projectsURL = [NSURL URLWithString:@"http://igtests-cvasilak.rhcloud.com/rest"];
-    
+
+    NSURL* projectsURL = [NSURL URLWithString:@"http://myserver.rhcloud.com/rest"];
+
     // create the server 'Pipeline'
     AGPipeline *server = [AGPipeline pipelineWithBaseURL:projectsURL];             // [3]
-    
+
     // create the 'Pipe' that will point to the remote '/developer/' endpoint
     id<AGPipe> developerPipe = [server pipe:^(id<AGPipeConfig> config) {          // [4]
         [config setName:@"/team/developers"];
