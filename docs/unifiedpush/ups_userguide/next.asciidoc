@@ -23,7 +23,7 @@ Native Clients
 
 Hybrid Clients
 ^^^^^^^^^^^^^^
-* link:../../../guides/aerogear-cordova/AeroGearCordovaPush[Apache Cordova for APNs and GCM]
+* link:http://aerogear.org/docs/guides/aerogear-cordova/AerogearCordovaPush/[Apache Cordova for APNs and GCM]
 * link:../../aerogear-push-chrome[Chrome Packaged Apps]
 
 
@@ -54,4 +54,3 @@ More demos
 ** link:https://github.com/aerogear/aerogear-aerodoc-android[Android client]
 ** link:https://github.com/aerogear/aerogear-aerodoc-ios[iOS client]
 ** link:https://github.com/aerogear/aerogear-aerodoc-cordova[Apache Cordova client]
-** FirefoxOS client ?
