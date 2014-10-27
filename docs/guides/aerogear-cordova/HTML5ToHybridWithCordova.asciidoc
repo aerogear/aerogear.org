@@ -9,7 +9,7 @@ This article will build upon the HTML5 https://github.com/jboss-jdf/jboss-as-qui
 
 What does all of that mean? Basically, this takes our https://community.jboss.org/docs/DOC-17326[HTML5 + REST] / http://www.jquerymobile.com"[jQuery Mobile] based web app and converts it to a native app for both iOS and Android. Currently, these apps will need to be built separately but in the future, we hope to provide a single build step for all supported mobile OS types. These concepts can be applied to the conversion of most HTML5/JS based web apps by just replacing the specific paths described in this article with paths that match your environment.
 
-Download the converted application from https://github.com/jboss-jdf/jboss-as-quickstart/tree/master/kitchensink-cordova.
+Download the converted application from https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/2.7.x-develop/kitchensink-cordova.
 
 === Repo Structure
 Before getting started, it is important to note the structure of this repo and how it may affect your environment. In order to avoid duplicating both files and effort, the web app assets (HTML, CSS, JS) files have been housed in a separate folder called *shared*. In there, you will find a folder called *www* under which are the files. In order for this structure to work during your builds, a symbolic link to the *www* folder from each of the app's respective *www* folders must be created. In iOS, that is in the */ios/* folder and in Android, the symbolic link is in the */android/assets* folder.
@@ -41,7 +41,7 @@ Now, we need to create the symbolic link from `shared/www` to `ios/www`. First w
 
 ==== Import the project into XCode
 
-Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode. 
+Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode.
 
 [TIP]
 ====
@@ -145,7 +145,7 @@ Now, open up the *KitchensinkCordova* class in `src`, alter the class to extend 
 [source,java]
 ----
 public class KitchensinkCordova extends DroidGap {
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -169,11 +169,11 @@ Edit the AndroidManifest.xml file and paste the following permissions between th
 
 [source,XML]
 ----
-    <supports-screens 
-        android:largeScreens="true" 
-        android:normalScreens="true" 
-        android:smallScreens="true" 
-        android:resizeable="true" 
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:resizeable="true"
         android:anyDensity="true" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -187,7 +187,7 @@ Edit the AndroidManifest.xml file and paste the following permissions between th
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 ----
