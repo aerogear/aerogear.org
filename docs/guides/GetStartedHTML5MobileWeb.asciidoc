@@ -22,7 +22,7 @@ Prerequisites
 
 Using JBoss tools is optional.  Any IDE that can generate and consume projects from Maven archetypes will work.  Even standard Maven command line tools are fine.
 
-An HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+, and note that some behaviors will vary slightly (ex. validations) based on browser support, especially IE 9.  For more details on AeroGear's target browser support see link:../AeroGearBrowserSupportTargets[AeroGear Browser Support Targets].
+An HTML5 compatible browser is required such as Chrome, Safari 5+, Firefox 5+, or IE 9+, and note that some behaviors will vary slightly (ex. validations) based on browser support, especially IE 9.  For more details on AeroGear's target browser support see link:http://aerogear.org/docs/guides/AeroGearBrowserTargets/[AeroGear Browser Support Targets].
 
 Mobile web support is limited to Android and iOS devices for now, however it should run on HP, and BlackBerry devices as well. Windows Phone, and others will work as jQuery Mobile announces support.
 
