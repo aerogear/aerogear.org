@@ -81,20 +81,20 @@ Now that our depenendecies are set up, it’s time to verify our installation. F
 
 === AeroGearExampleAPIClient.m
 
-At the Project Navigator click on "AeroGearExampleAPIClient.m". This _singleton_ instance class is used through out our project and hold references to the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe] objects allowing us to connect to remote RESTFul endpoints and perform CRUD operations on them. 
+At the Project Navigator click on "AeroGearExampleAPIClient.m". This _singleton_ instance class is used through out our project and hold references to the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe] objects allowing us to connect to remote RESTFul endpoints and perform CRUD operations on them.
 
-The first thing we need to do is add the URL of the remote application. The template has already generated a convinient placeholder so go ahead and change the _kAeroGearExampleAPIBaseURLString_ constant to point to the remote server that is 'http://igtests-cvasilak.rhcloud.com/rest'
+The first thing we need to do is add the URL of the remote application. The template has already generated a convinient placeholder so go ahead and change the _kAeroGearExampleAPIBaseURLString_ constant to point to the remote server that is 'http://myserver.rhcloud.com/rest'
 
 [source,c]
 ----
-static NSString * const kAeroGearExampleAPIBaseURLString = @"http://igtests-cvasilak.rhcloud.com/rest";  
+static NSString * const kAeroGearExampleAPIBaseURLString = @"http://myserver.rhcloud.com/rest";
 
 ...
 - (id)init {
     if (self = [super init]) {
         NSURL *baseURL = [NSURL URLWithString:kAeroGearExampleAPIBaseURLString];
 
-        // create the Pipeline object 
+        // create the Pipeline object
         AGPipeline *pipeline = [AGPipeline pipelineWithBaseURL:baseURL];   // [1]
 
         _pipe = [pipeline pipe:^(id<AGPipeConfig> config) {   // [2]
