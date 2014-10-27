@@ -30,9 +30,9 @@ Now that our project is created, its time to install required dependencies.
 
 === Step 2: Install Dependencies
 
-Generally, there are two approaches to install dependencies. 
+Generally, there are two approaches to install dependencies.
 
-The first approach (and the preferred one) is to use link:http://cocoapods.org[CocoaPods] dependency manager. If you haven't used it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details. 
+The first approach (and the preferred one) is to use link:http://cocoapods.org[CocoaPods] dependency manager. If you haven't used it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details.
 
 The second approach, is to manually add the dependencies to the project. Both approaches are discussed in this guide, so peak the approach you are most familiar with.
 
@@ -52,18 +52,18 @@ And then:
 pod install
 ----
 
-to install the dependencies. 
+to install the dependencies.
 
 _NOTE:_ Don't forget to open the Xcode workspace file instead of the project file after this step.
 
 ==== Approach 2: using manual Process
 
-We need to download both AFNetworking and the AeroGear libraries from their respective sources. 
+We need to download both AFNetworking and the AeroGear libraries from their respective sources.
 
-* For AFNetworking link:https://github.com/AFNetworking/AFNetworking/archive/1.3.1.zip[click here] 
-* For AeroGear link:https://github.com/aerogear/aerogear-ios/zipball/master[click here]. 
+* For AFNetworking link:https://github.com/AFNetworking/AFNetworking/archive/1.3.1.zip[click here]
+* For AeroGear link:https://github.com/aerogear/aerogear-ios/zipball/master[click here].
 
-Extract the zip archives and when finished, time to add them to our project. 
+Extract the zip archives and when finished, time to add them to our project.
 
 First, we add AFNetworking. Click _"File->Add files to AeroGearExample"_. In the dialog sheet that pops up, navigate to where AFNetworking code was extracted and select the AFNetworking folder
 
@@ -81,7 +81,7 @@ Again, make sure that _"Copy items into destination group's folder"_ and _"Creat
 
 Now that our dependencies are set up, it's time to verify our installation. For this, we are going to build a simple application that will fetch remote data from our testbed link:server.com[testbed server] deployed on link:https://openshift.redhat.com/app/[OpenShift]. The data represent a list of developer information (image, name, twitter) that will be displayed on a standard UITableView component. Upon clicking a developer on the list, his twitter page will be opened using the system's default browser. Let's start.
 
-- 1: Create your controller 
+- 1: Create your controller
 
 Create a new objective-c file, choose the name _"AGViewController"_ and make it extend _"UITableViewController"_.
 
@@ -114,7 +114,7 @@ Now, click on the _"AGAppDelegate.m"_ on the Project Navigator. At the top of th
     self.window.backgroundColor = [UIColor whiteColor];
     self.controller = [[UINavigationController alloc]     // [2]
                        initWithRootViewController:[[AGViewController alloc] initWithStyle:UITableViewStylePlain]];
-    self.window.rootViewController = self.controller;     // [3]                               
+    self.window.rootViewController = self.controller;     // [3]
 
     [self.window makeKeyAndVisible];
     return YES;
@@ -154,10 +154,10 @@ Now, click on the _"AGViewController.m"_ on the Project Navigator. At the top of
     [developerPipe read:^(id responseObject) {      // [5]
         // hold the response
         _data = responseObject;     // [6]
-        
+
         // refresh table view with the data returned
         [self.tableView reloadData];      // [7]
-        
+
     } failure:^(NSError *error) {
         NSLog(@"An error has occured during pipe read! \n%@", error);
     }];
@@ -188,11 +188,11 @@ Time to fill the empty table data source methods that Xcode created automaticall
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
+
     // extract the developer
     NSDictionary *developer = [_data objectAtIndex:indexPath.row];  //  [1]
 
@@ -205,7 +205,7 @@ Time to fill the empty table data source methods that Xcode created automaticall
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{    // [3]
         NSData *imageData = [NSData dataWithContentsOfURL:
                              [NSURL URLWithString:[developer objectForKey:@"photoURL"]]];
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
             if (cell.tag == indexPath.row) {   // [4]
                 cell.imageView.image = [UIImage imageWithData:imageData];   // [5]
@@ -213,7 +213,7 @@ Time to fill the empty table data source methods that Xcode created automaticall
             }
         });
     });
-    
+
     return cell;
 }
 ----
@@ -221,7 +221,7 @@ Time to fill the empty table data source methods that Xcode created automaticall
 In [1] we extract the developer object that is about to be rendered, from the list retrieved earlier during the initial Pipe 'read'. We then use it to fill the cell data with developer information [2]. Since we don't want to block the UI when the 'twitter' image is fetched, we dispatch it asynchronously [3] with the power of link:https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html#//apple_ref/doc/uid/TP40008091-CH102-SW1[GCD]. When the image is finally fetched, we set it on the cell [5].
 
 NOTE
-Since iOS table view component recycles cells in order to save memory (e.g. for large data sets), we need to ensure not to overwrite a 'recycled' cell with an old image. The trick we use here is to assign a tag on the cell with the row index and we verify in [4] when we are about to display it. 
+Since iOS table view component recycles cells in order to save memory (e.g. for large data sets), we need to ensure not to overwrite a 'recycled' cell with an old image. The trick we use here is to assign a tag on the cell with the row index and we verify in [4] when we are about to display it.
 
 
 - 5: Open Twitter developer page
@@ -233,14 +233,14 @@ What is left now is to add functionality where when a cell is clicked the applic
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // extract the developer
     NSDictionary *developer = [_data objectAtIndex:indexPath.row];  // [1]
-    
-    // format twitter url  
+
+    // format twitter url
     NSURL *url = [NSURL URLWithString:
                   [NSString stringWithFormat:@"http://twitter.com/%@", [developer objectForKey:@"twitter"]]];   // [2]
-    
+
     // open twitter page
     [[UIApplication sharedApplication] openURL:url];  // [3]
-    
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 ----
@@ -255,6 +255,6 @@ image::img/ios_emulator.png[Emulator]
 
 *Success!* Your first iOS application built with AeroGear!
 
-You can download the source code of this project from link:https://github.com/aerogear/aerogear-ios-cookbook/Buddies[github]. For more complete example applications that utilize different parts of the AeroGear library, have a look at our available cookbooks examples on link:https://github.com/aerogear/aerogear-ios-cookbook[github].
+You can download the source code of this project from link:https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Buddies[github]. For more complete example applications that utilize different parts of the AeroGear library, have a look at our available cookbooks examples on link:https://github.com/aerogear/aerogear-ios-cookbook[github].
 
 You can also browse link:http://aerogear.org/docs/specs/aerogear-ios/[AeroGear iOS API reference] to familiarize yourself with the wealth of options.

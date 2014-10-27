@@ -9,11 +9,11 @@ As of version 1.0 of the AeroGear library, we are offering an Xcode template for
 
 === Step 1: Install Xcode Template
 
-link:https://github.com/aerogear/aerogear-ios-xcode-template/zipball/master[Click here] to download the latest version of the template from the link:https://github.com/aerogear/aerogear-ios-xcode-template[project's web site]. Once the download completes, uncompress the file and inside you will find an _AeroGear_ folder. 
+link:https://github.com/aerogear/aerogear-ios-xcode-template/zipball/master[Click here] to download the latest version of the template from the link:https://github.com/aerogear/aerogear-ios-xcode-template[project's web site]. Once the download completes, uncompress the file and inside you will find an _AeroGear_ folder.
 
 image::./img/ios_template_folder.png[Template folder]
 
-The folder contains the system configuration files that comprise the installable Xcode template. To assist Xcode to recognize the template, we need to copy it to a specific location in order for it to pick it up. Because the location is a hidden folder in the system, we need to manual do the copy operation using a terminal. 
+The folder contains the system configuration files that comprise the installable Xcode template. To assist Xcode to recognize the template, we need to copy it to a specific location in order for it to pick it up. Because the location is a hidden folder in the system, we need to manual do the copy operation using a terminal.
 
 Open a terminal and type:
 
@@ -48,7 +48,7 @@ image:./img/ios_template_wizard.png[AeroGear screen]
 
 Select the template and click _Next_
 
-Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AGP"_. The template also has options for specifying the 'Authentication type' as well as an options to enable 'Push' (check the <<push,UnifiedPush section>> later in the tutorial) and 'Crypto'. Uncheck those options since we won't need it in our example but if you are interested check our link:http://aerogear.org/docs/guides/iOSCookbook/[cookbook guide] for more information. For the device family choose iPhone. 
+Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AGP"_. The template also has options for specifying the 'Authentication type' as well as an options to enable 'Push' (check the <<push,UnifiedPush section>> later in the tutorial) and 'Crypto'. Uncheck those options since we won't need it in our example but if you are interested check our link:http://aerogear.org/docs/guides/iOSCookbook/[cookbook guide] for more information. For the device family choose iPhone.
 
 image::./img/ios_project_details_screen.png[Details]
 
@@ -169,11 +169,11 @@ Now we need fill the table delegate data source methods that will be called when
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
+
     // extract the developer
     NSDictionary *developer = [_data objectAtIndex:indexPath.row];  //  [1]
 
@@ -186,7 +186,7 @@ Now we need fill the table delegate data source methods that will be called when
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{    // [3]
         NSData *imageData = [NSData dataWithContentsOfURL:
                              [NSURL URLWithString:[developer objectForKey:@"photoURL"]]];
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
             if (cell.tag == indexPath.row) {   // [4]
                 cell.imageView.image = [UIImage imageWithData:imageData];   // [5]
@@ -194,7 +194,7 @@ Now we need fill the table delegate data source methods that will be called when
             }
         });
     });
-    
+
     return cell;
 }
 ----
@@ -202,7 +202,7 @@ Now we need fill the table delegate data source methods that will be called when
 In [1] we extract the developer object that is about to be rendered, from the list retrieved earlier during the initial Pipe 'read'. We then use it to fill the cell data with developer information [2]. Since we don't want to block the UI when the 'twitter' image is fetched, we dispatch it asynchronously [3] with the power of link:https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html#//apple_ref/doc/uid/TP40008091-CH102-SW1[GCD]. When the image is finally fetched, we set it on the cell [5].
 
 NOTE
-Since iOS table view component recycles cells in order to save memory (e.g. for large data sets), we need to ensure not to overwrite a 'recycled' cell with an old image. The trick we use here is to assign a tag on the cell with the row index and we verify in [4] when we are about to display it. 
+Since iOS table view component recycles cells in order to save memory (e.g. for large data sets), we need to ensure not to overwrite a 'recycled' cell with an old image. The trick we use here is to assign a tag on the cell with the row index and we verify in [4] when we are about to display it.
 
 What is left now is to add functionality where when a cell is clicked the application open's the system browser and redirects to the developer's twitter page. Change the implementation of the 'didSelectRowAtIndexPath' that is called when the user clicks a cell on the table with the following:
 
@@ -211,14 +211,14 @@ What is left now is to add functionality where when a cell is clicked the applic
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // extract the developer
     NSDictionary *developer = [_data objectAtIndex:indexPath.row];  // [1]
-    
-    // format twitter url  
+
+    // format twitter url
     NSURL *url = [NSURL URLWithString:
                   [NSString stringWithFormat:@"http://twitter.com/%@", [developer objectForKey:@"twitter"]]];   // [2]
-    
+
     // open twitter page
     [[UIApplication sharedApplication] openURL:url];  // [3]
-    
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 ----
@@ -239,4 +239,4 @@ You can also browse link:http://aerogear.org/docs/specs/aerogear-ios/[AeroGear i
 
 == [[push]]UnifiedPush Support
 
-By clicking the Enable 'Push' option in the wizard, the template will also generate the code for you to connect to the link:../../specs/aerogear-server-push[AeroGear UnifiedPush Server], a new effort from JBoss to unify notification messaging across different mobile operating systems. By using the UnifiedPush Server at your backend it will allow you to send and receive notification across different mobile devices, do broadcasts and selective sends and much much more. If that sounds interesting, please have a look at this link:../aerogear-push-ios/[tutorial] for more information. It will show you how to setup the UnifiedPush server, arrange the provisioning profiles with Apple and send notification messages.
+By clicking the Enable 'Push' option in the wizard, the template will also generate the code for you to connect to the link:http://aerogear.org/docs/unifiedpush/[AeroGear UnifiedPush Server], a new effort from JBoss to unify notification messaging across different mobile operating systems. By using the UnifiedPush Server at your backend it will allow you to send and receive notification across different mobile devices, do broadcasts and selective sends and much much more. If that sounds interesting, please have a look at this link:http://aerogear.org/docs/unifiedpush/aerogear-push-ios/[tutorial] for more information. It will show you how to setup the UnifiedPush server, arrange the provisioning profiles with Apple and send notification messages.
