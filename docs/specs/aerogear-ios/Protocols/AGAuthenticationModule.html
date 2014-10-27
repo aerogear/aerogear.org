@@ -14,7 +14,7 @@
 				<h1><a id="libraryTitle" href="../index.html">AeroGear-iOS </a></h1>
 				<a id="developerHome" href="../index.html">Red Hat</a>
 			</div>
-			
+
 			<div id="title" role="banner">
 				<h1 class="hideInXcode">AGAuthenticationModule Protocol Reference</h1>
 			</div>
@@ -25,63 +25,63 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
+
 	<option value="overview">Overview</option>
-	
-	
-	
-	
+
+
+
+
 	<option value="tasks">Tasks</option>
-	
-	
-	
-	
-	
+
+
+
+
+
 	<option value="properties">Properties</option>
-	
+
 	<option value="//api/name/baseURL">&nbsp;&nbsp;&nbsp;&nbsp;baseURL</option>
-	
+
 	<option value="//api/name/enrollEndpoint">&nbsp;&nbsp;&nbsp;&nbsp;enrollEndpoint</option>
-	
+
 	<option value="//api/name/loginEndpoint">&nbsp;&nbsp;&nbsp;&nbsp;loginEndpoint</option>
-	
+
 	<option value="//api/name/logoutEndpoint">&nbsp;&nbsp;&nbsp;&nbsp;logoutEndpoint</option>
-	
+
 	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	<option value="instance_methods">Instance Methods</option>
-	
+
 	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
-	
+
 	<option value="//api/name/enroll:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- enroll:success:failure:</option>
-	
+
 	<option value="//api/name/login:password:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- login:password:success:failure:</option>
-	
+
 	<option value="//api/name/login:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- login:success:failure:</option>
-	
+
 	<option value="//api/name/logout:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- logout:failure:</option>
-	
-	
-	
+
+
+
 </select>
 				</li>
 			</ul>
 		</header>
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
-				
+
 <li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
 
 
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
+
 </ul></li>
 
 
@@ -89,17 +89,17 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/baseURL">baseURL</a></span></li>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enrollEndpoint">enrollEndpoint</a></span></li>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginEndpoint">loginEndpoint</a></span></li>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logoutEndpoint">logoutEndpoint</a></span></li>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
-	
+
 </ul></li>
 
 
@@ -107,17 +107,17 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enroll:success:failure:">enroll:success:failure:</a></span></li>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/login:password:success:failure:">login:password:success:failure:</a></span></li>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/login:success:failure:">login:success:failure:</a></span></li>
-	
+
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logout:failure:">logout:failure:</a></span></li>
-	
+
 </ul></li>
 
 
@@ -135,10 +135,10 @@
 				<div id="header">
 					<div class="section-header">
 						<h1 class="title title-header">AGAuthenticationModule Protocol Reference</h1>
-					</div>		
+					</div>
 				</div>
-				<div id="container">	
-					
+				<div id="container">
+
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Conforms to</td>
@@ -148,10 +148,10 @@
 	<td class="specification-value">AGAuthenticationModule.h</td>
 </tr>
 						</tbody></table></div>
-					
-                    
-                    
-					
+
+
+
+
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
@@ -183,7 +183,7 @@ NSMutableDictionary* userData = [NSMutableDictionary dictionary];
 
 <p>The <code>enroll</code> function submits a generic map object which contains all the information about the new user, that the
 server endpoint requires. The default (REST) auth module issues for the above, a request against
-<em><a href="https://todo-aerogear.rhcloud.com/todo-server/auth/enroll">https://todo-aerogear.rhcloud.com/todo-server/auth/enroll</a></em>. Besides the NSDictionary, the function accepts two simple
+<em><a href="https://myserver.rhcloud.com/auth/enroll">https://myserver.rhcloud.com/auth/enroll</a></em>. Besides the NSDictionary, the function accepts two simple
 blocks that are invoked on success or in case of an failure.</p>
 
 <h2>Login</h2>
@@ -204,7 +204,7 @@ protected endpoints:</p>
 <p>The <code>login</code> function submits a generic map object which contains the credentials that the server login service
 requires and accepts two simple blocks that are invoked on success or in case of a failure to login.</p>
 
-<p>The default (REST) auth module issues for the above, a request against _https://todo-aerogear.rhcloud.com/todo-server/auth/login</p>
+<p>The default (REST) auth module issues for the above, a request against _https://myserver.rhcloud.com/auth/login</p>
 
 <h2>Pass the auth module to a pipe</h2>
 
@@ -242,7 +242,7 @@ object.</p>
 }];
 </code></pre>
 
-<p>The default (REST) auth module issues for the above a request against <em><a href="https://todo-aerogear.rhcloud.com/todo-server/auth/logout">https://todo-aerogear.rhcloud.com/todo-server/auth/logout</a></em>.
+<p>The default (REST) auth module issues for the above a request against <em><a href="https://myserver.rhcloud.com/auth/logout">https://myserver.rhcloud.com/auth/logout</a></em>.
 The function accepts two simple blocks that are invoked on success or in case of an failure.</p>
 
 <h2>Time out and Cancel pending operations</h2>
@@ -250,18 +250,18 @@ The function accepts two simple blocks that are invoked on success or in case of
 <p>As with the case of Pipe, configured timeout interval (in the config object) and <a href="#//api/name/cancel">cancel</a> operation in
 <em>AGAuthenticationModule</em> is supported too.</p>
 					</div>
-					
-					
-					
-					
-					
+
+
+
+
+
 					<div class="section section-tasks">
 						<a title="Tasks" name="tasks"></a>
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
-						
-						
-						
-						
+
+
+
+
 
 						<ul class="task-list">
 							<li>
@@ -298,422 +298,422 @@ The function accepts two simple blocks that are invoked on success or in case of
 	<span class="tooltip">
 		<code><a href="#//api/name/enroll:success:failure:">&ndash;&nbsp;enroll:success:failure:</a></code>
 	</span>
-	
+
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/login:password:success:failure:">&ndash;&nbsp;login:password:success:failure:</a></code>
 	</span>
-	
+
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/login:success:failure:">&ndash;&nbsp;login:success:failure:</a></code>
 	</span>
-	
+
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/logout:failure:">&ndash;&nbsp;logout:failure:</a></code>
 	</span>
-	
+
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
 	</span>
-	
+
 	<span class="task-item-suffix">required method</span>
 </li>
 						</ul>
-						
+
 					</div>
-					
-					
-					
-					
-					
+
+
+
+
+
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
+
 						<div class="section-method">
 	<a name="//api/name/baseURL" title="baseURL"></a>
 	<h3 class="subsubtitle method-title">baseURL</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Returns the baseURL string of the underlying &lsquo;auth module implementation&rsquo;</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *baseURL</code></div>
 
-    
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns the baseURL string of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 						<div class="section-method">
 	<a name="//api/name/enrollEndpoint" title="enrollEndpoint"></a>
 	<h3 class="subsubtitle method-title">enrollEndpoint</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Returns the &lsquo;enroll endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *enrollEndpoint</code></div>
 
-    
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns the &lsquo;enroll endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 						<div class="section-method">
 	<a name="//api/name/loginEndpoint" title="loginEndpoint"></a>
 	<h3 class="subsubtitle method-title">loginEndpoint</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Returns the &lsquo;login endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *loginEndpoint</code></div>
 
-    
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns the &lsquo;login endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 						<div class="section-method">
 	<a name="//api/name/logoutEndpoint" title="logoutEndpoint"></a>
 	<h3 class="subsubtitle method-title">logoutEndpoint</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Returns the &lsquo;logout endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *logoutEndpoint</code></div>
 
-    
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns the &lsquo;logout endpoint&rsquo; of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 						<div class="section-method">
 	<a name="//api/name/type" title="type"></a>
 	<h3 class="subsubtitle method-title">type</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Returns the type of the underlying &lsquo;auth module implementation&rsquo;</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *type</code></div>
 
-    
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns the type of the underlying &lsquo;auth module implementation&rsquo;</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 					</div>
-					
-					
-					
-					
-					
+
+
+
+
+
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
+
 						<div class="section-method">
 	<a name="//api/name/cancel" title="cancel"></a>
 	<h3 class="subsubtitle method-title">cancel</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
 code set to NSURLErrorCancelled so that you can perform your &lsquo;cancel&rsquo; logic.</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
 
-    
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
 code set to NSURLErrorCancelled so that you can perform your &lsquo;cancel&rsquo; logic.</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 						<div class="section-method">
 	<a name="//api/name/enroll:success:failure:" title="enroll:success:failure:"></a>
 	<h3 class="subsubtitle method-title">enroll:success:failure:</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Performs a sign-up of a new user. The request accepts a NSDictionary which will be translated to JSON
 and send to the endpoint.</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>- (void)enroll:(NSDictionary *)<em>userData</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
-    
-	
+
+
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>userData</em></dt>
 			<dd><p>A map (NSDictionary) containing all the information requested by the
 &lsquo;registration&rsquo; service.</p></dd>
 		</dl>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
 			<dd><p>A block object to be executed when the operation finishes successfully.
 This block has no return value and takes one argument: A collection (NSDictionary), containing the response
 from the &lsquo;sign-up&rsquo; service.</p></dd>
 		</dl>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the operation finishes unsuccessfully.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the error that occurred.</p></dd>
 		</dl>
-		
+
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Performs a sign-up of a new user. The request accepts a NSDictionary which will be translated to JSON
 and send to the endpoint.</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 						<div class="section-method">
 	<a name="//api/name/login:password:success:failure:" title="login:password:success:failure:"></a>
 	<h3 class="subsubtitle method-title">login:password:success:failure:</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>DEPRECATED.</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>- (void)login:(NSString *)<em>username</em> password:(NSString *)<em>password</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
-    
-	
+
+
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>username</em></dt>
 			<dd><p>username</p></dd>
 		</dl>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>password</em></dt>
 			<dd><p>password</p></dd>
 		</dl>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
 			<dd><p>A block object to be executed when the operation finishes successfully.
 This block has no return value and takes one argument: A collection (NSDictionary), containing the response
 from the &lsquo;login&rsquo; service.</p></dd>
 		</dl>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the operation finishes unsuccessfully.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the error that occurred.</p></dd>
 		</dl>
-		
+
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>DEPRECATED.</p>
@@ -721,153 +721,153 @@ the error that occurred.</p></dd>
 <p>Performs the login for the given user. Since the data will be sent in plaintext, it is IMPORTANT,
 to run the sign-in via TLS/HTTPS.</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 						<div class="section-method">
 	<a name="//api/name/login:success:failure:" title="login:success:failure:"></a>
 	<h3 class="subsubtitle method-title">login:success:failure:</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Performs the login for the given user. Since the data will be sent in plaintext, it is IMPORTANT,
 to run the sign-in via TLS/HTTPS.</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>- (void)login:(NSDictionary *)<em>loginData</em> success:(void ( ^ ) ( id object ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
-    
-	
+
+
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>loginData</em></dt>
 			<dd><p>A map (NSDictionary) containing the credentials required by the
 &lsquo;log in&rsquo; service.</p></dd>
 		</dl>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
 			<dd><p>A block object to be executed when the operation finishes successfully.
 This block has no return value and takes one argument: A collection (NSDictionary), containing the response
 from the &lsquo;login&rsquo; service.</p></dd>
 		</dl>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the operation finishes unsuccessfully.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the error that occurred.</p></dd>
 		</dl>
-		
+
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Performs the login for the given user. Since the data will be sent in plaintext, it is IMPORTANT,
 to run the sign-in via TLS/HTTPS.</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 						<div class="section-method">
 	<a name="//api/name/logout:failure:" title="logout:failure:"></a>
 	<h3 class="subsubtitle method-title">logout:failure:</h3>
-	
-	
-	
+
+
+
 	<div class="method-subsection brief-description">
 		<p>Performs the logout of the current user.</p>
-	</div>		
-	
-    
+	</div>
+
+
 
 	<div class="method-subsection method-declaration"><code>- (void)logout:(void ( ^ ) ( ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
 
-    
-	
+
+
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
 			<dd><p>A block object to be executed when the operation finishes successfully.
 This block has no return value and takes no argument.</p></dd>
 		</dl>
-		
+
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>A block object to be executed when the operation finishes unsuccessfully.
 This block has no return value and takes one argument: The <code>NSError</code> object describing
 the error that occurred.</p></dd>
 		</dl>
-		
+
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Performs the logout of the current user.</p>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">AGAuthenticationModule.h</code><br />
-	</div>				
-	
-	
+	</div>
+
+
 </div>
-						
+
 					</div>
-					
-					
-                    
-                    
+
+
+
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -879,9 +879,9 @@ the error that occurred.</p></dd>
 					<hr />
 					<div class="footer-copyright">
 						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-06-19)</span><br />
-						
+
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
-						
+
 					</div>
 				</div>
 			</div>
@@ -891,18 +891,18 @@ the error that occurred.</p></dd>
 			{
 				window.location.hash = this.options[this.selectedIndex].value;
 			}
-			
+
 			function toggleTOC()
 			{
 				var contents = document.getElementById('contents');
 				var tocContainer = document.getElementById('tocContainer');
-				
+
 				if (this.getAttribute('class') == 'open')
 				{
 					this.setAttribute('class', '');
 					contents.setAttribute('class', '');
 					tocContainer.setAttribute('class', '');
-					
+
 					window.name = "hideTOC";
 				}
 				else
@@ -910,12 +910,12 @@ the error that occurred.</p></dd>
 					this.setAttribute('class', 'open');
 					contents.setAttribute('class', 'isShowingTOC');
 					tocContainer.setAttribute('class', 'isShowingTOC');
-					
+
 					window.name = "";
 				}
 				return false;
 			}
-			
+
 			function toggleTOCEntryChildren(e)
 			{
 				e.stopPropagation();
@@ -928,54 +928,54 @@ the error that occurred.</p></dd>
 				}
 				return false;
 			}
-			
+
 			function tocEntryClick(e)
 			{
 				e.stopPropagation();
 				return true;
 			}
-			
+
 			function init()
 			{
 				var selectElement = document.getElementById('jumpTo');
 				selectElement.addEventListener('change', jumpToChange, false);
-				
+
 				var tocButton = document.getElementById('table_of_contents');
 				tocButton.addEventListener('click', toggleTOC, false);
-				
+
 				var taskTreeItem = document.getElementById('task_treeitem');
 				if (taskTreeItem.getElementsByTagName('li').length > 0)
 				{
 					taskTreeItem.setAttribute('class', 'children');
 					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
 				}
-				
+
 				var tocList = document.getElementById('toc');
-				
+
 				var tocEntries = tocList.getElementsByTagName('li');
 				for (var i = 0; i < tocEntries.length; i++) {
 					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
 				}
-				
+
 				var tocLinks = tocList.getElementsByTagName('a');
 				for (var i = 0; i < tocLinks.length; i++) {
 					tocLinks[i].addEventListener('click', tocEntryClick, false);
 				}
-				
+
 				if (window.name == "hideTOC") {
 					toggleTOC.call(tocButton);
 				}
 			}
-			
+
 			window.onload = init;
-			
+
 			// If showing in Xcode, hide the TOC and Header
 			if (navigator.userAgent.match(/xcode/i)) {
 				document.getElementById("contents").className = "hideInXcode"
 				document.getElementById("tocContainer").className = "hideInXcode"
 				document.getElementById("top_header").className = "hideInXcode"
 			}
-			
+
 		</script>
 	</body>
 </html>
