@@ -16,7 +16,7 @@ Fire up Eclipse IDE and choose 'File'-> 'New Android Application'. Fill the 'App
 
 image::./img/new-project.png[New Project]
 
-Continue through the wizard by accepting the default options presented. Once finished, Eclipse would have generated a sample Android project with a default 'MainActivity' and will open the layout file for further editing. 
+Continue through the wizard by accepting the default options presented. Once finished, Eclipse would have generated a sample Android project with a default 'MainActivity' and will open the layout file for further editing.
 
 image::./img/eclipse-main.png[Eclipse Main Screen]
 
@@ -33,7 +33,7 @@ Now that we have the project set up, time to configure it to receive Push notifi
 
 == Registration with the UnifiedPush server
 
-The entry point for registration is the link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#push[Registrations:push] method. The method acts as a factory of different implementations of the link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar] interface which contain the actual registration/unregistration methods. 
+The entry point for registration is the link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#push[Registrations:push] method. The method acts as a factory of different implementations of the link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar] interface which contain the actual registration/unregistration methods.
 
 [NOTE]
 By default, the method will return an implementation that supports registration with the UnifiedPush server. Having the flexibility of a factory method, allows us in the future to expand it to support other different message brokers under a common messaging interface.
@@ -57,46 +57,46 @@ import android.app.Application;
 
 public class PushApplication extends Application {
 
-    /**********************************************************/	
+    /**********************************************************/
     /******** The UnifiedPush configuration parameters ********/
     /**********************************************************/
-    
+
     private final String VARIANT_ID       = "<Your-Variant-ID>";
     private final String SECRET           = "<Your-Variant-Secret>";
     private final String GCM_SENDER_ID    = "<Your-Sender-ID>";
-    
+
     // the URL which points to your UnifiedPush Server (e.g. "http://SERVER:PORT/CONTEXT/")
     private final String UNIFIED_PUSH_URL = "<the URL of the running UnifiedPush server>";
-    
+
     // used for 'selective send' to target a specific user
     // it can be any arbitary value (e.g. name, email etc)
     private final String MY_ALIAS         = "<name, email etc>";
-    
-    /***********************************************************/	
+
+    /***********************************************************/
     /***** End of the UnifiedPush configuration parameters *****/
     /***********************************************************/
-    
+
     private PushRegistrar registration;
-	
+
     @Override
     public void onCreate() {
         super.onCreate();
-		
+
         Registrations registrations = new Registrations();  // 1
-		
+
         try {
             PushConfig config = new PushConfig(new URI(UNIFIED_PUSH_URL), GCM_SENDER_ID);  // 2
             config.setVariantID(VARIANT_ID);
             config.setSecret(SECRET);
             config.setAlias(MY_ALIAS);
-			
+
             registration = registrations.push("unifiedpush", config);  // 3
 
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }
-	
+
     // Accessor method for Activities to access the 'PushRegistrar' object
     public PushRegistrar getRegistration() {
         return registration;
@@ -109,7 +109,7 @@ At the top of the file we declare the configurations params we obtained at the p
 [NOTE]
 Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are a very common source of problems, so please revisit them if you are experiencing problems.
 
-The setup of the registration happens on the 'onCreate' lifecycle method called when Android first initializes your application. In [1] we instantiate a new 'Registrations' object and in [2] we create a link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushConfig.html[PushConfig] object that will hold the configuration params we declared earlier. This object together with a name (it can be anything you choose) are passed as params on the 'push' factory method to create the PushRegistrar object [3]. 
+The setup of the registration happens on the 'onCreate' lifecycle method called when Android first initializes your application. In [1] we instantiate a new 'Registrations' object and in [2] we create a link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushConfig.html[PushConfig] object that will hold the configuration params we declared earlier. This object together with a name (it can be anything you choose) are passed as params on the 'push' factory method to create the PushRegistrar object [3].
 
 We are now ready to call link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html#register[PushRegistrar:register] method to register our application with the UnifiedPush server. Switch to the 'MainActivity' class and replace the existing 'onCreate' method with the following code:
 
@@ -140,7 +140,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
         @Override
         public void onFailure(Exception exception) {
-            Log.e("MainActivity", exception.getMessage(), exception);  // 4                  
+            Log.e("MainActivity", exception.getMessage(), exception);  // 4
         }
     });
 }
@@ -155,7 +155,7 @@ Notice that we didn't have to write any code to register the device with GCM. Th
 
 == Receiving notifications
 
-The standard practice for an Android application to be able to receive notifications, is the developer to edit App's manifest to enable the appropriate GCM permissions and also implement an link:http://developer.android.com/reference/android/content/BroadcastReceiver.html[Android BroadcastReceiver] that is called when a new notification arrives. Typically the receiver includes code that consumes the message and displays the payload in the Notification Manager. AeroGear library already provides an implementation of a broadcast receiver that a developer can use, link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver], but instead of displaying in the notification manager it delegates the consumption of the message to those that have expressed interest.
+The standard practice for an Android application to be able to receive notifications, is the developer to edit App's manifest to enable the appropriate GCM permissions and also implement an link:http://developer.android.com/reference/android/content/BroadcastReceiver.html[Android BroadcastReceiver] that is called when a new notification arrives. Typically the receiver includes code that consumes the message and displays the payload in the Notification Manager. AeroGear library already provides an implementation of a broadcast receiver that a developer can use, link:http://aerogear.org/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver], but instead of displaying in the notification manager it delegates the consumption of the message to those that have expressed interest.
 
 A developer implements the link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/MessageHandler.html[MessageHandler] interface and registers it with the library in order to be called when a new notification arrives. You can have multiple components listening for incoming notifications and the library will call each one in tandem upon arrival. To register a component, simple call the link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#registerMainThreadHandler[Registrations:registerMainThreadHandler] method if you want your component to be called on the main thread or link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#registerBackgroundThreadHandler[Registrations:registerBackgroundThreadHandler] method if you want to be called on a background thread. In the absence of any registered listeners, the library will call a default MessageHandler that you have defined in your app's manifest.
 
@@ -174,7 +174,7 @@ Open the _AndroidManifest.xml_ file and below the '<manifest>' entry add the nec
 [source,xml]
 ----
 <
-<manifest 
+<manifest
 ....
    <uses-permission android:name="android.permission.INTERNET" />
    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -196,7 +196,7 @@ Set the application name.  In the '<application>' element add the android:name a
     android:allowBackup="true"
     android:icon="@drawable/ic_launcher"
     android:label="@string/app_name"
-    android:theme="@style/AppTheme" 
+    android:theme="@style/AppTheme"
     android:name="com.push.pushapplication.PushApplication">
 ----
 
