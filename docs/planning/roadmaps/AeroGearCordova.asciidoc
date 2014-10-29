@@ -44,8 +44,8 @@ OAuth2-0.0.1 (November)
 ~~~~~~~~~~~~~~~~~~~~~~~
 * New Plugin to support OAuth2
 
-crypto-0.5.0 (August)
-~~~~~~~~~~~~~~~~~~~~~
+crypto-0.5.0 (December)
+~~~~~~~~~~~~~~~~~~~~~~~
 * remove jquery dependency
 
 2.x releases
