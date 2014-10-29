@@ -69,7 +69,10 @@ $ cordova plugin add https://github.com/aerogear/aerogear-pushplugin-cordova.git
 Done! Your project now contains the AeroGear PushPlugin. For an integration with the _UnifiedPush Server_ open the `www` folder in your text editor and apply the code from the example below. Afterwards you can execute the project with `cordova run <platform>`.
 
 ### Sample Example
-The below JavaScript code registers a device in the AeroGear UnifiedPush Server devices registry:
+
+There are two ways to register a device in the AeroGear UnifiedPush Server devices registry : 
+
+* Passing the config parameters directly in the JavaScript code :
 
 [source,javascript]
 ----
@@ -88,10 +91,38 @@ var pushConfig = {
 };
 
 push.register(onNotification, successHandler, errorHandler, pushConfig);
+
 ----
 
+* Using an external configuration file named _push-config.json_, placed inside the _www_ folder :
+
+[source,json]
+----
+{
+   "pushServerURL": "<pushServerURL e.g http(s)//host:port/context >",
+   "android": {
+      "senderID": "<senderID e.g Google Project ID only for android>",
+      "variantID": "<variantID e.g. 1234456-234320>",
+      "variantSecret": "<variantSecret e.g. 1234456-234320>"
+   },
+   "ios": {
+      "variantID": "<variantID e.g. 1234456-234320>",
+      "variantSecret": "<variantSecret e.g. 1234456-234320>"
+   }
+}
+
+----
+
+And then in your JavaScript : 
+
+[source,javascript]
+----
+push.register(onNotification, successHandler, errorHandler);
+----
+
+
 The onNotification callback will get executed by the plugin when a new message arrives. If you are only targeting one
-platform you can simplfy the config above by:
+platform you can simplfy the config (or your push-config.json file) above like:
 
 [source,javascript]
 ----
