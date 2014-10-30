@@ -123,13 +123,14 @@ image::./img/kc/Session_Timeout_Settings.png[Timeout configuration]
 
 NOTE: For security reasons the default timeout values for the UnifiedPush Server are pretty conservative. Becareful when increasing them!
 
-On the +Revocation Policies+ section, you can specify the _Not-before_ revocation policies per realm, application, or user, and _push_ this value to the client adapters that have a
-admin url set up:
+On the +Revocation Policies+ section, you can specify the _Not-before_ revocation policies per realm, application, or user, and _push_ this value to the client adapters that have a admin url set up:
 
 image::./img/kc/Session_Revocation_Policies.png[Revocation Policies]
 
+Security Defenses
+~~~~~~~~~~~~~~~~~
 
-By default +Brute Force Protection+ is disabled. You can enable it, using the highlighted button:
+By default +Brute Force Protection+ is disabled. You can enable it by navigating to +Security Defenses > Brute Force Protection+ and clicking the +Enabled+ button:
 
 image::./img/kc/Session_Enable_BruteForce.png[Enable Brute Force]
 
