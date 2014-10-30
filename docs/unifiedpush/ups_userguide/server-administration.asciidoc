@@ -44,15 +44,31 @@ image::./img/kc/EmailSettings.png[Email Server Settings]
 User Management
 ~~~~~~~~~~~~~~~
 
-To add new users that are allowed to use the UnifiedPush Server, you need to go to the +Users+ section of the _Keycloak Admin Console_:
+To manage users for the UnifiedPush Server, you need to go to the +Users+ section of the _Keycloak Admin Console_:
 
 image::./img/kc/User_overview.png[User Management Overview]
 
-To see a list of all existing users of the UnifiedPush Server, click on the +View all users+ link:
+To see a list of all existing users, click on the +View all users+ link:
 
 image::./img/kc/Users_list.png[List of existing Users]
 
-However, for adding a new user, you need to click the +Add User+ button in the above screen, which brings you to the _Add User_ form:
+Enabling the default developer account
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To enabled the default +developer+ account click on its username in the above screen, to edit the account:
+
+image::./img/kc/edit_developer.png[Edit default developer account]
+
+After toggling the +User Enabled+ button to +ON+, click the +Save+ button to active the +developer+ account.
+
+Adding new users
+^^^^^^^^^^^^^^^^
+
+To add new users for the UnifiedPush Server, go back need to the +Users+ section of the _Keycloak Admin Console_:
+
+image::./img/kc/User_overview.png[User Management Overview]
+
+Next you click the +Add User+ button in the above screen, which brings you to the _Add User_ form:
 
 image::./img/kc/User_add.png[Add new User]
 
