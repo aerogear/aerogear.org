@@ -23,7 +23,7 @@ The +developer+ accounts have full access to **UnifiedPush AdminUI**. This inclu
 
 The +admin+ has full access to **UnifiedPush AdminUI** _and_ the **Keycloak Admin Console**. On the UnifiedPush AdminUI the admin has full control of all users PushApplications and Variants. On the Keycloak Admin Console the admin can perform some administrative configurations around the UnifiedPush Server and its users.
 
-IMPORTANT: By default the +developer+ account is disabled and needs to be explicitly enabled by the +admin+ inside of the link:../server-administration[Keycloak Admin Console]!
+IMPORTANT: By default the +developer+ account is disabled and needs to be explicitly enabled by the +admin+ inside of the link:../server-administration/#_enabling_the_default_developer_account[Keycloak Admin Console]!
 
 Login and landing page
 ~~~~~~~~~~~~~~~~~~~~~~
