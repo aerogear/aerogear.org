@@ -59,7 +59,7 @@ To enable the default +developer+ account click on its username in the above scr
 
 image::./img/kc/edit_developer.png[Edit default developer account]
 
-After toggling the +User Enabled+ button to +ON+, click the +Save+ button to active the +developer+ account.
+After toggling the +User Enabled+ button to +ON+, click the +Save+ button to activate the +developer+ account.
 
 Adding new users
 ^^^^^^^^^^^^^^^^
@@ -94,7 +94,7 @@ On the +Role Mappings+ option you must assign the required role to the new creat
 
 image::./img/kc/User_role_config.png[Select the required admin role]
 
-The only available and required role is the +admin+ role, which you need to select on the +Available Roles+ list. Once selected, shuffle it over to the +Assigned Roles+ list:
+Choose the +developer+ role from the +Available Roles+ list. Once selected, shuffle it over to the +Assigned Roles+ list:
 
 image::./img/kc/User_role_configured.png[Configured role settings]
 
