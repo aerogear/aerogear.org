@@ -55,7 +55,7 @@ image::./img/kc/Users_list.png[List of existing Users]
 Enabling the default developer account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To enabled the default +developer+ account click on its username in the above screen, to edit the account:
+To enable the default +developer+ account click on its username in the above screen, to edit the account:
 
 image::./img/kc/edit_developer.png[Edit default developer account]
 
@@ -64,7 +64,7 @@ After toggling the +User Enabled+ button to +ON+, click the +Save+ button to act
 Adding new users
 ^^^^^^^^^^^^^^^^
 
-To add new users for the UnifiedPush Server, go back need to the +Users+ section of the _Keycloak Admin Console_:
+To add new users for the UnifiedPush Server, go back to the +Users+ section of the _Keycloak Admin Console_:
 
 image::./img/kc/User_overview.png[User Management Overview]
 
@@ -123,7 +123,7 @@ image::./img/kc/Session_Timeout_Settings.png[Timeout configuration]
 
 NOTE: For security reasons the default timeout values for the UnifiedPush Server are pretty conservative. Becareful when increasing them!
 
-On the +Revocation Policies+ section, you can specify the _Not-before_ revocation policies per realm, application, or user, and _push_ this value to the client adapters that have a admin url set up:
+On the +Revocation Policies+ section, you can specify the _Not-before_ revocation policies per realm, application, or user, and _push_ this value to the client adapters that have an admin url set up:
 
 image::./img/kc/Session_Revocation_Policies.png[Revocation Policies]
 
