@@ -11,6 +11,20 @@ Using the Admin UI
 
 The UnifiedPush Server can be accessed via its RESTful endpoints, as well over an administrative user interface.
 
+Admin and Developer accounts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once installed, the UnifiedPush Server comes with two different account types:
+
+* a single +admin+ user
+* an initial +developer+ account
+
+The +developer+ accounts have full access to **UnifiedPush AdminUI**. This includes full management of their own PushApplications and Variants as well as sending Push Notification from the UnifiedPush AdminUI.
+
+The +admin+ has full access to **UnifiedPush AdminUI** _and_ the **Keycloak Admin Console**. On the UnifiedPush AdminUI the admin has full control of all users PushApplications and Variants. On the Keycloak Admin Console the admin can perform some administrative configurations around the UnifiedPush Server and its users.
+
+IMPORTANT: By default the +developer+ account is disabled and needs to be explicitly enabled by the +admin+ inside of the link:../server-administration[Keycloak Admin Console]!
+
 Login and landing page
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -18,7 +32,7 @@ Once you have the UnifiedPush Server running, whether on link:../openshift[Opens
 
 image::./img/login.png[Login to the UnifiedPush Server]
 
-The default credentials are +admin+/+123+. On the very first login you are asked to update the password. It is a wise idea to change it to something completely different:
+The default credentials for the _admin_ are +admin+/+123+. On the very first login you are asked to update the password. It is a wise idea to change it to something completely different:
 
 image::img/update_password.png[Update Password]
 
