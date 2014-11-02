@@ -34,14 +34,6 @@ The best ways to do this are through:
 
 If what you want to work on is already in jira, then ask to have it assigned to you (see communicate section above). If there is no jira, go ahead and make one as described above, and in the link:../JIRAUsage[AeroGear Jira Usage and Guidelines].
 
-*Sign the JBoss community license agreement*
-
-This is pretty standard stuff for open source. Just use your JBoss user, and pick AeroGear for the project here:
-
-****
-https://cla.jboss.org
-****
-
 *Follow AeroGear's coding conventions and style*
 
 This link has the IDE settings, and conventions that should be followed for all AeroGear source code. Be sure to use the *aerogear* branch as it contains the correct link:../license[license and copyright information]. The aerogear branch should be the default branch.

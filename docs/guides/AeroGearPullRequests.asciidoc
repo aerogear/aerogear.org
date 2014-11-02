@@ -27,9 +27,6 @@ These are general guidelines about handling PRs and things to keep in mind as a 
 
 This section talks about handling a pull request generated from a community member or another project developer.
 
-* CLA
-** All non-employee contributors to AeroGear must sign http://cla.jboss.org/[JBoss's Contributor License Agreement] for the AeroGear project.
-** Please request users sign this, and if there are question contact the project lead
 * Jira
 ** 90% of the time there should be a jira associated with a PR
 ** The Jira should be linked to the PR following the instructions in the link:../GitHubWorkflow[AeroGear GitHub Workflow &amp; Instructions]
