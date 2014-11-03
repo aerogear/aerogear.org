@@ -5,9 +5,9 @@ title: Community
 
 # Community
 
-As an open-source project, the AeroGear community has many entry points. We welcome your participation however it suits your level of interest.
+As an open-source project, the AeroGear community has many entry points. We welcome your participation in any way that matches your level of interest.
 
-Read this page to learn about our community resources. Keep in mind that contributing code is not the only way to get involved. You can provide feedback on documentation and tutorials, test the releases, share your visions or just participate in the IRC or mailing list discussions. The various entry points are summarized below. See you there!
+Read this page to learn about our community resources. Keep in mind that contributing code is not the only way to get involved. You can provide feedback on documentation and tutorials, test the releases, share your visions, or just participate in the IRC or mailing list discussions. The various entry points are summarized below. See you there!
 
 ## Chat (IRC)
 
@@ -19,7 +19,7 @@ If you don’t have an IRC client installed or available, you can use the [web-b
 
 ## Mailing lists
 
-The AeroGear team has two maining lists
+The AeroGear team has two mailing lists
 
 ### User list
 
