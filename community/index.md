@@ -36,6 +36,7 @@ All the AeroGear source code is managed using the distributed version system [gi
 
 Both git and github are awesome for collaboration! To make improvements or bug fixes to the AeroGear project, simply fork one of the project's repositories, commit your changes and send a pull request.
 
+For more information on our GitHub workflow, please visit this [page](../docs/guides/GitHubWorkflow/) that describes the steps in-detail.
 
 ## Twitter
 
