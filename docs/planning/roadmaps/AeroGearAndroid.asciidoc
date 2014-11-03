@@ -19,6 +19,7 @@ link:https://issues.jboss.org/issues/?filter=12320508[2.0 alpha (Mid November)]
 
 * link:https://issues.jboss.org/browse/AGDROID-236[AGDROID-236]: Modularize the Android Library
 * link:https://issues.jboss.org/browse/AGDROID-273[AGDROID-273]: Modularize integration tests
+* link:https://issues.jboss.org/browse/AGDROID-310[AGDROID-310]: Drop support for Android < 4.1
 * link:https://issues.jboss.org/browse/AGDROID-304[AGDROID-304]: Use Travis Android environment
 * link:https://issues.jboss.org/browse/AGDROID-306[AGDROID-306]: Build library on travis using Java SDK 6, 7 and 8
 * link:https://issues.jboss.org/browse/AGDROID-302[AGDROID-302]: Maven Android Plugin 4 based builds
