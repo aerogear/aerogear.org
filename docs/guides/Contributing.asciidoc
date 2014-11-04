@@ -7,6 +7,10 @@ title: Contributing to AeroGear
 
 As an open source project we are always on the lookout for community members that want to step up and help with the project. There are lots of ways to help, and this article will help you get started!
 
+=== Apache License
+
+All contributions to AeroGear are made under the http://apache.org/licenses/LICENSE-2.0.txt[Apache License, Version 2.0].
+
 === Help Others
 Have experience with mobile or HTML5 based technologies? Interested in sharing your knowledge?
 
