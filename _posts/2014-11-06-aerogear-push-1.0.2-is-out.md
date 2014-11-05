@@ -17,7 +17,7 @@ The [UnifiedPush Server](../../../../../push) supports different platforms for m
 Below is a list with a few highlights of this release:
 
 * Keycloak 1.0.4 usage
-* new developer role for multi user support
+* New developer role for multi user support
 * SSLv3 version removed from docs
 * User guide updates
 * UI fixes and improvements
@@ -30,7 +30,7 @@ The 1.0.2 release of the UnifiedPush Server is also backed by various Docker ima
 
 ## Apache Cordova Push Plugin
 
-With this release we also release a new version (1.0.2) of our [Apache Cordova Push Plugin](http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.push).
+With this release of Unified Push Server we are also releasing a new version (1.0.2) of our [Apache Cordova Push Plugin](http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.push).
 
 ## Demos and Examples
 
@@ -42,7 +42,7 @@ To get easily started using the UnifiedPush Server we have a bunch of demos, sup
 
 ### Hello World Example
 
-The HelloWorld is a set of simple clients that show how to register a device with the UnifiedPush Server. On the Admin UI of the server you can use the _"Send Push"_ menu to send a message to the different applications, running on your phone.
+The HelloWorld is a set of simple clients that show how to register a device with the UnifiedPush Server. Using the Admin UI of the server you can use the _"Send Push"_ menu to send a message to the different applications, running on your phone.
 
 Check out the source code on [Github](https://github.com/aerogear/aerogear-push-helloworld/releases/latest).
 
