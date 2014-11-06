@@ -7,6 +7,10 @@ title: Contributing to AeroGear
 
 As an open source project we are always on the lookout for community members that want to step up and help with the project. There are lots of ways to help, and this article will help you get started!
 
+=== Apache License
+
+All contributions to AeroGear are made under the http://apache.org/licenses/LICENSE-2.0.txt[Apache License, Version 2.0].
+
 === Help Others
 Have experience with mobile or HTML5 based technologies? Interested in sharing your knowledge?
 
@@ -33,14 +37,6 @@ The best ways to do this are through:
 *Pick your poison*
 
 If what you want to work on is already in jira, then ask to have it assigned to you (see communicate section above). If there is no jira, go ahead and make one as described above, and in the link:../JIRAUsage[AeroGear Jira Usage and Guidelines].
-
-*Sign the JBoss community license agreement*
-
-This is pretty standard stuff for open source. Just use your JBoss user, and pick AeroGear for the project here:
-
-****
-https://cla.jboss.org
-****
 
 *Follow AeroGear's coding conventions and style*
 
