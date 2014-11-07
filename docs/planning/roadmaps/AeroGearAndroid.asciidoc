@@ -5,6 +5,8 @@ title: AeroGear Android Library
 
 AeroGear Android Library
 ========================
+
+This document covers the requirements, use-cases and planned API’s for the AeroGear Android client library. For oldest releases please consult link:../archived-aerogear-android[archived releases list].
  
 External References
 -------------------
@@ -12,105 +14,39 @@ External References
 * link:https://github.com/aerogear/aerogear-android/[Github Repo]
 * link:https://issues.jboss.org/browse/AGDROID/[JIRA]
 
-link:https://issues.jboss.org/issues/?filter=12321206[1.0.1 (Released on June 5, 2013)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+link:https://issues.jboss.org/issues/?filter=12320508[2.0 alpha (Mid November)]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Pipe
-** link:https://issues.jboss.org/browse/AGDROID-31[AGDROID-31]: Pipe Timeout
-** link:https://issues.jboss.org/browse/AGDROID-26[AGDROID-26]: Support for Nested Resources in Android
-** link:https://issues.jboss.org/browse/AGDROID-16[AGDROID-16]: Add cookie on requests to keep session
-
-* OTP
-** link:https://issues.jboss.org/browse/AGDROID-19[AGDROID-19]: Create android OTP demo app
-
-* Authentication
-** link:https://issues.jboss.org/browse/AGDROID-2[AGDROID-2]: Mark http basic as experimental
-
-link:https://issues.jboss.org/issues/?filter=12321205[1.1 (Released on July 23, 2013)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* Authentication
-** link:https://issues.jboss.org/browse/AGDROID-10[AGDROID-10]: HttpDigest Authentication
-** link:https://issues.jboss.org/browse/AGDROID-27[AGDROID-27]: HttpBasic Authentication
-
-* Pipe
-** link:https://issues.jboss.org/browse/AGDROID-9[AGDROID-9]: Multipart/File Upload
-** link:https://issues.jboss.org/browse/AGDROID-6[AGDROID-6]: Deprecate readWithFilter and add a renamed "Read" method
-** link:https://issues.jboss.org/browse/AGDROID-11[AGDROID-11]: Pipe needs a cancel method
-
-link:https://issues.jboss.org/issues/?filter=12321207[1.2 (Released on August 14, 2013)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* Unified Push
-** link:https://issues.jboss.org/browse/AGDROID-47[AGDROID-47]: Client SDK for registration
-** link:https://issues.jboss.org/browse/AGDROID-59[AGDROID-59]: Create push demo application
-
-link:https://issues.jboss.org/issues/?filter=12321208[1.2.1 (Released on October 7, 2013)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* Authentication
-** link:https://issues.jboss.org/browse/AGDROID-73[AGDROID-73]: Add Login(Map, Callback) to AuthenticationModule
-
-link:https://issues.jboss.org/issues/?filter=12320479[1.3 (Released on December 3, 2013)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* DataManager
-** link:https://issues.jboss.org/browse/AGDROID-146[AGDROID-146]: Encrypt Memory Store
-** link:https://issues.jboss.org/browse/AGDROID-147[AGDROID-147]: Encrypt SQL Store
-** link:https://issues.jboss.org/browse/AGDROID-145[AGDROID-145]: Encrypted storage showcase app for Android
-
-* Crypto
-** link:https://issues.jboss.org/browse/AGDROID-34[AGDROID-34]: Implementation and API usage for android crypto
-** link:https://issues.jboss.org/browse/AGDROID-124[AGDROID-124]: Provide an interface for password encryption into Android
-** link:https://issues.jboss.org/browse/AGDROID-125[AGDROID-125] Provide an interface for symmetric encryption into Android
-** link:https://issues.jboss.org/browse/AGDROID-126[AGDROID-126] Provide an interface for asymmetric encryption into Android
-
-* Unified Push
-** link:https://issues.jboss.org/browse/AGDROID-143[AGDROID-143]: Support registration for multiple categories
-
-link:https://issues.jboss.org/issues/?filter=12320567[1.3.1 (Released on December 18, 2013)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* Bug
-** link:https://issues.jboss.org/browse/AGDROID-170[AGDROID-170]: SQLStore can't save a JSONArray
-** link:https://issues.jboss.org/browse/AGDROID-150[AGDROID-150]: Wrong usage of Callback in 
-
-* Crypto
-** link:https://issues.jboss.org/browse/AGDROID-139[AGDROID-139]: API Wrappers for Keystore
-** link:https://issues.jboss.org/browse/AGDROID-129[AGDROID-129]: Generate key from passphrase
-
-link:https://issues.jboss.org/issues/?filter=12320506[1.4 (Released on July 01, 2014)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* Documentation
-** link:https://issues.jboss.org/browse/AGDROID-155[AGDROID-155]: Review/update usage guides on aerogear.org
-   
-* Push
-** link:https://issues.jboss.org/browse/AGDROID-237[AGDROID-237]: Modularize Push
-** link:https://issues.jboss.org/browse/AGPUSH-604[AGPUSH-604]: Android Quickstart Client
-** link:https://issues.jboss.org/browse/AGPUSH-588[AGPUSH-588]: Android Hello World Client
-
-* OAuth2
-** link:https://issues.jboss.org/browse/AGDROID-266[AGDROID-266]: Create Oauth2 Authorization module
-
-link:https://issues.jboss.org/issues/?filter=12320508[2.0 (Mid September)]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* link:https://issues.jboss.org/browse/AGDROID-192[AGDROID-192]: Remove deprecated APIs
-* link:https://issues.jboss.org/browse/AGDROID-236[AGDROID-236]: Modularizing the Android Library
+* link:https://issues.jboss.org/browse/AGDROID-236[AGDROID-236]: Modularize the Android Library
+* link:https://issues.jboss.org/browse/AGDROID-273[AGDROID-273]: Modularize integration tests
+* link:https://issues.jboss.org/browse/AGDROID-303[AGDROID-303] - Migrate modules to Android Lollipop
+* link:https://issues.jboss.org/browse/AGDROID-310[AGDROID-310]: Drop support for Android < 4.1
+* link:https://issues.jboss.org/browse/AGDROID-304[AGDROID-304]: Use Travis Android environment
+* link:https://issues.jboss.org/browse/AGDROID-306[AGDROID-306]: Build library on travis using Java SDK 6, 7 and 8
+* link:https://issues.jboss.org/browse/AGDROID-302[AGDROID-302]: Maven Android Plugin 4 based builds
 * link:https://issues.jboss.org/browse/AGDROID-259[AGDROID-259]: Replace factory by registration
+* link:https://issues.jboss.org/browse/AGDROID-307[AGDROID-307]: Deprecate apklib
+* link:https://issues.jboss.org/browse/AGDROID-308[AGDROID-308]: Change project structure to align with Gradle Project file structure.
+* link:https://issues.jboss.org/browse/AGDROID-192[AGDROID-192]: Remove deprecated APIs
+* link:https://issues.jboss.org/browse/AGDROID-228[AGDROID-228]: GDrive: An example app using oAuth2 with Google Drive
+* link:https://issues.jboss.org/browse/AGDROID-301[AGDROID-301]: Shoot-n-Share Oauth2 demo
+* link:https://issues.jboss.org/browse/AEROGEAR-1425[Data Sync - Revision control]
+** link:https://issues.jboss.org/browse/AGDROID-284[AGDROID-284]: Conflict resolution handling
+** link:https://issues.jboss.org/browse/AGDROID-285[AGDROID-285]: DiffMatchPatch conflict resolver
 
-link:https://issues.jboss.org/issues/?filter=12320508[2.1 (Mid November)]
+
+link:https://issues.jboss.org/issues/?filter=12322371[2.1 (late December)]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Offline
-** link:https://issues.jboss.org/browse/AGDROID-223[AGDROID-223]: Offline Authentication
-** link:https://issues.jboss.org/browse/AGDROID-224[AGDROID-224]: Encrypted Cache
+* link:https://issues.jboss.org/browse/AEROGEAR-1495[Data Sync - Server push]
+** https://issues.jboss.org/browse/AGDROID-286[AGDROID-286]: Provide Notification handler that is capable of delegeting to a configured Conflict Resolver
+
+* link:https://issues.jboss.org/browse/AGDROID-245[AGDROID-245]: Add support for keycloak workflow
 
 Future
 ~~~~~~
 
-* DataSync
+* Offline
 * Accounts Integration
 * Notifications
 * Analytics and Monitoring/measuring
