@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AccountManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body id="reference" class="Swift">
+    <a title="AccountManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p class="header-text"><a href="#">AeroGearOauth2 Docs</a></p>
+        <p id="header-links"><a href="https://github.com/aerogear/aerogear-ios-oauth2"><img id="header-icon" src="../img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
+      </div>
+    </header>
+    <section id="valence">
+      <div class="content-wrapper">
+        <p id="hierarchial_navigation">
+        <a href="#" id="design_resources_link">AeroGearOauth2 Reference</a>
+        <img id="carat" src="../img/carat.png" height="10px" width="6px" />
+        AccountManager Class Reference
+        </p>
+      </div>
+    </section>
+    <div class="content-wrapper">
+      <nav class="book-parts">
+        <ul class="nav-parts">
+          <li class="part-name tasks">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Classes.html#/s:C14AeroGearOAuth214FacebookConfig">FacebookConfig</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes.html#/s:C14AeroGearOAuth212GoogleConfig">GoogleConfig</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/AccountManager.html">AccountManager</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes.html#/s:C14AeroGearOAuth220KeycloakOAuth2Module">KeycloakOAuth2Module</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/OAuth2Module.html">OAuth2Module</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/KeychainWrap.html">KeychainWrap</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/TrustedPersistantOAuth2Session.html">TrustedPersistantOAuth2Session</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes.html#/s:C14AeroGearOAuth220FacebookOAuth2Module">FacebookOAuth2Module</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/Config.html">Config</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/UntrustedMemoryOAuth2Session.html">UntrustedMemoryOAuth2Session</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Global Variables.html#/s:v14AeroGearOAuth232AGAppLaunchedWithURLNotificationSS">AGAppLaunchedWithURLNotification</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Enums.html">Enums</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Enums.html#/s:O14AeroGearOAuth218AuthorizationState">AuthorizationState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Protocols/OAuth2Session.html">OAuth2Session</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="pixel-line"></div>
+      <div class="rubber-band-gap"></div>
+      <article class="chapter">
+      <a name="/"></a>
+        <h1 class="chapter-name">AccountManager</h1>
+        <section>
+          <section class="section">
+            <p class="para">An account manager used to instantiate, store and retrieve OAuth2 modules</p>
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Children"></a>
+                <a href="#/Children">
+                  <h3 class="section-name"></h3>
+                </a>
+              </div>
+              <ul class="task-group-list">
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:vC14AeroGearOAuth214AccountManager14sharedInstanceS0_">
+                    <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth214AccountManager14sharedInstanceS0_">sharedInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">access a shared instance of an account manager</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class var sharedInstance: AccountManager { get }</code>
+                          </p>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth214AccountManager10addAccountFMS0_FTCS_6Config11moduleClassMCS_12OAuth2Module_S2_">
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth214AccountManager10addAccountFMS0_FTCS_6Config11moduleClassMCS_12OAuth2Module_S2_">addAccount(_:moduleClass:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Instantiate an OAuth2 Module using the configuration object passed in and adds it to the account manager. It uses the OAuth2Session account_id as the name that this module will be stored in.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class func addAccount(config: Config, moduleClass: OAuth2Module.Type) -&gt; OAuth2Module</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">config</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the configuration object to use to setup an OAuth2 module</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">moduleClass</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the type of the OAuth2 module to instantiate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">the OAuth2 module</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth214AccountManager13removeAccountFMS0_FTSS6configCS_6Config11moduleClassMCS_12OAuth2Module_GSqS2__">
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth214AccountManager13removeAccountFMS0_FTSS6configCS_6Config11moduleClassMCS_12OAuth2Module_GSqS2__">removeAccount(_:config:moduleClass:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Removes an OAuth2 module</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class func removeAccount(name: String, config: Config, moduleClass: OAuth2Module.Type) -&gt; OAuth2Module?</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the name that the OAuth2 module was bound to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">config</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the configuration object to use to setup an OAuth2 module</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">moduleClass</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the type of the OAuth2 module to instantiate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">the OAuth2module or nil if not found</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth214AccountManager16getAccountByNameFMS0_FSSGSqCS_12OAuth2Module_">
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth214AccountManager16getAccountByNameFMS0_FSSGSqCS_12OAuth2Module_">getAccountByName(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Retrieves an OAuth2 module by a name</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class func getAccountByName(name: String) -&gt; OAuth2Module?</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the name that the OAuth2 module was bound to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">the OAuth2module or nil if not found</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth214AccountManager20getAccountsByClienIdFMS0_FSSGSaCS_12OAuth2Module_">
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth214AccountManager20getAccountsByClienIdFMS0_FSSGSaCS_12OAuth2Module_">getAccountsByClienId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Retrieves a list of OAuth2 modules bound to specific clientId</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class func getAccountsByClienId(clientId: String) -&gt; [OAuth2Module]</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the client it that the oauth2 module was bound to</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">the OAuth2module or nil if not found</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth214AccountManager18getAccountByConfigFMS0_FCS_6ConfigGSqCS_12OAuth2Module_">
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth214AccountManager18getAccountByConfigFMS0_FCS_6ConfigGSqCS_12OAuth2Module_">getAccountByConfig(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Retrieves an OAuth2 module by using a configuration object</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class func getAccountByConfig(config: Config) -&gt; OAuth2Module?</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">config</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the Config object that this oauth2 module was used to instantiate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">the OAuth2module or nil if not found</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth214AccountManager18addFacebookAccountFMS0_FCS_14FacebookConfigCS_20FacebookOAuth2Module">
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth214AccountManager18addFacebookAccountFMS0_FCS_14FacebookConfigCS_20FacebookOAuth2Module">addFacebookAccount(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">convenient method to retrieve a faccebook oauth2 module</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class func addFacebookAccount(config: FacebookConfig) -&gt; FacebookOAuth2Module</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">config</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">a Facebook configuration object. See FacebookConfig</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">a Facebook OAuth2 module</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth214AccountManager16addGoogleAccountFMS0_FCS_12GoogleConfigCS_12OAuth2Module">
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth214AccountManager16addGoogleAccountFMS0_FCS_12GoogleConfigCS_12OAuth2Module">addGoogleAccount(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">convenient method to retrieve a google oauth2 module ready to be used</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class func addGoogleAccount(config: GoogleConfig) -&gt; OAuth2Module</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">config</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">a google configuration object. See GoogleConfig</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">a google OAuth2 module</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth214AccountManager18addKeycloakAccountFMS0_FCS_14KeycloakConfigCS_20KeycloakOAuth2Module">
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth214AccountManager18addKeycloakAccountFMS0_FCS_14KeycloakConfigCS_20KeycloakOAuth2Module">addKeycloakAccount(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">convenient method to retrieve a Keycloak oauth2 module ready to be used</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public class func addKeycloakAccount(config: KeycloakConfig) -&gt; KeycloakOAuth2Module</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">config</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">a Keycloak configuration object. See KeycloakConfig</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">a Keycloak OAuth2 module</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p class="copyright">&copy; 2014 <a class="link" href="http://www.aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-11-07)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.12</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

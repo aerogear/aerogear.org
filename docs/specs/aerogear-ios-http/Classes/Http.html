@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Http Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body id="reference" class="Swift">
+    <a title="Http Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p class="header-text"><a href="#">AeroGearHttp Docs</a></p>
+        <p id="header-links"><a href="https://github.com/aerogear/aerogear-ios-http"><img id="header-icon" src="../img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
+      </div>
+    </header>
+    <section id="valence">
+      <div class="content-wrapper">
+        <p id="hierarchial_navigation">
+        <a href="#" id="design_resources_link">AeroGearHttp Reference</a>
+        <img id="carat" src="../img/carat.png" height="10px" width="6px" />
+        Http Class Reference
+        </p>
+      </div>
+    </section>
+    <div class="content-wrapper">
+      <nav class="book-parts">
+        <ul class="nav-parts">
+          <li class="part-name tasks">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Classes.html#/s:C12AeroGearHttp22JsonResponseSerializer">JsonResponseSerializer</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes.html#/s:C12AeroGearHttp24StringResponseSerializer">StringResponseSerializer</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/Http.html">Http</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/MultiPartData.html">MultiPartData</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes.html#/s:C12AeroGearHttp21HttpRequestSerializer">HttpRequestSerializer</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes.html#/s:C12AeroGearHttp21JsonRequestSerializer">JsonRequestSerializer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Enums.html">Enums</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Enums.html#/s:O12AeroGearHttp10HttpMethod">HttpMethod</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Enums.html#/s:O12AeroGearHttp15FileRequestType">FileRequestType</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Enums.html#/s:O12AeroGearHttp10UploadType">UploadType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Protocols/ResponseSerializer.html">ResponseSerializer</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Protocols/RequestSerializer.html">RequestSerializer</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Protocols/AuthzModule.html">AuthzModule</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="pixel-line"></div>
+      <div class="rubber-band-gap"></div>
+      <article class="chapter">
+      <a name="/"></a>
+        <h1 class="chapter-name">Http</h1>
+        <section>
+          <section class="section">
+            <p class="para">Main class for performing HTTP operations across RESTful resources</p>
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Children"></a>
+                <a href="#/Children">
+                  <h3 class="section-name"></h3>
+                </a>
+              </div>
+              <ul class="task-group-list">
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4HttpcFMS0_FT7baseURLGSqSS_13sessionConfigCSo25NSURLSessionConfiguration17requestSerializerPS_17RequestSerializer_18responseSerializerPS_18ResponseSerializer__S0_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4HttpcFMS0_FT7baseURLGSqSS_13sessionConfigCSo25NSURLSessionConfiguration17requestSerializerPS_17RequestSerializer_18responseSerializerPS_18ResponseSerializer__S0_">init(baseURL:sessionConfig:requestSerializer:responseSerializer:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Initialize an HTTP object</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public init(baseURL: String? = default, sessionConfig: NSURLSessionConfiguration = default, requestSerializer: RequestSerializer = default, responseSerializer: ResponseSerializer = default)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">baseURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the remote base URL of the application (optional)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">sessionConfig</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the SessionConfiguration object (by default it uses a defaultSessionConfiguration)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">requestSerializer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the actual request serializer to use when performing requests</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">responseSerializer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the actual response serializer to use upon receiving a response</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="result-description">
+                        <h4>Return Value</h4>
+                        <p class="para">the newly intitialized HTTP object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF97requestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF97requestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">request(_:parameters:method:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Gateway to perform different http requests including multipart</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>private func request(url: String, parameters: [String : AnyObject]? = default, method: HttpMethod, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the url of the resource</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">method</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the method to be used,</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF911fileRequestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod4typeOS_15FileRequestType8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF911fileRequestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod4typeOS_15FileRequestType8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">fileRequest(_:parameters:method:type:progress:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Gateway to perform different file requests either download or upload</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>private func fileRequest(url: String, parameters: [String : AnyObject]? = default, method: HttpMethod, type: FileRequestType, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the url of the resource</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">method</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the method to be used,</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the file request type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">progress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">a block that will be invoked to report progress during either download or upload</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http3GETFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http3GETFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">GET(_:parameters:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">performs an HTTP GET request</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func GET(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the url of the resource</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http4POSTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http4POSTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">POST(_:parameters:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">performs an HTTP POST request</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func POST(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the url of the resource</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http3PUTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http3PUTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">PUT(_:parameters:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">performs an HTTP PUT request</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func PUT(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the url of the resource</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http6DELETEFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6DELETEFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">DELETE(_:parameters:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">performs an HTTP DELETE request</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func DELETE(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the url of the resource</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http4HEADFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http4HEADFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">HEAD(_:parameters:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">performs an HTTP HEAD request</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func HEAD(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the url of the resource</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http8downloadFS0_FTSS20destinationDirectoryGSqSS_10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S4_S4__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http8downloadFS0_FTSS20destinationDirectoryGSqSS_10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S4_S4__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">download(_:destinationDirectory:parameters:method:progress:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Request to download a file</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func download(url: String, destinationDirectory: String? = default, parameters: [String : AnyObject]? = default, method: HttpMethod = default, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the URL of the downloadable resource</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">destinationDirectory</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the destination directory where the file would be stored, if not specified application&#39;s default &#39;.Documents&#39; directory would be used</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">method</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the method to be used, by default a .GET request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">progress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">a block that will be invoked to report progress during download</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4fileCSo5NSURL10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4fileCSo5NSURL10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:file:parameters:method:progress:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Request to upload a file using an NURL of a local file</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func upload(url: String, file: NSURL, parameters: [String : AnyObject]? = default, method: HttpMethod = default, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the URL to upload resource into</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">file</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the URL of the local file to be uploaded</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">method</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the method to be used, by default a .POST request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">progress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">a block that will be invoked to report progress during upload</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4dataCSo6NSData10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4dataCSo6NSData10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:data:parameters:method:progress:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Request to upload a file using a raw NSData object</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func upload(url: String, data: NSData, parameters: [String : AnyObject]? = default, method: HttpMethod = default, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the URL to upload resource into</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the data to be uploaded</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">method</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the method to be used, by default a .POST request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">progress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">a block that will be invoked to report progress during upload</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS6streamCSo13NSInputStream10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS6streamCSo13NSInputStream10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:stream:parameters:method:progress:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Request to upload a file using an NSInputStream object</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <p class="para">
+                          <code>public func upload(url: String, stream: NSInputStream, parameters: [String : AnyObject]? = default, method: HttpMethod = default, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the URL to upload resource into</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">stream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the stream that will be used for uploading</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">method</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the method to be used, by default a .POST request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">progress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">a block that will be invoked to report progress during upload</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the <code>NSError</code> object describing the network or parsing error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p class="copyright">&copy; 2014 <a class="link" href="http://www.aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-11-07)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.12</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
