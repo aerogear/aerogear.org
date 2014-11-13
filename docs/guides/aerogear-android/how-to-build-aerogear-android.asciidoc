@@ -24,7 +24,7 @@ git clone git://github.com/mosabua/maven-android-sdk-deployer.git
 
 ==== Install Android platform
 ```
-cd $PWD/maven-android-sdk-deployer/platforms/android-19
+cd $PWD/maven-android-sdk-deployer/platforms/android-21
 mvn install -N --quiet
 ```
 
