@@ -88,7 +88,7 @@ namespace PushApplication
             DataContext = this;
         
             PushConfig pushConfig = new PushConfig() { UnifiedPushUri = new Uri("<the URL of the running UnifiedPush server>"), VariantId = "<Your-Variant-ID>", VariantSecret = "<Your-Variant-Secret>" };
-            Registration registration = new Registration();
+            Registration registration = new WnsRegistration();
             registration.Register(pushConfig);
 
             this.InitializeComponent();
@@ -193,7 +193,7 @@ namespace PushApplication
             DataContext = this;
         
             PushConfig pushConfig = new PushConfig() { UnifiedPushUri = new Uri("<the URL of the running UnifiedPush server>"), VariantId = "<Your-Variant-ID>", VariantSecret = "<Your-Variant-Secret>" };
-            Registration registration = new Registration();
+            Registration registration = new WnsRegistration();
             registration.PushReceivedEvent += HandleNotification;
             registration.Register(pushConfig);
 
@@ -204,7 +204,7 @@ namespace PushApplication
 
         void HandleNotification(object sender, PushReceivedEvent e) //[3]
         {
-            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => messageList.Add(e.Args.ToastNotification.Content.InnerText));
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => messageList.Add(e.Args.message));
         }
 
         /// <summary>
