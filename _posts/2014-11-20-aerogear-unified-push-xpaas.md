@@ -11,7 +11,7 @@ Being listed as a Mobile Service on xPaaS, the [JBoss Unified Push Server](https
 
 ## Unified Push Quickstarts
 
-To get started using the JBoss Unified Push Server there are a series of [quickstarts](https://github.com/jboss-developer/jboss-unifiedpush-quickstarts/archive/1.0.0.Beta1.zip), from the basics, to business logic integration. Each quickstart comes with multiple client options (Android, iOS, and Apache Cordova (jQuery Mobile & Angular/Ionic).
+To get started using the JBoss Unified Push Server there are a series of [quickstarts](https://github.com/jboss-developer/jboss-unifiedpush-quickstarts/archive/1.0.0.Beta1.zip), from the basics, to business logic integration. Each quickstart comes with multiple client options (Android, iOS, and Apache Cordova (jQuery Mobile & Angular/Ionic)).
 
 ## Try it on Openshift
 
