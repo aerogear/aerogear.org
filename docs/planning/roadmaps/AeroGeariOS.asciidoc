@@ -24,7 +24,9 @@ link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.1.0%20AND%20proje
 
 * *Authentication*
 ** Basic/Digest auth for aerogear-ios-http link:https://issues.jboss.org/browse/AGIOS-255[AGIOS-255]
-** OpenID Connect flow link:https://issues.jboss.org/browse/AGIOS-282[AGIOS-282]
+** OpenID Connect flow Keycloak link:https://issues.jboss.org/browse/AGIOS-282[AGIOS-282]
+** OpenID Connect flow Google link:https://issues.jboss.org/browse/AGIOS-283[AGIOS-283]
+** OpenID Connect flow Facebook link:https://issues.jboss.org/browse/AGIOS-284[AGIOS-284]
 ** OpenID Connect demo app SharedShoot link:https://issues.jboss.org/browse/AGIOS-287[AGIOS-287]
 
 * *Demo App design*
