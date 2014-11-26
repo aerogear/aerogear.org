@@ -8,7 +8,7 @@ AeroGear Conflict Resolution Roadmap
 :Author: Daniel Bevenius
 
 
-0.1.0 (Oct, 2014) link:https://issues.jboss.org/browse/AEROGEAR-1425[Revision control]     
+0.1.0 (Q1, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1425[Revision control]     
 --------------------------------------------------------------------------------------
 This goal of this version is to require minimal changes to existing servers and no special message format 
 required between the client and the server.
@@ -54,7 +54,7 @@ A concrete conflict resolver that can uses DiffMatchPatch to resolve conflict. T
 configurable to allow for auto-merging.
 
 
-0.2.0 (Nov, 2014) link:https://issues.jboss.org/browse/AEROGEAR-1495[Server push]
+0.2.0 (Q1, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1495[Server push]
 ---------------------------------------------------------------------------------
 This version extends upon *0.1.0* to add support for the server to reach out and notify the client that there 
 is a newer version available. This version requires that the server be updated to enable the sending of notifications when
@@ -79,7 +79,7 @@ JavaScript
 ~~~~~~~~~~
 * link:https://issues.jboss.org/browse/AGJS-216[AGJS-216] _Provide Notification handler that is capable of delegeting to a configured <<js-resolver, Conflict Resolver>>_
 
-0.3.0 (Dec, 2014) link:https://issues.jboss.org/browse/AEROGEAR-1497[Partial updates]
+0.3.0 (Q2, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1497[Partial updates]
 -------------------------------------------------------------------------------------
 
 This version introduces a message protocol between the client and server. This enables efficient data exchange where minimal set of object modifications are sent 
@@ -109,7 +109,7 @@ JavaScript
 * link:https://issues.jboss.org/browse/AGJS-217[AGJS-217] _Partial Updates for JavaScript_
 
 
-0.4.0 (Feb, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1500[Data Persistence / Offline, SPDY]
+0.4.0 (Q3, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1500[Data Persistence / Offline, SPDY]
 ------------------------------------------------------------------------------------------------------
 
 The DataManager automatically stores data retrieved from server endpoint. Client SDKs provide a way how to connect DataManager with Pipeline and Resolver to allow for automatic updates and offline mode.
@@ -140,7 +140,7 @@ JavaScript
 * link:https://issues.jboss.org/browse/AGJS-218[AGJS-218] _Data Persistence / Offline support for JavaScript_
 
 
-0.5.0 (Apr, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1510[Batch Updates]
+0.5.0 (Q4, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1510[Batch Updates]
 -----------------------------------------------------------------------------------
 
 Client SDKs and Server API conforms to Batch API that will be designed for this purpose. The API reuses contracts established by Partial Updates feature. The link:http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html#_Toc372793748[OData Batch] format can be considered as a template format.
