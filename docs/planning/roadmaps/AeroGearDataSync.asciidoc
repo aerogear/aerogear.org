@@ -8,7 +8,7 @@ AeroGear DataSync Roadmap
 :Author: Daniel Bevenius
 
 0.1.0 (Q2, 2015) link:https://issues.jboss.org/browse/AEROGEAR-1374[Data Sync]
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 Full _real-time_ data sync where updates are initiated from both the client and server over a bi-directional channel. + 
 This version requires both a specific server side sync engine, as well as a client side sync engine. + 
 
@@ -47,7 +47,7 @@ A client facing API for JavaScript users wishing to synchronize data. This would
 handling the synchronizing itself, but can provide/customize the storage of data, choose the most appropriate network transport
 protocol.
 
-0.2.0 (Q2, 2015) link:https://issues.jboss.org/browse/AEROGEAR-981[Offline]
+0.2.0 (Q3, 2015) link:https://issues.jboss.org/browse/AEROGEAR-981[Offline]
 ---------------------------------------------------------------------------
 This version also supports persistent storage of updates to support offline work. + 
 
