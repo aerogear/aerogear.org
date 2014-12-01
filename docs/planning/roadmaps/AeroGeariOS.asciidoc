@@ -15,21 +15,7 @@ External References
 * link:https://github.com/aerogear/aerogear-ios/[Github Repo]
 * link:https://issues.jboss.org/browse/AGIOS/[JIRA]
 
-2.0.0 (Released 20th October 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-link:https://issues.jboss.org/browse/AGIOS/fixforversion/12321918[JIRAs for 2.0.0 release]
-
-* *modularization* link:https://issues.jboss.org/browse/AGIOS-187[AGIOS-187]
-
-* *http revisited*
-** http module to replace pipes link:https://issues.jboss.org/browse/AGIOS-227[AGIOS-227]
-
-* *OAuth2 revisited*
-** OAuth2 module link:https://issues.jboss.org/browse/AGIOS-231[AGIOS-231]
-** Object serialization: pluggable 'serializers' for http module link:https://issues.jboss.org/browse/AGIOS-13[AGIOS-13]
-
-
-2.1.0 (28th November 2014)
+2.1.0 (18th December 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.1.0%20AND%20project%20%3D%20AGIOS[JIRAs for 2.1.0 release]
 
@@ -38,26 +24,45 @@ link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.1.0%20AND%20proje
 
 * *Authentication*
 ** Basic/Digest auth for aerogear-ios-http link:https://issues.jboss.org/browse/AGIOS-255[AGIOS-255]
-** OpenID Connect flow link:https://issues.jboss.org/browse/AGIOS-282[AGIOS-282]
+** OpenID Connect flow Keycloak link:https://issues.jboss.org/browse/AGIOS-282[AGIOS-282]
+** OpenID Connect flow Google link:https://issues.jboss.org/browse/AGIOS-283[AGIOS-283]
+** OpenID Connect flow Facebook link:https://issues.jboss.org/browse/AGIOS-284[AGIOS-284]
 ** OpenID Connect demo app SharedShoot link:https://issues.jboss.org/browse/AGIOS-287[AGIOS-287]
 
-* *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
-** Implement Client Client as described in link:../AeroGearDataSync/[Sync Roadmap]
-** Cookbook demo app for sync link:https://issues.jboss.org/browse/AGIOS-297[AGIOS-297]
+* *Demo App design*
+** Shoot'nshare app link:https://issues.jboss.org/browse/AGIOS-305[AGIOS-305]
+** HelloWorld link:https://issues.jboss.org/browse/AEROGEAR-777[AEROGEAR-777]
+** Contacts link:https://issues.jboss.org/browse/AEROGEAR-780[AEROGEAR-780]
 
-2.2.0 (Dec 2014)
-~~~~~~~~~~~~~~~~
+* *Swift tooling*
+** Travis for Swift repositories link:https://issues.jboss.org/browse/AGIOS-248[AGIOS-248]
+** Cocoapods support for Swift libs link:https://issues.jboss.org/browse/AGIOS-306[AGIOS-306]
+
+2.2.0 (January 2015)
+~~~~~~~~~~~~~~~~~~~~
 link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.2.0%20AND%20project%20%3D%20AGIOS[JIRAs for 2.2.0 release]
 
 * *Store revisited*
-** Incremental store to replace store
+** POC on incremental store to replace store. Create JIRA tickets for more details out of the POC.
 
 * *http and auth/authz*
 ** Resources owner credentials grant link:https://issues.jboss.org/browse/AGIOS-196[AGIOS-196]
 ** Add more user roles in Keycloak Shoot-web app demo link:https://issues.jboss.org/browse/AGIOS-286[AGIOS-286]
 
-2.3.0 (Jan 2015)
-~~~~~~~~~~~~~~~~
+* *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
+** Implement Client Sync as described in link:../AeroGearDataSync/[Sync Roadmap]
+** Cookbook demo app for sync link:https://issues.jboss.org/browse/AGIOS-297[AGIOS-297]
+
+2.2.1 (February 2015)
+~~~~~~~~~~~~~~~~~~~~~
+TBD in more details
+
+2.2.2 (March 2015)
+~~~~~~~~~~~~~~~~~~
+TBD in more details
+
+2.3.0 (April 2015)
+~~~~~~~~~~~~~~~~~~
 * *Offline & Crypto*
 ** Offline Authentication link:https://issues.jboss.org/browse/AGIOS-176[AGIOS-176]
 ** Encrypted Cache link:https://issues.jboss.org/browse/AGIOS-177[AGIOS-177]
@@ -66,25 +71,3 @@ link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.2.0%20AND%20proje
 * *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1497]
 ** Partial Updates for iOS link:https://issues.jboss.org/browse/AGIOS-269[AGIOS-269]
 
-
-2.x Release(s)
-~~~~~~~~~~~~~~
-
-* *Sync*
-* Data Persistence / Offline support for iOS link:https://issues.jboss.org/browse/AGIOS-270[AGIOS-270]
-* SPDY support for iOS link:https://issues.jboss.org/browse/AGIOS-271[AGIOS-271]
-* Implement Batch API on iOS link:https://issues.jboss.org/browse/AGIOS-272[AGIOS-272]
-
-* *Notifications*
-** inspired by the JS module
-** STOMP support
-** MQTT support
-** integration with _Data Sync_ and _Offline_
-
-* *Web 2.0 features*
-** SSE (Server Sent Event)
-** "real time web"
-
-* *Social*
-** Common API
-*** Posting, Profile Info, Friend List, etc.

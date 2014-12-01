@@ -3,8 +3,7 @@ layout: basic
 title: AeroGear SimplePush Server
 ---
 
-AeroGear SimplePush Server Roadmap
-
+This document covers the requirements, use-cases and planned API’s for the AeroGear SimplePush Server.
 
 == External References
 * link:https://github.com/aerogear/aerogear-simplepush-server/[Github Repo]
@@ -18,9 +17,14 @@ AeroGear SimplePush Server Roadmap
 
 === link:https://issues.jboss.org/browse/AGSMPLPUSH-60?filter=12322070[0.12.0 (September, 2014)]
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-25[AGSMPLPUSH-25]: Verify that we include the latest changes from the SimplePush specification.
-* link:https://issues.jboss.org/browse/AGSMPLPUSH-4[AGSMPLPUSH-4]: Enable batch notifications for SimplePush server.
-* link:https://issues.jboss.org/browse/AGSMPLPUSH-30[AGSMPLPUSH-30]: Add SockJS support to Netty 5
+
+=== link:https://issues.jboss.org/browse/AGSMPLPUSH-60?filter=12322070[0.12.1 (November, 2014)]
+* link:https://issues.jboss.org/browse/AGSMPLPUSH-68[AGSMPLPUSH-68]: Update SockJS default CDN
+* link:https://issues.jboss.org/browse/AGSMPLPUSH-68[AGSMPLPUSH-69]: Remove non-existing Netty SockJS dependency from root pom.
 
 == link:https://issues.jboss.org/browse/AGSMPLPUSH-31?jql=project%20%3D%20AGSMPLPUSH%20AND%20fixVersion%20%3D%20future%20AND%20status%20%3D%20Open%20ORDER%20BY%20priority%20DESC[Future]
+* link:../AeroGearWebPush/[WebPush Server Roadmap]: WebPush is a possible successor of SimplePush.
 * link:https://issues.jboss.org/browse/AGSMPLPUSH-15[AGSMPLPUSH-15]: Investigate scalability for SimplePush Server
+* link:https://issues.jboss.org/browse/AGSMPLPUSH-4[AGSMPLPUSH-4]: Enable batch notifications for SimplePush server.
+* link:https://issues.jboss.org/browse/AGSMPLPUSH-30[AGSMPLPUSH-30]: Add SockJS support to Netty 5
 
