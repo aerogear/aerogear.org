@@ -27,3 +27,10 @@ See the [AeroGear.Crypto API docs](AeroGear.Crypto.html) for more info.
 There is a global variable named geofencing exported by Cordova that one can use to register the device for receiving geofencing events.
 
 See the [Geofencing docs](geofencing.html) for more info.
+
+## OAuth2 Plugin
+- - -
+
+oauth2 varaible can be used to add providers like google and keycloak to requestAccess
+
+See the [OAuth2 docs](Oauth2.html) for more info.
