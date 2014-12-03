@@ -1,0 +1,13 @@
+org.jboss.aerogear.android.authentication
+org.jboss.aerogear.android.code
+org.jboss.aerogear.android.http
+org.jboss.aerogear.android.impl.core
+org.jboss.aerogear.android.impl.http
+org.jboss.aerogear.android.impl.pipeline
+org.jboss.aerogear.android.impl.pipeline.loader
+org.jboss.aerogear.android.impl.pipeline.loader.support
+org.jboss.aerogear.android.impl.pipeline.paging
+org.jboss.aerogear.android.impl.util
+org.jboss.aerogear.android.pipeline
+org.jboss.aerogear.android.pipeline.paging
+org.jboss.aerogear.android.pipeline.support

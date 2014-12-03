@@ -1,0 +1,4 @@
+org.jboss.aerogear.android.authentication
+org.jboss.aerogear.android.authentication.impl
+org.jboss.aerogear.android.authentication.impl.loader
+org.jboss.aerogear.android.authentication.impl.loader.support
