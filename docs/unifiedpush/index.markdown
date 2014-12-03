@@ -38,6 +38,7 @@ For more details on the supported mobile platforms consult the guides below:
 
 ## API documentation
 
-* [UnifiedPush Server: RESTful API ](../specs/aerogear-unifiedpush-rest/overview-index.html)
+* [UnifiedPush Server: RESTful API (stable)](../specs/aerogear-unifiedpush-rest-1.0.x/overview-index.html)
+* [UnifiedPush Server: RESTful API (development)](../specs/aerogear-unifiedpush-rest/overview-index.html)
 * [UnifiedPush Java Client](../specs/aerogear-unifiedpush-java-client)
 * [UnifiedPush Node.js Client](../specs/aerogear-unifiedpush-nodejs-client)
