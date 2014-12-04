@@ -22,7 +22,8 @@ title: Specifications
 * [AeroGear Cordova](aerogear-cordova)
 
 #### Push Specifications
-* [AeroGear UnifiedPush RESTful APIs](aerogear-unifiedpush-rest/overview-index.html)
+* [AeroGear UnifiedPush RESTful APIs - stable](aerogear-unifiedpush-rest-1.0.x/overview-index.html)
+* [AeroGear UnifiedPush RESTful APIs - development](aerogear-unifiedpush-rest/overview-index.html)
 * [AeroGear UnifiedPush Java Client - Version 1.0.0](aerogear-unifiedpush-java-client)
 * [AeroGear UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
 * [AeroGear SimplePush Java Client](aerogear-simplepush-java-client)

@@ -1,5 +1,5 @@
 <HTML><HEAD><TITLE>Resource sender</TITLE></TITLE><LINK REL='stylesheet' TYPE='text/css' HREF='../doclet.css' TITLE='Style'/><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</HEAD><BODY><b>UnifiedPush RESTful Endpoint 1.0.2</b><table class='menu'><colgroup><col/><col/></colgroup><tbody><tr><td class='NavBarCell1' colspan='2'><table><tbody><tr><th><a href='../overview-summary.html'>Overview</a></th><th><a href='../overview-index.html'>Index</a></th><th><a href='../index.html'>Root resource</a></th></tr></tbody></table></td></tr><tr><td class='NavBarCell3'>summary: resource | <a href='#methods-summary'>method</a></td><td class='NavBarCell3'>detail: <a href='#methods-details'>method</a></td></tr></table><h2>Path: <a href='../index.html'>/</a> sender</h2>RESTful API for sending Push Notifications.
+</HEAD><BODY><b>UnifiedPush RESTful Endpoint 1.1.0-alpha.1</b><table class='menu'><colgroup><col/><col/></colgroup><tbody><tr><td class='NavBarCell1' colspan='2'><table><tbody><tr><th><a href='../overview-summary.html'>Overview</a></th><th><a href='../overview-index.html'>Index</a></th><th><a href='../index.html'>Root resource</a></th></tr></tbody></table></td></tr><tr><td class='NavBarCell3'>summary: resource | <a href='#methods-summary'>method</a></td><td class='NavBarCell3'>detail: <a href='#methods-details'>method</a></td></tr></table><h2>Path: <a href='../index.html'>/</a> sender</h2>RESTful API for sending Push Notifications.
  The Endpoint is protected using <code>HTTP Basic</code> (credentials <code>PushApplicationID:masterSecret</code>).
  <p/><p/>
 
@@ -9,22 +9,27 @@
    -v -H "Accept: application/json" -H "Content-type: application/json"
    -X POST
    -d '{
-     "alias" : ["someUsername"],
-     "deviceType" : ["someDevice"],
-     "categories" : ["someCategories"],
-     "variants" : ["someVariantIDs"],
-     "ttl" : 3600,
-     "message":
-     {
-       "key":"value",
-       "key2":"other value",
-       "alert":"HELLO!",
-       "action-category":"some value",
-       "sound":"default",
-       "badge":2,
-       "content-available" : true
+     "message": {
+      "alert": "HELLO!",
+      "action-category": "some value",
+      "sound": "default",
+      "badge": 2,
+      "content-available": true,
+      "user-data": {
+          "key": "value",
+          "key2": "other value"
+      },
+      "simple-push": "version=123"
      },
-     "simple-push":"version=123"
+     "criteria": {
+         "alias": [ "someUsername" ],
+         "deviceType": [ "someDevice" ],
+         "categories": [ "someCategories" ],
+         "variants": [ "someVariantIDs" ]
+     },
+     "config": {
+         "ttl": 3600
+     }
    }'
    https://SERVER:PORT/CONTEXT/rest/sender
  </pre>
@@ -41,27 +46,32 @@
    -v -H "Accept: application/json" -H "Content-type: application/json"
    -X POST
    -d '{
-     "alias" : ["someUsername"],
-     "deviceType" : ["someDevice"],
-     "categories" : ["someCategories"],
-     "variants" : ["someVariantIDs"],
-     "ttl" : 3600,
-     "message":
-     {
-       "key":"value",
-       "key2":"other value",
-       "alert":"HELLO!",
-       "action-category":"some value",
-       "sound":"default",
-       "badge":2,
-       "content-available" : true
+     "message": {
+      "alert": "HELLO!",
+      "action-category": "some value",
+      "sound": "default",
+      "badge": 2,
+      "content-available": true,
+      "user-data": {
+          "key": "value",
+          "key2": "other value"
+      },
+      "simple-push": "version=123"
      },
-     "simple-push":"version=123"
+     "criteria": {
+         "alias": [ "someUsername" ],
+         "deviceType": [ "someDevice" ],
+         "categories": [ "someCategories" ],
+         "variants": [ "someVariantIDs" ]
+     },
+     "config": {
+         "ttl": 3600
+     }
    }'
    https://SERVER:PORT/CONTEXT/rest/sender
  </pre>
 
- Details about the Message Format can be found HERE!</p><dl><dt><b>Input:</b></dt><dd><tt><a href='http://docs.oracle.com/javase/7/docs/api/java/util/Map.html'>Map</a>&lt;<a href='http://docs.oracle.com/javase/7/docs/api/java/lang/String.html'>String</a>,<a href='http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html'>Object</a>&gt;</tt></dd><dt><b>Output:</b></dt><dd><tt>javax.ws.rs.core.Response</tt></dd><dt><b>Consumes:</b></dt><dd>application/json</dd>
+ Details about the Message Format can be found HERE!</p><dl><dt><b>Input:</b></dt><dd><tt>org.jboss.aerogear.unifiedpush.message.UnifiedPushMessage</tt></dd><dt><b>Output:</b></dt><dd><tt>javax.ws.rs.core.Response</tt></dd><dt><b>Consumes:</b></dt><dd>application/json</dd>
 <DT><B>HTTP return codes:</B></DT><DD><B>200</B> - (OK) Indicates the Job has been accepted and is being process by the AeroGear UnifiedPush Server.</DD>
 <DD><B>401</B> - (Unauthorized) The request requires authentication.</DD>
 <DD><B>404</B> - (Not Found) The requested PushApplication resource does not exist.</DD>
@@ -69,4 +79,4 @@
 
 <DT><B>HTTP request headers:</B></DT><DD><B>aerogear-sender</B> - The header to identify the used client. If the header is not present, the standard "user-agent" header is used.</DD>
 
-</dl></td></tr></tbody></table><hr/><table class='menu'><colgroup><col/><col/></colgroup><tbody><tr><td class='NavBarCell1' colspan='2'><table><tbody><tr><th><a href='../overview-summary.html'>Overview</a></th><th><a href='../overview-index.html'>Index</a></th><th><a href='../index.html'>Root resource</a></th></tr></tbody></table></td></tr><tr><td class='NavBarCell3'>summary: resource | <a href='#methods-summary'>method</a></td><td class='NavBarCell3'>detail: <a href='#methods-details'>method</a></td></tr></table><b>UnifiedPush RESTful Endpoint 1.0.2</b><hr/><div class='footer'>Generated by <a href='http://www.lunatech-labs.com/open-source/jax-doclets'>Lunatech Labs jax-doclets</a> v0.10.0</div></BODY></HTML>
+</dl></td></tr></tbody></table><hr/><table class='menu'><colgroup><col/><col/></colgroup><tbody><tr><td class='NavBarCell1' colspan='2'><table><tbody><tr><th><a href='../overview-summary.html'>Overview</a></th><th><a href='../overview-index.html'>Index</a></th><th><a href='../index.html'>Root resource</a></th></tr></tbody></table></td></tr><tr><td class='NavBarCell3'>summary: resource | <a href='#methods-summary'>method</a></td><td class='NavBarCell3'>detail: <a href='#methods-details'>method</a></td></tr></table><b>UnifiedPush RESTful Endpoint 1.1.0-alpha.1</b><hr/><div class='footer'>Generated by <a href='http://www.lunatech-labs.com/open-source/jax-doclets'>Lunatech Labs jax-doclets</a> v0.10.0</div></BODY></HTML>
