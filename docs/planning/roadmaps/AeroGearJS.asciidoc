@@ -93,7 +93,7 @@ New Features
 * Use of ES6 Promises
 * Tie up loose ends
 
-2.1.0 (Mid October 2014)
+2.1.0 (Mid December 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 * Convert to ES6 modules
 ** transpile to AMD, CommonJS, Global link:https://issues.jboss.org/browse/AGJS-220[AGJS-220]
@@ -103,7 +103,7 @@ New Features
 ** DiffMatchPatch conflict resolver link:https://issues.jboss.org/browse/AGJS-215[AGJS-215]
 ** Cookbook recipe: create demo app for sync
 
-2.2.0 (Mid November 2014)
+2.2.0 (Mid January 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1495[AEROGEAR-1495]
 ** Provide Notification handler that is capable of delegating to a configured Conflict Resolver link:https://issues.jboss.org/browse/AGJS-216[AGJS-216]
@@ -113,18 +113,14 @@ New Features
 ~~~~~~~~~~~~~~
 * *Offline*
 ** link:https://issues.jboss.org/browse/AGJS-156[AGJS-156]
-** Support for using apps offline and detecting status
-** Simplified App Cache API / Keep eye on new offline APIs
+** Based on the ServiceWorkers API
+**** http://jakearchibald.com/2014/using-serviceworker-today/
+**** http://www.w3.org/TR/2014/WD-service-workers-20140508/
 ** Use DataSync when returning to online status
-* *Remove jQuery Requirements*
-**** https://issues.jboss.org/browse/AGJS-70[AGJS-70]
-* *Polymer Components*
-** link:https://issues.jboss.org/browse/AGJS-131[AGJS-131]
-* *Social*
-** Auth
-*** Login via Facebook, G+, Twitter?
-*** AeroGear.Auth adapter or separate?
-** Common API
-*** Posting, Profile Info, Friend List, etc.
+* *WebPush*
+** New spec for Push in the Browser link:http://www.w3.org/TR/push-api/
+** Possible polyfill based on Service Workers link:https://issues.jboss.org/browse/AGJS-264[AGJS-264]
+* *Oauth*
+** Focus is on Keycloak and a passport.js adapter link:https://issues.jboss.org/browse/KEYCLOAK-864[KEYCLOAK-864]
 
 And for the overall AeroGear Roadmap, see the link:http://aerogear.org/docs/planning/roadmaps/AeroGearRoadMap/[AeroGear Roadmap]
