@@ -181,3 +181,21 @@ External References
     ** AGSEC-189: Authorization Code Grant
 
 
+Future and beyond
+~~~~~~~~~~~~~~~~~
+
+* Social login
+* Encryption for UPS
+    ** iOS Passphrase encryption
+    ** Password protection/encryption during export/import
+* Offline authentication
+* Data synchronization
+* Two factor authentication with Push messages
+* Revisit our crypto API
+* Revisit our demos for security
+* Certificate pinning to all SDKs
+* NFC authentication for mobile devices
+* Device blacklisting
+* Biometrics authentication
+
+
