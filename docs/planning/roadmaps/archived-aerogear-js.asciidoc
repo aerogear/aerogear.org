@@ -1,0 +1,94 @@
+---
+layout: basic
+title: AeroGear JavaScript Library
+---
+
+AeroGear JavaScript Library
+===========================
+:Author: Lucas Holmquist
+
+This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.
+
+External References
+-------------------
+
+* link:https://github.com/aerogear/aerogear-js/[Github Repo]
+* link:https://issues.jboss.org/browse/AGJS/[JIRA]
+
+1.0.x Release(s)
+~~~~~~~~~~~~~~~~
+* *Bug Fixes and Minor Feature Additions*
+* *Dates*
+** Released as needed
+** If not critical, can be wrapped into a 1.x release
+
+1.1.0 (Mid June)
+~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
+* *Auth*
+** Basic/Digest Adapter
+* *Notifier*
+** Used for background communication in applications
+** Adapters
+*** SockJS
+*** More? (STOMP and other protocols to "unify" APIs)
+**** Can be moved to future releases
+
+1.2.0 (Mid August)
+~~~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
+* *SimplePush*
+** Base on Mozilla's SimplePush Protocol Specification
+** WebSocket/SockJS via Notifier
+* *Unified Push Client*
+** Separate module for app registration/unregistration with unified push server
+
+1.3.0 (Mid November)
+~~~~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
+* *Crypto*
+** aerogear.crypto.js
+** Provide encryption/decryption for passwords, data, etc.
+* *Pipeline*
+** Multi-part Uploads
+* *DataManager*
+** IndexedDB/WebSQL Adapter
+*** Feature detection to determine which is available
+*** IE9 supports neither so need to also be able to fall back to localStorage but use same API
+
+1.4.0 (Mid March)
+~~~~~~~~~~~~~~~~~
+New Features
+^^^^^^^^^^^^
+* *Auth*
+** OAuth2 Adapter
+*** Customizable Provider
+
+* *JS Cookbook*
+** Recipes for common usages
+
+1.5.0 (Early May)
+~~~~~~~~~~~~~~~~~
+New Features
+~~~~~~~~~~~~
+* *MQTT WS Adapter*
+** link:https://issues.jboss.org/browse/AGJS-47[AGJS-47]
+* *UnifiedPushClient updates*
+** Remove jQuery Requirement
+** Add ES6 promises( polyfill where needed )
+***** link:https://issues.jboss.org/browse/AGJS-154[AGJS-154]
+* *Code Cleanup*
+** Remove duplicated methods in Notifier
+**** link:https://issues.jboss.org/browse/AGJS-135[AGJS-135]
+* *More Cookbook Examples*
+** link:https://issues.jboss.org/browse/AGJS-41[AGJS-41]
+
+2.0.0 Release (Late September 2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Deprecation of Pipeline
+* Deprecation of the Authentication REST adapter
+* Use of ES6 Promises
+* Tie up loose ends
