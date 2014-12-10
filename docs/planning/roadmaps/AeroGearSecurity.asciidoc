@@ -45,7 +45,7 @@ Future and beyond
 * Revisit our crypto API
 * Revisit our demos for security
 * Certificate pinning to all SDKs
-* NFC authentication for mobile devices
+* link:https://fidoalliance.org/specifications/download[NFC authentication for mobile devices]
 * Device blacklisting
 * Biometrics authentication
 
