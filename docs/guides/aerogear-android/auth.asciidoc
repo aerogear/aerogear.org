@@ -19,11 +19,9 @@ This guide will go in depth on these two topics; however, we will also discuss b
 
 === API overview
 
-Interaction with Authentication services is mediated using classes which implement the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] interface, register themselves with the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] factory class, and apply themselves to a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] using link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*].
+Interaction with Authentication services is mediated using classes which implement the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] interface.  AuthenticationModule is a child of *PipeModule* and is appended to a Pipe during configuration with *PipeConfiguration.module*.  You can find more information about *PipeModule* in the pipe tutorial.
 
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] wraps up URL fields for enrolling, logging in, and logging out and defines the methods which call these URLs.  Once a login has been successfully completed, it also provides an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthorizationFields.html[*AuthorizationFields*] object which encapsulates the necessary parameters for applying authorization to a request via a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].
-
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] is a manager and a factory. It can consume an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationConfig.html[*AuthenticationConfig*] object and instantiate an appropriate built-in module tuned to work with a specific server configuration, or you can provide your own custom link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] and register it with then Authenticator. We will see an example of a custom authentication module later in the guide, where we will build a custom authentication module that goes against the popular Reddit web service.
+AuthenticationModules may be called by the user.  In general the `login` method will pass tokens to a server and parse the response for any necessary keys.  `logout` will remove the tokens locally and call any necessary server methods.  `enroll` will pass a user's information to a remote service and create an account.  These tasks are often implementation specific.  We do have modules supporting HttpBasic and HttpDigest as part of the AeroGear framework.
 
 *AbstractAuthenticationModule* is a convenience class for integrating with non AeroGear REST services.  It is also useful for when you want to only support a subset of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*]'s functionality, and it configures a THREAD_POOL_EXECUTOR for you to delegate your network calls to.  
 
@@ -34,17 +32,16 @@ link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl
 [source,java]
 ----
 // Create AuthenticationModule
-AuthenticationConfig authenticationConfig = new AuthenticationConfig();
-authenticationConfig.setLoginEndpoint("/auth/login");
-authenticationConfig.setLogoutEndpoint("/auth/logout");
+HttpDigestAuthenticationConfiguration config = AuthenticationManager.config(SIMPLE_MODULE_NAME, HttpDigestAuthenticationConfiguration.class);
+config.loginEndpoint("testLogin").logoutEndpoint("testLogout").baseURL(SIMPLE_URL)
 
-Authenticator authenticator = new Authenticator("http://myserver.com");
-AuthenticationModule authenticationModule = authenticator.auth("myLoginModule", authenticationConfig);
+AuthenticationModule simpleAuthModule = config.asModule();
+
 
 // Add AuthenticationModule to Pipe
-PipeConfig pipeConfig = new PipeConfig(baseURL, Task.class);
-pipeConfig.setAuthModule(authModule);
-pipeline.pipe(Task.class, pipeConfig);
+RestfulPipeConfiguration pipeConfig = PipeManager.config("autobots", RestfulPipeConfiguration.class);
+pipeConfig.withUrl(CONTROLLER_URL);
+pipeConfig.module(simpleAuthModule);
 ----
 
 ==== Using Authentication
@@ -57,7 +54,7 @@ While the application is not logged in, link:/docs/specs/aerogear-android/org/jb
 authenticationModule.login("myUsername", "myPassword", myCallback);
 ----
 
-By default the authenticator will send a Json using the default keys (_loginName_ and _password_). If server expects different keys you can use a map to send it.
+Alternatively, if your login needs extra data you can also submit a map.
 
 .loginWithCustomKeys
 [source,java]
@@ -89,21 +86,19 @@ authenticationModule.enroll(userData, myCallback);
 
 ==== Authentication Types
 
-For now we support three link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/AuthTypes.html[*authentication types*].
+We currently provide two AuthenticationModule implementations.  HttpBasic and HttpDigest.
 
-* AG_SECURITY (Login/Password)
-* HTTP_BASIC
-* DIGEST
-
-So, to use this you only need set it on link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationConfig.html[*AuthenticationConfig*]
 
 [source,java]
 ----
-AuthenticationConfig authenticationConfig = new AuthenticationConfig();
-authenticationConfig.setAuthType(AuthTypes.HTTP_BASIC);
+AuthenticationConfiguration config = AuthenticationManager.config(SIMPLE_MODULE_NAME, HttpBasicAuthenticationConfiguration.class);
+AuthenticationModule simpleAuthModule = config.baseURL(SIMPLE_URL).asModule();
+----
 
-Authenticator authenticator = new Authenticator("http://myserver.com");
-AuthenticationModule authenticationModule = authenticator.auth("myLoginModule", authenticationConfig);
+[source,java]
+----
+AuthenticationConfiguration config = AuthenticationManager.config(SIMPLE_MODULE_NAME, HttpDigestAuthenticationConfiguration.class);
+AuthenticationModule simpleAuthModule = config.baseURL(SIMPLE_URL).asModule();
 ----
 
 Take a look at the complete example in our link:https://github.com/aerogear/aerogear-android-cookbook[*cookbook app*]
@@ -183,5 +178,5 @@ public class RedditAuthenticationModule extends AbstractAuthenticationModule {
 }
 ----
 
-Take a look at the complete example in link:https://github.com/secondsun/AGReddit[*AGReddit*]
+Take a look at the complete example in link:https://github.com/aerogear/aerogear-android-cookbook/AGReddit[*AGReddit*]
 
