@@ -7,7 +7,7 @@ AeroGear JavaScript Library
 ===========================
 :Author: Lucas Holmquist
 
-This document covers the requirements, use-cases and planned API's for the AeroGear JavaScript client library.
+This document covers the requirements, use-cases and planned API’s for the AeroGear Javascript client library. For older releases please consult link:../archived-aerogear-js[archived releases list].
 
 External References
 -------------------
@@ -15,85 +15,7 @@ External References
 * link:https://github.com/aerogear/aerogear-js/[Github Repo]
 * link:https://issues.jboss.org/browse/AGJS/[JIRA]
 
-1.0.x Release(s)
-~~~~~~~~~~~~~~~~
-* *Bug Fixes and Minor Feature Additions*
-* *Dates*
-** Released as needed
-** If not critical, can be wrapped into a 1.x release
-
-1.1.0 (Mid June)
-~~~~~~~~~~~~~~~~
-New Features
-^^^^^^^^^^^^
-* *Auth*
-** Basic/Digest Adapter
-* *Notifier*
-** Used for background communication in applications
-** Adapters
-*** SockJS
-*** More? (STOMP and other protocols to "unify" APIs)
-**** Can be moved to future releases
-
-1.2.0 (Mid August)
-~~~~~~~~~~~~~~~~~~
-New Features
-^^^^^^^^^^^^
-* *SimplePush*
-** Base on Mozilla's SimplePush Protocol Specification
-** WebSocket/SockJS via Notifier
-* *Unified Push Client*
-** Separate module for app registration/unregistration with unified push server
-
-1.3.0 (Mid November)
-~~~~~~~~~~~~~~~~~~~
-New Features
-^^^^^^^^^^^^
-* *Crypto*
-** aerogear.crypto.js
-** Provide encryption/decryption for passwords, data, etc.
-* *Pipeline*
-** Multi-part Uploads
-* *DataManager*
-** IndexedDB/WebSQL Adapter
-*** Feature detection to determine which is available
-*** IE9 supports neither so need to also be able to fall back to localStorage but use same API
-
-1.4.0 (Mid March)
-~~~~~~~~~~~~~~~~~
-New Features
-^^^^^^^^^^^^
-* *Auth*
-** OAuth2 Adapter
-*** Customizable Provider
-
-* *JS Cookbook*
-** Recipes for common usages
-
-1.5.0 (Early May)
-~~~~~~~~~~~~~~~~~
-New Features
-~~~~~~~~~~~~
-* *MQTT WS Adapter*
-** link:https://issues.jboss.org/browse/AGJS-47[AGJS-47]
-* *UnifiedPushClient updates*
-** Remove jQuery Requirement
-** Add ES6 promises( polyfill where needed )
-***** link:https://issues.jboss.org/browse/AGJS-154[AGJS-154]
-* *Code Cleanup*
-** Remove duplicated methods in Notifier
-**** link:https://issues.jboss.org/browse/AGJS-135[AGJS-135]
-* *More Cookbook Examples*
-** link:https://issues.jboss.org/browse/AGJS-41[AGJS-41]
-
-2.0.0 Release (Late September 2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* Deprecation of Pipeline
-* Deprecation of the Authentication REST adapter
-* Use of ES6 Promises
-* Tie up loose ends
-
-2.1.0 (Mid October 2014)
+2.1.0 (Mid December 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 * Convert to ES6 modules
 ** transpile to AMD, CommonJS, Global link:https://issues.jboss.org/browse/AGJS-220[AGJS-220]
@@ -103,7 +25,7 @@ New Features
 ** DiffMatchPatch conflict resolver link:https://issues.jboss.org/browse/AGJS-215[AGJS-215]
 ** Cookbook recipe: create demo app for sync
 
-2.2.0 (Mid November 2014)
+2.2.0 (Mid January 2014)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 * *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1495[AEROGEAR-1495]
 ** Provide Notification handler that is capable of delegating to a configured Conflict Resolver link:https://issues.jboss.org/browse/AGJS-216[AGJS-216]
@@ -113,18 +35,14 @@ New Features
 ~~~~~~~~~~~~~~
 * *Offline*
 ** link:https://issues.jboss.org/browse/AGJS-156[AGJS-156]
-** Support for using apps offline and detecting status
-** Simplified App Cache API / Keep eye on new offline APIs
+** Based on the ServiceWorkers API
+**** http://jakearchibald.com/2014/using-serviceworker-today/
+**** http://www.w3.org/TR/2014/WD-service-workers-20140508/
 ** Use DataSync when returning to online status
-* *Remove jQuery Requirements*
-**** https://issues.jboss.org/browse/AGJS-70[AGJS-70]
-* *Polymer Components*
-** link:https://issues.jboss.org/browse/AGJS-131[AGJS-131]
-* *Social*
-** Auth
-*** Login via Facebook, G+, Twitter?
-*** AeroGear.Auth adapter or separate?
-** Common API
-*** Posting, Profile Info, Friend List, etc.
+* *WebPush*
+** New spec for Push in the Browser link:http://www.w3.org/TR/push-api/
+** Possible polyfill based on Service Workers link:https://issues.jboss.org/browse/AGJS-264[AGJS-264]
+* *Oauth*
+** Focus is on Keycloak and a passport.js adapter link:https://issues.jboss.org/browse/KEYCLOAK-864[KEYCLOAK-864]
 
 And for the overall AeroGear Roadmap, see the link:http://aerogear.org/docs/planning/roadmaps/AeroGearRoadMap/[AeroGear Roadmap]
