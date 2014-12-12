@@ -1,0 +1,174 @@
+---
+layout: basic
+title: Community
+nav-active-community: active
+section-title: Community
+section-description: Get involved, be part of the Aerogear community
+---
+
+
+<section class="community">
+  <div class="container">
+    <div class="row">        
+      <div class="col-md-3 sidebar">
+        <div class="submenu">
+          <ul>
+            <li class="menu-title active">
+              <a href="#">Overview</a>                  
+            </li>
+                
+            <li class="menu-title">
+              <a href="#">AeroGear Team</a>                  
+            </li>
+     
+            <li class="menu-title">
+              <a href="#">Contributors</a>                  
+            </li>
+
+            <li class="menu-title">
+              <a href="#">Contributing Guide</a>                  
+            </li>
+
+            <li class="menu-title">
+              <a href="#">Contact</a>                  
+            </li>                
+          <ul> 
+        </div><!-- submenu -->
+      </div><!-- col -->
+
+<!-- ======================================================================== -->      
+      
+      <div class="col-md-9">
+        
+        <article id="overview">
+          <h2 class="section-header">AeroGear Community</h2>          
+          <p>As an open-source project, the AeroGear community has many entry points. We welcome your participation in any way that matches your level of interest.</p>
+          <p>Read this page to learn about our community resources. Keep in mind that contributing code is not the only way to get involved. You can provide feedback on documentation and tutorials, test the releases, share your visions, or just participate in the IRC or mailing list discussions. The various entry points are summarized below. <strong>See you there!</strong></p>
+        </article><!-- overview -->
+        
+        
+        <article id="team">
+          <h2 class="section-header">AeroGear Team</h2>
+          <p>This is the core team that build and mantain aerogear ..rud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+          
+
+          <!-- TODO(agalante) we are running jekyll 1.2.1. We need 1.3 or greater to make Data work -->
+
+          {% for member in site.data.team %}
+          <div class="media user" itemscope itemtype="http://schema.org/Person">
+            
+            <div class="media-left" href="#">
+              <img src="{{ team.avatar }}" itemprop="image">
+            </div><!-- img -->
+                
+            <div class="media-body">
+              <div class="user-info">
+                <a href="https://{{ member.url }}" itemprop="url"><i class="fa fa-globe"></i> {{ member.url }}</a>
+                <a href="https://github.com/{{ member.github }}"<i class="fa fa-github-alt"></i> {{ member.github }}</a>
+              </div><!-- user-contact -->
+                  
+              <h4 class="media-heading" itemprop="name">{{ member.name }}</h4>
+                  
+              <div class="location" itemscope itemtype="http://schema.org/PostalAddress">
+                <i class="fa fa-map-marker"></i>
+                <span itemprop="addressLocality">{{ member.location-city }}</span>, 
+                <span itemprop="Country">{{ member.location-country }}</span>
+              </div><!-- address -->
+                  
+              <p>{{ member.description }}</p>
+              <h5><i class="fa fa-github-alt"></i> Last update</h5>
+              <p class="alt">{{ member.update-date }} {{ member.update-description }}</p>
+                  
+            </div><!-- body -->
+          </div><!-- user -->
+          {% endfor %}
+          
+          
+        
+        </article><!-- team -->
+        
+        
+        <article id="contributors">
+          
+          <h2 class="section-header">Contributors</h2>
+          <p>This are the guys that help aerogear grow...rud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+          
+          <ul class="media-list contributor-feed">
+            
+            
+            <!-- TODO(agalante) we are running jekyll 1.2.1. We need 1.3 or greater to make Data work -->
+
+            {% for contributor in site.data.contributors %}
+            <li class="media" itemscope itemtype="http://schema.org/Person">
+              <div class="media-left" href="#">
+                <img src="{{ contributor.avatar }}" itemprop="image">
+              </div>
+              
+              <div class="media-body">
+                <div class="contributor-update" href="#">
+                  <h5><i class="fa fa-github-alt"></i> Last update</h5>
+                  <p>{{ contributor.update-date }}</p>
+                </div>
+                <div class="contributor-info">
+                  <h5 itemprop="name">{{ contributor.name }}</h5>
+                  <p><a href="https://github.com/{{ contributor.github }}">{{ contributor.github }}</a></p>
+                </div><!-- contributor-info -->                  
+              </div><!-- media-body -->
+            </li><!-- media contributor -->
+            {% endfor %}
+
+                
+          </ul><!-- contributor-feed -->
+        
+        </article><!-- overview -->
+        
+        <article id="contact">
+          <h2 class="section-header">Where to find us</h2>
+          
+          <h3>Chat (IRC)</h3>
+          <p>We invite you to join us in the #aerogear channel on irc.freenode.net to chat about AeroGear and other topics related to mobile.</p>
+          <p>This channel is logged to transcripts.jboss.org.</p>
+          <p>If you don’t have an IRC client installed or available, you can use the web-based client on this site to join the #aerogear channel.</p>
+          <p>
+            <a href="irc://irc.freenode.net/aerogear" class="btn btn-primary">Go to IRC freenode #aerogear channel</a>
+          </p>
+          
+          <h3>Mailing lists</h3>
+          <p>The AeroGear team has two mailing lists</p>
+          
+          <h5>User list</h5>
+          <p>This list is the right place for general user questions such as how to configure, use or even troubleshoot the different AeroGear projects. <a href="https://lists.jboss.org/mailman/listinfo/aerogear-users">Subscribe</a> to the list before posting. Older threads can be read in its <a href="http://lists.jboss.org/pipermail/aerogear-users/">archive</a>.</p>
+          <p>
+           <a href="https://lists.jboss.org/mailman/listinfo/aerogear-users" class="btn btn-primary">Join user mailling list</a> 
+          </p>
+
+
+          <h5>Developer list</h5>
+          <p>This is a mailing list geared towards developing AeroGear itself. It often contains deep, technical discussions on how AeroGear works internally, how new features could be implemented. <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">Subscribe</a> to the list before posting. Older threads can be read in its <a href="http://lists.jboss.org/pipermail/aerogear-dev/">archive</a>.</p>
+          <p>
+           <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev" class="btn btn-primary">Join dev mailling list</a> 
+          </p>
+          
+          
+          <h3>Source Repository</h3>
+          <p>All the AeroGear source code is managed using the distributed version system git and hosted in sub-modules of the aerogear organization at github.com.</p>
+          <p>Both git and github are awesome for collaboration! To make improvements or bug fixes to the AeroGear project, simply fork one of the project’s repositories, commit your changes and send a pull request.</p>
+          <p>For more information on our GitHub workflow, please visit <a href="../getstarted/guides/GitHubWorkflow/">this page</a> that describes the steps in-detail.</p>
+          
+          <p>
+           <a href="https://github.com/aerogear" class="btn btn-primary">Go to github repos</a> 
+          </p>
+
+          <h3>Tiwtter</h3>
+          <p>Stay connected & up to date by following our @AeroGears account!</p>
+          <p>maybe put here twitter updates?</p>
+          
+          <p>
+           <a href="https://twitter.com/aerogears" class="btn btn-primary">Go to twitter</a> 
+          </p>
+
+        </article><!-- contact -->
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section> 
