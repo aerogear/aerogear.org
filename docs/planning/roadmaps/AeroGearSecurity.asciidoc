@@ -24,12 +24,20 @@ External References
     ** AGPUSH-1040: Add pagination to the PushApplication overview page
 
 * AGSEC-180: SDKs for OAuth2 plus integration with Keycloak
-    ** AGSEC-184: Include a section at AeroGear Security about OAuth2
-    ** AGSEC-185: Implicit grant flow
-    ** AGSEC-186: Refresh access tokens
-    ** AGSEC-187: Token revocation
-    ** AGSEC-188: Resource owner password credentials grant
-    ** AGSEC-189: Authorization Code Grant
+    ** link:https://issues.jboss.org/browse/AGIOS-193[AGIOS-193]: fluid integration with POST/PUT/GET/DELETE methods to automatically refresh token
+    ** link:https://issues.jboss.org/browse/AGIOS-198[AGIOS-198]:	KC inventory cookbook recipe with refresh token
+    ** link:https://issues.jboss.org/browse/AGIOS-206[AGIOS-206]:	KeyCloak revocation of 'access_token' support
+    ** link:https://issues.jboss.org/browse/AGIOS-230[AGIOS-230]:	Auth token in http module
+    ** link:https://issues.jboss.org/browse/AGIOS-231[AGIOS-231]:	Create OAuth2 module
+    ** link:https://issues.jboss.org/browse/AGIOS-253[AGIOS-253]:	OAuth2 AccountManager
+    ** link:https://issues.jboss.org/browse/AGIOS-282[AGIOS-282]:	Keycloak OpenID flow
+    ** link:https://issues.jboss.org/browse/AGIOS-283[AGIOS-283]:	Google OpenID flow
+    ** link:https://issues.jboss.org/browse/AGIOS-284[AGIOS-284]:	Facebook OpenID flow
+    ** link:https://issues.jboss.org/browse/AGDROID-248[AGDROID-248]: Add OAuth2 cookbook README
+    ** link:https://issues.jboss.org/browse/AGDROID-228[AGDROID-228]: Add OAuth2 example in cookbook
+    ** link:https://issues.jboss.org/browse/AGDROID-249[AGDROID-249]: Add OAuth2 to cookbook
+    ** link:https://issues.jboss.org/browse/AGDROID-256[AGDROID-256]: Add OAuth2 usage guide on aerogear.org
+    ** link:https://issues.jboss.org/browse/AGDROID-266[AGDROID-266]: Create Oauth2 Authorization module
 
 
 Future and beyond
