@@ -90,7 +90,7 @@ $ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 \
 $ mysql -u <user-name>
 mysql> create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
 mysql> create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
-mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';h
+mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';
 ----
 . Start the application server
 +
