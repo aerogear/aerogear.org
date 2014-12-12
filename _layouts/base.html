@@ -1,152 +1,39 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>AeroGear - {{page.title}}</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <meta name="viewport" content="initial-scale=1.0">
-
-    <link href="/css/tabzilla.css" media="screen" rel="stylesheet">
-    <link rel="shortcut icon" href="/favicon.ico"/>
-    <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.atom"/>
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
-    <script src="/js/libs/jquery/jquery-1.9.1.min.js"></script>
-    <script src="/js/jbossorg-tabzilla.js"></script>
-    <script src="/js/libs/highlight.min.js"></script>
-    <script type="text/javascript">
-        hljs.initHighlightingOnLoad();
-    </script>
-
-    <script src="/js/libs/modernizr-2.6.2.min.js"></script>
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-28733717-2']);
-        _gaq.push(['_setDomainName', 'aerogear.org']);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
+{% include header.html %}
 </head>
-<body>
-<div class="dropup rht-branding-visible">
-    <div id="ajbossproject">A JBoss Project</div> <a class="tabnav-closed" href="#" id="tab">Red Hat</a>
-    <script>
-        window.addEventListener('load', function() {
-            renderTabzilla("AeroGear", "AeroGear", false );
-        }, false);
-    </script>
-</div>
 
-<div id="sideNav" class="hidden">
-    <nav class="site">
-        <ul>
-            <li><a href="/" class="">Home</a></li>
-            <li><a href="/download" class="">Get started</a></li>
-            <li><a href="/docs" class="">Documentation</a></li>
-            <li><a href="/community" class="">Community</a></li>
-            <li><a href="/news" class=" ">News</a></li>
-        </ul>
-    </nav>
-</div>
+<body class=" {{page.body-class}} ">    
 
-<div id="site">
-    <header>
-        <div id="main-header">
-            <div class="end-title">
-                 <a href="/">
-                    <div id="logo"></div>
-                </a>
-                <a class="news fixed" href="{{ site.posts.first.url }}">Hey listen! {{ site.posts.first.title }}</a>
-            </div>
-            <nav>
-                <ul>
-                    <li>
-                        <a id="slide-menu-button">
-                            <img src="/img/hamburger_dark.png"/>
-                        </a>
-                    </li>
-                    <li><a href="/" class="fixed">Home</a></li>
-                    <li><a href="/download" class="fixed">Get started</a></li>
-                    <li><a href="/docs" class="fixed">Documentation</a></li>
-                    <li><a href="/community" class="fixed">Community</a></li>
-                    <li><a href="/news" class="fixed ">News</a></li>
-                </ul>
-                <div class="clearfix"></div>
-            </nav>
-        </div>
-    </header>
+{% include navigation.html %}
 
-    <div class="container">
-        {{ content }}
-    </div>
-
-    <footer>
-        <a href="/docs"/>Documentation</a> -
-        <a href="/docs/guides/Contributing/"/>Contribute</a> -
-        <a href="http://issues.jboss.org/browse/AEROGEAR" target="_blank">Report issues</a> -
-        <a href="https://lists.jboss.org/mailman/listinfo/aerogear-users" target="_blank"/>Join users mailing list</a> -
-        <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev" target="_blank"/>Join developer mailing list</a> -
-        <a href="irc://irc.freenode.net/aerogear" target="_blank"/>Chat with the team</a> -
-        <a href="/feed.atom" target="_blank"/>Feed</a>
-        <br/>
-        <a href="https://www.facebook.com/AeroGearProject"><div class="social facebook"></div></a>
-        <a href="https://plus.google.com/106588661437153585722/posts"><div class="social google-plus"></div></a>
-        <a href="https://www.twitter.com/aerogears"><div class="social twitter"></div></a>
-        <div class="clearfix"></div>
-        <div class="logos">
+{% include jboss-dropup.html %}
 
 
-        <div class="container" id="companyfooter">
-          <div class="redhatlogo" style="text-align:center;">
-              <div id="logospacer"></div>
-              <a href="http://www.redhat.com/">
-                <img src="/img/redhat_logo.png">
-              </a>
-          </div>
-        </div>
+<section class="main-banner">
+  <div class="container">
+ 
+{% if page.body-class == 'homepage' %}
+  
+  {% include homepage-header.html %}
 
+{% else %}
+  <h2>{{page.section-title}} <small>{{page.section-description}}</small></h2>
+{% endif %}
 
-        </div>
-    </footer>
-</div>
+  </div><!-- container -->
+</section> <!-- main banner -->
 
-<script src="/js/main.js"></script>
-<!-- to fix iPhone rotate/rescale issue https://gist.github.com/mathiasbynens/901295 -->
-<script>
-    (function (doc) {
+{% include aditional-actions.html %}
 
-        var addEvent = 'addEventListener',
-                type = 'gesturestart',
-                qsa = 'querySelectorAll',
-                scales = [1, 1],
-                meta = qsa in doc ? doc[qsa]('meta[name=viewport]') : [];
+{{ content }}
 
-        function fix() {
-            meta.content = 'width=device-width,minimum-scale=' + scales[0] + ',maximum-scale=' + scales[1];
-            doc.removeEventListener(type, fix, true);
-        }
+{% include footer.html %}
 
-        if ((meta = meta[meta.length - 1]) && addEvent in doc) {
-            fix();
-            scales = [.25, 1.6];
-            doc[addEvent](type, fix, true);
-        }
-
-    }(document));
-</script>
+{% include js.html %}
 
 </body>
 </html>

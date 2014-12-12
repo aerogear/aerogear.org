@@ -1,59 +1,279 @@
 ---
 layout: base
 title: Open Source Libraries for Mobile Connectivity
+body-class: homepage
+nav-active-home: active
 ---
 
+<!-- TODO(agalante) **what is this xmlns for? **
 <div class="start-header" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-    <div class="start-title">Bringing Mobile and Enterprise Together!</div>
-    <p>Libraries to <strong>simplify</strong> and <strong>unify</strong> mobile development across different platforms.</p>
-</div>
+ -->
+ 
+ 
+     <section class="main-features">
+      <div class="container">
+      
+      
+        <h2 class="section-header">AeroGear features</h2>
 
-<div>
-    <div class="modules">
-        <a href="/javascript/" class="module web">
-            <img src="img/js-logo.png" alt="Web">
-            <h3>Web</h3><p>Javascript</p>
-        </a>
-        <a href="/ios/" class="module ios">
-            <img src="img/ios-logo.png" alt="iOS">
-            <h3>iOS</h3><p>Objective-C</p>
-        </a>
-        <a href="/android/" class="module android">
-            <img src="img/library_android.png" alt="Android">
-            <h3>Android</h3><p>Java</p>
-        </a>
-        <a href="/cordova/" class="module hybrid">
-            <img src="img/cordova-logo.png" alt="Hybrid">
-            <h3>Hybrid</h3><p>Cordova</p>
-        </a>
-    </div>
 
-    <div class="features">
-        <div class="feature">
-            <div class="description">
-                <div class="illustration"><img src="img/feature_1.png" alt=""></div>
-                <h3>Unify mobile development</h3>
-                <p>AeroGear provides flexible and extensible libraries to simplify mobile development across platforms and cut common repetitive infrastructure tasks. Integrate with the most exotic of endpoints.</p>
-                <p><a href="/download/">Learn more</a></p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="feature">
-            <div class="description">
-                <div class="illustration left"><img src="img/feature_2.png" alt=""></div>
-                <h3>AeroGear Push</h3>
-                <p>AeroGear provides support for different push notification technologies like Google Cloud Messaging, Apple's APNs or Mozilla's SimplePush.</p>
-                <p><a href="/push/">Learn more</a></p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="feature">
-            <div class="description">
-                <div class="illustration"><img src="img/feature_4.png" alt=""></div>
-                <h3>Mobility and security, both</h3>
-                <p>Integrate with your existing enterprise environment. AeroGear provides <a href="docs/guides/AeroGear-OTP">Two-Factor Authentication</a> and also brings <a href="docs/specs/aerogear-crypto/">cryptography</a>  to improve your application's security.</p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
+        <div class="row">    
+            
+          <div class="col-md-6 core">
+            <h3><a href="#"><i class="fa fa-rocket"></i> AeroGear<strong>Core</strong></a></h3>
+            <p class="alt">Crossplatform APIs for all your common client-server infrastructure tasks.</p>
+            <p><strong>DataStores</strong>, <strong>Pipes</strong>, <strong>Authentication</strong>, <strong>Authorisation</strong> and <strong>Pagination</strong> APIs cover the bases for day-to-day cross-platform development.</p>
+            
+            <p><a href="features.html#core" class="btn btn-primary">Learn about AeroGear<strong>Core</strong></a></p>
+            
+          </div><!-- col -->
+          
+        
+          <div class="col-md-6 push">
+            <h3><a href="#"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong></a></h3>
+            <p class="alt">Send push notifications to any divide, regardless of platform or network.</p>
+            <p>A unified APU lets you send push notifications from the <strong>Unified Push Server</strong> via  <strong>Google Cloud Messaging</strong>, <strong>Apple’s APNs</strong> or <strong>SimplePush</strong> to any mobile divide.</p>
+            
+            <p><a href="features.html#push" class="btn btn-primary">Learn about AeroGear<strong>Push</strong></a></p>
+            
+          </div><!-- col -->
+        </div><!-- row -->
+
+
+        <div class="row">
+
+          <div class="col-md-6 security">
+            <h3><a href="#"><i class="fa fa-shield"></i> AeroGear<strong>Security</strong></a></h3>
+            <p class="alt">Integrate with your existing security and authentication infrastructure.</p>
+            <p>A small set of classes to provide integration with security providers written in Java, like <strong>PicketLink</strong> and <strong>Apache Shiro</strong>.</p>
+            <p><a href="features.html#security" class="btn btn-primary">Learn about AeroGear<strong>Security</strong></a></p>
+          </div><!-- col -->
+
+
+          <div class="col-md-6 sync">
+            <h3><a href="#"><i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong></a></h3>
+            <p class="alt">Sync things, some text goes here.</p>
+            <p>More text goes here about aerogear sync. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididu.</p>
+            <p><a href="features.html#syng" class="btn btn-primary">Learn about AeroGear<strong>Sync</strong></a></p>
+          </div><!-- col -->
+
+
+        </div><!-- row -->
+      </div><!-- container -->
+    </section><!--main features-->
+
+
+
+
+    <section class="clients">
+      <div class="container">
+      
+        <h2 class="section-header">AeroGear is crossplatform</h2>
+        
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+        <div class="row">        
+          <div class="col-md-4 col-sm-4">
+            <div class="well android">
+              <h4><i class="fa fa-android"></i>Android</h4>
+              <p>
+                <a href="start.html#android" class="btn btn-inverse btn-sm"><strong>Android</strong>AeroGear</a>
+              </p>
+            </div><!-- well-->
+            
+          </div><!-- col -->
+          
+          
+          <div class="col-md-4 col-sm-4">
+            <div class="well ios">
+             <h4><i class="fa fa-apple"></i>iOS</h4>
+             <p>
+               <a href="start.html#ios" class="btn btn-inverse btn-sm"><strong>iOS</strong>AeroGear</a>
+             </p>
+            </div><!-- well -->
+          </div><!-- col -->
+
+
+          <div class="col-md-4 col-sm-4">
+            <div class="well windows">
+             <h4><i class="fa fa-windows"></i>Windows</h4>
+             <p>
+               <a href="start.html#windows" class="btn btn-inverse btn-sm"><strong>Windows</strong>AeroGear</a>
+             </p>
+            </div><!-- well -->
+          </div><!-- col -->
+
+          
+          <div class="col-md-6 col-sm-6">
+            <div class="well cordova">
+              <h4><i class="fa fa-stop"></i>Cordova</h4>
+              <p>
+                <a href="start.html#cordova" class="btn btn-inverse btn-sm"><strong>Cordova</strong>AeroGear</a>
+              </p>
+            </div><!-- well -->
+          </div><!-- col -->
+          
+          <div class="col-md-6 col-sm-6">
+            <div class="well webjs">
+             <h4><i class="fa fa-html5"></i>Web/Js</h4>
+             <p>
+               <a href="start.html#webjs" class="btn btn-inverse btn-sm"><strong>Web/Js</strong>AeroGear</a>
+             </p>
+            </div><!-- well -->
+          </div><!-- col -->
+
+
+
+        </div><!-- row -->
+      </div><!-- container -->
+    </section> 
+
+
+    <section class="whatsnew">
+      <div class="container">
+      
+        <h2 class="section-header">What is happening</h2>
+        
+        <div class="row">
+          <div class="col-sm-4">
+            <h3 class="sub-section-header">Contributors ativity</h3>
+            
+              <ul class="media-list contributor-feed">
+              
+                <li class="media" itemscope itemtype="http://schema.org/Person">
+                  <a class="media-left" href="#">
+                    <img src="http://placehold.it/50x50" itemprop="image" alt="name" width="50">
+                  </a>
+                  <div class="media-body">
+                    <div class="contributor-info">
+                      <h5 itemprop="name">Andres Galante</h5>
+                      <p>andresgalante</p>
+                    </div><!-- contributor-info -->                  
+                  </div><!-- media-body -->
+                </li><!-- media contributor -->
+
+                <li class="media" itemscope itemtype="http://schema.org/Person">
+                  <a class="media-left" href="#">
+                    <img src="http://placehold.it/50x50" itemprop="image" alt="name">
+                  </a>
+                  <div class="media-body">
+                    <div class="contributor-info">
+                      <h5 itemprop="name">Andres Galante</h5>
+                      <p>andresgalante</p>
+                    </div><!-- contributor-info -->                  
+                  </div><!-- media-body -->
+                </li><!-- media contributor -->
+
+
+                <li class="media" itemscope itemtype="http://schema.org/Person">
+                  <a class="media-left" href="#">
+                    <img src="http://placehold.it/50x50" itemprop="image" alt="name">
+                  </a>
+                  <div class="media-body">
+                    <div class="contributor-info">
+                      <h5 itemprop="name">Andres Galante</h5>
+                      <p>andresgalante</p>
+                    </div><!-- contributor-info -->                  
+                  </div><!-- media-body -->
+                </li><!-- media contributor -->
+
+
+                <li class="media" itemscope itemtype="http://schema.org/Person">
+                  <a class="media-left" href="#">
+                    <img src="http://placehold.it/50x50" itemprop="image" alt="name">
+                  </a>
+                  <div class="media-body">
+                    <div class="contributor-info">
+                      <h5 itemprop="name">Andres Galante</h5>
+                      <p>andresgalante</p>
+                    </div><!-- contributor-info -->                  
+                  </div><!-- media-body -->
+                </li><!-- media contributor -->
+              </ul><!-- contributor-feed -->
+                
+            <p><a href="#" class="btn btn-primary"><i class="fa fa-user"></i> View all Contributor</a></p>
+                
+          </div><!-- col -->
+
+
+
+
+          <div class="col-sm-4">          
+           <h3 class="sub-section-header">News</h3>
+           
+           <div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
+           
+            <div class="article-header">
+              <h4 class="article-title" itemprop="name"><a href="#">How to Tie a Reef Knot</a></h4>
+              <p class="article-subtitle">by <span itemprop="author">John Doe</span></p>
+              <p class="article-date" itemprop="datePublished" content="2013-09-14">Sep 14, 2012</p>
+            </div><!-- article header -->
+            
+            <div class="article-description" itemprop="description">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+             </div><!-- article-description -->
+             
+           </div><!-- article -->    
+           
+            <p><a href="#" class="btn btn-primary"><i class="fa fa-newspaper-o"></i> View all news</a></p>
+           
+          </div><!-- col-->
+         
+          <div class="col-sm-4">
+           <h3 class="sub-section-header">Upcomming events</h3>
+            
+            <div class="article event" itemscope itemtype="http://schema.org/Event">
+     
+            <div class="article-header">
+              <h4 class="article-title" itemprop="name"><a href="#">Event Name</a></h4>
+              <p class="article-subtitle" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                <span itemprop="addressLocality">Buenos Aires</span>, 
+                <span itemprop="Country">Argentina</span>
+              </p>
+              <p class="article-date" itemprop="startDate" content="2013-09-14">Sep 14, 2012</p>
+            </div><!-- article header -->
+              
+              
+              <div itemprop="description">
+                <p>Dabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+              </div>
+
+
+            </div><!-- event-wrapper -->
+            
+            <p><a href="#" class="btn btn-primary"><i class="fa fa-calendar-o"></i> View all events</a></p>
+            
+          </div><!-- col-->
+
+        </div><!-- row-->
+
+        
+      </div><!-- container -->
+    </section> 
+
+
+
+
+
+    <section class="custommers">
+      <div class="container">
+      
+        <h2 class="section-header">Mobile development begines here</h2>
+        
+        <h3>A text about where you can find Aerogear.</h3>        
+        <p>Here goes some logos Openshift, Docker, Feedhenry and any other place where the user can use Aerogear.</p>
+        
+        <p>
+          <img src="http://placehold.it/185x90" alt="logo">
+          <img src="http://placehold.it/185x90" alt="logo">
+          <img src="http://placehold.it/185x90" alt="logo">
+          <img src="http://placehold.it/185x90" alt="logo">
+          <img src="http://placehold.it/185x90" alt="logo">
+        </p>  
+        
+            
+      </div><!-- container -->
+    </section> 
