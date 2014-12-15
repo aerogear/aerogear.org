@@ -314,6 +314,10 @@ a.news:hover {
     color: #60625e;
 }
 
+.module.windows h3 {
+  color: #08b1ec;
+}
+
 /* =================== Bringing mobile together ===================================================================== */
 .start-header {
     margin-top: 1.2em;
