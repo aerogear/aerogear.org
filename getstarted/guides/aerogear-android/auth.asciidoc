@@ -1,0 +1,187 @@
+---
+layout: basic
+title: AeroGear Android Authentication
+---
+
+== Authentication
+
+The goal of this guide is to provide a description of how authentication works in AeroGear Android and to give developers the ability to integrate their Android application with RESTful services.
+
+In RESTful services there are two basic parts of Authentication:
+
+* Logging in and Fetching a token
+* Applying the token to a request
+
+This guide will go in depth on these two topics; however, we will also discuss briefly:
+
+* Registering a new user
+* Logging out of a service
+
+=== API overview
+
+Interaction with Authentication services is mediated using classes which implement the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] interface, register themselves with the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] factory class, and apply themselves to a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] using link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/pipeline/PipeConfig.html[*PipeConfig*].
+
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] wraps up URL fields for enrolling, logging in, and logging out and defines the methods which call these URLs.  Once a login has been successfully completed, it also provides an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthorizationFields.html[*AuthorizationFields*] object which encapsulates the necessary parameters for applying authorization to a request via a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*].
+
+link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/Authenticator.html[*Authenticator*] is a manager and a factory. It can consume an link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationConfig.html[*AuthenticationConfig*] object and instantiate an appropriate built-in module tuned to work with a specific server configuration, or you can provide your own custom link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] and register it with then Authenticator. We will see an example of a custom authentication module later in the guide, where we will build a custom authentication module that goes against the popular Reddit web service.
+
+*AbstractAuthenticationModule* is a convenience class for integrating with non AeroGear REST services.  It is also useful for when you want to only support a subset of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*]'s functionality, and it configures a THREAD_POOL_EXECUTOR for you to delegate your network calls to.  
+
+=== How to use it
+
+==== Setting up authentication in pipe requests
+
+[source,java]
+----
+// Create AuthenticationModule
+AuthenticationConfig authenticationConfig = new AuthenticationConfig();
+authenticationConfig.setLoginEndpoint("/auth/login");
+authenticationConfig.setLogoutEndpoint("/auth/logout");
+
+Authenticator authenticator = new Authenticator("http://myserver.com");
+AuthenticationModule authenticationModule = authenticator.auth("myLoginModule", authenticationConfig);
+
+// Add AuthenticationModule to Pipe
+PipeConfig pipeConfig = new PipeConfig(baseURL, Task.class);
+pipeConfig.setAuthModule(authModule);
+pipeline.pipe(Task.class, pipeConfig);
+----
+
+==== Using Authentication
+
+While the application is not logged in, link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] will stay out of the way. However, interacting with authentication is this simple.
+
+.login
+[source,java]
+----
+authenticationModule.login("myUsername", "myPassword", myCallback);
+----
+
+By default the authenticator will send a Json using the default keys (_loginName_ and _password_). If server expects different keys you can use a map to send it.
+
+.loginWithCustomKeys
+[source,java]
+----
+Map<String, String> loginData = new HashMap<String, String>();
+loginData.put("username", "ag");
+loginData.put("password", "awesome");
+
+authenticationModule.login(loginData, myCallback);
+----
+
+.logout
+[source,java]
+----
+authenticationModule.logout(myCallback);
+----
+
+.enroll
+[source,java]
+----
+HashMap<String, String> userData = new HashMap<String, String>();
+userData.put("firstname", "AeroGear");
+userData.put("email", "aerogear-dev@lists.jboss.org");
+userData.put("username", "ag");
+userData.put("password", "awesome");
+
+authenticationModule.enroll(userData, myCallback);
+----
+
+==== Authentication Types
+
+For now we support three link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/impl/AuthTypes.html[*authentication types*].
+
+* AG_SECURITY (Login/Password)
+* HTTP_BASIC
+* DIGEST
+
+So, to use this you only need set it on link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationConfig.html[*AuthenticationConfig*]
+
+[source,java]
+----
+AuthenticationConfig authenticationConfig = new AuthenticationConfig();
+authenticationConfig.setAuthType(AuthTypes.HTTP_BASIC);
+
+Authenticator authenticator = new Authenticator("http://myserver.com");
+AuthenticationModule authenticationModule = authenticator.auth("myLoginModule", authenticationConfig);
+----
+
+Take a look at the complete example in our link:https://github.com/aerogear/aerogear-android-cookbook[*cookbook app*]
+
+=== Using Authentication: Custom Applications
+
+AeroGear Android\'s Authentication API provides a framework for supporting many other RESTful services. Obviously this guide cannot cover all of them, but we will review custom authentication with one third party service, link:http://www.reddit.com[Reddit].
+
+To retrieve the tokens Reddit requires for accessing a user\'s data we must log in as that user.  Reddit\'s login service consumes a HTTP POST at the URL http://www.reddit.com/api/login/%username with the Content-Type of application/x-www-form-urlencoded.  The request body is required to also include the parameters `user`, `passwd`, and `api_type`.  It returns a JSON response with parameters "json.data.modhash" and "json.data.cookie".  These parameters are extracted as part of the `login` method and passed to the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] implementation from the `getAuthorizationFields` method.
+
+Every Pipe request against the Reddit service from now on, will include these authorisation parameters as part of the request.
+
+==== RedditAuthenticationModule
+
+[source,java]
+----
+public class RedditAuthenticationModule extends AbstractAuthenticationModule {
+ 
+    private String authToken = "";
+    private String modHash = ""; 
+
+	@Override
+    public void login(final String username, final String password,
+		    final Callback<HeaderAndBody> callback) {
+        THREAD_POOL_EXECUTOR.execute(new Runnable() {
+		private Exception exception;
+		private HeaderAndBody result;
+
+		@Override
+		public void run() {
+		        try {
+		        	HttpProvider provider = 
+					new HttpRestProvider( new URL(String.format("http://www.reddit.com/api/login/%s", username)) );
+		        	provider.setDefaultHeader("User-Agent", "AeroGear StoryList Demo /u/secondsun");
+		        	provider.setDefaultHeader("Content-Type", "application/x-www-form-urlencoded");
+		        	
+				result = provider.post(String.format("user=%s&api_type=json&passwd=%s",username,password);
+
+				String json = new String(result.getBody());
+				JsonObject authenticationObject = new JsonParser().parse(json).getAsJsonObject()
+										  .get("json").getAsJsonObject()
+										  .get("data").getAsJsonObject();
+				
+				modHash = authenticationObject.get("modhash").getAsString();
+				authToken = authenticationObject.get("cookie").getAsString();
+				
+				isLoggedIn = true;
+		        } catch (Exception e) {
+		            exception = e;
+		        }
+
+			if (exception == null) {
+		            callback.onSuccess(this.result);
+		        } else {
+		            callback.onFailure(exception);
+		        }
+		        
+		}
+
+
+	});
+
+
+	}
+ 
+    public AuthorizationFields getAuthorizationFields() {
+ 
+        AuthorizationFields fields = new AuthorizationFields();
+        fields.addHeader("User-Agent", "AeroGear StoryList Demo /u/secondsun");
+        if (isLoggedIn) {
+            fields.addHeader("Cookie", "reddit_session="+authToken);
+            fields.addQueryParameter("uh", modHash);
+        }
+        return fields;
+    }
+     
+}
+----
+
+Take a look at the complete example in link:https://github.com/secondsun/AGReddit[*AGReddit*]
+

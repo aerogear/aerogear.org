@@ -1,0 +1,247 @@
+---
+layout: base-with-sidebar
+title: FAQ
+nav-active-getstarted: active
+section-title: Examples
+section-description: Real working examples using the AeroGear libraries
+section-class: guides
+---
+
+<h2>What is AeroGear about?</h2>
+<p>The following describes the basics of the AeroGear API:</p>
+
+<hr />
+
+<h2>What is a pipeline?</h2>
+<p>A pipeline represents a set of n connections to a server. The pipeline class offers some simple <strong>management</strong> APIs to work with containing <strong>pipe</strong> objects. Basically it allows you to add or remove new connections to the pipeline.</p>
+
+
+
+<h4>What is a pipe?</h4>
+<p>A pipe represents <strong>one</strong> connection to a server. The pipe API is basically an abstraction layer for any server side connection, which all allows you to simply <strong>read</strong> from, or <strong>write</strong> to a server connection. However, technical details like RESTful APIs (e.g. HTTP PUT or HTTT GET) are <strong>not</strong> exposed on the pipeline and pipe APIs. In the future you can have different type of pipe objects (&#8594; connections). The default (and CURRENTLY only supported) type is a REST connection.</p>
+
+
+<h5>JavaScript Example</h5>
+<pre>// create an empty pipeline:
+var myPipeline = AeroGear.Pipeline();
+
+// Add a connection/pipe object which is named 'myprojects' and points to a given server (RESTful) endpoint:
+myPipeline.add(
+    {
+        name: "myprojects",
+        settings: {
+            baseURL: "https://myserver.rhcloud.com/",
+            endPoint: "projects"
+        }
+     }
+);
+
+// reading data from the 'myprojects' connection:
+myPipeline.pipes['myprojects'].read();</pre>
+
+
+<h5>iOS Example</h5>
+
+<pre>// create an empty pipeline:
+AGPipeline* pipeline = [AGPipeline pipeline];
+
+// Add a connection/pipe object which is named 'myprojects' and points to a given server (RESTful) endpoint:
+id&lt;AGPipe&gt; projects = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"myprojects"];
+    [config setBaseURL:[NSURL URLWithString:@"http://myserver.rhcloud.com/"]];
+    [config setEndpoint:@"projects"];
+}];
+
+// reading data from the 'myprojects' connection:
+[projects read:^(id responseObject) {
+    // do something with the response
+    NSLog(@"read response\n%@", [responseObject description]);
+
+} failure:^(NSError *error) {
+ // an error occured, log in the console.
+    NSLog(@"Read: An error occured! \n%@", error);
+}];</pre>
+
+<h5>Android Example</h5>
+<pre><strong>MyApplication.java</strong>
+
+// creating the Pipeline pointing to the remote application
+Pipeline pipeline = new Pipeline("http://myserver.rhcloud.com/");
+
+// set up the config object for the pipe to point to a given server (RESTful) endpoint:
+PipeConfig config = new PipeConfig(baseURL, Project.class);
+config.setName("myprojects");
+config.setEndpoint("projects");
+
+// initialize Pipe with the given config
+pipeline.pipe(Project.class, config);
+<strong>ProjectListFragment.java</strong>
+
+public Fragment() {
+   this.readCallback = new ProjectListCallback();
+}
+
+public void load() {
+    MyApplication application = (MyApplication) getActivity().getApplication();
+
+    // access the Pipe
+     LoaderPipe&lt;Project&gt; listing = application.getPipeline().get("myprojects", this, this.getActivity());
+
+    // issue the read request passing the callback
+    listing.read(readCallback);
+}
+
+ private static class ProjectListCallback extends AbstractFragmentCallback&lt;List&lt;Project&gt;&gt; {
+        public ProjectListCallback() {
+            super("myCallback");
+        }
+
+        public void onSuccess(final List&lt;Project&gt; data) {
+            // do something with the response
+        }
+
+        public void onFailure(Exception e) {
+             //Gracefully handle the exception
+        }
+    }
+}</pre>
+
+<p>In the above snippet the read will issue a HTTP GET request, but that fact is hidden to the user of the API. The user basically reads data from the server connection.</p>
+
+
+<hr />
+
+  <h2>What is a datamanager?</h2>
+  <p>A datamanager represents a set of n <strong>data store</strong> implementations. The datamanager class offers some simple <strong>management</strong> APIs to work with containing <strong>store</strong> objects. Basically it allows you to add or remove new stores to the datamanager.</p>
+
+  <h4>What is a store?</h4>
+  <p>A store represents <strong>one</strong> concrete data store. The store API is basically a mechanism for connecting to and moving data in and out of different types of client side storage. The default implementation in all client platforms is an <strong>in memory</strong> storage system. Similar to the pipe API technical details of the underlying storage system are not exposed</p>
+  <h5>JavaScript Example</h5>
+  <pre class="highlight"><code class="javascript">// create an empty DataManager
+var datamanager = AeroGear.DataManager();
+
+// add a new (default) store object:
+datamanager.add("projects");
+
+// save an object to the 'projects' store:
+datamanager.stores['projects'].save(
+            {
+                id: "1",
+                username: "john"
+            }
+);</code></pre>
+   <h5>iOS Example</h5>
+   <pre class="highlight"><code class="c">// create an empty DataManager
+AGDataManager* datamanager = [AGDataManager manager];
+
+// add a new (default) store object:
+id<AGStore> store = [datamanager store:^(id<AGStoreConfig> config) {
+    [config setName:@"projects"];
+}];
+
+// create a project
+NSMutableDictionary *project = [NSMutableDictionary
+                               dictionaryWithObjectsAndKeys:@"Example Project",@"title",@"1",@"id", nil];
+
+// save an object to the 'projects' store:
+BOOL success = [store save:project error:nil];
+
+if (error)
+    NSLog(@"Save: An error occured! \n%@", error);</code></pre>
+
+  <h5>Android Example</h5>
+  <pre class="highlight"><code class="java">// create an empty DataManager
+DataManager dataManager = new DataManager();
+
+// set up the mapping for the object to be stored on this Store
+StoreConfig config = new StoreConfig();
+config.setKlass(Project.class);
+
+// add a new (default) store object:
+Store store = datamanager.store("projects", config);
+
+// save an object to the 'projects' store:
+store.save(new Project("1", "An Example Project"));</code></pre>
+
+
+
+
+<hr />
+
+
+  <h2>What is an authenticator?</h2>
+  <p>An authenticator represents a set of n authentication modules. The authenticator class offers some simple <strong>management</strong> APIs to work with containing <strong>auth modules</strong>. Basically it allows you to add or remove new modules to the authentication manager.</p>
+
+
+
+  <h4>What is an authentication module?</h4>
+  <p>The API represents <strong>one</strong> concrete authentication module. The API is provides an authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the pipe API technical details of the underlying system are not exposed.</p>
+
+   <h5>JavaScript Example</h5>
+   <pre class="highlight"><code class="javascript">// create an empty authenticator
+var auth = AeroGear.Auth();
+
+// add a new "myAuth" auth module:
+auth.add(
+    {
+        name: "myAuth",
+        settings: {
+            agAuth: true,
+            baseURL: "/"
+        }
+    }
+);
+
+// issue a login:
+var userAndPassword = {username: "john", password: "123"};
+auth.modules['myAuth'].login(JSON.stringify( userAndPassword ), {
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function( data ) {
+                            console.log('login worked...');
+                        }
+});</code></pre>
+
+   <h5>iOS Example</h5>
+   <pre class="highlight"><code class="c">// create an empty authenticator
+AGAuthenticator* authenticator = [AGAuthenticator authenticator];
+
+// add a new "myAuth" auth module:
+id<AGAuthenticationModule> myMod = [authenticator auth:^(id<AGAuthConfig> config) {
+    [config setName:@"myAuth"];
+    [config setBaseURL:[NSURL URLWithString:@"https://myserver.rhcloud.com/"];
+}];
+
+// issue a login:
+[myMod login:@"john" password:@"123" success:^(id object) {
+    // login successfully
+
+ } failure:^(NSError *error) {
+    NSLog(@"An error occured during login! \n%@", error);
+}];</code></pre>
+
+   <h5>Android Example</h5>
+   <pre class="highlight"><code class="java"><strong>MyApplication.java</strong>
+
+URL baseURL = new URL("http://myserver.rhcloud.com/");
+
+// create an authenticator pointing to the remote application
+Authenticator authenticator = new Authenticator(baseURL);
+
+// add a new "myAuth" auth module:
+authenticator.auth("myAuth", new AGSecurityAuthenticationConfig());
+<hr><strong>ProjectFragment.java</strong>
+
+MyApplication application = (MyApplication) getActivity().getApplication();
+application.getAuthenticator().get("myAuth", this,  this.getApplicationContext()).login("john", "123", new Callback<HeaderAndBody>() {
+    @Override
+    public void onSuccess(HeaderAndBody data) {
+        // login successfully
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        // login failed
+    }
+});</code></pre>
+

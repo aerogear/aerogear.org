@@ -1,0 +1,341 @@
+---
+layout: basic
+title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
+---
+
+== Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
+
+.By the end of this tutorial, you will have:
+* Setup your development environment
+* Created your first Phonegap/Apache Cordova-based Android Application
+* Run the app on the Android emulator
+* Run the app on a real Android device (if you have one handy)
+* Leverage the PhoneGap/Apache Cordova API for native device functionality
+* Connected your app “to the cloud” with a REST endpoint
+
+=== System Setup
+
+First make sure that you have a JDK installed on your machine.  JDK 1.6+ is recommended.
+
+TIP: To find your JDK version run "java -version" from a command prompt
+
+Download & Install JBoss Developer Studio.  link:https://devstudio.jboss.com/earlyaccess/[Download Here]
+
+Download and Unzip the Android SDK. link:http://developer.android.com/sdk/index.html[Download Here]
+
+_Note: make sure to remember where you unzipped it._
+
+=== Project Setup
+
+Now that your system is setup, lets create a new Cordova Project by clicking File -> New -> Other  (or Cntrl/Command N).
+
+In the "Select a wizard" dialog, select "Hybrid Mobile (Cordova) Application Project", then click "Next".
+
+image:img/1-start-wizard.png[]
+
+Enter the "Project Name", "Name" and "ID".  We will use `example` for name and `org.example` for "ID", in the screen below:
+
+image:img/2-create-project.png[]
+
+Press `Next` then you have the option to select what engine to use. In this example we use the latest:
+
+image:img/3-engine.png[]
+
+Pressing `Next` again will present the option to install some plugins, plugins can be used to use native features of the device, we don't need any for this tutorial.
+
+image:img/4-plugins.png[]
+
+Click `Finish` to exit the wizard.
+
+Your screen will look like the following:
+
+image:img/5-project.png[]
+
+Here you can find the settings we entered before, this is a editor for the config.xml in the www folder. Also in this generated www folder there is a example project you can run this on an android or ios device, but JDBS also has a special Cordova Simulator (CordovaSim) this together with live reload enables fast mobile development.
+
+image:img/6-cordova-sim.png[]
+
+=== Building An App
+
+First let's delete the generated demo by removing everything in the www directory except config.xml
+
+image:img/7-delete-example.png[]
+
+Now lets make it more interesting by adding some jQuery Mobile functionality.  Right-click on "www" and select "New Other", then select "HTML File".
+
+image:img/ss_build_0.png[]
+
+
+Name it "mobile.html" and select "Next"
+
+image:../img/ss_build_1.png[]
+
+Select "HTML5 jQuery Mobile Page" and select "Finish"
+
+image:../img/ss_build_2.png[]
+
+This will be our new "landing" page, so be sure to name it index.html
+
+Once that is complete, Save and Run
+
+image:../img/ss_build_3.png[]
+
+NOTE: This file contains references to remotely located jQuery & jQuery Mobile - it is recommended that you bring those files locally into the project for a Phonegap/Apache Cordova style application.
+
+If you want to load the jQuery libraries remotely, you can skip to the next section.
+
+Otherwise, we will need to edit mobile.html by pulling in local copies of jQuery and jQuery Mobile
+
+Download jQuery Mobile from http://jquerymobile.com/download/ and unzip
+
+Download the uncompressed/development jQuery http://jquery.com/download/
+
+Once downloaded and unzipped, copy both the jQuery and jQuery mobile JavaScript files into the project.  They should be copied to "js/libs".
+
+NOTE: For a mobile app, you want the majority of your resources, especially static ones bundled in the app.
+
+Then, create a "css" directory underneath "www" and drag & drop the "jquery.mobile-1.1.1.css" and the "images" into "css" as shown in the following screenshot. _note: your version of jQuery/jQuery Mobile might be different_
+
+image:../img/ss_build_4.png[]
+
+NOTE: It is normally recommended to use the .min versions of the JS libs, however, Eclipse often complains about those files as it cannot parse them.  This can even become a bigger problem when Eclipse refuses to let you deploy (Run As) your app.  Plus, these files are being bundled in your app for deployment the device so size is less important.
+
+Now, change the references in the mobile.html file to point to the correct location and the correct file names.
+
+  <link rel="stylesheet" href="css/jquery.mobile-1.1.1.css" />
+  <script type="text/javascript" src="js/libs/jquery-1.7.1.js"></script>
+  <script type="text/javascript" src="js/libs/jquery.mobile-1.1.1.js"></script>
+
+
+Also, change the alert(“Ready To Go”); to console.log
+
+	<script type="text/javascript">
+		$(document).on("pageinit", "#page1", function(event){
+			console.log("Ready To Go");
+		});
+	</script>
+
+And in the LogCat tab you should see the console.log output.
+
+image:../img/ss_build_5.png[]
+
+TIP: If you receive a “[ERROR] Error initializing Cordova: Class not found” message then it is likely you forgot to add the xml/config.xml directory & file under “res” in the project.
+
+NOTE: It is much easier to perform your JavaScript debugging via Chrome, Safari or FireFox than it is using console.log and LogCat here but you can at least see that your application attempted to load the JS/HTML files if nothing else works.
+
+Also, make sure the device is awake and not locked, sitting on the home screen before attempting to Run As Android Application – it tends to work more often in that scenario.  In Developer options (on the device), there is an option to Stay awake.
+
+==== Geolocation
+
+Time to add in some Apache Cordova Magic. First up, we will add in some "Geolocation" (where is the device on the planet).
+
+First, add the reference to cordova.js before the script tag for on(“pageinit”…)
+
+  <script type="text/javascript" charset="utf-8" src="js/libs/cordova.js"></script>
+
+
+
+Next, below the $(document).on(“pageinit”…) block add an eventlistener for "deviceready".
+
+NOTE: You only want your JS to begin running after Phonegap/Apache Cordova have established the environment.
+
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+Then add the "onDeviceReady" function that receives this event.
+
+  function onDeviceReady() {
+    console.log("Device Ready To Go");
+    console.log("Asking for geo location");
+    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+  } // onDeviceReady
+
+Notice that the getCurrentPosition() call above has two arguments.
+
+1. What function to call when things go well.
+2. What function to call when things go poorly.
+
+We will need to add those two functions into our overall <script> block.
+
+
+The onGeoSuccess function receives a position object that can be peeled apart and displayed on screen.
+
+  function onGeoSuccess(position) {
+     var element = document.getElementById('geolocation');
+     element.innerHTML = 
+      'Latitude: '  + position.coords.latitude          + '<br />' +
+      'Longitude: ' + position.coords.longitude         + '<br />' +
+      'Altitude: '  + position.coords.altitude          + '<br />' +
+      'Accuracy: '  + position.coords.accuracy          + '<br />' +
+      'Alt Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
+      'Heading: '   + position.coords.heading           + '<br />' +
+      'Speed: '     + position.coords.speed             + '<br />' +
+      'Timestamp: ' + position.timestamp                + '<br />';
+   }
+
+The onGeoError function receives the error message, if there is one.
+
+  function onGeoError(error) {
+         alert('code: '    + error.code    + '\n' +
+               'message: ' + error.message + '\n');
+  }
+
+
+
+Finally, add the HTML tag needed to display the results.  This will go in the data-role=”content” section.
+
+  <div id="geolocation">Finding geolocation...</div><p>
+
+
+The result:
+
+image:../img/ss_build_7.png[]
+
+NOTE: For more information on how Apache Cordova/Phonegap addresses Geolocation check out the API docs at:
+https://github.com/apache/cordova-plugin-geolocation/blob/master/doc/index.md
+
+==== Accelerometer
+
+The next bit of Apache Cordova Magic we will add is access to the "Accelerometer"
+
+Inside the onDeviceReady function, add the block of code that establishes the "watcher" for the device’s accelerometer.
+
+  var options = {};
+  options.frequency = 1000;
+  console.log("Hitting Accelerometer");
+  var accelerationWatch =
+     navigator.accelerometer.watchAcceleration(
+       updateAccelerationUI, function(ex) {
+         console.log("accel fail (" + ex.name + ": " + ex.message + ")");
+     }, options);
+
+
+TIP: The 1000 represents milliseconds, in this case, update my callback function every 1 second.
+
+Next add the function for updateAccelertationUI
+
+  // called when Accelerometer detects a change
+     function updateAccelerationUI(a) {
+      	document.getElementById('my.x').innerHTML = a.x;
+      	document.getElementById('my.y').innerHTML = a.y;
+      	document.getElementById('my.z').innerHTML = a.z;
+     } // updateAccelerationUI
+
+
+Now add the HTML elements to display the X, Y and Z in the content section
+
+	<div>X: <b id="my.x"></b> </div>
+	<div>Y: <b id="my.y"></b> </div>
+	<div>Z: <b id="my.z"></b> </div>
+	</p>
+
+
+Your code should now look like the following:
+
+Scripts:
+
+image:../img/ss_accel_0.png[]
+
+
+HTML:
+
+image:../img/ss_accel_1.png[]
+
+
+Finally, Run It
+
+image:../img/ss_accel_2.png[]
+
+NOTE: For more information on how Apache Cordova/Phonegap addresses Accelerometer check out the API docs at:
+https://github.com/apache/cordova-plugin-device-motion/blob/master/doc/index.md
+
+==== Data & REST
+
+Apps need data, and a good way to do that on a mobile device is with RESTful calls.
+
+In the on pageinit function add the block of jQuery code to retrieve data from a rest endpoint and load it into the UL called listOfItems.  _This UL was part of the original template so it should still be in your HTML body._
+
+  $.getJSON("http://myserver.rhcloud.com/rest/members", function(members) {
+      // console.log("returned are " + members);
+      var listOfMembers = $("#listOfItems");
+      listOfMembers.empty();
+      $.each(members, function(index, member) {
+             // console.log(member.name);
+            listOfMembers.append(
+              "<li><a href='#'>" + member.name + "</a>");
+      });
+      listOfMembers.listview("refresh");
+  });
+
+Since the "getJSON" call is accessing the network, permission needs to be setup in AndroidMainfest.xml. _This was done during our Project Setup_
+
+In addition, you must add the URL to the Apache Cordova whitelist.
+
+The easiest solution is as follows:
+Open res/xml/config.xml
+
+And update access origin to equal ”*”
+
+image:../img/ss_rest_0.png[]
+
+Now, Run it.
+
+image:../img/ss_rest_1.png[]
+
+NOTE: This is primarily useful for development.  An app you are deploying to real end-users via the Google Play Store, you will wish to be more specific.
+
+==== Extra Credit
+
+And if you wish to be more adventurous, wrap this logic in a check for Wifi vs 3G vs no connection and make a determination as to how to display a message to the end-user.
+
+  var networkState = navigator.network.connection.type;
+
+NOTE: For more information on how Apache Cordova/Phonegap addresses Connectivity check out the API docs at:
+https://github.com/apache/cordova-plugin-network-information/blob/master/doc/index.md
+
+
+=== Tips & Tricks:
+
+==== Eclipse complains about various JS libs
+
+In Some cases the your project won’t let you deploy the application.
+
+Workaround: Rename the libraries by removing their .js extensions
+
+Caution: This may mean that Eclipse will not recognize them as JavaScript files and not provide the correct editor.  Another option is to use the full or non-minified versions of the JavaScript library that you are interested in.  Since these files should be bundled in your Apache Cordova-based app’s distribution, there is no significant network download penalty to downloading the file at runtime.
+
+==== Target Android Version
+
+In case you wish to switch the Android version targets for your project go to the project properties and Android.
+
+And also change your AndroidManifest.xml
+
+      <uses-sdk
+          android:minSdkVersion="8"
+          android:targetSdkVersion="15" />
+
+==== REST Endpoints
+
+To connect to your endpoints, you need to "open" access to the specific Internet domains in res/xml/config.xml
+
+ex:
+
+  <access origin=".*"/>
+
+
+==== Change MainActivity title/label
+
+To change the title/label on the installed application, you can edit the "strings.xml" file located in "res/values/".
+
+This will change the application name on the launch icon as well as when multi-tasking.
+
+==== Phonegap API Explorer
+
+To test your device and Phonegap/Apache Cordova install
+
+https://play.google.com/store/apps/details?id=org.coenraets.phonegapexplorer&hl=en
+
+==== Phonegap/Apache Cordova Plugins
+
+https://github.com/phonegap/phonegap-plugins
+
+ChildBrowser is one of the most popular – it allows you to render a webpage, inside of your application
