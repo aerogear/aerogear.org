@@ -17,3 +17,8 @@ email: aerogear-dev@lists.jboss.org
 
 production_url : http://aerogear.org
 
+
+# Less compiler 
+# gems: ['jekyll-less']
+
+# lessc: /css/styles.less , /css/styles.css
