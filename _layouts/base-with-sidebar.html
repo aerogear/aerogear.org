@@ -29,9 +29,29 @@
 
 {% include aditional-actions.html %}
 
+<section class="{{ page.section-class }}">
+  <div class="container">
+    <div class="row">   
+      <div class="col-md-3 sidebar">
+          <div class="submenu">
 
-{{ content }}
+{% if page.section-class == 'guides' %}
+  {% include sidebar-guides.html %}
+{% elsif page.section-class == 'demos' %}
+  {% include sidebar-demos.html %}
+{% elsif page.section-class == 'start' %}
+  {% include sidebar-downloads.html %}
+{% endif %}
 
+
+          </div><!-- sidebar -->
+        </div><!-- col -->
+      <div class="col-md-9">
+        {{ content }}
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
 
 {% include footer.html %}
 

@@ -1,160 +1,105 @@
-/* License, etc. */
+jQuery(function($){
 
-$( function() {
-    var smallLayout;
-
-    $( ".repo-btns" ).click( function( event ) {
-        event.preventDefault();
-
-        // Test button pressed and load appropriate repo if necessary
-        var target = $( event.currentTarget ),
-            repodiv = $( "#repodiv" ),
-            repoContainer = $( "#repo-container" ),
-            repobtns = $( ".repo-btns" ),
-            repolink = $( "#fork-link" ),
-            body = $( "body" ),
-            dataLink = target.data( "link" ),
-            repoAr = dataLink.split( "/" ),
-            repoName = repoAr[ 1 ], repoUser = "aerogear";
-
-        repobtns.each( function() {
-            var $this = $( this );
-            $this.text( $this.data( "original-text" ) );
-        });
-
-        if ( repoContainer.is( ":visible" ) ) {
-            repoContainer.hide( function() {
-                if ( repodiv.data( "repo" ) != repoName ) {
-                    repodiv.empty();
-                    repoContainer.show( function() {
-                        body.animate( { scrollTop: repoContainer.offset().top - 150 }, "slow");
-                        repolink.attr( "href", "http://github.com/" + dataLink );
-                        repodiv.repo({
-                            user: repoUser,
-                            name: repoName
-                        });
-                        target.text( "Hide Repo" );
-                        repodiv.data( "repo", repoName );
-                    });
-                }
-            });
-        } else {
-            repodiv.empty();
-            repoContainer.show( function() {
-                body.animate( { scrollTop: repoContainer.offset().top - 150 }, "slow");
-                repolink.attr( "href", "http://github.com/" + dataLink );
-                repodiv.repo({
-                    user: repoUser,
-                    name: repoName
-                });
-                target.text( "Hide Repo" );
-                repodiv.data( "repo", repoName );
-            });
+$('body').scrollspy({ target: '.submenu' });  
+    
+    window.showShadow = function(){    
+     if($(window).scrollTop() === 0){
+            $(".navbar").css("box-shadow", "0 0 0px rgba(0,0,0,.2)");
+        }else{
+            $(".navbar").css("box-shadow", "0 0 8px rgba(0,0,0,.2)");
         }
-    });
+    };
+    
 
-    // Show Twitter Feed
-    $( "#aerogear-twitter" ).twitter( { ors: "aerogear", replies: false, rpp: 7 } );
+    window.adjustSize = function(){
+        
+        $("#text-container").css("padding-top",0);
+        $("#illus-container").css("padding-top",0);
+    
+        var windowHeight = $(window).height();
+        var headerHeight = $(".homepage .main-banner").height();
+        var navHeight = $("nav").height();
+//        var containerHeight = $(".homepage .main-banner .container").height();
+        var textHeight = $("#text-container").height();
+        var illusHeight = $("#illus-container").height();
 
-    // Initialize drop down menu
-    $( ".dropdown-toggle" ).dropdown();
+        var realHeight = (windowHeight-navHeight);
+        
+            
+            if($(window).width()<=768||$(window).height()<=(headerHeight+navHeight)){
+                $(".homepage .main-banner").css( "height", "auto");
+                $(".homepage .main-banner").css("padding-top", "10px");
+                $(".homepage .main-banner").css("padding-bottom", "10px");
+    
+            }else{
+             
+              if(illusHeight<textHeight){
+                $(".homepage .main-banner").css("height", realHeight);
+                $(".homepage .main-banner").css("padding-top", ((realHeight-textHeight)/2));
+                $(".homepage .main-banner").css("padding-bottom", "auto");
 
-    // Dynamic fixed positioning for left nav
-    if ( $( ".nav-box" ).length ) {
-        $( window ).on( "scroll", function( event ) {
-            var navBox = $(".nav-box"),
-                navBottom = navBox.position().top + navBox.height(),
-                footerTop = $("footer").position().top;
+                $("#illus-container").css("padding-top", ((textHeight-illusHeight)/2));
+                
+              }else{
+                           
+                $(".homepage .main-banner").css("height", realHeight);
+                $(".homepage .main-banner").css("padding-top", ((realHeight-illusHeight)/2));
+                $(".homepage .main-banner").css("padding-bottom", "auto");
+                $("#text-container").css("padding-top", ((illusHeight-textHeight)/2));
+                
+              }
+            
+            }
+    
+    
+    };
+    
+    $(window).scroll(showShadow);
+    $(window).resize(adjustSize);
+    showShadow();
+    adjustSize();
+    
+     setTimeout(adjustSize,100);   
 
-            navBox.css( "margin-top", navBottom > footerTop ? footerTop - navBottom - 5 : 0 );
-        });
-    }
 
-    // Home Link
-    $( ".banner-home-link" ).click( function( event ) {
-        document.location.href = "/";
-    });
 
-    // Format notes and tips
-    $( ".admonitionblock .icon .title:contains('Note'), .admonitionblock .icon .title:contains('Tip')" ).each( function() {
-        var $this = $( this ),
-            block = $this.closest( ".admonitionblock" );
-        block.addClass( "note-tip-block" );
-        block.find( ".content:eq(0)" ).addClass( "note-tip-content" );
-        if ( $this.is( ".title:contains('Note')" ) ) {
-            $this.replaceWith( "<i class='icon-pushpin note-tip-icon'></i>" );
-        } else {
-            $this.replaceWith( "<i class='icon-info-sign note-tip-icon'></i>" );
+ if($(window).width() > 992){
+     
+   $('.aditional-actions').affix({    
+       offset: {
+        top: function (){
+          return (this.top = $(".main-banner").outerHeight(true));
         }
-    });
+      }  
+   });
+   
+   
+  $(".submenu").css("width", $('.submenu').width());
+  
+  
+  
+   $('.submenu').affix({    
+       offset: {
+        top: function (){
+          return (this.top = $(".main-banner").outerHeight(true)+$(".aditional-actions").outerHeight(true));
+        },
+        
+//        top:116,
 
-    // Show/Hide Mobile Nav
-    $("#navButton, .menu-close-button").on("click", function() {
-        var nav = $(".nav-collapse"),
-            isHidden = nav.hasClass("hidden");
-
-        if ( isHidden ) {
-            nav.removeClass("hidden");
-            setTimeout( function() {
-                nav.addClass("menu-open");
-            }, 0);
-        } else {
-            nav.removeClass("menu-open");
-            setTimeout( function() {
-                nav.addClass("hidden");
-            }, 350);
-        }
-    });
-
-    // Resize accordion switch for home page
-    if ( $(".home-content").length ) {
-        $(window).smartresize( accordionConfig, 500 );
-        $( function() {
-            accordionConfig();
-        });
-    }
-
-    function accordionConfig() {
-        var collapsibles, collapseTriggers, visibles;
-        collapsibles = $(".collapse");
-        visibles = collapsibles.filter(":visible");
-        collapseTriggers = $(".accordion-group > div");
-
-        if ( !smallLayout && Modernizr.mq("only screen and (max-width: 768px)") ) {
-            collapsibles
-                .on("hide", function() {
-                    $( this ).closest(".accordion-group").find(".icon-circle-arrow-down").removeClass("icon-circle-arrow-down").addClass("icon-circle-arrow-right");
-                })
-                .on("show", function() {
-                    $( this ).closest(".accordion-group").find(".icon-circle-arrow-right").removeClass("icon-circle-arrow-right").addClass("icon-circle-arrow-down");
-                    collapsibles.not( $( this ) ).collapse("hide");
-                });
-
-            smallLayout = true;
-            collapsibles.collapse("hide");
-            collapsibles.eq( 0 ).collapse("show");
-        } else if ( smallLayout && Modernizr.mq("only screen and (min-width: 769px)") ) {
-            collapsibles.off("hide show");
-            collapsibles.each(function() {
-                $( this ).closest(".accordion-group").find(".icon-circle-arrow-down").removeClass("icon-circle-arrow-down").addClass("icon-circle-arrow-right");
-            });
-
-            smallLayout = false;
-            collapsibles.collapse("show");
-        } else {
-            collapsibles.off("hide show")
-                .on("hide", function() {
-                    if ( visibles.length > 1 ) {
-                        $( this ).collapse("show");
-                    }
-                });
+        bottom: function (){
+          return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
         }
 
-        if ( smallLayout === undefined ) {
-            smallLayout = false;
-            collapsibles.each(function() {
-                $( this ).closest(".accordion-group").find("i").hide();
-            });
-        }
-    }
+      }  
+   });
+  
+  
+
+
+
+
+ 
+ }
+
+    
 });

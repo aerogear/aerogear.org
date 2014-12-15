@@ -1,66 +1,20 @@
 ---
-layout: basic
-title: Downloads
+layout: base-with-sidebar
+title: Downloads and snippets
 nav-active-getstarted: active
 section-title: Start here
 section-description: How to get Aerogear up and running
+section-class: start
 ---
 
 
-<section class="start">
-  <div class="container">
-    <div class="row">   
-      <div class="col-md-3 sidebar">
-        
-        <!-- TODO(agalante) *how do we deal with submenus? -->
-        <div class="submenu">
-          <h5 class="active"><a href="#">Downloads</a></h5>
-            <ul>
-              <li class="menu-title">
-                <a href="#">Getting started</a>                  
-              </li>
-              
-              <li class="menu-title active">
-                <a href="#">AeroGear Android</a>
-                <ul>
-                   <li><a href="#">AeroGear Android</a></li>
-                   <li class="active"><a href="#">AeroGear Android Push</a></li>
-                   <li><a href="#">AeroGear Android OTP</a></li>
-                </ul>
-              </li>
-          
-              <li class="menu-title">
-                <a href="#">AeroGear iOS</a>                  
-              </li>
-          
-              <li class="menu-title">
-                <a href="#">AeroGear Cardova</a>                  
-              </li>
-          
-              <li class="menu-title">
-                <a href="#">AeroGear Web/Js</a>                  
-              </li>                                
-
-              <li class="menu-title">
-                <a href="#">AeroGear Security</a>                  
-              </li>                                
-              
-            </ul> 
-          <h5><a href="demos.html">Demos</a></h5>
-          <h5><a href="guides.html">Guides</a></h5>
-
-        </div><!-- submenu -->
-            
-      </div><!-- col -->
-      
-      <div class="col-md-9">
         
         <article id="overview">
              
           <h2 class="section-header">Get the Gear to Go Mobile!</h2>
           <p>Below you will find links to all of the libraries and other resources created by the AeroGear team. You can also view the source and contribute to any of these items by checking out our <a href="http://github.com/aerogear" target="_blank">repos on GitHub</a>.</p>        
         
-        </article><!-- overview -->
+        </article><!-- article -->
 
 <!-- ==================================================================================================== -->
         <article id="android">
@@ -71,7 +25,7 @@ section-description: How to get Aerogear up and running
              
 <hr> <!-- ====================================================== -->
           
-          <h4><i class="fa fa-rocket"></i> AeroGear Android</h4>
+          <h4 id="androidAeroGearAndroid"><i class="fa fa-rocket"></i> AeroGear Android</h4>
           <p><a href="https://github.com/aerogear/aerogear-android/archive/1.4.0.zip" class="btn btn-primary-inverse  btn-lg"><i class="fa fa-cloud-download"></i> Download Library v1.4.0</a></p>
           <h5>If you are using Maven:</h5>
           <pre>
@@ -98,7 +52,7 @@ dependencies {
   
 <hr> <!-- ====================================================== -->
 
-          <h4><i class="fa fa-paper-plane"></i> AeroGear Android Push</h4>
+          <h4 id="androidAeroGearAndroidPush"><i class="fa fa-paper-plane"></i> AeroGear Android Push</h4>
           <p><a href="https://github.com/aerogear/aerogear-android-push/archive/1.0.0.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download Library v1.0.0</a></p>
           
           <h5>If you are using Maven:</h5>
@@ -126,7 +80,7 @@ dependencies {
 
 <hr> <!-- ====================================================== -->
 
-          <h4><i class="fa fa-shield"></i> AeroGear Android OTP</h4>
+          <h4 id="androidAeroGearAndroidOTP"><i class="fa fa-shield"></i> AeroGear Android OTP</h4>
              
           <p><a href="https://github.com/aerogear/aerogear-otp-java/zipball/1.0.0" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download Now v1.0.0</a> <a href="http://search.maven.org/#browse%7C583881834"  class="btn btn-primary">Also in Maven Central</a></p>
       
@@ -153,7 +107,7 @@ dependencies {
              
 <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-rocket"></i> Aerogear iOS HTTP</h4>
+          <h4 id="iosAerogeariOSHTTP"><i class="fa fa-rocket"></i> Aerogear iOS HTTP</h4>
           <p>
            <a href="https://github.com/aerogear/aerogear-ios-http/zipball/0.1" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v0.1</a>
           </p>
@@ -166,7 +120,7 @@ dependencies {
 
  <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-shield"></i> Aerogear iOS oauth2</h4>
+          <h4 id="iosAerogeariOSoauth2"><i class="fa fa-shield"></i> Aerogear iOS oauth2</h4>
           <p>
            <a href="https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.1" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v0.1</a>
           </p>
@@ -180,7 +134,7 @@ dependencies {
 
  <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-paper-plane"></i> Aerogear iOS Push</h4>
+          <h4 id="iosAerogeariOSPush"><i class="fa fa-paper-plane"></i> Aerogear iOS Push</h4>
           <p>
            <a href="https://github.com/aerogear/aerogear-ios-push/zipball/2.0.0" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v2.0</a>
           </p>
@@ -194,7 +148,7 @@ dependencies {
 
  <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-rocket"></i> Aerogear iOS httpstub</h4>
+          <h4 id="iosAerogeariOShttpstub"><i class="fa fa-rocket"></i> Aerogear iOS httpstub</h4>
           <p>
            <a href="https://github.com/aerogear/aerogear-ios-httpstub/zipball/0.1" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v0.1</a>
           </p>
@@ -217,7 +171,7 @@ dependencies {
              
 <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-paper-plane"></i> AeroGear Push Plugin</h4>
+          <h4 id="cordovaAeroGearPushPlugin"><i class="fa fa-paper-plane"></i> AeroGear Push Plugin</h4>
           <p><a href="https://github.com/aerogear/aerogear-pushplugin-cordova/releases/latest" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download the latest Push Plugin</a></p>
           <h5>and if you want more information:</h5>
           <p>
@@ -229,7 +183,7 @@ dependencies {
 
  <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-rocket"></i> AeroGear OTP Plugin</h4>
+          <h4 id="cordovaAeroGearOTPPlugin"><i class="fa fa-rocket"></i> AeroGear OTP Plugin</h4>
              
           <p><a href="https://github.com/aerogear/aerogear-otp-cordova/archive/0.0.1.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download 0.0.1 OTP plugin</a></p>
           <h5>and if you want more information:</h5>
@@ -242,7 +196,7 @@ dependencies {
 
  <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-shield"></i> AeroGear Crypto Plugin</h4>
+          <h4 id="cordovaAeroGearCryptoPlugin"><i class="fa fa-shield"></i> AeroGear Crypto Plugin</h4>
              
           <p><a href="https://github.com/aerogear/aerogear-crypto-cordova/archive/0.0.1.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download 0.0.1 Crypto plugin</a></p>
           <h5>and if you want more information:</h5>
@@ -267,7 +221,7 @@ dependencies {
              
  <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-paper-plane"></i> AeroGear Push Plugin</h4>
+          <h4 id="webjsAeroGearPushPlugin"><i class="fa fa-paper-plane"></i> AeroGear Push Plugin</h4>
              
           <p><a href="https://github.com/aerogear/aerogear-js-dist/archive/2.0.0.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v2.0.0</a></p>
           
@@ -294,7 +248,7 @@ dependencies {
              
  <hr> <!-- ====================================================== -->
              
-          <h4><i class="fa fa-shield"></i> JAVA-OTP</h4>
+          <h4 id="securityJAVA-OTP"><i class="fa fa-shield"></i> JAVA-OTP</h4>
                 <pre>
 &lt;dependency&gt;
   &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
@@ -304,22 +258,14 @@ dependencies {
 
  <hr> <!-- ====================================================== -->
 
-          <h4><i class="fa fa-shield"></i> JAVA-CRYPTO</h4>
+          <h4 id="securityJAVA-CRYPTO"><i class="fa fa-shield"></i> JAVA-CRYPTO</h4>
                 <pre>
 &lt;dependency&gt;
   &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
   &lt;artifactId&gt;aerogear-crypto-java&lt;/artifactId&gt;
   &lt;version&gt;0.1.5&lt;/version&gt;
 &lt;/dependency&gt;</pre>
-        </div>
-
 
 
         </article><!-- cordova -->
 
-
-
-      </div><!-- col -->
-    </div><!-- row -->
-  </div><!-- container -->
-</section> 
