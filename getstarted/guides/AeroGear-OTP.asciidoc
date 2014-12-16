@@ -1,11 +1,14 @@
 ---
-layout: base-with-sidebar
+layout: base-text-page
 title: AeroGear Two-Factor Authentication with OTP
 nav-active-getstarted: active
-section-title: Examples
-section-description: Real working examples using the AeroGear libraries
 section-class: guides
+section-title: Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Get started
 ---
+
 
 == AeroGear Two-Factor Authentication with OTP
 

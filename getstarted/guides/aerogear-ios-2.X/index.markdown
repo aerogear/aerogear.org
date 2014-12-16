@@ -1,6 +1,12 @@
 ---
-layout: basic
+layout: base-with-sidebar
 title: AeroGear iOS 2.0 User Guide
+nav-active-getstarted: active
+section-title: Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Get started
+section-class: guides
 ---
 
 # AeroGear iOS 2.0 User Guides

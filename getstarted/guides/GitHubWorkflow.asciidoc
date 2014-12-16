@@ -1,6 +1,12 @@
 ---
-layout: basic
+layout: base-text-page
 title: AeroGear GitHub Workflow & Instructions
+nav-active-getstarted: active
+section-title: Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Get started
+section-class: guides
 ---
 
 == AeroGear GitHub Workflow & Instructions

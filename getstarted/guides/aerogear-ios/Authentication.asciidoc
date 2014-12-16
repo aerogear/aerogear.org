@@ -1,7 +1,14 @@
 ---
-layout: basic
+layout: base-text-page
 title: Authentication and User enrollment
+nav-active-getstarted: active
+section-title: Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Get started
+section-class: guides
 ---
+
 // tag::auth[]
 == Authentication and User enrollment
 

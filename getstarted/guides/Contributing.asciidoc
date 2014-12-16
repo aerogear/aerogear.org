@@ -1,6 +1,12 @@
 ---
-layout: basic
+layout: base-text-page
 title: Contributing to AeroGear
+nav-active-getstarted: active
+section-class: guides
+section-title: Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Get started
 ---
 
 == Contributing to AeroGear

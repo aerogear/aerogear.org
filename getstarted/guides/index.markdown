@@ -1,9 +1,9 @@
 ---
 layout: base-with-sidebar
-title: Demos and Examples
+title: guides
 nav-active-getstarted: active
-section-title: Examples
-section-description: Real working examples using the AeroGear libraries
+section-title: Guides
+section-description: Tutorials to help get you off and running.
 section-class: guides
 ---
 
@@ -49,7 +49,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 ---
 
 <h2 class="section-header" id="ContributingtoAeroGear">Contributing to AeroGear</h2> 
-* Contributing to AeroGear](Contributing)
+* [Contributing to AeroGear](Contributing)
 * [AeroGear GitHub Workflow](GitHubWorkflow)
 * [How to Handle AeroGear Pull Requests](AeroGearPullRequests)
 * [AeroGear JIRA Usage and Guidelines](JIRAUsage)

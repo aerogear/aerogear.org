@@ -1,0 +1,48 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+{% include header.html %}
+</head>
+
+<body class=" {{page.body-class}} ">    
+
+{% include navigation.html %}
+
+{% include jboss-dropup.html %}
+
+
+<section class="main-banner">
+  <div class="container">
+    <h2>{{page.section-title}} <small>{{page.section-description}}</small></h2>
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+{% include aditional-actions.html %}
+
+
+<section class="{{ page.section-class }}">
+<div class="container">
+  <ol class="breadcrumb" style="margin:0">
+    <li><a href="{{ page.breadcrumbs-url }}">{{ page.section-title }}</a></li>
+    <li><a href="{{ page.breadcrumbs-url }}">{{ page.sub-section-title }}</a></li>
+    <li class="active">{{page.title}}</li>
+  </ol>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">      
+        {{ content }}
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+{% include footer.html %}
+
+{% include js.html %}
+
+</body>
+</html>
