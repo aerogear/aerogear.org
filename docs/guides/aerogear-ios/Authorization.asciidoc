@@ -31,7 +31,7 @@ _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
 
 === Creating an Account Manager
 
-When authorizing an OAuth2 application, you often want the user to grant access for your app only once in the app lifetime. This is the whole purpose of AccountManager — you can create multiple accounts and store them in an AGStore. It's up to you to choose you store. By default all the sensitive data is stored in the Keychain if the iPhone passcode is set
+When authorizing an OAuth2 application, you often want the user to grant access for your app only once in the app lifetime. This is the whole purpose of AccountManager — you can create multiple accounts and store them in an AGStore. It's up to you to choose you store. By default all the sensitive data is stored in the Keychain if the iPhone passcode is set.
 
 Alternatively, you can use an encrypted storage for storing authorization tokens, but be aware that the user's password must be provided.
 
