@@ -5,7 +5,9 @@ nav-active-getstarted: active
 section-title: Guides
 section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
-sub-section-title: Get started
+sub-section-title: User Guides
+third-section-title: AeroGear iOS User Guide
+breadcrumbs-sub-url: /getstarted/guides/aerogear-ios
 section-class: guides
 ---
 

@@ -24,11 +24,21 @@
 
 <section class="{{ page.section-class }}">
 <div class="container">
+
   <ol class="breadcrumb" style="margin:0">
     <li><a href="{{ page.breadcrumbs-url }}">{{ page.section-title }}</a></li>
+{% if page.third-section-title %} 
+    <li><a href="{{ page.breadcrumbs-url }}">{{ page.sub-section-title }}</a></li>
+    <li><a href="{{ page.breadcrumbs-sub-url }}">{{ page.third-section-title }}</a></li>
+    <li class="active">{{page.title}}</li>
+{% else %}
     <li><a href="{{ page.breadcrumbs-url }}">{{ page.sub-section-title }}</a></li>
     <li class="active">{{page.title}}</li>
+{% endif %}
+
   </ol>
+
+
 </div>
 
   <div class="container">

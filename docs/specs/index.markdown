@@ -1,11 +1,14 @@
 ---
-layout: basic
-title: Specifications
+layout: base-with-sidebar
+title: guides
+nav-active-getstarted: active
+section-title: Guides
+section-description: Tutorials to help get you off and running.
+section-class: guides
 ---
 
-### Specifications
 
-#### Client Library Specifications
+## Client Library Specifications
 
 * [AeroGear JS 2.0.0](aerogear-js)
 * [AeroGear iOS Http 0.2.0](aerogear-ios-http)
@@ -28,14 +31,14 @@ title: Specifications
 * [AeroGear Security Crypto](aerogear-crypto)
 * [AeroGear Cordova](aerogear-cordova)
 
-#### Push Specifications
+## Push Specifications
 * [AeroGear UnifiedPush RESTful APIs - stable](aerogear-unifiedpush-rest-1.0.x/overview-index.html)
 * [AeroGear UnifiedPush RESTful APIs - development](aerogear-unifiedpush-rest/overview-index.html)
 * [AeroGear UnifiedPush Java Client - Version 1.0.0](aerogear-unifiedpush-java-client)
 * [AeroGear UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
 * [AeroGear SimplePush Java Client](aerogear-simplepush-java-client)
 
-#### Sync Specifications
+## Sync Specifications
 * [Data Sync Specification](aerogear-data-sync)
     * [Client API Proposals](aerogear-sync-client-api)
     * [Server API Proposals](aerogear-sync-server-api)

@@ -1,12 +1,14 @@
 ---
 layout: base-text-page
-title: AeroGear Android User Guide 
+title: Pipe 
 nav-active-getstarted: active
 section-title: Guides
 section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
-sub-section-title: Get started
+sub-section-title: User Guides
 section-class: guides
+third-section-title: AeroGear Android User Guide 
+breadcrumbs-sub-url: /getstarted/guides/aerogear-android
 ---
 
 = AeroGear Pipes in Android
