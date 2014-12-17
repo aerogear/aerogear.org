@@ -30,6 +30,7 @@ http.POST("/endpoint",  parameters: ["param": "value"], completionHandler: {(res
 // ...similarly, PUT, DELETE and HEAD can be called
 
 ```
+NOTE: The request is always executed asynchronously in a background thread whereas the completion callbacks are conveniently called in the main thread to give you the chance to update the UI.
 
 NOTE: In the example above, we used the optional '_baseURL_'  parameter of the remote application in order to avoid specifying it on each request. The constructor accepts further parameters that can customize it's behavior e.g setting a custom link:https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSURLSessionConfiguration_class/index.html[NSURLSessionConfiguration]. Head over to the link:https://aerogear.org/docs/specs/aerogear-ios-http/Classes/Http.html#/s:FC12AeroGearHttp4HttpcFMS0_FT7baseURLGSqSS_13sessionConfigCSo25NSURLSessionConfiguration17requestSerializerPS_17RequestSerializer_18responseSerializerPS_18ResponseSerializer__S0_[API documentation] for more information.
 
@@ -81,6 +82,8 @@ http.upload("/upload",  file:fileURL,
         // handle response
 })
 ```
+
+NOTE: Internally and if not specified, the method will use _'POST'_ when performing upload, but you can choose to override it by passing  an appropriate link:https://aerogear.org/docs/specs/aerogear-ios-http/Enums.html#/s:O12AeroGearHttp10HttpMethod[HttpMethod] in the _'method'_ parameter.
 
 Apart from NSURL objects pointing to local files you can also use an link:https://aerogear.org/docs/specs/aerogear-ios-http/Classes/Http.html#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4dataCSo6NSData10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_[NSData] or an link:https://aerogear.org/docs/specs/aerogear-ios-http/Classes/Http.html#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS6streamCSo13NSInputStream10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_[NSStream] convenient methods.
 
