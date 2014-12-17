@@ -12,17 +12,23 @@
     * AeroGear iOS Http v0.1
   * Cordova
     * AeroGear Cordova
+
 * AerogearSecurity Specifications
-  * Android
+  * Authentication
     * AeroGear Android Auth 2.0.0-alpha.1
     * AeroGear Android Authz 2.0.0-alpha.1
-    * AeroGear Android Security 2.0.0-alpha.1
-  * iOS
-    * AeroGear iOS Oauth2 v0.1
-    * AeroGear-OTP iOS 1.0.0
-  * don't know
+    * AeroGear Android OTP
+    * AeroGear Cordova OAuth2
+    * AeroGear Cordova OTP
+
+  * Cryptography
     * AeroGear-Crypto iOS 0.2.3
-    * AeroGear Security Crypto
+    * AeroGear Crypto Cordova
+    * AeroGear Crypto Android
+    * AeroGear JS Crypto
+  * General
+    * AeroGear Android Security 2.0.0-alpha.1
+
 * AerogearPush Specifications
   * Android
     * AeroGear Android Push 2.0.0-alpha.1
@@ -84,18 +90,16 @@ What are the changes here?
     * Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova
     * Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5
 * AerogearSecurity Guides
-  * Android
-    * Authentication
-    * Authorization
-  * iOS 1.X
-    * Authentication and User enrollment
-    * Authorization (OAuth2)
-    * Cryptography support
-  * iOS 2.X
-    * Authorization (OAuth2)
-  * Cordova
-    * AeroGear Two-Factor Authentication with OTP
-    * AeroGear Two-Factor Authentication with OTP as Cordova Plugin
+  * Authentication
+    * Android
+    * iOS 1.X
+    * iOS 2.X
+    * Cordova
+  * Cryptography
+    * Android
+    * iOS 1.X
+    * iOS 2.X
+    * Cordova
 * AerogearPush Guides
   * AeroGear UnifiedPush Server resources
     * UnifiedPush Server guides
