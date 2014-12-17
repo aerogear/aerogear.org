@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AeroGearOauth2  Reference</title>
+    <title>AeroGearOAuth2  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
+    <script type="text/javascript">
+    window.jazzy = {'docset': false}
+    if (typeof window.dash != 'undefined') {
+      document.documentElement.className += ' dash'
+      window.jazzy.docset = true
+    }
+    if (navigator.userAgent.match(/xcode/i)) {
+      document.documentElement.className += ' xcode'
+      window.jazzy.docset = true
+    }
+    </script>
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
   </head>
   <body id="reference" class="Swift">
-    <a title="AeroGearOauth2  Reference"></a>
+    <a title="AeroGearOAuth2  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p class="header-text"><a href="#">AeroGearOauth2 Docs</a></p>
+        <p class="header-text"><a href="index.html">AeroGearOAuth2 Docs</a></p>
         <p id="header-links"><a href="https://github.com/aerogear/aerogear-ios-oauth2"><img id="header-icon" src="img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
       </div>
     </header>
     <section id="valence">
       <div class="content-wrapper">
         <p id="hierarchial_navigation">
-        <a href="#" id="design_resources_link">AeroGearOauth2 Reference</a>
+        <a href="index.html" id="design_resources_link">AeroGearOAuth2 Reference</a>
         <img id="carat" src="img/carat.png" height="10px" width="6px" />
-        AeroGearOauth2  Reference
+        AeroGearOAuth2  Reference
         </p>
       </div>
     </section>
@@ -40,7 +52,7 @@
                 <a href="Classes/AccountManager.html">AccountManager</a>
               </li>
               <li class="nav-chapter">
-                <a href="Classes.html#/s:C14AeroGearOAuth220KeycloakOAuth2Module">KeycloakOAuth2Module</a>
+                <a href="Classes/KeycloakOAuth2Module.html">KeycloakOAuth2Module</a>
               </li>
               <li class="nav-chapter">
                 <a href="Classes/OAuth2Module.html">OAuth2Module</a>
@@ -52,7 +64,7 @@
                 <a href="Classes/TrustedPersistantOAuth2Session.html">TrustedPersistantOAuth2Session</a>
               </li>
               <li class="nav-chapter">
-                <a href="Classes.html#/s:C14AeroGearOAuth220FacebookOAuth2Module">FacebookOAuth2Module</a>
+                <a href="Classes/FacebookOAuth2Module.html">FacebookOAuth2Module</a>
               </li>
               <li class="nav-chapter">
                 <a href="Classes/Config.html">Config</a>
@@ -76,6 +88,33 @@
               <li class="nav-chapter">
                 <a href="Enums.html#/s:O14AeroGearOAuth218AuthorizationState">AuthorizationState</a>
               </li>
+              <li class="nav-chapter">
+                <a href="Enums.html#/s:O14AeroGearOAuth29TokenType">TokenType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="Extensions.html">Extensions</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="Extensions.html#/s:SS">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="Instance Methods.html">Instance Methods</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="Instance Methods.html#/s:FE14AeroGearOAuth2CSo6NSDate8toStringFS0_FT_SS">toString()</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="Local Variables.html">Local Variables</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="Local Variables.html#/s:vFE14AeroGearOAuth2CSo6NSDatecFMS0_FT10dateStringSS_S0_L_10dateStringSS">dateString</a>
+              </li>
             </ul>
           </li>
           <li class="part-name tasks">
@@ -92,15 +131,85 @@
       <div class="rubber-band-gap"></div>
       <article class="chapter">
       <a name="/"></a>
-        <h1 class="chapter-name">AeroGearOauth2</h1>
+        <h1 class="chapter-name">AeroGearOAuth2</h1>
         <section>
           <section class="section">
-            <p class="para">This is the index page for AeroGearOauth2 docs. Navigate using the links on the left.</p>
+            <div class='readme'><a href='#aerogear_ios_oauth2_a_href_https_travis_ci_org_aerogear_aerogear_ios_oauth2_img_src_https_travis_ci_org_aerogear_aerogear_ios_oauth2_png_alt_build_status_a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='aerogear_ios_oauth2_a_href_https_travis_ci_org_aerogear_aerogear_ios_oauth2_img_src_https_travis_ci_org_aerogear_aerogear_ios_oauth2_png_alt_build_status_a'>aerogear-ios-oauth2 <a href="https://travis-ci.org/aerogear/aerogear-ios-oauth2"><img src="https://travis-ci.org/aerogear/aerogear-ios-oauth2.png" alt="Build Status"></a></h1>
+<p class="para">OAuth2 Client based on <a href="https://github.com/aerogear/aerogear-ios-http">aerogear-ios-http</a>. 
+Taking care of: </p>
+<ul>
+<li>account manager for multiple OAuth2 accounts,</li>
+<li>request access and refresh token,</li>
+<li>grant access through secure external browser and URI schema to re-enter app,</li>
+<li>(implicit or explicit) refresh tokens, </li>
+<li>revoke tokens,</li>
+<li>permanent secure storage,</li>
+<li>adaptable to OAuth2 specific providers. Existing extensions: Google, Facebook, Keycloak etc&hellip;</li>
+</ul>
+<p class="para">100% Swift.</p><a href='#example_usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example_usage'>Example Usage</h2>
+<a href='#oauth2_grant_for_get_with_a_predefined_config_like_facebook' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='oauth2_grant_for_get_with_a_predefined_config_like_facebook'>OAuth2 grant for GET with a predefined config like Facebook</h4>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">Http</span> <span class="o">=</span> <span class="kt">Http</span><span class="p">()</span>                       <span class="c1">// [1]
+</span><span class="k">let</span> <span class="nv">facebookConfig</span> <span class="o">=</span> <span class="kt">FacebookConfig</span><span class="p">(</span>    <span class="c1">// [2]
+</span>    <span class="nv">clientId</span><span class="p">:</span> <span class="s">"YYY"</span><span class="p">,</span>
+    <span class="nv">clientSecret</span><span class="p">:</span> <span class="s">"XXX"</span><span class="p">,</span>
+    <span class="nv">scopes</span><span class="p">:[</span><span class="s">"photo_upload, publish_actions"</span><span class="p">])</span>
+<span class="k">var</span> <span class="nv">oauth2Module</span> <span class="o">=</span> <span class="kt">AccountManager</span><span class="o">.</span><span class="nf">addFacebookAccount</span><span class="p">(</span><span class="n">facebookConfig</span><span class="p">)</span>  <span class="c1">// [3]
+</span><span class="n">http</span><span class="o">.</span><span class="n">authzModule</span> <span class="o">=</span> <span class="n">oauth2Module</span>         <span class="c1">// [4]
+</span><span class="n">http</span><span class="o">.</span><span class="kt">GET</span><span class="p">(</span><span class="s">"/get"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{(</span><span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>   <span class="c1">// [5]
+</span>    <span class="c1">// handle response
+</span><span class="p">})</span>
+</code></pre>
+<p class="para">Create an instance of Http [1] from <a href="https://github.com/aerogear/aerogear-ios-http">aerogear-ios-http</a> a thin layer on top of NSURLSession.</p><p class="para">Fill-in the OAuth2 configuration in [2], here we use a predefined Config with all Facebook endpoint filled-in for us.</p><p class="para">Create an OAuth2Module from AccountManager&rsquo;s factory method in [3].</p><p class="para">Inject OAuth2Module into http object in [4] and uses the http object to GET/POST etc&hellip;</p><p class="para">See full description in <a href="https://aerogear.org/docs/guides/aerogear-ios-2.X/Authorization/">aerogear.org</a></p><a href='#openid_connect' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='openid_connect'>OpenID Connect</h4>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">Http</span> <span class="o">=</span> <span class="kt">Http</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">keycloakConfig</span> <span class="o">=</span> <span class="kt">KeycloakConfig</span><span class="p">(</span>
+    <span class="nv">clientId</span><span class="p">:</span> <span class="s">"sharedshoot-third-party"</span><span class="p">,</span>
+    <span class="nv">host</span><span class="p">:</span> <span class="s">"http://localhost:8080"</span><span class="p">,</span>
+    <span class="nv">realm</span><span class="p">:</span> <span class="s">"shoot-realm"</span><span class="p">,</span>
+    <span class="nv">isOpenIDConnect</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+<span class="k">var</span> <span class="nv">oauth2Module</span> <span class="o">=</span> <span class="kt">AccountManager</span><span class="o">.</span><span class="nf">addKeycloakAccount</span><span class="p">(</span><span class="n">keycloakConfig</span><span class="p">)</span>
+<span class="n">http</span><span class="o">.</span><span class="n">authzModule</span> <span class="o">=</span> <span class="n">oauth2Module</span>
+<span class="n">oauth2Module</span><span class="o">.</span><span class="n">login</span> <span class="p">{(</span><span class="nv">accessToken</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?,</span> <span class="nv">claims</span><span class="p">:</span> <span class="kt">OpenIDClaim</span><span class="p">?,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="k">in</span> <span class="c1">// [1]
+</span>    <span class="c1">// Do your own stuff here
+</span><span class="p">}</span>
+
+</code></pre>
+<p class="para">Similar approach for configuration, here we want to login as Keycloak user, using <code>login</code> method we get some user information back in OpenIDClaim object.</p><a href='#building_amp_running_tests' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='building_amp_running_tests'>Building &amp; Running tests</h2>
+<p class="para">The project uses <a href="https://github.com/aerogear/aerogear-ios-http">aerogear-ios-http</a> framework for its http calls, and <a href="https://github.com/aerogear/aerogear-ios-httpstub">aerogear-ios-httpstub</a> framework for stubbing its http network requests.  To handle these dependencies, it uses <a href="http://cocoapods.org">Cocoapods</a>. On the root directory of the project run:</p><pre class="highlight shell"><code>bundle install
+bundle <span class="nb">exec </span>pod install
+</code></pre>
+<p class="para">You are now ready to run the tests.</p><a href='#adding_the_library_to_your_project' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='adding_the_library_to_your_project'>Adding the library to your project</h2>
+<p class="para">To add the library in your project, you can either use <a href="http://cocoapods.org">Cocoapods</a> or simply drag the library in your project. See the respective sections below for instructions</p><a href='#using_a_href_http_cocoapods_org_cocoapods_a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using_a_href_http_cocoapods_org_cocoapods_a'>Using <a href="http://cocoapods.org">Cocoapods</a></h3>
+<p class="para">At this time, Cocoapods support for Swift frameworks is supported in a preview <a href="https://github.com/CocoaPods/CocoaPods/tree/swift">branch</a>. Simply <a href="http://swiftwala.com/cocoapods-is-ready-for-swift/">include a Gemfile</a> in your project pointing to that branch and in your <code>Podfile</code> add:</p><pre class="highlight plaintext"><code>pod 'AeroGearOAuth2'
+</code></pre>
+<p class="para">and then:
+<code>bash
+bundle install
+bundle exec pod install
+</code></p><p class="para">to install your dependencies.</p>
+<blockquote>
+<p class="para"><strong>NOTE:</strong>  Currently, there is a Swift compiler bug that causes abnormal behavior when  building with optimization level set to <code>-Fastest</code>  . Therefore, it is advised a <code>-None</code> optimization level is used, when importing the library. To do so, include the <a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/podspec/Shoot/Podfile#L9-L24">following block</a> in your <code>Podfile</code></p></blockquote>
+<a href='#drag_the_library_in_your_project' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='drag_the_library_in_your_project'>Drag the library in your project</h3>
+<p class="para">Follow these steps to add the library in your Swift project.</p>
+<ol>
+<li><a href="#1-clone-repositories">Clone repositories</a></li>
+<li><a href="#2-add-aerogearoauth2-xcodeproj-to-your-application-target">Add <code>AeroGearOAuth2.xcodeproj</code> to your application target</a></li>
+<li><a href="#2-add-aerogearhttp-xcodeproj-to-your-application-target">Add <code>AeroGearHttp.xcodeproj</code> to your application target</a></li>
+<li>Start writing your app!</li>
+</ol>
+<a href='#1_clone_repositories' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='1_clone_repositories'>1. Clone repositories</h4>
+<pre class="highlight plaintext"><code>git clone git@github.com:aerogear/aerogear-ios-http.git
+git clone git@github.com:aerogear/aerogear-ios-oauth2.git
+</code></pre>
+<a href='#2_add_code_aerogearoauth2_xcodeproj_code_to_your_application_target' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='2_add_code_aerogearoauth2_xcodeproj_code_to_your_application_target'>2. Add <code>AeroGearOAuth2.xcodeproj</code> to your application target</h4>
+<p class="para">Right-click on the group containing your application target and select <code>Add Files To YourApp</code>
+Next, select <code>AeroGearOAuth2.xcodeproj</code>, which you downloaded in step 1.</p><a href='#3_add_code_aerogearhttp_xcodeproj_code_to_your_application_target' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='3_add_code_aerogearhttp_xcodeproj_code_to_your_application_target'>3. Add <code>AeroGearHttp.xcodeproj</code> to your application target</h4>
+<p class="para">Right-click on the group containing your application target and select <code>Add Files To YourApp</code>
+Next, select <code>AeroGearHttp.xcodeproj</code>, which you downloaded in step 1.</p><p class="para">If you run into any problems, please <a href="http://issues.jboss.org/browse/AEROGEAR">file an issue</a> and/or ask our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-users">user mailing list</a>. You can also join our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">dev mailing list</a>.  </p></div>
           </section>
         </section>
         <section id="footer">
-          <p class="copyright">&copy; 2014 <a class="link" href="http://www.aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-11-07)</p>
-          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.12</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p class="copyright">&copy; 2014 <a class="link" href="https://aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-12-17)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.16</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
