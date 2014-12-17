@@ -38,9 +38,6 @@
 // @accent-color:                  #FFC4B6;
 
 
-//@accent-color-light:            #F2FF80;
-
-
 @gray-divider:                  rgba(0,0,0,.12);//12
 @gray-subtitle:                 rgba(0,0,0,.54);//54
 @gray-text:                     rgba(0,0,0,.75);//87
@@ -198,7 +195,6 @@
   top: 0px;
   right: 0;
   z-index: @zindex-modal!important;
-  background: red;
 }
 
 //helpers ==================================================================
@@ -223,7 +219,7 @@ body{
   font-weight: @font-weight-regular;
   color: @gray-text;
 //  background: #f1f1f1;
-background: red;
+// comobackground: red;
 }
 
 
@@ -629,7 +625,7 @@ padding-bottom: 40px!important;
 //  &:last-child{border: none;}  
 }
 
-//submenu ==================================================================
+//Article ==================================================================
 
 
 .docs{
@@ -651,78 +647,58 @@ article{
   
 }
 
-.sidebar{
-//right: 0;
-  @media (min-width: @screen-md-min) {
-//    .pisition-sticky;
-//    top: 0px;
-    }
-}
+
+//submenu ==================================================================
+
+//.sidebar{
+//  @media (min-width: @screen-md-min) {
+//    }
+//}
 
 .submenu.affix{
   top: 120px!important;
   position: fixed!important;
-//  background: red!important;
 }
 
-
 .submenu{
-border-right: 1px solid @gray-divider;
 padding-bottom: 60px;
-// height: 100%;
-//main titles
-  h5{
-    text-transform: uppercase;
-    font-weight: @font-weight-light;
-    a{
-//      color: @primary-color-light;
-      display: block;
-      padding-left: 10px;
-    } //a
-    &.active a{
-     font-weight: @font-weight-bold;
-     color: @primary-color-dark;
-    }
-
-  }//h6
-
   ul{
     .reset;
     list-style: none;
-    padding-left: 10px;
+//    padding-left: 10px;
 //    background: red;
     a{
       display: block;
-      padding: 5px 0 5px 8px ;
+      padding: 6px 0;
       border-right: 2px solid #fff;
-//      margin-left: -10px;
-    }
+      color: @gray-subtitle;
+    }//a
     
     li{
-    &.active>a{
+      &.active{
+        >a{
         border-right: 2px solid @primary-color;
-        background: @gray-lighter;
-        color: @primary-color-dark;
-      }
-    }
+        color: @primary-color;
+          }//a
+        ul {
+        display: block;
+        }//ul
+      }//active
+    }//li
     
-    .menu-title>a{
-//      background: blue;
-      font-weight: @font-weight-bold;
-      color: @primary-color;
-    }
     
     ul{
-//      padding-left: 10px;
-      margin-left: -10px;
-      a{
         padding-left: 20px;
-      }
-    }
+        display: none;
+      a{
+        padding: 3px 0;
+      }//a
+
+    }// ul ul
     
   }//ul 
 
-}
+} //submenu
 
 
 
@@ -860,14 +836,12 @@ footer{
 //logo ==================================================================
 
 .redhat{
-//  background: #000; 
   background: darken(@primary-color-dark, 10%);
   padding: 60px 0;
 }
 
 
 //Animation ==================================================================
-
 
 
 /* make keyframes that tell the start state and the end state of our object */

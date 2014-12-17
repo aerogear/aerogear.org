@@ -1,12 +1,12 @@
 ---
 layout: base-text-page
 title: AeroGear Licensing and Copyright
-nav-active-getstarted: active
-section-title: Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Get started
-section-class: guides
+nav-active-community: active
+section-class: community
+section-title: Community
+section-description: Get involved, be part of the Aerogear community
+breadcrumbs-url: /community#ContributingtGuides
+sub-section-title: Contributing Guide  
 ---
 
 == AeroGear Licensing and Copyright

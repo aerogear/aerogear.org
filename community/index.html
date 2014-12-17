@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: base
 title: Community
 nav-active-community: active
 section-title: Community
@@ -12,25 +12,25 @@ section-description: Get involved, be part of the Aerogear community
     <div class="row">        
       <div class="col-md-3 sidebar">
         <div class="submenu">
-          <ul>
-            <li class="menu-title active">
-              <a href="#">Overview</a>                  
+          <ul class="nav">
+            <li class="active">
+              <a href="#overview">Overview</a>                  
             </li>
                 
-            <li class="menu-title">
-              <a href="#">AeroGear Team</a>                  
+            <li>
+              <a href="#team">AeroGear Team</a>                  
             </li>
      
-            <li class="menu-title">
-              <a href="#">Contributors</a>                  
+            <li>
+              <a href="#contributors">Contributors</a>                  
             </li>
 
-            <li class="menu-title">
-              <a href="#">Contributing Guide</a>                  
+            <li>
+              <a href="#contributingGuides">Contributing to AeroGear</a>                  
             </li>
 
-            <li class="menu-title">
-              <a href="#">Contact</a>                  
+            <li>
+              <a href="#contact">Contact</a>                  
             </li>                
           <ul> 
         </div><!-- submenu -->
@@ -76,8 +76,8 @@ section-description: Get involved, be part of the Aerogear community
               </div><!-- address -->
                   
               <p>{{ member.description }}</p>
-              <h5><i class="fa fa-github-alt"></i> Last update</h5>
-              <p class="alt">{{ member.update-date }} {{ member.update-description }}</p>
+              <h5><i class="fa fa-github-alt"></i> Last update <span class="alt">{{ member.update-date }}</span></h5>
+              <p class="alt">{{ member.update-description }}</p>
                   
             </div><!-- body -->
           </div><!-- user -->
@@ -119,6 +119,20 @@ section-description: Get involved, be part of the Aerogear community
           </ul><!-- contributor-feed -->
         
         </article><!-- overview -->
+        
+        
+        <article id="guides" id="contributingGuides">
+          <h2 class="section-header">Contributing to AeroGear</h2> 
+          <ul>
+            <li><a href="/community/contributingGuides/Contributing">Contributing to AeroGear</a></li>
+            <li><a href="/community/contributingGuides/GitHubWorkflow">AeroGear GitHub Workflow</a></li>
+            <li><a href="/community/contributingGuides/AeroGearPullRequests">How to Handle AeroGear Pull Requests</a></li>
+            <li><a href="/community/contributingGuides/JIRAUsage">AeroGear JIRA Usage and Guidelines</a></li>
+            <li><a href="/community/contributingGuides/license">AeroGear Licensing and Copyright</a></li>
+            <li><a href="/community/contributingGuides/AeroGearDeveloperSetup">AeroGear Developer Tools Guide</a></li>
+            <li><a href="/docs/reference/AeroGearVersioningPolicy">AeroGear Versioning Policy</a></li>
+          </ul>
+        </article><!-- guides -->        
         
         <article id="contact">
           <h2 class="section-header">Where to find us</h2>

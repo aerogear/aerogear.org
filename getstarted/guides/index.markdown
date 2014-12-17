@@ -45,14 +45,3 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 <h2 class="section-header" id="UnifiedPushServer">UnifiedPush Server</h2> 
 * [AeroGear UnifiedPush Server resources](../unifiedpush)
-
----
-
-<h2 class="section-header" id="ContributingtoAeroGear">Contributing to AeroGear</h2> 
-* [Contributing to AeroGear](Contributing)
-* [AeroGear GitHub Workflow](GitHubWorkflow)
-* [How to Handle AeroGear Pull Requests](AeroGearPullRequests)
-* [AeroGear JIRA Usage and Guidelines](JIRAUsage)
-* [AeroGear Licensing and Copyright](license)
-* [AeroGear Developer Tools Guide](AeroGearDeveloperSetup)
-* [AeroGear Versioning Policy](/docs/reference/AeroGearVersioningPolicy)
