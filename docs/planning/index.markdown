@@ -13,7 +13,7 @@ Support of OAuth2 for Keycloak, Google and Facebook on our Android, iOS and Apac
 
 [List of JIRA tickets](https://issues.jboss.org/browse/AGSEC-180).
 
-### AeroGear Unified Push - 1.1.0 (April 2015)
+### AeroGear Push - 1.1.0 (April 2015)
 
 Next version of the Unified Push Server, containing new features like support for new Push networks or advanced analytis.
 
