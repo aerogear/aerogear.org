@@ -3,22 +3,35 @@
   <head>
     <title>Http Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
+    <script type="text/javascript">
+    window.jazzy = {'docset': false}
+    if (typeof window.dash != 'undefined') {
+      document.documentElement.className += ' dash'
+      window.jazzy.docset = true
+    }
+    if (navigator.userAgent.match(/xcode/i)) {
+      document.documentElement.className += ' xcode'
+      window.jazzy.docset = true
+    }
+    </script>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body id="reference" class="Swift">
+    <a name="//apple_ref/swift/Class/Http" class="dashAnchor"></a>
     <a title="Http Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p class="header-text"><a href="#">AeroGearHttp Docs</a></p>
+        <p class="header-text"><a href="../index.html">AeroGearHttp Docs</a> </p>
         <p id="header-links"><a href="https://github.com/aerogear/aerogear-ios-http"><img id="header-icon" src="../img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
       </div>
     </header>
     <section id="valence">
       <div class="content-wrapper">
         <p id="hierarchial_navigation">
-        <a href="#" id="design_resources_link">AeroGearHttp Reference</a>
+        <a href="../index.html" id="design_resources_link">AeroGearHttp Reference</a>
         <img id="carat" src="../img/carat.png" height="10px" width="6px" />
         Http Class Reference
         </p>
@@ -47,6 +60,23 @@
               </li>
               <li class="nav-chapter">
                 <a href="../Classes.html#/s:C12AeroGearHttp21JsonRequestSerializer">JsonRequestSerializer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Global Variables.html#/s:v12AeroGearHttp36HttpResponseSerializationErrorDomainSS">HttpResponseSerializationErrorDomain</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Global Variables.html#/s:v12AeroGearHttp45NetworkingOperationFailingURLResponseErrorKeySS">NetworkingOperationFailingURLResponseErrorKey</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Global Variables.html#/s:v12AeroGearHttp15HttpErrorDomainSS">HttpErrorDomain</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Global Variables.html#/s:v12AeroGearHttp44NetworkingOperationFailingURLRequestErrorKeySS">NetworkingOperationFailingURLRequestErrorKey</a>
               </li>
             </ul>
           </li>
@@ -92,16 +122,16 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Children"></a>
-                <a href="#/Children">
-                  <h3 class="section-name"></h3>
-                </a>
+                
+                <a name="/Unnamed"></a>
+                
               </div>
               <ul class="task-group-list">
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC12AeroGearHttp4HttpcFMS0_FT7baseURLGSqSS_13sessionConfigCSo25NSURLSessionConfiguration17requestSerializerPS_17RequestSerializer_18responseSerializerPS_18ResponseSerializer__S0_">
+                    <a name="//apple_ref/swift/Method/init(baseURL:sessionConfig:requestSerializer:responseSerializer:)" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4HttpcFMS0_FT7baseURLGSqSS_13sessionConfigCSo25NSURLSessionConfiguration17requestSerializerPS_17RequestSerializer_18responseSerializerPS_18ResponseSerializer__S0_">init(baseURL:sessionConfig:requestSerializer:responseSerializer:)</a>
                     </code>
                   </div>
@@ -111,15 +141,15 @@
                       <div class="pointy-thing"></div>
                       <div class="abstract">
                         <p class="para">Initialize an HTTP object</p>
+                        <a href="Classes/Http/init(baseURL:sessionConfig:requestSerializer:responseSerializer:).html" class="see-more">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public init(baseURL: String? = default, sessionConfig: NSURLSessionConfiguration = default, requestSerializer: RequestSerializer = default, responseSerializer: ResponseSerializer = default)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">baseURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">sessionConfig</span><span class="p">:</span> <span class="kt">NSURLSessionConfiguration</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">requestSerializer</span><span class="p">:</span> <span class="kt">RequestSerializer</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">ResponseSerializer</span> <span class="o">=</span> <span class="k">default</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -187,8 +217,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF97requestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF97requestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">request(_:parameters:method:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF97requestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/request(_:parameters:method:credential:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF97requestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">request(_:parameters:method:credential:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -203,9 +234,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>private func request(url: String, parameters: [String : AnyObject]? = default, method: HttpMethod, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HttpMethod</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -269,8 +299,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF911fileRequestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod4typeOS_15FileRequestType8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF911fileRequestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod4typeOS_15FileRequestType8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">fileRequest(_:parameters:method:type:progress:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF911fileRequestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod10credentialGSqCSo15NSURLCredential_4typeOS_15FileRequestType8progressGSqFTVSs5Int64S6_S6__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/fileRequest(_:parameters:method:credential:type:progress:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4HttpP33_7104E9FB44840040724975D456D57CF911fileRequestFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod10credentialGSqCSo15NSURLCredential_4typeOS_15FileRequestType8progressGSqFTVSs5Int64S6_S6__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">fileRequest(_:parameters:method:credential:type:progress:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -285,9 +316,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>private func fileRequest(url: String, parameters: [String : AnyObject]? = default, method: HttpMethod, type: FileRequestType, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">fileRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HttpMethod</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">FileRequestType</span><span class="p">,</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">ProgressBlock</span><span class="p">?,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -375,8 +405,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http3GETFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http3GETFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">GET(_:parameters:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http3GETFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/GET(_:parameters:credential:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http3GETFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">GET(_:parameters:credential:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -391,9 +422,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func GET(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="kt">GET</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -427,6 +457,18 @@
                             <tr>
                               <td scope="row">
                                 <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
                                 <em class="term">completionHandler</em>
                                 </code>
                               </td>
@@ -445,8 +487,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http4POSTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http4POSTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">POST(_:parameters:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http4POSTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/POST(_:parameters:credential:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http4POSTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">POST(_:parameters:credential:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -461,9 +504,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func POST(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="kt">POST</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -497,6 +539,18 @@
                             <tr>
                               <td scope="row">
                                 <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
                                 <em class="term">completionHandler</em>
                                 </code>
                               </td>
@@ -515,8 +569,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http3PUTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http3PUTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">PUT(_:parameters:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http3PUTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/PUT(_:parameters:credential:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http3PUTFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">PUT(_:parameters:credential:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -531,9 +586,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func PUT(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="kt">PUT</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -567,6 +621,18 @@
                             <tr>
                               <td scope="row">
                                 <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
                                 <em class="term">completionHandler</em>
                                 </code>
                               </td>
@@ -585,8 +651,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http6DELETEFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6DELETEFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">DELETE(_:parameters:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http6DELETEFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/DELETE(_:parameters:credential:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6DELETEFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">DELETE(_:parameters:credential:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -601,9 +668,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func DELETE(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="kt">DELETE</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -637,6 +703,18 @@
                             <tr>
                               <td scope="row">
                                 <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
                                 <em class="term">completionHandler</em>
                                 </code>
                               </td>
@@ -655,8 +733,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http4HEADFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http4HEADFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">HEAD(_:parameters:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http4HEADFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/HEAD(_:parameters:credential:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http4HEADFS0_FTSS10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">HEAD(_:parameters:credential:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -671,9 +750,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func HEAD(url: String, parameters: [String : AnyObject]? = default, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="kt">HEAD</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -707,6 +785,18 @@
                             <tr>
                               <td scope="row">
                                 <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
                                 <em class="term">completionHandler</em>
                                 </code>
                               </td>
@@ -725,8 +815,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http8downloadFS0_FTSS20destinationDirectoryGSqSS_10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S4_S4__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http8downloadFS0_FTSS20destinationDirectoryGSqSS_10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S4_S4__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">download(_:destinationDirectory:parameters:method:progress:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http8downloadFS0_FTSS20destinationDirectoryGSqSS_10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/download(_:destinationDirectory:parameters:credential:method:progress:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http8downloadFS0_FTSS20destinationDirectoryGSqSS_10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS2___GSqCSo7NSError__T__T_">download(_:destinationDirectory:parameters:credential:method:progress:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -741,9 +832,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func download(url: String, destinationDirectory: String? = default, parameters: [String : AnyObject]? = default, method: HttpMethod = default, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">destinationDirectory</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HttpMethod</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">ProgressBlock</span><span class="p">?,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -770,7 +860,7 @@
                               </td>
                               <td>
                                 <div class="definition">
-                                  <p class="para">the destination directory where the file would be stored, if not specified application&#39;s default &#39;.Documents&#39; directory would be used</p>
+                                  <p class="para">the destination directory where the file would be stored, if not specified application&rsquo;s default &rsquo;.Documents&rsquo; directory would be used</p>
                                 </div>
                               </td>
                             </tr>
@@ -783,6 +873,18 @@
                               <td>
                                 <div class="definition">
                                   <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
                                 </div>
                               </td>
                             </tr>
@@ -831,8 +933,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4fileCSo5NSURL10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4fileCSo5NSURL10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:file:parameters:method:progress:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4fileCSo5NSURL10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_6methodOS_10HttpMethod8progressGSqFTVSs5Int64S6_S6__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/upload(_:file:parameters:credential:method:progress:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4fileCSo5NSURL10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_6methodOS_10HttpMethod8progressGSqFTVSs5Int64S6_S6__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:file:parameters:credential:method:progress:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -847,9 +950,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func upload(url: String, file: NSURL, parameters: [String : AnyObject]? = default, method: HttpMethod = default, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">upload</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">file</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HttpMethod</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">ProgressBlock</span><span class="p">?,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -895,6 +997,18 @@
                             <tr>
                               <td scope="row">
                                 <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
                                 <em class="term">method</em>
                                 </code>
                               </td>
@@ -937,8 +1051,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4dataCSo6NSData10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4dataCSo6NSData10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:data:parameters:method:progress:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4dataCSo6NSData10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_6methodOS_10HttpMethod8progressGSqFTVSs5Int64S6_S6__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/upload(_:data:parameters:credential:method:progress:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS4dataCSo6NSData10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_6methodOS_10HttpMethod8progressGSqFTVSs5Int64S6_S6__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:data:parameters:credential:method:progress:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -953,9 +1068,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func upload(url: String, data: NSData, parameters: [String : AnyObject]? = default, method: HttpMethod = default, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">upload</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">NSData</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HttpMethod</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">ProgressBlock</span><span class="p">?,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -1001,6 +1115,18 @@
                             <tr>
                               <td scope="row">
                                 <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
                                 <em class="term">method</em>
                                 </code>
                               </td>
@@ -1043,8 +1169,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS6streamCSo13NSInputStream10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
-                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS6streamCSo13NSInputStream10parametersGSqGVSs10DictionarySSPSs9AnyObject___6methodOS_10HttpMethod8progressGSqFTVSs5Int64S5_S5__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:stream:parameters:method:progress:completionHandler:)</a>
+                    <a name="/s:FC12AeroGearHttp4Http6uploadFS0_FTSS6streamCSo13NSInputStream10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_6methodOS_10HttpMethod8progressGSqFTVSs5Int64S6_S6__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/upload(_:stream:parameters:credential:method:progress:completionHandler:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC12AeroGearHttp4Http6uploadFS0_FTSS6streamCSo13NSInputStream10parametersGSqGVSs10DictionarySSPSs9AnyObject___10credentialGSqCSo15NSURLCredential_6methodOS_10HttpMethod8progressGSqFTVSs5Int64S6_S6__T__17completionHandlerFTGSqPS3___GSqCSo7NSError__T__T_">upload(_:stream:parameters:credential:method:progress:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1059,9 +1186,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func upload(url: String, stream: NSInputStream, parameters: [String : AnyObject]? = default, method: HttpMethod = default, progress: ProgressBlock?, completionHandler: CompletionBlock)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">upload</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">NSInputStream</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">NSURLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HttpMethod</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">ProgressBlock</span><span class="p">?,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">CompletionBlock</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -1101,6 +1227,18 @@
                               <td>
                                 <div class="definition">
                                   <p class="para">the request parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">credential</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)</p>
                                 </div>
                               </td>
                             </tr>
@@ -1151,8 +1289,8 @@
           </section>
         </section>
         <section id="footer">
-          <p class="copyright">&copy; 2014 <a class="link" href="http://www.aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-11-07)</p>
-          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.12</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p class="copyright">&copy; 2014 <a class="link" href="https://aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-12-17)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.16</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
