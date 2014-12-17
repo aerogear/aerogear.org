@@ -67,7 +67,95 @@
   url: qmx.me
   location-city: Sao Paulo
   location-country: Brazil
-  description: developer, bassist, dad, not-dumb-christian, urban cyclist, geek, teacher, JRuby & other JVM-based langs freak, table tennis n00b - dynjs creator - 3 coffee
+  description: Developer, bassist, dad, not-dumb-christian, urban cyclist, geek, teacher, JRuby & other JVM-based langs freak, table tennis n00b - dynjs creator - 3 coffee
+
+
+- name: Daniel Passos
+  github: danielpassos
+  update-date: Wed, 17 Dec 2014 14:37:46 EST
+  update-description: <a href="https://github.com/danielpassos">danielpassos</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-android-cookbook/pull/24#issuecomment-67379867" title="Wearnorris">aerogear/aerogear-android-cookbook#24</a>
+  avatar: https://avatars1.githubusercontent.com/u/13337?v=3&s=100
+  url: passos.me
+  location-city: Rio de Janeiro
+  location-country: Brazil
+  description: I'm Daniel Passos from Rio de Janeiro, Brazil. I'm a Senior Software Engineer at Red Hat and DJ on my spare time. Passionate about radicals sports, love travelling and discovering new places
+
+
+- name: Erik Jan de Wit
+  github: edewit
+  update-date: Wed, 17 Dec 2014 14:37:46 EST
+  update-description: <a href="https://github.com/edewit">edewit</a> <span>pushed</span> to <a href="/edewit/aerogear-windows-oauth2/tree/master">master</a> at <a href="https://github.com/edewit/aerogear-windows-oauth2" class="css-truncate css-truncate-target">edewit/aerogear-windows-oauth2</a>
+  avatar: https://avatars2.githubusercontent.com/u/51133?v=3&s=100
+  url: blog.nerdin.ch
+  location-city: Zürich
+  location-country: Switzerland
+  description: Works at Red Hat, lives in Zwitserland. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+
+
+- name: Lukáš Fryč
+  github: lfryc
+  update-date: Wed, 17 Dec 2014 14:37:46 EST
+  update-description: <a href="https://github.com/lfryc">lfryc</a> <span>pushed</span> to <a href="/lfryc/aerogear.org/tree/new-design">new-design</a> at <a href="https://github.com/lfryc/aerogear.org" class="css-truncate css-truncate-target">lfryc/aerogear.org</a>
+  avatar: https://avatars3.githubusercontent.com/u/425792?v=3&s=100
+  url: lukas.fryc.eu
+  location-city: Brno
+  location-country: Czech Republic
+  description: Frontend master and a testing geek, an open source addicted father, runner, climber and Red Hatter.
+
+- name: Lucas Holmquist
+  github: lholmquist
+  update-date: Wed, 17 Dec 2014 14:37:46 EST
+  update-description: <a href="https://github.com/lholmquist">lholmquist</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-android-cookbook/pull/25#issuecomment-67385582" title="Update readme">aerogear/aerogear-android-cookbook#25</a>
+  avatar: https://avatars3.githubusercontent.com/u/1037138?v=3&s=100
+  url: lholmquist.org
+  location-city: NY
+  location-country: USA
+  description: Works at Red Hat, lives in NY. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+
+
+- name: Matthias Wessendorf
+  github: matzew
+  update-date: Wed, 17 Dec 2014 14:37:46 EST
+  update-description: <a href="https://github.com/matzew">matzew</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/384#issuecomment-67341965" title="Adjust visual style of the login screen">aerogear/aerogear-unifiedpush-server#384</a>
+  avatar: https://avatars3.githubusercontent.com/u/157646?v=3&s=100
+  url: matthiaswessendorf.wordpress.com/
+  location-city: Emsdetten
+  location-country: Germany
+  description: Specialties:iOS, WebSocket, HTML5, JMS, Stomp, AMQP, XMPP, Apache, ASF, Java EE 6, JSF 2.0, CDI, JPA, ADF Faces, Apache MyFaces, Apache MyFaces Trinidad, RIA, Rich-Internet-Applications, Server-side-push, .NET, Node.js
+
+
+- name: Sebastien Blanc
+  github: sebastienblanc
+  update-date: Wed, 17 Dec 2014 14:37:46 EST
+  update-description: <a href="https://github.com/sebastienblanc">sebastienblanc</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/460#issuecomment-67167202" title="removed 'old' liquibase scripts and ...">aerogear/aerogear-unifiedpush-server#460</a>
+  avatar: https://avatars2.githubusercontent.com/u/335133?v=3&s=100
+  url: sblanc.org/
+  location-city: City
+  location-country: Germany
+  description: Works at Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+
+- name: Hoyt Summers Pittman
+  github: secondsun
+  update-date: Wed, 17 Dec 2014 14:37:46 EST
+  update-description: <a href="https://github.com/secondsun">secondsun</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-android-cookbook/pull/24#issuecomment-67370342" title="Wearnorris">aerogear/aerogear-android-cookbook#24</a>
+  avatar: https://avatars3.githubusercontent.com/u/2413816?v=3&s=100
+  url: blog.sagaoftherealms.net
+  location-city: Atlanta
+  location-country: USA
+  description: Works at Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+
+
+- name: Andres Galante
+  github: andresgalante
+  update-date: Wed, 17 Dec 2014 14:37:46 EST
+  update-description: <a href="https://github.com/andresgalante">andresgalante</a> <span>pushed</span> to <a href="/andresgalante/aerogear.org/tree/new-design">new-design</a> at <a href="https://github.com/andresgalante/aerogear.org" class="css-truncate css-truncate-target">andresgalante/aerogear.org</a>
+  avatar: https://avatars2.githubusercontent.com/u/1832037?v=3&s=100
+  url: andresgalante.com
+  location-city: Buenos Aires
+  location-country: Argentina
+  description: Works at Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+
+
 
 
 
