@@ -3,7 +3,19 @@
   <head>
     <title>AeroGearHttp  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
+    <script type="text/javascript">
+    window.jazzy = {'docset': false}
+    if (typeof window.dash != 'undefined') {
+      document.documentElement.className += ' dash'
+      window.jazzy.docset = true
+    }
+    if (navigator.userAgent.match(/xcode/i)) {
+      document.documentElement.className += ' xcode'
+      window.jazzy.docset = true
+    }
+    </script>
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
   </head>
@@ -11,14 +23,14 @@
     <a title="AeroGearHttp  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p class="header-text"><a href="#">AeroGearHttp Docs</a></p>
+        <p class="header-text"><a href="index.html">AeroGearHttp Docs</a> </p>
         <p id="header-links"><a href="https://github.com/aerogear/aerogear-ios-http"><img id="header-icon" src="img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
       </div>
     </header>
     <section id="valence">
       <div class="content-wrapper">
         <p id="hierarchial_navigation">
-        <a href="#" id="design_resources_link">AeroGearHttp Reference</a>
+        <a href="index.html" id="design_resources_link">AeroGearHttp Reference</a>
         <img id="carat" src="img/carat.png" height="10px" width="6px" />
         AeroGearHttp  Reference
         </p>
@@ -47,6 +59,23 @@
               </li>
               <li class="nav-chapter">
                 <a href="Classes.html#/s:C12AeroGearHttp21JsonRequestSerializer">JsonRequestSerializer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="Global Variables.html">Global Variables</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="Global Variables.html#/s:v12AeroGearHttp36HttpResponseSerializationErrorDomainSS">HttpResponseSerializationErrorDomain</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="Global Variables.html#/s:v12AeroGearHttp45NetworkingOperationFailingURLResponseErrorKeySS">NetworkingOperationFailingURLResponseErrorKey</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="Global Variables.html#/s:v12AeroGearHttp15HttpErrorDomainSS">HttpErrorDomain</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="Global Variables.html#/s:v12AeroGearHttp44NetworkingOperationFailingURLRequestErrorKeySS">NetworkingOperationFailingURLRequestErrorKey</a>
               </li>
             </ul>
           </li>
@@ -87,12 +116,104 @@
         <h1 class="chapter-name">AeroGearHttp</h1>
         <section>
           <section class="section">
-            <p class="para">This is the index page for AeroGearHttp docs. Navigate using the links on the left.</p>
+            <div class='readme'><a href='#aerogear_ios_http_a_href_https_travis_ci_org_aerogear_aerogear_ios_http_img_src_https_travis_ci_org_aerogear_aerogear_ios_http_png_alt_build_status_a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='aerogear_ios_http_a_href_https_travis_ci_org_aerogear_aerogear_ios_http_img_src_https_travis_ci_org_aerogear_aerogear_ios_http_png_alt_build_status_a'>aerogear-ios-http  <a href="https://travis-ci.org/aerogear/aerogear-ios-http"><img src="https://travis-ci.org/aerogear/aerogear-ios-http.png" alt="Build Status"></a></h1>
+<p class="para">Thin layer to take care of your http requests working with NSURLSession. 
+Taking care of: </p>
+<ul>
+<li>Json serializer</li>
+<li>Multipart upload</li>
+<li>HTTP Basic/Digest authentication support</li>
+<li>Pluggable object serialization</li>
+</ul>
+<p class="para">100% Swift.</p><a href='#example_usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example_usage'>Example Usage</h2>
+<p class="para">To perform an HTTP request use the convenient methods found in the Http object. Here is an example usage:</p><pre class="highlight swift"><code><span class="k">let</span> <span class="nv">http</span> <span class="o">=</span> <span class="kt">Http</span><span class="p">(</span><span class="nv">baseURL</span><span class="p">:</span> <span class="s">"http://server.com"</span><span class="p">)</span>
+
+<span class="n">http</span><span class="o">.</span><span class="kt">GET</span><span class="p">(</span><span class="s">"/get"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{(</span><span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+     <span class="c1">// handle response
+</span><span class="p">})</span>
+
+<span class="n">http</span><span class="o">.</span><span class="kt">POST</span><span class="p">(</span><span class="s">"/post"</span><span class="p">,</span>  <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">],</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{(</span><span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+     <span class="c1">// handle response
+</span><span class="p">})</span>
+<span class="o">...</span>
+
+
+</code></pre>
+<a href='#authentication' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='authentication'>Authentication</h3>
+<p class="para">The library also leverages the build-in foundation support for http/digest authentication and exposes a convenient interface by allowing the credential object to be passed on the request. Here is an example:</p>
+<blockquote>
+<p class="para"><strong>NOTE:</strong>  It is advised that HTTPS should be used when performing authentication of this type</p></blockquote>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">credential</span> <span class="o">=</span> <span class="kt">NSURLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="s">"john"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"pass"</span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="kt">None</span><span class="p">)</span>
+
+<span class="n">http</span><span class="o">.</span><span class="kt">GET</span><span class="p">(</span><span class="s">"/protected/endpoint"</span><span class="p">,</span> <span class="nv">credential</span><span class="p">:</span> <span class="n">credential</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{(</span><span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+   <span class="c1">// handle response
+</span><span class="p">})</span>
+</code></pre>
+<p class="para"> You can also set a credential per protection space, so it&rsquo;s automatically picked up once http challenge is requested by the server, thus omitting the need to pass the credential on each request. In this case, you must initialize the <code>Http</code> object with a custom session configuration object, that has its credentials storage initialized with your credentials:</p><pre class="highlight swift"><code><span class="c1">// create a protection space
+</span><span class="k">var</span> <span class="nv">protectionSpace</span><span class="p">:</span> <span class="kt">NSURLProtectionSpace</span> <span class="o">=</span> <span class="kt">NSURLProtectionSpace</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="s">"httpbin.org"</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="mi">443</span><span class="p">,</span><span class="err">`</span><span class="kd">protocol</span><span class="err">`</span><span class="p">:</span> <span class="kt">NSURLProtectionSpaceHTTPS</span><span class="p">,</span> <span class="nv">realm</span><span class="p">:</span> <span class="s">"me@kennethreitz.com"</span><span class="p">,</span> <span class="nv">authenticationMethod</span><span class="p">:</span> <span class="kt">NSURLAuthenticationMethodHTTPDigest</span><span class="p">);</span>
+
+<span class="c1">// setup credential
+// notice that we use '.ForSession' type otherwise credential storage will discard and
+// won't save it when doing 'credentialStorage.setDefaultCredential' later on
+</span><span class="k">let</span> <span class="nv">credential</span> <span class="o">=</span> <span class="kt">NSURLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="n">password</span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="kt">ForSession</span><span class="p">)</span>
+
+<span class="c1">// assign it to credential storage
+</span><span class="k">var</span> <span class="nv">credentialStorage</span><span class="p">:</span> <span class="kt">NSURLCredentialStorage</span> <span class="o">=</span> <span class="kt">NSURLCredentialStorage</span><span class="o">.</span><span class="nf">sharedCredentialStorage</span><span class="p">()</span>
+<span class="n">credentialStorage</span><span class="o">.</span><span class="nf">setDefaultCredential</span><span class="p">(</span><span class="n">credential</span><span class="p">,</span> <span class="nv">forProtectionSpace</span><span class="p">:</span> <span class="n">protectionSpace</span><span class="p">);</span>
+
+<span class="c1">// set up default configuration and assign credential storage
+</span><span class="k">var</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="kt">NSURLSessionConfiguration</span><span class="o">.</span><span class="nf">defaultSessionConfiguration</span><span class="p">()</span>
+<span class="n">configuration</span><span class="o">.</span><span class="kt">URLCredentialStorage</span> <span class="o">=</span> <span class="n">credentialStorage</span>
+
+<span class="c1">// assign custom configuration to Http
+</span><span class="k">var</span> <span class="nv">http</span> <span class="o">=</span> <span class="kt">Http</span><span class="p">(</span><span class="nv">baseURL</span><span class="p">:</span> <span class="s">"http://httpbin.org"</span><span class="p">,</span> <span class="nv">sessionConfig</span><span class="p">:</span> <span class="n">configuration</span><span class="p">)</span>
+
+<span class="n">http</span><span class="o">.</span><span class="kt">GET</span><span class="p">(</span><span class="s">"/protected/endpoint"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{(</span><span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+   <span class="c1">// handle response
+</span><span class="p">})</span>
+</code></pre>
+<a href='#oauth2_protocol_support' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='oauth2_protocol_support'>OAuth2 Protocol Support</h3>
+<p class="para">To support the OAuth2 protocol, we have created a separate library <a href="https://github.com/aerogear/aerogear-ios-oauth2">aerogear-ios-oauth2</a> that can be easily integrated, in order to provide  out-of-the-box support for communicated with OAuth2 protected endpoints. Please have a look at the <q>Http and OAuth2Module</q> section on our <a href="http://aerogear.org/docs/guides/aerogear-ios-2.X/Authorization/">documentation page</a> for more information. </p><p class="para">Do you want to try it on your end? Follow next section steps.</p>
+<blockquote>
+<p class="para"><strong>NOTE:</strong>  The library has been tested with Xcode 6.1.1</p></blockquote>
+<a href='#build_test_and_play_with_aerogear_ios_http' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='build_test_and_play_with_aerogear_ios_http'>Build, test and play with aerogear-ios-http</h3>
+
+<ol>
+<li><p class="para">Clone this project</p></li>
+<li><p class="para">Get the dependencies</p></li>
+</ol>
+<p class="para">The project uses <a href="https://github.com/aerogear/aerogear-ios-httpstub">aerogear-ios-httpstub</a> framework for stubbing its http network requests and utilizes <a href="http://cocoapods.org">cocoapods</a> for handling it&rsquo;s dependencies. On the root directory of the project run:</p><pre class="highlight shell"><code>bundle install
+bundle <span class="nb">exec </span>pod install
+</code></pre>
+
+<ol>
+<li>open AeroGearHttp.xcworkspace</li>
+</ol>
+<a href='#adding_the_library_to_your_project' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='adding_the_library_to_your_project'>Adding the library to your project</h2>
+<p class="para">To add the library in your project, you can either use <a href="http://cocoapods.org">Cocoapods</a> or simply drag the library in your project. See the respective sections below for instructions</p><a href='#using_a_href_http_cocoapods_org_cocoapods_a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using_a_href_http_cocoapods_org_cocoapods_a'>Using <a href="http://cocoapods.org">Cocoapods</a></h3>
+<p class="para">At this time, Cocoapods support for Swift frameworks is supported in a preview <a href="https://github.com/CocoaPods/CocoaPods/tree/swift">branch</a> but tests shown that it&rsquo;s pretty stable to use. Simply <a href="http://swiftwala.com/cocoapods-is-ready-for-swift/">include a Gemfile</a> in your project pointing to that branch and in your <code>Podfile</code> add:</p><pre class="highlight plaintext"><code>pod 'AeroGearHttp'
+</code></pre>
+<p class="para">and then:</p><pre class="highlight shell"><code>bundle install
+bundle <span class="nb">exec </span>pod install
+</code></pre>
+<p class="para">to install your dependencies</p><a href='#drag_the_library_in_your_project' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='drag_the_library_in_your_project'>Drag the library in your project</h3>
+<p class="para">Follow these steps to add the library in your Swift project.</p>
+<ol>
+<li><a href="#1-clone-this-repository">Clone this repository</a></li>
+<li><a href="#2-add-aerogearhttp-xcodeproj-to-your-application-target">Add <code>AeroGearHttp.xcodeproj</code> to your application target</a></li>
+<li>Start writing your app!</li>
+</ol>
+<a href='#1_clone_this_repository' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='1_clone_this_repository'>1. Clone this repository</h4>
+<pre class="highlight plaintext"><code>git clone git@github.com:aerogear/aerogear-ios-http.git
+</code></pre>
+<a href='#2_add_code_aerogearhttp_xcodeproj_code_to_your_application_target' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='2_add_code_aerogearhttp_xcodeproj_code_to_your_application_target'>2. Add <code>AeroGearHttp.xcodeproj</code> to your application target</h4>
+<p class="para">Right-click on the group containing your application target and select <code>Add Files To YourApp</code>
+Next, select <code>AeroGearHttp.xcodeproj</code>, which you downloaded in step 1.</p><p class="para">If you run into any problems, please <a href="http://issues.jboss.org/browse/AEROGEAR">file an issue</a> and/or ask our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-users">user mailing list</a>. You can also join our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">dev mailing list</a>.  </p></div>
           </section>
         </section>
         <section id="footer">
-          <p class="copyright">&copy; 2014 <a class="link" href="http://www.aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-11-07)</p>
-          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.12</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p class="copyright">&copy; 2014 <a class="link" href="https://aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-12-17)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.16</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
