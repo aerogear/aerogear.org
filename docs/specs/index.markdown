@@ -8,11 +8,13 @@ title: Specifications
 #### Client Library Specifications
 
 * [AeroGear JS 2.0.0](aerogear-js)
-* [AeroGear iOS Http v0.1](aerogear-ios-http)
-* [AeroGear iOS Oauth2 v0.1](aerogear-ios-oauth2)
-* [AeroGear-Push iOS 1.0.0](aerogear-ios-push)
-* [AeroGear-OTP iOS 1.0.0](aerogear-otp-ios)
-* [AeroGear-Crypto iOS 0.2.3](aerogear-ios-crypto)
+* [AeroGear iOS Http 0.2.0](aerogear-ios-http)
+* [AeroGear iOS OAuth2 0.2.0](aerogear-ios-oauth2)
+* [AeroGear iOS JsonSZ 0.1.0](aerogear-ios-jsonsz)
+* [AeroGear iOS HttpStub 0.2.0](aerogear-ios-httpstub)
+* [AeroGear-iOS Push 1.0.0](aerogear-ios-push)
+* [AeroGear-iOS OTP 1.0.0](aerogear-otp-ios)
+* [AeroGear-iOS Crypto 0.2.3](aerogear-ios-crypto)
 * [AeroGear Android 1.4.0](aerogear-android)
 * [AeroGear Android Auth 2.0.0-alpha.1](/docs/specs/aerogear-android-auth/)
 * [AeroGear Android Authz 2.0.0-alpha.1](/docs/specs/aerogear-android-authz/)
