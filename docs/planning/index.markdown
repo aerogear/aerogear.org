@@ -1,9 +1,15 @@
 ---
-layout: basic
+layout: base
 title: Road Map
+nav-active-docs: active
+section-title: Road Map
+section-description:  List of the planed feature for the AeroGear project
+section-class: docs
 ---
 
-## Feature Roadmap
+
+
+needs work :)
 
 Below is a list of the planed feature for the AeroGear project.
 

@@ -139,57 +139,21 @@ nav-active-home: active
             <h3 class="sub-section-header">Contributors ativity</h3>
             
               <ul class="media-list contributor-feed">
-              
+
+              {% for member in site.data.team limit:4 %}
                 <li class="media" itemscope itemtype="http://schema.org/Person">
-                  <a class="media-left" href="#">
-                    <img src="http://placehold.it/50x50" itemprop="image" alt="name" width="50">
+                  <a class="media-left" href="/community/index.html#team">
+                    <img src="{{ member.avatar }}" itemprop="image" alt="{{ member.name }}">
                   </a>
                   <div class="media-body">
                     <div class="contributor-info">
-                      <h5 itemprop="name">Andres Galante</h5>
-                      <p>andresgalante</p>
+                      <h5 itemprop="name">{{ member.name }}</h5>
+                      <p><a href="https://github.com/{{ member.github }}"><i class="fa fa-github-alt"></i> {{ member.github }}</a></p>
                     </div><!-- contributor-info -->                  
                   </div><!-- media-body -->
                 </li><!-- media contributor -->
-
-                <li class="media" itemscope itemtype="http://schema.org/Person">
-                  <a class="media-left" href="#">
-                    <img src="http://placehold.it/50x50" itemprop="image" alt="name">
-                  </a>
-                  <div class="media-body">
-                    <div class="contributor-info">
-                      <h5 itemprop="name">Andres Galante</h5>
-                      <p>andresgalante</p>
-                    </div><!-- contributor-info -->                  
-                  </div><!-- media-body -->
-                </li><!-- media contributor -->
-
-
-                <li class="media" itemscope itemtype="http://schema.org/Person">
-                  <a class="media-left" href="#">
-                    <img src="http://placehold.it/50x50" itemprop="image" alt="name">
-                  </a>
-                  <div class="media-body">
-                    <div class="contributor-info">
-                      <h5 itemprop="name">Andres Galante</h5>
-                      <p>andresgalante</p>
-                    </div><!-- contributor-info -->                  
-                  </div><!-- media-body -->
-                </li><!-- media contributor -->
-
-
-                <li class="media" itemscope itemtype="http://schema.org/Person">
-                  <a class="media-left" href="#">
-                    <img src="http://placehold.it/50x50" itemprop="image" alt="name">
-                  </a>
-                  <div class="media-body">
-                    <div class="contributor-info">
-                      <h5 itemprop="name">Andres Galante</h5>
-                      <p>andresgalante</p>
-                    </div><!-- contributor-info -->                  
-                  </div><!-- media-body -->
-                </li><!-- media contributor -->
-              </ul><!-- contributor-feed -->
+              {% endfor %}
+            </ul><!-- contributor-feed -->
                 
             <p><a href="#" class="btn btn-primary"><i class="fa fa-user"></i> View all Contributor</a></p>
                 

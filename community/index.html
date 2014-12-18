@@ -24,14 +24,14 @@ section-class: community
           {% for member in site.data.team %}
           <div class="media user" itemscope itemtype="http://schema.org/Person">
             
-            <div class="media-left" href="#">
+            <div class="media-left">
               <img src="{{ member.avatar }}" itemprop="image" alt="{{ member.name }}">
             </div><!-- img -->
                 
             <div class="media-body">
               <div class="user-info">
                 <a href="https://{{ member.url }}" itemprop="url"><i class="fa fa-globe"></i> {{ member.url }}</a>
-                <a href="https://github.com/{{ member.github }}"<i class="fa fa-github-alt"></i> {{ member.github }}</a>
+                <a href="https://github.com/{{ member.github }}"><i class="fa fa-github-alt"></i> {{ member.github }}</a>
               </div><!-- user-contact -->
                   
               <h4 class="media-heading" itemprop="name">{{ member.name }}</h4>
@@ -65,7 +65,7 @@ section-class: community
 
             {% for contributor in site.data.contributors %}
             <li class="media" itemscope itemtype="http://schema.org/Person">
-              <div class="media-left" href="#">
+              <div class="media-left">
                 <img src="{{ contributor.avatar }}" itemprop="image">
               </div>
               

@@ -1,0 +1,215 @@
+---
+layout: basic
+title: UnifiedPush Server - Using the Admin UI
+---
+:toc:
+toc::[]
+
+
+Using the Admin UI
+------------------
+
+The UnifiedPush Server can be accessed via its RESTful endpoints, as well over an administrative user interface.
+
+Admin and Developer accounts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once installed, the UnifiedPush Server comes with two different account types:
+
+* a single +admin+ user
+* an initial +developer+ account
+
+The difference between the +admin+ and +developer+ account types is that the former can access all PushApplications and Variants configured on the server, whereas the latter has access only to the PushApplications and Variants created by the actual user. Further, the administration of the UnifiedPush Server, as well as management of it's users in the **Keycloak Admin Console**, can only be performed by the +admin+.
+
+IMPORTANT: By default the +developer+ account is disabled and needs to be explicitly enabled by the +admin+ inside of the link:../server-administration/#_enabling_the_default_developer_account[Keycloak Admin Console]!
+
+Login and landing page
+~~~~~~~~~~~~~~~~~~~~~~
+
+Once you have the UnifiedPush Server running, whether on link:../openshift[Openshift] or link:../server-installation[standalone], it is time to open the _AdminUI_, by accessing +http(s)://SERVER:PORT/ag-push+ in your browser. You are prompted by a login dialog:
+
+image::./img/login.png[Login to the UnifiedPush Server]
+
+The default credentials for the _admin_ are +admin+/+123+. On the very first login you are asked to update the password. It is a wise idea to change it to something completely different:
+
+image::img/update_password.png[Update Password]
+
+After applying the new password you are able to use the AdminUI of the UnifiedPush Server. The Dashboard is welcoming you:
+
+image::./img/landing_page.png[The Dashboard]
+
+Account Management
+~~~~~~~~~~~~~~~~~~
+
+To manage some details on your account, you need to click on the +username+ (_admin_ in this case) in the right hand corner of the screen. This opens a context menu where you click on +Account Management+:
+
+image::./img/account_management_start.png[Go to the Account Management page]
+
+This brings you to the page where you can configure details about your account. The first option allows you to provide additional information like your name and your email address:
+
+image::./img/account_management_details.png[Account Details]
+
+The next section allows you to update your current password.
+
+IMPORTANT: Please make sure to pick a _**strong password**_, see the +admin+ user as the +root+ on your machine...
+
+image::./img/account_management_password.png[Password Details]
+
+It is also possible to use the link:http://code.google.com/p/google-authenticator/[Google Authenticator app] as an additional security mechanism for your login:
+
+image::./img/account_management_authenticator.png[Setup an authenticator]
+
+Last but not least there is an overview of all OAuth client sessions that are currently active. If the session is connected via a browser the only information that is presented in the table below is the IP address of the client:
+
+image::./img/account_management_sessions.png[List of OAuth client sessions]
+
+To go back to the UnifiedPush AdminUI click the marked link on the right corner, this performs a redirect to the previous landing page:
+
+image::./img/account_management_end.png[Going back to the UnifiedPush AdminUI]
+
+Create and Manage PushApplication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To be able to use the UnifiedPush Server for your mobile development you need to create a PushApplication, which is a logical construct that represents an overall mobile application for different mobile platforms, called Variants. In the Navigation panel, the +Applications+ icon brings you to the management section for PushApplications:
+
+image::./img/applications_start.png[Manage your PushApplications]
+
+To create a new one, click the +Create Application+ button which brings up a dialog to provide a name and an optional description:
+
+image::./img/applications_create.png[Create Application]
+
+Once you are done with the above dialog, you are returned to the management section, which contains a list of all existing PushApplications. The one here is brand new and has no variants (nor any activity....):
+
+image::./img/applications_created.png[Manage your PushApplications]
+
+In case you want to rename or even delete a PushApplication click on the little gear icon, which offers you a context menu to do so:
+
+image::./img/applications_edit.png[Edit your PushApplication]
+
+Create and Manage Variants
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Since the PushApplication is a container for different platforms you need create a Variant for a specific mobile platform, like Android or iOS. For that click on the name of the PushApplication or the smaller +no variants+ link in the above screen. This brings you to the details page of the PushApplication:
+
+image::./img/applications_variant.png[PushApplication Details]
+
+Click the +Add Variant+ to open the dialog to create a Variant:
+
+image::./img/applications_variant_create.png[Create a new Variant]
+
+In this example we are creating an iOS Variant and giving it a name. Besides the name, each supported variant type contains some platform specific properties, such as a Google API key (Android) or passphrase and certificate (Apple). In this case we upload the require certificate and its passphrase for Apple's Push Notification Service.
+
+NOTE: If you are not familiar with the details of your desired mobile platform, click link:../../../unifiedpush/aerogear-push-ios/[here] for Apple's Push Notification Service or link:../../../unifiedpush/aerogear-push-android/[here] for Google's Cloud Messaging.
+
+After finishing the above dialog you are returned to the details page of the PushApplication, containing a list of existing Variants:
+
+image::./img/applications_variant_created.png[PushApplication Details with one Variants]
+
+Click on the little +++ icon so see some more details about your iOS Variant. The details page contains information that is needed inside of your (future) mobile application. It offers the +Server URL+ of the RESTful endpoint for the device registration, including the credentials (+Variant ID+ and +Secret+) for _this_ Variant:
+
+image::./img/applications_variant_details.png[Variant Details]
+
+Instead of copying and pasting the +Server URL+, +Variant ID+ and +Secret+ into your mobile application, the UnifiedPush AdminUI has a feature to generate code snippets. Clicking on the +Example implementation+ link generates platform specific code:
+
+image::./img/applications_variant_code.png[Code snippets for device registrations]
+
+This Variant is an iOS platform, therefore the code is generated for Objective-C, Swift and Apache Cordova (JavaScript).
+
+NOTE: If you are not familiar with the device registration, click link:../../../unifiedpush/aerogear-push-android/[here] for Android, link:../../../unifiedpush/aerogear-push-ios/[here] for iOS and link:../../../guides/aerogear-cordova/AerogearCordovaPush/[here] for Apache Cordova.
+
+
+Managing registered device
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once you are at the point where your device is registered with the UnifiedPush Server, refresh the details of the variant and you will notice an updated number of installations:
+
+image::./img/installations_on_variant.png[YO]
+
+Clicking on the actual number link in the image above you are getting to a list of all registered devices:
+
+image::./img/installations_and_details.png[DA]
+
+In this screen there is only one device listed and its details are expanded (see the red circle). The details show the entire +device-token+ of the device. On this screen you could also exclude a specific device from receiving Push Notifications, using the +Receiving+ toggle.
+
+Sending a Push Notification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now it is time to send a test message to the device using the +Send Push+ feature of the UnifiedPush Server! For that we select the PushApplication we would like to use:
+
+image::./img/send_push_select.png[Select the PushApplication]
+
+In the +Send Push+ dialog the +Message+ text field contains the payload to be sent out to the 3rd party Push Network:
+
+image::./img/send_push_payload.png[Enter the payload]
+
+To deliver the message click the +Send Push Notification+ button.
+
+NOTE: It is possible to filter the list of receivers, using +Alias+, +Device Types+ and +Category+. Read the link:../next/#_server_integration_tutorials[Server Integration Tutorials] for more details.
+
+If all goes well, your message will be delivered by the 3rd party Push Network to your device:
+
+image::../../../docs/unifiedpush/aerogear-push-ios/img/PushMessage.png[You got a notification!]
+
+Sending a Push Notification from code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+While sending a Push Notification from the AdminUI is a nice feature, in a real world scenario, the Push Notification is triggered by a backend, as explained in link:../next/#_server_integration_tutorials[Server Integration Tutorials].
+
+The UnifiedPush Server comes with APIs for link:../../../unifiedpush/GetStartedwithJavaSender/[Java], link:https://github.com/aerogear/aerogear-unifiedpush-nodejs-client#examples[Node.js]. Due to its RESTful architecture any backend, written in any language that supports HTTP, can link:../../../specs/aerogear-unifiedpush-rest/sender/index.html[send Push Notification requests] to it. On the details page of a PushApplication you find the required +Server URL+ and credentials (+Application ID+ and +Master Secret+).
+
+image::./img/sendJava_link.png[Link to code snippets]
+
+WARNING: Due to security reasons the +Application ID+ and the +Master Secret+ should be never stored on a mobile device! Push Notification requests should _never_ be triggered directly from a mobile device.
+
+For our supported SDKs the UnifiedPush Server has a feature to generate code snippets for the backend part as well. In the above screen, click on the +Example implementation+ link to get the code snippets:
+
+image::./img/sendJava_Code.png[The Java Sender code]
+
+The above Java code can be used in any JavaSE or JavaEE application that needs to send Push Notification requests.
+
+Dashboard
+~~~~~~~~~
+
+The Dashboard is a nice way to learn what's going on in the UnifiedPush Server. It presents a number of PushApplications, Sent Push Notifications and a total number of devices, registered with the UnifiedPush Server:
+
+image::./img/dashboard.png[Dashboard Overview]
+
+The Dashboard also has a +Warnings+ and a +Most Active+ section. The +Warnings+ area informs you if a problem occurred, while sending out the Push Notifications to the 3rd party Services. Clicking on an entry in that list provides you more details about the potential failure.
+
+The metadata is deleted after 30 days, using a nightly job within the UnifiedPush Server.
+
+Dashboard - Most Active
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The +Most Active+ section shows a recent list of PushApplications that have submitted Push Notification requests. Clicking on a PushApplication presents a list of all Push Notifications that have been sent out (in the last 30 days):
+
+image::./img/dashboard_activity.png[Push Notification Activity  List]
+
+The overview shows the number of receivers as well as the status of the delivery to the 3rd party service. To get more details about a certain Push Notification click the +++ icon:
+
+image::./img/dashboard_activity_expanded.png[Push Notification Activity Details]
+
+In the details you will see the payload of the message as well as the IP address of the sender. Clicking on the +Full Request+ link gives a even more details. The entire JSON string of the submitted Push Notification is visible:
+
+image::./img/dashboard_activity_full_message.png[The entire Push Notification payload]
+
+Here you are also able to see which supported SDK was used to send the message. In this example the message was sent from the Console of the UnifiedPush Server.
+
+Dashboard - Warnings
+^^^^^^^^^^^^^^^^^^^^
+
+The +Warnings+ section shows of a list of recent problems that occured, while sending out the Push Notifications to the 3rd party Services. Clicking on the +Activity+ for a variant shows the recent send activity:
+
+image::./img/dashboard_warnings.png[Warnings]
+
+In case of a problem the _Status_ is presented as +Failed+. To learn more about the details of the failure, open the Push Notification:
+
+image::./img/dashboard_warnings_details.png[Warnings Details]
+
+The +Reason+ underneath the actual _Push Notification_ tries to give more information about the failure reason. If the information in the AdminUI is not enough, you might need to link:../ups-debugging/##_enable_logging[enable logging].
+
+Next Steps
+~~~~~~~~~~
+
+Now that you are familiar with the AdminUI of the UnifiedPush Server, you can learn about its Administrative UI link:../server-administration[here].
+If you want to dive straight into some mobile development, you can find a list of different tutorials and guides link:../next[here].

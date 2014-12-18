@@ -77,14 +77,13 @@ $('body').scrollspy({ target: '.submenu' });
   $(".submenu").css("width", $('.submenu').width());
   
   
-  
    $('.submenu').affix({    
        offset: {
         top: function (){
-          return (this.top = $(".main-banner").outerHeight(true)+$(".aditional-actions").outerHeight(true));
+          return (this.top = $(".main-banner").outerHeight(true));
         },
         
-//        top:116,
+//        top:105,
 
         bottom: function (){
           return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));

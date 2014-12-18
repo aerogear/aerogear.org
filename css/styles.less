@@ -13,10 +13,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700,600,300,400);
 @font-family-sans-serif: 'Open Sans', sans-serif;
 
-// @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500);
-// @font-family-sans-serif: 'Roboto', sans-serif;
-
-
 @font-weight-light: 300;
 @font-weight-regular: 400;
 @font-weight-bold: 600;
@@ -268,12 +264,8 @@ footer{
 
 // section header
 .section-header{
-//  text-transform: uppercase;
-//  font-weight: @font-weight-bold;
-// border-bottom: 1px solid @gray-divider;
-//  color: @primary-color-dark;
-//  margin-bottom: 20px;
-  margin-top: 0;
+font-weight: @font-weight-regular;
+margin-top: 0;
 }
 
 .section-inverse{
@@ -376,6 +368,7 @@ footer{
 .main-banner{
   background: @primary-color;
   #gradient > .vertical(@primary-color-dark; @primary-color);
+  border-bottom: 2px solid @primary-color-dark;
   color: #fff;
   position: relative;
   
@@ -650,18 +643,24 @@ article{
 
 //submenu ==================================================================
 
-//.sidebar{
-//  @media (min-width: @screen-md-min) {
-//    }
-//}
+.sidebar{
+display: none;
+  @media (min-width: @screen-md-min) {
+    display: block;
+    }
+}
 
 .submenu.affix{
-  top: 120px!important;
+  top: 80px!important;
+  position: fixed!important;
+}
+
+.submenu.affix-bottom{
+//  top: 80px!important;
   position: fixed!important;
 }
 
 .submenu{
-padding-bottom: 60px;
   ul{
     .reset;
     list-style: none;
@@ -721,6 +720,7 @@ padding-bottom: 60px;
   .media-body{
     border-bottom: 1px solid @gray-divider;  
     padding-bottom: 9px;
+    width: 100%;
   }
   .user-info{
     float: right;
@@ -733,11 +733,15 @@ padding-bottom: 60px;
 }
 
 
-
 .contributor-feed{
   img{
     .img-circle;
     display: block;
+  }
+  
+  li img {
+    max-width: 50px;
+    max-height: 50px;
   }
   
   .media{
@@ -747,8 +751,7 @@ padding-bottom: 60px;
   
   .media-body{
     width: 100%;
-    padding: 5px 0 15px 0;
-//    height: 60px;
+    padding: 0px 0 10px 0;
     border-bottom: 1px solid @gray-divider;
   }
   h5,p{

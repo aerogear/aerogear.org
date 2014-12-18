@@ -1,0 +1,235 @@
+---
+layout: basic
+title: Your first Android/Push App
+---
+
+CAUTION: this functionality is only available on master
+
+== Your first Windows/Push App
+Now that the UnifiedPush server is up and running, time to create a sample application that will exercice AeroGear's Windows Push library support.
+
+Let's get started!
+
+== Creating the application
+Fire up Visual Studio and choose 'File'-> 'New' -> 'Project', then choose 'Blank App (Windows Phone)' on the project template dialog. Fill the 'Name' field with the name 'PushApplication'.
+
+image::./img/new-project.png[New Project]
+
+Now Visual Studio has generated a sample Windows Phone project with a default 'App' class. 
+
+image::./img/visual-studio-main.png[Visual Studio Main Screen]
+
+Now it's time to add the aerogear nuget package, right click on project in the 'Solution Explorer' and select 'Manage NuGet Packages' select online and nuget.org and search for aerogear and install to add the dependency.
+
+image::./img/nuget.png[NuGet Package]
+
+Open `MainPage.xaml` from the `Solution Explorer` and add a `ListView` to the `Grid`
+
+[source,xml]
+----
+<ListView Name="Messages" ItemsSource="{Binding messageList}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <TextBlock Text="{Binding}"/>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+----
+
+Open the `MainPage.xaml.cs` and add a field to bind the list view to:
+
+[source,csharp]
+----
+public ObservableCollection<string> messageList { get; private set; }
+public MainPage()
+{
+    messageList = new ObservableCollection<string>();
+    DataContext = this;
+----
+
+Now that we have the project set up, time to configure it to receive Push notifications. We will start first with the registration of the application with the UnifiedPush server.
+
+== Registration with the UnifiedPush server
+
+For now let's keep it simple and add the Registration logic to the MainPage before the components have initialized:
+
+[source,csharp]
+----
+using AeroGear.Push;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+
+namespace PushApplication
+{
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainPage : Page
+    {
+        public ObservableCollection<string> messageList { get; private set; }
+        public MainPage()
+        {
+            messageList = new ObservableCollection<string>();
+            DataContext = this;
+        
+            PushConfig pushConfig = new PushConfig() { UnifiedPushUri = new Uri("<the URL of the running UnifiedPush server>"), VariantId = "<Your-Variant-ID>", VariantSecret = "<Your-Variant-Secret>" };
+            Registration registration = new WnsRegistration();
+            registration.Register(pushConfig);
+
+            this.InitializeComponent();
+
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+        }
+
+        /// <summary>
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// </summary>
+        /// <param name="e">Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.</param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // TODO: Prepare page for display here.
+
+            // TODO: If your application contains multiple pages, ensure that you are
+            // handling the hardware Back button by registering for the
+            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
+            // If you are using the NavigationHelper provided by some templates,
+            // this event is handled for you.
+        }
+    }
+}
+----
+
+At the top of the file we declare the configurations params we obtained at the previous steps. The VARIANT_ID and SECRET are the id's you got after registering your Windows variant to the UnifiedPush server. Fill them with the values representing your specific configuration.
+
+[NOTE]
+Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are a very common source of problems, so please revisit them if you are experiencing problems.
+
+That is all what is needed to register with the UnifiedPush server!
+
+[NOTE]
+Notice that we didn't have to write any code to register the device with WNS. The library takes care off all the plumbing to register the device with WNS, obtain the 'channelUrl' and submit it to the UnifiedPush server.
+
+== Receiving notifications
+
+We are going to register a event handler that will display the received notification in the `ListView`. First we need to edit the app's settings.
+
+Edit App's settings
+~~~~~~~~~~~~~~~~~~~
+
+Open the _Package.appxmanifest_ and set `Toast capable` to Yes
+
+Open the _Package.appxmanifest_ in source mode (press F7) find the <Identity>' entry add the necessary app identity values you got from the Windows Dev Center in the previous step:
+
+[source,xml]
+----
+...
+<Identity Name="928pubname.PushApplication" Publisher="CN=46C334AA-C383-434A-A35E-D2C588F092D3" Version="1.0.0.0" />
+...
+----
+
+Handling notification
+~~~~~~~~~~~~~~~~~~~~~
+Create a new method, name it 'HandleNotification' and paste the following code:
+
+[source,csharp]
+----
+void HandleNotification(object sender, PushReceivedEvent e)
+{
+    Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => messageList.Add(e.Args.ToastNotification.Content.InnerText));
+}
+----
+
+Now add this method to the `PushReceivedEvent` on the `register` object the full code now looks like this:
+
+[source,csharp]
+----
+using AeroGear.Push;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+
+namespace PushApplication
+{
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainPage : Page
+    {
+        public ObservableCollection<string> messageList { get; private set; }
+        public MainPage()
+        {
+            messageList = new ObservableCollection<string>();
+            DataContext = this;
+        
+            PushConfig pushConfig = new PushConfig() { UnifiedPushUri = new Uri("<the URL of the running UnifiedPush server>"), VariantId = "<Your-Variant-ID>", VariantSecret = "<Your-Variant-Secret>" };
+            Registration registration = new WnsRegistration();
+            registration.PushReceivedEvent += HandleNotification;
+            registration.Register(pushConfig);
+
+            this.InitializeComponent();
+
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+        }
+
+        void HandleNotification(object sender, PushReceivedEvent e) //[3]
+        {
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => messageList.Add(e.Args.message));
+        }
+
+        /// <summary>
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// </summary>
+        /// <param name="e">Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.</param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // TODO: Prepare page for display here.
+
+            // TODO: If your application contains multiple pages, ensure that you are
+            // handling the hardware Back button by registering for the
+            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
+            // If you are using the NavigationHelper provided by some templates,
+            // this event is handled for you.
+        }
+    }
+}
+----
+
+In the 'HandleNotification' callback method [3] we simple extract the message payload and add it to the `messageList`.
+
+We are now ready to run the application.
+
+image::./img/app-main-screen.png[Push Application Main Screen]
+
+Now that we have our application up an running time to link:../push-notification[send messages] using the AeroGear UnifiedPush Server!
