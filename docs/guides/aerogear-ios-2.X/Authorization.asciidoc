@@ -174,10 +174,10 @@ You may want to revoke access tokens for you app by calling revokeAccess as show
 
 OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. It allows clients to verify the identity of the user based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the user.
 
-On top of OAuth2 authorization grant flow, you can use *login* which will behaves the same way as *requestAccess*:
+On top of OAuth2 authorization grant flow, you can use *login* which behaves the same way as *requestAccess*:
 1. check if access token is valid, if already there just run callback method
-2. if not valid and refresh token prsent, go and fetch new access token
-3. in none of the above triggers a prop-up to authenticate and grant access. Additional scope is required to retrieve user profile information.
+2. if not valid and refresh token present, go and fetch new access token
+3. if none of the above, trigger a pop-up to authenticate and grant access. Additional scope is required to retrieve user profile information.
 
 See code snippet below:  
 
