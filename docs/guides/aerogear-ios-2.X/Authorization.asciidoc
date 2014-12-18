@@ -43,7 +43,7 @@ Line [3], we create an OAuth2 module. By default this module will create a Trust
 
 The AccountManager's factory method _addAccount:moduleClass:_ is used to create any OAuth2Module. AccountManager also have utilities method like _addFacebookAccount_ to directly create FacebookOauth2Module.
 
-== Extend OAuth2Module
+== Extending OAuth2Module
 
 link:https://tools.ietf.org/html/rfc6749[OAuth2 specification] provides different implementation options, it's critical when implementing an OAuth2 SDK to offer extensibility. Let's show how to use AccountManager to instantiate a KeycloakOauth2Module:
 
@@ -80,7 +80,7 @@ public class FacebookOAuth2Module: OAuth2Module {
 }
 ----
 
-== Http and OAuth2Module
+== Working with Http and OAuth2Module
 
 === Explicit request access
 
@@ -168,4 +168,30 @@ You may want to revoke access tokens for you app by calling revokeAccess as show
         }
         // do domething
     })
+----
+
+== Login using OpenID Connect
+
+OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. It allows clients to verify the identity of the user based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the user.
+
+On top of OAuth2 authorization grant flow, you can use *login* which will behaves the same way as *requestAccess*:
+1. check if access token is valid, if already there just run callback method
+2. if not valid and refresh token prsent, go and fetch new access token
+3. in none of the above triggers a prop-up to authenticate and grant access. Additional scope is required to retrieve user profile information.
+
+See code snippet below:  
+
+[source,c]
+----
+  var Http = Http()
+  let keycloakConfig = KeycloakConfig(
+    clientId: "sharedshoot-third-party",
+    host: "http://localhost:8080",
+    realm: "shoot-realm",
+    isOpenIDConnect: true)
+  var oauth2Module = AccountManager.addKeycloakAccount(keycloakConfig)
+  http.authzModule = oauth2Module
+  oauth2Module.login {(accessToken: AnyObject?, claims: OpenIDClaim?, error: NSError?) in // [1]
+    // Do your own stuff here
+  }
 ----
