@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: AeroGear Cordova User Guide
 nav-active-getstarted: active
 section-title: Guides

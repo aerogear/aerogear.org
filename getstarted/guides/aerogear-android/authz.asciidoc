@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Android Authorization (OAuth2)
 nav-active-getstarted: active
 section-title: Guides

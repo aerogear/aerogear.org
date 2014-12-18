@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: AeroGear Android Data Store
 nav-active-getstarted: active
 section-title: Guides

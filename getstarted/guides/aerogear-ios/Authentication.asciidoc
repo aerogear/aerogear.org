@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Authentication and User enrollment
 nav-active-getstarted: active
 section-title: Guides

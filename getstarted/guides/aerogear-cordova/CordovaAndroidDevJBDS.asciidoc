@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
 nav-active-getstarted: active
 section-title: Guides

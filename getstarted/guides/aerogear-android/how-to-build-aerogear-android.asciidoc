@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: How to build AeroGear Android
 sub-section-title: User Guides
 third-section-title: AeroGear Android User Guides

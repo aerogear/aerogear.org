@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Get started with AeroGear.js
 nav-active-getstarted: active
 section-title: Guides

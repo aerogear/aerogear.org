@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Deploying HTML5 Applications to Openshift
 nav-active-getstarted: active
 section-title: Guides

@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: HTML5 + REST Applications
 nav-active-getstarted: active
 section-title: Guides

@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: AeroGear Two-Factor Authentication with OTP
 nav-active-getstarted: active
 section-class: guides

@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: AeroGear Android User Guide
 nav-active-getstarted: active
 section-title: Guides

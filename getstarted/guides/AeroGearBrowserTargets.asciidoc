@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: AeroGear Browser Support Targets
 nav-active-getstarted: active
 section-class: guides

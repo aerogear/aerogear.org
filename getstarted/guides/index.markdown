@@ -1,5 +1,5 @@
 ---
-layout: base-with-sidebar
+layout: base
 title: guides
 nav-active-getstarted: active
 section-title: Guides

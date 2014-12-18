@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Converting a Mobile HTML5 + REST Web App to a Hybrid App with Apache Cordova
 nav-active-getstarted: active
 section-title: Guides

@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Get Started with Hybrid Application Frameworks
 nav-active-getstarted: active
 section-title: Guides

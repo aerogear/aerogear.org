@@ -27,10 +27,71 @@
   </div><!-- container -->
 </section> <!-- main banner -->
 
+<!--
 {% include aditional-actions.html %}
+-->
 
 
-{{ content }}
+
+{% if page.section-class != null %} 
+
+
+<section class="{{ page.section-class }}">
+{% if page.sub-section-title != null %}
+  <div class="container">
+    <ol class="breadcrumb" style="margin:0">
+      <li><a href="{{ page.breadcrumbs-url }}">{{ page.section-title }}</a></li>
+  {% if page.third-section-title %} 
+      <li><a href="{{ page.breadcrumbs-url }}">{{ page.sub-section-title }}</a></li>
+      <li><a href="{{ page.breadcrumbs-sub-url }}">{{ page.third-section-title }}</a></li>
+      <li class="active">{{page.title}}</li>
+  {% else %}
+      <li><a href="{{ page.breadcrumbs-url }}">{{ page.sub-section-title }}</a></li>
+      <li class="active">{{page.title}}</li>
+  {% endif %}
+    </ol>
+  </div><!-- container -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">      
+        {{ content }}
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+
+{% else %}
+
+  <div class="container">
+    <div class="row">   
+      <div class="col-md-3 sidebar">
+          <div class="submenu">
+
+            {% if page.section-class == 'guides' %}
+              {% include sidebar-guides.html %}
+            {% elsif page.section-class == 'demos' %}
+              {% include sidebar-demos.html %}
+            {% elsif page.section-class == 'start' %}
+              {% include sidebar-downloads.html %}
+            {% elsif page.section-class == 'community' %}
+              {% include sidebar-community.html %}
+            {% endif %}
+
+
+          </div><!-- sidebar -->
+        </div><!-- col -->
+      <div class="col-md-9">
+        {{ content }}
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+  {% endif %}
+</section>
+
+
+{% else %}
+  {{ content }}
+{% endif %}
 
 
 {% include footer.html %}

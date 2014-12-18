@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Get Started With HTML5 Mobile Web Development with JBoss
 nav-active-getstarted: active
 section-title: Guides

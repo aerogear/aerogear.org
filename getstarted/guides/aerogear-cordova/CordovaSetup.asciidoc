@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: Setting up your development enivronment to use Apache Cordova
 nav-active-getstarted: active
 section-title: Guides

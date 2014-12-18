@@ -6,7 +6,7 @@ $('body').scrollspy({ target: '.submenu' });
      if($(window).scrollTop() === 0){
             $(".navbar").css("box-shadow", "0 0 0px rgba(0,0,0,.2)");
         }else{
-            $(".navbar").css("box-shadow", "0 0 8px rgba(0,0,0,.2)");
+            $(".navbar").css("box-shadow", "0 0 8px rgba(0,0,0,.3)");
         }
     };
     
