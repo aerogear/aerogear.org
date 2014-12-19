@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: AeroGear JIRA Usage and Guidelines
 nav-active-community: active
 section-class: community

@@ -1,5 +1,5 @@
 ---
-layout: base-text-page
+layout: base
 title: AeroGear GitHub Workflow & Instructions
 nav-active-community: active
 section-class: community
