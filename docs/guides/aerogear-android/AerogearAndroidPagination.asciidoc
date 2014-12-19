@@ -1,7 +1,14 @@
 ---
-layout: basic
+layout: base
 title: AeroGear Android Pagination
+nav-active-getstarted: active
+section-title: AeroGearCore Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Android
+section-class: guides
 ---
+
 == AeroGear Pagination in Android
 
 The Android AeroGear libraries implement paging as defined in link:/docs/specs/aerogear-client-paging/[the pagination spec].  We also have common use cases for the basic tasks in the Android sections of the  link:/docs/specs/aerogear-client-paging-usage/[paging usage document.]

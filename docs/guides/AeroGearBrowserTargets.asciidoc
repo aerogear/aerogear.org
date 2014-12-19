@@ -1,7 +1,14 @@
 ---
-layout: basic
+layout: base
 title: AeroGear Browser Support Targets
+nav-active-getstarted: active
+section-title: Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Supported Platforms
+section-class: guides
 ---
+
 
 AeroGear Browser Support Targets
 --------------------------------

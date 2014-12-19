@@ -1,7 +1,8 @@
 ---
-layout: basic
+layout: base
 title: UnifiedPush Server User Guide
 ---
+
 
 # UnifiedPush Server User Guide
 

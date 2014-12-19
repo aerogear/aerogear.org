@@ -1,8 +1,13 @@
 ---
-layout: basic
+layout: base
 title: Get started with AeroGear.js
+nav-active-getstarted: active
+section-title: AeroGearCore Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Js
+section-class: guides
 ---
-
 
 ## Get Started With AeroGear.js
 

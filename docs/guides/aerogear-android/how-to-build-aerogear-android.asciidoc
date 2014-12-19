@@ -1,6 +1,12 @@
 ---
-layout: basic
+layout: base
 title: How to build AeroGear Android
+nav-active-getstarted: active
+section-title: AeroGearCore Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Android
+section-class: guides
 ---
 
 == How to build AeroGear Android

@@ -1,7 +1,14 @@
 ---
-layout: basic
+layout: base
 title: Deploying HTML5 Applications to Openshift
+nav-active-getstarted: active
+section-title: AeroGearCore Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: HTML5
+section-class: guides
 ---
+
 
 Deploying HTML5 Applications to Openshift
 -----------------------------------------

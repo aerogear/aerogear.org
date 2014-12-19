@@ -1,7 +1,14 @@
 ---
-layout: basic
+layout: base
 title: Get Started With HTML5 Mobile Web Development with JBoss
+nav-active-getstarted: active
+section-title: AeroGearCore Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: HTML5
+section-class: guides
 ---
+
 
 == Get Started With HTML5 Mobile Web Development with JBoss
 

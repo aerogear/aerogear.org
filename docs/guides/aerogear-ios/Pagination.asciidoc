@@ -1,7 +1,15 @@
 ---
-layout: basic
+layout: base
 title: Pagination
+nav-active-getstarted: active
+section-title: AeroGearCore Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: iOS 1.X
+section-class: guides
 ---
+
+
 // tag::pagination[]
 == Pagination
 

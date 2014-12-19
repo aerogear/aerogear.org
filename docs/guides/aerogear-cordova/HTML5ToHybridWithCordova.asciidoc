@@ -1,7 +1,14 @@
 ---
-layout: basic
+layout: base
 title: Converting a Mobile HTML5 + REST Web App to a Hybrid App with Apache Cordova
+nav-active-getstarted: active
+section-title: AeroGearCore Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Cordova
+section-class: guides
 ---
+
 
 == Converting a Mobile HTML5 + REST Web App to a Hybrid App with Apache Cordova
 
