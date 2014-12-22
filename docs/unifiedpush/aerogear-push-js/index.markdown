@@ -1,7 +1,14 @@
 ---
-layout: basic
-title: Using UnifiedPush with AeroGear SimplePush.
+layout: base
+title: Using UnifiedPush with AeroGear SimplePush
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Tutorials 
 ---
+
 
 ## Using UnifiedPush with AeroGear SimplePush.
 

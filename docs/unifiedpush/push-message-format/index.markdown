@@ -1,6 +1,12 @@
---- 
-layout: basic 
+---
+layout: base
 title: AeroGear UnifiedPush Message Format 
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: UnifiedPush server guides
 ---
 
 # AeroGear UnifiedPush Message Format

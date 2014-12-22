@@ -1,7 +1,17 @@
 ---
-layout: basic
+layout: base
 title: Apple setup
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Tutorials
+breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-ios/
+third-section-title: AeroGear UnifiedPush Server and iOS applications
 ---
+
+
 
 Apple related setup
 -------------------

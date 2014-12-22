@@ -1,7 +1,16 @@
 ---
-layout: basic
+layout: base
 title: Your first Android/Push App
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Tutorials
+breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-android/
+third-section-title: AeroGear UnifiedPush Server and Android applications
 ---
+
 
 == Your first Android/Push App
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercice AeroGear's Android Push library support. For the purpose of the guide we will use the Eclipse environment with the ADT tools installed, but you are free to use any IDE that includes Android support.  Please visit our link:http://aerogear.org/docs/guides/aerogear-android/[web site] for more information on how to enable other popular IDEs for AeroGear Android development.

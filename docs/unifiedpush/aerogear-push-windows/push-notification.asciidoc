@@ -1,6 +1,14 @@
 ---
-layout: basic
+layout: base
 title: Send a Push Notification
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Tutorials
+breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-js/
+third-section-title: UnifiedPush Server and Windows applications
 ---
 
 CAUTION: this functionality is only available on master

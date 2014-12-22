@@ -1,7 +1,14 @@
 ---
-layout: basic
+layout: base
 title: AeroGear UnifiedPush Server and Chrome Packaged Applications
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Tutorials 
 ---
+
 
 ## GCM for Chrome Push Notifications with AeroGear's UnifiedPush Server
 

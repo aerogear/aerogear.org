@@ -76,11 +76,18 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 
 <h4 id="unifiedPush">UnifiedPush Server guides</h4>
 * [UnifiedPush Server User Guide](/docs/unifiedpush/ups_userguide)
+* [Overview](/docs/unifiedpush/ups_userguide/overview)
+* [Install and Configure the UnifiedPush Server](/docs/unifiedpush/ups_userguide/server-installation)
+* [Running on OpenShift](/docs/unifiedpush/ups_userguide/openshift)
+* [Using the Admin UI](/docs/unifiedpush/ups_userguide/admin-ui)
+* [Administration of the UnifiedPush Server](/docs/unifiedpush/ups_userguide/server-administration)
+* [Debugging the UnifiedPush Server](/docs/unifiedpush/ups_userguide/ups-debugging)
+* [Next steps](/docs/unifiedpush/ups_userguide/next)
 * [Push Notification Message Format](/docs/unifiedpush/push-message-format)
 * [Client Registration details](/docs/unifiedpush/client-registration)
 
 <h4 id="pushClientGuides">Client guides</h4>
-* [AeroGear Cordova PushPlugin](/docs/aerogear-cordova/AerogearCordovaPush)
+* [AeroGear Cordova PushPlugin](/docs/guides/aerogear-cordova/AerogearCordovaPush)
 
 <h4 id="pushTutorials">Tutorials</h4>
 * [Tutorial: Android Push Notifications](/docs/unifiedpush/aerogear-push-android)
@@ -91,7 +98,7 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 * [Getting Started with the Java Sender API](/docs/unifiedpush/GetStartedwithJavaSender)
 
 <h4 id="pushTroubleshooting">Troubleshooting</h4>
-To better help trouble shooting, you should [enable logging on UnifiedPush Server](/docs/ups_userguide/ups-debugging/#_enable_logging).
+To better help trouble shooting, you should [enable logging on UnifiedPush Server](/docs/unifiedpush/ups_userguide/ups-debugging/#_enable_logging).
 For more details on the supported mobile platforms consult the guides below:
 
 * [Android](/docs/unifiedpush/aerogear-push-android/troubleshooting)

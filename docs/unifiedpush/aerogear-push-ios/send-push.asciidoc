@@ -1,7 +1,16 @@
 ---
-layout: basic
+layout: base
 title: Sending messages
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Tutorials
+breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-ios/
+third-section-title: AeroGear UnifiedPush Server and iOS applications
 ---
+
 
 Now you have the Sample App running on your phone, so it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message to your device!
 

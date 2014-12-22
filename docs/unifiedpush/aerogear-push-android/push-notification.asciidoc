@@ -1,7 +1,16 @@
 ---
-layout: basic
+layout: base
 title: Send a Push Notification
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Tutorials
+breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-android/
+third-section-title: AeroGear UnifiedPush Server and Android applications
 ---
+
 
 Now that we have the sample application running, it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message.
 

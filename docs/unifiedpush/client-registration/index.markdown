@@ -1,6 +1,12 @@
 ---
-layout: basic
+layout: base
 title: AeroGear UnifiedPush Server - Client Registration
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: UnifiedPush Server guides 
 ---
 
 # Client registration with the UnifiedPush Server

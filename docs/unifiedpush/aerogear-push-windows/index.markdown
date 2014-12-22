@@ -1,6 +1,12 @@
 ---
-layout: basic
+layout: base
 title: AeroGear UnifiedPush Server and Windows applications
+nav-active-guides: active
+section-class: guides
+section-title: AeroGearPush Guides
+section-description: Tutorials to help get you off and running.
+breadcrumbs-url: /getstarted/guides/
+sub-section-title: Tutorials 
 ---
 
 <div class="admonitionblock caution">

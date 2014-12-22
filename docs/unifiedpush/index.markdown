@@ -27,8 +27,7 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 * [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
 ## Troubleshooting
-
-To better help trouble shooting, you should [enable logging on UnifiedPush Server](ups_userguide/ups-debugging/#_enable_logging).
+To better help trouble shooting, you should [enable logging on UnifiedPush Server](/docs/unifiedpush/ups_userguide/ups-debugging/#_enable_logging).
 
 For more details on the supported mobile platforms consult the guides below:
 
