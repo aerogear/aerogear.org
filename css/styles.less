@@ -737,7 +737,6 @@ display: none;
 //Community ==================================================================
 
 .user{
-//  background: red;
   margin: 20px 0;
   &:last-child{
     margin-bottom: 0;
@@ -749,11 +748,12 @@ display: none;
   
   img{
     .img-circle;
+    max-width: 100px;
+    max-height: 100px;
   }
   .media-body{
     border-bottom: 1px solid @gray-divider;  
     padding-bottom: 9px;
-    width: 100%;
   }
   .user-info{
     float: right;
@@ -764,7 +764,6 @@ display: none;
     margin-bottom: 10px;
   }
 }
-
 
 .contributor-feed{
   img{
@@ -783,12 +782,10 @@ display: none;
   }
   
   .media-body{
-    width: 100%;
     padding: 0px 0 10px 0;
     border-bottom: 1px solid @gray-divider;
   }
   h5,p{
-//    margin: 0 0 5px 0;
     line-height: 20px;
     margin: 0;
   }
