@@ -1,7 +1,14 @@
 ---
-layout: basic
+layout: base
 title: Cordova plugin roadmap
+nav-active-community: active
+section-class: roadmap
+section-title: Road Map
+section-description: List of the planed feature for the AeroGear project
+breadcrumbs-url: /docs/planning/
+sub-section-title: Roadmaps  
 ---
+
 
 AeroGear Cordova
 ================
