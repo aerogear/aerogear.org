@@ -214,8 +214,6 @@ body{
   margin-top: 50px;
   font-weight: @font-weight-regular;
   color: @gray-text;
-//  background: #f1f1f1;
-// comobackground: red;
 }
 
 img{
@@ -223,6 +221,11 @@ img{
   @media (min-width: @screen-md-min) {
     max-width: 130%;  
   }
+}
+
+table{
+  .table;
+  .table-bordered;
 }
 
 //animates links
@@ -284,10 +287,27 @@ margin-top: 0;
   margin-bottom: 20px;
 }
 
-//.breadcrumbs ==================================================================
+//breadcrumbs ==================================================================
 
 .breadcrumb{
   margin: 0;
+}
+
+//Helpfull hints ==================================================================
+
+.hint{
+  h4{
+    margin-bottom: 5px;
+  }
+  p{
+    margin-bottom: 0;
+  }
+}
+i{
+  float: left;
+}
+.alert-container{
+  margin-left: 70px;
 }
 
 //NavBar ==================================================================
