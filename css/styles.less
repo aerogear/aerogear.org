@@ -270,7 +270,7 @@ footer{
 
 
 // section header
-.section-header{
+.section-header, h2{
 font-weight: @font-weight-regular;
 margin-top: 0;
 }
@@ -394,28 +394,52 @@ margin-top: 0;
 
 //Main Banner ==================================================================
 
+.homepage{  
+  &:before{
+  #gradient > .vertical(@primary-color-dark; @primary-color);
+	left:0;
+	right: 0;
+	top: 50px;
+	bottom: 0;
+  position: fixed;
+  display: block;
+  content:".";
+  z-index: -2;   
+  font-size: 0.00000001px;
+  }	
+  
+  &:after{
+	background-image: url("/img/bg_header.png");
+	background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;	
+  content:".";
+//  text-indent: -9999999px;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;  
+  position: fixed;
+  display: block;
+  z-index: -1;   
+  font-size: 0.00000001px;
+   }
+ }
 
 .main-banner{
-  background: @primary-color;
+//  background: @primary-color;
+
   #gradient > .vertical(@primary-color-dark; @primary-color);
-  border-bottom: 2px solid @primary-color-dark;
+  border-bottom: 1px solid @primary-color-dark;
   color: #fff;
   position: relative;
-  
- .homepage &:before{
-   background: url("/img/bg_header.png") no-repeat center center;
-   background-size: cover;
-   content:".";
-   text-indent: -9999999px;
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   
- }
-  
-
+.homepage &{
+  background: none;
+//  #gradient > .vertical(transparent; darken(@primary-color-dark,10%));
+//  #gradient > .vertical-three-colors(transparent; transparent; 85%; darken(@primary-color-dark,10%));
+}
   img{
     width: 100%;
     .hidden-xs
@@ -543,8 +567,8 @@ margin-top: 0;
 
 .main-features{
 //   border-bottom: 1px solid @gray-divider; 
-//background: red;
-padding-bottom: 40px!important;
+  background: #fff;
+  padding-bottom: 40px!important;
     
   .row>.col-md-6{
     margin-bottom: 20px;
@@ -594,12 +618,15 @@ padding-bottom: 40px!important;
 //clientss ==================================================================
 
 
-.clients{
-//  background: @gray-lighter;
+.platform{
+ // background: @gray-lighter;
+  color: @white-text;
+  box-shadow: inset 0 0 200px darken(@primary-color-dark,20%);
   border-top: 1px solid @gray-divider;
   .well{
     text-align: center;
     color: #fff;
+    .hidden-xs;
   }
   
   .ios{         background: @platform-ios-color;}
@@ -626,10 +653,11 @@ padding-bottom: 40px!important;
   }
 }
 
-//custommers ==================================================================
+//whatsnew ==================================================================
 
 .whatsnew{
     border-top: 1px solid @gray-divider;
+    background: #fff;
 }
 
 
@@ -752,6 +780,7 @@ display: none;
   .media-body{
     border-bottom: 1px solid @gray-divider;  
     padding-bottom: 9px;
+    width: 100%;
   }
   .user-info{
     float: right;
@@ -780,6 +809,7 @@ display: none;
   }
   
   .media-body{
+    width: 100%;
     padding: 0px 0 10px 0;
     border-bottom: 1px solid @gray-divider;
   }
