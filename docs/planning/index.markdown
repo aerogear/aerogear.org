@@ -36,12 +36,9 @@ Supports persistent storage of updates to support offline work, for Android, iOS
 
 Details on specific platforms or features can be found below:
 
-* [Android](roadmaps/AeroGearAndroid)
-* [Cordova](roadmaps/AeroGearCordova)
-* [iOS](roadmaps/AeroGeariOS)
-* [JavaScript](roadmaps/AeroGearJS)
+* [Android](https://issues.jboss.org/browse/AGDROID)
+* [Cordova](https://issues.jboss.org/browse/AGCORDOVA)
+* [iOS](https://issues.jboss.org/browse/AGIOS)
+* [JavaScript](https://issues.jboss.org/browse/AGJS)
 * [Security](roadmaps/AeroGearSecurity)
-* [SimplePush](roadmaps/AeroGearSimplePush)
-* [UnifiedPush](roadmaps/UnifiedPush)
-* [WebPush](roadmaps/AeroGearWebPush)
-* [Web site](roadmaps/AeroGearWebSite)
+* [Push](https://issues.jboss.org/browse/AGPUSH)

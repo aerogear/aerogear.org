@@ -57,5 +57,3 @@ Future and beyond
     ** Password protection/encryption during export/import
 * Device blacklisting
 * Biometrics authentication
-
-
