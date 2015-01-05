@@ -40,5 +40,5 @@ Details on specific platforms or features can be found below:
 * [Cordova](https://issues.jboss.org/browse/AGCORDOVA)
 * [iOS](https://issues.jboss.org/browse/AGIOS)
 * [JavaScript](https://issues.jboss.org/browse/AGJS)
-* [Security](https://issues.jboss.org/browse/AGSEC)
+* [Security](roadmaps/AeroGearSecurity)
 * [Push](https://issues.jboss.org/browse/AGPUSH)
