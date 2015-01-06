@@ -11,7 +11,7 @@ AeroGear Android provides a simple data storage API.  This API is useful for cac
 
 ==== Creating a Store
 
-To create a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/datamanager/Store.html[*Store*], invoke  link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/DataManager.html[*DataManager*] config method, passing along a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/StoreConfiguration.html[*StoreConfiguration*]. link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/MemoryStoreConfiguration.html[*MemoryStoreConfiguration*] for an in-memory backed store, or link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/SQLStoreConfiguration.html[*SQLStoreConfiguration*] for an sqlite backed store. A name should be also provided to distinquish between different stores that this link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/DataManager.html[*DataManager*] can hold.
+To create a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/datamanager/Store.html[*Store*], invoke  link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/DataManager.html[*DataManager*] config method, passing along a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/StoreConfiguration.html[*StoreConfiguration*]. link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/MemoryStoreConfiguration.html[*MemoryStoreConfiguration*] for an in-memory backed store, or link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/SQLStoreConfiguration.html[*SQLStoreConfiguration*] for an sqlite backed store. A name should be also provided to distinguish between different stores that this link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/DataManager.html[*DataManager*] can hold.
 
 .MemoryStore
 [source,java]
@@ -111,7 +111,7 @@ Take a look at the complete example in our link:https://github.com/aerogear/aero
 
 ==== Encrypted Stores
 
-If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support, building on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-java[aerogear-crypto-java], encrypted variants of both memory (link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/EncryptedMemoryStore.html[*EncryptedMemoryStore*]) and SQLite (link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/EncryptedSQLStore.html[*EncryptedSQLStore*])
+If your storage information needs to be encrypted, AeroGear provides convenient and transparent encrypted storage support, building on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-java[aerogear-crypto-java], encrypted variants of both memory (link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/EncryptedMemoryStore.html[*EncryptedMemoryStore*]) and SQLite (link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/EncryptedSQLStore.html[*EncryptedSQLStore*])
 
 [source,java]
 ----
