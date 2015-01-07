@@ -7,8 +7,6 @@ title: AeroGear Android User Guide
 
 All methods on link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] consume a link:/docs/specs/aerogear-android-pipe-core/org/jboss/aerogear/android/Callback.html[*CallBack*]. If you are calling your link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] from an Activity or Fragment it is highly encouraged to create a static class which extends link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/AbstractActivityCallback.html[*AbstractActivityCallback*], link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/AbstractFragmentCallback.html[*AbstractFragmentCallback*].
 
-
-
 AeroGear uses a link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] metaphor for connecting to a remote web service. 
 
 === How to use it
@@ -70,8 +68,8 @@ link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/PipeM
 [source,java]
 ----
 PipeManager.config("developers", RestfulPipeConfiguration.class)
-                    .withUrl(new URL("http://www.server.com/developer"))
-                    .forClass(Developer.class);
+           .withUrl(new URL("http://www.server.com/developer"))
+           .forClass(Developer.class);
 
 Pipe<Developer> pipe = PipeManager.getPipe("developers");
 ----
@@ -102,8 +100,8 @@ The pipe instance will be respectful of the Android lifecycle and calls to its m
 [source,java]
 ----
 PipeManager.config("developers", RestfulPipeConfiguration.class)
-                    .withUrl(new URL("http://www.server.com/developer"))
-                    .forClass(Developer.class);
+           .withUrl(new URL("http://www.server.com/developer"))
+           .forClass(Developer.class);
 
 LoaderPipe<Developer> pipe = PipeManager.get("developers", activityInstance);
 pipe.reset();
