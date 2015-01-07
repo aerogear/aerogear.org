@@ -76,7 +76,7 @@ PipeManager.config("developers", RestfulPipeConfiguration.class)
 Pipe<Developer> pipe = PipeManager.getPipe("developers");
 ----
 
-Here is an example of using the link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] API to retrieve the JSON payload shown earlier. Note that the library will automatically marshall the payload to your model, leaving you only with task to display the results in the UI. Further and equal important, it will respect the Activity (or Fragment) lifecycle, a common source of problem bugging Android development as we will discuss next
+Here is an example of using the link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] API to retrieve the JSON payload shown earlier. Note that the library will automatically marshall the payload to your model, leaving you only with task to display the results in the UI. Further and equally important, it will respect the Activity (or Fragment) lifecycle, a common source of problem bugging Android developers as we will discuss next
 
 [source, java]
 ----
