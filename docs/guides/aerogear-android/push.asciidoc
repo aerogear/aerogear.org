@@ -160,4 +160,4 @@ public class MainActivity extends Activity implements MessageHandler {
 }
 ----
 
-Take a look at the complete example in our link:https://github.com/aerogear/aerogear-android-cookbook[cookbook app]
+Take a look at the complete example in our link:https://github.com/aerogear/aerogear-push-helloworld/tree/master/android[push helloworld example]
