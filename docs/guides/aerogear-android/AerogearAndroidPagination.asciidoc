@@ -9,7 +9,7 @@ The Android AeroGear libraries implement paging as defined in link:/docs/specs/a
 These two resources should be enough to get you up and running with Aerogear controller based services.  However, if you have special requirements or legacy services AeroGear\'s pagination framework can also be extended to support some pretty gnarly use cases.
 
 
-AeroGear ships with support for selecting data from the server response and using that data as a relative URI for locations of the "next" and "previous" pages of data.  You can enable paging by configuring a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageConfig.html[*PageConfig*] object and setting it on the Pipe using `PipeConfig.setPageConfig`.  When this option is enabled, `Pipe.read` and `Pipe.readWithFilter` will pass link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] instances to `Callback.onSuccess` instead of plain Lists.  You can call `PagedList.next` and `PagedList.previous` for load the next and previous data sets respectively.  
+AeroGear ships with support for selecting data from the server response and using that data as a relative URI for locations of the "next" and "previous" pages of data.  You can enable paging by configuring a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PageConfig.html[*PageConfig*] object and setting it on the Pipe using `PipeConfiguration.pageConfig`.  When this option is enabled, `Pipe.read` and `Pipe.readWithFilter` will pass link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] instances to `Callback.onSuccess` instead of plain Lists.  You can call `PagedList.next` and `PagedList.previous` for load the next and previous data sets respectively.  
 
 
 Let\'s say we have a service which returns a page of data in the following format:
@@ -55,17 +55,17 @@ void onCreate() {
      ResponseParser responseParser = new GsonResponseParser();
      responseParser.setMarshallingConfig(marshallingConfig);
 
-     PipeConfig pipeConfig = new PipeConfig(BASE_URL, Data.class);//Data is just an example type
-     pipeConfig.setResponseParser(responseParser);
+     RestfulPipeConfiguration config = PipeManager.config("listing", RestfulPipeConfiguration.class)
+                .withUrl(BASE_URL)
+                .responseParser(responseParser))
+                .pageConfig(pageConfig)
+                .forClass(Data.class);
 
-     pipeConfig.setPageConfig(pageConfig);
-
-     pipeline.pipe(Data.class, pipeConfig);
 }
 
 ----
 
--And now when we call `read` or `readWithFilter` our link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*]'s onSuccess method will be passed a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] instance.  
+And now when we call `read` or `readWithFilter` our link:/docs/specs/aerogear-android/org/jboss/aerogear/android/Callback.html[*CallBack*]'s onSuccess method will be passed a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/pipeline/paging/PagedList.html[*PagedList*] instance.  
 
 
 .ReadCallback.java
