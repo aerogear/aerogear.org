@@ -1,3 +1,2 @@
 org.jboss.aerogear.android.authorization
-org.jboss.aerogear.android.impl.authz
-org.jboss.aerogear.android.impl.authz.oauth2
+org.jboss.aerogear.android.authorization.oauth2
