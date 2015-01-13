@@ -1,12 +1,12 @@
 ---
 layout: basic
-title: UnifiedPush Server - Installation and configuration
+title: UnifiedPush Server - Debugging
 ---
 :toc:
 toc::[]
 
 Debugging the UnifiedPush Server
----------------------------------
+--------------------------------
 
 There are several ways to learn more about _"What's going on"_ inside the UnifiedPush Server
 
