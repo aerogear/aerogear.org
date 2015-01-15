@@ -32,6 +32,14 @@ Supports persistent storage of updates to support offline work, for Android, iOS
 [List of JIRA tickets](https://issues.jboss.org/browse/AEROGEAR-981)
 
 
+## unscheduled features
+
+### AeroGear Conflict Resolution 
+
+Dealing with conflicts while dealing with data and their state.
+
+[List of JIRA tickets](https://issues.jboss.org/browse/AEROGEAR-1560)
+
 #### specific Roadmaps
 
 Details on specific platforms or features can be found below:
