@@ -3,22 +3,35 @@
   <head>
     <title>Config Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
+    <script type="text/javascript">
+    window.jazzy = {'docset': false}
+    if (typeof window.dash != 'undefined') {
+      document.documentElement.className += ' dash'
+      window.jazzy.docset = true
+    }
+    if (navigator.userAgent.match(/xcode/i)) {
+      document.documentElement.className += ' xcode'
+      window.jazzy.docset = true
+    }
+    </script>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body id="reference" class="Swift">
+    <a name="//apple_ref/swift/Class/Config" class="dashAnchor"></a>
     <a title="Config Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p class="header-text"><a href="#">AeroGearOauth2 Docs</a></p>
+        <p class="header-text"><a href="../index.html">AeroGearOAuth2 Docs</a> </p>
         <p id="header-links"><a href="https://github.com/aerogear/aerogear-ios-oauth2"><img id="header-icon" src="../img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
       </div>
     </header>
     <section id="valence">
       <div class="content-wrapper">
         <p id="hierarchial_navigation">
-        <a href="#" id="design_resources_link">AeroGearOauth2 Reference</a>
+        <a href="../index.html" id="design_resources_link">AeroGearOAuth2 Reference</a>
         <img id="carat" src="../img/carat.png" height="10px" width="6px" />
         Config Class Reference
         </p>
@@ -40,7 +53,7 @@
                 <a href="../Classes/AccountManager.html">AccountManager</a>
               </li>
               <li class="nav-chapter">
-                <a href="../Classes.html#/s:C14AeroGearOAuth220KeycloakOAuth2Module">KeycloakOAuth2Module</a>
+                <a href="../Classes/KeycloakOAuth2Module.html">KeycloakOAuth2Module</a>
               </li>
               <li class="nav-chapter">
                 <a href="../Classes/OAuth2Module.html">OAuth2Module</a>
@@ -52,7 +65,7 @@
                 <a href="../Classes/TrustedPersistantOAuth2Session.html">TrustedPersistantOAuth2Session</a>
               </li>
               <li class="nav-chapter">
-                <a href="../Classes.html#/s:C14AeroGearOAuth220FacebookOAuth2Module">FacebookOAuth2Module</a>
+                <a href="../Classes/FacebookOAuth2Module.html">FacebookOAuth2Module</a>
               </li>
               <li class="nav-chapter">
                 <a href="../Classes/Config.html">Config</a>
@@ -75,6 +88,33 @@
             <ul class="nav-chapters">
               <li class="nav-chapter">
                 <a href="../Enums.html#/s:O14AeroGearOAuth218AuthorizationState">AuthorizationState</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Enums.html#/s:O14AeroGearOAuth29TokenType">TokenType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Extensions.html#/s:SS">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Instance Methods.html">Instance Methods</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Instance Methods.html#/s:FE14AeroGearOAuth2CSo6NSDate8toStringFS0_FT_SS">toString()</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Local Variables.html">Local Variables</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Local Variables.html#/s:vFE14AeroGearOAuth2CSo6NSDatecFMS0_FT10dateStringSS_S0_L_10dateStringSS">dateString</a>
               </li>
             </ul>
           </li>
@@ -100,16 +140,16 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Children"></a>
-                <a href="#/Children">
-                  <h3 class="section-name"></h3>
-                </a>
+                
+                <a name="/Unnamed"></a>
+                
               </div>
               <ul class="task-group-list">
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config7baseURLSS">
+                    <a name="//apple_ref/swift/Property/baseURL" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config7baseURLSS">baseURL</a>
                     </code>
                   </div>
@@ -125,9 +165,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public let baseURL: String</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">baseURL</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -137,6 +176,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config11redirectURLSS">
+                    <a name="//apple_ref/swift/Property/redirectURL" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config11redirectURLSS">redirectURL</a>
                     </code>
                   </div>
@@ -145,16 +185,15 @@
                     <section class="section instance-method">
                       <div class="pointy-thing"></div>
                       <div class="abstract">
-                        <p class="para">Applies the &quot;callback URL&quot; once request token issued.</p>
+                        <p class="para">Applies the <q>callback URL</q> once request token issued.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public let redirectURL: String</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">redirectURL</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -164,6 +203,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config13authzEndpointSS">
+                    <a name="//apple_ref/swift/Property/authzEndpoint" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config13authzEndpointSS">authzEndpoint</a>
                     </code>
                   </div>
@@ -172,16 +212,15 @@
                     <section class="section instance-method">
                       <div class="pointy-thing"></div>
                       <div class="abstract">
-                        <p class="para">Applies the &quot;authorization endpoint&quot; to the request token.</p>
+                        <p class="para">Applies the <q>authorization endpoint</q> to the request token.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public var authzEndpoint: String</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">authzEndpoint</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -191,6 +230,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config19accessTokenEndpointSS">
+                    <a name="//apple_ref/swift/Property/accessTokenEndpoint" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config19accessTokenEndpointSS">accessTokenEndpoint</a>
                     </code>
                   </div>
@@ -199,16 +239,15 @@
                     <section class="section instance-method">
                       <div class="pointy-thing"></div>
                       <div class="abstract">
-                        <p class="para">Applies the &quot;access token endpoint&quot; to the exchange code for access token.</p>
+                        <p class="para">Applies the <q>access token endpoint</q> to the exchange code for access token.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public var accessTokenEndpoint: String</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">accessTokenEndpoint</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -218,6 +257,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config19revokeTokenEndpointGSqSS_">
+                    <a name="//apple_ref/swift/Property/revokeTokenEndpoint" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config19revokeTokenEndpointGSqSS_">revokeTokenEndpoint</a>
                     </code>
                   </div>
@@ -233,9 +273,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public let revokeTokenEndpoint: String?</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">revokeTokenEndpoint</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -245,6 +284,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config20refreshTokenEndpointGSqSS_">
+                    <a name="//apple_ref/swift/Property/refreshTokenEndpoint" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config20refreshTokenEndpointGSqSS_">refreshTokenEndpoint</a>
                     </code>
                   </div>
@@ -260,9 +300,62 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public let refreshTokenEndpoint: String?</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">refreshTokenEndpoint</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:vC14AeroGearOAuth26Config16userInfoEndpointGSqSS_">
+                    <a name="//apple_ref/swift/Property/userInfoEndpoint" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config16userInfoEndpointGSqSS_">userInfoEndpoint</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Endpoint for OpenID Connect to get user information.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">userInfoEndpoint</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:vC14AeroGearOAuth26Config15isOpenIDConnectSb">
+                    <a name="//apple_ref/swift/Property/isOpenIDConnect" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config15isOpenIDConnectSb">isOpenIDConnect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Boolean to indicate whether OpenID Connect on authorization code grant flow is used.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isOpenIDConnect</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -272,6 +365,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config6scopesGSaSS_">
+                    <a name="//apple_ref/swift/Property/scopes" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config6scopesGSaSS_">scopes</a>
                     </code>
                   </div>
@@ -287,9 +381,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public let scopes: [String]</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">scopes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -299,6 +392,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config8clientIdSS">
+                    <a name="//apple_ref/swift/Property/clientId" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config8clientIdSS">clientId</a>
                     </code>
                   </div>
@@ -307,16 +401,15 @@
                     <section class="section instance-method">
                       <div class="pointy-thing"></div>
                       <div class="abstract">
-                        <p class="para">Applies the &quot;client id&quot; obtained with the client registration process.</p>
+                        <p class="para">Applies the <q>client id</q> obtained with the client registration process.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public let clientId: String</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -326,6 +419,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config12clientSecretGSqSS_">
+                    <a name="//apple_ref/swift/Property/clientSecret" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config12clientSecretGSqSS_">clientSecret</a>
                     </code>
                   </div>
@@ -334,16 +428,15 @@
                     <section class="section instance-method">
                       <div class="pointy-thing"></div>
                       <div class="abstract">
-                        <p class="para">Applies the &quot;client secret&quot; obtained with the client registration process.</p>
+                        <p class="para">Applies the <q>client secret</q> obtained with the client registration process.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public let clientSecret: String?</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">clientSecret</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -353,6 +446,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:vC14AeroGearOAuth26Config9accountIdGSqSS_">
+                    <a name="//apple_ref/swift/Property/accountId" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:vC14AeroGearOAuth26Config9accountIdGSqSS_">accountId</a>
                     </code>
                   </div>
@@ -368,9 +462,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public var accountId: String?</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">accountId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
                         </div>
                       </div>
                     </section>
@@ -381,8 +474,8 @@
           </section>
         </section>
         <section id="footer">
-          <p class="copyright">&copy; 2014 <a class="link" href="http://www.aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-11-07)</p>
-          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.12</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p class="copyright">&copy; 2014 <a class="link" href="https://aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-12-17)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.16</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

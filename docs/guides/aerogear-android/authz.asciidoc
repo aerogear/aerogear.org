@@ -7,39 +7,43 @@ title: Android Authorization (OAuth2)
 
 This guide will walk developers through the AeroGear Android Authorization APIs and demonstrate how to integrate with Google's Drive API.
 
-In general, the Authorization framework is a system of *AuthzModules* which coordinate with an *AuthzService* to supply valid tokens to *Pipe* instances.  Currently the Authz APIs support link:http://tools.ietf.org/html/rfc6749[OAuth2].
+In general, the Authorization framework is a system of link:/docs/specs/aerogear-android-authz/org/jboss/aerogear/android/authorization/AuthzModule.html[*AuthzModules*] which supply valid tokens to link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/Pipe.html[*Pipe*] instances.  Currently the Authz APIs support link:http://tools.ietf.org/html/rfc6749[OAuth2].
 
 == Instantiating an OAuth2AuthzModule
 
-Much like the rest of AeroGear, the Authz framework provides a factory class and configuration object *Authorizer* and *AuthzConfig* respectively.
+Much like the rest of AeroGear, the Authz framework provides a factory class and configuration object link:/docs/specs/aerogear-android-authz/org/jboss/aerogear/android/impl/authz/AuthorizationManager.html[*AuthorizationManager*] and link:/docs/specs/aerogear-android-authz/org/jboss/aerogear/android/impl/authz/AuthorizationConfiguration.html[*AuthorizationConfiguration*] respectively.
 
 This code example will use Google's APIs.  An explanation of setting up the remote components is beyond the scope of this document.
 
 [source,java]
 ----
-AuthzConfig authzConfig = new AuthzConfig(new URL(Constants.AUTHZ_URL), "restMod");
-            authzConfig.setAuthzEndpoint(AUTHZ_ENDPOINT);
-            authzConfig.setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT);
-            authzConfig.setAccountId(AUTHZ_ACCOOUNT_ID);
-            authzConfig.setClientId(AUTHZ_CLIENT_ID);
-            authzConfig.setClientSecret(AUTHZ_CLIENT_SECRET);
-            authzConfig.setRedirectURL(AUTHZ_REDIRECT_URL);
-            
-            //The offline access type causes google's APIs to provide a refresh token
-            authzConfig.getAdditionalAuthorizationParams().add(Pair.create("access_type", "offline"));
-            
-            //approval_prompt will cause Google's services to re-request authorization if the scopes change
-            authzConfig.getAdditionalAuthorizationParams().add(Pair.create("approval_prompt", "force"));
-            authzConfig.setScopes(new ArrayList<String>() {{"{{"}}
-                add("https://www.googleapis.com/auth/drive");
-            }});
 
-final OAuth2AuthzModule module = new Authorizer().authz(authzConfig);
+String AUTHZ_URL = "https://accounts.google.com"; //The base URL of the authorization server 
+String AUTHZ_ENDPOINT = "/o/oauth2/auth"; //The path relative to AUTHZ_URL to the authenticate a user
+String AUTHZ_TOKEN_ENDPOINT = "/o/oauth2/token"; //The path relative to AUTHZ_URL to the manage tokens
+String AUTHZ_ACCOUNT_ID = "ag-authz"; //A key to identify the account in AeroGear
+String AUTHZ_CLIENT_ID = ""; //The OAuth2 client ID
+String AUTHZ_CLIENT_SECRET = ""; //The OAuth2 client Secret
+String AUTHZ_REDIRECT_URL = ""; //The OAuth2 redirect URL
+
+AuthorizationConfiguration  authzConfiguration = AuthorizationManager.config("GoogleDriveAuthz", OAuth2AuthorizationConfiguration.class)
+        .setBaseURL(new URL(AUTHZ_URL))
+        .setAuthzEndpoint(AUTHZ_ENDPOINT)
+        .setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT)
+        .setAccountId(AUTHZ_ACCOUNT_ID)
+        .setClientId(AUTHZ_CLIENT_ID)
+        .setClientSecret(AUTHZ_CLIENT_SECRET)
+        .setRedirectURL(AUTHZ_REDIRECT_URL)
+        .setScopes(Arrays.asList("https://www.googleapis.com/auth/drive"))
+        .setAdditionalAuthorizationParams(ImmutableSet.of(Pair.create("access_type", "offline")))
+
+
+final OAuth2AuthzModule module = authzConfiguration.asModule();
 ----
 
 == Using AuthzModule and AuthzService
 
-The OAuth2AuthzModule utilizes an AuthzService to manage the lifecycle of tokens.  Currently the service stores tokens in memory and should be managed at the application level.  In the future we will implement an encrypted offline storage mechanism which will allow the AuthzModule to manage the service without a loss of state.  link:https://issues.jboss.org/browse/AGDROID-241[See JIRA]
+The link:/docs/specs/aerogear-android-authz/org/jboss/aerogear/android/impl/authz/oauth2/OAuth2AuthzModule.html[*OAuth2AuthzModule*] utilizes link:/docs/specs/aerogear-android-authz/org/jboss/aerogear/android/impl/authz/oauth2/OAuth2AuthzService.html[*OAuth2AuthzService*] to manage the lifecycle of tokens.
 
 To use the service we must declare it in **AndroidManifest.xml**
 
@@ -63,11 +67,11 @@ Then to fetch a token :
             });
 ```
 
-*requestAccess* consumes an Activity and Callback method.  It will bind to the AuthzService (starting it if necessary) and fetch tokens.  If this is the first time a request has been made, it will display a WebView fragment and embed an HTML form to interact with the remote Authentication services and fetch the required tokens.  Otherwise it will return the access token to the callback.
+*requestAccess* consumes an Activity and Callback method.  It will bind to the OAuth2AuthzService (starting it if necessary) and fetch tokens.  If this is the first time a request has been made, it will display a WebView fragment and embed an HTML form to interact with the remote Authentication services and fetch the required tokens.  Otherwise it will return the access token to the callback.
 
 == Pipes and AuthzModule
 
-You can provide to a *PipeConfig* object an *AuthzModule* instance.  Assuming that *requestAccess* has been successfully called, the *Pipe* instance created by that configuration will correctly incorporate the authz tokens in your requests.  It will also refresh any expired tokens if authorization fails and retry the request before failing.
+You can provide to a link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/PipeConfiguration.html[*PipeConfiguration*] object an link:/docs/specs/aerogear-android-authz/org/jboss/aerogear/android/authorization/AuthzModule.html[*AuthzModule*] instance.  Assuming that *requestAccess* has been successfully called, the *Pipe* instance created by that configuration will correctly incorporate the authz tokens in your requests.  It will also refresh any expired tokens if authorization fails and retry the request before failing.
 
 ```java
     Pipeline pipeline = new Pipeline(googleDriveURL);
@@ -94,4 +98,4 @@ You can provide to a *PipeConfig* object an *AuthzModule* instance.  Assuming th
 
 == Example application
 
-A Drive demo application has been provided at link:https://github.com/secondsun/aerogear-android-oauth2-demo/tree/migrate[GitHub].  The sample application includes instructions on configuring Google's services to gain the correct credentials.
+A Drive demo application has been provided at link:https://github.com/aerogear/aerogear-android-cookbook/tree/master/GDrive[GitHub].  The sample application includes instructions on configuring Google's services to gain the correct credentials.

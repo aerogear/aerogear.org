@@ -3,22 +3,35 @@
   <head>
     <title>OAuth2Module Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
+    <script type="text/javascript">
+    window.jazzy = {'docset': false}
+    if (typeof window.dash != 'undefined') {
+      document.documentElement.className += ' dash'
+      window.jazzy.docset = true
+    }
+    if (navigator.userAgent.match(/xcode/i)) {
+      document.documentElement.className += ' xcode'
+      window.jazzy.docset = true
+    }
+    </script>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body id="reference" class="Swift">
+    <a name="//apple_ref/swift/Class/OAuth2Module" class="dashAnchor"></a>
     <a title="OAuth2Module Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p class="header-text"><a href="#">AeroGearOauth2 Docs</a></p>
+        <p class="header-text"><a href="../index.html">AeroGearOAuth2 Docs</a> </p>
         <p id="header-links"><a href="https://github.com/aerogear/aerogear-ios-oauth2"><img id="header-icon" src="../img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
       </div>
     </header>
     <section id="valence">
       <div class="content-wrapper">
         <p id="hierarchial_navigation">
-        <a href="#" id="design_resources_link">AeroGearOauth2 Reference</a>
+        <a href="../index.html" id="design_resources_link">AeroGearOAuth2 Reference</a>
         <img id="carat" src="../img/carat.png" height="10px" width="6px" />
         OAuth2Module Class Reference
         </p>
@@ -40,7 +53,7 @@
                 <a href="../Classes/AccountManager.html">AccountManager</a>
               </li>
               <li class="nav-chapter">
-                <a href="../Classes.html#/s:C14AeroGearOAuth220KeycloakOAuth2Module">KeycloakOAuth2Module</a>
+                <a href="../Classes/KeycloakOAuth2Module.html">KeycloakOAuth2Module</a>
               </li>
               <li class="nav-chapter">
                 <a href="../Classes/OAuth2Module.html">OAuth2Module</a>
@@ -52,7 +65,7 @@
                 <a href="../Classes/TrustedPersistantOAuth2Session.html">TrustedPersistantOAuth2Session</a>
               </li>
               <li class="nav-chapter">
-                <a href="../Classes.html#/s:C14AeroGearOAuth220FacebookOAuth2Module">FacebookOAuth2Module</a>
+                <a href="../Classes/FacebookOAuth2Module.html">FacebookOAuth2Module</a>
               </li>
               <li class="nav-chapter">
                 <a href="../Classes/Config.html">Config</a>
@@ -75,6 +88,33 @@
             <ul class="nav-chapters">
               <li class="nav-chapter">
                 <a href="../Enums.html#/s:O14AeroGearOAuth218AuthorizationState">AuthorizationState</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Enums.html#/s:O14AeroGearOAuth29TokenType">TokenType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Extensions.html#/s:SS">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Instance Methods.html">Instance Methods</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Instance Methods.html#/s:FE14AeroGearOAuth2CSo6NSDate8toStringFS0_FT_SS">toString()</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Local Variables.html">Local Variables</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Local Variables.html#/s:vFE14AeroGearOAuth2CSo6NSDatecFMS0_FT10dateStringSS_S0_L_10dateStringSS">dateString</a>
               </li>
             </ul>
           </li>
@@ -100,16 +140,16 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Children"></a>
-                <a href="#/Children">
-                  <h3 class="section-name"></h3>
-                </a>
+                
+                <a name="/Unnamed"></a>
+                
               </div>
               <ul class="task-group-list">
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC14AeroGearOAuth212OAuth2ModulecERR">
+                    <a name="//apple_ref/swift/Method/init(config:session:requestSerializer:responseSerializer:)" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2ModulecERR">init(config:session:requestSerializer:responseSerializer:)</a>
                     </code>
                   </div>
@@ -119,15 +159,15 @@
                       <div class="pointy-thing"></div>
                       <div class="abstract">
                         <p class="para">Initialize an OAuth2 module</p>
+                        <a href="Classes/OAuth2Module/init(config:session:requestSerializer:responseSerializer:).html" class="see-more">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public required init(config: Config, session: OAuth2Session? = default, requestSerializer: RequestSerializer = default, responseSerializer: ResponseSerializer = default)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">Config</span><span class="p">,</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">OAuth2Session</span><span class="p">?</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">requestSerializer</span><span class="p">:</span> <span class="kt">RequestSerializer</span> <span class="o">=</span> <span class="k">default</span><span class="p">,</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">ResponseSerializer</span> <span class="o">=</span> <span class="k">default</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -192,10 +232,24 @@
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                
+                <a name="/Public%20API%20-%20To%20be%20overriden%20if%20necessary%20by%20OAuth2%20specific%20adapter"></a>
+                <a name="//apple_ref/swift/Section/Public API - To be overriden if necessary by OAuth2 specific adapter" class="dashAnchor"></a>
+                <a href="#/Public%20API%20-%20To%20be%20overriden%20if%20necessary%20by%20OAuth2%20specific%20adapter">
+                  <h3 class="section-name">Public API - To be overriden if necessary by OAuth2 specific adapter</h3>
+                </a>
+                
+              </div>
+              <ul class="task-group-list">
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC14AeroGearOAuth212OAuth2Module24requestAuthorizationCodeFS0_FFTGSqPSs9AnyObject__GSqCSo7NSError__T_T_">
+                    <a name="//apple_ref/swift/Method/requestAuthorizationCode(_:)" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2Module24requestAuthorizationCodeFS0_FFTGSqPSs9AnyObject__GSqCSo7NSError__T_T_">requestAuthorizationCode(_:)</a>
                     </code>
                   </div>
@@ -211,9 +265,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func requestAuthorizationCode(completionHandler: (AnyObject?, NSError?) -&gt; Void)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestAuthorizationCode</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">AnyObject</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -242,6 +295,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC14AeroGearOAuth212OAuth2Module18refreshAccessTokenFS0_FFTGSqPSs9AnyObject__GSqCSo7NSError__T_T_">
+                    <a name="//apple_ref/swift/Method/refreshAccessToken(_:)" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2Module18refreshAccessTokenFS0_FFTGSqPSs9AnyObject__GSqCSo7NSError__T_T_">refreshAccessToken(_:)</a>
                     </code>
                   </div>
@@ -257,9 +311,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func refreshAccessToken(completionHandler: (AnyObject?, NSError?) -&gt; Void)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">refreshAccessToken</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">AnyObject</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -288,6 +341,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC14AeroGearOAuth212OAuth2Module39exchangeAuthorizationCodeForAccessTokenFS0_FTSS17completionHandlerFTGSqPSs9AnyObject__GSqCSo7NSError__T__T_">
+                    <a name="//apple_ref/swift/Method/exchangeAuthorizationCodeForAccessToken(_:completionHandler:)" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2Module39exchangeAuthorizationCodeForAccessTokenFS0_FTSS17completionHandlerFTGSqPSs9AnyObject__GSqCSo7NSError__T__T_">exchangeAuthorizationCodeForAccessToken(_:completionHandler:)</a>
                     </code>
                   </div>
@@ -303,9 +357,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func exchangeAuthorizationCodeForAccessToken(code: String, completionHandler: (AnyObject?, NSError?) -&gt; Void)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">exchangeAuthorizationCodeForAccessToken</span><span class="p">(</span><span class="nv">code</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">AnyObject</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -320,7 +373,7 @@
                               </td>
                               <td>
                                 <div class="definition">
-                                  <p class="para">the &#39;authorization&#39; code to exchange for an access token</p>
+                                  <p class="para">the &lsquo;authorization&rsquo; code to exchange for an access token</p>
                                 </div>
                               </td>
                             </tr>
@@ -346,6 +399,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC14AeroGearOAuth212OAuth2Module13requestAccessFS0_FFTGSqPSs9AnyObject__GSqCSo7NSError__T_T_">
+                    <a name="//apple_ref/swift/Method/requestAccess(_:)" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2Module13requestAccessFS0_FFTGSqPSs9AnyObject__GSqCSo7NSError__T_T_">requestAccess(_:)</a>
                     </code>
                   </div>
@@ -361,9 +415,54 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func requestAccess(completionHandler: (AnyObject?, NSError?) -&gt; Void)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestAccess</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">AnyObject</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A block object to be executed when the request operation finishes.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC14AeroGearOAuth212OAuth2Module5loginFS0_FFTGSqPSs9AnyObject__GSqCS_11OpenIDClaim_GSqCSo7NSError__T_T_">
+                    <a name="//apple_ref/swift/Method/login(_:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2Module5loginFS0_FFTGSqPSs9AnyObject__GSqCS_11OpenIDClaim_GSqCSo7NSError__T_T_">login(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Gateway to provide authentication using the Authorization Code Flow with OpenID Connect</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">login</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">AnyObject</span><span class="p">?,</span> <span class="kt">OpenIDClaim</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -392,6 +491,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC14AeroGearOAuth212OAuth2Module12revokeAccessFS0_FFTGSqPSs9AnyObject__GSqCSo7NSError__T_T_">
+                    <a name="//apple_ref/swift/Method/revokeAccess(_:)" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2Module12revokeAccessFS0_FFTGSqPSs9AnyObject__GSqCSo7NSError__T_T_">revokeAccess(_:)</a>
                     </code>
                   </div>
@@ -407,9 +507,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func revokeAccess(completionHandler: (AnyObject?, NSError?) -&gt; Void)</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">revokeAccess</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">AnyObject</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
                         </div>
                       </div>
                       <div class="parameters">
@@ -438,6 +537,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC14AeroGearOAuth212OAuth2Module19authorizationFieldsFS0_FT_GSqGVSs10DictionarySSSS__">
+                    <a name="//apple_ref/swift/Method/authorizationFields()" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2Module19authorizationFieldsFS0_FT_GSqGVSs10DictionarySSSS__">authorizationFields()</a>
                     </code>
                   </div>
@@ -453,9 +553,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func authorizationFields() -&gt; [String : String]?</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">authorizationFields</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span></code></pre>
+
                         </div>
                       </div>
                       <div class="result-description">
@@ -469,6 +568,7 @@
                   <div class="task-group-term">
                     <code>
                     <a name="/s:FC14AeroGearOAuth212OAuth2Module12isAuthorizedFS0_FT_Sb">
+                    <a name="//apple_ref/swift/Method/isAuthorized()" class="dashAnchor"></a>
                     <a class="x-instance-method Swift" href="#/s:FC14AeroGearOAuth212OAuth2Module12isAuthorizedFS0_FT_Sb">isAuthorized()</a>
                     </code>
                   </div>
@@ -484,9 +584,8 @@
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <p class="para">
-                          <code>public func isAuthorized() -&gt; Bool</code>
-                          </p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isAuthorized</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
                         </div>
                       </div>
                       <div class="result-description">
@@ -501,8 +600,8 @@
           </section>
         </section>
         <section id="footer">
-          <p class="copyright">&copy; 2014 <a class="link" href="http://www.aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-11-07)</p>
-          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.12</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p class="copyright">&copy; 2014 <a class="link" href="https://aerogear.org" target="_blank" rel="external">AeroGear</a>. All rights reserved. (Last updated: 2014-12-17)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.16</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

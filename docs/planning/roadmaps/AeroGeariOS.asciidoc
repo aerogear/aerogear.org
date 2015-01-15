@@ -50,7 +50,7 @@ link:https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.2.0%20AND%20proje
 ** Add more user roles in Keycloak Shoot-web app demo link:https://issues.jboss.org/browse/AGIOS-286[AGIOS-286]
 
 * *Sync* link to Epic Conflict resolution link:https://issues.jboss.org/browse/AEROGEAR-1425[AEROGEAR-1425]
-** Implement Client Sync as described in link:../AeroGearDataSync/[Sync Roadmap]
+** Implement Client Sync as described in link:https://issues.jboss.org/browse/AGIOS-302[AGIOS-302]
 ** Cookbook demo app for sync link:https://issues.jboss.org/browse/AGIOS-297[AGIOS-297]
 
 2.2.1 (February 2015)

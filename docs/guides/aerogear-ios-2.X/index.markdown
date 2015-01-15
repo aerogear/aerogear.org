@@ -6,6 +6,9 @@ title: AeroGear iOS 2.0 User Guide
 # AeroGear iOS 2.0 User Guides
 
 ## User Guides
+* [AeroGear HTTP](HttpLib)
+* [AeroGear JsonSZ](JsonSZ)
+* [AeroGear HttpStub](HttpStub)
 * [Authorization (OAuth2)](Authorization)
 
 ## Example apps
