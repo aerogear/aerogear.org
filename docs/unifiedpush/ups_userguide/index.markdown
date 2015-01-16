@@ -16,6 +16,7 @@ title: UnifiedPush Server User Guide
     * [H2 Database](server-installation/#_h2_database)
     * [MySQL Database](server-installation/#_mysql_database)
     * [PostgreSQL Database](server-installation/#_postgresql_database)
+    * [Migration](server-installation/#_migration)
   * [Deploy the UnifiedPush Server](server-installation/#_deploy_the_unifiedpush_server)
 * [Running on OpenShift](openshift)
   * [Create an instance using OpenShift's Web UI](openshift/#_create_an_instance_using_openshift_s_web_ui)
@@ -42,6 +43,10 @@ title: UnifiedPush Server User Guide
 * [Debugging the UnifiedPush Server](ups-debugging)
   * [Enable Logging](ups-debugging/#_enable_logging)
   * [Dashboard of the AdminUI](ups-debugging/#_dashboard_of_the_adminui)
+* [Database migration](migration)
+  * [1.0.0 users](migration/#_1_0_0_users)
+  * [1.0.1 and 1.0.2 users](migration/#_1_0_1_and_1_0_2_users)
+  * [Upgrade problems?](migration/#_upgrade_problems)
 
 * [Next steps](next)
   * Contains links to detailed client and server Push tutorials and demos
