@@ -21,9 +21,12 @@ Full real-time data sync where updates are initiated from both the client and se
 
 ### AeroGear Push - 1.1.0 (April 2015)
 
-Next version of the Unified Push Server, containing new features like support for new Push networks or advanced analytis.
+Next version of the Unified Push Server, containing new features like support for new Push networks or advanced analytics:
 
-[List of JIRA tickets](https://issues.jboss.org/browse/AGPUSH/fixforversion/12323762).
+* [1.1.0.alpha.2](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326455/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel) (_early February_)
+* [1.1.0.beta.1](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326579/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)  (_early March_)
+* [1.1.0.beta.2](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326578/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)  (_late March_)
+* [1.1.0.final](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326301/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)   (_mid April_)
 
 ### AeroGear Offline - 1.0.0 (June 2015)
 
