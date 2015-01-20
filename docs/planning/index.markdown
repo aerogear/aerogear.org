@@ -68,7 +68,4 @@ Details on specific platforms or features can be found below:
 * [iOS](roadmaps/AeroGeariOS)
 * [JavaScript](roadmaps/AeroGearJS)
 * [Security](roadmaps/AeroGearSecurity)
-* [SimplePush](roadmaps/AeroGearSimplePush)
-* [UnifiedPush](roadmaps/UnifiedPush)
-* [WebPush](roadmaps/AeroGearWebPush)
 * [Web site](roadmaps/AeroGearWebSite)
