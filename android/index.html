@@ -4,7 +4,7 @@ title: AeroGear Android
 ---
 
 <h2>AeroGear Android</h2>
-<p>AeroGear on Android simplifies developing mobile applications which connect to remote services.  We support all versions of Android above 2.3.3 (and 2.3.3 if you include the support-library).  Aerogear Android is published in Maven Central and available as library project on Github.</p>
+<p>AeroGear on Android simplifies developing mobile applications which connect to remote services.  AeroGear Android 2.0.0 supports Android 4.1 and higher. Aerogear Android is published in Maven Central and available as library project on Github.</p>
 <p>All of the features of AeroGear are supported including DataStores, Pipes, Authentication, Authorization, and Pagination.  We also supply APIs for offloading the work done by Pipes to the Loader API; your Activities will crash less and use less bandwidth.</p>
 <p>If you have any questions, feel free to hit us up on the mailing list or on irc.</p>
 
@@ -12,30 +12,111 @@ title: AeroGear Android
     <div class="column4">
         <br/><br/><img src="/img/library_android.png"/>
     </div>
-    <div class="column4">
-            <h4>AeroGear Android</h4>
-            <a href="https://github.com/aerogear/aerogear-android/archive/1.4.0.zip">Download Now v1.4.0</a><br/>
-            Also in <a href="http://search.maven.org/#browse%7C772305025">Maven Central</a><br/>
-            <a href="https://github.com/aerogear/aerogear-android-cookbook">Demo Application</a><br/>
-            <a href="https://github.com/aerogear/aerogear-android">View the Source</a><br/>
-            <a href="/docs/guides/aerogear-android">Learn More</a><br/>
-    </div>
-    <div class="column4">
-            <h4>AeroGear Android Push</h4>
-            <a href="https://github.com/aerogear/aerogear-android-push/archive/1.0.0.zip">Download Now v1.0.0</a><br/>
-            Also in <a href="http://search.maven.org/#browse%7C1423326006">Maven Central</a><br/>
-            <a href="https://github.com/aerogear/aerogear-push-helloworld/tree/master/android">Demo Application</a><br/>
-            <a href="https://github.com/aerogear/aerogear-android-push">View the Source</a><br/>
-            <a href="/docs/guides/aerogear-android">Learn More</a><br/>
-    </div>
+    <div class="column1">
+        <table>
+            <thead>
+            <tr>
+                <th>Module</th>
+                <th>Repository</th>
+                <th>Depends on</th>
+                <th>Maven Link</th>
+                <th>Download Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>core</td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-core">aerogear-android-core</a>
+                </td>
+                <td></td>
+                <td>
+                    <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-core%7C2.0.0%7Caar">Maven</a>
+                </td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-core/archive/2.0.0.zip">zip</a>
+                </td>
+            </tr>
+            <tr>
+                <td>security</td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-security">aerogear-android-security</a>
+                </td>
+                <td>core</td>
+                <td>
+                    <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-security%7C2.0.0%7Caar">Maven</a>
+                </td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-security/archive/2.0.0.zip">zip</a>
+                </td>
+            </tr>
+            <tr>
+                <td>store</td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-store">aerogear-android-store</a>
+                </td>
+                <td>security</td>
+                <td>
+                    <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-store%7C2.0.0%7Caar">Maven</a>
+                </td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-store/archive/2.0.0.zip">zip</a>
+                </td>
+            </tr>
+            <tr>
+                <td>pipe</td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-pipe">aerogear-android-pipe</a>
+                </td>
+                <td>core</td>
+                <td>
+                    <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-pipe%7C2.0.0%7Caar">Maven</a>
+                </td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-pipe/archive/2.0.0.zip">zip</a>
+                </td>
+            </tr>            
+            <tr>
+                <td>auth</td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-auth">aerogear-android-auth</a>
+                </td>
+                <td>pipe</td>
+                <td>
+                    <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-auth%7C2.0.0%7Caar">Maven</a>
+                </td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-auth/archive/2.0.0.zip">zip</a>
+                </td>
+            </tr>
 
-    <div class="column4">
-        <h4>AeroGear Android OTP</h4>
-            <a href="https://github.com/aerogear/aerogear-otp-java/zipball/1.0.0" target="_blank">Download Now v1.0.0</a><br/>
-            Also in <a href="http://search.maven.org/#browse%7C583881834">Maven Central</a><br/>
-            <a href="https://github.com/aerogear/aerogear-otp-android-demo/zipball/1.0.0" target="_blank">Demo Application</a><br/>
-            <a href="https://github.com/aerogear/aerogear-otp-java">View the Source</a><br/>
-            <a href="/docs/guides/AeroGear-OTP/">Learn More</a><br/>
-        <br/>
+            <tr>
+                <td>authz</td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-authz">aerogear-android-authz</a>
+                </td>
+                <td>pipe, store</td>
+                <td>
+                    <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-authz%7C2.0.0%7Caar">Maven</a>
+                </td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-authz/archive/2.0.0.zip">zip</a>
+                </td>
+            </tr>
+            <tr>
+                <td>push</td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-push">aerogear-android-push</a>
+                </td>
+                <td>pipe</td>
+                <td>
+                    <a href="http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-push%7C2.0.0%7Caar">Maven</a>
+                </td>
+                <td>
+                    <a href="https://github.com/aerogear/aerogear-android-push/archive/2.0.0.zip">zip</a>
+                </td>
+            </tr>            
+            </tbody>
+        </table>
     </div>
 </div>
