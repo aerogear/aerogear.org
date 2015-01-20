@@ -21,7 +21,7 @@ title: Specifications
 * [AeroGear Android Pipe 2.0.0](/docs/specs/aerogear-android-pipe/)
 * [AeroGear Android Push 2.0.0](/docs/specs/aerogear-android-push/)
 * [AeroGear Android Security 2.0.0](/docs/specs/aerogear-android-security/)
-* [AeroGear Android Store 2.0.0-alpha.1](/docs/specs/aerogear-android-store/)
+* [AeroGear Android Store 2.0.0](/docs/specs/aerogear-android-store/)
 * [Pipe API](aerogear-client-pipe)
 * [Paging API](aerogear-client-paging)
 * [Paging API usage examples](aerogear-client-paging-usage)
