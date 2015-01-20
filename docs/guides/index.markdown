@@ -5,25 +5,6 @@ title: Guides
 
 ### Guides
 
-#### Supported Platforms
-
-* [AeroGear Browser Support Targets](AeroGearBrowserTargets)
-
-#### Getting Started
-
-* [FAQ](FAQ.html)
-* [Get Started With AeroGear.js](GetStartedAeroGearJS.html)
-* [Get Started With HTML5 Mobile Web Development](GetStartedHTML5MobileWeb)
-* [Get Started with Hybrid Application Frameworks](aerogear-cordova/HybridApplicationFrameworks)
-* [Get Started with iOS and Xcode](GetStartedwithAeroGearandXcode)
-* [Get Started with iOS and AeroGear Xcode Template](GetStartedwithAeroGearandXcodeTemplate)
-* [Deploying HTML5 Applications to Openshift](HTML5AppsToOpenshift)
-* [HTML5 Mobile Quickstart & Archetype Deep Dive](HTML5MobileQuickstartAndDeepDive)
-* [HTML5 + REST Applications](HTML5RESTApps)
-* [Cordova Setup](aerogear-cordova/CordovaSetup)
-* [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](aerogear-cordova/HTML5ToHybridWithCordova)
-* [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](aerogear-cordova/CordovaAndroidDevJBDS)
-
 #### User Guides
 
 * [AeroGear Android User Guide](aerogear-android)
