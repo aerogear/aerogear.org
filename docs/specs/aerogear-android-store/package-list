@@ -1,3 +1,4 @@
-org.jboss.aerogear.android
-org.jboss.aerogear.android.datamanager
-org.jboss.aerogear.android.impl.datamanager
+org.jboss.aerogear.android.store
+org.jboss.aerogear.android.store.generator
+org.jboss.aerogear.android.store.memory
+org.jboss.aerogear.android.store.sql
