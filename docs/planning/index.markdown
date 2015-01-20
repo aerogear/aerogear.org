@@ -19,7 +19,7 @@ Full real-time data sync where updates are initiated from both the client and se
 
 [List of JIRA tickets](https://issues.jboss.org/issues/?filter=12323088)
 
-### AeroGear Push - 1.1.0 (April 2015)
+### AeroGear UnifiedPush Server - 1.1.0 (April 2015)
 
 Next version of the Unified Push Server, containing new features like support for new Push networks or advanced analytics:
 
@@ -42,6 +42,15 @@ Supports persistent storage of updates to support offline work, for Android, iOS
 Dealing with conflicts while dealing with data and their state.
 
 [List of JIRA tickets](https://issues.jboss.org/browse/AEROGEAR-1560)
+
+### AeroGear WebPush Server
+
+The [WebPush Specificiation](https://tools.ietf.org/html/draft-thomson-webpush-http2) is in an early state, but we see it as the successor of SimplePush. Below a few milestones for our WebPush effort are listed:
+
+* [1.0.0.alpha.1](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326564/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)
+* [1.0.0.alpha.2](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326565/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)
+* [1.0.0.beta.1](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326566/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)
+* [1.0.0.beta.2](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326567/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)
 
 #### specific Roadmaps
 
