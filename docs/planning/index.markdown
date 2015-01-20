@@ -43,6 +43,13 @@ Dealing with conflicts while dealing with data and their state.
 
 [List of JIRA tickets](https://issues.jboss.org/browse/AEROGEAR-1560)
 
+### AeroGear SimplePush Server
+
+Next releases for our implementation of Mozilla's SimplePush specification:
+
+* [0.13.0](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326562/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)
+* [future tasks](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326563/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)
+
 ### AeroGear WebPush Server
 
 The [WebPush Specificiation](https://tools.ietf.org/html/draft-thomson-webpush-http2) is in an early state, but we see it as the successor of SimplePush. Below a few milestones for our WebPush effort are listed:
