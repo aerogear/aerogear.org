@@ -52,7 +52,7 @@ Next releases for our implementation of Mozilla's SimplePush specification:
 
 ### AeroGear WebPush Server
 
-The [WebPush Specification](https://tools.ietf.org/html/draft-thomson-webpush-http2) is in an early state, but we see it as the successor of SimplePush. Below a few milestones for our WebPush effort are listed:
+The [WebPush Specification](https://tools.ietf.org/html/draft-thomson-webpush-http2) is in an early state, but we see it as the successor of SimplePush. Below are a few milestones for our WebPush effort are listed:
 
 * [1.0.0.alpha.1](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326564/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)
 * [1.0.0.alpha.2](https://issues.jboss.org/browse/AGPUSH/fixforversion/12326565/?selectedTab=com.atlassian.jira.jira-projects-plugin:version-issues-panel)
