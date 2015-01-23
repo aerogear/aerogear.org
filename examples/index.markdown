@@ -24,8 +24,7 @@ Below are lists of example applications and running demos which demonstrate the 
 
 ### JavaScript
 
-* [AS QuickStart](https://github.com/aerogear/kitchensink-aerogear-js)
-    * [Running Demo](http://js-aerogear.rhcloud.com/)
+* [Cookbook](https://github.com/aerogear/aerogear-js-cookbook)
 
 
 
