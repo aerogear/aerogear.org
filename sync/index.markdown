@@ -24,7 +24,7 @@ Our Netty-based [Java Server](https://github.com/aerogear/aerogear-sync-server) 
 
 ### Android
 
-An [XMPP-client library](https://github.com/aerogear/aerogear-sync-server/tree/master/client-xmpp) to receive sync updates over GCM.
+An [XMPP-client library](https://github.com/aerogear/aerogear-android-sync) to receive sync updates over GCM.
 
 ### iOS 
 
