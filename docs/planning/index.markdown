@@ -9,7 +9,7 @@ Below is a list of the planed feature for the AeroGear project.
 
 ### AeroGear OAuth2 - 1.0.0 (January 2015)
 
-Support of OAuth2 for Keycloak, Google and Facebook on our Android, iOS and Apache Cordova platforms.
+Support of OAuth2 for Keycloak, Google and Facebook on our Android, iOS, Windows and Apache Cordova platforms.
 
 [List of JIRA tickets](https://issues.jboss.org/browse/AGSEC-180).
 
