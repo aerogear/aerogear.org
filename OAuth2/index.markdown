@@ -9,7 +9,7 @@ Support of OAuth2 for [Keycloak](http://keycloak.jboss.org/), Google and Faceboo
 
 ## Roadmap
 
-The AeroGear OAuth2 effort started out of a POC and we are now moving towards a first alpha release. 
+The AeroGear OAuth2 effort started out of a POC and we are now moving towards a first release. 
 
 [List of 1.0.0 JIRA tickets](https://issues.jboss.org/browse/AGSEC-180)
 
