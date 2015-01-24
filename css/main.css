@@ -279,6 +279,8 @@ a.news:hover {
     display: inline-block;
     margin-bottom: 1.4em;
     text-decoration: none;
+    vertical-align: top;
+    margin-top: 1.4em;
 }
 
 .module img {
