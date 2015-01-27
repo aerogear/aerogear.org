@@ -15,7 +15,7 @@ domain: aerogear.org
 author: AeroGear Project
 email: aerogear-dev@lists.jboss.org
 
-production_url : http://aerogear.org
+baseurl: http://aerogear.org
 
 
 # Less compiler 
