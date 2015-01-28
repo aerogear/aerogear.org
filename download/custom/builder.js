@@ -1,5 +1,5 @@
 $( function( $ ) {
-	var host = "http://custombuilder-aerogear.rhcloud.com/builder/deps",
+	var host = "https://custombuilder-aerogear.rhcloud.com/builder/deps",
 		dependencyMap,
         externalMap,
 		groupBy = function( data, iterator ) {
@@ -181,7 +181,7 @@ $( function( $ ) {
 				$( ".alert" ).hide();
 				$( "#download" ).html(
                     $( "<iframe>" )
-                        .attr( "src",'http://custombuilder-aerogear.rhcloud.com/builder/bundle/aerogear/src/master/aerogear.custom.zip?' + $.param( config ) )
+                        .attr( "src",'https://custombuilder-aerogear.rhcloud.com/builder/bundle/aerogear/src/master/aerogear.custom.zip?' + $.param( config ) )
                 );
 			} else {
                 //show error thing
