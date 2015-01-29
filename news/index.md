@@ -62,7 +62,7 @@ Handlebars.registerHelper("summarize", function( description ) {
 var template = Handlebars.compile($('#tmpl').html());
 
 $.getFeed({
-  url: "http://aggregator-aerogear.rhcloud.com",
+  url: "https://aggregator-aerogear.rhcloud.com",
   success: function( feed ) {
     $("#result").append(
       template({
