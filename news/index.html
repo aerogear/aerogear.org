@@ -9,9 +9,35 @@ section-class: news
 
 <!-- TODO(agalante) Make this work :) -->
             
- <h2 class="section-header">AeroGear News</h2>              
-              
-              
+<h2 class="section-header">AeroGear News</h2>
+
+{% for post in site.posts %}
+{% assign author = site.authors[post.author] %}
+{% assign module = site.modules[post.module] %}
+<div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
+    <div class="article-icon"><i class="fa fa-newspaper-o fa-lg"></i></div>
+    <div class="article-header">
+        <div class="avatar">
+            <img src="http://www.gravatar.com/avatar/{{author.gravatar}}">
+        </div>
+        <h4 class="article-title" itemprop="name">
+            <a href="{{post.url}}">
+                {% if module.icon %}
+                <i class="fa {{module.icon}}"></i>
+                {% endif %}
+                {{post.title}}
+            </a>
+        </h4>
+        <p class="article-subtitle">by <span itemprop="author">{{author.display_name}}</span></p>
+        <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">{{post.date |  date: "%-d %b %Y" }}</p>
+    </div><!-- article header -->
+
+    <div class="article-description" itemprop="description">
+        {{ post.excerpt }}
+    </div><!-- article-description -->
+
+</div><!-- article -->
+{% endfor %}
               
             <div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
               <div class="article-icon"><i class="fa fa-newspaper-o fa-lg"></i></div>
