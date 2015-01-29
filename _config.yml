@@ -22,3 +22,37 @@ production_url : http://aerogear.org
 # gems: ['jekyll-less']
 
 # lessc: /css/styles.less , /css/styles.css
+
+authors:
+  matzew:
+    display_name: Matthias Wessendorf
+    gravatar: df135e9a2604ec2ce5d12ad049a8c99b
+    email: matzew@apache.org
+    web: http://www.wessendorf.net/
+    twitter: mwessendorf
+    github: matzew
+  sebastienblanc:
+    display_name: Sebastien Blanc
+    gravatar: 8d9d426881112f44887500d96852f725
+    email:
+    web: http://sblanc.org/
+    twitter: sebi2706
+    github: sebastienblanc
+  abstractj:
+    display_name: Bruno Oliviera
+    gravatar: 65fc48520f4086d76e2abed1ff3db40c
+    email: bruno@abstractj.org
+    web: http://blog.abstractj.org/
+    twitter: abstractj
+    github: abstractj
+  qmx:
+    display_name: Douglas Campos
+    gravatar: 684b4bfe97a40454db104abcb601e375
+    email: bruno@abstractj.org
+    web: http://blog.qmx.me/
+    twitter: qmx
+    github: qmx
+
+modules:
+  push:
+    icon: fa-paper-plane
