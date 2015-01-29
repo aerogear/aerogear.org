@@ -21,7 +21,7 @@ section-class: news
             <img src="http://www.gravatar.com/avatar/{{author.gravatar}}">
         </div>
         <h4 class="article-title" itemprop="name">
-            <a href="{{post.url}}">
+            <a href="{{site.baseurl}}{{post.url}}">
                 {% if module.icon %}
                 <i class="fa {{module.icon}}"></i>
                 {% endif %}
