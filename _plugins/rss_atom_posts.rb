@@ -4,13 +4,22 @@ require 'diskcached'
 
 module Reading
   class Generator < Jekyll::Generator
-    def generate(site)
-      # urls = %w[http://dcp.jboss.org/v1/rest/feed/?sys_type=blogpost&tag=aerogear]
-      # feeds = Feedjira::Feed.fetch_and_parse urls
-      # feed = feeds['http://dcp.jboss.org/v1/rest/feed/?sys_type=blogpost&tag=aerogear']
-      # puts feed.title
-      # site.data['yummy'] = feeds
 
+    def lookup_author(site, identifier)
+      author = site.data["team"][identifier]
+      if author then
+        return {
+            "name" =>author["name"],
+            "avatar" => author["avatar"]
+        }
+      else
+        return {
+            "name" => identifier
+        }
+      end
+    end
+
+    def generate(site)
       diskcache = Diskcached.new('/tmp/aerogear.site.cache', 10)
 
       feed_xml = diskcache.cache('feed_planet_aerogear_tag') do
@@ -19,7 +28,9 @@ module Reading
         http.body_str
       end
 
-      feed_to_hash = []
+
+
+      posts = []
       feed = RSS::Parser.parse(feed_xml)
       feed.items.each do |item|
         tags = []
@@ -27,17 +38,30 @@ module Reading
           tag = cat.term
             tags.push(tag) unless tag =~ /^feed_/ || ["aerogear", "mobile", "Uncategorized"].include?(tag)
         end
-        feed_to_hash.push({
-                              "title" => item.title.content,
-                              "url" => item.link.href,
-                              "date" => item.published.content,
-                              "excerpt" => item.summary.content,
-                              "author" => item.author.name.content,
-                              "tags" => tags
-                          })
+        posts << {
+          "date" => "#{item.published.content}",
+          "title" => item.title.content,
+          "url" => item.link.href,
+          "excerpt" => item.summary.content,
+          "author" => lookup_author(site, item.author.name.content),
+          "tags" => tags
+        }
       end
 
-      site.data['feed'] = feed_to_hash
+      site.posts.each do |post|
+        posts << {
+          "date" => "#{post.date}",
+          "url" => post.url,
+          "title" => post.title,
+          "excerpt" => post.excerpt,
+          "author" => lookup_author(site, post.data["author"]),
+          "tags" => post.tags
+        } if post.published?
+      end
+
+      posts.sort! { |a,b| b["date"].casecmp(a["date"]) }
+
+      site.data['all_posts'] = posts
     end
   end
 end
