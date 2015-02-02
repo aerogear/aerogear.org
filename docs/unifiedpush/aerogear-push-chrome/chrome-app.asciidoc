@@ -118,11 +118,11 @@ We also need to create our app.js:
 [source,javascript]
 ----
 // Here we listen for incoming messages from GCM and then we will just add them to our list
-chrome.pushMessaging.onMessage.addListener( function( message ) {
+chrome.gcm.onMessage.addListener( function( message ) {
     var ul = document.querySelector('#messages ul'),
         li = document.createElement('li');
 
-    li.innerHTML = message.payload;
+    li.innerHTML = message.data.alert;
     ul.appendChild( li );
 });
 ----
