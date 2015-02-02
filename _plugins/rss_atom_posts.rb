@@ -6,7 +6,15 @@ module Reading
   class Generator < Jekyll::Generator
 
     def lookup_author(site, identifier)
-      author = site.data["team"][identifier]
+      author = site.data["people"][identifier]
+      if author == nil then
+        site.data["people"].each do |nick, person|
+          if identifier.eql? person["name"] then
+            puts person
+            author = person
+          end
+        end
+      end
       if author then
         return {
             "name" =>author["name"],
