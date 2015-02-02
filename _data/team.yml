@@ -1,4 +1,5 @@
-- name: Corinne Krych
+corinnekrych:
+  name: Corinne Krych
   github: corinnekrych
   update-date: Wed, 17 Dec 2014 12:42:16 EST
   update-description: <a href="https://github.com/corinnekrych">corinnekrych</a> <span>opened</span> pull request <a href="https://github.com/aerogear/aerogear-ios-oauth2/pull/17">aerogear/aerogear-ios-oauth2#17</a>
@@ -8,7 +9,8 @@
   location-country: France
   description: Senior technical consultant with 15 years experience, 12 companies, worked in different environments and methodologies. Enthusiastic, curious and skilled. Pragmatic thinker I will understand requirements and turn them into quality software and useful documentation.
 
-- name: Jay Balunas
+balunasj:
+  name: Jay Balunas
   github: balunasj
   update-date: Fri, 19 Sep 2014 16:11:17 EDT
   update-description: <a href="https://github.com/balunasj">balunasj</a> <span>forked</span> <a href="https://github.com/feedhenry/fh-cordova-plugin-webview" class="css-truncate css-truncate-target">feedhenry/fh-cordova-plugin-webview</a> to <a href="https://github.com/balunasj/fh-cordova-plugin-webview" class="css-truncate css-truncate-target" title="balunasj/fh-cordova-plugin-webview">balunasj/fh-cordova-plugin-webview</a>
@@ -17,9 +19,10 @@
   location-city: Syracuse, New York Area
   location-country: USA
   description: Jay Balunas is a passionate software engineer specializing in Java-related enterprise technologies. Specifically focused on web tier frameworks, UI design, including the related server-side technologies. 
-  
-- name: Görkem Ercan
-  github: liufengyun
+
+gorkem:
+  name: Görkem Ercan
+  github: gorkem
   update-date: Mon, 15 Dec 2014 19:39:56 EST 
   update-description: <a href="https://github.com/gorkem">gorkem</a> <span>pushed</span> to <a href="/eclipse/thym/tree/master">master</a> at <a href="https://github.com/eclipse/thym" class="css-truncate css-truncate-target">eclipse/thym</a>
   avatar: https://avatars0.githubusercontent.com/u/82738
@@ -27,8 +30,9 @@
   location-city: Toronto 
   location-country: Canada
   description: Gorkem has tens of years of experience working on software projects with different technologies ranging from enterprise and mobile Java to Symbian and Qt C++. He specializes on providing tools and APIs for developers.
-  
-- name: Bruno Oliveira
+
+abstractj:
+  name: Bruno Oliveira
   github: abstractj
   update-date: Wed, 17 Dec 2014 11:30:43 EST 
   update-description: <a href="https://github.com/abstractj">abstractj</a> <span>opened</span> pull request <a href="https://github.com/aerogear/aerogear.org/pull/448">aerogear/aerogear.org#448</a>
@@ -38,7 +42,8 @@
   location-country: Brazil
   description: Husband, uncle, greenhorn runner, crypto wannabe, passionate about security and programming languages, a hungry dog. Just another crappy writer.
 
-- name: Christos Vasilakis
+cvasilak:
+  name: Christos Vasilakis
   github: cvasilak
   update-date: Wed, 17 Dec 2014 11:30:43 EST 
   update-description: <a href="https://github.com/cvasilak">cvasilak</a> <span>opened</span> pull request <a href="https://github.com/aerogear/aerogear.org/pull/449">aerogear/aerogear.org#449</a>
@@ -48,7 +53,8 @@
   location-country: Greece
   description: Senior Software Engineer Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
-- name: Daniel Bevenius
+danbev:
+  name: Daniel Bevenius
   github: danbev
   update-date: Wed, 17 Dec 2014 10:16:39 EST
   update-description: <a href="https://github.com/danbev">danbev</a> <span>pushed</span> to <a href="/danbev/aerogear-ios-sync-client/tree/cocoapods">cocoapods</a> at <a href="https://github.com/danbev/aerogear-ios-sync-client" class="css-truncate css-truncate-target">danbev/aerogear-ios-sync-client</a>
@@ -58,7 +64,8 @@
   location-country: Sweden
   description: Senior Software Engineer Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
-- name: Douglas Campos
+qmx:
+  name: Douglas Campos
   github: qmx
   update-date: Wed, 17 Dec 2014 10:16:39 EST
   update-description: <a href="https://github.com/qmx">qmx</a> <span>pushed</span> to <a href="/qmx/aerogear-unified-push-server/tree/fix-npe-accept">fix-npe-accept</a> at <a href="https://github.com/qmx/aerogear-unified-push-server" class="css-truncate css-truncate-target">qmx/aerogear-unified-push-server</a>
@@ -68,7 +75,8 @@
   location-country: Brazil
   description: Developer, bassist, dad, not-dumb-christian, urban cyclist, geek, teacher, JRuby & other JVM-based langs freak, table tennis n00b - dynjs creator - 3 coffee
 
-- name: Daniel Passos
+danielpassos:
+  name: Daniel Passos
   github: danielpassos
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/danielpassos">danielpassos</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-android-cookbook/pull/24#issuecomment-67379867" title="Wearnorris">aerogear/aerogear-android-cookbook#24</a>
@@ -78,7 +86,8 @@
   location-country: Brazil
   description: I'm Daniel Passos from Rio de Janeiro, Brazil. I'm a Senior Software Engineer at Red Hat and DJ on my spare time. Passionate about radicals sports, love travelling and discovering new places
 
-- name: Erik Jan de Wit
+edewit:
+  name: Erik Jan de Wit
   github: edewit
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/edewit">edewit</a> <span>pushed</span> to <a href="/edewit/aerogear-windows-oauth2/tree/master">master</a> at <a href="https://github.com/edewit/aerogear-windows-oauth2" class="css-truncate css-truncate-target">edewit/aerogear-windows-oauth2</a>
@@ -88,7 +97,8 @@
   location-country: Switzerland
   description: Works at Red Hat, lives in Zwitserland. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
-- name: Lukáš Fryč
+lfryc:
+  name: Lukáš Fryč
   github: lfryc
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/lfryc">lfryc</a> <span>pushed</span> to <a href="/lfryc/aerogear.org/tree/new-design">new-design</a> at <a href="https://github.com/lfryc/aerogear.org" class="css-truncate css-truncate-target">lfryc/aerogear.org</a>
@@ -98,7 +108,8 @@
   location-country: Czech Republic
   description: Frontend master and a testing geek, an open source addicted father, runner, climber and Red Hatter.
 
-- name: Lucas Holmquist
+lholmquist:
+  name: Lucas Holmquist
   github: lholmquist
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/lholmquist">lholmquist</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-android-cookbook/pull/25#issuecomment-67385582" title="Update readme">aerogear/aerogear-android-cookbook#25</a>
@@ -108,7 +119,8 @@
   location-country: USA
   description: Works at Red Hat, lives in NY. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
-- name: Matthias Wessendorf
+matzew:
+  name: Matthias Wessendorf
   github: matzew
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/matzew">matzew</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/384#issuecomment-67341965" title="Adjust visual style of the login screen">aerogear/aerogear-unifiedpush-server#384</a>
@@ -118,7 +130,8 @@
   location-country: Germany
   description: Specialties:iOS, WebSocket, HTML5, JMS, Stomp, AMQP, XMPP, Apache, ASF, Java EE 6, JSF 2.0, CDI, JPA, ADF Faces, Apache MyFaces, Apache MyFaces Trinidad, RIA, Rich-Internet-Applications, Server-side-push, .NET, Node.js
 
-- name: Sebastien Blanc
+sebastienblanc:
+  name: Sebastien Blanc
   github: sebastienblanc
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/sebastienblanc">sebastienblanc</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/460#issuecomment-67167202" title="removed 'old' liquibase scripts and ...">aerogear/aerogear-unifiedpush-server#460</a>
@@ -128,7 +141,8 @@
   location-country: Germany
   description: Works at Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
-- name: Hoyt Summers Pittman
+secondsun:
+  name: Hoyt Summers Pittman
   github: secondsun
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/secondsun">secondsun</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-android-cookbook/pull/24#issuecomment-67370342" title="Wearnorris">aerogear/aerogear-android-cookbook#24</a>
@@ -138,7 +152,8 @@
   location-country: USA
   description: Works at Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
-- name: Andres Galante
+andresgalante:
+  name: Andres Galante
   github: andresgalante
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/andresgalante">andresgalante</a> <span>pushed</span> to <a href="/andresgalante/aerogear.org/tree/new-design">new-design</a> at <a href="https://github.com/andresgalante/aerogear.org" class="css-truncate css-truncate-target">andresgalante/aerogear.org</a>

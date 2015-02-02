@@ -12,13 +12,13 @@ section-class: news
 <h2 class="section-header">AeroGear News</h2>
 
 {% for post in site.posts %}
-{% assign author = site.authors[post.author] %}
-{% assign module = site.modules[post.module] %}
+{% assign author = site.data.team[post.author] %}
+{% assign module = site.data.modules[post.module] %}
 <div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
     <div class="article-icon"><i class="fa fa-newspaper-o fa-lg"></i></div>
     <div class="article-header">
         <div class="avatar">
-            <img src="http://www.gravatar.com/avatar/{{author.gravatar}}">
+            <img src="{{author.avatar}}" width="60px">
         </div>
         <h4 class="article-title" itemprop="name">
             <a href="{{site.baseurl}}{{post.url}}">
@@ -28,7 +28,7 @@ section-class: news
                 {{post.title}}
             </a>
         </h4>
-        <p class="article-subtitle">by <span itemprop="author">{{author.display_name}}</span></p>
+        <p class="article-subtitle">by <span itemprop="author">{{author.name}}</span></p>
         <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">{{post.date |  date: "%-d %b %Y" }}</p>
     </div><!-- article header -->
 
