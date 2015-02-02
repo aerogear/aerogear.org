@@ -10,7 +10,6 @@ module Reading
       if author == nil then
         site.data["people"].each do |nick, person|
           if identifier.eql? person["name"] then
-            puts person
             author = person
           end
         end
@@ -27,11 +26,19 @@ module Reading
       end
     end
 
+    def include_blog_entry_in_news_feed(entry, categories)
+      return categories.include? "aerogear" || entry.title.content =~ /aerogear/i || entry.summary.content =~ /aerogear/i;
+    end
+
     def generate(site)
       diskcache = Diskcached.new('/tmp/aerogear.site.cache', 10)
-
+      feed_names = []
+      site.data["people"].each do |nick, person|
+          feed_names << person["jboss-planet-tag"] if person["jboss-planet-tag"]
+      end
+      feed_names =
       feed_xml = diskcache.cache('feed_planet_aerogear_tag') do
-        url = 'http://dcp.jboss.org/v1/rest/feed/?sys_type=blogpost&tag=feed_name_mwessendorf&tag=feed_name_krisborchers'
+        url = 'http://dcp.jboss.org/v1/rest/feed/?sys_type=blogpost&tag=' + feed_names.join("&tag=")
         http = Curl.get(url)
         http.body_str
       end
@@ -40,20 +47,25 @@ module Reading
 
       posts = []
       feed = RSS::Parser.parse(feed_xml)
-      feed.items.each do |item|
-        tags = []
-        item.categories.each do |cat|
-          tag = cat.term
-            tags.push(tag) unless tag =~ /^feed_/ || ["aerogear", "mobile", "Uncategorized"].include?(tag)
+      feed.items.each do |entry|
+        categories = []
+        entry.categories.each do |cat|
+          categories << cat.term
         end
-        posts << {
-          "date" => "#{item.published.content}",
-          "title" => item.title.content,
-          "url" => item.link.href,
-          "excerpt" => item.summary.content,
-          "author" => lookup_author(site, item.author.name.content),
-          "tags" => tags
-        }
+        if include_blog_entry_in_news_feed(entry, categories) then
+          tags = []
+          categories.each do |category|
+            tags << category unless category =~ /^feed_/ || ["aerogear", "mobile", "Uncategorized"].include?(category)
+          end
+          posts << {
+            "date" => "#{entry.published.content}",
+            "title" => entry.title.content,
+            "url" => entry.link.href,
+            "excerpt" => entry.summary.content,
+            "author" => lookup_author(site, entry.author.name.content),
+            "tags" => tags
+          }
+        end
       end
 
       site.posts.each do |post|
