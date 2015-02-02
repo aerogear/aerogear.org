@@ -11,10 +11,13 @@ section-class: news
 
 <h2 class="section-header">AeroGear News</h2>
 
-{% for post in site.data['feed'] %}
+{% for post in site.data['all_posts'] %}
 <div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
     <div class="article-icon"><i class="fa fa-newspaper-o fa-lg"></i></div>
     <div class="article-header">
+        {% if post.author.avatar %}
+        <img src="{{ post.author.avatar }}" width="60" />
+        {% endif %}
         <h4 class="article-title" itemprop="name">
             <a href="{{site.baseurl}}{{post.url}}">
                 {% if module.icon %}
@@ -23,7 +26,9 @@ section-class: news
                 {{post.title}}
             </a>
         </h4>
-        <p class="article-subtitle">by <span itemprop="author">{{post.author}}</span></p>
+        {% if post.author.name %}
+        <p class="article-subtitle">by <span itemprop="author">{{post.author.name}}</span></p>
+        {% endif %}
         <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">{{post.date |  date: "%-d %b %Y" }}</p>
     </div><!-- article header -->
 
@@ -38,34 +43,6 @@ section-class: news
         </li>
         {% endfor %}
     </ul>
-
-</div><!-- article -->
-{% endfor %}
-
-{% for post in site.posts %}
-{% assign author = site.data.team[post.author] %}
-{% assign module = site.data.modules[post.module] %}
-<div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
-    <div class="article-icon"><i class="fa fa-newspaper-o fa-lg"></i></div>
-    <div class="article-header">
-        <div class="avatar">
-            <img src="{{author.avatar}}" width="60px">
-        </div>
-        <h4 class="article-title" itemprop="name">
-            <a href="{{site.baseurl}}{{post.url}}">
-                {% if module.icon %}
-                <i class="fa {{module.icon}}"></i>
-                {% endif %}
-                {{post.title}}
-            </a>
-        </h4>
-        <p class="article-subtitle">by <span itemprop="author">{{author.name}}</span></p>
-        <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">{{post.date |  date: "%-d %b %Y" }}</p>
-    </div><!-- article header -->
-
-    <div class="article-description" itemprop="description">
-        {{ post.excerpt }}
-    </div><!-- article-description -->
 
 </div><!-- article -->
 {% endfor %}
