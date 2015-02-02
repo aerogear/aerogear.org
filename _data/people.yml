@@ -41,6 +41,7 @@ abstractj:
   location-city: Sao Paulo
   location-country: Brazil
   description: Husband, uncle, greenhorn runner, crypto wannabe, passionate about security and programming languages, a hungry dog. Just another crappy writer.
+  jboss-planet-tag: feed_name_abstractj
 
 cvasilak:
   name: Christos Vasilakis
@@ -74,6 +75,7 @@ qmx:
   location-city: Sao Paulo
   location-country: Brazil
   description: Developer, bassist, dad, not-dumb-christian, urban cyclist, geek, teacher, JRuby & other JVM-based langs freak, table tennis n00b - dynjs creator - 3 coffee
+  jboss-planet-tag: feed_name_qmx_blog
 
 danielpassos:
   name: Daniel Passos
@@ -85,6 +87,7 @@ danielpassos:
   location-city: Rio de Janeiro
   location-country: Brazil
   description: I'm Daniel Passos from Rio de Janeiro, Brazil. I'm a Senior Software Engineer at Red Hat and DJ on my spare time. Passionate about radicals sports, love travelling and discovering new places
+  jboss-planet-tag: feed_name_passos
 
 edewit:
   name: Erik Jan de Wit
@@ -107,6 +110,7 @@ lfryc:
   location-city: Brno
   location-country: Czech Republic
   description: Frontend master and a testing geek, an open source addicted father, runner, climber and Red Hatter.
+  jboss-planet-tag: feed_name_lfryc_events
 
 lholmquist:
   name: Lucas Holmquist
@@ -129,6 +133,7 @@ matzew:
   location-city: Emsdetten
   location-country: Germany
   description: Specialties:iOS, WebSocket, HTML5, JMS, Stomp, AMQP, XMPP, Apache, ASF, Java EE 6, JSF 2.0, CDI, JPA, ADF Faces, Apache MyFaces, Apache MyFaces Trinidad, RIA, Rich-Internet-Applications, Server-side-push, .NET, Node.js
+  jboss-planet-tag: feed_name_mwessendorf
 
 sebastienblanc:
   name: Sebastien Blanc
@@ -166,3 +171,4 @@ andresgalante:
 kborchers:
   name: Kris Borchers
   avatar: https://avatars2.githubusercontent.com/u/282468
+  jboss-planet-tag: feed_name_krisborchers
