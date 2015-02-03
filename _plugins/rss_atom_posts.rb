@@ -26,12 +26,21 @@ module Reading
       end
     end
 
+    def lookup_module(site, modName, tags)
+      if modName then
+        return site.data["modules"][modName]
+      end
+      tags.each do |tag|
+        return site.data["modules"][tag] if site.data["modules"][tag]
+      end
+    end
+
     def include_blog_entry_in_news_feed(entry, categories)
       return categories.include? "aerogear" || entry.title.content =~ /aerogear/i || entry.summary.content =~ /aerogear/i;
     end
 
     def generate(site)
-      diskcache = Diskcached.new('/tmp/aerogear.site.cache', 10)
+      diskcache = Diskcached.new('/tmp/aerogear.site.cache', 300)
       feed_names = []
       site.data["people"].each do |nick, person|
           feed_names << person["jboss-planet-tag"] if person["jboss-planet-tag"]
@@ -63,7 +72,9 @@ module Reading
             "url" => entry.link.href,
             "excerpt" => entry.summary.content,
             "author" => lookup_author(site, entry.author.name.content),
-            "tags" => tags
+            "tags" => tags,
+            "module" => lookup_module(site, nil, tags),
+            "external" => true
           }
         end
       end
@@ -75,7 +86,9 @@ module Reading
           "title" => post.title,
           "excerpt" => post.excerpt,
           "author" => lookup_author(site, post.data["author"]),
-          "tags" => post.tags
+          "tags" => post.tags,
+          "module" => lookup_module(site, post.data["module"], post.tags),
+          "external" => false
         } if post.published?
       end
 
