@@ -1,0 +1,10 @@
+org.jboss.aerogear.sync
+org.jboss.aerogear.sync.client
+org.jboss.aerogear.sync.diffmatchpatch
+org.jboss.aerogear.sync.diffmatchpatch.client
+org.jboss.aerogear.sync.diffmatchpatch.server
+org.jboss.aerogear.sync.jsonmergepatch
+org.jboss.aerogear.sync.jsonmergepatch.server
+org.jboss.aerogear.sync.jsonpatch
+org.jboss.aerogear.sync.jsonpatch.server
+org.jboss.aerogear.sync.server
