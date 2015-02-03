@@ -28,7 +28,7 @@ title: AeroGear Data Sync
 
 
 * [Message Format](../aerogear-sync-data-format)
-* [AeroGear Java Server API](../aerogear-sync-server-api)  
+* [AeroGear Java Server API](../aerogear-sync-server-java-api)  
 * [AeroGear Java Client API](../aerogear-sync-client-java-api)  
 
 
