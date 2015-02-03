@@ -19,9 +19,9 @@ section-class: news
         <img src="{{ post.author.avatar }}" width="60" />
         {% endif %}
         <h4 class="article-title" itemprop="name">
-            <a href="{{site.baseurl}}{{post.url}}">
-                {% if module.icon %}
-                <i class="fa {{module.icon}}"></i>
+            <a href="{% if post.external == false %}{{ site.baseurl }}{% endif %}{{ post.url }}">
+                {% if post.module.icon %}
+                <i class="fa {{post.module.icon}}"></i>
                 {% endif %}
                 {{post.title}}
             </a>
@@ -29,7 +29,9 @@ section-class: news
         {% if post.author.name %}
         <p class="article-subtitle">by <span itemprop="author">{{post.author.name}}</span></p>
         {% endif %}
-        <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">{{post.date |  date: "%-d %b %Y" }}</p>
+        <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">
+            {{post.date |  date: "%-d %b %Y" }}
+        </p>
     </div><!-- article header -->
 
     <div class="article-description" itemprop="description">
