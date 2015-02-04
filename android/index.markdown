@@ -17,6 +17,10 @@ title: AeroGear Android
 
 We have lots of [guides](https://aerogear.org/docs/guides/aerogear-android/) and [sample applications](https://github.com/aerogear/aerogear-android-cookbook) to help you get started with AeroGear and Android.
 
+## Requirements and Recommendations
+
+AeroGear 2.x supports Android 4.1 and higher.  If you need support for Android 2.3, please use [AeroGear Android 1.4](https://github.com/aerogear/aerogear-android/releases).  We recommend [Android Studio](http://developer.android.com/sdk/index.html) for application development. 
+
 # Our Libraries 
 
 Our library is broken up into modules and available from Maven Central and GitHub
