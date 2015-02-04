@@ -37,5 +37,3 @@ title: Specifications
 
 #### Sync Specifications
 * [Data Sync Specification](aerogear-data-sync)
-    * [Client API Proposals](aerogear-sync-client-api)
-    * [Server API Proposals](aerogear-sync-server-api)

@@ -4,52 +4,75 @@ title: AeroGear Sync Data model
 ---
 # Status: Experimental
 
-## Data model
-This data model is defined in JavaScript Object Notation (JSON) and specifies the application protocol for AeroGear Data Sync.
+# Message format
+This section defines the message format that is sent between a client and a server. 
 
+## Add message type
+The _add_ message is sent when a client wants to add a document/object into the server sync engine.  
+The format is in Java Object Notation (JSON) and has the following structure:
 
-### JavaScript Object Notation
-
-    {
-        id: <guid>, 
-        rev: <last revision>, 
-        content: <arbitrary json> 
+    { "msgType": "add",   
+      "id":"12345",   
+      "clientId":"76170b10-5d2f-496f-b4ba-c71b31a27f72",   
+      "content":{"name":"Luke Skywalker"}  
     }
 
-#### objectId (String)
-This is the global identifier for the object.  
-This field is optional.
+*msgType*  
+The typeof this message. Must be ```add```. 
 
-#### rev  (String)
-The revision of this object. When a object gets updated the revision will be incremented.  
-This field is optional.
+*id*  
+The document identifier for this document being added. This value is chosen by the client and all clients that use the same document id receive updates when this 
+document is updated.
 
-#### content (Object)
-This is the sync data for the application. It may be a diff, a whole object, etc.  
-This field is required.
+*clientId*  
+An identifier for the client adding the document. This value must be a unique identifier for the client. 
 
+*content*  
+The actual content of the document/object being added. The type of content depends upon the type of documents the server supports.
+In the above example the document/object content type is JSON.
 
-### Java
+## Patch message type
+The _patch_ message is sent when a client or server has updates that need to be sent the the other side. 
+The format is in JSON and has the following structure:
 
-    public interface Document<T, ID> {
-        public ID id;
-        public String rev;
-        public T content;
+    { "msgType": "patch",
+      "id": "12345",
+      "clientId":"76170b10-5d2f-496f-b4ba-c71b31a27f72",   
+      "edits":[
+        { "clientVersion":0, 
+          "serverVersion":0, 
+          "checksum": "da39a3ee5e6b4b0d3255bfef95601890afd80709", 
+          "diffs": [
+            { "op":"replace","path":"/name","value":"Darth Vader" }
+          ]
+        }
+      ]
     }
-    
-_&lt;T&gt;_ is any object that can be serialized to JSON.   
-_&lt;ID&gt;_ is a convenience shorthand since it's a _GUID/UUID_. _ID_ does not have to be a natural key but could be a surrogate key instead.
 
-### Objective-C
+*msgType*  
+The typeof this message. Must be ```patch```. 
 
-    @interface AGDocument : NSObject
+*id*  
+The document identifier for this document being updated.
 
-    @property (readonly) NSString* id;
-    @property (readonly) NSString* rev;
-    @property id content;
+*clientId*  
+An identifier for the client.
 
-    @end
+*edits*  
+Is an array of updates. An edit is created for each diff taken on the client or server side. These edits are stored before sending to the opposing side, and
+removed after being applied. They act as acknowledgments. 
 
-The dynamic _id_ type is used to store objects that can be serialized to JSON. In Objective-C that is usually _NSArray_ and _NSDictionary_.
+*clientVersion*  
+This is client version that this edit was based on.
+
+*serverVersion*  
+This is server version that this edit was based on.
+
+*checksum*  
+This is checksum for the shadow document on the opposing side.
+
+*diffs*  
+The format of diffs depends on the type of document/object type that the server supports. In the above example the format of patches is of 
+[JSON PATCH](https://tools.ietf.org/html/rfc6902). 
 
 
