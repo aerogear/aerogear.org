@@ -21,40 +21,21 @@ Ok, now that your back, lets continue.
 
 For the purpose of the guide, we will be using the AdminUI and assuming that you have followed the previous guide to login and setup your UnifiedPush Server environment.
 
-=== Register a Push Application
+:pushplatform: Android
+include::docs/unifiedpush/include--register-app.asciidoc[]
 
-Now that we are logged in, let's create a new _Push Application_.
+You may be wondering why we are creating an Android Variant for a Chrome app.  Well, the previous link:https://developer.chrome.com/extensions/pushMessaging[chrome.pushMessaging API] has been deprecated since chrome 38 and will be removed soon.  This has been replaced with the link:https://developer.chrome.com/extensions/gcm[chrome.gcm API], which uses the same GCM as Android.  This allows us to use the Android Variant for Chrome Apps!!
 
-In the Navigation panel, the +Applications+ icon brings you to the management section for PushApplications:
+Click the **Add Variant** button. And fill out the Android options.  You will want to use the **Client ID** and **Project Number** from the *Google API Console* in their appropriate fields.
 
-image::../../unifiedpush/ups_userguide/img/applications_start.png[Manage your PushApplications]
+image::../aerogear-push-android/img/variant_02.png[Android Variant Options]
 
-Now click the +Create Application+ button which brings up a dialog to provide a name and an optional description:
+Click **Add** and your variant will be created.
 
-image::./img/application_create.png[Create Application]
+image::../aerogear-push-android/img/variant_03.png[Android Variant Created]
 
-Now that we have our new Chrome Application, you will notice that we have no variants.  Time to create one.  Click on the "No variants" icon to get started
+Expand the variant card and make note of the **Variant ID** and **Secret** fields. Both will be used later when registering your installation through the Android client SDK.
 
-image::./img/application_created.png[Created Application]
-
-_Remeber: Variants are the actual application_
-
-=== Register an Chrome Packaged App Variant
-
-image::./img/variant_home.png[Variant Home]
-
-Time to register our Chrome Packaged App variant.
-
-Click on the _Add Variant_ button
-
-image::./img/add_variant.png[Add Variant]
-
-Choose the _Chrome_ option and then enter in the _clientId_ and _clientSecret_ parameters to the Google API Client ID and Client Secret you obtained earlier from the Google API console.  Also, update the _refreshToken_ parameter with the refresh token you obtained from the OAuth2 Playground
-
-image::./img/variant_created.png[Variant Created]
-
-The variant has been created.  There is an _Example Installation_ link that will be useful for our next section.
-
-image::./img/example_impl.png[Example Implementation]
+image::../aerogear-push-android/img/variant_04.png[Android Variant Details]
 
 The server is now configured. Time to link:../chrome-app[create a Chrome Packaged Application] that will use the AeroGear JS library to connect to the UnifiedPush server and start receiving notifications.
