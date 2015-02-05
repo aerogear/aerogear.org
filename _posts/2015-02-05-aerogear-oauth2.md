@@ -1,4 +1,7 @@
-# OAuth2 support on AeroGear
+---
+layout: post
+title: OAuth2 support on AeroGear
+---
 
 Fasten your seatbelts, because today we are pleased to announce the official availability of our SDKs for OAuth2.
 
