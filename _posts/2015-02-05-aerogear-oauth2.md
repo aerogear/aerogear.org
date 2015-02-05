@@ -13,7 +13,7 @@ Just to give you a general idea, the table below reflects the current state of o
 
 | Flows          | Android | iOS | JavaScript | Cordova | Windows Phone |
 |:---------------------:|:-------:|:---:|:----------:|:-------:|:-------------:|
-|[Implicit grant flow](https://tools.ietf.org/html/rfc6749#section-4.2)|&#10004;|&#10004;|**-**|_soon_|&#10004;|
+|[Implicit grant flow](https://tools.ietf.org/html/rfc6749#section-4.2)|**-**|**-**|**-**|_soon_|**-**|
 |[Refresh access tokens](https://tools.ietf.org/html/rfc6749#section-4.3)|&#10004;|&#10004;|**-**|**-**|**-**|
 |[Token revocation](http://tools.ietf.org/html/rfc7009#section-2)|**-**|&#10004;|**-**|**-**|**-**|
 |[Resource owner password credentials grant](https://tools.ietf.org/html/rfc6749#section-4.3) |**-**|_soon_|**-**|**-**|**-**|
