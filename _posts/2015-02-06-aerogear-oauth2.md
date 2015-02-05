@@ -18,6 +18,17 @@ Just to give you a general idea, the table below reflects the current state of o
 
 # Quickstarts
 
+We have a demo application, called Shoot’n Share for all of our supported platforms (Android, iOS and Cordova). The application allows you to upload a photo to Facebook, Google+ or a Keycloak protected backend.
+
+The different applications can be found it the platform specific cookbooks:
+
+* [Android Shoot’n Share](https://github.com/aerogear/aerogear-android-cookbook/tree/master/ShootAndShare)
+* [iOS Shoot’n Share](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Shoot)
+* [Cordova Shoot’n Share](https://github.com/aerogear/aerogear-cordova-cookbook/tree/master/Shoot)
+
+The Keycloak protected backend application is a simple Java EE / JAX-RS based application, which is located [here](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot).
+
 ## What's next ?
 
+We will have OAuth2 support on Windows Phone very soon. If you want to take an early look, clone the [repository](https://github.com/aerogear/aerogear-windows-oauth2) and give the [Shoot’n Share](https://github.com/aerogear/aerogear-windows-cookbook/blob/master/Shoot/README.md) app a try!
 
