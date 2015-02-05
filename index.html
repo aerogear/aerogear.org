@@ -21,8 +21,8 @@ nav-active-home: active
             
           <div class="col-md-6 core">
             <h3><a href="#"><i class="fa fa-rocket"></i> AeroGear<strong>Core</strong></a></h3>
-            <p class="alt">Crossplatform APIs for all your common client-server infrastructure tasks.</p>
-            <p><strong>DataStores</strong>, <strong>Pipes</strong>, <strong>Authentication</strong>, <strong>Authorisation</strong> and <strong>Pagination</strong> APIs cover the bases for day-to-day cross-platform development.</p>
+            <p class="alt">Cross-platform APIs for all your common client-server infrastructure tasks.</p>
+            <p><strong>DataStores</strong>, <strong>Pipes</strong>, <strong>Authentication</strong>, <strong>Authorization</strong> and <strong>Pagination</strong> APIs cover the bases for day-to-day cross-platform development.</p>
             
             <p><a href="modules/index.html#core" class="btn btn-primary">Learn about AeroGear<strong>Core</strong></a></p>
             
@@ -31,8 +31,8 @@ nav-active-home: active
         
           <div class="col-md-6 push">
             <h3><a href="#"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong></a></h3>
-            <p class="alt">Send push notifications to any divide, regardless of platform or network.</p>
-            <p>A unified APU lets you send push notifications from the <strong>Unified Push Server</strong> via  <strong>Google Cloud Messaging</strong>, <strong>Apple’s APNs</strong> or <strong>SimplePush</strong> to any mobile divide.</p>
+            <p class="alt">Send push notifications to any device, regardless of platform or network.</p>
+            <p>A unified API lets you send push notifications from the <strong>Unified Push Server</strong> via <strong>Google Cloud Messaging</strong>, <strong>Apple’s APNs</strong>, <strong>Amazon's ADM</strong>, <strong>Microsoft's WNS</strong> and <strong>MPNS</strong>, <strong>SimplePush</strong> or <strong>WebPush</strong> to any mobile device.</p>
             
             <p><a href="modules/index.html#push" class="btn btn-primary">Learn about AeroGear<strong>Push</strong></a></p>
             
@@ -52,8 +52,8 @@ nav-active-home: active
 
           <div class="col-md-6 sync">
             <h3><a href="#"><i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong></a></h3>
-            <p class="alt">Sync things, some text goes here.</p>
-            <p>More text goes here about aerogear sync. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididu.</p>
+            <p class="alt">Real-time, client-server data synchronization with ease and efficiency.</p>
+            <p>Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel.</p>
             <p><a href="modules/index.html#syng" class="btn btn-primary">Learn about AeroGear<strong>Sync</strong></a></p>
           </div><!-- col -->
 
@@ -71,10 +71,10 @@ nav-active-home: active
       
         <div class="row">  
           <div class="col-md-5 col-sm-6">
-        <h2 class="section-header">AeroGear is crossplatform</h2>
+        <h2 class="section-header">AeroGear is cross-platform</h2>
         
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p>Psum dolor sit usmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>AeroGear provides flexible and extensible libraries to simplify mobile development across platforms and cut common repetitive infrastructure tasks.</p>
+        <p>The list of supported platforms includes:</p>
         <ul>
           <li>Android</li>  
           <li>iOS</li>  
@@ -167,13 +167,13 @@ nav-active-home: active
         
         <div class="row">
           <div class="col-sm-4">
-            <h3 class="sub-section-header">Contributors ativity</h3>
+            <h3 class="sub-section-header">Contributors activity</h3>
             
               <ul class="media-list contributor-feed">
 
               {% for member in site.data.team limit:4 %}
                 <li class="media" itemscope itemtype="http://schema.org/Person">
-                  <a class="media-left" href="/community/index.html#team">
+                  <a class="media-left" href="{{ site.baseurl }}/community/index.html#team">
                     <img src="{{ member.avatar }}" itemprop="image" alt="{{ member.name }}">
                   </a>
                   <div class="media-body">
@@ -186,7 +186,7 @@ nav-active-home: active
               {% endfor %}
             </ul><!-- contributor-feed -->
                 
-            <p><a href="/community/index.html#team" class="btn btn-primary"><i class="fa fa-user"></i> View all Contributor</a></p>
+            <p><a href="{{ site.baseurl }}/community/index.html#contributors" class="btn btn-primary"><i class="fa fa-user"></i> View all Contributors</a></p>
                 
           </div><!-- col -->
 
@@ -196,21 +196,61 @@ nav-active-home: active
           <div class="col-sm-4">          
            <h3 class="sub-section-header">News</h3>
            
-           <div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
+           <!--<div class="article news" itemscope itemtype="http://schema.org/NewsArticle">-->
+           <!---->
+            <!--<div class="article-header">-->
+              <!--<h4 class="article-title" itemprop="name"><a href="#">How to Tie a Reef Knot</a></h4>-->
+              <!--<p class="article-subtitle">by <span itemprop="author">John Doe</span></p>-->
+              <!--<p class="article-date" itemprop="datePublished" content="2013-09-14">Sep 14, 2012</p>-->
+            <!--</div>&lt;!&ndash; article header &ndash;&gt;-->
+            <!---->
+            <!--<div class="article-description" itemprop="description">-->
+                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
+             <!--</div>&lt;!&ndash; article-description &ndash;&gt;-->
+             <!---->
+           <!--</div>&lt;!&ndash; article &ndash;&gt;    -->
+
+              {% assign post = site.data['all_posts'][0] %}
+              <div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
+                  <div class="article-header">
+
+                      <h4 class="article-title" itemprop="name">
+                          <a href="{% if post.external == false %}{{ site.baseurl }}{% endif %}{{ post.url }}">
+                              {{post.title}}
+                          </a>
+                      </h4>
+
+                      <div class="media">
+                          {% if post.author.avatar %}
+                          <div class="media-left">
+                              <img src="{{ post.author.avatar }}" />
+                          </div>
+                          {% endif %}
+
+                          <div class="media-body">
+                              {% if post.author.name %}
+                              <p class="article-subtitle">by
+              <span itemprop="author">
+              {{post.author.name}}
+              </span>
+                              </p>
+                              {% endif %}
+                              <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">
+                              posted on {{post.date |  date: "%-d %b %Y" }}
+                              </p>
+                          </div>
+                      </div>
+
+
+                  </div><!-- article header -->
+
+                  <div class="article-description" itemprop="description">
+                      {{ post.excerpt }}
+                  </div><!-- article-description -->
+
+              </div>
            
-            <div class="article-header">
-              <h4 class="article-title" itemprop="name"><a href="#">How to Tie a Reef Knot</a></h4>
-              <p class="article-subtitle">by <span itemprop="author">John Doe</span></p>
-              <p class="article-date" itemprop="datePublished" content="2013-09-14">Sep 14, 2012</p>
-            </div><!-- article header -->
-            
-            <div class="article-description" itemprop="description">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-             </div><!-- article-description -->
-             
-           </div><!-- article -->    
-           
-            <p><a href="/news" class="btn btn-primary"><i class="fa fa-newspaper-o"></i> View all news</a></p>
+            <p><a href="{{ site.baseurl }}/news" class="btn btn-primary"><i class="fa fa-newspaper-o"></i> View all news</a></p>
            
           </div><!-- col-->
          
@@ -254,15 +294,14 @@ nav-active-home: active
     <section class="custommers">
       <div class="container">
       
-        <h2 class="section-header">Mobile development begines here</h2>
+        <h2 class="section-header">Mobile development begins here</h2>
         
-        <p>A text about where you can find Aerogear. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>        
+        <p>Using mobile technologies will never be so easy as in the cloud. AeroGear supports several cloud-enabled providers and technologies.</p>
         
         <p>          
-          <a href="#"><img src="img/logos_home/docker.gif" alt="docker" /></a>
-          <a href="#"><img src="img/logos_home/feedhenry.gif" alt="feedhenry"  /></a>
-          <a href="#"><img src="img/logos_home/openshift.gif" alt="openshift"  /></a>
-          <a href="#"><img src="http://placehold.it/185x90" alt="logo"></a>
+          <a href="https://registry.hub.docker.com/u/aerogear/unifiedpush-wildfly/"><img src="{{ site.baseurl }}/img/logos_home/docker.gif" alt="docker" /></a>
+          <a href="http://www.feedhenry.com/feedhenry-and-red-hat-pushing-ahead-with-integrations/"><img src="{{ site.baseurl }}/img/logos_home/feedhenry.gif" alt="feedhenry"  /></a>
+          <a href="https://developers.openshift.com/en/xpaas-unified-push.html"><img src="{{ site.baseurl }}/img/logos_home/openshift.gif" alt="openshift"  /></a>
         </p>  
         
             
