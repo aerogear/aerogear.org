@@ -47,7 +47,7 @@ section-class: news
     </div><!-- article header -->
 
     <div class="article-description" itemprop="description">
-        {{ post.excerpt }}
+        {{ post.excerpt | markdownify }}
     </div><!-- article-description -->
 
 
