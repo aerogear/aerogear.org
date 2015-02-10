@@ -28,7 +28,7 @@ Creating [geo fences](/docs/specs/aerogear-cordova/geofencing.html) is a cool wa
 Last but not least is our OAuth2 Plugin that lets you do [OAuth2 based Authorization](https://github.com/aerogear/aerogear-oauth2-cordova)
 
 # Roadmap
-Keep an eye on our [JIRA](https://jira.jboss.org/browse/AGCORDOVA) page for upcoming releases as well as what we are currently working on.
+Keep an eye on our [JIRA](https://jira.jboss.org/browse/AGCORDOVA/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel) page for upcoming releases as well as what we are currently working on.
 
 ## Platforms
-Right now iOS and Android are the supported platforms and we are working on supporting windows as well the Push Plugin already has windows support. See [JIRA](https://issues.jboss.org/browse/AGCORDOVA/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel) for things we are working on at the moment.
+Right now iOS and Android are the supported platforms and we are working on supporting windows as well the Push Plugin already has windows support. See [JIRA](https://issues.jboss.org/browse/AGCORDOVA) for things we are working on at the moment.
