@@ -31,4 +31,4 @@ Last but not least is our OAuth2 Plugin that lets you do [OAuth2 based Authoriza
 Keep an eye on our [JIRA](https://jira.jboss.org/browse/AGCORDOVA) page for upcoming releases as well as what we are currently working on.
 
 ## Platforms
-Right now iOS and Android are the supported platforms and we are working on supporting windows as well the Push Plugin already has windows support. See [JIRA](https://jira.jboss.org/browse/AGCORDOVA) for things we are working on at the moment.
+Right now iOS and Android are the supported platforms and we are working on supporting windows as well the Push Plugin already has windows support. See [JIRA](https://issues.jboss.org/browse/AGCORDOVA/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel) for things we are working on at the moment.
