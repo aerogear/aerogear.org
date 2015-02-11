@@ -63,7 +63,7 @@ The [WebPush Specification](https://tools.ietf.org/html/draft-thomson-webpush-ht
 
 Details on specific platforms or features can be found below:
 
-* [Android](roadmaps/AeroGearAndroid)
+* [Android](https://issues.jboss.org/browse/AGDROID/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel)
 * [Cordova](roadmaps/AeroGearCordova)
 * [iOS](roadmaps/AeroGeariOS)
 * [JavaScript](roadmaps/AeroGearJS)
