@@ -1,7 +1,8 @@
 ---
 layout: post
 title: AeroGear Mobile Push 1.0.0 is out!
-
+author: matzew
+module: push
 ---
 
 We’re happy to announce the availability of AeroGear Mobile Push 1.0.0!

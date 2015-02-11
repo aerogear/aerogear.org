@@ -1,6 +1,8 @@
 ---
 layout: post
-title: UnifiedPush Server 1.1.0-alpha.1 with Windows Push is out ! 
+title: UnifiedPush Server 1.1.0-alpha.1 with Windows Push is out !
+author: sebastienblanc
+module: push
 ---
 
 We are happy to announce that the [Unified Push Server 1.1.0-alpha.1](https://github.com/aerogear/aerogear-unifiedpush-server/releases/tag/1.1.0-alpha.1) has been released ! 

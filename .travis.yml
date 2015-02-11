@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+- 1.9.3
+install:
+- bash -x travis.sh install
+script:
+- bash -x travis.sh script
+after_success:
+- bash -x travis.sh after_success
+env:
+  global:
+    secure: Hze+W1B6f9Jpa/RM6Ca9O8EfZJlU1b6320dqSipKEyuyCbc6QRCMW5/qYGPwpC77Eq/YYSBdGccT5BktqsDVDbPI0lGt/WFXKTIdW+RuUwBRUQu7hjO/NfHPgcmsGvXx1B6ajxGc645eMRutuyszDMsBHZgMaCRc126EcH+kRcE=
