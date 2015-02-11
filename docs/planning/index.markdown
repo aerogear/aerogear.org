@@ -37,7 +37,7 @@ Supports persistent storage of updates to support offline work, for Android, iOS
 
 ## unscheduled features
 
-### AeroGear Conflict Resolution 
+### AeroGear Conflict Resolution
 
 Dealing with conflicts while dealing with data and their state.
 
@@ -67,4 +67,4 @@ Details on specific platforms or features can be found below:
 * [Cordova](https://issues.jboss.org/browse/AGCORDOVA/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel)
 * [iOS](https://issues.jboss.org/browse/AGIOS/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel)
 * [JavaScript](https://issues.jboss.org/browse/AGJS/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel)
-* [Security](roadmaps/AeroGearSecurity)
+* [Security](https://issues.jboss.org/browse/agsec/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel)
