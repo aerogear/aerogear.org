@@ -66,5 +66,5 @@ Details on specific platforms or features can be found below:
 * [Android](https://issues.jboss.org/browse/AGDROID/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel)
 * [Cordova](https://issues.jboss.org/browse/AGCORDOVA/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel)
 * [iOS](roadmaps/AeroGeariOS)
-* [JavaScript](roadmaps/AeroGearJS)
+* [JavaScript](https://issues.jboss.org/browse/AGJS/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel)
 * [Security](roadmaps/AeroGearSecurity)
