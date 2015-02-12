@@ -10,10 +10,10 @@ Support of OAuth2 for [Keycloak](http://keycloak.jboss.org/), Google and Faceboo
 | Flows          | Android | iOS | JavaScript | Cordova | Windows Phone |
 |:---------------------:|:-------:|:---:|:----------:|:-------:|:-------------:|
 |[Implicit grant flow](https://tools.ietf.org/html/rfc6749#section-4.2)|**-**|**-**|**-**|_soon_|**-**|
-|[Refresh access tokens](https://tools.ietf.org/html/rfc6749#section-4.3)|&#10004;|&#10004;|**-**|**-**|**-**|
+|[Refresh access tokens](https://tools.ietf.org/html/rfc6749#section-4.3)|&#10004;|&#10004;|**-**|&#10004;|&#10004;|
 |[Token revocation](http://tools.ietf.org/html/rfc7009#section-2)|**-**|&#10004;|**-**|**-**|**-**|
 |[Resource owner password credentials grant](https://tools.ietf.org/html/rfc6749#section-4.3) |**-**|_soon_|**-**|**-**|**-**|
-|[Authorization Code Grant](https://tools.ietf.org/html/rfc6749#section-4.1)|&#10004;|&#10004;|**-**|**-**|**-**|
+|[Authorization Code Grant](https://tools.ietf.org/html/rfc6749#section-4.1)|&#10004;|&#10004;|**-**|&#10004;|&#10004;|
 
 ## Roadmap
 
