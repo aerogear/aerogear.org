@@ -12,9 +12,9 @@ The AeroGear UnifiedPush Server is a server that allows sending native push mess
 
 About the UnifiedPush Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The AeroGear UnifiedPush Server offers an unified Notification Service API to the above mentioned Push Network Services. When a push message request is sent to the UnifiedPush Server, it is internally translated into the format of these 3rd party networks. This gives a server the ability to send Push Notifications to different mobile platforms.
+The AeroGear UnifiedPush Server offers a unified Notification Service API to the above mentioned Push Network Services. When a push message request is sent to the UnifiedPush Server, it is internally translated into the format of these 3rd party networks. This gives a server the ability to send Push notifications to different mobile platforms.
 
-NOTE: When using the UnifiedPush Server, please keep in mind that Push Notifications is a signalling mechanism and that it is not suitable to be used as a data carrying system (e.g. use in a chat application).
+NOTE: When using the UnifiedPush Server, please keep in mind that Push notification is a signalling mechanism and that it is not suitable to be used as a data carrying system (e.g. use in a chat application).
 
 Privacy note
 ~~~~~~~~~~~~
