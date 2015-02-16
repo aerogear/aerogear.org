@@ -1,6 +1,8 @@
 ---
 layout: post
 title: AeroGear iOS SDK v2.1 is out !
+author: corinnekrych
+module: core
 ---
 
 Hi AeroGear community,

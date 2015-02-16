@@ -1,6 +1,8 @@
 ---
 layout: post
-title: AeroGear Android 2.0.0 is out ! 
+title: AeroGear Android 2.0.0 is out !
+author: secondsun
+module: core
 ---
 
 We are happy to announce that the 2.0.0 version of our Android library has been released!
