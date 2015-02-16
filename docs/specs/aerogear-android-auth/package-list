@@ -1,4 +1,3 @@
 org.jboss.aerogear.android.authentication
-org.jboss.aerogear.android.authentication.impl
-org.jboss.aerogear.android.authentication.impl.loader
-org.jboss.aerogear.android.authentication.impl.loader.support
+org.jboss.aerogear.android.authentication.basic
+org.jboss.aerogear.android.authentication.digest

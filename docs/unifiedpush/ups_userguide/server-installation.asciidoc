@@ -176,6 +176,10 @@ For EAP:
 $ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config.cli
 ----
 
+==== Migration
+
+For information on database migrations for MySQL and PostgreSQL, consult the link:../migration[Migration guide].
+
 [[deploy]]
 === Deploy the UnifiedPush Server
 After the application server is configured for the UnifiedPush datasource, the two UnifiedPush Server application +.war+ files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server.

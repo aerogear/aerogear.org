@@ -23,13 +23,13 @@ title: AeroGear Android User Guide
 * [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo)
 
 ## JavaDoc documentation
-* [AeroGear Android 1.4.0](/docs/specs/aerogear-android)
-* [AeroGear Android Auth 2.0.0-alpha.1](/docs/specs/aerogear-android-auth/)
-* [AeroGear Android Authz 2.0.0-alpha.1](/docs/specs/aerogear-android-authz/)
-* [AeroGear Android Pipe 2.0.0-alpha.1](/docs/specs/aerogear-android-pipe/)
-* [AeroGear Android Push 2.0.0-alpha.1](/docs/specs/aerogear-android-push/)
-* [AeroGear Android Security 2.0.0-alpha.1](/docs/specs/aerogear-android-security/)
-* [AeroGear Android Store 2.0.0-alpha.1](/docs/specs/aerogear-android-store/)
+* [AeroGear Android Auth 2.0.0](/docs/specs/aerogear-android-auth/)
+* [AeroGear Android Authz 2.0.0](/docs/specs/aerogear-android-authz/)
+* [AeroGear Android Core 2.0.0](/docs/specs/aerogear-android-core/)
+* [AeroGear Android Pipe 2.0.0](/docs/specs/aerogear-android-pipe/)
+* [AeroGear Android Push 2.0.0](/docs/specs/aerogear-android-push/)
+* [AeroGear Android Security 2.0.0](/docs/specs/aerogear-android-security/)
+* [AeroGear Android Store 2.0.0](/docs/specs/aerogear-android-store/)
 
 
 ## Projects using AeroGear on Android

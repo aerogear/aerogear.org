@@ -19,7 +19,18 @@ The AeroGear UnifiedPush Server is a server that allows sending native push mess
 
 About the UnifiedPush Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The AeroGear UnifiedPush Server offers an unified Notification Service API to the above mentioned Push Network Services. When a push message request is sent to the UnifiedPush Server, it is internally translated into the format of these 3rd party networks. This gives a server the ability to send Push Notifications to different mobile platforms. When using the UnifiedPush Server, please keep in mind that Push Notifications is a signalling mechanism and that it is not suitable to be used as a data carrying system (e.g. use in a chat application).
+The AeroGear UnifiedPush Server offers a unified Notification Service API to the above mentioned Push Network Services. When a push message request is sent to the UnifiedPush Server, it is internally translated into the format of these 3rd party networks. This gives a server the ability to send Push notifications to different mobile platforms.
+
+NOTE: When using the UnifiedPush Server, please keep in mind that Push notification is a signalling mechanism and that it is not suitable to be used as a data carrying system (e.g. use in a chat application).
+
+Privacy note
+~~~~~~~~~~~~
+
+As explained in the _link:#_how_the_unifiedpush_server_works[How the UnifiedPush Server works]_ section, the payload of the push notification is delivered to 3rd party Push Network providers, like Google or Apple.
+
+WARNING: It is highly recommended to not sent any send sensitive personal or confidential information belonging to an individual (e.g. a social security number, financial account or transactional information, or any information where the individual may have a reasonable expectation of secure transmission) as part of any Push Notification!
+
+For analytic purposes on our link:../admin-ui/#_dashboard[Dashboard] we store the content of the +alert+ key sent to the UnifiedPush Server. The content of the +alert+ key belongs to the metadata, which is deleted after 30 days, using a nightly job within the UnifiedPush Server.
 
 Use-cases and scenarios
 ~~~~~~~~~~~~~~~~~~~~~~~

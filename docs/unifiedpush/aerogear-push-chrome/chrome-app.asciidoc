@@ -28,7 +28,7 @@ You can download AeroGear.js link:https://github.com/aerogear/aerogear-js-dist/r
 
 We will create the remaining files.
 
-The first thing we need to do is create a manifest.json file and add the _pushMessaging_ permission:
+The first thing we need to do is create a manifest.json file and add the _gcm_ permission:
 
 [source,json]
 ----
@@ -46,7 +46,7 @@ The first thing we need to do is create a manifest.json file and add the _pushMe
           "scripts": ["scripts/main.js", "scripts/jquery.min.js", "scripts/aerogear.js"]
         }
     },
-    "permissions": ["pushMessaging"]
+    "permissions": ["gcm"]
 }
 ----
 
@@ -67,10 +67,10 @@ chrome.app.runtime.onLaunched.addListener(function() {
 // This will happen when the app is first Installed
 chrome.runtime.onInstalled.addListener(function() {
 
-    // First we need to get the channelID and then send it to the UnifiedPush Server
+    // First we need to register our senderId with GCM and then send the returned registrationId to the UnifiedPush Server
     // This code could also go in the 'onLaunched' method
 
-    chrome.pushMessaging.getChannelId( true, function(channelId) {
+    chrome.gcm.register(['YOUR_SENDERID'], function (registrationId) {
         /*
             Set our Variant ID and Secret and the location of the UnifiedPush Server
         */
@@ -78,7 +78,7 @@ chrome.runtime.onInstalled.addListener(function() {
             variantSecret = "VARIANT_SECRET",
             pushServerURL = "http://localhost:8080/ag-push";
 
-        // Once we have the channelID we can then register with the UnifiedPush Server using
+        // Once we have the registrationId we can then register with the UnifiedPush Server using
         // the AeroGear.js library
         var client = AeroGear.UnifiedPushClient(
                 variantId,
@@ -88,7 +88,7 @@ chrome.runtime.onInstalled.addListener(function() {
             // The channelId will be the "device token"
 
         settings.metadata = {
-            deviceToken: channelId.channelId
+            deviceToken: registrationId
         };
 
         // Register with the UnifiedPush Server
@@ -99,9 +99,6 @@ chrome.runtime.onInstalled.addListener(function() {
 ----
 
 The above code is responsible for registering with the UnifiedPush Server once the application is installed.
-
-[NOTE]
-_You can use the example implementation from the UnifiedPush server for the chrome.pushMessaging.getChannelId method_
 
 [NOTE]_To learn more about the Chrome App Lifcycle, link:http://developer.chrome.com/apps/app_lifecycle[go here]_
 
@@ -130,17 +127,13 @@ We also need to create our app.js:
 [source,javascript]
 ----
 // Here we listen for incoming messages from GCM and then we will just add them to our list
-chrome.pushMessaging.onMessage.addListener( function( message ) {
+chrome.gcm.onMessage.addListener( function( message ) {
     var ul = document.querySelector('#messages ul'),
         li = document.createElement('li');
 
-    li.innerHTML = message.payload;
+    li.innerHTML = message.data.alert;
     ul.appendChild( li );
 });
 ----
-
-=== Upload to the Chrome Web Store
-
-To use GCM for Chrome, you will need to publish your app on the Chrome Web Store.  Publishing to the Web Store is beyond the scope of the tutorial, but here is an excellent walkthrough from the link:https://developers.google.com/chrome/web-store/docs/get_started_simple#step1[chrome developer docs]
 
 Now that we have our application up an running time to link:../push-notification[send messages] using the AeroGear UnifiedPush Server!

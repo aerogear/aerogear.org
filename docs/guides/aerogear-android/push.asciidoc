@@ -15,27 +15,54 @@ Push messaging is a mechanism for sending data to mobile clients from a remote s
 
 On Android messages that GCM receives from an application server are sent to the Android device over an XMPP connection managed by the operating system.  These messages are then extracted and passed to applications via a BroadcastReceiver.  Android applications can register to receive push notifications by declaring a receiver in their AndroidManifest.xml files.
 
-=== API overview
-
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html[Registrations]
- : Similar to PipeLine, this class acts as a factory and registry of *PushRegistrars*.  Additionally this class provides static methods to register a MessageHandler to be informed of a push message.
-
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar]
- : This is the main class which handles registering and unregistering from a push network.
-
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/impl/unifiedpush/PushTypes.html[PushTypes]
- : An enum of types supported by the Push APIs
-
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushConfig.html[PushConfig]
- : Provides configuration options for constructing a push registrar from the Registrations class.
-
-link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/MessageHandler.html[MessageHandler]
- : An interface which is called when a push message is consumed.
-
-http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver]
- : An implementation of *BroadcastReceiver* which routes messages from GCM to the AeroGear Push APIs.
-
 === How to use it
+
+==== Registering with GCM and Unified Push Server
+
+This code example demonstrates how to create a link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar], provide values required to register the application with GCM and Unified Push, and perform the registration.
+
+[source,java]
+----
+RegistrarManager.config("myPushRegistar", AeroGearGCMPushConfiguration.class)
+                .setPushServerURI(new URI(UNIFIED_PUSH_URL))
+                .setSenderIds(GCM_SENDER_ID)
+                .setVariantID(VARIANT_ID)
+                .setSecret(SECRET)
+                .asRegistrar();
+
+PushRegistrar registrar = RegistrarManager.getRegistrar("myPushRegistar");
+registrar.register(getApplicationContext(), new Callback<Void>() {
+    @Override
+    public void onSuccess(Void ignore) {
+        // Seems your device was registered in Unified Push Server
+    }
+
+    @Override
+    public void onFailure(Exception exception) {
+        // Oops! Something is wrong.
+        /* The developer should resolve the error and retry registration */
+    }
+});
+
+----
+
+If you no longer wish to receive Push notifications, you may unregister.
+
+[source,java]
+----
+registrar.unregister(getApplicationContext(), new Callback<Void>() {
+    @Override
+    public void onSuccess(Void ignore) {
+        // Seems your device was unregistered in Unified Push Server
+    }
+
+    @Override
+    public void onFailure(Exception exception) {
+        // Oops! Something is wrong.
+    }
+});
+
+----
 
 ==== Configuring your application to receive Push messages
 
@@ -62,7 +89,7 @@ and add this element as a child of the application element to register the defau
 [source, xml]
 ----
 <receiver
-    android:name="org.jboss.aerogear.android.unifiedpush.AeroGearGCMMessageReceiver"
+    android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
     android:permission="com.google.android.c2dm.permission.SEND" >
     <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -77,7 +104,7 @@ You can also add a default message handler to the receiver in AndroidManifest.xm
 [source, xml]
 ----
 <receiver
-    android:name="org.jboss.aerogear.android.unifiedpush.AeroGearGCMMessageReceiver"
+    android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
     android:permission="com.google.android.c2dm.permission.SEND" >
     <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -89,102 +116,48 @@ You can also add a default message handler to the receiver in AndroidManifest.xm
 
 ----
 
-==== Registering with GCM and Unified Push Server
-
-This code example demonstrates how to create a link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushConfig.html[PushConfig], provide values required to register the application with GCM and Unified Push, and perform the registration.
-
-[source,java]
-----
-PushConfig config = new PushConfig(UNIFIED_PUSH_URL, GCM_SENDER_ID);
-config.setVariantID(VARIANT_ID);
-config.setSecret(SECRET);
-
-Registrations registrations = new Registrations();
-PushRegistrar registrar = registrations.push("registrar", config);
-registrar.register(getApplicationContext(), new Callback<Void>() {
-    @Override
-    public void onSuccess(Void ignore) {
-        Toast.makeText(getApplicationContext(), "Register successful", Toast.LENGTH_LONG).show();
-        Log.i(TAG, "SUCCESS");
-    }
-
-    @Override
-    public void onFailure(Exception exception) {
-        Toast.makeText(getApplicationContext(), "Register failed", Toast.LENGTH_LONG).show();
-        /*The developer should resolve the error and retry registration*/
-        Log.e(TAG, exception.getMessage(), exception);
-    }
-});
-
-----
-
-If you no longer wish to receive Push notifications, you may unregister.
-
-[source,java]
-----
-registrar.unregister(getApplicationContext(), new Callback<Void>() {
-    @Override
-    public void onSuccess(Void ignore) {
-        Toast.makeText(getApplicationContext(), "Unregistration succeeded", Toast.LENGTH_LONG).show();
-        Log.i(TAG, "SUCCESS");
-    }
-
-    @Override
-    public void onFailure(Exception exception) {
-        Toast.makeText(getApplicationContext(), "Unregistration failed", Toast.LENGTH_LONG).show();
-        Log.e(TAG, exception.getMessage(), exception);
-    }
-});
-
-----
-
 ==== Handling messages
 
-Currently, push messages are received by an instance of link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver]. They are processed and passed to link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html[Registrations] via notifyHandlers method.
+Currently, push messages are received by an instance of link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/gcm/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver]. The messages are processed and passed to link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html[RegistrarManager] via notifyHandlers method.
 
-Classes which implement MessageHandler can ask that their methods be called on either the UI thread using link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#registerMainThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)[Registrations.registerMainThreadHandler] or on a background thread using link:/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#registerBackgroundThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)[Registrations:registerBackgroundThreadHandler]. UI threads are most useful for Activities and Fragments, background threads are most useful for everything else.
+Classes which implement MessageHandler can ask that their methods be called on either the UI thread using link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html#registerMainThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)[RegistrarManager.registerMainThreadHandler] or on a background thread using link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html#registerBackgroundThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)[RegistrarManager:registerBackgroundThreadHandler]. UI threads are most useful for Activities and Fragments, background threads are most useful for everything else.
 
-In an Activity you MUST remove the handler when the Activity goes into the background and MUST reenable it when it comes into the foreground.
+In an Activity (also in a Fragment) you *must* remove the handler when the Activity goes into the background and *must* reenable it when it comes into the foreground.
 
 [source,java]
 ----
 public class MainActivity extends Activity implements MessageHandler {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_main);
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Registrations.registerMainThreadHandler(this);
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-                Registrations.registerMainThreadHandler(this);
-	}
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Registrations.unregisterMainThreadHandler(this);
+    }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		Registrations.unregisterMainThreadHandler(this);
-	}
+    @Override
+    public void onMessage(Context context, Bundle bundle) {
+        TextView text = (TextView) findViewById(R.id.text_view1);
+        text.setText(bundle.getString("alert"));
+        text.invalidate();
+    }
 
-	@Override
-	public void onMessage(Context context, Bundle bundle) {
-		TextView text = (TextView) findViewById(R.id.text_view1);
-		text.setText(bundle.getString("alert"));
-		text.invalidate();
-	}
+    @Override
+    public void onDeleteMessage(Context context, Bundle bundle) {
+        //ignore
+    }
 
-	@Override
-	public void onDeleteMessage(Context context, Bundle bundle) {
-		//ignore
-	}
-
-	@Override
-	public void onError() {
-		//ignore
-	}
+    @Override
+    public void onError() {
+        //ignore
+    }
 
 }
 ----
 
-Take a look at the complete example in our link:https://github.com/aerogear/aerogear-android-cookbook[cookbook app]
+Take a look at the complete example in our link:https://github.com/aerogear/aerogear-push-helloworld/tree/master/android[push helloworld example]
