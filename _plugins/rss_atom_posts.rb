@@ -5,47 +5,12 @@ require 'diskcached'
 module Reading
   class Generator < Jekyll::Generator
 
-    def lookup_author(site, identifier)
-      author = site.data["people"][identifier]
-      if author == nil then
-        site.data["people"].each do |nick, person|
-          if identifier.eql? person["name"] then
-            author = person
-          end
-        end
-      end
-      if author then
-        return {
-            "name" =>author["name"],
-            "avatar" => author["avatar"]
-        }
-      else
-        return {
-            "name" => identifier
-        }
-      end
-    end
-
-    def lookup_module(site, modName, tags)
-      if modName then
-        return site.data["modules"][modName]
-      end
-      tags.each do |tag|
-        return site.data["modules"][tag] if site.data["modules"][tag]
-      end
-    end
-
-    def include_blog_entry_in_news_feed(entry, categories)
-      return categories.include? "aerogear" || entry.title.content =~ /aerogear/i || entry.summary.content =~ /aerogear/i;
-    end
-
     def generate(site)
       diskcache = Diskcached.new('/tmp/aerogear.site.cache', 300)
       feed_names = []
       site.data["people"].each do |nick, person|
           feed_names << person["jboss-planet-tag"] if person["jboss-planet-tag"]
       end
-      feed_names =
       feed_xml = diskcache.cache('feed_planet_aerogear_tag') do
         url = 'http://dcp.jboss.org/v1/rest/feed/?sys_type=blogpost&tag=' + feed_names.join("&tag=")
         http = Curl.get(url)
@@ -95,6 +60,40 @@ module Reading
       posts.sort! { |a,b| b["date"].casecmp(a["date"]) }
 
       site.data['all_posts'] = posts
+    end
+
+    def lookup_author(site, identifier)
+      author = site.data["people"][identifier]
+      if author == nil then
+        site.data["people"].each do |nick, person|
+          if identifier.eql? person["name"] then
+            author = person
+          end
+        end
+      end
+      if author then
+        return {
+            "name" =>author["name"],
+            "avatar" => author["avatar"]
+        }
+      else
+        return {
+            "name" => identifier
+        }
+      end
+    end
+
+    def lookup_module(site, modName, tags)
+      if modName then
+        return site.data["modules"][modName]
+      end
+      tags.each do |tag|
+        return site.data["modules"][tag] if site.data["modules"][tag]
+      end
+    end
+
+    def include_blog_entry_in_news_feed(entry, categories)
+      return categories.include? "aerogear" || entry.title.content =~ /aerogear/i || entry.summary.content =~ /aerogear/i;
     end
   end
 end
