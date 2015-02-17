@@ -14,61 +14,111 @@ section-class: demos
 
 </article><!-- article -->
 
-<!-- ================================================================================================= -->
+<article id="featured">
+  <h2 class="section-header">Features Demos</h2>
+  <p>Full-fledged applications that demonstrate multiple technologies in one example.</p>
+
+  <hr />
+
+  <h2 id="aerodoc"><i class="fa fa-medkit"></i> AeroDoc</h2>
+  <p>AeroDoc is an tutorial application to demonstrate how to build an application using Unified Push server. </p>
+  <p>
+    <span><strong>Technologies:</strong></span>
+    <span class="label label-default"><i class="fa fa-paper-plane"></i> Push</span>
+    <span class="label label-default"><i class="fa fa-shield"></i> Authentication</span>
+  </p>
+
+  <h4>AeroDoc Theme</h4>
+  <p><i>AeroDoc</i> is a company in the health care industry, selling a revolutionary tensiometer. Their clients are doctors. <i>AeroDoc</i> has several sales agents all over the United States. At the headquarters, they have their "first line" sales departement, doing cold calls all along the day. As soon they have a concrete lead, they use their <i>AeroDoc Admin</i> app to filter out available sales Agents available in the lead area. They can then send them a push notification.</p>
+  <p>The sales agent receives the notification on their mobile device that a new lead is available. The agent will handle the lead by "accepting" the notification, informing the other agents that the lead has been processed.</p>
+  <p>In this highly competitive market of the tensiometers, be able to process a lead directly is for sure a competitive advantage.</p>
+  <h4>Get the AeroDoc source!</h4>
+  <p>
+    <a href="https://github.com/aerogear/aerogear-android-cookbook/tree/master/AeroDoc" class="btn btn-primary-inverse"><i class="fa fa-android"></i> Android</a>
+    <a href="https://github.com/aerogear/aerogear-aerodoc-ios" class="btn btn-primary-inverse"><i class="fa fa-apple"></i> iOS</a>
+    <a href="https://github.com/aerogear/aerogear-aerodoc-cordova" class="btn btn-primary-inverse"><i class="fa fa-simplybuilt"></i> Cordova</a>
+    <a href="https://github.com/aerogear/aerogear-aerodoc-web" class="btn btn-primary-inverse"><i class="fa fa-html5"></i> Web</a>
+    <a href="https://github.com/aerogear/aerogear-aerodoc-backend" class="btn btn-primary-inverse"><i class="fa fa-cloud"></i> Backend</a>
+  </p>
+</article>
+
+
+<article id="cookbooks">
+  <h2 class="section-header">Cookbooks</h2>
+  <p>The AeroGear Cookbooks is a set of recipes to quick start your AeroGear experience.</p>
+</article>
+
+
+
+  <!-- ================================================================================================= -->
 <article id="android">
-  <h2 class="section-header">Android Cookbooks</h2>
+  <h2 class="section-header"><i class="fa fa-android"></i> Android Cookbook</h2>
 
   {{ site.data['cookbooks']['android'] | markdownify }}
+
+  <p>
+    <a href="https://github.com/aerogear/aerogear-android-cookbook" class="btn btn-primary-inverse btn-lg"><i class="fa fa-github"></i> More Info</a>
+    <a href="/getstarted/guides/" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guides</a>
+    <a href="/docs/specs/" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i> Documentation</a>
+  </p>
 
 </article>
 
 
 <!-- ================================================================================================= -->
 <article id="ios">
-  <h2 class="section-header">iOS Cookbooks</h2>
+  <h2 class="section-header"><i class="fa fa-apple"></i> iOS Cookbook</h2>
 
   {{ site.data['cookbooks']['ios'] | markdownify }}
+
+  <p>
+    <a href="https://github.com/aerogear/aerogear-ios-cookbook" class="btn btn-primary-inverse btn-lg"><i class="fa fa-github"></i> More Info</a>
+    <a href="/getstarted/guides/" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guides</a>
+    <a href="/docs/specs/" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i> Documentation</a>
+  </p>
 
 </article>
 
 
 <!-- ================================================================================================= -->
 <article id="cordova">
-  <h2 class="section-header">Cordova Cookbooks</h2>
+  <h2 class="section-header"><i class="fa fa-simplybuilt"></i> Cordova Cookbook</h2>
 
   {{ site.data['cookbooks']['cordova'] | markdownify }}
+
+  <p>
+    <a href="https://github.com/aerogear/aerogear-cordova-cookbook" class="btn btn-primary-inverse btn-lg"><i class="fa fa-github"></i> More Info</a>
+    <a href="/getstarted/guides/" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guides</a>
+    <a href="/docs/specs/" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i> Documentation</a>
+  </p>
 
 </article>
 
 
 <!-- ================================================================================================= -->
 <article id="windows">
-  <h2 class="section-header">Windows Cookbooks</h2>
+  <h2 class="section-header"><i class="fa fa-windows"></i> Windows Cookbook</h2>
 
   {{ site.data['cookbooks']['windows'] | markdownify }}
+
+  <p>
+    <a href="https://github.com/aerogear/aerogear-windows-cookbook" class="btn btn-primary-inverse btn-lg"><i class="fa fa-github"></i> More Info</a>
+    <a href="/getstarted/guides/" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guides</a>
+    <a href="/docs/specs/" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i> Documentation</a>
+  </p>
 
 </article>
 
 <!-- ================================================================================================= -->
 <article id="js">
-  <h2 class="section-header">JavaScript Cookbooks</h2>
+  <h2 class="section-header"><i class="fa fa-html5"></i> JavaScript Cookbook</h2>
 
   {{ site.data['cookbooks']['js'] | markdownify }}
 
-</article>
+  <p>
+    <a href="https://github.com/lfryc/aerogear-js-cookbook" class="btn btn-primary-inverse btn-lg"><i class="fa fa-github"></i> More Info</a>
+    <a href="/getstarted/guides/" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guides</a>
+    <a href="/docs/specs/" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i> Documentation</a>
+  </p>
 
-
-
-<!-- ================================================================================================= -->
-<article id="presentations">
-
-<h2 class="section-header">Presentations about AeroGear</h2>
-
-<h4 id="presentationsAndroid">Android</h4>
-  <ul>
-    <li><a href="http://www.rvl.io/secondsun/aerogear-android-1">AeroGear Android 1.0.0</a></li>
-    <li><a href="http://www.slideshare.net/danielpassos/mobileconf-2013-aerogear-android">AeroGear Android - The mobile developer's utility belt</a></li>
-    <li><a href="https://github.com/secondsun/android_app_workshop">Let's Build a Modern Android App</a></li>
-  </ul>
-  
 </article>
