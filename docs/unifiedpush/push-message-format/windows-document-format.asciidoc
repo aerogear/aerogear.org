@@ -17,7 +17,7 @@ Windows supports [toast messages](https://msdn.microsoft.com/en-us/library/windo
     "alert": "First line bold",
     "windows": {
       "type": "toast",
-      "toastType: "ToastText02",
+      "toastType": "ToastText02",
       "textFields": ["additional text"]
     }
 }
@@ -55,7 +55,7 @@ Tile
     "alert": "Text Field 1 (larger text)",
     "windows": {
       "type": "tile",
-      "tileType: "TileSquarePeekImageAndText02",
+      "tileType": "TileSquarePeekImageAndText02",
       "textFields": ["Text Field 2"],
       "images": [ "image" ]
     }
