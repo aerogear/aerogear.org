@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AeroGear Sync
+title: AeroGear Sync alpha.1 release is out
 ---
 
 This is the first alpha release of [AeroGear Sync](https://aerogear.org/sync/) which is an implementation of Google's 
