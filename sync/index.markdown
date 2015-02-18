@@ -11,7 +11,7 @@ sub-section-title: AeroGear Sync
 
 <div class="feature sync">
   <h1><i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong></h1>
-  <p class="alt">Real-time, client-server data synchronization with ease and efficiency.</p>
+  <p class="alt">Real-time, client-server data synchronization with ease and efficiency. <span class="label label-warning">In Development</span></p>
 
   <p>
     <a href="/getstarted/downloads/" class="btn btn-primary-inverse btn-lg"><i class="fa fa-hand-o-right"></i> Get started</a>

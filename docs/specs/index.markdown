@@ -49,7 +49,7 @@ span.version {
 
 <h2 class="section-header" id="push"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong> Specifications</h2>
 
-* [Android Push](/docs/specs/aerogear-android-push/) <span class="version">2.0.0-alpha.1</span>
+* [Android Push](/docs/specs/aerogear-android-push/) <span class="version">2.0.0</span>
 * [Push iOS](aerogear-ios-push) <span class="version">1.0.0</span>
 
 <h4>UnifiedPush</h4>
