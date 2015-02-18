@@ -1,0 +1,4 @@
+dependencies {
+  compile 'org.jboss.aerogear:aerogear-android-{{ include.module }}:{{ include.version }}'
+  //My other dependencies
+}

@@ -5,206 +5,180 @@ nav-active-getstarted: active
 section-title: Start here
 section-description: How to get Aerogear up and running
 section-class: start
+
+androidVersion: 2.0.0
+androidModules:
+  - core
+  - security
+  - store
+  - pipe
+  - auth
+  - authz
+  - push
+
+iosModules:
+  http:
+    name: HTTP
+    version: 0.2
+    cocoapod: aerogearhttp
+    zip: https://github.com/aerogear/aerogear-ios-http/zipball/0.2.0
+  oauth2:
+    name: OAuth2
+    version: 0.2
+    cocoapod: aerogearoauth2
+    zip: https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.2.0
+  push:
+    name: Push
+    version: 1.0
+    cocoapod: AeroGear-Push
+    zip: https://github.com/aerogear/aerogear-ios-push/archive/1.0.0-swift.zip
+  httpstub:
+    name: HTTP Stub
+    version: 0.2
+    cocoapod: aerogearhttpstub
+    zip: https://github.com/aerogear/aerogear-ios-httpstub/zipball/0.2.0
+  jsonsz:
+    name: JSON Serialization
+    version: 0.1
+    cocoapod: aerogearjsonsz
+    zip: https://github.com/aerogear/aerogear-ios-jsonsz/zipball/0.1.0
+
+
+cordovaModules:
+  pushplugin:
+    name: Push Plugin
+    version: latest
+    plugin: org.jboss.aerogear.cordova.push
+  otp:
+    name: OTP Plugin
+    version: 0.0.1
+    plugin: org.jboss.aerogear.cordova.otp
+  crypto:
+    name: Crypto Plugin
+    version: 0.0.1
+    plugin: org.jboss.aerogear.cordova.crypto
+
+
+javascriptVersion: 2.0.0
+
+
 ---
-
-
         
         <article id="overview">
-             
+
           <h2 class="section-header">Get the Gear to Go Mobile!</h2>
-          <p>Below you will find links to all of the libraries and other resources created by the AeroGear team. You can also view the source and contribute to any of these items by checking out our <a href="http://github.com/aerogear" target="_blank">repos on GitHub</a>.</p>        
-        
+          <p>Below you will find links to all of the libraries and other resources created by the AeroGear team. You can also view the source and contribute to any of these items by checking out our <a href="http://github.com/aerogear" target="_blank">repos on GitHub</a>.</p>
+
         </article><!-- article -->
 
 <!-- ==================================================================================================== -->
         <article id="android">
-          <h2 class="section-header">AeroGear Android</h2>
+          <h2 class="section-header"><i class="fa fa-android"></i> AeroGear Android</h2>
           <p>AeroGear on Android simplifies developing mobile applications which connect to remote services. We support all versions of Android above 2.3.3 (and 2.3.3 if you include the support-library). Aerogear Android is published in Maven Central and available as library project on Github.</p>
           <p>All of the features of AeroGear are supported including DataStores, Pipes, Authentication, Authorization, and Pagination. We also supply APIs for offloading the work done by Pipes to the Loader API; your Activities will crash less and use less bandwidth.</p>
           <p>If you have any questions, feel free to hit us up on the <a href="http://aerogear-users.1116366.n5.nabble.com/">user mailing list</a> or on <a href="irc://irc.freenode.net/aerogear">irc</a>.</p>
              
 <hr> <!-- ====================================================== -->
           
-          <h4 id="androidAeroGearAndroid"><i class="fa fa-rocket"></i> AeroGear Android</h4>
-          <p><a href="https://github.com/aerogear/aerogear-android/archive/1.4.0.zip" class="btn btn-primary-inverse  btn-lg"><i class="fa fa-cloud-download"></i> Download Library v1.4.0</a></p>
-          <h5>If you are using Maven:</h5>
-          <pre>
-&lt;dependency&gt;
-  &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
-  &lt;artifactId&gt;aerogear-android&lt;/artifactId&gt;
-  &lt;version&gt;1.4.0&lt;/version&gt;
-  &lt;type&gt;apklib&lt;/type&gt;
-&lt;/dependency&gt;</pre>
-          
-          <h5>If you are using gradle:</h5>
-          <pre>
-dependencies {
-  compile 'org.jboss.aerogear:aerogear-android:1.4.0@aar'
-}</pre>
-        
+          <h4 id="downloadsAndroid">Downloads and Snippets</h4>
+          {% for module in page.androidModules %}
+          <p>
+            <a href="https://github.com/aerogear/aerogear-android-{{ module }}/archive/{{ page.androidVersion }}.zip" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download Android {{ module | capitalize }} v{{ page.androidVersion }}</a>
+            <a href="#" class="btn btn-primary btn-sm" onclick="$('#android-{{ module }}-maven').toggle(); return false;"><i class="fa fa-cube"></i> Maven</a>
+            <a href="#" class="btn btn-primary btn-sm" onclick="$('#android-{{ module }}-gradle').toggle(); return false;"><i class="fa fa-puzzle-piece"></i> Gradle</a>
+            <a href="https://github.com/aerogear/aerogear-android-{{ module }}/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
+          </p>
+          <div id="android-{{ module }}-maven" style="display: none">
+<pre>{% capture androidCoreMaven %}{% include_relative snippets/android-maven module=module version=page.androidVersion %}{% endcapture %}{{ androidCoreMaven | xml_escape }}</pre>
+          </div>
+          <div id="android-{{ module }}-gradle" style="display: none">
+<pre>{% include_relative snippets/android-gradle module=module version=page.androidVersion %}</pre>
+          </div>
+          {% endfor %}
+
           <h5>and if you want more:</h5>
           <p>
-            <a href="https://github.com/aerogear/aerogear-android/" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
-          </p>
-                  
-  
-<hr> <!-- ====================================================== -->
-
-          <h4 id="androidAeroGearAndroidPush"><i class="fa fa-paper-plane"></i> AeroGear Android Push</h4>
-          <p><a href="https://github.com/aerogear/aerogear-android-push/archive/1.0.0.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download Library v1.0.0</a></p>
-          
-          <h5>If you are using Maven:</h5>
-          <pre>
-&lt;dependency&gt;
-  &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
-  &lt;artifactId&gt;aerogear-android-push&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0&lt;/version&gt;
-  &lt;type&gt;apklib&lt;/type&gt;
-&lt;/dependency&gt;</pre>
-          
-          <h5>If you are using gradle (as experimental)</h5>
-          <pre>
-dependencies {
-  compile 'org.jboss.aerogear:aerogear-android-push:1.0.0@aar'
-}</pre>
-        
-          <h5>and if you want more:</h5>
-          <p>
-            <a href="https://github.com/aerogear/aerogear-android-push/" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
+            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a>
+            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Applications</a>
+            <a href="/docs/specs" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
           </p>
 
-
-<hr> <!-- ====================================================== -->
-
-          <h4 id="androidAeroGearAndroidOTP"><i class="fa fa-shield"></i> AeroGear Android OTP</h4>
-             
-          <p><a href="https://github.com/aerogear/aerogear-otp-java/zipball/1.0.0" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download Now v1.0.0</a> <a href="http://search.maven.org/#browse%7C583881834"  class="btn btn-primary">Also in Maven Central</a></p>
-      
-          <h5>and if you want more:</h5>
-          <p>
-            <a href="https://github.com/aerogear/aerogear-otp-java" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
-          </p>
-        
 
         </article><!-- android -->
 
 <!-- ==================================================================================================== -->
         <article id="ios">
-          
-          <h2 class="section-header">AeroGear iOS</h2>
+
+          <h2 class="section-header"><i class="fa fa-apple"></i> AeroGear iOS</h2>
           <p>The aim of the project is to provide a set of convenient and modular Swift based iOS libraries, ranging from networking, authorization (and in particular OAuth2) , Storage and Crypto. We believe the iOS platform offers a solid and extremely powerful foundation, but there are cases in which developer productivity can be improved by offering a much easier access to that foundation. Please use the corresponding links below for more information of the features provided by each respective library.</p>
 
           <p>If you have any questions, feel free to hit us up on the <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">mailing list</a> or on <a href="irc://irc.freenode.net/aerogear">irc</a>.</p>
-             
+
           <div class="alert alert-info" role="alert">If you are looking for AeroGear iOS 1.x series, please visit <a href="#">this page</a> for more information.</div>
 
-             
+
 <hr> <!-- ====================================================== -->
-             
-          <h4 id="iosAerogeariOSHTTP"><i class="fa fa-rocket"></i> Aerogear iOS HTTP</h4>
+
+          <h4 id="downloadsIOS">Downloads and Snippets</h4>
+          {% for item in page.iosModules %}
+          {% assign moduleName = item[0] %}
+          {% assign module = item[1] %}
           <p>
-           <a href="https://github.com/aerogear/aerogear-ios-http/zipball/0.1" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v0.1</a>
+            <a href="{{ module.zip }}" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download iOS {{ module.name }} v{{ module.version }}</a>
+            <a href="http://cocoapods.org/?q={{ module.cocoapod }}" class="btn btn-primary btn-sm"><i class="fa fa-cubes"></i> CocoaPods</a>
+            <a href="https://github.com/aerogear/aerogear-ios-{{ moduleName }}/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
           </p>
+          {% endfor %}
+
           <h5>and if you want more:</h5>
           <p>
-            <a href="https://github.com/aerogear/aerogear-ios-http/tree/0.1" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
+            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a>
+            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Applications</a>
+            <a href="/docs/specs" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
           </p>
 
- <hr> <!-- ====================================================== -->
-             
-          <h4 id="iosAerogeariOSoauth2"><i class="fa fa-shield"></i> Aerogear iOS oauth2</h4>
-          <p>
-           <a href="https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.1" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v0.1</a>
-          </p>
-          <h5>and if you want more:</h5>
-          <p>
-            <a href="https://github.com/aerogear/aerogear-ios-oauth2/tree/0.1" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
-          </p>
-
-
- <hr> <!-- ====================================================== -->
-             
-          <h4 id="iosAerogeariOSPush"><i class="fa fa-paper-plane"></i> Aerogear iOS Push</h4>
-          <p>
-           <a href="https://github.com/aerogear/aerogear-ios-push/zipball/2.0.0" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v2.0</a>
-          </p>
-          <h5>and if you want more:</h5>
-          <p>
-            <a href="https://github.com/aerogear/aerogear-ios-push/tree/2.0.0" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
-          </p>
-
-
- <hr> <!-- ====================================================== -->
-             
-          <h4 id="iosAerogeariOShttpstub"><i class="fa fa-rocket"></i> Aerogear iOS httpstub</h4>
-          <p>
-           <a href="https://github.com/aerogear/aerogear-ios-httpstub/zipball/0.1" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v0.1</a>
-          </p>
-          <h5>and if you want more:</h5>
-          <p>
-            <a href="https://github.com/aerogear/aerogear-ios-httpstub/tree/0.1" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
-          </p>
-          
         </article><!-- ios -->
-            
-            
-            
+
    <!-- ==================================================================================================== -->
         <article id="cordova">
-          <h2 class="section-header">AeroGear Cordova</h2>
+          <h2 class="section-header"><i class="fa fa-simplybuilt"></i> AeroGear Cordova</h2>
           <p>Using the same AeroGear.js library we use for mobile web apps, we can move our app to the device and gain access to native APIs thanks to Apache Cordova. We also have some plugins that take advantage of native hardware for speed, security and push notifications.</p>
           <p>If you have any questions, feel free to hit us up on the <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">mailing list</a> or on <a href="irc://irc.freenode.net/aerogear">irc</a>.</p>
-             
+
 <hr> <!-- ====================================================== -->
-             
-          <h4 id="cordovaAeroGearPushPlugin"><i class="fa fa-paper-plane"></i> AeroGear Push Plugin</h4>
-          <p><a href="https://github.com/aerogear/aerogear-pushplugin-cordova/releases/latest" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download the latest Push Plugin</a></p>
-          <h5>and if you want more information:</h5>
-          <p>
-            <a href="https://github.com/aerogear/aerogear-pushplugin-cordova/" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.push" class="btn btn-primary"><i class="fa fa-stop"></i> Cordova Plugin Registry</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
-          </p>
 
- <hr> <!-- ====================================================== -->
-             
-          <h4 id="cordovaAeroGearOTPPlugin"><i class="fa fa-rocket"></i> AeroGear OTP Plugin</h4>
-             
-          <p><a href="https://github.com/aerogear/aerogear-otp-cordova/archive/0.0.1.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download 0.0.1 OTP plugin</a></p>
-          <h5>and if you want more information:</h5>
+          <h4 id="downloadsCordova">Downloads and Snippets</h4>
+          {% for item in page.cordovaModules %}
+          {% assign moduleName = item[0] %}
+          {% assign module = item[1] %}
           <p>
-            <a href="https://github.com/aerogear/aerogear-otp-cordova/" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.otp" class="btn btn-primary"><i class="fa fa-stop"></i> Cordova Plugin Registry</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
+            <a href="https://github.com/aerogear/aerogear-{{ moduleName }}-cordova/releases/{{ module.version }}" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download Cordova {{ module.name }} {{ module.version }}</a>
+            <a href="http://plugins.cordova.io/#/package/{{ module.plugin }}" class="btn btn-primary btn-sm"><i class="fa fa-cubes"></i> Plugin Registry</a>
+            <a href="https://github.com/aerogear/aerogear-{{ moduleName }}-cordova/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
+            <span class="label label-default cordovaplugin" contenteditable="true" readonly="readonly"><span contenteditable="false">{{ module.plugin }}</span></span>
           </p>
+          {% endfor %}
 
- <hr> <!-- ====================================================== -->
-             
-          <h4 id="cordovaAeroGearCryptoPlugin"><i class="fa fa-shield"></i> AeroGear Crypto Plugin</h4>
-             
-          <p><a href="https://github.com/aerogear/aerogear-crypto-cordova/archive/0.0.1.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download 0.0.1 Crypto plugin</a></p>
-          <h5>and if you want more information:</h5>
+          <script>
+            var elements = [].slice.call(document.querySelectorAll('span.label.cordovaplugin'));
+            elements.forEach(function( element ) {
+              element.onclick = function() {
+                var contentElement = element.querySelectorAll('span')[0];
+                var range = document.createRange();
+                range.selectNodeContents(contentElement);
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+                element.focus();
+              }
+            });
+          </script>
+
+          <h5>and if you want more:</h5>
           <p>
-            <a href="https://github.com/aerogear/aerogear-crypto-cordova/" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.crypto" class="btn btn-primary"><i class="fa fa-stop"></i> Cordova Plugin Registry</a> 
-            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Application</a>
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
+            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a>
+            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Applications</a>
+            <a href="/docs/specs" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
           </p>
 
         </article><!-- cordova -->
@@ -212,60 +186,136 @@ dependencies {
 
 
    <!-- ==================================================================================================== -->
-      
-        <article id="webjs">
-          <h2 class="section-header">AeroGear.js</h2>
+
+        <article id="js">
+          <h2 class="section-header"><i class="fa fa-html5"></i> AeroGear.js</h2>
           <p>When building mobile web apps, it is important to have lightweight, performant code that gives a great experience to your users no matter what device they might be using. That is where AeroGear.js comes in. This library provides everything from a simple persistence layer to a security API and everything in between.</p>
           <p>If you have any questions, feel free to hit us up on the <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">mailing list</a> or on <a href="irc://irc.freenode.net/aerogear">irc</a>.</p>
 
-             
+
  <hr> <!-- ====================================================== -->
-             
-          <h4 id="webjsAeroGearPushPlugin"><i class="fa fa-paper-plane"></i> AeroGear Push Plugin</h4>
-             
-          <p><a href="https://github.com/aerogear/aerogear-js-dist/archive/2.0.0.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download v2.0.0</a></p>
-          
-          <h5>and if you want more information:</h5>
-          
+
           <p>
-            <a href="" class="btn btn-primary"><i class="fa fa-cubes"></i> Custom download</a> 
-            <a href="https://github.com/aerogear/aerogear-js" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a> 
-            <a href="/docs/docoumentation" class="btn btn-primary"><i class="fa fa-book"></i> API Documentation</a> 
-            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a> 
+            <a href="https://github.com/aerogear/aerogear-js-dist/archive/{{ page.javascriptVersion }}.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download AeroGear.js v{{ page.javascriptVersion }}</a>
+            <a href="#" class="btn btn-primary" onclick="$('#javascript-bower').toggle(); return false;"><i class="fa fa-puzzle-piece"></i> Bower</a>
+            <a href="https://aerogear.org/download/custom/" class="btn btn-primary"><i class="fa fa-gears"></i> Customized Build</a>
+            <a href="https://github.com/aerogear/aerogear-js/" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a>
+          </p>
+          <div id="javascript-bower" style="display: none">
+            <p><span class="label label-default">bower.json</span></p>
+<pre>{% include_relative snippets/javascript-bower version=page.javascriptVersion %}</pre>
+          </div>
+
+          <h5>and if you want more:</h5>
+          <p>
+            <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a>
+            <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Applications</a>
+            <a href="/docs/specs" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
           </p>
 
-        </article><!-- cordova -->
+        </article><!-- js -->
+
+
+<!-- ==================================================================================================== -->
+
+<article id="push">
+  <h2 class="section-header"><i class="fa fa-paper-plane"></i> AeroGear Push</h2>
+  <p>If you have any questions, feel free to hit us up on the <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">mailing list</a> or on <a href="irc://irc.freenode.net/aerogear">irc</a>.</p>
+
+
+  <hr> <!-- ====================================================== -->
+
+  <h4><i class="fa fa-server"></i> UnifiedPush Server</h4>
+
+  <p>
+    <a href="https://developers.openshift.com/en/xpaas-unified-push.html#getting-started" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud"></i> Run on OpenShift</a>
+    <a href="https://registry.hub.docker.com/u/aerogear/unifiedpush-wildfly/" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud"></i> Run as Docker container</a>
+  </p>
+
+  <p>
+    <a href="https://github.com/aerogear/aerogear-unifiedpush-server/releases/latest" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download UnifiedPush Server 1.1.0-alpha.1</a>
+    <a href="https://github.com/aerogear/aerogear-unifiedpush-server" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
+    <span class="label label-warning">Development</span>
+  </p>
+  <p>
+    <a href="https://github.com/aerogear/aerogear-unifiedpush-server/releases/tag/1.0.2" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download UnifiedPush Server 1.0.2</a>
+    <a href="https://github.com/aerogear/aerogear-unifiedpush-server/tree/1.0.x" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
+    <span class="label label-success">Stable</span>
+  </p>
+
+  <h5>and if you want more:</h5>
+  <p>
+    <a href="/getstarted/guides#push" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a>
+    <a href="/docs/specs#push" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
+    <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Applications</a>
+  </p>
+
+  <hr> <!-- ====================================================== -->
+
+  <h4><i class="fa fa-code"></i> UnifiedPush Java Client</h4>
+  <p>Add Maven dependency to <span class="label label-default">pom.xml</span>:</p>
+  <pre>{% capture unifiedPushJavaClient %}{% include_relative snippets/push-unifiedpush-maven %}{% endcapture %}{{ unifiedPushJavaClient | xml_escape }}</pre>
+
+  <h5>and if you want more:</h5>
+  <p>
+    <a href="/docs/specs/aerogear-unifiedpush-java-client/" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
+  </p>
+
+
+  <hr> <!-- ====================================================== -->
+
+  <h4><i class="fa fa-code"></i> UnifiedPush Node.js Client</h4>
+  <p>Add the Node package from command-line:</p>
+  <pre>$ npm install unifiedpush-node-sender</pre>
+
+  <h5>and if you want more:</h5>
+  <p>
+    <a href="/docs/specs/aerogear-unifiedpush-nodejs-client/" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
+  </p>
+
+  <hr> <!-- ====================================================== -->
+
+  <h4><i class="fa fa-server"></i> SimplePush Server</h4>
+  <p>
+    <a href="https://github.com/aerogear/aerogear-simplepush-server/zipball/0.12.1" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download SimplePush Server 0.12.1</a>
+    <a href="https://github.com/aerogear/aerogear-simplepush-server" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
+  </p>
+
+  <hr> <!-- ====================================================== -->
+
+  <h4><i class="fa fa-code"></i> SimplePush Java Client</h4>
+  <p>Add Maven dependency to <span class="label label-default">pom.xml</span>:</p>
+  <pre>{% capture simplepushJavaClient %}{% include_relative snippets/push-simplepush-maven %}{% endcapture %}{{ simplepushJavaClient | xml_escape }}</pre>
+
+  <h5>and if you want more:</h5>
+  <p>
+    <a href="http://localhost:4000/docs/specs/aerogear-simplepush-java-client/" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
+  </p>
 
 
 
 
-   <!-- ==================================================================================================== -->
-      
+</article><!-- security -->
+
+
+
+<!-- ==================================================================================================== -->
+
         <article id="security">
-          <h2 class="section-header">AeroGear Security</h2>
+          <h2 class="section-header"><i class="fa fa-shield"></i> AeroGear Security</h2>
           <p>If you have any questions, feel free to hit us up on the <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">mailing list</a> or on <a href="irc://irc.freenode.net/aerogear">irc</a>.</p>
 
-             
- <hr> <!-- ====================================================== -->
-             
-          <h4 id="securityJAVA-OTP"><i class="fa fa-shield"></i> JAVA-OTP</h4>
-                <pre>
-&lt;dependency&gt;
-  &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
-  &lt;artifactId&gt;aerogear-otp-java&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0&lt;/version&gt;
-&lt;/dependency&gt;</pre>
 
  <hr> <!-- ====================================================== -->
 
-          <h4 id="securityJAVA-CRYPTO"><i class="fa fa-shield"></i> JAVA-CRYPTO</h4>
-                <pre>
-&lt;dependency&gt;
-  &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
-  &lt;artifactId&gt;aerogear-crypto-java&lt;/artifactId&gt;
-  &lt;version&gt;0.1.5&lt;/version&gt;
-&lt;/dependency&gt;</pre>
+          <h4>JAVA-OTP</h4>
+          <pre>{% capture securityJavaOtp %}{% include_relative snippets/security-java-otp %}{% endcapture %}{{ securityJavaOtp | xml_escape }}</pre>
+
+ <hr> <!-- ====================================================== -->
+
+          <h4>JAVA-CRYPTO</h4>
+          <pre>{% capture securityJavaCrypto %}{% include_relative snippets/security-java-crypto %}{% endcapture %}{{ securityJavaCrypto | xml_escape }}</pre>
 
 
-        </article><!-- cordova -->
+        </article><!-- security -->
 

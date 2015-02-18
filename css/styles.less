@@ -1518,6 +1518,19 @@ img {
   color: lightgray;
 }
 
+input.transparent {
+  border: 0;
+  width: 22em;
+  overflow: auto;
+  background-color: transparent;
+  &:focus {
+    outline-color: transparent;
+    outline-style: none;
+  }
+}
 
-
-
+input.code {
+  font-family: monospace;
+//  font-size: 0.8em;
+//  color: gray;
+}
