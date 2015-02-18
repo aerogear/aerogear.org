@@ -8,7 +8,9 @@ title: AeroGear WebPush
 [WebPush Protocol](http://tools.ietf.org/html/draft-thomson-webpush-http2-02) specification with the purpose of gaining a better understanding of the specification. 
 
 As you might have guessed from the name this is about push notifications and is related to the [Push API](https://w3c.github.io/push-api/index.html). 
-In brief, it allows a device to maintain a single HTTP/2 connect which can service as many client applications as needed. For example, when used in combination with the Push API a service worker will handle the registration to the WebPush Server and manage the subscriptions for the applications. An application would in this case be tab in a web browser. 
+In brief, it allows a device to maintain a single HTTP/2 connect which can service as many client applications as needed. For example, when used in combination with the Push API 
+a [service worker](http://www.html5rocks.com/en/tutorials/service-worker/introduction/) will handle the registration to the WebPush Server and manage the subscriptions for the 
+applications. An application would in this case be tab in a web browser. 
 
 Apart from using less resources, in the form of one connection per browser instead of one per application, it also enables the service worker to receive notifications even if the target application of those notifications is not currently active. The service worker can take various actions when this situation occurs, like post a message to an open window to inform the user of the notification. For more details please refer to the [Push API](https://w3c.github.io/push-api/index.html). 
 
