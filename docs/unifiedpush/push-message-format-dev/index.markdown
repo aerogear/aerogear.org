@@ -9,7 +9,7 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
 
 ## Sender
 
-    curl -3 -u "{PushApplicationID}:{MasterSecret}"
+    curl -u "{PushApplicationID}:{MasterSecret}"
        -v -H "Accept: application/json" -H "Content-type: application/json" 
        -X POST
        -d '{
