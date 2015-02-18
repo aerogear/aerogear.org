@@ -80,7 +80,7 @@ To make the user experience the same on iOS and Android, for cordova users, we u
 
 ##### Windows special keys
 
-For windows we also support sending toast, tile, badge and raw notifications for MPNS and WNS to keep the message uniform the first text for the message template is the value from alert and for a numeric badge we use the main badge field. Of course you could add criteria to only select windows devices. If you don't specify the windows section of the message a toast notification is send with the alert as the content. More information about the [windows message format](windows-message-format/)
+For windows we also support sending toast, tile, badge and raw notifications for MPNS and WNS to keep the message uniform the first text for the message template is the value from alert and for a numeric badge we use the main badge field. Of course you could add criteria to only select windows devices. If you don't specify the windows section of the message a toast notification is send with the alert as the content. More information about the [windows message format](windows-document-format/)
 
 #### SimplePush Object
 
