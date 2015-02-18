@@ -13,27 +13,41 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
        -v -H "Accept: application/json" -H "Content-type: application/json" 
        -X POST
        -d '{
-           "variants" : ["c3f0a94f-48de-4b77-a08e-68114460857e", "444939cd-ae63-4ce1-96a4-de74b77e3737" ....],
-           "alias" : ["user@account.com", "someone@aerogear.org", ....],
-           "categories" : ["someCategory", "otherCategory"],
-           "deviceType" : ["iPad", "AndroidTablet"],
-           "ttl" : 3600,
+           "criteria": {
+             "variants" : ["c3f0a94f-48de-4b77-a08e-68114460857e", "444939cd-ae63-4ce1-96a4-de74b77e3737" ....],
+             "alias" : ["user@account.com", "someone@aerogear.org", ....],
+             "categories" : ["someCategory", "otherCategory"],
+             "deviceType" : ["iPad", "AndroidTablet"]
+           },
            "message": {
              "alert":"HELLO!",
              "sound":"default",
              "badge":7,
              "content-available" : true,
              "action-category" : "some_category",
-             "someKey":"some value",
-             "anotherCustomKey":"some other value"
+             "simple-push": "version=123",
+             "user-data": {
+                "someKey":"some value",
+                "anotherCustomKey":"some other value"
+             },
+             "windows": {                                                
+                "type": "tile",                                         
+                "duration": "short",                                    
+                "badge": "alert",                                       
+                "tileType": "TileWideBlockAndText01",                   
+                "images": ["Assets/test.jpg", "Assets/background.png"], 
+                "textFields": ["foreground text"]                       
+              },                                                           
            },
-           "simple-push": "version=123"
+           "config": {
+             "ttl" : 3600,
+           }
          }'
 
     https://SERVER:PORT/CONTEXT/rest/sender
 
 ### Message Format
-The message format is very simple: A generic JSON map is used to sent messages to Android and iOS devices. 
+The message format is very simple: A generic JSON map is used to sent messages to Android, iOS and Windows devices. 
 
 * ```ttl``` Specifies in seconds the ```time-to-live``` for the submitted notification. This value is supported by APNs and GCM. If a device is offline for a longer time than specified by the ```ttl``` value, the supported Push Networks may not deliver the notification.
 
@@ -63,6 +77,10 @@ None! The JSON map is submitted as it is, directly to the device. There are no A
 ##### Cordova Android special keys
 
 To make the user experience the same on iOS and Android, for cordova users, we use the iOS alert 'key' on Android as well to generate a notification for you. And we've introduced a 'title' that can optionally be used for the title of this notification, if none is specified the application name will be used like on iOS.
+
+##### Windows special keys
+
+For windows we also support sending toast, tile, badge and raw notifications for MPNS and WNS to keep the message uniform the first text for the message template is the value from alert and for a numeric badge we use the main badge field. Of course you could add criteria to only select windows devices. If you don't specify the windows section of the message a toast notification is send with the alert as the content. More information about the [windows message format](windows-message-format/)
 
 #### SimplePush Object
 
