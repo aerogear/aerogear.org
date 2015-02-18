@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AeroGear WebPush
+title: AeroGear WebPush alpha.1 is out.
 ---
 
 [AeroGear WebPush](https://github.com/aerogear/aerogear-webpush-server#aerogear-webpush-server-) alpha1 is a proof of concept implementation of the 
