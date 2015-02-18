@@ -3,8 +3,7 @@ layout: post
 title: AeroGear WebPush
 ---
 
-## AeroGear WebPush
-[AeroGear WebPush](https://github.com/aerogear/aerogear-webpush-server#aerogear-webpush-server-) is a proof of concept implementation of the 
+[AeroGear WebPush](https://github.com/aerogear/aerogear-webpush-server#aerogear-webpush-server-) alpha1 is a proof of concept implementation of the 
 [WebPush Protocol](http://tools.ietf.org/html/draft-thomson-webpush-http2-02) specification with the purpose of gaining a better understanding of the specification. 
 
 As you might have guessed from the name this is about push notifications and is related to the [Push API](https://w3c.github.io/push-api/index.html). 
