@@ -5,7 +5,7 @@ title: AeroGear Data-Sync
 
 # Data-Sync (under development)
 
-Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel. This feature provides both, a specific server side sync engine, as well as a client side sync engines for Android, iOS and JavaScript. The implementation is based on Google's [Differential Synchonrization](http://research.google.com/pubs/pub35605.html) by Neil Fraser.
+Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel. This feature provides server side sync engines, as well as client side sync engines and clients for Android, iOS and JavaScript. The implementation is based on Google's [Differential Synchonrization](http://research.google.com/pubs/pub35605.html) by Neil Fraser.
 
 ## Roadmap
 
@@ -23,28 +23,28 @@ Below are the various GitHub repositories that are part of the Data-Sync feature
 
 ### Data-Sync Server
 
-Our Netty-based [Java Server](https://github.com/aerogear/aerogear-sync-server) exposes WebSocket and XMPP/GCM endpoint for our different clients.
+* [Java Sync Server Engine](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-core#aerogear-server-differential-synchronization-server-core) the Server Sync Engine.
+* [Netty Sync Server](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-netty#netty-differential-synchronization-server-implementation) which exposes WebSocket and XMPP/GCM endpoint for our different clients.
+* [Node Sync Server](https://github.com/aerogear/aerogear-nodejs-sync-server#aerogear-nodejs-sync-server-) which exposes WebSocket for our different clients.
 
 ### Android
-
-An [XMPP-client library](https://github.com/aerogear/aerogear-android-sync) to receive sync updates over GCM.
+* [Java Client Sync Engine](https://github.com/aerogear/aerogear-sync-server/tree/master/client/client-core#aerogear-server-differential-synchronization-client-core) a Java Client Sync Engine implementation.
+* [Netty Sync Client](https://github.com/aerogear/aerogear-sync-server/tree/master/client/client-netty) a Netty based WebSocket Sync Client.
+* [XMPP Client](https://github.com/aerogear/aerogear-android-sync#xmpp-differential-synchronization-client-implementation) to receive sync updates over GCM.
+* [Demo application](https://github.com/danbev/android-diffsync-demo) which can be used against the above Java server.
 
 ### iOS 
 
-For iOS we have two different libraries that are developed:
-
-* [Differential Synchronization Client Engine](https://github.com/aerogear/aerogear-ios-sync)
-* [WebSocket-based Diff-Sync client](https://github.com/aerogear/aerogear-ios-sync-client)
+* [Sync Client Engine](https://github.com/aerogear/aerogear-ios-sync#aerogear-ios-differential-synchronization-client-engine--) a Swift based Client Sync Engine library.
+* [Sync Client](https://github.com/aerogear/aerogear-ios-sync-client#aerogear-ios-differential-synchronization-client--) a Swift based WebSocket Sync Client.
+* [Demo application](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Jedi#jedi) which can be used against the above Java server.
 
 The initial releases of the libraries are available on [CocoaPods](http://cocoapods.org/?q=AeroGearSync) as well.
 
-Besides the libraries we do already have a little [demo application](https://github.com/aerogear/aerogear-ios-sync-demo), which can be used against the above Java server.
-
 ### JavaScript
 
-The JavaScript client comes with a WebSocket-based library as well. There is also a Node.js based demo, which can be used against the above Java server.
-
-Currently our JS library and demo is located [here](https://github.com/aerogear/aerogear-sync-server/tree/master/js-client).
+* [Sync Library](https://github.com/aerogear/aerogear-js/tree/diff-sync-client#diff-sync) a JavaScript based Client Sync Engine implementation and WebSocket client library.
+* [Demo application](https://github.com/aerogear/aerogear-js-cookbook/tree/diff-sync-json-patch/diff-sync#differential-syncronization) a Node.js based demo, which can be used againste the above Java Sync Server.
 
 ## Get involved
 
