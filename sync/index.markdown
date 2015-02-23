@@ -24,7 +24,7 @@ Below are the various GitHub repositories that are part of the Data-Sync feature
 ### Data-Sync Server
 
 * [Java Sync Server Engine](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-core#aerogear-server-differential-synchronization-server-core) the Server Sync Engine.
-* [Netty Sync Server](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-netty#netty-differential-synchronization-server-implementation) which exposes WebSocket and XMPP/GCM endpoint for our different clients.
+* [Netty Sync Server](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-netty#netty-differential-synchronization-server-implementation) which embeds the Java Server Sync Engine and exposes WebSocket and XMPP/GCM endpoint for our different clients.
 * [Node Sync Server](https://github.com/aerogear/aerogear-nodejs-sync-server#aerogear-nodejs-sync-server-) which exposes WebSocket for our different clients.
 
 ### Android
