@@ -1,13 +1,13 @@
-# This is the default format. 
+# This is the default format.
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /news/:year/:month/:day/:title/index.html
 
 include: ["atom.xml"]
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "bin", "vendor", "Gemfile", "Gemfile.lock", "build", "publish-production", "publish-staging"]
 markdown: kramdown
-pygments: true
+highlighter: true
 
-# Themes are encouraged to use these universal variables 
+# Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
 title : AeroGear
@@ -18,7 +18,7 @@ email: aerogear-dev@lists.jboss.org
 baseurl: http://aerogear.org
 
 
-# Less compiler 
+# Less compiler
 # gems: ['jekyll-less']
 
 # lessc: /css/styles.less , /css/styles.css
