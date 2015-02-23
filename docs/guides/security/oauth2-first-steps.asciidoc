@@ -93,7 +93,10 @@ Now save your changes and Facebook is ready to go.
 [[Keycloak]]
 === Keycloak and Shoot Server Setup
 
-Please refer to
-https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot[aerogear-backend-cookbook
-shoot recipe].
+. Download [Keycloak Appliance Distribution (version 1.0.4.Final)](http://docs.jboss.org/keycloak/docs/1.0.4.Final/userguide/html/server-installation.html#Appliance_install)
+. Start the server `KEYCLOAK_APPLIANCE_HOME/Keycload/bin/standalone.sh -b 0.0.0.0`
+. Open [http://localhost:8080/auth/admin/index.html](http://localhost:8080/auth/admin/index.html)
+. Login using _admin_ / _admin_
+. Click on `Add realm`
+. import this our [realm configuration file](configuration/shoot-realm.json)
 
