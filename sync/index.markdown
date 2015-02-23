@@ -31,7 +31,7 @@ Below are the various GitHub repositories that are part of the Data-Sync feature
 * [Java Client Sync Engine](https://github.com/aerogear/aerogear-sync-server/tree/master/client/client-core#aerogear-server-differential-synchronization-client-core) a Java Client Sync Engine implementation.
 * [Netty Sync Client](https://github.com/aerogear/aerogear-sync-server/tree/master/client/client-netty) a Netty based WebSocket Sync Client.
 * [XMPP Client](https://github.com/aerogear/aerogear-android-sync#xmpp-differential-synchronization-client-implementation) to receive sync updates over GCM.
-* [Demo application](https://github.com/danbev/android-diffsync-demo) which can be used against the above Java server.
+* [Demo application](https://github.com/aerogear/aerogear-android-cookbook) which can be used against the above Java server.
 
 ### iOS 
 
