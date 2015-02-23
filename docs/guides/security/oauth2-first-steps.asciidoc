@@ -3,93 +3,95 @@ layout: basic
 title: OAuth2 first steps
 ---
 
-== OAuth2 first steps
+OAuth2 first steps
+------------------
 
-[[google-account-setup]]
-Google Account Setup
-++++++++++++++++++++
+* <<Google>>
+* <<Facebook>>
+* <<Keycloak>>
 
-First, you must authenticate with Google. You will need a Google Account
+[[Google]]
+=== Google Account Setup
+
+. First, you must authenticate with Google. You will need a Google Account
 for this. Now open the http://console.developer.google.com[Google
 Console].
 
-If you haven't created a project, click "Create Project" and give the
+. If you haven't created a project, click "Create Project" and give the
 new project a name:
-
++
 image:img/google-console-1.png[Google Console - Create Project]
-
-Now you need to enable the Drive API. To do that, navigate to APIs &
++
+. Now you enable the Drive API. To do that, navigate to APIs &
 auth > APIs and scroll down to the Drive API item, which you need to
 turn on:
-
++
 image:img/google-console-2.png[Google Console - Enable APIs]
-
-Now you need create new credentials to access your Drive accounts from
++
+. Create new credentials to access your Drive accounts from
 the app. Go to APIs & auth > Credentials and inside OAuth area click the
 blue `Create new Client ID` button.
-
++
 image:img/google-console-3.png[Google Console - Create client ID]
-
-You will need to create a _consent screen_. Click the blue
++
+. You will need to create a _consent screen_. Click the blue
 `Configure consent screen`
-
++
 image:img/google-console-4.png[Google Console - Consent screen]
-
-Afterwards, click save and you will return to the Client ID. Select
++
+. Afterwards, click save and you will return to the Client ID. Select
 `Installed application` and `Other`:
-
++
 image:img/google-console-5.png[Google Console - Create client ID]
-
-On the last screen we finally get to see the actual value of the
++
+. On the last screen we finally get to see the actual value of the
 generated `client id`, `secret id` and `redirect uris`, which you will
 use later:
-
++
 image:img/google-console-6.png[Google Console - Credentials]
 
-[[facebook-account-setup]]
-Facebook Account Setup
-++++++++++++++++++++++
+[[Facebook]]
+=== Facebook Account Setup
 
-First you must have a Facebook account. Now open the
+. First you must have a Facebook account. Now open the
 https://developers.facebook.com/[Facebook Developers] page and select
 `Apps` -> `Add a New App`
-
++
 image:img/facebook-1.png[Facebook - Add App]
-
-Click `www`
-
++
+. Create a new app and select `Website` as platform
++
 image:img/facebook-2.png[Facebook - Select platform]
-
-Click `Skip and Create App ID`
-
++
+. Click `Skip and Create App ID`
++
 image:img/facebook-3.png[Facebook - Skip and Create App ID]
-
-Setup a Display Name and Namespace and select a category, then click
++
+. Setup a Display Name and Namespace and select a category, then click
 `Create App ID`
-
++
 image:img/facebook-4.png[Facebook - Choice app category]
++
+. Fill out the captcha
 
-Fill out the captcha
-
-You are now on the Dashboard view. Make a note of your `App ID` and
+. Now on the Dashboard view. Make a note of your `App ID` and
 `App Secret`.
-
++
 image:img/facebook-5.png[Facebook - Dashboard]
-
-Select `Settings` from the sidebar and then the `Advanced` tab
-
++
+. Select `Settings` from the sidebar and then the `Advanced` tab
++
 image:img/facebook-6.png[Facebook - Advanced Tab]
-
-Scroll to Security and enable `Embedded browser OAuth Login` and make
++
+. Scroll to Security and enable `Embedded browser OAuth Login` and make
 `https://localhost/` your redirectURI
-
++
 image:img/facebook-7.png[Facebook - Enable OAuth]
-
++
 Now save your changes and Facebook is ready to go.
 
-[[keycloak-and-shoot-server-setup]]
-Keycloak and Shoot Server Setup
-+++++++++++++++++++++++++++++++
+[[Keycloak]]
+=== Keycloak and Shoot Server Setup
 
 Please refer to
 https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot[aerogear-backend-cookbook
