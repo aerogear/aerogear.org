@@ -273,19 +273,28 @@ margin-top: 20px;
   }
   
   h3{
-    border-top: 1px solid @gray-divider;
-    padding-top: @padding-large-vertical;
-    background: red;
+    border-bottom: 1px solid @gray-divider;
+    padding-bottom: @padding-large-vertical;
+    margin-top: @padding-large-vertical*4;
   }
   
   p{
     margin: @padding-large-vertical 0;
   }
-  
+  span{
+    text-align: center;
+  }
+  .image{
+    text-align: center;
+    display: block;    
+    margin: @padding-large-vertical*1.5 0;
+  }
   img{
     max-width: 100%;
     @media (min-width: @screen-md-min) {
-      max-width: 130%;  
+      max-width: 120%;
+      margin-left: -10%;  
+      margin-right: -10%;  
     }
   }
 }

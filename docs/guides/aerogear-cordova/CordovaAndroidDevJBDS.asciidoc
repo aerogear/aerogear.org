@@ -12,7 +12,7 @@ sub-section-title: Cordova
 
 == Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
 
-.By the end of this tutorial, you will have:
+By the end of this tutorial, you will have:
 * Setup your development environment
 * Created your first Phonegap/Apache Cordova-based Android Application
 * Run the app on the Android emulator
