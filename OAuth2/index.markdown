@@ -45,6 +45,12 @@ Our [Apache Cordova plugin](https://github.com/aerogear/aerogear-oauth2-cordova)
 * iOS
 * Windows
 
+### See it in Action
+
+To see it in action, watch the screencast below:
+
+<p><center><iframe width="560" height="315" src="https://www.youtube.com/embed/nEqwncaOcu4" frameborder="0" allowfullscreen></iframe></center></p>
+
 ## Demo applications 
 
 We have a demo application, called _Shoot'n Share_ for all of our supported platforms (Android, iOS, Windows and Cordova). The application allows you to upload a photo to Facebook, Google+ or a Keycloak protected backend.
