@@ -3,10 +3,10 @@ layout: base
 title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
 nav-active-getstarted: active
 section-title: AeroGearCore Guides
+section-class: guides
 section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: Cordova
-section-class: guides
 ---
 
 
@@ -19,6 +19,7 @@ section-class: guides
 * Run the app on a real Android device (if you have one handy)
 * Leverage the PhoneGap/Apache Cordova API for native device functionality
 * Connected your app “to the cloud” with a REST endpoint
+
 
 === System Setup
 
