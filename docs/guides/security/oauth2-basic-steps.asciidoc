@@ -1,9 +1,9 @@
 ---
 layout: basic
-title: OAuth2 first steps
+title: OAuth2 basic steps
 ---
 
-OAuth2 first steps
+OAuth2 basic steps
 ------------------
 
 * <<Google>>
