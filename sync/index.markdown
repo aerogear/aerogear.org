@@ -43,7 +43,7 @@ The initial releases of the libraries are available on [CocoaPods](http://cocoap
 
 ### JavaScript
 
-* [Sync Library](https://github.com/aerogear/aerogear-js/tree/diff-sync-client#diff-sync) a JavaScript based Client Sync Engine implementation and WebSocket client library.
+* [Sync Library](https://github.com/aerogear/aerogear-js/tree/master/src/diff-sync) a JavaScript based Client Sync Engine implementation and WebSocket client library.
 * [Demo application](https://github.com/aerogear/aerogear-js-cookbook/tree/diff-sync-json-patch/diff-sync#differential-syncronization) a Node.js based demo, which can be used againste the above Java Sync Server.
 
 ## Get involved
