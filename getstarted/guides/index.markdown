@@ -20,6 +20,12 @@ Designed to get you started with enterprise mobile development.
 <h4 id="coreAndroid">Android</h4>
 * [How to build AeroGear Android library](/docs/guides/aerogear-android/how-to-build-aerogear-android)
 
+<h4 id="coreIOS1">iOS 2.X</h4>
+* [AeroGear HTTP](/docs/guides/aerogear-ios-2.X/HttpLib)
+* [AeroGear JsonSZ](/docs/guides/aerogear-ios-2.X/JsonSZ)
+* [AeroGear HttpStub](/docs/guides/aerogear-ios-2.X/HttpStub)
+* [AeroGear Authorization (OAuth2)](/docs/guides/aerogear-ios-2.X/Authorization)
+
 <h4 id="coreIOS1">iOS 1.X</h4>
 * Get Started with iOS and Xcode
 * [Get Started with iOS and AeroGear Xcode Template](/docs/guides/aerogear-ios/XcodeTemplate)
