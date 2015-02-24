@@ -1,13 +1,13 @@
---- 
-layout: basic 
-title: AeroGear iOS User Guide 
+---
+layout: basic
+title: AeroGear iOS User Guide
 ---
 
 # AeroGear iOS User Guides
 
 ## Getting Started Guides
-* [Get Started with iOS and Xcode](/docs/guides/GetStartedwithAeroGearandXcode/)
-* [Get Started with iOS and AeroGear Xcode Template](/docs/guides/GetStartedwithAeroGearandXcodeTemplate/)
+* [Get Started with iOS and Xcode](AeroGearandXcode)
+* [Get Started with iOS and AeroGear Xcode Template](XcodeTemplate)
 
 ## Usage Guides
 * [Pipe and Pipeline](Pipe)
@@ -25,7 +25,4 @@ title: AeroGear iOS User Guide
 * [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo)
 
 ## API documentation
-* [1.4.0 API documentation](/docs/specs/aerogear-ios/)
-
-## Presentations about AeroGear on iOS
-*  -
+* [1.6.1 API documentation](/docs/specs/aerogear-ios/)
