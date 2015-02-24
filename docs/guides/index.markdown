@@ -22,7 +22,7 @@ title: Guides
   * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](aerogear-cordova/AerogearCordovaOTP)
 
 * OAuth2
-  * [First steps](security/oauth2-first-steps)
+  * [Basic steps](security/oauth2-basic-steps)
 
 
 ### Contributing to AeroGear
