@@ -22,8 +22,15 @@ title: Guides
   * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](aerogear-cordova/AerogearCordovaOTP)
 
 * OAuth2
-  * [Basic steps](security/oauth2-basic-steps)
+  1. [Basic steps](security/oauth2-basic-steps)
+  2. Client libraries
 
+     The following SDKs were crafted with the simplicity in mind and are constantly improving at each release.
+
+     * [Android client library](http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-authz%7C2.0.0%7Caar)
+     * [iOS client library](http://cocoapods.org/?q=aerogearoauth2)
+     * [Apache Cordova client library](https://github.com/aerogear/aerogear-oauth2-cordova/releases/tag/v1.0.2)
+     * [Windows Phone](http://www.nuget.org/packages/aerogear-windows-oauth2/)
 
 ### Contributing to AeroGear
 
