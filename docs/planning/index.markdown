@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Road Map
-nav-active-docs: active
+nav-active-roadmap: active
 section-title: Road Map
 section-description:  List of the planed feature for the AeroGear project
 section-class: roadmaps
