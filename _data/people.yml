@@ -8,7 +8,7 @@ corinnekrych:
   twitter: corinnekrych
   location-city:
   location-country: France
-  description: Senior technical consultant with 15 years experience, 12 companies, worked in different environments and methodologies. Enthusiastic, curious and skilled. Pragmatic thinker I will understand requirements and turn them into quality software and useful documentation.
+  description: Senior technical consultant with 15 years experience, 12 companies, worked in different environments and methodologies. Enthusiastic, curious and skilled. Pragmatic thinker I will understand requirements and turn them into quality software and useful documentation. Corinne leads iOS team in AeroGear.
 
 balunasj:
   name: Jay Balunas
@@ -43,7 +43,7 @@ abstractj:
   twitter: abstractj
   location-city: Sao Paulo
   location-country: Brazil
-  description: Husband, uncle, greenhorn runner, crypto wannabe, passionate about security and programming languages, a hungry dog. Just another crappy writer.
+  description: Husband, uncle, greenhorn runner, crypto wannabe, passionate about security and programming languages, a hungry dog. Just another crappy writer. Bruno leads security related efforts in AeroGear.
   jboss-planet-tag: feed_name_abstractj
 
 cvasilak:
@@ -56,7 +56,7 @@ cvasilak:
   twitter: cvasilak
   location-city:
   location-country: Greece
-  description: Senior Software Engineer Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+  description: Senior Software Engineer Red Hat. Christos is core developer in iOS team in AeroGear.
 
 danbev:
   name: Daniel Bevenius
@@ -67,7 +67,7 @@ danbev:
   twitter: dbevenius
   location-city:
   location-country: Sweden
-  description: Senior Software Engineer Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+  description: Senior Software Engineer Red Hat. Daniel leads various server backend technologies in AeroGear.
 
 qmx:
   name: Douglas Campos
@@ -92,7 +92,7 @@ danielpassos:
   twitter: passos
   location-city: Rio de Janeiro
   location-country: Brazil
-  description: I'm Daniel Passos from Rio de Janeiro, Brazil. I'm a Senior Software Engineer at Red Hat and DJ on my spare time. Passionate about radicals sports, love travelling and discovering new places
+  description: I'm Daniel Passos from Rio de Janeiro, Brazil. I'm a Senior Software Engineer at Red Hat and DJ on my spare time. Passionate about radicals sports, love travelling and discovering new places. Daniel leads Android team in AeroGear.
   jboss-planet-tag: feed_name_passos
 
 edewit:
@@ -105,7 +105,7 @@ edewit:
   twitter: edewit
   location-city: Zürich
   location-country: Switzerland
-  description: Works at Red Hat, lives in Zwitserland. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+  description: Works at Red Hat, lives in Zwitserland. Erik leads Cordova team in AeroGear.
 
 lfryc:
   name: Lukáš Fryč
@@ -117,7 +117,7 @@ lfryc:
   twitter: lfryc
   location-city: Brno
   location-country: Czech Republic
-  description: Frontend master and a testing geek, an open source addicted father, runner, climber and Red Hatter.
+  description: Frontend master and a testing geek, an open source addicted father, runner, climber and Red Hatter. Lukáš is a core developer in JS team in AeroGear.
   jboss-planet-tag: feed_name_lfryc_events
 
 lholmquist:
@@ -130,7 +130,7 @@ lholmquist:
   twitter: sienaluke
   location-city: NY
   location-country: USA
-  description: Works at Red Hat, lives in NY. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+  description: Works at Red Hat, lives in NY. Lucas leads JS team in AeroGear.
 
 matzew:
   name: Matthias Wessendorf
@@ -142,7 +142,7 @@ matzew:
   twitter: mwessendorf
   location-city: Emsdetten
   location-country: Germany
-  description: Specialties:iOS, WebSocket, HTML5, JMS, Stomp, AMQP, XMPP, Apache, ASF, Java EE 6, JSF 2.0, CDI, JPA, ADF Faces, Apache MyFaces, Apache MyFaces Trinidad, RIA, Rich-Internet-Applications, Server-side-push, .NET, Node.js
+  description: 'Specialties: iOS, WebSocket, HTML5, JMS, Stomp, AMQP, XMPP, Apache, ASF, Java EE 6, JSF 2.0, CDI, JPA, ADF Faces, Apache MyFaces, Apache MyFaces Trinidad, RIA, Rich-Internet-Applications, Server-side-push, .NET, Node.js. Matthias leads the AeroGear project.'
   jboss-planet-tag: feed_name_mwessendorf
 
 sebastienblanc:
@@ -155,7 +155,7 @@ sebastienblanc:
   twitter: sebi2706
   location-city:
   location-country: France
-  description: Works at Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+  description: Works at Red Hat. Sebastien leads UnifiedPush efforts in AeroGear.
 
 secondsun:
   name: Hoyt Summers Pittman
@@ -167,7 +167,7 @@ secondsun:
   twitter: summerspittman
   location-city: Atlanta
   location-country: USA
-  description: Works at Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+  description: Works at Red Hat. Summers is a core developer in Android team in AeroGear.
 
 andresgalante:
   name: Andres Galante
@@ -178,7 +178,7 @@ andresgalante:
   url: andresgalante.com
   location-city: Buenos Aires
   location-country: Argentina
-  description: Works at Red Hat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+  description: Works at Red Hat. Andres designs beutiful things and makes them work for people.
 
 kborchers:
   name: Kris Borchers
