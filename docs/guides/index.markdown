@@ -29,7 +29,7 @@ title: Guides
 
      * [Android client library](http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-authz%7C2.0.0%7Caar)
      * [iOS client library](http://cocoapods.org/?q=aerogearoauth2)
-     * [Apache Cordova client library](https://github.com/aerogear/aerogear-oauth2-cordova/releases/tag/v1.0.2)
+     * [Apache Cordova client library](http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.oauth2)
      * [Windows Phone](http://www.nuget.org/packages/aerogear-windows-oauth2/)
 
 ### Contributing to AeroGear
