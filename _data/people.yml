@@ -146,14 +146,14 @@ matzew:
   jboss-planet-tag: feed_name_mwessendorf
 
 sebastienblanc:
-  name: Sebastien Blanc
+  name: Sébastien Blanc
   github: sebastienblanc
   update-date: Wed, 17 Dec 2014 14:37:46 EST
   update-description: <a href="https://github.com/sebastienblanc">sebastienblanc</a> <span>commented</span> on pull request <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/460#issuecomment-67167202" title="removed 'old' liquibase scripts and ...">aerogear/aerogear-unifiedpush-server#460</a>
   avatar: https://avatars2.githubusercontent.com/u/335133
   url: sblanc.org
   twitter: sebi2706
-  location-city:
+  location-city: Vallauris
   location-country: France
   description: Works at Red Hat. Sebastien leads UnifiedPush efforts in AeroGear.
 
