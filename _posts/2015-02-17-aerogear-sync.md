@@ -10,7 +10,6 @@ This release provides both, server side sync engines, as well as a client side s
 
 #### Servers
 [Java](https://github.com/aerogear/aerogear-sync-server)  
-[Node.js](https://github.com/aerogear/aerogear-nodejs-sync-server)
 
 #### Client libraries
 [Android](https://github.com/aerogear/aerogear-android-sync)  
@@ -27,8 +26,6 @@ As part of this release we are providing a simple demo application that is based
 To run the above demo applications you'll need one of the sync servers running, please refer to the links below for instructions about how to 
 start the servers.  
 [Java Server](https://github.com/danbev/aerogear-sync-server/releases/tag/1.0.0.Alpha1-SNAPSHOT)    
-[Node.js Server](https://github.com/aerogear/aerogear-nodejs-sync-server)
-
 
 ## Documentation
 For more details about the current release, please consult [our documentation](http://aerogear.org/sync).
@@ -41,3 +38,4 @@ For more details about the current release, please consult [our documentation](h
 # What's next? 
 * Client library for Windows. 
 * More alpha releases as we continue developing the server and clients. 
+* [Node.js based Sync Server](https://github.com/aerogear/aerogear-nodejs-sync-server)
