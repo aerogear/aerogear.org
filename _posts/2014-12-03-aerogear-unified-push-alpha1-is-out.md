@@ -1,9 +1,16 @@
 ---
-layout: post
+layout: base
 title: UnifiedPush Server 1.1.0-alpha.1 with Windows Push is out !
+nav-active-news: active
+section-title: AeroGear News
+section-class: news
+section-description: Artciles, posts, events, videos and updates.
+breadcrumbs-url: /news/
+sub-section-title: News
 author: sebastienblanc
 module: push
 ---
+
 
 We are happy to announce that the [Unified Push Server 1.1.0-alpha.1](https://github.com/aerogear/aerogear-unifiedpush-server/releases/tag/1.1.0-alpha.1) has been released ! 
 

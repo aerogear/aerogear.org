@@ -1,9 +1,16 @@
 ---
-layout: post
+layout: base
 title: AeroGear iOS SDK v2.1 is out !
+nav-active-news: active
+section-title: AeroGear News
+section-class: news
+section-description: Artciles, posts, events, videos and updates.
+breadcrumbs-url: /news/
+sub-section-title: News
 author: corinnekrych
 module: core
 ---
+
 
 Hi AeroGear community,
 

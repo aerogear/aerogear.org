@@ -1,9 +1,16 @@
 ---
-layout: post
+layout: base
 title: AeroGear UnifiedPush Server 1.0.2 is out!
+nav-active-news: active
+section-title: AeroGear News
+section-class: news
+section-description: Artciles, posts, events, videos and updates.
+breadcrumbs-url: /news/
+sub-section-title: News
 author: matzew
 module: push
 ---
+
 
 We’re happy to announce the availability of AeroGear UnifiedPush Server 1.0.2!
 
