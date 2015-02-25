@@ -10,9 +10,8 @@ sub-section-title: Cordova
 ---
 
 
-== Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
-
 By the end of this tutorial, you will have:
+
 * Setup your development environment
 * Created your first Phonegap/Apache Cordova-based Android Application
 * Run the app on the Android emulator
@@ -21,7 +20,7 @@ By the end of this tutorial, you will have:
 * Connected your app “to the cloud” with a REST endpoint
 
 
-=== System Setup
+== System Setup
 
 First make sure that you have a JDK installed on your machine.  JDK 1.6+ is recommended.
 
@@ -33,7 +32,7 @@ Download and Unzip the Android SDK. link:http://developer.android.com/sdk/index.
 
 _Note: make sure to remember where you unzipped it._
 
-=== Project Setup
+== Project Setup
 
 Now that your system is setup, lets create a new Cordova Project by clicking File -> New -> Other  (or Cntrl/Command N).
 
@@ -63,7 +62,7 @@ Here you can find the settings we entered before, this is a editor for the confi
 
 image:img/6-cordova-sim.png[]
 
-=== Building An App
+== Building An App
 
 First let's delete the generated demo by removing everything in the www directory except config.xml
 
