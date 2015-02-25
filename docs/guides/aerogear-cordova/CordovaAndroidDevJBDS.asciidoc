@@ -187,7 +187,6 @@ The onGeoError function receives the error message, if there is one.
   }
 
 
-
 Finally, add the HTML tag needed to display the results.  This will go in the data-role=”content” section.
 
   <div id="geolocation">Finding geolocation...</div><p>
