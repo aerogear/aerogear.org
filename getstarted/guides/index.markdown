@@ -13,7 +13,7 @@ Designed to get you started with enterprise mobile development.
 
 ---
 
-<h2 class="section-header" id="core"><i class="fa fa-graduation-cap"></i> First Steps</h2>
+<h2 class="section-header" id="first-steps"><i class="fa fa-graduation-cap"></i> First Steps</h2>
 
 > Learn how to make first steps in the mobile development on each of supported platforms
 
@@ -32,9 +32,9 @@ Designed to get you started with enterprise mobile development.
 
 ---
 
-<h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>Core</strong> Guides</h2>
+<h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>SDK</strong> Guides</h2>
 
-> Take the knowledge further and learn about advanced concepts supported by Core library
+> Take the knowledge further and learn about advanced concepts supported by client libraries
 
 <h4 id="coreAndroid">Android</h4>
 * [Pipe](/docs/guides/aerogear-android/pipe)
