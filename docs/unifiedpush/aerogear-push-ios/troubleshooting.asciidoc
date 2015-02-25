@@ -101,3 +101,50 @@ Since iO8, registerForRemoteNotificationTypes has been deprecated in favour of r
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 #endif
 ----
+
+### Question: Failure to connect when server uses a self-signed certificate
+
+*Problem description*
+
+When trying to connect  to a server that uses a self-signed certificate, the application fails to connect with the following message:
+
+[source,c]
+----
+Domain=NSURLErrorDomain Code=-1202 "The certificate for this server is invalid. You might be connecting to a server that is pretending to be “example.com” which could put your confidential information at risk." UserInfo=0x14a730 {NSErrorFailingURLStringKey=https://example.com/, NSLocalizedRecoverySuggestion=Would you like to connect to the server anyway?, ..}
+----
+
+*Answer*
+
+By default, the underlying networking foundation rejects connections to server's that use a self-signed certificate and you need to take extra measures in order to make it work. Although the following snippets of code can bypass the built-in security check, they are not recommended unless you are working in a development sandbox and you need a quick-and-dirty solution for internal testing. You can find more information on self-signed certificates on link:https://developer.apple.com/library/ios/technotes/tn2232/_index.html#//apple_ref/doc/uid/DTS40012884-CH1-SECSELFSIGNEDCERTS[Apple technote paper] as well in link:https://github.com/aerogear/aerogear-ios-push/pull/46#issuecomment-75815787[this page here] that summarizes possible solutions when you take your app in production.
+
+*Objective-C*
+
+If you are using Objective-C, modify the link:https://github.com/aerogear/aerogear-ios-push/blob/1.x_dev/push-sdk/AGDeviceRegistration.m[AGDeviceRegistration.m] source code and add the following function:
+
+[source,c]
+
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {    
+    if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust] && [challenge.protectionSpace.host isEqualToString:_baseURL.host]) {
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        completionHandler(NSURLSessionAuthChallengeUseCredential,credential);
+    } else {
+        completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+    }
+}
+
+*Swift*
+
+If you are using Swift modify the link:https://github.com/aerogear/aerogear-ios-push/blob/master/push-sdk-swift/AGDeviceRegistration.swift[AGDeviceRegistration.swift] source code and add the following function:
+
+[source,c]
+
+public func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential!) -> Void) {
+    if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust && challenge.protectionSpace.host == serverURL.host! {
+        let credentials = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!)
+        completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential, credentials)
+    } else {
+        completionHandler(NSURLSessionAuthChallengeDisposition.CancelAuthenticationChallenge, nil)
+    }
+}
+
+
