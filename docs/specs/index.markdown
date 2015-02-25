@@ -3,11 +3,11 @@ layout: base
 title: Documentation Library 
 nav-active-docs: active
 section-title: Documentation
-section-description: Aerogear specifications.
+section-description: Aerogear API documentation & specifications.
 section-class: docs
 ---
 
-<h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>Core</strong> Specifications</h2>
+<h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>SDK</strong> Docs</h2>
 
 <style>
 span.version {
@@ -47,10 +47,7 @@ span.version {
 
 ---
 
-<h2 class="section-header" id="push"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong> Specifications</h2>
-
-* [Android Push](/docs/specs/aerogear-android-push/) <span class="version">2.0.0</span>
-* [Push iOS](aerogear-ios-push) <span class="version">1.0.0</span>
+<h2 class="section-header" id="push"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong> Docs</h2>
 
 <h4>UnifiedPush</h4>
 
@@ -62,6 +59,12 @@ span.version {
 <h4>SimplePush</h4>
 
 * [SimplePush Java Client](aerogear-simplepush-java-client)
+
+<h4>Client Libs</h4>
+
+* [Android Push](/docs/specs/aerogear-android-push/) <span class="version">2.0.0</span>
+* [Push iOS](aerogear-ios-push) <span class="version">1.0.0</span>
+* [Cordova Push](aerogear-cordova/Push.html)
 
 ---
 
