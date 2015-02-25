@@ -9,9 +9,6 @@ section-class: roadmaps
 
 <h2 id="plans">Planned features for the AeroGear project</h2>
 
-#### <i class="fa fa-shield"></i> AeroGear OAuth2 - 1.0.0 (January 2015)
-Support of OAuth2 for Keycloak, Google and Facebook on our Android, iOS, Windows and Apache Cordova platforms.
-<p><a href="https://issues.jboss.org/browse/AGSEC-180" class="btn btn-primary">List of JIRA tickets</a></p>
 ___
 
 #### <i class="fa fa-refresh"></i> AeroGear Data-Sync - 1.0.0.alpha.1 (February 2015)
@@ -35,8 +32,9 @@ Supports persistent storage of updates to support offline work, for Android, iOS
 ___
 
 
-
 <h2 id="unscheduled">Unscheduled Features</h2>
+
+---
 
 #### <i class="fa fa-refresh"></i> AeroGear Conflict Resolution
 Dealing with conflicts while dealing with data and their state.
