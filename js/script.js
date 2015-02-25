@@ -15,15 +15,6 @@ $('body').scrollspy({ target: '.submenu' });
 
 
 
- if($(window).width() > 992){
-     
-   $('.aditional-actions').affix({    
-       offset: {
-        top: function (){
-          return (this.top = $(".main-banner").outerHeight(true));
-        }
-      }  
-   });
    
    
   $(".submenu").css("width", $('.submenu').width());

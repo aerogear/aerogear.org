@@ -8,8 +8,16 @@ nav-active-home: active
 <!-- TODO(agalante) **what is this xmlns for? **
 <div class="start-header" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
  -->
+ 
+ 
 <div class="main-background"></div>
  
+ <section class="aditional-actions">
+  <div class="container">
+    <a class="news fixed" href="{{ site.posts.first.url }}"><strong>Hey listen!</strong> {{ site.posts.first.title }}</a>
+  </div>
+</section> 
+
      <section class="main-features">
       <div class="container">
       
@@ -47,169 +55,6 @@ nav-active-home: active
         </div><!-- row -->
       </div><!-- container -->
     </section><!--main features-->
-
-
-
-    <section class="quote">
-      <div class="container">
-        <h3>
-          <a class="news fixed" href="{{ site.posts.first.url }}"><strong>Hey listen!</strong> {{ site.posts.first.title }}</a>
-        </h3>
-<!--        <p><strong>Name Lastname</strong>, Company Name</p> -->
-      </div><!-- container -->
-    </section> 
-
-
-    <section class="whatsnew">
-      <div class="container">
-      
-        <h2 class="section-header">Latest news</h2>
-        
-        <div class="row">
-        
-          <div class="col-sm-6">          
-           <!--<h3 class="sub-section-header">News</h3> -->
-           
-           <!--<div class="article news" itemscope itemtype="http://schema.org/NewsArticle">-->
-           <!---->
-            <!--<div class="article-header">-->
-              <!--<h4 class="article-title" itemprop="name"><a href="#">How to Tie a Reef Knot</a></h4>-->
-              <!--<p class="article-subtitle">by <span itemprop="author">John Doe</span></p>-->
-              <!--<p class="article-date" itemprop="datePublished" content="2013-09-14">Sep 14, 2012</p>-->
-            <!--</div>&lt;!&ndash; article header &ndash;&gt;-->
-            <!---->
-            <!--<div class="article-description" itemprop="description">-->
-                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
-             <!--</div>&lt;!&ndash; article-description &ndash;&gt;-->
-             <!---->
-           <!--</div>&lt;!&ndash; article &ndash;&gt;    -->
-
-              {% assign post = site.data['all_posts'][0] %}
-              <div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
-                  <div class="article-header">
-
-                      <h4 class="article-title" itemprop="name">
-                          <a href="{% if post.external == false %}{{ site.baseurl }}{% endif %}{{ post.url }}">
-                              {{post.title}}
-                          </a>
-                      </h4>
-
-                      <div class="media">
-                          {% if post.author.avatar %}
-                          <div class="media-left">
-                              <img src="{{ post.author.avatar }}" />
-                          </div>
-                          {% endif %}
-
-                          <div class="media-body">
-                              {% if post.author.name %}
-                              <p class="article-subtitle">by
-                                <span itemprop="author">
-                                {{post.author.name}}
-                                </span>
-                              </p>
-                              {% endif %}
-                              <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">
-                              posted on {{post.date |  date: "%-d %b %Y" }}
-                              </p>
-                          </div>
-                      </div>
-
-                  </div><!-- article header -->
-
-                  <div class="article-description" itemprop="description">
-                      {{ post.excerpt }}
-                  </div><!-- article-description -->
-
-              </div>
-           
-           
-          </div><!-- col-->
-
-
-
-
-          <div class="col-sm-6">          
-              {% assign post = site.data['all_posts'][1] %}
-              <div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
-                  <div class="article-header">
-
-                      <h4 class="article-title" itemprop="name">
-                          <a href="{% if post.external == false %}{{ site.baseurl }}{% endif %}{{ post.url }}">
-                              {{post.title}}
-                          </a>
-                      </h4>
-
-                      <div class="media">
-                          {% if post.author.avatar %}
-                          <div class="media-left">
-                              <img src="{{ post.author.avatar }}" />
-                          </div>
-                          {% endif %}
-
-                          <div class="media-body">
-                              {% if post.author.name %}
-                              <p class="article-subtitle">by
-                                <span itemprop="author">
-                                {{post.author.name}}
-                                </span>
-                              </p>
-                              {% endif %}
-                              <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">
-                              posted on {{post.date |  date: "%-d %b %Y" }}
-                              </p>
-                          </div>
-                      </div>
-
-                  </div><!-- article header -->
-
-                  <div class="article-description" itemprop="description">
-                      {{ post.excerpt }}
-                  </div><!-- article-description -->
-
-              </div>
-           
-           
-          </div><!-- col-->
-
-          <div class="col-sm-12">          
-            <p><a href="{{ site.baseurl }}/news" class="btn btn-primary"><i class="fa fa-newspaper-o"></i> View all news</a></p>
-          </div>
-
-
-         
-         <!--
-          <div class="col-sm-4">
-            <h3 class="sub-section-header">Upcomming events</h3>
-            
-            <div class="article event" itemscope itemtype="http://schema.org/Event">
-     
-            <div class="article-header">
-              <h4 class="article-title" itemprop="name"><a href="#">Event Name</a></h4>
-              <p class="article-subtitle" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                <span itemprop="addressLocality">Buenos Aires</span>, 
-                <span itemprop="Country">Argentina</span>
-              </p>
-              <p class="article-date" itemprop="startDate" content="2013-09-14">Sep 14, 2012</p>
-            </div>
-              
-              <div itemprop="description">
-                <p>Dabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-              </div>
-
-            </div>
-            
-            <p><a href="/news" class="btn btn-primary"><i class="fa fa-calendar-o"></i> View all events</a></p>
-            
-          </div> col-->
-
-        </div><!-- row-->
-        
-      </div><!-- container -->
-    </section> 
 
 
 
