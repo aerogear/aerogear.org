@@ -39,8 +39,9 @@ Designed to get you started with enterprise mobile development.
 * [Store](/docs/guides/aerogear-android/store)
 
 <h4 id="coreIOS1">iOS</h4>
-* [AeroGear HTTP](/docs/guides/aerogear-ios-2.X/HttpLib)
-* [AeroGear JsonSZ](/docs/guides/aerogear-ios-2.X/JsonSZ)
+* [HTTP](/docs/guides/aerogear-ios-2.X/HttpLib)
+* [JsonSZ](/docs/guides/aerogear-ios-2.X/JsonSZ)
+* [Authorization](/docs/guides/aerogear-ios-2.X/Authorization)
 
 <div class="alert alert-info" role="alert">If you are looking for AeroGear iOS 1.x series, please visit <a href="/docs/guides/aerogear-ios/">this page</a> for more information.</div>
 
