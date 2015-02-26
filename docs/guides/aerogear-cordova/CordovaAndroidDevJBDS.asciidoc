@@ -127,7 +127,7 @@ NOTE: It is much easier to perform your JavaScript debugging via Chrome, Safari 
 
 Also, make sure the device is awake and not locked, sitting on the home screen before attempting to Run As Android Application – it tends to work more often in that scenario.  In Developer options (on the device), there is an option to Stay awake.
 
-==== Geolocation
+=== Geolocation
 
 Time to add in some Apache Cordova Magic. First up, we will add in some "Geolocation" (where is the device on the planet).
 
@@ -194,7 +194,7 @@ image:../../img/ss_build_7.png[]
 NOTE: For more information on how Apache Cordova/Phonegap addresses Geolocation check out the API docs at:
 https://github.com/apache/cordova-plugin-geolocation/blob/master/doc/index.md
 
-==== Accelerometer
+=== Accelerometer
 
 The next bit of Apache Cordova Magic we will add is access to the "Accelerometer"
 
@@ -249,7 +249,7 @@ image:../../img/ss_accel_2.png[]
 NOTE: For more information on how Apache Cordova/Phonegap addresses Accelerometer check out the API docs at:
 https://github.com/apache/cordova-plugin-device-motion/blob/master/doc/index.md
 
-=== Data & REST
+== Data & REST
 
 Apps need data, and a good way to do that on a mobile device is with RESTful calls.
 
@@ -284,7 +284,7 @@ image:../../img/ss_rest_1.png[]
 
 NOTE: This is primarily useful for development.  An app you are deploying to real end-users via the Google Play Store, you will wish to be more specific.
 
-==== Extra Credit
+=== Extra Credit
 
 And if you wish to be more adventurous, wrap this logic in a check for Wifi vs 3G vs no connection and make a determination as to how to display a message to the end-user.
 
@@ -296,7 +296,7 @@ https://github.com/apache/cordova-plugin-network-information/blob/master/doc/ind
 
 == Tips & Tricks:
 
-==== Eclipse complains about various JS libs
+=== Eclipse complains about various JS libs
 
 In Some cases the your project won’t let you deploy the application.
 
@@ -304,7 +304,7 @@ Workaround: Rename the libraries by removing their .js extensions
 
 Caution: This may mean that Eclipse will not recognize them as JavaScript files and not provide the correct editor.  Another option is to use the full or non-minified versions of the JavaScript library that you are interested in.  Since these files should be bundled in your Apache Cordova-based app’s distribution, there is no significant network download penalty to downloading the file at runtime.
 
-==== Target Android Version
+=== Target Android Version
 
 In case you wish to switch the Android version targets for your project go to the project properties and Android.
 
@@ -314,7 +314,7 @@ And also change your AndroidManifest.xml
           android:minSdkVersion="8"
           android:targetSdkVersion="15" />
 
-==== REST Endpoints
+=== REST Endpoints
 
 To connect to your endpoints, you need to "open" access to the specific Internet domains in res/xml/config.xml
 
@@ -323,19 +323,19 @@ ex:
   <access origin=".*"/>
 
 
-==== Change MainActivity title/label
+=== Change MainActivity title/label
 
 To change the title/label on the installed application, you can edit the "strings.xml" file located in "res/values/".
 
 This will change the application name on the launch icon as well as when multi-tasking.
 
-==== Phonegap API Explorer
+=== Phonegap API Explorer
 
 To test your device and Phonegap/Apache Cordova install
 
 https://play.google.com/store/apps/details?id=org.coenraets.phonegapexplorer&hl=en
 
-==== Phonegap/Apache Cordova Plugins
+=== Phonegap/Apache Cordova Plugins
 
 https://github.com/phonegap/phonegap-plugins
 

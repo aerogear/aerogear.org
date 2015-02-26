@@ -11,7 +11,7 @@ An Authenticator manages different authentication module implementations. It is 
 
 An AuthenticationModule represents an authentication module and provides the authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the Pipe, technical details of the underlying system are not exposed
 
-=== Creating an authenticator with an authentication module
+== Creating an authenticator with an authentication module
 
 To create an authenticator, you need to use the AGAuthenticator class. Below is an example:
 
@@ -30,7 +30,7 @@ id<AGAuthenticationModule> myMod = [authenticator auth:^(id<AGAuthConfig> config
 
 The AGAuthenticator class offers some simple 'management' APIs to work with containing AGAuthenticationModule objects. The API provides an authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the pipe API technical details of the underlying system are not exposed.
 
-=== Register a user
+== Register a user
 
 The _enroll_ function of the 'AGAuthenticationModule' protocol is used to register new users with the backend:
 
@@ -55,7 +55,7 @@ NSDictionary* userData = @{@"username": @"john",
 
 The _enroll_ function submits a generic map object with contains all the information about the new user, that the server endpoint requires. The default (REST) auth module issues for the above a request against _https://myserver.rhcloud.com/auth/enroll_. Besides the NSDictionary the function accepts two simple blocks that are invoked on success or in case of a failure.
 
-=== Login
+== Login
 
 Once you have a _valid_ user you can use that information to issue a login against the server, to start accessing protected endpoints:
 
@@ -74,7 +74,7 @@ NSDictionary *credentials = @{@"username": @"john", @"password": @"123"};
 
 The default (REST) auth module issues for the above a request against _https://myserver.rhcloud.com/auth/login_. Besides the _username_ and the _password_ (stored in a _NSDictionary_), the function accepts two simple blocks that are invoked on success or in case of a failure.
 
-=== Pass the auth module to a pipe
+== Pass the auth module to a pipe
 
 After running a successful login, you can start using the _AGAuthenticationModule_ object on a _AGPipe_ object to access protected endpoints:
 
@@ -97,7 +97,7 @@ id<AGPipe> tasks = [pipeline pipe:^(id<AGPipeConfig> config) {
 
 When creating a pipe you need to use the _authModule_ argument in order to pass in an _AGAuthenticationModule_ object.
 
-=== Logout
+== Logout
 
 The logout from the server can be archived by using the _logout_ function:
 
@@ -114,7 +114,7 @@ The logout from the server can be archived by using the _logout_ function:
 
 The default (REST) auth module issues for the above a request against _https://myserver.rhcloud.com/auth/logout_. The function accepts two simple blocks that are invoked on success or in case of a failure.
 
-=== NSURLCredential support.
+== NSURLCredential support.
 As of version 1.1.0 of the library, you can pass directly on the Pipe configuration an link:http://tinyurl.com/neqbum2[NSURLCredential] object. Doing that will give you instant support for the built-in authentication protocols already supported in iOS (such as Basic/Digest). When a request comes in where an authentication challenge is required, the library will pass to the server those credentials.
 
 To pass the NSURLCredential object, use the _setCredential_ configuration method during construction of the Pipe:
@@ -131,7 +131,7 @@ id<AGPipe> tasks = [pipeline pipe:^(id<AGPipeConfig> config) {
 NOTE: Care should be taken when specifying the persistence type param when constructing the NSURLCredential object. Specifying type other than link:http://tinyurl.com/q28l9hd[NSURLCredentialPersistenceNone], will have the effect of the credentials to be preserved across session and application restarts. In that case, the developer is responsible to clear the cache. See link:http://tinyurl.com/n9amy5q[NSURLCredentialStorage] class reference for more information.
 
 
-=== Time out and Cancel pending operations
+== Time out and Cancel pending operations
 
 As with the case of Pipe, configured timeout interval (in the config object) and cancel operation in _AGAuthenticationModule_ is supported too.
 

@@ -27,7 +27,7 @@ link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/Abst
 
 == How to use it
 
-==== Setting up authentication in pipe requests
+=== Setting up authentication in pipe requests
 
 [source,java]
 ----
@@ -44,7 +44,7 @@ pipeConfig.withUrl(CONTROLLER_URL);
 pipeConfig.module(simpleAuthModule);
 ----
 
-==== Using Authentication
+=== Using Authentication
 
 While the application is not logged in, link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] will stay out of the way. However, interacting with authentication is this simple.
 
@@ -84,7 +84,7 @@ userData.put("password", "awesome");
 authenticationModule.enroll(userData, myCallback);
 ----
 
-==== Authentication Types
+=== Authentication Types
 
 We currently provide two AuthenticationModule implementations.  HttpBasic and HttpDigest.
 
@@ -111,7 +111,7 @@ To retrieve the tokens Reddit requires for accessing a user\'s data we must log 
 
 Every Pipe request against the Reddit service from now on, will include these authorisation parameters as part of the request.
 
-==== RedditAuthenticationModule
+=== RedditAuthenticationModule
 
 [source,java]
 ----

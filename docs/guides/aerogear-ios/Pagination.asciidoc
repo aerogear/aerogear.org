@@ -33,7 +33,7 @@ Paging configuration parameters are encapsulated in the AGPageConfig object. Sim
 For cases that a custom pagination strategy is followed in the server application , the library also allows the user to plug in a user-defined one, by the means of the [pageConfig setPageParameterExtractor] configuration setting. If set, the library will follow this strategy, overriding the build-in provided ones. In that case, the metadata location is not required and is ignored if set. The strategy should follow the protocol AGPageParameterExtractor, allowing the library to determine the 'next' and 'previous' parameters.
 
 
-=== Start Paging
+== Start Paging
 
 To kick-start pagination, you use the method _readWithParams_ of the underlying AGPipe, passing your desired query parameters to the server. Upon successfully completion, the _pagedResultSet_ (an enchached category of nsarray) will allow you to scroll through the result set.
 
@@ -52,7 +52,7 @@ __block NSMutableArray *pagedResultSet;
 }];
 ----
 
-=== Move Forward in the result set
+== Move Forward in the result set
 
 To move forward in the result set, you simple call _next_ on the _pagedResultSet_ :
 
@@ -67,7 +67,7 @@ To move forward in the result set, you simple call _next_ on the _pagedResultSet
 }];
 ----
 
-=== Move Backwards in the result set
+== Move Backwards in the result set
 
 To move backwards in the result set, you simple call _previous_ on the _pagedResultSet_ :
 

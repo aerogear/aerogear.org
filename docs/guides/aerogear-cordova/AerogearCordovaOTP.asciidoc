@@ -10,7 +10,7 @@ line tool to build, deploy and manage Cordova-based applications.
 
 Read about how OTP works on this link:/docs/guides/AeroGear-OTP/[AeroGear OTP guide]
 
-=== Example
+== Example
 
 To create One Time Passwords in your cordova application first create a new project and install the plugin.
 
