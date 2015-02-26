@@ -15,20 +15,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         
-        {% if page.section == 'homepage' %}
-          <li class="active">
-        {% else %}
-          <li>
-        {% endif %}
+
+        <li class="{% if page.section == 'homepage' %}active{% endif %}">
         <a href="/">Home</a>
         </li>
 
-        {% if page.section == 'modules' %}
-          <li class="dropdown active">
-        {% else %}
-          <li class="dropdown">
-        {% endif %}
 
+        <li class="dropdown {% if page.section == 'modules' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Modules<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/push/">Push</a></li>
@@ -38,12 +31,8 @@
           </ul>
         </li>
 
-        {% if page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}
-          <li class="dropdown active">
-        {% else %}
-          <li class="dropdown">
-        {% endif %}
 
+        <li class="dropdown {% if page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Get started<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/getstarted/downloads">Downloads and snippets</a></li>
@@ -52,36 +41,26 @@
           </ul>
         </li>
 
-        {% if page.section == 'docs' %}
-          <li class="active">
-        {% else %}
-          <li>
-        {% endif %}
-        <a href="/docs/specs/">Docs</a></li>
+
+        <li class="{% if page.section == 'docs' %}active{% endif %}">
+          <a href="/docs/specs/">Docs</a>
+        </li>
+
+
+        <li class="{% if page.section == 'roadmap' %}active{% endif %}">
+          <a href="/docs/planning/">Road Map</a>
+        </li>
         
         
-        {% if page.section == 'roadmap' %}
-          <li class="active">
-        {% else %}
-          <li>
-        {% endif %}
-        <a href="/docs/planning/">Road Map</a></li>
+        <li class="{% if page.section == 'community' %}active{% endif %}">
+          <a href="/community">Community</a>
+        </li>
         
         
-        {% if page.section == 'community' %}
-          <li class="active">
-        {% else %}
-          <li>
-        {% endif %}
-        <a href="/community">Community</a></li>
-        
-        
-        {% if page.section == 'news' %}
-          <li class="active">
-        {% else %}
-          <li>
-        {% endif %}
-        <a href="/news">News</a></li>
+
+        <li class="{% if page.section == 'news' %}active{% endif %}">
+          <a href="/news">News</a>
+        </li>
         
       </ul>
 
