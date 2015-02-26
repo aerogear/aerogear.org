@@ -1,10 +1,7 @@
 ---
-layout: base
-title: guides
-nav-active-getstarted: active
-section-title: Guides
-section-description: Tutorials to help get you off and running.
-section-class: guides
+layout: index
+title: AeroGear Guides
+section: guides
 ---
 
 

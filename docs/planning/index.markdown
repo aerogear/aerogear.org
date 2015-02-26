@@ -1,10 +1,7 @@
 ---
-layout: base
+layout: index
 title: Road Map
-nav-active-roadmap: active
-section-title: Road Map
-section-description:  List of the planed feature for the AeroGear project
-section-class: roadmaps
+section: roadmap
 ---
 
 <h2 id="plans">Planned features for the AeroGear project</h2>

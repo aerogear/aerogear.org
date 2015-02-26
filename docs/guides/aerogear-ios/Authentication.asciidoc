@@ -1,16 +1,13 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Authentication and User enrollment
-nav-active-getstarted: active
-section-title: AeroGearSecurity Guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: iOS 1.X
-section-class: guides
 ---
 
 // tag::auth[]
-== Authentication and User enrollment
+
 
 An Authenticator manages different authentication module implementations. It is basically a factory that hides the concrete instantiation of a specific Authentication Module implementation. The class offers simple APIs to add, remove, or get access to a 'authentication module'.
 

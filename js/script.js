@@ -13,8 +13,6 @@ $('body').scrollspy({ target: '.submenu' });
     $(window).scroll(showShadow);
     showShadow();
 
-
-
    
    
   $(".submenu").css("width", $('.submenu').width());
@@ -26,22 +24,13 @@ $('body').scrollspy({ target: '.submenu' });
           return (this.top = $(".main-banner").outerHeight(true));
         },
         
-//        top:105,
-
         bottom: function (){
           return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
         }
 
       }  
    });
-  
-  
 
-
-
-
- 
- }
 
     
 });

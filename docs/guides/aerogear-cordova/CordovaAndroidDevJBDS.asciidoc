@@ -1,10 +1,7 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
-nav-active-getstarted: active
-section-title: AeroGearCore Guides
-section-class: guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: Cordova
 ---

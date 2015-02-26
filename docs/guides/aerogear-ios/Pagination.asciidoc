@@ -1,17 +1,14 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Pagination
-nav-active-getstarted: active
-section-title: AeroGearCore Guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: iOS 1.X
-section-class: guides
 ---
 
 
 // tag::pagination[]
-== Pagination
+
 
 The library has built-in paging support, enabling the scrolling to either forward or backwards through a result set returned from the server. Paging metadata located in the server response (either in the headers via link:http://tools.ietf.org/html/rfc5988[WebLinking RFC] or custom headers, or in the body) are used to identify the next or the previous result set. For example, the Twitter search paging metadata is located in the link:https://dev.twitter.com/docs/api/1/get/search[body] of the response signifying the next or previous result set. The location of this metadata as well as naming, is fully configurable during the creation of the pipe, thus enabling greater flexibility in supporting several different paging strategies.
 

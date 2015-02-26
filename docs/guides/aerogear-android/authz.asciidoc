@@ -1,15 +1,11 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Android Authorization (OAuth2)
-nav-active-getstarted: active
-section-title: AeroGearSecurity Guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: Android
-section-class: guides
 ---
 
-== OAuth2 Authorization
 
 This guide will walk developers through the AeroGear Android Authorization APIs and demonstrate how to integrate with Google's Drive API.
 

@@ -1,15 +1,11 @@
 ---
-layout: base
+layout: post
+section: guides
 title: AeroGear Cordova OTP
-nav-active-getstarted: active
-section-title: AeroGearSecurity Guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: Cordova
-section-class: guides
 ---
 
-== AeroGear Cordova OTP
 
 Before we start please install link:https://github.com/apache/cordova-cli/[Apache Cordova CLI], which is the command
 line tool to build, deploy and manage Cordova-based applications.

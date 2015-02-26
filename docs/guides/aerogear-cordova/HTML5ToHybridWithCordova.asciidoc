@@ -1,16 +1,12 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Converting a Mobile HTML5 + REST Web App to a Hybrid App with Apache Cordova
-nav-active-getstarted: active
-section-title: AeroGearCore Guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: Cordova
-section-class: guides
 ---
 
 
-== Converting a Mobile HTML5 + REST Web App to a Hybrid App with Apache Cordova
 
 This article will build upon the HTML5 https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/2.7.x-develop/kitchensink-cordova[kitchensink quickstart], which we have converted to an http://incubator.apache.org/cordova/[Apache Cordova] based hybrid application.
 
@@ -18,23 +14,23 @@ What does all of that mean? Basically, this takes our https://community.jboss.or
 
 Download the converted application from https://github.com/jboss-developer/jboss-wfk-quickstarts/tree/2.7.x-develop/kitchensink-cordova.
 
-=== Repo Structure
+== Repo Structure
 Before getting started, it is important to note the structure of this repo and how it may affect your environment. In order to avoid duplicating both files and effort, the web app assets (HTML, CSS, JS) files have been housed in a separate folder called *shared*. In there, you will find a folder called *www* under which are the files. In order for this structure to work during your builds, a symbolic link to the *www* folder from each of the app's respective *www* folders must be created. In iOS, that is in the */ios/* folder and in Android, the symbolic link is in the */android/assets* folder.
 
-=== System Requirements & Setup
+== System Requirements & Setup
 
 link:../CordovaSetup[Cordova Setup] details how to set up your system to use Cordova.
 
-=== iOS
+== iOS
 
-==== Generate the XCode project using Cordova
+=== Generate the XCode project using Cordova
 
 Before we can build the app, and run it in the simulator or on a device, we need to create the project using Cordova.
 
 [NOTE]
-==============================
+=====================
 These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting-started_ios_index.md.html[Getting Started with iOS] guide for Cordova.
-==============================
+=====================
 
 First, we need to create a new project. In a terminal, change into the kitchensink-cordova directory. Now, run Cordova to generate a project:
 
@@ -46,12 +42,12 @@ Now, we need to create the symbolic link from `shared/www` to `ios/www`. First w
     rm -rf www
     ln -s ../../shared/www www
 
-==== Import the project into XCode
+=== Import the project into XCode
 
 Open Xcode, then select File -&gt; Open, then browse to the *&lt;repo-folder&gt;/ios/* folder and select the *KitchensinkCordova.xcodeproj* file. Click Open and you should see the project in XCode.
 
 [TIP]
-====
+===
 If the *www* folder is not visible in the project or appears broken, that means your OS was unable to create the symbolic link from the file in the repo. If it is there but XCode shows it as missing or broken, all you have to do is create the symbolic link. Now you can just open Terminal, navigate to the *&lt;repo-folder&gt;/ios/* folder and then create the link like this:
 
 [source,bash]
@@ -62,7 +58,7 @@ $ ln -s <full-path-to-your-repo>/shared/www www
 
 This will create the symbolic link and the folder should be fixed in XCode. If the folder is missing, there is a little trick that you have to do to get XCode to see it. First in the *&lt;repo-folder&gt;/ios/KitchensinkCordova* delete the www file which came from the repo if it exists. Then create a new folder called *www*. Now from finder, drag that folder into XCode and drop it on the KitchensinkCordova project on the left side of the window. A dialog window should appear and you want to select the option to add the folder as a reference. You should now see that folder listed in XCode. This is where it gets tricky. Go back to Finder and delete the *www* folder you just created. It will now show as broken in XCode but that's ok. In Terminal, create the symbolic link using the instructions above and you should be ready to go.
 
-====
+===
 
 image::../img/folders.png[Sample Folder List in XCode]
 
@@ -94,7 +90,7 @@ Click the Run button in the upper left corner of XCode and the iOS Simulator sho
 
 image::../img/network.png[iOS Simulator shoing network connection output]
 
-==== Building the App for Devices
+=== Building the App for Devices
 After you are able to successfully test your app with the iOS Simulator, it is time to test it on a device. As stated above in the system requirements, this is going to require an Apple Developer account, an iOS development certificate (downloaded to your machine) and a provisioning profile (also downloaded and installed in XCode) for the device(s) you plan to test on. For more information about these requirements, visit the http://developer.apple.com[Apple Developer] site. Now, on to the steps to deploy to your device.
 
 One important note about the provisioning profile is that the when you create your App ID, it must match the App ID of the app exactly or it won't work. For this quickstart, we have used *org.jboss.as.quickstarts.kitchensinkcordova.KitchensinkCordova* as the App ID so you must also create that App ID in your profile and create a provisioning profile for it if you wish to test this quickstart.
@@ -105,16 +101,16 @@ Once you have your provisioning profile set up and installed, open your project 
 
 Next, make sure your device is attached to your machine, then in XCode, near the top-left corner of the window, you will see the name of your app, followed by the device or simulator that it will run on. Click the device name and select your connected device. Click Run, and it should deploy to and run on your device. That's it!
 
-=== Android Build
+== Android Build
 
-==== Generate the Eclipse project using Cordova
+=== Generate the Eclipse project using Cordova
 
 Before we can build the app, and run it in the simulator or on a device, we need to create the project using Cordova.
 
 [NOTE]
-==============================
+====================
 These steps are based on the link:http://docs.phonegap.com/en/edge/guide_getting-started_android_index.md.html[Getting Started with Android guide for Cordova].
-==============================
+====================
 
 First, we need to create a new project. In Eclipse, go to *File -> New -> Other...*, and select *Android Application Project*:
 
@@ -139,9 +135,9 @@ image::../img/android_new_project_5.png[]
 Now, hit *Finish*.
 
 [NOTE]
-====
+===
 You may need to click *Next* after creating the activity to install the relevant Android libraries.
-====
+===
 
 Copy *<CORDOVA_HOME>/lib/android/cordova-2.0.0.jar* to *libs/*.
 
@@ -232,10 +228,10 @@ Now that you have a virtual device, select it and click Start. On the following 
 
 image::../img/androidSim.png[App running in Android simulator]
 
-==== Building the App for Devices
+=== Building the App for Devices
 Running the app on your Android device is even easier. First, make sure your device has USB debugging enabled. This is usually done by going to *Settings -&gt; Applications -&gt; Development -&gt; USB debugging*. Once you have done this, make sure there are no virtual devices running, then connect your device to your computer with your USB cable. In Eclipse, go to Run -&gt; Run (or click the green "Play" button in the toolbar) and the app should start on your device. If you still have the simulator running, the app may start in the simulator. If this happens, or you would like to have both the simulator running and your device connected, you can use the method outlined in the section on running your app in the simulator. When you get to the part on selecting a running device, both your simulator and your physical device should be in the list and you can select from there.
 
-==== Android FAQ
+=== Android FAQ
 * When trying to run the project, I receive a message similar to "Android requires compiler compliance level 5.0 or 6.0. Found '1.4' instead." What do I do?
 ** As recommended by Eclipse, "Please use Android Tools &gt; Fix Project Properties" will fix this issue
 * I receive the error "Unable to resolve target 'android-7'", what do I do?

@@ -1,19 +1,15 @@
 ---
-layout: base
+layout: post
+section: guides
 title: AeroGear Android Data Store
-nav-active-getstarted: active
-section-title: AeroGearCore Guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: Android
-section-class: guides
 ---
 
-== Store
 
 AeroGear Android provides a simple data storage API.  This API is useful for caching responses, sharing data among different systems, or providing some form of limited offline support.  
 
-=== How to use it
+== How to use it
 
 ==== Creating a Store
 

@@ -12,25 +12,17 @@
 
 {% include jboss-dropup.html %}
 
-
 <section class="main-banner">
   <div class="container">
  
 {% if page.body-class == 'homepage' %}
-  
   {% include homepage-header.html %}
-
 {% else %}
-  <h2>{{page.section-title}} <small>{{page.section-description}}</small></h2>
+  {% include inner-header.html %}
 {% endif %}
 
   </div><!-- container -->
 </section> <!-- main banner -->
-
-<!--
-{% include aditional-actions.html %}
--->
-
 
 
 {% if page.section-class != null %} 

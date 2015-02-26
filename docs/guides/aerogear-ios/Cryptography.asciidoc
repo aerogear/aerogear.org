@@ -1,12 +1,9 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Cryptography support
-nav-active-getstarted: active
-section-title: AeroGearSecurity Guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: iOS 1.X
-section-class: guides
 ---
 
 // tag::crypto[]

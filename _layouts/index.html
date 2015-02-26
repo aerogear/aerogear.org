@@ -1,0 +1,59 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+{% include header.html %}
+</head>
+
+<body>    
+
+{% include navigation.html %}
+
+{% include jboss-dropup.html %}
+
+<section class="main-banner">
+  <div class="container">
+  {% include inner-header.html %}
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="{{ page.section }}">
+  <div class="container">
+    <div class="row">   
+      <div class="col-md-3 sidebar">
+          <div class="submenu">
+            {% if page.section == 'guides' %}
+              {% include sidebar-guides.html %}
+            {% elsif page.section == 'demos' %}
+              {% include sidebar-demos.html %}
+            {% elsif page.section == 'getstarted' %}
+              {% include sidebar-downloads.html %}
+            {% elsif page.section == 'community' %}
+              {% include sidebar-community.html %}
+            {% elsif page.section == 'docs' %}
+              {% include sidebar-docs.html %}
+            {% elsif page.section == 'news' %}
+              {% include sidebar-news.html %}
+            {% elsif page.section == 'roadmap' %}
+              {% include sidebar-roadmaps.html %}
+            {% endif %}
+          </div><!-- sidebar -->
+        </div><!-- col -->
+        <div class="col-md-9">
+          {{ content }}
+        </div><!-- col 9 -->
+      </div><!-- row -->
+    </div><!-- container -->
+
+</section>
+
+
+
+{% include footer.html %}
+
+{% include js.html %}
+
+</body>
+</html>

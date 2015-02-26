@@ -1,10 +1,7 @@
 ---
-layout: base
+layout: index
 title: Documentation Library 
-nav-active-docs: active
-section-title: Documentation
-section-description: Aerogear API documentation & specifications.
-section-class: docs
+section: docs
 ---
 
 <h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>SDK</strong> Docs</h2>

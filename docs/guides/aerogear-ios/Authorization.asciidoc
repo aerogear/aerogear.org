@@ -1,16 +1,14 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Authorization (OAuth2)
-nav-active-getstarted: active
-section-title: AeroGearSecurity Guides
-section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: iOS 1.X
-section-class: guides
 ---
 
 // tag::authz[]
-== Authorizer and AccountManager
+
+
 An Authorizer manages different authorization module implementations. It is basically a factory that hides the concrete instantiation of a specific AGAuthorizer Module implementation. The class offers simple APIs to add, remove, or get access to a 'authorization module'.
 
 The AuthorizationModule current implementation is based on link:http://tools.ietf.org/html/rfc6749[OAuth2 protocol] and uses REST as the authz transport. Similar to the Pipe, technical details of the underlying system are not exposed.
