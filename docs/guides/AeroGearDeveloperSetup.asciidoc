@@ -1,12 +1,7 @@
 ---
-layout: base
+layout: post
+section: community
 title: AeroGear Developer Tools Guide
-section-class: community
-nav-active-community: active
-section-title: Community
-section-description: Get involved, be part of the Aerogear community
-breadcrumbs-url: /community/index.html#guides
-sub-section-title: Contributing Guide  
 ---
 
 

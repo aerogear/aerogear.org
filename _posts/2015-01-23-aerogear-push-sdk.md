@@ -1,12 +1,7 @@
 ---
-layout: base
+layout: post
+section: news
 title: AeroGear iOS Push-SDK for Swift v1.0
-nav-active-news: active
-section-title: AeroGear News
-section-class: news
-section-description: Artciles, posts, events, videos and updates.
-breadcrumbs-url: /news/
-sub-section-title: News
 author: corinnekrych
 module: push
 ---

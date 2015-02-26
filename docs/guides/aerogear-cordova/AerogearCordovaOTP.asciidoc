@@ -2,8 +2,6 @@
 layout: post
 section: guides
 title: AeroGear Cordova OTP
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Cordova
 ---
 
 

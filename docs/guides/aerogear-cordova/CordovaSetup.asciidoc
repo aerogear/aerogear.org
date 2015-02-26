@@ -2,8 +2,6 @@
 layout: post
 section: guides
 title: Setting up your development enivronment to use Apache Cordova
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Cordova
 ---
 
 == Setting up your development enivronment to use Apache Cordova

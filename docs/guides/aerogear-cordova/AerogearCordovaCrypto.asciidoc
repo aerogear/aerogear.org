@@ -1,6 +1,7 @@
 ---
-layout: basic
+layout: post
 title: AeroGear Cordova Crypto
+section: guides
 ---
 
 == AeroGear Cordova Crypto

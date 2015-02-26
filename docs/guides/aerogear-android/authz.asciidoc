@@ -2,8 +2,6 @@
 layout: post
 section: guides
 title: Android Authorization (OAuth2)
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Android
 ---
 
 

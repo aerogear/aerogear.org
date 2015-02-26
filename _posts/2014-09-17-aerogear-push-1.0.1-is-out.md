@@ -1,12 +1,7 @@
 ---
-layout: base
+layout: post
+section: news
 title: AeroGear Mobile Push 1.0.1 is out!
-nav-active-news: active
-section-title: AeroGear News
-section-class: news
-section-description: Artciles, posts, events, videos and updates.
-breadcrumbs-url: /news/
-sub-section-title: News
 author: sebastienblanc
 module: push
 ---

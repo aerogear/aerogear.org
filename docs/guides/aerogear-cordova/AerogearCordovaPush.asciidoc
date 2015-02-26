@@ -1,15 +1,9 @@
 ---
-layout: base
-title: AeroGear Cordova Push
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: UnifiedPush Server guides 
+layout: post
+title: AeroGear Cordova Push Plugin
+section: guides
 ---
 
-== AeroGear Cordova Push Plugin
 
 The AeroGear Cordova Push Plugin is an extension of the standard Cordova Push Plugin the difference is that it's
 that it supports AeroGears UnifiedPush better and that makes that there is less boiler plate to take care of in

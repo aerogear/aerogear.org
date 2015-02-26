@@ -2,8 +2,6 @@
 layout: post
 section: guides
 title: Pagination
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: iOS 1.X
 ---
 
 

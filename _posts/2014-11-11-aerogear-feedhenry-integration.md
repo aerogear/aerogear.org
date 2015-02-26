@@ -1,12 +1,7 @@
 ---
-layout: base
+layout: post
+section: news
 title: FeedHenry meets AeroGear UnifiedPush Server!
-nav-active-news: active
-section-title: AeroGear News
-section-class: news
-section-description: Artciles, posts, events, videos and updates.
-breadcrumbs-url: /news/
-sub-section-title: News
 author: matzew
 module: push
 tags:

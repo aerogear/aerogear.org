@@ -1,12 +1,7 @@
 ---
-layout: base
+layout: post
+section: news
 title: Red Hat JBoss Unified Push Server and xPaaS
-nav-active-news: active
-section-title: AeroGear News
-section-class: news
-section-description: Artciles, posts, events, videos and updates.
-breadcrumbs-url: /news/
-sub-section-title: News
 author: matzew
 module: push
 ---

@@ -2,8 +2,6 @@
 layout: post
 section: guides
 title: Getting Started with AeroGear and Xcode Template
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: iOS 1.X
 ---
 
 As of version 1.0 of the AeroGear library, we are offering an Xcode template for our users to easily get started with the framework. This guide will help you setup the template in your existing Xcode installation. Once installed you can easily use the template as a basis for all your future AeroGear iOS applications. The guide assumes that you have Xcode IDE installed in your machine. If not, you can download it from the Apple developer web site link:https://developer.apple.com/xcode[here]. Let's get started.

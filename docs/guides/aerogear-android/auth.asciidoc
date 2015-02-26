@@ -2,8 +2,6 @@
 layout: post
 section: guides
 title: AeroGear Android Authentication
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Android
 ---
 
 

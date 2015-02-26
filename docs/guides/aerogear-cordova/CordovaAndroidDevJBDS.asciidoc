@@ -2,8 +2,6 @@
 layout: post
 section: guides
 title: Tutorial - Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 7
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Cordova
 ---
 
 
