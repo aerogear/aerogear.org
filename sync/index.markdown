@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: landing-page
 title: AeroGear Data-Sync
 section: modules
 breadcrumbs-url: /modules/

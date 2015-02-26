@@ -1,6 +1,7 @@
 ---
-layout: basic
+layout: landing-page
 title: AeroGear Android
+section: platforms
 ---
 
 # AeroGear Android

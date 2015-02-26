@@ -30,6 +30,16 @@
           </ul>
         </li>
 
+        <li class="dropdown {% if page.section == 'platforms' %}active{% endif %}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Platforms<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/android/">Android</a></li>
+            <li><a href="/ios/">iOS</a></li>
+            <li><a href="/cordova/">Cordova</a></li>
+            <li><a href="/javascript/">JavaScript</a></li>
+            <li><a href="/windows/">Windows</a></li>
+          </ul>
+        </li>
 
         <li class="dropdown {% if page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Get started<span class="caret"></span></a>

@@ -1,6 +1,7 @@
 ---
-layout: basic
+layout: landing-page
 title: Hybrid with Cordova
+section: platforms
 ---
 
 ![Cordova logo](/img/cordova-logo.png)
