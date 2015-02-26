@@ -115,7 +115,7 @@ Domain=NSURLErrorDomain Code=-1202 "The certificate for this server is invalid. 
 
 *Answer*
 
-By default, the underlying networking foundation rejects connections to server's that use a self-signed certificate and you need to take extra measures in order to make it work. Although the following snippets of code can bypass the built-in security check, they are not recommended unless you are working in a development sandbox and you need a quick-and-dirty solution for internal testing. You can find more information on self-signed certificates on link:https://developer.apple.com/library/ios/technotes/tn2232/_index.html#//apple_ref/doc/uid/DTS40012884-CH1-SECSELFSIGNEDCERTS[Apple technote paper] as well in link:https://github.com/aerogear/aerogear-ios-push/pull/46#issuecomment-75815787[this page here] that summarizes possible solutions when you take your app in production.
+By default, the underlying networking foundation rejects connections to server's that use a self-signed certificate and you need to take extra measures in order to make it work. Although the following snippets of code can bypass the built-in security check, they are *not recommended unless you are working in a development sandbox and you need a quick-and-dirty solution for internal testing*. You can find more information on self-signed certificates on link:https://developer.apple.com/library/ios/technotes/tn2232/_index.html#//apple_ref/doc/uid/DTS40012884-CH1-SECSELFSIGNEDCERTS[Apple technote paper] as well in link:https://github.com/aerogear/aerogear-ios-push/pull/46#issuecomment-75815787[this page here] that summarizes possible solutions when you take your app in production.
 
 *Objective-C*
 
