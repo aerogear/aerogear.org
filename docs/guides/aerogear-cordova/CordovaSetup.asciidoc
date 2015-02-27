@@ -10,7 +10,7 @@ section-class: guides
 ---
 == Apache Cordova CLI 
 
-Cordova comes with a CLI (Command Line Interface) which help starting with link:http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html[Cordova]. 
+Cordova comes with a CLI (Command Line Interface) to help you get started with link:http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html[Cordova]. 
 
 == Eclipse Thym 
 
