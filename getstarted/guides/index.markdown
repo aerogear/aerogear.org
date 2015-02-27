@@ -45,7 +45,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <h4 id="coreCordova">Cordova</h4>
 * [Get Started with Hybrid Application Frameworks](/docs/guides/aerogear-cordova/HybridApplicationFrameworks)
 * [Cordova Setup](/docs/guides/aerogear-cordova/CordovaSetup)
-* [Converting an AeroGear HTML5 + REST Web App to a Hybrid App with Apache Cordova](/docs/guides/aerogear-cordova/HTML5ToHybridWithCordova)
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](/docs/guides/aerogear-cordova/CordovaAndroidDevJBDS)
 
 ---
