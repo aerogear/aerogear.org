@@ -1,25 +1,24 @@
----
-layout: post
-title: Debugging the UnifiedPush Server
-section: guides
----
+// ---
+// layout: post
+// title: Debugging the UnifiedPush Server
+// section: guides
+// ---
+// 
 
-:toc:
-toc::[]
-
+== Debugging the UnifiedPush Server
 
 There are several ways to learn more about _"What's going on"_ inside the UnifiedPush Server
 
-== Enable Logging
+=== Enable Logging
 
 The UnifiedPush Server internally uses +java.util.logging+ as its logging framework.
 
 
-=== WildFly and JBoss AS
+==== WildFly and JBoss AS
 
 There are different ways to enable detailed logging for the UnifiedPush Server in WildFly and JBoss AS.
 
-==== Using jboss-cli tool
+===== Using jboss-cli tool
 
 The most convenient way to enable logging on a running server is using the +jboss-cli.sh+ (+jboss-cli.bat+ on Windows) tool. Once the server is running, launch the tool:
 
@@ -45,7 +44,7 @@ After each line you should notice a statement that your configuration was succes
 ----
 
 
-==== Tweaking the standalone.xml file
+===== Tweaking the standalone.xml file
 
 Another option is editing the +$SERVER_HOME/standalone/configuration/standalone.xml+ file.
 NOTE: This requires a stop of the server.
@@ -69,7 +68,7 @@ Inside of the +<subsystem>+ element of the _logging_ subsystem you simply need t
 
 Once done save the file and restart the server.
 
-==== Test the enabled logging
+===== Test the enabled logging
 
 At this point all log levels from the UnifiedPush Server are enabled. To verify this, you can send a Push Notification from the Admin Console. The console should print a message like:
 
@@ -79,7 +78,7 @@ At this point all log levels from the UnifiedPush Server are enabled. To verify 
    (http--127.0.0.1-8080-1) Message sent by: 'AeroGear UnifiedPush Console'
 ----
 
-== Dashboard of the AdminUI
+=== Dashboard of the AdminUI
 
 The AdminUI contains a _Dashboard_ which provides a number of valuable information as well:
 

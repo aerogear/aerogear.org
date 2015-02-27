@@ -1,16 +1,15 @@
----
-layout: post
-title: Administration of the UnifiedPush Server
-section: guides
----
+// ---
+// layout: post
+// title: Administration of the UnifiedPush Server
+// section: guides
+// ---
 
-:toc:
-toc::[]
 
+== Administration of the UnifiedPush Server
 
 The UnifiedPush Server is protected by the link:http://keycloak.org[Keycloak SSO server]. This document explains a few features from the **Keycloak Admin Console** to perform some administrative configurations around the UnifiedPush Server and its users.
 
-== Login and Settings
+=== Login and Settings
 
 After exploring the UnifiedPush Server's AdminUI it is time to become familiar with the _Keycloak Admin Console_, which is located at:
 
@@ -39,7 +38,7 @@ Another item that could be configured is the _Forgot password_ function, if one 
 
 image:./img/kc/EmailSettings.png[Email Server Settings]
 
-== User Management
+=== User Management
 
 To manage users for the UnifiedPush Server, you need to go to the +Users+ section of the _Keycloak Admin Console_:
 
@@ -49,7 +48,7 @@ To see a list of all existing users, click on the +View all users+ link:
 
 image:./img/kc/Users_list.png[List of existing Users]
 
-=== Enabling the default developer account
+==== Enabling the default developer account
 
 To enable the default +developer+ account click on its username in the above screen, to edit the account:
 
@@ -57,7 +56,7 @@ image:./img/kc/edit_developer.png[Edit default developer account]
 
 After toggling the +User Enabled+ button to +ON+, click the +Save+ button to activate the +developer+ account.
 
-=== Adding new users
+==== Adding new users
 
 To add new users for the UnifiedPush Server, go back to the +Users+ section of the _Keycloak Admin Console_:
 
@@ -103,7 +102,7 @@ image:./img/kc/User_sessions_overview.png[Active sessions of a specific user]
 
 This dialog allows you to +logout+ a specific session of the user, or all using the +Logout All Sessions+ button above the table.
 
-== Active Sessions
+=== Active Sessions
 
 In the +Sessions and Tokens+ section of the _Keycloak Admin Console_ you can monitor all active session against the UnifiedPush Server's realm, as well as providing configurations around access tokens or timeouts.
 
@@ -121,7 +120,7 @@ On the +Revocation Policies+ section, you can specify the _Not-before_ revocatio
 
 image:./img/kc/Session_Revocation_Policies.png[Revocation Policies]
 
-== Security Defenses
+=== Security Defenses
 
 By default +Brute Force Protection+ is disabled. You can enable it by navigating to +Security Defenses > Brute Force Protection+ and clicking the +Enabled+ button:
 
@@ -129,10 +128,10 @@ image:./img/kc/Session_Enable_BruteForce.png[Enable Brute Force]
 
 With _Brute Force Protection_ enabled your UnifiedPush Server gains more security features. The above form gives options to configure different times and options for attempts to perform a login, and how often.
 
-== SSL by default
+=== SSL by default
 
 By default the option "Require SSL" on Keycloak is enabled to make sure that UnifiedPush will run under SSL, except for *localhost* and *Docker* images. If you are deploying UPS on non-SSL environment, an exception like "*request scheme: http ssl required*" is expected.
 
-== Next Steps
+=== Next Steps
 
 Now that you are familiar with the two admin user interfaces of the UnifiedPush Server, it is time to get some mobile development started! You can find a list of different tutorials and guides link:../next[here].
