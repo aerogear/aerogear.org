@@ -3,60 +3,6 @@ layout: index
 title: Downloads and snippets
 section: getstarted
 
-androidVersion: 2.0.0
-androidModules:
-  - core
-  - security
-  - store
-  - pipe
-  - auth
-  - authz
-  - push
-
-iosModules:
-  http:
-    name: HTTP
-    version: 0.2
-    cocoapod: aerogearhttp
-    zip: https://github.com/aerogear/aerogear-ios-http/zipball/0.2.0
-  oauth2:
-    name: OAuth2
-    version: 0.2
-    cocoapod: aerogearoauth2
-    zip: https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.2.0
-  push:
-    name: Push
-    version: 1.0
-    cocoapod: AeroGear-Push
-    zip: https://github.com/aerogear/aerogear-ios-push/archive/1.0.0-swift.zip
-  httpstub:
-    name: HTTP Stub
-    version: 0.2
-    cocoapod: aerogearhttpstub
-    zip: https://github.com/aerogear/aerogear-ios-httpstub/zipball/0.2.0
-  jsonsz:
-    name: JSON Serialization
-    version: 0.1
-    cocoapod: aerogearjsonsz
-    zip: https://github.com/aerogear/aerogear-ios-jsonsz/zipball/0.1.0
-
-
-cordovaModules:
-  pushplugin:
-    name: Push Plugin
-    version: latest
-    plugin: org.jboss.aerogear.cordova.push
-  otp:
-    name: OTP Plugin
-    version: 0.0.1
-    plugin: org.jboss.aerogear.cordova.otp
-  crypto:
-    name: Crypto Plugin
-    version: 0.0.1
-    plugin: org.jboss.aerogear.cordova.crypto
-
-
-javascriptVersion: 2.0.0
 
 
 ---
@@ -78,20 +24,9 @@ javascriptVersion: 2.0.0
 <hr> <!-- ====================================================== -->
           
           <h4 id="downloadsAndroid">Downloads and Snippets</h4>
-          {% for module in page.androidModules %}
-          <p>
-            <a href="https://github.com/aerogear/aerogear-android-{{ module }}/archive/{{ page.androidVersion }}.zip" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download Android {{ module | capitalize }} v{{ page.androidVersion }}</a>
-            <a href="#" class="btn btn-primary btn-sm" onclick="$('#android-{{ module }}-maven').toggle(); return false;"><i class="fa fa-cube"></i> Maven</a>
-            <a href="#" class="btn btn-primary btn-sm" onclick="$('#android-{{ module }}-gradle').toggle(); return false;"><i class="fa fa-puzzle-piece"></i> Gradle</a>
-            <a href="https://github.com/aerogear/aerogear-android-{{ module }}/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
-          </p>
-          <div id="android-{{ module }}-maven" style="display: none">
-<pre>{% capture androidCoreMaven %}{% include_relative snippets/android-maven module=module version=page.androidVersion %}{% endcapture %}{{ androidCoreMaven | xml_escape }}</pre>
-          </div>
-          <div id="android-{{ module }}-gradle" style="display: none">
-<pre>{% include_relative snippets/android-gradle module=module version=page.androidVersion %}</pre>
-          </div>
-          {% endfor %}
+{% for module in site.data.sdk['android']['modules'] %}
+{% include downloads/android-module.html module=module %}
+{% endfor %}
 
           <h5>and if you want more:</h5>
           <p>
@@ -117,14 +52,10 @@ javascriptVersion: 2.0.0
 <hr> <!-- ====================================================== -->
 
           <h4 id="downloadsIOS">Downloads and Snippets</h4>
-          {% for item in page.iosModules %}
+          {% for item in site.data.sdk['ios']['modules'] %}
           {% assign moduleName = item[0] %}
           {% assign module = item[1] %}
-          <p>
-            <a href="{{ module.zip }}" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download iOS {{ module.name }} v{{ module.version }}</a>
-            <a href="http://cocoapods.org/?q={{ module.cocoapod }}" class="btn btn-primary btn-sm"><i class="fa fa-cubes"></i> CocoaPods</a>
-            <a href="https://github.com/aerogear/aerogear-ios-{{ moduleName }}/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
-          </p>
+          {% include downloads/ios-module.html moduleName=moduleName module=module %}
           {% endfor %}
 
           <h5>and if you want more:</h5>
@@ -145,31 +76,13 @@ javascriptVersion: 2.0.0
 <hr> <!-- ====================================================== -->
 
           <h4 id="downloadsCordova">Downloads and Snippets</h4>
-          {% for item in page.cordovaModules %}
+          {% for item in site.data.sdk['cordova']['modules'] %}
           {% assign moduleName = item[0] %}
           {% assign module = item[1] %}
-          <p>
-            <a href="https://github.com/aerogear/aerogear-{{ moduleName }}-cordova/releases/{{ module.version }}" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download Cordova {{ module.name }} {{ module.version }}</a>
-            <a href="http://plugins.cordova.io/#/package/{{ module.plugin }}" class="btn btn-primary btn-sm"><i class="fa fa-cubes"></i> Plugin Registry</a>
-            <a href="https://github.com/aerogear/aerogear-{{ moduleName }}-cordova/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
-            <span class="label label-default cordovaplugin" contenteditable="true" readonly="readonly"><span contenteditable="false">{{ module.plugin }}</span></span>
-          </p>
+          {% include downloads/cordova-plugin.html moduleName=moduleName module=module %}
           {% endfor %}
 
-          <script>
-            var elements = [].slice.call(document.querySelectorAll('span.label.cordovaplugin'));
-            elements.forEach(function( element ) {
-              element.onclick = function() {
-                var contentElement = element.querySelectorAll('span')[0];
-                var range = document.createRange();
-                range.selectNodeContents(contentElement);
-                var sel = window.getSelection();
-                sel.removeAllRanges();
-                sel.addRange(range);
-                element.focus();
-              }
-            });
-          </script>
+          {% include downloads/cordova-plugin-script.html %}
 
           <h5>and if you want more:</h5>
           <p>
@@ -192,16 +105,7 @@ javascriptVersion: 2.0.0
 
  <hr> <!-- ====================================================== -->
 
-          <p>
-            <a href="https://github.com/aerogear/aerogear-js-dist/archive/{{ page.javascriptVersion }}.zip" class="btn btn-primary-inverse btn-lg"><i class="fa fa-cloud-download"></i> Download AeroGear.js v{{ page.javascriptVersion }}</a>
-            <a href="#" class="btn btn-primary" onclick="$('#javascript-bower').toggle(); return false;"><i class="fa fa-puzzle-piece"></i> Bower</a>
-            <a href="https://aerogear.org/download/custom/" class="btn btn-primary"><i class="fa fa-gears"></i> Customized Build</a>
-            <a href="https://github.com/aerogear/aerogear-js/" class="btn btn-primary"><i class="fa fa-github-alt"></i> View the Source</a>
-          </p>
-          <div id="javascript-bower" style="display: none">
-            <p><span class="label label-default">bower.json</span></p>
-<pre>{% include_relative snippets/javascript-bower version=page.javascriptVersion %}</pre>
-          </div>
+{% include downloads/aerogear-js.html %}
 
           <h5>and if you want more:</h5>
           <p>
