@@ -32,12 +32,12 @@
           
         <div class="media">
           <div class="media-left">
-            <img src="https://avatars1.githubusercontent.com/u/1395710" />
+            <img src="{{ site.data.people[page.author]['avatar'] }}" />
           </div>
           <div class="media-body">
             <p class="article-subtitle">by
               <span itemprop="author">
-                Bruno Oliveira
+                {{ site.data.people[page.author]['name'] }}
               </span>
             </p>
             <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">
