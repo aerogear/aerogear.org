@@ -1,16 +1,9 @@
 ---
-layout: base
-title: Authorization (OAuth2)
-nav-active-getstarted: active
-section-title: AeroGearSecurity Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: iOS 2.X
-section-class: guides
+layout: post
+title: OAuth2Module and OAuth2Session
+section: guides
 ---
 
-
-== OAuth2Module and OAuth2Session
 
 When writing an link:https://tools.ietf.org/html/rfc6749[OAuth2] application, you often want the user to grant access for only once in the app lifetime. OAuth2Module stores access and refresh tokens in OAuth2Session. OAuth2Session is a protocol which is implemented in 2 flavors:
 

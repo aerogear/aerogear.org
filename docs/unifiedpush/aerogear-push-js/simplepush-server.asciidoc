@@ -1,18 +1,8 @@
 ---
-layout: base
-title: AeroGear SimplePush Server
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials
-breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-js/
-third-section-title: Using UnifiedPush with AeroGear SimplePush
+layout: post
+section: guides
+title: The AeroGear SimplePush Server
 ---
-
-The AeroGear SimplePush Server
-------------------------------
 
 The link:https://github.com/aerogear/aerogear-simplepush-server[AeroGear SimplePush server] is a high performant implementation of the link:https://wiki.mozilla.org/WebAPI/SimplePush/Protocol[SimplePush protocol]. Mozilla provides a link:https://github.com/jrconlin/pushgo[server implementation] based on the Go programming language and link:https://github.com/aerogear/aerogear-js#simplepushclient[AeroGear's JavaScript client] will work just fine against that implementation. We wanted to provide another server option both for security (some companies would like more control over the push environment) and as a way to set up completely internal push networks. For example, a company with an internal app with a need for push notifications, could deploy a SimplePush server on their internal network/VPN and have push messaging capability to their web apps without having to contact an outside server.
 
@@ -22,7 +12,7 @@ The SimplePush specification states that secure WebSockets should be used as the
 
 In this guide we will describe the setup of the _Netty_ based implementation which can be used both as a standalone component, or be integrated into JBoss Application Server. Details on how you can integrate the server with the JBoss can be found in link:https://github.com/aerogear/aerogear-simplepush-server/tree/master/wildfly-module[this page] but this guide will use the standalone component.
 
-=== Setup
+== Setup
 
 Download the server from the project's link:https://github.com/aerogear/aerogear-simplepush-server[github page]. Then on the command line issue:
 

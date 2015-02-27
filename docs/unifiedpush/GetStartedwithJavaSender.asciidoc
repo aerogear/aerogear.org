@@ -1,25 +1,18 @@
 ---
-layout: base
+layout: post
 title: Getting Started with Java Sender client API
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials 
+section: guides
 ---
 
 :toc:
 toc::[]
-
-== Getting Started with Java Sender client API
 
 
 AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
 
 
 
-=== Installation
+== Installation
 
 The library can be downloaded through the project link:https://github.com/aerogear/aerogear-unified-push-java-client[github] page or if you are using Maven, simply add the following dependency in your 'pom.xml':
 
@@ -29,7 +22,7 @@ The library can be downloaded through the project link:https://github.com/aeroge
             <version>1.0.0</version>
         </dependency>
 
-=== API Overview
+== API Overview
 
 The API is straightforward to use and consists of the following methods:
   
@@ -56,7 +49,7 @@ The _UnifiedMessage_ object passed as a parameter on those methods contain the a
 
 A concrete implementation of the _JavaSender_ interface can be found on the 'SenderClient' class, which internally uses _HttpURLConnection_ for the communication (but can easily be adopted to support other http providers).
 
-=== Sending a message
+== Sending a message
 
 Let's start now with a simple example where the notification is send to all mobile variants registered under the Push Application ID: 
 
@@ -102,7 +95,7 @@ The optional _title_ attribute [5], is a cordova Android specific attribute that
 
 Once the notification payload is constructed, we invoke the send method [6] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:http://aerogear.org/docs/specs/aerogear-unifiedpush-rest/sender/index.html[server documentation] for a list of valid responses.
 
-=== Selected send
+== Selected send
 
 To narrow down the list of the recipients, you are given the following options: (shown with the respective builder method)
 
@@ -132,13 +125,13 @@ To narrow down the list of the recipients, you are given the following options: 
    .simplePush("version");
 ----
 
-NOTE:  All these query criterias are optional. If no criterias are passed it will act as a broadcast send, where all clients are notified.
+NOTE: All these query criterias are optional. If no criterias are passed it will act as a broadcast send, where all clients are notified.
 
 As you realize from the list, the Sender API offers _tremendous_ flexibility in supporting even the most complex scenarios. You can mix and match options to target a specific mobile audience. 
 
 Once the UnifiedMessage is build with your desired criterias, simply call the _send_ method on the JavaSender to send the notification.
 
-=== iOS specific payload
+== iOS specific payload
 
 For iOS, you are given the following options: (shown with the respective builder method)
 
@@ -154,7 +147,7 @@ For iOS, you are given the following options: (shown with the respective builder
    .actionCategory("acceptLead")
 ----
 
-=== Connect via a Proxy
+== Connect via a Proxy
 
 If your infrastructure is behind a proxy, you can specify this while creating an instance of your SenderClient : 
 [source,java]
@@ -168,7 +161,7 @@ JavaSender defaultJavaSender = new SenderClient.Builder()
                 .build();
 ----
 
-=== Use a custom Trustore
+== Use a custom Trustore
 
 If your infrastructure uses a custom TrustStore, you can specify this while creating an instance of your SenderClient : 
 
@@ -181,7 +174,7 @@ JavaSender defaultJavaSender = new SenderClient.Builder()
 ----
 
 
-=== Integrating with Java EE
+== Integrating with Java EE
 
 The library can be used inside a Java EE environment to enable your enterprise applications to send notification messages to mobile clients, when e.g. a particular business event occurs. Let's see one approach of integration through an example of a PaymentGateway.
 
@@ -309,6 +302,6 @@ public class NotificationSender {
 }
 ----
 
-=== Conclusion
+== Conclusion
 
 The Sender API is simple and easy to use, allowing you to connect to the UnifiedPush server and send notifications. It can be used both in your standalone applications or be embedded in a Java EE environment. Work is being done to port it to other languages too and if you are interested you can give us a hand too! Please join our link:https://lists.jboss.org/mailman/listinfo/aerogear-dev[developer mailing list], or find us on link:irc://irc.freenode.net/aerogear[IRC] and introduce yourself!

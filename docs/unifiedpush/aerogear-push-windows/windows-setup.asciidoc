@@ -1,53 +1,43 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Windows setup
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials
-breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-js/
-third-section-title: UnifiedPush Server and Windows applications
 ---
 
 
 CAUTION: this functionality is only available on master
 
-Windows Setup
--------------
 
 Before the Windows application is able to receive the notifications, you must authenticate yourself with Microsoft as a developer. You'll need to create or have a Microsoft account.
 
-Register your app
-~~~~~~~~~~~~~~~~~
+== Register your app
 
 Then you'll need to register your app. Open the https://dev.windows.com/[Windows Store apps] page of the Windows Dev Center and sign in with your Microsoft account.
 
 - Click submit apps:
 
-image::./img/wdc-1.png[Submit apps]
+image:./img/wdc-1.png[Submit apps]
 
 - Choose 'Windows Phone Store' for now:
 
-image::./img/wdc-2.png[Windows Phone Store]
+image:./img/wdc-2.png[Windows Phone Store]
 
 - On the dasboard page click the 'Submit App' button:
 
-image::./img/wdc-3.png[Submit App]
+image:./img/wdc-3.png[Submit App]
 
 - Go to the 'App Info' page to fill out nessary information:
 
-image::./img/wdc-4.png[App Info]
+image:./img/wdc-4.png[App Info]
 
 Provide a unique name for your app. Enter the name and click the Reserve name button. If the name is available, it is reserved for your app. Once you have successfully reserved a name for your app, the credentials will be displayed, you'll need to save these for later:
 
-image::./img/wdc-5.png[Credentials of your app]
+image:./img/wdc-5.png[Credentials of your app]
 
 - Select a category and click 'More options' and then click the 'here' link:
 
-image::./img/wdc-6.png[Push notifications]
+image:./img/wdc-6.png[Push notifications]
 
 - Note down the Package SID and the Client Secret as we'll need those later on:
 
-image::./img/wdc-7.png[Push App Settings]
+image:./img/wdc-7.png[Push App Settings]

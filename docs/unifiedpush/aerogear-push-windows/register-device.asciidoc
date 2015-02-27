@@ -1,21 +1,12 @@
 ---
-layout: base
+layout: post
+section: guides
 title: The AeroGear UnifiedPush Server
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials
-breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-js/
-third-section-title: UnifiedPush Server and Windows applications
 ---
 
 
 CAUTION: this functionality is only available on master
 
-The AeroGear UnifiedPush Server
--------------------------------
 
 With all the Windows Setup work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to WNS for a later message sending.
 
@@ -24,23 +15,22 @@ include::docs/unifiedpush/include--register-app.asciidoc[]
 
 Click the **Add Variant** button. And fill out the Windows options. You will want to use the **Package SID** and **Client Secret** from the *Windows Dev Center* in their appropriate fields.
 
-image::./img/variant_02.png[Windows Variant Options]
+image:./img/variant_02.png[Windows Variant Options]
 
 Click **Add** and your variant will be created.
 
-image::./img/variant_03.png[Android Variant Created]
+image:./img/variant_03.png[Android Variant Created]
 
 Expand the variant card and make note of the **Variant ID** and **Secret** fields. Both will be used later when registering your installation through the Android client SDK.
 
-image::./img/variant_04.png[Android Variant Details]
+image:./img/variant_04.png[Android Variant Details]
 
 Notice an _Example Installation_ link which, when clicked, reveals a screen with source code examples for the registration to the UPS, with the settings preconfigured automatically based on the current environment. A handy feature that you can refer when creating your own applications to easy the setup process.
 
-image::./img/example_01.png[Example Implementation]
+image:./img/example_01.png[Example Implementation]
 
 NOTE: Clicking on the appropriate tab, you can choose between _C#_ and _Cordova_ snippet!
 
-Visual Studio
-~~~~~~~~~~~~~
+== Visual Studio
 
 The server is now configured. Let's move to Visual Studio and link:../windows-app[create an Windows application] that will use the AeroGear Windows library to connect to the UnifiedPush server and start receiving notifications.

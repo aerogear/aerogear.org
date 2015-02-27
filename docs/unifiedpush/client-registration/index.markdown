@@ -1,15 +1,8 @@
 ---
-layout: base
-title: AeroGear UnifiedPush Server - Client Registration
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: UnifiedPush Server guides 
+layout: post
+title: Client registration with the UnifiedPush Server
+section: guides
 ---
-
-# Client registration with the UnifiedPush Server
 
 This document describes the functionality of a client SDK that works with the AeroGear UnifiedPush Server.
 
@@ -19,7 +12,7 @@ The [AeroGear UnifiedPush Server](https://github.com/aerogear/aerogear-unifiedpu
 
 **Goal:** A client library to register a mobile application (```Installation```) with the UnifiedPush Server.
 
-#### Background: Push Network Token
+### Background: Push Network Token
 
 To receive native push notifications from a Push Network (e.g. APNs, GCM or SimplePush), the mobile device is identified with a unique ```device-token```, assigned by the actual Push Network. This ```device-token``` is passed, by the underlying Operating-System, to the mobile application. Details are different on each platform and  **not** part of this document.
 

@@ -1,19 +1,11 @@
----
-layout: base
-title: UnifiedPush Server - Installation and configuration
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: UnifiedPush Server guides 
----
-
-:toc:
-toc::[]
-
+// ---
+// layout: post
+// title: Install and Configure the UnifiedPush Server
+// section: guides
+// ---
 
 == Install and Configure the UnifiedPush Server
+
 Getting the UnifiedPush Server up and running with an on-premise application server is a three-step setup process:
 
 . <<getfiles,Get the UnifiedPush Server application files>>

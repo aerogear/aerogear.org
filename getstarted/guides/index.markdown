@@ -55,7 +55,7 @@ Designed to get you started with enterprise mobile development.
 * [Authorization](/docs/guides/aerogear-android/authz)
 
 <h4 id="securityIOS2">iOS 2.X</h4>
-* [Authorization (OAuth2)](/docs/guides/Authorization)
+* [Authorization (OAuth2)](/docs/guides/aerogear-ios-2.X/Authorization)
 
 <h4 id="securityIOS1">iOS 1.X</h4>
 * [Authentication and User enrollment](/docs/guides/aerogear-ios/Authentication)
@@ -72,16 +72,7 @@ Designed to get you started with enterprise mobile development.
 > In several tutorials and guides you can learn all about the UnifiedPush technology
 
 <h4 id="unifiedPush">UnifiedPush Server guides</h4>
-* [UnifiedPush Server User Guide](/docs/unifiedpush/ups_userguide)
-    * [Overview](/docs/unifiedpush/ups_userguide/overview)
-    * [Install and Configure the UnifiedPush Server](/docs/unifiedpush/ups_userguide/server-installation)
-    * [Running on OpenShift](/docs/unifiedpush/ups_userguide/openshift)
-    * [Using the Admin UI](/docs/unifiedpush/ups_userguide/admin-ui)
-    * [Administration of the UnifiedPush Server](/docs/unifiedpush/ups_userguide/server-administration)
-    * [Debugging the UnifiedPush Server](/docs/unifiedpush/ups_userguide/ups-debugging)
-    * [Next steps](/docs/unifiedpush/ups_userguide/next)
-    * [Push Notification Message Format](/docs/unifiedpush/push-message-format)
-    * [Client Registration details](/docs/unifiedpush/client-registration)
+* [UnifiedPush Server User Guide](/docs/unifiedpush/ups_userguide/index)
 
 <h4 id="pushClientGuides">Client guides</h4>
 * [AeroGear Cordova PushPlugin](/docs/guides/aerogear-cordova/AerogearCordovaPush)

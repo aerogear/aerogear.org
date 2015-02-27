@@ -1,18 +1,11 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Your first Chrome/Push App
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials
-breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-js/
-third-section-title: AeroGear UnifiedPush Server and Chrome Packaged Applications
 ---
 
 
-== Your first Chrome/Push App
+
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercise AeroGear's Chrome Push library support.
 
 Let's get started!
@@ -22,7 +15,7 @@ Since a Chrome Packaged Application is just a Web Application consisting of HTML
 
 Here is an example of what the directory structure will look like
 
-image::./img/app_1.png[App Structure]
+image:./img/app_1.png[App Structure]
 
 You can download AeroGear.js link:https://github.com/aerogear/aerogear-js-dist/releases/latest[here] and the jQuery library link:http://jquery.com/download/[here]
 
