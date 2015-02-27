@@ -5,6 +5,12 @@ title: Guides
 
 ### Guides
 
+
+#### Getting Started
+
+* [Get Started with Hybrid Application Frameworks](aerogear-cordova/HybridApplicationFrameworks)
+* [Cordova Setup](aerogear-cordova/CordovaSetup)
+
 #### User Guides
 
 * [AeroGear Android User Guide](aerogear-android)
