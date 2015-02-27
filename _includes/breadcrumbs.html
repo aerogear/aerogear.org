@@ -2,11 +2,11 @@
       <li>
         {% if page.section == 'guides' %}
           <a href="{{ site.baseurl }}/getstarted/guides/">Guides</a>
-        {% else if page.section == 'modules' %}
+        {% elsif page.section == 'modules' %}
           <a href="{{ site.baseurl }}/modules//">Modules</a>
-        {% else if page.section == 'news' %}
+        {% elsif page.section == 'news' %}
           <a href="{{ site.baseurl }}/news/">News</a>
-        {% else if page.section == 'community' %}
+        {% elsif page.section == 'community' %}
           <a href="{{ site.baseurl }}/community/">Community</a>
         {% endif %}
       </li>
