@@ -13,7 +13,7 @@ type and some small (really!) amount of code to provide the necessary crypto par
 Let's start with a small primer to symmetric encryption, which is primary cryptography mechanism used
 to encrypt the data stores.
 
-=== Symmetric encryption API
+== Symmetric encryption API
 
 Symmetric encryption (also called private key encryption) is when the same key is used to encrypt and decrypt data. It is best defined with the following concepts:
 
@@ -80,7 +80,7 @@ With link:http://aerogear.org/docs/specs/aerogear-ios-crypto/Classes/AGSecretBox
 NOTE: To be able to decrypt, you need the randomly generated IV and you can regenerate the key with the salt and the password (prompted on the fly).
 It is not recommended to store either password or derived key. Salt and IV are not security sensitive in the sense that they can be stored.
 
-=== Encrypted storage
+== Encrypted storage
 
 If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted stores with the same API as the plain ones.
 
@@ -133,7 +133,7 @@ In [6] we initialize our data store (an encrypted plist [7]), setting the encryp
 
 In [9] we attempt to read data from the store. If that fails, then user supplied wrong crypto parameters (either passphrase or salt).
 
-=== AeroGear Crypto Password
+== AeroGear Crypto Password
 
 If you want to see it all together, give a try to link:https://github.com/aerogear/aerogear-crypto-ios-demo[AeroGear Crypto Password] app.
 This application shows you how using encrypted storage you can store in a central point all your passwords.

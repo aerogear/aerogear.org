@@ -4,14 +4,13 @@ title: AeroGear Cordova Crypto
 section: guides
 ---
 
-== AeroGear Cordova Crypto
 
 Before we start please install link:https://github.com/apache/cordova-cli/[Apache Cordova CLI], which is the command
 line tool to build, deploy and manage Cordova-based applications.
 
 Read about how OTP works on this link:/docs/guides/AeroGear-OTP/[AeroGear OTP guide]
 
-=== Example
+== Example
 
 First let's create a new project and install the plugin.
 
