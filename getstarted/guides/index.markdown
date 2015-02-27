@@ -55,7 +55,7 @@ Designed to get you started with enterprise mobile development.
 * [Authorization](/docs/guides/aerogear-android/authz)
 
 <h4 id="securityIOS2">iOS 2.X</h4>
-* [Authorization (OAuth2)](/docs/guides/Authorization)
+* [Authorization (OAuth2)](/docs/guides/aerogear-ios-2.X/Authorization)
 
 <h4 id="securityIOS1">iOS 1.X</h4>
 * [Authentication and User enrollment](/docs/guides/aerogear-ios/Authentication)
