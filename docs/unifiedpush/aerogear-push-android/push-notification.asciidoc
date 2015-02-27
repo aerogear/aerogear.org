@@ -1,14 +1,7 @@
 ---
-layout: base
+layout: post
 title: Send a Push Notification
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials
-breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-android/
-third-section-title: AeroGear UnifiedPush Server and Android applications
+section: guides
 ---
 
 
@@ -24,18 +17,18 @@ image:./img/send_notification.png[Send Notification]
 
 If all goes well, you should see the message payload being displayed on screen:
 
-image::./img/hello-unifiedpush-active.png[Message Receiced-Active]
+image:./img/hello-unifiedpush-active.png[Message Receiced-Active]
 
 Now click the 'Home' button to return to Android Home Screen and send another push message. You should see the notification being displayed in the Notification Manager:
 
-image::./img/hello-unifiedpush-inactive.png[Message Receiced-InActive]
+image:./img/hello-unifiedpush-inactive.png[Message Receiced-InActive]
 
 == You are done
 
 That's all you need to use the _AeroGear_ project for sending and receiving _Push Notifications_ from Android.
 
-Last-Minute Notes
------------------
+== Last-Minute Notes
+
 Since we interface with the Android devices via link:http://developer.android.com/google/gcm/index.html[Google Cloud Messaging], we still have a few things to keep in mind regarding the messages we send:
 
 - Messages can be maximum 4kb

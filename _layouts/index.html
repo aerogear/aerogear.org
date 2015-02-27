@@ -36,13 +36,22 @@
               {% include sidebar-docs.html %}
             {% elsif page.section == 'news' %}
               {% include sidebar-news.html %}
+            {% elsif page.section == 'ups-guides' %}
+              {% include sidebar-ups.html %}
             {% elsif page.section == 'roadmap' %}
               {% include sidebar-roadmaps.html %}
             {% endif %}
           </div><!-- sidebar -->
         </div><!-- col -->
         <div class="col-md-9">
-          {{ content }}
+          {% if page.section == 'ups-guides' %} 
+            <div class="post">
+              <h1>{{ page.title }}</h1>
+              {{ content }}
+            </div>
+          {% else %}
+            {{ content }}
+          {% endif %}
         </div><!-- col 9 -->
       </div><!-- row -->
     </div><!-- container -->

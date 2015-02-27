@@ -1,15 +1,8 @@
 ---
-layout: base
+layout: index
 title: UnifiedPush Server User Guide
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: UnifiedPush Server guides 
+section: guides
 ---
-
-# UnifiedPush Server User Guide
 
 * [Overview](overview)
   * [About the UnifiedPush Server](overview#_about_the_unifiedpush_server)

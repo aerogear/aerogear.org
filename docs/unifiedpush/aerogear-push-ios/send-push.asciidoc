@@ -1,20 +1,12 @@
 ---
-layout: base
+layout: post
 title: Sending messages
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials
-breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-ios/
-third-section-title: AeroGear UnifiedPush Server and iOS applications
+section: guides
 ---
 
 
 Now you have the Sample App running on your phone, so it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message to your device!
 
-== Simple Sender
 
 Login to the administration console of the UnifiedPush server and click on the "Send Push" icon in the navigation menu. Select the application that you created and write a message in the text field. Once done, hit the 'Send Push Notification'.
 

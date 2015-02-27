@@ -1,0 +1,23 @@
+---
+layout: index
+title: UnifiedPush Server User Guide
+section: ups-guides
+---
+
+
+
+include::docs/unifiedpush/ups_userguide/overview.asciidoc[Overview]
+
+include::docs/unifiedpush/ups_userguide/server-installation.asciidoc[Install and Configure the UnifiedPush Server]
+
+include::docs/unifiedpush/ups_userguide/openshift.asciidoc[Openshift]
+
+include::docs/unifiedpush/ups_userguide/admin-ui.asciidoc[Using the Admin UI]
+
+include::docs/unifiedpush/ups_userguide/server-administration.asciidoc[Administration of the UnifiedPush Server]
+
+include::docs/unifiedpush/ups_userguide/ups-debugging.asciidoc[Debugging the UnifiedPush Server]
+
+include::docs/unifiedpush/ups_userguide/migration.asciidoc[Database migration]
+
+include::docs/unifiedpush/ups_userguide/next.asciidoc[Next steps]

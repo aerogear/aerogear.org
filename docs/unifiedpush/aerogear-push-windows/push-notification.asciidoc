@@ -1,14 +1,7 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Send a Push Notification
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials
-breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-js/
-third-section-title: UnifiedPush Server and Windows applications
 ---
 
 CAUTION: this functionality is only available on master
@@ -17,7 +10,6 @@ Now that we have the sample application running, it is time to use the _AeroGear
 
 == Simple Sender
 
-
 Login to the administration console of the UnifiedPush server and click on the "Send Push" icon in the navigation menu. Select the application that you created and write a message in the text field. Once done, hit the 'Send Push Notification'.
 
 image:./img/send_notification.png[Send Notification]
@@ -25,11 +17,11 @@ image:./img/send_notification.png[Send Notification]
 
 If all goes well, you should see the message payload being displayed on screen:
 
-image::./img/hello-unifiedpush-active.png[Message Receiced-Active]
+image:./img/hello-unifiedpush-active.png[Message Receiced-Active]
 
 Now click the 'Home' button to return to Home Screen and send another push message. You should see the notification being displayed in the Notification Manager:
 
-image::./img/hello-unifiedpush-inactive.png[Message Receiced-InActive]
+image:./img/hello-unifiedpush-inactive.png[Message Receiced-InActive]
 
 == You are done
 
