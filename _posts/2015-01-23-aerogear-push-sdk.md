@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: AeroGear iOS Push-SDK for Swift v1.0
 author: corinnekrych

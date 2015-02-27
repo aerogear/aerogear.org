@@ -1,11 +1,12 @@
 ---
-layout: post
+layout: news
 section: news
 title: OAuth2 support on AeroGear
 author: abstractj
 module: security
 ---
 
+	
 
 Fasten your seatbelts, because today we are pleased to announce the official availability of our SDKs for OAuth2.
 

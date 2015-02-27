@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: AeroGear UnifiedPush Server 1.0.2 is out!
 author: matzew

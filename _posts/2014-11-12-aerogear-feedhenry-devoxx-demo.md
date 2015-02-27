@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: Devoxx keynote Feedhenry AeroGear demo
 author: matzew

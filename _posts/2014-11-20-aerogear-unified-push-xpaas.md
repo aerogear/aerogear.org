@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: Red Hat JBoss Unified Push Server and xPaaS
 author: matzew

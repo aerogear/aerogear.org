@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+{% include header.html %}
+</head>
+
+<body>    
+
+{% include navigation.html %}
+
+{% include jboss-dropup.html %}
+
+<section class="main-banner">
+  <div class="container">
+    {% include inner-header.html %}
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="{{ page.section }}">
+  
+  <div class="container">
+     {% include breadcrumbs.html %}
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 post">
+
+        <h1>{{ page.title }}</h1>
+          
+        <div class="media">
+          <div class="media-left">
+            <img src="https://avatars1.githubusercontent.com/u/1395710" />
+          </div>
+          <div class="media-body">
+            <p class="article-subtitle">by
+              <span itemprop="author">
+                Bruno Oliveira
+              </span>
+            </p>
+            <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">
+              posted on 5 Feb 2015
+            </p>
+          </div>
+        </div>        
+
+        {{ content }}
+        
+        
+        <ul class="list-inline article-extra-info">
+
+          <li class="article-extra-info-module">
+            <strong>module:</strong>
+            <a href="#">
+              <i class="fa fa-shield"></i>
+              Aerogear<strong>Security</strong>
+            </a>
+          </li>        
+          
+          <li class="article-extra-info-platform">
+            <strong>platform:</strong>
+              <a href="#">
+                Android
+              </a>
+          </li>
+          
+          <li class="article-extra-info-release">
+            <strong>releases:</strong> 
+              <a href="#">
+                1.2
+              </a>
+          </li>
+        </ul>
+    
+        <div class="tag-cloud">
+          <a href="#"><i class="fa fa-tag"></i> ups</a>
+          <a href="#"><i class="fa fa-tag"></i> javascript</a>
+          <a href="#"><i class="fa fa-tag"></i> consoleUI</a>
+          <a href="#"><i class="fa fa-tag"></i> tagname</a>
+          <a href="#"><i class="fa fa-tag"></i> java</a>
+        </div>
+        
+
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+{% include footer.html %}
+
+{% include js.html %}
+
+</body>
+</html>

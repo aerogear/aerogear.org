@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: FeedHenry meets AeroGear UnifiedPush Server!
 author: matzew

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: AeroGear iOS SDK v2.1 is out !
 author: corinnekrych

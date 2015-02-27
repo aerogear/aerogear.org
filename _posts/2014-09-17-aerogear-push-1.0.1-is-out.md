@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: AeroGear Mobile Push 1.0.1 is out!
 author: sebastienblanc

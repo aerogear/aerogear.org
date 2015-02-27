@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: UnifiedPush Server 1.1.0-alpha.1 with Windows Push is out !
 author: sebastienblanc

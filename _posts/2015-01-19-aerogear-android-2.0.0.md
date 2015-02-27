@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: news
 section: news
 title: AeroGear Android 2.0.0 is out !
 author: secondsun

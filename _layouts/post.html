@@ -20,21 +20,7 @@
 <section class="{{ page.section }}">
   
   <div class="container">
-    <ol class="breadcrumb" style="margin:0">
-     
-      <li>
-        {% if page.section == 'guides' %}
-          <a href="{{ site.baseurl }}/getstarted/guides/">Guides</a>
-        {% else if page.section == 'modules' %}
-          <a href="{{ site.baseurl }}/modules//">Modules</a>
-        {% else if page.section == 'news' %}
-          <a href="{{ site.baseurl }}/news/">News</a>
-        {% else if page.section == 'community' %}
-          <a href="{{ site.baseurl }}/community/">Community</a>
-        {% endif %}
-      </li>
-      <li class="active">{{page.title}}</li>
-    </ol>
+     {% include breadcrumbs.html %}
   </div><!-- container -->
 
 
