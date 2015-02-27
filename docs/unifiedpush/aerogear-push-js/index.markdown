@@ -1,16 +1,9 @@
 ---
-layout: base
+layout: post
 title: Using UnifiedPush with AeroGear SimplePush
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials 
+section: guides
 ---
 
-
-## Using UnifiedPush with AeroGear SimplePush.
 
 The [AeroGear UnifiedPush](https://github.com/aerogear/aerogear-unifiedpush-server.git) server apart from providing support on pushing notifications to different mobile platforms (called _Variants_), it also supports pushing notifications to Web clients too. It includes [SimplePush protocol](https://wiki.mozilla.org/WebAPI/SimplePush/Protocol) support, Mozilla's new emerging standard for push notifications, integrated into the server as another supported _Variant_. 
 

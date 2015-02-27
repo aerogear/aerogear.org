@@ -1,12 +1,7 @@
 ---
-layout: base
+layout: post
 title: UnifiedPush Server - Overview
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: UnifiedPush Server guides 
+section: guides
 ---
 
 :toc:
@@ -76,7 +71,7 @@ How the UnifiedPush Server Works
 
 The AeroGear UnifiedPush Server can be seen as a _broker_ that distributes push messages to different 3rd party Push Networks. The graphic below gives a little overview:
 
-image::./img/aerogear_unified_push_server.png[How it works]
+image:./img/aerogear_unified_push_server.png[How it works]
 
 1. One PushApplication and at least one mobile platform variant must be created (link:../admin-ui/#_using_the_admin_ui[see Using the Admin UI]).
 2. The variant credentials that are generated and stored by the UnifiedPush Server must be added to the mobile application source, enabling the application to register with the UnifiedPush Server once it is installed on mobile devices (see link:../next[tutorials]).

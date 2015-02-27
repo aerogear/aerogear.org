@@ -1,15 +1,9 @@
 ---
-layout: base
-title: AeroGear UnifiedPush Server and iOS applications
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials 
+layout: post
+title: APNs Push Notifications with AeroGear's UnifiedPush Server
+section: guides
 ---
 
-## APNs Push Notifications with AeroGear's UnifiedPush Server
 
 The following step-by-step guides, give you an introduction on how to use the AeroGear UnifiedPush Server for sending Push Notifications to your own iOS Apps. The guide assumes you have an Apple developer account already setup as well as a real iOS device (not through emulator) for testing. So, let's get started:
 
@@ -20,6 +14,6 @@ The following step-by-step guides, give you an introduction on how to use the Ae
 1. [Your first iOS/Push App](iOS-app)
 1. [Finally: Send a Push Notification](send-push)
 
-### Troubleshooting
+## Troubleshooting
 
 * [Having issues with getting it to run?](troubleshooting)

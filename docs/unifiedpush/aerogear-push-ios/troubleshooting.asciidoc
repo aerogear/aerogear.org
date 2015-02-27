@@ -1,28 +1,21 @@
 ---
-layout: base
+layout: post
 title: iOS Troubleshooting
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Troubleshooting 
+section: guides
 ---
 
 
-iOS Troubleshooting
--------------------
 This troubleshooting guide takes as a pre-requesite that you have carefully followed the instructions in the link:../index.html[iOS tutotial].
 
 Something goes wrong, you have the symptoms and you would like to know how to fix it.  Follow the guide of frequently asked questions below and if you still can't find an answer to your problem, don't hesitate to ask our link:http://aerogear-dev.1069024.n5.nabble.com/[mailing list].
 
-### Question: No matching provisioning profiles found
+## Question: No matching provisioning profiles found
 
 *Problem description*
 
 Running a client app, you run into "No matching provisioning profiles found":
 
-image::./img/no_matching_provisionning_profile.png[No matching provisioning profile]
+image:./img/no_matching_provisionning_profile.png[No matching provisioning profile]
 
 
 *Answer*
@@ -31,7 +24,7 @@ image::./img/no_matching_provisionning_profile.png[No matching provisioning prof
 * is it the first time you use this app? have you followed the pre-requisite section on link:../provisioning-profiles[provisioning profile]?
 
 
-### Question: APNs error
+## Question: APNs error
 
 *Problem description*
 
@@ -66,7 +59,7 @@ If you do enter the failure callback then your problem is similar to link:#_ques
 
 * If you do not enter the error callback, check you actually _did_ register for remote notifications. Note: with iOS8, your remote registration to APNs is splitted into 2 methods call. See code snippet in link:#_question_compilation_error_in_xcode6[Compilation error in Xcode6]
 
-### Question: My registration fails because of nil deviceID
+## Question: My registration fails because of nil deviceID
 
 *Problem description*
 
@@ -83,7 +76,7 @@ In application like link:https://github.com/aerogear/aerogear-push-quickstarts/t
 
 To solve the problem, refer to link:#_question_my_registration_to_ups_never_happens[My registration to UPS never happens]
 
-### Question: Compilation error in Xcode6
+## Question: Compilation error in Xcode6
 
 *Problem description*
 
