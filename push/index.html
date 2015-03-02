@@ -16,7 +16,7 @@ sub-section-title: AeroGear Push
     <a href="/getstarted/guides/#push" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guides</a>
     <a href="/getstarted/demos/" class="btn btn-primary btn-sm"><i class="fa fa-cogs"></i> Demos</a>
     <a href="/docs/specs/#push" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i> Documentation</a>
-    <a href="https://github.com/aerogear/?query=push" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> GitHub Repos</a>
+    <a href="https://github.com/aerogear/?query=push" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> GitHub Repositories</a>
   </p>
 
   <h3>Supported Technologies</h3>
@@ -35,7 +35,14 @@ sub-section-title: AeroGear Push
 <article>
   <h2 id="unifiedpush"><i class="fa fa-send-o"></i> Unified<strong>Push</strong> Server</h2>
 
-  <p>The AeroGear UnifiedPush Server is server that allows sending native push messages to different mobile operating systems, such as Android, iOS, Windows or Firefox OS/SimplePush.</p>
+  <p class="alt">The AeroGear UnifiedPush Server is server that allows sending native push messages to different mobile operating systems, such as Android, iOS, Windows or Firefox OS/SimplePush.</p>
+
+  <p>
+    <a href="/getstarted/downloads/#unifiedpush" class="btn btn-primary-inverse"><i class="fa fa-hand-o-right"></i> Get started with UnifiedPush Server</a>
+    <a href="/docs/unifiedpush/ups_userguide/" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guide</a>
+    <a href="/docs/specs/#unifiedpush" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i> API Documentation</a>
+    <a href="https://github.com/aerogear/aerogear-unifiedpush-server/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> GitHub Repo</a>
+  </p>
 
   <h4>See it in Action</h4>
 
@@ -45,16 +52,11 @@ sub-section-title: AeroGear Push
 
   <h4>Getting started</h4>
 
-  <p>To get started with the UnifiedPush Server checkout one of our <a href="/getstarted/downloads/#push" class="btn btn-primary-inverse"><i class="fa fa-hand-o-right"></i> Releases</a></p>
+  <p>To get started with the UnifiedPush Server checkout one of our <a href="/getstarted/downloads/#push">Releases</a>.</p>
 
-  <!--<ul>-->
-    <!--<li><a href="https://github.com/aerogear/aerogear-unifiedpush-server/releases/tag/1.0.2">1.0.2 (stable)</a></li>-->
-    <!--<li><a href="https://github.com/aerogear/aerogear-unifiedpush-server/releases/tag/1.0.2">1.1.0-alpha.1</a></li>-->
-  <!--</ul>-->
+  <p>For more information please checkout out our detailed <a href="/getstarted/guides/#unifiedpush">Guides</a> and <a href="/docs/specs/#push">Documentation</a>.</p>
 
-  <p>For more information please checkout out our detailed <a href="/getstarted/guides/#push" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guides</a> and <a href="/docs/specs/#push" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i> Documentation</a></p>
-
-  <p>Feel free browse the source or fork the <a href="https://github.com/aerogear/aerogear-unifiedpush-server/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> GitHub Repo</a></p>
+  <p>Feel free browse the source or fork the <a href="https://github.com/aerogear/aerogear-unifiedpush-server/">GitHub Repo</a>.</p>
 </article>
 
 <!---------------------------------------------------->
@@ -63,32 +65,42 @@ sub-section-title: AeroGear Push
 
   <h2 id="simplepush"><i class="fa fa-cogs"></i> Simple<strong>Push</strong> Server</h2>
 
-  <p>Our SimplePush Server represents an implementation of <a href="https://wiki.mozilla.org/WebAPI/SimplePush">Mozilla's SimplePush</a>, which is based on-top of WebSocket. It was created for Push Notifications delivery on FirefoxOS, but can also be used for different use-cases, like for the Internet-of-Things.</p>
+  <p class="alt">Our SimplePush Server represents an implementation of <a href="https://wiki.mozilla.org/WebAPI/SimplePush">Mozilla's SimplePush</a>, which is based on-top of WebSocket. It was created for Push Notifications delivery on FirefoxOS, but can also be used for different use-cases, like for the Internet-of-Things.</p>
+
+  <p>
+    <a href="/getstarted/downloads/#simplepush" class="btn btn-primary-inverse"><i class="fa fa-hand-o-right"></i> Get started with SimplePush Server</a>
+    <a href="https://github.com/aerogear/aerogear-js-cookbook/tree/master/simplepush-example" class="btn btn-primary btn-sm"><i class="fa fa-cogs"></i> Quickstart</a>
+    <a href="https://github.com/aerogear/aerogear-simplepush-server/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> GitHub Repo</a>
+  </p>
 
   <h4>See it in Action</h4>
   <p>Best way to see our SimplePush Server in action is using our <a href="https://github.com/aerogear/aerogear-js-cookbook/tree/master/simplepush-example">Quickstart example</a>.</p>
 
   <h4>Get Started</h4>
 
-  <p>To get started with the SimplePush Server checkout the last <a href="/getstarted/downloads/#simplepush" class="btn btn-primary-inverse"><i class="fa fa-hand-o-right"></i> Release</a></p>
+  <p>To get started with the SimplePush Server checkout the last <a href="/getstarted/downloads/#simplepush">release</a>.</p>
 
 </article>
 
 <!---------------------------------------------------->
 
 <article>
-  <h2 id="webpush"><i class="fa fa-flask"></i> Web<strong>Push</strong> Server</h2>
+
+  <h2 id="webpush"><i class="fa fa-flask"></i> Web<strong>Push</strong> Server <sub><span class="label label-warning">Experimental</span></sub></h2>
   <p>The <a href="https://tools.ietf.org/html/draft-thomson-webpush-http2">WebPush Specification</a> is based on HTTP2 and currently in an early state. The AeroGear team sees it as the successor of SimplePush.</p>
+  <p>
+    <a href="https://github.com/aerogear/aerogear-webpush-server/" class="btn btn-primary-inverse"><i class="fa fa-github-alt"></i> GitHub Repo</a>
+  </p>
 
   <h4>Getting started</h4>
-  <p>To get started with the WebPush Server fork the <a href="https://github.com/aerogear/aerogear-webpush-server" class="btn btn-primary-inverse"><i class="fa fa-github-alt"></i> GitHub Repo</a></p>
+  <p>To get started with the WebPush Server fork the <a href="https://github.com/aerogear/aerogear-webpush-server">GitHub Repo</a>.</p>
 </article>
 
 <!---------------------------------------------------->
 
 <article>
   <h2 id="roadmap"><i class="fa fa-road"></i> RoadMap</h2>
-  <p>Upcoming releases of these three push servers are tracked in our project <a href="/docs/planning" class="btn btn-primary btn-sm"><i class="fa fa-road"></i> RoadMap</a>.</p>
+  <p>Upcoming releases of these three push servers are tracked in our project <a href="/docs/planning" class="btn btn-primary btn-sm"><i class="fa fa-road"></i> RoadMap</a></p>
 </article>
 
 
@@ -96,5 +108,5 @@ sub-section-title: AeroGear Push
 
 <article>
   <h2 id="get-involved"><i class="fa fa-users"></i> Get Involved</h2>
-  <p>If you are interested, feel free to fork the <a href="https://github.com/aerogear" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> Repositories</a> and get your hands dirty. Also, feel free to reach out to us if you have any <a href="/community/#contact" class="btn btn-primary btn-sm"><i class="fa fa-question"></i> Questions</a></p>
+  <p>If you are interested, feel free to fork the <a href="https://github.com/aerogear" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> Repositories</a> and get your hands dirty. Also, feel free to reach out to us if you have any <a href="/community/#contact" class="btn btn-primary btn-sm"><i class="fa fa-users"></i> Questions</a></p>
 </article>

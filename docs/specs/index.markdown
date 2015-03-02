@@ -45,7 +45,7 @@ span.version {
 
 <h2 class="section-header" id="push"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong> Docs</h2>
 
-<h4>UnifiedPush</h4>
+<h4 id="unifiedpush">UnifiedPush</h4>
 
 * [UnifiedPush RESTful APIs - stable](aerogear-unifiedpush-rest-1.0.x/overview-index.html)
 * [UnifiedPush RESTful APIs - development](aerogear-unifiedpush-rest/overview-index.html)
