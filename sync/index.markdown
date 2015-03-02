@@ -19,20 +19,20 @@ sub-section-title: AeroGear Sync
 Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel. This feature provides both, a specific server side sync engine, as well as a client side sync engines for Android, iOS and JavaScript. The implementation is based on Google's [Differential Synchonrization](http://research.google.com/pubs/pub35605.html) by Neil Fraser.
 
 
-<h2><i class="fa fa-road"></i> RoadMap</h2>
+<h2 id="roadmap"><i class="fa fa-road"></i> RoadMap</h2>
 
 The AeroGear Data-Sync effort started out of a POC and we are now moving towards a first alpha release. 
 
 [List of sync-1.0.0.alpha.1 JIRA tickets](https://issues.jboss.org/issues/?filter=12323088)
 
 
-<h2><i class="fa fa-road"></i> Specification</h2>
+<h2 id="spec"><i class="fa fa-book"></i> Specification</h2>
 
 The specification for AeroGear Data-Sync including client/server API, message format and more can be found here:  
 [Data-Sync Specification](../docs/specs/aerogear-data-sync)
 
 
-<h2><i class="fa fa-flask"></i> Development</h2>
+<h2 id="development"><i class="fa fa-flask"></i> Development</h2>
 
 Below are the various GitHub repositories that are part of the Data-Sync feature in AeroGear.
 
@@ -69,6 +69,6 @@ Currently our JS library and demo is located [here](https://github.com/aerogear/
 
 
 
-<h2><i class="fa fa-users"></i> Get Involved</h2>
+<h2 id="get-involved"><i class="fa fa-users"></i> Get Involved</h2>
 
 If you are interested, feel free to fork the repositories and get your hands dirty. Also, feel free to reach out to us if you have any [questions](/community)!
