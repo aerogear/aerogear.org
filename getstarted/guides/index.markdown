@@ -17,9 +17,6 @@ Designed to get you started with enterprise mobile development.
 <h4 id="coreAndroid">Android</h4>
 * [How to build AeroGear Android library](/docs/guides/aerogear-android/how-to-build-aerogear-android)
 
-<h4 id="coreIOS1">iOS 1.X</h4>
-* Get Started with iOS and Xcode
-* [Get Started with iOS and AeroGear Xcode Template](/docs/guides/aerogear-ios/XcodeTemplate)
 
 <h4 id="coreCordova">Cordova</h4>
 * [Get Started with Hybrid Application Frameworks](/docs/guides/aerogear-cordova/HybridApplicationFrameworks)
@@ -37,10 +34,12 @@ Designed to get you started with enterprise mobile development.
 * [Pagination](/docs/guides/aerogear-android/AerogearAndroidPagination)
 * [Store](/docs/guides/aerogear-android/store)
 
-<h4 id="coreIOS1">iOS 1.X</h4>
-* [Pipe and Pipeline](/docs/guides/aerogear-ios/Pipe)
-* [Pagination](/docs/guides/aerogear-ios/Pagination)
-* [Store and DataManager](/docs/guides/aerogear-ios/DataStore)
+<h4 id="coreIOS1">iOS</h4>
+* [HTTP](/docs/guides/aerogear-ios-2.X/HttpLib)
+* [JsonSZ](/docs/guides/aerogear-ios-2.X/JsonSZ)
+* [Authorization](/docs/guides/aerogear-ios-2.X/Authorization)
+
+<div class="alert alert-info" role="alert">If you are looking for AeroGear iOS 1.x series, please visit <a href="/docs/guides/aerogear-ios/">this page</a> for more information.</div>
 
 ---
 
@@ -54,13 +53,10 @@ Designed to get you started with enterprise mobile development.
 * [Authentication](/docs/guides/aerogear-android/auth)
 * [Authorization](/docs/guides/aerogear-android/authz)
 
-<h4 id="securityIOS2">iOS 2.X</h4>
-* [Authorization (OAuth2)](/docs/guides/Authorization)
+<h4 id="securityIOS2">iOS</h4>
+* [Authorization](/docs/guides/aerogear-ios-2.X/Authorization)
 
-<h4 id="securityIOS1">iOS 1.X</h4>
-* [Authentication and User enrollment](/docs/guides/aerogear-ios/Authentication)
-* [Authorization (OAuth2)](/docs/guides/aerogear-ios/Authorization)
-* [Cryptography support](/docs/guides/aerogear-ios/Cryptography)
+<div class="alert alert-info" role="alert">If you are looking for AeroGear iOS 1.x series, please visit <a href="/docs/guides/aerogear-ios/">this page</a> for more information.</div>
 
 <h4 id="securityCordova">Cordova</h4>
 * [Two-Factor Authentication with One-Time Password - Cordova Plugin](/docs/guides/aerogear-cordova/AerogearCordovaOTP)
