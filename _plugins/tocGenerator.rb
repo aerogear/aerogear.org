@@ -35,16 +35,31 @@ module Jekyll
 
         doc = Nokogiri::HTML(html)
 
+        headings = Array.new
+        h2 = nil
+
+        doc.css('h2, h3').each do |element|
+          if (element.name == 'h2')
+            h2 = { "element" => element, "siblings" => [] }
+            headings << h2
+          elsif (element.name == 'h3')
+            if h2 != nil
+              h3 = { "element" => element }
+              h2["siblings"] << h3
+            end
+          end
+        end
+
         # Find H1 tag and all its H2 siblings until next H1
-        doc.css('h2').each do |h1|
-            # TODO This XPATH expression can greatly improved
-            ct  = h1.xpath('count(following-sibling::h1)')
-            h2s = h1.xpath("following-sibling::h3[count(following-sibling::h2)=#{ct}]")
+        headings.each do |heading|
+            h1 = heading["element"]
+            h2s = heading["siblings"]
 
             level_html = '';
             inner_section = 0;
 
-            h2s.map.each do |h2|
+            h2s.each do |heading|
+                h2 = heading["element"]
                 inner_section += 1;
                 anchor_id = h2['id']
                 if !anchor_id

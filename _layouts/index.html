@@ -37,7 +37,7 @@
             {% elsif page.section == 'news' %}
               {% include sidebar-news.html %}
             {% elsif page.section == 'ups-guides' %}
-              {% include sidebar-ups.html %}
+              {{ content | toc_generate }}
             {% elsif page.section == 'roadmap' %}
               {% include sidebar-roadmaps.html %}
             {% endif %}
