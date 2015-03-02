@@ -37,18 +37,18 @@ The specification for AeroGear Data-Sync including client/server API, message fo
 Below are the various GitHub repositories that are part of the Data-Sync feature in AeroGear.
 
 
-<h4><i class="fa fa-server"></i> Data-Sync Server</h4>
+<h3><i class="fa fa-server"></i> Data-Sync Server</h3>
 
 Our Netty-based [Java Server](https://github.com/aerogear/aerogear-sync-server) exposes WebSocket and XMPP/GCM endpoint for our different clients.
 
 
-<h4><i class="fa fa-android"></i> Android</h4>
+<h3><i class="fa fa-android"></i> Android</h3>
 
 An [XMPP-client library](https://github.com/aerogear/aerogear-android-sync) to receive sync updates over GCM.
 
 
 
-<h4><i class="fa fa-apple"></i> iOS</h4>
+<h3><i class="fa fa-apple"></i> iOS</h3>
 
 For iOS we have two different libraries that are developed:
 
@@ -61,7 +61,7 @@ Besides the libraries we do already have a little [demo application](https://git
 
 
 
-<h4><i class="fa fa-html5"></i> JavaScript</h4>
+<h3><i class="fa fa-html5"></i> JavaScript</h3>
 
 The JavaScript client comes with a WebSocket-based library as well. There is also a Node.js based demo, which can be used against the above Java server.
 
