@@ -3,7 +3,7 @@ require 'nokogiri'
 module Jekyll
   module TOCGenerator
     TOGGLE_HTML = '<div id="toctitle"><h2>%1</h2>%2</div>'
-    TOC_CONTAINER_HTML = '<div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>%1<ul>%2</ul></td></tr></tbody></table></div>'
+    TOC_CONTAINER_HTML = '<div id="toc-container"><ul class="nav">%2</ul></div>'
     HIDE_HTML = '<span class="toctoggle">[<a id="toctogglelink" class="internal" href="#">%1</a>]</span>'
 
    def toc_generate(html)
@@ -36,18 +36,25 @@ module Jekyll
         doc = Nokogiri::HTML(html)
 
         # Find H1 tag and all its H2 siblings until next H1
-        doc.css('h1').each do |h1|
+        doc.css('h2').each do |h1|
             # TODO This XPATH expression can greatly improved
             ct  = h1.xpath('count(following-sibling::h1)')
-            h2s = h1.xpath("following-sibling::h2[count(following-sibling::h1)=#{ct}]")
+            h2s = h1.xpath("following-sibling::h3[count(following-sibling::h2)=#{ct}]")
 
             level_html = '';
             inner_section = 0;
 
             h2s.map.each do |h2|
                 inner_section += 1;
-                anchor_id = anchor_prefix + toc_level.to_s + '-' + toc_section.to_s + '-' + inner_section.to_s
-                h2['id'] = "#{anchor_id}"
+                anchor_id = h2['id']
+                if !anchor_id
+                    empty_id_warning(h2)
+                end
+                #if !anchor_id
+                #  anchor_id = anchor_prefix + toc_level.to_s + '-' + toc_section.to_s + '-' + inner_section.to_s
+                #end
+                #h2['id'] = "#{anchor_id}"
+
 
                 level_html += create_level_html(anchor_id,
                     toc_level + 1,
@@ -59,8 +66,14 @@ module Jekyll
             if level_html.length > 0
                 level_html = '<ul>' + level_html + '</ul>';
             end
-            anchor_id = anchor_prefix + toc_level.to_s + '-' + toc_section.to_s;
-            h1['id'] = "#{anchor_id}"
+            anchor_id = h1['id']
+            if !anchor_id
+                empty_id_warning(h1)
+            end
+            #if !anchor_id
+            #  anchor_id = anchor_prefix + toc_level.to_s + '-' + toc_section.to_s;
+            #end
+            #h1['id'] = "#{anchor_id}"
 
             toc_html += create_level_html(anchor_id,
                 toc_level,
@@ -92,16 +105,16 @@ module Jekyll
                     .gsub('%2', toc_html);
                 doc.css('body').children.before(toc_table)
             end
-            doc.css('body').children.to_xhtml(indent:3, indent_text:" ")
+            doc.css('#toc-container').children.to_xhtml(indent:3, indent_text:" ")
         else
-            return html
+            return ''
         end
    end
 
 private
 
     def create_level_html(anchor_id, toc_level, toc_section, tocNumber, tocText, tocInner)
-        link = '<a href="#%1"><span class="tocnumber">%2</span> <span class="toctext">%3</span></a>%4'
+        link = '<a href="#%1"><span class="toctext">%3</span></a>%4'
             .gsub('%1', anchor_id.to_s)
             .gsub('%2', tocNumber.to_s)
             .gsub('%3', tocText)
@@ -110,6 +123,11 @@ private
             .gsub('%1', toc_level.to_s)
             .gsub('%2', toc_section.to_s)
             .gsub('%3', link)
+    end
+
+    def empty_id_warning(element)
+        Jekyll.logger.warn "toc_generate:", "no ID specified: <#{element.name}>#{element.text}</#{element.name}>"
+        element.text
     end
   end
 end

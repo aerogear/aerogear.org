@@ -16,13 +16,17 @@
   </div><!-- container -->
 </section> <!-- main banner -->
 
-
 <section class="{{ page.section }}">
 
 
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2 post">
+      <div class="col-md-3 sidebar">
+        <div class="submenu">
+          {{ content | toc_generate }}
+        </div><!-- sidebar -->
+      </div><!-- col -->
+      <div class="col-md-9 post">
         {{ content }}
       </div><!-- col 8 -->
     </div><!-- row -->
