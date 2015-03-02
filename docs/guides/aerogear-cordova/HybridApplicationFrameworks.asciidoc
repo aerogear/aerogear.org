@@ -17,7 +17,7 @@ Hybrid application projects usually involve web based technologies such as JavaS
  
 The leading frameworks in this area are detailed below with links to examples, and future plans (jira's).  If you want to get involved jump right in!
 
-=== Apache Cordova
+== Apache Cordova
 
 Project link: http://cordova.apache.org/
  

@@ -1,19 +1,12 @@
 ---
-layout: base
+layout: post
+section: guides
 title: Your first Android/Push App
-nav-active-guides: active
-section-class: guides
-section-title: AeroGearPush Guides
-section-description: Tutorials to help get you off and running.
-breadcrumbs-url: /getstarted/guides/
-sub-section-title: Tutorials
-breadcrumbs-sub-url: /docs/unifiedpush/aerogear-push-js/
-third-section-title: UnifiedPush Server and Windows applications
 ---
 
 CAUTION: this functionality is only available on master
 
-== Your first Windows/Push App
+
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercice AeroGear's Windows Push library support.
 
 Let's get started!
@@ -21,15 +14,15 @@ Let's get started!
 == Creating the application
 Fire up Visual Studio and choose 'File'-> 'New' -> 'Project', then choose 'Blank App (Windows Phone)' on the project template dialog. Fill the 'Name' field with the name 'PushApplication'.
 
-image::./img/new-project.png[New Project]
+image:./img/new-project.png[New Project]
 
 Now Visual Studio has generated a sample Windows Phone project with a default 'App' class. 
 
-image::./img/visual-studio-main.png[Visual Studio Main Screen]
+image:./img/visual-studio-main.png[Visual Studio Main Screen]
 
 Now it's time to add the aerogear nuget package, right click on project in the 'Solution Explorer' and select 'Manage NuGet Packages' select online and nuget.org and search for aerogear and install to add the dependency.
 
-image::./img/nuget.png[NuGet Package]
+image:./img/nuget.png[NuGet Package]
 
 Open `MainPage.xaml` from the `Solution Explorer` and add a `ListView` to the `Grid`
 
@@ -137,8 +130,7 @@ Notice that we didn't have to write any code to register the device with WNS. Th
 
 We are going to register a event handler that will display the received notification in the `ListView`. First we need to edit the app's settings.
 
-Edit App's settings
-~~~~~~~~~~~~~~~~~~~
+== Edit App's settings
 
 Open the _Package.appxmanifest_ and set `Toast capable` to Yes
 
@@ -151,8 +143,8 @@ Open the _Package.appxmanifest_ in source mode (press F7) find the <Identity>' e
 ...
 ----
 
-Handling notification
-~~~~~~~~~~~~~~~~~~~~~
+== Handling notification
+
 Create a new method, name it 'HandleNotification' and paste the following code:
 
 [source,csharp]
@@ -238,6 +230,6 @@ In the 'HandleNotification' callback method [3] we simple extract the message pa
 
 We are now ready to run the application.
 
-image::./img/app-main-screen.png[Push Application Main Screen]
+image:./img/app-main-screen.png[Push Application Main Screen]
 
 Now that we have our application up an running time to link:../push-notification[send messages] using the AeroGear UnifiedPush Server!
