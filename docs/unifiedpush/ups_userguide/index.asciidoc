@@ -1,7 +1,8 @@
 ---
-layout: index
+layout: post
 title: UnifiedPush Server User Guide
-section: ups-guides
+section: guides
+toc_generate: true
 ---
 
 

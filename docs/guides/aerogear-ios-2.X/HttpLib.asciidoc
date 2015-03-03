@@ -1,6 +1,7 @@
 ---
-layout: basic
+layout: post
 title: AeroGear Http
+toc_generate: true
 ---
 
 == Introduction
