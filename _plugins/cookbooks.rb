@@ -21,7 +21,7 @@ module Readme
 
       cookbooks.each do |platform, url|
         body_str = diskcache.cache('cookbook-' + platform) do
-          puts url
+          Jekyll.logger.info "cookbooks:", "fetching #{url}"
           http = Curl.get( url ) do |http|
             http.headers['User-Agent'] = 'Jekyll'
           end
