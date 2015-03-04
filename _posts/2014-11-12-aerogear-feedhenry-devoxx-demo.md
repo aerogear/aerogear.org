@@ -4,6 +4,7 @@ section: news
 title: Devoxx keynote Feedhenry AeroGear demo
 author: matzew
 module: push
+tags: feedhenry
 ---
 
 

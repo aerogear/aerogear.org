@@ -28,20 +28,27 @@ module Reading
           categories << cat.term
         end
         if include_blog_entry_in_news_feed(entry, categories) then
-          tags = []
-          categories.each do |category|
-            tags << category unless category =~ /^feed_/ || ["aerogear", "mobile", "Uncategorized"].include?(category)
-          end
-          posts << {
+          tags_set = get_tags_as_set(site, categories)
+          author = lookup_author(site, entry.author.name.content)
+          mod = lookup_module(site, nil, tags_set)
+          platform = lookup_platform(site, nil, tags_set)
+          tags = tags_set.to_a
+
+          # puts "---"
+          # puts tags
+          # puts "---"
+
+          post = {
             "date" => "#{entry.published.content}",
             "title" => entry.title.content,
             "url" => entry.link.href,
             "excerpt" => entry.summary.content,
-            "author" => lookup_author(site, entry.author.name.content),
+            "author" => author,
+            "module" => mod,
             "tags" => tags,
-            "module" => lookup_module(site, nil, tags),
             "external" => true
           }
+          posts << post
         end
       end
 
@@ -54,6 +61,8 @@ module Reading
           "author" => lookup_author(site, post.data["author"]),
           "tags" => post.tags,
           "module" => lookup_module(site, post.data["module"], post.tags),
+          "platform" => lookup_platform(site, post.data["platform"], post.tags),
+          "releases" => post.data["releases"],
           "external" => false
         } if post.published?
       end
@@ -85,12 +94,67 @@ module Reading
     end
 
     def lookup_module(site, modName, tags)
+      mappings = site.data["post-tag-mapping"]
       if modName then
         return site.data["modules"][modName]
       end
       tags.each do |tag|
-        return site.data["modules"][tag] if site.data["modules"][tag]
+        if mappings[tag] == '=module' then
+          tags.delete(tag)
+          return site.data["modules"][tag] if site.data["modules"][tag]
+        end
       end
+      return nil
+    end
+
+    def lookup_platform(site, platformName, tags)
+      mappings = site.data["post-tag-mapping"]
+      if platformName then
+        return site.data["sdk"][platformName]
+      end
+      tags.each do |tag|
+        if mappings[tag] == '=platform' then
+          tags.delete(tag)
+          return site.data["sdk"][tag] if site.data["sdk"][tag]
+        end
+      end
+      return nil
+    end
+
+    def get_tags_as_set(site, tags)
+      mappings = site.data["post-tag-mapping"]
+      set = Set.new
+      tags.each do |tag|
+        tag = tag.downcase
+        if /^feed_/ =~ tag then
+          next
+        end
+        if tag.match(/^aerogear-(.*)$/) then
+          tag = $1
+        end
+        # puts "processing #{tag}"
+        mapped = mappings[tag]
+        # puts "mapped: '#{mapped}'"
+        if mapped.nil? then
+          set.add(tag)
+        else
+          case mapped
+            when /^\+(.*)$/
+              # puts "add: #{tag} + #{$1}"
+              set.add($1)
+              set.add(tag)
+            when /^=/
+              # puts "module: #{tag}"
+              set.add(tag)
+            else
+              # puts "removal: #{tag}"
+              set.add(mapped)
+          end
+        end
+        set.delete('')
+        set.delete(nil)
+      end
+      return set
     end
 
     def include_blog_entry_in_news_feed(entry, categories)

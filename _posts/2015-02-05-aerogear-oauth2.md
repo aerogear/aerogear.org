@@ -4,6 +4,7 @@ section: news
 title: OAuth2 support on AeroGear
 author: abstractj
 module: security
+tags: oauth2
 ---
 
 	

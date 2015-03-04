@@ -4,6 +4,7 @@ section: news
 title: Red Hat JBoss Unified Push Server and xPaaS
 author: matzew
 module: push
+tags: xpaas
 ---
 
 

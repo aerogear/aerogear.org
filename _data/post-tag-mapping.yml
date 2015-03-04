@@ -1,0 +1,34 @@
+# README:
+#
+#  FORMAT:
+#     source: target
+#
+#  - 'releases', 'platform' and 'module' categories will be treated differently - they
+#    don't show up in tag list, they have own sorting mechanism
+#  - other tags are mappings, one tag will imply another (such as 'oauth2: security'
+#    implies that oauth2 will get tag security, which is in fact module, so 'oauth2'
+#    tags will be categorized as being security module)
+#  - the tag ending with ! symbol acts as renaming, such as 'unifiedpush: push!' means
+#    that 'unifiedpush' won't show up at all, the 'push' tag will be instead, which will
+#    be at the end treated as 'module'
+#  - the use of '!' means we want to remove the tag altogether, e.g. 'mobile: !'
+
+# MODULEs
+release: 	=releases
+ios: 		=platform
+android:	=platform
+cordova:	=platform
+push:		=module
+security:	=module
+sync:		=module
+
+# IMPLICATIONS (ADDITIONS)
+oauth2: +security
+
+# REPLACEMENT
+unifiedpush: push
+
+# REMOVAL
+aerogear: ''
+mobile: ''
+Uncategorized: ''

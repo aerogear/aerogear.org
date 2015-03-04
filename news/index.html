@@ -14,7 +14,9 @@ section: news
         <h4 class="article-title" itemprop="name">
             <a href="{% if post.external == false %}{{ site.baseurl }}{% endif %}{{ post.url }}">
                 {{post.title}}
+
             </a>
+          {% if post.external %}<i class="fa fa-external-link"></i>{% endif %}
         </h4>
         
         <div class="media">
@@ -65,20 +67,25 @@ section: news
         </a>
       </li>        
       {% endif %}
-      
+
+      {% if post.platform %}
       <li class="article-extra-info-platform">
         <strong>platform:</strong>
           <a href="#">
-            Android
+            <i class="fa {{post.platform.icon}}"></i>
+            {{ post.platform.name }}
           </a>
       </li>
-      
+      {% endif %}
+
+      {% if post.releases %}
       <li class="article-extra-info-release">
         <strong>releases:</strong> 
           <a href="#">
-            1.2
+            {{ post.releases }}
           </a>
       </li>
+      {% endif %}
       
     </ul>
 

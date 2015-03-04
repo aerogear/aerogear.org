@@ -4,6 +4,7 @@ section: news
 title: AeroGear UnifiedPush Server 1.0.2 is out!
 author: matzew
 module: push
+releases: 1.0.2
 ---
 
 

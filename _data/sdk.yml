@@ -2,6 +2,8 @@ aerogearjs:
   version: 2.0.0
 
 android:
+  name: Android
+  icon: fa-android
   version: 2.0.0
   modules:
     - core
@@ -13,6 +15,8 @@ android:
     - push
 
 ios:
+  name: iOS
+  icon: fa-apple
   modules:
     http:
       name: HTTP
@@ -48,6 +52,8 @@ ios:
       guide: /docs/guides/aerogear-ios-2.X/JsonSZ/
 
 cordova:
+  name: Cordova
+  icon: fa-simplybuild
   modules:
     pushplugin:
       name: Push
