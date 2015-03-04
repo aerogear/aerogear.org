@@ -9,6 +9,7 @@ corinnekrych:
   location-city: French Riviera
   location-country: France
   description: 'Code is craft and collaboration is key to success. I love chatting the latest tech trends at coffee break: female geek. Mobile is my playground, AeroGear my open source family and iOS my platform by heart. iOS tech lead in AeroGear.'
+  jboss-planet-tag: feed_name_corinnekrych
 
 balunasj:
   name: Jay Balunas
@@ -57,6 +58,7 @@ cvasilak:
   location-city:
   location-country: Greece
   description: Senior Software Engineer Red Hat. Christos is core developer in iOS team in AeroGear.
+  jboss-planet-tag: feed_name_cvasilak
 
 danbev:
   name: Daniel Bevenius
@@ -106,6 +108,7 @@ edewit:
   location-city: Zürich
   location-country: Switzerland
   description: Works at Red Hat, lives in Zwitserland. Erik leads Cordova team in AeroGear.
+  jboss-planet-tag: feed_name_edewit
 
 lfryc:
   name: Lukáš Fryč
@@ -131,6 +134,7 @@ lholmquist:
   location-city: NY
   location-country: USA
   description: Works at Red Hat, lives in NY. Lucas leads JS team in AeroGear.
+  jboss-planet-tag: feed_name_blog_of_thrones
 
 matzew:
   name: Matthias Wessendorf
@@ -156,6 +160,7 @@ sebastienblanc:
   location-city: Vallauris
   location-country: France
   description: Works at Red Hat. Sebastien leads UnifiedPush efforts in AeroGear.
+  jboss-planet-tag: feed_name_sebiblog
 
 secondsun:
   name: Hoyt Summers Pittman
@@ -168,6 +173,7 @@ secondsun:
   location-city: Atlanta
   location-country: USA
   description: Works at Red Hat. Summers is a core developer in Android team in AeroGear.
+  jboss-planet-tag: feed_name_secondsun
 
 andresgalante:
   name: Andres Galante
