@@ -29,10 +29,12 @@ module Reading
         end
         if include_blog_entry_in_news_feed(entry, categories) then
           tags_set = get_tags_as_set(site, categories)
+          is_release = tags_set.include?('release')
           author = lookup_author(site, entry.author.name.content)
           mod = lookup_module(site, nil, tags_set)
           platform = lookup_platform(site, nil, tags_set)
           tags = tags_set.to_a
+          classes = derive_classes(tags, mod, platform, is_release)
 
           # puts "---"
           # puts tags
@@ -45,7 +47,9 @@ module Reading
             "excerpt" => entry.summary.content,
             "author" => author,
             "module" => mod,
+            "platform" => platform,
             "tags" => tags,
+            "classes" => classes,
             "external" => true
           }
           posts << post
@@ -53,18 +57,26 @@ module Reading
       end
 
       site.posts.each do |post|
-        posts << {
-          "date" => "#{post.date}",
-          "url" => post.url,
-          "title" => post.title,
-          "excerpt" => post.excerpt,
-          "author" => lookup_author(site, post.data["author"]),
-          "tags" => post.tags,
-          "module" => lookup_module(site, post.data["module"], post.tags),
-          "platform" => lookup_platform(site, post.data["platform"], post.tags),
-          "releases" => post.data["releases"],
-          "external" => false
-        } if post.published?
+        mod = lookup_module(site, post.data["module"], Set.new)
+        platform = lookup_platform(site, post.data["platform"], Set.new)
+        is_release = post.data["releases"] != nil
+        classes = derive_classes(post.tags, mod, platform, is_release)
+
+        if post.published? then
+          posts << {
+            "date" => "#{post.date}",
+            "url" => post.url,
+            "title" => post.title,
+            "excerpt" => post.excerpt,
+            "author" => lookup_author(site, post.data["author"]),
+            "tags" => post.tags,
+            "module" => mod,
+            "platform" => platform,
+            "releases" => post.data["releases"],
+            "classes" => classes,
+            "external" => false
+          }
+        end
       end
 
       posts.sort! { |a,b| b["date"].casecmp(a["date"]) }
@@ -155,6 +167,23 @@ module Reading
         set.delete(nil)
       end
       return set
+    end
+
+    def derive_classes(tags, mod, platform, is_release)
+      classes = Set.new
+      unless platform.nil? then
+        platformName = platform["name"].downcase
+        classes.add("platform-#{platformName}")
+      end
+      unless mod.nil? then
+        modName = mod["name"].downcase
+        classes.add("module-#{modName}") unless mod.nil?
+      end
+      tags.each do |tag|
+        classes.add("tag-#{tag}")
+      end
+      classes.add("release") if is_release
+      return classes.to_a.join(' ')
     end
 
     def include_blog_entry_in_news_feed(entry, categories)

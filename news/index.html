@@ -7,7 +7,7 @@ section: news
 <h2 class="section-header">AeroGear News</h2>
 
 {% for post in site.data['all_posts'] %}
-<div class="article news" itemscope itemtype="http://schema.org/NewsArticle">
+<div class="article news {{ post.classes }}" itemscope itemtype="http://schema.org/NewsArticle">
     <div class="article-icon"><i class="fa fa-newspaper-o fa-lg"></i></div>
     <div class="article-header">
 
