@@ -860,6 +860,40 @@ article{
       color: gray;
     }
   }
+
+  .checkbox {
+    font-size: 1.2em;
+    font-weight: normal !important;
+    a {
+      color: white;
+      &:active, &:focus {
+        text-decoration: none;
+      }
+      &:hover {
+        text-decoration: underline !important;
+      }
+    }
+  }
+
+  .tag-cloud{
+    line-height: @line-height-large*1.3;
+    font-size: @font-size-h6;
+    a{
+      display: inline-block;
+      background: @brand-primary;
+      padding: 0 6px;
+      border-radius: 3px;
+      color: #fff;
+      margin-bottom: 3px;
+
+      &:active, &:focus {
+        text-decoration: none;
+      }
+      &:hover {
+        text-decoration: underline !important;
+      }
+    }
+  }
 }
 
 .article{
@@ -948,19 +982,6 @@ article{
   &.twitter{
     padding-right: 40px;
   }
-  
-.tag-cloud{
-  line-height: @line-height-large*1.3;
-    font-size: @font-size-h6;
-  a{
-    display: inline-block;
-    background: @brand-primary;
-    padding: 0 6px;
-    border-radius: 3px;
-    color: #fff;
-    margin-bottom: 3px;
-  }
-}
 
 .news .col-md-9{
   min-height: 600px;

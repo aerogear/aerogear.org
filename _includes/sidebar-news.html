@@ -2,118 +2,91 @@
 
 <div class="submenu">
 
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="" checked="checked">
-    All Posts
-  </label>
-</div>
-
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    Articles
-  </label>
-</div>
-
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    Events
-  </label>
-</div>
-
-
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    Videos
-  </label>
-</div>
-
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    Twitter
-  </label>
-</div>
-
-
 <h5>Modules:</h5>
             
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="" checked="checked">
-    All Modules
-  </label>
+<div class="checkbox module all">
+  <span class="label label-primary">
+    <a href="#module">
+      All modules
+    </a>
+  </span>
 </div>
 
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-      <i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong>
-  </label>
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-push">
+      <i class="fa fa-paper-plane"></i> Push
+    </a>
+  </span>
 </div>
 
 
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-      <i class="fa fa-shield"></i> AeroGear<strong>Security</strong>
-  </label>
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-security">
+      <i class="fa fa-shield"></i> Security
+    </a>
+  </span>
 </div>
 
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-      <i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong>
-  </label>
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-sync">
+      <i class="fa fa-refresh"></i> Sync
+    </a>
+  </span>
 </div>
 
 
 
 <h5>Platforms:</h5>
 
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="" checked="checked">
-    All platforms
-  </label>
+<div class="checkbox platform all">
+  <span class="label label-primary">
+    <a href="#platform">
+      All platforms
+    </a>
+  </span>
 </div>
 
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    Android
-  </label>
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-android">
+      <i class="fa fa-android"></i> Android
+    </a>
+  </span>
 </div>
 
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    iOS
-  </label>
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-ios">
+      <i class="fa fa-apple"></i> iOS
+    </a>
+  </span>
 </div>
 
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    Cordova
-  </label>
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-cordova">
+      <i class="fa fa-simplybuilt"></i> Cordova
+    </a>
+  </span>
 </div>
 
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    JavaScript
-  </label>
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-javascript">
+      <i class="fa fa-html5"></i> JavaScript
+    </a>
+  </span>
 </div>
 
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" checked="checked" disabled>
-    Windows
-  </label>
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-windows">
+      <i class="fa fa-windows"></i> Windows
+    </a>
+  </span>
 </div>
 
 <h5>Popular tags:</h5>
@@ -130,3 +103,75 @@
 </div>
 
 </div><!-- /submenu -->
+
+<!--<script src="//rawgit.com/makesites/jquery-hurl/master/lib/jquery.hurl.js"></script>-->
+
+<script src="https://rawgit.com/avakarev/jquery-hashman/master/jquery.hashman.js"></script>
+
+<script>
+  (function ( $ ) {
+
+    $.fn.newsSwitchSingle = function() {
+      $(this).each(function() {
+        var div = $(this);
+        div.click(function() {
+          if ( div.correspondingAllSwitch().isActive() ) {
+            div.correspondingAllSwitch().switchActive( false );
+            div.correspondingSingleSwitches().switchActive( false );
+            div.switchActive( true );
+          } else {
+            div.switchActive( !div.isActive() );
+            if (!div.correspondingSingleSwitches().isInactive()) {
+              div.correspondingAllSwitch().switchActive( true );
+            }
+          }
+          return false;
+        });
+      });
+    };
+
+    $.fn.newsSwitchAll = function() {
+      $(this).each(function() {
+        var div = $(this);
+        div.click(function() {
+          div.switchActive( !div.isActive() );
+          div.correspondingSingleSwitches().switchActive( div.isActive() );
+          return false;
+        });
+      });
+    };
+
+    $.fn.isActive = function() {
+      return $(this).is(':has( span.label-primary )');
+    };
+
+    $.fn.isInactive = function() {
+      return $(this).is(':has( span.label-default )');
+    };
+
+    $.fn.switchActive = function( active ) {
+      var label = $( 'span.label', this );
+      label.removeClass( active ? 'label-default' : 'label-primary' );
+      label.addClass( active ? 'label-primary' : 'label-default' );
+    };
+
+    $.fn.correspondingAllSwitch = function() {
+      var value = $('a', this).attr('href').replace('#', '');
+      var match = value.match('^([^-]+)-');
+      var prefix = match ? match[1] : value;
+      return $(".checkbox." + prefix + ".all");
+    };
+
+    $.fn.correspondingSingleSwitches = function() {
+      var value = $('a', this).attr('href').replace('#', '');
+      var match = value.match('^([^-]+)-');
+      var prefix = match ? match[1] : value;
+      return $(".checkbox." + prefix + ":not(.all)");
+    };
+
+  }( jQuery ));
+
+  $(".checkbox:has(span.label a).all").newsSwitchAll();
+  $(".checkbox:has(span.label a):not(.all)").newsSwitchSingle();
+
+</script>
