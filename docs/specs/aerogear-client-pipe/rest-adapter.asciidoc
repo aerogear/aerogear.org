@@ -1,5 +1,6 @@
 ---
 layout: post
+section: docs
 title: RestAdapter, An AeroGear Pipe Implementation
 
 ---

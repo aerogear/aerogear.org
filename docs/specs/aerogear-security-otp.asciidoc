@@ -1,5 +1,6 @@
 ---
 layout: post
+section: docs
 title: AeroGear Security OTP Specification
 ---
 
