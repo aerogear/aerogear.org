@@ -13,6 +13,8 @@ title: How to build AeroGear Android
 * Latest link:http://developer.android.com/tools/support-library/index.html[Android Support Library] and link:http://developer.android.com/google/play-services/index.html[Google Play Services]
 * Latest link:https://github.com/mosabua/maven-android-sdk-deployer[Maven Android SDK Deployer]
 
+== Note
+If you only want to build Android applications using AeroGear you do not need to build the project from source.  Our compiled ready to go binaries are available in Maven Central.  If you want to contribute to AeroGear Android then read on.
 == Building
 
 AeroGear's Android libraries are built as apklib projects using Maven, but Google does not ship all the required libraries to Maven Central. You must locally deploy them using the link:https://github.com/mosabua/maven-android-sdk-deployer[maven-android-sdk-deployer].
