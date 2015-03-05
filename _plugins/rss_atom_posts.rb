@@ -18,7 +18,7 @@ module Reading
         http.body_str
       end
 
-
+      all_tags = Set.new
 
       posts = []
       feed = RSS::Parser.parse(feed_xml)
@@ -35,6 +35,8 @@ module Reading
           platform = lookup_platform(site, nil, tags_set)
           tags = tags_set.to_a
           classes = derive_classes(tags, mod, platform, is_release)
+
+          all_tags.merge(tags)
 
           # puts "---"
           # puts tags
@@ -62,6 +64,8 @@ module Reading
         is_release = post.data["releases"] != nil
         classes = derive_classes(post.tags, mod, platform, is_release)
 
+        all_tags.merge(post.tags)
+
         if post.published? then
           posts << {
             "date" => "#{post.date}",
@@ -82,6 +86,7 @@ module Reading
       posts.sort! { |a,b| b["date"].casecmp(a["date"]) }
 
       site.data['all_posts'] = posts
+      site.data['all_post_tags'] = all_tags.to_a
     end
 
     def lookup_author(site, identifier)

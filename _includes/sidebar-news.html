@@ -91,15 +91,9 @@
 
 <h5>Popular tags:</h5>
 <div class="tag-cloud">
-  <a href="#"><i class="fa fa-tag"></i> ups</a>
-  <a href="#"><i class="fa fa-tag"></i> jboss</a>
-  <a href="#"><i class="fa fa-tag"></i> javascript</a>
-  <a href="#"><i class="fa fa-tag"></i> ups</a>
-  <a href="#"><i class="fa fa-tag"></i> jboss</a>
-  <a href="#"><i class="fa fa-tag"></i> javascript</a>
-  <a href="#"><i class="fa fa-tag"></i> consoleUI</a>
-  <a href="#"><i class="fa fa-tag"></i> tagname</a>
-  <a href="#"><i class="fa fa-tag"></i> java</a>
+  {% for tag in site.data['all_post_tags'] %}
+    <a href="#tag-{{ tag }}" class="active"><i class="fa fa-tag"></i> {{ tag }}</a>
+  {% endfor %}
 </div>
 
 </div><!-- /submenu -->
@@ -115,6 +109,7 @@
       $(this).each(function() {
         var div = $(this);
         div.click(function() {
+          $.allTags().tagSwitchActive( true );
           if ( div.correspondingAllSwitch().isActive() ) {
             div.correspondingAllSwitch().switchActive( false );
             div.correspondingSingleSwitches().switchActive( false );
@@ -134,6 +129,7 @@
       $(this).each(function() {
         var div = $(this);
         div.click(function() {
+          $.allTags().tagSwitchActive( true );
           div.switchActive( !div.isActive() );
           div.correspondingSingleSwitches().switchActive( div.isActive() );
           return false;
@@ -163,10 +159,44 @@
     };
 
     $.fn.correspondingSingleSwitches = function() {
-      var value = $('a', this).attr('href').replace('#', '');
+      var value = $(this).find('a').attr('href').replace('#', '');
       var match = value.match('^([^-]+)-');
       var prefix = match ? match[1] : value;
       return $(".checkbox." + prefix + ":not(.all)");
+    };
+
+    $.fn.tagSwitch = function() {
+      $(this).click(function() {
+        if (!$.allTags().is(':not(.active)')) { // all tags are active
+          $(this).tagSwitchActive( true );
+        } else { // at least one tag is inactive
+          if ($(this).is('.active')) {
+            $(this).tagSwitchActive( false );
+          } else {
+            $(this).tagSwitchActive( true );
+          }
+        }
+        // switch modules / platforms switches to all checked
+        $(".checkbox.all").each(function() {
+          $(this).switchActive( true );
+          $(this).correspondingSingleSwitches().switchActive( true );
+        });
+
+        return false;
+      });
+    };
+
+    $.fn.tagSwitchActive = function( active ) {
+      if (active) {
+        $.allTags().removeClass('active');
+        $(this).addClass('active');
+      } else {
+        $.allTags().addClass('active');
+      }
+    };
+
+    $.allTags = function() {
+      return $(".tag-cloud a");
     };
 
   }( jQuery ));
@@ -174,4 +204,5 @@
   $(".checkbox:has(span.label a).all").newsSwitchAll();
   $(".checkbox:has(span.label a):not(.all)").newsSwitchSingle();
 
+  $(".tag-cloud a").tagSwitch();
 </script>
