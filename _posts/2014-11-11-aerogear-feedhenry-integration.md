@@ -5,7 +5,6 @@ title: FeedHenry meets AeroGear UnifiedPush Server!
 author: matzew
 module: push
 tags:
-- push
 - feedhenry
 ---
 

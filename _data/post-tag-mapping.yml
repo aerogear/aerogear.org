@@ -3,27 +3,29 @@
 #  FORMAT:
 #     source: target
 #
-#  - 'releases', 'platform' and 'module' categories will be treated differently - they
+#  - '=releases', '=platform' and '=module' categories will be treated differently - they
 #    don't show up in tag list, they have own sorting mechanism
-#  - other tags are mappings, one tag will imply another (such as 'oauth2: security'
-#    implies that oauth2 will get tag security, which is in fact module, so 'oauth2'
-#    tags will be categorized as being security module)
-#  - the tag ending with ! symbol acts as renaming, such as 'unifiedpush: push!' means
-#    that 'unifiedpush' won't show up at all, the 'push' tag will be instead, which will
-#    be at the end treated as 'module'
-#  - the use of '!' means we want to remove the tag altogether, e.g. 'mobile: !'
+#  - simple tag mappings are replacements, one tag will replace another (such as 'unifiedpush: push'
+#    implies that unifiedpush tag will be replaced by simple push (that will later be treated such as module)
+#  - the tag starting with + means implications (additions) - the tag will be added (such as 'oauth2: +security'
+#    implies that in addition to oauth2, the post will be categorized as security (which is recognized as module
+#    by another mapping)
+#  - the use of empty tag '' means removing the given tag altogether
 
 # MODULEs
 release: 	=releases
 ios: 		=platform
 android:	=platform
 cordova:	=platform
+javascript: =platform
+windows:    =platform
 push:		=module
 security:	=module
 sync:		=module
 
 # IMPLICATIONS (ADDITIONS)
 oauth2: +security
+nodejs: +javascript
 
 # REPLACEMENT
 unifiedpush: push
@@ -32,3 +34,4 @@ unifiedpush: push
 aerogear: ''
 mobile: ''
 Uncategorized: ''
+plugins: ''

@@ -38,10 +38,6 @@ module Reading
 
           all_tags.merge(tags)
 
-          # puts "---"
-          # puts tags
-          # puts "---"
-
           post = {
             "date" => "#{entry.published.content}",
             "title" => entry.title.content,
@@ -142,29 +138,27 @@ module Reading
       mappings = site.data["post-tag-mapping"]
       set = Set.new
       tags.each do |tag|
-        tag = tag.downcase
+        tag = tag.downcase.gsub(/\./, '')
         if /^feed_/ =~ tag then
           next
         end
         if tag.match(/^aerogear-(.*)$/) then
           tag = $1
         end
-        # puts "processing #{tag}"
         mapped = mappings[tag]
-        # puts "mapped: '#{mapped}'"
         if mapped.nil? then
           set.add(tag)
         else
           case mapped
             when /^\+(.*)$/
-              # puts "add: #{tag} + #{$1}"
+              # add both, tag and mapped
               set.add($1)
               set.add(tag)
             when /^=/
-              # puts "module: #{tag}"
+              # add just tag itself for modules, it will be recognized and removed later
               set.add(tag)
             else
-              # puts "removal: #{tag}"
+              # remove tag, use mapped
               set.add(mapped)
           end
         end

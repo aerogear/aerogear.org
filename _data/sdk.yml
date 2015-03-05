@@ -1,5 +1,7 @@
-aerogearjs:
-  version: 2.0.0
+javascript:
+  name: JavaScript
+  icon: fa-html5
+  aerogearjs-version: 2.0.0
 
 android:
   name: Android
@@ -53,7 +55,7 @@ ios:
 
 cordova:
   name: Cordova
-  icon: fa-simplybuild
+  icon: fa-simplybuilt
   modules:
     pushplugin:
       name: Push
@@ -86,3 +88,6 @@ cordova:
       version: latest
       plugin: org.jboss.aerogear.cordova.oauth2
 
+windows:
+  name: Windows
+  icon: fa-windows
