@@ -1,0 +1,106 @@
+* <<Google>>
+* <<Facebook>>
+* <<Keycloak>>
+
+[[Google]]
+== Google Account Setup
+
+. First, you must authenticate with Google. You will need a Google Account
+for this. Now open the http://console.developer.google.com[Google
+Console].
+
+. If you haven't created a project, click "Create Project" and give the
+new project a name:
++
+image:/docs/guides/security/oauth2/img/google-console-1.png[Google Console - Create Project]
++
+. Now you enable the Drive API. To do that, navigate to APIs &
+auth > APIs and scroll down to the Drive API item, which you need to
+turn on:
++
+image:/docs/guides/security/oauth2/img/google-console-2.png[Google Console - Enable APIs]
++
+. Create new credentials to access your Drive accounts from
+the app. Go to APIs & auth > Credentials and inside OAuth area click the
+blue `Create new Client ID` button.
++
+image:/docs/guides/security/oauth2/img/google-console-3.png[Google Console - Create client ID]
++
+. You will need to create a _consent screen_. Click the blue
+`Configure consent screen`
++
+image::/docs/guides/security/oauth2/img/google-console-4.png[Google Console - Consent screen]
++
+. Afterwards, click save and you will return to the Client ID. Select `Installed application` and `iOS` and fill in your `bundle ID`, these settings will work for Android and iOS:
++
+image:/docs/guides/security/oauth2/img/google-console-5.png[Google Console - Create client ID]
++
+. On the last screen we finally get to see the actual value of the
+generated `client id`, `secret id` and `redirect uris`, which you will
+use later:
++
+image:/docs/guides/security/oauth2/img/google-console-6.png[Google Console - Credentials]
+
+[[Facebook]]
+== Facebook Account Setup
+
+. First you must have a Facebook account. Now open the
+https://developers.facebook.com/[Facebook Developers] page and select
+`Apps` -> `Add a New App`
++
+image:/docs/guides/security/oauth2/img/facebook-1.png[Facebook - Add App]
++
+. Create a new app and select `Website` as platform
++
+image:/docs/guides/security/oauth2/img/facebook-2.png[Facebook - Select platform]
++
+. Click `Skip and Create App ID`
++
+image:/docs/guides/security/oauth2/img/facebook-3.png[Facebook - Skip and Create App ID]
++
+. Setup a Display Name and Namespace and select a category, then click
+`Create App ID`
++
+image:/docs/guides/security/oauth2/img/facebook-4.png[Facebook - Choice app category]
++
+. Fill out the captcha
+
+. Now on the Dashboard view. Make a note of your `App ID` and
+`App Secret`.
++
+image:/docs/guides/security/oauth2/img/facebook-5.png[Facebook - Dashboard]
++
+. Select `Settings` from the sidebar and then the `Advanced` tab
++
+image:/docs/guides/security/oauth2/img/facebook-6.png[Facebook - Advanced Tab]
++
+. Scroll to Security and enable `Embedded browser OAuth Login` and make
+`https://localhost/` your redirectURI
++
+image:/docs/guides/security/oauth2/img/facebook-7.png[Facebook - Enable OAuth]
++
+Now save your changes and Facebook is ready to go.
+
+[[Keycloak]]
+== Keycloak and Shoot Server Setup
+
+
+. Download Keycloak Appliance Distribution version http://sourceforge.net/projects/keycloak/files/1.1.0.Final/[1.1.0.Final]
+. Start the server
++
+[source,bash]
+$ KEYCLOAK_APPLIANCE_HOME/keycloak/bin/standalone.sh -b 0.0.0.0
++
+A quick screencast can be seen https://asciinema.org/a/16876[here].
+. Open http://localhost:8080/auth/admin/index.html[http://localhost:8080/auth/admin/index.html]
++
+image:/docs/guides/security/oauth2/img/keycloak-1.jpg[Keycloak - Login page]
++
+. Login using *Username*: _admin_ / *Password*: _admin_
+. Insert a new password
+. Click on `Add realm`
++
+image:/docs/guides/security/oauth2/img/keycloak-2.jpg[Keycloak - Realm configuration]
++
+. Import the https://raw.githubusercontent.com/aerogear/aerogear-backend-cookbook/master/Shoot/configuration/shoot-realm.json[realm configuration file]
+
