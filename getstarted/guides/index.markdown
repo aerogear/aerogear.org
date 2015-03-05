@@ -15,7 +15,8 @@ Designed to get you started with enterprise mobile development.
 > Learn how to make first steps in the mobile development on each of supported platforms
 
 <h4 id="coreAndroid">Android</h4>
-* [How to build AeroGear Android library](/docs/guides/aerogear-android/how-to-build-aerogear-android)
+* [Google's Android Tutorials](https://developer.android.com/training/index.html)
+* [AeroGear Android General information](/android/)
 
 
 <h4 id="coreCordova">Cordova</h4>
