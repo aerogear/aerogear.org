@@ -57,8 +57,7 @@
 
   <div class="container">
     <div class="row">   
-      <div class="col-md-3 sidebar">
-          <div class="submenu">
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
             {% if page.section-class == 'guides' %}
               {% include sidebar-guides.html %}
             {% elsif page.section-class == 'demos' %}
@@ -74,7 +73,6 @@
             {% elsif page.section-class == 'roadmaps' %}
               {% include sidebar-roadmaps.html %}
             {% endif %}
-          </div><!-- sidebar -->
         </div><!-- col -->
         <div class="col-md-9">
           {{ content }}

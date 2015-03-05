@@ -27,10 +27,8 @@
   <div class="container">
     <div class="row">
       {% if page.toc_generate == true %}
-      <div class="col-md-3 sidebar">
-        <div class="submenu">
-          {{ content | toc_generate }}
-        </div><!-- sidebar -->
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        {{ content | toc_generate }}
       </div><!-- col -->
       {% endif %}
       <div class="{% if page.toc_generate == true %}col-md-9{% else %}col-md-8 col-md-offset-2{% endif %} post">

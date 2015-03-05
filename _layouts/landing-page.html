@@ -21,10 +21,8 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-3 sidebar">
-        <div class="submenu">
-          {{ content | toc_generate }}
-        </div><!-- sidebar -->
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        {{ content | toc_generate }}
       </div><!-- col -->
       <div class="col-md-9 post">
         {{ content }}
