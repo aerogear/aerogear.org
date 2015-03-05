@@ -63,6 +63,15 @@ $('body').scrollspy({ target: '.sidebar' });
 //      }  
 //   });
 
+    // scroll to correct position of anchor (avoid being hidden behind navbar)
+    function scrollAnchorToView() {
+      window.scrollBy(0, -70);
+    }
+    $(window).on('hashchange', scrollAnchorToView);
+    if (location.hash) {
+      scrollAnchorToView();
+    }
+
 
     
 });
