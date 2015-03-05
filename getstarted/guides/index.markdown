@@ -48,22 +48,21 @@ Designed to get you started with enterprise mobile development.
 
 > Secure the application by using authentication, two-factor authentication and authorization mechanisms
 
-<h3 id="securityCordova">Cordova</h3>
+#### 1. Overview
 
-* OTP
-  * [AeroGear Two-Factor Authentication with OTP](AeroGear-OTP)
-  * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](aerogear-cordova/AerogearCordovaOTP)
+In progress
 
-* OAuth2
-  1. [Basic steps](/docs/guides/security/oauth2)
-  2. Client libraries
+#### 2. OTP
+* [AeroGear Two-Factor Authentication with OTP](AeroGear-OTP)
+* [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](aerogear-cordova/AerogearCordovaOTP)
 
-     The following SDKs were crafted with the simplicity in mind and are constantly improving at each release.
+#### 3. Cryptography
 
-     * [Android client library](http://search.maven.org/#artifactdetails%7Corg.jboss.aerogear%7Caerogear-android-authz%7C2.0.0%7Caar)
-     * [iOS client library](http://cocoapods.org/?q=aerogearoauth2)
-     * [Apache Cordova client library](http://plugins.cordova.io/#/package/org.jboss.aerogear.cordova.oauth2)
-     * [Windows Phone](http://www.nuget.org/packages/aerogear-windows-oauth2/)
+* In progress
+
+#### 4. OAuth2
+
+  1. [Before you get started](/docs/guides/security/oauth2)
 
 <div class="alert alert-info" role="alert">If you are looking for AeroGear iOS 1.x series, please visit <a href="/docs/guides/aerogear-ios/">this page</a> for more information.</div>
 ---
