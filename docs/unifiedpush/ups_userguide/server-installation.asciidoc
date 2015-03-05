@@ -85,6 +85,8 @@ $ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 \
 ----
 . Create the UnifiedPush MySQL database
 +
+For 1.0.x : 
++
 [source,c]
 ----
 $ mysql -u <user-name>
@@ -92,6 +94,19 @@ mysql> create database unifiedpush default character set = "UTF8" default collat
 mysql> create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
 mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';
 ----
++
+For 1.1.x : 
++
+[source,c]
+----
+$ mysql -u <user-name>
+mysql> create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
+mysql> create database keycloak default character set = "UTF8" default collate = "utf8_general_ci";
+mysql> create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
+mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';
+mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON keycloak.* TO 'keycloak'@'localhost';
+----
+
 . Start the application server
 +
 [source,c]
@@ -134,12 +149,25 @@ $ mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 \
 ----
 . Create the UnifiedPush PostgreSQL database
 +
+For 1.0.x :
++
 [source,c]
 ----
 $ psql -U <user-name>
 psql> create database unifiedpush;
 psql> create user unifiedpush with password 'unifiedpush';
 psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
+----
+For 1.1.x : 
++
+[source,c]
+----
+$ psql -U <user-name>
+psql> create database unifiedpush;
+psql> create database keycloak;
+psql> create user unifiedpush with password 'unifiedpush';
+psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
+psql> GRANT ALL PRIVILEGES ON DATABASE keycloak to keycloak;
 ----
 . If necessary, enable UnifiedPush Server access to the PostgreSQL database by adding the following lines to your +$POSTGRES_HOME/data/pg_hba.conf+ file
 +
