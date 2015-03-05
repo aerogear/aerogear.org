@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: post
 title: Offline Storage Specification (OSS)
 ---
 

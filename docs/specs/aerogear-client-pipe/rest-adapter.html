@@ -3,129 +3,129 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="generator" content="Asciidoctor 0.1.1">
-    
-    
+
+
     <title>RestAdapter</title>
-    
-    
-    
+
+
+
   </head>
   <body class="article">
-    
+
     <div id="header">
-      
-      
+
+
     </div>
-    
+
     <div id="content">
 <div class="paragraph">
-    
+
   <p>---
-layout: basic
+layout: post
 title: RestAdapter, An AeroGear Pipe Implementation</p>
 </div>
 <div class="paragraph">
-    
+
   <p>---</p>
 </div>
 
 <div class="sect1">
   <h2 id="_restadapter">RestAdapter</h2>
-  
+
   <div class="sectionbody">
 <div class="paragraph">
-    
+
   <p><strong>RestAdapter</strong> is a implementation of <strong>Pipe</strong> provided by AeroGear which is used for accessing remote HTTP based REST services.</p>
 </div>
 
 <div class="sect2">
   <h3 id="_methods">Methods</h3>
-  
+
 <div class="ulist">
-  
+
   <ul>
-  
+
     <li>
       <p><strong>read</strong> : Performs a HTTP GET to the URL defined by ${baseUrl}/${resource}</p>
-      
+
 <div class="ulist">
-  
+
   <ul>
-  
+
     <li>
       <p>Additional parameters may be appended to the URL&#8217;s path or query.</p>
-      
+
     </li>
-  
+
   </ul>
 </div>
 
-      
+
     </li>
-  
+
     <li>
       <p><strong>save</strong> : Performs a HTTP POST or PUT to the URL defined by ${baseUrl}/${resource}/${resource.id}</p>
-      
+
 <div class="ulist">
-  
+
   <ul>
-  
+
     <li>
       <p>The body of the request is a JSON serialized version of the resource being saved</p>
-      
+
     </li>
-  
+
     <li>
       <p>If resource has an identifying value, RestAdapter uses an HTTP_POST</p>
-      
+
     </li>
-  
+
     <li>
       <p>If there is no identifying value, a PUT method is called.  ${resource.id} is omitted from the path</p>
-      
+
     </li>
-  
+
   </ul>
 </div>
 
-      
+
     </li>
-  
+
     <li>
       <p><strong>delete</strong> : Performs and HTTP DELETE to the URL defined by ${baseUrl}/${resource}/${id}</p>
-      
+
 <div class="ulist">
-  
+
   <ul>
-  
+
     <li>
       <p>If there is no id available, this is an error.</p>
-      
+
     </li>
-  
+
   </ul>
 </div>
 
-      
+
     </li>
-  
+
   </ul>
 </div>
 
-  
+
 </div>
 
 
   </div>
-  
+
 </div>
 
 
     </div>
-    
+
     <div id="footer">
       <div id="footer-text">
-        
+
         Last updated 2013-05-20 15:58:58 EDT
       </div>
     </div>

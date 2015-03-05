@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: post
 title: AeroGear Data Sync
 ---
 
@@ -11,11 +11,11 @@ AeroGear Data Sync Use Cases
 
 [options="header" cols="^,^,^,^,^"]
 |=============================================================================
-| Use Case 	| Push/Poll 	| Realtime 	| Server 	| APIs Used 
-| Periodic Read Only Update | Poll | N | Any legacy | Pipelines, Authentication, Stores 
-| Real Time Read Only Update | Push | Y(ish) | Legacy + Updates for Unified Push | Unified Push, Store 
-| Simple Settings Sync | Push | Y(ish) | Legacy + Updates for Unified Push + Updates for conflict mgmt | Pipelines, Authentication, UnifiedPush, Store 
-| Real Time Text Sync | Push | Y | Needs lots of custom code, vert.x realtime component | UnifiedPush, Store 
+| Use Case 	| Push/Poll 	| Realtime 	| Server 	| APIs Used
+| Periodic Read Only Update | Poll | N | Any legacy | Pipelines, Authentication, Stores
+| Real Time Read Only Update | Push | Y(ish) | Legacy + Updates for Unified Push | Unified Push, Store
+| Simple Settings Sync | Push | Y(ish) | Legacy + Updates for Unified Push + Updates for conflict mgmt | Pipelines, Authentication, UnifiedPush, Store
+| Real Time Text Sync | Push | Y | Needs lots of custom code, vert.x realtime component | UnifiedPush, Store
 |=============================================================================
 
 Periodic Read Only Update
@@ -28,36 +28,36 @@ Usage proposal: Reading a schedule (Android)
 ```java
 
   PipeConfig pipeConfig = buildConfig()
-  
+
   SyncConfig syncConfig = new SyncConfig();
   syncConfig.setType(SyncTypes.PeriodicReadOnly);
   syncConfig.setExpiresIn(SyncConfig.24_HOURS);
-  
+
   pipeConfig.setSync(syncConfig);
-  
+
   Pipe<Schedule> schedulePipe = pipeline.pipe(pipeConfig);
-  
+
   schedulePipe.read(/*call back*/);
   /*
   This will check a SQL Store, notice there is no data, fetch the data, and store metadata about when it was fetched.
   */
-  
-  
-  
+
+
+
   //12 Hours later
   schedulePipe.read(/*call back*/);
   /*
   This will check a SQL Store, notice there is data, notice it is inside of the expires time, and return it.
   No call to the remote source will be made.
   */
-  
-  
+
+
   //36 Hours later
   schedulePipe.read(/*call back*/);
   /*
   This will check a SQL Store, notice there is data, notice it is stale, and refetch and refresh the data.
   */
-  
+
 ```
 
 

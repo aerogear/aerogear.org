@@ -1,6 +1,6 @@
 ---
-layout: basic
-title: RestAdapter, An AeroGear Pipe Implementation  
+layout: post
+title: RestAdapter, An AeroGear Pipe Implementation
 
 ---
 
@@ -17,7 +17,7 @@ Methods
 
 * *save* : Performs a HTTP POST or PUT to the URL defined by $\{baseUrl}/$\{resource}/${resource.id}
   ** The body of the request is a JSON serialized version of the resource being saved
-  ** If resource has an identifying value, RestAdapter uses an HTTP_POST 
+  ** If resource has an identifying value, RestAdapter uses an HTTP_POST
   ** If there is no identifying value, a PUT method is called.  ${resource.id} is omitted from the path
 
 * *delete* : Performs and HTTP DELETE to the URL defined by $\{baseUrl}/$\{resource}/$\{id}

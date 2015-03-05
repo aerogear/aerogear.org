@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: post
 title: AeroGear Data Sync
 ---
 # Status: Experimental
@@ -28,7 +28,7 @@ title: AeroGear Data Sync
 
 
 * [Message Format](../aerogear-sync-data-format)
-* [AeroGear Java Server API](../aerogear-sync-server-java-api/org/jboss/aerogear/sync/server/ServerSyncEngine.html)  
-* [AeroGear Java Client API](../aerogear-sync-server-java-api/org/jboss/aerogear/sync/client/ClientSyncEngine.html)  
+* [AeroGear Java Server API](../aerogear-sync-server-java-api/org/jboss/aerogear/sync/server/ServerSyncEngine.html)
+* [AeroGear Java Client API](../aerogear-sync-server-java-api/org/jboss/aerogear/sync/client/ClientSyncEngine.html)
 
 

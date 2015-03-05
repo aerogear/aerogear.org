@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: post
 title: AeroGear Data Sync
 ---
 
@@ -9,7 +9,7 @@ title: AeroGear Data Sync
 
 ## Overview
 
-The Client API I propose bridges Datastores, Pipes, and Push technologies.  
+The Client API I propose bridges Datastores, Pipes, and Push technologies.
 
 Currently, the user has to manually signal an intent to push his changes to a remote service.  However, the push subsystem takes care of receiving updates from a server.
 
@@ -27,7 +27,7 @@ Before we get into the APIs I would like to demonstrate a usage example for two 
     TwoWaySqlSynchronizer<UserCalendar> userCalendarSync;
     TwoWaySqlSynchronizerConfig syncConfig = new TwoWaySqlSynchronizer.TwoWaySqlSynchronizerConfig();
     syncConfig.setKlass(UserCalendar.class);
-    syncConfig.setPipeConfig(userCalendarPipeConfig); 
+    syncConfig.setPipeConfig(userCalendarPipeConfig);
     syncConfig.setStoreConfig(userCalendarStoreConfig);
 
     userCalendarSync = new TwoWaySqlSynchronizer<UserCalendar>(syncConfig);
@@ -72,7 +72,7 @@ Before we get into the APIs I would like to demonstrate a usage example for two 
         super.onPause();
         userCalendarSync.removeListener(this);
     }
-    
+
 
     @Override
     public void dataUpdated(Collection<UserCalendar> newData) {
@@ -127,7 +127,7 @@ beginSync ***void*** **appContext**
 stopSync ***void***
 : This method unregisters the app from synchronization.  It will also perform any necessary cleanup.  This method does not necessarily remove data.
 
-loadRemoteChanges ***void*** 
+loadRemoteChanges ***void***
 : This method will download *update* the current working data with the remote *changes*.
 
 sync ***void***
@@ -136,13 +136,13 @@ sync ***void***
 resetToRemoteState ***void*** **Callback**
 : This will download the remote data and replace the local data with it.
 
-## TwoWaySqlSynchronizer :: Synchronizer 
+## TwoWaySqlSynchronizer :: Synchronizer
 
 This Synchronizer will examine a local data store and send changes to the server.  It does this by maintaining a reference to an external SQLStore and an internal reference to a Shadow SQL Store.  The Shadow store is updated when synchronization happens to generate a change list to send to the server or apply to the local data store.
 
 One of the "neat" things about this synchronizer is that since GCM handles offline state, we will only receive messages when the device is online.  Thus we don't have to worry about online/offline detection.  We still have to worry about conflict detection and resolution however.
 
-## PeriodicReadOnlySynchronizer  :: Synchronizer 
+## PeriodicReadOnlySynchronizer  :: Synchronizer
 
 This synchronizer may store data in any store and refreshes its data from the server on a schedule provided by its config object.
 
@@ -201,27 +201,27 @@ Use cases where caching data is useful and where it should be transparent and lo
 
 
     PipeConfig pipeConfig = buildConfig()
-  
+
     SyncConfig syncConfig = new SyncConfig();
     syncConfig.setType(SyncTypes.PeriodicReadOnly);
     syncConfig.setExpiresIn(SyncConfig.24_HOURS);
-  
+
     pipeConfig.setSync(syncConfig);
-  
+
     Pipe<Schedule> schedulePipe = pipeline.pipe(pipeConfig);
-  
+
     schedulePipe.read(/*call back*/);
     /*
     This will check a SQL Store, notice there is no data, fetch the data, and store metadata about when it was fetched.
     */
-  
+
     //12 Hours later
     schedulePipe.read(/*call back*/);
     /*
     This will check a SQL Store, notice there is data, notice it is inside of the expires time, and return it.
     No call to the remote source will be made.
     */
-  
+
     //36 Hours later
     schedulePipe.read(/*call back*/);
     /*
@@ -230,7 +230,7 @@ Use cases where caching data is useful and where it should be transparent and lo
 
 
 ## Topics not addressed
- 
+
 * Data life cycle
 * Security
 *Conflict detection
@@ -239,29 +239,29 @@ Use cases where caching data is useful and where it should be transparent and lo
 
     // [option 1 fully automatic we create a pipe and add the posibilty to add a store for failover and sync just happens at on- and offline events]
     // and because merging can fail users can add a conflict handlers
-     
+
     Builder builder = Builder.createPipe(pipeConfig).addFailoverStore(storeConfig);
     Pipe<Car> pipe = builder.pipe(Car.class);
-     
+
     pipe.addConfictHandler(new ConflictHandler() {
       public void conflict(Field originalField, Field newField) {
       // user interaction
       }
     });
-     
+
     // [option 2 explicit let the user specify when to sync and what to sync]
     SyncedPipe pipe = SyncPipeBuilder.build(options); // SyncPipe Store and Pipe togheter
-     
+
     // or we only use a store to sync and tell the sync manager where to sync to
     SyncManager syncManager = new SyncManger();
     syncManger.filter(readFilter); // maybe we don't want to sync all data but just some part
-     
+
     syncManager.addConnectionHandler(new ConnectionHandler() {
       public void onConnection() {
       syncManger.sync(pipe);
       }
     });
-     
+
     syncManger.addConfictHandler(new ConflictHandler() {
       public void conflict(Field original, Field new) {
       // user interaction

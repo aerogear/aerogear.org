@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: post
 title: AeroGear Client Paging
 
 ---
@@ -33,8 +33,8 @@ An object to apply general information about a (paging) request.
 
 *Linking*
 
-- _nextIdentifier_: String, the `next` identifier name (default: `next`) 
-- _previousIdentifier_: String, the `previous` identifier name (default: `previous`) 
+- _nextIdentifier_: String, the `next` identifier name (default: `next`)
+- _previousIdentifier_: String, the `previous` identifier name (default: `previous`)
 
 
 #### Request- and Pipe- level
@@ -49,13 +49,13 @@ However, it should be always possible for a user to update the arguments on a _p
 
 - _offsetValue_: String, the offset of the first element that should be included in the returned collection (default: `0`)
 
-*limit* 
+*limit*
 
 - _limitValue_: int, the maximum number of results the server should return (default: `10`)
 
 ##### CUSTOM parameter providers
 
-A `parameter provider` API will be provided to that the application developer can submit any (paging) parameter that the used server requires. An example would be that the used paging service supports sorting as well. 
+A `parameter provider` API will be provided to that the application developer can submit any (paging) parameter that the used server requires. An example would be that the used paging service supports sorting as well.
 
 ***
 
@@ -71,13 +71,13 @@ _NOTE:_ When scrolling outside of the allowed range (e.g. invoking `next` on the
 
 ***
 
-## Use cases - Behaviour 
+## Use cases - Behaviour
 
 ### start the pagination and next
 
 * start a `paged read` (see concrete API docs for details)
  * this returns the first page
- * scroll to the `next` or `last` page - if possible/desired 
+ * scroll to the `next` or `last` page - if possible/desired
 
 ### Jump to a specific page
 
