@@ -26,12 +26,12 @@ section: community
             <div class="media-body">
               <div class="user-info">
                 {% if member.url %}
-                <a href="http://{{ member.url }}" itemprop="url"><i class="fa fa-globe"></i> {{ member.url }}</a>
+                <a href="http://{{ member.url }}" itemprop="url"><i class="fa fa-globe fa-lg"></i> <span class="hidden-xs hidden-md">{{ member.url }}</span></a>
                 {% endif %}
                 {% if member.twitter %}
-                <a href="https://twitter.com/{{ member.twitter }}" itemprop="url"><i class="fa fa-twitter"></i> {{ member.twitter }}</a>
+                <a href="https://twitter.com/{{ member.twitter }}" itemprop="url"><i class="fa fa-twitter fa-lg"></i> <span class="hidden-xs hidden-md">{{ member.twitter }}<span class="hidden-xs hidden-md"></a>
                 {% endif %}
-                <a href="https://github.com/{{ member.github }}"><i class="fa fa-github-alt"></i> {{ member.github }}</a>
+                <a href="https://github.com/{{ member.github }}"><i class="fa fa-github-alt fa-lg"></i> <span class="hidden-xs hidden-md">{{ member.github }}</span></a>
               </div><!-- user-contact -->
                   
               <h4 class="media-heading" itemprop="name">{{ member.name }}</h4>
