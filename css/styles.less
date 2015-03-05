@@ -711,6 +711,7 @@ article{
 
 //submenu ==================================================================
 
+/*
 .sidebar{
 display: none;
   @media (min-width: @screen-md-min) {
@@ -724,6 +725,7 @@ display: none;
 .submenu.affix{
   top: 80px!important;
   position: fixed!important;
+  background: red;
 }
 
 .submenu.affix-bottom{
@@ -735,8 +737,6 @@ display: none;
   ul{
     .reset;
     list-style: none;
-//    padding-left: 10px;
-//    background: red;
     a{
       display: block;
       padding: 6px 0;
@@ -769,6 +769,81 @@ display: none;
   }//ul 
 
 } //submenu
+
+*/
+
+//.sidebar ==================================================================
+
+
+.affix-bottom{
+//  top: 80px!important;
+//  position: fixed!important;
+}
+
+.affix{
+  top: 80px!important;
+  position: fixed!important;
+//  background: red;
+}
+
+
+.sidebar{
+  @media (min-width: @screen-md-min) {
+    margin-top: 6px;
+  }
+  
+  .affix,.affix-bottom {
+    @media (min-width: @screen-lg-min) {
+      top: 80px;
+      width: calc(~"1170px/4 - 30px");
+    }
+    
+    @media (max-width: @screen-md-max) {
+      top: 80px;
+      width: calc(~"970px/4 - 30px");
+    }
+  }
+  
+  > .nav > li {
+    
+    > ul {
+      display: none;
+      .nav;
+    }
+    
+    &.active > ul {
+      display: block;
+    }
+  }
+  
+  a {
+    font-weight: @font-weight-regular;
+  }
+  
+  .active > a {
+    border-right: 2px solid @primary-color-dark;
+  }
+  
+  > .nav > li > a {
+//    text-transform: uppercase;
+      font-weight: @font-weight-bold;
+  }
+  
+  .nav > li {
+    > a {
+      padding: 8px 15px;
+    }
+    
+    > ul {
+      margin-bottom: 10px;
+      
+      li a {
+        padding: 4px 15px 4px 35px;
+      }
+    }
+    
+  }
+}
 
 
 

@@ -1,6 +1,24 @@
 jQuery(function($){
 
-$('body').scrollspy({ target: '.submenu' });  
+$('body').scrollspy({ target: '.sidebar' });  
+
+  $('.sidebar > .nav').affix({
+    offset: {
+        top: function (){
+          return (this.top = $(".main-banner").outerHeight(true));
+        },
+        bottom: 558
+//        bottom: function () {
+//          return (this.bottom = $('footer').outerHeight(true) + $('.redhat').outerHeight(true));
+//        }
+//      bottom: function () {
+//        return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
+//      }
+    }
+  });  
+
+
+
     
     window.showShadow = function(){    
      if($(window).scrollTop() === 0){
@@ -13,23 +31,21 @@ $('body').scrollspy({ target: '.submenu' });
     $(window).scroll(showShadow);
     showShadow();
 
-   
-   
-  $(".submenu").css("width", $('.submenu').width());
-  
-  
-   $('.submenu').affix({    
-       offset: {
-        top: function (){
-          return (this.top = $(".main-banner").outerHeight(true));
-        },
-        
-        bottom: function (){
-          return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
-        }
 
-      }  
-   });
+
+  
+//   $('.submenu').affix({    
+//       offset: {
+//        top: function (){
+//          return (this.top = $(".main-banner").outerHeight(true));
+//        },
+//        
+//        bottom: function (){
+//          return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
+//        }
+//
+//      }  
+//   });
 
 
     
