@@ -18,6 +18,22 @@ $('body').scrollspy({ target: '.sidebar' });
   });  
 
 
+  $('.submenu').affix({
+    offset: {
+        top: function (){
+          return (this.top = $(".main-banner").outerHeight(true));
+        },
+        bottom: 558
+//        bottom: function () {
+//          return (this.bottom = $('footer').outerHeight(true) + $('.redhat').outerHeight(true));
+//        }
+//      bottom: function () {
+//        return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
+//      }
+    }
+  });  
+
+
 
     
     window.showShadow = function(){    
