@@ -69,7 +69,7 @@ In progress
 
 #### 4. OAuth2
 
-  1. [Before you get started](/docs/guides/security/oauth2)
+  1. [OAuth2](/docs/guides/security/oauth2-guide)
 
 <div class="alert alert-info" role="alert">If you are looking for AeroGear iOS 1.x series, please visit <a href="/docs/guides/aerogear-ios/">this page</a> for more information.</div>
 ---
