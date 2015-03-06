@@ -1,9 +1,9 @@
 ---
-layout: basic
+layout: post
 title: AeroGear iOS User Guide
----
+section: guides
 
-# AeroGear iOS User Guides
+---
 
 <h2 class="section-header" id="core"><i class="fa fa-graduation-cap"></i> First Steps</h2>
 

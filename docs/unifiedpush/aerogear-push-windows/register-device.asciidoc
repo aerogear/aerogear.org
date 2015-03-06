@@ -1,11 +1,5 @@
----
-layout: post
-section: guides
-title: The AeroGear UnifiedPush Server
----
 
-
-CAUTION: this functionality is only available on master
+== The AeroGear UnifiedPush Server
 
 
 With all the Windows Setup work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to WNS for a later message sending.
@@ -31,6 +25,6 @@ image:./img/example_01.png[Example Implementation]
 
 NOTE: Clicking on the appropriate tab, you can choose between _C#_ and _Cordova_ snippet!
 
-== Visual Studio
+=== Visual Studio
 
 The server is now configured. Let's move to Visual Studio and link:../windows-app[create an Windows application] that will use the AeroGear Windows library to connect to the UnifiedPush server and start receiving notifications.

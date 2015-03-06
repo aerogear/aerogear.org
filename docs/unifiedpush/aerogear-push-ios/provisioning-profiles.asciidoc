@@ -1,13 +1,9 @@
----
-layout: post
-title: Creating a Provisioning Profile
-section: guides
----
 
+== Creating a Provisioning Profile
 
 Now that you have created an App ID and you got your SSL certificate, it's time to create a _Provisioning Profile_
 
-== Development Provisioning Profile
+=== Development Provisioning Profile
 
 In the _Provisioning Portal_ you need to create an _iOS App Development_ provisioning profile, so that you can test the Push Notifications on your own iOS devices:
 
@@ -36,7 +32,7 @@ image:./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profil
 
 
 
-== Distribution Provisioning Profile
+=== Distribution Provisioning Profile
 
 In order to test Push Notifications on a *production environment*, you need to create an _iOS App Distribution_ provisioning profile in the _Provisioning Portal_.
 
@@ -63,7 +59,7 @@ Now download the Profile and open the file. Go to Xcode -> preferences... menu, 
 image:./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profile]
 
 
-== Settting up Xcode
+=== Settting up Xcode
 
 Now, let's setup the link:../xcode-setup[Xcode]
 
