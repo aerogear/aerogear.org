@@ -2,6 +2,7 @@
 layout: post
 title: Client registration with the UnifiedPush Server
 section: guides
+toc_generate: true
 ---
 
 This document describes the functionality of a client SDK that works with the AeroGear UnifiedPush Server.

@@ -47,6 +47,8 @@ span.version {
 
 <h4 id="unifiedpush">UnifiedPush</h4>
 
+* [UnifiedPush Message Format](../unifiedpush/push-message-format/)
+* [UnifiedPush Client Registration](../unifiedpush/client-registration/)
 * [UnifiedPush RESTful APIs - stable](aerogear-unifiedpush-rest-1.0.x/overview-index.html)
 * [UnifiedPush RESTful APIs - development](aerogear-unifiedpush-rest/overview-index.html)
 * [UnifiedPush Java Client](aerogear-unifiedpush-java-client) <span class="version">1.0.0</span>
