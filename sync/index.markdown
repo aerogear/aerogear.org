@@ -19,6 +19,13 @@ sub-section-title: AeroGear Sync
 Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel. This feature provides both, a specific server side sync engine, as well as a client side sync engines for Android, iOS and JavaScript. The implementation is based on Google's [Differential Synchonrization](http://research.google.com/pubs/pub35605.html) by Neil Fraser.
 
 
+<h3 id="sync-in-action">See it in Action</h3>
+
+<p>To see it in action, watch the screencast below:</p>
+<p><center>
+	<iframe src="https://player.vimeo.com/video/121332828" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</center></p>
+
 <h2 id="roadmap"><i class="fa fa-road"></i> RoadMap</h2>
 
 The AeroGear Data-Sync effort started out of a POC and we are now moving towards a first alpha release. 
