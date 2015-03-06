@@ -91,10 +91,15 @@ span.version {
 ---
 
 <h2 class="section-header" id="sync"><i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong> Specifications <sub><span class="label label-warning">Experimental</span></sub></h2>
-
 * [Data Sync Specification](aerogear-data-sync)
+* [Data Sync Message Format](aerogear-sync-data-format)
+
+<h4 id="securityGeneral">Sync Server</h4>
+* [Java Server API](aerogear-sync-server-java-api/org/jboss/aerogear/sync/server/ServerSyncEngine.html)
+* [Java Client API](aerogear-sync-server-java-api/org/jboss/aerogear/sync/client/ClientSyncEngine.html)
+
+<h4 id="securityGeneral">Proposals</h4>
 * [Client API Proposals](aerogear-sync-client-api)
-* [Server API Proposals](aerogear-sync-server-api)
 
 ---
 

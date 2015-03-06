@@ -2,10 +2,8 @@
 layout: post
 section: docs
 title: AeroGear Client Paging
-
+toc_generate: true
 ---
-
-# Client Paging
 
 This document describes the client side interfaces which a developer can use to Page through data obtained from remote rest services.  This document describes both how to interact with paging enabled applications as well how to extend the client libraries and APIs to support most other restful services.
 

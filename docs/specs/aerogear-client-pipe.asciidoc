@@ -2,11 +2,8 @@
 layout: post
 section: docs
 title: AeroGear Pipelines and Pipes
-
+toc_generate: true
 ---
-
-AeroGear Pipelines and Pipes
-----------------------------
 
 The AeroGear client libraries provide **Pipe** implementations as abstractions around high latency data sources.  **Pipe** defines several asynchronous methods for performing CRUD operations on a `resource` managed by this source.
 
@@ -14,11 +11,9 @@ The AeroGear client libraries provide **Pipe** implementations as abstractions a
 
 ''''
 
-Pipe
-~~~~
+## Pipe
 
-Methods
-^^^^^^^
+### Methods
 
 
 *NOTE:*
@@ -43,13 +38,11 @@ Methods
  ** This method MUST be provided a callback which will be called upon completion of the operation.  No data will be passed to the callback
 
 
-Error Handling
-^^^^^^^^^^^^^^
+### Error Handling
 
 Pipe's make use of a callback to pass error information to the client.  The callback is often passed to the CRUD methods along with the callback to be invoked for successful processing.
 
-Configuration
-^^^^^^^^^^^^^
+### Configuration
 
 **Pipe** instances have the following properties which will be consumed by **Pipeline** to create instances.
 
@@ -75,8 +68,7 @@ Configuration
   ** When this limit is reached, the **Pipe** should report it as an error.
   ** It defaults to a large integer.
 
-See Also
-^^^^^^^^
+### See Also
 
  * link:rest-adapter/[Rest Adapter] : A provided implementation of Pipe to access RESTful web Services
 
@@ -85,18 +77,15 @@ See Also
  * link:../aerogear-client-paging/[Paging spec] : An extension of the Pipe API to include paging information
 
 
-Pipeline
-~~~~~~~~
+## Pipeline
 
 A Pipeline is both a factory  for new **Pipes** and a reference to existing **Pipes**.
 
-Properties
-^^^^^^^^^^
+### Properties
 
  * *baseURL* : the URL of the server the resources the __Pipes__ will connect to
 
-Functions
-^^^^^^^^^
+### Functions
 
  * *pipe* : Creates a Pipe and returns an instance
   ** This method MUST be provided a resource parameter for the resulting Pipe
@@ -105,7 +94,6 @@ Functions
 * *remove* : Removes a Pipe from the Pipelines cache
   ** This method MUST be provided with a name of the Pipe to remove
 
-Retrieving Pipes
-^^^^^^^^^^^^^^^^
+### Retrieving Pipes
 
 **Pipe** instances are retrieved from **Pipeline** by using the Pipe's name parameter.

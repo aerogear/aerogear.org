@@ -1,14 +1,15 @@
 ---
 layout: post
 section: docs
-title: AeroGear Sync Data model
+title: AeroGear Sync Message Format
 ---
-# Status: Experimental
 
-# Message format
+<span class="label label-warning">Status: Experimental</span>
+
+## Message format
 This section defines the message format that is sent between a client and a server.
 
-## Add message type
+### Add message type
 The _add_ message is sent when a client wants to add a document/object into the server sync engine.
 The format is in Java Object Notation (JSON) and has the following structure:
 
@@ -32,7 +33,7 @@ An identifier for the client adding the document. This value must be a unique id
 The actual content of the document/object being added. The type of content depends upon the type of documents the server supports.
 In the above example the document/object content type is JSON.
 
-## Patch message type
+### Patch message type
 The _patch_ message is sent when a client or server has updates that need to be sent the the other side.
 The format is in JSON and has the following structure:
 

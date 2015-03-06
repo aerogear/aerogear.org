@@ -2,27 +2,26 @@
 layout: post
 section: docs
 title: AeroGear Crypto API
+toc_generate: true
 ---
 
-# Status: Experimental
-
-# AeroGear Crypto API
+<span class="label label-warning">Status: Experimental</span>
 
 **Note**: This document is a working progress if you strongly disagree with something, fix it.
 
-# Authors
+#### Authors
 
 * Bruno Oliveira
 * Corinne Krych
 * Douglas Campos
 * Matthias Wessendorf
 
-# Goals
+#### Goals
 
 * User friendly interface for non crypto experts.
 * Enable advanced developers can make use of the pure crypto provider implementation.
 
-# Supported Algorithms
+#### Supported Algorithms
 
 * PBKDF2 for password based key derivation
 * AES with GCM for symmetric encryption
