@@ -1,9 +1,10 @@
 ---
 layout: post
-title: The UnifiedPush Server
+title: 
 section: guides
 ---
 
+== The UnifiedPush Server
 
 With all the Apple work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unifiedpush-server[UnifiedPush Server], so that it can be used to connect to APNs for a later message sending.
 
@@ -29,6 +30,6 @@ image:./img/example_impl.png[Example Implementation]
 NOTE: Clicking on the appropriate tab, you can choose between _Objective-C_, _Swift_ and _Cordova_ snippet!
 
 
-== Xcode
+=== Xcode
 
 The server is now configured. Let's move to Xcode to create a very simple link:../iOS-app[example application] that will connect to the UnifiedPush server and start receiving notifications.

@@ -2,6 +2,7 @@
 layout: post
 title: GCM Push Notifications with AeroGear's UnifiedPush Server
 section: guides
+toc_generate: true
 ---
 
 
@@ -15,3 +16,8 @@ The following step-by-step guides, give you an introduction on how to use the Ae
 ## Troubleshooting
 
 * [Having issues with getting it to run?](troubleshooting)
+
+
+
+
+include::docs/unifiedpush/ups_userguide/overview.asciidoc[Overview]

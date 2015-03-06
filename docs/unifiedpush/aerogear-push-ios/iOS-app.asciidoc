@@ -1,16 +1,12 @@
----
-layout: post
-title: Creating an iOS application
-section: guides
----
 
+== Creating an iOS application
 
 Before we start, please install link:http://cocoapods.org/[CocoaPods].
 
 
 Afterwards, please clone this link:https://github.com/aerogear/aerogear-push-ios-demo[Sample Application]. It uses our SDK to register your application installation with the iOS Variant you registered earlier!
 
-== Sample App
+=== Sample App
 
 Once the application is on your filesystem, invoke the following command:
 
@@ -35,7 +31,7 @@ Further, ensure that the correct *Provisioning profile* is set on the applicatio
 image:./img/provisioning_profile.png[Provisioning Profile]
 
 
-== Setting up the iOS Variant ID
+=== Setting up the iOS Variant ID
 
 Now it is time to look at the code: Open the link:https://github.com/aerogear/aerogear-push-ios-demo/blob/master/PushTest/AGAppDelegate.m[AGAppDelegate file]. Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
 
@@ -140,7 +136,7 @@ Next, in [2] we call _registerWithClientInfo_ passing a configuration block that
 [NOTE]
 Do not forget to use the _development_ _VariantID_ and _VariantSecret_ if you are using your _development_ provisioning profile as your signing identity in Xcode, or to use _production_ _VariantID_ and _VariantSecret_ if you are using your _distribution_ provisioning profile.)
 
-=== Callbacks
+==== Callbacks
 
 The _success_ callback is invoked, when the _AeroGear UnifiedPush Server_ was able to register your device with the given _iOS Variant_. Otherwise the _failure_ callback would be invoked. One case could be a wrong IP address....
 
@@ -148,12 +144,12 @@ The _success_ callback is invoked, when the _AeroGear UnifiedPush Server_ was ab
 The _application: didFailToRegisterForRemoteNotificationsWithError:_ would be invoked if there is a problem in receving a token from _APNs_...
 
 
-== Test the app on your device
+=== Test the app on your device
 
 Now run the phone on the device. After agreeing on receiving Push Messages, you will see another Dialog, that welcomes you! Now put the app into the background, by clicking the home button.
 
 
-== Sending messages to the device
+=== Sending messages to the device
 
 The last chapter shows how to link:../send-push[send messages] to the device, using the _AeroGear UnifiedPush Server_!
 

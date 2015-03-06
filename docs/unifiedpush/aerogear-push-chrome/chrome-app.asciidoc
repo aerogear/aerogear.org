@@ -1,16 +1,10 @@
----
-layout: post
-section: guides
-title: Your first Chrome/Push App
----
-
-
+== Your first Chrome/Push App
 
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercise AeroGear's Chrome Push library support.
 
 Let's get started!
 
-== Creating the application
+=== Creating the application
 Since a Chrome Packaged Application is just a Web Application consisting of HTML, Javascript and CSS, you can use any editor you feel comfortable with.
 
 Here is an example of what the directory structure will look like

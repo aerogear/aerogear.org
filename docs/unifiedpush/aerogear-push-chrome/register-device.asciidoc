@@ -1,13 +1,8 @@
----
-layout: post
-section: guides
-title: The AeroGear UnifiedPush Server
----
-
+== The AeroGear UnifiedPush Server
 
 Now that all the Google work is done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to CGM for sending messages later in the tutorial.
 
-== AeroGear UnifiedPush Server
+=== AeroGear UnifiedPush Server
 
 The _AeroGear UnifiedPush Server_ defines a logical _abstraction_ for Mobile Applications that have support for different Push Networks. Its _Push Applications_ can have different "Variants". For this tutorial we'll need to create a _Push Application_ which will contain one Chrome Packaged App Variant.
 

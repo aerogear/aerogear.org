@@ -1,9 +1,5 @@
----
-layout: post
-section: guides
-title: Web Example
----
 
+== Web Example
 
 Now that we have configured both SimplePush and UnifiedPush servers and have them up and running, it's time to explore a simple web application that will exercise AeroGear JavaScript API support and demonstrate the workflow in action. Start by cloning the example from link:https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart[here].
 
