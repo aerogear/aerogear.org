@@ -10,7 +10,7 @@ sub-section-title: AeroGear Security
   <p class="alt">Mobile security for humans, integrating your mobile application to already existent infrastructure.</p>
   <p>
     <a href="{{ site.baseurl }}/getstarted/downloads" class="btn btn-primary-inverse btn-lg"><i class="fa fa-hand-o-right"></i> Get started</a>
-    <a href="{{ site.baseurl }}//specs/" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guide</a>
+    <a href="{{ site.baseurl }}/getstarted/guides/#security" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guide</a>
     <a href="https://issues.jboss.org/browse/agsec/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel" class="btn btn-primary btn-sm"><i class="fa fa-road"></i> Roadmap</a>
   </p>
 
