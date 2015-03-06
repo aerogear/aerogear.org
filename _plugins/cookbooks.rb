@@ -14,7 +14,7 @@ module Readme
           "ios" => "https://api.github.com/repos/aerogear/aerogear-ios-cookbook/readme",
           "cordova" => "https://api.github.com/repos/aerogear/aerogear-cordova-cookbook/readme",
           "windows" => "https://api.github.com/repos/aerogear/aerogear-windows-cookbook/readme",
-          "js" => "https://api.github.com/repos/lfryc/aerogear-js-cookbook/readme"
+          "js" => "https://api.github.com/repos/aerogear/aerogear-js-cookbook/readme"
       }
 
       diskcache = Diskcached.new('/tmp/aerogear.site.cache', 3000)
