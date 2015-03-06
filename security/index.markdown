@@ -11,7 +11,7 @@ sub-section-title: AeroGear Security
   <p>
     <a href="{{ site.baseurl }}/getstarted/downloads" class="btn btn-primary-inverse btn-lg"><i class="fa fa-hand-o-right"></i> Get started</a>
     <a href="{{ site.baseurl }}//specs/" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guide</a>
-    <a href="{{ site.baseurl }}/OAuth2/" class="btn btn-primary btn-sm"><i class="fa fa-road"></i> Roadmap</a>
+    <a href="https://issues.jboss.org/browse/agsec/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel" class="btn btn-primary btn-sm"><i class="fa fa-road"></i> Roadmap</a>
   </p>
 
 A set of libraries designed for Android, iOS, Windows Phone and Hybrid platforms to make security easy for developers. Providing an easy to use interface for OAuth2, OTP and cryptography.
