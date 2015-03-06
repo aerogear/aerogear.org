@@ -1,14 +1,10 @@
----
-layout: post
-section: guides
-title: The AeroGear UnifiedPush Server
----
 
+== The AeroGear UnifiedPush Server
 
 The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain the _SimplePush_ variant. Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/unifiedpush/[here].
 
 :pushplatform: SimplePush
-include::docs/unifiedpush/include--register-app.asciidoc[]
+include::../../unifiedpush/include--register-app.asciidoc[]
 
 Time to register our SimplePush Variant. Click on the **Add Variant** button
 
@@ -25,7 +21,7 @@ Notice an _Example Installation_ link which, when clicked, reveals a screen with
 image:./img/example_impl.png[Example Implementation]
 
 
-== Web App
+=== Web App
 
 That's all. That was really simple, wasn't it?
 

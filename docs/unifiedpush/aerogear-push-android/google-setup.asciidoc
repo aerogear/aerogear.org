@@ -1,14 +1,8 @@
----
-layout: post
-title: Google Related Setup
-section: guides
----
-
-
+== Google Related Setup
 
 Before the Android application is able to receive the notifications, you must authenticate yourself with Google as a developer. Luckily this is both easy and free to do, and doesn't require much set-up. Like iOS, you are only able to test out your push notifications in a real device.
 
-== Registering with Google
+=== Registering with Google
 
 First, we must authenticate with Google. Google offers the Google Cloud Messaging (GCM) platform, formerly known as Cloud to Device Messaging (C2DM). You will need a Google Account for this. Now open the https://cloud.google.com/console[Google Cloud Console].
 

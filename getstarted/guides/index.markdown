@@ -78,17 +78,18 @@ In progress
 * [AeroGear Cordova PushPlugin](/docs/guides/aerogear-cordova/AerogearCordovaPush)
 
 <h4 id="pushTutorials">Tutorials</h4>
-* [Tutorial: Android Push Notifications](/docs/unifiedpush/aerogear-push-android)
-* [Tutorial: iOS Push Notifications](/docs/unifiedpush/aerogear-push-ios)
-* [Tutorial: JavaScript Push Notifications](/docs/unifiedpush/aerogear-push-js)
-* [Tutorial: Windows Push Notifications](/docs/unifiedpush/aerogear-push-windows)
-* [Tutorial: Chrome Packaged Apps Push Notifications](/docs/unifiedpush/aerogear-push-chrome)
+* [Tutorial: Android Push Notifications](/docs/unifiedpush/aerogear-push-android/guides)
+* [Tutorial: iOS Push Notifications](/docs/unifiedpush/aerogear-push-ios/guides)
+* [Tutorial: JavaScript Push Notifications](/docs/unifiedpush/aerogear-push-js/guides)
+* [Tutorial: Windows Push Notifications](/docs/unifiedpush/aerogear-push-windows/guides)
+* [Tutorial: Chrome Packaged Apps Push Notifications](/docs/unifiedpush/aerogear-push-chrome/guides)
 * [Getting Started with the Java Sender API](/docs/unifiedpush/GetStartedwithJavaSender)
 
 <h4 id="pushTroubleshooting">Troubleshooting</h4>
 To better help trouble shooting, you should [enable logging on UnifiedPush Server](/docs/unifiedpush/ups_userguide/ups-debugging/#_enable_logging).
 For more details on the supported mobile platforms consult the guides below:
 
-* [Android](/docs/unifiedpush/aerogear-push-android/troubleshooting)
+* [Android](/docs/unifiedpush/aerogear-push-android/guides/#_android_troubleshooting)
 * [Cordova](/docs/unifiedpush/aerogear-push-cordova/troubleshooting)
-* [iOS](/docs/unifiedpush/aerogear-push-ios/troubleshooting)
+* [iOS](/docs/unifiedpush/aerogear-push-ios/guides/#_ios_troubleshooting)
+

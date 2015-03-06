@@ -1,13 +1,10 @@
----
-layout: post
-section: guides
-title: Sending messages
----
+
+== Sending messages
 
 
 Now you have the Sample App running on your phone, so it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message to your device!
 
-== Simple Sender
+=== Simple Sender
 
 Login to the administration console of the UnifiedPush server and click on the "Send Push" icon in the navigation menu. Select the application that you created and write a message in the text field. Once done, hit the 'Send Push Notification'.
 
@@ -18,6 +15,6 @@ You should see again the 'mail' notification being received:
 image:./img/unifiedpush_selected_screen.png[UnifiedPush Selected screen]
 
 
-== You are done
+=== You are done
 
 UnifiedPush server integrates with SimplePush and treats it as another mobile variant, in par with iOS and Android platforms that we currently support. Now sending notifications to your mobile clients means that your web applications can benefit too, either running on a mobile device or on a desktop. As a final note, the SimplePush specification is an on-going effort from Mozilla and currently marked experimental, so some of the APIs outlined in the guide may change or deprecate. The AeroGear project pays close attention to the development of the SimplePush specification and will incorporate changes as soon as become available.  

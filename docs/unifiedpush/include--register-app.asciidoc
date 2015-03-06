@@ -1,6 +1,6 @@
 For the purpose of the guide, we will be using the AdminUI console and assume that you have already link:http://aerogear.org/docs/unifiedpush/ups_userguide/server-installation/[installed] and link:http://aerogear.org/docs/unifiedpush/ups_userguide/admin-ui/[logged in] in the UnifiedPush Administration console.
 
-== Register a Push Application
+=== Register a Push Application
 
 Now that we are logged in, let's create a new _Push Application_.
 
@@ -18,6 +18,6 @@ image:../../img/application_created.png[Created Application]
 
 Time to create one variant. Click on the **No variants** icon to get started.
 
-== Register an {pushplatform} Variant
+=== Register an {pushplatform} Variant
 
 image:../../img/application_detail.png[Variant home]
