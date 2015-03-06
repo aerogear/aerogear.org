@@ -15,7 +15,8 @@ Ok, now that your back, lets continue.
 For the purpose of the guide, we will be using the AdminUI and assuming that you have followed the previous guide to login and setup your UnifiedPush Server environment.
 
 :pushplatform: Android
-include::docs/unifiedpush/include--register-app.asciidoc[]
+include::../../unifiedpush/include--register-app.asciidoc[]
+
 
 You may be wondering why we are creating an Android Variant for a Chrome app.  Well, the previous link:https://developer.chrome.com/extensions/pushMessaging[chrome.pushMessaging API] has been deprecated since chrome 38 and will be removed soon.  This has been replaced with the link:https://developer.chrome.com/extensions/gcm[chrome.gcm API], which uses the same GCM as Android.  This allows us to use the Android Variant for Chrome Apps!!
 
