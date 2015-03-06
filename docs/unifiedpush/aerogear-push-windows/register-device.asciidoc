@@ -5,7 +5,7 @@
 With all the Windows Setup work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to WNS for a later message sending.
 
 :pushplatform: Windows
-include::../../unifiedpush/include--register-app.asciidoc[]
+include:docs/unifiedpush/include--register-app.asciidoc[]
 
 Click the **Add Variant** button. And fill out the Windows options. You will want to use the **Package SID** and **Client Secret** from the *Windows Dev Center* in their appropriate fields.
 
