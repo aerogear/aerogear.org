@@ -1,0 +1,60 @@
+---
+layout: post
+title: Get Started with iOS platform
+toc_generate: true
+---
+
+== Get Started with iOS platform
+
+If you're brand new to iOS, this first section will give you interesting links to start with iOS environment and platform. We've all been a beginner at one point, do not fear iOS platform is easy to start with specially with its new Swift language.
+
+== Prerequisites
+- Get a mac and an iOS device. 
+- Target the latest release: install Yosemite, Xcode 6.1.1. iOS 8.1.3
+
+== Online Training
+If you like screencast and MOOC session, I'd recommend the excellent Stanford classes. You can find them for free on link:https://itunes.apple.com/us/course/developing-ios-8-apps-swift/id961180099[iTunes].
+
+== Books
+There are plenty of good books to learn from, among good one here is a book with tutorials from link:http://www.raywenderlich.com/store/ios-apprentice[Ray Wenderlich].
+
+To start with Swift, we recommend the link:https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html[Swift guided tour]. 
+
+== Get started with AeroGear
+
+=== AeroGear: Xcode and iOS
+
+==== AeroGear 2.X
+Our libraries for AeroGear iOS 2.X are Swift based you will need at least Xcode 6.1.1.
+
+Runtime for Swift based demo and libraries is 8.X.
+
+==== AeroGear 1.6.X
+Our earlier version work for Xcode 5 and iOS 6. 
+
+**Note** Although still supported AeroGear 1.6.X is a deprecated branch, all new features go in 2.X version (on master for all libraries).
+
+=== Build with cocoapods
+
+Our Swift and ObjC libraries are build using link:http://cocoapods.org/[Cocoapods 0.36.0].
+In your Podfile add the AeroGear dependencies you're interested in (here for example OAuth2):
+
+```bash
+pod 'AeroGearOAuth2'
+```
+**Note:** For Swift dependencies we use "dependencies as framework". 
+You need to add ```use_frameworks!``` to your Podfile.
+Read more about it link:http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/[here] and see for example our link:https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Jedi/JsonPatchSync/Podfile#L5[cookbook podfile].
+
+and then run:
+
+```
+pod install
+```
+
+to install your dependencies. Open the xcodeworkspace to work with it.
+
+== Going further with AeroGear
+
+Once you get familiar with the environment, your're ready to try out our link:https://github.com/aerogear/aerogear-ios-cookbook[cookbook recipes] and carry on with our link:/ios/[AeroGear iOS main page].
+
