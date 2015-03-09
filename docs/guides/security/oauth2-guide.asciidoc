@@ -6,6 +6,63 @@ toc_generate: true
 ---
 
 == Overview
+
+Support of OAuth2 for http://keycloak.jboss.org/[Keycloak], Google and Facebook on our Android, iOS, Windows and Cordova platforms.
+
+[width="100%", frame="topbot",options="header,footer"]
+|=======================================================================
+|Flows |Android |iOS |JavaScript |Cordova |Windows Phone
+|https://tools.ietf.org/html/rfc6749#section-4.2[Implicit grant flow]
+|*-* |*-* |*-* |_soon_ |*-*
+
+|https://tools.ietf.org/html/rfc6749#section-4.3[Refresh access tokens]
+|✔ |✔ |*-* |✔ |✔
+
+|http://tools.ietf.org/html/rfc7009#section-2[Token revocation] |*-* |✔
+|*-* |*-* |*-*
+
+|https://tools.ietf.org/html/rfc6749#section-4.3[Resource owner password
+credentials grant] |*-* |_soon_ |*-* |*-* |*-*
+
+|https://tools.ietf.org/html/rfc6749#section-4.1[Authorization Code
+Grant] |✔ |✔ |*-* |✔ |✔
+|=======================================================================
+
+Below are the various GitHub repositories that are part of the OAuth2 feature in AeroGear.
+
+=== Android
+
+The https://github.com/aerogear/aerogear-android-authz[AeroGear Android Authz] will give developers the ability to integrate their Android application with RESTful services secured with OAuth2.
+
+=== iOS
+
+On iOS we do have a Swift based OAuth2 client https://github.com/aerogear/aerogear-ios-oauth2[library].
+
+=== Windows
+
+For Windows we have a client library for OAuth2 on https://github.com/aerogear/aerogear-windows-oauth2[Windows phone].
+
+=== Apache Cordova
+
+Our https://github.com/aerogear/aerogear-oauth2-cordova[Apache Cordova plugin] for OAuth2 supports the following platforms:
+
+* Android
+* iOS
+* Windows
+
+=== Demo applications
+
+We have a demo application, called _Shoot'n Share_ for all of our supported platforms (Android, iOS, Windows and Cordova). The application allows you to upload a photo to Facebook, Google+ or a Keycloak protected backend.
+
+The different applications can be found it the platform specific _cookbooks_:
+
+* https://github.com/aerogear/aerogear-android-cookbook/tree/master/ShootAndShare[Android Shoot'n Share]
+* https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Shoot[iOS Shoot'n Share]
+* https://github.com/aerogear/aerogear-windows-cookbook/blob/master/Shoot/README.md[Windows Shoot'n Share]
+* https://github.com/aerogear/aerogear-cordova-cookbook/tree/master/Shoot[Cordova Shoot'n Share]
+
+The Keycloak protected backend application is a simple Java EE / JAX-RS based application. The source is located https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot[here].
+
 == Requirements
 === Android
 === Apache Cordova
