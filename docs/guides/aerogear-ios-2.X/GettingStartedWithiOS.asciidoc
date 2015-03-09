@@ -56,5 +56,4 @@ to install your dependencies. Open the xcodeworkspace to work with it.
 
 == Going further with AeroGear
 
-Once you get familiar with the environment, your're ready to try out our link:https://github.com/aerogear/aerogear-ios-cookbook[cookbook recipes] and carry on with our link:/ios/[AeroGear iOS main page].
-
+Once you get familiar with the environment, you are ready to try out our link:/getstarted/demos/#ios[cookbook recipes] or carry on with link:/ios/[AeroGear iOS overview page].
