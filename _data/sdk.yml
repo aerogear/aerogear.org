@@ -35,7 +35,7 @@ ios:
       cocoapod: aerogearoauth2
       zip: https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.2.0
       demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.0/Shoot
-      guide: http://localhost:4000/docs/guides/aerogear-ios-2.X/Authorization/
+      guide: /docs/guides/aerogear-ios-2.X/Authorization/
     push:
       name: Push
       module: push
@@ -43,7 +43,7 @@ ios:
       cocoapod: AeroGear-Push
       zip: https://github.com/aerogear/aerogear-ios-push/archive/1.0.0-swift.zip
       demo: https://github.com/aerogear/aerogear-push-helloworld/tree/swift/ios-swift
-      guide: http://localhost:4000/docs/unifiedpush/aerogear-push-ios/
+      guide: /docs/unifiedpush/aerogear-push-ios/
     jsonsz:
       name: JSON Serialization
       module: core
