@@ -26,15 +26,15 @@ ios:
       version: 0.2
       cocoapod: aerogearhttp
       zip: https://github.com/aerogear/aerogear-ios-http/zipball/0.2.0
-      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.0/Weather
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.1/Weather
       guide: /docs/guides/aerogear-ios-2.X/HttpLib/
     oauth2:
       name: OAuth2
       module: security
       version: 0.2
       cocoapod: aerogearoauth2
-      zip: https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.2.0
-      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.0/Shoot
+      zip: https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.2.1
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.1/Shoot
       guide: /docs/guides/aerogear-ios-2.X/Authorization/
     push:
       name: Push
@@ -50,7 +50,7 @@ ios:
       version: 0.1
       cocoapod: aerogearjsonsz
       zip: https://github.com/aerogear/aerogear-ios-jsonsz/zipball/0.1.0
-      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.0/Buddies
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.1/Buddies
       guide: /docs/guides/aerogear-ios-2.X/JsonSZ/
 
 cordova:
