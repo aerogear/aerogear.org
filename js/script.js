@@ -1,6 +1,9 @@
 jQuery(function($){
 
-$('body').scrollspy({ target: '.sidebar' });  
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 75
+  });
 
   $('.sidebar > .nav').affix({
     offset: {
@@ -8,12 +11,6 @@ $('body').scrollspy({ target: '.sidebar' });
           return (this.top = $(".main-banner").outerHeight(true));
         },
         bottom: 558
-//        bottom: function () {
-//          return (this.bottom = $('footer').outerHeight(true) + $('.redhat').outerHeight(true));
-//        }
-//      bottom: function () {
-//        return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
-//      }
     }
   });  
 
@@ -24,54 +21,54 @@ $('body').scrollspy({ target: '.sidebar' });
           return (this.top = $(".main-banner").outerHeight(true));
         },
         bottom: 558
-//        bottom: function () {
-//          return (this.bottom = $('footer').outerHeight(true) + $('.redhat').outerHeight(true));
-//        }
-//      bottom: function () {
-//        return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
-//      }
     }
   });  
 
 
+  window.showShadow = function(){
+   if($(window).scrollTop() === 0){
+          $(".navbar").css("box-shadow", "0 0 0px rgba(0,0,0,.2)");
+      }else{
+          $(".navbar").css("box-shadow", "0 0 8px rgba(0,0,0,.3)");
+      }
+  };
 
-    
-    window.showShadow = function(){    
-     if($(window).scrollTop() === 0){
-            $(".navbar").css("box-shadow", "0 0 0px rgba(0,0,0,.2)");
-        }else{
-            $(".navbar").css("box-shadow", "0 0 8px rgba(0,0,0,.3)");
-        }
-    };
-    
-    $(window).scroll(showShadow);
-    showShadow();
+  $(window).scroll(showShadow);
+  showShadow();
 
 
-
-  
-//   $('.submenu').affix({    
-//       offset: {
-//        top: function (){
-//          return (this.top = $(".main-banner").outerHeight(true));
-//        },
-//        
-//        bottom: function (){
-//          return (this.bottom = $("footer").outerHeight(true)+$('.redhat').outerHeight(true));
-//        }
-//
-//      }  
-//   });
-
-    // scroll to correct position of anchor (avoid being hidden behind navbar)
-    function scrollAnchorToView() {
-      window.scrollBy(0, -70);
+  /**
+   * scrolls to the provided anchor given by hash name (#id)
+   * @param hash the name of the anchor
+   * @returns {boolean} true if we found the element and scrolled to it
+   */
+  function scrollToHash( hash ) {
+    var targetId = hash.replace(/^#/, '');
+    if (targetId) {
+      var target = document.getElementById(targetId);
+      if (target && target.scrollIntoView) {
+        var timeout = window.requestAnimationFrame || window.setTimeout;
+        timeout(function () {
+          location.hash = targetId;
+          target.scrollIntoView(true);
+          window.scrollBy(0, -70);
+        });
+        return true;
+      }
     }
-    $(window).on('hashchange', scrollAnchorToView);
-    if (location.hash) {
-      scrollAnchorToView();
+    return false;
+  }
+
+  // scroll to correct position when clicking on anchor
+  $('body').on('click', 'a[href^="#"]', function() {
+    var result = scrollToHash( $(this).attr('href') );
+    return !result; // return false in case we were able to scroll to the element
+  });
+  // scroll to initial location hash
+  $(function() {
+    if ( location.hash ) {
+      scrollToHash( location.hash );
     }
-
-
+  });
     
 });
