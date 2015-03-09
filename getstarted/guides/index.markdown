@@ -18,6 +18,9 @@ Designed to get you started with enterprise mobile development.
 * [Google's Android Tutorials](https://developer.android.com/training/index.html)
 * [AeroGear Android General information](/android/)
 
+<h4 id="coreAndroid">iOS</h4>
+* [Get Started with iOS environment](/docs/guides/aerogear-ios-2.X/GettingStartedWithiOS)
+* [AeroGear iOS General information](/iOS/)
 
 <h4 id="coreCordova">Cordova</h4>
 * [Get Started with Hybrid Application Frameworks](/docs/guides/aerogear-cordova/HybridApplicationFrameworks)
