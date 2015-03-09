@@ -24,6 +24,10 @@ Designed to get you started with enterprise mobile development.
 * [Cordova Setup](/docs/guides/aerogear-cordova/CordovaSetup)
 * [Tutorial: Android Development w/ PhoneGap/Apache Cordova in JBoss Developer Studio 5](/docs/guides/aerogear-cordova/CordovaAndroidDevJBDS)
 
+<h4 id="coreWindows">Windows</h4>
+* [Get started with Window](/docs/guides/aerogear-windows/GettingStarted)
+
+
 ---
 
 <h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>SDK</strong> Guides</h2>

@@ -1,0 +1,8 @@
+---
+layout: post
+section: guides
+title: Getting started with Windows
+---
+== Visual Studio 
+
+Install https://www.visualstudio.com/[Visual Studio] and use https://docs.nuget.org/Consume/Package-Manager-Dialog[nuget] to find and install the https://www.nuget.org/packages?q=aerogear[aerogear libraries].
