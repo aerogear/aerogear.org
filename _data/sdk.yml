@@ -52,6 +52,21 @@ ios:
       zip: https://github.com/aerogear/aerogear-ios-jsonsz/zipball/0.1.0
       demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.1/Buddies
       guide: /docs/guides/aerogear-ios-2.X/JsonSZ/
+    sync:
+      name: Sync
+      module: sync
+      version: 1.0.0-alpha.1
+      cocoapod: aerogearsync
+      zip: https://github.com/aerogear/aerogear-ios-sync/zipball/1.0.0-alpha.1
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.1/Jedi
+    sync-client:
+      name: Sync-Client
+      module: sync
+      version: 1.0.0-alpha.1
+      cocoapod: aerogearsyncclient
+      zip: https://github.com/aerogear/aerogear-ios-sync-client/zipball/1.0.0-alpha.1
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.1/Jedi
+
 
 cordova:
   name: Cordova
