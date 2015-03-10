@@ -225,7 +225,7 @@ First create a helper class and add these lines of code:
 
 <div id="keycloak" class="snippet-oauth2">
 </br>
-<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java">Copy & paste</a>
+<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
 AuthorizationManager.config("KeyCloakAuthz", OAuth2AuthorizationConfiguration.class)
         .setBaseURL(new URL("http://localhost:8080/auth"))
@@ -241,7 +241,7 @@ AuthorizationManager.config("KeyCloakAuthz", OAuth2AuthorizationConfiguration.cl
 
 <div id="facebook" class="snippet-oauth2" style="display: none">
 </br>
-<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java">Copy & paste</a>
+<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
 AuthorizationManager.config("FacebookOAuth", OAuth2AuthorizationConfiguration.class)
         .setBaseURL(new URL("https://"))
@@ -260,7 +260,7 @@ AuthorizationManager.config("FacebookOAuth", OAuth2AuthorizationConfiguration.cl
 
 <div id="google" class="snippet-oauth2" style="display: none">
 </br>
-<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java">Copy & paste</a>
+<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
 
 AuthorizationManager.config("GoogleDriveAuthz", OAuth2AuthorizationConfiguration.class)
