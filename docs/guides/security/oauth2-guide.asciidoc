@@ -223,7 +223,7 @@ First create a helper class and add these lines of code:
 </ul>
 <script defer src="/js/code-snippets.js"></script>
 
-<div id="keycloak" class="snippet-oauth2">
+<div id="keycloak" class="snippet-oauth2-android-auth-manager">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
@@ -239,7 +239,7 @@ AuthorizationManager.config("KeyCloakAuthz", OAuth2AuthorizationConfiguration.cl
 </pre>
 </div>
 
-<div id="facebook" class="snippet-oauth2" style="display: none">
+<div id="facebook" class="snippet-oauth2-android-auth-manager" style="display: none">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
@@ -258,11 +258,10 @@ AuthorizationManager.config("FacebookOAuth", OAuth2AuthorizationConfiguration.cl
 </pre>
 </div>
 
-<div id="google" class="snippet-oauth2" style="display: none">
+<div id="google" class="snippet-oauth2-android-auth-manager" style="display: none">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
-
 AuthorizationManager.config("GoogleDriveAuthz", OAuth2AuthorizationConfiguration.class)
         .setBaseURL(new URL("https://accounts.google.com"))
         .setClientId("<replace me>")
@@ -275,7 +274,6 @@ AuthorizationManager.config("GoogleDriveAuthz", OAuth2AuthorizationConfiguration
         .setScopes(Arrays.asList("https://www.googleapis.com/auth/drive"))
         .addAdditionalAuthorizationParam(Pair.create("access_type", "offline"))
         .asModule();
-
 </pre>
 </div>
 ++++
@@ -287,7 +285,7 @@ Please make sure to use the proper `client ID` and `client secret` for your appl
 The Android library will automatically marshall the HTTP request payload from OAuth2 providers. For more detailed information, please visit the link:/docs/guides/aerogear-android/pipe[Android documentation].
 +
 [source,java]
-.https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/model/PhotoHolder.java[PhotoHolder - copy & paste here]
+.https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/model/PhotoHolder.java[PhotoHolder - copy & paste]
 ----
 public class PhotoHolder {
 
@@ -304,33 +302,49 @@ public class PhotoHolder {
 +
 Now you can configure the link:/docs/guides/aerogear-android/pipe[PipeManager] to make use of the `AuthorizationManager` previously initialised.
 +
-[source,java]
-.https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java[Keycloak - copy & paste here]
-----
+++++
+<ul class="nav nav-tabs nav-snippets">
+  <li class="active"><a href="#keycloak"><i class="fa fa-shield"></i> Keycloak</a></li>
+  <li><a href="#facebook" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+  <li><a href="#google" title="Google"><i class="fa fa-google"></i> Google</a></li>
+</ul>
+<script defer src="/js/code-snippets.js"></script>
+
+<div id="keycloak" class="snippet-oauth2-pipe-manager">
+</br>
+<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
 PipeManager.config("kc-upload", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule("KeyCloakAuthz"))
         .withUrl(new URL("http://localhost:8080/shoot/rest/photos"))
         .requestBuilder(new MultipartRequestBuilder())
         .forClass(PhotoHolder.class);
-----
-+
-[source,java]
-.https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java[Facebook - copy & paste]
-----
+</pre>
+</div>
+
+<div id="facebook" class="snippet-oauth2-pipe-manager" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
 PipeManager.config("fb-upload", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule("FacebookOAuth"))
         .withUrl(new URL("https://graph.facebook.com/me/photos"))
         .requestBuilder( new MultipartRequestBuilder())
         .forClass(PhotoHolder.class);
-----
-+
-[source,java]
-.https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java[Google - copy & paste]
-----
+</pre>
+</div>
+
+<div id="google" class="snippet-oauth2-pipe-manager" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+
 PipeManager.config("gp-upload", RestfulPipeConfiguration.class)
         .module(AuthorizationManager.getModule(GoogleDriveAuthz))
         .withUrl(new URL("https://www.googleapis.com/upload/drive/v2/files?uploadType=multipart"))
         .requestBuilder(new GoogleDriveFileUploadRequestBuilder())
         .forClass(PhotoHolder.class);
-----
+</pre>
+</div>
+++++
 +
 Please make sure to use the proper `client ID` and `client secret` for your application.
 +
