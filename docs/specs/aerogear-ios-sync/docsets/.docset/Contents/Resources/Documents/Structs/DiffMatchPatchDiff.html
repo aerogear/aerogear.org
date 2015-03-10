@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DiffMatchPatchDiff Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script type="text/javascript">
+    window.jazzy = {'docset': false}
+    if (typeof window.dash != 'undefined') {
+      document.documentElement.className += ' dash'
+      window.jazzy.docset = true
+    }
+    if (navigator.userAgent.match(/xcode/i)) {
+      document.documentElement.className += ' xcode'
+      window.jazzy.docset = true
+    }
+    </script>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body id="reference" class="Swift">
+    <a name="//apple_ref/swift/Struct/DiffMatchPatchDiff" class="dashAnchor"></a>
+    <a title="DiffMatchPatchDiff Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p class="header-text"><a href="../index.html"> Docs</a> (85% documented)</p>
+        <p id="header-links"><a href=""><img id="header-icon" src="../img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
+      </div>
+    </header>
+    <section id="valence">
+      <div class="content-wrapper">
+        <p id="hierarchial_navigation">
+        <a href="../index.html" id="design_resources_link"> Reference</a>
+        <img id="carat" src="../img/carat.png" height="10px" width="6px" />
+        DiffMatchPatchDiff Struct Reference
+        </p>
+      </div>
+    </section>
+    <div class="content-wrapper">
+      <nav class="book-parts">
+        <ul class="nav-parts">
+          <li class="part-name tasks">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Classes/BackupShadowDocument.html">BackupShadowDocument</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/ClientDocument.html">ClientDocument</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/ClientSyncEngine.html">ClientSyncEngine</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/DiffMatchPatchSynchronizer.html">DiffMatchPatchSynchronizer</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/Document.html">Document</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/InMemoryDataStore.html">InMemoryDataStore</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/JsonPatchSynchronizer.html">JsonPatchSynchronizer</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/ShadowDocument.html">ShadowDocument</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Functions.html">Functions</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Functions.html#/s:F12AeroGearSyncoi2eeFTVS_13JsonPatchEditS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Functions.html#/s:F12AeroGearSyncoi2eeFTVS_18DiffMatchPatchEditS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Functions.html#/s:F12AeroGearSyncoi2eeFTVS_3KeyS0__Sb">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Protocols/ClientSynchronizer.html">ClientSynchronizer</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Protocols/DataStore.html">DataStore</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Protocols.html#/s:P12AeroGearSync10Difference">Difference</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Protocols/Edit.html">Edit</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Protocols/PatchMessage.html">PatchMessage</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Protocols/Payload.html">Payload</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Structs.html">Structs</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Structs/DiffMatchPatchDiff.html">DiffMatchPatchDiff</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Structs/DiffMatchPatchEdit.html">DiffMatchPatchEdit</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Structs/DiffMatchPatchMessage.html">DiffMatchPatchMessage</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Structs/JsonPatchDiff.html">JsonPatchDiff</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Structs/JsonPatchEdit.html">JsonPatchEdit</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Structs/JsonPatchMessage.html">JsonPatchMessage</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Structs/Key.html">Key</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="pixel-line"></div>
+      <div class="rubber-band-gap"></div>
+      <article class="chapter">
+      <a name="/"></a>
+        <h1 class="chapter-name">DiffMatchPatchDiff</h1>
+        <section>
+          <section class="section">
+            <p class="para">Implements the marker interface that represents a diff or two versions of a document/object.</p>
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                
+                <a name="/Unnamed"></a>
+                
+              </div>
+              <ul class="task-group-list">
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:vV12AeroGearSync18DiffMatchPatchDiff9operationOS0_9Operation">
+                    <a name="//apple_ref/swift/Property/operation" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:vV12AeroGearSync18DiffMatchPatchDiff9operationOS0_9Operation">operation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Defines type of operation: ADD, DELETe, UNCHANGED.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">operation</span><span class="p">:</span> <span class="kt">Operation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:vV12AeroGearSync18DiffMatchPatchDiff4textSS">
+                    <a name="//apple_ref/swift/Property/text" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:vV12AeroGearSync18DiffMatchPatchDiff4textSS">text</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Represents the content of the difference.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:OV12AeroGearSync18DiffMatchPatchDiff9Operation">
+                    <a name="//apple_ref/swift/Enum/Operation" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:OV12AeroGearSync18DiffMatchPatchDiff9Operation">Operation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Undocumented</p>
+                        <a href="../Structs/DiffMatchPatchDiff/Operation.html" class="see-more">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FV12AeroGearSync18DiffMatchPatchDiffcFMS0_FT9operationOS0_9Operation4textSS_S0_">
+                    <a name="//apple_ref/swift/Method/init(operation:text:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FV12AeroGearSync18DiffMatchPatchDiffcFMS0_FT9operationOS0_9Operation4textSS_S0_">init(operation:text:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Default init.</p>
+                        <a href="../Structs/DiffMatchPatchDiff/init(operation:text:).html" class="see-more">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">operation</span><span class="p">:</span> <span class="kt">Operation</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">either ADD, DELETE, UNCHANGED.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">text</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">the content of the diff itself.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:vV12AeroGearSync18DiffMatchPatchDiff11descriptionSS">
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:vV12AeroGearSync18DiffMatchPatchDiff11descriptionSS">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Printable protocol implementation, provides a string representation of the object.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p class="copyright">&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-03-10)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.1.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
