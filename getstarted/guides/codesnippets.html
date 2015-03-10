@@ -6,11 +6,13 @@ section: docs
 
 <h3>Usage</h3>
 
-<p>Simply use <a href="http://getbootstrap.com/components/#nav-tabs">Bootstrap Nav Tabs</a> with additional class: <code>nav-snippets</code>. The links have to reference to a code snippet element, such as <code>&lt;pre id="xyz" class="snippet-abc"&gt;</code> element: <code>&lt;a href="#xyz"&gt;</code>. Notice the use of class <code>snippet-abc</code> - that class is common to all code samples in a group so that they are shown/hidden adequately.</code></p>
+<p>Simply use <a href="http://getbootstrap.com/components/#nav-tabs">Bootstrap Nav Tabs</a> with additional class: <code>nav-snippets</code>. The links have to reference to a code snippet element, such as <code>&lt;pre id="xyz" class="snippet-abc"&gt;</code> element: <code>&lt;a href="#xyz"&gt;</code>. Notice the use of class <code>snippet-abc</code> - that class is common to all code samples in a group so that they are shown/hidden adequately (generally you can use any <code>snippet-*</code>).</p>
 
-<p>For more details, inspect the source code of sample tabs and snippets bellow.</p>
+<p>Hide all the snippets that should not be hidden initially with <code>hidden</code> or <code>style="display:none</code> attribute.</p>
 
 <p>Don't forget to include the script in the page: <code>&lt;script defer src="/js/code-snippets.js"&gt;&lt;/script&gt;</code>. The defer attribute will take care of de-duping the javascript source loading.</p>
+
+<p>For more details, inspect the source code of sample tabs and snippets bellow.</p>
 
 <h3>Push Client Registration</h3>
 
@@ -26,7 +28,67 @@ section: docs
 
 <script defer src="/js/code-snippets.js"></script>
 
-<div id="js-simplepush" class="snippet-push-client" style="display: none">
+
+<div id="android" class="snippet-push-client">
+<pre class="highlight">
+package com.push.pushapplication;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.jboss.aerogear.android.unifiedpush.PushConfig;
+import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
+import org.jboss.aerogear.android.unifiedpush.Registrations;
+
+import android.app.Application;
+
+public class PushApplication extends Application {
+
+    private final String VARIANT_ID       = "{{ exampleCtrl.variant.variantID }}";
+    private final String SECRET           = "{{ exampleCtrl.variant.secret }}";
+    private final String GCM_SENDER_ID    = "{{ exampleCtrl.variant.projectNumber }}";
+    private final String UNIFIED_PUSH_URL = "{{ exampleCtrl.currentLocation }}";
+
+    private PushRegistrar registration;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        Registrations registrations = new Registrations();
+
+        try {
+            PushConfig config = new PushConfig(new URI(UNIFIED_PUSH_URL), GCM_SENDER_ID);
+            config.setVariantID(VARIANT_ID);
+            config.setSecret(SECRET);
+            config.setAlias(MY_ALIAS);
+
+            registration = registrations.push("unifiedpush", config);
+
+            registration.register(getApplicationContext(), new Callback() {
+                private static final long serialVersionUID = 1L;
+
+                @Override
+                public void onSuccess(Void ignore) {
+                     Toast.makeText(MainActivity.this, "Registration Succeeded!",
+                             Toast.LENGTH_LONG).show();
+               }
+
+               @Override
+               public void onFailure(Exception exception) {
+                     Log.e("MainActivity", exception.getMessage(), exception);
+               }
+            });
+
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+</pre>
+</div>
+
+<div id="js-simplepush" class="snippet-push-client">
 <pre class="highlight">
 (function() {
    var endpoint, endpointRequest, SPClient, UPClient;
@@ -102,66 +164,7 @@ section: docs
 </pre>
 </div>
 
-<div id="android" class="snippet-push-client">
-<pre class="highlight">
-package com.push.pushapplication;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import org.jboss.aerogear.android.unifiedpush.PushConfig;
-import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
-import org.jboss.aerogear.android.unifiedpush.Registrations;
-
-import android.app.Application;
-
-public class PushApplication extends Application {
-
-    private final String VARIANT_ID       = "{{ exampleCtrl.variant.variantID }}";
-    private final String SECRET           = "{{ exampleCtrl.variant.secret }}";
-    private final String GCM_SENDER_ID    = "{{ exampleCtrl.variant.projectNumber }}";
-    private final String UNIFIED_PUSH_URL = "{{ exampleCtrl.currentLocation }}";
-
-    private PushRegistrar registration;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        Registrations registrations = new Registrations();
-
-        try {
-            PushConfig config = new PushConfig(new URI(UNIFIED_PUSH_URL), GCM_SENDER_ID);
-            config.setVariantID(VARIANT_ID);
-            config.setSecret(SECRET);
-            config.setAlias(MY_ALIAS);
-
-            registration = registrations.push("unifiedpush", config);
-
-            registration.register(getApplicationContext(), new Callback() {
-                private static final long serialVersionUID = 1L;
-
-                @Override
-                public void onSuccess(Void ignore) {
-                     Toast.makeText(MainActivity.this, "Registration Succeeded!",
-                             Toast.LENGTH_LONG).show();
-               }
-
-               @Override
-               public void onFailure(Exception exception) {
-                     Log.e("MainActivity", exception.getMessage(), exception);
-               }
-            });
-
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
-}
-</pre>
-</div>
-
-<div id="ios-objc" class="snippet-push-client" style="display: none">
+<div id="ios-objc" class="snippet-push-client" hidden>
 <pre class="highlight">
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -196,7 +199,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 </pre>
 </div>
 
-<div id="ios-swift" class="snippet-push-client" style="display: none">
+<div id="ios-swift" class="snippet-push-client" hidden>
 <pre class="highlight">
 func application(application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
   println("APNS Success")
@@ -228,7 +231,7 @@ func application(application: UIApplication!, didRegisterForRemoteNotificationsW
 </pre>
 </div>
 
-<div id="cordova" class="snippet-push-client" style="display: none">
+<div id="cordova" class="snippet-push-client" hidden>
 <pre class="highlight">
 var app = {
     // Application Constructor
@@ -286,7 +289,7 @@ app.initialize();
 </pre>
 </div>
 
-<div id="windows-wps" class="snippet-push-client" style="display: none">
+<div id="windows-wps" class="snippet-push-client" hidden>
 <pre class="highlight">
 using AeroGear.Push;
 
@@ -307,7 +310,7 @@ void HandleNotification(object sender, PushReceivedEvent e)
 </pre>
 </div>
 
-<div id="windows-mpns" class="snippet-push-client" style="display: none">
+<div id="windows-mpns" class="snippet-push-client" hidden>
 <pre class="highlight">
 using AeroGear.Push;
 

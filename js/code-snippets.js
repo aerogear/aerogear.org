@@ -19,7 +19,9 @@
     $('a', this).click(function() {
       $(this).snippetTabSwitch();
       return false;
-    })
+    });
+    // hide the tabs that are not active initially
+    $('li.active a[href^="#"]', this).snippetTabSwitch();
   };
 
   $.fn.snippetTabSwitch = function() {
