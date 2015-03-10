@@ -217,13 +217,13 @@ First create a helper class and add these lines of code:
 +
 ++++
 <ul class="nav nav-tabs nav-snippets">
-  <li class="active"><a href="#keycloak"><i class="fa fa-shield"></i> Keycloak</a></li>
-  <li><a href="#facebook" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
-  <li><a href="#google" title="Google"><i class="fa fa-google"></i> Google</a></li>
+  <li class="active"><a href="#keycloak-oauth2-android-auth-manager"><i class="fa fa-shield"></i> Keycloak</a></li>
+  <li><a href="#facebook-oauth2-android-auth-manager" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+  <li><a href="#google-oauth2-android-auth-manager" title="Google"><i class="fa fa-google"></i> Google</a></li>
 </ul>
 <script defer src="/js/code-snippets.js"></script>
 
-<div id="keycloak" class="snippet-oauth2-android-auth-manager">
+<div id="keycloak-oauth2-android-auth-manager" class="snippet-oauth2-android-auth-manager">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
@@ -239,7 +239,7 @@ AuthorizationManager.config("KeyCloakAuthz", OAuth2AuthorizationConfiguration.cl
 </pre>
 </div>
 
-<div id="facebook" class="snippet-oauth2-android-auth-manager" style="display: none">
+<div id="facebook-oauth2-android-auth-manager" class="snippet-oauth2-android-auth-manager" style="display: none">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
@@ -258,7 +258,7 @@ AuthorizationManager.config("FacebookOAuth", OAuth2AuthorizationConfiguration.cl
 </pre>
 </div>
 
-<div id="google" class="snippet-oauth2-android-auth-manager" style="display: none">
+<div id="google-oauth2-android-auth-manager" class="snippet-oauth2-android-auth-manager" style="display: none">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
@@ -304,13 +304,13 @@ Now you can configure the link:/docs/guides/aerogear-android/pipe[PipeManager] t
 +
 ++++
 <ul class="nav nav-tabs nav-snippets">
-  <li class="active"><a href="#keycloak"><i class="fa fa-shield"></i> Keycloak</a></li>
-  <li><a href="#facebook" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
-  <li><a href="#google" title="Google"><i class="fa fa-google"></i> Google</a></li>
+  <li class="active"><a href="#keycloak-oauth2-pipe-manager"><i class="fa fa-shield"></i> Keycloak</a></li>
+  <li><a href="#facebook-oauth2-pipe-manager" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+  <li><a href="#google-oauth2-pipe-manager" title="Google"><i class="fa fa-google"></i> Google</a></li>
 </ul>
 <script defer src="/js/code-snippets.js"></script>
 
-<div id="keycloak" class="snippet-oauth2-pipe-manager">
+<div id="keycloak-oauth2-pipe-manager" class="snippet-oauth2-pipe-manager">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
@@ -321,7 +321,7 @@ PipeManager.config("kc-upload", RestfulPipeConfiguration.class).module(Authoriza
 </pre>
 </div>
 
-<div id="facebook" class="snippet-oauth2-pipe-manager" style="display: none">
+<div id="facebook-oauth2-pipe-manager" class="snippet-oauth2-pipe-manager" style="display: none">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
@@ -332,7 +332,7 @@ PipeManager.config("fb-upload", RestfulPipeConfiguration.class).module(Authoriza
 </pre>
 </div>
 
-<div id="google" class="snippet-oauth2-pipe-manager" style="display: none">
+<div id="google-oauth2-pipe-manager" class="snippet-oauth2-pipe-manager" style="display: none">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
@@ -353,7 +353,7 @@ Please make sure to use the proper `client ID` and `client secret` for your appl
 Finally, you need to request access to the OAuth2 provider. Make sure to create a new method for the helper class and inform the module name. The possible values are: `KeyCloakAuthz`, `FacebookOAuth` and `GoogleDriveAuthz`.
 +
 [source,java]
-.https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java[Requesting access - copy & paste here]
+.https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java[Copy & paste]
 ----
 final AuthzModule authzModule = AuthorizationManager.getModule(<module name>);
 
