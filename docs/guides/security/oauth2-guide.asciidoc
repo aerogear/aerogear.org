@@ -174,13 +174,15 @@ image:/docs/guides/security/img/keycloak-2.jpg[Keycloak - Realm configuration]
 
 == Getting started
 
-AeroGear integrates with several OAuth2 providers. To give a try, download one of our https://github.com/aerogear/aerogear-android-cookbook/releases[cookbooks]. If you already have an existing mobile application, please select a platform and follow one of the steps below.
+AeroGear integrates with several OAuth2 providers. If you already have an existing mobile application, please select a platform and follow one of the steps below.
 
 === Server side deployment
 
 Instructions about how to deploy the shoot server
 
 === Android
+
+To download one of our examples, check our https://github.com/aerogear/aerogear-android-cookbook/releases[cookbooks].
 
 . Adding AeroGear to the project
 +
@@ -336,7 +338,6 @@ PipeManager.config("fb-upload", RestfulPipeConfiguration.class).module(Authoriza
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
-
 PipeManager.config("gp-upload", RestfulPipeConfiguration.class)
         .module(AuthorizationManager.getModule(GoogleDriveAuthz))
         .withUrl(new URL("https://www.googleapis.com/upload/drive/v2/files?uploadType=multipart"))
@@ -373,9 +374,193 @@ authzModule.requestAccess(activity, new Callback<String>() {
 });
 ----
 
+. You are legendary!
++
+Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
 
 === Apache Cordova
 === iOS
+
+To download one of our examples, check our https://github.com/aerogear/aerogear-ios-cookbook/releases/[cookbooks].
+
+. Adding AeroGear to the project
++
+[source]
+.https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Podfile[Podfile]
+----
+pod 'AeroGearHttp', '0.2.0'
+pod 'AeroGearOAuth2', '0.2.1'
+----
+
+. Configure Info.plist file
++
+Add the `CFBundleURLTypes` key or skip this step if you're not planning to connect with Facebook.
++
+[source]
+.https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/Info.plist[Info.plist]
+----
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>org.aerogear.Shoot</string>
+            <string>fbYYY</string>
+        </array>
+    </dict>
+</array>
+----
+
+. Create a `ViewController` class and instantiate the Http class
++
+For more detailed information about the HTTP module, please visit the link:/docs/guides/aerogear-ios-2.X/HttpLib/[iOS documentation].
++
+[source]
+.https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift[ViewController.swift]
+----
+var Http = Http()
+----
+
+. Initialise the OAuth2 provider configuration
++
+++++
+<ul class="nav nav-tabs nav-snippets">
+  <li class="active"><a href="#keycloak-oauth2-ios-config"><i class="fa fa-shield"></i> Keycloak</a></li>
+  <li><a href="#facebook-oauth2-ios-config" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+  <li><a href="#google-oauth2-ios-config" title="Google"><i class="fa fa-google"></i> Google</a></li>
+</ul>
+<script defer src="/js/code-snippets.js"></script>
+
+<div id="keycloak-oauth2-ios-config" class="snippet-oauth2-ios-config">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+let keycloakHost = "http://localhost:8080"
+let keycloakConfig = KeycloakConfig(
+    clientId: "shoot-third-party",
+    host: keycloakHost,
+    realm: "shoot-realm")
+</pre>
+</div>
+
+<div id="facebook-oauth2-ios-config" class="snippet-oauth2-ios-config" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+let facebookConfig = FacebookConfig(
+    clientId: "YYY",
+    clientSecret: "XXX",
+    scopes:["photo_upload, publish_actions"])
+</pre>
+</div>
+
+<div id="google-oauth2-ios-config" class="snippet-oauth2-ios-config" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+let googleConfig = GoogleConfig(
+    clientId: "<your client secret goes here.apps.googleusercontent.com>",
+    scopes:["https://www.googleapis.com/auth/drive"])
+</pre>
+</div>
+++++
++
+Please make sure to use the proper `client ID` and `client secret` for your application.
+
+. Add the OAuth2 configuration to the `AccountManager`
++
+++++
+<ul class="nav nav-tabs nav-snippets">
+  <li class="active"><a href="#keycloak-oauth2-ios-manager"><i class="fa fa-shield"></i> Keycloak</a></li>
+  <li><a href="#facebook-oauth2-ios-manager" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+  <li><a href="#google-oauth2-ios-manager" title="Google"><i class="fa fa-google"></i> Google</a></li>
+</ul>
+<script defer src="/js/code-snippets.js"></script>
+
+<div id="keycloak-oauth2-ios-manager" class="snippet-oauth2-ios-manager">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+let keycloakModule = AccountManager.addKeycloakAccount(keycloakConfig)
+</pre>
+</div>
+
+<div id="facebook-oauth2-ios-manager" class="snippet-oauth2-ios-manager" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+let facebookModule =  AccountManager.addFacebookAccount(facebookConfig)
+</pre>
+</div>
+
+<div id="google-oauth2-ios-manager" class="snippet-oauth2-ios-manager" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+let googleModule = AccountManager.addGoogleAccount(googleConfig)
+</pre>
+</div>
+
+++++
+
+. Inject the OAuth2 module into HTTP object
++
+++++
+<ul class="nav nav-tabs nav-snippets">
+  <li class="active"><a href="#keycloak-oauth2-ios-inject"><i class="fa fa-shield"></i> Keycloak</a></li>
+  <li><a href="#facebook-oauth2-ios-inject" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+  <li><a href="#google-oauth2-ios-inject" title="Google"><i class="fa fa-google"></i> Google</a></li>
+</ul>
+<script defer src="/js/code-snippets.js"></script>
+
+<div id="keycloak-oauth2-ios-inject" class="snippet-oauth2-ios-inject">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+self.http.authzModule = keycloakModule
+</pre>
+</div>
+
+<div id="facebook-oauth2-ios-inject" class="snippet-oauth2-ios-inject" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+self.http.authzModule = facebookModule
+</pre>
+</div>
+
+<div id="google-oauth2-ios-inject" class="snippet-oauth2-ios-inject" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+self.http.authzModule = googleModule
+</pre>
+</div>
+++++
+
+. Create a method to send the HTTP request
++
+Finally, send an HTTP request to make sure that everything is fine. Make sure to create a separate method for this.
++
+[source]
+.https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/ViewController.swift[Copy & paste]
+----
+func performUpload(url: String, parameters: [String: AnyObject]?) {
+    self.http.POST(url, parameters: parameters, completionHandler: {(response, error) in
+        if (error != nil) {
+            self.presentAlert("Error", message: error!.localizedDescription)
+        } else {
+            self.presentAlert("Success", message: "Successfully uploaded!")
+        }
+    })
+}
+----
+
+. You are legendary!
++
+Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
+
+
 === Windows Phone
 == Next steps
 == Asking for help
