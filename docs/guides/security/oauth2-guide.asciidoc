@@ -217,13 +217,13 @@ First create a helper class and add these lines of code:
 +
 ++++
 <ul class="nav nav-tabs nav-snippets">
-  <li class="active"><a href="#keycloak" class="btn btn-primary"><i class="fa fa-shield"></i> Keycloak</a></li>
-  <li><a href="#facebook" class="btn btn-primary" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
-  <li><a href="#google" class="btn btn-primary" title="Google"><i class="fa fa-google"></i> Google</a></li>
+  <li class="active"><a href="#keycloak"><i class="fa fa-shield"></i> Keycloak</a></li>
+  <li><a href="#facebook" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+  <li><a href="#google" title="Google"><i class="fa fa-google"></i> Google</a></li>
 </ul>
 <script defer src="/js/code-snippets.js"></script>
 
-<div id="keycloak" class="snippet-oauth2" style="display: none">
+<div id="keycloak" class="snippet-oauth2">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java">Copy & paste</a>
 <pre class="highlight">
@@ -239,7 +239,7 @@ AuthorizationManager.config("KeyCloakAuthz", OAuth2AuthorizationConfiguration.cl
 </pre>
 </div>
 
-<div id="facebook" class="snippet-oauth2">
+<div id="facebook" class="snippet-oauth2" style="display: none">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java">Copy & paste</a>
 <pre class="highlight">
@@ -258,7 +258,7 @@ AuthorizationManager.config("FacebookOAuth", OAuth2AuthorizationConfiguration.cl
 </pre>
 </div>
 
-<div id="google" class="snippet-oauth2">
+<div id="google" class="snippet-oauth2" style="display: none">
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/GooglePlusHelper.java">Copy & paste</a>
 <pre class="highlight">
