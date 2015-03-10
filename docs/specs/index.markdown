@@ -26,6 +26,8 @@ span.version {
 * [Http](aerogear-ios-http) <span class="version">0.2.0</span>
 * [OAuth2](aerogear-ios-oauth2) <span class="version">0.2.0</span>
 * [JsonSZ](aerogear-ios-jsonsz) <span class="version">0.1.0</span>
+* [Sync](aerogear-ios-sync) <span class="version">1.0.0-alpha.1</span>
+* [Sync client](aerogear-ios-sync-client) <span class="version">1.0.0-alpha.1</span>
 * [Push](aerogear-ios-push) <span class="version">1.0.0</span>
 * [OTP](aerogear-otp-ios) <span class="version">1.0.0</span>
 * [Crypto](aerogear-ios-crypto) <span class="version">0.2.3</span>
