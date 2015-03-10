@@ -348,7 +348,7 @@ PipeManager.config("gp-upload", RestfulPipeConfiguration.class)
 +
 Please make sure to use the proper `client ID` and `client secret` for your application.
 +
-. Access request
+. Request access
 +
 Finally, you need to request access to the OAuth2 provider. Make sure to create a new method for the helper class and inform the module name. The possible values are: `KeyCloakAuthz`, `FacebookOAuth` and `GoogleDriveAuthz`.
 +
