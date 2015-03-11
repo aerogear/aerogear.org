@@ -205,7 +205,7 @@ image:/docs/guides/security/img/keycloak-2.jpg[Keycloak - Realm configuration]
 
 AeroGear integrates with several OAuth2 providers. If you already have an existing mobile application, please select a platform and follow one of the steps below.
 
-Shoot'nShare
+All the examples described here are based on our demo application, called Shoot'nShare.
 
 === Server side deployment
 
@@ -811,8 +811,12 @@ public async void Upload(OAuth2Module module)
 +
 Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
 
-== Next steps
+== What's next?
+
+We're constantly improving our API, based on the the open source community, if you think something is missing, file a https://issues.jboss.org/browse/agsec[Jira].
+
+Want to learn more? Go back to link:/getstarted/guides/[our guides].
+
 == Asking for help
-== Acknowledgments
 
-
+Security can be tricky sometimes, due to numerous misunderstandings and subtle details behind it, so feel free to reach out to us if you have any link:/community/#contact[questions] or want to provide honest feedback.
