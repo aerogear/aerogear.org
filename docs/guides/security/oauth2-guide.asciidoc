@@ -68,10 +68,33 @@ The different applications can be found it the platform specific _cookbooks_:
 The Keycloak protected backend application is a simple Java EE / JAX-RS based application. The source is located https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot[here].
 
 == Requirements
+
+=== Server side
+
+* http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java 7]
+* http://download.jboss.org/wildfly/8.2.0.Final/wildfly-8.2.0.Final.tar.gz[WildFly 8.2.0.Final]
+* http://sourceforge.net/projects/keycloak/files/1.1.0.Final/[Keycloak 1.1.0.Final]
+
 === Android
+
+* http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java 7]
+* http://www.gradle.org/[Gradle 2.2.1]
+* https://developer.android.com/sdk/index.html[Android SDK] with http://developer.android.com/tools/revisions/platforms.html[platform version 21]
+
 === Apache Cordova
+
+* https://nodejs.org/[Node.js] and https://www.npmjs.com/[npm]
+* http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html[Cordova installed]
+
 === iOS
+
+* http://guides.cocoapods.org/using/getting-started.html#getting-started[Cocoapods 0.36.0.x]
+* https://developer.apple.com/xcode/downloads/[XCode 6.2]
+
 === Windows Phone
+
+* https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx[Visual Studio 2013]
+* https://docs.nuget.org/consume/installing-nuget[nuget]
 
 == Before you get started
 
