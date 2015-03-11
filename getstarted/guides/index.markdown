@@ -55,23 +55,23 @@ Designed to get you started with enterprise mobile development.
 
 > Secure the application by using authentication, two-factor authentication and authorization mechanisms
 
-#### 1. Overview
-
-In progress
-
-#### 2. OTP
+#### OTP
 * [AeroGear Two-Factor Authentication with OTP](/docs/guides/AeroGear-OTP)
 * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](/docs/guides/aerogear-cordova/AerogearCordovaOTP)
 
-#### 3. Cryptography
+#### Cryptography
 
 * In progress
 
-#### 4. OAuth2
+#### OAuth2
 
-  1. [OAuth2](/docs/guides/security/oauth2-guide)
+  1. [Overview](/docs/guides/security/oauth2-guide#_overview)
+  2. [Requirements](/docs/guides/security/oauth2-guide/#_requirements)
+  3. [Before you get started](docs/guides/security/oauth2-guide/#_before_you_get_started)
+  4. [Getting started](/docs/guides/security/oauth2-guide/#_getting_started)
+  5. [What’s next?](/docs/guides/security/oauth2-guide/#_what_s_next)
+  6. [Asking for help](/docs/guides/security/oauth2-guide/#_asking_for_help)
 
-<div class="alert alert-info" role="alert">If you are looking for AeroGear iOS 1.x series, please visit <a href="/docs/guides/aerogear-ios/">this page</a> for more information.</div>
 ---
 
 <h2 class="section-header" id="push"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong> Guides</h2>
