@@ -379,22 +379,20 @@ authzModule.requestAccess(activity, new Callback<String>() {
 Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
 
 === Apache Cordova
-=== iOS
 
-To download one of our examples, check our https://github.com/aerogear/aerogear-ios-cookbook/releases/[cookbooks].
+To download one of our examples, check our https://github.com/aerogear/aerogear-cordova-cookbook[cookbooks].
 
 . Adding AeroGear to the project
 +
 [source]
-.https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Podfile[Podfile]
+.https://github.com/aerogear/aerogear-cordova-cookbook/blob/master/Shoot/config.xml[config.xml]
 ----
-pod 'AeroGearHttp', '0.2.0'
-pod 'AeroGearOAuth2', '0.2.1'
+$ cordova plugin add org.jboss.aerogear.cordova.oauth2
 ----
 
 . Configure Info.plist file
 +
-Add the `CFBundleURLTypes` key or skip this step if you're not planning to connect with Facebook.
+Add the `CFBundleURLTypes` key or skip this step if you have no plans to connect with Facebook or deploy on iOS.
 +
 [source]
 .https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/Info.plist[Info.plist]
@@ -411,7 +409,127 @@ Add the `CFBundleURLTypes` key or skip this step if you're not planning to conne
 </array>
 ----
 
-. Create a `ViewController` class and instantiate the Http class
+
+. Add the OAuth2 provider configuration
++
+++++
+<ul class="nav nav-tabs nav-snippets">
+  <li class="active"><a href="#keycloak-oauth2-cordova-config"><i class="fa fa-shield"></i> Keycloak</a></li>
+  <li><a href="#facebook-oauth2-cordova-config" title="Facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+  <li><a href="#google-oauth2-cordova-config" title="Google"><i class="fa fa-google"></i> Google</a></li>
+</ul>
+<script defer src="/js/code-snippets.js"></script>
+
+<div id="keycloak-oauth2-cordova-config" class="snippet-oauth2-cordova-config">
+</br>
+<a href="https://github.com/aerogear/aerogear-cordova-cookbook/blob/master/Shoot/www/js/app.js"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+oauth2.addKeycloak({
+  name: 'keycloak',
+  settings: {
+    base: '<location of keycloak server e.g. http://192.168.0.12:8080/auth>',
+    //when you use the shoot and share backend these do not need to change
+    clientId: 'shoot-third-party',
+    realm: 'shoot-realm'
+  }
+});
+</pre>
+</div>
+
+<div id="facebook-oauth2-cordova-config" class="snippet-oauth2-cordova-config" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-cordova-cookbook/blob/master/Shoot/www/js/app.js"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+oauth2.addFacebook({
+  name: 'facebook',
+  settings: {
+    //On iOS, be sure to also update the <project_name>-Info.plist file with the clientId
+    clientId: '<your client id goes here>',
+    clientSecret: '<your client secret goes here>',
+    scopes: 'photo_upload, publish_actions'
+  }
+});
+
+</pre>
+</div>
+
+<div id="google-oauth2-cordova-config" class="snippet-oauth2-cordova-config" style="display: none">
+</br>
+<a href="https://github.com/aerogear/aerogear-cordova-cookbook/blob/master/Shoot/www/js/app.js"><i class="fa fa-paperclip"></i> Copy & paste</a>
+<pre class="highlight">
+oauth2.addGoogle({
+  name: 'gplus',
+  settings: {
+    //replace with your own if you want to...
+    clientId: '<your client secret goes here.apps.googleusercontent.com>',
+    scopes: 'https://www.googleapis.com/auth/drive'
+  }
+});
+</pre>
+</div>
+++++
++
+Please make sure to use the proper `client ID` and `client secret` for your application.
+
+. Deploy
++
+++++
+<ul class="nav nav-tabs nav-snippets">
+  <li class="active"><a href="#android-oauth2-cordova-deploy"><i class="fa fa-android"></i> Android</a></li>
+  <li><a href="#ios-oauth2-cordova-deploy" title="Facebook"><i class="fa fa-apple"></i> iOS</a></li>
+</ul>
+<script defer src="/js/code-snippets.js"></script>
+
+<div id="android-oauth2-cordova-deploy" class="snippet-oauth2-cordova-deploy">
+<pre class="highlight">
+$ cordova run android
+</pre>
+</div>
+
+<div id="ios-oauth2-cordova-deploy" class="snippet-oauth2-cordova-deploy" style="display: none">
+<pre class="highlight">
+$ cordova run ios
+</pre>
+</div>
+++++
+
+. You are legendary!
++
+Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
+
+=== iOS
+
+To download one of our examples, check our https://github.com/aerogear/aerogear-ios-cookbook/releases/[cookbooks].
+
+. Adding AeroGear to the project
++
+[source]
+.https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Podfile[Podfile]
+----
+pod 'AeroGearHttp', '0.2.0'
+pod 'AeroGearOAuth2', '0.2.1'
+----
+
+. Configure Info.plist file
++
+Add the `CFBundleURLTypes` key or skip this step if you have no plans to connect with Facebook.
++
+[source]
+.https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Shoot/Shoot/Info.plist[Info.plist]
+----
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>org.aerogear.Shoot</string>
+            <string>fbYYY</string>
+        </array>
+    </dict>
+</array>
+----
+
+. Create a `ViewController` class and instantiate the `Http` class
 +
 For more detailed information about the HTTP module, please visit the link:/docs/guides/aerogear-ios-2.X/HttpLib/[iOS documentation].
 +
