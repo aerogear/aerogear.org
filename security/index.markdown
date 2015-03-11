@@ -7,7 +7,7 @@ sub-section-title: AeroGear Security
 ---
 
   <h1><i class="fa fa-shield"></i> AeroGear<strong>Security</strong></h1>
-  <p class="alt">Mobile security for humans, integrating your mobile application to already existent infrastructure.</p>
+  <p class="alt">Mobile security for humans, integrating your mobile application into existing infrastructure.</p>
   <p>
     <a href="{{ site.baseurl }}/getstarted/downloads" class="btn btn-primary-inverse btn-lg"><i class="fa fa-hand-o-right"></i> Get started</a>
     <a href="{{ site.baseurl }}/getstarted/guides/#security" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guide</a>
