@@ -685,8 +685,93 @@ func performUpload(url: String, parameters: [String: AnyObject]?) {
 +
 Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
 
-
+[[windows-getting-started]]
 === Windows Phone
+
+To download one of our examples, check https://github.com/aerogear/aerogear-windows-oauth2[the sources].
+
+. Application configuration
++
+Go to Visual Studio and open `Package.appxmanifest` go to `Declarations` add a protocol and set the bundle id you picked on the google console.
++
+image:/docs/guides/security/img/windows-protocol-config.png[Protocol configuration]
++
+Next step is setting up the account in code, replace the `<google-client-id>` with your google `client id`.
+
+. Initialise the OAuth2 provider configuration
++
+[source]
+----
+var config = await GoogleConfig.Create(
+    "<google-client-id>",
+    new List<string>(new string[] { "https://www.googleapis.com/auth/drive" }),
+    "google"
+);
+----
+
+. Add the OAuth2 configuration to the `AccountManager`
++
+[source]
+----
+var googleModule = await AccountManager.AddAccount(config);
+----
+
+. Request access
++
+[source]
+----
+if (await module.RequestAccessAndContinue())
+{
+    Upload(module);
+}
+----
++
+if the result is `true` the app will not be suspended and we can for instance upload to Google Drive, like in this example. Otherwise the app will be suspended and an authentication dialog will appear.
++
+To handle the continuation event, include http://msdn.microsoft.com/en-us/library/dn631755.aspx[continuation manager] in you app. Or implement everything by yourself:
++
+[source]
+----
+protected async override void OnActivated(IActivatedEventArgs args)
+{
+    if (args.Kind == ActivationKind.WebAuthenticationBrokerContinuation)
+    {
+        //get a reference to the page as IWebAuthenticationContinuable
+        var wabPage = rootFrame.Content as IWebAuthenticationContinuable;
+        wabPage.ContinueWebAuthentication(args as WebAuthenticationBrokerContinuationEventArgs);
+    }
+...
+----
++
+The page will have to implement the `IWebAuthenticationContinuable` interface like this:
++
+[source]
+----
+async void IWebAuthenticationContinuable.ContinueWebAuthentication(WebAuthenticationBrokerContinuationEventArgs args)
+{
+    Upload(await AccountManager.ParseContinuationEvent(args));
+}
+----
++
+This will parse the `ContinuationEvent` and save the token from the OAuth provider (in this case Google) to the device. So the next time user don't  need to authenticate again.
++
+In the upload method, make use of `AuthzWebRequest`, a special WebRequest that will take care of adding the authentication headers.
++
+[source]
+----
+public async void Upload(OAuth2Module module)
+{
+    var request = AuthzWebRequest.Create("https://www.googleapis.com/upload/drive/v2/files", module);
+    request.Method = "POST";
+
+    using (var postStream = await Task<Stream>.Factory.FromAsync(request.BeginGetRequestStream, request.EndGetRequestStream, request))
+...
+----
+
+. You are legendary!
++
+Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
+
 == Next steps
 == Asking for help
 == Acknowledgments
