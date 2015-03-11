@@ -12,7 +12,7 @@ Designed to get you started with enterprise mobile development.
 
 <h2 class="section-header" id="first-steps"><i class="fa fa-graduation-cap"></i> First Steps</h2>
 
-> Learn how to make first steps in the mobile development on each of supported platforms
+> Take the first steps in the mobile development on each of the supported platforms
 
 <h4 id="coreAndroid">Android</h4>
 * [Google's Android Tutorials](https://developer.android.com/training/index.html)
@@ -35,7 +35,7 @@ Designed to get you started with enterprise mobile development.
 
 <h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>SDK</strong> Guides</h2>
 
-> Take the knowledge further and learn about advanced concepts supported by client libraries
+> Take your knowledge further and learn about advanced concepts supported by client libraries
 
 <h4 id="coreAndroid">Android</h4>
 * [Pipe](/docs/guides/aerogear-android/pipe)
@@ -76,7 +76,7 @@ In progress
 
 <h2 class="section-header" id="push"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong> Guides</h2>
 
-> In several tutorials and guides you can learn all about the UnifiedPush technology
+> Tutorials and guides that will help you learn all about the UnifiedPush technology
 
 <h4 id="unifiedPush">UnifiedPush Server guides</h4>
 * [UnifiedPush Server User Guide](/docs/unifiedpush/ups_userguide/index)
