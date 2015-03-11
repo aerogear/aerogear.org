@@ -7,7 +7,7 @@ title: Specifications
 
 #### Client Library Specifications
 
-* [AeroGear JS 2.0.0](aerogear-js)
+* [AeroGear JS 2.1.0](aerogear-js)
 * [AeroGear iOS Http 0.2.0](aerogear-ios-http)
 * [AeroGear iOS OAuth2 0.2.0](aerogear-ios-oauth2)
 * [AeroGear iOS JsonSZ 0.1.0](aerogear-ios-jsonsz)

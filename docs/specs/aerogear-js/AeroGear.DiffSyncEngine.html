@@ -18,7 +18,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Module: mozSetMessageHandler</h1>
+    <h1 class="page-title">Module: DiffSyncEngine</h1>
     
     
 
@@ -28,7 +28,9 @@
     
 <header>
     <h2>
-    mozSetMessageHandler
+        <span class="ancestors"><a href="AeroGear.html">AeroGear</a>.</span>
+    
+    DiffSyncEngine
     </h2>
     
 </header>  
@@ -40,7 +42,7 @@
     
         
 <dt>
-    <h4 class="name" id="mozSetMessageHandler"><span class="type-signature"></span>new mozSetMessageHandler<span class="signature">(messageType, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="DiffSyncEngine"><span class="type-signature"></span>new DiffSyncEngine<span class="signature">(config)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
@@ -52,7 +54,7 @@
 
     
     <div class="description">
-        Add the setMessageHandler/mozSetMessageHandler function to the global navigator object
+        The AeroGear Differential Sync Engine.
     </div>
     
 
@@ -86,7 +88,53 @@
 	
         <tr>
             
-                <td class="name"><code>messageType</code></td>
+                <td class="name"><code>config</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A configuration
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>type</code></td>
             
             
             <td class="type">
@@ -99,33 +147,32 @@
             </td>
             
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
             
             
             
-            <td class="description last">a name or category to give the messages being received and in this implementation, likely 'push'</td>
+                <td class="default">
+                
+                    "jsonPatch"
+                
+                </td>
+            
+            
+            <td class="description last">the type of sync engine, defaults to jsonPatch</td>
         </tr>
 	
 	
-	
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Function</span>
-
-
-            
+	</tbody>
+</table>
             </td>
-            
-            
-            
-            
-            
-            <td class="description last">the function to be called when a message of this type is received</td>
         </tr>
 	
 	
@@ -156,7 +203,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear.simplepush.js.html">simplepush/aerogear.simplepush.js</a>, <a href="aerogear.simplepush.js.html#line157">line 157</a>
+        <a href="aerogear.diff-sync-engine.js.html">diff-sync/aerogear.diff-sync-engine.js</a>, <a href="aerogear.diff-sync-engine.js.html#line24">line 24</a>
     </li></ul></dd>
     
     
@@ -177,24 +224,29 @@
     
     
     
+    <h5>Returns:</h5>
     
-    
-        <h5>Example</h5>
+            
+<div class="param-desc">
+    diffSyncEngine - The created DiffSyncEngine
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
         
-    <pre class="prettyprint"><code>                        navigator.setMessageHandler( "push", function( message ) {
-                            if ( message.channelID === mailEndpoint.channelID ) {
-                                console.log("Mail Message Received");
-                            }
-                        });
-
-                        or
-                        // Mozilla's spec currently has the 'moz' prefix
-                        navigator.mozSetMessageHandler( "push", function( message ) {
-                            if ( message.channelID === mailEndpoint.channelID ) {
-                                console.log("Mail Message Received");
-                            }
-                        });</code></pre>
-
+    
     
 </dd>
 
@@ -211,6 +263,64 @@
     
     
     
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="adapters"><span class="type-signature">&lt;static> </span>adapters<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The adapters object is provided so that adapters can be added to the AeroGear.DiffSyncEngine namespace dynamically and still be accessible to the add method
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aerogear.diff-sync-engine.js.html">diff-sync/aerogear.diff-sync-engine.js</a>, <a href="aerogear.diff-sync-engine.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -234,7 +344,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Mar 11 2015 14:05:06 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Mar 11 2015 14:05:02 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
