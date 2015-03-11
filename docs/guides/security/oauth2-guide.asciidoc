@@ -180,9 +180,23 @@ image:/docs/guides/security/img/keycloak-2.jpg[Keycloak - Realm configuration]
 
 AeroGear integrates with several OAuth2 providers. If you already have an existing mobile application, please select a platform and follow one of the steps below.
 
+Shoot'nShare
+
 === Server side deployment
 
-Instructions about how to deploy the shoot server
+Most of the examples do not require an application server to work, but if you're planning to use http://keycloak.jboss.org/[Keycloak] as security provider, http://wildfly.org/[WildFly] is required.
+
+Assuming that all the instructions described link:#Keycloak[here] were properly followed, now deploy our example server:
+
+[source]
+----
+$ git clone git@github.com:aerogear/aerogear-backend-cookbook.git && cd aerogear-backend-cookbook
+$ cd Shoot
+$ mvn clean install
+$ mvn wildfly:deploy
+----
+
+Keep in mind that the example server is not required to connect with http://keycloak.jboss.org/[Keycloak]. Shoot'nShare server only showcase an end-to-end security integration in real life and display the uploaded photos.
 
 [[android-getting-started]]
 === Android
