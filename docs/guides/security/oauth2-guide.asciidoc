@@ -98,6 +98,8 @@ The Keycloak protected backend application is a simple Java EE / JAX-RS based ap
 
 == Before you get started
 
+The OAuth2 examples described in this guide require some previous setup to make `Keycloak`, `Facebook` and `Google` work. Please follow the steps listed below.
+
 [[Google]]
 === Google Account Setup
 
