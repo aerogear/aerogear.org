@@ -30,18 +30,12 @@ Grant] |✔ |✔ |*-* |✔ |✔
 
 Below are the various GitHub repositories that are part of the OAuth2 feature in AeroGear.
 
+[[android-overview]]
 === Android
 
 The https://github.com/aerogear/aerogear-android-authz[AeroGear Android Authz] will give developers the ability to integrate their Android application with RESTful services secured with OAuth2.
 
-=== iOS
-
-On iOS we do have a Swift based OAuth2 client https://github.com/aerogear/aerogear-ios-oauth2[library].
-
-=== Windows
-
-For Windows we have a client library for OAuth2 on https://github.com/aerogear/aerogear-windows-oauth2[Windows phone].
-
+[[cordova-overview]]
 === Apache Cordova
 
 Our https://github.com/aerogear/aerogear-oauth2-cordova[Apache Cordova plugin] for OAuth2 supports the following platforms:
@@ -49,6 +43,16 @@ Our https://github.com/aerogear/aerogear-oauth2-cordova[Apache Cordova plugin] f
 * Android
 * iOS
 * Windows
+
+[[ios-overview]]
+=== iOS
+
+On iOS we do have a Swift based OAuth2 client https://github.com/aerogear/aerogear-ios-oauth2[library].
+
+[[windows-overview]]
+=== Windows
+
+For Windows we have a client library for OAuth2 on https://github.com/aerogear/aerogear-windows-oauth2[Windows phone].
 
 === Demo applications
 
@@ -180,6 +184,7 @@ AeroGear integrates with several OAuth2 providers. If you already have an existi
 
 Instructions about how to deploy the shoot server
 
+[[android-getting-started]]
 === Android
 
 To download one of our examples, check our https://github.com/aerogear/aerogear-android-cookbook/releases[cookbooks].
@@ -378,6 +383,7 @@ authzModule.requestAccess(activity, new Callback<String>() {
 +
 Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
 
+[[cordova-getting-started]]
 === Apache Cordova
 
 To download one of our examples, check our https://github.com/aerogear/aerogear-cordova-cookbook[cookbooks].
@@ -497,6 +503,7 @@ $ cordova run ios
 +
 Congratulations, we're done here! You followed all the steps to heaven and now it's time to celebrate.
 
+[[ios-getting-started]]
 === iOS
 
 To download one of our examples, check our https://github.com/aerogear/aerogear-ios-cookbook/releases/[cookbooks].
