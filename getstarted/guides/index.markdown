@@ -62,10 +62,6 @@ Designed to get you started with enterprise mobile development.
 * [AeroGear Two-Factor Authentication with OTP](/docs/guides/AeroGear-OTP)
 * [AeroGear Two-Factor Authentication with OTP as Cordova Plugin](/docs/guides/aerogear-cordova/AerogearCordovaOTP)
 
-#### Cryptography
-
-* In progress
-
 #### OAuth2
 
   1. [Overview](/docs/guides/security/oauth2-guide#_overview)
