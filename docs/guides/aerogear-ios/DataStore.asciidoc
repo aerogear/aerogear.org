@@ -8,7 +8,7 @@ title: Store and DataManager
 // tag::store[]
 
 
-A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage (note that encrypted variants of these stores are also available, check the <<crypto, Cryptography support>> section below).
+A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage (note that encrypted variants of these stores are also available, check the link:/docs/guides/aerogear-ios/Cryptography/[Cryptography support] section below).
 
 A DataManager manages different Store implementations. It is basically a factory that hides the concrete instantiations of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.
 

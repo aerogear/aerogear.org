@@ -26,7 +26,7 @@ Below is a list with a few highlights of the server:
 * increased APNs payload (2k)
 * WildFly 8.x support
 
-In our new [User Guide](../../../../../docs/unifiedpush/ups_userguide/) you can find more details about the UnifiedPush Server!
+In our new [User Guide](../../../../../docs/unifiedpush/ups_userguide/index/) you can find more details about the UnifiedPush Server!
 
 ### Openshift Online
 
