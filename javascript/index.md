@@ -29,13 +29,16 @@ section: platforms
 
 ## <i class="fa fa-refresh"></i> Diff Sync
 
-The Diff Sync client and server are based on an implementation of Google's Differential Synchonrization by Neil Fraser.
+The Diff Sync client and server are based on an implementation of Google&#39;s <a href="http://research.google.com/pubs/pub35605.html">Differential Synchonrization</a> by Neil Fraser.
 
-The DiffSyncClient connects to the AeroGear Sync Server
+The [DiffSyncClient](/docs/specs/aerogear-js/AeroGear.DiffSyncClient.html) connects to the [AeroGear Sync Server](https://github.com/aerogear/aerogear-sync-server).
 
-The DiffSyncEngine is responsible for the algorithm logic.
+The [DiffSyncEngine](/docs/specs/aerogear-js/AeroGear.DiffSyncEngine.html) is responsible for the algorithm logic - there are two adapters available: [JSON Patch](/docs/specs/aerogear-js/AeroGear.DiffSyncEngine.adapters.jsonPatch.html), [DiffMatchPatch](/docs/specs/aerogear-js/AeroGear.DiffSyncEngine.adapters.diffMatchPatch.html).
 
-<a href="/docs/specs/aerogear-js/AeroGear.DiffSyncClient.html" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
+<p>
+<a href="/docs/specs/aerogear-js/AeroGear.DiffSyncClient.html" class="btn btn-primary"><i class="fa fa-file-text-o"></i> DiffSyncClient API Documentation</a>
+<a href="/docs/specs/aerogear-js/AeroGear.DiffSyncEngine.html" class="btn btn-primary"><i class="fa fa-file-text-o"></i> DiffSyncEngine API Documentation</a>
+</p>
 
 ## <i class="fa fa-shield"></i> Crypto
 

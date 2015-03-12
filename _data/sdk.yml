@@ -1,7 +1,7 @@
 javascript:
   name: JavaScript
   icon: fa-html5
-  aerogearjs-version: 2.0.0
+  aerogearjs-version: 2.1.0
 
 android:
   name: Android
