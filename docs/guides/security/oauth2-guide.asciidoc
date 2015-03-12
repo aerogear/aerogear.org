@@ -360,7 +360,8 @@ Now you can configure the link:/docs/guides/aerogear-android/pipe[PipeManager] t
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/KeycloakHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
-PipeManager.config("kc-upload", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule("KeyCloakAuthz"))
+PipeManager.config("kc-upload", RestfulPipeConfiguration.class)
+        .module(AuthorizationManager.getModule("KeyCloakAuthz"))
         .withUrl(new URL("http://localhost:8080/shoot/rest/photos"))
         .requestBuilder(new MultipartRequestBuilder())
         .forClass(PhotoHolder.class);
@@ -371,7 +372,8 @@ PipeManager.config("kc-upload", RestfulPipeConfiguration.class).module(Authoriza
 </br>
 <a href="https://github.com/aerogear/aerogear-android-cookbook/blob/master/ShootAndShare/app/src/main/java/org/jboss/aerogear/android/cookbook/shootandshare/util/FacebookHelper.java"><i class="fa fa-paperclip"></i> Copy & paste</a>
 <pre class="highlight">
-PipeManager.config("fb-upload", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule("FacebookOAuth"))
+PipeManager.config("fb-upload", RestfulPipeConfiguration.class)
+        .module(AuthorizationManager.getModule("FacebookOAuth"))
         .withUrl(new URL("https://graph.facebook.com/me/photos"))
         .requestBuilder( new MultipartRequestBuilder())
         .forClass(PhotoHolder.class);
