@@ -2,7 +2,6 @@
 layout: post
 section: guides
 title: Setting up your development enivronment to use Apache Cordova
-toc_generate: true
 ---
 == Apache Cordova CLI 
 

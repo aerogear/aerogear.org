@@ -2,7 +2,6 @@
 layout: post
 section: guides
 title: AeroGear Cordova OTP
-toc_generate: true
 ---
 
 
