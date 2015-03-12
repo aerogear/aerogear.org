@@ -2,6 +2,7 @@
 layout: post
 section: guides
 title: Store and DataManager
+toc_generate: true
 ---
 
 

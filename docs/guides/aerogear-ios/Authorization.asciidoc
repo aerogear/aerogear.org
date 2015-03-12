@@ -2,6 +2,7 @@
 layout: post
 section: guides
 title: Authorization (OAuth2)
+toc_generate: true
 ---
 
 // tag::authz[]

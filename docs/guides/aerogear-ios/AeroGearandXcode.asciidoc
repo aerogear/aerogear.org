@@ -7,6 +7,7 @@ section-description: Tutorials to help get you off and running.
 breadcrumbs-url: /getstarted/guides/
 sub-section-title: iOS 1.X
 section-class: guides
+toc_generate: true
 ---
 
 == Getting Started with AeroGear and Xcode

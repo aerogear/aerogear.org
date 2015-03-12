@@ -1,6 +1,8 @@
 ---
 layout: basic
 title: AeroGear HttpStub
+section: guides
+toc_generate: true
 ---
 
 == Introduction
