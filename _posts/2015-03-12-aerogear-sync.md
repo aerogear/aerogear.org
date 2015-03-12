@@ -7,7 +7,7 @@ This is the first alpha release of [AeroGear Sync](https://aerogear.org/sync/) w
 
 #### Servers
 
-Our server is written in [Java](https://github.com/aerogear/aerogear-sync-server) and provides three different wire protocol:
+Our server is written in [Java](https://github.com/aerogear/aerogear-sync-server) and provides three different synchronization algorithms:
 
 * DiffMatchPatch
 * JsonMergePatch
