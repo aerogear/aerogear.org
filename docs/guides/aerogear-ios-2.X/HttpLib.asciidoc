@@ -1,6 +1,8 @@
 ---
-layout: basic
+layout: post
 title: AeroGear Http
+section: guides
+toc_generate: true
 ---
 
 == Introduction

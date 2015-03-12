@@ -1,17 +1,17 @@
 ---
-layout: basic
+layout: post
+section: docs
 title: AeroGear Client Paging Usage
-
+toc_generate: true
 ---
-## Client Paging Usage
 
 Below is a comparison of the method usage proposed by each lib for handling paged resources.
 
-### Enable Paging
+## Enable Paging
 
 *General Use Case* : The client configures paging settings.
 
-#### Android
+### Android
 
     ReadFilter filter = new ReadFilter();
     filter.setLimit(7);
@@ -28,7 +28,7 @@ Below is a comparison of the method usage proposed by each lib for handling page
       }
     });
 
-#### iOS
+### iOS
 
     NSURL* baseURL = [NSURL URLWithString:@"https://controller-aerogear.rhcloud.com/aerogear-controller-demo"];
     AGPipeline* agPipeline = [AGPipeline pipelineWithBaseURL:baseURL];
@@ -53,7 +53,7 @@ Below is a comparison of the method usage proposed by each lib for handling page
       //handle error
     }];
 
-#### JS
+### JS
 
     var cars = AeroGear.Pipeline({
       name: "cars",
@@ -79,7 +79,7 @@ Below is a comparison of the method usage proposed by each lib for handling page
     });
 
 
-### Read Next Page
+## Read Next Page
 
 *General Use Case* : The client request the next page of a Pipe response.
 
@@ -88,7 +88,7 @@ Below is a comparison of the method usage proposed by each lib for handling page
 *Retrieving the first page* : offset must be 0.
 
 
-#### Android
+### Android
 
     ReadFilter filter = new ReadFilter();
     filter.setLimit(7);
@@ -119,7 +119,7 @@ Below is a comparison of the method usage proposed by each lib for handling page
     });
 
 
-#### iOS
+### iOS
 *General Use Case* : The client requests the next page of a Pipe response.
 
     // move to the next page
@@ -147,7 +147,7 @@ To specify new offset, simply redefine query params and start over.
       //handle error
     }];
 
-#### JS
+### JS
 
 *General Use Case* : The client requests the next page of a Pipe response.
 
@@ -178,14 +178,14 @@ Moving to the next page from last is left on the specific server implementation,
       }
     });
 
-### Read Previous Page
+## Read Previous Page
 
 *General Use Case* : The client request the previous page of a Pipe response.
 
 *Failure Use Case* : The current page is the first page.
 
 
-#### Android
+### Android
 
     ReadFilter filter = new ReadFilter();
     filter.setLimit(5);
@@ -215,7 +215,7 @@ Moving to the next page from last is left on the specific server implementation,
     });
 
 
-#### iOS
+### iOS
 
 *General Use Case* : The client request the previous page of a Pipe response.
 
@@ -231,7 +231,7 @@ Moving to the next page from last is left on the specific server implementation,
 
 Similar to next case, the behaviour is left to the specific server implementation.
 
-#### JS
+### JS
 
 *General Use Case* : The client request the previous page of a Pipe response.
 
@@ -248,11 +248,11 @@ Similar to next case, the behaviour is left to the specific server implementatio
 
 Similar to next case, the behaviour is left to the specific server implementation.
 
-### Change Offset and Limit
+## Change Offset and Limit
 
 *General Use Case* : The client changes the paging configuration mid-flight.
 
-#### Android
+### Android
 
 
     ReadFilter filter = new ReadFilter();
@@ -289,7 +289,7 @@ Similar to next case, the behaviour is left to the specific server implementatio
     });
 
 
-#### iOS
+### iOS
 
 Simply redefine query params and start over.
 
@@ -302,7 +302,7 @@ Simply redefine query params and start over.
       //handle error
     }];
 
-#### JS
+### JS
 
 *General Use Case* : The client changes the paging configuration mid-flight.
 
@@ -317,13 +317,13 @@ Simply redefine query params and start over.
       }
     });
 
-### Jumping to a specific page
+## Jumping to a specific page
 
 *General Use Case* : The client request a specific page.
 
 *Failure Use Case* : The requested page does not exist.
 
-#### Android
+### Android
 
     ReadFilter filter = new ReadFilter();
     filter.setLimit(5);
@@ -341,7 +341,7 @@ Simply redefine query params and start over.
       }
     });
 
-#### iOS
+### iOS
 
 Simply redefine query params and start over.
 
@@ -354,7 +354,7 @@ Simply redefine query params and start over.
         //handle error
     }];
 
-#### JS
+### JS
 
     cars.read({
       offsetValue: 1,
@@ -367,9 +367,9 @@ Simply redefine query params and start over.
       }
     });
 
-### Return All Records (No longer paged)
+## Return All Records (No longer paged)
 
-#### Android
+### Android
 
     cars.read(new Callback<Car>() {
       @Override
@@ -384,13 +384,13 @@ Simply redefine query params and start over.
     });
 
 
-#### iOS
+### iOS
 
     [pipe read:^(id responseObject) {
       // do something with the response...
     } failure:^(NSError *error) {...}];
 
-#### JS
+### JS
 
     // Get all records for a single read but continue paging afterward
     cars.read({

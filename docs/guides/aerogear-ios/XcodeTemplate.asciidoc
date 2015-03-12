@@ -1,17 +1,17 @@
 ---
-layout: basic
-title: AeroGear Xcode Template
+layout: post
+section: guides
+title: Getting Started with AeroGear and Xcode Template
+toc_generate: true
 ---
-
-== Getting Started with AeroGear and Xcode Template
 
 As of version 1.0 of the AeroGear library, we are offering an Xcode template for our users to easily get started with the framework. This guide will help you setup the template in your existing Xcode installation. Once installed you can easily use the template as a basis for all your future AeroGear iOS applications. The guide assumes that you have Xcode IDE installed in your machine. If not, you can download it from the Apple developer web site link:https://developer.apple.com/xcode[here]. Let's get started.
 
-=== Step 1: Install Xcode Template
+== Step 1: Install Xcode Template
 
 link:https://github.com/aerogear/aerogear-ios-xcode-template/zipball/master[Click here] to download the latest version of the template from the link:https://github.com/aerogear/aerogear-ios-xcode-template[project's web site]. Once the download completes, uncompress the file and inside you will find an _AeroGear_ folder.
 
-image::../img/ios_template_folder.png[Template folder]
+image:../../img/ios_template_folder.png[Template folder]
 
 The folder contains the system configuration files that comprise the installable Xcode template. To assist Xcode to recognize the template, we need to copy it to a specific location in order for it to pick it up. Because the location is a hidden folder in the system, we need to manual do the copy operation using a terminal.
 
@@ -36,29 +36,29 @@ and finally copy the template:
 $ cp -r AeroGear ~/Library/Developer/Xcode/Templates/Application/Project\ Templates/
 ----
 
-=== Step 3: Verify installation
+== Step 3: Verify installation
 
 Fire up Xcode and when presented with the welcome screen, choose "Create a new Xcode Project".
 
-image::../img/ios_welcome_screen.png[Welcome screen]
+image:../../img/ios_welcome_screen.png[Welcome screen]
 
 If the installation of the template was succesful, you will find the _AeroGear_ template under the iOS section. If not, please verify that you correctly install the template from Step 1.
 
-image:../img/ios_template_wizard.png[AeroGear screen]
+image:../../img/ios_template_wizard.png[AeroGear screen]
 
 Select the template and click _Next_
 
 Enter _"AeroGearExample"_ in the Product Name field and your initials as the Class Prefix. In this example I used _"AGP"_. The template also has options for specifying the 'Authentication type' as well as an options to enable 'Push' (check the <<push,UnifiedPush section>> later in the tutorial) and 'Crypto'. Uncheck those options since we won't need it in our example but if you are interested check our link:http://aerogear.org/docs/guides/iOSCookbook/[cookbook guide] for more information. For the device family choose iPhone.
 
-image::../img/ios_project_details_screen.png[Details]
+image:../../img/ios_project_details_screen.png[Details]
 
 Xcode creates our project and we are presented with the default project screen.
 
-image::../img/ios_template_project_screen.png[Main Project Screen]
+image:../../img/ios_template_project_screen.png[Main Project Screen]
 
 Now that our project is created, there is one final step left before we can start using the project.
 
-=== Step 4: Install Dependencies through CocoaPods
+== Step 4: Install Dependencies through CocoaPods
 
 The project created by the AeroGear template uses link:http://cocoapods.org[CocoaPods] for managing any external library dependencies (including AeroGear). If you haven't used it so far in your iOS projects, please take the time to familiarize yourself. It will make your life much easier when dealing with dependencies (and upgrades!). Have a look at the link:http://cocoapods.org[web site] for installation details.
 
@@ -75,11 +75,11 @@ pod install
 
 to install the dependencies. Further, this step will also create a workspace file (with the extension <project name>.xcworkspace) that contains the definitions for both the project and it's required library dependencies. We will use that file for now on when opening the project.
 
-=== Step 5: Verify the installation
+== Step 5: Verify the installation
 
 Now that our depenendecies are set up, it’s time to verify our installation. For this, we are going to build a simple application that will fetch remote data from our testbed testbed server deployed on OpenShift. The data represent a list of developer information (image, name, twitter) that will be displayed on a standard UITableView component. Upon clicking a developer on the list, his twitter page will be opened using the system’s default browser. Let’s start.
 
-=== AeroGearExampleAPIClient.m
+== AeroGearExampleAPIClient.m
 
 At the Project Navigator click on "AeroGearExampleAPIClient.m". This _singleton_ instance class is used through out our project and hold references to the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe] objects allowing us to connect to remote RESTFul endpoints and perform CRUD operations on them.
 
@@ -111,7 +111,7 @@ Central to AeroGear is the concept of link:/docs/specs/aerogear-ios/Classes/AGPi
 
 This completes our walkthrough for the "AeroGearExampleAPIClient.m" class.
 
-=== AGPViewController.m
+== AGPViewController.m
 
 At the Project Navigator click on "AGPViewController.m". This View Controller class holds the table component that will display the objects when they are retrieved from the server.
 
@@ -225,11 +225,11 @@ What is left now is to add functionality where when a cell is clicked the applic
 
 In [1] we extract the developer object as we did previously from the cell the user clicked. We then setup an NSURL object [2] that points to the developers twitter page and we ask the system to open it the browser [3].
 
-=== Step 6: Run
+== Step 6: Run
 
 We are ready now to run the sample project. From the menu select "Product->Run" and if all goes well, you will be presented with the following screen:
 
-image::../img/ios_template_emulator.png[Emulator]
+image:../../img/ios_template_emulator.png[Emulator]
 
 *Success!* Your first iOS application built with AeroGear!
 

@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+{% include header.html %}
+</head>
+
+<body>    
+
+{% include navigation.html %}
+
+{% include jboss-dropup.html %}
+
+<section class="main-banner">
+  <div class="container">
+  {% include inner-header.html %}
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="{{ page.section }}">
+  <div class="container">
+    <div class="row">   
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+            {% if page.section == 'guides' %}
+              {% include sidebar-guides.html %}
+            {% elsif page.section == 'demos' %}
+              {% include sidebar-demos.html %}
+            {% elsif page.section == 'getstarted' %}
+              {% include sidebar-downloads.html %}
+            {% elsif page.section == 'community' %}
+              {% include sidebar-community.html %}
+            {% elsif page.section == 'docs' %}
+              {% include sidebar-docs.html %}
+            {% elsif page.section == 'news' %}
+              {% include sidebar-news.html %}
+            {% elsif page.section == 'ups-guides' %}
+              {{ content | toc_generate }}
+            {% elsif page.section == 'roadmap' %}
+              {% include sidebar-roadmaps.html %}
+            {% endif %}
+      </div><!-- col -->
+      <div class="col-md-9">
+          {% if page.section == 'ups-guides' %} 
+            <div class="post">
+              <h1>{{ page.title }}</h1>
+              {{ content }}
+            </div>
+          {% else %}
+            {{ content }}
+          {% endif %}
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+
+</section>
+
+
+
+{% include footer.html %}
+
+{% include js.html %}
+
+</body>
+</html>

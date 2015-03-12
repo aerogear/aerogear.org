@@ -1,7 +1,10 @@
 ---
-layout: post
+layout: news
+section: news
 title: AeroGear Mobile Push 1.0.0 is out!
-
+author: matzew
+module: push
+releases: 1.0.0
 ---
 
 We’re happy to announce the availability of AeroGear Mobile Push 1.0.0!
@@ -23,7 +26,7 @@ Below is a list with a few highlights of the server:
 * increased APNs payload (2k)
 * WildFly 8.x support
 
-In our new [User Guide](../../../../../docs/unifiedpush/ups_userguide/) you can find more details about the UnifiedPush Server!
+In our new [User Guide](../../../../../docs/unifiedpush/ups_userguide/index/) you can find more details about the UnifiedPush Server!
 
 ### Openshift Online
 

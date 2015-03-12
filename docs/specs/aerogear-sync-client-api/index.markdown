@@ -1,15 +1,19 @@
 ---
-layout: basic
-title: AeroGear Data Sync
+layout: post
+section: docs
+title: AeroGear Sync Client API Proposals
+toc_generate: true
 ---
 
-# Status: Experimental
+<span class="label label-warning">Status: Experimental</span>
 
-# Summersp Strawman (Java flavored)
+## Summers' Proposal
 
-## Overview
+(Java flavored)
 
-The Client API I propose bridges Datastores, Pipes, and Push technologies.  
+### Overview
+
+The Client API I propose bridges Datastores, Pipes, and Push technologies.
 
 Currently, the user has to manually signal an intent to push his changes to a remote service.  However, the push subsystem takes care of receiving updates from a server.
 
@@ -17,7 +21,7 @@ This strawman is biased towards Java, but as we discuss it we can move toward a 
 
 This straw man is still very limited.  Implementation specific limitations are described with their respective classes, but in general I have not yet proposed solutions for offline support, conflict resolution and detection, etc.
 
-## Usage (Android)
+### Usage (Android)
 
 Before we get into the APIs I would like to demonstrate a usage example for two way settings sync.
 
@@ -27,7 +31,7 @@ Before we get into the APIs I would like to demonstrate a usage example for two 
     TwoWaySqlSynchronizer<UserCalendar> userCalendarSync;
     TwoWaySqlSynchronizerConfig syncConfig = new TwoWaySqlSynchronizer.TwoWaySqlSynchronizerConfig();
     syncConfig.setKlass(UserCalendar.class);
-    syncConfig.setPipeConfig(userCalendarPipeConfig); 
+    syncConfig.setPipeConfig(userCalendarPipeConfig);
     syncConfig.setStoreConfig(userCalendarStoreConfig);
 
     userCalendarSync = new TwoWaySqlSynchronizer<UserCalendar>(syncConfig);
@@ -72,7 +76,7 @@ Before we get into the APIs I would like to demonstrate a usage example for two 
         super.onPause();
         userCalendarSync.removeListener(this);
     }
-    
+
 
     @Override
     public void dataUpdated(Collection<UserCalendar> newData) {
@@ -93,15 +97,15 @@ Before we get into the APIs I would like to demonstrate a usage example for two 
         </receiver>
 
 
-## General Classes
+### General Classes
 
 The following classes should be applicable over all implementations.
 
-## SynchronizeEventListener
+#### SynchronizeEventListener
 
 Objects which implement this pattern will be notified by the sync subsystem when a change has occurred.
 
-### Methods
+##### Methods
 
 dataUpdated ***void*** **newData**
 : This is called when data has been successfully synced with no conflicts.  The newData parameter is the new synced object.
@@ -109,7 +113,7 @@ dataUpdated ***void*** **newData**
 resolveConflicts ***resolvedData*** **localData, remoteData**
 : This is called when data needs to be resolved.  The method is provided with a copy of the local data and the remote data.  The returned value is the resolved state.  The sync subsystem will attempt to resolve the returned state with the remote server.  If this is successful, dataUpdated will be called.
 
-## Synchronizer
+#### Synchronizer
 
 Objects which implement this pattern will be responsible for scheduling synchronization and listeners.
 
@@ -127,7 +131,7 @@ beginSync ***void*** **appContext**
 stopSync ***void***
 : This method unregisters the app from synchronization.  It will also perform any necessary cleanup.  This method does not necessarily remove data.
 
-loadRemoteChanges ***void*** 
+loadRemoteChanges ***void***
 : This method will download *update* the current working data with the remote *changes*.
 
 sync ***void***
@@ -136,21 +140,21 @@ sync ***void***
 resetToRemoteState ***void*** **Callback**
 : This will download the remote data and replace the local data with it.
 
-## TwoWaySqlSynchronizer :: Synchronizer 
+#### TwoWaySqlSynchronizer :: Synchronizer
 
 This Synchronizer will examine a local data store and send changes to the server.  It does this by maintaining a reference to an external SQLStore and an internal reference to a Shadow SQL Store.  The Shadow store is updated when synchronization happens to generate a change list to send to the server or apply to the local data store.
 
 One of the "neat" things about this synchronizer is that since GCM handles offline state, we will only receive messages when the device is online.  Thus we don't have to worry about online/offline detection.  We still have to worry about conflict detection and resolution however.
 
-## PeriodicReadOnlySynchronizer  :: Synchronizer 
+#### PeriodicReadOnlySynchronizer  :: Synchronizer
 
 This synchronizer may store data in any store and refreshes its data from the server on a schedule provided by its config object.
 
-## SyncConfig
+#### SyncConfig
 
 Properties on this object are used to configure Synchronizers.  Individual synchronizers may extends this class to include their own properties.
 
-### Properties
+#### Properties
 
 klass **Class**
 : This is the class type of the Synchronizer.  Objects managed by the Synchronizer of are this type
@@ -164,15 +168,15 @@ storeConfig **StoreConfig**
 type **SyncType**
 : This is the type of synchronizer this class configures (PeriodicReadOnlySync, TwoWaySqlSync, etc)
 
-## Android specific classes
+### Android specific classes
 
 The following classes are specific to Android but may serve as a referenc for others.
 
-### AeroGearGCMSyncMessageReceiver :: BroadcastReceiver
+#### AeroGearGCMSyncMessageReceiver :: BroadcastReceiver
 
 This class listens for GCM messages from Google and sends signals to a configured Synchronizer to load the remote changes.
 
-#### Properties provided in Manifest.xml
+##### Properties provided in Manifest.xml
 
 SYNC_PROVIDER_KEY
 : This is the fully qualified name of a Provider whose get method returns the Synchronizer AeroGearGCMSyncMessageReceiver is receiver messages for.
@@ -180,7 +184,7 @@ SYNC_PROVIDER_KEY
 SYNC_MESSAGE_KEY
 : This is a key which should be present in the GCM message to signal that which data type has been updated.  If this key is not present the Synchronizer will not be called for this message.
 
-### SyncTimerReceiver :: BroadcastReceiver
+#### SyncTimerReceiver :: BroadcastReceiver
 
 This class listens for Alarms invoked by the Android Alarm manager.  It will call inform a sychronizer to synchronize based on a clock.
 
@@ -193,35 +197,35 @@ SYNC_MESSAGE_KEY
 : This is a key which should be present in the alarm intent.  It will be used by the Receiver to route update messages to the correct synchronizer.
 
 
-## Periodic Read Only Update
+### Periodic Read Only Update
 
 Use cases where caching data is useful and where it should be transparent and long lived are covered by this.
 
-### Usage proposal: Reading a schedule (Android)
+#### Usage proposal: Reading a schedule (Android)
 
 
     PipeConfig pipeConfig = buildConfig()
-  
+
     SyncConfig syncConfig = new SyncConfig();
     syncConfig.setType(SyncTypes.PeriodicReadOnly);
     syncConfig.setExpiresIn(SyncConfig.24_HOURS);
-  
+
     pipeConfig.setSync(syncConfig);
-  
+
     Pipe<Schedule> schedulePipe = pipeline.pipe(pipeConfig);
-  
+
     schedulePipe.read(/*call back*/);
     /*
     This will check a SQL Store, notice there is no data, fetch the data, and store metadata about when it was fetched.
     */
-  
+
     //12 Hours later
     schedulePipe.read(/*call back*/);
     /*
     This will check a SQL Store, notice there is data, notice it is inside of the expires time, and return it.
     No call to the remote source will be made.
     */
-  
+
     //36 Hours later
     schedulePipe.read(/*call back*/);
     /*
@@ -229,39 +233,39 @@ Use cases where caching data is useful and where it should be transparent and lo
     */
 
 
-## Topics not addressed
- 
+### Topics not addressed
+
 * Data life cycle
 * Security
-*Conflict detection
+* Conflict detection
 
-# Edewit's proposal
+## Edewit's proposal
 
     // [option 1 fully automatic we create a pipe and add the posibilty to add a store for failover and sync just happens at on- and offline events]
     // and because merging can fail users can add a conflict handlers
-     
+
     Builder builder = Builder.createPipe(pipeConfig).addFailoverStore(storeConfig);
     Pipe<Car> pipe = builder.pipe(Car.class);
-     
+
     pipe.addConfictHandler(new ConflictHandler() {
       public void conflict(Field originalField, Field newField) {
       // user interaction
       }
     });
-     
+
     // [option 2 explicit let the user specify when to sync and what to sync]
     SyncedPipe pipe = SyncPipeBuilder.build(options); // SyncPipe Store and Pipe togheter
-     
+
     // or we only use a store to sync and tell the sync manager where to sync to
     SyncManager syncManager = new SyncManger();
     syncManger.filter(readFilter); // maybe we don't want to sync all data but just some part
-     
+
     syncManager.addConnectionHandler(new ConnectionHandler() {
       public void onConnection() {
       syncManger.sync(pipe);
       }
     });
-     
+
     syncManger.addConfictHandler(new ConflictHandler() {
       public void conflict(Field original, Field new) {
       // user interaction

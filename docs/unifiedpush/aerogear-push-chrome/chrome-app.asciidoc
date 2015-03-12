@@ -1,19 +1,16 @@
----
-layout: basic
-title: Your first Chrome/Push App
----
-
+[[chrome-app]]
 == Your first Chrome/Push App
+
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercise AeroGear's Chrome Push library support.
 
 Let's get started!
 
-== Creating the application
+=== Creating the application
 Since a Chrome Packaged Application is just a Web Application consisting of HTML, Javascript and CSS, you can use any editor you feel comfortable with.
 
 Here is an example of what the directory structure will look like
 
-image::./img/app_1.png[App Structure]
+image:./img/app_1.png[App Structure]
 
 You can download AeroGear.js link:https://github.com/aerogear/aerogear-js-dist/releases/latest[here] and the jQuery library link:http://jquery.com/download/[here]
 
@@ -127,4 +124,4 @@ chrome.gcm.onMessage.addListener( function( message ) {
 });
 ----
 
-Now that we have our application up an running time to link:../push-notification[send messages] using the AeroGear UnifiedPush Server!
+Now that we have our application up an running time to link:#push-notification[send messages] using the AeroGear UnifiedPush Server!

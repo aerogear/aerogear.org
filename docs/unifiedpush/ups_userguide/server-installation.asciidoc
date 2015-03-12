@@ -1,12 +1,12 @@
----
-layout: basic
-title: UnifiedPush Server - Installation and configuration
----
-:toc:
-toc::[]
+// ---
+// layout: post
+// title: Install and Configure the UnifiedPush Server
+// section: guides
+// ---
 
-
+[[server-installation]]
 == Install and Configure the UnifiedPush Server
+
 Getting the UnifiedPush Server up and running with an on-premise application server is a three-step setup process:
 
 . <<getfiles,Get the UnifiedPush Server application files>>
@@ -199,7 +199,7 @@ $ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-con
 
 ==== Migration
 
-For information on database migrations for MySQL and PostgreSQL, consult the link:../migration[Migration guide].
+For information on database migrations for MySQL and PostgreSQL, consult the link:#database-migration[Migration guide].
 
 [[deploy]]
 === Deploy the UnifiedPush Server
@@ -207,4 +207,4 @@ After the application server is configured for the UnifiedPush datasource, the t
 
 To deploy the UnifiedPush Server, copy the two +.war+ files to +/path/to/SERVER_HOME/standalone/deployments/+. This can be done either before or after starting the application server.
 
-After deployment with the application server running, the UnifiedPush Server Console can be accessed at link:http://localhost:8080/ag-push/[]. For information about using the Console, see link:../admin-ui[Using the Admin UI].
+After deployment with the application server running, the UnifiedPush Server Console can be accessed at link:http://localhost:8080/ag-push/[]. For information about using the Console, see link:#admin-ui[Using the Admin UI].

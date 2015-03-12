@@ -1,0 +1,93 @@
+javascript:
+  name: JavaScript
+  icon: fa-html5
+  aerogearjs-version: 2.1.0
+
+android:
+  name: Android
+  icon: fa-android
+  version: 2.0.0
+  modules:
+    - core
+    - security
+    - store
+    - pipe
+    - auth
+    - authz
+    - push
+
+ios:
+  name: iOS
+  icon: fa-apple
+  modules:
+    http:
+      name: HTTP
+      module: core
+      version: 0.2
+      cocoapod: aerogearhttp
+      zip: https://github.com/aerogear/aerogear-ios-http/zipball/0.2.0
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.0/Weather
+      guide: /docs/guides/aerogear-ios-2.X/HttpLib/
+    oauth2:
+      name: OAuth2
+      module: security
+      version: 0.2
+      cocoapod: aerogearoauth2
+      zip: https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.2.0
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.0/Shoot
+      guide: http://localhost:4000/docs/guides/aerogear-ios-2.X/Authorization/
+    push:
+      name: Push
+      module: push
+      version: 1.0
+      cocoapod: AeroGear-Push
+      zip: https://github.com/aerogear/aerogear-ios-push/archive/1.0.0-swift.zip
+      demo: https://github.com/aerogear/aerogear-push-helloworld/tree/swift/ios-swift
+      guide: http://localhost:4000/docs/unifiedpush/aerogear-push-ios/
+    jsonsz:
+      name: JSON Serialization
+      module: core
+      version: 0.1
+      cocoapod: aerogearjsonsz
+      zip: https://github.com/aerogear/aerogear-ios-jsonsz/zipball/0.1.0
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.2.0/Buddies
+      guide: /docs/guides/aerogear-ios-2.X/JsonSZ/
+
+cordova:
+  name: Cordova
+  icon: fa-simplybuilt
+  modules:
+    pushplugin:
+      name: Push
+      long-name: Push
+      module: push
+      version: latest
+      plugin: org.jboss.aerogear.cordova.push
+    otp:
+      name: OTP
+      long-name: OTP (One-Time Password)
+      module: security
+      version: 0.0.1
+      plugin: org.jboss.aerogear.cordova.otp
+    crypto:
+      name: Crypto
+      long-name: Crypto
+      module: security
+      version: 0.0.1
+      plugin: org.jboss.aerogear.cordova.crypto
+    geo:
+      name: Geo
+      long-name: Geofencing
+      module: geo
+      version: latest
+      plugin: org.jboss.aerogear.cordova.geo
+    oauth2:
+      name: OAuth2
+      long-name: OAuth2
+      module: security
+      version: latest
+      plugin: org.jboss.aerogear.cordova.oauth2
+
+windows:
+  name: Windows
+  icon: fa-windows

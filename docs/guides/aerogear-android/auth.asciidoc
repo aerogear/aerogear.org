@@ -1,9 +1,10 @@
 ---
-layout: basic
+layout: post
+section: guides
 title: AeroGear Android Authentication
+toc_generate: true
 ---
 
-== Authentication
 
 The goal of this guide is to provide a description of how authentication works in AeroGear Android and to give developers the ability to integrate their Android application with RESTful services.
 
@@ -17,7 +18,7 @@ This guide will go in depth on these two topics; however, we will also discuss b
 * Registering a new user
 * Logging out of a service
 
-=== API overview
+== API overview
 
 Interaction with Authentication services is mediated using classes which implement the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] interface.  AuthenticationModule is a child of link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/code/PipeModule.html[*PipeModule*] and is appended to a Pipe during configuration with link:/docs/specs/aerogear-android-pipe/org/jboss/aerogear/android/pipeline/PipeConfiguration.html#module(org.jboss.aerogear.android.code.PipeModule)[*PipeConfiguration.module*].  You can find more information about *PipeModule* in the link:/docs/guides/aerogear-android/pipe/[*pipe tutorial*].
 
@@ -25,9 +26,9 @@ AuthenticationModules may be called by the user.  In general the `login` method 
 
 link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AbstractAuthenticationModule.html[*AbstractAuthenticationModule*] is a convenience class for integrating with non AeroGear REST services.  It is also useful for when you want to only support a subset of the link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*]'s functionality, and it configures a THREAD_POOL_EXECUTOR for you to delegate your network calls to.  
 
-=== How to use it
+== How to use it
 
-==== Setting up authentication in pipe requests
+=== Setting up authentication in pipe requests
 
 [source,java]
 ----
@@ -44,7 +45,7 @@ pipeConfig.withUrl(CONTROLLER_URL);
 pipeConfig.module(simpleAuthModule);
 ----
 
-==== Using Authentication
+=== Using Authentication
 
 While the application is not logged in, link:/docs/specs/aerogear-android/org/jboss/aerogear/android/authentication/AuthenticationModule.html[*AuthenticationModule*] will stay out of the way. However, interacting with authentication is this simple.
 
@@ -84,7 +85,7 @@ userData.put("password", "awesome");
 authenticationModule.enroll(userData, myCallback);
 ----
 
-==== Authentication Types
+=== Authentication Types
 
 We currently provide two AuthenticationModule implementations.  HttpBasic and HttpDigest.
 
@@ -103,7 +104,7 @@ AuthenticationModule simpleAuthModule = config.baseURL(SIMPLE_URL).asModule();
 
 Take a look at the complete example in our link:https://github.com/aerogear/aerogear-android-cookbook[*cookbook app*]
 
-=== Using Authentication: Custom Applications
+== Using Authentication: Custom Applications
 
 AeroGear Android\'s Authentication API provides a framework for supporting many other RESTful services. Obviously this guide cannot cover all of them, but we will review custom authentication with one third party service, link:http://www.reddit.com[Reddit].
 
@@ -111,7 +112,7 @@ To retrieve the tokens Reddit requires for accessing a user\'s data we must log 
 
 Every Pipe request against the Reddit service from now on, will include these authorisation parameters as part of the request.
 
-==== RedditAuthenticationModule
+=== RedditAuthenticationModule
 
 [source,java]
 ----

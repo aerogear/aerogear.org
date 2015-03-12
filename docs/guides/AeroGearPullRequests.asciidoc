@@ -1,5 +1,6 @@
 ---
-layout: basic
+layout: post
+section: community
 title: How to Handle AeroGear Pull Requests 
 ---
 

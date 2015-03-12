@@ -1,6 +1,8 @@
 ---
-layout: basic
+layout: post
 title: AeroGear JsonSZ
+section: guides
+toc_generate: true
 ---
 
 == Introduction

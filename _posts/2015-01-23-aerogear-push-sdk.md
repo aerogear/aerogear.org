@@ -1,6 +1,11 @@
 ---
-layout: post
+layout: news
+section: news
 title: AeroGear iOS Push-SDK for Swift v1.0
+author: corinnekrych
+module: push
+platform: ios
+tags: swift
 ---
 
 Since [Swift](https://developer.apple.com/swift/) language seems to have stabilize a bit and _no big changes_ have occurred on the last Xcode releases, we thought it will be good idea to release a v1.0 port of our [Push-SDK library](https://github.com/aerogear/aerogear-ios-push) for those that are interested in and staring a new project that utilize the language.

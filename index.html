@@ -1,63 +1,70 @@
 ---
-layout: base
+layout: home
 title: Open Source Libraries for Mobile Connectivity
+section: homepage
 ---
 
+<!-- TODO(agalante) **what is this xmlns for? **
 <div class="start-header" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-    <div class="start-title">Bringing Mobile and Enterprise Together!</div>
-    <p>Libraries to <strong>simplify</strong> and <strong>unify</strong> mobile development across different platforms.</p>
-</div>
+ -->
+ 
+ 
+<div class="main-background"></div>
+ 
+ <section class="aditional-actions">
+  <div class="container">
+    <a class="news fixed" href="{{ site.posts.first.url }}"><strong>Check it out!</strong> {{ site.posts.first.title }}</a>
+  </div>
+</section> 
 
-<div>
-    <div class="modules">
-        <a href="/javascript/" class="module web">
-            <img src="img/js-logo.png" alt="Web">
-            <h3>Web</h3><p>Javascript</p>
-        </a>
-        <a href="/ios/" class="module ios">
-            <img src="img/ios-logo.png" alt="iOS">
-            <h3>iOS</h3><p>Swift</p><p>Objective-C</p>
-        </a>
-        <a href="/android/" class="module android">
-            <img src="img/library_android.png" alt="Android">
-            <h3>Android</h3><p>Java</p>
-        </a>
-        <a href="/cordova/" class="module hybrid">
-            <img src="img/cordova-logo.png" alt="Hybrid">
-            <h3>Hybrid</h3><p>Cordova</p>
-        </a>
-        <a href="/windows/" class="module windows">
-            <img src="img/windows-logo.png" alt="Windows">
-            <h3>Windows</h3><p>C#</p>
-        </a>
-    </div>
+     <section class="main-features">
+      <div class="container">
+      
+      
+        <h2 class="section-header">AeroGear Modules</h2>
 
-    <div class="features">
-        <div class="feature">
-            <div class="description">
-                <div class="illustration"><img src="img/feature_1.png" alt=""></div>
-                <h3>Unify mobile development</h3>
-                <p>AeroGear provides flexible and extensible libraries to simplify mobile development across platforms and cut common repetitive infrastructure tasks. Integrate with the most exotic of endpoints.</p>
-                <p><a href="/download/">Learn more</a></p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="feature">
-            <div class="description">
-                <div class="illustration left"><img src="img/feature_2.png" alt=""></div>
-                <h3>AeroGear Push</h3>
-                <p>AeroGear provides support for different push notification technologies like Google Cloud Messaging, Apple's APNs or Mozilla's SimplePush.</p>
-                <p><a href="/push/">Learn more</a></p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="feature">
-            <div class="description">
-                <div class="illustration"><img src="img/feature_4.png" alt=""></div>
-                <h3>Mobility and security, both</h3>
-                <p>Integrate with your existing enterprise environment. AeroGear provides <a href="docs/guides/AeroGear-OTP">Two-Factor Authentication</a> and also brings <a href="docs/specs/aerogear-crypto/">cryptography</a>  to improve your application's security.</p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
+
+        <div class="row">    
+        
+          <div class="col-md-4 push">
+            <h3><a href="/push/"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong></a></h3>
+            <p class="alt">Send push notifications to any device, regardless of platform or network.</p>
+            <p>Send push notifications from the <strong>Unified Push Server</strong> via <span title="Google Cloud Messaging, Apple’s APNs, Amazon's ADM, Microsoft's WNS and MPNS, SimplePush, WebPush">7 push networks</span> to any mobile device.</p>
+            
+            <p><a href="/push/" class="btn btn-primary">Learn about AeroGear<strong>Push</strong></a></p>
+            
+          </div><!-- col -->
+
+          <div class="col-md-4 security">
+            <h3><a href="/security/"><i class="fa fa-shield"></i> AeroGear<strong>Security</strong></a></h3>
+            <p class="alt">Integrate with your existing security and authentication infrastructure.</p>
+            <p>A small set of classes to provide integration with security providers written in Java, like <strong>PicketLink</strong> and <strong>Apache Shiro</strong>.</p>
+            <p><a href="/security/" class="btn btn-primary">Learn about AeroGear<strong>Security</strong></a></p>
+          </div><!-- col -->
+
+
+          <div class="col-md-4 sync">
+            <h3><a href="/sync/"><i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong></a></h3>
+            <p class="alt">Real-time, client-server data synchronization with ease and efficiency.</p>
+            <p>Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel.</p>
+            <p><a href="/sync/" class="btn btn-primary">Learn about AeroGear<strong>Sync</strong></a></p>
+          </div><!-- col -->
+
+
+        </div><!-- row -->
+      </div><!-- container -->
+    </section><!--main features-->
+
+
+
+    <section class="custommers">
+      <div class="container">
+        <h2 class="section-header">Mobile development begins here</h2>        
+        <p>Using mobile technologies will never be so easy as in the cloud. AeroGear supports several cloud-enabled providers and technologies.</p>
+        <p>          
+          <a href="https://registry.hub.docker.com/u/aerogear/unifiedpush-wildfly/"><img src="{{ site.baseurl }}/img/logos_home/docker.gif" alt="docker" /></a>
+          <a href="http://www.feedhenry.com/feedhenry-and-red-hat-pushing-ahead-with-integrations/"><img src="{{ site.baseurl }}/img/logos_home/feedhenry.gif" alt="feedhenry"  /></a>
+          <a href="https://developers.openshift.com/en/xpaas-unified-push.html"><img src="{{ site.baseurl }}/img/logos_home/openshift.gif" alt="openshift"  /></a>
+        </p> 
+      </div><!-- container -->
+    </section>

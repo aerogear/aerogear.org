@@ -1,16 +1,16 @@
 ---
-layout: basic
+layout: post
+section: guides
 title: AeroGear Cordova OTP
 ---
 
-== AeroGear Cordova OTP
 
 Before we start please install link:https://github.com/apache/cordova-cli/[Apache Cordova CLI], which is the command
 line tool to build, deploy and manage Cordova-based applications.
 
 Read about how OTP works on this link:/docs/guides/AeroGear-OTP/[AeroGear OTP guide]
 
-=== Example
+== Example
 
 To create One Time Passwords in your cordova application first create a new project and install the plugin.
 

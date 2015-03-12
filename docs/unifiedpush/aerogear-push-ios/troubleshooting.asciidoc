@@ -1,10 +1,6 @@
----
-layout: basic
-title: iOS Troubleshooting
----
+[[troubleshooting]]
+## iOS Troubleshooting
 
-iOS Troubleshooting
--------------------
 This troubleshooting guide takes as a pre-requesite that you have carefully followed the instructions in the link:../index.html[iOS tutotial].
 
 Something goes wrong, you have the symptoms and you would like to know how to fix it.  Follow the guide of frequently asked questions below and if you still can't find an answer to your problem, don't hesitate to ask our link:http://aerogear-dev.1069024.n5.nabble.com/[mailing list].
@@ -15,13 +11,13 @@ Something goes wrong, you have the symptoms and you would like to know how to fi
 
 Running a client app, you run into "No matching provisioning profiles found":
 
-image::./img/no_matching_provisionning_profile.png[No matching provisioning profile]
+image:./img/no_matching_provisionning_profile.png[No matching provisioning profile]
 
 
 *Answer*
 
 * have you changed your computer recently? If yes, if you provisioning profile was deliver in your previous machine, you need to migrate your provisioning profile, please follow link:https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/export_signing_assets.html#//apple_ref/doc/uid/TP40013306-CH8-SW1[Exporting Your Signing Identities and Provisioning Profiles] Apple documentation.
-* is it the first time you use this app? have you followed the pre-requisite section on link:../provisioning-profiles[provisioning profile]?
+* is it the first time you use this app? have you followed the pre-requisite section on link:#provisioning-profiles[provisioning profile]?
 
 
 ### Question: APNs error
@@ -38,7 +34,7 @@ Domain=NSCocoaErrorDomain Code=3000 "no valid 'aps-environment' entitlement stri
 
 Your Bundle ID name should match with the Bundle ID as created on Apple's developer portal. Please refer to [Apple App ID and SSL certificate for APNs](app-id-sll-certificate-apns.asciidoc) documentation for more details on configuration.
 
-### Question: My registration to UPS never happens
+#### Question: My registration to UPS never happens
 
 *Problem description*
 

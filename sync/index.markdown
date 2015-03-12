@@ -1,51 +1,81 @@
 ---
-layout: basic
+layout: landing-page
 title: AeroGear Data-Sync
+section: modules
+breadcrumbs-url: /modules/
+sub-section-title: AeroGear Sync
 ---
 
-# Data-Sync (under development)
+  <h1><i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong></h1>
+  <p class="alt">Real-time, client-server data synchronization with ease and efficiency. <span class="label label-warning">In Development</span></p>
 
-Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel. This feature provides server side sync engines, as well as client side sync engines and clients for Android, iOS and JavaScript. The implementation is based on Google's [Differential Synchonrization](http://research.google.com/pubs/pub35605.html) by Neil Fraser.
+  <p>
+    <a href="/getstarted/downloads/" class="btn btn-primary-inverse btn-lg"><i class="fa fa-hand-o-right"></i> Get started</a>
+    <a href="https://github.com/aerogear/?query=sync" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> GitHub Repos</a>
+    <a href="/docs/planning/" class="btn btn-primary btn-sm"><i class="fa fa-road"></i> RoadMap</a>
+  </p>
 
-## Roadmap
+
+Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel. This feature provides a specific server side sync engine, as well as a client side sync engines for Android, iOS and JavaScript. The implementation is based on Google's [Differential Synchonrization](http://research.google.com/pubs/pub35605.html) by Neil Fraser.
+
+
+<h3 id="sync-in-action">See it in Action</h3>
+
+<p>To see it in action, watch the screencast below:</p>
+<p><center>
+	<iframe src="https://player.vimeo.com/video/121332828" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</center></p>
+
+<h2 id="roadmap"><i class="fa fa-road"></i> RoadMap</h2>
 
 The AeroGear Data-Sync effort started out of a POC and we are now moving towards a first alpha release. 
 
 [List of sync-1.0.0.alpha.1 JIRA tickets](https://issues.jboss.org/issues/?filter=12323088)
 
-## Specification
+
+<h2 id="spec"><i class="fa fa-book"></i> Specification</h2>
+
 The specification for AeroGear Data-Sync including client/server API, message format and more can be found here:  
 [Data-Sync Specification](../docs/specs/aerogear-data-sync)
 
-## Development
+
+<h2 id="development"><i class="fa fa-flask"></i> Development</h2>
 
 Below are the various GitHub repositories that are part of the Data-Sync feature in AeroGear.
 
-### Data-Sync Server
 
-* [Java Sync Server Engine](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-core#aerogear-server-differential-synchronization-server-core) the Server Sync Engine.
-* [Netty Sync Server](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-netty#netty-differential-synchronization-server-implementation) which embeds the Java Server Sync Engine and exposes WebSocket and XMPP/GCM endpoint for our different clients.
-* [Node Sync Server](https://github.com/aerogear/aerogear-nodejs-sync-server#aerogear-nodejs-sync-server-) which exposes WebSocket for our different clients.
+<h3 id="data-sync-server"><i class="fa fa-server"></i> Data-Sync Server</h3>
 
-### Android
-* [Java Client Sync Engine](https://github.com/aerogear/aerogear-sync-server/tree/master/client/client-core#aerogear-server-differential-synchronization-client-core) a Java Client Sync Engine implementation.
-* [Netty Sync Client](https://github.com/aerogear/aerogear-sync-server/tree/master/client/client-netty) a Netty based WebSocket Sync Client.
-* [XMPP Client](https://github.com/aerogear/aerogear-android-sync#xmpp-differential-synchronization-client-implementation) to receive sync updates over GCM.
-* [Demo application](https://github.com/aerogear/aerogear-android-cookbook) which can be used against the above Java server.
+Our Netty-based [Java Server](https://github.com/aerogear/aerogear-sync-server) exposes WebSocket and XMPP/GCM endpoint for our different clients.
 
-### iOS 
 
-* [Sync Client Engine](https://github.com/aerogear/aerogear-ios-sync#aerogear-ios-differential-synchronization-client-engine--) a Swift based Client Sync Engine library.
-* [Sync Client](https://github.com/aerogear/aerogear-ios-sync-client#aerogear-ios-differential-synchronization-client--) a Swift based WebSocket Sync Client.
-* [Demo application](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Jedi#jedi) which can be used against the above Java server.
+<h3 id="android"><i class="fa fa-android"></i> Android</h3>
+
+An [XMPP-client library](https://github.com/aerogear/aerogear-android-sync) to receive sync updates over GCM.
+
+
+
+<h3 id="ios"><i class="fa fa-apple"></i> iOS</h3>
+
+For iOS we have two different libraries that are developed:
+
+* [Differential Synchronization Client Engine](https://github.com/aerogear/aerogear-ios-sync)
+* [WebSocket-based Diff-Sync client](https://github.com/aerogear/aerogear-ios-sync-client)
 
 The initial releases of the libraries are available on [CocoaPods](http://cocoapods.org/?q=AeroGearSync) as well.
 
-### JavaScript
+Besides the libraries we do already have a little [demo application](https://github.com/aerogear/aerogear-ios-sync-demo), which can be used against the above Java server.
 
-* [Sync Library](https://github.com/aerogear/aerogear-js/tree/master/src/diff-sync) a JavaScript based Client Sync Engine implementation and WebSocket client library.
-* [Demo application](https://github.com/aerogear/aerogear-js-cookbook/tree/diff-sync-json-patch/diff-sync#differential-syncronization) an Ember.js based demo, which can be used againste the above Java Sync Server.
 
-## Get involved
+
+<h3 id="javascript"><i class="fa fa-html5"></i> JavaScript</h3>
+
+The JavaScript client comes with a WebSocket-based library as well. There is also a Node.js based demo, which can be used against the above Java server.
+
+Currently our JS library and demo is located [here](https://github.com/aerogear/aerogear-sync-server/tree/master/js-client).
+
+
+
+<h2 id="get-involved"><i class="fa fa-users"></i> Get Involved</h2>
 
 If you are interested, feel free to fork the repositories and get your hands dirty. Also, feel free to reach out to us if you have any [questions](/community)!

@@ -1,7 +1,12 @@
 ---
-layout: post
+layout: news
+section: news
 title: Devoxx keynote Feedhenry AeroGear demo
+author: matzew
+module: push
+tags: feedhenry
 ---
+
 
 For the Devoxx keynote we wanted to show off FeedHenry, because our libraries are server agnostic we thought it would be doable and thanks to some great help we got from the people at FeedHenry the integration with AeroGear was a breeze. Now it's even available in a generic form for all FH users to use (as a mBaas Service) it uses our [Node.js library](https://www.npmjs.org/package/unifiedpush-node-sender), read more about it on the [FeedHenry blog](http://www.feedhenry.com/pushing-ahead-with-integrations/).
 

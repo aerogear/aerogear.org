@@ -1,32 +1,32 @@
 ---
-layout: basic
+layout: post
+section: docs
 title: AeroGear Crypto API
+toc_generate: true
 ---
 
-# Status: Experimental
-
-# AeroGear Crypto API
+<span class="label label-warning">Status: Experimental</span>
 
 **Note**: This document is a working progress if you strongly disagree with something, fix it.
 
-# Authors
+#### Authors
 
 * Bruno Oliveira
 * Corinne Krych
 * Douglas Campos
 * Matthias Wessendorf
 
-# Goals
+#### Goals
 
 * User friendly interface for non crypto experts.
 * Enable advanced developers can make use of the pure crypto provider implementation.
 
-# Supported Algorithms
+#### Supported Algorithms
 
 * PBKDF2 for password based key derivation
 * AES with GCM for symmetric encryption
 
-# API symmetry 
+# API symmetry
 
 ## JavaScript
 
@@ -46,7 +46,7 @@ AeroGear JS make use of [sjcl](http://crypto.stanford.edu/sjcl/) with wrappers f
                 key: generatedKey,
                 data: "My bonnie lies over the ocean"
             };
-            
+
             var ciphertext = AeroGear.Crypto().encrypt( options );
 
     * Decryption:
@@ -59,7 +59,7 @@ AeroGear JS make use of [sjcl](http://crypto.stanford.edu/sjcl/) with wrappers f
             };
 
             var plainText = AeroGear.Crypto().decrypt( options );;
-            
+
 
 ## Android
 
@@ -78,19 +78,19 @@ The android platform unfortunately ships a incomplete and outdated version of [B
             //Generate the key
             Pbkdf2 pbkdf2 = AeroGearCrypto.pbkdf2();
             byte[] privateKey = pbkdf2.encrypt("passphrase");
-    
+
             //Initializes the crypto box
             CryptoBox cryptoBox = new CryptoBox(privateKey);
-    
+
             //Encryption
             byte[] IV = new Random().randomBytes();
             byte[] ciphertext = cryptoBox.encrypt(IV, "My bonnie lies over the ocean");
-    
+
     * Decryption:
 
             //Decryption
             CryptoBox pandora = new CryptoBox(privateKey);
-            byte[] message = pandora.decrypt(IV, ciphertext);            
+            byte[] message = pandora.decrypt(IV, ciphertext);
 
 
 ## iOS
@@ -120,19 +120,19 @@ The iOS bits were implemented on top of [Common Crypto](https://developer.apple.
 
 # Scenarios
 
-**Note**: For all scenarios the authentication process was intentionally ignored. 
+**Note**: For all scenarios the authentication process was intentionally ignored.
 
-## Local data encryption 
+## Local data encryption
 
 * An user wants to store sensitive data on mobile device and the data must be protected
 
-For this scenario we will make use of *symmetric ciphers* to encrypt/decrypt the local data, of course an efficient way to properly store the key must be evaluated and the key should never be shared with others. 
+For this scenario we will make use of *symmetric ciphers* to encrypt/decrypt the local data, of course an efficient way to properly store the key must be evaluated and the key should never be shared with others.
 
-The API *can't* encourage developers to commit some common mistakes like predictable key, IV or salt, that said the API must be responsible for the entropy behind the scenes and as well generate these values. 
+The API *can't* encourage developers to commit some common mistakes like predictable key, IV or salt, that said the API must be responsible for the entropy behind the scenes and as well generate these values.
 
 By default the API will provide *AES* with *GCM*, if for some reason the crypto provider doesn't have any support for these modes, *CBC* or *CTR*  must be replacement and the change explicitly documented.
 
-**Note**: The following solution doesn't prevent an attacker from extract the data via USB and try to break the encryption. 
+**Note**: The following solution doesn't prevent an attacker from extract the data via USB and try to break the encryption.
 
 ![](img/local_encryption_0.0.1.png)
 
@@ -143,8 +143,8 @@ The demo app ```AeroGear Crypto``` is a single app that let you easily create al
 
 For the initial release, the flow to change master password will not be implemented.
 
-Video links: 
+Video links:
 
 * For [Android client](http://vimeo.com/77804314)
 
-* For [iOS client](http://vimeo.com/78366502) 
+* For [iOS client](http://vimeo.com/78366502)

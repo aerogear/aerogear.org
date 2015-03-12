@@ -1,9 +1,10 @@
 ---
-layout: basic
+layout: post
+section: guides
 title: Android Authorization (OAuth2)
+toc_generate: true
 ---
 
-== OAuth2 Authorization
 
 This guide will walk developers through the AeroGear Android Authorization APIs and demonstrate how to integrate with Google's Drive API.
 

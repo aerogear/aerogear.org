@@ -1,0 +1,1061 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>AGPipe Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">AeroGear-iOS </a></h1>
+				<a id="developerHome" href="../index.html">Red Hat</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">AGPipe Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/URL">&nbsp;&nbsp;&nbsp;&nbsp;URL</option>
+	
+	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	
+	<option value="//api/name/read:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- read:failure:</option>
+	
+	<option value="//api/name/read:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- read:success:failure:</option>
+	
+	<option value="//api/name/readWithParams:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- readWithParams:success:failure:</option>
+	
+	<option value="//api/name/remove:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- remove:success:failure:</option>
+	
+	<option value="//api/name/save:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- save:success:failure:</option>
+	
+	<option value="//api/name/setUploadProgressBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- setUploadProgressBlock:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/URL">URL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:failure:">read:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:success:failure:">read:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readWithParams:success:failure:">readWithParams:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/remove:success:failure:">remove:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save:success:failure:">save:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setUploadProgressBlock:">setUploadProgressBlock:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="AGPipe Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">AGPipe Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">AGPipe.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>AGPipe represents a server connection. An object of this class is responsible to communicate with the server in order
+to perform read/write operations.</p>
+
+<h2>Save data</h2>
+
+<p>To store newly created objects on a <em>remote</em> server resource you use the <code>save</code> method. Currently the objects are
+<em>just</em> simple map objects but in the future we are looking to support more advanced(complex) frameworks,
+like <em>Core Data</em>.</p>
+
+<p>  In the example below, the <code>save</code> function stores the given NSDictionary on the server, in this case on a RESTful
+  resource. As arguments it accepts simple blocks that are invoked on <em>success</em> or in case of an <em>failure</em>.</p>
+
+<pre><code>// create a dictionary and set some key/value data on it:
+NSMutableDictionary* projectEntity = [NSMutableDictionary dictionary];
+[projectEntity setValue:@"Hello World" forKey:@"title"];
+// add other properties, like style etc ...
+
+// save the 'new' project:
+[projects save:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"CREATE RESPONSE\n%@", [responseObject description]);
+
+    // get the id of the new project, from the JSON response...
+    id resourceId = [responseObject valueForKey:@"id"];
+
+    // and update the 'object', so that it knows its ID...
+    [projectEntity setValue:[resourceId stringValue] forKey:@"id"];
+
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occurred! \n%@", error);
+}];
+</code></pre>
+
+<h2>Update data</h2>
+
+<p>The <code>save</code> method is also responsible for updating an &lsquo;object&rsquo;. However this happens <strong>only</strong> when there is an &lsquo;id&rsquo;
+property/field available:</p>
+
+<pre><code>// change the title of the previous project 'object':
+[projectEntity setValue:@"Hello Update World!" forKey:@"title"];
+
+// and now update it on the server
+[projects save:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"UPDATE RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"UPDATE: An error occurred! \n%@", error);
+}];
+</code></pre>
+
+<h2>Remove data</h2>
+
+<p>The AGPipe also contains a <code>remove</code> method to delete the data on the server. It takes the map object which <strong>must</strong>
+have an &lsquo;id&rsquo; property/field set, so that it knows which resource to delete:</p>
+
+<pre><code>// Now, just remove the project:
+[projects remove:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"DELETE RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"DELETE: An error occurred! \n%@", error);
+}];
+</code></pre>
+
+<p>In this case, where we have a RESTful pipe, the API issues an HTTP DELETE request.</p>
+
+<p>  ## Read all data from the server</p>
+
+<p>The <code>read</code> method allows to (currently) read <em>all</em> data from the server, of the underlying AGPipe:</p>
+
+<pre><code>[projects read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];                             r
+</code></pre>
+
+<p>Since we are pointing to a RESTful endpoint, the API issues a HTTP GET request. The JSON output of the above NSLog()
+call looks like this:</p>
+
+<pre><code>(
+        {
+        id = 8;
+        style = "project-234-255-0";
+        tasks =         (
+        );
+        title = "Created from testcase";
+    },
+        {
+        id = 15;
+        style = "project-255-255-255";
+        tasks =         (
+        );
+        title = "Some title";
+    }
+)
+</code></pre>
+
+<p>Of course the <em>collection</em> behind the responseObject can be stored to a variable..</p>
+
+<h2>Upload files</h2>
+
+<p>Support for multipart upload is also provided. The types of data that can be uploaded are local files, instances of NSData and NSInputStream.
+Let&rsquo;s see how the upload mechanism works with an example:</p>
+
+<pre><code> // a multipart that contains a file
+ NSURL *file1 = &lt;path to a local file&gt;
+ AGFilePart *filePart = [[AGFilePart alloc]initWithFileURL:file1 name:@"myfile"];
+
+ // a multipart that contains an NSData object
+ NSData *data1 = [@"Lorem ipsum dolor sit amet.." dataUsingEncoding:NSUTF8StringEncoding];
+ AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:data1
+                                                                name:@"data1"
+                                                        fileName:@"data1.txt" mimeType:@"text/plain"];
+
+ // set up payload
+ NSDictionary *dict = @{@"somekey": @"somevalue",
+                        @"another_key": @"some_other_key",
+                        @"file1":filePart,
+                        @"file2":dataPart};
+
+ // set an (optional) progress block
+ [[apiClient uploadPipe] setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten,
+                            long long totalBytesExpectedToWrite) {
+
+    NSLog(@"UPLOADPIPE Sent bytesWritten=%d totalBytesWritten=%qi of 
+            totalBytesExpectedToWrite=%qi bytes", bytesWritten, totalBytesWritten,
+            totalBytesExpectedToWrite);
+ }];
+
+ // upload data
+ [[apiClient uploadPipe] save:dict success:^(id responseObject) {
+    NSLog(@"Successfully uploaded!");
+
+ } failure:^(NSError *error) {
+    NSLog(@"An error has occured during upload! \n%@", error);
+ }];
+</code></pre>
+
+<p>An <em><a href="../Classes/AGFilePart.html">AGFilePart</a></em> and <em><a href="../Classes/AGFileDataPart.html">AGFileDataPart</a></em> objects are used to attach the data we want to upload. The former is initialized to point to a local file whereas the latter point to an NSData object respectively. Not shown in the example above, but an <em><a href="../Classes/AGStreamPart.html">AGStreamPart</a></em> can be also used to read the data from a NSInputStream directly.</p>
+
+<p>NOTE: For NSData we need to explicitly specify both the <em>&lsquo;filename&rsquo;</em> and the <em>&lsquo;MIME type&rsquo;</em>, since they can not be automatically determined as with the case of a file.</p>
+
+<p>After initialization of the objects, we simply attach them to the payload, setting an (optional) progress block so we can get notified during the upload.</p>
+
+<p>NOTE: Prior to version 1.4 of the library, multipart upload was supported by the means of attaching an <em>NSURL</em> object directly on the payload. The method is still supported, but it is now deprecated and will be removed in the future versions of the library.</p>
+
+<h2>Time out and Cancel pending operations</h2>
+
+<h3>Timeout</h3>
+
+<p>During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an
+operation to complete. If the time interval is exceeded with no response from the server, then the <em>failure</em> callback
+is executed with an error code set to <em>NSURLErrorTimedOut</em>.</p>
+
+<p>From the todo example above:</p>
+
+<pre><code>id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setTimeout:20];  // set the time interval to 20 secs
+}];
+</code></pre>
+
+<p>Note: If you are running on iOS versions &lt; 6 and a timeout occurs on a pipe&rsquo;s <em>save</em> operation, the error code is set
+to <em>NSURLErrorCancelled</em>.</p>
+
+<h3>Cancel</h3>
+
+<p>At any time after starting your operations, you can call <code>cancel</code> on the Pipe object to <a href="#//api/name/cancel">cancel</a> all running Pipe
+operations. Doing so will invoke the pipe&rsquo;s <em>failure</em> block with an error code set to  <em>NSURLErrorCancelled</em>. You can
+then check this code in order to perform your &lsquo;cancellation&rsquo; logic .</p>
+
+<pre><code>[projects read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occurred! \n%@", error);
+}];
+
+// cancel the request
+[projects cancel];
+</code></pre>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/URL">&nbsp;&nbsp;URL</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/read:failure:">&ndash;&nbsp;read:failure:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/read:success:failure:">&ndash;&nbsp;read:success:failure:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/readWithParams:success:failure:">&ndash;&nbsp;readWithParams:success:failure:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/save:success:failure:">&ndash;&nbsp;save:success:failure:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/remove:success:failure:">&ndash;&nbsp;remove:success:failure:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setUploadProgressBlock:">&ndash;&nbsp;setUploadProgressBlock:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/URL" title="URL"></a>
+	<h3 class="subsubtitle method-title">URL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *URL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the url string of the underlying &lsquo;pipe implementation&rsquo;.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="subsubtitle method-title">type</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *type</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the type of the underlying &lsquo;pipe implementation&rsquo;.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cancel" title="cancel"></a>
+	<h3 class="subsubtitle method-title">cancel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Cancel all running pipe operations. Doing so will invoke the pipe&rsquo;s &lsquo;failure&rsquo; block with an error
+code set to NSURLErrorCancelled so that you can perform your &lsquo;cancellation&rsquo; logic.</p>
+
+<p>Note: Calling cancel has no effect on the server, so if you do a save or remove and then
+call cancel, that action will still take place on the the server.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/read:failure:" title="read:failure:"></a>
+	<h3 class="subsubtitle method-title">read:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads all the data from the underlying server connection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)read:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+This block has no return value and takes one argument: The object created from the response
+data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
+or that finishes successfully, but encountered an error while parsing the response data.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads all the data from the underlying server connection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/read:success:failure:" title="read:success:failure:"></a>
+	<h3 class="subsubtitle method-title">read:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Read specific object from the underlying server connection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)read:(id)<em>value</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>The value of the recordId. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+This block has no return value and takes one argument: The object created from the response
+data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
+or that finishes successfully, but encountered an error while parsing the response data.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Read specific object from the underlying server connection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/readWithParams:success:failure:" title="readWithParams:success:failure:"></a>
+	<h3 class="subsubtitle method-title">readWithParams:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reads all the data that matches a given parameter provider from the underlying server connection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)readWithParams:(NSDictionary *)<em>parameterProvider</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameterProvider</em></dt>
+			<dd><p>A dictionary containing all the parameters and their values, that are
+passed to the server. If no parameterProvider is given, the defaults from the <a href="../Protocols/AGPipeConfig.html"><code>AGPipeConfig</code></a>
+are used.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+This block has no return value and takes one argument: The object created from the response
+data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
+or that finishes successfully, but encountered an error while parsing the response data.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reads all the data that matches a given parameter provider from the underlying server connection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/remove:success:failure:" title="remove:success:failure:"></a>
+	<h3 class="subsubtitle method-title">remove:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Removes an object from the underlying server connection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)remove:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to remove. Note the map must have the
+&lsquo;recordId&rsquo; key set. See property <a href="../Protocols/AGPipeConfig.html#//api/name/recordId">[AGPipeConfig recordId]</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+This block has no return value and takes one argument: The object created from the response
+data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
+or that finishes successfully, but encountered an error while parsing the response data.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Removes an object from the underlying server connection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/save:success:failure:" title="save:success:failure:"></a>
+	<h3 class="subsubtitle method-title">save:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Saves (or updates) a given object from the underlying server connection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)save:(NSDictionary *)<em>object</em> success:(void ( ^ ) ( id responseObject ))<em>success</em> failure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>a &lsquo;JSON&rsquo; map, representing the data to save/update. If the map contains values
+of NSURL objects that point to local files, a multi-part request will be constructed to upload the
+files to the server. To track progress of the upload, call <a href="#//api/name/setUploadProgressBlock:">[AGPipe setUploadProgressBlock:]</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+This block has no return value and takes one argument: The object created from the response
+data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully,
+or that finishes successfully, but encountered an error while parsing the response data.
+This block has no return value and takes one argument: The <code>NSError</code> object describing
+the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Saves (or updates) a given object from the underlying server connection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setUploadProgressBlock:" title="setUploadProgressBlock:"></a>
+	<h3 class="subsubtitle method-title">setUploadProgressBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets a progress status callback that is invoked during uploading of a file(s).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setUploadProgressBlock:(void ( ^ ) ( NSUInteger bytesWritten , long long totalBytesWritten , long long totalBytesExpectedToWrite ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block accepts three arguments: the number of bytes written in the latest write,
+the total bytes written for this connection, and the total bytes expected to be written during
+the request determined by the length of the HTTP body.</p>
+
+<p>NOTE. The block can be called several times and is always executed on the main thread.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sets a progress status callback that is invoked during uploading of a file(s).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AGPipe.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 Red Hat. All rights reserved. (Last updated: 2014-02-17)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

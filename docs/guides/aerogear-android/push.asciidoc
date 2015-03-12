@@ -1,23 +1,23 @@
 ---
-layout: basic
+layout: post
+section: guides
 title: AeroGear Android Push
+toc_generate: true
 ---
-
-== Push
 
 AeroGear for Android provides support for integrating with push services. Currently only Google's Cloud Messaging (GCM) with the AeroGear Unified Push Server is supported, but we are planning to add support for Mozilla's Simple Push, MQTT, and standalone GCM soon.
 
 This document supplements the link:http://aerogear.org/docs/unifiedpush/aerogear-push-android/[Push Notification Tutorial] by focusing only on the Push API code. The tutorial includes a much fuller look at the Android's place in the push ecosystem.
 
-=== Push in a Nutshell
+== Push in a Nutshell
 
 Push messaging is a mechanism for sending data to mobile clients from a remote server.  For mobile services this reduces battery usage, removes polling code, and provides for a better user experience as data changes are communicated in real time.
 
 On Android messages that GCM receives from an application server are sent to the Android device over an XMPP connection managed by the operating system.  These messages are then extracted and passed to applications via a BroadcastReceiver.  Android applications can register to receive push notifications by declaring a receiver in their AndroidManifest.xml files.
 
-=== How to use it
+== How to use it
 
-==== Registering with GCM and Unified Push Server
+=== Registering with GCM and Unified Push Server
 
 This code example demonstrates how to create a link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar], provide values required to register the application with GCM and Unified Push, and perform the registration.
 
@@ -64,7 +64,7 @@ registrar.unregister(getApplicationContext(), new Callback<Void>() {
 
 ----
 
-==== Configuring your application to receive Push messages
+=== Configuring your application to receive Push messages
 
 Before you can use GCM notifications in Android, your application's AndroidManifest.xml must be updated to include both permissions for GCM and a broadcast receiver to handle push messages from the service.
 
@@ -116,7 +116,7 @@ You can also add a default message handler to the receiver in AndroidManifest.xm
 
 ----
 
-==== Handling messages
+=== Handling messages
 
 Currently, push messages are received by an instance of link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/gcm/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver]. The messages are processed and passed to link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html[RegistrarManager] via notifyHandlers method.
 

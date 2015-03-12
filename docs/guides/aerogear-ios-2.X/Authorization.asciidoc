@@ -1,9 +1,10 @@
 ---
-layout: basic
-title: Authorization (OAuth2)
+layout: post
+title: OAuth2Module and OAuth2Session
+section: guides
+toc_generate: true
 ---
 
-== OAuth2Module and OAuth2Session
 
 When writing an link:https://tools.ietf.org/html/rfc6749[OAuth2] application, you often want the user to grant access for only once in the app lifetime. OAuth2Module stores access and refresh tokens in OAuth2Session. OAuth2Session is a protocol which is implemented in 2 flavors:
 

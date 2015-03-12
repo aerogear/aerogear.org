@@ -1,14 +1,10 @@
----
-layout: basic
-title: Send a Push Notification
----
+[[push-notification]]
+== Send a Push Notification
 
-CAUTION: this functionality is only available on master
 
 Now that we have the sample application running, it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message.
 
-== Simple Sender
-
+=== Simple Sender
 
 Login to the administration console of the UnifiedPush server and click on the "Send Push" icon in the navigation menu. Select the application that you created and write a message in the text field. Once done, hit the 'Send Push Notification'.
 
@@ -17,12 +13,12 @@ image:./img/send_notification.png[Send Notification]
 
 If all goes well, you should see the message payload being displayed on screen:
 
-image::./img/hello-unifiedpush-active.png[Message Receiced-Active]
+image:./img/hello-unifiedpush-active.png[Message Receiced-Active]
 
 Now click the 'Home' button to return to Home Screen and send another push message. You should see the notification being displayed in the Notification Manager:
 
-image::./img/hello-unifiedpush-inactive.png[Message Receiced-InActive]
+image:./img/hello-unifiedpush-inactive.png[Message Receiced-InActive]
 
-== You are done
+=== You are done
 
 That's all you need to use the _AeroGear_ project for sending and receiving _Push Notifications_ for Windows.

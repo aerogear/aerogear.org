@@ -1,9 +1,6 @@
----
-layout: basic
-title: Your first Android/Push App
----
-
+[[android-app]]
 == Your first Android/Push App
+
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercice AeroGear's Android Push library support. For the purpose of the guide we will use the Eclipse environment with the ADT tools installed, but you are free to use any IDE that includes Android support.  Please visit our link:http://aerogear.org/docs/guides/aerogear-android/[web site] for more information on how to enable other popular IDEs for AeroGear Android development.
 
 [NOTE]
@@ -11,14 +8,14 @@ The next steps assume you have already imported 'aerogear-android' library into 
 
 Let's get started!
 
-== Creating the application
+=== Creating the application
 Fire up Eclipse IDE and choose 'File'-> 'New Android Application'. Fill the 'Application Name' field with the name 'PushApplication' and the 'Package Name' with 'com.push.pushapplication'. As link:http://developer.android.com/google/gcm/gs.html[Google advises], the 'Minimum Required SDK' option for the GCM feature is 'API.8 Android 2.2 (Froyo)' so select this option if not selected. For 'Target SDK' and 'Compile With' options, choose the maximum API SDK installed on your machine.
 
-image::./img/new-project.png[New Project]
+image:./img/new-project.png[New Project]
 
 Continue through the wizard by accepting the default options presented. Once finished, Eclipse would have generated a sample Android project with a default 'MainActivity' and will open the layout file for further editing.
 
-image::./img/eclipse-main.png[Eclipse Main Screen]
+image:./img/eclipse-main.png[Eclipse Main Screen]
 
 We will use the 'TextView' component that the wizard conveniently created for us to display the message payload. But in order to be able to be referenced in our code we need to give the component first an 'id'. Simple append in the 'TextView' declaration:
 
@@ -31,7 +28,7 @@ We will use the 'TextView' component that the wizard conveniently created for us
 
 Now that we have the project set up, time to configure it to receive Push notifications. We will start first with the registration of the application with the UnifiedPush server.
 
-== Registration with the UnifiedPush server
+=== Registration with the UnifiedPush server
 
 The entry point for registration is the link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/Registrations.html#push[Registrations:push] method. The method acts as a factory of different implementations of the link:http://aerogear.org/docs/specs/aerogear-android/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar] interface which contain the actual registration/unregistration methods.
 
@@ -153,7 +150,7 @@ That is all what is needed to register with the UnifiedPush server!
 [NOTE]
 Notice that we didn't have to write any code to register the device with GCM. The library takes care off all the plumbing to register the device with GCM, obtain the 'registrationId' and submit it to the UnifiedPush server.
 
-== Receiving notifications
+=== Receiving notifications
 
 The standard practice for an Android application to be able to receive notifications, is the developer to edit App's manifest to enable the appropriate GCM permissions and also implement an link:http://developer.android.com/reference/android/content/BroadcastReceiver.html[Android BroadcastReceiver] that is called when a new notification arrives. Typically the receiver includes code that consumes the message and displays the payload in the Notification Manager. AeroGear library already provides an implementation of a broadcast receiver that a developer can use, link:http://aerogear.org/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver], but instead of displaying in the notification manager it delegates the consumption of the message to those that have expressed interest.
 
@@ -166,8 +163,7 @@ Nothing prevents you to send a notification in the Notification Manager when you
 
 Let's return to our example. We are going to register a default MessageHandler that will display the received notification in the Notification Manager. First we need to edit the app's manifest.
 
-Edit App's manifest
-~~~~~~~~~~~~~~~~~~~
+=== Edit App's manifest
 
 Open the _AndroidManifest.xml_ file and below the '<manifest>' entry add the necessary permissions to enable our app to receive messages:
 
@@ -220,8 +216,8 @@ Let's register now AeroGear's Broadcast Receiver that will listen for notificati
 
 Notice the 'DEFAULT_MESSAGE_HANDLER_KEY' parameter is used to pass the name of the default MessageHandler class that will be called once the notification is received.
 
-Handling notification
-~~~~~~~~~~~~~~~~~~~~~
+=== Handling notification
+
 Create a new class, name it 'NotifyingHandler' and paste the following code:
 
 [source,java]
@@ -324,4 +320,4 @@ image::./img/app-main-screen.png[Push Application Main Screen]
 [NOTE]
 If you don't see the 'Registration Succeeded' popup, means that an error has occurred during the registration. Switch to the LogCat console in Eclipse to locate the exception and act accordingly.
 
-Now that we have our application up an running time to link:../push-notification[send messages] using the AeroGear UnifiedPush Server!
+Now that we have our application up an running time to link:#push-notification[send messages] using the AeroGear UnifiedPush Server!

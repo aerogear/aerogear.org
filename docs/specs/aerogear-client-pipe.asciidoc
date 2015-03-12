@@ -1,32 +1,28 @@
 ---
-layout: basic
+layout: post
+section: docs
 title: AeroGear Pipelines and Pipes
-
+toc_generate: true
 ---
-
-AeroGear Pipelines and Pipes
-----------------------------
 
 The AeroGear client libraries provide **Pipe** implementations as abstractions around high latency data sources.  **Pipe** defines several asynchronous methods for performing CRUD operations on a `resource` managed by this source.
 
-**Pipe** implementations are instantiated, referenced, and accessed from the **Pipeline** service.  **Pipeline** consumes a `baseURL`, and a configuration object to create a **Pipe**.  
+**Pipe** implementations are instantiated, referenced, and accessed from the **Pipeline** service.  **Pipeline** consumes a `baseURL`, and a configuration object to create a **Pipe**.
 
 ''''
 
-Pipe
-~~~~
+## Pipe
 
-Methods
-^^^^^^^
+### Methods
 
 
 *NOTE:*
 
 * Calls to CRUD methods should have any side effects.
 
-* Pipes are also responsible for applying any necessary metadata connected to a request including but not limited to authentication, authorization, and paging.  
+* Pipes are also responsible for applying any necessary metadata connected to a request including but not limited to authentication, authorization, and paging.
 
-* A Pipe is responsible for handling errors and passing them to the user.  
+* A Pipe is responsible for handling errors and passing them to the user.
 
 
 * *read* : This method fetches a resource or collection of resources from the data source.
@@ -42,40 +38,37 @@ Methods
  ** This method MUST be provided a callback which will be called upon completion of the operation.  No data will be passed to the callback
 
 
-Error Handling
-^^^^^^^^^^^^^^
+### Error Handling
 
 Pipe's make use of a callback to pass error information to the client.  The callback is often passed to the CRUD methods along with the callback to be invoked for successful processing.
 
-Configuration
-^^^^^^^^^^^^^
+### Configuration
 
 **Pipe** instances have the following properties which will be consumed by **Pipeline** to create instances.
 
- * *resource* : This is a type of object or data that the **Pipe** interacts with.  
+ * *resource* : This is a type of object or data that the **Pipe** interacts with.
   ** I.E. a blog has resources post, author, comment, etc
 
  * *baseURL* : This is the URL of the service which is hosting resources a **Pipe** handles
-    
- * *name* : this is value that **Pipeline** will use to reference a **Pipe** instance.  
+
+ * *name* : this is value that **Pipeline** will use to reference a **Pipe** instance.
   ** It defaults to `lowerCase(resource)`
-    
- * *endpoint* : This is the value appended to baseURL to form the full URL to `resource`.   
+
+ * *endpoint* : This is the value appended to baseURL to form the full URL to `resource`.
   ** It defaults to `lowerCase(resource)`
-    
- * *type* : This is the implementation of the **Pipe** instance.  
+
+ * *type* : This is the implementation of the **Pipe** instance.
   ** It defaults to `REST`.
 
  * *pageConfig* : This is the configuration for paging.  (//TODO link to paging)
 
  * *authModule* : This is the object which will provide authentication information.  (//TODO link to a nd write authentication spec)
 
- * *timeout* : This is the maximum time an operation is allowed to run.  
-  ** When this limit is reached, the **Pipe** should report it as an error.  
+ * *timeout* : This is the maximum time an operation is allowed to run.
+  ** When this limit is reached, the **Pipe** should report it as an error.
   ** It defaults to a large integer.
- 
-See Also
-^^^^^^^^
+
+### See Also
 
  * link:rest-adapter/[Rest Adapter] : A provided implementation of Pipe to access RESTful web Services
 
@@ -84,18 +77,15 @@ See Also
  * link:../aerogear-client-paging/[Paging spec] : An extension of the Pipe API to include paging information
 
 
-Pipeline
-~~~~~~~~
+## Pipeline
 
 A Pipeline is both a factory  for new **Pipes** and a reference to existing **Pipes**.
 
-Properties
-^^^^^^^^^^
+### Properties
 
  * *baseURL* : the URL of the server the resources the __Pipes__ will connect to
 
-Functions
-^^^^^^^^^
+### Functions
 
  * *pipe* : Creates a Pipe and returns an instance
   ** This method MUST be provided a resource parameter for the resulting Pipe
@@ -104,7 +94,6 @@ Functions
 * *remove* : Removes a Pipe from the Pipelines cache
   ** This method MUST be provided with a name of the Pipe to remove
 
-Retrieving Pipes
-^^^^^^^^^^^^^^^^
+### Retrieving Pipes
 
 **Pipe** instances are retrieved from **Pipeline** by using the Pipe's name parameter.

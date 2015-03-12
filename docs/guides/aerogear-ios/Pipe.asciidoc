@@ -1,15 +1,18 @@
 ---
-layout: basic
+layout: post
+section: guides
 title: Pipe and Pipeline
+toc_generate: true
 ---
+
+
 // tag::pipe[]
-== Pipe and Pipeline
 
 A Pipe object represents a server connection. An object of this class is responsible to communicate with the server in order to perform read/write operations.
 
 A Pipeline object represents a 'collection' of server connections (aka Pipes). It provides a standard way to communicate with the server no matter the data format or transport expected. It contains some simple management APIs to create and remove Pipe objects.
 
-=== Creating a Pipeline and a Pipe object
+== Creating a Pipeline and a Pipe object
 
 To create a pipeline, you need to use the AGPipeline class. Below is an example:
 

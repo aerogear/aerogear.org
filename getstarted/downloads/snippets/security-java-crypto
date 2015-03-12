@@ -1,0 +1,5 @@
+<dependency>
+  <groupId>org.jboss.aerogear</groupId>
+  <artifactId>aerogear-crypto-java</artifactId>
+  <version>0.1.5</version>
+</dependency>

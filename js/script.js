@@ -1,160 +1,74 @@
-/* License, etc. */
+jQuery(function($){
 
-$( function() {
-    var smallLayout;
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 75
+  });
 
-    $( ".repo-btns" ).click( function( event ) {
-        event.preventDefault();
-
-        // Test button pressed and load appropriate repo if necessary
-        var target = $( event.currentTarget ),
-            repodiv = $( "#repodiv" ),
-            repoContainer = $( "#repo-container" ),
-            repobtns = $( ".repo-btns" ),
-            repolink = $( "#fork-link" ),
-            body = $( "body" ),
-            dataLink = target.data( "link" ),
-            repoAr = dataLink.split( "/" ),
-            repoName = repoAr[ 1 ], repoUser = "aerogear";
-
-        repobtns.each( function() {
-            var $this = $( this );
-            $this.text( $this.data( "original-text" ) );
-        });
-
-        if ( repoContainer.is( ":visible" ) ) {
-            repoContainer.hide( function() {
-                if ( repodiv.data( "repo" ) != repoName ) {
-                    repodiv.empty();
-                    repoContainer.show( function() {
-                        body.animate( { scrollTop: repoContainer.offset().top - 150 }, "slow");
-                        repolink.attr( "href", "http://github.com/" + dataLink );
-                        repodiv.repo({
-                            user: repoUser,
-                            name: repoName
-                        });
-                        target.text( "Hide Repo" );
-                        repodiv.data( "repo", repoName );
-                    });
-                }
-            });
-        } else {
-            repodiv.empty();
-            repoContainer.show( function() {
-                body.animate( { scrollTop: repoContainer.offset().top - 150 }, "slow");
-                repolink.attr( "href", "http://github.com/" + dataLink );
-                repodiv.repo({
-                    user: repoUser,
-                    name: repoName
-                });
-                target.text( "Hide Repo" );
-                repodiv.data( "repo", repoName );
-            });
-        }
-    });
-
-    // Show Twitter Feed
-    $( "#aerogear-twitter" ).twitter( { ors: "aerogear", replies: false, rpp: 7 } );
-
-    // Initialize drop down menu
-    $( ".dropdown-toggle" ).dropdown();
-
-    // Dynamic fixed positioning for left nav
-    if ( $( ".nav-box" ).length ) {
-        $( window ).on( "scroll", function( event ) {
-            var navBox = $(".nav-box"),
-                navBottom = navBox.position().top + navBox.height(),
-                footerTop = $("footer").position().top;
-
-            navBox.css( "margin-top", navBottom > footerTop ? footerTop - navBottom - 5 : 0 );
-        });
+  $('.sidebar > .nav').affix({
+    offset: {
+        top: function (){
+          return (this.top = $(".main-banner").outerHeight(true));
+        },
+        bottom: 558
     }
+  });  
 
-    // Home Link
-    $( ".banner-home-link" ).click( function( event ) {
-        document.location.href = "/";
-    });
 
-    // Format notes and tips
-    $( ".admonitionblock .icon .title:contains('Note'), .admonitionblock .icon .title:contains('Tip')" ).each( function() {
-        var $this = $( this ),
-            block = $this.closest( ".admonitionblock" );
-        block.addClass( "note-tip-block" );
-        block.find( ".content:eq(0)" ).addClass( "note-tip-content" );
-        if ( $this.is( ".title:contains('Note')" ) ) {
-            $this.replaceWith( "<i class='icon-pushpin note-tip-icon'></i>" );
-        } else {
-            $this.replaceWith( "<i class='icon-info-sign note-tip-icon'></i>" );
-        }
-    });
+  $('.submenu').affix({
+    offset: {
+        top: function (){
+          return (this.top = $(".main-banner").outerHeight(true));
+        },
+        bottom: 558
+    }
+  });  
 
-    // Show/Hide Mobile Nav
-    $("#navButton, .menu-close-button").on("click", function() {
-        var nav = $(".nav-collapse"),
-            isHidden = nav.hasClass("hidden");
 
-        if ( isHidden ) {
-            nav.removeClass("hidden");
-            setTimeout( function() {
-                nav.addClass("menu-open");
-            }, 0);
-        } else {
-            nav.removeClass("menu-open");
-            setTimeout( function() {
-                nav.addClass("hidden");
-            }, 350);
-        }
-    });
+  window.showShadow = function(){
+   if($(window).scrollTop() === 0){
+          $(".navbar").css("box-shadow", "0 0 0px rgba(0,0,0,.2)");
+      }else{
+          $(".navbar").css("box-shadow", "0 0 8px rgba(0,0,0,.3)");
+      }
+  };
 
-    // Resize accordion switch for home page
-    if ( $(".home-content").length ) {
-        $(window).smartresize( accordionConfig, 500 );
-        $( function() {
-            accordionConfig();
+  $(window).scroll(showShadow);
+  showShadow();
+
+
+  /**
+   * scrolls to the provided anchor given by hash name (#id)
+   * @param hash the name of the anchor
+   * @returns {boolean} true if we found the element and scrolled to it
+   */
+  function scrollToHash( hash ) {
+    var targetId = hash.replace(/^#/, '');
+    if (targetId) {
+      var target = document.getElementById(targetId);
+      if (target && target.scrollIntoView) {
+        var timeout = window.requestAnimationFrame || window.setTimeout;
+        timeout(function () {
+          location.hash = targetId;
+          target.scrollIntoView(true);
+          window.scrollBy(0, -70);
         });
+        return true;
+      }
     }
+    return false;
+  }
 
-    function accordionConfig() {
-        var collapsibles, collapseTriggers, visibles;
-        collapsibles = $(".collapse");
-        visibles = collapsibles.filter(":visible");
-        collapseTriggers = $(".accordion-group > div");
-
-        if ( !smallLayout && Modernizr.mq("only screen and (max-width: 768px)") ) {
-            collapsibles
-                .on("hide", function() {
-                    $( this ).closest(".accordion-group").find(".icon-circle-arrow-down").removeClass("icon-circle-arrow-down").addClass("icon-circle-arrow-right");
-                })
-                .on("show", function() {
-                    $( this ).closest(".accordion-group").find(".icon-circle-arrow-right").removeClass("icon-circle-arrow-right").addClass("icon-circle-arrow-down");
-                    collapsibles.not( $( this ) ).collapse("hide");
-                });
-
-            smallLayout = true;
-            collapsibles.collapse("hide");
-            collapsibles.eq( 0 ).collapse("show");
-        } else if ( smallLayout && Modernizr.mq("only screen and (min-width: 769px)") ) {
-            collapsibles.off("hide show");
-            collapsibles.each(function() {
-                $( this ).closest(".accordion-group").find(".icon-circle-arrow-down").removeClass("icon-circle-arrow-down").addClass("icon-circle-arrow-right");
-            });
-
-            smallLayout = false;
-            collapsibles.collapse("show");
-        } else {
-            collapsibles.off("hide show")
-                .on("hide", function() {
-                    if ( visibles.length > 1 ) {
-                        $( this ).collapse("show");
-                    }
-                });
-        }
-
-        if ( smallLayout === undefined ) {
-            smallLayout = false;
-            collapsibles.each(function() {
-                $( this ).closest(".accordion-group").find("i").hide();
-            });
-        }
+  // scroll to correct position when clicking on anchor
+  $('body').on('click', 'a[href^="#"]', function() {
+    var result = scrollToHash( $(this).attr('href') );
+    return !result; // return false in case we were able to scroll to the element
+  });
+  // scroll to initial location hash
+  $(function() {
+    if ( location.hash ) {
+      scrollToHash( location.hash );
     }
+  });
+    
 });

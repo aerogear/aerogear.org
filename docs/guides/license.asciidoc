@@ -1,5 +1,6 @@
 ---
-layout: basic
+layout: post
+section: community
 title: AeroGear Licensing and Copyright
 ---
 

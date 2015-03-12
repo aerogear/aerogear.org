@@ -1,0 +1,106 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Modules</h5>
+        <ul class="list-unstyled">
+         <li><a href="/push/">AeroGear<strong>Push</strong></a></li>
+         <li><a href="/security/">AeroGear<strong>Security</strong></a></li>
+         <li><a href="/sync/">AeroGear<strong>Sync</strong></a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>Platforms</h5>
+        <ul class="list-unstyled">
+          <li><a href="/android/">Android</a></li>
+          <li><a href="/ios/">iOS</a></li>
+          <li><a href="/cordova/">Cordova</a></li>
+          <li><a href="/javascript/">JavaScript</a></li>
+          <li><a href="/windows/">Windows</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>Aerogear</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getstarted/downloads">Downloads and snippets</a></li>
+          <li><a href="/getstarted/guides">Guides</a></li>
+          <li><a href="/getstarted/demos">Demos</a></li>
+          <li><a href="/docs/specs/">Docs</a></li>
+          <li><a href="/docs/planning/">Road Map</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a href="https://github.com/aerogear/">GitHub</a></li>
+          <li><a href="http://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">Developer mailing list</a></li>
+          <li><a href="https://lists.jboss.org/mailman/listinfo/aerogear-users">Users mailing list</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+
+
+<!-- TODO(agalante) **Do we need this? ** 
+
+<script src="/js/main.js"></script>
+< to fix iPhone rotate/rescale issue https://gist.github.com/mathiasbynens/901295 >
+<script>
+    (function (doc) {
+
+        var addEvent = 'addEventListener',
+                type = 'gesturestart',
+                qsa = 'querySelectorAll',
+                scales = [1, 1],
+                meta = qsa in doc ? doc[qsa]('meta[name=viewport]') : [];
+
+        function fix() {
+            meta.content = 'width=device-width,minimum-scale=' + scales[0] + ',maximum-scale=' + scales[1];
+            doc.removeEventListener(type, fix, true);
+        }
+
+        if ((meta = meta[meta.length - 1]) && addEvent in doc) {
+            fix();
+            scales = [.25, 1.6];
+            doc[addEvent](type, fix, true);
+        }
+
+    }(document));
+</script>
+-->

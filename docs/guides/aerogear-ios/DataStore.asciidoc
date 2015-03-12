@@ -1,11 +1,15 @@
 ---
-layout: basic
+layout: post
+section: guides
 title: Store and DataManager
+toc_generate: true
 ---
-// tag::store[]
-== Store and DataManager
 
-A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage (note that encrypted variants of these stores are also available, check the <<crypto, Cryptography support>> section below).
+
+// tag::store[]
+
+
+A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html[in-memory], link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html[property list] and a link:http://aerogear.org/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html[SQLite] storage (note that encrypted variants of these stores are also available, check the link:/docs/guides/aerogear-ios/Cryptography/[Cryptography support] section below).
 
 A DataManager manages different Store implementations. It is basically a factory that hides the concrete instantiations of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.
 
@@ -13,7 +17,7 @@ The code snippets below are part of https://github.com/aerogear/aerogear-ios/tre
 
 NOTE: Right now, there is NO automatic data sync. This is up to the user.
 
-=== Create a datamanager with store object:
+== Create a datamanager with store object:
 
 After receiving data from the server, your application may want to keep the data around. The AGDataManager API allows you to create AGStore instances. To create a datamanager, you need to use the AGDataManager class. Below is an example:
 
@@ -42,7 +46,7 @@ id<AGStore> store = [dm store:^(id<AGStoreConfig> config) {
 
 Storage can be of type:¬†MEMORY, PLIST or SQLITE. Similar to the pipe API technical details of the underlying system are not exposed.
 
-=== Save data to the Store
+== Save data to the Store
 
 When using a pipe to read all entries of a endpoint, you can use the AGStore to save the received objects:
 
@@ -68,7 +72,7 @@ id<AGPipe> tasksPipe = [todo get:@"tasks"];
 
 When loading all tasks from the server, the AGStore object is used inside of the _read_ block from the AGPipe object. The returned collection of tasks is stored inside our in-memory store, from where the data can be accessed.
 
-=== Read an object from the Store
+== Read an object from the Store
 
 [source,c]
 ----
@@ -86,7 +90,7 @@ If you want to read _all_ the objects contained in the store, simply call the _r
 NSArray *objects = [myStore readAll];
 ----
 
-=== Remove one object from the Store
+== Remove one object from the Store
 
 The remove function allows you to delete a single entry in the collection, if present:
 
@@ -101,7 +105,7 @@ if (![myStore remove:taskObject error:error])
 
 The remove method accepts a _taskObject_ which is the object you want to remove. If the object does not exist in the store, FALSE is returned.
 
-=== Filter the entire store
+== Filter the entire store
 
 Filtering of the data available in the AGStore is also supported, by using the familiar NSPredicate class available in iOS. In the following example, after storing a pair of dictionaries representing user information details in the store (which can be easily come from a response from a server), we simple call the _filter_ method to filter out the desired information:
 
@@ -149,7 +153,7 @@ if (success) { // if save succeeded, query the data
 
 Using NSPredicate to filter desired data, is a powerful mechanism offered in iOS and we strongly suggest to familiarize yourself with it, if not already. Take a look at Apple's own link:http://tinyurl.com/chmgwv5[documentation] for more information.
 
-=== Reset the entire store
+== Reset the entire store
 
 The reset function allows you the erase all data available in the used AGStore object:
 
@@ -162,7 +166,7 @@ if (![myStore reset:&error])
     NSLog(@"Reset: An error occured during reset! \n%@", error);
 ----
 
-=== PropertyList Storage Specific
+== PropertyList Storage Specific
 
 A simple _Property list_ storage system is part of the library as well that uses the same 'AGStore' protocol for reading and writing. Depending on the type specified during store configuration, the system will use either link:https://developer.apple.com/library/mac/documentation/cocoa/reference/foundation/Classes/NSPropertyListSerialization_Class/Reference/Reference.html[NSPropertyListSerialization] (type ''_PLIST_'') or link:https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html[NSJSONSerialization] (type ''_JSON_'') when exporting data.
 

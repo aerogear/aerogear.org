@@ -1,36 +1,36 @@
----
-layout: basic
-title: The UnifiedPush Server
----
+//---
+//layout: post
+//title:
+//section: guides
+//---
 
-The UnifiedPush Server
------------------------
+[[unified-push-server]]
+== The UnifiedPush Server
 
 With all the Apple work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unifiedpush-server[UnifiedPush Server], so that it can be used to connect to APNs for a later message sending.
 
 The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain two _Variants_ (one for {pushplatform} _Development_ and one for {pushplatform} _Production_ app). Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/unifiedpush/ups_userguide/overview/[here].
 
 :pushplatform: iOS
-include::docs/unifiedpush/include--register-app.asciidoc[]
+include:docs/unifiedpush/include--register-app.asciidoc[]
 
 Time to register our iOS Variant. Click on the **Add Variant** button
 
-image::./img/add_variant.png[Add Variant]
+image:./img/add_variant.png[Add Variant]
 
 Fill in a _name_ and a _description_ and choose the iOS option from the list of available variant types. Doing so, will reveal a new dialog to upload the SSL Certificate we created earlier, as well as the the options to enter the _Passphrase_  and the choice between _Production_ and _Development_ variant.
 
 Once finish editing, click the **Add** button and the variant will be created on server.
 
-image::./img/variant_created.png[Variant Created]
+image:./img/variant_created.png[Variant Created]
 
 Notice an _Example Installation_ link which, when clicked, reveals a screen with source code examples for the registration to the UPS, with the settings preconfigured automatically based on the current environment. A handy feature that you can refer when creating your own applications to easy the setup process.
 
-image::./img/example_impl.png[Example Implementation]
+image:./img/example_impl.png[Example Implementation]
 
 NOTE: Clicking on the appropriate tab, you can choose between _Objective-C_, _Swift_ and _Cordova_ snippet!
 
 
-Xcode
-~~~~~
+=== Xcode
 
-The server is now configured. Let's move to Xcode to create a very simple link:../iOS-app[example application] that will connect to the UnifiedPush server and start receiving notifications.
+The server is now configured. Let's move to Xcode to create a very simple link:#ios-app[example application] that will connect to the UnifiedPush server and start receiving notifications.

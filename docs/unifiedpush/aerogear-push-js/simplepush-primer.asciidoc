@@ -1,8 +1,4 @@
----
-layout: basic
-title: SimplePush Primer
----
-
+[[simplepush-primer]]
 == SimplePush Primer
 
 SimplePush protocol is Mozilla's new emerging standard for push notifications, conceptually based on link:http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/pubs/archive/37474.pdf[Thialfi], Google's own highly scalable notification service. Introduced first in Firefox OS, there are plans to bring support to it on desktop and mobile browsers as well. The primary goal of the protocol, as stated in the link:https://wiki.mozilla.org/WebAPI/SimplePush/Protocol[SimplePush specification] is:
@@ -23,7 +19,7 @@ The client did _not_ receive the data of the new post; instead it received a not
 
 The following diagram visually describes the workflow:
 
-image::./img/simplepush_flow.png[SimplePush flow]
+image:./img/simplepush_flow.png[SimplePush flow]
 
 Primary advantages of using SimplePush are:
 
@@ -70,4 +66,4 @@ Currently the SimplePush API is supported only in Firefox OS v1.1 and in custom 
 
 You can find more information on AeroGear SimplePush JavaScript API on our link:https://github.com/aerogear/aerogear-simplepush-quickstart[SimplePush quickstart]. This guide leverages that example and enchances to support registration with the UnifiedPush server. Now once a notification is received in the UnifiedPush server, it will forward to the SimplePush server which will in turn push it to all registered SimplePush clients.
 
-In the link:../simplepush-server[next section] we will have a brief look at the second component of the SimplePush, the SimplePush server.
+In the link:#simplepush-server[next section] we will have a brief look at the second component of the SimplePush, the SimplePush server.

@@ -1,7 +1,12 @@
 ---
-layout: post
+layout: news
+section: news
 title: Red Hat JBoss Unified Push Server and xPaaS
+author: matzew
+module: push
+tags: xpaas
 ---
+
 
 We are happy to announce that the [JBoss Unified Push Server](http://www.jboss.org/unifiedpush/) is officially available as a Developer Preview as part of the [JBoss xPaaS Services for OpenShift](https://developers.openshift.com/en/xpaas.html#_mobile_services)!
 

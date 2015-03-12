@@ -9,10 +9,10 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 
 ## UnifiedPush Server guides
 
-* [UnifiedPush Server User Guide](ups_userguide)
+* [UnifiedPush Server User Guide](ups_userguide/index/)
 * [Push Notification Message Format (stable)](push-message-format)
 * [Push Notification Message Format (development)](push-message-format-dev)
-* [Client Registration details](client-registration)
+* [Client Registration details](client-registration/)
 
 ## Client guides
 
@@ -28,14 +28,13 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 * [Getting Started with the Java Sender API](GetStartedwithJavaSender)
 
 ## Troubleshooting
-
-To better help trouble shooting, you should [enable logging on UnifiedPush Server](ups_userguide/ups-debugging/#_enable_logging).
+To better help trouble shooting, you should [enable logging on UnifiedPush Server](/docs/unifiedpush/ups_userguide/index/#_enable_logging).
 
 For more details on the supported mobile platforms consult the guides below:
 
-* [Android](aerogear-push-android/troubleshooting)
+* [Android](aerogear-push-android/guides/#troubleshooting)
 * [Cordova](aerogear-push-cordova/troubleshooting)
-* [iOS](aerogear-push-ios/troubleshooting)
+* [iOS](aerogear-push-ios/guides/#troubleshooting)
 
 ## API documentation
 

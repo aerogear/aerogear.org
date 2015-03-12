@@ -1,11 +1,15 @@
 ---
-layout: post
+layout: news
+section: news
 title: AeroGear iOS SDK v2.1 is out !
+author: corinnekrych
+module: core
+platform: ios
+releases: 2.1
 ---
 
-Hi AeroGear community,
 
-we are happy to announce the next versions of our iOS [Swift](https://developer.apple.com/swift/) libraries. Here are few of new features introduced in each respective lib:
+We are happy to announce the next versions of our iOS [Swift](https://developer.apple.com/swift/) libraries. Here are few of new features introduced in each respective lib.
 
 - [aerogear-ios-jsonsz](https://github.com/aerogear/aerogear-ios-jsonsz) *(new)*
 

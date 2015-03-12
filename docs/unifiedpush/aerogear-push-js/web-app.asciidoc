@@ -1,8 +1,4 @@
----
-layout: basic
-title: Web Example
----
-
+[[web-app]]
 == Web Example
 
 Now that we have configured both SimplePush and UnifiedPush servers and have them up and running, it's time to explore a simple web application that will exercise AeroGear JavaScript API support and demonstrate the workflow in action. Start by cloning the example from link:https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart[here].
@@ -23,7 +19,7 @@ var simplePushUrl = "<URL of the running SimplePush server>";
 Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are common source of problem, so please revisit them if you are experiencing problems.
 
 [NOTE]
-If you are unsure, you can always look at the Example from the AdminUI as link:../unifiedpush-server[described in previous chapter].
+If you are unsure, you can always look at the Example from the AdminUI as link:#unifiedpush-server[described in previous chapter].
 
 Next our UnifiedPush client object is created passing along the configuration params we declared earlier. The object would be used, as we will see later, to register the received endpoints from the SimplePush server to the UnifiedPush server.
 
@@ -75,4 +71,4 @@ image:./img/unifiedpush_main_screen.png[UnifiedPush main screen]
 
 A connection to the SimplePush server is established where we register our 'mail' channel, and then we register the endpoint received with the UnifiedPush server.
 
-Now that we have our application up an running time to link:../send-push[send messages] using the AeroGear UnifiedPush Server!
+Now that we have our application up an running time to link:#send-push[send messages] using the AeroGear UnifiedPush Server!

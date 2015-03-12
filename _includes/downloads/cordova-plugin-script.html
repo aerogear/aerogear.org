@@ -1,0 +1,14 @@
+<script>
+  var elements = [].slice.call(document.querySelectorAll('span.label.cordovaplugin'));
+  elements.forEach(function( element ) {
+    element.onclick = function() {
+      var contentElement = element.querySelectorAll('span')[0];
+      var range = document.createRange();
+      range.selectNodeContents(contentElement);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      element.focus();
+    }
+  });
+</script>

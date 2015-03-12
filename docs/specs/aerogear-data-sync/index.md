@@ -1,14 +1,16 @@
 ---
-layout: basic
+layout: post
+section: docs
 title: AeroGear Data Sync
 ---
-# Status: Experimental
 
-# References
+<span class="label label-warning">Status: Experimental</span>
+
+## References
 
 - [Jira](https://issues.jboss.org/browse/AGSYNC-7)
 
-# Features
+## Features
 
 * Detect Change
 
@@ -26,9 +28,8 @@ title: AeroGear Data Sync
 
     Once a client application has an update message from the server, it can apply the message to correctly update its local data.  This should be done automatically as part of receiving the update, but it may be done manually or may be delayed and automatically executed later.
 
+## Read More
 
 * [Message Format](../aerogear-sync-data-format)
-* [AeroGear Java Server API](../aerogear-sync-server-java-api/org/jboss/aerogear/sync/server/ServerSyncEngine.html)  
-* [AeroGear Java Client API](../aerogear-sync-server-java-api/org/jboss/aerogear/sync/client/ClientSyncEngine.html)  
-
-
+* [AeroGear Java Server API](../aerogear-sync-server-java-api/org/jboss/aerogear/sync/server/ServerSyncEngine.html)
+* [AeroGear Java Client API](../aerogear-sync-server-java-api/org/jboss/aerogear/sync/client/ClientSyncEngine.html)

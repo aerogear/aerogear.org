@@ -1,0 +1,95 @@
+---
+layout: index
+title: AeroGear News
+section: news
+---
+
+<h2 class="section-header">AeroGear News</h2>
+
+{% for post in site.data['all_posts'] %}
+<div class="article news {{ post.classes }}" itemscope itemtype="http://schema.org/NewsArticle">
+    <div class="article-icon"><i class="fa fa-newspaper-o fa-lg"></i></div>
+    <div class="article-header">
+
+        <h4 class="article-title" itemprop="name">
+            <a href="{% if post.external == false %}{{ site.baseurl }}{% endif %}{{ post.url }}">
+                {{post.title}}
+
+            </a>
+          {% if post.external %}<i class="fa fa-external-link"></i>{% endif %}
+        </h4>
+        
+        <div class="media">
+          {% if post.author.avatar %}
+          <div class="media-left">
+            <img src="{{ post.author.avatar }}" />
+          </div>
+          {% endif %}
+          
+          <div class="media-body">
+            {% if post.author.name %}
+            <p class="article-subtitle">by
+              <span itemprop="author">
+              {{post.author.name}}
+              </span>
+            </p>
+            {% endif %}        
+            <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">
+              posted on {{post.date |  date: "%-d %b %Y" }}
+            </p>
+          </div>
+        </div>        
+ 
+
+    </div><!-- article header -->
+
+    <div class="article-description" itemprop="description">
+        {{ post.excerpt | markdownify }}
+    </div><!-- article-description -->
+
+
+    <ul class="list-inline article-extra-info">
+      
+      {% for tag in post.tags %}
+      <li class="article-extra-info-tag">
+          <a href="#tag-{{ tag }}">
+            <i class="fa fa-tag"></i> {{ tag }}
+          </a>
+      </li>        
+      {% endfor %}
+
+      {% if post.module.icon %}
+      <li class="article-extra-info-module">
+        <strong>module:</strong>
+        <a href="#module-{{post.module.name | downcase}}">
+          <i class="fa {{post.module.icon}}"></i> 
+          <strong>{{post.module.name}}</strong>
+        </a>
+      </li>        
+      {% endif %}
+
+      {% if post.platform %}
+      <li class="article-extra-info-platform">
+        <strong>platform:</strong>
+          <a href="#platform-{{ post.platform.name | downcase }}">
+            <i class="fa {{post.platform.icon}}"></i>
+            {{ post.platform.name }}
+          </a>
+      </li>
+      {% endif %}
+
+      {% if post.releases %}
+      <li class="article-extra-info-release">
+        <strong>releases:</strong> 
+          <a>
+            {{ post.releases }}
+          </a>
+      </li>
+      {% endif %}
+      
+    </ul>
+
+</div><!-- article -->
+{% endfor %}
+
+<script src="/js/news.js"></script>

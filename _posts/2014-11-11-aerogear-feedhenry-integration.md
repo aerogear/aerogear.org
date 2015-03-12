@@ -1,8 +1,13 @@
 ---
-layout: post
+layout: news
+section: news
 title: FeedHenry meets AeroGear UnifiedPush Server!
-
+author: matzew
+module: push
+tags:
+- feedhenry
 ---
+
 
 After Red Hat's acquisition of [FeedHenry](http://www.redhat.com/en/about/press-releases/red-hat-acquire-feedhenry-adds-enterprise-mobile-application-platform) the AeroGear team is excited to promote the first integration between FeedHenry and the AeroGear Unified Push Server!
 

@@ -1,15 +1,16 @@
 ---
-layout: basic
+layout: post
+section: guides
 title: AeroGear Android Data Store
+toc_generate: true
 ---
 
-== Store
 
 AeroGear Android provides a simple data storage API.  This API is useful for caching responses, sharing data among different systems, or providing some form of limited offline support.  
 
-=== How to use it
+== How to use it
 
-==== Creating a Store
+=== Creating a Store
 
 To create a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/datamanager/Store.html[*Store*], invoke  link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/DataManager.html[*DataManager*] config method, passing along a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/StoreConfiguration.html[*StoreConfiguration*]. link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/MemoryStoreConfiguration.html[*MemoryStoreConfiguration*] for an in-memory backed store, or link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/SQLStoreConfiguration.html[*SQLStoreConfiguration*] for an sqlite backed store. A name should be also provided to distinguish between different stores that this link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/DataManager.html[*DataManager*] can hold.
 
@@ -52,7 +53,7 @@ You also can do something after Store creation adding a listener in a config
 })
 ---- 
 
-==== Object ID's
+=== Object ID's
 
 All objects which are stored or read from a store need to have an ID field. This field is annotated with the link:/docs/specs/aerogear-android-core/org/jboss/aerogear/android/RecordId.html[*@RecordId*] annotation in your class file.
 
@@ -73,7 +74,7 @@ DataManager.config("myMemoryStoreName", MemoryStoreConfiguration.class)
 
 PS: AeroGear does not control the id value. This is delegated to IdGenerator, so it's your (developer) responsibility to control it. 
 
-==== Saving Data  
+=== Saving Data
 
 The method save is used to insert a new record or update an existing one. To distinquish between the two, the @RecordId annotation will be scanned on the model class and if the field with this annotation is found to be null, a new record will be inserted otherwise an update will be applied.
 
@@ -86,21 +87,21 @@ data.setDescription("Awesome library");
 store.save(data);  
 ----
 
-==== Clearing the data store  
+=== Clearing the data store
 
 [source,java]
 ----
 store.reset();  
 ----
 
-==== Reading All Data  
+=== Reading All Data
 
 [source,java]
 ----
 Collection<MyModel> allData = store.readAll();  
 ----
 
-==== Deleting Data  
+=== Deleting Data
 
 [source,java]
 ----
@@ -109,7 +110,7 @@ store.remove(1); // Deletes the element with id 1
 
 Take a look at the complete example in our link:https://github.com/aerogear/aerogear-android-cookbook[cookbook app]
 
-==== Encrypted Stores
+=== Encrypted Stores
 
 If your storage information needs to be encrypted, AeroGear provides convenient and transparent encrypted storage support, building on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-java[aerogear-crypto-java], encrypted variants of both memory (link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/EncryptedMemoryStore.html[*EncryptedMemoryStore*]) and SQLite (link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/EncryptedSQLStore.html[*EncryptedSQLStore*])
 

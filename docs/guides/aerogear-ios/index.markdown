@@ -1,21 +1,26 @@
---- 
-layout: basic 
-title: AeroGear iOS User Guide 
+---
+layout: post
+title: AeroGear iOS User Guide
+section: guides
+
 ---
 
-# AeroGear iOS User Guides
+<h2 class="section-header" id="core"><i class="fa fa-graduation-cap"></i> First Steps</h2>
 
-## Getting Started Guides
-* [Get Started with iOS and Xcode](/docs/guides/GetStartedwithAeroGearandXcode/)
-* [Get Started with iOS and AeroGear Xcode Template](/docs/guides/GetStartedwithAeroGearandXcodeTemplate/)
+* [Get Started with iOS and Xcode](AeroGearandXcode)
+* [Get Started with iOS and AeroGear Xcode Template](XcodeTemplate)
 
-## Usage Guides
+<h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>Core</strong> Guides</h2>
+
 * [Pipe and Pipeline](Pipe)
 * [Pagination](Pagination)
 * [Authentication and User enrollment](Authentication)
-* [Authorization (OAuth2)](Authorization)
 * [Store and DataManager](DataStore)
+
+
+<h2 class="section-header" id="security"><i class="fa fa-shield"></i> AeroGear<strong>Security</strong> Guides</h2>
 * [Cryptography support](Cryptography)
+* [Authorization (OAuth2)](Authorization)
 
 ## Example apps
 
@@ -25,7 +30,4 @@ title: AeroGear iOS User Guide
 * [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo)
 
 ## API documentation
-* [1.4.0 API documentation](/docs/specs/aerogear-ios/)
-
-## Presentations about AeroGear on iOS
-*  -
+* [1.6.1 API documentation](/docs/specs/aerogear-ios/)
