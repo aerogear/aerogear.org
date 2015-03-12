@@ -124,9 +124,34 @@ image:./img/installations_and_details.png[DA]
 
 In this screen there is only one device listed and its details are expanded (see the red circle). The details show the entire +device-token+ of the device. On this screen you could also exclude a specific device from receiving Push Notifications, using the +Receiving+ toggle.
 
+=== Exporting installations
+
+At any time, for a particular Variant, you can export its installations (registered devices) to a JSON file :
+
+image::./img/export1.png[DA]
+
+And then :
+
+image::./img/export2.png[DA]
+
+The file will be named with the Variant ID. 
+
+=== Importing installations
+
+At any time, for a particular Variant, you can import installations (registered devices) into it : 
+
+image::./img/import1.png[DA]
+
+And then :  
+
+image::./img/import2.png[DA]
+
+select a local JSON file containing installations.
+
+NOTE: The import file must have the expected JSON structure as defined link:https://aerogear.org/docs/specs/aerogear-unifiedpush-rest-1.0.x/registry/device/importer/index.html[here].
+
 [[sending_a_push_notification]]
 === Sending a Push Notification
-
 
 Now it is time to send a test message to the device using the +Send Push+ feature of the UnifiedPush Server! For that we select the PushApplication we would like to use:
 

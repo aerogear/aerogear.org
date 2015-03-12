@@ -36,7 +36,7 @@ span.version {
 * [AeroGear Cordova](aerogear-cordova)
 
 <h4 id="coreJs">JavaScript</h4>
-* [AeroGear.js](aerogear-js) <span class="version">2.0.0</span>
+* [AeroGear.js](aerogear-js) <span class="version">2.1.0</span>
 
 <h4>Deprecated</h4>
 * [Pipe API](aerogear-client-pipe)
