@@ -34,7 +34,7 @@ As part of this release we are providing a simple demo application that is based
 
 To run the above demo applications you'll need one of the sync servers running, please refer to the links below for instructions about how to 
 start the servers.  
-[Java Server](https://github.com/danbev/aerogear-sync-server/releases/tag/1.0.0.Alpha1-SNAPSHOT)
+[Java Server](https://github.com/aerogear/aerogear-sync-server/releases/tag/1.0.0-alpha.1)
 
 #### See it in Action
 
