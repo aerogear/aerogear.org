@@ -17,7 +17,6 @@ Before you can run the side, make sure you have [asciidoc](http://www.methods.co
 
 ## deploy
 
-Pushing to `master` branch, will trigger a CI build, which will deploy to <http://staging.aerogear.org>.
+Pushing to `master` branch, will trigger a Jenkins CI build, which will deploy to <http://staging.aerogear.org>.
 
 Pushing to `production` branch, deploys the site to <http://aerogear.org>.
-
