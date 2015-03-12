@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Get Started with iOS platform
+section: guides
 toc_generate: true
 ---
 

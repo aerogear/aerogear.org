@@ -2,6 +2,7 @@
 layout: post
 section: guides
 title: Getting started with Windows
+toc_generate: true
 ---
 == Visual Studio 
 
