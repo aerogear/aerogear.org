@@ -66,7 +66,7 @@ Designed to get you started with enterprise mobile development.
 
   1. [Overview](/docs/guides/security/oauth2-guide#_overview)
   2. [Requirements](/docs/guides/security/oauth2-guide/#_requirements)
-  3. [Before you get started](docs/guides/security/oauth2-guide/#_before_you_get_started)
+  3. [Before you get started](/docs/guides/security/oauth2-guide/#_before_you_get_started)
   4. [Getting started](/docs/guides/security/oauth2-guide/#_getting_started)
   5. [What’s next?](/docs/guides/security/oauth2-guide/#_what_s_next)
   6. [Asking for help](/docs/guides/security/oauth2-guide/#_asking_for_help)
