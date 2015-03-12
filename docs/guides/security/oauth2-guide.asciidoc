@@ -291,8 +291,8 @@ AuthorizationManager.config("KeyCloakAuthz", OAuth2AuthorizationConfiguration.cl
 <pre class="highlight">
 AuthorizationManager.config("FacebookOAuth", OAuth2AuthorizationConfiguration.class)
         .setBaseURL(new URL("https://"))
-        .setClientId("<replace me>")
-        .setClientSecret("<replace me>")
+        .setClientId("replace me")
+        .setClientSecret("replace me")
         .setAuthzEndpoint("www.facebook.com/dialog/oauth")
         .setAccessTokenEndpoint("graph.facebook.com/oauth/access_token")
         .setAccountId("facebook-token")
@@ -310,8 +310,8 @@ AuthorizationManager.config("FacebookOAuth", OAuth2AuthorizationConfiguration.cl
 <pre class="highlight">
 AuthorizationManager.config("GoogleDriveAuthz", OAuth2AuthorizationConfiguration.class)
         .setBaseURL(new URL("https://accounts.google.com"))
-        .setClientId("<replace me>")
-        .setClientSecret("<replace me>")
+        .setClientId("replace me")
+        .setClientSecret("replace me")
         .setAuthzEndpoint("/o/oauth2/auth")
         .setAccessTokenEndpoint("/o/oauth2/token")
         .setRefreshEndpoint("/o/oauth2/token")
