@@ -64,7 +64,7 @@ For iOS we have two different libraries that are developed:
 
 The initial releases of the libraries are available on [CocoaPods](http://cocoapods.org/?q=AeroGearSync) as well.
 
-Besides the libraries we do already have a little [demo application](https://github.com/aerogear/aerogear-ios-sync-demo), which can be used against the above Java server.
+Besides the libraries we do already have a little [demo application](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Jedi) on our [Cookbook example repository](https://github.com/aerogear/aerogear-ios-cookbook#), which can be used against the above Java server.
 
 
 
