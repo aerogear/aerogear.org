@@ -4,7 +4,7 @@
 // section: guides
 // ---
 
-
+[[next-steps]]
 == Next steps
 
 Now that you are familiar with the UnifiedPush Server it is time to checkout out our tutorials to get Push Notification working with our mobile clients and existing backends!

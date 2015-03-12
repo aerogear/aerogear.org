@@ -5,6 +5,7 @@
 // ---
 // 
 
+[[debugging]]
 == Debugging the UnifiedPush Server
 
 There are several ways to learn more about _"What's going on"_ inside the UnifiedPush Server
@@ -82,6 +83,6 @@ At this point all log levels from the UnifiedPush Server are enabled. To verify 
 
 The AdminUI contains a _Dashboard_ which provides a number of valuable information as well:
 
-* The +Most Active+ section shows a recent list of PushApplications that have submitted Push Notification requests. Learn more link:../admin-ui/#_dashboard_most_active[here].
+* The +Most Active+ section shows a recent list of PushApplications that have submitted Push Notification requests. Learn more link:#_dashboard_most_active[here].
 
-* The +Warnings+ section shows of a list of recent problems that occured. Learn more link:../admin-ui/#_dashboard_warnings[here]
+* The +Warnings+ section shows of a list of recent problems that occured. Learn more link:#_dashboard_warnings[here]

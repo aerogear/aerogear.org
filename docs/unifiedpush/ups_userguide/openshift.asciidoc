@@ -4,7 +4,8 @@
 // section: guides
 // ---
 //
- 
+
+[[openshift]]
 == Running the UnifiedPush Server on OpenShift
 
 AeroGear provides an UnifiedPush Server cartridge to make it easy to get it running on OpenShift. If you don't already have an account or don't know how to create applications go to https://www.openshift.com/ first. You can create the UnifiedPush Server instance either with the web tool or the command line tool, both approaches are described below.
@@ -41,4 +42,4 @@ If you are interested to learn more about +rhc+, checkout the following resource
 
 === Next Steps
 
-Now it is time to make yourself familiar with the link:../admin-ui[Admin UI].
+Now it is time to make yourself familiar with the link:#admin-ui[Admin UI].

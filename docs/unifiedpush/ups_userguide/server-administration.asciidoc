@@ -4,7 +4,7 @@
 // section: guides
 // ---
 
-
+[[server-administration]]
 == Administration of the UnifiedPush Server
 
 The UnifiedPush Server is protected by the link:http://keycloak.org[Keycloak SSO server]. This document explains a few features from the **Keycloak Admin Console** to perform some administrative configurations around the UnifiedPush Server and its users.
@@ -134,4 +134,4 @@ By default the option "Require SSL" on Keycloak is enabled to make sure that Uni
 
 === Next Steps
 
-Now that you are familiar with the two admin user interfaces of the UnifiedPush Server, it is time to get some mobile development started! You can find a list of different tutorials and guides link:../next[here].
+Now that you are familiar with the two admin user interfaces of the UnifiedPush Server, it is time to get some mobile development started! You can find a list of different tutorials and guides link:#next-steps[here].
