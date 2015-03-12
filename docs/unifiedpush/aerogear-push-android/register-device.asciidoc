@@ -1,3 +1,4 @@
+[[register-device]]
 == The AeroGear UnifiedPush Server
 
 With all the Google work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to CGM for a later message sending.
@@ -27,4 +28,4 @@ NOTE: Clicking on the appropriate tab, you can choose between _Android_ and _Cor
 
 === Eclipse
 
-The server is now configured. Let's move to Eclipse and link:../android-app[create an Android application] that will use the AeroGear Android library to connect to the UnifiedPush server and start receiving notifications.
+The server is now configured. Let's move to Eclipse and link:#android-app[create an Android application] that will use the AeroGear Android library to connect to the UnifiedPush server and start receiving notifications.

@@ -1,4 +1,4 @@
-
+[[provisioning-profiles]]
 == Creating a Provisioning Profile
 
 Now that you have created an App ID and you got your SSL certificate, it's time to create a _Provisioning Profile_
@@ -61,5 +61,5 @@ image:./img/XcodeOrganizer.png[Xcode Organizer shows the new Provisioning Profil
 
 === Settting up Xcode
 
-Now, let's setup the link:../xcode-setup[Xcode]
+Now, let's setup the link:#xcode-setup[Xcode]
 

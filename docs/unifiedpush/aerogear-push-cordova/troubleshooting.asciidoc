@@ -46,7 +46,7 @@ Your error callback is called with the message: "no valid 'aps-environment' enti
 
 *Answer*
 
-Your Bundle ID name should match with the Bundle ID as created on Apple's developer portal. Please refer to link:../../aerogear-push-ios/app-id-ssl-certificate-apns[Apple App ID and SSL certificate for APNs] documentation for more details on configuration.
+Your Bundle ID name should match with the Bundle ID as created on Apple's developer portal. Please refer to link:../../aerogear-push-ios/guides/#app-id-ssl-certificate-apns[Apple App ID and SSL certificate for APNs] documentation for more details on configuration.
 
 ### I have another Issue
 

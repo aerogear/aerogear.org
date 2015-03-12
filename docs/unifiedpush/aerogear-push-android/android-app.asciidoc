@@ -1,3 +1,4 @@
+[[android-app]]
 == Your first Android/Push App
 
 Now that the UnifiedPush server is up and running, time to create a sample application that will exercice AeroGear's Android Push library support. For the purpose of the guide we will use the Eclipse environment with the ADT tools installed, but you are free to use any IDE that includes Android support.  Please visit our link:http://aerogear.org/docs/guides/aerogear-android/[web site] for more information on how to enable other popular IDEs for AeroGear Android development.
@@ -319,4 +320,4 @@ image::./img/app-main-screen.png[Push Application Main Screen]
 [NOTE]
 If you don't see the 'Registration Succeeded' popup, means that an error has occurred during the registration. Switch to the LogCat console in Eclipse to locate the exception and act accordingly.
 
-Now that we have our application up an running time to link:../push-notification[send messages] using the AeroGear UnifiedPush Server!
+Now that we have our application up an running time to link:#push-notification[send messages] using the AeroGear UnifiedPush Server!

@@ -1,3 +1,4 @@
+[[register-device]]
 == The AeroGear UnifiedPush Server
 
 Now that all the Google work is done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to CGM for sending messages later in the tutorial.
@@ -6,9 +7,9 @@ Now that all the Google work is done, we are now ready to setup the link:https:/
 
 The _AeroGear UnifiedPush Server_ defines a logical _abstraction_ for Mobile Applications that have support for different Push Networks. Its _Push Applications_ can have different "Variants". For this tutorial we'll need to create a _Push Application_ which will contain one Chrome Packaged App Variant.
 
-Details on the AeroGear UnifiedPush Server are discussed link:../../ups_userguide/[here].
+Details on the AeroGear UnifiedPush Server are discussed link:../../ups_userguide/index/[here].
 
-Once you have run through the link:../../ups_userguide/server-installation[Installation] and link:../../ups_userguide/admin-ui/#_login_and_landing_page[Login] Procedures, meet me back here.  I'll wait.
+Once you have run through the link:../../ups_userguide/index/#server-installation[Installation] and link:../../ups_userguide/index/#_login_and_landing_page[Login] Procedures, meet me back here.  I'll wait.
 
 Ok, now that your back, lets continue.
 
@@ -32,4 +33,4 @@ Expand the variant card and make note of the **Variant ID** and **Secret** field
 
 image:../../aerogear-push-android/img/variant_04.png[Android Variant Details]
 
-The server is now configured. Time to link:../chrome-app[create a Chrome Packaged Application] that will use the AeroGear JS library to connect to the UnifiedPush server and start receiving notifications.
+The server is now configured. Time to link:#chrome-app[create a Chrome Packaged Application] that will use the AeroGear JS library to connect to the UnifiedPush server and start receiving notifications.

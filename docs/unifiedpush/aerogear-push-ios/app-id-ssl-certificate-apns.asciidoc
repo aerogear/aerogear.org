@@ -1,3 +1,4 @@
+[[app-id-ssl-certificate-apns]]
 == Apple related setup
 
 Before you are able to use Push Notifications on your iOS Application, a few steps are required. This section of the tutorial gives a quick overview of what is needed!
@@ -70,4 +71,4 @@ Now export it too as a *.p12* (_Personal Information Exchange_). This file will 
 
 ==== Provisioning Profile
 
-Next, you need to create an link:../provisioning-profiles[Apple Provisioning Profile]
+Next, you need to create an link:#provisioning-profiles[Apple Provisioning Profile]

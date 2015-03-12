@@ -1,4 +1,4 @@
-
+[[windows-app]]
 == Your first Android/Push App
 
 
@@ -227,4 +227,4 @@ We are now ready to run the application.
 
 image:./img/app-main-screen.png[Push Application Main Screen]
 
-Now that we have our application up an running time to link:../push-notification[send messages] using the AeroGear UnifiedPush Server!
+Now that we have our application up an running time to link:#push-notification[send messages] using the AeroGear UnifiedPush Server!

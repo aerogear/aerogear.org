@@ -9,8 +9,8 @@ The [AeroGear UnifiedPush](https://github.com/aerogear/aerogear-unifiedpush-serv
 
 The following step-by-step guides, will briefly introduce you to the concepts of SimplePush itself, howto setup the AeroGear SimplePush and UnifiedPush servers, and with the help of an example we will show you how to send notification messages to your web applications.
 
-1. [SimplePush Protocol Primer](simplepush-primer)
-2. [The AeroGear SimplePush Server](simplepush-server)
-3. [The AeroGear Unified Push Server](unifiedpush-server)
-4. [Web Example](web-app)
-5. [Finally: Send a Push Notification](send-push)
+1. [SimplePush Protocol Primer](guides/#simplepush-primer)
+2. [The AeroGear SimplePush Server](guides/#simplepush-server)
+3. [The AeroGear Unified Push Server](guides/#unifiedpush-server)
+4. [Web Example](guides/#web-app)
+5. [Finally: Send a Push Notification](guides/#send-push)

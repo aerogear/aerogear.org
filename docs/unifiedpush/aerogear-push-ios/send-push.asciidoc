@@ -1,4 +1,4 @@
-
+[[send-push]]
 == Sending messages
 
 Now you have the Sample App running on your phone, so it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message to your device!

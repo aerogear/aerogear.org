@@ -1,4 +1,4 @@
-
+[[ios-app]]
 == Creating an iOS application
 
 Before we start, please install link:http://cocoapods.org/[CocoaPods].
@@ -151,6 +151,6 @@ Now run the phone on the device. After agreeing on receiving Push Messages, you 
 
 === Sending messages to the device
 
-The last chapter shows how to link:../send-push[send messages] to the device, using the _AeroGear UnifiedPush Server_!
+The last chapter shows how to link:#send-push[send messages] to the device, using the _AeroGear UnifiedPush Server_!
 
 

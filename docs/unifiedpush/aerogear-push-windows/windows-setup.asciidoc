@@ -1,4 +1,4 @@
-
+[[windows-setup]]
 == Windows setup
 
 Before the Windows application is able to receive the notifications, you must authenticate yourself with Microsoft as a developer. You'll need to create or have a Microsoft account.

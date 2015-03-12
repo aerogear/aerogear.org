@@ -1,3 +1,4 @@
+[[google-setup]]
 == Google Related Setup
 
 Before the Chrome Packaged application is able to receive the notifications, you must authenticate yourself with Google as a developer. Luckily this is both easy and free to do, and doesn't require much set-up.
@@ -36,4 +37,4 @@ On the last screen we are finally get to see the actual value of the generated S
 
 image:../../aerogear-push-android/img/gcc_7.png["Project Number",border="1"]
 
-Now that Google is ready to accept and deliver our messages, we are ready to setup the link:../register-device[UnifiedPush server].
+Now that Google is ready to accept and deliver our messages, we are ready to setup the link:#register-device[UnifiedPush server].

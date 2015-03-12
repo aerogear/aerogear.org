@@ -1,4 +1,4 @@
-
+[[register-device]]
 == The AeroGear UnifiedPush Server
 
 
@@ -27,4 +27,4 @@ NOTE: Clicking on the appropriate tab, you can choose between _C#_ and _Cordova_
 
 === Visual Studio
 
-The server is now configured. Let's move to Visual Studio and link:../windows-app[create an Windows application] that will use the AeroGear Windows library to connect to the UnifiedPush server and start receiving notifications.
+The server is now configured. Let's move to Visual Studio and link:#windows-app[create an Windows application] that will use the AeroGear Windows library to connect to the UnifiedPush server and start receiving notifications.
