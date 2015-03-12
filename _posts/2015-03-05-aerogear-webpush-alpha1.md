@@ -1,6 +1,10 @@
 ---
-layout: post
-title: AeroGear WebPush alpha.1 is out.
+layout: news
+section: news
+title: AeroGear WebPush alpha.1 is out
+author: danbev
+module: push
+releases: 1.0.0-alpha.1
 ---
 
 [AeroGear WebPush](https://github.com/aerogear/aerogear-webpush-server#aerogear-webpush-server-) alpha1 is a proof of concept implementation of the 
