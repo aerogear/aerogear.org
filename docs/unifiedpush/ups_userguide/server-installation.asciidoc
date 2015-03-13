@@ -206,4 +206,4 @@ After deployment with the application server running, the UnifiedPush Server Con
 
 === Database Migration
 
-For migrating the database schema to a new version the migration tool from the above link:#schema[Create the database schema] section is used. For details around the database migration, consult the link:#database-migration[Migration guide].
+For migrating the database schema to a new version the migration tool from the above link:#schema[Create the database schema] section is used. For details around the database migration, consult the link:#migration-guide[Migration guide].
