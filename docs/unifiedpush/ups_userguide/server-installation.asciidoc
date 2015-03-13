@@ -7,10 +7,11 @@
 [[server-installation]]
 == Install and Configure the UnifiedPush Server
 
-Getting the UnifiedPush Server up and running with an on-premise application server is a three-step setup process:
+Getting the UnifiedPush Server up and running with an on-premise application server is a four-step setup process:
 
 . <<getfiles,Get the UnifiedPush Server application files>>
 . <<gendbds,Generate the UnifiedPush database and datasource>>
+. <<schema,Create the database schema>>
 . <<deploy,Deploy the UnifiedPush Server>>
 
 Each of these steps is detailed here, with instructions and useful scripts provided for the supported databases (MySQL, PostgreSQL) and application servers (link:http://jbossas.jboss.org/downloads/[EAP 6.3.0 GA], link:http://wildfly.org/downloads/[WildFly 8]).
@@ -168,14 +169,41 @@ For EAP:
 $ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config.cli
 ----
 
-==== Migration
+[[schema]]
+=== Create the database schema
 
-For information on database migrations for MySQL and PostgreSQL, consult the link:#database-migration[Migration guide].
+After the application server is configured for the UnifiedPush datasource, the schema must be created. Inside of the release bundle there is a +migrator+ folder which contains a command line interface to create the required database schema. The tool is also used to migrate from an existing schema to a newer version of the schema, used for the UnifiedPush Server.
+
+Copy the _liquibase example_ file to  +liquibase.properties+ and edit it to match your database name and credentials.
+
+
+[source,c]
+----
+cp liquibase-database-flavor-example.properties liquibase.properties
+----
+
+After the +liquibase.properties+ contains the proper credentials, you need to execute the migration tool:
+
+[source,c]
+----
+./bin/ups-migrator update
+----
+
+In case of a successful run, the script prints
+
+[source,c]
+----
+Liquibase Update Successful
+----
 
 [[deploy]]
 === Deploy the UnifiedPush Server
-After the application server is configured for the UnifiedPush datasource, the two UnifiedPush Server application +.war+ files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server.
+With the database schema in place, the two UnifiedPush Server application +.war+ files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server.
 
 To deploy the UnifiedPush Server, copy the two +.war+ files to +/path/to/SERVER_HOME/standalone/deployments/+. This can be done either before or after starting the application server.
 
 After deployment with the application server running, the UnifiedPush Server Console can be accessed at link:http://localhost:8080/ag-push/[]. For information about using the Console, see link:#admin-ui[Using the Admin UI].
+
+=== Database Migration
+
+For migrating the database schema to a new version the migration tool from the above link:#schema[Create the database schema] section is used. For details around the database migration, consult the link:#database-migration[Migration guide].
