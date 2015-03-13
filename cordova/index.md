@@ -6,7 +6,7 @@ section: platforms
 
 <article class="push">
 
-  <h1><i class="fa fa-android"></i> AeroGear Cordova</h1>
+  <h1><i class="fa fa-simplybuilt"></i> AeroGear Cordova</h1>
   <p class="alt">AeroGear Cordova makes developing apps with Cordova easier by adding plugins for thing that are hard to do right.</p>
 
   <p>
