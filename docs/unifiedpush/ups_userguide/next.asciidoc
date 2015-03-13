@@ -35,8 +35,8 @@ For the backend integration of your server we have a few different tutorials as 
 
 === Quickstarts
 
-* link:https://github.com/jboss-mobile/unified-push-helloworld/releases/latest[HelloWorld for Android, Cordova and iOS]
-* link:https://github.com/jboss-mobile/unified-push-quickstarts/releases/latest[MobileContacts for Android, Cordova and iOS + JAX-RS and Fabric8]
+* link:https://github.com/jboss-mobile/unified-push-helloworld[HelloWorld for Android, Cordova and iOS]
+* link:https://github.com/jboss-mobile/unified-push-quickstarts[MobileContacts for Android, Cordova and iOS + JAX-RS and Fabric8]
 * link:https://github.com/aerogear/aerogear-js-cookbook/tree/master/simplepush-unifiedpush-example[SimplePush and UnifiedPush]
 
 
