@@ -16,7 +16,7 @@ Getting the UnifiedPush Server up and running with an on-premise application ser
 
 Each of these steps is detailed here, with instructions and useful scripts provided for the supported databases (MySQL, PostgreSQL) and application servers (link:http://jbossas.jboss.org/downloads/[EAP 6.3.0 GA], link:http://wildfly.org/downloads/[WildFly 8]).
 
-NOTE: You can also link:http://aerogear.org/docs/unifiedpush/ups_userguide/openshift/[run the UnifiedPush Server in the cloud with OpenShift] but this requires a different setup process.
+NOTE: You can also link:#openshift[run the UnifiedPush Server in the cloud with OpenShift] but this requires a different setup process.
 
 [[getfiles]]
 === Get the UnifiedPush Server Application Files

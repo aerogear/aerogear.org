@@ -24,8 +24,6 @@ Different type of client technologies are supported with the Server
 * link:http://aerogear.org/docs/guides/aerogear-cordova/AerogearCordovaPush/[Apache Cordova for APNs and GCM]
 * link:../../aerogear-push-chrome[Chrome Packaged Apps]
 
-
-
 === Server Integration Tutorials
 
 For the backend integration of your server we have a few different tutorials as well:
@@ -37,15 +35,15 @@ For the backend integration of your server we have a few different tutorials as 
 
 === Quickstarts
 
-* link:https://github.com/aerogear/aerogear-push-helloworld/releases/latest[HelloWorld for Android, Cordova and iOS]
-* link:https://github.com/aerogear/aerogear-push-quickstarts/releases/latest[MobileContacts for Android, Cordova and iOS + JAX-RS and Fabric8]
-* link:https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart[SimplePush and UnifiedPush]
+* link:https://github.com/jboss-mobile/unified-push-helloworld/releases/latest[HelloWorld for Android, Cordova and iOS]
+* link:https://github.com/jboss-mobile/unified-push-quickstarts/releases/latest[MobileContacts for Android, Cordova and iOS + JAX-RS and Fabric8]
+* link:https://github.com/aerogear/aerogear-js-cookbook/tree/master/simplepush-unifiedpush-example[SimplePush and UnifiedPush]
 
 
 === More demos
 
 * AeroDoc Showcase (includes cases like Geolocation, via Hibernate Search)
-** link:https://github.com/aerogear/aerogear-aerodoc-backend[JavaEE Backend Application]
-** link:https://github.com/aerogear/aerogear-aerodoc-android[Android client]
-** link:https://github.com/aerogear/aerogear-aerodoc-ios[iOS client]
-** link:https://github.com/aerogear/aerogear-aerodoc-cordova[Apache Cordova client]
+** link:https://github.com/aerogear/aerogear-backend-cookbook/tree/master/aerodoc-backend[JavaEE Backend Application]
+** link:https://github.com/aerogear/aerogear-android-cookbook/tree/master/AeroDoc[Android client]
+** link:https://github.com/aerogear/aerogear-ios-cookbook/tree/1.6.x/AeroDoc[iOS client]
+** link:https://github.com/aerogear/aerogear-cordova-cookbook/tree/master/aerodoc-cordova[Apache Cordova client]
