@@ -5,7 +5,6 @@ section: guides
 toc_generate: true
 ---
 
-
 When writing an link:https://tools.ietf.org/html/rfc6749[OAuth2] application, you often want the user to grant access for only once in the app lifetime. OAuth2Module stores access and refresh tokens in OAuth2Session. OAuth2Session is a protocol which is implemented in 2 flavors:
 
 - TrustedPersistantOAuth2Session: you store access and refresh tokens permanently in Keychain secure storage,
