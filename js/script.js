@@ -9,6 +9,7 @@ jQuery(function($){
     offset: {
         top: function (){
           return (this.top = $(".main-banner").outerHeight(true)+$(".nav").outerHeight(true)+$(".breadcrumb").outerHeight(true)+30);
+//          return (this.top = $(".main-banner").outerHeight(true));
         },
  //       top:184,
         bottom: 558
