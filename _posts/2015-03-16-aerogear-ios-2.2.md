@@ -1,7 +1,13 @@
 ---
-layout: post
-title: AeroGear iOS SDK v2.2 is out !
+layout: news
+section: news
+title: AeroGear iOS SDK v2.2 is out!
+author: corinnekrych
+module: sync
+platform: ios
+tags: sync ios swift
 ---
+
 
 Hello AeroGear Community,
 
