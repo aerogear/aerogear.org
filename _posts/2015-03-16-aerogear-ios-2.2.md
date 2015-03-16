@@ -17,13 +17,13 @@ The work around synchronisation on iOS is covered with:
 
 - [aerogear-ios-sync-client](https://github.com/aerogear/aerogear-ios-sync-client): the client uses sync engine and a network implementation. Our libraries is based on WebSockets to provide real-time sync.
 
-- [Jedi demo](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Jedi): Star war fan, rejoice in discovering our two Jedi hobbies demos (DiffMatchPatch and JsonPatch).
+- [Jedi demo](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Jedi): Star Wars fan, rejoice in discovering our two Jedi hobbies demos (DiffMatchPatch and JsonPatch).
       
 **2. House cleaning tasks:**
 
 - Move to [cocoapods 0.36.0](http://blog.cocoapods.org/CocoaPods-0.36/) for using iOS dynamic framework.
 
-- Deprecate [aerogear-ios-httpstub](https://github.com/aerogear/aerogear-ios-httpstub).
+- Deprecate [aerogear-ios-httpstub](https://github.com/aerogear/aerogear-ios-httpstub) in favor of [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs).
 
 - and cookbook demos: Buddies is replaced by [ChuckNorris](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/ChuckNorrisJokes) to remove backend dependency. [AeroDoc repo](https://github.com/aerogear/aerogear-aerodoc-ios) has moved to [cookbook 1.6.x branch](https://github.com/aerogear/aerogear-ios-cookbook/tree/1.6.x) to better gather together all demos.
 
