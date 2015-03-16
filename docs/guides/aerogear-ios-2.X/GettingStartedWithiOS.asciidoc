@@ -5,8 +5,6 @@ section: guides
 toc_generate: true
 ---
 
-== Get Started with iOS platform
-
 If you're brand new to iOS, this first section will give you interesting links to start with iOS environment and platform. We've all been a beginner at one point, do not fear iOS platform is easy to start with specially with its new Swift language.
 
 == Prerequisites
