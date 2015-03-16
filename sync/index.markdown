@@ -16,7 +16,7 @@ sub-section-title: AeroGear Sync
   </p>
 
 
-Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel. This feature provides a specific server side sync engine, as well as a client side sync engines for Android, iOS and JavaScript. The implementation is based on Google's [Differential Synchonrization](http://research.google.com/pubs/pub35605.html) by Neil Fraser.
+Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel. This feature provides both, a specific server side sync engine, as well as a client side sync engines for Android, iOS and JavaScript. The implementation is based on Google's [Differential Synchonrization](http://research.google.com/pubs/pub35605.html) by Neil Fraser.
 
 
 <h3 id="sync-in-action">See it in Action</h3>
@@ -64,7 +64,7 @@ For iOS we have two different libraries that are developed:
 
 The initial releases of the libraries are available on [CocoaPods](http://cocoapods.org/?q=AeroGearSync) as well.
 
-Besides the libraries we do already have a little [demo application](https://github.com/aerogear/aerogear-ios-sync-demo), which can be used against the above Java server.
+Besides the libraries we do already have a little [demo application](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Jedi) on our [Cookbook example repository](https://github.com/aerogear/aerogear-ios-cookbook#), which can be used against the above Java server.
 
 
 
