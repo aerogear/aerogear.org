@@ -17,7 +17,7 @@
         
 
         <li class="{% if page.section == 'homepage' %}active{% endif %}">
-        <a href="/">Home</a>
+          <a href="/">Home</a>
         </li>
 
 
@@ -41,7 +41,7 @@
           </ul>
         </li>
 
-        <li class="dropdown hidden-xs hidden-sm {% if page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}active{% endif %}">
+        <li class="dropdown hidden-sm {% if page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Get started<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/getstarted/downloads">Downloads and snippets</a></li>
@@ -50,8 +50,16 @@
           </ul>
         </li>
 
+        <li class="hidden-sm {% if page.section == 'docs' %}active{% endif %}">
+          <a href="/docs/specs/">Docs</a>
+        </li>
 
-        <li class="dropdown hidden-lg hidden-md {% if page.section == 'docs' or  page.section == 'roadmap' or  page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}active{% endif %}">
+
+        <li class="hidden-sm {% if page.section == 'roadmap' %}active{% endif %}">
+          <a href="/docs/planning/">Road Map</a>
+        </li>
+        
+        <li class="dropdown hidden-lg hidden-md hidden-xs {% if page.section == 'docs' or  page.section == 'roadmap' or  page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Docs <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/docs/specs/">API Documentation and Specifications</a></li>
@@ -60,18 +68,7 @@
             <li><a href="/getstarted/guides">Guides</a></li>
             <li><a href="/getstarted/demos">Demos</a></li>
           </ul>
-        </li>
-
-
-        <li class="hidden-xs hidden-sm {% if page.section == 'docs' %}active{% endif %}">
-          <a href="/docs/specs/">Docs</a>
-        </li>
-
-
-        <li class="hidden-xs hidden-sm {% if page.section == 'roadmap' %}active{% endif %}">
-          <a href="/docs/planning/">Road Map</a>
-        </li>
-        
+        </li>        
         
         <li class="{% if page.section == 'community' %}active{% endif %}">
           <a href="/community">Community</a>
