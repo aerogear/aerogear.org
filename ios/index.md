@@ -52,6 +52,11 @@ section: platforms
 [aerogear-ios-push](https://github.com/aerogear/aerogear-ios-push/) is a small and handy library written in Swift that helps to register iOS applications with the AeroGear UnifiedPush Server.
 {% when 'jsonsz' %}
 [aerogear-ios-jsonsz](https://github.com/aerogear/aerogear-ios-jsonsz/) serializes 'Swift' objects back-forth from their JSON representation the 'easy way'.
+{% when 'sync' %}
+[aerogear-ios-sync](https://github.com/aerogear/aerogear-ios-sync/)  an iOS Sync Engine for AeroGear Differential Synchronization server
+{% when 'sync-client' %}
+[aerogear-ios-sync-client](https://github.com/aerogear/aerogear-ios-sync-client/) a client side implementation for AeroGear Differential Synchronization server based on websockets
+
 {% endcase %}
 {% endcapture %}
 <!-- END DESCRIPTION -->
