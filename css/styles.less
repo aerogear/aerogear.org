@@ -1364,7 +1364,7 @@ footer{
 
 
 /* --- Resolution width adjustments ---*/
-@media (min-width: 1200px) {
+@media (min-width: @screen-lg-min) {
   #tabnav-panel {
     width: 1230px;
     margin: 0 auto;
@@ -1373,7 +1373,9 @@ footer{
     width: 100%;
   }
 }
-@media (min-width: 980px) and (max-width: 1199px) {
+
+
+@media (min-width: @screen-md-max) and (max-width: @screen-lg-min) {
   #tabnav-panel {
     width: 1000px;
     margin: 0 auto;
@@ -1381,8 +1383,12 @@ footer{
   #tabnav-panel.fullwidth {
     width: 100%;
   }
+  #ajbossproject {
+    display: none;
+  }
+
 }
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: @screen-sm-min) and (max-width: @screen-md-max) {
   #tabnav-panel {
     width: 784px;
     margin: 0 auto;
@@ -1390,9 +1396,16 @@ footer{
   #tabnav-panel.fullwidth {
     width: 100%;
   }
+
+  /* ---- Hides "A JBoss Project" box on mobile devices ---- */
+  #ajbossproject {
+    display: none;
+  }
+
 }
 
-@media (max-width: 979px) {
+
+@media (max-width: @screen-sm-max) {
   #tabnav-panel {
     max-width: 767px;
     margin: 0 auto;

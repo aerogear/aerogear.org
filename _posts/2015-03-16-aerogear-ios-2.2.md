@@ -1,13 +1,18 @@
 ---
-layout: post
-title: AeroGear iOS SDK v2.2 is out !
+layout: news
+section: news
+title: AeroGear iOS SDK v2.2 is out!
+author: corinnekrych
+module: sync
+platform: ios
+tags: swift
 ---
 
-Hello AeroGear Community,
+The iOS team is happy to announce the version 2.2 of the AeroGear iOS libraries. This version includes Synchronization engine and client.
 
-The iOS team is happy to announce the next versions of AeroGear iOS libraries. Here is what's inside:
+## What's inside
 
-**1. Synchronisation *(new)*:**
+### 1. Synchronisation <span class="label label-success">new</span>
 
 With the [1.0.0-alpha1 sync release](/sync), AeroGear add a new feature to its tools belt: synchronization of data. Sync is declined server side: with Java and JavaScript libraries and client side: with Android and iOS platforms. To learn more about synchronisation, [read the sync announcement](/news/2015/02/17/aerogear-sync/index.html).
 
@@ -19,7 +24,7 @@ The work around synchronisation on iOS is covered with:
 
 - [Jedi demo](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/Jedi): Star Wars fan, rejoice in discovering our two Jedi hobbies demos (DiffMatchPatch and JsonPatch).
       
-**2. House cleaning tasks:**
+### 2. House cleaning tasks
 
 - Move to [cocoapods 0.36.0](http://blog.cocoapods.org/CocoaPods-0.36/) for using iOS dynamic framework.
 
@@ -27,7 +32,8 @@ The work around synchronisation on iOS is covered with:
 
 - and cookbook demos: Buddies is replaced by [ChuckNorris](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/ChuckNorrisJokes) to remove backend dependency. [AeroDoc repo](https://github.com/aerogear/aerogear-aerodoc-ios) has moved to [cookbook 1.6.x branch](https://github.com/aerogear/aerogear-ios-cookbook/tree/1.6.x) to better gather together all demos.
 
-#### What's next?
+## What's next?
+
 We will carry on our effort on sync and to provide a better Swift implementation of [JSON Pointer RFC6901](https://tools.ietf.org/html/rfc6901) and [JSON Patch RFC6902](https://tools.ietf.org/html/rfc6902). Stay tuned!
 
 Give our libraries and demos a spin and let us know what you think!  If you run into any problems, please [file an issue](http://issues.jboss.org/browse/AGIOS)  and/or ask our [dev](https://lists.jboss.org/mailman/listinfo/aerogear-dev) and [user](https://lists.jboss.org/mailman/listinfo/aerogear-users) mailing list or join us on IRC  [#aerogear channel](irc://irc.freenode.net/aerogear)
