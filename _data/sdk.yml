@@ -6,7 +6,7 @@ javascript:
 android:
   name: Android
   icon: fa-android
-  version: 2.0.0
+  version: 2.1.0
   modules:
     - core
     - security
@@ -15,6 +15,7 @@ android:
     - auth
     - authz
     - push
+    - sync 
 
 ios:
   name: iOS

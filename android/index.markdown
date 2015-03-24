@@ -74,18 +74,16 @@ Android library is broken up into modules and available from Maven Central and G
 
 {% include downloads/android-module.html module='push' %}
 
+## <i class="fa fa-refresh"></i>  Sync Module
+[aerogear-android-sync](https://github.com/aerogear/aerogear-android-sync) connects to the AeroGear Sync Server and provides Android Service bindings for use by Activities.
+
+{% include downloads/android-module.html module='sync' %}
+
 ---
 
 # Roadmap
 
 Keep an eye on our [JIRA](https://jira.jboss.org/browse/AGDROID) page for upcoming releases as well as what we are currently working on.
-
-
-## <i class="fa fa-refresh"></i>  Sync
-
-We've started working on a sync library to work with the [aerogear-sync-server](https://github.com/aerogear/aerogear-sync-server). This is scheduled to be the big new feature of 2.1.  You can track our progress in our [JIRA](https://issues.jboss.org/issues/?jql=fixVersion%20%3D%202.1.0%20AND%20project%20%3D%20AGDROID).
-
-And as a [sneak peek](https://plus.google.com/103442292643366117394/posts/2Eusx4tPY9c)
 
 
 ## <i class="fa fa-shield"></i> More OAuth2
