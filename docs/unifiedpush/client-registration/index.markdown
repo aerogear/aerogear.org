@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Client registration with the UnifiedPush Server
-section: guides
+section: docs
 toc_generate: true
 ---
 
