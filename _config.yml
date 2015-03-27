@@ -5,7 +5,10 @@ permalink: /news/:year/:month/:day/:title/index.html
 include: ["atom.xml"]
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "bin", "vendor", "Gemfile", "Gemfile.lock", "build", "publish-production", "publish-staging"]
 markdown: kramdown
-highlighter: true
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
