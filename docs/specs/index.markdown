@@ -14,13 +14,14 @@ span.version {
 </style>
 
 <h4 id="coreAndroid">Android</h4>
-* [Auth](/docs/specs/aerogear-android-auth/) <span class="version">2.0.0</span>
-* [Authz](/docs/specs/aerogear-android-authz/) <span class="version">2.0.0</span>
-* [Core](/docs/specs/aerogear-android-core/) <span class="version">2.0.0</span>
-* [Pipe](/docs/specs/aerogear-android-pipe/) <span class="version">2.0.0</span>
-* [Push](/docs/specs/aerogear-android-push/) <span class="version">2.0.0</span>
-* [Security](/docs/specs/aerogear-android-security/) <span class="version">2.0.0</span>
-* [Store](/docs/specs/aerogear-android-store/) <span class="version">2.0.0</span>
+* [Auth](/docs/specs/aerogear-android-auth/) <span class="version">2.1.0</span>
+* [Authz](/docs/specs/aerogear-android-authz/) <span class="version">2.1.0</span>
+* [Core](/docs/specs/aerogear-android-core/) <span class="version">2.1.0</span>
+* [Pipe](/docs/specs/aerogear-android-pipe/) <span class="version">2.1.0</span>
+* [Push](/docs/specs/aerogear-android-push/) <span class="version">2.1.0</span>
+* [Security](/docs/specs/aerogear-android-security/) <span class="version">2.1.0</span>
+* [Store](/docs/specs/aerogear-android-store/) <span class="version">2.1.0</span>
+* [Sync](/docs/specs/aerogear-android-sync/) <span class="version">2.1.0</span>
 
 <h4 id="coreIOS">iOS</h4>
 * [Http](aerogear-ios-http) <span class="version">0.2.0</span>
