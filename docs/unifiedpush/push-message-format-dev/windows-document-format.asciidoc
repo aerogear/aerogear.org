@@ -1,15 +1,22 @@
 ---
-layout: basic
-title: UnifiedPush Server - Windows message format
+layout: post
+title: UnifiedPush - Windows Message Format
+section: docs
+toc_generate: true
 ---
 
-Windows message format
+Links
+~~~~~
+
+* link:../../push-message-format-dev/[UnifiedPush Message Format - Unstable]
+
+Windows Message Format
 ----------------------
 
 By adding a windows section to your message you are able to use the advanced formatting for push messages on windows devices. Have a look at the https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx[windows message catalog] to see what is posible. Be sure to have your application pinned to the start screen to see these notifications.
 
 Toast
-~~~~~
+-----
 Windows supports https://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx[toast messages] that have multiple lines of text, the first will be displayed bold. In order to keep the message as uniform as possible the first line will be the value of the message alert e.g.
 
 ```json
@@ -25,7 +32,7 @@ Windows supports https://msdn.microsoft.com/en-us/library/windows/apps/hh761494.
 This enables you to send these messages to different platforms only by adding extra information for windows users. MPNS does not support different toastTypes and a maximum of 2 lines of text additional lines are ignored.
 
 Badge
-~~~~~
+-----
 In addition to https://msdn.microsoft.com/en-us/library/windows/apps/hh779719.aspx[badge] numbers, that is also supported by iOS, windows has badge glyphs. Keeping with unifying the message we use the message badge value for the numbers and a special Windows badge value for the glyph e.g.
 
 ```json
@@ -47,7 +54,7 @@ or for a glyph:
 ```
 
 Tile
-~~~~
+----
 https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx[Tile message] are available in several sizes: small, medium, wide, and large, most sizes display text, images and badges. The user can change the size of the tile on the start screen. Again, in order to unify the first text is taken from the message alert, example tile message:
 
 ```json
@@ -64,7 +71,7 @@ https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx[Tile message
 Images could be local or URL based. Be sure to have the correct number of text and images that the template needs otherwise the message will not be send. For MPNS a tile is used, the first image is the background image and the second (if available) backBackgroundImage.
 
 Raw
-~~~
+---
 https://msdn.microsoft.com/en-us/library/windows/apps/jj676791.aspx[Raw] message are general purpose and do not have any UI and are simular to iOS's content-available. The value of the mesage alert field is send to the application:
 
 ```json

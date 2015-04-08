@@ -1,11 +1,17 @@
---- 
-layout: basic 
-title: AeroGear UnifiedPush Message Format 
+---
+layout: post
+title: AeroGear UnifiedPush Message Format - Unstable
+section: docs
+toc_generate: true
 ---
 
-# AeroGear UnifiedPush Message Format
+The UnifiedPush Server allows sending messages to the native and non-native Push APIs. <span class="label label-warning">Development version</span>
 
-The UnifiedPush Server allows sending messages to the native and non-native Push APIs:
+### Links
+
+* [UnifiedPush Message Format - Stable](../push-message-format/)
+* [Windows message format](./windows-document-format/)
+
 
 ## Sender
 
@@ -55,12 +61,12 @@ The message format is very simple: A generic JSON map is used to sent messages t
 
 
 
-#### Message Object
+### Message Object
 
 The applications on the devices will receive the JSON map and are responsible for performing a lookup to read values 
 of the given keys.
 
-##### iOS special keys
+#### iOS special keys
 
 If the JSON map contains one of the following reserved keywords, Apple specific hooks will be invoked on the device:
 
@@ -70,23 +76,23 @@ If the JSON map contains one of the following reserved keywords, Apple specific 
 * ```content-available``` (iOS7 feature for submitting silent iOS notifications)
 * ```action-category``` (iOS8 feature for interactive notifications)
 
-##### Android special keys
+#### Android special keys
 
 None! The JSON map is submitted as it is, directly to the device. There are no Android specific keywords.
 
-##### Cordova Android special keys
+#### Cordova Android special keys
 
 To make the user experience the same on iOS and Android, for cordova users, we use the iOS alert 'key' on Android as well to generate a notification for you. And we've introduced a 'title' that can optionally be used for the title of this notification, if none is specified the application name will be used like on iOS.
 
-##### Windows special keys
+#### Windows special keys
 
 For Windows we also support sending toast, tile, badge and raw notifications. For MPNS and WNS to keep the message uniform the first text for the message template is the value from alert and for a numeric badge we use the main badge field. Of course you could add criteria to only select Windows devices. If you don't specify the Windows section of the message a toast notification is send with the alert as the content. More information about the [windows message format](windows-document-format/)
 
-#### SimplePush Object
+### SimplePush Object
 
 For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants. The version is submitted to all connected client, that are subscribed on their matching channels.
 
-#### Query component
+### Query component
 
 Currently the Server will support the following query criteria:
 
