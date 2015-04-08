@@ -1,11 +1,17 @@
 ---
 layout: post
 title: AeroGear UnifiedPush Message Format 
-section: guides
+section: docs
+toc_generate: true
 ---
 
 
 The UnifiedPush Server allows sending messages to the native and non-native Push APIs:
+
+### Links
+
+* [UnifiedPush Message Format - Unstable](../push-message-format-dev/)
+
 
 ## Sender
 
