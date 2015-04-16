@@ -40,8 +40,8 @@
                 {{ site.data.people[page.author]['name'] }}
               </span>
             </p>
-            <p class="article-date" itemprop="datePublished" content="{{post.date |  date: "%Y-%m-%d" }}">
-              posted on 5 Feb 2015
+            <p class="article-date" itemprop="datePublished" content="{{page.date |  date: "%Y-%m-%d" }}">
+              posted on {{page.date |  date: "%-d %b %Y" }}
             </p>
           </div>
         </div>
