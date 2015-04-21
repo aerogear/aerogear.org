@@ -11,7 +11,7 @@ section: guides
 <i class="icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-this functionality is only available on master
+this functionality is only available on GitHub at the master branch
 </td>
 </tr>
 </tbody></table>
