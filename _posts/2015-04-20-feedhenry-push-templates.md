@@ -7,7 +7,16 @@ author: edewit
 
 Currently in software development the biggest challenge is integrating. A lot of what we do involves integrating with other platforms or libraries. Knowing how to integrate is important, so here I'm going to show how to integrate the Unified Push Server (UPS) with Feedhenry, for adding push notification support. To make things even easier we created a Feedhenry Template that you can use as a starting point for your application that contain all the parts you'll need.
 
-Start by creating a new project and select "Sample Projects" and then find the Project named: `Push Hello World`. Click choose pick a name and hit create.
+To illustrate how to use the FeedHenry Template for push notifications, you will build a set of sample applications for receiving sports news. You will use a centralized cloud application that integrates with both a push server as well as any client applications. The centralized cloud app contains various categories (i.e. different sports) and news stories associated with one or more categories. There are also two client applications: 
+
+* Console web application: Lets administrators create and update the category list, as well as create news stories on the centralized cloud app
+* Mobile application: Lets users subscribe to any of the available categories and receive a push notification whenever a new story is posted with that category
+
+To build a project based on this template:
+
+1. Create a new project.
+1. Click *Sample Projects*, and then find the Project named: *Push Hello World*.
+1. Click select type a name, and then click *create*.
 
 ![choose template](/img/news/2015-04-20-feedhenry-push-templates/1.png)
 
@@ -44,6 +53,9 @@ Then in the project click on the "Cloud App" and select "Environment variables" 
 Now that that is all setup, the "Cloud App" can use the "GUID" to fetch the "Service Connector", that connects to UPS to send the messages. Let's fire up a browser and open the "Console", create a couple of Categories for instance: Football, Rugby and Basketball. Now build and install the mobile client on a device and select the categories you want to receive. Send a message and see how they arrive on the mobile client.
 
 ![console](/img/news/2015-04-20-feedhenry-push-templates/8.png)
+
+Last but not least the mobile client has a file called `push-config.json` you'll need to update the `Variant ID` and `Variant Secret` for each platform, so that it can receive messages. Register for a specific category and see messages arrive when you send them from the console.
+
 ![mobile app received notification](/img/news/2015-04-20-feedhenry-push-templates/9.png)
 
 You can use and extend this template for your own use case. Hope you like it.
