@@ -8,7 +8,7 @@ platform: ios
 tags: swift
 ---
 
-The iOS team is happy to announce the version 2.3 of the AeroGear iOS libraries. This version revisit all Swift libs to update them to Swift 1.2.
+The iOS team is happy to announce the version 2.3 of the AeroGear iOS libraries. This version revisits all Swift libs to update them to Swift 1.2.
 
 ## What's inside
 
