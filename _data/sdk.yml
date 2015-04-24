@@ -15,7 +15,7 @@ android:
     - auth
     - authz
     - push
-    - sync 
+    - sync
 
 ios:
   name: iOS
@@ -42,7 +42,7 @@ ios:
       module: push
       version: 1.1
       cocoapod: AeroGear-Push
-      zip: https://github.com/aerogear/aerogear-ios-push/archive/1.1.1-swift.zip
+      zip: https://github.com/aerogear/aerogear-ios-push/archive/1.1.0-swift.zip
       demo: https://github.com/aerogear/aerogear-push-helloworld/tree/swift/ios-swift
       guide: /docs/unifiedpush/aerogear-push-ios/
     jsonsz:
