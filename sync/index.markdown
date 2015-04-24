@@ -70,9 +70,9 @@ Besides the libraries we do already have a little [demo application](https://git
 
 <h3 id="javascript"><i class="fa fa-html5"></i> JavaScript</h3>
 
-The JavaScript client comes with a WebSocket-based library as well. There is also a Node.js based demo, which can be used against the above Java server.
+The JavaScript client comes with a WebSocket-based library. 
 
-Currently our JS library and demo is located [here](https://github.com/aerogear/aerogear-sync-server/tree/master/js-client).
+Our JS library is located [here](https://github.com/aerogear/aerogear-js#diff-sync). A demo, which can be used against the above Java server, is located [here](https://github.com/aerogear/aerogear-js-cookbook/tree/master/diff-sync-ember).
 
 
 
