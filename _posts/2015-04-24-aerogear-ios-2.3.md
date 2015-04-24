@@ -23,7 +23,7 @@ Our 2.3 release brings iOS 8.3 support and compile against Xcode 6.3 with Swift 
 - [aerogear-ios-push](https://github.com/aerogear/aerogear-ios-push) with pod [1.1.0-swift](http://cocoadocs.org/docsets/AeroGear-Push-Swift/1.1.0).
 - [aerogear-ios-http 0.3.0](https://github.com/aerogear/aerogear-ios-http) with pod [0.3.0](http://cocoadocs.org/docsets/AeroGearHttp/0.3.0).
 - [aerogear-ios-oauth2](https://github.com/aerogear/aerogear-ios-oauth2) with pod [0.3.0](http://cocoadocs.org/docsets/AeroGearOAuth2/0.3.0).    
-- [aerogear-ios-jsonsz](https://github.com/aerogear/aerogear-ios-jsonsz) with pod [0.2.0](http://cocoadocs.org/docsets/AeroGearJsonsz/0.3.0).
+- [aerogear-ios-jsonsz](https://github.com/aerogear/aerogear-ios-jsonsz) with pod [0.2.0](http://cocoadocs.org/docsets/AeroGearJsonsz/0.2.0).
 
 ### 2. Embedded WebVew option for OAuth2
 
