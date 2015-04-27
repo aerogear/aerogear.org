@@ -28,6 +28,10 @@ The server is a simple CRUD application for Categories. The client app called co
 
 With this generated project all that is left todo is connect the Unified Push Server to this project, first go to openshift.com and create an UPS instance, search on AeroGear pick a name and "Create Application". For more information on how to set up a unified push server on openshift have a look at our [documentation](/docs/unifiedpush/ups_userguide/index/#openshift). Now you have a running UPS on openshift you need to login and create an "application" that will be used by your Feedhenry apps to send push notifications. Note down the `Application ID`, `Master Secret` and the `Server URL` as we going to need those later on.
 
+![Application settings](/img/news/2015-04-20-feedhenry-push-templates/10.png)
+
+For the clients that we want to use (e.g. Android iOS) we need to create variants, for more information on how to do this have a look at the UPS documentation for [Android](https://aerogear.org/docs/unifiedpush/aerogear-push-android/) and [iOS](https://aerogear.org/docs/unifiedpush/aerogear-push-ios/)
+
 Next we need to do two things we need create a "Service connector" for UPS and we need to tell the Cloud App the `GUID` of the "Service connector" so that it can use this to send messages to UPS. First we setup the "Service connector" to connect to our openshift UPS instance, go to the `Services & APIs` tab and click `Provision mBaaS Service/API`:
 
 ![Provision mBaaS Service](/img/news/2015-04-20-feedhenry-push-templates/3.png)
@@ -54,7 +58,7 @@ Now that that is all setup, the "Cloud App" can use the "GUID" to fetch the "Ser
 
 ![console](/img/news/2015-04-20-feedhenry-push-templates/8.png)
 
-Last but not least the mobile client has a file called `push-config.json` you'll need to update the `Variant ID` and `Variant Secret` for each platform, so that it can receive messages. Register for a specific category and see messages arrive when you send them from the console.
+Last but not least the mobile client has a file called `push-config.json` you'll need to update the `Variant ID` and `Variant Secret` and for android also the projectID for each platform, so that it can receive messages. Register for a specific category and see messages arrive when you send them from the console.
 
 ![mobile app received notification](/img/news/2015-04-20-feedhenry-push-templates/9.png)
 
