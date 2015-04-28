@@ -9,7 +9,7 @@ Currently in software development the biggest challenge is integrating. A lot of
 
 To illustrate how to use the FeedHenry Template for push notifications, you will build a set of sample applications for receiving sports news. You will use a centralized cloud application that integrates with both a push server as well as any client applications. The centralized cloud app contains various categories (i.e. different sports) and news stories associated with one or more categories. There are also two client applications: 
 
-* Console web application: Lets administrators create and update the category list, as well as create news stories on the centralized cloud app
+* Console web application: Let administrators create and update the category list, as well as create news stories on the centralized cloud app
 * Mobile application: Lets users subscribe to any of the available categories and receive a push notification whenever a new story is posted with that category
 
 To build a project based on this template:
