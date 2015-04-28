@@ -20,11 +20,11 @@ To build a project based on this template:
 
 ![choose template](/img/news/2015-04-20-feedhenry-push-templates/1.png)
 
-Now you have 3 apps one cloud app and two client apps.
+Now you have three apps one Cloud Code App and two Client Apps.
 
 ![app structure](/img/news/2015-04-20-feedhenry-push-templates/5.png)
 
-The server is a simple CRUD application for Categories. The client app called console is the "management inteface" here you can create and delete Categories. These categories are used by the mobile client to "subscribe" to. For example I have a sports news site and I push messages about different sports to the mobile users. The users "subscribe" to different sports they want to receive notifications about.
+The _Push Cloud App_ is a simple server-side CRUD application for categories. The _Push Console App_ is a "management inteface" where you create and delete these categories. These categories are used by the _Push Notifications Mobile Client_ to "subscribe" to. For example I have a sports news site and I push messages about different sports to the mobile users. The users _subscribes_ to different sports they want to receive notifications about.
 
 With this generated project all that is left todo is connect the Unified Push Server to this project, first go to openshift.com and create an UPS instance, search on AeroGear pick a name and "Create Application". For more information on how to set up a unified push server on openshift have a look at our [documentation](/docs/unifiedpush/ups_userguide/index/#openshift). Now you have a running UPS on openshift you need to login and create an "application" that will be used by your Feedhenry apps to send push notifications. Note down the `Application ID`, `Master Secret` and the `Server URL` as we going to need those later on.
 
@@ -54,11 +54,16 @@ Then in the project click on the "Cloud App" and select "Environment variables" 
 
 ![environment variable](/img/news/2015-04-20-feedhenry-push-templates/6.png)
 
-Now that that is all setup, the "Cloud App" can use the "GUID" to fetch the "Service Connector", that connects to UPS to send the messages. Let's fire up a browser and open the "Console", create a couple of Categories for instance: Football, Rugby and Basketball. Now build and install the mobile client on a device and select the categories you want to receive. Send a message and see how they arrive on the mobile client.
+Now that that is all setup, the "Cloud App" can use the "GUID" to fetch the "Service Connector", that connects to UPS to send the messages.
+
+Let's fire up a browser and open the _Push Console App_ to create a couple of categories for instance: Football, Rugby and Basketball: 
 
 ![console](/img/news/2015-04-20-feedhenry-push-templates/8.png)
 
-Last but not least the mobile client has a file called `push-config.json` you'll need to update the `Variant ID` and `Variant Secret` and for android also the projectID for each platform, so that it can receive messages. Register for a specific category and see messages arrive when you send them from the console.
+Now go to your _Push Notifications Mobile Client_ and open the file called `push-config.json`. You'll need to update the _Variant ID_ and _Variant Secret_ for each platform, so that it can register itself with the UnifiedPush Server in order to receive messages. For Android you also need to specify the _projectID_ inside of that JSON file.  Finally build and install the _Push Notifications Mobile Client_ on a device and select the categories you want to receive.
+
+
+Now go back to the _Push Console App_ and send a message. If all worked well, you will see how the push notifications arrive on the mobile client. 
 
 ![mobile app received notification](/img/news/2015-04-20-feedhenry-push-templates/9.png)
 
