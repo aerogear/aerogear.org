@@ -50,7 +50,7 @@ Select the created "Service connector" and then the "Associate Service" button. 
 
 On the info page copy the `Service ID` and under access control add you project, then click save.
 
-Then in the project click on the "Cloud App" and select "Environment variables" from the sidebar. Click "Add Variable" and enter `AEROGEAR_SERVICE_GUID` for name and paste the "Service connector" for "Development" then "Push Environment Variables" to publish these.
+Then in the project click on the "Push Cloud App" and select "Environment variables" from the sidebar. Click "Add Variable" and enter `AEROGEAR_SERVICE_GUID` for name and paste the `Service ID` you copied earlier for the "Development" label. Next click on "Push Environment Variables" to publish these.
 
 ![environment variable](/img/news/2015-04-20-feedhenry-push-templates/6.png)
 
