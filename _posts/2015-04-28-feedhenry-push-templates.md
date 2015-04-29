@@ -5,7 +5,7 @@ title: AeroGear quick start push Templates
 author: edewit
 ---
 
-Currently in software development the biggest challenge is integrating. A lot of what we do involves integrating with other platforms or libraries. Knowing how to integrate is important, so here I'm going to show how to integrate the Unified Push Server (UPS) with Feedhenry, for adding push notification support. To make things even easier we created a Feedhenry Template that you can use as a starting point for your application that contain all the parts you'll need.
+Currently in software development the biggest challenge is integrating. A lot of what we do involves integrating with other platforms or libraries. Knowing how to integrate is important, so here I'm going to show how to integrate the Unified Push Server (UPS) with Feedhenry, for adding push notification support. To make things even easier we created a Feedhenry Template that you can use as a starting point for your application that contains all the parts you'll need.
 
 To illustrate how to use the FeedHenry Template for push notifications, you will build a set of sample applications for receiving sports news. You will use a centralized cloud application that integrates with both a push server as well as any client applications. The centralized cloud app contains various categories (i.e. different sports) and news stories associated with one or more categories. There are also two client applications: 
 
@@ -60,7 +60,7 @@ Let's fire up a browser and open the _Push Console App_ to create a couple of ca
 
 ![console](/img/news/2015-04-20-feedhenry-push-templates/8.png)
 
-Now go to your _Push Notifications Mobile Client_ and open the file called `push-config.json`. You'll need to update the _Variant ID_ and _Variant Secret_ for each platform, so that it can register itself with the UnifiedPush Server in order to receive messages. For Android you also need to specify the _projectID_ inside of that JSON file.  Finally build and install the _Push Notifications Mobile Client_ on a device and select the categories you want to receive.
+Now go to your _Push Notifications Mobile Client_ and open the file called `push-config.json`. You'll need to update the _Variant ID_ and _Variant Secret_ for each platform and the _pushServerURL_ to the location of your UnifiedPush Server, so that it can register itself with the UnifiedPush Server in order to receive messages. For Android you also need to specify the _senderID_ (also called project number on the google console) inside of that JSON file.  Finally build and install the _Push Notifications Mobile Client_ on a device and select the categories you want to receive.
 
 
 Now go back to the _Push Console App_ and send a message. If all worked well, you will see how the push notifications arrive on the mobile client. 
