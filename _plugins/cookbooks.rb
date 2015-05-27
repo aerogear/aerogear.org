@@ -37,7 +37,7 @@ module Readme
         content = content[0..content.rindex('|')]
         content = content.gsub(/:heavy_check_mark:/, '<i class="fa fa-check green"></i>')
         content = content.gsub(/:heavy_minus_sign:/, '<i class="fa fa-remove gray"></i>')
-        content = content.gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '[\1](' + baseurl + '/\2)')
+        content = content.gsub(/\[([^\]]+)\]\(((?!http).+)\)/, '[\1](' + baseurl + '/\2)')
 
         site.data['cookbooks'] = {} unless site.data['cookbooks']
         site.data['cookbooks'][platform] = content
