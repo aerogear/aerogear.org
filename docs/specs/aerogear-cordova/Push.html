@@ -80,7 +80,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line24">line 24</a>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -120,193 +120,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Members</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="FetchResult"><span class="type-signature">&lt;readonly> </span>FetchResult<span class="type-signature"> :number</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        When using 'content-availble' on iOS use this enum for the result see <a href="Push.html#setContentAvailable">Push#setContentAvailable</a>
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">number</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-        <h5 class="subsection-title">Properties:</h5>
-
-        <dl>
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>NewData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>NoData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    1
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>Failed</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    2
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table></dl>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line30">line 30</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-</dd>
-
-        </dl>
     
 
     
@@ -315,7 +128,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="register"><span class="type-signature"></span>register<span class="signature">(onNotification, successCallback, <span class="optional">errorCallback</span>, options)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="register"><span class="type-signature"></span>register<span class="signature">(onNotification, successCallback, <span class="optional">errorCallback</span>, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {void}</span></h4>
 
     
 </dt>
@@ -469,6 +282,8 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -478,7 +293,7 @@
 
             
 
-            <td class="description last">A configuration for the Unified Push server, so that it can register this device. If an object or array containing objects is used, the objects can have the following properties:
+            <td class="description last">A configuration for the Unified Push server, so that it can register this device. This is optional a when a file called push-config.json is put in the `www` folder this will be used. The object can have the following properties:
                 <h6>Properties</h6>
                 
 
@@ -947,7 +762,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line85">line 85</a>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line97">line 97</a>
     </li></ul></dd>
     
 
@@ -1000,7 +815,7 @@
     alias: "&lt;alias e.g. a username or an email address optional>",
 }
 
-push.register(onNotification, errorHandler, pushConfig);
+push.register(onNotification, successHandler, errorHandler, pushConfig);
 
 </code></pre>
 
@@ -1019,7 +834,24 @@ var pushConfig = {
     }
 };
 
-push.register(onNotification, errorHandler, pushConfig);</code></pre>
+push.register(onNotification, successHandler, errorHandler, pushConfig);
+
+</code></pre>
+
+    <pre class="prettyprint"><code>//push-config.json file in www folder
+{
+   "pushServerURL": "&lt;pushServerURL e.g http(s)//host:port/context >",
+   "android": {
+      "senderID": "&lt;senderID e.g Google Project ID only for android>",
+      "variantID": "&lt;variantID e.g. 1234456-234320>",
+      "variantSecret": "&lt;variantSecret e.g. 1234456-234320>"
+   },
+   "ios": {
+      "variantID": "&lt;variantID e.g. 1234456-234320>",
+      "variantSecret": "&lt;variantSecret e.g. 1234456-234320>"
+   }
+}
+push.register(onNotification, successHandler);</code></pre>
 
     
 </dd>
@@ -1162,7 +994,7 @@ push.register(onNotification, errorHandler, pushConfig);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line136">line 136</a>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line162">line 162</a>
     </li></ul></dd>
     
 
@@ -1304,7 +1136,7 @@ push.register(onNotification, errorHandler, pushConfig);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line152">line 152</a>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line178">line 178</a>
     </li></ul></dd>
     
 
@@ -1484,7 +1316,7 @@ push.register(onNotification, errorHandler, pushConfig);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line111">line 111</a>
+        <a href="aerogear-push.js.html">aerogear-push.js</a>, <a href="aerogear-push.js.html#line137">line 137</a>
     </li></ul></dd>
     
 
@@ -1556,7 +1388,7 @@ push.register(onNotification, errorHandler, pushConfig);</code></pre>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Dec 02 2014 13:24:58 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Fri May 29 2015 09:48:31 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

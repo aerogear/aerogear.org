@@ -227,4 +227,36 @@ We are now ready to run the application.
 
 image:./img/app-main-screen.png[Push Application Main Screen]
 
+=== Metrics
+Optionally the windows client SDK supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.
+
+UPS sends an unique ID for every push message by default all we have to do is send this ID back to UPS when the app was opened using the message. Open the _App.xaml.cs_ and find the `OnLaunched` method. At the end of the method add the following:
+
+[source,csharp]
+----
+if (!string.IsNullOrEmpty(e.Arguments))
+{
+    var data = UrlQueryParser.ParseQueryString(e.Arguments); // [1]
+    rootFrame.Navigate(typeof(MainPage), data[Registration.PUSH_ID_KEY]); // [2]
+}
+----
+
+The `e.Arguments` are filled when the user 'opens' the app using the message in [1] we create a `IDictionary` out off the passed arguments and then navigate to the _MainPage_ with the push message ID, then on the MainPage where we do the registration we can also send the metrics, all we have to do is change the logic slightly:
+
+[source,csharp]
+----
+var param = e.Parameter as string;  // [1]
+if (string.IsNullOrEmpty(param))
+{
+    await registration.Register(pushConfig);
+    onRegistrationComplete();
+}
+else
+{
+    await registration.SendMetricWhenAppLaunched(pushConfig, param);
+}
+----
+
+When the push message ID [1] is not there we perform a normal registration otherwise we send the metrics to UPS
+
 Now that we have our application up an running time to link:#push-notification[send messages] using the AeroGear UnifiedPush Server!
