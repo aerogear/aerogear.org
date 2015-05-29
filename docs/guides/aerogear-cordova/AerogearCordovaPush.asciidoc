@@ -121,6 +121,25 @@ And then in your JavaScript :
 push.register(onNotification, successHandler, errorHandler);
 ----
 
+Or you can use a combination of the two, this is ideal when you have some dynamic configuration like categories or aliases:
+
+[source,javascript]
+----
+
+ajax({
+    url: "push-config.json",
+    dataType: "text"
+})
+.then( function( result ) {
+    var pushConfig = JSON.parse(result.data);
+
+    //now set the categories that you get from elsewhere from the user.
+    pushConfig.categories = categories;
+    
+    //and then register..
+    push.register(onNotification, successHandler, errorHandler, pushConfig);
+});
+----
 
 The onNotification callback will get executed by the plugin when a new message arrives. If you are only targeting one
 platform you can simplfy the config (or your push-config.json file) above like:
