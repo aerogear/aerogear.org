@@ -7,7 +7,7 @@ toc_generate: true
 
 AeroGear for Android provides support for integrating with push services. Currently only Google's Cloud Messaging (GCM) with the AeroGear Unified Push Server is supported, but we are planning to add support for Mozilla's Simple Push, MQTT, and standalone GCM soon.
 
-This document supplements the link:http://aerogear.org/docs/unifiedpush/aerogear-push-android/[Push Notification Tutorial] by focusing only on the Push API code. The tutorial includes a much fuller look at the Android's place in the push ecosystem.
+This document supplements the link:/docs/unifiedpush/aerogear-push-android/[Push Notification Tutorial] by focusing only on the Push API code. The tutorial includes a much fuller look at the Android's place in the push ecosystem.
 
 == Push in a Nutshell
 

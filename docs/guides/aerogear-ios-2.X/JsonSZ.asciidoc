@@ -86,4 +86,4 @@ And that's it!
 
 NOTE: if the objects in the JSON response are encapsulated in a top-level Array container, you can use the convenient method _fromJSONArray()_ instead.
 
-Head over to our link:https://github.com/aerogear/aerogear-ios-jsonsz/blob/master/AeroGearJsonSZTests/AeroGearJsonSZTests.swift[test-suite] for more example usage of the API and give us feedback on the link:https://aerogear.org/community/[mailing list].  We will love to hear your thoughts and suggestions!
+Head over to our link:https://github.com/aerogear/aerogear-ios-jsonsz/blob/master/AeroGearJsonSZTests/AeroGearJsonSZTests.swift[test-suite] for more example usage of the API and give us feedback on the link:/community/[mailing list].  We will love to hear your thoughts and suggestions!

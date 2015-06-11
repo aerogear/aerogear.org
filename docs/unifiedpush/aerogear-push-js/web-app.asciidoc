@@ -3,7 +3,7 @@
 
 Now that we have configured both SimplePush and UnifiedPush servers and have them up and running, it's time to explore a simple web application that will exercise AeroGear JavaScript API support and demonstrate the workflow in action. Start by cloning the example from link:https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart[here].
 
-As with the link:http://aerogear.org/docs/unifiedpush/aerogear-push-ios/[iOS] and link:http://aerogear.org/docs/unifiedpush/aerogear-push-android/[Android] client SDKs, we need to configure the _variantId_, _variantSecret_ and the _URL's_ of our running servers. Navigate to _js/_ folder and open in your favorite text editor, the _unifiedpush.js_ file. The file contains the main logic of the application and is responsible to register the channels with the SimplePush server, retrieve the endpoints for the update, and then register those endpoints with the UnifiedPush server so that notifications can be received.
+As with the link:/docs/unifiedpush/aerogear-push-ios/[iOS] and link:/docs/unifiedpush/aerogear-push-android/[Android] client SDKs, we need to configure the _variantId_, _variantSecret_ and the _URL's_ of our running servers. Navigate to _js/_ folder and open in your favorite text editor, the _unifiedpush.js_ file. The file contains the main logic of the application and is responsible to register the channels with the SimplePush server, retrieve the endpoints for the update, and then register those endpoints with the UnifiedPush server so that notifications can be received.
 
 Prior to run the application, let's do a walkthrough of the code involved. On top of the file you will notice the configuration params that you need to change according to your specific configuration:
 
