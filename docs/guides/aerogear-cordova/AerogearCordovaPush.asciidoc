@@ -156,7 +156,7 @@ var pushConfig = {
 push.register(onNotification, successHandler, errorHandler, pushConfig);
 ----
 
-== Start receiving messages:
+== Start receiving messages
 
 [source,javascript]
 ----
@@ -174,6 +174,21 @@ The passed in 'event' object contains:
 
 Also have a look here for link:http://aerogear.org/docs/unifiedpush/[more information about the message] sending and properties
 
+=== Metrics
+Optionally the cordova plugin supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.
+
+UPS sends an unique ID for every push message by default all we have to do set `sendMetricInfo` to `true` in the config to tell the plugin to send this ID back when the user openend the app with the notification.
+
+[source,javascript]
+----
+var pushConfig = {
+    pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+    sendMetricInfo: true, //<1>
+    ...
+};
+----
+<1> With this set to `true` the UPS dashboard will show metrics on how 'successful' your message was
+
 === iOS background notification
 Sending notifications that contain 'content-availble' on iOS will call the javacript first before launching the app, this will enable you to update the UI or do a silent push (e.g. without an alert) to update the content of your app without the user noticing.  After fetching the content you'll have to 'inform' the os about the result by calling setContentAvailable with either NewData, NoData or Failed link:/docs/specs/aerogear-cordova/Push.html#setContentAvailable[AeroGear Push plugin API]
 
@@ -190,7 +205,7 @@ function onNotification(event) {
 }
 ----
 
-== To unregister (only available on Android):
+== To unregister (only available on Android)
 
 [source,javascript]
 ----
