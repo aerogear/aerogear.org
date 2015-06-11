@@ -141,7 +141,7 @@ For 2.2 and the future we are looking at improvements to our authz libraries as 
 
 ## About AeroGear
 
-If you would like to learn more about AeroGear's Android libraries a great place to start is our [Android landing page](https://aerogear.org/android/).  If you would like to participate in development, have questions, or want to chat with us our [community section](https://aerogear.org/community/#contact) has all of our contact information.
+If you would like to learn more about AeroGear's Android libraries a great place to start is our [Android landing page](/android/).  If you would like to participate in development, have questions, or want to chat with us our [community section](/community/#contact) has all of our contact information.
 
 ##Changelog
 
