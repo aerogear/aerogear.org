@@ -177,7 +177,7 @@ Also have a look here for link:http://aerogear.org/docs/unifiedpush/[more inform
 === Metrics
 Optionally the cordova plugin supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.
 
-UPS sends an unique ID for every push message by default all we have to do set `sendMetricInfo` to `true` in the config to tell the plugin to send this ID back when the user openend the app with the notification.
+UPS sends an unique ID for every push message by default all we have to do set `sendMetricInfo` to `true` in the config to tell the plugin to send this ID back when the user opened the app with the notification.
 
 [source,javascript]
 ----
