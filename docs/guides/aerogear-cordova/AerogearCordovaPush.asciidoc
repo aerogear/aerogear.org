@@ -172,7 +172,7 @@ The passed in 'event' object contains:
 * badge the number to display on the icon ios specific
 * any custom set properties are available under e.payload ( e.g `alert(e.payload.foo);` )
 
-Also have a look here for link:http://aerogear.org/docs/unifiedpush/[more information about the message] sending and properties
+Also have a look here for link:docs/unifiedpush/[more information about the message] sending and properties
 
 === Metrics
 Optionally the cordova plugin supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.

@@ -12,7 +12,7 @@ We are happy to announce that the [Unified Push Server 1.1.0-alpha.1](https://gi
 
 ## What is new ?
 
-The big new feature is the support of Windows Push ! Take a look at our [Windows Push HelloWorld quickstart](https://github.com/aerogear/aerogear-push-helloworld/tree/master/windows) and [the Windows Tutorial](http://aerogear.org/docs/unifiedpush/aerogear-push-windows/) to help you to get started.
+The big new feature is the support of Windows Push ! Take a look at our [Windows Push HelloWorld quickstart](https://github.com/aerogear/aerogear-push-helloworld/tree/master/windows) and [the Windows Tutorial](/docs/unifiedpush/aerogear-push-windows/) to help you to get started.
 
 Another cool feature that has been added is the Import/Export of installations. From the admin console, you can now easily extract in JSON format all the installations from a variant. The same way, you can import a set of installations for a particular variant.
 

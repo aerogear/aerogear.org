@@ -21,7 +21,7 @@ Different type of client technologies are supported with the Server
 
 ==== Hybrid Clients
 
-* link:http://aerogear.org/docs/guides/aerogear-cordova/AerogearCordovaPush/[Apache Cordova for APNs and GCM]
+* link:/docs/guides/aerogear-cordova/AerogearCordovaPush/[Apache Cordova for APNs and GCM]
 * link:../../aerogear-push-chrome[Chrome Packaged Apps]
 
 === Server Integration Tutorials

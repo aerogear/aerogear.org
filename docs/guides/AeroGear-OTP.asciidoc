@@ -59,7 +59,7 @@ If you are an Android developer, you can find the library already in maven. Just
 </dependency>
 ----
 
-For more in-depth information about OTP and AeroGear, I suggest you to look at the official documentation page link:http://aerogear.org/docs/specs/aerogear-security-otp/[here]. The page includes nice diagrams showing the flow of the authentication process and will help you to better understand the concept.
+For more in-depth information about OTP and AeroGear, I suggest you to look at the official documentation page link:/docs/specs/aerogear-security-otp/[here]. The page includes nice diagrams showing the flow of the authentication process and will help you to better understand the concept.
 
 So go ahead and give them a try. We will love your link:https://issues.jboss.org/browse/AEROGEAR[feedback and suggestions]!
 

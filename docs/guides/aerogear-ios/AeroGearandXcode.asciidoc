@@ -230,4 +230,4 @@ image::../../img/ios_emulator.png[Emulator]
 
 You can download the source code of this project from link:https://github.com/corinnekrych/SampleAeroGear[github]. For a more complete example application that uses AeroGear to perform link:http://en.wikipedia.org/wiki/Create,_read,_update_and_delete[CRUD] operations on a remote endpoint, have a look at the TODO application available on link:https://github.com/aerogear/aerogear-todo-ios[github].
 
-You can also browse link:http://aerogear.org/docs/specs/aerogear-ios/[AeroGear iOS API reference] to familiarize yourself with the wealth of options.
+You can also browse link:/docs/specs/aerogear-ios/[AeroGear iOS API reference] to familiarize yourself with the wealth of options.
