@@ -1,0 +1,16 @@
+JsonResponseSerializer.swift
+	public init()
+StringResponseSerializer.swift
+	public init()
+Http.swift
+	public var authzModule:  AuthzModule?
+	public func calculateURL(baseURL: String?,  var url: String) -> NSURL
+	public func hasMultiPartData(parameters: [String: AnyObject]?) -> Bool
+Utils.swift
+	public func urlEncode() -> String
+HttpRequestSerializer.swift
+	public func stringFromParameters(parameters: [String: AnyObject]) -> String
+	public func serialize(tuple: (String?, AnyObject)) -> [(String?, AnyObject)]
+	public func stringValue(tuple: (String?, AnyObject)) -> String
+	public func multiPartBodyFromParams(parameters: [String: AnyObject], boundary: String) -> NSData
+	public func hasMultiPartData(parameters: [String: AnyObject]?) -> Bool

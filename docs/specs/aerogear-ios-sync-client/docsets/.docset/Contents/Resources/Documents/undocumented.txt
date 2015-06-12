@@ -1,3 +1,0 @@
-SyncClient.swift
-	public convenience init(url: String, syncEngine: ClientSyncEngine<CS, D>)
-	public convenience init(url: String, protocols: Array<String>, syncEngine: ClientSyncEngine<CS, D>)
