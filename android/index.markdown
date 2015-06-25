@@ -38,46 +38,46 @@ Android library is broken up into modules and available from Maven Central and G
 
 ## <i class="fa fa-rocket"></i> Core Module
 [aerogear-android-core](https://github.com/aerogear/aerogear-android-core) contains some common packages and utilities shared across all our libraries.  
-
-{% include downloads/android-module.html module='core' %}
+{% assign module = site.data.sdk['android']['modules']['core'] %}
+{% include downloads/android-module.html module=module %}
 
 
 ## <i class="fa fa-shield"></i> Security Module
 [aerogear-android-security](https://github.com/aerogear/aerogear-android-security) provides some basic encryption and key management utilities.
-
-{% include downloads/android-module.html module='security' %}
+{% assign module = site.data.sdk['android']['modules']['security'] %}
+{% include downloads/android-module.html module=module %}
 
 ## <i class="fa fa-database"></i> Store Module
 [aerogear-android-store](https://github.com/aerogear/aerogear-android-store)  is a simple data storage API. This API is useful for caching responses, sharing data among different systems, or providing some form of limited offline support.
-
-{% include downloads/android-module.html module='store' %}
+{% assign module = site.data.sdk['android']['modules']['store'] %}
+{% include downloads/android-module.html module=module %}
 
 
 ## <i class="fa fa-exchange"></i> Pipe Module
 [aerogear-android-pipe](https://github.com/aerogear/aerogear-android-pipe) is used to interact with RESTful services.
-
-{% include downloads/android-module.html module='pipe' %}
+{% assign module = site.data.sdk['android']['modules']['pipe'] %}
+{% include downloads/android-module.html module=module %}
 
 ## <i class="fa fa-key"></i> Auth Module
 [aerogear-android-auth](https://github.com/aerogear/aerogear-android-auth) provides Pipe modules for HTTP Basic and HTTP Digest authentication.
-
-{% include downloads/android-module.html module='auth' %}
+{% assign module = site.data.sdk['android']['modules']['auth'] %}
+{% include downloads/android-module.html module=module %}
 
 ## <i class="fa fa-shield"></i> Authz Module
 [aerogear-android-authz](https://github.com/aerogear/aerogear-android-authz) provides Pipe modules for connecting to OAuth 2 secured services as well as basic token management.
-
-{% include downloads/android-module.html module='authz' %}
+{% assign module = site.data.sdk['android']['modules']['authz'] %}
+{% include downloads/android-module.html module=module %}
 
 
 ## <i class="fa fa-paper-plane"></i> Push Module
 [aerogear-android-push](https://github.com/aerogear/aerogear-android-push) connects to the Unified Push Server and Google Cloud Messaging to enable push notification in AeroGear applications.
-
-{% include downloads/android-module.html module='push' %}
+{% assign module = site.data.sdk['android']['modules']['push'] %}
+{% include downloads/android-module.html module=module %}
 
 ## <i class="fa fa-refresh"></i>  Sync Module
 [aerogear-android-sync](https://github.com/aerogear/aerogear-android-sync) connects to the AeroGear Sync Server and provides Android Service bindings for use by Activities.
-
-{% include downloads/android-module.html module='sync' %}
+{% assign module = site.data.sdk['android']['modules']['sync'] %}
+{% include downloads/android-module.html module=module %}
 
 ---
 
