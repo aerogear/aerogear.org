@@ -1,5 +1,5 @@
 {% assign module = include.module %}
-{% assign moduleName = include.moduleName %}
+{% assign moduleName = module.name %}
 <p>
   <a href="{{ module.zip }}" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download iOS {{ module.name }} v{{ module.version }}</a>
   <a href="http://cocoapods.org/?q={{ module.cocoapod }}" class="btn btn-primary btn-sm"><i class="fa fa-cubes"></i> CocoaPods</a>

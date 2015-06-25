@@ -21,7 +21,8 @@ section: getstarted
 <hr> <!-- ====================================================== -->
           
           <h4 id="downloadsAndroid">Downloads and Snippets</h4>
-{% for module in site.data.sdk['android']['modules'] %}
+{% for item in site.data.sdk['android']['modules'] %}
+{% assign module = item[1] %}
 {% include downloads/android-module.html module=module %}
 {% endfor %}
 
