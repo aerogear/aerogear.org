@@ -1,0 +1,27 @@
+JarIndex-Version: 1.0
+
+aerogear-android-push-2.2.0-javadoc.jar
+org
+org/jboss
+org/jboss/aerogear
+org/jboss/aerogear/android
+org/jboss/aerogear/android/unifiedpush
+org/jboss/aerogear/android/unifiedpush/class-use
+org/jboss/aerogear/android/unifiedpush/gcm
+org/jboss/aerogear/android/unifiedpush/gcm/class-use
+org/jboss/aerogear/android/unifiedpush/metrics
+org/jboss/aerogear/android/unifiedpush/metrics/class-use
+allclasses-frame.html
+allclasses-noframe.html
+constant-values.html
+deprecated-list.html
+help-doc.html
+index-all.html
+index.html
+overview-frame.html
+overview-summary.html
+overview-tree.html
+package-list
+script.js
+stylesheet.css
+
