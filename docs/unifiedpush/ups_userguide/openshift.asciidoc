@@ -15,10 +15,12 @@ WARNING: It's important that immediately after creating an UnifiedPush Server in
 
 === Create an instance using OpenShift's Web UI
 
+The easiest way to run on OpenShift is to the click the button below:
 
-Open link:https://openshift.redhat.com/app/console/applications[Openshift's Application overview page] and click on +Add Application+. Find our +AeroGear Push+ cartridge and click on it. Fill in the following form and click on +Create Application+. This creates an UnifiedPush Server instance with a configured _MySQL 5.5_ database. Click on +Continue to the application overview page+.
+image:http://launch-shifter.rhcloud.com/launch/light/LAUNCH ON.svg["Run me on Openshift",link="https://openshift.redhat.com/app/console/application_type/quickstart!31"]
+
+Now, just fill in the form and click on +Create Application+! This creates an UnifiedPush Server instance with a configured _MySQL 5.5_ database. Click on +Continue to the application overview page+.
 Under the list of applications you should find your new UnifiedPush Server instance and the status should be _Started_. Click on it to open the UnifiedPush Server's homepage.
-
 
 === Create an instance using OpenShift's command line interface
 
