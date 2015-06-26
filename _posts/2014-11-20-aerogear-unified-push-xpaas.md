@@ -24,7 +24,7 @@ Deploying the Unified Push Server on Openshift is simple, just follow the instru
 
 ## FeedHenry integration
 
-If you are curious about our [FeedHenry integration](http://aerogear.org/news/2014/11/11/aerogear-feedhenry-integration/index.html), please check out our previous blog for the [Devoxx Keynote demo](http://aerogear.org/news/2014/11/12/aerogear-feedhenry-devoxx-demo/index.html).
+If you are curious about our [FeedHenry integration](/news/2014/11/11/aerogear-feedhenry-integration/index.html), please check out our previous blog for the [Devoxx Keynote demo](/news/2014/11/12/aerogear-feedhenry-devoxx-demo/index.html).
 
 ## What's next for the Unified Push Server? 
 

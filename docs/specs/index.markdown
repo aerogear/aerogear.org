@@ -18,7 +18,7 @@ span.version {
 * [Authz](/docs/specs/aerogear-android-authz/) <span class="version">2.1.0</span>
 * [Core](/docs/specs/aerogear-android-core/) <span class="version">2.1.0</span>
 * [Pipe](/docs/specs/aerogear-android-pipe/) <span class="version">2.1.0</span>
-* [Push](/docs/specs/aerogear-android-push/) <span class="version">2.1.0</span>
+* [Push](/docs/specs/aerogear-android-push/) <span class="version">2.2.0</span>
 * [Security](/docs/specs/aerogear-android-security/) <span class="version">2.1.0</span>
 * [Store](/docs/specs/aerogear-android-store/) <span class="version">2.1.0</span>
 * [Sync](/docs/specs/aerogear-android-sync/) <span class="version">2.1.0</span>
@@ -29,7 +29,7 @@ span.version {
 * [JsonSZ](aerogear-ios-jsonsz) <span class="version">0.1.0</span>
 * [Sync](aerogear-ios-sync) <span class="version">1.0.0-alpha.1</span>
 * [Sync client](aerogear-ios-sync-client) <span class="version">1.0.0-alpha.1</span>
-* [Push](aerogear-ios-push) <span class="version">1.0.0</span>
+* [Push](aerogear-ios-push) <span class="version">1.1.0-beta.1-swift</span>
 * [OTP](aerogear-otp-ios) <span class="version">1.0.0</span>
 * [Crypto](aerogear-ios-crypto) <span class="version">0.2.3</span>
 

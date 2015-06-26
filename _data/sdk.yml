@@ -8,14 +8,30 @@ android:
   icon: fa-android
   version: 2.1.0
   modules:
-    - core
-    - security
-    - store
-    - pipe
-    - auth
-    - authz
-    - push
-    - sync
+    core:
+      name: core
+      version: 2.1.0
+    security:
+      name: security
+      version: 2.1.0
+    store:
+      name: store
+      version: 2.1.0
+    pipe:
+      name: pipe
+      version: 2.1.0
+    auth:
+      name: auth
+      version: 2.1.0
+    authz:
+      name: authz
+      version: 2.1.0
+    push:
+      name: push
+      version: 2.2.0
+    sync:
+      name: sync
+      version: 2.1.0
 
 ios:
   name: iOS

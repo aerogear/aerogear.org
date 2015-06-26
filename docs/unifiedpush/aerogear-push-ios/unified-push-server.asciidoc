@@ -9,7 +9,7 @@
 
 With all the Apple work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unifiedpush-server[UnifiedPush Server], so that it can be used to connect to APNs for a later message sending.
 
-The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain two _Variants_ (one for {pushplatform} _Development_ and one for {pushplatform} _Production_ app). Details on the AeroGear UnifiedPush Server are discussed link:http://aerogear.org/docs/unifiedpush/ups_userguide/overview/[here].
+The _AeroGear UnifiedPush Server_ defines logical _abstraction_ for Mobile Applications that have support for different Push Networks. It's _Push Applications_ can have different "Variants". For this tutorial we need to create a _Push Application_ which will contain two _Variants_ (one for {pushplatform} _Development_ and one for {pushplatform} _Production_ app). Details on the AeroGear UnifiedPush Server are discussed link:/docs/unifiedpush/ups_userguide/overview/[here].
 
 :pushplatform: iOS
 include:docs/unifiedpush/include--register-app.asciidoc[]

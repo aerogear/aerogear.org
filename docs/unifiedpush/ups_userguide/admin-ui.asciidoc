@@ -148,7 +148,7 @@ image::./img/import2.png[DA]
 
 select a local JSON file containing installations.
 
-NOTE: The import file must have the expected JSON structure as defined link:https://aerogear.org/docs/specs/aerogear-unifiedpush-rest-1.0.x/registry/device/importer/index.html[here].
+NOTE: The import file must have the expected JSON structure as defined link:/docs/specs/aerogear-unifiedpush-rest-1.0.x/registry/device/importer/index.html[here].
 
 [[sending_a_push_notification]]
 === Sending a Push Notification

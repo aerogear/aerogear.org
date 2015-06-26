@@ -104,7 +104,7 @@ NSMutableDictionary* projectEntity = [@{@"title": @"Hello World"} mutableCopy];
 Above the _save_ function stores the given NSDictionary on the server. In this case, where we have a RESTful pipe the API issues a HTTP POST request.
 
 [[noteid]]
-NOTE: Upon success, we set the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html#//api/name/recordId[recordId] property on the object from the server response. This is a required step cause this property is used by Pipe's <<update, update>> and <<remove, remove>> methods to perform operations on the object. By default, the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe] is configured to use the name _"id"_, but if your RESTful resource uses a different name, you can easily override it using the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html#//api/name/recordId[recordId] configuration option when constructing the link:http://aerogear.org/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe].
+NOTE: Upon success, we set the link:/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html#//api/name/recordId[recordId] property on the object from the server response. This is a required step cause this property is used by Pipe's <<update, update>> and <<remove, remove>> methods to perform operations on the object. By default, the link:/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe] is configured to use the name _"id"_, but if your RESTful resource uses a different name, you can easily override it using the link:/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html#//api/name/recordId[recordId] configuration option when constructing the link:/docs/specs/aerogear-ios/Protocols/AGPipe.html[Pipe].
 
 [[update]]
 === Update object

@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Implementation-Title: AeroGear Android Push Library
+Implementation-Version: 2.2.0
+Build-Timestamp: Thu, 18 Jun 2015 19:05:31 -0300
+Archiver-Version: Plexus Archiver
+Java-Version: 1.8.0_20-ea
+Built-By: passos
+Scm-Connection: scm:git:git@github.com:aerogear/aerogear-android-push.
+ git
+Specification-Vendor: JBoss by Red Hat
+Os-Arch: x86_64
+Specification-Title: AeroGear Android Push Library
+Implementation-Vendor-Id: org.jboss.aerogear
+Java-Vendor: Oracle Corporation
+Os-Name: Mac OS X
+Scm-Url: git@github.com:aerogear/aerogear-android-push.git
+Implementation-Vendor: JBoss by Red Hat
+Os-Version: 10.10.3
+Scm-Revision: 9200bee296d4fe7aa198f59ca810935d71fd158d
+Created-By: Apache Maven
+Build-Jdk: 1.8.0_20-ea
+Specification-Version: 2.2.0
+Implementation-URL: http://aerogear.org
+

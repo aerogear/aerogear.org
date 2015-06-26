@@ -156,7 +156,7 @@ var pushConfig = {
 push.register(onNotification, successHandler, errorHandler, pushConfig);
 ----
 
-== Start receiving messages:
+== Start receiving messages
 
 [source,javascript]
 ----
@@ -172,7 +172,22 @@ The passed in 'event' object contains:
 * badge the number to display on the icon ios specific
 * any custom set properties are available under e.payload ( e.g `alert(e.payload.foo);` )
 
-Also have a look here for link:http://aerogear.org/docs/unifiedpush/[more information about the message] sending and properties
+Also have a look here for link:docs/unifiedpush/[more information about the message] sending and properties
+
+=== Metrics
+Optionally the cordova plugin supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.
+
+UPS sends an unique ID for every push message by default all we have to do set `sendMetricInfo` to `true` in the config to tell the plugin to send this ID back when the user opened the app with the notification.
+
+[source,javascript]
+----
+var pushConfig = {
+    pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+    sendMetricInfo: true, //<1>
+    ...
+};
+----
+<1> With this set to `true` the UPS dashboard will show metrics on how 'successful' your message was
 
 === iOS background notification
 Sending notifications that contain 'content-availble' on iOS will call the javacript first before launching the app, this will enable you to update the UI or do a silent push (e.g. without an alert) to update the content of your app without the user noticing.  After fetching the content you'll have to 'inform' the os about the result by calling setContentAvailable with either NewData, NoData or Failed link:/docs/specs/aerogear-cordova/Push.html#setContentAvailable[AeroGear Push plugin API]
@@ -190,7 +205,7 @@ function onNotification(event) {
 }
 ----
 
-== To unregister (only available on Android):
+== To unregister (only available on Android)
 
 [source,javascript]
 ----
@@ -209,88 +224,7 @@ Full example (https://github.com/aerogear/aerogear-pushplugin-cordova/blob/maste
 
 [source,html]
 ----
-<!DOCTYPE HTML>
-<html>
-<head>
-  <title>Demo</title>
-</head>
-<body>
-
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-<script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>
-
-<script type="text/javascript">
-
-  function onDeviceReady() {
-    var pushConfig = {
-        pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
-        alias: "<alias e.g. a username or an email address optional>",
-        android: {
-          senderID: "<senderID e.g Google Project ID only for android>",
-          variantID: "<variantID e.g. 1234456-234320>",
-          variantSecret: "<variantSecret e.g. 1234456-234320>"
-        },
-        ios: {
-          variantID: "<variantID e.g. 1234456-234320>",
-          variantSecret: "<variantSecret e.g. 1234456-234320>"
-        }
-    }
-
-    var statusList = $("#app-status-ul");
-    statusList.append('<li>deviceready event received</li>');
-
-    try {
-      statusList.append('<li>registering </li>');
-      push.register(onNotification, successHandler, errorHandler, pushConfig);
-    } catch (err) {
-      txt = "There was an error on this page.\n\n";
-      txt += "Error description: " + err.message + "\n\n";
-      alert(txt);
-    }
-  }
-
-  function onNotification(e) {
-    var statusList = $("#app-status-ul");
-
-    // if the notification contains a sound, play it.
-    if (e.sound && (typeof Media != 'undefined')) {
-      //install the media plugin to use this
-      var media = new Media("/android_asset/www/" + e.sound);
-      media.play();
-    }
-
-    if (e.coldstart) {
-      statusList.append('<li>--COLDSTART NOTIFICATION--' + '</li>');
-    }
-
-    statusList.append('<li>MESSAGE -> MSG: ' + e.alert + '</li>');
-
-    //only on ios
-    if (e.badge) {
-      push.setApplicationIconBadgeNumber(successHandler, e.badge);
-    }
-  }
-
-  function successHandler() {
-    $("#app-status-ul").append('<li>success</li>');
-  }
-
-  function errorHandler(error) {
-    $("#app-status-ul").append('<li>error:' + error + '</li>');
-  }
-
-  document.addEventListener('deviceready', onDeviceReady, true);
-
-</script>
-<div id="home">
-  <div id="app-status-div">
-    <ul id="app-status-ul">
-      <li>AeroGear PushPlugin UnifiedPush Demo</li>
-    </ul>
-  </div>
-</div>
-</body>
-</html>
+include::https://raw.githubusercontent.com/aerogear/aerogear-cordova-push/master/example/index.html[]
 ----
 
 ## Documentation
