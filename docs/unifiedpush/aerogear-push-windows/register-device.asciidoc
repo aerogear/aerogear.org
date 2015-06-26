@@ -5,25 +5,15 @@
 With all the Windows Setup work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to WNS for a later message sending.
 
 :pushplatform: Windows
-include:docs/unifiedpush/include--register-app.asciidoc[]
 
-Click the **Add Variant** button. And fill out the Windows options. You will want to use the **Package SID** and **Client Secret** from the *Windows Dev Center* in their appropriate fields.
+In the Wizard after you create a PushApplication, click the **Add Variant** button and fill out the Windows options. You will want to use the **Package SID** and **Client Secret** from the *Windows Dev Center* in their appropriate fields:
 
 image:./img/variant_02.png[Windows Variant Options]
 
-Click **Add** and your variant will be created.
+Afterwards you will see some code snippets, containing the **Variant ID** and **Secret**, that you can use in your Windows application for the registration of the device, running your app:
 
-image:./img/variant_03.png[Android Variant Created]
+image:./img/variant_03.png[Windows Variant Created]
 
-Expand the variant card and make note of the **Variant ID** and **Secret** fields. Both will be used later when registering your installation through the Android client SDK.
-
-image:./img/variant_04.png[Android Variant Details]
-
-Notice an _Example Installation_ link which, when clicked, reveals a screen with source code examples for the registration to the UPS, with the settings preconfigured automatically based on the current environment. A handy feature that you can refer when creating your own applications to easy the setup process.
-
-image:./img/example_01.png[Example Implementation]
-
-NOTE: Clicking on the appropriate tab, you can choose between _C#_ and _Cordova_ snippet!
 
 === Visual Studio
 
