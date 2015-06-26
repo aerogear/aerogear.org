@@ -90,7 +90,7 @@ NOTE: At any time, you can skip the workflow of the Wizard, by clicking the _Ski
 
 ==== Wizard: Step 2
 
-Since the PushApplication is a container for different platforms you need create a _Variant_ for a specific mobile platform, like Android, iOS or Windows.
+Since the PushApplication is a container for different platforms you need to create a _Variant_ for a specific mobile platform, like Android, iOS or Windows.
 
 image:./img/wizard2.png[Wizard - Add Variant]
 
@@ -102,11 +102,11 @@ In this example we are creating an Android Variant and giving it a name. Besides
 
 NOTE: If you are not familiar with the details of your desired mobile platform, click link:../../../unifiedpush/aerogear-push-android/[here] for Android, link:../../../guides/aerogear-cordova/AerogearCordovaPush/[here] for Apache Cordova, link:../../../unifiedpush/aerogear-push-ios/[here] for iOS and link:../../../unifiedpush/aerogear-push-windows/[here] for Windows.
 
-After finishing the above dialog you are coming to the details page of the newly create Variant:
+After finishing the above dialog you are coming to the details page of the newly created Variant:
 
 image:./img/wizard4.png[Wizard - code snippets]
 
-The page contains some code snippets that are specific to underlying mobile platform (e.g. Android), which allows your mobile application, running on a device, to register itself against the Unified Push Server for push notification delivery.
+The page contains some code snippets that are specific to the underlying mobile platform (e.g. Android), which allows your mobile application, running on a device, to register itself against the Unified Push Server for push notification delivery.
 
 In our Android example you are getting two options:
 
@@ -139,9 +139,9 @@ After all of that, you are done! Congratulations!
 
 image:./img/wizard7.png[Wizard - Finished]
 
-=== Managment of PushApplication
+=== Management of PushApplication
 
-To work with a specific PushApplication, you have to select on from the overview list. However, for updates of the name or even deleting it, you have to click one of those links that are visable when hovering over the desired PushApplications:
+To work with a specific PushApplication, you have to select one from the overview list. However, to update the name or even deleting it, you have to click one of those links that are visible when hovering over the desired PushApplications:
 
 image:./img/application0.png[PushAPplication - Overview]
 
@@ -155,9 +155,9 @@ image:./img/application2.png[PushAPplication - Delete]
 
 WARNING: When deleting a PushApplication, all Variants and their registered devices are removed!
 
-=== Managment of Variants
+=== Management of Variants
 
-On the _Variants_ tab of the PushApplication give a list of all existing variants. To edit or delete a Variant expand the details of the desired Variants (+).
+The _Variants_ tab of the PushApplication gives a list of all existing variants. To edit or delete a Variant expand the details of the desired Variants (+).
 
 image:./img/variant1.png[Variant - Details]
 
@@ -179,7 +179,7 @@ It is also possible to renew the Variant Secret, used by the Mobile Applications
 
 image:./img/variant3.png[Variant - Renew Variant Secret]
 
-WARNING: When chaning the variant secret or deleting it, existing mobile apps are no longer able to register their metadata on the Unified Push Server!
+WARNING: When changing the variant secret or deleting it, existing mobile apps are no longer able to register their metadata on the Unified Push Server!
 
 You have to confirm this change, as this requires updates to the mobile applications, running on the devices!
 
@@ -193,7 +193,7 @@ The table shows the metadata of each device, including the device token, subscri
 
 === Importing Device Metadata
 
-For various reasons, e.g. migrating from a custom solution to the UnifiedPush Server, it is possible to import devices and their metadata, including their devicetoken, into a variant. This is possible via cURL and on the UI. For that, on a specific variant, click on the _More_ menu you have the the choice to select the _Import_ option:
+For various reasons, e.g. migrating from a custom solution to the Unified Push Server, it is possible to import devices and their metadata, including their devicetoken, into a variant. This is possible via cURL and on the UI. For that, on a specific variant, click on the _More_ menu you have the the choice to select the _Import_ option:
 
 image:./img/import1.png[Import UI]
 
@@ -205,7 +205,7 @@ image:./img/import2.png[Import UI]
 
 === Exporting Device Metadata
 
-Similar, the UnifiedPush Server has an option to export the device metadata of a variant. This is handy when you want to move from one UnifiedPush Server instance to a different one. On the _More_ menu of a specific variant, you have the the choice to select the _Export_ option:
+Similar, the Unified Push Server has an option to export the device metadata of a variant. This is handy when you want to move from one Unified Push Server instance to a different one. On the _More_ menu of a specific variant, you have the the choice to select the _Export_ option:
 
 image:./img/export1.png[Export the tokens]
 
@@ -223,7 +223,7 @@ Now the _Send Push_ dialog pops up:
 
 image:./img/send2.png[Enter the payload]
 
-In the +Send Push+ dialog the +Message+ text field contains the payload to be sent out to the 3rd party Push Network. To deliver the message click the +Send Push Notification+ button.
+In the +Send Push+ dialog, the +Message+ text field contains the payload to be sent out to the 3rd party Push Network. To deliver the message click the +Send Push Notification+ button.
 
 NOTE: It is possible to filter the list of receivers, using +Alias+, +Device Types+ and +Category+. Read the link:#_server_integration_tutorials[Server Integration Tutorials] for more details.
 
@@ -260,7 +260,7 @@ image:./img/analyticsClean.png[Push Activity]
 
 === PushApplication Activity
 
-On the _Activity log_ tab of a PushApplication you see a list of send Push notifications that have been sent to the server:
+On the _Activity log_ tab of a PushApplication you see a list of Push notifications that have been sent to the server:
 
 image:./img/activity1.png[Push Activity - Details]
 
