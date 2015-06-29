@@ -75,7 +75,7 @@ $ mysql -u <user-name>
 mysql> create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
 mysql> create database keycloak default character set = "UTF8" default collate = "utf8_general_ci";
 mysql> create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
-mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';
+mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP,INDEX ON unifiedpush.* TO 'unifiedpush'@'localhost';
 mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON keycloak.* TO 'unifiedpush'@'localhost';
 ----
 
