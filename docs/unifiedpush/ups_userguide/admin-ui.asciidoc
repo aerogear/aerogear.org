@@ -251,14 +251,30 @@ Besides Java, the UI contains snippets for Node.js and cURL.
 
 === PushApplication Analytics
 
-NOTE: The collected metadata and payload is _automatically_ deleted after 30 days, using a nightly job within the Unified Push Server.
-
-
-image:./img/analytics1.png[Push Activity]
-
-image:./img/analytics2.png[Push Activity]
+The Unified Push Server provides some metrics and analytics which are presented on a dasboard : 
 
 image:./img/analyticsClean.png[Push Activity]
+
+The upper part shows some *key* numbers : 
+
+* _Push Messages_ : The total number of push messages sent to UnifiedPush Server for dispatching to registered devices.
+* _Notification Dispatched_ : The total number of notifications dispatched via Push Networks to registered devices.
+* _Notifications Opened_ : Number of notifications that were delivered to registered device and opened by a user.
+* _Average Open Rate_ : The result of _Notifications Opened_ / _Notifications Dispatched_
+
+The _Performance_ chart show for each Push Notification the number of targeted devices, the number of opened apps. The x-axis legend shows the _alert_ value of the Push Notification payload.
+
+Finally, the _Push Networks_ chart shows the split between the different Push Networks. 
+
+To get the _Notifications Opened_ metric activated, it needs to be "turned on" on the different client SDKs :
+
+* For iOS, please refer to link:https://aerogear.org/docs/specs/aerogear-ios-push/Classes/AGPushAnalytics.html[this document].
+* For Android, please check the _org.jboss.aerogear.android.unifiedpush.metrics_ package  in link:https://aerogear.org/docs/specs/aerogear-android-push/[the JavaDoc]. 
+* For Cordova, please refer to the _Metrics_ section of link:https://aerogear.org/docs/guides/aerogear-cordova/AerogearCordovaPush/[this document].
+* For Windows, please refer to link://todo[this document].
+
+
+NOTE: The collected metadata and payload is _automatically_ deleted after 30 days, using a nightly job within the Unified Push Server.
 
 
 === PushApplication Activity
