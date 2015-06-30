@@ -243,8 +243,11 @@ image:./img/send3.png[Backend push integration]
 
 WARNING: Due to security reasons the +Application ID+ and the +Master Secret+ should be never stored on a mobile device! Push Notification requests should _never_ be triggered directly from a mobile device.
 
-The visible Java code above can be used in any JavaSE or JavaEE application that needs to send Push Notification requests to the Unified Push Server. Besides Java, the UI contains snippets for Node.js and cURL. 
+The visible Java code above can be used in any JavaSE or JavaEE application that needs to send Push Notification requests to the Unified Push Server, like shown in the diagram below:
 
+image:./img/sending_sd.png[Sending Push from Backend]
+
+Besides Java, the UI contains snippets for Node.js and cURL.
 
 === PushApplication Analytics
 
