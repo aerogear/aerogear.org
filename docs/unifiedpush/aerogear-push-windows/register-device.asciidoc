@@ -6,7 +6,7 @@ With all the Windows Setup work being done, we are now ready to setup the link:h
 
 :pushplatform: Windows
 
-In the Wizard after you create a PushApplication, click the **Add Variant** button and fill out the Windows options. You will want to use the **Package SID** and **Client Secret** from the *Windows Dev Center* in their appropriate fields:
+In the link:/docs/unifiedpush/ups_userguide/index/#_the_wizard[Wizard] after you create a PushApplication, click the **Add Variant** button and fill out the Windows options. You will want to use the **Package SID** and **Client Secret** from the *Windows Dev Center* in their appropriate fields:
 
 image:./img/variant_02.png[Windows Variant Options]
 

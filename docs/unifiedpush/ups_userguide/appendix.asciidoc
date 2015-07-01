@@ -1,0 +1,55 @@
+// ---
+// layout: post
+// title: Appendix
+// section: guides
+// ---
+
+[[appendix]]
+== Appendix
+
+This section contains a few diagrams, that explain the architecutre and the work-flow of the UnifiedPush Server
+
+=== Global Architecture
+
+This diagram show the different components that compose the UnifiedPush Server:
+
+image:./img/global_architecture.svg[Global Architecture]
+
+The _UPS Core_ contains a DAO layer, talking to the (MySQL/Postgres) database. The DAO layer is invoked by different service classes. The message delivery to the different Push Networks is handled by JMS (see link:#_jms_internals[here] for more details). The access to the server is handled via two different categories of RESTful APIs.
+
+=== REST APIs
+
+==== Core APIs
+
+The UnifiedPush Server is not limited to be accessed only via the UI for creating PushApplications or Variants. The RESTful _Core APIs_ (e.g. Management/Metric APIs) offer access to the server for integration cases like discussed in the link:#integration[UPS Integration] section or below:
+
+image:./img/directgrant_app_creation_sd.png[Creating PushApplication from code]
+
+
+==== Developer APIs
+
+The _Developer APIs_ are more commonly used. They offer public endpoints for device registration and sending Push Notification delivery requests.
+
+===== Device Registration
+
+Below is a diagram that explain the flow of the _Device Registration Process_:
+
+image:./img/registration_sd.png[Device Registration]
+
+When the mobile device obtains a device token (or registrationID) from its PushNetwork (e.g. GCM or APNs), the AeroGear powered application calls our Registration SDK with the given token. The SDK itself authenticates itself against the UnifiedPush Server and sends the token to the server, so that it can be used for future Push Notification sends.
+
+===== Sending a Push Notification
+
+The UnifiedPush Server comes with APIs for link:../../../unifiedpush/GetStartedwithJavaSender/[Java] and link:https://github.com/aerogear/aerogear-unifiedpush-nodejs-client#examples[Node.js]. Due to its RESTful architecture any backend, written in any language that supports HTTP(S), can link:../../../specs/aerogear-unifiedpush-rest/sender/index.html[send Push Notification requests] to it:
+
+image:./img/sending_sd.png[Sending Push from Backend]
+
+If the backend needs to send a push notification, e.g. after catching an event, the AeroGear Push Sender SDK is invoked. SDK itself authenticates itself against the UnifiedPush Server and sends the payload to it. This results in several JMS jobs, that are than delivering the payload to the 3rd party Push Networks. Eventually the message may hit the device, delivered from the 3rd party Push Network.
+
+=== JMS internals
+
+Currently the delivery of Push Notifications is handled with CDI events and JMS:
+
+image:img/jms_overview.png[JMS details of the UnifiedPush Server]
+
+One the payload hits the RESTful endpoint, a _NotificationRoute_ is invoked, which fires a few CDI events: One for each Variant that is involed in the Push Notification delivery. The event is observed by multiple _TokenLoader_ instances, which loads device-tokes from the database and queues them for processing by the _NotificationDispatcher_. This class selects (using CDI) the specific sender for the desired Push Network and eventually delivers the message to the 3rd party Push Networks. Once the sending process finishes the _NotificationDispatcher_  generates a JMS message for _MetricsCollector_ with information about how much devices were notified.
