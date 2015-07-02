@@ -13,7 +13,7 @@ This section contains a few diagrams, that explain the architecutre and the work
 
 This diagram show the different components that compose the UnifiedPush Server:
 
-image:./img/global_architecture.svg[Global Architecture]
+image:./img/global_architecture.png[Global Architecture]
 
 The _UPS Core_ contains a DAO layer, talking to the (MySQL/Postgres) database. The DAO layer is invoked by different service classes. The message delivery to the different Push Networks is handled by JMS (see link:#_jms_internals[here] for more details). The access to the server is handled via two different categories of RESTful APIs.
 
