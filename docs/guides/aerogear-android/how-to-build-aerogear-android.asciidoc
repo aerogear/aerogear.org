@@ -46,9 +46,10 @@ cd $PWD/maven-android-sdk-deployer/extras/compatibility-v7-appcompat
 mvn install -N --quiet
 ```
 
-=== Install locally google-m2repository
+=== Install locally repositories
 ```
-cd $PWD/maven-android-sdk-deployer/repositories/google-m2repository
+cd $PWD/maven-android-sdk-deployer/repositories
 mvn install -N --quiet
 ```
+
 
