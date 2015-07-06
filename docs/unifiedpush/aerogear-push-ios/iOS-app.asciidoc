@@ -143,6 +143,36 @@ The _success_ callback is invoked, when the _AeroGear UnifiedPush Server_ was ab
 
 The _application: didFailToRegisterForRemoteNotificationsWithError:_ would be invoked if there is a problem in receving a token from _APNs_...
 
+=== Metrics 
+Optionally the iOS SDK supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.
+
+UPS sends an unique ID for every push message by default all we have to do is send this ID back to UPS when the app was opened using the message:
+
+[source,c]
+----
+- (BOOL)application:(UIApplication *)application
+   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+       ...
+       // Send metrics when app is launched due to push notification
+       [AGPushAnalytics sendMetricsWhenAppLaunched:launchOptions];
+       ...
+}
+----
+
+If the application is launched using a push notification the _sendMetricsWhenAppLaunched_ static function needs to be invoked within the _didFinishLaunchingWithOptions_ method. when the app is brought from background to foreground due to a push notification, the following line needs to be added to the _didReceiveRemoteNotification_ method:
+
+[source,c]
+----
+- (void)application:(UIApplication *)application 
+   didReceiveRemoteNotification:(NSDictionary *)userInfo
+   fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+   
+       ...
+       // Send metrics when app is launched due to push notification
+       [AGPushAnalytics sendMetricsWhenAppLaunched:launchOptions];
+       ...
+}
+----
 
 === Test the app on your device
 
