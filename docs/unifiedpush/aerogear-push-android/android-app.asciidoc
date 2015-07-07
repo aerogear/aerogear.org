@@ -320,4 +320,36 @@ image::./img/app-main-screen.png[Push Application Main Screen]
 [NOTE]
 If you don't see the 'Registration Succeeded' popup, means that an error has occurred during the registration. Switch to the LogCat console in Eclipse to locate the exception and act accordingly.
 
+=== Metrics
+Optionally the Android SDK supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.
+
+UPS sends an unique ID for every push message by default all we have to do is send this ID back to UPS when the app was opened using the message:
+
+[source,java]
+----
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ....
+    application = (PushApplication) getApplication();
+
+    if(getIntent().getBooleanExtra(PushApplication.PUSH_MESSAGE_FROM_BACKGROUND, false)) {
+        UnifiedPushMetricsMessage metricsMessage = new UnifiedPushMetricsMessage(getIntent().getExtras());
+        application.sendMetric(metricsMessage, new MetricsCallback());
+    }
+...
+}
+----
+
+In the _onCreate_  method of your 'MainActivity' class, we create a new instance of the _UnifiedPushMetricsMessage_ passing in the push notification payload. The _UnifiedPushMetricsMessage_ internally reads the above described unique message ID. Finally we invoke a custom 'sendMetric' method on the application:
+
+[source,java]
+----
+public void sendMetric(UnifiedPushMetricsMessage metricsMessage, Callback<UnifiedPushMetricsMessage> callback) {
+    AeroGearGCMPushRegistrar registrar = (AeroGearGCMPushRegistrar) RegistrarManager.getRegistrar(PUSH_REGISTER_NAME);
+    registrar.sendMetrics(metricsMessage, callback);
+}
+----
+
+Our 'sendMetric' method basically invokes the _sendMetrics_ functionality of the Android SDK, passing in the previously created _UnifiedPushMetricsMessage_ object for tracking purposes.
+
 Now that we have our application up an running time to link:#push-notification[send messages] using the AeroGear UnifiedPush Server!
