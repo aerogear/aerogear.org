@@ -99,7 +99,7 @@ cordova:
       name: OTP
       long-name: OTP (One-Time Password)
       module: security
-      version: 0.0.1
+      version: latest
       plugin: org.jboss.aerogear.cordova.otp
     crypto:
       name: Crypto
