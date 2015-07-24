@@ -17,6 +17,7 @@ Make sure you have the 3rd party configuration, required by GCM or APNs:
 
 * link:/docs/unifiedpush/aerogear-push-android/guides/#google-setup[Setup for android]
 * link:/docs/unifiedpush/aerogear-push-ios/guides/#app-id-ssl-certificate-apns[Setup for ios]
+* link:/docs/unifiedpush/aerogear-push-windows/guides/#windows-setup[Setup for windows]
 
 ## Getting Started
 

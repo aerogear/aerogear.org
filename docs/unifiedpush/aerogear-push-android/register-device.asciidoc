@@ -5,24 +5,13 @@ With all the Google work being done, we are now ready to setup the link:https://
 
 :pushplatform: Android
 
-include:docs/unifiedpush/include--register-app.asciidoc[]
+In the link:/docs/unifiedpush/ups_userguide/index/#_the_wizard[Wizard] after you create a PushApplication, click the **Add Variant** button and fill out the Android options. You will want to use the **Client ID** and **Project Number** from the *Google API Console* in their appropriate fields:
 
-Click the **Add Variant** button. And fill out the Android options.  You will want to use the **Client ID** and **Project Number** from the *Google API Console* in their appropriate fields.
+image:./img/variant_01.png[Android Variant Options]
 
-image:./img/variant_02.png[Android Variant Options]
+Afterwards you will see some code snippets, containing the **Variant ID** and **Secret**, that you can use in your Android application for the registration of the device, running your app:
 
-Click **Add** and your variant will be created.
-
-image:./img/variant_03.png[Android Variant Created]
-
-Expand the variant card and make note of the **Variant ID** and **Secret** fields. Both will be used later when registering your installation through the Android client SDK.
-
-image:./img/variant_04.png[Android Variant Details]
-
-
-Notice an _Example Installation_ link which, when clicked, reveals a screen with source code examples for the registration to the UPS, with the settings preconfigured automatically based on the current environment. A handy feature that you can refer when creating your own applications to easy the setup process.
-
-image:./img/example_01.png[Example Implementation]
+image:./img/variant_02.png[Android Variant Details]
 
 NOTE: Clicking on the appropriate tab, you can choose between _Android_ and _Cordova_ snippet!
 

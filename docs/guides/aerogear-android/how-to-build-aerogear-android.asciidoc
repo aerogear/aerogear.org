@@ -28,27 +28,8 @@ cd $PWD/maven-android-sdk-deployer/platforms/android-22
 mvn install -N --quiet
 ```
 
-=== Install locally google-play-services
+=== Install locally Android and Google libraries 
 ```
-cd $PWD/maven-android-sdk-deployer/extras/google-play-services
-mvn  install -N --quiet
+cd $PWD/maven-android-sdk-deployer/repositories
+mvn install --quiet
 ```
-
-=== Install locally compatibility-v4
-```
-cd $PWD/maven-android-sdk-deployer/extras/compatibility-v4
-mvn install -N --quiet
-```
-
-=== Install locally compatibility-v7-appcompat
-```
-cd $PWD/maven-android-sdk-deployer/extras/compatibility-v7-appcompat
-mvn install -N --quiet
-```
-
-=== Install locally google-m2repository
-```
-cd $PWD/maven-android-sdk-deployer/repositories/google-m2repository
-mvn install -N --quiet
-```
-
