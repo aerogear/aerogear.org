@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AeroGear UnifiedPush Node.js Sender API Documentation</title>
-
+    <title>AeroGear.js API Documentation</title>
+    
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
@@ -17,13 +17,13 @@
 <body>
 
 <div id="main">
-
+    
     <h1 class="page-title">Source: unifiedpush-node-sender.js</h1>
+    
+    
 
 
-
-
-
+    
     <section>
         <article>
             <pre class="prettyprint source"><code>/* Node.js Sender API for the AeroGear Unified Push server
@@ -101,7 +101,7 @@ function send( serverSettings, message, callback ) {
     req.end( JSON.stringify( message ), "utf8" );
 }
 
-function createServerSettings( url, settings ) {
+function createServerSettings( url, applicationId, masterSecret ) {
     var serverSettings = {
         protocol: url.protocol,
         hostname: url.hostname,
@@ -112,7 +112,7 @@ function createServerSettings( url, settings ) {
             "Content-type": "application/json",
             "aerogear-sender": "AeroGear Node.js Sender"
         },
-        auth: settings.applicationID + ":" + settings.masterSecret,
+        auth: applicationId + ":" + masterSecret,
         method: "POST"
     };
     return serverSettings;
@@ -123,22 +123,38 @@ function camelToDash( str ) {
         .replace( /([a-z\d])([A-Z])/g, "$1-$2" ).toLowerCase();
 }
 
+function removeEmptyArrays (opt) {
+    for (var o in opt) {
+        if (Array.isArray(opt[o]) && opt[o].length &lt; 1) {
+            delete opt[o];
+        }
+    }
+    return opt;
+}
+
 var AeroGear = {};
 
 /**
     The AeroGear.Sender does cool stuff
     @class
-    @param {String} url - The URL of the Unified Push Server.
+    @param {Object} settings={} - the settings to be passed
+    @param {String} settings.url - The URL of the Unified Push Server.
+    @param {String} settings.applicationId - The Application ID
+    @param {String} settings.masterSecret - The Master Secret
     @returns {Object} sender - a Sender Object Event Emitter
  */
-AeroGear.Sender = function( url ) {
-    if( !url ) {
+AeroGear.Sender = function( settings ) {
+    settings = settings || {};
+
+    if( !settings.url || !settings.applicationId || !settings.masterSecret ) {
         throw "UnifiedPushSenderError";
     }
 
     if ( !( this instanceof  AeroGear.Sender ) ) {
-        return new  AeroGear.Sender( url );
+        return new  AeroGear.Sender( settings );
     }
+
+    var url = settings.url;
 
     events.EventEmitter.call( this );
 
@@ -148,64 +164,86 @@ AeroGear.Sender = function( url ) {
     this.getUrl = function() {
         return url;
     };
+
+    this.getApplicationId = function() {
+        return settings.applicationId;
+    };
+
+    this.getMasterSecret = function() {
+        return settings.masterSecret;
+    };
 };
 
 util.inherits( AeroGear.Sender, events.EventEmitter );
 
-exports.AeroGear = AeroGear;
-
-
 /**
     The send Method
-    @param {Object} message={} - the message to be passed
-    @param {String} [message.alert]
-    @param {String} [message.actionCategory]
-    @param {String} [message.sound]
-    @param {String} [message.badge]
-    @param {Boolean} [message.contentAvailable]
-    @param {Object} settings={} - the settings to be passed
-    @param {String} settings.applicationID - The Application ID
-    @param {String} settings.masterSecret - The Master Secret
-    @param {String} [settings.simplePush] - simplePush version number
-    @param {Number} [settings.ttl] - the time to live in seconds. This value is supported by APNs and GCM Only
-    @param {Object} [settings.criteria={}] - the criteria to select
-    @param {Array} [settings.criteria.alias] - a list of email or name strings
-    @param {Array} [settings.criteria.deviceType] - a list of device types as strings
-    @param {Array} [settings.criteria.categories] - a list of categories as strings
-    @param {Array} [settings.criteria.variants] - a list of variantID's as strings
+    @param {Object}  message={} - the message to be passed
+    @param {String}  [message.alert] - message that will be displayed on the alert UI element
+    @param {String}  [message.sound] - The name of a sound file
+    @param {String}  [message.badge] - The number to display as the badge of the app icon
+    @param {Object}  [message.userData={}] - any extra user data to be passed
+    @param {Object}  [message.apns={}]
+    @param {String}  [message.apns.title] - A short string describing the purpose of the notification.
+    @param {String}  [message.apns.actionCategory] - the identifier of the action category for the interactive notification
+    @param {Boolean} [message.apns.contentAvailable]
+    @param {String}  [message.apns.action] - The label of the action button
+    @param {Array}   [message.apns.urlArgs] - an array of values that are paired with the placeholders inside the urlFormatString value of your website.json file. Safari Only
+    @param {String}  [message.apns.titleLocKey] - The key to a title string in the Localizable.strings file for the current localization. iOS Only
+    @param {Array}   [message.apns.titleLocArgs] - Variable string values to appear in place of the format specifiers in title-loc-key. iOS Only
+    @param {Object}  [message.windows={}]
+    @param {String}  [message.windows.type] - The type of message to send toast, raw, badge or tile.
+    @param {String}  [message.windows.duration] - Duration a Toast message is displayed 'long' or 'short'
+    @param {String}  [message.windows.badge] - Badge notifications type for badges that are not numbers (none, activity, alert, available, away, busy, newMessage, paused, playing, unavailable, error or attention), for numbers use the value in the main part of the message.
+    @param {String}  [message.windows.tileType] - Different type of tile messages with different sizes see the [tile template catalog]{@link https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx} e.g. 'TileSquareText02' or 'TileWideBlockAndText02'
+    @param {Array}   [message.windows.images] - Images either local or remote need match the nubmer of the tileType
+    @param {Array}   [message.windows.textFields] - Texts needs to be same as the number of the tileType
+    @param {String}  [message.simplePush] - simplePush version number
+    @param {Object}  options = {} - the options to be passed
+    @param {Object}  [options.config={}] - the criteria to select
+    @param {Number}  [options.config.ttl] - the time to live in seconds. This value is supported by APNs and GCM Only
+    @param {Object}  [options.criteria={}] - the criteria to select
+    @param {Array}   [options.criteria.alias] - a list of email or name strings
+    @param {Array}   [options.criteria.deviceType] - a list of device types as strings
+    @param {Array}   [options.criteria.categories] - a list of categories as strings
+    @param {Array}   [options.criteria.variants] - a list of variantID's as strings
     @returns {Object} itself
 
  */
-AeroGear.Sender.prototype.send = function( message, settings, callback ) {
+AeroGear.Sender.prototype.send = function( message, options, callback ) {
 
-    settings = settings || {};
-
-    if( !settings.applicationID || !settings.masterSecret ) {
-        throw "UnifiedPushSenderError";
+    if( options && typeof options === "function" ) {
+        callback = options;
+        options = undefined;
     }
 
-    var serverSettings, setting, crit, key,
+    options = options || {};
+
+    var serverSettings, option, key, apnsKey,
         url = urlParser.parse( this.getUrl() ),
         newMessage = {};
 
-    for( setting in settings ) {
-        if( setting !== "applicationID" && setting !== "masterSecret" )
-        {
-            if( setting === "criteria" ) {
-                for( crit in settings.criteria ) {
-                    newMessage[ crit ] = settings.criteria[ crit ];
-                }
-            } else if( setting === "simplePush" ) {
-                newMessage[ "simple-push" ] = settings[setting];
-                delete settings[setting];
-            } else {
-                newMessage[ setting ] = settings[ setting ];
-            }
+    // Make sure we remove empty arrays for criteria
+    newMessage.criteria = removeEmptyArrays(options.criteria);
+    newMessage.config = options.config;
+
+    for( option in options ) {
+        if( option !== "criteria" || option !== "config" ) {
+            newMessage[ option ] = options[ option ];
         }
     }
 
     for( key in message ) {
-        if( key === "actionCategory" || key === "contentAvailable" ) {
+        if ( key === "apns" ) {
+            for( apnsKey in message[key]) {
+                if( apnsKey === "actionCategory" || apnsKey === "contentAvailable" || apnsKey === "urlArgs" || apnsKey === "titleLocKey" || apnsKey === "titleLocArgs") {
+                    message[key][camelToDash(apnsKey)] = message[key][apnsKey];
+                    delete message[key][apnsKey];
+                }
+            }
+        }
+
+        if(key === "simplePush" || key === "userData") {
             message[camelToDash(key)] = message[key];
             delete message[key];
         }
@@ -213,12 +251,14 @@ AeroGear.Sender.prototype.send = function( message, settings, callback ) {
 
     newMessage.message = message;
 
-    serverSettings = createServerSettings( url, settings );
+    serverSettings = createServerSettings( url, this.getApplicationId(), this.getMasterSecret() );
 
     send.call( this, serverSettings, newMessage, callback );
 
     return this;
 };
+
+module.exports = AeroGear;
 </code></pre>
         </article>
     </section>
@@ -235,7 +275,7 @@ AeroGear.Sender.prototype.send = function( message, settings, callback ) {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 14 2014 08:43:07 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Aug 10 2015 09:33:32 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
