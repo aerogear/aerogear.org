@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AeroGear UnifiedPush Node.js Sender API Documentation</title>
+    <title>AeroGear.js API Documentation</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -46,6 +46,7 @@
 
 <p>Node Sender API for the AeroGear Unified Push server</p>
 
+
 <h2>Getting Started</h2>
 
 <h3>Pre Reqs:</h3>
@@ -82,25 +83,73 @@ $ npm install</code></pre>
 
 <p>Require the <code>unifiedpush-node-sender</code> library</p>
 
-<pre><code>var agSender = require( &quot;unifiedpush-node-sender&quot; ).AeroGear,
-    url = &quot;http://localhost:8080/ag-push&quot;;</code></pre>
+<pre><code>var agSender = require( &quot;unifiedpush-node-sender&quot; ),
+    settings = {
+        url: &quot;http://localhost:8080/ag-push&quot;,
+        applicationId: &quot;12345&quot;,
+        masterSecret: &quot;123456&quot;
+    };</code></pre>
 
 <h3>Send a Message</h3>
 
 <p>You can use either listen for the success and error events</p>
 
-<pre><code>agSender.Sender( url ).send( message, settings ).on( &quot;success&quot;, function( response ) {
+<pre><code>agSender.Sender( settings ).send( message, options ).on( &quot;success&quot;, function( response ) {
     console.log( &quot;success called&quot;, response );
 });</code></pre>
 
 <p>Or you can use a callback</p>
 
-<pre><code>agSender.Sender( url ).send( message, settings, function( err, response ) {
+<pre><code>agSender.Sender( settings ).send( message, options, function( err, response ) {
     if( !err ) {
         console.log( &quot;success called&quot;, response );
         return;
     }
-});</code></pre></article>
+});</code></pre>
+
+<h2>API Documentation</h2>
+
+<h3>Class: Sender</h3>
+
+<p>The Sender Class,  It is an <code>EventEmitter</code></p>
+
+<h3>new Sender(settings)</h3>
+
+<ul><li><code>settings</code> Object<ul><li><code>url</code> String - The URL of the Unified Push Server.</li><li><code>applicationId</code> String - The id of an Application from the Unified Push Server</li><li><code>masterSecret</code> String - The master secret for that Application</li></ul></li></ul>
+
+<h3>sender.send([message], [options], [callback])</h3>
+
+<ul><li><p><code>message</code> Object</p><ul><li><code>alert</code> String - message that will be displayed on the alert UI element</li><li><code>sound</code> String - The name of a sound file</li><li><code>badge</code> String - The number to display as the badge of the app icon</li><li><code>simplePush</code> String - simplePush version number</li><li><p><code>userData</code> Object - any extra user data to be passed</p></li></ul></li><li><p><code>message.apns</code> Object</p><ul><li><code>title</code> String - A short string describing the purpose of the notification.</li><li><code>action</code> String - The label of the action button</li><li><code>urlArgs</code> Array - an array of values that are paired with the placeholders inside the urlFormatString value of your website.json file. Safari Only</li><li><code>titleLocKey</code> String - The key to a title string in the Localizable.strings file for the current localization. iOS Only</li><li><code>titleLocArgs</code> Array - Variable string values to appear in place of the format specifiers in title-loc-key. iOS Only</li><li><code>actionCategory</code> String - the identifier of the action category for the interactive notification</li><li><p><code>contentAvailable</code> Boolean - Provide this key with a value of 1 to indicate that new content is available. iOS Only</p></li></ul></li><li><p><code>message.windows</code> Object</p><ul><li><code>type</code> String - The type of message to send toast, raw, badge or tile.</li><li><code>duration</code> String - Duration a Toast message is displayed &#39;long&#39; or &#39;short&#39;</li><li><code>badge</code> String - Badge notifications type for badges that are not numbers (none, activity, alert, available, away, busy, newMessage, paused, playing, unavailable, error or attention), for numbers use the value in the main part of the message.</li><li><code>tileType</code> String - Different type of tile messages with different sizes see the <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx">tile template catalog</a> e.g. &#39;TileSquareText02&#39; or &#39;TileWideBlockAndText02&#39;</li><li><code>images</code> Array - Images either local or remote need match the nubmer of the tileType</li><li><p><code>textFields</code> Array - Texts needs to be same as the number of the tileType</p></li></ul></li><li><p><code>options</code> Object</p></li><li><p><code>options.config</code> Object</p><ul><li><p><code>ttl</code> Number - the time to live in seconds. This value is supported by APNs and GCM Only</p></li></ul></li><li><p><code>options.criteria</code> Object</p><ul><li><code>alias</code> Array - a list of email or name strings</li><li><code>deviceType</code> Array - a list of device types as strings</li><li><code>categories</code> Array - a list of categories as strings</li><li><p><code>variants</code> Array - a list of variantID&#39;s as strings</p></li></ul></li><li><p><code>callback</code> Function</p></li></ul>
+
+<h3>Event: &#39;success&#39;</h3>
+
+<p><code>function () { }</code></p>
+
+<h3>Event: &#39;error&#39;</h3>
+
+<p><code>function (error) { }</code></p>
+
+<p>For more information about the Unified Push Server&#39;s REST sender API, look <a href="https://aerogear.org/docs/specs/aerogear-unifiedpush-rest/sender/index.html">here</a></p>
+
+<h2>Development</h2>
+
+<p>If you would like to help develop AeroGear you can join our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">developer&#39;s mailing list</a>, join #aerogear on Freenode, or shout at us on Twitter @aerogears.</p>
+
+<p>Also takes some time and skim the <a href="http://aerogear.org/docs/guides/Contributing/">contributor guide</a></p>
+
+<h4>Generate Documentation</h4>
+
+<p>The code is documented in JSDoc and can be generated in <code>docs</code> folder by running:</p>
+
+<p><code>npm run-script docs</code></p>
+
+<h2>Questions?</h2>
+
+<p>Join our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-users">user mailing list</a> for any questions or help! We really hope you enjoy app development with AeroGear!</p>
+
+<h2>Found a bug?</h2>
+
+<p>If you found a bug please create a ticket for us on <a href="https://issues.jboss.org/browse/AGPUSH">Jira</a> with some steps to reproduce it.</p></article>
     </section>
 
 
@@ -117,7 +166,7 @@ $ npm install</code></pre>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 14 2014 08:43:07 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Aug 10 2015 09:33:32 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

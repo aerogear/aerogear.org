@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AeroGear UnifiedPush Node.js Sender Documentation</title>
-
+    <title>AeroGear.js API Documentation</title>
+    
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
@@ -17,144 +17,213 @@
 <body>
 
 <div id="main">
-
+    
     <h1 class="page-title">Module: Sender</h1>
-
-
+    
+    
 
 
 
 <section>
-
+    
 <header>
     <h2>
     Sender
     </h2>
-
-</header>
+    
+</header>  
 
 <article>
     <div class="container-overview">
-
-
-
-
+    
+    
+    
+        
 <dt>
-    <h4 class="name" id="Sender"><span class="type-signature"></span>new Sender<span class="signature">(url)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-
+    <h4 class="name" id="Sender"><span class="type-signature"></span>new Sender<span class="signature">(settings={})</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
 </dt>
 <dd>
+    
+    
 
-
-
-
+    
     <div class="description">
         The AeroGear.Sender does cool stuff
     </div>
+    
 
-
-
-
-
-
-
+    
+    
+    
+    
+    
         <h5>Parameters:</h5>
-
+        
 
 <table class="params">
     <thead>
 	<tr>
-
+		
 		<th>Name</th>
-
-
+		
+		
 		<th>Type</th>
-
-
-
-
-
+		
+		
+		
+		
+		
 		<th class="last">Description</th>
 	</tr>
 	</thead>
-
+	
 	<tbody>
-
-
+	
+	
         <tr>
-
-                <td class="name"><code>url</code></td>
-
-
+            
+                <td class="name"><code>settings={}</code></td>
+            
+            
             <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
 
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the settings to be passed</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.url</code></td>
+            
+            
+            <td class="type">
+            
+                
 <span class="param-type">String</span>
 
 
-
+            
             </td>
-
-
-
-
-
+            
+            
+            
+            
+            
             <td class="description last">The URL of the Unified Push Server.</td>
         </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.applicationId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
 
 
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The Application ID</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>settings.masterSecret</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The Master Secret</td>
+        </tr>
+	
+	
 	</tbody>
 </table>
-
-
-
+    
+    
+    
 <dl class="details">
+    
+        
+    
+    
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="unifiedpush-node-sender.js.html">unifiedpush-node-sender.js</a>, <a href="unifiedpush-node-sender.js.html#line106">line 106</a>
+        <a href="unifiedpush-node-sender.js.html">unifiedpush-node-sender.js</a>, <a href="unifiedpush-node-sender.js.html#line118">line 118</a>
     </li></ul></dd>
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
 </dl>
 
+    
+    
 
+    
 
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
     <h5>Returns:</h5>
-
-
+    
+            
 <div class="param-desc">
     sender - a Sender Object Event Emitter
 </div>
@@ -166,732 +235,1279 @@
 		Type
 	</dt>
 	<dd>
-
+		
 <span class="param-type">Object</span>
 
 
 	</dd>
 </dl>
 
-
-
-
+        
+    
+    
 </dd>
 
-
+    
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         <h3 class="subsection-title">Methods</h3>
-
+        
         <dl>
-
+            
 <dt>
-    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(message={}, settings={})</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(message={}, options)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
 </dt>
 <dd>
+    
+    
 
-
-
-
+    
     <div class="description">
         The send Method
     </div>
+    
 
-
-
-
-
-
-
+    
+    
+    
+    
+    
         <h5>Parameters:</h5>
-
+        
 
 <table class="params">
     <thead>
 	<tr>
-
+		
 		<th>Name</th>
-
-
+		
+		
 		<th>Type</th>
-
-
+		
+		
 		<th>Argument</th>
-
-
-
+		
+		
+		
 		<th>Default</th>
-
-
+		
+		
 		<th class="last">Description</th>
 	</tr>
 	</thead>
-
+	
 	<tbody>
-
-
+	
+	
         <tr>
-
+            
                 <td class="name"><code>message={}</code></td>
-
-
+            
+            
             <td class="type">
-
-
+            
+                
 <span class="param-type">Object</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
+            
+            
+            
                 <td class="default">
-
+                
                 </td>
-
-
+            
+            
             <td class="description last">the message to be passed</td>
         </tr>
-
-
-
+	
+	
+	
         <tr>
-
+            
                 <td class="name"><code>message.alert</code></td>
-
-
+            
+            
             <td class="type">
-
-
+            
+                
 <span class="param-type">String</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
+            
+            
+            
                 <td class="default">
-
+                
                 </td>
-
-
-            <td class="description last"></td>
+            
+            
+            <td class="description last">message that will be displayed on the alert UI element</td>
         </tr>
-
-
-
+	
+	
+	
         <tr>
-
-                <td class="name"><code>message.actionCategory</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-                <td class="default">
-
-                </td>
-
-
-            <td class="description last"></td>
-        </tr>
-
-
-
-        <tr>
-
+            
                 <td class="name"><code>message.sound</code></td>
-
-
+            
+            
             <td class="type">
-
-
+            
+                
 <span class="param-type">String</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
+            
+            
+            
                 <td class="default">
-
+                
                 </td>
-
-
-            <td class="description last"></td>
+            
+            
+            <td class="description last">The name of a sound file</td>
         </tr>
-
-
-
+	
+	
+	
         <tr>
-
+            
                 <td class="name"><code>message.badge</code></td>
-
-
+            
+            
             <td class="type">
-
-
+            
+                
 <span class="param-type">String</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
+            
+            
+            
                 <td class="default">
-
+                
                 </td>
-
-
-            <td class="description last"></td>
+            
+            
+            <td class="description last">The number to display as the badge of the app icon</td>
         </tr>
-
-
-
+	
+	
+	
         <tr>
-
-                <td class="name"><code>message.contentAvailable</code></td>
-
-
+            
+                <td class="name"><code>message.userData</code></td>
+            
+            
             <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
 
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">any extra user data to be passed</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>message.apns</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">A short string describing the purpose of the notification.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>actionCategory</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the identifier of the action category for the interactive notification</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>contentAvailable</code></td>
+            
+            
+            <td class="type">
+            
+                
 <span class="param-type">Boolean</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
-                <td class="default">
-
-                </td>
-
-
+            
+            
+            
+            
             <td class="description last"></td>
         </tr>
-
-
-
+	
+	
+	
         <tr>
-
-                <td class="name"><code>settings={}</code></td>
-
-
+            
+                <td class="name"><code>action</code></td>
+            
+            
             <td class="type">
+            
+                
+<span class="param-type">String</span>
 
 
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">The label of the action button</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>urlArgs</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">an array of values that are paired with the placeholders inside the urlFormatString value of your website.json file. Safari Only</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>titleLocKey</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">The key to a title string in the Localizable.strings file for the current localization. iOS Only</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>titleLocArgs</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Variable string values to appear in place of the format specifiers in title-loc-key. iOS Only</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>message.windows</code></td>
+            
+            
+            <td class="type">
+            
+                
 <span class="param-type">Object</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
-
-
-
-
-                </td>
-
-
-
-                <td class="default">
-
-                </td>
-
-
-            <td class="description last">the settings to be passed</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>settings.applicationID</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-
-
-
-
-                </td>
-
-
-
-                <td class="default">
-
-                </td>
-
-
-            <td class="description last">The Application ID</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>settings.masterSecret</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-
-
-
-
-                </td>
-
-
-
-                <td class="default">
-
-                </td>
-
-
-            <td class="description last">The Master Secret</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>settings.simplePush</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">String</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
+            
+            
+            
                 <td class="default">
-
-                </td>
-
-
-            <td class="description last">simplePush version number</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>settings.ttl</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Number</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-                <td class="default">
-
-                </td>
-
-
-            <td class="description last">the time to live in seconds. This value is supported by APNs and GCM Only</td>
-        </tr>
-
-
-
-        <tr>
-
-                <td class="name"><code>settings.criteria</code></td>
-
-
-            <td class="type">
-
-
-<span class="param-type">Object</span>
-
-
-
-            </td>
-
-
-                <td class="attributes">
-
-                    &lt;optional><br>
-
-
-
-
-
-                </td>
-
-
-
-                <td class="default">
-
+                
                     {}
-
+                
                 </td>
-
-
-            <td class="description last">the criteria to select
+            
+            
+            <td class="description last">
                 <h6>Properties</h6>
-
+                
 
 <table class="params">
     <thead>
 	<tr>
-
+		
 		<th>Name</th>
-
-
+		
+		
 		<th>Type</th>
-
-
+		
+		
 		<th>Argument</th>
-
-
-
-
+		
+		
+		
+		
 		<th class="last">Description</th>
 	</tr>
 	</thead>
-
+	
 	<tbody>
-
-
+	
+	
         <tr>
-
-                <td class="name"><code>alias</code></td>
-
-
+            
+                <td class="name"><code>type</code></td>
+            
+            
             <td class="type">
+            
+                
+<span class="param-type">String</span>
 
 
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">The type of message to send toast, raw, badge or tile.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>duration</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Duration a Toast message is displayed 'long' or 'short'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>badge</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Badge notifications type for badges that are not numbers (none, activity, alert, available, away, busy, newMessage, paused, playing, unavailable, error or attention), for numbers use the value in the main part of the message.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>tileType</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Different type of tile messages with different sizes see the <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx">tile template catalog</a> e.g. 'TileSquareText02' or 'TileWideBlockAndText02'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>images</code></td>
+            
+            
+            <td class="type">
+            
+                
 <span class="param-type">Array</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
+            
+            
+            
+            
+            <td class="description last">Images either local or remote need match the nubmer of the tileType</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>textFields</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
 
 
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Texts needs to be same as the number of the tileType</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>message.simplePush</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
 
 
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">simplePush version number</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">= {} - the options to be passed
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>config</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">the criteria to select
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>ttl</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the time to live in seconds. This value is supported by APNs and GCM Only</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>criteria</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">the criteria to select
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>alias</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+            
             <td class="description last">a list of email or name strings</td>
         </tr>
-
-
-
+	
+	
+	
         <tr>
-
+            
                 <td class="name"><code>deviceType</code></td>
-
-
+            
+            
             <td class="type">
-
-
+            
+                
 <span class="param-type">Array</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
-
+            
+            
+            
+            
             <td class="description last">a list of device types as strings</td>
         </tr>
-
-
-
+	
+	
+	
         <tr>
-
+            
                 <td class="name"><code>categories</code></td>
-
-
+            
+            
             <td class="type">
-
-
+            
+                
 <span class="param-type">Array</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
-
+            
+            
+            
+            
             <td class="description last">a list of categories as strings</td>
         </tr>
-
-
-
+	
+	
+	
         <tr>
-
+            
                 <td class="name"><code>variants</code></td>
-
-
+            
+            
             <td class="type">
-
-
+            
+                
 <span class="param-type">Array</span>
 
 
-
+            
             </td>
-
-
+            
+            
                 <td class="attributes">
-
+                
                     &lt;optional><br>
-
-
-
-
-
+                
+                    
+                
+                    
+                
                 </td>
-
-
-
-
+            
+            
+            
+            
             <td class="description last">a list of variantID's as strings</td>
         </tr>
-
-
+	
+	
 	</tbody>
 </table>
             </td>
         </tr>
-
-
+	
+	
 	</tbody>
 </table>
-
-
-
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
 <dl class="details">
+    
+        
+    
+    
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="unifiedpush-node-sender.js.html">unifiedpush-node-sender.js</a>, <a href="unifiedpush-node-sender.js.html#line151">line 151</a>
+        <a href="unifiedpush-node-sender.js.html">unifiedpush-node-sender.js</a>, <a href="unifiedpush-node-sender.js.html#line185">line 185</a>
     </li></ul></dd>
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
 </dl>
 
+    
+    
 
+    
 
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
     <h5>Returns:</h5>
-
-
+    
+            
 <div class="param-desc">
     itself
 </div>
@@ -903,27 +1519,27 @@
 		Type
 	</dt>
 	<dd>
-
+		
 <span class="param-type">Object</span>
 
 
 	</dd>
 </dl>
 
-
-
-
+        
+    
+    
 </dd>
 
         </dl>
-
-
-
-
-
+    
+    
+    
+    
+    
 </article>
 
-</section>
+</section>  
 
 
 
@@ -937,7 +1553,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Aug 14 2014 08:43:07 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Aug 10 2015 09:33:32 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
