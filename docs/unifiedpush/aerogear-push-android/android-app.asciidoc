@@ -10,7 +10,7 @@ Fire up Android Studio IDE and choose 'Start a new Android Studio project'. Fill
 
 image:./img/android-studio-wizard-1.png[Android Studio - New Project, Wizard (Step 1)]
 
-The _Minimum SDK_ option for the link:http://http://github.com/aerogear/aerogear-android-push[AeroGear Android Push] is _API 16 (Android 4.1 - Jelly Bean)_ so select this option if not selected.
+The _Minimum SDK_ option for the link:http://http://github.com/aerogear/aerogear-android-push[AeroGear Android Push] >= 2.0 is _API 16 (Android 4.1 - Jelly Bean)_ so select this option if not selected.
 
 image:./img/android-studio-wizard-2.png[Android Studio - New Project, Wizard (Step 2)]
 
