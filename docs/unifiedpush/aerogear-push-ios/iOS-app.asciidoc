@@ -1,74 +1,47 @@
 [[ios-app]]
 == Creating an iOS application
 
-Before we start, please install link:http://cocoapods.org/[CocoaPods].
-
-
-Afterwards, please clone this link:https://github.com/aerogear/aerogear-push-ios-demo[Sample Application]. It uses our SDK to register your application installation with the iOS Variant you registered earlier!
-
-=== Sample App
-
-Once the application is on your filesystem, invoke the following command:
+To start, get this link:https://github.com/jboss-mobile/unified-push-helloworld/tree/master/ios-swift[HelloWorld Application]. It uses our SDK to register your application installation with the iOS Variant you registered earlier!
 
 [source,c]
 ----
-pod install
+git clone git@github.com:jboss-mobile/unified-push-helloworld.git
+cd ios-swift
 ----
 
-This downloads the project dependencies (e.g. our little SDK) and creates a Workspace, which you need to open in order to work with the Application. In the same folder invoke
+=== HelloWorld App
+
+To open the project, invoke:
 
 [source,c]
 ----
-open PushTest.xcworkspace
+open HelloWorldSwift.xcodeproj
 ----
 
 Once the project is opened in Xcode, you need to change the *Bundle ID*, since it *has* to match the one that you created earlier:
 
 image:./img/bundleIDchange.png[Change the Bundle Identifier]
 
-Further, ensure that the correct *Provisioning profile* is set on the application:
-
-image:./img/provisioning_profile.png[Provisioning Profile]
-
-
 === Setting up the iOS Variant ID
 
-Now it is time to look at the code: Open the link:https://github.com/aerogear/aerogear-push-ios-demo/blob/master/PushTest/AGAppDelegate.m[AGAppDelegate file]. Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
+Now it is time to look at the code: Open the link:https://github.com/jboss-mobile/unified-push-helloworld/blob/master/ios-swift/HelloWorldSwift/AppDelegate.swift[AppDelegate file]. 
+
+Here we have removed all the unneeded boilerplate code, in order to focus on getting the _Apple Push Notifications_ to work. The _application:didFinishLaunchingWithOptions:_ method contains a call to the _registerForRemoteNotificationTypes_ to notify the operating system, that this app is interested in different types of _Remote Notifications_:
 
 
 [source,c]
 ----
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-// Let the device know we want to receive push notifications
- [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-  (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  // bootstrap the registration process by asking the user to 'Accept' and then register with APNS thereafter
+  let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+  UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+  UIApplication.sharedApplication().registerForRemoteNotifications()
 ...
-...
-...
+  return true
+}
 ----
 
-__Note:__ Since iOS8 _registerForRemoteNotificationTypes_ has been removed in favor of _registerUserNotificationSettings_. Besides, for remote push notification you will need the extra step to call _registerForRemoteNotifications_. If you want to offer support for both iOS7 and iOS8, you can use this code snippet:
-
-[source,c]
-----
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-// when running under iOS 8 we will use the new API for APNS registration
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    } else {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }
-#else
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-
-#endif
-...
-----
+__Note iO7:__ Instead of iOS8 specific _registerUserNotificationSettings_ use _registerForRemoteNotificationTypes_. If you want to offer support for both iOS7 and iOS8 in ObjC syntax see this link:https://www.hackingwithswift.com/new-syntax-swift-2-availability-checking[code], for a Swift2 check use link:https://www.hackingwithswift.com/new-syntax-swift-2-availability-checking[#available check].
 
 Once the application is started the _FIRST_ time, it generates the following dialog, where the user has to agree that the application _may_ receive "Push Notification Messages":
 
@@ -88,53 +61,68 @@ Now let's look at the important code section:
 
 [source,c]
 ----
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-    // initialize "Registration helper" object using the
-    // base URL where the "AeroGear UnifiedPush Server" is running.
+func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+  // time to register user with the "AeroGear UnifiedPush Server"
 
-    AGDeviceRegistration *registration =    // [1]
-    
-        // WARNING: make sure, you start JBoss with the -b 0.0.0.0 option, to bind on all interfaces
-        // from the iPhone, you can NOT use localhost 
-        [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"http://192.168.0.102:8080/ag-push/"]];  
-    
-    [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {   // [2]
-        
-        // You need to fill the 'Variant Id' together with the 'Variant Secret'
-        // both received when performing the variant registration with the server.
-        [clientInfo setVariantID:@"402880e63ea239b9013ea23be9dc0004"];  // [3]
-        [clientInfo setVariantSecret:@"45d23ff4-cba4-49f2-ab91-6ba5fd7d23b4"];  // [4]
-
-        // apply the token, to identify THIS device
-        [clientInfo setDeviceToken:deviceToken];  // [5]
-
-        // --optional config--
-        // set some 'useful' hardware information params
-        UIDevice *currentDevice = [UIDevice currentDevice];
-        
-        [clientInfo setOperatingSystem:[currentDevice systemName]];  // [6]
-        [clientInfo setOsVersion:[currentDevice systemVersion]];     // [7]
-        [clientInfo setDeviceType: [currentDevice model]];           // [8]
-        
-    } success:^() {
-        
-        // successfully registered!
-
-    } failure:^(NSError *error) {
-        // did receive an HTTP error from the UPS server ???
-        // Let's log it for now:
-        NSLog(@"UPS registration Error: %@", error);
-    }];
+  let device = AGDeviceRegistration(config: "pushconfig")  // [1]
+  // perform registration of this device
+  device.registerWithClientInfo({ (clientInfo: AGClientDeviceInformation!) in // [2]
+    // set the deviceToken
+    clientInfo.deviceToken = deviceToken
+            
+    // --optional config--
+    // set some 'useful' hardware information params
+    let currentDevice = UIDevice()
+           
+    clientInfo.operatingSystem = currentDevice.systemName // [3]
+    clientInfo.osVersion = currentDevice.systemVersion    // [4]
+    clientInfo.deviceType = currentDevice.model           // [5]
+  },
+  success: {
+    // successfully registered!
+    print("successfully registered with UPS!")
+                
+    // send NSNotification for success_registered, will be handle by registered AGViewController
+    let notification = NSNotification(name:"success_registered", object: nil)
+    NSNotificationCenter.defaultCenter().postNotification(notification)
+    },
+            
+  failure: {(error: NSError!) in
+    print("Error Registering with UPS: \(error.localizedDescription)")
+           
+    let notification = NSNotification(name:"error_register", object: nil)
+     NSNotificationCenter.defaultCenter().postNotification(notification)
+  })
 }
+    
 ----
 
-In [1] we initialize our _AGDeviceRegistration_ object. **NOTE:** You can not use _localhost_ from the device, you have to use an (internal) IP address, where the _AeroGear UnifiedPush Server_ is running!
+In [1] we initialize our _AGDeviceRegistration_ object reading fhconfig.plist file. See below the content of the config file:
 
-Next, in [2] we call _registerWithClientInfo_ passing a configuration block that sets up the parameters needed to register this app with the _AeroGear Push Server_. The required parameters that need to be present are the _VariantID_ [3] and _VariantSecret_ [4]  (which we received it in the previous chapter when we were registering the _iOS Variant_ with the _Push Application_) and the Device Token [5]. It is valid to specify a bit more data on the _clientInfo_ and we do here by setting metadata such the operating system [6], its version [7] and the device type [8].
+[source,c]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>serverURL</key>
+    <string>http://192.168.0.10:8080/ag-push</string>
+    <key>variantID</key>
+    <string>a62785ec-2f08-408d-93f3-c4869e0edbfe</string>
+    <key>variantSecret</key>
+    <string>7ba81aed-f561-4476-8ecf-45d506800dca</string>
+</dict>
+</plist>
+----
+
+In this file we define the _serverURL_ if the Unified Push Server,the _VariantID_  and _VariantSecret_ (which we received it in the previous chapter when we were registering the _iOS Variant_ with the _Push Application_).
+
+**NOTE:** You can not use _localhost_ from the device, you have to use an (internal) IP address, where the _AeroGear UnifiedPush Server_ is running!
 
 [NOTE]
 Do not forget to use the _development_ _VariantID_ and _VariantSecret_ if you are using your _development_ provisioning profile as your signing identity in Xcode, or to use _production_ _VariantID_ and _VariantSecret_ if you are using your _distribution_ provisioning profile.)
+
+Next, in [2] we call _registerWithClientInfo_ passing a configuration block that sets up the parameters needed to register this app with the _AeroGear Push Server_: the Device Token. It is valid to specify a bit more data on the _clientInfo_ and we do here by setting metadata such the operating system [3], its version [4] and the device type [5].
 
 ==== Callbacks
 
@@ -150,27 +138,37 @@ UPS sends an unique ID for every push message by default all we have to do is se
 
 [source,c]
 ----
-- (BOOL)application:(UIApplication *)application
-   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-       ...
-       // Send metrics when app is launched due to push notification
-       [AGPushAnalytics sendMetricsWhenAppLaunched:launchOptions];
-       ...
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+       
+  // bootstrap the registration process by asking the user to 'Accept' and then register with APNS thereafter
+  let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+  UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+  UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+  // Send metrics when app is launched due to push notification
+  AGPushAnalytics.sendMetricsWhenAppLaunched(launchOptions)
+  ...
+  return true
 }
 ----
 
-If the application is launched using a push notification the _sendMetricsWhenAppLaunched_ static function needs to be invoked within the _didFinishLaunchingWithOptions_ method. when the app is brought from background to foreground due to a push notification, the following line needs to be added to the _didReceiveRemoteNotification_ method:
+If the application is launched using a push notification the _sendMetricsWhenAppLaunched_ static function needs to be invoked within the _didFinishLaunchingWithOptions_ method. 
+
+When the app is brought from background to foreground due to a push notification, the following line needs to be added to the _didReceiveRemoteNotification_ method:
 
 [source,c]
 ----
-- (void)application:(UIApplication *)application 
-   didReceiveRemoteNotification:(NSDictionary *)userInfo
-   fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-   
-       ...
-       // Send metrics when app is launched due to push notification
-       [AGPushAnalytics sendMetricsWhenAppLaunched:launchOptions];
-       ...
+func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult) -> Void) {
+  // When a message is received, send NSNotification, would be handled by registered ViewController
+  let notification:NSNotification = NSNotification(name:"message_received", object:nil, userInfo:userInfo)
+  NSNotificationCenter.defaultCenter().postNotification(notification)
+  print("UPS message received: \(userInfo)")
+        
+  // Send metrics when app is brpught form backgrpund tp foreground due to push notification
+  AGPushAnalytics.sendMetricsWhenAppAwoken(application.applicationState, userInfo: userInfo)
+        
+   // No additioanl data to fetch
+   fetchCompletionHandler(UIBackgroundFetchResult.NoData)
 }
 ----
 
