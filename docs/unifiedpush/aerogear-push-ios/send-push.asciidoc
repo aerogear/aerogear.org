@@ -13,33 +13,44 @@ image:./img/PushMessage.png[Send Notification]
 
 === Custom Dialog
 
-While the application is running in foreground, the above described feature is _NOT_ available. However, a different callback can be implemented on the _AppDelegate_ class:
+To receive the message send by the Unified Push Server console, implement _application:didReceiveRemoteNotification:_ (for foreground notification or _application:didReceiveRemoteNotification:fetchCompletionHandler:_  for background notification.
 
 [source,c]
 ----
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-
-    // A JSON object is received, represented as a NSDictionary.
-    // use it to pick your custom key
-    
-    // For demo reasons, we simply read the "alert" key, from the "aps" dictionary:
-    NSString *alertValue = [userInfo valueForKeyPath:@"aps.alert"];
-    
-    
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: @"Custom Dialog, while Program is active"
-                          message: alertValue
-                          delegate: nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
-    [alert show];
+func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult) -> Void) {
+  // When a message is received, send NSNotification, would be handled by registered ViewController
+  let notification:NSNotification = NSNotification(name:"message_received", object:nil, userInfo:userInfo)
+  NSNotificationCenter.defaultCenter().postNotification(notification)
+  print("UPS message received: \(userInfo)")
+        
+  // No additioanl data to fetch
+  fetchCompletionHandler(UIBackgroundFetchResult.NoData)
 }
 ----
 
-The _application didReceiveRemoteNotification:_ method receives a _NSDictionary_ which represents a _JSON_ map, of the received payload. The _aps_ field of that map contains all the received attributes, like the earlier mentioned _alert_ key/value pair. The show code simply reads the value of the _alert_ key and explicitly displays it in a custom dialog. Of course, based on the needed functionality it would be also possible to update a view, based on the received message.
+In this example, we send a the entire notification object in NSNotificationCenter. Once intersepted the following method will process and sipaly the message contined in the notification:
 
+[source,c]
+----
+func messageReceived(notification: NSNotification) {
+  let obj:AnyObject? = notification.userInfo!["aps"]!["alert"]  // [1]    
+  // if alert is a flat string
+  if let msg = obj as? String {    // [2]
+    messages.append(msg)
+  } else {                         // [3]
+     // if the alert is a dictionary we need to extract the value of the body key
+     let msg = obj!["body"] as! String
+      messages.append(msg)
+  }
+  tableView.reloadData()
+}
+----
 
-The custom Dialog:
+The object received as _NSDictionary_ which represents a _JSON_ map, of the received payload. The _aps_ field of that map contains all the received attributes, like the earlier mentioned _alert_ key/value pair [1]. 
+
+If the Unified Push Server is 1.0.X the alert is aa string as in [2], if Unified Push Server is 1.1.x, the alort is an objet as shown in [3].
+
+The code simply reads the value of the _alert_ key and displays in a UITableView as shown below:
 
 image:./img/CustomDialog.png[Custom Dialog]
 
@@ -54,7 +65,7 @@ Reading the value of your own keys is as simple as in the above snippet about th
 
 [source,c]
 ----
-NSString *customValue = [userInfo valueForKeyPath:@"customKey"];
+let customValue = userInfo.valueForKeyPath("customKey")
 ----
 
 Now the evaluated value can be used inside of the iOS application.
@@ -67,13 +78,12 @@ _Note:_ *If your application has _no_ need for background processing, using the 
 
 [source,c]
 ----
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-
+func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult) -> Void) {
     // 'userInfo' contains information related to the remote notification.
 
     // should always be called at the end of processing so
     // the system can take a UI snapshot of the application.
-    completionHandler(UIBackgroundFetchResultNewData);
+  fetchCompletionHandler(UIBackgroundFetchResult.NoData)
 }
 ----
 
