@@ -12,7 +12,7 @@ section: platforms
   <p>
     <a href="/getstarted/guides/" class="btn btn-primary"><i class="fa fa-book"></i> Guides</a>
     <a href="/getstarted/demos/#cordova" class="btn btn-primary"><i class="fa fa-cogs"></i> Demos</a>
-    <a href="http://localhost:4000/docs/specs/aerogear-cordova/" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
+    <a href="/docs/specs/aerogear-cordova/" class="btn btn-primary"><i class="fa fa-file-text-o"></i> API Documentation</a>
     <a href="https://github.com/aerogear/?query=cordova" class="btn btn-primary"><i class="fa fa-github-alt"></i> GitHub Repos</a>
   </p>
 

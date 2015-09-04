@@ -94,31 +94,31 @@ cordova:
       long-name: Push
       module: push
       version: latest
-      plugin: org.jboss.aerogear.cordova.push
+      plugin: aerogear-cordova-push
     otp:
       name: OTP
       long-name: OTP (One-Time Password)
       module: security
       version: latest
-      plugin: org.jboss.aerogear.cordova.otp
+      plugin: aerogear-cordova-otp
     crypto:
       name: Crypto
       long-name: Crypto
       module: security
-      version: 0.0.1
-      plugin: org.jboss.aerogear.cordova.crypto
+      version: latest
+      plugin: aerogear-cordova-crypto
     geo:
       name: Geo
       long-name: Geofencing
       module: geo
       version: latest
-      plugin: org.jboss.aerogear.cordova.geo
+      plugin: aerogear-cordova-geo
     oauth2:
       name: OAuth2
       long-name: OAuth2
       module: security
       version: latest
-      plugin: org.jboss.aerogear.cordova.oauth2
+      plugin: aerogear-cordova-oauth2
 
 windows:
   name: Windows
