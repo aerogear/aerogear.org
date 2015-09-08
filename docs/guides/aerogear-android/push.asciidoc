@@ -143,8 +143,7 @@ public class MainActivity extends Activity implements MessageHandler {
     @Override
     public void onMessage(Context context, Bundle bundle) {
         TextView text = (TextView) findViewById(R.id.text_view1);
-        text.setText(bundle.getString("alert"));
-        text.invalidate();
+        text.setText(bundle.getString(UnifiedPushMessage.ALERT_KEY));
     }
 
     @Override

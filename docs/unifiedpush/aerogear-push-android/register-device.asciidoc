@@ -15,6 +15,6 @@ image:./img/variant_02.png[Android Variant Details]
 
 NOTE: Clicking on the appropriate tab, you can choose between _Android_ and _Cordova_ snippet!
 
-=== Eclipse
+=== Android Studio
 
-The server is now configured. Let's move to Eclipse and link:#android-app[create an Android application] that will use the AeroGear Android library to connect to the UnifiedPush server and start receiving notifications.
+The server is now configured. Let's move to Android Studio and link:#android-app[create an Android application] that will use the AeroGear Android library to connect to the UnifiedPush server and start receiving notifications.
