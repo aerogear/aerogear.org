@@ -72,13 +72,27 @@ Images could be local or URL based. Be sure to have the correct number of text a
 
 Raw
 ---
-https://msdn.microsoft.com/en-us/library/windows/apps/jj676791.aspx[Raw] message are general purpose and do not have any UI and are simular to iOS's content-available. The value of the mesage alert field is send to the application:
+https://msdn.microsoft.com/en-us/library/windows/apps/jj676791.aspx[Raw] message are general purpose and do not have any UI and are similar to iOS's content-available. The value of the mesage alert field is send to the application:
 
 ```json
 "message": {
     "alert": "Raw message to the app",
     "windows": {
       "type": "raw"
+    }
+}
+```
+
+Page
+----
+
+This enables to load a specific page when the notification was received in the background and the user activates your app by 'touching' the notification
+Also when you use cordova in combination with MPNS you can set the page attribute to `cordova` this will ensure two things, that your javascript callback is called once the notification was used to bring your app into the foreground and that you receive the user data.
+
+```json
+"message": {
+    "windows": {
+      "page": "/Page.xaml"
     }
 }
 ```
