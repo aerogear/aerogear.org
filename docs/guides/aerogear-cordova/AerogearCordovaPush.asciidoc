@@ -206,6 +206,20 @@ function onNotification(event) {
 }
 ----
 
+=== Windows
+In order for your callback to be called when the user uses the notification to bring the application in foreground, you'll need to add a page parameter to the message:
+
+[source,javascript]
+----
+"message": {
+    "windows": {
+      "page": "cordova"
+    }
+}
+----
+
+The sender will use this to trigger a 'special internal' page within the plugin that will call your javascript callback and parse the user-data. Without the app will come to foreground without invoking the javascript callback like you are used on the other platforms.
+
 == To unregister (only available on Android)
 
 [source,javascript]
