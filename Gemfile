@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'RedCloth', '4.2.9'
-gem 'jekyll', '2.5.2'
+gem 'jekyll', '3.0.0'
 gem 'net-sftp', '2.1.2'
-gem 'asciidoctor', '1.5.2'
+gem 'asciidoctor', '1.5.3'
 gem 'kramdown', '1.6.0'
 gem 'rouge', '1.8.0'
 gem 'less', '2.6.0'
