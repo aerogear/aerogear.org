@@ -1,6 +1,7 @@
 .sass-cache
 .DS_Store
 .awestruct
+.jekyll-metadata
 _site
 _tmp/
 bin/

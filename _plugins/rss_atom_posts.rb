@@ -18,7 +18,7 @@ module Reading
         http.body_str
       end
 
-      all_tags = Set.new
+      all_data = Set.new
 
       posts = []
       feed = RSS::Parser.parse(feed_xml)
@@ -28,15 +28,15 @@ module Reading
           categories << cat.term
         end
         if include_blog_entry_in_news_feed(entry, categories) then
-          tags_set = get_tags_as_set(site, categories)
-          is_release = tags_set.include?('release')
+          data_set = get_data_as_set(site, categories)
+          is_release = data_set.include?('release')
           author = lookup_author(site, entry.author.name.content)
-          mod = lookup_module(site, nil, tags_set)
-          platform = lookup_platform(site, nil, tags_set)
-          tags = tags_set.to_a
-          classes = derive_classes(tags, mod, platform, is_release)
+          mod = lookup_module(site, nil, data_set)
+          platform = lookup_platform(site, nil, data_set)
+          data = data_set.to_a
+          classes = derive_classes(data, mod, platform, is_release)
 
-          all_tags.merge(tags)
+          all_data.merge(data)
 
           post = {
             "date" => "#{entry.published.content}",
@@ -46,7 +46,7 @@ module Reading
             "author" => author,
             "module" => mod,
             "platform" => platform,
-            "tags" => tags,
+            "data" => data,
             "classes" => classes,
             "external" => true
           }
@@ -58,18 +58,18 @@ module Reading
         mod = lookup_module(site, post.data["module"], Set.new)
         platform = lookup_platform(site, post.data["platform"], Set.new)
         is_release = post.data["releases"] != nil
-        classes = derive_classes(post.tags, mod, platform, is_release)
+        classes = derive_classes(post.data, mod, platform, is_release)
 
-        all_tags.merge(post.tags)
+        all_data.merge(post.data)
 
         if post.published? then
           posts << {
             "date" => "#{post.date}",
             "url" => post.url,
-            "title" => post.title,
-            "excerpt" => post.excerpt,
+            "title" => post.data["title"],
+            "excerpt" => post.data["excerpt"],
             "author" => lookup_author(site, post.data["author"]),
-            "tags" => post.tags,
+            "data" => post.data,
             "module" => mod,
             "platform" => platform,
             "releases" => post.data["releases"],
@@ -82,7 +82,7 @@ module Reading
       posts.sort! { |a,b| b["date"].casecmp(a["date"]) }
 
       site.data['all_posts'] = posts
-      site.data['all_post_tags'] = all_tags.to_a
+      site.data['all_post_data'] = all_data.to_a
     end
 
     def lookup_author(site, identifier)
@@ -106,38 +106,38 @@ module Reading
       end
     end
 
-    def lookup_module(site, modName, tags)
+    def lookup_module(site, modName, data)
       mappings = site.data["post-tag-mapping"]
       if modName then
         return site.data["modules"][modName]
       end
-      tags.each do |tag|
+      data.each do |tag|
         if mappings[tag] == '=module' then
-          tags.delete(tag)
+          data.delete(tag)
           return site.data["modules"][tag] if site.data["modules"][tag]
         end
       end
       return nil
     end
 
-    def lookup_platform(site, platformName, tags)
+    def lookup_platform(site, platformName, data)
       mappings = site.data["post-tag-mapping"]
       if platformName then
         return site.data["sdk"][platformName]
       end
-      tags.each do |tag|
+      data.each do |tag|
         if mappings[tag] == '=platform' then
-          tags.delete(tag)
+          data.delete(tag)
           return site.data["sdk"][tag] if site.data["sdk"][tag]
         end
       end
       return nil
     end
 
-    def get_tags_as_set(site, tags)
+    def get_data_as_set(site, data)
       mappings = site.data["post-tag-mapping"]
       set = Set.new
-      tags.each do |tag|
+      data.each do |tag|
         tag = tag.downcase.gsub(/\./, '')
         if /^feed_/ =~ tag then
           next
@@ -168,7 +168,7 @@ module Reading
       return set
     end
 
-    def derive_classes(tags, mod, platform, is_release)
+    def derive_classes(data, mod, platform, is_release)
       classes = Set.new
       unless platform.nil? then
         platformName = platform["name"].downcase
@@ -178,7 +178,7 @@ module Reading
         modName = mod["name"].downcase
         classes.add("module-#{modName}") unless mod.nil?
       end
-      tags.each do |tag|
+      data.each do |tag|
         classes.add("tag-#{tag}")
       end
       classes.add("release") if is_release
