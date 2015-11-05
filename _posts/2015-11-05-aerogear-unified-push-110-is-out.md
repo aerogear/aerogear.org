@@ -7,17 +7,17 @@ module: push
 releases: 1.1.0.Final
 ---
 
-The AeroGear team is happy to announce the version 1.1.0 of the UnifiedPush Server! Over the last year we have developed several new features on our 1.1.0 release series, with a two alpha and four beta releases. The highlight of the release The release focuses on a few new features
+The AeroGear team is happy to announce the version 1.1.0 of the UnifiedPush Server! Over the last year we have developed several new features on our 1.1.0 release series, with a two alpha and four beta releases. The highlights of this release are:
 
 * Microsoft’s Windows Push Notification service (WNS)
 * Microsoft’s Push Notification service (MPNs)
 * Amazon Device Messaging (ADM) - _experimental_
 * Analytics and Push Metrics
-* an all new Admin UI 
-* JMS based architecutre 
+* An all new Admin UI 
+* JMS based architecture 
 * Device metadata import
 * Java-8 support
-* new REST API doc (miredot)
+* New REST API doc (miredot)
 
 As well as several fixes and improvements! 
 
