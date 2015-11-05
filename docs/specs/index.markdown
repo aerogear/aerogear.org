@@ -52,8 +52,8 @@ span.version {
 
 * [UnifiedPush Message Format](../unifiedpush/push-message-format/)
 * [UnifiedPush Client Registration](../unifiedpush/client-registration/)
-* [UnifiedPush RESTful APIs - stable](aerogear-unifiedpush-rest-1.0.x/overview-index.html)
-* [UnifiedPush RESTful APIs - development](aerogear-unifiedpush-rest/overview-index.html)
+* [UnifiedPush RESTful APIs](aerogear-unifiedpush-rest/index.html)
+* [UnifiedPush RESTful APIs](aerogear-unifiedpush-rest-1.0.x/overview-index.html)  <span class="version">1.0.3</span>
 * [UnifiedPush Java Client](aerogear-unifiedpush-java-client) <span class="version">1.0.0</span>
 * [UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
 
