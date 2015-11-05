@@ -13,7 +13,7 @@ Before you can run the side, make sure you have [asciidoc](http://www.methods.co
 1. run `bundle install --path vendor` to install the dependencies
 1. run `bundle exec jekyll serve --watch`
 1. go to <http://127.0.0.1:4000/>
-1. profit
+1. profit!
 
 ## deploy
 
