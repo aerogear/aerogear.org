@@ -1,0 +1,61 @@
+// ---
+// layout: post
+// title: UPS System Properties
+// section: guides
+// ---
+
+[[sysprops]]
+== UPS System Properties
+
+For an advanced configuration - or just plain testing purposes, it is possible to launch the UPS with a bunch of different System properties: 
+
+[[propertiestable]]
+=== System Properties for the UnifiedPush Server
+[width="80%",cols="3,^2,^2",options="header"]
+|=========================================================
+|Name |Description |Default Value
+
+|custom.aerogear.apns.push.host |Defines a custom URL for APNs push server| no value, defaulting to Apple's service
+|custom.aerogear.apns.push.port |Defines a custom port for APNs push server| no value, defaulting to Apple's service
+|custom.aerogear.apns.feedback.host |Defines a custom URL for APNs feedback server| no value, defaulting to Apple's service
+|custom.aerogear.apns.feedback.port |Defines a custom port for APNs feedback server| no value, defaulting to Apple's service
+|aerogear.android.batchSize |Specifies how many Android devices tokens will be loaded and delivered in one batch| 1000
+|aerogear.android.batchesToLoad |Specifies how many Android batches should be loaded in one token-loading transaction.| 10
+|aerogear.ios.batchSize |Specifies how many iOS devices tokens will be loaded and delivered in one batch| 10000
+|aerogear.ios.batchesToLoad |Specifies how many iOS batches should be loaded in one token-loading transaction.| 3
+|aerogear.simplePush.batchSize |Specifies how many SimplePush client tokens will be loaded and delivered in one batch| 1000
+|aerogear.simplePush.batchesToLoad |Specifies how many SimplePush batches should be loaded in one token-loading transaction.| 10
+|aerogear.windows_wns.batchSize |Specifies how many Windows-8 tokens will be loaded and delivered in one batch| 1000
+|aerogear.windows_wns.batchesToLoad |Specifies how many Windows-8 batches should be loaded in one token-loading transaction.| 10
+|aerogear.windows_mpns.batchSize |Specifies how many Windows-10 devices tokens will be loaded and delivered in one batch| 1000
+|aerogear.windows_mpns.batchesToLoad |Specifies how many Windows-10 batches should be loaded in one token-loading transaction.| 10
+|aerogear.adm.batchSize |Specifies how many Amazon devices tokens will be loaded and delivered in one batch| 1000
+|aerogear.adm.batchesToLoad |Specifies how many Amazon batches should be loaded in one token-loading transaction.| 10
+
+|=========================================================
+
+
+[[commandline]]
+=== CLI configuration arguments
+It is possible to specify one or more of the above system properties, when launching the Java EE container, like:
+
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/standalone.sh -Daerogear.ios.batchSize=2000
+----
+
+
+[[xmlconfig]]
+=== XML configuration file
+It is also possible to include the desired system variables into the +standalone-full.xml+ configuration file:
+
+[source,xml]
+----
+...
+</extensions>
+
+<system-properties>
+   <property name="aerogear.ios.batchSize" value="2000"/>
+   ...
+</system-properties>
+----

@@ -1,6 +1,6 @@
 // ---
 // layout: post
-// title: Install and Configure the UnifiedPush Server
+// title: Install the UnifiedPush Server
 // section: guides
 // ---
 
