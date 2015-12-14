@@ -19,7 +19,7 @@ The library can be downloaded through the project link:https://github.com/aeroge
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>unifiedpush-java-client</artifactId>
-            <version>1.0.0</version>
+            <version>1.1.0.Final</version>
         </dependency>
 
 == API Overview
@@ -28,7 +28,7 @@ The API is straightforward to use and consists of the following methods:
   
 [source,java]
 ----
-public interface JavaSender {
+public interface PushSender {
 
     /**
      * Sends the given payload to installations of the referenced PushApplication.
@@ -47,7 +47,39 @@ public interface JavaSender {
 
 The _UnifiedMessage_ object passed as a parameter on those methods contain the actual notification payload. The object, as we will see in the example later on, utilizes the builder pattern to help you construct easily the payload. The difference between the two methods, is that the first one allows you to pass a callback so that you can be notified regarding whether the notification was successfully accepted by the server for transmission.
 
-A concrete implementation of the _JavaSender_ interface can be found on the 'SenderClient' class, which internally uses _HttpURLConnection_ for the communication (but can easily be adopted to support other http providers).
+A concrete implementation of the _PushSender_ interface can be found on the 'DefaultPushSender' class, which internally uses _HttpURLConnection_ for the communication (but can easily be adopted to support other http providers).
+
+== Initialisation of the DefaultPushSender
+
+There are 2 ways to instantiate a DefaultPushSender : 
+
+- "Inline" :
+[source,java]
+----
+PushSender defaultPushSender = DefaultPushSender.withRootServerURL("http://localhost:8080/ag-push")
+                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")
+                .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
+                .build();
+----
+
+- Using a external config file : 
+
+[source,java]
+----
+   //pushConfig.json
+{
+  "serverUrl": "http://aerogear.example.com/ag-push",
+  "pushApplicationId": "c7fc6525-5506-4ca9-9cf1-55cc261ddb9c",
+  "masterSecret": "8b2f43a9-23c8-44fe-bee9-d6b0af9e316b"}
+}
+----
+
+and then 
+
+[source,java]
+----
+  PushSender defaultPushSender = DefaultPushSender.withConfig("pushConfig.json").build();
+----  
 
 == Sending a message
 
@@ -55,20 +87,21 @@ Let's start now with a simple example where the notification is send to all mobi
 
 [source,java]
 ----
-JavaSender sender = new SenderClient.Builder("http://localhost:8080/ag-push").build();       // [1]
-
-UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()                 // [2]
-                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")  
+PushSender defaultPushSender = DefaultPushSender.withRootServerURL("http://localhost:8080/ag-push")
+                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")
                 .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
-                .alert("Hello from Java Sender API!")
-                .sound("default")
-                .badge("1")
-                .timeToLive(3600)  // [3]                                       
-                .attribute("some_key", "with_value")  // [4]
-                .attribute("title", "A Cool Title") // [5]
                 .build();
 
-sender.send(unifiedMessage, new MessageResponseCallback() {      // [6]
+UnifiedMessage unifiedMessage = new UnifiedMessage.withMessage()                 // [2]
+                .alert("Hello from Java Sender API!")
+                .sound("default")
+                .badge("1")                                  
+                .userData("some_key", "with_value")  // [3]
+                .withConfig()
+                  .timeToLive(3600)  // [4]     
+                .build();
+
+sender.send(unifiedMessage, new MessageResponseCallback() {      // [5]
 
             @Override
             public void onComplete(int statusCode) {
@@ -76,28 +109,41 @@ sender.send(unifiedMessage, new MessageResponseCallback() {      // [6]
               // was accepted for transmission by the server.
             }
 
-            @Override
-            public void onError(Throwable throwable) {
-              // an error occured during send
-            }
           });
 ----
 
-In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. If the hostname changes, you will need to create a new instance of the client.
+In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. If the hostname changes, you will need to create a new instance of the client.  The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. 
 
-In [2], we access the builder object and we use it to fill in the parameters. The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. 
+In [2], we access the builder object and we use it to fill in the parameters.
 
-An optional _timeToLive_ [3] (in seconds) can be added on the notification payload, instructing the remote provider to drop the notification in case the device is unable to receive it (e.g. offline) for a period longer than the seconds specified. 
+Further, support is provided with the help of the _userData_ param [3], to attach on the notification arbitrary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
 
-Further, support is provided with the help of the _attribute_ param [4], to attach on the notification arbitrary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
+An optional _timeToLive_ [4] (in seconds) can be added on the notification payload configuration section, instructing the remote provider to drop the notification in case the device is unable to receive it (e.g. offline) for a period longer than the seconds specified. 
 
-The optional _title_ attribute [5], is a cordova Android specific attribute that will be used when displaying the notification in the notification panel. The default will be the cordova appName.  
-
-Once the notification payload is constructed, we invoke the send method [6] passing along our callback. If there was an error during send, then the 'onError' callback method would be called otherwise 'onComplete' would be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:/docs/specs/aerogear-unifiedpush-rest/sender/index.html[server documentation] for a list of valid responses.
+Once the notification payload is constructed, we invoke the send method [5] passing along our callback. The'onComplete' callback will be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:/docs/specs/aerogear-unifiedpush-rest/sender/index.html[server documentation] for a list of valid responses.
 
 == Selected send
 
-To narrow down the list of the recipients, you are given the following options: (shown with the respective builder method)
+To narrow down the list of the recipients, you can use the the criteria builder. There are 2 ways of using this criteria builder :
+- Start building your message by passing the criteria :  
+[source,java]
+----
+UnifiedMessage unifiedMessage = UnifiedMessage.withCriteria()
+                .aliases("mike")
+                .message()
+                  .aler("hello")
+----
+- Anytime while building your message : 
+[source,java]
+----
+UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .alert(ALERT_MSG)
+                .sound(DEFAULT_SOUND)
+                .criteria().aliases("mike")
+                .build();
+---- 
+
+The different criteria options are : 
 
 - narrow down by specific mobile variants (e.g. HR Android, HR iPhone):
 [source,java]
@@ -131,9 +177,17 @@ As you realize from the list, the Sender API offers _tremendous_ flexibility in 
 
 Once the UnifiedMessage is build with your desired criterias, simply call the _send_ method on the JavaSender to send the notification.
 
-== iOS specific payload
+== APNs (iOS) specific payload
 
-For iOS, you are given the following options: (shown with the respective builder method)
+For APNs specific payload you can use the apns() builder method :
+[source,java]
+----
+  UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .apns()
+                   .contentAvailable() // just an example, see the complete list below 
+----
+
+These are the specific APNs payload options : (shown with the respective builder method)
 
 - An iOS specific argument to send notifications to Newsstand applications and submitting silent iOS notifications (iOS7)
 [source,java]
@@ -147,13 +201,109 @@ For iOS, you are given the following options: (shown with the respective builder
    .actionCategory("acceptLead")
 ----
 
+- Sets the value of the 'action' key from the submitted payload
+[source,java]
+----
+   .action("myAction")
+----
+
+- Sets the value of the 'title' key from the submitted payload
+[source,java]
+----
+   .title("myTitle")
+----
+
+- The key to a title string in the Localizable.strings file for the current localization
+[source,java]
+----
+   .localizedTitleKey("fr_title")
+----
+
+- Sets the arguments for the localizable title key
+[source,java]
+----
+   .localizedTitleArguments(["title1","title2"])
+----
+
+- Sets the value of the 'url-args' key from the submitted payload
+[source,java]
+----
+   .urlArgs(["arg1","arg2"])
+----
+
+== Windows specific payload
+
+For Windows specific payload you can use the windows() builder method :
+[source,java]
+----
+  UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .windows()
+                   .raw() // just an example, see the complete list below 
+----
+
+These are the specific Windows payload options : (shown with the respective builder method)
+
+- Set the type of message to send toast, raw, badge or tile. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh465403.aspx[here] for detailed information/
+[source,java]
+----
+   .type(Type.tile)
+----
+
+- Set the raw notification type. A raw notification is a type of push notification without any associated UI. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh761463.aspx[here] for detailed information/
+[source,java]
+----
+   .raw()
+----
+
+- Set the badge notifications type for badges that are not numbers. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx[here] for detailed information/
+[source,java]
+----
+   .badgeType(BadgeType.activity)
+----
+
+- Set the type of the tile messages, different sizes are available. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx[here] for detailed information/
+[source,java]
+----
+   .tileType(TileType.TileSquareBlock)
+----
+
+- Set the duration of a Toast message (long or short)
+[source,java]
+----
+   .durationType(DurationType.long)
+----
+
+- Set the toast template. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx[here] for detailed information/
+[source,java]
+----
+   .toastType(ToastType.ToastText01)
+----
+
+- Set a list of image's paths for the Tile Notification Type
+[source,java]
+----
+   .images(Arrays.asList("/images/image1.png","/images/image2.png")
+----
+
+- Set a list of text fields for the Tile Notification Type
+[source,java]
+----
+   .textFields(Arrays.asList("foo","bar")
+----
+
+- Set the page in you application to launch when the user 'touches' the notification in the notification dock.
+NOTE: For cordova applications set this to 'cordova' to launch your app and invoke the javascript callback.
+[source,java]
+----
+   .page("myPage")
+----
+
 == Connect via a Proxy
 
 If your infrastructure is behind a proxy, you can specify this while creating an instance of your SenderClient : 
 [source,java]
 ----
-JavaSender defaultJavaSender = new SenderClient.Builder()
-                .rootServerURL("http://localhost:8080/ag-push")
+PushSender defaultJavaSender = DefaultPushSender.withConfig("pushConfig.json")
                 .proxy("proxy.example.com", 8080)
                 .proxyUser("proxyuser")
                 .proxyPassword("password")
@@ -167,8 +317,7 @@ If your infrastructure uses a custom TrustStore, you can specify this while crea
 
 [source,java]
 ----
-JavaSender defaultJavaSender = new SenderClient.Builder()
-                .rootServerURL("https://localhost:8080/ag-push")
+PushSender defaultJavaSender = DefaultPushSender.withConfig("pushConfig.json")
                 .customTrustStore("setup/aerogear.truststore", "jks", "aerogear")
                 .build();
 ----
@@ -191,9 +340,9 @@ public class Resources {
 
     @Produces
     @ApplicationScoped
-    public SenderClient getSenderClient() {
+    public PushSender getSenderClient() {
        // initialize to point to the hostname of the running UnifiedPush server
-       return  new SenderClient.Builder("http://localhost:8080/ag-push").build();
+       return DefaultPushSender.withConfig("pushConfig.json").build();
     }
 }
 ----
@@ -289,12 +438,11 @@ public class NotificationSender {
 
   // here the CDI 'Payment' event is caught and the actual send is triggered
   void sendPaymentNotification(@Observes(during = AFTER_SUCCESS) Payment payment) { 
-      UnifiedMessage unifiedMessage = new UnifiedMessage.Builder()
-                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")  
-                .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
+      UnifiedMessage unifiedMessage =  UnifiedMessage.withMessage()
                 .alert("Thank you for your payment!")
                 .sound("default")
-                .aliases(Arrays.asList(payment.getUserAlias()))
+                .criteria()
+                   .aliases(Arrays.asList(payment.getUserAlias()))
                 .build();
 
       sender.send(message)
