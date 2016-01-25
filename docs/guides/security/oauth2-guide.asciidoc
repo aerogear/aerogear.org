@@ -434,7 +434,7 @@ To download one of our examples, check our https://github.com/aerogear/aerogear-
 [source]
 .https://github.com/aerogear/aerogear-cordova-cookbook/blob/master/Shoot/config.xml[config.xml]
 ----
-$ cordova plugin add org.jboss.aerogear.cordova.oauth2
+$ cordova plugin add aerogear-cordova-oauth2
 ----
 
 . Configure Info.plist file

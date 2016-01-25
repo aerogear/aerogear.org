@@ -58,7 +58,7 @@ Install the aerogear-pushplugin-cordova plugin by executing:
 
 [source,bash]
 ----
-$ cordova plugin add org.jboss.aerogear.cordova.push
+$ cordova plugin add aerogear-cordova-push
 ----
 
 or if you want the latest and greatest development version you can install the version from the git repo like so:
@@ -72,7 +72,7 @@ Done! Your project now contains the AeroGear PushPlugin. For an integration with
 
 ### Sample Example
 
-There are two ways to register a device in the AeroGear UnifiedPush Server devices registry : 
+There are two ways to register a device in the AeroGear UnifiedPush Server devices registry :
 
 * Passing the config parameters directly in the JavaScript code :
 
@@ -115,7 +115,7 @@ push.register(onNotification, successHandler, errorHandler, pushConfig);
 
 ----
 
-And then in your JavaScript : 
+And then in your JavaScript :
 
 [source,javascript]
 ----
@@ -136,7 +136,7 @@ ajax({
 
     //now set the categories that you get from elsewhere from the user.
     pushConfig.categories = categories;
-    
+
     //and then register..
     push.register(onNotification, successHandler, errorHandler, pushConfig);
 });
