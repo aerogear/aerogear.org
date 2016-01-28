@@ -25,6 +25,8 @@ include::docs/unifiedpush/ups_userguide/integration.asciidoc[Integrating the Uni
 
 include::docs/unifiedpush/ups_userguide/migration.asciidoc[Database migration]
 
+include::docs/unifiedpush/ups_userguide/ups-keycloak-decoupling.asciidoc[Deploying UPS & Keycloak in separated instances]
+
 include::docs/unifiedpush/ups_userguide/next.asciidoc[Next steps]
 
 include::docs/unifiedpush/ups_userguide/appendix.asciidoc[Appendix]
