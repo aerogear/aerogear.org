@@ -31,7 +31,7 @@ All the command line arguments are documented just running the scripts under *$U
 |-h, --help|Help
 |=========================================================
 
-Note: These scripts are pretty much based on *jboss-cli.sh* and can be ported  to any OS.
+*Note:* These scripts are pretty much based on *jboss-cli.sh* and can be ported  to any OS.
 
 ==== ups-setup.sh
 
@@ -41,7 +41,7 @@ Note: These scripts are pretty much based on *jboss-cli.sh* and can be ported  t
 
 |-s, --ups-host|WildFly HTTP management port where UPS is deployed
 |-r, --realm|Realm name
-|    --subsystem-setup|link:Keycloak subsystem setup[http://keycloak.github.io/docs/userguide/keycloak-server/html/ch08.html#jboss-adapter-installation]
+|    --subsystem-setup|link:http://keycloak.github.io/docs/userguide/keycloak-server/html/ch08.html#jboss-adapter-installation[Keycloak subsystem setup]
 |-h, --help|Help
 |=========================================================
 
@@ -56,7 +56,7 @@ image:img/keycloak-one-to-one.png[One to One relationship]
 
 1. Deploy Keycloak following link:http://keycloak.github.io/docs/userguide/keycloak-server/html/server-installation.html[these instructions]
 
-2. Import the realm configuration file and start WildFly in a separate port
+2. Import the realm configuration file and start WildFly on a separate port
 
   $UPS_HOME/bin/keycloak-setup.sh --ups-host=http://localhost:8082 --wildfly-offset=3 --realm-import=$UPS_HOME/bin/ups-realm-template.json
 
@@ -70,7 +70,7 @@ image:img/keycloak-one-to-one.png[One to One relationship]
 
   $UPS_HOME/bin/ups-setup.sh --subsystem-setup
 
-3. Start WildFly in a separate port
+3. Start WildFly on a separate port
 
   $WILDFLY_HOME/bin/standalone.sh -Djboss.socket.binding.port-offset=2 --server-config=standalone-full.xml
 
@@ -83,23 +83,22 @@ image:img/keycloak-one-to-one.png[One to One relationship]
 
 === Scenario 2: One Keycloak server to multiple instances of UPS
 
-The following setup covers scenarios where people wants to have multiple WildFly instances of UPS authenticating against just one server running Keycloak.
+The following setup covers scenarios where people want to have multiple WildFly instances of UPS authenticating against just one server running Keycloak.
 
 image:img/keycloak-one-to-many.png[Keycloak One to Many]
 
 ==== Keycloak setup
 
-1. Deploy Keycloak following link:http://keycloak.github.io/docs/userguide/keycloak-server/html/server-installation.html[these instructions]
+. Deploy Keycloak following link:http://keycloak.github.io/docs/userguide/keycloak-server/html/server-installation.html[these instructions]
 
-2. Create the realm configuration file or just copy from UPS template
+. Create the realm configuration file or just copy from UPS template
 
   cp $UPS_HOME/bin/ups-realm-template.json $UPS_HOME/bin/ups-production-realm.json
   cp $UPS_HOME/bin/ups-realm-template.json $UPS_HOME/bin/ups-dev-realm.json
 
-3. Edit the JSON file template and change the realm name
-For example, at _ups-dev-realm.json_ change *"realm": "aerogear"* to *"realm": "aerogear-dev"*.
+. Edit the JSON file template and change the realm name. For example, at _ups-dev-realm.json_ change *"realm": "aerogear"* to *"realm": "aerogear-dev"*.
 
-4. Import the realm configuration file and start WildFly in a separate port
+. Import the realm configuration file and start WildFly on a separate port
 
   $UPS_HOME/bin/keycloak-setup.sh --ups-host=http://localhost:8081,http://localhost:8082 --wildfly-offset=3 --realm-import=$UPS_HOME/bin/ups-dev-realm.json,$UPS_HOME/bin/ups-production-realm.json
 
@@ -131,7 +130,7 @@ For example, at _ups-dev-realm.json_ change *"realm": "aerogear"* to *"realm": "
 . Deploy the UnifiedPush server
 
 
-=== Scenario 3: Deploying in an already existent realm
+=== Scenario 3: Deploying into an existing realm
 
 The following scenarios applies when people already have Keycloak deployed in their infrastructure and want to have all the setup in a single realm.
 
@@ -161,7 +160,7 @@ image:img/keycloak-partial-import.png[Partial import]
 
   $UPS_HOME/bin/ups-setup.sh --subsystem-setup
 
-3. Start WildFly in a separate port
+3. Start WildFly on a separate port
 
   $WILDFLY_HOME/bin/standalone.sh -Djboss.socket.binding.port-offset=2 --server-config=standalone-full.xml
 
