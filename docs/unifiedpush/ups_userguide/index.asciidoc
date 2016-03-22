@@ -11,9 +11,9 @@ include::docs/unifiedpush/ups_userguide/overview.asciidoc[Overview]
 
 include::docs/unifiedpush/ups_userguide/server-installation.asciidoc[Install the UnifiedPush Server]
 
-include::docs/unifiedpush/ups_userguide/server-installation_advanced.asciidoc[Cluster and Docker]
-
 include::docs/unifiedpush/ups_userguide/server-installation_properties.asciidoc[System Properties for the UnifiedPush Server]
+
+include::docs/unifiedpush/ups_userguide/server-installation_advanced.asciidoc[Cluster and Docker]
 
 include::docs/unifiedpush/ups_userguide/openshift.asciidoc[Openshift]
 
