@@ -5,9 +5,9 @@ require 'net/sftp'
 # aerogear@filemgmt.jboss.org:www_htdocs/aerogear
 HOST = "filemgmt.jboss.org"
 USERNAME = "aerogear"
-PATH = "/stg_htdocs"
+PATH = "/www_htdocs/aerogear"
 KEY_FILE = "/private/aerogear/aerogear-site"
-BASE_FOLDER = "#{PATH}/aerogear"
+BASE_FOLDER = "#{PATH}/staging.aerogear.org"
 FOLDERS = Dir.glob("_site/**/").map {|f| f[0..-2]}
 FILES = Dir.glob("_site/**/*") - FOLDERS
 
