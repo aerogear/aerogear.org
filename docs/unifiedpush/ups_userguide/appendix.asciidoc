@@ -60,17 +60,17 @@ image:img/jms_overview.png[JMS details of the UnifiedPush Server]
 
 Once the payload hits the RESTful endpoint, a `NotificationRouter` is invoked, which queues a JMS message into `{Network}PushMessageQueue`, one for each Variant in the given Application. Once these messages are queued, the REST interface replies 202 Accepted, which indicates that the Push Message was accepted for later processing.
 
-Messages from `{Network}PushMessageQueue` are then processed by `TokenLoader` transactionally. `TokenLoader` streams device tokens from database and pushes token batches of configured size (`aerogear.{network}.batchSize` system property) to `{Network}TokenBatchQueue`. The `TokenLoader` loads number of batches to load in one transaction (configurable by `aerogear.{network}.batchesToLoad` system property). After one token loading transaction, `TokenLoader` sends a message back to same `{Network}PushMessageQueue` with information from which token should next transaction continue. The `TokenLoader` transaction can be also failed when memory limits of `{Network}TokenBatchQueue` are exceeded. In that case, the token loading transaction will be repeated (the batches are de-duplicated by their serial ID, so in that case there will be no duplicate batches).
+Messages from `{Network}PushMessageQueue` are then processed by `TokenLoader` transactionally. `TokenLoader` streams device tokens from database and pushes token batches of configured size (`aerogear.{network}.batchSize` system property) to `{Network}TokenBatchQueue`. The `TokenLoader` loads number of batches to load in one transaction (configurable by `aerogear.{network}.batchesToLoad` system property). After one token loading transaction, `TokenLoader` sends a message back to same `{Network}PushMessageQueue` with information from which token should next transaction continue. The `TokenLoader` transaction can also fail when memory limits of `{Network}TokenBatchQueue` are exceeded. In that case, the token loading transaction will be repeated (the batches are de-duplicated by their serial ID, so in that case there will be no duplicate batches).
 
-The tokens from `{Network}TokenBatchQueue` are received by `NotificationDispatcher` that opens connection/-s to given Push Network and submits Push Messages for given batch of tokens. The number of `NotificationDispatcher` workers can be limited by configuring `maxSession` activation config properties of Message-Driven Beans.
+The tokens from `{Network}TokenBatchQueue` are received by `NotificationDispatcher` that opens connection/-s to a given Push Network and submits Push Messages for the given batch of tokens. The number of `NotificationDispatcher` workers can be limited by configuring `maxSession` activation config properties of Message-Driven Beans.
 
 NOTE: `maxSession` activation config property for MDBs influences how many workers can be instantiated on given node, so this does not limit number of workers in a cluster of nodes.
 
-Once `NotificationDispatches` finishes processing for given batch of tokens (no matter if it succeeds or fails), it triggers `MetricsCollector` that writtes metric into database.
+Once `NotificationDispatches` finishes processing for given batch of tokens (no matter if it succeeds or fails), it triggers `MetricsCollector` that writes metric into database.
 
 ==== Metric Collection
 
-The further details on metric collection process can be seen in following diagram:
+The further details on metric collection process can be seen in the following diagram:
 
 image:img/jms_metric_collection.png[JMS details of the Metric Collection]
 

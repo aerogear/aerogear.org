@@ -31,7 +31,7 @@ NOTE: In case the different nodes are running on the same machine, it is require
 
 All other steps are exactly the same, including setting up the link:#gendbds[Database] as well and the link:#deploy[Deployment] of the UPS WAR files.
 
-NOTE: For deployments on nodes, running on a different port, make sure to specify the port via link:https://docs.jboss.org/author/display/WFLY8/CLI+Recipes[jboss-cli] or the link:https://docs.jboss.org/wildfly/plugins/maven/latest/deploy-mojo.html#port[WildFly Maven Plugin].
+NOTE: For deployments on nodes, running on a different port, make sure to specify the port via link:https://docs.jboss.org/author/display/WFLY10/CLI+Recipes[jboss-cli] or the link:https://docs.jboss.org/wildfly/plugins/maven/latest/deploy-mojo.html#port[WildFly Maven Plugin].
 
 [NOTE]
 ============================================================

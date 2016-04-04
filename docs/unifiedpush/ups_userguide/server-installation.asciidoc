@@ -33,7 +33,7 @@ Different files are provided for each application servers:
 
 [[confjms]]
 === Configure JMS destinations for the UnifiedPush
-The UnifiedPush Server requires JMS queues and topics that it uses for token loading, notification dispatching and metrics collection.
+The UnifiedPush Server 1.2.x requires JMS queues and topics that it uses for token loading, notification dispatching and metrics collection.
 
 Following CLI script creates all required JMS destinations and also configures address settings that influence JMS destinations behavior:
 
