@@ -48,8 +48,50 @@ If the backend needs to send a push notification, e.g. after catching an event, 
 
 === JMS internals
 
-Currently the delivery of Push Notifications is handled with CDI events and JMS:
+Currently the delivery of Push Notifications is handled with CDI events and JMS.
+
+CDI events are translated into JMS messages so that they can be processed asynchronously and transactionally (if needed).
+
+==== Token Loading and Notification Dispatching
+
+There is architectural diagram describing how different processors works internally:
 
 image:img/jms_overview.png[JMS details of the UnifiedPush Server]
 
-One the payload hits the RESTful endpoint, a _NotificationRoute_ is invoked, which fires a few CDI events: One for each Variant that is involed in the Push Notification delivery. The event is observed by multiple _TokenLoader_ instances, which loads device-tokes from the database and queues them for processing by the _NotificationDispatcher_. This class selects (using CDI) the specific sender for the desired Push Network and eventually delivers the message to the 3rd party Push Networks. Once the sending process finishes the _NotificationDispatcher_  generates a JMS message for _MetricsCollector_ with information about how much devices were notified.
+Once the payload hits the RESTful endpoint, a `NotificationRouter` is invoked, which queues a JMS message into `{Network}PushMessageQueue`, one for each Variant in the given Application. Once these messages are queued, the REST interface replies 202 Accepted, which indicates that the Push Message was accepted for later processing.
+
+Messages from `{Network}PushMessageQueue` are then processed by `TokenLoader` transactionally. `TokenLoader` streams device tokens from database and pushes token batches of configured size (`aerogear.{network}.batchSize` system property) to `{Network}TokenBatchQueue`. The `TokenLoader` loads number of batches to load in one transaction (configurable by `aerogear.{network}.batchesToLoad` system property). After one token loading transaction, `TokenLoader` sends a message back to same `{Network}PushMessageQueue` with information from which token should next transaction continue. The `TokenLoader` transaction can also fail when memory limits of `{Network}TokenBatchQueue` are exceeded. In that case, the token loading transaction will be repeated (the batches are de-duplicated by their serial ID, so in that case there will be no duplicate batches).
+
+The tokens from `{Network}TokenBatchQueue` are received by `NotificationDispatcher` that opens connection/-s to a given Push Network and submits Push Messages for the given batch of tokens. The number of `NotificationDispatcher` workers can be limited by configuring `maxSession` activation config properties of Message-Driven Beans.
+
+NOTE: `maxSession` activation config property for MDBs influences how many workers can be instantiated on given node, so this does not limit number of workers in a cluster of nodes.
+
+Once `NotificationDispatches` finishes processing for given batch of tokens (no matter if it succeeds or fails), it triggers `MetricsCollector` that writes metric into database.
+
+==== Metric Collection
+
+The further details on metric collection process can be seen in the following diagram:
+
+image:img/jms_metric_collection.png[JMS details of the Metric Collection]
+
+Once `TokenLoader` loads a batch and sends it for processing, it also queues messages to `BatchLoadedQueue`. Once it loads last token batch, it also queues message to `AllBatchesLoadedQueue`. These events are important for `MetricCollector` to decide whether token loading process ended.
+
+`NotificationDispatches` sends metrics for each processed message to `MetricQueue`.
+
+Both, `TokenLoader` and `NotificationDispatcher` sends message to `TriggerVariantMetricQueue`. That messages are processed by `MetricCollectionTrigger` that receives them, deduplicates and sends exactly one message to `TriggerMetricCollectionQueue`.
+
+`MetricCollector` is triggered by message from `TriggerMetricCollectionQueue`. It receives it transactionally, and if it detects that Push Messaging processing is still in progress, it will roll that transaction back, which means that it will be redelivered (the time after it is redelivered can be configured in JMS queue properties).
+
+`MetricCollector` internally collects messages from `MetricQueue` and `BatchLoadedQueue`, updates `PushMessageInformation` object and writes it into database. Once `MetricCollector` receives message from `AllBatchesLoadedQueue` and it detects, that metrics were processed for all loaded batches, it ends Push Message metrics collection process by committing its transaction.
+
+==== Limiting Number of ApnsServices
+
+APNs limits how many connections can be created for one iOS variant. In order to make sure that the number of opened connection won't exceed that limit, UnifiedPush Server manages distributed counter of available (free) service slots. The counter is stored as messages in `FreeServiceSlotQueue`, so each message in that queue represents one available slot for a new service that can be used to open connection to APNs.
+
+`FreeServiceSlotQueue` is populated in `NotificationRouter` with number of messages representing limit of connections that can be created.
+
+Once `NotificationDispatcher` wants to push messages to APNs leveraging `ApnsService`, it will first ask `ApnsServiceHolder` for an instance of service. `ApnsServiceHolder` provides a cached instance or it asks for a slot for a new service instance, then it can create it.
+
+When the notifications are dispatched, `NotificationDispatches` returns instance of `ApnsService` to `ApnsServiceHolder` that stores it to a cache for reuse by another dispatcher, and if not reused within time limits, it closes allocated connection and sends a messages to `FreeServiceSlotQueue` indicating that a new instance can be created.
+
+image:img/jms_service_holder.png[JMS details of the ApnsServiceHolder]

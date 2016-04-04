@@ -31,6 +31,17 @@ Different files are provided for each application servers:
 ** For WildFly, +unifiedpush-server-wildfly.war+
 ** For EAP, +unifiedpush-server-as7.war+
 
+[[confjms]]
+=== Configure JMS destinations for the UnifiedPush
+The UnifiedPush Server 1.2.x requires JMS queues and topics that it uses for token loading, notification dispatching and metrics collection.
+
+Following CLI script creates all required JMS destinations and also configures address settings that influence JMS destinations behavior:
+
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/jms-setup-wildfly.cli
+----
+
 [[gendbds]]
 === Generate the UnifiedPush Database and Datasource
 The UnifiedPush Server requires an accompanying database in which to store push application, variant and installation details. You can use the database of your choice but the corresponding datasource added to the application server must have JNDI name +java:jboss/datasources/UnifiedPushDS+.
@@ -57,7 +68,7 @@ $ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 \
 ----
 . Create the UnifiedPush MySQL database
 +
-For 1.0.x : 
+For 1.0.x :
 +
 [source,c]
 ----
@@ -67,7 +78,7 @@ mysql> create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
 mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';
 ----
 +
-For 1.1.x : 
+For 1.1.x :
 +
 [source,c]
 ----
@@ -130,7 +141,7 @@ psql> create database unifiedpush;
 psql> create user unifiedpush with password 'unifiedpush';
 psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
 ----
-For 1.1.x : 
+For 1.1.x :
 +
 [source,c]
 ----

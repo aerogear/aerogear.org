@@ -1,13 +1,13 @@
 // ---
 // layout: post
-// title: UPS System Properties
+// title: UPS Configuration Properties
 // section: guides
 // ---
 
 [[sysprops]]
-== UPS System Properties
+== UPS Configuration Properties
 
-For an advanced configuration - or just plain testing purposes, it is possible to launch the UPS with a bunch of different System properties: 
+For an advanced configuration (or just plain testing purposes), it is possible to launch the UPS with a bunch of different properties - some of them can be configured via System Properties, others can be configured as a configuration of JMS subsystem and other are configured of EJB.
 
 [[propertiestable]]
 === System Properties for the UnifiedPush Server
@@ -36,7 +36,7 @@ For an advanced configuration - or just plain testing purposes, it is possible t
 
 
 [[commandline]]
-=== CLI configuration arguments
+==== Configuring System Properties via CLI configuration arguments
 It is possible to specify one or more of the above system properties, when launching the Java EE container, like:
 
 [source,c]
@@ -46,7 +46,7 @@ $ ./path/to/SERVER_HOME/bin/standalone.sh -Daerogear.ios.batchSize=2000
 
 
 [[xmlconfig]]
-=== XML configuration file
+==== Configuring System Properties via XML configuration file
 It is also possible to include the desired system variables into the +standalone-full.xml+ configuration file:
 
 [source,xml]
@@ -59,3 +59,37 @@ It is also possible to include the desired system variables into the +standalone
    ...
 </system-properties>
 ----
+
+=== Configuring JMS messaging subsystem
+
+By default, JMS queues and topics required for UnifiedPush Server to work are installed via CLI script `jms-setup-wildfly.cli`.
+
+The properties of these queues and topics can be configured to change characteristics of message delivery.
+
+NOTE: Some queues are configured for each supported Push Network: Adm, APNs, GCM, MPNS, SimplePush, WNS. In the table it is represented as a placeholder {Network}.
+
+[width="80%",cols="3,^2,^2",options="header"]
+|=========================================================
+|JMS Destination |Properties |Explanation
+
+|`/queue/{Network}PushMessageQueue` |`redelivery-delay=1500`|when `TokenLoader` fails to load tokens (for example when the queue it pushes tokens to is full) it will retry delivery in 1.5s
+|`/queue/{Network}PushMessageQueue` |`redelivery-multiplier=1.5, max-redelivery-delay=5000`| `redelivery-delay` is increased after repeated failure until it reaches 5s
+|`/queue/{Network}TokenBatchQueue` |`address-full-policy=FAIL` |when the token queue is full, the `TokenLoader` will fail, and it will be redelivered according to properties of `{Network}PushMessageQueue`
+|`/queue/{Network}TokenBatchQueue` |`max-size-bytes=40000` |specifies how many tokens can be stored for given {Network} (in bytes)
+|`/queue/TriggerMetricCollectionQueue` |`redelivery-delay=1000` | trigger `MetricCollector` every 1 second until all metrics are collected
+
+|=========================================================
+
+The properties can be configured either during installation by modifying the installation CLI script or once installed, they can be changed in `<address-settings>` section of `standalone-full.xml`.
+
+=== Configuring workers
+
+UnifiedPush Server uses Message-Driven Beans (MDBs) as workers for processing internal JMS events.
+
+The number of created workers can be configured by tweaking activation config property `maxSession` in `/WEB-INF/jboss-ejb3.xml` configuration file in the deployed WAR.
+
+By default, there are 15 workers for processing each of the queues.
+
+NOTE: The only exception is `/queue/APNsTokenBatchQueue` which has limit of 10 workers, which is given by the limit of maximum 10 connections to APNs per one certificate.
+
+NOTE: In order to fully understand how JMS Internals work in UnifiedPush Server, see Appendix section.
