@@ -22,7 +22,7 @@ Since the UnifiedPush Server requires a full profile, we need to start the serve
 
 [source,c]
 ----
-$ ./path/to/NODE_x/bin/standalone.sh --server-config=standalone-full-ha.xml -Djboss.node.name=NameOfTheNode
+$ ./path/to/NODE_x/bin/standalone.sh --server-config=standalone-full-ha.xml -Djboss.node.name=NameOfTheNode -Djboss.messaging.cluster.password=SomePassword -Djava.net.preferIPv4Stack=true
 ----
 
 Each node needs to get a unique name inside of the cluster, that is another slight difference to running a single standalone instance.
@@ -31,12 +31,21 @@ NOTE: In case the different nodes are running on the same machine, it is require
 
 All other steps are exactly the same, including setting up the link:#gendbds[Database] as well and the link:#deploy[Deployment] of the UPS WAR files.
 
-NOTE: For deployments on nodes, running on a different port, make sure to specify the port via link:https://docs.jboss.org/author/display/WFLY8/CLI+Recipes[jboss-cli] or the link:https://docs.jboss.org/wildfly/plugins/maven/latest/deploy-mojo.html#port[WildFly Maven Plugin].
+NOTE: For deployments on nodes, running on a different port, make sure to specify the port via link:https://docs.jboss.org/author/display/WFLY10/CLI+Recipes[jboss-cli] or the link:https://docs.jboss.org/wildfly/plugins/maven/latest/deploy-mojo.html#port[WildFly Maven Plugin].
+
+[NOTE]
+============================================================
+On OS X, you need to enable multicast first:
+----
+sudo route add -net 224.0.0.0/5 127.0.0.1
+----
+============================================================
+
 
 [[wf-domain]]
 === Cluster in WildFly Domain Mode
 
-Another option to run a WildFly cluster running it as a _Managed Domain_, which allows you to run and manage a multi-server domain topologyis in a more centralized way, as discussed in the link:https://docs.jboss.org/author/display/WFLY8/Operating+modes[WildFly documentation]. 
+Another option to run a WildFly cluster running it as a _Managed Domain_, which allows you to run and manage a multi-server domain topologyis in a more centralized way, as discussed in the link:https://docs.jboss.org/author/display/WFLY8/Operating+modes[WildFly documentation].
 
 NOTE: Arun Gupta did a short screencast on how to configure a link:http://blog.arungupta.me/wildfly-8-clustering-and-session-failover/[Managed Domain].
 
