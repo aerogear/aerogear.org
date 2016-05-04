@@ -19,6 +19,19 @@ image:./img/no_matching_provisionning_profile.png[No matching provisioning profi
 * have you changed your computer recently? If yes, if you provisioning profile was deliver in your previous machine, you need to migrate your provisioning profile, please follow link:https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/export_signing_assets.html#//apple_ref/doc/uid/TP40013306-CH8-SW1[Exporting Your Signing Identities and Provisioning Profiles] Apple documentation.
 * is it the first time you use this app? have you followed the pre-requisite section on link:#provisioning-profiles[provisioning profile]?
 
+### Question: Remote host closed connection during handshake
+
+*Problem description*
+
+When sending a push notification you are receicing an 'Remote host closed connection during handshake'
+[source,java]
+----
+javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake
+----
+
+*Answer*
+
+Your .p12 is not good. You need to create a .p12 out of your certificate as described in link:#_apple_app_id_and_ssl_certificate_for_apns[Apple App ID and SSL certificate for APNs]?
 
 ### Question: APNs error
 
