@@ -42,11 +42,10 @@
 * limitations under the License.
 */
 
-var http = require( "http" ),
-    https = require( "https" ),
-    urlParser = require( "url" ),
+var request = require("request"),
     util = require( "util" ),
-    events = require( "events" );
+    events = require( "events"),
+    _ = require("lodash");
 
 function doEvent( status, message, callback ) {
     if( !callback || typeof callback !== "function" ) {
@@ -61,58 +60,30 @@ function doEvent( status, message, callback ) {
     }
 }
 
-function send( serverSettings, message, callback ) {
-    // we stash the 'https' module on a local variable, IF the server is deployed using SSL.
-    // Otherwise the 'http' module is stashed
-    var caller = (serverSettings.protocol === "https:") ? https : http,
-        that = this,
-        req = caller.request( serverSettings, function( res ) {
+function send( options, message, callback ) {
+    var that = this;
+    request(options, function (err, response, body) {
+        if (err) {
+            return doEvent.call( that, "error", "problem with request: " + err.message, callback );
+        }
 
-            if( res.statusCode >= 400 ) {
-                doEvent.call( that, "error", res.statusCode, callback );
-            } else if( res.statusCode === 301 || res.statusCode === 302 || res.statusCode === 303 ) {
-                //Moved Status,  Need to resend
-                if( !res.headers.location ) {
-                    doEvent.call( that, "error", "redirect url is not available", callback );
-                } else {
-                    var url = urlParser.parse( res.headers.location );
-
-                    //Better way i think
-                    serverSettings.protocol = url.protocol;
-                    serverSettings.hostname =  url.hostname;
-                    serverSettings.port = url.port;
-                    serverSettings.path = url.pathname;
-
-                    send.call( that, serverSettings, message, callback );
-                }
-            } else {
-                res.setEncoding('utf8');
-                res.on( "data", function ( chunk ) {
-                    doEvent.call( that, "success", chunk, callback );
-                });
-            }
-        });
-
-    req.on( "error", function( error ) {
-        doEvent.call( that, "error", "problem with request: " + error.message, callback );
+        doEvent.call( that, "success", body, callback );
     });
-
-    // write data to request body
-    req.end( JSON.stringify( message ), "utf8" );
 }
 
-function createServerSettings( url, applicationId, masterSecret ) {
+function createServerSettings( url, applicationId, masterSecret, customHeaders, message ) {
+    var defaultHeaders = {
+        "aerogear-sender": "AeroGear Node.js Sender"
+    };
     var serverSettings = {
-        protocol: url.protocol,
-        hostname: url.hostname,
-        port: url.port,
-        path: url.pathname,
-        headers: {
-            "Accept": "application/json",
-            "Content-type": "application/json",
-            "aerogear-sender": "AeroGear Node.js Sender"
+        uri: url,
+        headers: _.extend( {}, defaultHeaders, customHeaders ),
+        auth: {
+            user: applicationId,
+            pass: masterSecret
         },
-        auth: applicationId + ":" + masterSecret,
+        json: true,
+        body: message,
         method: "POST"
     };
     return serverSettings;
@@ -141,6 +112,7 @@ var AeroGear = {};
     @param {String} settings.url - The URL of the Unified Push Server.
     @param {String} settings.applicationId - The Application ID
     @param {String} settings.masterSecret - The Master Secret
+    @param {Object} settings.headers - The hash of custom HTTP headers / header overrides
     @returns {Object} sender - a Sender Object Event Emitter
  */
 AeroGear.Sender = function( settings ) {
@@ -151,7 +123,7 @@ AeroGear.Sender = function( settings ) {
     }
 
     if ( !( this instanceof  AeroGear.Sender ) ) {
-        return new  AeroGear.Sender( settings );
+        return new AeroGear.Sender( settings );
     }
 
     var url = settings.url;
@@ -172,6 +144,10 @@ AeroGear.Sender = function( settings ) {
     this.getMasterSecret = function() {
         return settings.masterSecret;
     };
+
+    this.getCustomHeaders = function() {
+        return settings.headers || {};
+    };
 };
 
 util.inherits( AeroGear.Sender, events.EventEmitter );
@@ -180,6 +156,7 @@ util.inherits( AeroGear.Sender, events.EventEmitter );
     The send Method
     @param {Object}  message={} - the message to be passed
     @param {String}  [message.alert] - message that will be displayed on the alert UI element
+    @param {String}  [message.priority] - sets a processing priority on a push message. values can be 'normal' or 'high'
     @param {String}  [message.sound] - The name of a sound file
     @param {String}  [message.badge] - The number to display as the badge of the app icon
     @param {Object}  [message.userData={}] - any extra user data to be passed
@@ -220,7 +197,6 @@ AeroGear.Sender.prototype.send = function( message, options, callback ) {
     options = options || {};
 
     var serverSettings, option, key, apnsKey,
-        url = urlParser.parse( this.getUrl() ),
         newMessage = {};
 
     // Make sure we remove empty arrays for criteria
@@ -251,7 +227,7 @@ AeroGear.Sender.prototype.send = function( message, options, callback ) {
 
     newMessage.message = message;
 
-    serverSettings = createServerSettings( url, this.getApplicationId(), this.getMasterSecret() );
+    serverSettings = createServerSettings( this.getUrl(), this.getApplicationId(), this.getMasterSecret(), this.getCustomHeaders(), newMessage );
 
     send.call( this, serverSettings, newMessage, callback );
 
@@ -275,7 +251,7 @@ module.exports = AeroGear;
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Aug 10 2015 09:33:32 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu May 05 2016 08:39:29 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
