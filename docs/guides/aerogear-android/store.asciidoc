@@ -18,7 +18,7 @@ To create a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/d
 [source,java]
 ----
 DataManager.config("myMemoryStoreName", MemoryStoreConfiguration.class)
-           .store();
+           .store(Object.class);
 
 Store store = dataManager.get("myMemoryStoreName"); 
 ----
@@ -30,8 +30,7 @@ Note: A Memory store will go away when the application is removed from memory an
 ----
 DataManager.config("mySQLStoreName", SQLStoreConfiguration.class)
            .withContext(getApplicationContext())
-           .forClass(MyModel.class)
-           .store();
+           .store(MyModel.class);
 
 SQLStore store = (SQLStore) dataManager.get("mySQLStoreName"); 
 store.open(/*callback*/);
@@ -39,7 +38,7 @@ store.open(/*callback*/);
 store.openSync();
 ----
 
-Note: for an SQLStore you will need to make sure that 'open' has been called before you can access it.
+Note: for an SQLStore you should make sure that 'open' or 'openSync' have been called before accessing the store.  Otherwise, the store will be opened when a request is made which may impact performance.
 
 You also can do something after Store creation adding a listener in a config
 
@@ -69,7 +68,7 @@ The Store implementation will use an link:/docs/specs/aerogear-android-store/org
 ----
 DataManager.config("myMemoryStoreName", MemoryStoreConfiguration.class)
            .withIdGenerator(new MyIdGenerator())
-           .store();
+           .store(Object.class);
 ----
 
 PS: AeroGear does not control the id value. This is delegated to IdGenerator, so it's your (developer) responsibility to control it. 
@@ -119,8 +118,7 @@ If your storage information needs to be encrypted, AeroGear provides convenient 
 DataManager.config("myEncryptedSQLStoreName", EncryptedSQLStoreConfiguration.class)
            .withContext(getApplicationContext())
            .usingPassphrase("My awesome passphrase")
-           .forClass(MyModel.class)
-           .store();
+           .store(MyModel.class);
 ----
 
 If you want to see it all together, give a try to link:https://github.com/aerogear/aerogear-crypto-android-demo[AeroGear Crypto Demo app]. The application demonstrates how you can use encrypted storage to store in a central point all your passwords.
