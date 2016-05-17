@@ -1,2 +1,4 @@
 org.jboss.aerogear.android.authorization
 org.jboss.aerogear.android.authorization.oauth2
+org.jboss.aerogear.android.authorization.oauth2.intent
+org.jboss.aerogear.android.authorization.oauth2.webview
