@@ -1,6 +1,6 @@
 ---
 layout: index
-title: Documentation Library 
+title: Documentation Library
 section: docs
 ---
 
@@ -55,7 +55,7 @@ span.version {
 * [UnifiedPush RESTful APIs](aerogear-unifiedpush-rest/index.html)  <span class="version">1.1.0</span>
 * [UnifiedPush RESTful APIs](aerogear-unifiedpush-rest-1.0.x/overview-index.html)  <span class="version">1.0.3</span>
 * [UnifiedPush Java Client](aerogear-unifiedpush-java-client) <span class="version">1.1.0</span>
-* [UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client)
+* [UnifiedPush Node.js Client](aerogear-unifiedpush-nodejs-client) <span class="version">0.12.0</span>
 
 <h4>SimplePush</h4>
 

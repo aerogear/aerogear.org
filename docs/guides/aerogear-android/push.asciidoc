@@ -13,7 +13,7 @@ This document supplements the link:/docs/unifiedpush/aerogear-push-android/[Push
 
 Push messaging is a mechanism for sending data to mobile clients from a remote server.  For mobile services this reduces battery usage, removes polling code, and provides for a better user experience as data changes are communicated in real time.
 
-On Android messages that GCM receives from an application server are sent to the Android device over an XMPP connection managed by the operating system.  These messages are then extracted and passed to applications via a BroadcastReceiver.  Android applications can register to receive push notifications by declaring a receiver in their AndroidManifest.xml files.
+On Android messages that GCM receives from an application server are sent to the Android device over a connection managed by the operating system.  These messages are then extracted and passed to an application using services definied in that application's AndroidManifest.xml file.  The link:https://developers.google.com/cloud-messaging/[GCM docs] explore this in much more depth.
 
 == How to use it
 
@@ -66,9 +66,9 @@ registrar.unregister(getApplicationContext(), new Callback<Void>() {
 
 === Configuring your application to receive Push messages
 
-Before you can use GCM notifications in Android, your application's AndroidManifest.xml must be updated to include both permissions for GCM and a broadcast receiver to handle push messages from the service.
+Before you can use GCM notifications in Android, your application's AndroidManifest.xml must be updated to include permissions for GCM, broadcast receiver to consume push messages from  GCM, and a service to provide application specific logic.  Optionally you may also listen for updates to your GCM registration ID (InstanceID) and respond to them as well.
 
-To enable the permissions (necessary for Android < 4.2 ie 95% of Android devices) add these as a child of the manifest element.
+To enable the permissions add these as a child of the manifest element.
 
 [source, xml]
 ----
@@ -84,37 +84,56 @@ To enable the permissions (necessary for Android < 4.2 ie 95% of Android devices
 <uses-permission android:name="[PUT YOUR APP PACKAGE HERE]" />
 ----
 
-and add this element as a child of the application element to register the default AeroGear Android broadcast receiver. It will receive all messages and dispatch the message to registered handlers.
+and add these elements as children of the application element to register the default AeroGear Android GCM Service. It will receive all messages and dispatch them to registered handlers.
 
 [source, xml]
 ----
 <receiver
-    android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
     android:permission="com.google.android.c2dm.permission.SEND" >
     <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
         <category android:name="[PUT YOUR APP PACKAGE HERE]" />
     </intent-filter>
 </receiver>
+<service
+    android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND">
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+</service>
 
 ----
 
-You can also add a default message handler to the receiver in AndroidManifest.xml. If there are currently no handlers registered on the Registrations object it will handle the message.
+You can also add a default message handler to the AeroGearGCMMessageReceiver service in AndroidManifest.xml. If there are currently no handlers registered on the Registrations object it will handle the message.
 
 [source, xml]
 ----
-<receiver
+<service
     android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
-    android:permission="com.google.android.c2dm.permission.SEND" >
+    android:permission="com.google.android.c2dm.permission.SEND">
     <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <category android:name="[PUT YOUR APP PACKAGE HERE]" />
     </intent-filter>
     <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY"
                android:value="[PUT YOUR CLASS WITH MessageHandler IMPLEMENTATION HERE]" />
-</receiver>
+</service>
 
 ----
+
+You should also register the UnifiedPushInstanceIDListenerService in your manifest.  This class will listen for changes to you InstanceID token from GCM and update the Unified Push Server.
+
+[source, xml]
+----
+<service android:name="org.jboss.aerogear.android.unifiedpush.gcm.UnifiedPushInstanceIDListenerService" android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+----
+
 
 === Handling messages
 
@@ -141,21 +160,10 @@ public class MainActivity extends Activity implements MessageHandler {
     }
 
     @Override
-    public void onMessage(Context context, Bundle bundle) {
+    public void onMessage(Context context, Bundle message) {
         TextView text = (TextView) findViewById(R.id.text_view1);
-        text.setText(bundle.getString(UnifiedPushMessage.ALERT_KEY));
+        text.setText(message.getString(UnifiedPushMessage.ALERT_KEY));
     }
-
-    @Override
-    public void onDeleteMessage(Context context, Bundle bundle) {
-        //ignore
-    }
-
-    @Override
-    public void onError() {
-        //ignore
-    }
-
 }
 ----
 
