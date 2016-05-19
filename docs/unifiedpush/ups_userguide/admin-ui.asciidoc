@@ -14,11 +14,11 @@ The Unified Push Server can be accessed via its RESTful endpoints, as well over 
 Once installed, the Unified Push Server comes with two different account types:
 
 * a single +admin+ user
-* an initial +developer+ account
+* a +developer+ role
 
 The difference between the +admin+ and +developer+ account types is that the former can access all PushApplications and Variants configured on the server, whereas the latter has access only to the PushApplications and Variants created by the actual user. Further, the administration of the Unified Push Server, as well as management of it's users in the **Keycloak Admin Console**, can only be performed by the +admin+.
 
-IMPORTANT: By default the +developer+ account is disabled and needs to be explicitly enabled by the +admin+ inside of the Keycloak Admin Console!
+IMPORTANT: By default there is _no_ +developer+ account and one needs to be explicitly created by the +admin+ inside of the Keycloak Admin Console!
 
 === Login and landing page
 
