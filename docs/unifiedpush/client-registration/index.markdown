@@ -66,5 +66,5 @@ Internally, the client SDK needs to check if the device can establish a connecti
 
 ## Platform specific details
 
-Every client platform has it's own base APIs, to receive Push Message from it's Push Network. The AeroGear client SDK _may_ offer utilities to even more simplify this process.
+Every client platform has its own base APIs, to receive Push Message from its Push Network. The AeroGear client SDK _may_ offer utilities to simplify this process even more.
 _For example: In Android a custom ```Intent``` is required, therefore it would make sense if the "AeroGear Android Push Client Library" offers a convenience implementation for this class._
