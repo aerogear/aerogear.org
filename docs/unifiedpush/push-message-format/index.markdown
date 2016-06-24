@@ -6,7 +6,7 @@ toc_generate: true
 ---
 
 
-The UnifiedPush Server allows sending messages to the native and non-native Push APIs:
+The UnifiedPush Server allows the sending of messages to the native and non-native Push APIs:
 
 ### Links
 
@@ -39,11 +39,11 @@ The UnifiedPush Server allows sending messages to the native and non-native Push
     https://SERVER:PORT/CONTEXT/rest/sender
 
 ### Message Format
-The message format is very simple: A generic JSON map is used to sent messages to Android and iOS devices. 
+The message format is very simple: A generic JSON map is used to send messages to Android and iOS devices. 
 
 * ```ttl``` Specifies in seconds the ```time-to-live``` for the submitted notification. This value is supported by APNs and GCM. If a device is offline for a longer time than specified by the ```ttl``` value, the supported Push Networks may not deliver the notification.
 
-* ```content-available``` is an iOS specific argument to mark the payload as 'content-available'. The feature is needed when sending notifications to Newsstand applications and submitting silent iOS notifications (iOS7)
+* ```content-available``` is an iOS specific argument to mark the payload as 'content-available'. The feature is needed when sending notifications to Newsstand applications and submitting silent iOS notifications (iOS7).
 
 
 
@@ -72,7 +72,7 @@ To make the user experience the same on iOS and Android, for cordova users, we u
 
 ### SimplePush Object
 
-For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants. The version is submitted to all connected client, that are subscribed on their matching channels.
+For SimplePush an extra ```simple-push``` object is provided. This key is only used for SimplePush variants. The version is submitted to all connected clients that are subscribed on their matching channels.
 
 ### Query component
 
@@ -83,4 +83,4 @@ Currently the Server will support the following query criteria:
 * ```categories```: Helps to _tag_ the current client with multiple categories. Gives a semantic meaning to a registered ```Installation```.
 * ```deviceType```: A list of raw device types that should receive the message (e.g. Coupon only for iPad and AndroidTablets). The ```deviceType``` needs to be stored when the device is registering itself with the server.
 
-_**NOTE:**_ All these query criterias are optionnal. If no criterias are passed it will act as a  _broadcast_ send, where _all_ clients are notified. 
+_**NOTE:**_ All these query criteria are optional. If no criteria are passed it will act as a  _broadcast_ send, where _all_ clients are notified. 
