@@ -5,7 +5,7 @@ Before the Android application is able to receive the notifications, you must se
 
 * the Server key
 * the Sender ID
-* the `google-services.json` file that needs to be included in the app manifest in Android Studio.
+* the `google-services.json` file that needs to be placed into the /app folder of your Android Studio project.
 
 === Project Setup and App Registration using the Firebase Console
 
@@ -33,7 +33,7 @@ image:./img/add_app.png[Add Firebase to your app]
 
 - In the pop-up window enter the Package name of your app and then click on _Add app_. This automatically generates the `google-services.json` file that must be added to your app manifest in Android Studio. Download the .json file and save it. To close the pop-up window, click _Continue_ and then _Finish_ on the following screen.
 
-image:./img/package_name.png[Download google-services.json]
+image:./img/download_json.png[Download google-services.json]
 
 TIP: To re-download the google-services.json file, navigate to the _Project Settings_, then switch to the *General* tab, choose the desired app and click the google-services.json download button.
 
