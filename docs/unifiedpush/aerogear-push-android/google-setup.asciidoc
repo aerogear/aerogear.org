@@ -1,45 +1,40 @@
 [[google-setup]]
-== Google Related Setup
+== Obtaining Firebase Cloud Messaging Credentials
 
-Before the Android application is able to receive the notifications, you must authenticate yourself with Google as a developer. Luckily this is both easy and free to do, and doesn't require much set-up. Like iOS, you are only able to test out your push notifications in a real device.
+Before the Android application is able to receive the notifications, you must set up access to the Firebase Console. Luckily, this is both easy and free to do, and doesn't require much set-up. As with iOS, you are only able to test out your push notifications in a real device. This section shows you how to obtain the credentials necessary to set up Firebase Cloud Messaging for your app, including:
 
-=== Registering with Google
+* the Server key
+* the Sender ID
+* the `google-services.json` file that needs to be placed into the /app folder of your Android Studio project.
 
-First, we must authenticate with Google. Google offers the Google Cloud Messaging (GCM) platform, formerly known as Cloud to Device Messaging (C2DM). You will need a Google Account for this. Now open the https://cloud.google.com/console[Google Cloud Console].
+=== Project Setup and App Registration using the Firebase Console
 
+First, you must register with the Firebase Cloud Messaging (FCM) platform, formerly known as Google Cloud Messaging (GCM). You need a Google Account to do this. Start by opening the https://console.firebase.google.com[Firebase Console].
 
-- If you haven't created a project, click _Create Project_:
+- If you haven't created a project, click _Create New Project_:
 
-image:./img/gcc_1.png[Create New Project]
+image:./img/create_new_project.png[Create New Project]
 
-- Now give the new project a name:
+- Now give your new project a name:
 
-image:./img/gcc_2.png[New Project Name]
+image:./img/project_name.png[New Project Name]
 
-- Once the project has been created you will see the overview screen. From there grab the project number (used later as the _Sender ID_):
+- Once the project has been created you will be taken to the Overview screen. From there click the Settings icon located next to the project name in the sidebar, and in the pop-up menu click _Project Settings_.
 
-image:./img/gcc_3.png[Project Number]
+image:./img/project_settings.png[Project Number]
 
-Now you need to enable the _Google Cloud Messaging for Android_ APIs. To do that, navigate to +APIs & auth+ > +APIs+ and scroll down to the _Google Cloud Messaging for Android_ item: which you need to turn on:
+On the _Project Settings screen_, switch to the _Cloud Messaging_ tab, where you can find the _Server key_ and _Sender ID_ (known in GCM as _Project Number_).   
 
-image:./img/gcc_4_a.png[Cloud Messaging for Android]
+image:./img/retrieve_credentials.png[Retrieve Credentials]
 
-Now click in the link and press the _Enable API_ button:
+- As the final step of the setup procedure, you need to download the `google-services.json` file. To do this, first navigate to the Overview screen and click on _Add App_ (If you have no apps using FCM yet, select the option to _Add Firebase to your Android app_).
 
-image:./img/gcc_4_b.png[Enabling Cloud Messaging for Android]
+image:./img/add_app.png[Add Firebase to your app]
 
+- In the pop-up window enter the Package name of your app and then click on _Add app_. This automatically generates the `google-services.json` file that must be added to your app manifest in Android Studio. Download the .json file and save it. To close the pop-up window, click _Continue_ and then _Finish_ on the following screen.
 
-Now we need to register our application and state that we are accessing the Google APIs from a _Web Server_, the _AeroGear UnifiedPush Server_ in this case. First go to +APIs & auth+ > +Credentials+ and inside of the _Public API access_ area click the blue *CREATE NEW KEY* button. This launches the following popup, where you select the +Server key+ option:
+image:./img/download_json.png[Download google-services.json]
 
-image:./img/gcc_5.png[Project Number]
-
-On the next screen we just click the blue +Create+ button to create our Server Key:
-
-image:./img/gcc_6.png[Project Number]
-- For extra security, you may whitelist an IP address (or multiple) for the sending server
-
-On the last screen we are finally get to see the actual value of the generated Server Key, which we will use later:
-
-image:./img/gcc_7.png["Project Number",border="1"]
+TIP: To re-download the google-services.json file, navigate to the _Project Settings_, then switch to the *General* tab, choose the desired app and click the google-services.json download button.
 
 Now that Google is ready to accept and deliver our messages, we are ready to setup the link:#register-device[UnifiedPush server].
