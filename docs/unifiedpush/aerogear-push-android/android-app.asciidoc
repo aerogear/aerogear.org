@@ -1,7 +1,7 @@
 [[android-app]]
 == Your first Android/Push App
 
-Now that the UnifiedPush server is up and running, time to create a sample application that will exercice AeroGear's Android Push library support. For the purpose of the guide we will use the link:http://developer.android.com/tools/studio/index.html[Android Studio] with the ADT tools installed, but you are free to use any IDE that includes Android Gradle support.
+Now that the UnifiedPush server is up and running, time to create a sample application that will exercise AeroGear's Android Push library support. For the purpose of the guide we will use the link:http://developer.android.com/tools/studio/index.html[Android Studio] with the ADT tools installed, but you are free to use any IDE that includes Android Gradle support.
 
 Let's get started!
 
