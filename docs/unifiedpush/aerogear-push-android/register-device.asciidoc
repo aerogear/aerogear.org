@@ -1,11 +1,11 @@
 [[register-device]]
 == The AeroGear UnifiedPush Server
 
-With all the Google work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to CGM for a later message sending.
+With all the Google work being done, we are now ready to setup the link:https://github.com/aerogear/aerogear-unified-push-server[UnifiedPush Server], so that it can be used to connect to FCM for later message sending.
 
 :pushplatform: Android
 
-In the link:/docs/unifiedpush/ups_userguide/index/#_the_wizard[Wizard] after you create a PushApplication, click the **Add Variant** button and fill out the Android options. You will want to use the **Client ID** and **Project Number** from the *Google API Console* in their appropriate fields:
+In the link:/docs/unifiedpush/ups_userguide/index/#_the_wizard[Wizard] after you create a PushApplication, click the **Add Variant** button and fill out the Android options. You will want to use the **Server Key** and **Sender ID** obtained from the *Firebase Console* in their appropriate fields:
 
 image:./img/variant_01.png[Android Variant Options]
 
