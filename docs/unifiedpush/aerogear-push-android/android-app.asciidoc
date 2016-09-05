@@ -34,7 +34,7 @@ Open the `build.gradle` app file and add the AeroGear Android Push dependency:
 ----
 dependencies {
     ...
-    compile 'org.jboss.aerogear:aerogear-android-push:2.+'
+    compile 'org.jboss.aerogear:aerogear-android-push:4.+'
 }
 
 ----
@@ -176,33 +176,16 @@ Open the `AndroidManifest.xml` file and below the `<manifest>` entry add the nec
 ....
    <uses-permission android:name="android.permission.INTERNET" />
    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-   <uses-permission android:name="android.permission.WAKE_LOCK" />
-   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-   <permission
-         android:name="com.push.pushapplication.permission.C2D_MESSAGE"
-         android:protectionLevel="signature" />
-
-   <uses-permission android:name="com.push.pushapplication.permission.C2D_MESSAGE" />
 ...
 ----
 
-Let's register now AeroGear's Broadcast Receiver that will listen for notifications. Below the `<application>` entry add the following:
+Let's register now our own `MessageHandler` inside of the `<application>` entry:
 
 [source,xml]
 ----
 <application
 ...
-    <receiver
-        android:name="org.jboss.aerogear.android.unifiedpush.fcm.AeroGearFCMMessageReceiver"
-        android:permission="com.google.android.c2dm.permission.SEND">
-        <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
-            <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
-
-            <category android:name="org.jboss.aerogear.unifiedpush.helloworld"/>
-        </intent-filter>
-        <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY" android:value="com.push.pushapplication.NotifyingHandler"/>
-    </receiver>
+    <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY" android:value="com.push.pushapplication.NotifyingHandler"/>
 </application>
 ----
 
@@ -238,17 +221,24 @@ public class NotifyingHandler implements MessageHandler {
     public NotifyingHandler() {
     }
 
-    @Override
+		@Override
     public void onMessage(Context context, Bundle bundle) {
         this.context = context;
 
         String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
-        notify(message);
+
+        HelloWorldApplication application = (HelloWorldApplication) context.getApplicationContext();
+        application.addMessage(message);
+
+        notify(bundle);
     }
 
-    private void notify(String message) {
+    private void notify(Bundle bundle) {
+
         NotificationManager mNotificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
 
         Intent intent = new Intent(context, MainActivity.class)
                 .addFlags(PendingIntent.FLAG_UPDATE_CURRENT)
@@ -267,16 +257,6 @@ public class NotifyingHandler implements MessageHandler {
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
-    }
-
-    @Override
-    public void onDeleteMessage(Context context, Bundle bundle) {
-        // handle GoogleCloudMessaging.MESSAGE_TYPE_DELETED
-    }
-
-    @Override
-    public void onError() {
-        // handle GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR
     }
 
 }
