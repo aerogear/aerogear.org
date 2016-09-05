@@ -11,7 +11,7 @@ In several tutorials and guides you can learn all about the UnifiedPush Server.
 
 * [UnifiedPush Server User Guide](ups_userguide/index/)
 * [Push Notification Message Format (stable)](push-message-format)
-* [Push Notification Message Format (development)](push-message-format-dev)
+* [Push Notification Message Format (1.0.x)](push-message-format-1-0)
 * [Client Registration details](client-registration/)
 
 ## Client guides
