@@ -5,7 +5,7 @@ Now that we have the sample application running, it is time to use the _AeroGear
 
 === Simple Sender
 
-Login to the administration console of the UnifiedPush server and click on the "Send Notification" button on the desired PushApplication and write a message in the text field. Once done, hit the 'Send Push Notification':
+Log into the administration console of the UnifiedPush server and click on the "Send Notification" button on the desired PushApplication and write a message in the text field. Once done, hit the 'Send Push Notification':
 
 image:./img/send_notification.png[Send Notification]
 
@@ -23,10 +23,10 @@ That's all you need to use the _AeroGear_ project for sending and receiving _Pus
 
 === Last-Minute Notes
 
-Since we interface with the Android devices via link:http://developer.android.com/google/gcm/index.html[Google Cloud Messaging], we still have a few things to keep in mind regarding the messages we send:
+Since we interface with the Android devices via link:https://firebase.google.com/docs/cloud-messaging/[Firebase Cloud Messaging], we still have a few things to keep in mind regarding the messages we send:
 
 - Messages can be maximum 4kb
 - Messages can be link:http://developer.android.com/google/gcm/adv.html#throttling[throttled]
 - Google will hold messages in queue for 28 days if the intended device is unavailable for delivery, after which they will be discarded
 
-For a more thorough explanation of the GCM system and queue, check out link:http://developer.android.com/google/gcm/adv.html[GCM Advanced Topics], and link:http://developer.android.com/google/gcm/gcm.html[GCM Architectual Overview]
+For a more thorough explanation of the FCM system and queue, check out the link:https://firebase.google.com/docs/cloud-messaging/[Firebase Cloud Messaging Documentation].

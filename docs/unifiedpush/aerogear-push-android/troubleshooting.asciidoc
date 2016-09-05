@@ -13,7 +13,7 @@ When you call `PushRegistrar.register` onFailure is called with the exception me
 
 *Answer*
 
-There are several causes for this issue.  The easiest solution is that the GCM registration service had an error and you should retry at a later date.  However, there are also several code/environment issues to check.
+There are several causes for this issue.  The easiest solution is that the FCM registration service had an error and you should retry at a later date.  However, there are also several code/environment issues to check.
 
 . You do not have Google Play Services installed on your device. +
 If you are running an emulator, make sure you are using a Google APIs Target higher than Android 4.2. If you are using a device, make sure you are using a Google experience device and not an Amazon Fire or AOSP device.
@@ -24,7 +24,7 @@ If you are running an emulator, make sure you are using a Google APIs Target hig
 ----
 <permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
        android:protectionLevel="signature" />
-<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />   
+<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
 ----
 
 . Make sure you have the correct permissions available.
@@ -34,11 +34,11 @@ If you are running an emulator, make sure you are using a Google APIs Target hig
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> 
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
 <permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
        android:protectionLevel="signature" />
-<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />   
+<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
 ----
 
 . Make sure your device's clock is set correctly.  Some people on link:http://stackoverflow.com/questions/17188982/how-to-fix-google-cloud-messaging-registration-error-service-not-available[Stack Overflow] have reported this issue.
