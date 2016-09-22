@@ -242,6 +242,11 @@ Full example (https://github.com/aerogear/aerogear-pushplugin-cordova/blob/maste
 include::https://raw.githubusercontent.com/aerogear/aerogear-cordova-push/master/example/index.html[]
 ----
 
+### Xcode 8 setup
+Xcode 8 requires a .entitlements file with a `aps-environment` key present in order to make the push notifications work.
+The plugin includes a Cordova hook that will add that file with the `aps-environment` key and `development` value.
+To change the value to `production` you have to provide your own Push.entitlements file. You can pick the link:https://github.com/aerogear/aerogear-cordova-push/blob/master/src/ios/Push.entitlements[example file], change the value to `production` and put it inside the www folder. It's values will be copied to the project when `cordova prepare ios` is run.
+
 ## Documentation
 * link:/docs/specs/aerogear-cordova/index.html[AeroGear Push plugin API doc]
 
