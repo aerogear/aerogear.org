@@ -18,7 +18,7 @@ These are general guidelines about handling PRs and things to keep in mind as a 
 *** This is especially important for large or complex changes
 ** Exceptions:
 *** Updates are clearly trivial
-*** No one is available to review in a timely manor
+*** No one is available to review in a timely manner
 *** Updates are blocking your progress with other critical items
 *** Another project developer has "+1"'ed the PR after a basic review
 * Do NOT use the GitHub PR merge facilities
