@@ -108,6 +108,12 @@ span.version {
 
 ---
 
+<h2 class="section-header" id="offline"><i class="fa fa-refresh"></i> AeroGear<strong>Offline</strong> Specifications <sub><span class="label label-warning">Proposal</span></sub></h2>
+* [Offline API Proposal](aerogear-offline/)
+
+---
+
+
 <h5>...are you looking for more?</h5>
 <p>
    <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a>
