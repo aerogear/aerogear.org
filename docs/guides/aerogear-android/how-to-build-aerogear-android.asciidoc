@@ -5,8 +5,8 @@ title: How to build AeroGear Android
 ---
 
 == Prereqs
-* link:http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java 7]
-* link:http://maven.apache.org/[Maven 3.1.1]
+* link:http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java 8]
+* link:http://maven.apache.org/[Maven 3.3.x]
 * Latest link:https://developer.android.com/sdk/index.html[Android SDK] and link:http://developer.android.com/tools/revisions/platforms.html[Platform version]
 * Latest link:http://developer.android.com/tools/support-library/index.html[Android Support Library], link:http://developer.android.com/google/play-services/index.html[Google Play Services], and Google Repository.
 * Latest link:https://github.com/mosabua/maven-android-sdk-deployer[Maven Android SDK Deployer]
@@ -24,7 +24,7 @@ git clone git://github.com/mosabua/maven-android-sdk-deployer.git
 
 === Install Android platform
 ```
-cd $PWD/maven-android-sdk-deployer/platforms/android-22
+cd $PWD/maven-android-sdk-deployer/platforms/android-24
 mvn install -N --quiet
 ```
 
