@@ -23,6 +23,20 @@ Find below the required application server version:
 
 NOTE: You can also link:#openshift[run the UnifiedPush Server in the cloud with OpenShift] but this requires a different setup process.
 
+Extract the downloaded archive in a directory of your choice and save that path in an environment variable
+
+*UNIX*
+[source,shell]
+----
+export APPSRV_HOME=/path/to/SERVER_HOME
+----
+
+*WINDOWS*
+[source,batch]
+----
+set APPSRV_HOME=X:\path\to\SERVER_HOME
+----
+
 [[getfiles]]
 === Get the UnifiedPush Server Application Files
 The UnifiedPush Server application is provided in two files: +unifiedpush-server.war+ and +unifiedpush-auth-server.war+. These files contain the core functionality and authentication components of the UnifiedPush Server. Both files are necessary to achieve a working UnifiedPush Server application.
@@ -36,15 +50,31 @@ Different files are provided for each application servers:
 ** For WildFly, +unifiedpush-server-wildfly.war+
 ** For EAP, +unifiedpush-server-as7.war+
 
+Extract the downloaded archive in a working directory of your choice and save that path in an environment variable.
+
+*UNIX*
+[source,shell]
+----
+export WORK_DIR=/path/to/WORK_DIR
+----
+
+*WINDOWS*
+[source,c]
+----
+set WORK_DIR=X:\path\to\WORK_DIR
+----
+
+From now on we will refer only to unix syntax. It will be, however, pretty simple to convert the commands to the Windows syntax.
+
 [[confjms]]
 === Configure JMS destinations for the UnifiedPush
 The UnifiedPush Server 1.2.x requires JMS queues and topics that it uses for token loading, notification dispatching and metrics collection.
 
 Following CLI script creates all required JMS destinations and also configures address settings that influence JMS destinations behavior:
 
-[source,c]
+[source,shell]
 ----
-$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/jms-setup-wildfly.cli
+$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/configuration/jms-setup-wildfly.cli
 ----
 
 [[gendbds]]
@@ -60,22 +90,21 @@ To complete these prerequisite processes and configure the application server fo
 
 . Copy the MySQL module, located in the +databases/src/main/resources/modules/com+ directory of the release bundle, to the application server modules directory
 +
-[source,c]
+[source,shell]
 ----
-$ cp -r /path/to/com /path/to/SERVER_HOME/modules/
+$ cp -r $WORK_DIR/databases/src/main/resources/modules/com $APPSRV_HOME/modules/
 ----
 . Add the MySQL JDBC driver to the application server +mysql+ module
 +
-[source,c]
+[source,shell]
 ----
-$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 \
--DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/
+$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=$APPSRV_HOME/modules/com/mysql/jdbc/main/
 ----
 . Create the UnifiedPush MySQL database
 +
 For 1.0.x :
 +
-[source,c]
+[source,SQL]
 ----
 $ mysql -u <user-name>
 mysql> create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
@@ -85,7 +114,7 @@ mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO '
 +
 For 1.1.x :
 +
-[source,c]
+[source,SQL]
 ----
 $ mysql -u <user-name>
 mysql> create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
@@ -97,24 +126,24 @@ mysql> GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON keycloak.* TO 'uni
 
 . Start the application server, using the full-profile mode
 +
-[source,c]
+[source,shell]
 ----
-$ ./path/to/SERVER_HOME/bin/standalone.sh --server-config=standalone-full.xml
+$ $APPSRV_HOME/bin/standalone.sh --server-config=standalone-full.xml
 ----
 . Configure the application server to use the MySQL driver and create and add the UnifiedPush datasource for the MySQL database using the application server CLI and downloaded configuration script, located in the +databases+ directory of the release bundle
 +
 For WildFly:
 +
-[source,c]
+[source,shell]
 ----
-$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config-wildfly.cli
+$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/databases/mysql-database-config-wildfly.cli
 ----
 +
 For EAP:
 +
-[source,c]
+[source,shell]
 ----
-$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config.cli
+$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/databases/mysql-database-config.cli
 ----
 
 ==== PostgreSQL Database
@@ -124,22 +153,21 @@ To complete these prerequisite processes and configure the application server fo
 
 . Copy the PostgreSQL module, located in the +databases/src/main/resources/modules/org+ directory of the release bundle, to the application server modules directory
 +
-[source,c]
+[source,shell]
 ----
-$ cp -r /path/to/org /path/to/SERVER_HOME/modules/
+$ cp -r $WORK_DIR/databases/src/main/resources/modules/org $APPSRV_HOME/modules/
 ----
 . Add the PostgreSQL JDBC driver to the application server +postgresql+ module
 +
 [source,c]
 ----
-$ mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 \
--DoutputDirectory=/Path/to/SERVER_HOME/modules/org/postgresql/main/
+$ mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=$APPSRV_HOME/modules/org/postgresql/main/
 ----
 . Create the UnifiedPush PostgreSQL database
 +
 For 1.0.x :
 +
-[source,c]
+[source,SQL]
 ----
 $ psql -U <user-name>
 psql> create database unifiedpush;
@@ -148,7 +176,7 @@ psql> GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
 ----
 For 1.1.x :
 +
-[source,c]
+[source,SQL]
 ----
 $ psql -U <user-name>
 psql> create database unifiedpush;
@@ -167,22 +195,22 @@ host    all             unifiedpush     127.0.0.1/32            md5
 +
 [source,c]
 ----
-$ ./path/to/SERVER_HOME/bin/standalone.sh --server-config=standalone-full.xml
+$ $APPSRV_HOME/bin/standalone.sh --server-config=standalone-full.xml
 ----
 . Configure the application server to use the PostgreSQL driver and create and add the UnifiedPush datasource for the PostgreSQL database using the application server CLI and downloaded configuration script, located in the +databases+ directory of the release bundle
 +
 For WildFly:
 +
-[source,c]
+[source,shell]
 ----
-$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config-wildfly.cli
+$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/databases/postgresql-database-config-wildfly.cli
 ----
 +
 For EAP:
 +
-[source,c]
+[source,shell]
 ----
-$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/postgresql-database-config.cli
+$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/databases/postgresql-database-config.cli
 ----
 
 [[schema]]
@@ -193,14 +221,14 @@ After the application server is configured for the UnifiedPush datasource, the s
 Copy the _liquibase example_ file to  +liquibase.properties+ and edit it to match your database name and credentials.
 
 
-[source,c]
+[source,shell]
 ----
 cp liquibase-database-flavor-example.properties liquibase.properties
 ----
 
 After the +liquibase.properties+ contains the proper credentials, you need to execute the migration tool:
 
-[source,c]
+[source,shell]
 ----
 ./bin/ups-migrator update
 ----
@@ -216,7 +244,7 @@ Liquibase Update Successful
 === Deploy the UnifiedPush Server
 With the database schema in place, the two UnifiedPush Server application +.war+ files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server.
 
-To deploy the UnifiedPush Server, copy the two +.war+ files to +/path/to/SERVER_HOME/standalone/deployments/+. This can be done either before or after starting the application server.
+To deploy the UnifiedPush Server, copy the two +.war+ files to +$APPSRV_HOME/standalone/deployments/+. This can be done either before or after starting the application server.
 
 After deployment with the application server running, the UnifiedPush Server Console can be accessed at link:http://localhost:8080/ag-push/[]. For information about using the Console, see link:#admin-ui[Using the Admin UI].
 
