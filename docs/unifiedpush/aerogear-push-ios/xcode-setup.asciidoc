@@ -36,6 +36,19 @@ image::./img/code_signing.png[Xcode project settings]
 
 **NOTES:** The Provisioning profile setting is set to 'None' in Xcode 5. And in Xcode 6, the Provisioning profile setting should be set to 'Automatic' by default. Check link:https://developer.apple.com/library/ios/qa/qa1814/_index.html[apple documentation for more details].
 
+In Xcode 8, a .entitlements file is needed to make push notifications work.
+To create it, go to the Capabilities section of the project.
+
+image::./img/push-capabilities-disabled.png[Push Capabilities disabled]
+
+You can see that the Push Notifications switch is in "OFF" state.
+Click the switch and Xcode 8 will connect with your developer account to add the needed provisioning profiles and will also create the YourProjectName.entitlements file.
+
+image::./img/push-capabilities-enabled.png[Push Capabilities enabled]
+
+Notice that the status of the Push Notifications switch is now "ON" and there is a new HelloWorld.entitlements file in the left side.
+
+
 === Running into "No matching provisioning profiles found" issue?
 
 Check out link:#_question_no_matching_provisioning_profiles_found[iOS troubleshooting guide].
