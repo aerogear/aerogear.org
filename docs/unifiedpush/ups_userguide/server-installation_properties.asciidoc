@@ -9,6 +9,15 @@
 
 For an advanced configuration (or just plain testing purposes), it is possible to launch the UPS with a bunch of different properties - some of them can be configured via System Properties, others can be configured as a configuration of JMS subsystem and other are configured of EJB.
 
+[[envvarstable]]
+=== Environment variables for the UnifiedPush Server
+[width="80%",cols="2,^2,^2",options="header"]
+|=========================================================
+|Name |Description |Default Value
+|SOCKS_PROXY_HOST| Set the value to the IP address or hostname of SOCKS server if required for APN or health endpoint| None
+|SOCKS_PROXY_PORT| Set the value to the port number of SOCKS server referenced above if used| None
+|=========================================================
+
 [[propertiestable]]
 === System Properties for the UnifiedPush Server
 [width="80%",cols="3,^2,^2",options="header"]
