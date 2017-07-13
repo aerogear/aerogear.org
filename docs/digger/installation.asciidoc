@@ -1,0 +1,17 @@
+---
+layout: post
+section: guides
+title: Digger installation guide
+toc_generate: true
+---
+
+== Digger macOS setup
+
+include::docs/digger/installation/macos-prereqs.asciidoc[macOS prerequisites]
+
+include::docs/digger/installation/macos-setup.asciidoc[macOS setup]
+
+=== Further options
+
+Further configuration of the macOS node is possible through optional variables.
+link:macos-options[View all macOS variables].
