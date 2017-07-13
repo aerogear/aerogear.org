@@ -1,0 +1,40 @@
+=== Setting Ansible variables
+The macOS part of the installer will perform the following tasks.
+
+. Install Homebrew.
+. Install RVM and Ruby.
+. Install NVM and Node.
+. Install Xcode.
+. Download Apple certificates.
+. Update Cocoapods.
+. Configure machine as a node in Jenkins.
+
+To run the complete Ansible provisioning task you will need the following
+variables set when running the Ansible job.
+
+
+.Required Variables
+|===
+| Variable name | Description
+
+| `xcode_install_user`
+| Apple Developer Account username. If this isn't set Xcode installation will
+be skipped.
+
+| `xcode_install_password`
+| Apple Developer Account password. If this isn't set Xcode installation will
+be skipped.
+
+| `credential_private_key_path`
+| Path to the private key that Jenkins should use to SSH into the macOS node.
+If this isn't set the Jenkins node configuration will be skipped.
+
+| `credential_passphrase` - 
+| Passphrase for the private key. If this isn't set the Jenkins node
+configuration will be skipped.
+
+| `credential_public_key_path` - 
+| Path to the public key. The macOS node will add this to it's
+`authorized_keys` file. If this isn't set the Jenkins node configuration will
+be skipped.
+|===
