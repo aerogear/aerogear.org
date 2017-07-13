@@ -1,0 +1,31 @@
+=== Prerequisites
+==== Machine prerequisites
+
+* A user with sudo permissions and SSH access.
+* `ansible_sudo_pass` variable set when running the Ansible job.
+
+==== Network access
+The job supports the use of a proxy.
+
+The machine requires network access to the following hosts:
+
+.Required resources
+|===
+| Hostname | Reason
+
+| https://github.com
+| To download and install Homebrew packages and Cocoapods.
+
+| https://raw.githubusercontent.com
+| To download and install NVM.
+
+| https://rvm.io
+| To download and install RVM.
+
+| http://developer.apple.com
+| To download developer certificates and Xcode.
+
+| https://npmjs.org
+| To install NPM packages.
+|===
+Other external hosts may be required depending on what other packages you specify to install.
