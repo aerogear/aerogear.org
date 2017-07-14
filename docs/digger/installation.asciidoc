@@ -11,6 +11,8 @@ include::docs/digger/installation/macos-prereqs.asciidoc[macOS prerequisites]
 
 include::docs/digger/installation/macos-setup.asciidoc[macOS setup]
 
+include::docs/digger/installation/known-issues.asciidoc[Known issues]
+
 === Further options
 
 Further configuration of the macOS node is possible through optional variables.
