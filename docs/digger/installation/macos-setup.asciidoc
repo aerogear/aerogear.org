@@ -38,3 +38,17 @@ configuration will be skipped.
 `authorized_keys` file. If this isn't set the Jenkins node configuration will
 be skipped.
 |===
+
+Below is an example of using all required variables when running the Digger
+Ansible job to provision macOS machines.
+
+----
+ansible-playbook -i sample-inventory-file sample-playbook.yml
+-e "ansible_sudo_pass=exampleSudoPassword"
+-e "xcode_install_user=exampleAppleDeveloperUsername"
+-e "xcode_install_password=exampleAppleDeveloperPassword"
+-e "credential_private_key_path=/path/to/sshKey"
+-e "credential_passphrase=exampleSshKeyPassphrase"
+-e "credential_public_key_path=/path/to/sshKey.pub"
+--tags="provision-osx"
+----
