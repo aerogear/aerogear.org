@@ -171,7 +171,29 @@ provided keys. Add each machine as a node in the build farm, connecting through
 SSH.
 
 You will need to create a key pair using a tool such as ssh-keygen to allow the
-Jenkins instance to connect with the macOS nodes.
+Jenkins instance to connect with the macOS nodes. Below is the steps involved
+in creating a key pair.
+
+.Generating a key pair
+----
+# Run ssh-keygen. -b is the number of bits (2048 by default), -C is an optional
+comment.
+ssh-keygen -t rsa -b 4096 -C "Digger-Jenkins-MacOS-Credentials"
+
+# You'll be prompted to select a location for the key pair along with a name.
+> Enter file in which to save the key:
+> ~/.ssh/digger_macos_rsa
+
+# You'll be asked to select a passphrase.
+> Enter passphrase (empty for no passphrase):
+> mySecurePassword
+
+# Your key pair will then be available under the specified directory with the
+# specified name.
+> ls ~/.ssh/
+digger_macos_rsa
+digger_macos_rsa.pub
+----
 
 To run this section as a standalone step you must specify the
 `osx_configure_buildfarm` tag.
@@ -205,7 +227,11 @@ macOS_buildfarm_cred.
 |buildfarm_user_id
 |Jenkins user. Defaults to admin.
 |buildfarm_node_executors
-|Number of executors (Jenkins configuration) on the macOS node. Defaults to 1.
+|Number of executors (Jenkins configuration) on the macOS node. Defaults to
+`1`. There is currently no build isolation with the macOS node meaning there is
+no guarenteed support for concurrent builds. This value should not be changed
+unless you are certain all apps will be built with the same signing
+credentials.
 |buildfarm_node_mode
 |How the macOS node should be utilised. Should be one of:
 |NORMAL
