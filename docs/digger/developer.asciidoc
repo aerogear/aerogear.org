@@ -1,0 +1,8 @@
+---
+layout: post
+section: guides
+title: Digger developer guide
+toc_generate: true
+---
+
+== developer guide
