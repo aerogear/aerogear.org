@@ -107,5 +107,5 @@ For more details on the supported mobile platforms consult the guides below:
 
 <h4 id="diggerGuides">Guides</h4>
 * [Installation Guide](/docs/digger/installation)
-* [Admin Guide](/)
-* [Developer Guide](/)
+* [Admin Guide](/docs/digger/admin)
+* [Developer Guide](/docs/digger/developer)

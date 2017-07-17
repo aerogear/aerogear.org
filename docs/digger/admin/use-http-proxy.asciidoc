@@ -1,0 +1,47 @@
+=== Configuration Options
+
+It is possible to run AeroGear Digger behind a HTTP proxy server. To configure the proxy server, you need to add the following Ansible Variables:
+
+|===
+| Variable name | Description
+
+| proxy_host
+| The host name of the proxy server. It should not contain protocol
+| proxy_port
+| The port number of the proxy
+| proxy_user
+| Required if authentication is enabled
+| proxy_pass
+| Required if authentication is enabled
+| proxy_protocol
+| Optional. The protocol to use with the proxy. Default value is `http`.
+|===
+
+You can define these variables either in an inventory file, or pass via the command line. 
+Please check the http://docs.ansible.com/ansible/playbooks_variables.html[Ansible Variables Docs] for more details.
+
+NOTE: There are some known issues with using a HTTP proxy that requires authentication.
+Please check the link:known_issues[Known Issues] doc for more details.
+It is recommended to use a HTTP proxy that doesn't require authentication.
+
+=== Limitations
+
+Once these variables are set, the Digger Installer will automatically make sure that the proxy settings are used by:
+
+* The Jenkins server
+* The Android SDK tool to download Android SDKs
+* Adding appropriate environment variables to the container/node that will run the build jobs, like `HTTP_PROXY` and `HTTPS_PROXY`
+* Ansible itself to install various tools when provision the Mac servers
+
+These changes should allow the default build tools like Gradle and XCode to work with the HTTP proxy.
+
+However, there maybe some tools that requires specific configuration to work with proxy.
+In this case, you will need to update the configuration for those tools manually in the Jenkinsfile, using the values from the environment variables like `HTTP_PROXY` and `HTTPS_PROXY`.
+
+
+
+
+
+
+
+
