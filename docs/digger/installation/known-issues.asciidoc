@@ -30,3 +30,14 @@ following command.
 ----
 openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new
 ----
+
+=== iOS Build Limitations
+
+==== No Build Isolation Support
+
+At the moment, the iOS builds do not support isolation. This means if one iOS build process changes the settings/environment, it will impact on the next iOS build.
+
+==== No Parallel Builds Support On A Single Mac Server
+
+Due to each iOS build needs to update some of the global configurations (like certifications, keys etc), only 1 iOS build is allowed at a time on a single Mac server.
+If you need to support parallel iOS builds, you will need to configure multiple Mac servers.

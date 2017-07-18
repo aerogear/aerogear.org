@@ -1,0 +1,57 @@
+== Run the Digger Installer
+
+To run the Digger installer, you should:
+
+. Step 1
++
+Clone the https://github.com/aerogear/digger-installer[Digger Installer repo]
+
+. Step 2
++
+Update the `inventory-sample` file in the repo to provide the information about your cluster.
+
+. Step 3
++
+Update the configurations of various tasks. You should check the following configurations:
++
+* Check the variables defined in `vars/buildfarm.yml` file and change them if required. 
+* To build Android applications, you may need to change the Android SDK components as descirbed in the <<Configure the Android SDK components>> section
+* To build iOS applications, you need to provide the required Ansible variables to as described in the <<Setup Mac Servers>> section
+
+. Step 4
++
+Run the following command:
++
+----
+ansible-playbook -i inventory-sample sample-build-playbook.yml
+----
++
+and follow the instructions.
+
+The sample playbook will perform the following tasks:
+
+* Create a project in OpenShift
+* Install and configure Jenkins
+* Install Android SDK to a PV
+* Setup Mac servers
+
+You can edit the default playbook file to only run the tasks that you need, or you can use tags to specify the tasks you need to run.
+For example, to only run the task to install Jenkins, you can run:
+
+----
+ansible-playbook -i inventory-sample sample-build-playbook.yml --tags="deploy-jenkins"
+----
+
+NOTE: All the tasks in the installer are idempotent and you can run them multiple times and they will produce the same results.
+
+More details about these tasks are explained in the following sections. They are optional content and you can skip them and go to the <<Verify Installation>> section.
+
+// details about installing Jenkins
+include::./install-jenkins.asciidoc[]
+
+//details about installing Android SDK
+include::./install-android-sdk.asciidoc[]
+
+//details about setting up Mac servers
+include::./macos-setup.asciidoc[macOS setup]
+
