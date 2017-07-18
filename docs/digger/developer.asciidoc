@@ -5,4 +5,4 @@ title: Digger developer guide
 toc_generate: true
 ---
 
-== developer guide
+include::docs/digger/developer/jenkinsfile.asciidoc[Using Jenkinsfiles]
