@@ -5,7 +5,7 @@ You may build this via
 docker build --tag aerogear.org .
 ```
 
-If you want to edit files loclaly you will need to mount your volume at /home/aerogear/aerogear
+If you want to edit files locally you will need to mount your volume at /home/aerogear/aerogear
 
 For example : 
 ``` 
