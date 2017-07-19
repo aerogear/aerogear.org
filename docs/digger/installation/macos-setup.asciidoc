@@ -1,4 +1,6 @@
-=== Setting Ansible variables
+=== Setup Mac Servers
+
+==== Setting Ansible variables
 The macOS part of the installer will perform the following tasks.
 
 . Install Homebrew.
@@ -52,3 +54,8 @@ ansible-playbook -i sample-inventory-file sample-playbook.yml
 -e "credential_public_key_path=/path/to/sshKey.pub"
 --tags="provision-osx"
 ----
+
+==== Further options
+
+Further configuration of the macOS node is possible through optional variables.
+link:macos-options[View all macOS variables].
