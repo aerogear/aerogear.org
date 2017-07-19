@@ -8,22 +8,21 @@ Clone the https://github.com/aerogear/digger-installer[Digger Installer repo]
 
 . Step 2
 +
-Update the `inventory-sample` file in the repo to provide the information about your cluster.
+Make a copy of the `inventory-sample` file in the repo, and update it to provide the information about your cluster.
++
+For more details about the Mac server configurations, please check the <<Setup Mac Servers>> section.
 
+//TODO: remove this step once we can configure Android SDK components via Ansible variables.
 . Step 3
 +
-Update the configurations of various tasks. You should check the following configurations:
-+
-* Check the variables defined in `vars/buildfarm.yml` file and change them if required. 
 * To build Android applications, you may need to change the Android SDK components as descirbed in the <<Configure the Android SDK components>> section
-* To build iOS applications, you need to provide the required Ansible variables to as described in the <<Setup Mac Servers>> section
 
 . Step 4
 +
 Run the following command:
 +
 ----
-ansible-playbook -i inventory-sample sample-build-playbook.yml
+ansible-playbook -i your-inventory-copy sample-build-playbook.yml
 ----
 +
 and follow the instructions.
@@ -31,15 +30,16 @@ and follow the instructions.
 The sample playbook will perform the following tasks:
 
 * Create a project in OpenShift
-* Install and configure Jenkins
-* Install Android SDK to a PV
-* Setup Mac servers
+* Install Jenkins (tag: deploy-jenkins)
+* Install Android SDK to a PV (tag: android-sdk)
+* Configure Jenkins (tag: configure-buildfarm)
+* Setup Mac servers (tag: provision-osx)
 
-You can edit the default playbook file to only run the tasks that you need, or you can use tags to specify the tasks you need to run.
+If you only want to run a particular task, you can pass the tag values to the command line.
 For example, to only run the task to install Jenkins, you can run:
 
 ----
-ansible-playbook -i inventory-sample sample-build-playbook.yml --tags="deploy-jenkins"
+ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy-jenkins"
 ----
 
 NOTE: All the tasks in the installer are idempotent and you can run them multiple times and they will produce the same results.

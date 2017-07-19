@@ -7,7 +7,7 @@ To build Android applications, Jenkins will create containers (pods) dynamically
 
 However, Android SDK is required to build Android apps. But it will take too long to build if we have to download the Android SDK every time.
 
-To solve this problem, the installer need to download the Android SDK first and make sure it is available to the building pods. 
+To solve this problem, the installer needs to download the Android SDK first and make sure it is available to the building pods. 
 It will perform the following tasks:
 
 * Create a new pod to download the Android SDK. The pod will use an image that contains the required tools, and claims a PV.
@@ -18,6 +18,6 @@ It will perform the following tasks:
 
 The Android SDK contains many different components. 
 Only a subset of them are installed by default. 
-The list of components that will be installed are specified in the `android-sdk/templates/sample_cfg.j2` file of the Digger installer repo.
+The list of components that will be installed are specified in the https://github.com/aerogear/digger-installer/blob/master/android-sdk/templates/sample_cfg.j2[android-sdk/templates/sample_cfg.j2] file of the Digger installer repo.
 
 You can modify this file to add or remove Android SDK components that need to be installed.
