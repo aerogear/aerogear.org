@@ -1,0 +1,4 @@
+== Jenkins pipeline documentation
+
+Further information on using Jenkinsfiles are available in the
+https://jenkins.io/doc/pipeline/steps/[Jenkins pipeline reference]
