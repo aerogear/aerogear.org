@@ -12,10 +12,10 @@ Make a copy of the `inventory-sample` file in the repo, and update it to provide
 +
 For more details about the Mac server configurations, please check the <<Setup Mac Servers>> section.
 
-//TODO: remove this step once we can configure Android SDK components via Ansible variables.
 . Step 3
+//TODO: remove this step once we can configure Android SDK components via Ansible variables.
 +
-* To build Android applications, you may need to change the Android SDK components as descirbed in the <<Configure the Android SDK components>> section
+To build Android applications, you may need to change the Android SDK components as descirbed in the <<Configure the Android SDK components>> section
 
 . Step 4
 +
