@@ -1,4 +1,4 @@
-== Using Jenkinsfiles
+== Using Jenkinsfiles in an app
 
 === Checkout source code
 To checkout a projects source code the `checkout` step can be used.
@@ -15,8 +15,40 @@ node("android"){
 }
 ----
 
+=== Adding a configuration file (RHMAP only)
+When building apps in RHMAP a properties file should be added to the app to
+allow it to make backend requests. In Android this is a properties file named
+`fhconfig.properties`, in iOS this is a plist file named `fhconfig.plist`. The
+contents of these files is provided in the Jenkinsfile through
+`params.FH_CONFIG_CONTENT`. Below are examples of populating the configuration
+file for Android and iOS.
+
+.fhconfig Android properties file
+[source,groovy]
+----
+node("android") {
+  // Checkout source code
+  ...
+  stage("Prepare"){
+    writeFile file: 'app/src/main/assets/fhconfig.properties', text: params.FH_CONFIG_CONTENT
+  }
+  ...
+}
+----
+
+.fhconfig iOS plist file
+[source,groovy]
+----
+node("android") {
+  stage("Prepare") {
+    writeFile: file: 'app/fhconfig.plist', text: params.FH_CONFIG_CONTENT
+  }
+}
+----
+
 === Signing Android build
-When an Android apk is created it can be signed using the provided `signAndroidApks` function.
+When an Android apk is created it can be signed using the provided
+`signAndroidApks` function.
 
 [source,groovy]
 ----
@@ -29,7 +61,8 @@ node("android"){
           keyStoreId: "${params.BUILD_CREDENTIAL_ID}",
           keyAlias: "${params.BUILD_CREDENTIAL_ALIAS}",
           apksToSign: "**/*-unsigned.apk",
-          // uncomment the following line to output the signed APK to a separate directory as described above
+          // uncomment the following line to output the signed APK to a
+          separate directory as described above
           // signedApkMapping: [ $class: UnsignedApkBuilderDirMapping ],
         )
     } else {
@@ -47,7 +80,8 @@ The `signAndroidApks` function takes the following parameters.
 | Parameter | Description
 
 | keyStoreId
-| Keystore ID. This will be provided through the `BUILD_CREDENTIAL_ID` parameter if the app is built through RHMAP.
+| Keystore ID. This will be provided through the `BUILD_CREDENTIAL_ID`
+parameter if the app is built through RHMAP.
 
 | keyAlias
 | Alias of the private key/certificate chain. This will be provided through the `BUILD_CREDENTIAL_ALIAS` parameter if the app is built through RHMAP.
@@ -56,7 +90,8 @@ The `signAndroidApks` function takes the following parameters.
 | A file name or glob pattern specifying the APK files to store.
 
 | signedApkMapping
-| Output the signed APK to a separate directory than the unsigned APK. Omit if storing in the same directory.
+| Output the signed APK to a separate directory than the unsigned APK. Omit if
+storing in the same directory.
 
 | androidHome
 | Override Android home directory.
@@ -92,7 +127,7 @@ node('ios'){
 
   stage('CodeSign') {
     codeSign(
-      profileId: 'redhat-dist-dp',
+      profileId: "${params.BUILD_CREDENTIAL_ID}",
       clean: true,
       verify: true,
       ipaName: 'myapp',
@@ -110,13 +145,18 @@ The funtion takes the following parameters.
 | Parameter | Description
 
 | cleanBeforeBuild
-|	This will delete the build directories before invoking the build. This will force the rebuilding of all dependencies and can make large projects take a lot longer
+|	This will delete the build directories before invoking the build. This will
+force the rebuilding of all dependencies and can make large projects take a lot
+longer
 
 | target
-| The target to build. If left empty, this will build all targets in the project. If you wish to build your binary and the unit test module, it is best to do this as two separate steps each with their own target.
+| The target to build. If left empty, this will build all targets in the
+project. If you wish to build your binary and the unit test module, it is best
+to do this as two separate steps each with their own target.
 
 | sdk
-| You only need to supply this value if you want to specify the SDK to build against. If empty, the SDK will be determined by XCode.
+| You only need to supply this value if you want to specify the SDK to build
+against. If empty, the SDK will be determined by XCode.
 
 | workspace
 | Workspace to build from.
@@ -145,7 +185,8 @@ The funtion takes the following parameters.
 | Parameter | Description
 
 | profileId
-| ID of the developer profile. This will be provided through the `BUILD_CREDENTIAL_ID` parameter if the app is built through RHMAP.
+| ID of the developer profile. This will be provided through the
+`BUILD_CREDENTIAL_ID` parameter if the app is built through RHMAP.
 
 | clean
 | Removes the previous signature (if any) before signing the artifact.
@@ -160,7 +201,7 @@ The funtion takes the following parameters.
 | Path to the app to sign.
 |===
 
-=== Jenkins pipeline documentation
+=== Example Jenkinsfiles
 
-Further information on using Jenkinsfiles are available in the
-https://jenkins.io/doc/pipeline/steps/[Jenkins pipeline reference]
+* https://github.com/feedhenry-templates/welcome-android-gradle/blob/master/Jenkinsfile[Jenkinsfile for RHMAP Android Template]
+// TODO: Add in Jenkinsfile for iOS template.
