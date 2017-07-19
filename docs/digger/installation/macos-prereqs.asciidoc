@@ -1,4 +1,7 @@
-=== Prerequisites
+=== Mac Server
+
+This is only required for building ios applications.
+
 ==== Machine prerequisites
 
 * A user with sudo permissions and SSH access. There are scripts that will
