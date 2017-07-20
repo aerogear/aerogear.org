@@ -1,0 +1,10 @@
+== Verify Installation
+
+To help verify and monitor the status of the Digger service, the Digger installer will also install https://www.nagios.org/[Nagios] and some checks to monitor:
+
+* The status of the Jenkins container (pod)
+* The connectivity between Jenkins and the Mac servers (if any)
+* The load stats of the Mac servers (if any)
+
+The installer will automatically check the Nagios status at the end of the run.
+You can also manually login to the Nagios dashboard and check the status.

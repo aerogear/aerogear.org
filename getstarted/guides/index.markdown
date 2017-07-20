@@ -99,3 +99,13 @@ For more details on the supported mobile platforms consult the guides below:
 * [Cordova](/docs/unifiedpush/aerogear-push-cordova/troubleshooting)
 * [iOS](/docs/unifiedpush/aerogear-push-ios/guides/#troubleshooting)
 
+---
+
+<h2 class="section-header" id="digger"> AeroGear<strong>Digger</strong> Guides</h2>
+
+> Installation and administration guides for AeroGear Digger.
+
+<h4 id="diggerGuides">Guides</h4>
+* [Installation Guide](/docs/digger/installation)
+* [Admin Guide](/docs/digger/admin)
+* [Developer Guide](/docs/digger/developer)

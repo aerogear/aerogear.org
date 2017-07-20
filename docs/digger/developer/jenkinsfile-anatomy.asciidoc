@@ -1,0 +1,43 @@
+== Anatomy of a Jenkinsfile
+
+A typical Jenkinsfile will have a number of components. These components define
+the Jenkins node that the app build should run on, what should be performed
+during the build and what should be done with the artifacts that result from
+the build.
+
+.Basic Jenkinsfile structure
+[source,groovy]
+----
+node('android') { # <1>
+  stage('Checkout') { # <2>
+    checkout scm # <3>
+  }
+
+  stage('Build') { # <4>
+    ...
+  }
+
+  stage('Archive') { # <5>
+    archiveArtifacts artifacts: 'app/build/outputs/apk/app-release.apk', excludes: 'app/build/outputs/apk/*-unaligned.apk'
+  }
+}
+----
+
+<1> Define the node that you want the build to run on. The only argument for
+the `node` function is a string that should match a label given to a Jenkins
+node. In Digger this value should be `ios` or `android`. any other value will
+result in the build not being assigned to a node and timing out.
+<2> Add a stage to the build. Multiple stages can be added to break up builds
+logically. The `stage` function takes one argument which is the name of the
+stage.
+<3> Checkout the source code of the repo. This is done using the provided
+`checkout` function. `scm` is another helper which uses the SCM details from
+the Jenkins job configuration. When using Digger with RHMAP the SCM details
+will be configured automatically at build time.
+<4> Build the applications. This is done using a build tool such as Gradle for
+Android or Xcode for iOS. The steps involved here are covered further in
+<<Using Jenkinsfiles in an app>>.
+<5> Archive the resulting artifacts of the build. When building Android and iOS
+apps there will be resulting build artifacts which can be stored. The
+`archiveArtifacts` function allows this to be done by providing the path to the
+artifacts as parameters.

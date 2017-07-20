@@ -1,0 +1,52 @@
+=== Mac Server
+
+This is only required for building ios applications.
+
+==== Machine prerequisites
+
+* A user with sudo permissions and SSH access. There are scripts that will
+create a user named `jenkins` for you and allow SSH access for that user.
+It is highly recommended that you read scripts and change the `PASSWORD`
+variable in `create-osx-user.sh` to something secure.
+  - https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh]
+  - https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
+----
+# Download the scripts onto the macOS machine you are provisioning.
+curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/create-osx-user.sh
+curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
+
+# Edit the PASSWORD for the jenkins user in create-osx-user.sh
+# Execute create-osx-user.sh with the updated password
+sudo bash create-osx-user.sh
+
+# Execute enable-osx-remote-login.sh to allow SSH access
+sudo bash enable-osx-remote-login.sh
+----
+
+* `ansible_sudo_pass` variable set when running the Ansible job.
+
+==== Network access
+The job supports the use of a proxy.
+
+The machine requires network access to the following hosts:
+
+.Required resources
+|===
+| Hostname | Reason
+
+| https://github.com
+| To download and install Homebrew packages and Cocoapods.
+
+| https://raw.githubusercontent.com
+| To download and install NVM.
+
+| https://rvm.io
+| To download and install RVM.
+
+| http://developer.apple.com
+| To download developer certificates and Xcode.
+
+| https://npmjs.org
+| To install NPM packages.
+|===
+Other external hosts may be required depending on what other packages you specify to install.
