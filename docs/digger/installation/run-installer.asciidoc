@@ -1,37 +1,24 @@
 == Run the Digger Installer
 
-To run the Digger installer, you should:
+.To run the Digger installer, follow these steps:
 
-. Step 1
-+
-Clone the https://github.com/aerogear/digger-installer[Digger Installer repo]
+. Clone the https://github.com/aerogear/digger-installer[Digger Installer repo]
 
-. Step 2
-+
-Make a copy of the `inventory-sample` file in the repo, and update it to provide the information about your cluster.
-+
+. Make a copy of the `inventory-sample` file in the repo, and update it to provide the information about your cluster.
 For more details about the Mac server configurations, please check the <<Setup Mac Servers>> section.
 
-. Step 3
+. To build Android applications, you may need to change the Android SDK components as descirbed in the <<Configure the Android SDK components>> section
 //TODO: remove this step once we can configure Android SDK components via Ansible variables.
-+
-To build Android applications, you may need to change the Android SDK components as descirbed in the <<Configure the Android SDK components>> section
-
-. Step 4
-+
-Run the following command:
-+
+. Run the following command and follow the instructions printed in the terminal:
 ----
 ansible-playbook -i your-inventory-copy sample-build-playbook.yml
 ----
-+
-and follow the instructions.
 
-The sample playbook will perform the following tasks:
+.The sample Ansible playbook will perform the following tasks:
 
 * Create a project in OpenShift
 * Install Jenkins (tag: deploy-jenkins)
-* Install Android SDK to a PV (tag: android-sdk)
+* Install Android SDK to a Persistent Volume (tag: android-sdk)
 * Configure Jenkins (tag: configure-buildfarm)
 * Setup Mac servers (tag: provision-osx)
 
@@ -44,7 +31,7 @@ ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy
 
 NOTE: All the tasks in the installer are idempotent and you can run them multiple times and they will produce the same results.
 
-More details about these tasks are explained in the following sections. They are optional content and you can skip them and go to the <<Verify Installation>> section.
+More details about these tasks are explained in the following sections. They are optional content and you can skip them and go straight to the <<Verify Installation>> section.
 
 // details about installing Jenkins
 include::./install-jenkins.asciidoc[]
