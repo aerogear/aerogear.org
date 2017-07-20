@@ -2,13 +2,13 @@
 
 The AeroGear Digger project allows developers to quickly setup a service that can be used to build mobile applications on OpenShift.
 
-It is consisted of the following main components:
+It is made of following components:
 
 * A Jenkins server that is used to run all the build tasks
 * A Docker-formated image with all the required tools to build Android applications
 * Mac servers with pre-installed tools to build iOS applications
-* An http://docs.ansible.com/ansible/index.html[Ansible] based automation tool to install and configure all the other components
-* A suite of sample Jenkinsfile to show case how to build mobile applications using Jenkins pipeline
+* An http://docs.ansible.com/ansible/index.html[Ansible] based automation tool used to install and configure all the other components
+* A suite of sample Jenkinsfiles to demonstrate how to build mobile applications using Jenkins pipeline
 
-At the moment, the main objective of the project is to be used with the RedHat Application Platform (RHMAP).
-However, it should be possible to use it on its own as a CI/CD server for mobile applications.
+At the moment, the main objective of this project is to be used with the RedHat Application Platform (RHMAP).
+However, it will be possible to use it on its own as a CI/CD server for mobile applications.

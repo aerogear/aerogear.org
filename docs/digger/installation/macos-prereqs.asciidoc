@@ -1,30 +1,41 @@
 === Mac Server
 
-This is only required for building ios applications.
+This is only required for building iOS applications.
 
-==== Machine prerequisites
+==== Mac Machine Setup
 
-* A user with sudo permissions and SSH access. There are scripts that will
-create a user named `jenkins` for you and allow SSH access for that user.
-It is highly recommended that you read scripts and change the `PASSWORD`
-variable in `create-osx-user.sh` to something secure.
-  - https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh]
-  - https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
+- Set `ansible_sudo_pass` variable for the Ansible job.
+- Set up a user with sudo permissions and SSH access.
+These scripts will create a user named `jenkins` and allow SSH access for that user.
+It is highly recommended that you read these scripts and change the `PASSWORD`
+variable in `create-osx-user.sh` to something secure:
+  
+.Scripts
+https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh]
+https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
+--
+  
+. Download the scripts into the macOS machine you are provisioning:
++
+[source,bash]
 ----
-# Download the scripts onto the macOS machine you are provisioning.
 curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/create-osx-user.sh
 curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
-
-# Edit the PASSWORD for the jenkins user in create-osx-user.sh
-# Execute create-osx-user.sh with the updated password
+----
++
+. Edit the PASSWORD for the jenkins user in create-osx-user.sh
+. Execute create-osx-user.sh with the updated password
++
+----
 sudo bash create-osx-user.sh
-
-# Execute enable-osx-remote-login.sh to allow SSH access
+----
++
+. Execute enable-osx-remote-login.sh to allow SSH access
++
+----
 sudo bash enable-osx-remote-login.sh
 ----
-
-* `ansible_sudo_pass` variable set when running the Ansible job.
-
+--
 ==== Network access
 The job supports the use of a proxy.
 
