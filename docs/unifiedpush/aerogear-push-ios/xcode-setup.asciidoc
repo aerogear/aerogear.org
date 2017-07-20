@@ -1,0 +1,59 @@
+//---
+//layout: post
+//title:
+//section: guides
+//---
+
+[[xcode-setup]]
+== Code signing, app id, provisioning profile
+
+Let's explain the Apple code signing and provisioning profile approach. It all starts with a developer certificate.
+
+Developer or Distribution certificate
+
+
+As an iOS developer, chances are you have a certificate, a public key, and a private key on your development machine. A certificate is — very broadly speaking — a public key combined with a lot of additional information that was itself signed by Apple Worldwide Developer Relations CA. This is the certificate you need to renew every year.
+
+=== Code signing
+
+Code signing is a security technology that allows you to certify that an app was created by you.
+All apps running on iOS must be code signed.
+
+=== Entitlements
+
+Entitlements specify which resources of the system an app is allowed to use. These entitlements should all be enabled in the developer center’s App ID, and embedded in the provisioning profile. Setting entitlements to enable Push notification is done in link:#app-id-ssl-certificate-apns[Apple App ID and SSL certificate for APNs].
+
+=== Provisioning profile
+
+A provisioning profile is a collection of all the components needed to determine if a particular app can run on a particular device. It's a central point where app-id, list all UUID devices where app can run, certificate and entitlements are gathered together.
+
+
+=== Code signing and Provisioning Profile in Xcode: automatic mode
+
+Code signing and provisioning profile selection should be in automatic mode by default. Specifically if your project is used by multiple iOS developpers, let Xcode find the appropriate developer provisioning profile.
+
+image::./img/code_signing.png[Xcode project settings]
+
+**NOTES:** The Provisioning profile setting is set to 'None' in Xcode 5. And in Xcode 6, the Provisioning profile setting should be set to 'Automatic' by default. Check link:https://developer.apple.com/library/ios/qa/qa1814/_index.html[apple documentation for more details].
+
+In Xcode 8, a .entitlements file is needed to make push notifications work.
+To create it, go to the Capabilities section of the project.
+
+image::./img/push-capabilities-disabled.png[Push Capabilities disabled]
+
+You can see that the Push Notifications switch is in "OFF" state.
+Click the switch and Xcode 8 will connect with your developer account to add the needed provisioning profiles and will also create the YourProjectName.entitlements file.
+
+image::./img/push-capabilities-enabled.png[Push Capabilities enabled]
+
+Notice that the status of the Push Notifications switch is now "ON" and there is a new HelloWorld.entitlements file in the left side.
+
+
+=== Running into "No matching provisioning profiles found" issue?
+
+Check out link:#_question_no_matching_provisioning_profiles_found[iOS troubleshooting guide].
+
+==== UnifiedPush Server
+
+Now, after managing all the Apple certificates, let's setup the link:#unified-push-server[UnifiedPush Server].
+

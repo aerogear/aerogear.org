@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-sender.html">sender</a></li><li><a href="module-unifiedpush-node-sender.html">unifiedpush-node-sender</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+		<div class="col-sm-3 col-md-3">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1>unifiedpush-node-sender <a href="https://travis-ci.org/aerogear/aerogear-unifiedpush-nodejs-client"><img src="https://secure.travis-ci.org/aerogear/aerogear-unifiedpush-nodejs-client.png?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/aerogear/aerogear-unifiedpush-nodejs-client?branch=master"><img src="https://coveralls.io/repos/github/aerogear/aerogear-unifiedpush-nodejs-client/badge.svg?branch=master" alt="Coverage Status"></a></h1><p>Node Sender API for the AeroGear Unified Push server</p>
+<p><em>note: This version of the sender is compatible with the 1.1.x series of the UnifiedPush Server</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Project Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>License:</td>
+<td>Apache License, Version 2.0</td>
+</tr>
+<tr>
+<td>Build:</td>
+<td>npm</td>
+</tr>
+<tr>
+<td>Documentation:</td>
+<td>https://aerogear.org/push/</td>
+</tr>
+<tr>
+<td>Issue tracker:</td>
+<td>https://issues.jboss.org/browse/AGPUSH</td>
+</tr>
+<tr>
+<td>Mailing lists:</td>
+<td><a href="http://aerogear-users.1116366.n5.nabble.com/">aerogear-users</a> (<a href="https://lists.jboss.org/mailman/listinfo/aerogear-users">subscribe</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="http://aerogear-dev.1069024.n5.nabble.com/">aerogear-dev</a> (<a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">subscribe</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2>Getting Started</h2><h3>Pre Reqs:</h3><ul>
+<li>node.js</li>
+<li>npm</li>
+<li>git</li>
+</ul>
+<h3>Building</h3><p>clone and install:</p>
+<pre class="prettyprint source"><code>$ git@github.com:aerogear/aerogear-unifiedpush-nodejs-client.git
+
+$ cd aerogear-unifiedpush-nodejs-client
+
+$ npm install</code></pre><h3>Running Tests</h3><pre class="prettyprint source"><code>$ npm test</code></pre><h3>Add to a Project</h3><p>In your project do</p>
+<pre class="prettyprint source"><code>npm install path/to/aerogear-unified-push-node-client</code></pre><p>or</p>
+<p>install from npm</p>
+<pre class="prettyprint source"><code>npm install unifiedpush-node-sender</code></pre><h2>Examples</h2><p>Require the <code>unifiedpush-node-sender</code> library</p>
+<pre class="prettyprint source"><code>const agSender = require('unifiedpush-node-sender');
+
+const settings = {
+    url: 'http://localhost:8080/ag-push',
+    applicationId: '12345',
+    masterSecret: '123456'
+};</code></pre><h3>Send a Message</h3><p>First get a handle on the <code>client</code> object,  then use the <code>client.sender.send</code> method to send a message</p>
+<pre class="prettyprint source"><code>agSender(settings).then((client) => {
+    client.sender.send(message, options).then((response) => {
+        console.log('success', response);
+    })
+});</code></pre><h2>API Documentation</h2><h3>Class: Sender</h3><p>The Sender Class, It returns a Promise with the <code>client</code> object</p>
+<h3>Sender(settings)</h3><ul>
+<li><code>settings</code> Object<ul>
+<li><code>url</code> String - The URL of the Unified Push Server.</li>
+<li><code>applicationId</code> String - The id of an Application from the Unified Push Server</li>
+<li><code>masterSecret</code> String - The master secret for that Application</li>
+<li><code>headers</code> Object - The hash of custom HTTP headers / header overrides</li>
+</ul>
+</li>
+</ul>
+<h3>client.sender.send([message], [options])</h3><ul>
+<li><p><code>message</code> Object</p>
+<ul>
+<li><code>alert</code> String - message that will be displayed on the alert UI element</li>
+<li><code>priority</code> String - sets a processing priority on a push message. values can be 'normal' or 'high'</li>
+<li><code>sound</code> String - The name of a sound file</li>
+<li><code>badge</code> String - The number to display as the badge of the app icon</li>
+<li><code>simplePush</code> String - simplePush version number</li>
+<li><code>userData</code> Object - any extra user data to be passed</li>
+</ul>
+</li>
+<li><p><code>message.apns</code> Object</p>
+<ul>
+<li><code>title</code> String - A short string describing the purpose of the notification.</li>
+<li><code>action</code> String - The label of the action button</li>
+<li><code>urlArgs</code> Array - an array of values that are paired with the placeholders inside the urlFormatString value of your website.json file. Safari Only</li>
+<li><code>titleLocKey</code> String - The key to a title string in the Localizable.strings file for the current localization. iOS Only</li>
+<li><code>titleLocArgs</code> Array - Variable string values to appear in place of the format specifiers in title-loc-key. iOS Only</li>
+<li><code>actionCategory</code> String - the identifier of the action category for the interactive notification</li>
+<li><code>contentAvailable</code> Boolean - Provide this key with a value of 1 to indicate that new content is available. iOS Only</li>
+</ul>
+</li>
+<li><p><code>message.windows</code> Object</p>
+<ul>
+<li><code>type</code> String - The type of message to send toast, raw, badge or tile.</li>
+<li><code>duration</code> String - Duration a Toast message is displayed 'long' or 'short'</li>
+<li><code>badge</code> String - Badge notifications type for badges that are not numbers (none, activity, alert, available, away, busy, newMessage, paused, playing, unavailable, error or attention), for numbers use the value in the main part of the message.</li>
+<li><code>tileType</code> String - Different type of tile messages with different sizes see the <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx">tile template catalog</a> e.g. 'TileSquareText02' or 'TileWideBlockAndText02'</li>
+<li><code>images</code> Array - Images either local or remote need match the nubmer of the tileType</li>
+<li><code>textFields</code> Array - Texts needs to be same as the number of the tileType</li>
+</ul>
+</li>
+<li><p><code>options</code> Object</p>
+</li>
+<li><p><code>options.config</code> Object</p>
+<ul>
+<li><code>ttl</code> Number - the time to live in seconds. This value is supported by APNs and GCM Only</li>
+</ul>
+</li>
+<li><p><code>options.criteria</code> Object</p>
+<ul>
+<li><code>alias</code> Array - a list of email or name strings</li>
+<li><code>deviceType</code> Array - a list of device types as strings</li>
+<li><code>categories</code> Array - a list of categories as strings</li>
+<li><code>variants</code> Array - a list of variantID's as strings</li>
+</ul>
+</li>
+</ul>
+<h2>Changes from 0.12.0 to 0.13.0</h2><p>0.13.0 is pretty much a complete re-write of the client.  It now only returns Promises.</p>
+<p>It also require at least node 4.x or greater.</p>
+<p>The way in which the <code>send</code> method is invoked has changed also.  Check out the example above to see the new way of using this library</p>
+<p>For more information about the Unified Push Server's REST sender API, look <a href="https://aerogear.org/docs/specs/aerogear-unifiedpush-rest/sender/index.html">here</a></p>
+<h2>Development</h2><p>If you would like to help develop AeroGear you can join our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">developer's mailing list</a>, join #aerogear on Freenode, or shout at us on Twitter @aerogears.</p>
+<p>Also takes some time and skim the <a href="http://aerogear.org/docs/guides/Contributing/">contributor guide</a></p>
+<h4>Generate Documentation</h4><p>The code is documented in JSDoc and can be generated in <code>docs</code> folder by running:</p>
+<p><code>npm run docs</code></p>
+<h2>Questions?</h2><p>Join our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-users">user mailing list</a> for any questions or help! We really hope you enjoy app development with AeroGear!</p>
+<h2>Found a bug?</h2><p>If you found a bug please create a ticket for us on <a href="https://issues.jboss.org/browse/AGPUSH">Jira</a> with some steps to reproduce it.</p></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+<div class="modal fade" id="searchResults">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Search results</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	
+		on 2016-06-07T08:36:23-04:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			var id = $( heading ).attr( "id" );
+			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		SearcherDisplay.init();
+	});
+</script>
+
+</body>
+</html>

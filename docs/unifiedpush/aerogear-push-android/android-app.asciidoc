@@ -1,0 +1,350 @@
+[[android-app]]
+== Your first Android/Push App
+
+Now that the UnifiedPush server is up and running, time to create a sample application that will exercise AeroGear's Android Push library support. For the purpose of the guide we will use the link:http://developer.android.com/tools/studio/index.html[Android Studio] with the ADT tools installed, but you are free to use any IDE that includes Android Gradle support.
+
+Let's get started!
+
+=== Creating the application
+Fire up Android Studio IDE and choose 'Start a new Android Studio project'. Fill the 'Application Name' field with the name 'PushApplication' and the 'Package Name' with `com.push.pushapplication`.
+
+image:./img/android-studio-wizard-1.png[Android Studio - New Project, Wizard (Step 1)]
+
+The _Minimum SDK_ option for the link:http://http://github.com/aerogear/aerogear-android-push[AeroGear Android Push] >= 2.0 is _API 16 (Android 4.1 - Jelly Bean)_ so select this option if not selected.
+
+image:./img/android-studio-wizard-2.png[Android Studio - New Project, Wizard (Step 2)]
+
+Continue through the wizard by accepting the default options presented. Once finished, Android Studio would have generated a sample Android project with a default 'MainActivity' and the layout file for further editing.
+
+image:./img/android-studio-project-overview.png[Android Studio - Project Overview]
+
+We will use the _TextView_ component that the wizard conveniently created for us to display the message payload. But in order to be able to be referenced in our code we need to give the component first an 'id'. Simple append in the 'TextView' declaration:
+
+[source,xml]
+----
+<TextView
+	android:id="@+id/label"
+	...
+----
+
+Before we start code, let's add the AeroGear Android Push library as a dependency
+
+Open the `build.gradle` app file and add the AeroGear Android Push dependency:
+[source]
+----
+dependencies {
+    ...
+    compile 'org.jboss.aerogear:aerogear-android-push:4.+'
+}
+
+----
+
+Now that we have the project set up, time to configure it to receive Push notifications. We will start first with the registration of the application with the UnifiedPush server.
+
+=== Registration with the UnifiedPush server
+
+First of all, you need create a file `push-config.json` in `app/src/main/assets` folder with the Unified Push Informations
+
+[NOTE]
+Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are a very common source of problems, so please revisit them if you are experiencing problems.
+
+[source,json]
+----
+{
+  "pushServerURL": "pushServerURL (e.g http(s)//host:port/context)",
+  "android": {
+    "senderID": "senderID (e.g Google Project ID only for android)",
+    "variantID": "variantID (e.g. 1234456-234320)",
+    "variantSecret": "variantSecret (e.g. 1234456-234320)"
+  }
+}
+----
+
+The entry point for registration is the link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html[RegistrarManager]. This is a _factory_ of different implementations of the link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar] interface which contain the actual registration/unregistration methods.
+
+[NOTE]
+By default, the method will return an implementation that supports registration with the UnifiedPush server. Having the flexibility of a factory method, allows us in the future to expand it to support other different message brokers under a common messaging interface.
+
+Since the registration setup is an one-step process not bound to any Android 'Activity', let's encapsulate it in a subclass of an Android link:http://developer.android.com/reference/android/app/Application.html[Application].
+
+Create a new class, name it `PushApplication` and paste the following code:
+
+[source,java]
+----
+package com.push.pushapplication;
+
+import android.app.Application;
+
+import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
+import org.jboss.aerogear.android.unifiedpush.RegistrarManager;
+import org.jboss.aerogear.android.unifiedpush.fcm.AeroGearFCMPushJsonConfiguration;
+
+public class PushApplication extends Application {
+
+    private static final String PUSH_REGISTAR_NAME = "myPushRegistar";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        RegistrarManager.config(PUSH_REGISTAR_NAME, AeroGearFCMPushJsonConfiguration.class)
+                .loadConfigJson(getApplicationContext())
+                .asRegistrar();
+
+    }
+
+    // Accessor method for Activities to access the 'PushRegistrar' object
+    public PushRegistrar getPushRegistar() {
+        return RegistrarManager.getRegistrar(PUSH_REGISTAR_NAME);
+    }
+
+}
+
+----
+
+The setup of the registration happens on the `onCreate` lifecycle method called when Android first initializes your application. It will create (and store) a link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar] object based on `push-config.json` informations declared earlier. This object together with a name (it can be anything you choose) are passed as params on the `config` factory method to create the `link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar]` object.
+
+[NOTE]
+Don't forget to configure the link:http://developer.android.com/reference/android/app/Application.html[Application] class in `AndroidManifest.xml`
+[source,xml]
+----
+<application
+    android:name=".PushApplication"
+    ...
+/>
+----
+
+We are now ready to call link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html#register[PushRegistrar:register] method to register our device in the UnifiedPush server. Switch to the `MainActivity` class and replace the existing `onCreate` method with the following code:
+
+[source,java]
+----
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    PushApplication application = (PushApplication) getApplication();
+    PushRegistrar pushRegistar = application.getPushRegistar();
+    pushRegistar.register(getApplicationContext(), new Callback<Void>() {
+        @Override
+        public void onSuccess(Void data) {
+            Log.d(TAG, "Registration Succeeded");
+            Toast.makeText(getApplicationContext(),
+                    "Yay, Device registered", Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            Toast.makeText(getApplicationContext(),
+                    "Ops, something is wrong :(", Toast.LENGTH_LONG).show();
+        }
+    });
+}
+----
+
+That is all what is needed to register with the UnifiedPush server!
+
+[NOTE]
+That we didn't have to write any code to register the device with FCM. The library takes care off all the plumbing to register the device with FCM, obtain the `registrationId` and submit it to the UnifiedPush server.
+
+image::./img/app-main-screen.png[Push Application - Main Screen]
+
+[NOTE]
+If you don't see the _Registration Succeeded_ popup, means that an error has occurred during the registration. Switch to the LogCat console in Android Studio to locate the exception and act accordingly.
+
+=== Receiving notifications
+
+The standard practice for an Android application to be able to receive notifications, is the developer to edit App's manifest to enable the appropriate FCM permissions and also implement an link:http://developer.android.com/reference/android/content/BroadcastReceiver.html[Android BroadcastReceiver] that is called when a new notification arrives. Typically the receiver includes code that consumes the message and displays the payload in the Notification Manager. AeroGear library already provides an implementation of a broadcast receiver that a developer can use, link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/fcm/AeroGearFCMMessageReceiver.html[AeroGearFCMMessageReceiver], but instead of displaying in the notification manager it delegates the consumption of the message to those that have expressed interest.
+
+A developer implements the link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/MessageHandler.html[MessageHandler] interface and registers it with the library in order to be called when a new notification arrives. You can have multiple components listening for incoming notifications and the library will call each one in tandem upon arrival. To register a component, simple call the link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html#registerMainThreadHandler-org.jboss.aerogear.android.unifiedpush.MessageHandler-[RegistrarManager:registerMainThreadHandler] method if you want your component to be called on the main thread or link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html#registerBackgroundThreadHandler-org.jboss.aerogear.android.unifiedpush.MessageHandler-[Registrations:registerBackgroundThreadHandler] method if you want to be called on a background thread. In the absence of any registered listeners, the library will call a default link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/MessageHandler.html[MessageHandler] that you have defined in your app's manifest.
+
+Typically you register a _default_ link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/MessageHandler.html[MessageHandler] that displays the notification in the NotificationManager when your application is stopped or in the background and possible a link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/MessageHandler.html[MessageHandler] that consumes the payload when your application is active.
+
+[NOTE]
+Nothing prevents you to send a notification in the Notification Manager when your application is active; the mechanism is there for your convenience.
+
+Let's return to our example. We are going to register a default link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/MessageHandler.html[MessageHandler] that will display the received notification and show in the Notification Manager. First we need to edit the app's manifest.
+
+==== Configuring App's manifest
+
+Open the `AndroidManifest.xml` file and below the `<manifest>` entry add the necessary permissions to enable our app to receive messages:
+
+[source,xml]
+----
+<manifest
+....
+   <uses-permission android:name="android.permission.INTERNET" />
+   <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+...
+----
+
+Let's register now our own `MessageHandler` inside of the `<application>` entry:
+
+[source,xml]
+----
+<application
+...
+    <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY" android:value="com.push.pushapplication.NotifyingHandler"/>
+</application>
+----
+
+[NOTE]
+Notice the `DEFAULT_MESSAGE_HANDLER_KEY` parameter is used to pass the name of the default MessageHandler class that will be called once the notification is received.
+
+==== Handling notification
+
+Create a new class, name it `NotifyingHandler` and paste the following code:
+
+[source,java]
+----
+package com.push.pushapplication;
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+
+import org.jboss.aerogear.android.unifiedpush.MessageHandler;
+import org.jboss.aerogear.android.unifiedpush.fcm.UnifiedPushMessage;
+
+public class NotifyingHandler implements MessageHandler {
+
+    public static final int NOTIFICATION_ID = 1;
+    private Context context;
+
+    public static final NotifyingHandler instance = new NotifyingHandler();
+
+    public NotifyingHandler() {
+    }
+
+		@Override
+    public void onMessage(Context context, Bundle bundle) {
+        this.context = context;
+
+        String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
+
+        HelloWorldApplication application = (HelloWorldApplication) context.getApplicationContext();
+        application.addMessage(message);
+
+        notify(bundle);
+    }
+
+    private void notify(Bundle bundle) {
+
+        NotificationManager mNotificationManager = (NotificationManager)
+                context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
+
+        Intent intent = new Intent(context, MainActivity.class)
+                .addFlags(PendingIntent.FLAG_UPDATE_CURRENT)
+                .putExtra(UnifiedPushMessage.ALERT_KEY, message);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+                .setAutoCancel(true)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(context.getString(R.string.app_name))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setContentText(message);
+
+        mBuilder.setContentIntent(contentIntent);
+        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+    }
+
+}
+
+----
+
+AeroGear calls the `onMessage` callback method when a new notification arrives. Here we simply extract the message payload and we use the platform's notification manager to display it.
+
+Since we also want the `MainActivity` to be able to receive the notification and update the TextView with the payload, we need to register it with the library. To do so the Activity, as with the `NotifyingHandler` class we saw earlier, must implement the link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/MessageHandler.html[MessageHandler] interface. In the declaration of the Activity simple append the following:
+
+[source,java]
+----
+public class MainActivity extends Activity implements MessageHandler {
+----
+
+and paste the following code:
+
+[source,java]
+----
+@Override
+protected void onResume() {
+    super.onResume();
+    RegistrarManager.registerMainThreadHandler(this); // 1
+    RegistrarManager.unregisterBackgroundThreadHandler(NotifyingHandler.instance);
+}
+
+@Override
+protected void onPause() {
+    super.onPause();
+    RegistrarManager.unregisterMainThreadHandler(this); // 2
+    RegistrarManager.registerBackgroundThreadHandler(NotifyingHandler.instance);
+}
+
+@Override
+public void onMessage(Context context, Bundle bundle) {
+    // display the message contained in the payload
+    TextView text = (TextView) findViewById(R.id.label);
+    text.setText(bundle.getString(UnifiedPushMessage.ALERT_KEY)); // 3
+}
+
+@Override
+public void onDeleteMessage(Context context, Bundle message) {
+    // handle GoogleCloudMessaging.MESSAGE_TYPE_DELETED
+}
+
+@Override
+public void onError() {
+    // handle GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR
+}
+----
+
+Notice that we use the standard Activity life-cycle methods `onResume` to register[1] and  `onPause` to unregister[2] itself for handling the notification. Finally, in the `onMessage` callback method[3] we simple extract the message payload and update the TextView.
+
+image::./img/app-message-received.jpg[Push Application - Message received]
+
+=== Metrics
+
+Optionally the Android SDK supports sending metrics to UPS. Metrics can be used to view how many users have received/readed/opened the message. This can be important information if you want to know how well your messages are received by your application users.
+
+UPS sends an unique ID for every push message by default all we have to do is send this ID back to UPS when the app was opened using the message:
+
+[source,java]
+----
+@Override
+public void onMessage(Context context, Bundle bundle) {
+    // Do something with the message
+    String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
+    ...
+
+    // Send metrics about the message received
+    PushApplication application = (PushApplication) getApplication();
+    AeroGearFCMPushRegistrar pushRegistar = (AeroGearFCMPushRegistrar) application.getPushRegistar();
+
+    String pushMessageId = bundle.getString(UnifiedPushMessage.PUSH_MESSAGE_ID);
+    UnifiedPushMetricsMessage pushMetricsMessage = new UnifiedPushMetricsMessage(pushMessageId);
+
+    pushRegistar.sendMetrics(pushMetricsMessage, new Callback<UnifiedPushMetricsMessage>() {
+        @Override
+        public void onSuccess(UnifiedPushMetricsMessage unifiedPushMetricsMessage) {
+            Log.d(TAG, "Metrics for : " + unifiedPushMetricsMessage.getMessageId() + " successfully sent");
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+            Log.d(TAG, e.getMessage(), e);
+        }
+    });
+}
+----
+
+Now that we have our application up an running time to link:#push-notification[send messages] using the AeroGear UnifiedPush Server!

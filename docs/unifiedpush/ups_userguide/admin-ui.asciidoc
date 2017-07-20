@@ -1,0 +1,295 @@
+// ---
+// layout: post
+// title: Using the Admin UI
+// section: guides
+// ---
+
+[[admin-ui]]
+== Using the Admin UI
+
+The Unified Push Server can be accessed via its RESTful endpoints, as well over an administrative user interface.
+
+=== Admin and Developer accounts
+
+Once installed, the Unified Push Server comes with two different account types:
+
+* a single +admin+ user
+* a +developer+ role
+
+The difference between the +admin+ and +developer+ account types is that the former can access all PushApplications and Variants configured on the server, whereas the latter has access only to the PushApplications and Variants created by the actual user. Further, the administration of the Unified Push Server, as well as management of it's users in the **Keycloak Admin Console**, can only be performed by the +admin+.
+
+IMPORTANT: By default there is _no_ +developer+ account and one needs to be explicitly created by the +admin+ inside of the Keycloak Admin Console!
+
+=== Login and landing page
+
+Once you have the Unified Push Server running, whether on link:#openshift[Openshift] or link:#server-installation[standalone], it is time to open the _AdminUI_, by accessing +http(s)://SERVER:PORT/ag-push+ in your browser. You are prompted by a login dialog:
+
+image:./img/login.png[Login to the Unified Push Server]
+
+The default credentials for the _admin_ are +admin+/+123+. 
+
+NOTE: On the very first login you are asked to update the password. It is a wise idea to change it to something completely different.
+
+After applying the password you are able to use the AdminUI of the Unified Push Server:
+
+image:./img/landing_page.png[List of PushApplications]
+
+NOTE: Right after a fresh installation you won't have any PushApplication in our database. In this case you will see the Wizard (learn more in link:#_the_wizard[Wizard section]) as the landing page.
+
+=== Account Management
+
+To manage some details on your account, you need to click on the +username+ (_admin_ in this case) in the right hand corner of the screen. This opens a context menu where you click on +Account Management+:
+
+image:./img/account1.png[Go to the Account Management page]
+
+This brings you to the page where you can configure details about your account. The first option allows you to provide additional information like your name and your email address:
+
+image:./img/account2.png[Account Details]
+
+The next section allows you to update your current password.
+
+IMPORTANT: Please make sure to pick a _**strong password**_, see the +admin+ user as the +root+ on your machine...
+
+image:./img/account3.png[Password Details]
+
+It is also possible to use the link:http://code.google.com/p/google-authenticator/[Google Authenticator app] as an additional security mechanism for your login:
+
+image:./img/account4.png[Setup an authenticator]
+
+On the _Sessions_ menu there is an overview of all client sessions that are currently active. If the session is connected via a browser the only information that is presented in the table below is the IP address of the client:
+
+image:./img/account5.png[List of OAuth client sessions]
+
+On the _Applications_ menu you see a read-only list of all application clients that have rights to access the Unified Push Server:
+
+image:./img/account6.png[List of OAuth client sessions]
+
+To go back to the Unified Push AdminUI click the marked link on the right corner, this performs a redirect to the previous landing page:
+
+image:./img/account7.png[Going back to the Unified Push AdminUI]
+
+=== The Wizard
+
+To be able to use the Unified Push Server for your mobile development you need to create a PushApplication and at least one Variant. The PushApplication is a logical construct, that represents an overall mobile application container for its _different_ mobile platforms, which are called Variants. The Wizard is used to create a PushApplication and one Variant. The Wizard is launched when clicking the _Create Application_ button on the overview page:
+
+image:./img/wizard_create_app.png[Create Application]
+
+==== Wizard: Start!
+
+Before diving into the details the Wizard shows an overview page, containing a bit more details on the steps inside the wizard:
+
+image:./img/wizard0.png[Wizard - overview]
+
+==== Wizard: Step 1
+
+To create a new PushApplication click the _START HERE_ button, which brings you to the first step of the Wizard, asking for the name of your PushApplication:
+
+image:./img/wizard1.png[Wizard - PushApplication]
+
+NOTE: At any time, you can skip the workflow of the Wizard, by clicking the _Skip the wizard_ link on the top right!
+
+==== Wizard: Step 2
+
+Since the PushApplication is a container for different platforms you need to create a _Variant_ for a specific mobile platform, like Android, iOS or Windows.
+
+image:./img/wizard2.png[Wizard - Add Variant]
+
+Next click on the _+Add A Variant_ button in the screen above, which brings you to the details page for the Variant:
+
+image:./img/wizard3.png[Wizard - Variant details]
+
+In this example we are creating an Android Variant and giving it a name. Besides the name, each supported variant type contains some platform specific properties, such as a Google Cloud Messaging key (Android) or passphrase and certificate (Apple). In this case we enter the require _GCM Key_ and the _GCM Project Number_.
+
+NOTE: If you are not familiar with the details of your desired mobile platform, click link:../../../unifiedpush/aerogear-push-android/[here] for Android, link:../../../guides/aerogear-cordova/AerogearCordovaPush/[here] for Apache Cordova, link:../../../unifiedpush/aerogear-push-ios/[here] for iOS and link:../../../unifiedpush/aerogear-push-windows/[here] for Windows.
+
+After finishing the above dialog you are coming to the details page of the newly created Variant:
+
+image:./img/wizard4.png[Wizard - code snippets]
+
+The page contains some code snippets that are specific to the underlying mobile platform (e.g. Android), which allows your mobile application, running on a device, to register itself against the Unified Push Server for push notification delivery.
+
+In our Android example you are getting two options:
+
+* Native Android source code
+* JavaScript for Apache Cordova
+
+==== Wizard: Step 3
+
+The next step in the Wizard gives the option to send a test push notification to the devices that are registered with the Variant. In this case we have registered devices and can use the textfield to send a test notification:
+
+image:./img/wizard5a.png[Wizard - Test notification]
+
+However, the textfield will be disabled in case there are no devices registered:
+
+image:./img/wizard5b.png[Wizard - Test notification]
+
+NOTE: The transition to from step 3 to the _Test notification_ dialog happens automatically in case a devices performs the registration, while looking at the Wizard.
+
+==== Wizard: Step 4
+
+For the supported SDKs the Unified Push Server has a feature to generate code snippets for the backend part as well:
+
+image:./img/wizard6.png[Wizard - Backend integration hooks]
+
+The visible Java code above can be used in any JavaSE or JavaEE application that needs to send Push Notification requests to the Unified Push Server. Besides Java, the UI contains snippets for Node.js and cURL. 
+
+==== Wizard: Finished!
+
+After all of that, you are done! Congratulations!
+
+image:./img/wizard7.png[Wizard - Finished]
+
+=== Management of PushApplication
+
+To work with a specific PushApplication, you have to select one from the overview list. However, to update the name or even deleting it, you have to click one of those links that are visible when hovering over the desired PushApplications:
+
+image:./img/application0.png[PushAPplication - Overview]
+
+The _Edit name_ option gives you a simple dialog, which accepts the new name:
+
+image:./img/application1.png[PushAPplication - Rename]
+
+In order to remove the PushApplication, you have to confirm by entering the its name:
+
+image:./img/application2.png[PushAPplication - Delete]
+
+WARNING: When deleting a PushApplication, all Variants and their registered devices are removed!
+
+=== Management of Variants
+
+The _Variants_ tab of the PushApplication gives a list of all existing variants. To edit or delete a Variant expand the details of the desired Variants (+).
+
+image:./img/variant1.png[Variant - Details]
+
+The above view shows details about the variant, such as the number of sent messages and registered devices. The view also contains more details about the involved 3rd party Push Network, GCM in this example. At the bottom the view also contains a list of all registered devices, showing their metadata.
+
+To change the name of the variant, click on the _Edit name_ link:
+
+image:./img/variant_edit.png[Variant - Rename]
+
+Similar to the PushApplication, in order to remove the variant, you have to confirm by entering the name of the variant:
+
+image:./img/variant_delete.png[Variant - Delete]
+
+To update the details of the used Push Network, such as the Apple certificate or the GCM key, click on _Edit Network Options_ link:
+
+image:./img/variant2.png[Variant - Edit Push Network Options]
+
+It is also possible to renew the Variant Secret, used by the Mobile Applications running on the device:
+
+image:./img/variant3.png[Variant - Renew Variant Secret]
+
+WARNING: When changing the variant secret or deleting it, existing mobile apps are no longer able to register their metadata on the Unified Push Server!
+
+You have to confirm this change, as this requires updates to the mobile applications, running on the devices!
+
+=== Managing registered device
+
+The details view of a specific variant as a list of the registered devices at the bottom: 
+
+image:./img/devices1.png[Device list]
+
+The table shows the metadata of each device, including the device token, subscribed categories or - if present - the used alias. On this screen you could also exclude a specific device from receiving Push Notifications, by unchecking the _Receiving_ check-box.
+
+=== Importing Device Metadata
+
+For various reasons, e.g. migrating from a custom solution to the Unified Push Server, it is possible to import devices and their metadata, including their devicetoken, into a variant. This is possible via cURL and on the UI. For that, on a specific variant, click on the _More_ menu you have the the choice to select the _Import_ option:
+
+image:./img/import1.png[Import UI]
+
+The following dialog allows you to upload a JSON file, containing the device metadata.
+
+NOTE: The API for the JSON importer is described link:/docs/specs/aerogear-unifiedpush-rest/registry/device/importer/index.html#POST[here]! 
+
+image:./img/import2.png[Import UI]
+
+=== Exporting Device Metadata
+
+Similar, the Unified Push Server has an option to export the device metadata of a variant. This is handy when you want to move from one Unified Push Server instance to a different one. On the _More_ menu of a specific variant, you have the the choice to select the _Export_ option:
+
+image:./img/export1.png[Export the tokens]
+
+Starting the export will generate a JSON file, which is being downloaded to your machine:
+
+image:./img/export2.png[Export the tokens]
+
+=== Sending a Push Notification
+
+The Admin UI allows you to send a (test) Push Notification to your Variants and their devices at any time. For that, open a PushApplication and click on the "Send Notification" button:
+
+image:./img/send1.png[Send a Push]
+
+Now the _Send Push_ dialog pops up:
+
+image:./img/send2.png[Enter the payload]
+
+In the +Send Push+ dialog, the +Message+ text field contains the payload to be sent out to the 3rd party Push Network. To deliver the message click the +Send Push Notification+ button.
+
+NOTE: It is possible to filter the list of receivers, using +Alias+, +Device Types+ and +Category+. Read the link:#_server_integration_tutorials[Server Integration Tutorials] for more details.
+
+If all goes well, your message will be delivered by the 3rd party Push Network to your device:
+
+image:/docs/unifiedpush/aerogear-push-ios/img/PushMessage.png[You got a notification!]
+
+==== Sending a Push Notification from code
+
+While sending a Push Notification from the AdminUI is a nice feature, in a real world scenario, the Push Notification is triggered by a backend, as explained in link:#_server_integration_tutorials[Server Integration Tutorials].
+
+The Unified Push Server comes with APIs for link:../../../unifiedpush/GetStartedwithJavaSender/[Java] and link:https://github.com/aerogear/aerogear-unifiedpush-nodejs-client#examples[Node.js]. Due to its RESTful architecture any backend, written in any language that supports HTTP(S), can link:../../../specs/aerogear-unifiedpush-rest/sender/index.html[send Push Notification requests] to it. On the details page of a PushApplication you find the required +Server URL+ and credentials (+Application ID+ and +Master Secret+).
+
+For the supported SDKs the Unified Push Server has a feature to generate code snippets for the backend part as well:
+
+image:./img/send3.png[Backend push integration]
+
+WARNING: Due to security reasons the +Application ID+ and the +Master Secret+ should be never stored on a mobile device! Push Notification requests should _never_ be triggered directly from a mobile device.
+
+The visible Java code above can be used in any JavaSE or JavaEE application that needs to send Push Notification requests to the Unified Push Server, like shown in the diagram below:
+
+image:./img/sending_sd.png[Sending Push from Backend]
+
+Besides Java, the UI contains snippets for Node.js and cURL.
+
+=== PushApplication Analytics
+
+The Unified Push Server provides some metrics and analytics which are presented on a dasboard : 
+
+image:./img/analyticsClean.png[Push Activity]
+
+The upper part shows some *key* numbers : 
+
+* _Push Messages_ : The total number of push messages sent to UnifiedPush Server for dispatching to registered devices.
+* _Notification Dispatched_ : The total number of notifications dispatched via Push Networks to registered devices.
+* _Notifications Opened_ : Number of notifications that were delivered to registered device and opened by a user.
+* _Average Open Rate_ : The result of _Notifications Opened_ / _Notifications Dispatched_
+
+The _Performance_ chart show for each Push Notification the number of targeted devices, the number of opened apps. The x-axis legend shows the _alert_ value of the Push Notification payload.
+
+Finally, the _Push Networks_ chart shows the split between the different Push Networks. 
+
+To get the _Notifications Opened_ metric activated, it needs to be "turned on" on the different client SDKs :
+
+* For iOS, please refer to link:https://aerogear.org/docs/specs/aerogear-ios-push/Classes/AGPushAnalytics.html[this document].
+* For Android, please check the _org.jboss.aerogear.android.unifiedpush.metrics_ package  in link:https://aerogear.org/docs/specs/aerogear-android-push/[the JavaDoc]. 
+* For Cordova, please refer to the _Metrics_ section of link:https://aerogear.org/docs/guides/aerogear-cordova/AerogearCordovaPush/[this document].
+* For Windows, please refer to link:https://aerogear.org/docs/unifiedpush/aerogear-push-windows/guides/#_metrics[this document].
+
+
+NOTE: The collected metadata and payload is _automatically_ deleted after 30 days, using a nightly job within the Unified Push Server.
+
+
+=== PushApplication Activity
+
+On the _Activity log_ tab of a PushApplication you see a list of Push notifications that have been sent to the server:
+
+image:./img/activity1.png[Push Activity - Details]
+
+Each Push Notification can be expanded to see parts of the payload. While being in this view and opening the link:#_sending_a_push_notification[Send Push Notification] Dialog to send a Push Notification, you will see the __Pending...__ status afterwards, until the message was delivered to all involved 3rd party Push Networks:
+
+image:./img/activity2.png[Push Activity - Pending]
+
+NOTE: The collected metadata and payload is _automatically_ deleted after 30 days, using a nightly job within the Unified Push Server.
+
+=== Next Steps
+
+Now that you are familiar with the AdminUI of the Unified Push Server, you can learn about its Administrative UI link:#server-administration[here].
+If you want to dive straight into some mobile development, you can find a list of different tutorials and guides link:#next-steps[here].

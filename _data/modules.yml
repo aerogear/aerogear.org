@@ -1,0 +1,19 @@
+core:
+  name: Core
+  icon: fa-rocket
+
+push:
+  name: Push
+  icon: fa-paper-plane
+
+security:
+  name: Security
+  icon: fa-shield
+
+sync:
+  name: Sync
+  icon: fa-refresh
+
+geo:
+  name: Geo
+  icon: fa-globe

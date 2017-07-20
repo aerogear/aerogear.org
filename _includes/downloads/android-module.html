@@ -1,0 +1,13 @@
+{% assign module = include.module %}
+<p>
+  <a href="https://github.com/aerogear/aerogear-android-{{ module.name }}/archive/{{ module.version }}.zip" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download Android {{ module.name | capitalize }} v{{ module.version }}</a>
+  <a href="#" class="btn btn-primary btn-sm" onclick="$('#android-{{ module.name }}-maven').toggle(); return false;"><i class="fa fa-cube"></i> Maven</a>
+  <a href="#" class="btn btn-primary btn-sm" onclick="$('#android-{{ module.name }}-gradle').toggle(); return false;"><i class="fa fa-puzzle-piece"></i> Gradle</a>
+  <a href="https://github.com/aerogear/aerogear-android-{{ module.name }}/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
+</p>
+<div id="android-{{ module.name }}-maven" style="display: none">
+  <pre>{% capture mavenSnippet %}{% include downloads/snippets/android-maven module=module.name version=module.version %}{% endcapture %}{{ mavenSnippet | xml_escape }}</pre>
+</div>
+<div id="android-{{ module.name }}-gradle" style="display: none">
+  <pre>{% include downloads/snippets/android-gradle module=module.name version=module.version %}</pre>
+</div>

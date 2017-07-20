@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Edit Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Edit" class="dashAnchor"></a>
+    <a title="Edit Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href=""><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Edit Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/BackupShadowDocument.html">BackupShadowDocument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ClientDocument.html">ClientDocument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ClientSyncEngine.html">ClientSyncEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Document.html">Document</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InMemoryDataStore.html">InMemoryDataStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ShadowDocument.html">ShadowDocument</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ClientSynchronizer.html">ClientSynchronizer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataStore.html">DataStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:P12AeroGearSync10Difference">Difference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Edit.html">Edit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PatchMessage.html">PatchMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Payload.html">Payload</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Edit</h1>
+            <p>Represents a single edit. The typealias D refer to the type of the Diff comaptible with the Edit.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync4Edit8clientIdSS"></a>
+                    <a name="//apple_ref/swift/Property/clientId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync4Edit8clientIdSS">clientId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The clientId to identifie which client it is related to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync4Edit10documentIdSS"></a>
+                    <a name="//apple_ref/swift/Property/documentId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync4Edit10documentIdSS">documentId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The documentId to identifie which docuemnt the edit applies to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">documentId</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync4Edit13clientVersionSi"></a>
+                    <a name="//apple_ref/swift/Property/clientVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync4Edit13clientVersionSi">clientVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The client version that edit is related to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">clientVersion</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync4Edit13serverVersionSi"></a>
+                    <a name="//apple_ref/swift/Property/serverVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync4Edit13serverVersionSi">serverVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The server version that edit is related to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">serverVersion</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync4Edit8checksumSS"></a>
+                    <a name="//apple_ref/swift/Property/checksum" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync4Edit8checksumSS">checksum</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A checksum of the opposing sides shadow document.
+The shadow document must patch strictly and this checksum is used to verify that the other sides
+shadow document is in fact the same. This can then be used by before patching to make sure that
+the shadow documents on both sides are in fact identical.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">checksum</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync4Edit5diffsGSaQQPS0_1D_"></a>
+                    <a name="//apple_ref/swift/Property/diffs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync4Edit5diffsGSaQQPS0_1D_">diffs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Diff for this edit.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">diffs</span><span class="p">:</span> <span class="p">[</span><span class="kt">D</span><span class="p">]</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-06-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

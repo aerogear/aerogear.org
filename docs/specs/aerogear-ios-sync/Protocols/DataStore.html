@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DataStore Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/DataStore" class="dashAnchor"></a>
+    <a title="DataStore Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href=""><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        DataStore Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/BackupShadowDocument.html">BackupShadowDocument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ClientDocument.html">ClientDocument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ClientSyncEngine.html">ClientSyncEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Document.html">Document</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InMemoryDataStore.html">InMemoryDataStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ShadowDocument.html">ShadowDocument</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ClientSynchronizer.html">ClientSynchronizer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataStore.html">DataStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:P12AeroGearSync10Difference">Difference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Edit.html">Edit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PatchMessage.html">PatchMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Payload.html">Payload</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>DataStore</h1>
+            <p>A DataStore implementation is responsible for storing and serving data for a
+Differential Synchronization implementation.
+<br/><br/>
+<code>&lt;T&gt;</code> the type of the Document that this data store can store.
+<br/>
+<code>&lt;D&gt;</code> the type of Edits that this data store can store.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore18saveClientDocumentUS0__U___FQPS0_FGCS_14ClientDocumentQS1_1T_T_"></a>
+                    <a name="//apple_ref/swift/Method/saveClientDocument(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore18saveClientDocumentUS0__U___FQPS0_FGCS_14ClientDocumentQS1_1T_T_">saveClientDocument(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Saves a client document.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">saveClientDocument</span><span class="p">(</span><span class="nv">clientDocument</span><span class="p">:</span> <span class="kt">ClientDocument</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientDocument</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the ClientDocument to save.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore17getClientDocumentUS0__U___FQPS0_FTSS8clientIdSS_GSqGCS_14ClientDocumentQS1_1T__"></a>
+                    <a name="//apple_ref/swift/Method/getClientDocument(_:clientId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore17getClientDocumentUS0__U___FQPS0_FTSS8clientIdSS_GSqGCS_14ClientDocumentQS1_1T__">getClientDocument(_:clientId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the ClientDocument matching the passed-in document documentId.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getClientDocument</span><span class="p">(</span><span class="nv">documentId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ClientDocument</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>documentId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the document id of the shadow document.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the client for which to retrieve the shadow document.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>ClientDocument the client document matching the documentId.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore18saveShadowDocumentUS0__U___FQPS0_FGCS_14ShadowDocumentQS1_1T_T_"></a>
+                    <a name="//apple_ref/swift/Method/saveShadowDocument(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore18saveShadowDocumentUS0__U___FQPS0_FGCS_14ShadowDocumentQS1_1T_T_">saveShadowDocument(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Saves a shadow document.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">saveShadowDocument</span><span class="p">(</span><span class="nv">shadowDocument</span><span class="p">:</span> <span class="kt">ShadowDocument</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>shadowDocument</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the ShadowDocument to save.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore17getShadowDocumentUS0__U___FQPS0_FTSS8clientIdSS_GSqGCS_14ShadowDocumentQS1_1T__"></a>
+                    <a name="//apple_ref/swift/Method/getShadowDocument(_:clientId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore17getShadowDocumentUS0__U___FQPS0_FTSS8clientIdSS_GSqGCS_14ShadowDocumentQS1_1T__">getShadowDocument(_:clientId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the ShadowDocument matching the passed-in document documentId.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getShadowDocument</span><span class="p">(</span><span class="nv">documentId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ShadowDocument</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>documentId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the document id of the shadow document.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the client for which to retrieve the shadow document.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>ShadowDocument the shadow document matching the documentId.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore24saveBackupShadowDocumentUS0__U___FQPS0_FGCS_20BackupShadowDocumentQS1_1T_T_"></a>
+                    <a name="//apple_ref/swift/Method/saveBackupShadowDocument(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore24saveBackupShadowDocumentUS0__U___FQPS0_FGCS_20BackupShadowDocumentQS1_1T_T_">saveBackupShadowDocument(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Saves a backup shadow document.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">saveBackupShadowDocument</span><span class="p">(</span><span class="nv">backupShadowDocument</span><span class="p">:</span> <span class="kt">BackupShadowDocument</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>backupShadow</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the BackupShadowDocument to save.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore23getBackupShadowDocumentUS0__U___FQPS0_FTSS8clientIdSS_GSqGCS_20BackupShadowDocumentQS1_1T__"></a>
+                    <a name="//apple_ref/swift/Method/getBackupShadowDocument(_:clientId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore23getBackupShadowDocumentUS0__U___FQPS0_FTSS8clientIdSS_GSqGCS_20BackupShadowDocumentQS1_1T__">getBackupShadowDocument(_:clientId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the BackupShadowDocument matching the passed-in document documentId.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getBackupShadowDocument</span><span class="p">(</span><span class="nv">documentId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">BackupShadowDocument</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>documentId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the document identifier of the backup shadow document.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the client identifier for which to fetch the document.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>BackupShadowDocument the backup shadow document matching the documentId.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore9saveEditsUS0__U___FQPS0_FQS1_1DT_"></a>
+                    <a name="//apple_ref/swift/Method/saveEdits(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore9saveEditsUS0__U___FQPS0_FQS1_1DT_">saveEdits(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Saves an Edit to the data store.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">saveEdits</span><span class="p">(</span><span class="nv">edit</span><span class="p">:</span> <span class="kt">D</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>edit</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the edit to be saved.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>documentId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the document identifier for the edit.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the client identifier for the edit.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore8getEditsUS0__U___FQPS0_FTSS8clientIdSS_GSqGSaQS1_1D__"></a>
+                    <a name="//apple_ref/swift/Method/getEdits(_:clientId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore8getEditsUS0__U___FQPS0_FTSS8clientIdSS_GSqGSaQS1_1D__">getEdits(_:clientId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retreives the array of Edits for the specified document documentId.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getEdits</span><span class="p">(</span><span class="nv">documentId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">D</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>documentId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the document identifier of the edit.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the client identifier for which to fetch the document.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>[D] the edits for the document.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore10removeEditUS0__U___FQPS0_FQS1_1DT_"></a>
+                    <a name="//apple_ref/swift/Method/removeEdit(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore10removeEditUS0__U___FQPS0_FQS1_1DT_">removeEdit(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes the edit from the store.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeEdit</span><span class="p">(</span><span class="nv">edit</span><span class="p">:</span> <span class="kt">D</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>edit</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the edit to be removed.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>documentId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the document identifier for the edit.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the client identifier for the edit.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync9DataStore11removeEditsUS0__U___FQPS0_FTSS8clientIdSS_T_"></a>
+                    <a name="//apple_ref/swift/Method/removeEdits(_:clientId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync9DataStore11removeEditsUS0__U___FQPS0_FTSS8clientIdSS_T_">removeEdits(_:clientId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes all edits for the specific client and document pair.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeEdits</span><span class="p">(</span><span class="nv">documentId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>documentId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the document identifier of the edit.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the client identifier.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-06-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

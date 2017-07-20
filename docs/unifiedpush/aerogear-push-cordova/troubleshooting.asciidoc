@@ -1,0 +1,53 @@
+---
+layout: post
+title: Android Troubleshooting
+section: guides
+---
+
+
+This troubleshooting guide takes as a pre-requesite that you have carefully followed the instructions in the link:/docs/guides/aerogear-cordova/AerogearCordovaPush/[Getting Started].
+
+We've documented some of the common configuration failures in this guide.  If you are having issues which we don't cover or otherwise need help, feel free to post to our link:https://lists.jboss.org/mailman/listinfo/aerogear-users/[user list].
+
+## Android
+
+### Issue: Registration fails with the error "SERVICE_NOT_AVAILABLE"
+
+*Problem description*
+
+Your error callback is called with the message "SERVICE_NOT_AVAILABLE".
+
+*Answer*
+
+There are several causes for this issue.  The easiest solution is that the GCM registration service had an error and you should retry at a later date.  However, there are also several code/environment issues to check.
+
+. You do not have Google Play Services installed on your device. +
+If you are running an emulator, make sure you are using a Google APIs Target higher than Android 4.2. If you are using a device, make sure you are using a Google experience device and not an Amazon Fire or AOSP device.
+
+. Make sure your device's clock is set correctly.  Some people on link:http://stackoverflow.com/questions/17188982/how-to-fix-google-cloud-messaging-registration-error-service-not-available[Stack Overflow] have reported this issue.
+
+### Issue: Registration fails with INVALID_SENDER
+
+*Problem description*
+
+Your error callback is called with the exception message "INVALID_SENDER".
+
+*Answer*
+
+Make sure the SenderID matches the project number from the Google API Console.  This will be an link:../../aerogear-push-android/img/gcc_3.png[all numeric string].
+
+## iOS
+
+### Issue: APNs error
+
+*Problem description*
+
+Your error callback is called with the message: "no valid 'aps-environment' entitlement string found for application"
+
+*Answer*
+
+Your Bundle ID name should match with the Bundle ID as created on Apple's developer portal. Please refer to link:../../aerogear-push-ios/guides/#app-id-ssl-certificate-apns[Apple App ID and SSL certificate for APNs] documentation for more details on configuration.
+
+### I have another Issue
+
+If you are having issues which we don't cover or otherwise need help, feel free to post to our link:https://lists.jboss.org/mailman/listinfo/aerogear-users[mailing list].  Also, messages in logcat / xcode console may give useful results from Google or StackOverflow.

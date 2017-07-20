@@ -1,0 +1,99 @@
+<!-- TODO(agalante) this should filter the news by types  -->
+
+<div class="submenu">
+
+<h5>Modules:</h5>
+            
+<div class="checkbox module all">
+  <span class="label label-primary">
+    <a href="#module">
+      All modules
+    </a>
+  </span>
+</div>
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-push">
+      <i class="fa fa-paper-plane"></i> Push
+    </a>
+  </span>
+</div>
+
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-security">
+      <i class="fa fa-shield"></i> Security
+    </a>
+  </span>
+</div>
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-sync">
+      <i class="fa fa-refresh"></i> Sync
+    </a>
+  </span>
+</div>
+
+
+
+<h5>Platforms:</h5>
+
+<div class="checkbox platform all">
+  <span class="label label-primary">
+    <a href="#platform">
+      All platforms
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-android">
+      <i class="fa fa-android"></i> Android
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-ios">
+      <i class="fa fa-apple"></i> iOS
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-cordova">
+      <i class="fa fa-simplybuilt"></i> Cordova
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-javascript">
+      <i class="fa fa-html5"></i> JavaScript
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-windows">
+      <i class="fa fa-windows"></i> Windows
+    </a>
+  </span>
+</div>
+
+<h5>Popular tags:</h5>
+<div class="tag-cloud">
+  {% for tag in site.data['all_post_tags'] %}
+    <a href="#tag-{{ tag }}" class="active"><i class="fa fa-tag"></i> {{ tag }}</a>
+  {% endfor %}
+</div>
+
+</div><!-- /submenu -->

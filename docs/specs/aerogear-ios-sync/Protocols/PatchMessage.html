@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PatchMessage Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/PatchMessage" class="dashAnchor"></a>
+    <a title="PatchMessage Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href=""><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        PatchMessage Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/BackupShadowDocument.html">BackupShadowDocument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ClientDocument.html">ClientDocument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ClientSyncEngine.html">ClientSyncEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Document.html">Document</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InMemoryDataStore.html">InMemoryDataStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ShadowDocument.html">ShadowDocument</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ClientSynchronizer.html">ClientSynchronizer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataStore.html">DataStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:P12AeroGearSync10Difference">Difference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Edit.html">Edit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PatchMessage.html">PatchMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Payload.html">Payload</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>PatchMessage</h1>
+            <p>Represents a stack of changes made on the server of client side.
+<br/><br/>
+A PatchMessage is what is passed between the client and the server. It contains an array of
+Edits that represent updates to be performed on the opposing sides document.
+<br/><br/>
+<code>&lt;E&gt;</code> the type of the Edit that this PatchMessage holds.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync12PatchMessage10documentIdGSQSS_"></a>
+                    <a name="//apple_ref/swift/Property/documentId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync12PatchMessage10documentIdGSQSS_">documentId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Identifies the document that this edit is related to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">documentId</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync12PatchMessage8clientIdGSQSS_"></a>
+                    <a name="//apple_ref/swift/Property/clientId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync12PatchMessage8clientIdGSQSS_">clientId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Identifies the client that this edit instance belongs to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP12AeroGearSync12PatchMessage5editsGSQGSaQQPS0_1E__"></a>
+                    <a name="//apple_ref/swift/Property/edits" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP12AeroGearSync12PatchMessage5editsGSQGSaQQPS0_1E__">edits</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list Edits.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">edits</span><span class="p">:</span> <span class="p">[</span><span class="kt">E</span><span class="p">]</span><span class="o">!</span> <span class="p">{</span><span class="k">get</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP12AeroGearSync12PatchMessagecUS0__US_4Edit____FMQPS0_FT2idSS8clientIdSS5editsGSaQS2_1E__S2_"></a>
+                    <a name="//apple_ref/swift/Method/init(id:clientId:edits:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP12AeroGearSync12PatchMessagecUS0__US_4Edit____FMQPS0_FT2idSS8clientIdSS5editsGSaQS2_1E__S2_">init(id:clientId:edits:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default init.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">edits</span><span class="p">:</span> <span class="p">[</span><span class="kt">E</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pathMessage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>unique id.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>client</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>id to identify the client sesion.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>list</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>of edits that makes the content of the patch.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-06-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

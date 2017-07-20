@@ -1,0 +1,88 @@
+// ---
+// layout: post
+// title: Debugging the UnifiedPush Server
+// section: guides
+// ---
+// 
+
+[[debugging]]
+== Debugging the UnifiedPush Server
+
+There are several ways to learn more about _"What's going on"_ inside the UnifiedPush Server
+
+=== Enable Logging
+
+The UnifiedPush Server internally uses +java.util.logging+ as its logging framework.
+
+
+==== WildFly and JBoss AS
+
+There are different ways to enable detailed logging for the UnifiedPush Server in WildFly and JBoss AS.
+
+===== Using jboss-cli tool
+
+The most convenient way to enable logging on a running server is using the +jboss-cli.sh+ (+jboss-cli.bat+ on Windows) tool. Once the server is running, launch the tool:
+
+[source,shell]
+----
+$SERVER_HOME/bin/jboss-cli.sh --connect
+----
+
+Once connected to the server, paste in the following two commands, one by one:
+
+[source,shell]
+----
+/subsystem=logging/console-handler=AEROGEAR:add(formatter="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n",autoflush=true)
+
+/subsystem=logging/logger=org.jboss.aerogear.unifiedpush:add(level=FINEST,use-parent-handlers=false,handlers=["AEROGEAR"])
+----
+
+After each line you should notice a statement that your configuration was successful:
+
+[source,shell]
+----
+{"outcome" => "success"}
+----
+
+
+===== Tweaking the standalone.xml file
+
+Another option is editing the +$SERVER_HOME/standalone/configuration/standalone.xml+ file.
+NOTE: This requires a stop of the server.
+
+Inside of the +<subsystem>+ element of the _logging_ subsystem you simply need to add the following XML snippet:
+
+[source,xml]
+----
+<console-handler name="AEROGEAR">
+    <formatter>
+        <pattern-formatter pattern="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
+    </formatter>
+</console-handler>
+<logger category="org.jboss.aerogear.unifiedpush" use-parent-handlers="false">
+    <level name="FINEST"/>
+    <handlers>
+        <handler name="AEROGEAR"/>
+    </handlers>
+</logger>
+----
+
+Once done save the file and restart the server.
+
+===== Test the enabled logging
+
+At this point all log levels from the UnifiedPush Server are enabled. To verify this, you can send a Push Notification from the Admin Console. The console should print a message like:
+
+[source,shell]
+----
+17:30:50,571 FINE  [org.jboss.aerogear.unifiedpush.rest.sender.PushNotificationSenderEndpoint]
+   (http--127.0.0.1-8080-1) Message sent by: 'AeroGear UnifiedPush Console'
+----
+
+=== Dashboard of the AdminUI
+
+The AdminUI contains a _Dashboard_ which provides a number of valuable information as well:
+
+* The +Most Active+ section shows a recent list of PushApplications that have submitted Push Notification requests. Learn more link:#_dashboard_most_active[here].
+
+* The +Warnings+ section shows of a list of recent problems that occured. Learn more link:#_dashboard_warnings[here]

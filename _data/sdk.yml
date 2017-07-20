@@ -1,0 +1,125 @@
+javascript:
+  name: JavaScript
+  icon: fa-html5
+  aerogearjs-version: 2.1.0
+
+android:
+  name: Android
+  icon: fa-android
+  version: 2.1.0
+  modules:
+    core:
+      name: core
+      version: 3.1.0
+    security:
+      name: security
+      version: 3.1.0
+    store:
+      name: store
+      version: 3.1.0
+    pipe:
+      name: pipe
+      version: 3.2.0
+    auth:
+      name: auth
+      version: 3.1.0
+    authz:
+      name: authz
+      version: 3.1.0
+    push:
+      name: push
+      version: 4.1.0
+    sync:
+      name: sync
+      version: 2.1.0
+
+ios:
+  name: iOS
+  icon: fa-apple
+  modules:
+    http:
+      name: HTTP
+      module: core
+      version: 0.3
+      cocoapod: aerogearhttp
+      zip: https://github.com/aerogear/aerogear-ios-http/zipball/0.3.0
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.3.0/Weather
+      guide: /docs/guides/aerogear-ios-2.X/HttpLib/
+    oauth2:
+      name: OAuth2
+      module: security
+      version: 0.3
+      cocoapod: aerogearoauth2
+      zip: https://github.com/aerogear/aerogear-ios-oauth2/zipball/0.3.0
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.3.0/Shoot
+      guide: /docs/guides/aerogear-ios-2.X/Authorization/
+    push:
+      name: Push
+      module: push
+      version: 1.1
+      cocoapod: AeroGear-Push
+      zip: https://github.com/aerogear/aerogear-ios-push/archive/1.1.0-swift.zip
+      demo: https://github.com/aerogear/aerogear-push-helloworld/tree/swift/ios-swift
+      guide: /docs/unifiedpush/aerogear-push-ios/
+    jsonsz:
+      name: JSON Serialization
+      module: core
+      version: 0.2
+      cocoapod: aerogearjsonsz
+      zip: https://github.com/aerogear/aerogear-ios-jsonsz/zipball/0.2.0
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.3.0/ChuckNorrisJokes
+      guide: /docs/guides/aerogear-ios-2.X/JsonSZ/
+    sync:
+      name: Sync
+      module: sync
+      version: 1.0.0-alpha.2
+      cocoapod: aerogearsync
+      zip: https://github.com/aerogear/aerogear-ios-sync/zipball/1.0.0-alpha.2
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.3.0/Jedi
+    sync-client:
+      name: Sync-Client
+      module: sync
+      version: 1.0.0-alpha.2
+      cocoapod: aerogearsyncclient
+      zip: https://github.com/aerogear/aerogear-ios-sync-client/zipball/1.0.0-alpha.2
+      demo: https://github.com/aerogear/aerogear-ios-cookbook/tree/0.3.0/Jedi
+
+
+cordova:
+  name: Cordova
+  icon: fa-simplybuilt
+  modules:
+    pushplugin:
+      name: Push
+      long-name: Push
+      module: push
+      version: latest
+      plugin: aerogear-cordova-push
+    otp:
+      name: OTP
+      long-name: OTP (One-Time Password)
+      module: security
+      version: latest
+      plugin: aerogear-cordova-otp
+    crypto:
+      name: Crypto
+      long-name: Crypto
+      module: security
+      version: latest
+      plugin: aerogear-cordova-crypto
+    geo:
+      name: Geo
+      long-name: Geofencing
+      module: geo
+      version: latest
+      plugin: aerogear-cordova-geo
+    oauth2:
+      name: OAuth2
+      long-name: OAuth2
+      module: security
+      version: latest
+      plugin: aerogear-cordova-oauth2
+
+windows:
+  name: Windows
+  icon: fa-windows

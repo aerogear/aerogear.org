@@ -1,0 +1,170 @@
+---
+layout: post
+section: guides
+title: AeroGear Android Push
+toc_generate: true
+---
+
+AeroGear for Android provides support for integrating with push services. Currently only Google's Cloud Messaging (GCM) with the AeroGear Unified Push Server is supported, but we are planning to add support for Mozilla's Simple Push, MQTT, and standalone GCM soon.
+
+This document supplements the link:/docs/unifiedpush/aerogear-push-android/[Push Notification Tutorial] by focusing only on the Push API code. The tutorial includes a much fuller look at the Android's place in the push ecosystem.
+
+== Push in a Nutshell
+
+Push messaging is a mechanism for sending data to mobile clients from a remote server.  For mobile services this reduces battery usage, removes polling code, and provides for a better user experience as data changes are communicated in real time.
+
+On Android messages that GCM receives from an application server are sent to the Android device over a connection managed by the operating system.  These messages are then extracted and passed to an application using services definied in that application's AndroidManifest.xml file.  The link:https://developers.google.com/cloud-messaging/[GCM docs] explore this in much more depth.
+
+== How to use it
+
+=== Registering with GCM and Unified Push Server
+
+This code example demonstrates how to create a link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html[PushRegistrar], provide values required to register the application with GCM and Unified Push, and perform the registration.
+
+[source,java]
+----
+RegistrarManager.config("myPushRegistar", AeroGearGCMPushConfiguration.class)
+                .setPushServerURI(new URI(UNIFIED_PUSH_URL))
+                .setSenderIds(GCM_SENDER_ID)
+                .setVariantID(VARIANT_ID)
+                .setSecret(SECRET)
+                .asRegistrar();
+
+PushRegistrar registrar = RegistrarManager.getRegistrar("myPushRegistar");
+registrar.register(getApplicationContext(), new Callback<Void>() {
+    @Override
+    public void onSuccess(Void ignore) {
+        // Seems your device was registered in Unified Push Server
+    }
+
+    @Override
+    public void onFailure(Exception exception) {
+        // Oops! Something is wrong.
+        /* The developer should resolve the error and retry registration */
+    }
+});
+
+----
+
+If you no longer wish to receive Push notifications, you may unregister.
+
+[source,java]
+----
+registrar.unregister(getApplicationContext(), new Callback<Void>() {
+    @Override
+    public void onSuccess(Void ignore) {
+        // Seems your device was unregistered in Unified Push Server
+    }
+
+    @Override
+    public void onFailure(Exception exception) {
+        // Oops! Something is wrong.
+    }
+});
+
+----
+
+=== Configuring your application to receive Push messages
+
+Before you can use GCM notifications in Android, your application's AndroidManifest.xml must be updated to include permissions for GCM, broadcast receiver to consume push messages from  GCM, and a service to provide application specific logic.  Optionally you may also listen for updates to your GCM registration ID (InstanceID) and respond to them as well.
+
+To enable the permissions add these as a child of the manifest element.
+
+[source, xml]
+----
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+<permission
+    android:name="com.mypackage.C2D_MESSAGE"
+    android:protectionLevel="signature" />
+
+<uses-permission android:name="[PUT YOUR APP PACKAGE HERE]" />
+----
+
+and add these elements as children of the application element to register the default AeroGear Android GCM Service. It will receive all messages and dispatch them to registered handlers.
+
+[source, xml]
+----
+<receiver
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
+    android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="[PUT YOUR APP PACKAGE HERE]" />
+    </intent-filter>
+</receiver>
+<service
+    android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND">
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+</service>
+
+----
+
+You can also add a default message handler to the AeroGearGCMMessageReceiver service in AndroidManifest.xml. If there are currently no handlers registered on the Registrations object it will handle the message.
+
+[source, xml]
+----
+<service
+    android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND">
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+    <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY"
+               android:value="[PUT YOUR CLASS WITH MessageHandler IMPLEMENTATION HERE]" />
+</service>
+
+----
+
+You should also register the UnifiedPushInstanceIDListenerService in your manifest.  This class will listen for changes to you InstanceID token from GCM and update the Unified Push Server.
+
+[source, xml]
+----
+<service android:name="org.jboss.aerogear.android.unifiedpush.gcm.UnifiedPushInstanceIDListenerService" android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+----
+
+
+=== Handling messages
+
+Currently, push messages are received by an instance of link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/gcm/AeroGearGCMMessageReceiver.html[AeroGearGCMMessageReceiver]. The messages are processed and passed to link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html[RegistrarManager] via notifyHandlers method.
+
+Classes which implement MessageHandler can ask that their methods be called on either the UI thread using link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html#registerMainThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)[RegistrarManager.registerMainThreadHandler] or on a background thread using link:/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html#registerBackgroundThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)[RegistrarManager:registerBackgroundThreadHandler]. UI threads are most useful for Activities and Fragments, background threads are most useful for everything else.
+
+In an Activity (also in a Fragment) you *must* remove the handler when the Activity goes into the background and *must* reenable it when it comes into the foreground.
+
+[source,java]
+----
+public class MainActivity extends Activity implements MessageHandler {
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Registrations.registerMainThreadHandler(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Registrations.unregisterMainThreadHandler(this);
+    }
+
+    @Override
+    public void onMessage(Context context, Bundle message) {
+        TextView text = (TextView) findViewById(R.id.text_view1);
+        text.setText(message.getString(UnifiedPushMessage.ALERT_KEY));
+    }
+}
+----
+
+Take a look at the complete example in our link:https://github.com/aerogear/aerogear-push-helloworld/tree/master/android[push helloworld example]

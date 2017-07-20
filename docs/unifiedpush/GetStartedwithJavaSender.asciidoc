@@ -1,0 +1,455 @@
+---
+layout: post
+title: Getting Started with Java Sender client API
+section: guides
+---
+
+:toc:
+toc::[]
+
+
+AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit the project's link:https://github.com/aerogear/aerogear-unified-push-server[github] page for more information.
+
+
+
+== Installation
+
+The library can be downloaded through the project link:https://github.com/aerogear/aerogear-unified-push-java-client[github] page or if you are using Maven, simply add the following dependency in your 'pom.xml':
+
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>unifiedpush-java-client</artifactId>
+            <version>1.1.0.Final</version>
+        </dependency>
+
+== API Overview
+
+The API is straightforward to use and consists of the following methods:
+  
+[source,java]
+----
+public interface PushSender {
+
+    /**
+     * Sends the given payload to installations of the referenced PushApplication.
+     * We also pass a callback to handle the message.
+     */
+    void send(UnifiedMessage unifiedMessage, MessageResponseCallback callback);
+
+    /**
+     * Sends the given payload to installations of the referenced PushApplication.
+     */
+    void send(UnifiedMessage unifiedMessage);
+
+    ...
+}
+----
+
+The _UnifiedMessage_ object passed as a parameter on those methods contain the actual notification payload. The object, as we will see in the example later on, utilizes the builder pattern to help you construct easily the payload. The difference between the two methods, is that the first one allows you to pass a callback so that you can be notified regarding whether the notification was successfully accepted by the server for transmission.
+
+A concrete implementation of the _PushSender_ interface can be found on the 'DefaultPushSender' class, which internally uses _HttpURLConnection_ for the communication (but can easily be adopted to support other http providers).
+
+== Initialisation of the DefaultPushSender
+
+There are 2 ways to instantiate a DefaultPushSender : 
+
+- "Inline" :
+[source,java]
+----
+PushSender defaultPushSender = DefaultPushSender.withRootServerURL("http://localhost:8080/ag-push")
+                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")
+                .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
+                .build();
+----
+
+- Using a external config file : 
+
+[source,java]
+----
+   //pushConfig.json
+{
+  "serverUrl": "http://aerogear.example.com/ag-push",
+  "pushApplicationId": "c7fc6525-5506-4ca9-9cf1-55cc261ddb9c",
+  "masterSecret": "8b2f43a9-23c8-44fe-bee9-d6b0af9e316b"}
+}
+----
+
+and then 
+
+[source,java]
+----
+  PushSender defaultPushSender = DefaultPushSender.withConfig("pushConfig.json").build();
+----  
+
+== Sending a message
+
+Let's start now with a simple example where the notification is send to all mobile variants registered under the Push Application ID: 
+
+[source,java]
+----
+PushSender defaultPushSender = DefaultPushSender.withRootServerURL("http://localhost:8080/ag-push")
+                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")
+                .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
+                .build();
+
+UnifiedMessage unifiedMessage = new UnifiedMessage.withMessage()                 // [2]
+                .alert("Hello from Java Sender API!")
+                .sound("default")
+                .badge("1")                                  
+                .userData("some_key", "with_value")  // [3]
+                .withConfig()
+                  .timeToLive(3600)  // [4]     
+                .build();
+
+sender.send(unifiedMessage, new MessageResponseCallback() {      // [5]
+
+            @Override
+            public void onComplete(int statusCode) {
+              // check the 'statusCode' to determine whether the notification
+              // was accepted for transmission by the server.
+            }
+
+          });
+----
+
+In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. If the hostname changes, you will need to create a new instance of the client.  The _pushApplicationId_ and _masterSecret_ params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send. 
+
+In [2], we access the builder object and we use it to fill in the parameters.
+
+Further, support is provided with the help of the _userData_ param [3], to attach on the notification arbitrary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives. 
+
+An optional _timeToLive_ [4] (in seconds) can be added on the notification payload configuration section, instructing the remote provider to drop the notification in case the device is unable to receive it (e.g. offline) for a period longer than the seconds specified. 
+
+Once the notification payload is constructed, we invoke the send method [5] passing along our callback. The'onComplete' callback will be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the link:/docs/specs/aerogear-unifiedpush-rest/sender/index.html[server documentation] for a list of valid responses.
+
+== Selected send
+
+To narrow down the list of the recipients, you can use the the criteria builder. There are 2 ways of using this criteria builder :
+- Start building your message by passing the criteria :  
+[source,java]
+----
+UnifiedMessage unifiedMessage = UnifiedMessage.withCriteria()
+                .aliases("mike")
+                .message()
+                  .aler("hello")
+----
+- Anytime while building your message : 
+[source,java]
+----
+UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .alert(ALERT_MSG)
+                .sound(DEFAULT_SOUND)
+                .criteria().aliases("mike")
+                .build();
+---- 
+
+The different criteria options are : 
+
+- narrow down by specific mobile variants (e.g. HR Android, HR iPhone):
+[source,java]
+----
+    variants(Arrays.asList("c3f0a94f-48de-4b77-a08e..." /* HR_Premium */, "444939cd-ae63-4ce1-96a4..." /* HR_Free */));
+----
+- narrow down by specific aliases, thus allowing to send a message directly to a specific mobile installation. Note that here we used an email address, but anything that helps to identify a user can be used (e.g. username, user ID, etc)
+[source,java]
+----
+    .aliases(Arrays.asList("john@somewhere.com", "maria@somewhere.com"));
+----
+- narrow down by specific device types:
+[source,java]
+----
+    .deviceType(Arrays.asList("iPhone", "iPad_Mini", "web"));
+----
+- narrow down by specific categories:
+[source,java]
+----
+   .categories("someCategory", "otherCategory");
+----
+- narrow down SimplePush clients:
+[source,java]
+----
+   .simplePush("version");
+----
+
+NOTE: All these query criterias are optional. If no criterias are passed it will act as a broadcast send, where all clients are notified.
+
+As you realize from the list, the Sender API offers _tremendous_ flexibility in supporting even the most complex scenarios. You can mix and match options to target a specific mobile audience. 
+
+Once the UnifiedMessage is build with your desired criterias, simply call the _send_ method on the JavaSender to send the notification.
+
+== APNs (iOS) specific payload
+
+For APNs specific payload you can use the apns() builder method :
+[source,java]
+----
+  UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .apns()
+                   .contentAvailable() // just an example, see the complete list below 
+----
+
+These are the specific APNs payload options : (shown with the respective builder method)
+
+- An iOS specific argument to send notifications to Newsstand applications and submitting silent iOS notifications (iOS7)
+[source,java]
+----
+   .contentAvailable()
+----
+
+- An iOS specific argument to pass an Action Category for interactive notifications (iOS8)
+[source,java]
+----
+   .actionCategory("acceptLead")
+----
+
+- Sets the value of the 'action' key from the submitted payload
+[source,java]
+----
+   .action("myAction")
+----
+
+- Sets the value of the 'title' key from the submitted payload
+[source,java]
+----
+   .title("myTitle")
+----
+
+- The key to a title string in the Localizable.strings file for the current localization
+[source,java]
+----
+   .localizedTitleKey("fr_title")
+----
+
+- Sets the arguments for the localizable title key
+[source,java]
+----
+   .localizedTitleArguments(["title1","title2"])
+----
+
+- Sets the value of the 'url-args' key from the submitted payload
+[source,java]
+----
+   .urlArgs(["arg1","arg2"])
+----
+
+== Windows specific payload
+
+For Windows specific payload you can use the windows() builder method :
+[source,java]
+----
+  UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .windows()
+                   .raw() // just an example, see the complete list below 
+----
+
+These are the specific Windows payload options : (shown with the respective builder method)
+
+- Set the type of message to send toast, raw, badge or tile. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh465403.aspx[here] for detailed information/
+[source,java]
+----
+   .type(Type.tile)
+----
+
+- Set the raw notification type. A raw notification is a type of push notification without any associated UI. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh761463.aspx[here] for detailed information/
+[source,java]
+----
+   .raw()
+----
+
+- Set the badge notifications type for badges that are not numbers. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx[here] for detailed information/
+[source,java]
+----
+   .badgeType(BadgeType.activity)
+----
+
+- Set the type of the tile messages, different sizes are available. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx[here] for detailed information/
+[source,java]
+----
+   .tileType(TileType.TileSquareBlock)
+----
+
+- Set the duration of a Toast message (long or short)
+[source,java]
+----
+   .durationType(DurationType.long)
+----
+
+- Set the toast template. Check link:https://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx[here] for detailed information/
+[source,java]
+----
+   .toastType(ToastType.ToastText01)
+----
+
+- Set a list of image's paths for the Tile Notification Type
+[source,java]
+----
+   .images(Arrays.asList("/images/image1.png","/images/image2.png")
+----
+
+- Set a list of text fields for the Tile Notification Type
+[source,java]
+----
+   .textFields(Arrays.asList("foo","bar")
+----
+
+- Set the page in you application to launch when the user 'touches' the notification in the notification dock.
+NOTE: For cordova applications set this to 'cordova' to launch your app and invoke the javascript callback.
+[source,java]
+----
+   .page("myPage")
+----
+
+== Connect via a Proxy
+
+If your infrastructure is behind a proxy, you can specify this while creating an instance of your SenderClient : 
+[source,java]
+----
+PushSender defaultJavaSender = DefaultPushSender.withConfig("pushConfig.json")
+                .proxy("proxy.example.com", 8080)
+                .proxyUser("proxyuser")
+                .proxyPassword("password")
+                .proxyType(Proxy.Type.HTTP)
+                .build();
+----
+
+== Use a custom Trustore
+
+If your infrastructure uses a custom TrustStore, you can specify this while creating an instance of your SenderClient : 
+
+[source,java]
+----
+PushSender defaultJavaSender = DefaultPushSender.withConfig("pushConfig.json")
+                .customTrustStore("setup/aerogear.truststore", "jks", "aerogear")
+                .build();
+----
+
+
+== Integrating with Java EE
+
+The library can be used inside a Java EE environment to enable your enterprise applications to send notification messages to mobile clients, when e.g. a particular business event occurs. Let's see one approach of integration through an example of a PaymentGateway.
+
+A payment request is initiated through a REST endpoint. The endpoint delegates the processing to an EJB and if the transaction succeeds, a CDI Payment Event is fired. The event is then picked up from CDI Observer bean, which then uses the JavaSender API to send a notification back to client.
+
+[source,java]
+----
+/**
+ *  Various resource produces e.g. PersistentContext etc.
+ */
+public class Resources {
+
+    // ...
+
+    @Produces
+    @ApplicationScoped
+    public PushSender getSenderClient() {
+       // initialize to point to the hostname of the running UnifiedPush server
+       return DefaultPushSender.withConfig("pushConfig.json").build();
+    }
+}
+----
+
+Payment.java
+
+[source,java]
+----
+/**
+ * Models a payment
+ */
+ public class Payment {
+
+    private String userAlias;
+    private BigDecimal amount;
+    private Date datetime;
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public String getUserAlias() {
+        return userAlias;
+    }
+
+    public void setUserAlias(String userAlias) {
+        this.userAlias = userAlias;
+    }
+}
+----
+
+PaymentResource.java
+
+[source,java]
+----
+/**
+ *  A JAX-RS endpoint for clients to kickstart payment processing
+ */
+ @Path("/payments")
+ public class PaymentResource {
+
+  @Inject
+  PaymentsProcessor processor;
+
+  @POST
+  @Consumes("application/json")
+  public Response pay(Payment payment) {
+    processor.pay(payment)
+
+    return Response.ok().build();
+  }    
+}
+----
+
+PaymentsProcessor.java
+
+[source,java]
+----
+/**
+ *  The EJB responsible for processing the payment
+ */
+@Stateless
+public class PaymentsProcessor {
+
+    @Inject
+    Event<Payment> event;
+
+    public void pay(Payment payment) {
+        // process the payment
+        // ...
+
+        event.fire(payment);
+    }
+}
+----
+
+NotificationSender.java
+
+[source,java]
+----
+/**
+ * The class that listens for payment events 
+ * and responsible to send receipt notifications
+ */
+public class NotificationSender {
+
+  @Inject 
+  SenderClient sender;
+
+  // here the CDI 'Payment' event is caught and the actual send is triggered
+  void sendPaymentNotification(@Observes(during = AFTER_SUCCESS) Payment payment) { 
+      UnifiedMessage unifiedMessage =  UnifiedMessage.withMessage()
+                .alert("Thank you for your payment!")
+                .sound("default")
+                .criteria()
+                   .aliases(Arrays.asList(payment.getUserAlias()))
+                .build();
+
+      sender.send(message)
+  }
+}
+----
+
+== Conclusion
+
+The Sender API is simple and easy to use, allowing you to connect to the UnifiedPush server and send notifications. It can be used both in your standalone applications or be embedded in a Java EE environment. Work is being done to port it to other languages too and if you are interested you can give us a hand too! Please join our link:https://lists.jboss.org/mailman/listinfo/aerogear-dev[developer mailing list], or find us on link:irc://irc.freenode.net/aerogear[IRC] and introduce yourself!

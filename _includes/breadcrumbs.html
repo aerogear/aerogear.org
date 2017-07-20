@@ -1,0 +1,16 @@
+    <ol class="breadcrumb" style="margin:0">
+      <li>
+        {% if page.section == 'guides' %}
+          <a href="{{ site.baseurl }}/getstarted/guides/">Guides</a>
+        {% elsif page.section == 'modules' %}
+          <a href="{{ site.baseurl }}/modules//">Modules</a>
+        {% elsif page.section == 'news' %}
+          <a href="{{ site.baseurl }}/news/">News</a>
+        {% elsif page.section == 'community' %}
+          <a href="{{ site.baseurl }}/community/">Community</a>
+        {% elsif page.section == 'docs' %}
+          <a href="{{ site.baseurl }}/docs/specs/">Docs</a>
+        {% endif %}
+      </li>
+      <li class="active">{{page.title}}</li>
+    </ol>

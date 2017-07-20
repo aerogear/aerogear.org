@@ -1,0 +1,13 @@
+---
+layout: post
+section: guides
+title: Setting up your development enivronment to use Apache Cordova
+---
+== Apache Cordova CLI 
+
+Cordova comes with a CLI (Command Line Interface) to help you get started with link:http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html[Cordova]. 
+
+== Eclipse Thym 
+
+There is also a really useful Eclipse Plugin that will help starting with Cordova projects, check it link:https://www.eclipse.org/thym/[here].
+

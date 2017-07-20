@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+{% include header.html %}
+</head>
+
+<body class=" {{page.body-class}} ">    
+
+{% include navigation.html %}
+
+{% include jboss-dropup.html %}
+
+<section class="main-banner">
+  <div class="container">
+ 
+{% if page.body-class == 'homepage' %}
+  {% include homepage-header.html %}
+{% else %}
+  {% include inner-header.html %}
+{% endif %}
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+{% if page.section-class != null %} 
+
+
+<section class="{{ page.section-class }}">
+{% if page.sub-section-title != null %}
+  <div class="container">
+    <ol class="breadcrumb" style="margin:0">
+      <li><a href="{{ page.breadcrumbs-url }}">{{ page.section-title }}</a></li>
+  {% if page.third-section-title %} 
+      <li><a href="{{ page.breadcrumbs-url }}">{{ page.sub-section-title }}</a></li>
+      <li><a href="{{ page.breadcrumbs-sub-url }}">{{ page.third-section-title }}</a></li>
+      <li class="active">{{page.title}}</li>
+  {% else %}
+      <li><a href="{{ page.breadcrumbs-url }}">{{ page.sub-section-title }}</a></li>
+      <li class="active">{{page.title}}</li>
+  {% endif %}
+    </ol>
+  </div><!-- container -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 post">
+        <h1>{{ page.title }}</h1>      
+        {{ content }}
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+
+{% else %}
+
+  <div class="container">
+    <div class="row">   
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+            {% if page.section-class == 'guides' %}
+              {% include sidebar-guides.html %}
+            {% elsif page.section-class == 'demos' %}
+              {% include sidebar-demos.html %}
+            {% elsif page.section-class == 'start' %}
+              {% include sidebar-downloads.html %}
+            {% elsif page.section-class == 'community' %}
+              {% include sidebar-community.html %}
+            {% elsif page.section-class == 'docs' %}
+              {% include sidebar-docs.html %}
+            {% elsif page.section-class == 'news' %}
+              {% include sidebar-news.html %}
+            {% elsif page.section-class == 'roadmaps' %}
+              {% include sidebar-roadmaps.html %}
+            {% endif %}
+        </div><!-- col -->
+        <div class="col-md-9">
+          {{ content }}
+        </div><!-- col 9 -->
+      </div><!-- row -->
+    </div><!-- container -->
+  {% endif %}
+</section>
+
+
+{% else %}
+  {{ content }}
+{% endif %}
+
+
+{% include footer.html %}
+
+{% include js.html %}
+
+</body>
+</html>

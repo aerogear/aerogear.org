@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+{% include header.html %}
+</head>
+
+<body class="homepage">    
+
+{% include navigation.html %}
+
+{% include jboss-dropup.html %}
+
+<section class="main-banner">
+  <div class="container"> 
+  {% include homepage-header.html %}
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+{{ content }}
+
+{% include footer.html %}
+
+{% include js.html %}
+
+</body>
+</html>

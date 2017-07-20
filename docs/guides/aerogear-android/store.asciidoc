@@ -1,0 +1,124 @@
+---
+layout: post
+section: guides
+title: AeroGear Android Data Store
+toc_generate: true
+---
+
+
+AeroGear Android provides a simple data storage API.  This API is useful for caching responses, sharing data among different systems, or providing some form of limited offline support.  
+
+== How to use it
+
+=== Creating a Store
+
+To create a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/datamanager/Store.html[*Store*], invoke  link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/DataManager.html[*DataManager*] config method, passing along a link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/StoreConfiguration.html[*StoreConfiguration*]. link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/MemoryStoreConfiguration.html[*MemoryStoreConfiguration*] for an in-memory backed store, or link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/SQLStoreConfiguration.html[*SQLStoreConfiguration*] for an sqlite backed store. A name should be also provided to distinguish between different stores that this link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/DataManager.html[*DataManager*] can hold.
+
+.MemoryStore
+[source,java]
+----
+DataManager.config("myMemoryStoreName", MemoryStoreConfiguration.class)
+           .store(Object.class);
+
+Store store = dataManager.get("myMemoryStoreName"); 
+----
+
+Note: A Memory store will go away when the application is removed from memory and is best suited for short term caching.
+
+.SQLStore
+[source,java]
+----
+DataManager.config("mySQLStoreName", SQLStoreConfiguration.class)
+           .withContext(getApplicationContext())
+           .store(MyModel.class);
+
+SQLStore store = (SQLStore) dataManager.get("mySQLStoreName"); 
+store.open(/*callback*/);
+// or
+store.openSync();
+----
+
+Note: for an SQLStore you should make sure that 'open' or 'openSync' have been called before accessing the store.  Otherwise, the store will be opened when a request is made which may impact performance.
+
+You also can do something after Store creation adding a listener in a config
+
+[source,java]
+----
+.addOnStoreCreatedListener(new OnStoreCreatedListener() {
+    @Override
+    public void onStoreCreated(StoreConfiguration<?> storeConfiguration, Store<?> store) {
+        // Here you can do something with the store using the configurations
+    }
+})
+---- 
+
+=== Object ID's
+
+All objects which are stored or read from a store need to have an ID field. This field is annotated with the link:/docs/specs/aerogear-android-core/org/jboss/aerogear/android/RecordId.html[*@RecordId*] annotation in your class file.
+
+[source,java]
+----
+@RecordId
+private UUID id
+----
+
+The Store implementation will use an link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/datamanager/IdGenerator.html[*IdGenerator*] object to generate an id when you save the object. By default the Store will use link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/DefaultIdGenerator.html[DefaultIdGenerator] to create a new UUID value for your id field. If you are not using a UUID to represent your id field, you need to implement your own link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/datamanager/IdGenerator.html[*IdGenerator*]
+
+[source,java]
+----
+DataManager.config("myMemoryStoreName", MemoryStoreConfiguration.class)
+           .withIdGenerator(new MyIdGenerator())
+           .store(Object.class);
+----
+
+PS: AeroGear does not control the id value. This is delegated to IdGenerator, so it's your (developer) responsibility to control it. 
+
+=== Saving Data
+
+The method save is used to insert a new record or update an existing one. To distinquish between the two, the @RecordId annotation will be scanned on the model class and if the field with this annotation is found to be null, a new record will be inserted otherwise an update will be applied.
+
+[source,java]
+----
+MyModel data = new MyModel();
+data.setName("AeroGear Android");
+data.setDescription("Awesome library");
+
+store.save(data);  
+----
+
+=== Clearing the data store
+
+[source,java]
+----
+store.reset();  
+----
+
+=== Reading All Data
+
+[source,java]
+----
+Collection<MyModel> allData = store.readAll();  
+----
+
+=== Deleting Data
+
+[source,java]
+----
+store.remove(1); // Deletes the element with id 1  
+----
+
+Take a look at the complete example in our link:https://github.com/aerogear/aerogear-android-cookbook[cookbook app]
+
+=== Encrypted Stores
+
+If your storage information needs to be encrypted, AeroGear provides convenient and transparent encrypted storage support, building on the security foundation provided by link:https://github.com/aerogear/aerogear-crypto-java[aerogear-crypto-java], encrypted variants of both memory (link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/EncryptedMemoryStore.html[*EncryptedMemoryStore*]) and SQLite (link:/docs/specs/aerogear-android-store/org/jboss/aerogear/android/impl/datamanager/EncryptedSQLStore.html[*EncryptedSQLStore*])
+
+[source,java]
+----
+DataManager.config("myEncryptedSQLStoreName", EncryptedSQLStoreConfiguration.class)
+           .withContext(getApplicationContext())
+           .usingPassphrase("My awesome passphrase")
+           .store(MyModel.class);
+----
+
+If you want to see it all together, give a try to link:https://github.com/aerogear/aerogear-crypto-android-demo[AeroGear Crypto Demo app]. The application demonstrates how you can use encrypted storage to store in a central point all your passwords.

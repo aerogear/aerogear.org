@@ -1,0 +1,14 @@
+.sass-cache
+.DS_Store
+.awestruct
+.jekyll-metadata
+_site
+_tmp/
+bin/
+/.bundle
+/vendor
+/.rbenv-version
+*~
+*.iml
+Gemfile.lock
+/nbproject/private/

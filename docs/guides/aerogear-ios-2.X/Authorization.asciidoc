@@ -1,0 +1,197 @@
+---
+layout: post
+title: OAuth2Module and OAuth2Session
+section: guides
+toc_generate: true
+---
+
+When writing an link:https://tools.ietf.org/html/rfc6749[OAuth2] application, you often want the user to grant access for only once in the app lifetime. OAuth2Module stores access and refresh tokens in OAuth2Session. OAuth2Session is a protocol which is implemented in 2 flavors:
+
+- TrustedPersistantOAuth2Session: you store access and refresh tokens permanently in Keychain secure storage,
+- UntrustedMemoryOAuth2Session: tokens are stored in memory without encryption.
+
+It's up to you to choose the store, TrustedPersistantOAuth2Session is the default.
+
+== Creating an OAuth2Module
+
+To create an OAuth2 module, either use OAuth2Module init or use AccountManager. The later being preferred if you want to create several OAuth2 modules within a same app.
+
+=== OAuth2Module init
+
+[source,c]
+----
+    let googleConfig = GoogleConfig(
+        clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",  // [1]
+        scopes:["https://www.googleapis.com/auth/drive"])             // [2]
+
+    let gdModule =  OAuth2Module(config: googleConfig)           // [3]
+----
+
+In line [1] and [2], we use the client ID and we specify the scope, here we share with google drive.
+
+Line [3], we create an OAuth2 module. By default this module will create a TrustedSessionStorage to permanently store your tokens. Therefore every time your open your app you can POST/GET etc... without having to grant access again. You can choose a less secure UntrustedMemoryOAuth2Session but each time you close your app and reopen it, you will be prompted the first time to grant access.
+
+=== AccountManager
+
+[source,c]
+----
+    let googleConfig = GoogleConfig(
+        clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+        scopes:["https://www.googleapis.com/auth/drive"])
+        let gdModule = AccountManager.addGoogleAccount(googleConfig)
+----
+
+The AccountManager's factory method _addAccount:moduleClass:_ is used to create any OAuth2Module. AccountManager also have utilities method like _addFacebookAccount_ to directly create FacebookOauth2Module.
+
+== Extending OAuth2Module
+
+link:https://tools.ietf.org/html/rfc6749[OAuth2 specification] provides different implementation options, it's critical when implementing an OAuth2 SDK to offer extensibility. Let's show how to use AccountManager to instantiate a KeycloakOauth2Module:
+
+=== Keycloak extension
+[source,c]
+----
+    var keycloakConfig = Config(base: "http://localhost:8080/auth",
+        authzEndpoint: "realms/shoot-realm/tokens/login",
+        redirectURL: "org.aerogear.Shoot://oauth2Callback",
+        accessTokenEndpoint: "realms/shoot-realm/tokens/access/codes",
+        clientId: "shoot-third-party",
+        refreshTokenEndpoint: "realms/shoot-realm/tokens/refresh",
+        revokeTokenEndpoint: "realms/shoot-realm/tokens/logout")
+
+    let gdModule = AccountManager.addAccount(keycloakConfig, moduleClass: KeycloakOAuth2Module.self)
+----
+
+=== Facebook extension
+To implement your own _OAuth2Module_ simply inherit from _OAuth2Module_ and override the needed methods. OAuth2Module implements _AuthzModule_ protocol.
+For example, check _FacebookOAuth2Module_ where only _exchangeAuthorizationCodeForAccessToken:completionHandler_ and _revokeAccess:completionHandler_ overrides were needed.
+
+
+[source,c]
+----
+public class FacebookOAuth2Module: OAuth2Module {
+
+    override public func exchangeAuthorizationCodeForAccessToken(code: String, completionHandler: (AnyObject?, NSError?) -> Void) {
+       ....
+    }
+
+    override public func revokeAccess(completionHandler: (AnyObject?, NSError?) -> Void) {
+        ....
+    }
+}
+----
+
+== Working with Http and OAuth2Module
+
+=== Explicit request access
+
+[source,c]
+----
+    let googleConfig = GoogleConfig(
+        clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+        scopes:["https://www.googleapis.com/auth/drive"])
+
+    let gdModule =  OAuth2Module(config: googleConfig)
+    var http = Http()                                                                          // [1]
+    http.authzModule = gdModule
+
+    gdModule.requestAccess { (response:AnyObject?, error:NSError?) -> Void in                  // [2]
+        let filename = self.imageView.accessibilityIdentifier;                                 // [3]
+        let multiPartData = MultiPartData(data:UIImageJPEGRepresentation(self.imageView.image, 0.2),
+            name: "image",
+            filename: filename,
+            mimeType: "image/jpg")
+
+        http.POST("https://www.googleapis.com/upload/drive/v2/files", parameters: ["data": multiPartData],
+         completionHandler: {(response, error) in  // [6]
+            if (error != nil) {
+                println("Error uploading file: \(error)")
+            } else {
+                println("Successfully uploaded: " + response!.description)
+            }
+        })
+    }
+----
+
+
+Line [1] we initialize an HTTP object and inject it the OAuth2 module.
+
+In line [2], we actually request access. This method checks if the OAuth2Session (here stored in keychain) contains a non-expired access token. If there is no token, it will go through the authorization code grant. If the token is expired (which happens every hour), a refreshed token will be asked transparently without any prompt.
+
+In the callback method [3], we can check if the request was successful (check error parameter) and here perform an image upload.
+
+=== Implicit request access
+
+[source,c]
+----
+   let googleConfig = GoogleConfig(
+       clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+       scopes:["https://www.googleapis.com/auth/drive"])
+    let gdModule = AccountManager.addGoogleAccount(googleConfig)
+    self.http.authzModule = gdModule                                    // [1]
+
+    self.http.POST("https://www.googleapis.com/upload/drive/v2/files", parameters:  self.extractImageAsMultipartParams(),
+    completionHandler: {(response, error) in
+        if (error != nil) {
+            self.presentAlert("Error", message: error!.localizedDescription)
+        } else {
+            self.presentAlert("Success", message: "Successfully uploaded!")
+        }
+    })
+----
+
+In line [1], inject OAuth2Module in HTTP object. This is an important step, this way you link the HTTP object to the authorization module.
+
+Then simply do HTTP calls without checking if there is a valid access token. POST method underneath checks if an OAuth2 module is plugged to HTTP and will make the right call for you :
+
+- either start authz code grant
+- or refresh access code if needed
+- or simply run the POST if all tokens are already available
+
+== Refresh token
+
+Refresh token is handled transparently when using HTTP. You may want to deal with sending a refresh token request yourself as show below:
+[source,c]
+----
+    oauth2Module.refreshAccessToken({(response, error) in
+        // do something
+    })
+----
+== Revoke access
+
+You may want to revoke access tokens for you app by calling revokeAccess as shown below:
+
+[source,c]
+----
+    oauth2Module.revokeAccess({(response, error) in
+        if (error != nil) {
+            // do something with error
+        }
+        // do domething
+    })
+----
+
+== Login using OpenID Connect
+
+OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. It allows clients to verify the identity of the user based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the user.
+
+On top of OAuth2 authorization grant flow, you can use *login* which behaves the same way as *requestAccess*:
+1. check if access token is valid, if already there just run callback method
+2. if not valid and refresh token present, go and fetch new access token
+3. if none of the above, trigger a pop-up to authenticate and grant access. Additional scope is required to retrieve user profile information.
+
+See code snippet below:  
+
+[source,c]
+----
+  var Http = Http()
+  let keycloakConfig = KeycloakConfig(
+    clientId: "sharedshoot-third-party",
+    host: "http://localhost:8080",
+    realm: "shoot-realm",
+    isOpenIDConnect: true)
+  var oauth2Module = AccountManager.addKeycloakAccount(keycloakConfig)
+  http.authzModule = oauth2Module
+  oauth2Module.login {(accessToken: AnyObject?, claims: OpenIDClaim?, error: NSError?) in // [1]
+    // Do your own stuff here
+  }
+----

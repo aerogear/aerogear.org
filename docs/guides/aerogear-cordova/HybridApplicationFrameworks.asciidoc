@@ -1,0 +1,26 @@
+---
+layout: post
+section: guides
+title: Get Started with Hybrid Application Frameworks
+---
+
+
+This wiki page will give an overview of what hybrid applications are, what tools and frameworks are out there to help create them, and some teasers for upcoming examples if you wanted to get involved.
+
+== What is a Hybrid Application
+
+The term "*_hybrid mobile application_*" can be a bit confusing for new developers. Hybrid apps, are native mobile applications that are built using technologies other than the native SDK's for the platforms.  Most of them claim "write once run anywhere", however the truth is more like "write almost once, and run almost anywhere".  As with most things there are different degrees of compatibility and tinkering that is required. 
+
+image:img/app_types.png[]
+
+Hybrid application projects usually involve web based technologies such as JavaScript, HTML, etc...  There are a number of frameworks out there that assist with this.  They typically involve some sort of wrapper and/or compiling phase to turn your common code into these native applications.  All of these frameworks provide different degrees of access to the native device's functionality.  Once these applications are built they can be deployed just like any other native application - i.e. through appstores, or direct links depending on the device.
+ 
+The leading frameworks in this area are detailed below with links to examples, and future plans (jira's).  If you want to get involved jump right in!
+
+== Apache Cordova
+
+Project link: http://cordova.apache.org/
+ 
+In 2011, Adobe/Nitobi donated the PhoneGap codebase to the Apache Software Foundation (ASF) for incubation.  The first name of this donation was called 'Callback', which has now renamed itself to Apache Cordova.  The Apache Cordova is the heart of the PhoneGap project, which is basically a distribution of the Apache Cordova project.  More details about the relationship of the two projects can be found in a detailed http://phonegap.com/2012/03/19/phonegap-cordova-and-what%E2%80%99s-in-a-name/[blog post].
+
+Apache Cordova is one of the most popular hybrid frameworks around.  It uses a native wrapper approach and is developed primarily with direct web technologies.  It also provides a JavaScript bridge into native functionality in the form of plugins.

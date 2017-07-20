@@ -1,0 +1,26 @@
+---
+layout: post
+section: docs
+title: RestAdapter, An AeroGear Pipe Implementation
+
+---
+
+RestAdapter
+-----------
+
+**RestAdapter** is a implementation of **Pipe** provided by AeroGear which is used for accessing remote HTTP based REST services.
+
+Methods
+~~~~~~~
+
+* *read* : Performs a HTTP GET to the URL defined by $\{baseUrl}/$\{resource}
+  ** Additional parameters may be appended to the URL's path or query.
+
+* *save* : Performs a HTTP POST or PUT to the URL defined by $\{baseUrl}/$\{resource}/${resource.id}
+  ** The body of the request is a JSON serialized version of the resource being saved
+  ** If resource has an identifying value, RestAdapter uses an HTTP_POST
+  ** If there is no identifying value, a PUT method is called.  ${resource.id} is omitted from the path
+
+* *delete* : Performs and HTTP DELETE to the URL defined by $\{baseUrl}/$\{resource}/$\{id}
+  ** If there is no id available, this is an error.
+

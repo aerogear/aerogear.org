@@ -1,0 +1,106 @@
+---
+layout: post
+section: community
+title: AeroGear Developer Tools Guide
+---
+
+
+== AeroGear Developer Tools Guide
+
+This article shows suggestions of common tools that the AeroGear team uses for the development of HTML5 + REST Mobile Apps, Hybrid Apps, and Native Client Apps.
+
+
+_note: this guide will assume you plan to use JBoss AS 7 as your backend.( http://jboss.org/as7[Get It Here] )_
+
+=== Getting Started
+
+To get started the following are highly recommended
+
+* Java 6.0 (Java SDK 1.6)+
+* http://maven.apache.org/download.html[Maven 3+]
+* https://help.github.com/articles/set-up-git[Git]
+* http://github.com[Github.com account]
+
+* http://developer.android.com/sdk/index.html[Android SDK]
+* http://incubator.apache.org/cordova/[Apache Cordova]
+* https://developer.apple.com/[iOS SDK]
+
+=== Lets Start Coding
+
+To start coding and create your new awesome app, you'll need an editor.
+
+==== Full Fledged IDE's
+
+* http://www.jboss.org/tools[JBoss Tools]
+* http://www.redhat.com/products/jbossenterprisemiddleware/developer-studio/[JBoss Developer Studio]
+* http://www.jetbrains.com/idea/[Intelli J]
+
+* https://developer.apple.com/[Xcode] - OS X only
+
+==== Text Editors
+
+* http://www.vim.org/[Vim]
+* http://sublimetext.com[Sublime Text 2] - see below for recommended packages
+
+
+==== Debuging
+
+The Full Fledged IDE's all have good debbugers for compiled code, but for JavaScript(mobile web) there are options:
+
+* https://www.google.com/intl/en/chrome/browser/[Chrome Developer Tools]
+* http://getfirebug.com/[Firebug]
+* http://www.apple.com/safari/[Safari Web Inspector]
+
+However, debugging a remote Web App gets a little tricky.
+
+* iOS 6
+* http://people.apache.org/~pmuellr/weinre/docs/latest/[WEINRE]
+* https://developers.google.com/chrome/mobile/docs/debugging[Chrome for Android]
+* https://github.com/square/PonyDebugger#readme[PonyDebugger]
+
+=== Communication
+
+As stated by link:../Contributing[this guide], communication is key.  Here are some IRC programs:
+
+==== Multi-Platform
+
+* http://www.pidgin.im/[Pidgin]
+
+==== OS X
+
+* http://adium.im/[Adium]
+* http://codeux.com/textual/[Textual]
+* http://limechat.net/mac/[Limechat]
+
+====  Windows
+
+* http://www.mirc.com/[mIRC]
+
+
+
+=== Sublime Text 2 Packages
+
+according to http://www.sublimetext.com/[sublimetext.com] :
+
+----
+Sublime Text is a sophisticated text editor for code, markup and prose.
+You'll love the slick user interface, extraordinary features and amazing performance.
+----
+
+Here are some packages that will help the development process:
+
+* SublimeLinter
+* TrailingSpaces
+* Markdown Preview
+
+TIP: The easiest way to install packages is through the http://wbond.net/sublime_packages/package_control/installation[package manager].
+
+=== Utilities
+
+Helpful utility packages:
+
+* http://mxcl.github.com/homebrew/[homebrew]
+
+* http://howtonode.org/how-to-install-nodejs[node]
+
+* http://kdiff3.sourceforge.net/[kdiff3]
