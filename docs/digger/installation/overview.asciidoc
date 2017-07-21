@@ -4,7 +4,7 @@ The AeroGear Digger project allows developers to quickly setup a service that ca
 
 It is made of following components:
 
-* A Jenkins server that is used to run all the build tasks
+* A Jenkins server that is used to run the build tasks
 * A Docker-formated image with all the required tools to build Android applications
 * Mac servers with pre-installed tools to build iOS applications
 * An http://docs.ansible.com/ansible/index.html[Ansible] based automation tool used to install and configure all the other components

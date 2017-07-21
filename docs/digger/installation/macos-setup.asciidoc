@@ -11,8 +11,7 @@ The macOS part of the installer will perform the following tasks.
 . Update Cocoapods.
 . Configure machine as a node in Jenkins.
 
-To run the complete Ansible provisioning task you will need the following
-variables set when running the Ansible job.
+To run the complete Ansible provisioning task you need to have the following variables set when running the Ansible job.
 
 
 .Required Variables
@@ -41,8 +40,7 @@ configuration will be skipped.
 be skipped.
 |===
 
-Below is an example of using all required variables when running the Digger
-Ansible job to provision macOS machines.
+.Example of using all required variables when running the Digger Ansible job to provision macOS machines:
 
 ----
 ansible-playbook -i sample-inventory-file sample-playbook.yml
@@ -55,7 +53,7 @@ ansible-playbook -i sample-inventory-file sample-playbook.yml
 --tags="provision-osx"
 ----
 
-==== Further options
+==== Further macOS Configuration options
 
 Further configuration of the macOS node is possible through optional variables.
 link:macos-options[View all macOS variables].

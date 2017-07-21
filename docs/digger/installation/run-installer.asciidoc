@@ -4,10 +4,10 @@
 
 . Clone the https://github.com/aerogear/digger-installer[Digger Installer repo]
 
-. Make a copy of the `inventory-sample` file in the repo, and update it to provide the information about your cluster.
-For more details about the Mac server configurations, please check the <<Setup Mac Servers>> section.
+. Make a copy of the `inventory-sample` file from the repo, and update it to provide the information about your cluster.
+For more details about the Mac Server configurations, please check the <<Setup Mac Servers>> section.
 
-. To build Android applications, you may need to change the Android SDK components as descirbed in the <<Configure the Android SDK components>> section
+. To build Android applications, you may need to <<Configure the Android SDK components>>.
 //TODO: remove this step once we can configure Android SDK components via Ansible variables.
 . Run the following command and follow the instructions printed in the terminal:
 ----
@@ -17,13 +17,13 @@ ansible-playbook -i your-inventory-copy sample-build-playbook.yml
 .The sample Ansible playbook will perform the following tasks:
 
 * Create a project in OpenShift
-* Install Jenkins (tag: deploy-jenkins)
-* Install Android SDK to a Persistent Volume (tag: android-sdk)
-* Configure Jenkins (tag: configure-buildfarm)
-* Setup Mac servers (tag: provision-osx)
+* Install Jenkins (tag: `deploy-jenkins`)
+* Install Android SDK to a Persistent Volume (tag: `android-sdk`)
+* Configure Jenkins (tag: `configure-buildfarm`)
+* Setup Mac servers (tag: `provision-osx`)
 
-If you only want to run a particular task, you can pass the tag values to the command line.
-For example, to only run the task to install Jenkins, you can run:
+If you want to run only a specific task, you can pass the task tag value to the following command.
+For example, to only run the "install Jenkins" task, run:
 
 ----
 ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy-jenkins"
@@ -31,7 +31,7 @@ ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy
 
 NOTE: All the tasks in the installer are idempotent and you can run them multiple times and they will produce the same results.
 
-More details about these tasks are explained in the following sections. They are optional content and you can skip them and go straight to the <<Verify Installation>> section.
+More details about these tasks are explained in the following sections. If you are not interested in the details, skip to <<Verify Installation>>.
 
 // details about installing Jenkins
 include::./install-jenkins.asciidoc[]
