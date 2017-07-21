@@ -1,8 +1,6 @@
 === RHMAP properties
 
-When using Digger from RHMAP there are properties that can be set using
-environment variables in the `millicore` deployment configuration in order to
-configure Digger.
+When using Digger from RHMAP, you can configure Digger by setting RHMAP properties using environment variables in the `millicore` deployment configuration.
 
 .RHMAP properties
 |===
@@ -10,7 +8,7 @@ configure Digger.
 
 |buildfarm.version
 |BUILDFARM_VERSION
-|The version of the buildfarm being used. Should be set to `2.0.0` when
+|The version of the Build Farm being used. Should be set to `2.0.0` when
 using Digger.
 
 |buildfarm.hostname
@@ -50,7 +48,7 @@ to enable CSRF protection.
 
 |buildfarm.builds.total
 |BUILDFARM_BUILDS_TOTAL
-|The maximum number of builds to keep at any one time in Jenkins.
+|The maximum number of builds to keep in Jenkins simultaneously.
 
 |buildfarm.artifacts.days
 |BUILDFARM_ARTIFACTS_DAYS
@@ -58,5 +56,5 @@ to enable CSRF protection.
 
 |buildfarm.artifacts.total
 |BUILDFARM_ARTIFACTS_TOTAL
-|The maximum number of build artifacts to keep at any one time in Jenkins.
+|The maximum number of build artifacts to keep in Jenkins simultaneously.
 |===
