@@ -1,5 +1,4 @@
 === Install Jenkins
-You can use the tag `deploy-jenkins` to only perform the task to setup Jenkins. See <<Run the Digger Installer>>
 
 The installer will perform the following tasks for Jenkins setup and configuration:
 
