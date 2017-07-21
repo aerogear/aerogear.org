@@ -9,7 +9,7 @@ Before running the Digger installer, please make sure the following prerequisite
 Install Ansible locally. You can check the installed Ansible version by running `ansible --version`.
 Please check http://docs.ansible.com/ansible/intro_installation.html[Ansible installation instructions].
 
-=== Java
+=== Java 2.2 and higher
 
 A local installation of Java is required.
 
