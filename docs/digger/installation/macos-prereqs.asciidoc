@@ -5,17 +5,17 @@ This is only required for building iOS applications.
 ==== Mac Machine Setup
 
 - Set `ansible_sudo_pass` variable for the Ansible job.
+
+.MacOS Scripts: https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh] https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
 - Set up a user with sudo permissions and SSH access.
-These scripts will create a user named `jenkins` and allow SSH access for that user.
+These scripts will create a user named `jenkins` with SSH access.
 It is highly recommended that you read these scripts and change the `PASSWORD`
-variable in `create-osx-user.sh` to something secure:
-  
-.Scripts
-https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh]
-https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
+variable in `create-osx-user.sh` to a strong passphrase:
+    
+
 --
   
-. Download the scripts into the macOS machine you are provisioning:
+. Download the scripts into the target macOS machine:
 +
 [source,bash]
 ----
@@ -23,23 +23,23 @@ curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/c
 curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
 ----
 +
-. Edit the PASSWORD for the jenkins user in create-osx-user.sh
-. Execute create-osx-user.sh with the updated password
+. Edit the `PASSWORD` for the Jenkins user in `create-osx-user.sh`.
+. Execute `create-osx-user.sh` with the updated password:
 +
 ----
 sudo bash create-osx-user.sh
 ----
 +
-. Execute enable-osx-remote-login.sh to allow SSH access
+. Execute `enable-osx-remote-login.sh` to allow SSH access:
 +
 ----
 sudo bash enable-osx-remote-login.sh
 ----
 --
 ==== Network access
-The job supports the use of a proxy.
+The macOS preparation can be optionally done using a proxy.
 
-The machine requires network access to the following hosts:
+The machine requires a network access to the following hosts:
 
 .Required resources
 |===
