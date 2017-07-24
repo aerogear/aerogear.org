@@ -1,4 +1,4 @@
-=== Install Jenkins
+=== How Ansible Installs Jenkins
 
 The installer will perform the following tasks for Jenkins setup and configuration:
 

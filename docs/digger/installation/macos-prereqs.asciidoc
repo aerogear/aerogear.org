@@ -3,7 +3,7 @@
 This is only required for building iOS applications.
 
 ==== Mac Machine Setup
-
+//what is this??? v
 - Set `ansible_sudo_pass` variable for the Ansible job.
 
 .MacOS Scripts: https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh] https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
