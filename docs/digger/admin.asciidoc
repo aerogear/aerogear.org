@@ -5,6 +5,12 @@ title: Digger Administration guide
 toc_generate: true
 ---
 
-== HTTP Proxy Support
+include::docs/digger/admin/monitoring.asciidoc[]
 
-include::docs/digger/admin/use-http-proxy.asciidoc[suport proxy]
+include::docs/digger/admin/use-http-proxy.asciidoc[]
+
+include::docs/digger/admin/manage-artifacts.asciidoc[]
+
+include::docs/digger/admin/installing-plugins.asciidoc[]
+
+include::docs/digger/admin/known-issues.asciidoc[]
