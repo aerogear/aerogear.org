@@ -1,3 +1,5 @@
+== HTTP Proxy Support
+
 === Configuration Options
 
 It is possible to run AeroGear Digger behind a HTTP proxy server. To configure the proxy server, you need to add the following Ansible Variables:
@@ -17,7 +19,7 @@ It is possible to run AeroGear Digger behind a HTTP proxy server. To configure t
 | Optional. The protocol to use with the proxy. Default value is `http`.
 |===
 
-You can define these variables either in an inventory file, or pass via the command line. 
+You can define these variables either in an inventory file, or pass via the command line.
 Please check the http://docs.ansible.com/ansible/playbooks_variables.html[Ansible Variables Docs] for more details.
 
 NOTE: There are some known issues with using a HTTP proxy that requires authentication.
