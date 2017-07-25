@@ -1,4 +1,4 @@
-== Connect to RHMAP
+== Connect Digger to RHMAP
 
 If you have an instance of RedHat Mobile Application Platform (RHMAP) running, you can configure RHMAP to use the new Digger service.
 
