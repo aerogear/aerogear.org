@@ -55,7 +55,7 @@ other gems can be specified using the `gem_packages` variable.
 |The URL of the RVM-required gpg key.
 
 |rvm_gpg_file_name
-|Defines the GPG(???) filename on the node.
+|File name given to the GPG public key required to verify RVM.
 
 |ruby_version
 |The version of Ruby to install on the node.
@@ -68,7 +68,7 @@ other gems can be specified using the `gem_packages` variable.
 Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
 |===
 
-== Install Nodejs
+== Install Node.js
 
 To run this step individually use `osx_install_nodejs` tag (see <<Running Installer steps individually>>).
 
@@ -76,7 +76,7 @@ Installs NVM along with any versions of Nodejs specified through variables.
 Packages from NPM can be defined also, however they will be installed globally.
 
 
-.Install Nodejs variables
+.Install Node.js variables
 |===
 | Variable name | Description
 
@@ -217,7 +217,7 @@ will be skipped.
 |buildfarm_node_port
 |The port used to connect to the macOS node. Default is `22`.
 |buildfarm_node_root_dir
-|Root node of the node in Jenkins(??? rephrase). Default is `/Users/jenkins`. 
+|Path to Jenkins root folder. Default is `/Users/jenkins`. 
 |buildfarm_credential_id
 |Identifier for the Jenkins credential object. Default is
 `macOS_buildfarm_cred`.
@@ -226,7 +226,7 @@ will be skipped.
 |buildfarm_node_name
 |Name of the slave/node in Jenkins. Default is `macOS (<node_host_address>)`.
 |buildfarm_node_labels
-|List of labels to give the macOS node(??? rephrase). Default is `ios`. 
+|List of labels assigned to the macOS node. Default is `ios`. 
 |buildfarm_user_id
 |Jenkins user ID. Default is `admin`.
 |buildfarm_node_executors
