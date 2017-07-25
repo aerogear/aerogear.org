@@ -1,0 +1,35 @@
+== Manage Digger artifacts
+When Digger executes builds it will produce build logs and build artifacts.
+Over time, these logs and artifacts will build up indefinitely. To manage the
+amount of build logs and artifacts to retain there are a number of options that
+can be configured. If using Digger with RHMAP these options can be specified
+by setting environment variables in the `millicore` deployment configuration in
+RHMAP. Configuration options in Jenkins along with their RHMAP are detailed
+below.
+
+NOTE: All Jenkins configuration for Digger artifacts can be performed using the
+user interface in  `<Job Name> -> Configure -> Discard Old Builds` with the
+`Log Rotation` strategy enabled.
+
+|===
+| Option | Configure in Jenkins | RHMAP property
+
+| Days to keep builds
+| Set the `Days to keep builds` value to an integer.
+| BUILDFARM_BUILDS_DAYS
+
+| Max number of builds to keep
+| Set the `Max # of builds to keep` value to the amount of total build records
+to keep irrespective of time.
+| BUILDFARM_BUILDS_TOTAL
+
+| Days to keep artifacts
+| Set the `Days to keep artifacts` value to the amount of days to keep builds
+with artifacts for.
+| BUILDFARM_ARTIFACTS_DAYS
+
+| Total number of builds to keep with artifacts
+| Set the `Max # of builds to keep with artifacts` value to the amount of
+builds with artifacts to keep irrespective of time.
+| BUILDFARM_ARTIFACTS_TOTAL
+|===
