@@ -6,12 +6,11 @@ title: Digger Ansible macOS variables
 
 == Install Homebrew
 
-Installs Homebrew on the node.
+To run this step individually use
+`osx_install_homebrew` tag, see <<Running Installer steps individually>>
 
-This will also add any taps and packages specified in the options.
+This installation step will also add any taps and packages specified in the options.
 
-To run this section as a standalone step you must specify the
-`osx_install_homebrew` tag.
 
 |===
 | Variable name | Description
@@ -34,12 +33,14 @@ To run this section as a standalone step you must specify the
 
 == Install Ruby
 
-Installs RVM along with a single version of Ruby. The version of Ruby to
-install can be defined by a variable. The cocoapods gem will be installed,
-other gems can be specified using the gem_packages variable.
+To run this step individually use `osx_install_ruby` tag (see <<Running Installer steps individually>>).
 
-To run this section as a standalone step you must specify the 
-`osx_install_ruby` tag.
+This step installs RVM along with a single version of Ruby. The version of Ruby to
+install can be defined by a variable. The cocoapods gem will be installed,
+other gems can be specified using the `gem_packages` variable.
+
+
+
 
 |===
 | Variable name | Description
@@ -48,13 +49,13 @@ To run this section as a standalone step you must specify the
 |The URL of RVM installation script (defaults to GitHub release).
 
 |rvm_install_file_name
-|What to name the file on the node.
+|Defines the installation filename on the node.
 
 |rvm_gpg_url
-|The URL of the RVM prerequisite gpg key.
+|The URL of the RVM-required gpg key.
 
 |rvm_gpg_file_name
-|What to name the file on the node.
+|File name given to the GPG public key required to verify RVM.
 
 |ruby_version
 |The version of Ruby to install on the node.
@@ -67,22 +68,22 @@ To run this section as a standalone step you must specify the
 Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
 |===
 
-== Install Nodejs
+== Install Node.js
+
+To run this step individually use `osx_install_nodejs` tag (see <<Running Installer steps individually>>).
 
 Installs NVM along with any versions of Nodejs specified through variables.
 Packages from NPM can be defined also, however they will be installed globally.
 
-To run this section as a standalone step you must specify the
-`osx_install_nodejs` tag.
 
-.Install Nodejs variables
+.Install Node.js variables
 |===
 | Variable name | Description
 
 |nvm_install_url
 |The URL of NVM installation script (defaults to GitHub release).
 |nvm_install_file_name
-|What to name the file on the node.
+|Define the nvm Install filename on the node
 |node_versions
 |A list of Node versions to install.
 |npm_packages
@@ -92,20 +93,20 @@ Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
 
 == Install Xcode
 
-Installs Xcode CLI tools and Xcode versions specified. Installing Xcode a
-single version of Xcode can take over 30 mi so please be patient during
+To run this step individually use `osx_install_xcode` tag (see <<Running Installer steps individually>>).
+
+This step installs Xcode CLI tools and Xcode versions specified. Installing Xcode a
+single version of Xcode can take over 30 minutes so please be patient during
 these stages.
 
 === Two Factor Authentication (2FA) Support
-If you have 2FA enabled for the Apple Developer Account you're specifying then
-you will need to set the xcode_install_session_token option to a cookie
+If you have 2FA enabled for the specified Apple Developer Account then
+you will need to set the `xcode_install_session_token` option to a cookie
 provided by authenticating with Apple. This can be done using Fastlane
 Spaceship.
 
-To run this section as a standalone step you must specify the
-`osx_install_xcode` tag.
 
-NOTE: Installed fastlane version must be >= 2.42.0
+NOTE: Installed Fastlane must be 2.42.0 or higher
 
 .Obtaining Apple Developer cookie for 2FA Xcode install
 ----
@@ -140,12 +141,12 @@ install.
 
 == Download Apple certificates
 
-Downloads some required certificates into the node. Right now, the only
+To run this step individually use `osx_download_certs` tag. (see <<Running Installer steps individually>>).
+
+Downloads the required certificates into the node. Right now, the only
 required certificate is Apple's WWDR certificate. This certificate will be
 downloaded into the user's home directory.
 
-To run this section as a standalone step you must specify the
-`osx_download_certs` tag.
 
 .Download Apple certificate variables
 |===
@@ -154,24 +155,26 @@ To run this section as a standalone step you must specify the
 |apple_wwdr_cert_url
 |Apple WWDR certificate URL. Defaults to Apple's official URL
 |apple_wwdr_cert_file_name
-|Output file name of the downloaded file. Defaults to AppleWWDRCA.cer.
+|Filename for the downloaded certificate. Default is `AppleWWDRCA.cer`.
 |===
 
 == Update Cocoapods
 
 Executes pod repo update.
 
-To run this section as a standalone step you must specify the
-`osx_pod_repo_update` tag.
+To run this step individually use 
+`osx_pod_repo_update` tag. (see <<Running Installer steps individually>>).
 
-== Configure Buildfarm node
+== Configure Build Farm node
+To run this step individually use `osx_configure_buildfarm` tag.(see <<Running Installer steps individually>>).
 
-Creates a credential set in the build farm for the macOS nodes using the
-provided keys. Add each machine as a node in the build farm, connecting through
+
+This step creates a credential set in the Build Farm for the macOS nodes using the
+provided keys. Add each machine as a node in the Build Farm, connecting through
 SSH.
 
 You will need to create a key pair using a tool such as ssh-keygen to allow the
-Jenkins instance to connect with the macOS nodes. Below is the steps involved
+Jenkins instance to connect with the macOS nodes. Below are the steps involved
 in creating a key pair.
 
 .Generating a key pair
@@ -195,10 +198,10 @@ digger_macos_rsa
 digger_macos_rsa.pub
 ----
 
-To run this section as a standalone step you must specify the
-`osx_configure_buildfarm` tag.
 
-.Configure buildfarm node variables
+== WHICH COMMAND SHOULD BE USED TO CHANGE the following VARIABLES?
+
+.Configure Build Farm node variables
 |===
 | Variable name | Description
 
@@ -212,35 +215,35 @@ the macOS node. If this is not set then this section will be skipped.
 |Location of the public key of the pair. If this is not set then this section
 will be skipped.
 |buildfarm_node_port
-|The port to connect to the macOS node on. Defaults to 22.
+|The port used to connect to the macOS node. Default is `22`.
 |buildfarm_node_root_dir
-|Root node of the node in Jenkins. Defaults to /Users/jenkins.
+|Path to Jenkins root folder. Default is `/Users/jenkins`. 
 |buildfarm_credential_id
-|Identifier for the Jenkins credential object. Defaults to
-macOS_buildfarm_cred.
+|Identifier for the Jenkins credential object. Default is
+`macOS_buildfarm_cred`.
 |buildfarm_credential_description
 |Description of the Jenkins credential object.
 |buildfarm_node_name
-|Name of the slave/node in Jenkins. Defaults to macOS (<node_host_address>).
+|Name of the slave/node in Jenkins. Default is `macOS (<node_host_address>)`.
 |buildfarm_node_labels
-|List of labels to give the macOS node. Defaults to only ios.
+|List of labels assigned to the macOS node. Default is `ios`. 
 |buildfarm_user_id
-|Jenkins user. Defaults to admin.
+|Jenkins user ID. Default is `admin`.
 |buildfarm_node_executors
-|Number of executors (Jenkins configuration) on the macOS node. Defaults to
+|Number of executors (Jenkins configuration) on the macOS node. Default is
 `1`. There is currently no build isolation with the macOS node meaning there is
-no guarenteed support for concurrent builds. This value should not be changed
-unless you are certain all apps will be built with the same signing
+no guaranteed support for concurrent builds. This value should not be changed
+unless you are certain all apps will be built with the same signature
 credentials.
-|buildfarm_node_mode
-|How the macOS node should be utilised. Should be one of:
-|NORMAL
-|Use this node as much as possible
-|EXCLUSIVE
-|Only build jobs with labels matching this node.
 |buildfarm_node_description
 |Description of the macOS node in Jenkins.
-|Other options
+|buildfarm_node_mode <MODE>
+|How the macOS node should be utilised. The following options are available:
+|<MODE> = NORMAL
+|Use this node as much as possible
+|<MODE> = EXCLUSIVE
+|Only build jobs with labels matching this node will use this node.
+
 |===
 
 .Other variables
@@ -251,5 +254,5 @@ credentials.
 |A directory where downloaded scripts and other miscellaneous files can be
 stored for the duration of the job.
 |project_name
-|Name of the Jenkins project in OpenShift. Defaults to jenkins.
+|Name of the Jenkins project in OpenShift. Defaults to `jenkins`.
 |===
