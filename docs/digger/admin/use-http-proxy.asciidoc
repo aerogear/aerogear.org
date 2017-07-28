@@ -7,6 +7,8 @@ It is possible to run AeroGear Digger behind a HTTP proxy server. To configure t
 |===
 | Variable name | Description
 
+| proxy_url
+| The value to set `http_proxy` and `https_proxy` environment variables to.
 | proxy_host
 | The host name of the proxy server. It should not contain protocol
 | proxy_port
