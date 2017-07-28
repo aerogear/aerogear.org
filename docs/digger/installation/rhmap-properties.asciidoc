@@ -6,55 +6,55 @@ When using Digger from RHMAP, you can configure Digger by setting RHMAP properti
 |===
 | Property name | Environment variable | Description
 
-| buildfarm.version
+| buildfarm_version
 | BUILDFARM_VERSION
 | The version of the buildfarm being used. Should be set to `2.0.0` when
 using Digger.
 
-| buildfarm.hostname
+| buildfarm_hostname
 | BUILDFARM_HOST
 | The hostname of the Jenkins instance that was provisioned by Digger.
 
-| buildfarm.username
+| buildfarm_username
 | BUILDFARM_USERNAME
 | The username used to authenticate with the Jenkins instance.
 
-| buildfarm.password
+| buildfarm_password
 | BUILDFARM_PASSWORD
 | The password of the user used to authenticate with the Jenkins instance.
 
-| buildfarm.platforms
+| buildfarm_platforms
 | BUILDFARM_PLATFORMS
 | The mobile platforms that should be built using the Jenkins instance. Should
 be a comma separated list e.g. `android,ios`. Possible values are `ios` and
 `android`.
 
-| buildfarm.build.timeout
+| buildfarm_build_properties
 | BUILDFARM_BUILD_TIMEOUT
 | The number of seconds that RHMAP should wait before timing out a build.
 
-| buildfarm.build.polling.interval
+| buildfarm_build_polling_interval
 | BUILDFARM_BUILD_POLLING_INTERVAL
 | The number of seconds between each poll of a Jenkins build.
 
-| buildfarm.csrf.enabled
+| buildfarm_csrf_enabled
 | BUILDFARM_CSRF_ENABLED
 | Whether CSRF protection is enabled on the Jenkins instance. It is recommended
 to enable CSRF protection.
 
-| buildfarm.builds.days
+| buildfarm_builds_days
 | BUILDFARM_BUILDS_DAYS
 | The number of days to keep builds in Jenkins.
 
-| buildfarm.builds.total
+| buildfarm_builds_total
 | BUILDFARM_BUILDS_TOTAL
 | The maximum number of builds to keep at any one time in Jenkins.
 
-| buildfarm.artifacts.days
+| buildfarm_artifacts_days
 | BUILDFARM_ARTIFACTS_DAYS
 | The number of days to keep build artifacts in Jenkins.
 
-| buildfarm.artifacts.total
+| buildfarm_artifacts_total
 | BUILDFARM_ARTIFACTS_TOTAL
-| The maximum number of build artifacts to keep at any one time in Jenkins.
+| The maximum number of build artifacts to keep in Jenkins simultaneously.
 |===
