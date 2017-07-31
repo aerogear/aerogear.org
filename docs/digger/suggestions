@@ -1,2 +1,27 @@
 /installation/macos-options.asciidoc
 229 use slave instead of node???
+
+/admin/digger-monitoring.asciidoc
+2 when? suggestion: The Nagios instance performs (regularily) a number of checks:
+
+/admin/using-http-proxy
+29 use xref??
+37 pod? to maintain consistency. Or is there a "tool" per se?
+HTTP Proxy Usage Limitations: Can we refer to some other documentation regarding this(which tools may cause problem, pointing to their docs, etc.)
+
+
+- macOS vs Mac, use 1 variation - macOS
+  macOS machine vs macOS server - use one,                      
+
+- asciidoc naming, for example, 
+  "installing-plugins" is very ambiguous
+  "known-issues" also,
+  It is true that the folder the doc is contained in gives some info about what is inside the doc, but if we want to migrate to modular documentation, i think this can help
+  e.g. longer, more descriptive names:
+    use-http-proxy - is very undescriptive, even for editor, is it a directive to use http proxy?
+    correction: using-http-proxy   
+    
+- should ustalene pomenovanie(?)s such as:
+  - Ansible Playbook
+  - Jenkins Plugin
+  etc. be CAPITALISED?
