@@ -1,0 +1,7 @@
+== Digger Nagios Monitoring
+Nagios is provisioned by default by the Digger Ansible playbook. The Nagios instance will perform a number of checks (WHEN???):
+
+* Check that the macOS server is running is accessible by Jenkins
+* Check that the Jenkins instance is running
+
+The URL and credentials for accessing the Nagios instance will be provided when the Ansible job has completed its provisioning.

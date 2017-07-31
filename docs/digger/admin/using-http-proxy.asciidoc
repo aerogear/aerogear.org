@@ -1,0 +1,44 @@
+== HTTP Proxy Support
+
+When you configure the Digger Installer to use proxy, it will automatically reconfigure the following components:
+
+
+* The Jenkins server
+* The Android SDK pod used to download Android SDKs
+* Container/node that will run the build jobs, by adding the appropriate environment variables like `HTTP_PROXY` and `HTTPS_PROXY` (where?)
+* Ansible to install various tools used to provision the macOS servers(??? verify if this is correct or it should be "Ansible to install various macOS tools"
+
+These changes should allow the default build tools like Gradle and XCode to work with the HTTP proxy. (should or will?)
+
+=== Configuration Options
+
+You can run AeroGear Digger behind a HTTP proxy server by defining the following Ansible Variables:
+
+|===
+| Variable name | Description
+
+| proxy_url
+| This URL is pasted into `http_proxy` and `https_proxy` environment variables.
+| proxy_host
+| The host name of the proxy server. It should not contain protocol(??? HTTP etc? Protocol definition?)
+| proxy_port
+| The port number of the proxy
+| proxy_user
+| Required if proxy authentication is enabled
+| proxy_pass
+| Required if proxy authentication is enabled
+| proxy_protocol
+| Optional. The protocol to use with the proxy. Default value is `http`.
+|===
+
+You can define these variables either in an inventory file, or via CLI.
+Please refer to the http://docs.ansible.com/ansible/playbooks_variables.html[Ansible Playbook Variables Docs] for more details.
+
+NOTE: There are issues with using HTTP proxies that require authentication.
+Please check the link:known_issues[Known Issues] doc for more details.
+It is recommended to use an HTTP proxy that doesn't require authentication.
+
+=== HTTP Proxy Usage Limitations
+
+There may be some tools that requires specific configuration to work with proxy.
+In this case, you will need to update the configuration for those tools manually in the Jenkinsfile, using the values from the environment variables like `HTTP_PROXY` and `HTTPS_PROXY`.
