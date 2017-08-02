@@ -2,10 +2,10 @@
 
 .To run the Digger installer, follow these steps:
 
-. Clone the https://github.com/aerogear/digger-installer[Digger Installer repo]
+. Clone the https://github.com/aerogear/digger-installer[Digger Installer GitHub repo]
 
 . Make a copy of the `inventory-sample` file from the repo, and update it to provide the information about your cluster.
-For more details about the Mac Server configurations, please check the <<Setup Mac Servers>> section.
+For more details about the macOS Server configurations, please check the <<Setup macOS Servers>> section.
 
 . To build Android applications, you may need to <<Configure the Android SDK components>>.
 //TODO: remove this step once we can configure Android SDK components via Ansible variables.
@@ -20,7 +20,7 @@ ansible-playbook -i your-inventory-copy sample-build-playbook.yml
 * Install Jenkins (tag: `deploy-jenkins`)
 * Install Android SDK to a Persistent Volume (tag: `android-sdk`)
 * Configure Jenkins (tag: `configure-buildfarm`)
-* Setup Mac servers (tag: `provision-osx`)
+* Setup macOS Servers (tag: `provision-osx`)
 
 NOTE: All the tasks in the installer are idempotent and you can run them multiple times and they will produce the same results.
 
@@ -41,11 +41,11 @@ ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy
 
 
 // details about installing Jenkins
-include::./install-jenkins.asciidoc[]
+include::./ansible-installs-jenkins.asciidoc[]
 
 //details about installing Android SDK
-include::./install-android-sdk.asciidoc[]
+include::./android-sdk-digger.asciidoc[]
 
-//details about setting up Mac servers
-include::./macos-setup.asciidoc[macOS setup]
+//details about setting up macOS servers
+include::./macos-setup.asciidoc[]
 
