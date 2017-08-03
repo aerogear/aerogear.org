@@ -1,7 +1,7 @@
 == Installing Jenkins plugins
-Digger will by default install a number of Jenkins plugins required for its proper operation. If more Jenkins plugins are required, they can be specified in Ansible playbook(???) or using the Jenkins user interface.
+Digger will by default install a number of Jenkins plugins required for its proper operation. If more Jenkins plugins are required, they can be installed by including them in Ansible playbook or using the Jenkins UI.
 
-NOTE: Plugins for Jenkins can be found at link::https://plugins.jenkins.io. (PLEASE VERIFY LINK SYNTAX)
+NOTE: Plugins for Jenkins can be found at https://plugins.jenkins.io
 
 === Using Ansible Playbook
 The `jenkins_plugins` parameter can be overridden to include new plugins. The
@@ -17,5 +17,5 @@ structure of a Jenkins plugin is as follows.
 
 === Using Jenkins UI
 Go to `Manage Jenkins -> Manage Plugins`. If the plugin is not available in the
-`Available` tab then it can be installed by uploading an `.hpi` file in
+`Available` tab then it   can be installed by uploading an `.hpi` file in
 `Advanced -> Upload Plugin`.
