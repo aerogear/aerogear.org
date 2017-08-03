@@ -5,7 +5,7 @@ When you configure the Digger Installer to use proxy, it will automatically reco
 
 * The Jenkins server
 * The Android SDK pod used to download Android SDKs
-* Container/node that will run the build jobs, by adding the appropriate environment variables like `HTTP_PROXY` and `HTTPS_PROXY` (where?)
+* Container/node that will run the build jobs, by adding the appropriate environment variables like `HTTP_PROXY` and `HTTPS_PROXY` in the inventory file - sample provided https://github.com/aerogear/digger-installer/blob/master/inventory-sample[here].
 * Ansible to install various tools used to provision the macOS servers(??? verify if this is correct or it should be "Ansible to install various macOS tools"
 
 These changes should allow the default build tools like Gradle and XCode to work with the HTTP proxy. (should or will?)

@@ -5,12 +5,15 @@ title: Digger Administration guide
 toc_generate: true
 ---
 
+
+include::/admin/about-admin-guide.asciidoc[]
+
+include::/admin/installing-jenkins-plugins.asciidoc[]
+
 include::/admin/digger-nagios-monitoring.asciidoc[]
 
 include::/admin/using-http-proxy.asciidoc[]
 
 include::/admin/managing-digger-logs-artifacts.asciidoc[]
-
-include::/admin/installing-jenkins-plugins.asciidoc[]
 
 include::/admin/known-issues.asciidoc[]
