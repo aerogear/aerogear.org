@@ -1,4 +1,4 @@
-=== Setup Mac Servers
+=== Setup macOS Servers
 
 ==== Setting Ansible variables
 The macOS part of the installer will perform the following tasks.
