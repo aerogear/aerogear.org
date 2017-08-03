@@ -1,0 +1,9 @@
+=== How Ansible Installs Jenkins
+//pwright: I think heading should be task oriented, ie run playbook
+
+The installer will perform the following tasks for Jenkins setup and configuration:
+
+* Create the Jenkins service on OpenShift. It will automatically create the required routes, services and pods, and wait for Jenkins to be up and running. It will also create an admin user by default.
+* Then the installer will use the https://wiki.jenkins.io/display/JENKINS/Jenkins+CLI[Jenkins CLI] tool to configure Jenkins. This tool requires the user public keys to be uploaded to Jenkins manually. The installer will stop and provide you with instructions on how to do that.
+* Once the key is uploaded, the installer will resume. It will update configurations of Jenkins, and install the required plugins.
+
