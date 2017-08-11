@@ -1,0 +1,68 @@
+---
+layout: post
+section: guides
+title: Digger and RHMAP
+toc_generate: true
+---
+
+== Overview
+
+The main purpose of this document is to explain how AeroGear Digger and RedHat Mobile Application Platform (RHMAP) work together to build mobile applications on OpenShift.
+
+If you are using AeroGear Digger on its own, feel free to skip the content of this document.
+
+== Setup
+
+At the time of writing this document (Aug 2017), the self-managed RHMAP is not using AeroGear Digger as the default build farm. It is using the SaaS version build farm by default to build mobile applications.
+
+However, from release version 4.5 of RHMAP, admin users will be able to install AeroGear Digger as part of RHMAP installation, and use it as the default build farm. 
+For more details, please check the link:/docs/digger/installation[Installation Guide].
+
+After the setup is completed, developers will also need to make sure there are corresponding `Jenkinsfile` in the apps for Jenkins to build them.
+More details can be found in the link:/docs/digger/developer[Developer Guide].
+
+Once that's done, developers will be able to build mobile apps using AeroGear Digger through RHMAP.
+
+== App Build Request Sequences
+
+The following diagram explains what happens when a build request is triggered by a client on RHMAP:
+
+image::./img/app_build_request.png[App Build Request]
+
+It can be divided into 3 stages:
+
+=== Pre-build
+
+This stage includes all the steps before the build is started on Jenkins. 
+
+During this stage, RHMAP will make sure all the required resources are gathered, and the corresponding Jenkins job is updated to reflect the currect status of the project on RHMAP.
+For all the keys and certificates that are required for the build, RHMAP will also make sure they are saved in the Jenkins credential store.
+
+=== Build
+
+This stage includes all the steps from when the build is started on Jenkins, until the build is completed.
+
+During this stage, the build is done by Jenkins and RHMAP will just poll the logs from Jenkins and present the logs to the client.
+
+=== Post-build
+
+This stage includes all the steps from when the build is completed on Jenkins, until the request is fully completed.
+
+During this stage, RHMAP will make sure the link to the generated binaries are saved on the platform, and also remove the keys and certificates from the Jenkins credential store.
+
+== Q & A
+
+=== How keys and certs are managed by RHMAP and AeroGear Digger?
+
+When developers upload keys and certs to RHMAP, they are saved in the database without encryption. 
+However, RHMAP does require the private key to be password protected when it's being uploaded, and it will ask for the password to decrypt the private key file to continue the build process.
+
+Before a build is started, RHMAP will send the keys and certificates to Jenkins and save them in Jenkins credentials store. 
+However, the original password entered by the developer is not sent. RHMAP will use a different password instead.
+
+When the build is completed, RHMAP will make sure the corresponding credential is removed from Jenkins.
+
+
+
+
+
