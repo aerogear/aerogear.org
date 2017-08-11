@@ -1,8 +1,8 @@
-=== Mac Server
+=== macOS Server
 
 This is only required for building iOS applications.
 
-==== Mac Machine Setup
+==== macOS Machine Setup
 
 - Set `ansible_sudo_pass` variable for the Ansible job to enable the Installer to work with root permissions. It is required by several installation steps.
 
