@@ -5,6 +5,14 @@ You may build this via
 docker build --tag aerogear.org .
 ```
 
+To run the container:
+
+```
+./run.sh
+```
+from this directory (does not work if you run it from a different directory).
+
+
 If you want to edit files locally you will need to mount your volume at /home/aerogear/aerogear
 
 For example : 
