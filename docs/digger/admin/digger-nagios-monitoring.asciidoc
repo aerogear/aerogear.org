@@ -1,0 +1,8 @@
+== Digger Nagios Monitoring
+Nagios is provisioned by default by the Digger Ansible playbook. Once Nagios is successfully installed, a number of checks are triggered by the playbook:
+
+* Check that the Android PVC (PersistentVolumeClaim) is Bound
+* Check that the macOS server is running is accessible by Jenkins
+* Check that the Jenkins instance is running
+
+The URL and credentials for accessing the Nagios instance will be provided when the Ansible job has completed its provisioning.
