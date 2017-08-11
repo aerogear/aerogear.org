@@ -205,15 +205,12 @@ digger_macos_rsa.pub
 |===
 | Variable name | Description
 
-|credential_private_key_path
-|Location of the private key of the pair. This is stored in Jenkins and used to
-SSH into the macOS node. If this is not set then this section will be skipped.
+|credential_private_key
+|Private key stored in Jenkins and used to SSH into the macOS node. If this is not set then a key pair will be generated.
+|credential_public_key
+|Public key of the pair. If this is not set then a key pair will be generated.
 |credential_passphrase
-|Passphrase of the private key. This is stored in Jenkins and used to SSH into
-the macOS node. If this is not set then this section will be skipped.
-|credential_public_key_path
-|Location of the public key of the pair. If this is not set then this section
-will be skipped.
+|Passphrase of the private key. This is stored in Jenkins and used to SSH into the macOS node. If this is not set the private key will not be password protected.
 |buildfarm_node_port
 |The port used to connect to the macOS node. Default is `22`.
 |buildfarm_node_root_dir
