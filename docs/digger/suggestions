@@ -11,7 +11,7 @@ HTTP Proxy Usage Limitations: Can we refer to some other documentation regarding
 
 
 - macOS vs Mac, use 1 variation - macOS
-  macOS machine vs macOS server - use one,                      
+- macOS machine vs macOS server - use one,                      
 
 - asciidoc naming, for example, 
   "installing-plugins" is very ambiguous
@@ -21,7 +21,7 @@ HTTP Proxy Usage Limitations: Can we refer to some other documentation regarding
     use-http-proxy - is very undescriptive, even for editor, is it a directive to use http proxy?
     correction: using-http-proxy   
     
-- should ustalene pomenovanie(?)s such as:
-  - Ansible Playbook
-  - Jenkins Plugin
+- should widely used terms such as:
+  .Ansible Playbook
+  .Jenkins Plugin
   etc. be CAPITALISED?
