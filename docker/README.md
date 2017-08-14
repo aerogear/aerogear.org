@@ -12,6 +12,9 @@ To run the container:
 ```
 from this directory (does not work if you run it from a different directory).
 
+## Advanced
+
+For more control, you might want to use the following instructions:
 
 If you want to edit files locally you will need to mount your volume at /home/aerogear/aerogear
 
