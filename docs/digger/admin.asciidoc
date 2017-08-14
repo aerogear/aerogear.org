@@ -6,14 +6,14 @@ toc_generate: true
 ---
 
 
-include::/admin/about-admin-guide.asciidoc[]
+include::docs/digger/admin/about-admin-guide.asciidoc[]
 
-include::/admin/installing-jenkins-plugins.asciidoc[]
+include::docs/digger/admin/installing-jenkins-plugins.asciidoc[]
 
-include::/admin/digger-nagios-monitoring.asciidoc[]
+include::docs/digger/admin/digger-nagios-monitoring.asciidoc[]
 
-include::/admin/using-http-proxy.asciidoc[]
+include::docs/digger/admin/using-http-proxy.asciidoc[]
 
-include::/admin/managing-digger-logs-artifacts.asciidoc[]
+include::docs/digger/admin/managing-digger-logs-artifacts.asciidoc[]
 
-include::/admin/known-issues.asciidoc[]
+include::docs/digger/admin/known-issues.asciidoc[]
