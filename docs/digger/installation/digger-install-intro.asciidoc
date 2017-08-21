@@ -1,7 +1,7 @@
 == Digger Installation Introduction
 //Please DO NOT use 'Overview' as a section heading anywhere http://stylepedia.net/#sect-Red_Hat_Technical_Publications-Writing_Style_Guide-Overall_Book_Design-Unused_Heading_Titles
 
-The AeroGear Digger project allows to setup a service that you can use to build mobile applications using OpenShift containers.
+The AeroGear Digger project allows you to setup a service builds mobile applications using OpenShift containers.
 //DON'T USE PASSIVE VOICE
 
 It is made of following components:
