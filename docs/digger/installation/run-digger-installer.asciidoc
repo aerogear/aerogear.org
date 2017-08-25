@@ -44,7 +44,7 @@ ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy
 include::./ansible-installs-jenkins.asciidoc[]
 
 //details about installing Android SDK
-include::./android-sdk-digger.asciidoc[]
+include::./install-android-sdk.asciidoc[]
 
 //details about setting up macOS servers
 include::./macos-setup.asciidoc[]
