@@ -1,21 +1,21 @@
 === macOS Server
 
-This is only required for building iOS applications.
+NOTE: This is required only if you want to build iOS applications.
 
-==== macOS Machine Setup
+==== macOS and macOS Ansible Scripts Configuration
 
-- Set `ansible_sudo_pass` variable for the Ansible job to enable the Installer to work with root permissions. It is required by several installation steps.
+- Grant the Installer `sudo` priviledges by entering the password into the `ansible_sudo_pass` variable.
+//?????? IN THE ANSIBLE INVENTORY FILE OR WHERE
+//???? sudo or root? or is it the same in this context?
 
 .macOS Scripts: https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh] https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
 - Set up a user with sudo permissions and SSH access.
 These scripts will create a user named `jenkins` with SSH access.
-It is highly recommended that you read these scripts and change the `PASSWORD`
-variable in `create-osx-user.sh` to a strong passphrase:
-    
+It is highly recommended to set a strong `PASSWORD` in `create-osx-user.sh`.
 
 --
   
-. Download the scripts into the target macOS machine:
+. Download the scripts to the macOS system:
 +
 [source,bash]
 ----
@@ -23,41 +23,45 @@ curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/c
 curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
 ----
 +
-. Edit the `PASSWORD` for the Jenkins user in `create-osx-user.sh`.
-. Execute `create-osx-user.sh` with the updated password:
+. Set a secure user `PASSWORD` in `create-osx-user.sh`.
+. Run `create-osx-user.sh`:
 +
 ----
 sudo bash create-osx-user.sh
 ----
 +
-. Execute `enable-osx-remote-login.sh` to allow SSH access:
+. Run `enable-osx-remote-login.sh` to enable SSH access:
 +
 ----
 sudo bash enable-osx-remote-login.sh
 ----
 --
-==== Network access
-The macOS preparation can be optionally done using a proxy.
+==== Enable macOS Network access
+The macOS configuration can be optionally done using a proxy.
+//how???
 
-The machine requires a network access to the following hosts:
+The macOS requires a network access to the following hosts:
 
-.Required resources
+.Hosts and resources they provide:
 |===
-| Hostname | Reason
+| Hostname | Provides
 
 | https://github.com
-| To download and install Homebrew packages and Cocoapods.
+| `Homebrew packages` and `Cocoapods`
 
 | https://raw.githubusercontent.com
-| To download and install NVM.
+| `NVM - Node Version Manager`
 
 | https://rvm.io
-| To download and install RVM.
+| `RVM - Ruby Version Manager`
 
 | http://developer.apple.com
-| To download developer certificates and Xcode.
+| `Apple Certificates` and `Xcode`
 
 | https://npmjs.org
-| To install NPM packages.
+| `NPM packages`
 |===
+
+
 Other external hosts may be required depending on what other packages you specify to install. ???
+//???Care to explain???

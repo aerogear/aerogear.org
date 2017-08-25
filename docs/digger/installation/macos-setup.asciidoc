@@ -30,7 +30,7 @@ be skipped.
 | Path to the private key that Jenkins should use to SSH into the macOS node.
 If this isn't set the Jenkins node configuration will be skipped.
 
-| `credential_passphrase` -
+| `credential_passphrase`
 | Passphrase for the private key. If this isn't set the Jenkins node
 configuration will be skipped.
 
@@ -40,7 +40,7 @@ configuration will be skipped.
 be skipped.
 |===
 
-.Example of using all required variables when running the Digger Ansible job to provision macOS machines:
+.Example showing command with all required variables needed to start the Digger Ansible job to provision macOS systems:
 
 ----
 ansible-playbook -i sample-inventory-file sample-playbook.yml
