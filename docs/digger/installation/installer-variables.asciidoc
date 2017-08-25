@@ -130,22 +130,6 @@ Variables below are used while provisioning an OSX node.
 |What to name the nvm installation script on the node.
 |install-nvm.sh
 
-|rvm_install_url
-|What to name the rvm installation script on the node.
-|https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer
-
-|rvm_install_file_name
-|What to name the rvm installation script on the node.
-|install-rvm.sh
-
-|rvm_gpg_url
-|The URL of the rvm prerequisite gpg key.
-|https://rvm.io/mpapis.asc
-
-|rvm_gpg_file_name
-|What to name the rvm gpg file on the node.
-|mpapis.asc
-
 |ruby_version
 |The version of Ruby to install on the node.
 |ruby-2.3.3-latest
@@ -156,7 +140,7 @@ Variables below are used while provisioning an OSX node.
 
 |xcode_install_version
 |The version of the xcode-install tool to install on the node.
-|2.2.0
+|2.2.1
 
 |gem_packages
 |A list of gems to install on the node. Format: `{ name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }`
