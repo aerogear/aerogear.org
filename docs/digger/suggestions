@@ -25,3 +25,5 @@ HTTP Proxy Usage Limitations: Can we refer to some other documentation regarding
   .Ansible Playbook
   .Jenkins Plugin
   etc. be CAPITALISED?
+  
+- don't use "machine", use "system" instead. Machine sounds very "mechanical". ????

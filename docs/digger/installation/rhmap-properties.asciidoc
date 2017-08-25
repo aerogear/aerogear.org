@@ -1,6 +1,6 @@
-=== RHMAP properties
+=== RHMAP Environment Variables
 
-When using Digger from RHMAP, you can configure Digger by setting RHMAP properties using environment variables in the `millicore` deployment configuration.
+When using Digger from RHMAP, you can configure Digger by setting RHMAP Environment variables in the `millicore` deployment configuration.
 
 .RHMAP properties
 |===
@@ -8,7 +8,7 @@ When using Digger from RHMAP, you can configure Digger by setting RHMAP properti
 
 | buildfarm_version
 | BUILDFARM_VERSION
-| The version of the buildfarm being used. Should be set to `2.0.0` when
+| The version of the Build Farm being used. Should be set to `2.0.0` when
 using Digger.
 
 | buildfarm_hostname
@@ -21,26 +21,24 @@ using Digger.
 
 | buildfarm_password
 | BUILDFARM_PASSWORD
-| The password of the user used to authenticate with the Jenkins instance.
+| Password for the username defined in `buildfarm_username`.
 
 | buildfarm_platforms
 | BUILDFARM_PLATFORMS
-| The mobile platforms that should be built using the Jenkins instance. Should
-be a comma separated list e.g. `android,ios`. Possible values are `ios` and
-`android`.
+| The mobile platforms to build using the Jenkins instance. Must be a comma separated list e.g. `android,ios`. Valid values: `ios`,`android`.
 
 | buildfarm_build_properties
 | BUILDFARM_BUILD_TIMEOUT
-| The number of seconds that RHMAP should wait before timing out a build.
-
+| The number of seconds that RHMAP will wait before timing out a build.
+//VERIFY THIS ^^^^^ Shouldnt be buildfarm.build.timeout ? If y, then what is buildfarm_build_properties?
 | buildfarm_build_polling_interval
 | BUILDFARM_BUILD_POLLING_INTERVAL
 | The number of seconds between each poll of a Jenkins build.
 
 | buildfarm_csrf_enabled
 | BUILDFARM_CSRF_ENABLED
-| Whether CSRF protection is enabled on the Jenkins instance. It is recommended
-to enable CSRF protection.
+| CSRF protection. Recommended setting: Enabled
+//^^^ which values go here? is this r/w i.e. can check if the protection is on/off (e.g. when some trigger disables it, not sure if possible tho) Or only serves as a switch?
 
 | buildfarm_builds_days
 | BUILDFARM_BUILDS_DAYS
@@ -48,7 +46,7 @@ to enable CSRF protection.
 
 | buildfarm_builds_total
 | BUILDFARM_BUILDS_TOTAL
-| The maximum number of builds to keep at any one time in Jenkins.
+| The maximum number of builds to keep in Jenkins.
 
 | buildfarm_artifacts_days
 | BUILDFARM_ARTIFACTS_DAYS
@@ -56,5 +54,5 @@ to enable CSRF protection.
 
 | buildfarm_artifacts_total
 | BUILDFARM_ARTIFACTS_TOTAL
-| The maximum number of build artifacts to keep in Jenkins simultaneously.
+| The maximum number of build artifacts to keep in Jenkins.
 |===
