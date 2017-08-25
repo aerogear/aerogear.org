@@ -1,0 +1,67 @@
+=== macOS Server
+
+NOTE: This is required only if you want to build iOS applications.
+
+==== macOS and macOS Ansible Scripts Configuration
+
+- Grant the Installer `sudo` priviledges by entering the password into the `ansible_sudo_pass` variable.
+//?????? IN THE ANSIBLE INVENTORY FILE OR WHERE
+//???? sudo or root? or is it the same in this context?
+
+.macOS Scripts: https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh] https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
+- Set up a user with sudo permissions and SSH access.
+These scripts will create a user named `jenkins` with SSH access.
+It is highly recommended to set a strong `PASSWORD` in `create-osx-user.sh`.
+
+--
+  
+. Download the scripts to the macOS system:
++
+[source,bash]
+----
+curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/create-osx-user.sh
+curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
+----
++
+. Set a secure user `PASSWORD` in `create-osx-user.sh`.
+. Run `create-osx-user.sh`:
++
+----
+sudo bash create-osx-user.sh
+----
++
+. Run `enable-osx-remote-login.sh` to enable SSH access:
++
+----
+sudo bash enable-osx-remote-login.sh
+----
+--
+==== Enable macOS Network access
+The macOS configuration can be optionally done using a proxy.
+//how???
+
+The macOS requires a network access to the following hosts:
+
+.Hosts and resources they provide:
+|===
+| Hostname | Provides
+
+| https://github.com
+| `Homebrew packages` and `Cocoapods`
+
+| https://raw.githubusercontent.com
+| `NVM - Node Version Manager`
+
+| https://rvm.io
+| `RVM - Ruby Version Manager`
+
+| http://developer.apple.com
+| `Apple Certificates` and `Xcode`
+
+| https://npmjs.org
+| `NPM packages`
+|===
+
+
+Other external hosts may be required depending on what other packages you specify to install. ???
+//???Care to explain???

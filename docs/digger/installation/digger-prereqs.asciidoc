@@ -1,0 +1,22 @@
+== Prerequisites
+
+A Digger server can be installed using the https://github.com/aerogear/digger-installer[Digger Installer tool].
+
+Before running the Digger installer, please make sure the following prerequisites are met:
+
+=== Ansible 2.2 and higher
+
+Install Ansible locally. You can check the installed Ansible version by running `ansible --version`.
+Please check http://docs.ansible.com/ansible/intro_installation.html[Ansible installation instructions].
+
+=== Java 2.2 and higher
+
+A local installation of Java is required. DOES THIS NEED JDK???? WHICH VERSION?
+//does this need JDK? what versions are supported?"
+
+=== OpenShift 3.0 and higher
+
+* A running OpenShift cluster, and its command line tool (https://github.com/openshift/origin/releases/tag/v1.3.1[oc]) installed locally.
+* The OpenShift cluster must have at least 2 persistent volumes (PVs) with minimum of 10GB instantiated.
+
+include::./macos-prereqs.asciidoc[macOS prerequisites]

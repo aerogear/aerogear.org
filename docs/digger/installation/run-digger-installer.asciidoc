@@ -1,0 +1,54 @@
+== Run the Digger Installer
+
+.To run the Digger installer, follow these steps:
+
+. Clone the https://github.com/aerogear/digger-installer[Digger Installer GitHub repo]
+
+. Make a copy of the Ansible `inventory-sample` file from the repo, and update it with the information about your infrastructure.
++
+NOTE: For more details about the macOS Server configurations, please read the <<Setup macOS Servers>> section.
+
+
+. To build Android applications, you need to <<Configure the Android SDK components>>.
+//TODO: remove this step once we can configure Android SDK components via Ansible variables.
+. Run the following command with the updated `inventory-sample` and follow the instructions printed in the terminal.:
+----
+ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
+----
+//^ please verify
+.The sample Ansible playbook will perform the following tasks:
+--
+NOTE: All tasks are idempotent. You can run them multiple times and they will produce the same results.
+--
+
+* Create a project in OpenShift
+* Install Jenkins (tag: `deploy-jenkins`)
+* Install Android SDK to a Persistent Volume (tag: `android-sdk`)
+* Configure Jenkins (tag: `configure-buildfarm`)
+* Setup macOS Servers (tag: `provision-osx`)
+
+More details about these tasks are explained in the following sections. If you are not interested in the details, skip to <<Verify Installation>>.
+
+
+=== Running Installer steps individually
+If you want to run specific tasks, enter the task tag values into the following command.
+For example, to only run the "install Jenkins" task, run:
+
+.Passing single and multiple tags to Ansible
+----
+ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy-jenkins"
+----
+----
+ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy-jenkins","android-sdk","configure-buildfarm"
+----
+
+
+// details about installing Jenkins
+include::/ansible-installs-jenkins.asciidoc[]
+
+//details about installing Android SDK
+include::/install-android-sdk.asciidoc[]
+
+//details about setting up macOS servers
+include::/macos-setup.asciidoc[]
+

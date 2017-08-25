@@ -1,0 +1,23 @@
+---
+layout: post
+section: guides
+title: Digger installation guide
+toc_generate: true
+---
+
+// overview
+include::/installation/digger-install-intro.asciidoc[]
+
+// prerequisites
+include::/installation/digger-prereqs.asciidoc[]
+
+// Run Digger Installer
+include::/installation/run-digger-installer.asciidoc[]
+
+// verify installation
+include::/installation/verify-installation.asciidoc[]
+// connect to RHMAP
+include::/installation/connect-digger-to-rhmap.asciidoc[]
+
+// known issues
+include::/installation/known-issues.asciidoc[Known issues]
