@@ -1,9 +1,10 @@
-=== How Ansible Installs Jenkins
+=== Upload User Public Keys for Automatic Jenkins Installation
 //pwright: I think heading should be task oriented, ie run playbook
 
-The installer will perform the following tasks for Jenkins setup and configuration:
+The installer creates the Jenkins service on OpenShift with required routes, services and pods, and the waits for Jenkins to be running. It also creates an admin user.
+//Admin user where ? ^
 
-* Create the Jenkins service on OpenShift. It will automatically create the required routes, services and pods, and wait for Jenkins to be up and running. It will also create an admin user by default.
-* Then the installer will use the https://wiki.jenkins.io/display/JENKINS/Jenkins+CLI[Jenkins CLI] tool to configure Jenkins. This tool requires the user public keys to be uploaded to Jenkins manually. The installer will stop and provide you with instructions on how to do that.
-* Once the key is uploaded, the installer will resume. It will update configurations of Jenkins, and install the required plugins.
+Upload the User Public keys to Jenkins with steps printed in the terminal when prompted by the Installer. These keys will be used by Ansible to Jenkins configuration by Jenkins CLI tool.
+//Are the configurations AND plugins installed by Jenkins CLI tool? ^ If j then the last sentence is not required and "installation of required plugins" goes before "by Jenkins CLI tool".
 
+The installation will continue when the key are uploaded. It will update the configurations of Jenkins, and install the required Jenkins plugins.
