@@ -6,18 +6,18 @@ toc_generate: true
 ---
 
 // overview
-include::/installation/digger-install-intro.asciidoc[]
+include::docs/digger/installation/digger-install-intro.asciidoc[]
 
 // prerequisites
-include::/installation/digger-prereqs.asciidoc[]
+include::docs/digger/installation/digger-prereqs.asciidoc[]
 
 // Run Digger Installer
-include::/installation/run-digger-installer.asciidoc[]
+include::docs/digger/installation/run-digger-installer.asciidoc[]
 
 // verify installation
-include::/installation/verify-installation.asciidoc[]
+include::docs/digger/installation/verify-installation.asciidoc[]
 // connect to RHMAP
-include::/installation/connect-digger-to-rhmap.asciidoc[]
+include::docs/digger/installation/connect-digger-to-rhmap.asciidoc[]
 
 // known issues
 include::docs/digger/installation/known-issues.asciidoc[Known issues]
