@@ -1,4 +1,4 @@
-=== Upload User Public Keys for Automatic Jenkins Installation
+=== Provide User Public Keys to Ansible for Jenkins Installation
 //pwright: I think heading should be task oriented, ie run playbook
 
 The installer creates the Jenkins service on OpenShift with required routes, services and pods, and the waits for Jenkins to be running. It also creates an admin user.
