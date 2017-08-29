@@ -1,9 +1,5 @@
 == Prerequisites
 
-A Digger server can be installed using the https://github.com/aerogear/digger-installer[Digger Installer tool].
-
-Before running the Digger installer, please make sure the following prerequisites are met:
-
 === Ansible 2.2 and higher
 
 Install Ansible locally. You can check the installed Ansible version by running `ansible --version`.
