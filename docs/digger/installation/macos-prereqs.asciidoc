@@ -4,7 +4,7 @@ NOTE: This is required only if you want to build iOS applications.
 
 ==== macOS and macOS Ansible Scripts Configuration
 
-- Grant the Installer `sudo` priviledges by entering the password into the `ansible_sudo_pass` variable.
+- Set the password in `ansible_sudo_pass` variable to give the Installer `sudo` privileges.
 //?????? IN THE ANSIBLE INVENTORY FILE OR WHERE
 //???? sudo or root? or is it the same in this context?
 
