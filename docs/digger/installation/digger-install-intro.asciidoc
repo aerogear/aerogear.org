@@ -2,15 +2,16 @@
 //Please DO NOT use 'Overview' as a section heading anywhere http://stylepedia.net/#sect-Red_Hat_Technical_Publications-Writing_Style_Guide-Overall_Book_Design-Unused_Heading_Titles
 GitHub repo with Ansible job used for Digger installation https://github.com/aerogear/digger-installer[Digger Installer tool].
 
-Use AeroGear Digger for building mobile applications on OpenShift containers.
+The AeroGear Digger project allows you to setup a service that has the capability to build mobile applications using OpenShift containers.
 
 It is made of following components:
 
 * A Jenkins server that is used to run the build tasks
 * A Docker-formated image with all the required tools to build Android applications
-* macOS servers with pre-installed tools to build iOS applications
-* An http://docs.ansible.com/ansible/index.html[Ansible] based automation tool used to install and configure all the required components
-* A suite of sample `Jenkinsfiles` to demonstrate how to build mobile applications using Jenkins pipeline
+* macOS servers with pre-installed tools to build iOS applications (optional)
+* An http://docs.ansible.com/ansible/index.html[Ansible] based automation tool used to install and configure all the components
+* A nagios server for monitoring the digger components
+* A suite of sample Jenkinsfiles to demonstrate how to build mobile applications using Jenkins pipeline
 
 This project is designed to be used with the RedHat Application Platform (RHMAP). 
 However, it is possible to use it on its own as a CI/CD server to build mobile applications.
