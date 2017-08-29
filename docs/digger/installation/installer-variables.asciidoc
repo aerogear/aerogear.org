@@ -130,10 +130,6 @@ Variables below are used while provisioning an OSX node.
 |What to name the nvm installation script on the node.
 |install-nvm.sh
 
-|ruby_version
-|The version of Ruby to install on the node.
-|ruby-2.3.3-latest
-
 |node_versions
 |A list of Node versions to install.
 |6
