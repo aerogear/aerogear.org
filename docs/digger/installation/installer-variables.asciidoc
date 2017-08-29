@@ -138,10 +138,6 @@ Variables below are used while provisioning an OSX node.
 |The version of the xcode-install tool to install on the node.
 |2.2.1
 
-|gem_packages
-|A list of gems to install on the node. Format: `{ name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }`
-|Only installs xcode-install by default.
-
 |cocoapods_version
 |The version of the Cocoapods gem to install.
 |1.1.1
