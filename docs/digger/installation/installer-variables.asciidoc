@@ -165,8 +165,8 @@ Variables below are used to login to the OpenShift Cluster.
 
 |===
 
-[[variables-provision-osx]]
-=== provision-osx
+[[variables-osx-provision]]
+=== osx-provision
 
 Variables below are used while provisioning an OSX node.
 
