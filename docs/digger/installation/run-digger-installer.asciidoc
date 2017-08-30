@@ -15,7 +15,7 @@ NOTE: For more details about the macOS Server configurations, please read the <<
 ----
 ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
 ----
-//^ please verify
+
 .The sample Ansible playbook will perform the following tasks:
 --
 NOTE: All tasks are idempotent. You can run them multiple times and they will produce the same results.

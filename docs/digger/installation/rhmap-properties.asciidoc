@@ -30,7 +30,7 @@ using Digger.
 | buildfarm_build_properties
 | BUILDFARM_BUILD_TIMEOUT
 | The number of seconds that RHMAP will wait before timing out a build.
-//VERIFY THIS ^^^^^ Shouldnt be buildfarm.build.timeout ? If y, then what is buildfarm_build_properties?
+
 | buildfarm_build_polling_interval
 | BUILDFARM_BUILD_POLLING_INTERVAL
 | The number of seconds between each poll of a Jenkins build.
@@ -38,7 +38,6 @@ using Digger.
 | buildfarm_csrf_enabled
 | BUILDFARM_CSRF_ENABLED
 | CSRF protection. Recommended setting: Enabled
-//^^^ which values go here? is this r/w i.e. can check if the protection is on/off (e.g. when some trigger disables it, not sure if possible tho) Or only serves as a switch?
 
 | buildfarm_builds_days
 | BUILDFARM_BUILDS_DAYS
