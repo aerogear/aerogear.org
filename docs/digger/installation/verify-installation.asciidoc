@@ -4,7 +4,7 @@ To monitor the status of the Digger components, the Digger installer will also i
 
 To verify the installation
 
-. Log in to Nagios using the url and crednetials outputted at the end of the installation.
+. Log in to Nagios using the url and credentials outputted at the end of the installation.
 . Navigate to the Services Link
 . Verify that all Nagios checks are passing.
 
