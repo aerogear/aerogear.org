@@ -1,6 +1,5 @@
 === How to install Android SDK with Ansible
-//pwright: I think heading should be task oriented, ie run playbook
-//pmacko: +1, changed to active form
+
 WARNING: During the process, you will be ask to manually accept the Android SDK License Agreement.
  
 The Android SDK is required to build Android apps. The installer downloads the Android SDK and makes it available to the building pods by performing the following steps:
@@ -10,10 +9,6 @@ The Android SDK is required to build Android apps. The installer downloads the A
 * Update the Kubernetes plugin configuration to add a new pod template. It will mount and connect the PV in “Read-Only” mode to the pods, and setup the required environment variables to define an Android home directory.
 
 Jenkins dynamically creates containers (pods) on OpenShift using the https://wiki.jenkins.io/display/JENKINS/Kubernetes+Plugin[Kubernetes Jenkins plugin] for each Android build.
-
-//* It doesn't require a build server to be running constantly
-//* Each build is performed completely in isolation -> redundant I think, good for "marketing", otherwise I think not, ppl are familiar with containers
-
 
 ==== Configure Android SDK components 
 
