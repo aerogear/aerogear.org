@@ -38,7 +38,3 @@ Java is required for some configuration of Jenkins during the installation. If J
 ==== Access to dockerhub
 
 The installer retrieves the relevant docker formatted images from https://hub.docker.com/. Please ensure that all nodes in the OpenShift Installation have access to this site.
-
-=== macOS Server pre-requisites
-
-include::./macos-prereqs.asciidoc[macOS prerequisites]
