@@ -8,7 +8,7 @@ The Android SDK is required to build Android apps. The installer downloads the A
 * Invoke a script to download the Android SDK. The Android SDK will be retained in the PV.
 * Update the Kubernetes plugin configuration to add a new pod template. It will mount and connect the PV in “Read-Only” mode to the pods, and setup the required environment variables to define an Android home directory.
 
-Jenkins dynamically creates containers (pods) on OpenShift using the https://wiki.jenkins.io/display/JENKINS/Kubernetes+Plugin[Kubernetes Jenkins plugin] for each Android build.
+Jenkins dynamically creates containers (pods) on OpenShift using the https://wiki.jenkins.io/display/JENKINS/Kubernetes+Plugin[Kubernetes Jenkins plugin^] for each Android build.
 
 ==== Configure Android SDK components 
 

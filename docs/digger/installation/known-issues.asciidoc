@@ -1,3 +1,4 @@
+[[known-issues]]
 == Known issues
 
 === Issues with using HTTP Proxy
