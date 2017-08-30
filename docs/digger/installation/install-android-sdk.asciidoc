@@ -1,6 +1,6 @@
 === How to install Android SDK with Ansible
 
-WARNING: During the process, you will be ask to manually accept the Android SDK License Agreement.
+WARNING: During the process, you will be asked to accept the Android SDK License Agreement.
  
 The Android SDK is required to build Android apps. The installer downloads the Android SDK and makes it available to the building pods by performing the following steps:
 
@@ -13,6 +13,4 @@ Jenkins dynamically creates containers (pods) on OpenShift using the https://wik
 ==== Configure Android SDK components 
 
 The Android SDK contains many different components. Only a subset of them are installed by default.
-The list of installed components are specified https://github.com/aerogear/digger-installer/blob/master/android-sdk/templates/sample_cfg.j2[in this file] contained in `digger-installer` repo .
-
-You can modify this file to select which Android SDK components you want to install.
+//TODO finish this section
