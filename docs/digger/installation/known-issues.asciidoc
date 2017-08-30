@@ -41,4 +41,3 @@ At the moment, the iOS builds do not support isolation. This means if one iOS bu
 
 Due to each iOS build needs to update some of the global configurations (like certifications, keys etc), only single iOS build can be run on a single Mac server at any given time.
 If you need to support parallel iOS builds, you will need to configure multiple Mac servers.
-//^this needs style review, whole known issues
