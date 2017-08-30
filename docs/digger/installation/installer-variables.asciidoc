@@ -1,7 +1,9 @@
-== Variables
+[[installer-variables]]
+== Installer Variables
 
 Tables below shows all variables used in the installer per role.
 
+[[variables-android-sdk]]
 === android-sdk
 
 |===
@@ -12,6 +14,7 @@ Tables below shows all variables used in the installer per role.
 |/opt/android-sdk-linux
 |===
 
+[[variables-configure-buildfarm]]
 === configure-buildfarm
 
 |===
@@ -26,7 +29,7 @@ Tables below shows all variables used in the installer per role.
 |5
 |===
 
-
+[[variables-deploy-jenkins]]
 === deploy-jenkins
 
 |===
@@ -50,6 +53,7 @@ Tables below shows all variables used in the installer per role.
 
 |===
 
+[[variables-deploy-nagios]]
 === deploy-nagios
 
 Variables below are used in Nagios for sending alert emails.
@@ -79,7 +83,7 @@ Variables below are used in Nagios for sending alert emails.
 
 |===
 
-
+[[variables-java]]
 === java
 
 Variables below are to configure the JDK to install on the remote that runs Jenkins CLI commands.
@@ -97,7 +101,7 @@ Variables below are to configure the JDK to install on the remote that runs Jenk
 
 |===
 
-
+[[variables-login]]
 === login
 
 |===
@@ -111,6 +115,7 @@ Variables below are to configure the JDK to install on the remote that runs Jenk
 
 |===
 
+[[variables-provision-osx]]
 === provision-osx
 
 Variables below are used while provisioning an OSX node.

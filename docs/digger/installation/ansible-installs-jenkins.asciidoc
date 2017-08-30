@@ -1,9 +1,0 @@
-=== Provide User Public Keys to Ansible for Jenkins Installation
-
-INFO: An existing Admin/jenkins user is required
-
-The installer creates the Jenkins service on OpenShift with required routes, services and pods, and the waits for Jenkins to be running.
-
-Upload the User Public keys to Jenkins with steps printed in the terminal when prompted by the Installer. These keys will be used by Ansible to Jenkins configuration by Jenkins CLI tool.
-
-The installation will continue when the key are uploaded. It will update the configurations of Jenkins, and install the required Jenkins plugins.

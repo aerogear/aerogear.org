@@ -1,3 +1,4 @@
+[[macos-server]]
 === macOS Server
 
 NOTE: This is required only if you want to build iOS applications.
