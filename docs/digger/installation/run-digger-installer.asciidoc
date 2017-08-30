@@ -2,7 +2,7 @@
 
 .To run the Digger installer, follow these steps:
 
-. Clone the https://github.com/aerogear/digger-installer[Digger Installer GitHub repo]
+. Clone the https://github.com/aerogear/digger-installer[Digger Installer GitHub repo^]
 
 . Make a copy of the Ansible `inventory-sample` file from the repo, and update it with the information about your infrastructure
 +
