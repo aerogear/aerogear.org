@@ -1,6 +1,6 @@
 == Digger Installation Introduction
 //Please DO NOT use 'Overview' as a section heading anywhere http://stylepedia.net/#sect-Red_Hat_Technical_Publications-Writing_Style_Guide-Overall_Book_Design-Unused_Heading_Titles
-GitHub repo with Ansible job used for Digger installation https://github.com/aerogear/digger-installer[Digger Installer tool].
+GitHub repo with Ansible job used for Digger installation https://github.com/aerogear/digger-installer[Digger Installer tool^].
 
 The AeroGear Digger project allows you to setup a service that has the capability to build mobile applications using OpenShift containers.
 
