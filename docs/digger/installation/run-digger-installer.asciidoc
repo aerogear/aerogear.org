@@ -24,10 +24,11 @@ ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
 
 . Carry out manual steps during the installation
 +
-There are two points during the installation where there are manual steps required.
+There are three points during the installation where there are manual steps required.
 +
 .. Accepting the Android SDK Licence
-.. Copy the servers ssh key to Jenkins
+.. Copy the server's (where ansible task are running) public ssh key to Jenkins
+.. Accept the Oracle Licence when installing Java on macOS server
 +
 Both of these steps are required for the installation to complete successfully. At each step the Ansible Installer will pause and prompt with the required actions.
 
@@ -40,7 +41,7 @@ During the installation the Ansible playbook will perform the following tasks:
 * Configure Jenkins
 * Setup macOS Server(s) (optional depending on command used)
 * Install Nagios
-* Print url and credentiatls for Jenkins and Nagios
+* Print url and credentials for Jenkins and Nagios
 
 --
 NOTE: All tasks are idempotent. You can run them multiple times and they will produce the same results.
