@@ -5,9 +5,20 @@
 
 To build iOS Application using Aerogear Digger take the following steps below.
 
+. AAdd a Jenkinsfile to the Application
+
+Add a relevant (depending on the type of the application) Jenkinsfile to the root directoy of your application.
+Aerogear Digger provides sample https://github.com/aerogear/digger-jenkins/tree/master/jenkinsfiles[Jenkinsfiles^] for building the following 3 types of Applications
+
+* Native Android
+* Native iOS
+* Cordova (for Android and iOS)
+
+The files are provided with a .groovy extension. Rename the file to `Jenkinsfile` when adding it to the application.
+
 . Create iOS Credentials
 +
-Create a zipfile (using the extention .developerprofile) with your dev certificate and private key (in p12 file format) and a provisioning profile.
+Create a zipfile with your dev certificate and private key (in p12 file format) and a provisioning profile.
 
 . Create new Jenkins Credentials
 +
@@ -20,7 +31,7 @@ Create a new Jenkins credentials using the `apple developer profile` type using 
 .. -> Click on `Add Credentials`
 
 .. Choose Kind: `Apple Developer Profile`
-.. Upload the .developerproflie File (the zip file created in Step 1)
+.. Upload the zip file created in Step 1
 .. Enter password (Note: you may need to resize your browser to view the password entry correctly)
 .. Add description (optional)
 .. Press `OK`
@@ -76,9 +87,8 @@ image::./img/pipeline_from_script.png[Pipeline from Script]
 .. Choose `Pipeline script from SCM`
 .. Choose `SCM` -> Git
 .. Enter `Repository URL` -> the url of the git repository
-.. Add `Credentials` (if required)
-.. Update `Branches to build` (if required)
-.. Update `Script Path` (if required)
+.. Add `Credentials`
+.. Review `Branches to build`
 . Trigger the build
 .. Return to the build screen
 .. -> Click on `Build with Parameters`
