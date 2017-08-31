@@ -177,7 +177,7 @@ node("android"){
 === Function Parameters
 
 [[sign-android-apks]]
-==== signAndroidApks
+==== signAndroidApks Parameters
 
 The `signAndroidApks` function takes the following parameters.
 
@@ -209,7 +209,7 @@ storing in the same directory.
 The funtion takes the following parameters.
 
 [[building-with-xcode]]
-==== Building with xCode
+==== Building with xCode Parameters
 .xcodeBuild options
 |===
 | Parameter | Description
@@ -249,6 +249,8 @@ against. If empty, the SDK will be determined by XCode.
 | flags
 | Flags to add to the command that is executed.
 |===
+
+==== CodeSign Parameters
 
 .codeSign options
 |===
