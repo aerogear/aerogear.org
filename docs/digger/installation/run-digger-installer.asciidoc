@@ -2,53 +2,47 @@
 
 .To run the Digger installer, follow these steps:
 
-. Clone the https://github.com/aerogear/digger-installer[Digger Installer GitHub repo]
+. Clone the https://github.com/aerogear/digger-installer[Digger Installer GitHub repo^]
 
-. Make a copy of the Ansible `inventory-sample` file from the repo, and update it with the information about your infrastructure.
+. Make a copy of the Ansible `inventory-sample` file from the repo, and update it with the information about your infrastructure
 +
-NOTE: For more details about the macOS Server configurations, please read the <<Setup macOS Servers>> section.
+NOTE: For a full list of variables that can be configured via the inventory file see the link:#installer-variables[Installer Variables] section.
 
+. Run the playbook using the updated `inventory-sample` and follow the instructions printed in the terminal.:
 
-. To build Android applications, you need to <<Configure the Android SDK components>>.
-//TODO: remove this step once we can configure Android SDK components via Ansible variables.
-. Run the following command with the updated `inventory-sample` and follow the instructions printed in the terminal.:
+** Command to install digger without a macOS server
++
+----
+ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml --skip-tags=osx-provision
+----
+
+** Command to install digger with a macOS server
++
 ----
 ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
 ----
 
-.The sample Ansible playbook will perform the following tasks:
+. Carry out manual steps during the installation
++
+There are three points during the installation where there are manual steps required.
++
+.. Accepting the Android SDK Licence
+.. Copy the server's (where ansible task are running) public ssh key to Jenkins
+.. Accept the Oracle Licence when installing Java on macOS server
++
+Both of these steps are required for the installation to complete successfully. At each step the Ansible Installer will pause and prompt with the required actions.
+
+During the installation the Ansible playbook will perform the following tasks:
+
+* Verify and Install (if required) the minimum Java version
+* Create a project in OpenShift
+* Install Jenkins
+* Install Android SDK to a Persistent Volume
+* Configure Jenkins
+* Setup macOS Server(s) (optional depending on command used)
+* Install Nagios
+* Print url and credentials for Jenkins and Nagios
+
 --
 NOTE: All tasks are idempotent. You can run them multiple times and they will produce the same results.
 --
-
-* Create a project in OpenShift
-* Install Jenkins (tag: `deploy-jenkins`)
-* Install Android SDK to a Persistent Volume (tag: `android-sdk`)
-* Configure Jenkins (tag: `configure-buildfarm`)
-* Setup macOS Servers (tag: `provision-osx`)
-
-More details about these tasks are explained in the following sections. If you are not interested in the details, skip to <<Verify Installation>>.
-
-
-=== Running Installer steps individually
-If you want to run specific tasks, enter the task tag values into the following command.
-For example, to only run the "install Jenkins" task, run:
-
-.Passing single and multiple tags to Ansible
-----
-ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy-jenkins"
-----
-----
-ansible-playbook -i your-inventory-copy sample-build-playbook.yml --tags="deploy-jenkins","android-sdk","configure-buildfarm"
-----
-
-
-// details about installing Jenkins
-include::/ansible-installs-jenkins.asciidoc[]
-
-//details about installing Android SDK
-include::/install-android-sdk.asciidoc[]
-
-//details about setting up macOS servers
-include::/macos-setup.asciidoc[]
-

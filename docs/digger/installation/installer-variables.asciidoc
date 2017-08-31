@@ -1,230 +1,325 @@
-== Variables
+[[installer-variables]]
+== Installer Variables
 
-Tables below shows all variables used in the installer per role.
+The tables below shows all variables used in the installer per role. If the variable is specified as Required (i.e. Yes in Required Field and/or empty value in Default field) it should be provided either via the command line, via the inventory file or via an encrypted http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
 
+=== general
+
+|===
+| Variable name | Description | Default value | Required
+
+|jenkins_route_protocol
+|Route protocol used to contact Jenkins
+|https
+|No
+
+|===
+
+
+
+[[variables-android-sdk]]
 === android-sdk
 
 |===
-| Variable name | Description | Default value
+| Variable name | Description | Default value | Required
 
 |android_sdk_home
 |Location of Android SDK that is installed in the Android SDK container.
 |/opt/android-sdk-linux
+|No
 |===
 
+
+[[variables-configure-buildfarm]]
 === configure-buildfarm
 
 |===
-| Variable name | Description | Default value
+| Variable name | Description | Default value | Required
 
 |project_name
 |Name of the OpenShift project.
-|jenkins
+|digger
+|No
 
 |concurrent_android_builds
 |Number of max number of concurrent Android builds that are allowed.
 |5
+|No
 |===
 
-
+[[variables-deploy-jenkins]]
 === deploy-jenkins
 
 |===
-| Variable name | Description | Default value
+| Variable name | Description | Default value | Required
 
 |project_name
 |Name of the OpenShift project.
-|jenkins
+|digger
+|No
 
 |enable_oauth
 |Whether to enable OAuth OpenShift integration. If false, a static account will be initialized.
 |false
+|No
 
 |master_memory_limit
 |Maximum amount of memory the Jenkins master container can use.
 |3Gi
+|No
 
 |master_volume_capacity
 |Volume space available for data.
 |40Gi
+|No
 
 |===
 
+[[variables-deploy-nagios]]
 === deploy-nagios
 
 Variables below are used in Nagios for sending alert emails.
 
 |===
-| Variable name | Description | Default value
+| Variable name | Description | Default value | Required
 
 |smtp_server
 |SMTP server to send alert emails.
 |localhost
+|No
 
 |smtp_username
 |SMTP username.
 |username
+|No
 
 |smtp_password
 |Password of the SMTP user.
 |password
+|No
 
 |smtp_from_address
 |SMTP from address.
 |admin@example.com
+|No
 
 |rhmap_admin_email
 |Destination address of alert emails.
 |root@localhost
+|No
+
+|jenkins_user
+|User for accessing jenkins during nagios checks
+|admin
+|No
+
+|jenkins_pass
+|User Password for acessing jenkins during nagios checks
+|password
+|No
 
 |===
 
-
+[[variables-java]]
 === java
 
 Variables below are to configure the JDK to install on the remote that runs Jenkins CLI commands.
 
 |===
-| Variable name | Description | Default value
+| Variable name | Description | Default value | Required
 
 |repo
 |Repository to install JDK.
 |rhel-7-server-optional-rpms
+|No
 
 |java_version
 |JDK version to install.
 |1.8.0
+|No
 
 |===
 
-
+[[variables-login]]
 === login
 
+Variables below are used to login to the OpenShift Cluster.
+
 |===
-| Variable name | Description
+| Variable name | Description | Default value | Required
 
 |oc_user
 |OpenShift user to login to OpenShift.
+|
+|Yes
 
 |oc_password
 |OpenShift user password.
+|
+|Yes
+
+|login_url
+|Url used to log in. 
+|https://localhost:8443
+|No. * Except if running the playbook locally against a remote server and using `ansible_connection=local` Otherwise allow to default.
 
 |===
 
-=== provision-osx
+[[variables-osx-provision]]
+=== osx-provision
 
 Variables below are used while provisioning an OSX node.
 
 |===
-| Variable name | Description | Default value
+| Variable name | Description | Default value | Required
+
+|ansible_become_pass
+|Sudo password for carrying out root priveledged actions on a macOS server
+|
+|Yes/No if passing the value via the command line
 
 |remote_tmp_dir
 |What directory to use when creating some temporary files.
 |/tmp
-
-|nvm_install_url
-|The URL of nvm installation script.
-|https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh
-
-|nvm_install_file_name
-|What to name the nvm installation script on the node.
-|install-nvm.sh
+|No
 
 |node_versions
 |A list of Node versions to install.
 |6
+|No
 
 |xcode_install_version
 |The version of the xcode-install tool to install on the node.
 |2.2.1
+|No
+
+|gem_packages
+|
+|name: public_suffix, version: 2.0.5:name: xcode-install: <xcode_install_version>
+|No
 
 |cocoapods_version
 |The version of the Cocoapods gem to install.
 |1.1.1
+|No
 
 |npm_packages
 |A list of global NPM packages to install. Format: `{ name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }`.
-|Only install cordova@7.0.1 by default
+|name: cordova, version: 7.0.1
+|No
 
 |homebrew_packages
 |The packages to install using Homebrew. Format: `{ name: <PACKAGE_NAME> }`.
 |gpg, grep, jq
+|No
 
 |homebrew_version
 |The version of Homebrew to install (git tag).
 |1.3.1
+|No
 
 |homebrew_repo
 |The git repo where Homebrew resides (defaults to GitHub repo).
 |https://github.com/Homebrew/brew
+|No
 
 |homebrew_prefix
 |The parent directory of the directory where Homebrew resides.
 |/usr/local
+|No
+
 
 |homebrew_install_path
 |Where Homebrew will be installed.
 |<homebrew_prefix>/Homebrew
+|No
+
 
 |homebrew_brew_bin_path
 |Where `brew` will be installed.
 |/usr/local/bin
+|No
+
+|homebrew_paths
+|
+|<homebrew_install_path>,<homebrew_brew_bin_path>,<homebrew_var_path>,/usr/local/Cellar,/usr/local/opt,/usr/local/share,/usr/local/etc,/usr/local/include
+|No
+
 
 |homebrew_taps
 |A list of taps to add.
 |homebrew/core, caskroom/cask
+|No
 
 |xcode_install_user
 |Apple Developer Account username. If this is not set then Xcode will not be installed.
 |
+|Yes (if xcode is required)
 
 |xcode_install_password
 |Apple Developer Account password. If this is not set then Xcode will not be installed.
 |
+|Yes (if xcode is required)
 
 |xcode_install_session_token
 |Apple Developer Account auth cookie from `fastlane spaceauth` command (For accounts with 2FA enabled).
 |
+|Yes (if xcode is required)
 
 |xcode_versions
 |A list of Xcode versions to install. These may take over 30 minutes each to install.
 |'8.3.3'
+|No
+
+|xcode_default_version
+|Teh default version of xcode to be used
+|<xcode_version>[0]
+|No
 
 |apple_wwdr_cert_url
 | Apple WWDR certificate URL. Defaults to Apple's official URL.
 |http://developer.apple.com/certificationauthority/AppleWWDRCA.cer
+|No
 
 |apple_wwdr_cert_file_name
 |Output file name of the downloaded file.
 |AppleWWDRCA.cer
+|No
 
 |buildfarm_node_port
 |The port to connect to the macOS node on.
 |22
+|No
 
 |buildfarm_node_root_dir
 |Path to Jenkins root folder.
 |/Users/jenkins
+|No
 
 |buildfarm_credential_id
 |Identifier for the Jenkins credential object.
 |macOS_buildfarm_cred
+|No
 
 |buildfarm_credential_description
 |Description of the Jenkins credential object.
 |Shared credential for the macOS nodes in the buildfarm.
+|No
 
 |buildfarm_node_name
 |Name of the slave/node in Jenkins.
 |macOS (<node_host_address>)
+|No
 
 |buildfarm_node_labels
 |List of labels assigned to the macOS node.
 |ios
+|No
 
 |buildfarm_user_id
 |Jenkins user ID.
 |admin
+|No
 
 |buildfarm_node_executors
 |Number of executors (Jenkins configuration) on the macOS node.
@@ -233,55 +328,66 @@ no guaranteed support for concurrent builds. This value should not be changed
 unless you are certain all apps will be built with the same signature
 credentials.
 |1
+|No
 
-|buildfarm_node_mode <MODE>
+|buildfarm_node_mode
 |How the macOS node should be utilised. The following options are available:
 |NORMAL
-|<MODE> = NORMAL
-|Use this node as much as possible
-|
-|<MODE> = EXCLUSIVE
-|Only build jobs with labels matching this node will use this node.
-|
+|No. Can be set to EXCLUSIVE to set that only build jobs with labels matching this node will use this node.
 
 |buildfarm_node_description
 |Description of the macOS node in Jenkins.
 |macOS node for the buildfarm
+|No
+
+|project_name
+|The name of the digger Project in OpenShift
+|digger
+|No
 
 |proxy_host
 |Proxy url/base hostname to be used.
 |
+|No/Yes if the macOS server only has outbound internet access via proxy
 
 |proxy_port
 |Proxy port to be used.
 |
+|No/Yes if the macOS server only has outbound internet access via proxy
 
 |proxy_device
 |The proxy network device to use the proxy config from the list of devices.
 |Ethernet
+|No
 
 |proxy_ctx
 |A list of proxies to be set.
 |webproxy, securewebproxy
+|No
 
 |buildfarm_lang_env_var
 |Value of `LANG` environment variable to set on the macOS node. CocoaPods require this to `en_US.UTF-8`.
 |en_US.UTF-8
+|No
 
 |buildfarm_path_env_var
 |`$PATH` environment variable to use in the macOS node.
 |$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+|No
 
 |credential_private_key
 |Private key stored in Jenkins and used to SSH into the macOS node. If this is not set then a key pair will be generated.
 |
+|No
 
 |credential_public_key
 |Public key of the pair. If this is not set then a key pair will be generated.
 |
+|No
 
 |credential_passphrase
 |Passphrase of the private key. This is stored in Jenkins and used to SSH into the macOS node. If this is not set the private key will not be password protected.
 |
+|No
 
 |===

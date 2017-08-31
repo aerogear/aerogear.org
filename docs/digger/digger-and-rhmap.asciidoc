@@ -62,6 +62,65 @@ However, the original password entered by the developer is not sent. RHMAP will 
 
 When the build is completed, RHMAP will make sure the corresponding credential is removed from Jenkins.
 
+[[rhmap-environment-variables]]
+== RHMAP Environment Variables
+
+When using Digger from RHMAP, you can configure Digger by setting RHMAP Environment variables in the `millicore` deployment configuration.
+
+.RHMAP properties
+|===
+| Property name | Environment variable | Description
+
+| buildfarm_version
+| BUILDFARM_VERSION
+| The version of the Build Farm being used. Should be set to `2.0.0` when
+using Digger.
+
+| buildfarm_hostname
+| BUILDFARM_HOST
+| The hostname of the Jenkins instance that was provisioned by Digger.
+
+| buildfarm_username
+| BUILDFARM_USERNAME
+| The username used to authenticate with the Jenkins instance.
+
+| buildfarm_password
+| BUILDFARM_PASSWORD
+| Password for the username defined in `buildfarm_username`.
+
+| buildfarm_platforms
+| BUILDFARM_PLATFORMS
+| The mobile platforms to build using the Jenkins instance. Must be a comma separated list e.g. `android,ios`. Valid values: `ios`,`android`.
+
+| buildfarm_build_properties
+| BUILDFARM_BUILD_TIMEOUT
+| The number of seconds that RHMAP will wait before timing out a build.
+
+| buildfarm_build_polling_interval
+| BUILDFARM_BUILD_POLLING_INTERVAL
+| The number of seconds between each poll of a Jenkins build.
+
+| buildfarm_csrf_enabled
+| BUILDFARM_CSRF_ENABLED
+| CSRF protection. Recommended setting: Enabled
+
+| buildfarm_builds_days
+| BUILDFARM_BUILDS_DAYS
+| The number of days to keep builds in Jenkins.
+
+| buildfarm_builds_total
+| BUILDFARM_BUILDS_TOTAL
+| The maximum number of builds to keep in Jenkins.
+
+| buildfarm_artifacts_days
+| BUILDFARM_ARTIFACTS_DAYS
+| The number of days to keep build artifacts in Jenkins.
+
+| buildfarm_artifacts_total
+| BUILDFARM_ARTIFACTS_TOTAL
+| The maximum number of build artifacts to keep in Jenkins.
+|===
+
 
 
 

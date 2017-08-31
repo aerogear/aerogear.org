@@ -1,4 +1,5 @@
-=== macOS Server
+[[macos-server]]
+=== macOS Server pre-requisites
 
 NOTE: This is required only if you want to build iOS applications.
 
