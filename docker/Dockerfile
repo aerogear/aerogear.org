@@ -23,6 +23,7 @@ USER root
 RUN dnf install -y libcurl-devel libcurl
 USER aerogear
  
+ RUN  /bin/bash -l -c "gem install jekyll"
  RUN  /bin/bash -l -c "bundle install --path vendor"
 
 ## Run
