@@ -3,7 +3,7 @@
 A typical Jenkinsfile will contain a number of sections. These sections define
 the steps required to build an Application specific to it's type.
 
-Digger provides sample https://github.com/aerogear/digger-jenkins/tree/master/jenkinsfiles[Jenkinsfiles^] for building the following 3 types of Applications
+Aerogear Digger provides sample https://github.com/aerogear/digger-jenkins/tree/master/jenkinsfiles[Jenkinsfiles^] for building the following 3 types of Applications
 
 * Native Android
 * Native iOS
