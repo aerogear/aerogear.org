@@ -8,9 +8,9 @@ Before running the Digger installer, please make sure the following prerequisite
 
 === General pre-requisites
 
-==== Ansible 2.3 or higher
+==== Ansible 2.2.3 or higher
 
-Digger Installer requires a version of Ansible 2.3 or higher on the machine that the Ansible playbook will be executed from. You can check the installed Ansible version by running `ansible --version`.
+Digger Installer requires a version of Ansible 2.2.3 or higher on the machine that the Ansible playbook will be executed from. You can check the installed Ansible version by running `ansible --version`.
 Please check http://docs.ansible.com/ansible/intro_installation.html[Ansible installation instructions] for information on how to install.
 
 ==== Outbound internet access
