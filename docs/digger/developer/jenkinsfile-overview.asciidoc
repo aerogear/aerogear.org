@@ -9,3 +9,6 @@ existing application to using a Jenkinsfile.
 
 NOTE: This guide contains some information specific to using Digger with RHMAP.
 This information can be ignored when using Digger as a standalone service.
+
+Further information (if required) on using Jenkinsfiles is available in the
+https://jenkins.io/doc/pipeline/steps/[Jenkins pipeline documentation^]
