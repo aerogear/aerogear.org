@@ -1,26 +1,26 @@
-== HTTP Proxy Support
+== Using HTTP/HTTPS Proxy with Aerogear Digger
 
-When you configure the Digger Installer to use proxy, it will automatically reconfigure the following components:
+WARNING: HTTP Proxies that require authentication are not supported.
+Please check the link:known_issues[Known Issues] for more details.
 
+If you want to install the Digger behind proxy, the installer will automatically configure the following components to use the proxy (if an outbound Internet access is required):
 
 * The Jenkins server
 * The Android SDK pod used to download Android SDKs
-* Container/node that will run the build jobs, by adding the appropriate environment variables like `HTTP_PROXY` and `HTTPS_PROXY` in the inventory file - sample provided https://github.com/aerogear/digger-installer/blob/master/inventory-sample[here].
-* Ansible to install various tools used to provision the macOS servers(??? verify if this is correct or it should be "Ansible to install various macOS tools"
+* Container/node that will run the build jobs, by adding the appropriate environment variables like `HTTP_PROXY` and `HTTPS_PROXY` in the inventory file. 
+Sample provided in https://github.com/aerogear/digger-installer/blob/master/inventory-sample[AeroGear Digger GitHub repo].
+* macOS servers used to run iOS builds
 
-These changes should allow the default build tools like Gradle and XCode to work with the HTTP proxy. (should or will?)
+=== Ansible Variables Regarding HTTP/HTTPS Proxy
 
-=== Configuration Options
-
-You can run AeroGear Digger behind a HTTP proxy server by defining the following Ansible Variables:
+You can run AeroGear Digger behind a HTTP proxy server by setting the following Ansible Variables:
 
 |===
 | Variable name | Description
-
 | proxy_url
 | This URL is pasted into `http_proxy` and `https_proxy` environment variables.
 | proxy_host
-| The host name of the proxy server. It should not contain protocol(??? HTTP etc? Protocol definition?)
+| The host name of the proxy server. Follow URL format `<host>:<port>` e.g. `127.0.0.1:8080`
 | proxy_port
 | The port number of the proxy
 | proxy_user
@@ -34,11 +34,6 @@ You can run AeroGear Digger behind a HTTP proxy server by defining the following
 You can define these variables either in an inventory file, or via CLI.
 Please refer to the http://docs.ansible.com/ansible/playbooks_variables.html[Ansible Playbook Variables Docs] for more details.
 
-NOTE: There are issues with using HTTP proxies that require authentication.
-Please check the link:known_issues[Known Issues] doc for more details.
-It is recommended to use an HTTP proxy that doesn't require authentication.
+=== Using external tools with HTTP/HTTPS Proxy
 
-=== HTTP Proxy Usage Limitations
-
-There may be some tools that requires specific configuration to work with proxy.
-In this case, you will need to update the configuration for those tools manually in the Jenkinsfile, using the values from the environment variables like `HTTP_PROXY` and `HTTPS_PROXY`.
+If you want to use the external tools with HTTP/HTTPS proxy, you will have to manually update the configuration for those tools  in the Jenkinsfile, using the values from the environment variables such as `HTTP_PROXY` and `HTTPS_PROXY`.
