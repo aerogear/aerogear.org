@@ -7,7 +7,6 @@ When you configure the Digger Installer to use proxy, it will automatically reco
 * Container/node that will run the build jobs, by adding the appropriate environment variables like `HTTP_PROXY` and `HTTPS_PROXY` in the inventory file. 
 Sample provided in https://github.com/aerogear/digger-installer/blob/master/inventory-sample[AeroGear Digger GitHub repo].
 * Ansible to install various tools used to provision the macOS servers
-//(??? verify if this is correct or it should be "Ansible to install various macOS tools")
 
 These changes allow the default build tools (Gradle, XCode) to use HTTP proxy.
 
@@ -21,7 +20,6 @@ You can run AeroGear Digger behind a HTTP proxy server by defining the following
 | This URL is pasted into `http_proxy` and `https_proxy` environment variables.
 | proxy_host
 | The host name of the proxy server. It should not contain protocol
-//(??? HTTP etc? Protocol definition?)
 | proxy_port
 | The port number of the proxy
 | proxy_user
@@ -43,4 +41,3 @@ It is recommended to use an HTTP proxy that doesn't require authentication.
 
 There are tools that requires specific configuration in order to work with proxy.
 If you want to use these tools, you will need to update the configuration for those tools manually in the Jenkinsfile, using the values from the environment variables like `HTTP_PROXY` and `HTTPS_PROXY`.
-//rewrite, which tools etc.
