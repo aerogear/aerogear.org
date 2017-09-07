@@ -144,6 +144,39 @@ node("android"){
 }
 ----
 
+
+==== Using specific versions of Android SDK and Gradle
+
+Android SDK and Gradle versions are defined in the Android project.
+
+To change Android SDK version change the version information in app's `app/build.gradle.file`:
+[source,groovy]
+----
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        ...
+        minSdkVersion 16
+        targetSdkVersion 25
+        ...
+    }
+...
+}
+----
+
+See https://developer.android.com/studio/build/index.html[Android platform documents] for
+explanation of these properties.
+
+To change Gradle version, change the `distributionUrl` property in `gradle/wrapper/gradle-wrapper.properties`
+in the app's source tree.
+[source,properties]
+----
+distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
+----
+
+
 === Signing the Application
 
 ==== Signing Android build
@@ -206,7 +239,7 @@ storing in the same directory.
 
 
 
-The funtion takes the following parameters.
+The function takes the following parameters.
 
 [[building-with-xcode]]
 ==== Building with xCode Parameters
