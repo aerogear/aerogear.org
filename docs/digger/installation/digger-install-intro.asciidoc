@@ -15,3 +15,7 @@ It is made of following components:
 
 This project is designed to be used with the RedHat Application Platform (RHMAP). 
 However, it is possible to use it on its own as a CI/CD server to build mobile applications.
+
+
+ so pre-req is clean install macOs machine or macincloud
+ private key or pass for user

@@ -1,42 +1,128 @@
 [[macos-server]]
 === macOS Server pre-requisites
 
-NOTE: This is required only if you want to build iOS applications.
+This is required for building iOS applications. The following specifications are recommended:
 
-==== macOS and macOS Ansible Scripts Configuration
+* 4GB RAM
+* 2 Cores
+* A clean install of macOS 10.12 Sierra or cloud provider macincloud
+* 30GB minimum disk space and and additional 20GB per XCode version
 
-- Set the password in `ansible_sudo_pass` variable to give the Installer `sudo` privileges.
 
-.macOS Scripts: https://github.com/aerogear/digger-jenkins/blob/master/admin/create-osx-user.sh[create-osx-user.sh] https://github.com/aerogear/digger-jenkins/blob/master/admin/enable-osx-remote-login.sh[enable-osx-remote-login.sh]
-- Set up a user with sudo permissions and SSH access.
-These scripts will create a user named `jenkins` with SSH access.
-It is highly recommended to set a strong `PASSWORD` in `create-osx-user.sh`.
+The sections below outline the required state for the macOS node. Ansible requires SSH access to the macOS server in order to correctly provision the machine to support iOS builds. To enable this, it is required that
+a user with sudo permissions and SSH access exists on the target machine. Read the following sections and ensure these conditions are met to enable correct configuration of your macOS server via the Ansible installation.
 
---
-  
-. Download the scripts to the macOS system:
-+
+====== Create SSH User
+
+We recommended that you create a new user which will be provided to Ansible for SSH connections. An example bash script is provided to achieve this.
+
+WARNING: The provided scripts helps with creating an OSX user. Do not use these scripts without reviewing their contents as it will allow access to your machine with a default password.
+Change the default `PASSWORD` and ensure `USER_ID` is not assigned.
+
+By default, this script will create a user named `jenkins` with a `UID` of `550` and add the user to the the `sudoers` file. The users `PASSWORD` variable is set by default to `Password1`.
+To enable iOS builds, this user is added to the `admin` group.
+
+If using the sample script (contents provided below) you should read it carefully, understand its implications and edit it as required.
+The script can be downloaded for convenience and run using the following commands:
+
 [source,bash]
 ----
 curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/create-osx-user.sh
-curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
-----
-+
-. Set a secure user `PASSWORD` in `create-osx-user.sh`.
-. Run `create-osx-user.sh`:
-+
-----
 sudo bash create-osx-user.sh
 ----
-+
-. Run `enable-osx-remote-login.sh` to enable SSH access:
-+
+
+[source,bash]
 ----
+#!/usr/bin/env bash
+
+USERNAME="jenkins"
+PASSWORD="Password1"
+REAL_NAME="Jenkins Agent"
+GROUP_NAME="staff"
+
+# the first user's id is 500, second is 501 ...
+# picking a big number to be on the safe side.
+# You can run this one to list UIDs
+#   dscl . -list /Users UniqueID
+USER_ID=550
+
+# GID 20 is `staff`
+GROUP_ID=20
+
+############### end of parameters
+
+. /etc/rc.common
+dscl . create /Users/${USERNAME}
+dscl . create /Users/${USERNAME} RealName ${REAL_NAME}
+dscl . passwd /Users/${USERNAME} ${PASSWORD}
+
+dscl . create /Users/${USERNAME} UniqueID ${USER_ID}
+dscl . create /Users/${USERNAME} PrimaryGroupID ${GROUP_ID}
+dscl . create /Users/${USERNAME} UserShell /bin/bash
+dscl . create /Users/${USERNAME} NFSHomeDirectory /Users/${USERNAME}
+dseditgroup -o edit -a ${USERNAME} -t user admin
+cp -R /System/Library/User\ Template/English.lproj /Users/${USERNAME}
+chown -R ${USERNAME}:${GROUP_NAME} /Users/${USERNAME}
+
+echo "${USERNAME}  ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
+echo "Done creating OSX user - you may need to restart the osx server to apply all changes for the user ${USERNAME}"
+----
+
+IMPORTANT: Restart the server to implement the changes made above.
+
+====== Configure Remote Login
+
+We must enable the Ansible process running remotely to execute commands on the macOS server via SSH.
+
+Again, a sample script (contents provided below) is provided to achieve this. The `USERNAME` variable should match the user that was created in the previous step.
+It can be downloaded and executed by running the following:
+
+[source,bash]
+----
+curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
 sudo bash enable-osx-remote-login.sh
 ----
---
-==== Enable macOS Network access
-The macOS configuration can be optionally done using a proxy.
+
+[source,bash]
+----
+#!/usr/bin/env bash
+
+# This script helps with enabling SSH for given OSX user.
+# This script is not meant to be run in an automation. Run it manually.
+
+USERNAME="jenkins"
+
+# com.apple.access_ssh is a special group name on OSX.
+# any user part of that group can have SSH connections in.
+OSX_SSH_GROUP_NAME="com.apple.access_ssh"
+
+systemsetup -setremotelogin on
+# in order to check what groups are are there:
+#   dscl . list /Groups PrimaryGroupID
+# create a group for limiting SSH access
+dseditgroup -o create -q ${OSX_SSH_GROUP_NAME}
+# add user into this group
+dseditgroup -o edit -a ${USERNAME} -t user ${OSX_SSH_GROUP_NAME}
+# now, following should work  ---> ssh username@localhost
+----
+
+This allows the `USERNAME` created previously to access the server via SSH with a password. You may also choose to add a public key to the `authorized_keys` file for said user, with the private key of the key pair existing on the Ansible management node.
+
+
+====== Connecting via Ansible
+
+A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation].
+This allows us to run commands as `sudo` user
+
+The user created in the previous steps should be provided as a host variable to Ansible via `ansible_ssh_user`
+
+Set `ansible_sudo_pass` variable or pass the `--ask-sudo-pass` flag when running the Ansible playbook to enable the installer to work with root permissions.
+This value should match the password set when creating the user.
+
+
+
+==== Network access
 
 The macOS requires a network access to the following hosts:
 
