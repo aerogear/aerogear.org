@@ -149,7 +149,7 @@ node("android"){
 
 Android SDK and Gradle versions are defined in the Android project.
 
-To change Android SDK version change the version information in app's `app/build.gradle.file`:
+To change Android SDK version change the version information in app's `app/build.gradle` file:
 [source,groovy]
 ----
 android {
