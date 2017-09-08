@@ -3,9 +3,17 @@
 
 === Issues with using HTTP Proxy
 
-==== HTTP proxy with mac Jenkins node
-When adding a mac machine as a node/slave in Jenkins, a direct connection is
-required. This means that a HTTP proxy is not supported for this situation.
+==== HTTP proxy with macOS Jenkins node
+
+When configuring Jenkins to work behind a HTTP proxy, there is a https://issues.jenkins-ci.org/browse/JENKINS-31464[limitation/bug] in the way slave nodes use the Git plugins. This is because the slaves inherit proxy information from the master.
+
+The result, is that a macOs node (the Jenkins slave responsible for iOS builds), will attempt to checkout application source code through a HTTP proxy address and port if one has been specified during the provisioning of Digger.
+
+This may not be an issue if the slave exists on the same network, but could be problamatic if it exists on some external network outside the OpenShift cluster. Two potential workarounds exist:
+
+1. Add networking rules to allow the macOS server to route requests through the proxy. This is the recommended approach as it allows you to keep your Jenkins configuration intact.
+
+1. Remove the proxy configuration in Jenkins > Manage Jenkins > Manage Plugins > Advanced. If you then need to checkout source code behind a proxy for specific builds, the required configuration steps can be added to the Jenkinsfile where necessary.
 
 ==== HTTP proxy authentication in Android builds
 When building Android apps, the pod in which the apps are built cannot use a
