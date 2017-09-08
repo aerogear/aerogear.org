@@ -13,9 +13,5 @@ It is made of following components:
 * A nagios server for monitoring the digger components
 * A suite of sample Jenkinsfiles to demonstrate how to build mobile applications using Jenkins pipeline
 
-This project is designed to be used with the RedHat Application Platform (RHMAP). 
+This project is designed to be used with the RedHat Mobile Application Platform (RHMAP).
 However, it is possible to use it on its own as a CI/CD server to build mobile applications.
-
-
- so pre-req is clean install macOs machine or macincloud
- private key or pass for user
