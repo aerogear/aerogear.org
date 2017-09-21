@@ -306,3 +306,47 @@ against. If empty, the SDK will be determined by XCode.
 | Path to the app to sign.
 |===
 
+
+=== Customising Jenkinsfile
+
+A developer may wish to customise their `Jenkinsfile` to build an application. For instance they may want to install
+a specific version of `nodejs` or build with a specific version of a dependency as an alternative to the default
+version which is installed globally. An example snippet of each use case is outlined below:
+
+==== Specifying a specific nodejs version
+
+A developer needs to install dependencies on a `Node v6.9.5` runtime
+
+----
+node("android"){
+  ...
+  stage("Prepare"){
+      sh '. $NVM_DIR/nvm.sh && nvm install 6.9.5 && nvm alias default 6.9.5'
+      writeFile file: 'www/fhconfig.json', text: params.FH_CONFIG_CONTENT
+      sh 'npm install --production'
+      ...
+  }
+  ...
+}
+----
+
+
+==== Installing and using a specific dependency version
+
+A developer's Cordova application needs to be built with Cordova version 6.3.1
+
+----
+node("android"){
+  ...
+
+  stage("Prepare"){
+      ...
+      sh "npm install cordova@6.3.1"
+      sh "node_modules/cordova/bin/cordova platform rm ${platform}"
+      sh "node_modules/cordova/bin/cordova platform add ${platform}"
+      sh "node_modules/cordova/bin/cordova prepare ${platform}"
+      ...
+  }
+  ...
+}
+----
