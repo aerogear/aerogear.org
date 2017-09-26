@@ -21,8 +21,7 @@ This installation step will also add any taps and packages specified in the opti
 |The packages to install using Homebrew. Format: { name: <PACKAGE_NAME> }.
 |homebrew_repo
 |The git repo where Homebrew resides (defaults to GitHub repo).
-|homebrew_prefix -
-|homebrew_install_path
+|homebrew_prefix -homebrew_install_path
 |Where Homebrew will be installed, used as
 `homebrew_prefix/homebrew_install_path`.
 |homebrew_brew_bin_path
