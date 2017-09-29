@@ -1,7 +1,7 @@
 == Managing Digger Build Logs and Artifacts
 App builds started by Digger produce build logs and build artifacts.
 Over time, these will build up. There are a number of options to manage the buildup. If you are using Digger with RHMAP, these options can be specified
-by setting environment variables in the `millicore` deployment(???) configuration in
+by setting environment variables in the `millicore` deployment configuration in
 RHMAP. Configuration options found in Jenkins along with associated RHMAP properties are detailed below.
 
 NOTE: Entire Jenkins configuration regarding Digger artifacts can be performed using the
