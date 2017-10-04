@@ -14,6 +14,10 @@ sync:
   name: Sync
   icon: fa-refresh
 
+sync:
+  name: Digger
+  icon: fa-mobile
+
 geo:
   name: Geo
   icon: fa-globe
