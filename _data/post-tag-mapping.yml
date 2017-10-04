@@ -22,6 +22,7 @@ windows:    =platform
 push:		=module
 security:	=module
 sync:		=module
+digger:		=module
 
 # IMPLICATIONS (ADDITIONS)
 oauth2: +security
