@@ -64,14 +64,6 @@ span.version {
 
 ---
 
-<h2 class="section-header" id="digger">AeroGear<strong>Digger</strong> Docs</h2>
-
-<h4 id="diggerinstaller">Digger Installer</h4>
-
-* [Ansible macOS variables](../digger/installation/index)
-
----
-
 <h2 class="section-header" id="security"><i class="fa fa-shield"></i> AeroGear<strong>Security</strong> Specifications</h2>
 
 <h4 id="securityAuthentication">Authentication</h4>
@@ -108,6 +100,15 @@ span.version {
 
 <h4 id="securityGeneral">Proposals</h4>
 * [Client API Proposals](aerogear-sync-client-api)
+
+
+---
+
+<h2 class="section-header" id="digger"><i class="fa fa-mobile"></i> AeroGear<strong>Digger</strong> Guides</h2>
+
+* [Installation Guide](/docs/digger/installation)
+* [Admin Guide](/docs/digger/admin)
+* [Developer Guide](/docs/digger/developer)
 
 ---
 
