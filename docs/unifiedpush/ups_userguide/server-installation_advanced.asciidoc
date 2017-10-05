@@ -61,7 +61,7 @@ $ cp -r /path/to/com /path/to/SERVER_HOME/modules/
 +
 [source,c]
 ----
-$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 \
+$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.44 \
 -DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/
 ----
 . Database setup
