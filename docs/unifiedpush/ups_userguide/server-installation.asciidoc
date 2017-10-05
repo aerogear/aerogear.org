@@ -98,7 +98,7 @@ $ cp -r $WORK_DIR/databases/src/main/resources/modules/com $APPSRV_HOME/modules/
 +
 [source,shell]
 ----
-$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.18 -DoutputDirectory=$APPSRV_HOME/modules/com/mysql/jdbc/main/
+$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.44 -DoutputDirectory=$APPSRV_HOME/modules/com/mysql/jdbc/main/
 ----
 . Create the UnifiedPush MySQL database
 +
