@@ -1,5 +1,8 @@
 == Using HTTP/HTTPS Proxy with Aerogear Digger
 
+WARNING: HTTP Proxies that require authentication are not supported.
+Please check the link:known_issues[Known Issues] for more details.
+
 If you choose to install the Digger behind proxy, the installer will automatically configure the following components to use the proxy (if they require an outbound internet access):
 
 * The Jenkins server
@@ -19,7 +22,7 @@ You can run AeroGear Digger behind a HTTP proxy server by setting the following 
 | proxy_url
 | This URL is pasted into `http_proxy` and `https_proxy` environment variables.
 | proxy_host
-| The host name of the proxy server. The URL should be `<host>:<port>` not `<protocol>//:<host>:<port>`, e.g. `127.0.0.1:8080`
+| The host name of the proxy server. Follow URL format `<host>:<port>` e.g. `127.0.0.1:8080`
 | proxy_port
 | The port number of the proxy
 | proxy_user
@@ -33,9 +36,6 @@ You can run AeroGear Digger behind a HTTP proxy server by setting the following 
 You can define these variables either in an inventory file, or via CLI.
 Please refer to the http://docs.ansible.com/ansible/playbooks_variables.html[Ansible Playbook Variables Docs] for more details.
 
-WARNING: HTTP Proxies that require authentication are not supported.
-Please check the link:known_issues[Known Issues] for more details.
-
 === Using external tools with HTTP/HTTPS Proxy
 
-If you want to use the external tools with HTTP/HTTPS proxy, you will have to update the configuration for those tools manually in the Jenkinsfile, using the values from the environment variables like `HTTP_PROXY` and `HTTPS_PROXY`.
+If you want to use the external tools with HTTP/HTTPS proxy, you will have to update the configuration for those tools manually in the Jenkinsfile, using the values from the environment variables e.g. `HTTP_PROXY` and `HTTPS_PROXY`.
