@@ -1,0 +1,67 @@
+== Anatomy of a Jenkinsfile
+
+A typical Jenkinsfile will contain a number of sections. These sections define
+the steps required to build an Application specific to it's type.
+
+Aerogear Digger provides sample https://github.com/aerogear/digger-jenkins/tree/master/jenkinsfiles[Jenkinsfiles^] for building the following 3 types of Applications
+
+* Native Android
+* Native iOS
+* Cordova (for Android and iOS)
+
+Further details are provided below on the structure and functions of the provided Jenkinsfiles. To try out these files in a deployed digger installation skip to the link:#build-application[Building Applications] section
+
+=== General Jenkinsfile structure
+[source,groovy]
+----
+# Define/Assign variables e.g <1>
+def platform = "android"
+
+node(platform) { # <2>
+  stage('Checkout') { # <3>
+    checkout scm # <4>
+  }
+
+  stage('Prepare'){ # <5>
+    ...
+  }
+
+  stage('Build') { # <6>
+    ...
+  }
+
+  stage('Sign') { # <7>
+    ...
+  }
+
+  stage('Archive') { # <8>
+    ...
+  }
+}
+----
+<1> Assign variables to use during the build steps. The example shown above
+is the `platform` variable. The only argument for the `platform` variable
+is a string that should match a label given to a Jenkins node. In Digger
+this value should be `ios` or `android`. any other value will result in the
+build not being assigned to a node and timing out.
+<2> The `node` function defines the node that the build should run on. This
+is populated by the platform parameter. By providing a variable here the
+same Jenkinsfile can be used in the case of Cordova where the builds may
+need to be executed on and 'android' or 'ios' node.
+<3> Add a stage to the build. Multiple stages can be added to break up builds
+logically. The `stage` function takes one argument which is the name of the
+stage.
+<4> Checkout the source code of the repo. This is done using the provided
+`checkout` function. `scm` is another helper which uses the SCM details from
+the Jenkins job configuration. When using Digger with RHMAP the SCM details
+will be configured automatically at build time.
+<5> Platform specific pre-requisite steps are executed during the prepare stage.
+e.g. add platform for cordova.
+<6> Build the applications. This is done using a build tool such as Gradle for
+Android or Xcode for iOS. The steps involved here are covered further in
+<<Using Jenkinsfiles in an app>>.
+<7> Sign the application using application specific steps if required
+<8> Archive the resulting artifacts of the build. When building Android and iOS
+apps there will be resulting build artifacts which can be stored. The
+`archiveArtifacts` function allows this to be done by providing the path to the
+artifacts as parameters.

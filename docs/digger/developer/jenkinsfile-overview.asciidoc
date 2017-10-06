@@ -1,0 +1,14 @@
+== Overview
+
+The AeroGear Digger project leverages Jenkinsfiles to build applications.
+A Jenkinsfile will need to exist in a repo for it to be built succesfully.
+
+This guide covers the basic anatomy of a Jenkinsfile, plugins that can
+be used to help with building and signing applications and migrating an
+existing application to using a Jenkinsfile.
+
+NOTE: This guide contains some information specific to using Digger with RHMAP.
+This information can be ignored when using Digger as a standalone service.
+
+Further information (if required) on using Jenkinsfiles is available in the
+https://jenkins.io/doc/pipeline/steps/[Jenkins pipeline documentation^]

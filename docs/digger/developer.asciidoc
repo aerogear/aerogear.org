@@ -1,0 +1,14 @@
+---
+layout: post
+section: guides
+title: Digger developer guide
+toc_generate: true
+---
+
+include::docs/digger/developer/jenkinsfile-overview.asciidoc[]
+
+include::docs/digger/developer/jenkinsfile-anatomy.asciidoc[]
+
+include::docs/digger/developer/jenkinsfile-create.asciidoc[]
+
+include::docs/digger/developer/jenkins-build.asciidoc[]

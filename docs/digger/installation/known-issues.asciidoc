@@ -1,0 +1,44 @@
+[[known-issues]]
+== Known issues
+
+=== Issues with using HTTP Proxy
+
+==== HTTP proxy with mac Jenkins node
+When adding a mac machine as a node/slave in Jenkins, a direct connection is
+required. This means that a HTTP proxy is not supported for this situation.
+
+==== HTTP proxy authentication in Android builds
+When building Android apps, the pod in which the apps are built cannot use a
+proxy that requires authentication. This is due to a issue within Gradle.
+
+==== Android SDK Manager tools don't support HTTP proxy with authentication
+When installing the Android SDK into the SDK pod during provisioning, the
+Android sdkmanager tools used don't support HTTP Proxy that requires
+authentication.
+
+=== Issues with Ansible provisioning
+
+==== Encrypted private key cannot be provided in Ansible provisioning
+The user's private key cannot be encrypted when running the Ansible playbook.
+
+Note that this does not include the key pair that should be provided when
+provisioning the macOS node, the private key of the macOS key pair should be
+encrypted with a passphrase.
+
+To work around this you can use `openssl` to remove the passphrase from your key using the
+following command.
+
+----
+openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new
+----
+
+=== iOS Build Limitations
+
+==== No Build Isolation Support
+
+At the moment, the iOS builds do not support isolation. This means if one iOS build process changes the settings/environment, it will impact every other iOS build processes.
+
+==== No Parallel Builds Support On A Single macOS Server
+
+Due to each iOS build needs to update some of the global configurations (like certifications, keys etc), only single iOS build can be run on a single Mac server at any given time.
+If you need to support parallel iOS builds, you will need to configure multiple Mac servers.
