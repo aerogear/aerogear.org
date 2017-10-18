@@ -5,7 +5,7 @@
 
 To build iOS Application using Aerogear Digger take the following steps below.
 
-. AAdd a Jenkinsfile to the Application
+. Add a Jenkinsfile to the Application
 
 Add a relevant (depending on the type of the application) Jenkinsfile to the root directoy of your application.
 Aerogear Digger provides sample https://github.com/aerogear/digger-jenkins/tree/master/jenkinsfiles[Jenkinsfiles^] for building the following 3 types of Applications
