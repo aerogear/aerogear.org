@@ -104,11 +104,15 @@ span.version {
 
 ---
 
-<h2 class="section-header" id="digger"><i class="fa fa-mobile"></i> AeroGear<strong>Digger</strong> Guides</h2>
+<h2 class="section-header" id="digger"><i class="fa fa-mobile"></i> AeroGear<strong>Digger</strong> Docs</h2>
 
+<h4>Guides</h4>
 * [Installation Guide](/docs/digger/installation)
 * [Admin Guide](/docs/digger/admin)
 * [Developer Guide](/docs/digger/developer)
+
+<h4>Specs</h4>
+* [Node client specs](/docs/specs/aerogear-digger-node-client)
 
 ---
 
