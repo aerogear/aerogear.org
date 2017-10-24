@@ -48,7 +48,7 @@ The tables below shows all variables used in the installer per role. If the vari
 |===
 
 |jenkins_private_key_password
-|Jenkins SSH private key variable password (if password protected)
+|Jenkins SSH private key password (if password protected)
 |None
 |No
 |===
