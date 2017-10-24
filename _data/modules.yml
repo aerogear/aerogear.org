@@ -14,8 +14,12 @@ sync:
   name: Sync
   icon: fa-refresh
 
-sync:
+digger:
   name: Digger
+  # we actually use a png image for Digger's logo, but it is not worth it
+  # to change the structure here and show it properly.
+  # let's just show a mobile phone.
+  # the icon here is used very minimally anyway.
   icon: fa-mobile
 
 geo:
