@@ -112,6 +112,7 @@ span.version {
 * [Developer Guide](/docs/digger/developer)
 
 <h4>Specs</h4>
+* [Java client specs](/docs/specs/aerogear-digger-java-client)
 * [Node client specs](/docs/specs/aerogear-digger-node-client)
 
 ---
