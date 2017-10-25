@@ -47,6 +47,12 @@ The tables below shows all variables used in the installer per role. If the vari
 |No
 |===
 
+|jenkins_private_key_password
+|Jenkins SSH private key password (if password protected)
+|None
+|No
+|===
+
 [[variables-deploy-jenkins]]
 === deploy-jenkins
 
