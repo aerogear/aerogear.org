@@ -1,0 +1,4 @@
+org.aerogear.digger.client
+org.aerogear.digger.client.model
+org.aerogear.digger.client.services
+org.aerogear.digger.client.util
