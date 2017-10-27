@@ -104,7 +104,7 @@ span.version {
 
 ---
 
-<h2 class="section-header" id="digger"><i class="fa fa-mobile"></i> AeroGear<strong>Digger</strong> Docs</h2>
+<h2 class="section-header" id="digger"><i><img src="/img/aerogeardigger_icon_32px_cropped.png"></i> AeroGear<strong>Digger</strong> Docs</h2>
 
 <h4>Guides</h4>
 * [Installation Guide](/docs/digger/installation)
