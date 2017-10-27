@@ -12,7 +12,7 @@ This is required for building iOS applications. The following specifications are
 The sections below outline the required state for the macOS node. Ansible requires SSH access to the macOS server in order to correctly provision the machine to support iOS builds. To enable this, it is required that
 a user with sudo permissions and SSH access exists on the target machine. Read the following sections and ensure these conditions are met to enable correct configuration of your macOS server via the Ansible installation.
 
-====== Create SSH User
+==== Create SSH User
 
 We recommended that you create a new user which will be provided to Ansible for SSH connections. An example bash script is provided to achieve this.
 
@@ -71,7 +71,7 @@ echo "Done creating OSX user - you may need to restart the osx server to apply a
 
 IMPORTANT: Restart the server to implement the changes made above.
 
-====== Configure Remote Login
+==== Configure Remote Login
 
 We must enable the Ansible process running remotely to execute commands on the macOS server via SSH.
 
@@ -110,7 +110,7 @@ dseditgroup -o edit -a ${USERNAME} -t user ${OSX_SSH_GROUP_NAME}
 This allows the `USERNAME` created previously to access the server via SSH with a password. You may also choose to add a public key to the `authorized_keys` file for said user, with the private key of the key pair existing on the Ansible management node.
 
 
-====== Connecting via Ansible
+==== Connecting via Ansible
 
 A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation].
 This allows us to run commands as `sudo` user

@@ -13,7 +13,7 @@ This may not be an issue if the slave exists on the same network, but could be p
 
 1. Add networking rules to allow the macOS server to route requests through the proxy. This is the recommended approach as it allows you to keep your Jenkins configuration intact.
 
-1. Remove the proxy configuration in Jenkins > Manage Jenkins > Manage Plugins > Advanced. If you then need to checkout source code behind a proxy for specific builds, the required configuration steps can be added to the Jenkinsfile where necessary.
+2. Remove the proxy configuration in Jenkins > Manage Jenkins > Manage Plugins > Advanced. If you then need to checkout source code behind a proxy for specific builds, the required configuration steps can be added to the Jenkinsfile where necessary.
 
 ==== HTTP proxy authentication in Android builds
 When building Android apps, the pod in which the apps are built cannot use a

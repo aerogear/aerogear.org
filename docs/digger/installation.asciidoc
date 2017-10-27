@@ -5,23 +5,26 @@ title: Digger installation guide
 toc_generate: true
 ---
 
-// overview
-include::docs/digger/installation/digger-install-intro.asciidoc[]
+// overviewNOTE: Digger can be installed behind HTTP/HTTPS proxy that do not require authentication.
+
+include::/docs/digger/installation/digger-install-intro.asciidoc[]
 
 // digger prerequisites
-include::docs/digger/installation/digger-prereqs.asciidoc[]
+include::/docs/digger/installation/digger-prereqs.asciidoc[]
 
 // macOs prerequisites
-include::docs/digger/installation/macos-prereqs.asciidoc[]
+include::/docs/digger/installation/macos-prereqs.asciidoc[macOS prerequisites]
+
+include::/docs/digger/installation/using-http-proxy.asciidoc[Using Proxy]
 
 // Run Digger Installer
-include::docs/digger/installation/run-digger-installer.asciidoc[]
+include::/docs/digger/installation/run-digger-installer.asciidoc[]
 
 // verify installation
-include::docs/digger/installation/verify-installation.asciidoc[]
+include::/docs/digger/installation/verify-installation.asciidoc[]
 
 // list of all variables
-include::docs/digger/installation/installer-variables.asciidoc[]
+include::/docs/digger/installation/installer-variables.asciidoc[]
 
 // known issues
-include::docs/digger/installation/known-issues.asciidoc[Known issues]
+include::/docs/digger/installation/known-issues.asciidoc[Known issues]
