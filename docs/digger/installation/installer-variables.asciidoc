@@ -41,6 +41,17 @@ The tables below shows all variables used in the installer per role. If the vari
 |digger
 |No
 
+|add_public_key_automatically
+|To enable adding ssh public key to Jenkins configuration automatically
+|true
+|No
+
+|jenkins_oauth_token
+|If you're using variable `add_public_key_automatically=true` and Jenkins with OAuth,
+you must specify OAuth token so adding the key automatically doesn't fail
+|<oauth_token>
+|No
+
 |concurrent_android_builds
 |Number of max number of concurrent Android builds that are allowed.
 |5
