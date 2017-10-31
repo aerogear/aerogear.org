@@ -12,12 +12,12 @@ It contains following components:
 * An http://docs.ansible.com/ansible/index.html[Ansible] based automation tool used to install and configure all components
 * A Docker-formated image with all tools required for Android application building
 * A Nagios server for Digger components health monitoring
-* A suite of sample Jenkinsfiles used to demonstrate the building of mobile applications using Jenkins pipeline
-* macOS servers with pre-installed tools to build iOS applications (optional).
-
+* A suite of sample Jenkinsfiles used for demonstration of mobile applications building using Jenkins pipeline
+* Optional iOS app build functionality by utilising macOS servers with pre-installed required tools
+NOTE: Ansible also configures macOS servers, some pre-configuration of macOS servers is required, see <<macos-prereqs>>
 
 The main components (Jenkins, Android SDK, Nagios) are deployed to an OpenShift Container Platform. With these components installed, Digger has the capability to build Android Applications. 
 
-You can set up a macOS server to enable iOS applications builds. See <<macOS prerequisites>>
+You can set up a macOS server to enable iOS applications builds. See <<macos-prereqs>>
 
 

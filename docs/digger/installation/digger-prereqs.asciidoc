@@ -1,18 +1,18 @@
 == Prerequisites
 Before running the Digger installer, please make sure the following prerequisites are met:
 
+=== Proxy Configuration (optional)
+
+See <<using-http-proxy>>.
+
 === Ansible 2.2.3 or higher
 
 Digger Installer requires a version of Ansible 2.2.3 or higher to be installed on node which will execute the Ansible playbook. You can check the installed Ansible version by running `ansible --version`.
 Please refer to http://docs.ansible.com/ansible/intro_installation.html[Ansible installation instructions].
 
-=== Outbound Internet access
+=== Access to Internet
 
 Digger requires an outbound Internet access to perform npm installations. Make sure that all relevant nodes/servers have outbound internet access.
-
-=== Proxy Configuration (optional)
-
-See <<Using Proxy>>.
 
 === Java 2.2 and higher
 

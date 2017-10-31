@@ -1,7 +1,7 @@
 [[installer-variables]]
 == Installer Variables
 
-The tables below shows all variables used in the installer per role. If the variable is specified as Required (i.e. Yes in Required Field and/or empty value in Default field) it should be provided either via the command line, via the inventory file or via an encrypted http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
+The tables below shows all variables used in the installer per Ansible role. If the variable is specified as Required (i.e. Yes in Required Field and/or empty value in Default field) it should be provided either via the command line, via the inventory file or via an encrypted http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
 
 === general
 
@@ -9,7 +9,7 @@ The tables below shows all variables used in the installer per role. If the vari
 | Variable name | Description | Default value | Required
 
 |jenkins_route_protocol
-|Route protocol used to contact Jenkins
+|Route protocol used to connect to Jenkins
 |https
 |No
 
@@ -42,7 +42,7 @@ The tables below shows all variables used in the installer per role. If the vari
 |No
 
 |concurrent_android_builds
-|Number of max number of concurrent Android builds that are allowed.
+|Number of max. allowed concurrent Android builds.
 |5
 |No
 |===
@@ -84,7 +84,7 @@ Variables below are used in Nagios for sending alert emails.
 | Variable name | Description | Default value | Required
 
 |smtp_server
-|SMTP server to send alert emails.
+|SMTP server that will send alert emails.
 |localhost
 |No
 
@@ -104,17 +104,17 @@ Variables below are used in Nagios for sending alert emails.
 |No
 
 |rhmap_admin_email
-|Destination address of alert emails.
+|Destination address for alert emails.
 |root@localhost
 |No
 
 |jenkins_user
-|User for accessing jenkins during nagios checks
+|User for accessing Jenkins during Nagios checks
 |admin
 |No
 
 |jenkins_pass
-|User Password for acessing jenkins during nagios checks
+|User Password for accessing Jenkins during Nagios checks
 |password
 |No
 
@@ -129,7 +129,7 @@ Variables below are to configure the JDK to install on the remote that runs Jenk
 | Variable name | Description | Default value | Required
 
 |repo
-|Repository to install JDK.
+|Red Hat repository to install JDK from.
 |rhel-7-server-optional-rpms
 |No
 
@@ -161,7 +161,7 @@ Variables below are used to login to the OpenShift Cluster.
 |login_url
 |Url used to log in. 
 |https://localhost:8443
-|No. * Except if running the playbook locally against a remote server and using `ansible_connection=local` Otherwise allow to default.
+|No, except when running the playbook locally against a remote server and using `ansible_connection=local` - set to default value.
 
 |===
 
@@ -174,12 +174,12 @@ Variables below are used while provisioning an OSX node.
 | Variable name | Description | Default value | Required
 
 |ansible_become_pass
-|Sudo password for carrying out root priveledged actions on a macOS server
+|Sudo password for carrying out root actions on a macOS server
 |
 |Yes/No if passing the value via the command line
 
 |remote_tmp_dir
-|What directory to use when creating some temporary files.
+|What directory to use when creating temporary files.
 |/tmp
 |No
 
@@ -254,17 +254,17 @@ Variables below are used while provisioning an OSX node.
 |xcode_install_user
 |Apple Developer Account username. If this is not set then Xcode will not be installed.
 |
-|Yes (if xcode is required)
+|Yes (if Xcode is required)
 
 |xcode_install_password
 |Apple Developer Account password. If this is not set then Xcode will not be installed.
 |
-|Yes (if xcode is required)
+|Yes (if Xcode is required)
 
 |xcode_install_session_token
 |Apple Developer Account auth cookie from `fastlane spaceauth` command (For accounts with 2FA enabled).
 |
-|Yes (if xcode is required)
+|Yes (if Xcode is required)
 
 |xcode_versions
 |A list of Xcode versions to install. These may take over 30 minutes each to install.
@@ -272,7 +272,7 @@ Variables below are used while provisioning an OSX node.
 |No
 
 |xcode_default_version
-|Teh default version of xcode to be used
+|Teh default version of Xcode to be used
 |<xcode_version>[0]
 |No
 
@@ -341,7 +341,7 @@ credentials.
 |No
 
 |project_name
-|The name of the digger Project in OpenShift
+|The name of the Digger Project in OpenShift
 |digger
 |No
 
