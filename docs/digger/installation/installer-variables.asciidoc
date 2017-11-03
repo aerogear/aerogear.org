@@ -120,6 +120,11 @@ Variables below are used in Nagios for sending alert emails.
 |admin@example.com
 |No
 
+|rhmap_admin_email
+|Destination address of alert emails.
+|root@localhost
+|No
+
 |jenkins_user
 |User for accessing jenkins during nagios checks
 |admin
