@@ -1,4 +1,4 @@
-== Nagios Installation Health checks
+=== Nagios Installation Health checks
 
 To monitor the status of the Digger components, the Digger installer will also install https://www.nagios.org/[Nagios^] and several Nagios checks that monitor. At the end of the installation Ansible will trigger each of the checks and output the results of these checks. 
 

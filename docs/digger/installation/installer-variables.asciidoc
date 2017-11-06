@@ -1,9 +1,9 @@
 [[installer-variables]]
-== Installer Variables
+=== Installer Variables
 
 The tables below shows all variables used in the installer per Ansible role. If the variable is specified as Required (i.e. Yes in Required Field and/or empty value in Default field) it should be provided either via the command line, via the inventory file or via an encrypted http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
 
-=== general
+==== general
 
 |===
 | Variable name | Description | Default value | Required
@@ -18,7 +18,7 @@ The tables below shows all variables used in the installer per Ansible role. If 
 
 
 [[variables-android-sdk]]
-=== android-sdk
+==== android-sdk
 
 |===
 | Variable name | Description | Default value | Required
@@ -31,7 +31,7 @@ The tables below shows all variables used in the installer per Ansible role. If 
 
 
 [[variables-configure-buildfarm]]
-=== configure-buildfarm
+==== configure-buildfarm
 
 |===
 | Variable name | Description | Default value | Required
@@ -48,7 +48,7 @@ The tables below shows all variables used in the installer per Ansible role. If 
 |===
 
 [[variables-deploy-jenkins]]
-=== deploy-jenkins
+==== deploy-jenkins
 
 |===
 | Variable name | Description | Default value | Required
@@ -76,7 +76,7 @@ The tables below shows all variables used in the installer per Ansible role. If 
 |===
 
 [[variables-deploy-nagios]]
-=== deploy-nagios
+==== deploy-nagios
 
 Variables below are used in Nagios for sending alert emails.
 
@@ -121,7 +121,7 @@ Variables below are used in Nagios for sending alert emails.
 |===
 
 [[variables-java]]
-=== java
+==== java
 
 Variables below are to configure the JDK to install on the remote that runs Jenkins CLI commands.
 
@@ -141,7 +141,7 @@ Variables below are to configure the JDK to install on the remote that runs Jenk
 |===
 
 [[variables-login]]
-=== login
+==== login
 
 Variables below are used to login to the OpenShift Cluster.
 
@@ -166,9 +166,9 @@ Variables below are used to login to the OpenShift Cluster.
 |===
 
 [[variables-osx-provision]]
-=== osx-provision
+==== osx-provision
 
-Variables below are used while provisioning an OSX node.
+Variables below are used while provisioning an mac node.
 
 |===
 | Variable name | Description | Default value | Required

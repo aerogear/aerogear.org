@@ -1,6 +1,7 @@
-= macOS Digger Installation Steps
+[[macos-variables]]
+=== macOS Digger Variables For Installation Steps
 
-== Install Homebrew
+==== Install Homebrew
 
 To run this step individually use
 `osx_install_homebrew` tag, see <<Running Installer steps individually>>
@@ -26,7 +27,7 @@ This installation step will also add any taps and packages specified in the opti
 |A list of taps to add.
 |===
 
-== Install Ruby
+=== Install Ruby
 
 To run this step individually use `osx_install_ruby` tag (see <<Running Installer steps individually>>).
 
@@ -60,7 +61,7 @@ other gems can be specified using the `gem_packages` variable.
 Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
 |===
 
-== Install Node.js
+=== Install Node.js
 
 To run this step individually use `osx_install_nodejs` tag (see <<Running Installer steps individually>>).
 
@@ -83,7 +84,7 @@ Packages from NPM can be defined also, however they will be installed globally.
 Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
 |===
 
-== Install Xcode
+=== Install Xcode
 
 To run this step individually use `osx_install_xcode` tag (see <<Running Installer steps individually>>).
 
@@ -91,7 +92,7 @@ This step installs Xcode CLI tools and Xcode versions specified. Installing Xcod
 single version of Xcode can take over 30 minutes so please be patient during
 these stages.
 
-=== Xcode Two Factor Authentication (2FA) Support
+==== Xcode Two Factor Authentication (2FA) Support
 If you have 2FA enabled for the specified Apple Developer Account then
 you will need to set the `xcode_install_session_token` option to a cookie
 provided by authenticating with Apple. This can be done using Fastlane
@@ -131,7 +132,7 @@ accounts with 2FA enabled).
 install.
 |===
 
-== Download Apple certificates
+=== Download Apple certificates
 
 To run this step individually use `osx_download_certs` tag. (see <<Running Installer steps individually>>).
 
@@ -150,14 +151,14 @@ downloaded into the user's home directory.
 |Filename for the downloaded certificate. Default is `AppleWWDRCA.cer`.
 |===
 
-== Update Cocoapods
+=== Update Cocoapods
 
 Executes pod repo update.
 
 To run this step individually use 
 `osx_pod_repo_update` tag. (see <<Running Installer steps individually>>).
 
-== Configure Build Farm node
+=== Configure Build Farm node
 To run this step individually use `osx_configure_buildfarm` tag.(see <<Running Installer steps individually>>).
 
 

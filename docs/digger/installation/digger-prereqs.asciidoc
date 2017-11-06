@@ -1,24 +1,24 @@
-== Prerequisites
+=== Prerequisites
 Before running the Digger installer, please make sure the following prerequisites are met:
 
-=== Proxy Configuration (optional)
+==== Proxy Configuration (optional)
 
 See <<using-http-proxy>>.
 
-=== Ansible 2.2.3 or higher
+==== Ansible 2.2.3 or higher
 
 Digger Installer requires a version of Ansible 2.2.3 or higher to be installed on node which will execute the Ansible playbook. You can check the installed Ansible version by running `ansible --version`.
 Please refer to http://docs.ansible.com/ansible/intro_installation.html[Ansible installation instructions].
 
-=== Access to Internet
+==== Access to Internet
 
 Digger requires an outbound Internet access to perform npm installations. Make sure that all relevant nodes/servers have outbound internet access.
 
-=== Java 2.2 and higher
+==== Java 2.2 and higher
 
 Java is required for Jenkins configuration during the installation. Will be automatically installed if not present.
 
-=== OpenShift 3.3 or higher
+==== OpenShift 3.3 or higher
 
 * An OpenShift Container Platform, and its command line tool (https://github.com/openshift/origin/releases/tag/v1.3.1[oc^]) installed locally.
 * The OpenShift cluster with the following PVs (Persistent Volumes) available:
@@ -26,6 +26,6 @@ Java is required for Jenkins configuration during the installation. Will be auto
 ** 10GB for Android-sdk
 ** 1GB for Nagios
 
-=== Access to DockerHub
+==== Access to DockerHub
 
 The installer retrieves the Docker-formatted images from https://hub.docker.com/. Please make sure that all nodes in the OpenShift Installation have access to this site.

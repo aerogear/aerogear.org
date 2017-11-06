@@ -1,22 +1,22 @@
 [[macos-prereqs]]
-== macOS prerequisites
+==== macOS prerequisites (optional)
 Read the following sections and ensure the conditions are met to enable a correct configuration of your macOS server by Ansible.
 
 .Recommended specifications:
 
-* A fresh macOS 10.12 Sierra install (MacinCloud service can be utilised, too)
+* A fresh macOS 10.12 Sierra install (MacinCloud service can be used, too)
 * 4GB RAM
 * 2 CPU Cores
-* 30GB minimum disk space and and additional 20GB per XCode version
+* 30GB minimum disk space and and additional 20GB per installed XCode version
 
 
-=== Create SSH User for Ansible
+===== Create SSH User for Ansible
 
 Ansible requires an SSH access to the macOS server in order to correctly provision the server to support iOS builds. Create a user with sudo permissions and SSH access on the macOS server. 
 
 An example bash script is provided.
 
-WARNING: Review the script before using it. The unmodified script will allow access to your machine with a default password. Change the default `PASSWORD` and ensure `USER_ID` is not assigned.
+WARNING: Review the script before using it. The unmodified script will allow access to your machine with a default password. Change the default `PASSWORD` and ensure that `USER_ID` is unassigned.
 
 By default, the script will create a user named `jenkins` with a `UID` of `550` and add the user to the the `sudoers` file. The users `PASSWORD` variable is set by default to `Password1`. The user is added to the `admin` group.
 
@@ -69,11 +69,13 @@ echo "Done creating OSX user - you may need to restart the osx server to apply a
 ----
 
 
-=== Configure Remote Login
+===== Configure Remote Login
 Enable the remotely running Ansible process to execute commands on the macOS server via SSH.
 
 A sample script is provided below. The `USERNAME` variable should contain the name of the user created in the previous step.
 This allows the `USERNAME` to access the server via SSH with a password. 
+
+WARNING: Review and understand the script before using it.
 
 You can also add a public encryption key to the `authorized_keys` file associated with the user, with the private key of the asymmetric key pair present on the Ansible management node.
 
@@ -108,16 +110,16 @@ dseditgroup -o edit -a ${USERNAME} -t user ${OSX_SSH_GROUP_NAME}
 # now, following should work  ---> ssh username@localhost
 ----
 
-=== Ansible root Permissions
+===== Ansible root Permissions
 
 A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation].
 This allows Ansible to run commands as `sudo` user.
 
-The name of the user created in the previous steps should be provided as a variable to Ansible in `ansible_ssh_user`.
+Add the name of the user created in the previous steps as a variable `ansible_ssh_user` into the Ansible inventory file.
 
 Set `ansible_sudo_pass` variable or pass the `--ask-sudo-pass` flag with the user password to enable the installer to work with root permissions.
 
-=== macOS Internet Access
+===== macOS Internet Access
 
 The macOS requires an Internet access to the following hosts:
 IMPORTANT: Other external hosts may be required depending on what other packages you specify to install.
@@ -141,4 +143,3 @@ IMPORTANT: Other external hosts may be required depending on what other packages
 | https://npmjs.org
 | `NPM packages`
 |===
-

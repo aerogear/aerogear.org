@@ -1,12 +1,13 @@
-== Running the Digger Installer
+=== Running Digger Installer
 
-.To run the Digger installer, follow these steps:
+.To run Digger installer, follow these steps:
 
 . Clone the https://github.com/aerogear/digger-installer[Digger Installer GitHub repo^]
 
-. Make a copy of the Ansible `inventory-sample` file from the repo, and update it with the information about your infrastructure
+. Make a copy of the Ansible `inventory-sample` file from the repo, and update it with the information about your infrastructure. https://github.com/aerogear/digger-installer/blob/master/inventory-sample[Sample Ansible Inventory file].
+
 +
-NOTE: For a full list of variables that can be configured via the inventory file refer to link:#installer-variables[Installer Variables].
+NOTE: For a full list of variables that can be configured via the inventory file refer to <<installer-variables>>
 
 . Run the playbook using the updated `inventory-sample` and follow the instructions printed in the terminal:
 

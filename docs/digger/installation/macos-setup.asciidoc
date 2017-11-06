@@ -1,6 +1,7 @@
+[[macos-setup]]
 === Setup macOS Servers (optional)
 
-The installer will perform the following tasks to provision macOS servers:
+After setting of the required Ansible variables, the installer will perform the following tasks to provision macOS servers:
 
 . Install Homebrew,
 . Install RVM and Ruby,
@@ -9,8 +10,6 @@ The installer will perform the following tasks to provision macOS servers:
 . Download Apple certificates,
 . Update Cocoapods,
 . Register macOS Server as a node in Jenkins.
-
-You need to have the following Ansible variables set:
 
 ==== Set Required Ansible Variables
 
@@ -54,5 +53,5 @@ ansible-playbook -i sample-inventory-file sample-playbook.yml
 
 ==== Further macOS Configuration options
 
+xref:macos-variables[View all macOS variables].
 Further configuration of the macOS node is possible through optional variables.
-link:macos-options[View all macOS variables].

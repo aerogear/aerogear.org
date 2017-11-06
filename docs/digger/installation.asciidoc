@@ -16,14 +16,20 @@ include::docs/digger/installation/macos-prereqs.asciidoc[macOS prerequisites]
 //using digger behind http/s proxy
 include::docs/digger/installation/using-http-proxy.asciidoc[Using Proxy]
 
+// macOS setup
+include::docs/digger/installation/macos-setup.asciidoc[]
+
 // Run Digger Installer
 include::docs/digger/installation/run-digger-installer.asciidoc[]
 
 // Nagios installation health checks
 include::docs/digger/installation/nagios-digger-health-check.asciidoc[]
 
-// list of all variables
+// list of all variables except macOS
 include::docs/digger/installation/installer-variables.asciidoc[]
+
+// list of macOS variables
+include::docs/digger/installation/macos-variables.asciidoc[]
 
 // known issues
 include::docs/digger/installation/known-issues.asciidoc[Known issues]

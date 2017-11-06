@@ -1,23 +1,22 @@
 == AeroGear Digger Installation
 //Please DO NOT use 'Overview' as a section heading anywhere http://stylepedia.net/#sect-Red_Hat_Technical_Publications-Writing_Style_Guide-Overall_Book_Design-Unused_Heading_Titles
-https://github.com/aerogear/digger-installer[Digger Installer^] - GitHub repo with Ansible playbook used for Digger installation.
+https://github.com/aerogear/aerogear-digger-installer[Digger Installer^] - GitHub repo with Ansible playbook used for Digger installation.
 
 The AeroGear Digger project allows you to setup a CI/CD server that is able to build mobile applications using OpenShift containers.
 
-NOTE: Digger can be installed behind HTTP/HTTPS proxy that do not require authentication.
+For more details about Ansible playbooks and variables, please refer to http://docs.ansible.com/ansible/playbooks_variables.html[Ansible Playbook Variables Docs].
 
 It contains following components:
 
 * A Jenkins server, used to run the build tasks
 * An http://docs.ansible.com/ansible/index.html[Ansible] based automation tool used to install and configure all components
 * A Docker-formated image with all tools required for Android application building
-* A Nagios server for Digger components health monitoring
-* A suite of sample Jenkinsfiles used for demonstration of mobile applications building using Jenkins pipeline
-* Optional iOS app build functionality by utilising macOS servers with pre-installed required tools
-NOTE: Ansible also configures macOS servers, some pre-configuration of macOS servers is required, see <<macos-prereqs>>
+* A Nagios server for health monitoring of Digger components 
+* A suite of sample Jenkinsfiles used for demonstration of mobile application building using Jenkins pipeline
+* Optional iOS app build functionality by utilising macOS servers with pre-installed required tools. See <<macos-setup>>.
 
-The main components (Jenkins, Android SDK, Nagios) are deployed to an OpenShift Container Platform. With these components installed, Digger has the capability to build Android Applications. 
+NOTE: Ansible also configures macOS servers, pre-configuration of macOS servers is required, see <<macos-prereqs>>
 
-You can set up a macOS server to enable iOS applications builds. See <<macos-prereqs>>
+The main components (Jenkins, Android SDK, Nagios) are deployed to an OpenShift Container Platform. With these components installed, Digger has the capability to build Android applications. 
 
-
+It is possible to deploy Digger behind HTTP/HTTPS proxy that do not require authentication. see <<using-http-proxy>>
