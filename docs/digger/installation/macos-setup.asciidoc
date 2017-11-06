@@ -1,0 +1,58 @@
+=== Setup macOS Servers (optional)
+
+The installer will perform the following tasks to provision macOS servers:
+
+. Install Homebrew,
+. Install RVM and Ruby,
+. Install NVM and Node,
+. Install Xcode,
+. Download Apple certificates,
+. Update Cocoapods,
+. Register macOS Server as a node in Jenkins.
+
+You need to have the following Ansible variables set:
+
+==== Set Required Ansible Variables
+
+|===
+| Variable name | Description
+
+| `xcode_install_user`
+| Apple Developer Account username. If not set, Xcode installation will
+be skipped.
+
+| `xcode_install_password`
+| Apple Developer Account password. If not set, Xcode installation will
+be skipped.
+
+| `credential_private_key_path`
+| Path to the private key that Jenkins should use to SSH into the macOS node.
+If not set, the Jenkins node configuration will be skipped.
+
+| `credential_passphrase`
+| Passphrase for the private key. If not set, the Jenkins node
+configuration will be skipped.
+
+| `credential_public_key_path` -
+| Path to the public key. The macOS node will add this to it's
+`authorized_keys` file. If not set, the Jenkins node configuration will
+be skipped.
+|===
+
+.Example command with all required variables needed to start the Digger Ansible job to provision macOS systems:
+
+----
+ansible-playbook -i sample-inventory-file sample-playbook.yml
+-e "ansible_sudo_pass=exampleSudoPassword"
+-e "xcode_install_user=exampleAppleDeveloperUsername"
+-e "xcode_install_password=exampleAppleDeveloperPassword"
+-e "credential_private_key_path=/path/to/sshKey"
+-e "credential_passphrase=exampleSshKeyPassphrase"
+-e "credential_public_key_path=/path/to/sshKey.pub"
+--tags="provision-osx"
+----
+
+==== Further macOS Configuration options
+
+Further configuration of the macOS node is possible through optional variables.
+link:macos-options[View all macOS variables].

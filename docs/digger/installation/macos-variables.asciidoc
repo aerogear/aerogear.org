@@ -1,8 +1,4 @@
----
-layout: post
-section: docs
-title: Digger Ansible macOS variables
----
+= macOS Digger Installation Steps
 
 == Install Homebrew
 
@@ -38,9 +34,6 @@ This step installs RVM along with a single version of Ruby. The version of Ruby 
 install can be defined by a variable. The cocoapods gem will be installed,
 other gems can be specified using the `gem_packages` variable.
 
-
-
-
 |===
 | Variable name | Description
 
@@ -75,7 +68,7 @@ Installs NVM along with any versions of Nodejs specified through variables.
 Packages from NPM can be defined also, however they will be installed globally.
 
 
-.Install Node.js variables
+.`osx_install_nodejs` variables
 |===
 | Variable name | Description
 
@@ -98,14 +91,14 @@ This step installs Xcode CLI tools and Xcode versions specified. Installing Xcod
 single version of Xcode can take over 30 minutes so please be patient during
 these stages.
 
-=== Two Factor Authentication (2FA) Support
+=== Xcode Two Factor Authentication (2FA) Support
 If you have 2FA enabled for the specified Apple Developer Account then
 you will need to set the `xcode_install_session_token` option to a cookie
 provided by authenticating with Apple. This can be done using Fastlane
 Spaceship.
 
 
-NOTE: Installed Fastlane must be 2.42.0 or higher
+NOTE: Fastlane 2.42.0 or higher is required
 
 .Obtaining Apple Developer cookie for 2FA Xcode install
 ----
@@ -120,7 +113,7 @@ the value for `xcode_install_session_token`.
 Alternatively disable 2FA on the Apple Developer Account for the duration of
 the Ansible job.
 
-.Install Xcode variables
+.`osx_install_xcode` variables
 |===
 | Variable name | Description
 
@@ -147,7 +140,7 @@ required certificate is Apple's WWDR certificate. This certificate will be
 downloaded into the user's home directory.
 
 
-.Download Apple certificate variables
+.`osx_download_certs` variables
 |===
 | Variable name | Description
 
@@ -197,10 +190,7 @@ digger_macos_rsa
 digger_macos_rsa.pub
 ----
 
-
-== WHICH COMMAND SHOULD BE USED TO CHANGE the following VARIABLES?
-
-.Configure Build Farm node variables
+.`osx_configure_buildfarm` variables
 |===
 | Variable name | Description
 
