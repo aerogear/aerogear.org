@@ -57,8 +57,9 @@ other gems can be specified using the `gem_packages` variable.
 |The version of the Cocoapods gem to install.
 
 |gem_packages
-|A list of gems to install on the node.
-Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
+|A list of gems to install on the node. 
+
+{ name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
 |===
 
 === Install Node.js
@@ -81,7 +82,8 @@ Packages from NPM can be defined also, however they will be installed globally.
 |A list of Node versions to install.
 |npm_packages
 |A list of global NPM packages to install.
-Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
+
+{ name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
 |===
 
 === Install Xcode

@@ -1,11 +1,11 @@
 === Nagios Installation Health checks
 
-To monitor the status of the Digger components, the Digger installer will also install https://www.nagios.org/[Nagios^] and several Nagios checks that monitor. At the end of the installation Ansible will trigger each of the checks and output the results of these checks. 
+To monitor the status of Digger components, the Digger installer will also install https://www.nagios.org/[Nagios^] and several Nagios checks. At the end of the installation, Ansible will trigger the checks and output the results.
 
-.To navigate to Nagios and manually verify that all checks are passing:
+.To navigate to Nagios checks:
 
-. Log in to Nagios using the URL and credentials outputted at the end of the installation.
-. Navigate to the Services Link
+. Log in to Nagios using the URL and credentials printed in the terminal at the end of the installation.
+. Navigate to the Services Link.
 . Verify that all Nagios checks are passing.
 
 .The environment specific checks carried out by Nagios are:

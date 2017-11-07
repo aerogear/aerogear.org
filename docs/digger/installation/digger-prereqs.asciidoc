@@ -12,7 +12,7 @@ Please refer to http://docs.ansible.com/ansible/intro_installation.html[Ansible 
 
 ==== Access to Internet
 
-Digger requires an outbound Internet access to perform npm installations. Make sure that all relevant nodes/servers have outbound internet access.
+Digger requires an outbound Internet access to perform npm installations. Make sure that all relevant nodes/servers have outbound Internet access.
 
 ==== Java 2.2 and higher
 
@@ -21,7 +21,7 @@ Java is required for Jenkins configuration during the installation. Will be auto
 ==== OpenShift 3.3 or higher
 
 * An OpenShift Container Platform, and its command line tool (https://github.com/openshift/origin/releases/tag/v1.3.1[oc^]) installed locally.
-* The OpenShift cluster with the following PVs (Persistent Volumes) available:
+* OpenShift cluster with the following PVs (Persistent Volumes) available:
 ** 40GB for Jenkins
 ** 10GB for Android-sdk
 ** 1GB for Nagios

@@ -1,7 +1,7 @@
 == Installing Jenkins plugins
 NOTE: Plugins for Jenkins can be found at https://plugins.jenkins.io
 
-Digger will by default install a number of Jenkins plugins required for its proper operation. If more Jenkins plugins are required, they can be installed by including them as a task in Ansible playbook or using the Jenkins UI.
+Digger will by default install required Jenkins plugins. If more Jenkins plugins are required, they can be installed by listing them in a task in Ansible playbook or using Jenkins UI.
 
 === Using Ansible Playbook
 https://github.com/aerogear/aerogear-digger-installer/blob/master/configure-buildfarm/defaults/main.yml[Digger Installer Ansible playbook^]. 

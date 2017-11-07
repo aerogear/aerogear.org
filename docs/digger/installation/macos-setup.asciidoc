@@ -1,7 +1,7 @@
 [[macos-setup]]
 === Setup macOS Servers (optional)
 
-After setting of the required Ansible variables, the installer will perform the following tasks to provision macOS servers:
+After setting the required Ansible variables, the installer will perform the following tasks to provision macOS servers:
 
 . Install Homebrew,
 . Install RVM and Ruby,
@@ -38,7 +38,7 @@ configuration will be skipped.
 be skipped.
 |===
 
-.Example command with all required variables needed to start the Digger Ansible job to provision macOS systems:
+.Example command with variables needed to start the Digger Ansible job to provision macOS server:
 
 ----
 ansible-playbook -i sample-inventory-file sample-playbook.yml

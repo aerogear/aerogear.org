@@ -1,6 +1,5 @@
 [[macos-prereqs]]
 ==== macOS prerequisites (optional)
-Read the following sections and ensure the conditions are met to enable a correct configuration of your macOS server by Ansible.
 
 .Recommended specifications:
 
@@ -18,15 +17,14 @@ An example bash script is provided.
 
 WARNING: Review the script before using it. The unmodified script will allow access to your machine with a default password. Change the default `PASSWORD` and ensure that `USER_ID` is unassigned.
 
-By default, the script will create a user named `jenkins` with a `UID` of `550` and add the user to the the `sudoers` file. The users `PASSWORD` variable is set by default to `Password1`. The user is added to the `admin` group.
+By default, the script will create a user named `jenkins` with `USER_ID=550` and add the user to the the `sudoers` file. The user's `PASSWORD` is set by default to `Password1`. The user is added to the `admin` group.
 
 IMPORTANT: Restart the server to implement the changes.
 
-The script can be downloaded and executed using the following commands:
-
+Download and execute the script with the following commands:
 [source,bash]
 ----
-curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/create-osx-user.sh
+curl -O https://raw.githubusercontent.com/aerogear/aerogear-digger/master/admin/create-osx-user.sh
 sudo bash create-osx-user.sh
 ----
 
@@ -83,7 +81,7 @@ The script can be downloaded and executed using the following commands:
 
 [source,bash]
 ----
-curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
+curl -O https://raw.githubusercontent.com/aerogear/aerogear-digger/master/admin/enable-osx-remote-login.sh
 sudo bash enable-osx-remote-login.sh
 ----
 
@@ -112,16 +110,17 @@ dseditgroup -o edit -a ${USERNAME} -t user ${OSX_SSH_GROUP_NAME}
 
 ===== Ansible root Permissions
 
-A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation].
+A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation^].
 This allows Ansible to run commands as `sudo` user.
 
-Add the name of the user created in the previous steps as a variable `ansible_ssh_user` into the Ansible inventory file.
+Add the name of the user created in previous steps as a variable `ansible_ssh_user` into the Ansible inventory file.
 
-Set `ansible_sudo_pass` variable or pass the `--ask-sudo-pass` flag with the user password to enable the installer to work with root permissions.
+Set `ansible_sudo_pass` variable or `--ask-sudo-pass` flag with the user password to enable the installer to work with root permissions.
 
 ===== macOS Internet Access
 
-The macOS requires an Internet access to the following hosts:
+The macOS requires Internet access to the following hosts:
+
 IMPORTANT: Other external hosts may be required depending on what other packages you specify to install.
 
 .Hosts and resources they provide:

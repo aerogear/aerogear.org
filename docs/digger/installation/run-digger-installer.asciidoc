@@ -1,10 +1,8 @@
 === Running Digger Installer
 
-.To run Digger installer, follow these steps:
+. Clone the https://github.com/aerogear/aerogear-digger-installer[Digger Installer GitHub repo^]
 
-. Clone the https://github.com/aerogear/digger-installer[Digger Installer GitHub repo^]
-
-. Make a copy of the Ansible `inventory-sample` file from the repo, and update it with the information about your infrastructure. https://github.com/aerogear/digger-installer/blob/master/inventory-sample[Sample Ansible Inventory file].
+. Make a copy of the Ansible `inventory-sample` file from the repo, and update it with the information about your infrastructure. https://github.com/aerogear/aerogear-digger-installer/blob/master/inventory-sample[Sample Ansible Inventory file^].
 
 +
 NOTE: For a full list of variables that can be configured via the inventory file refer to <<installer-variables>>
@@ -14,7 +12,7 @@ NOTE: For a full list of variables that can be configured via the inventory file
 ** Command to install Digger without a macOS server
 +
 ----
-ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml --skip-tags=osx-provision
+ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml --skip-tags=provision-osx
 ----
 
 ** Command to install Digger with a macOS server
@@ -23,15 +21,12 @@ ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml --skip-tag
 ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
 ----
 
-. Carry out manual steps during the installation
+. Manually accept Android SDK licence
 +
-There are three points during the installation where there are manual steps required.
+.. During initial Android SDK installation
+.. During sync of Android SDK versions
 +
-.. Accept the Android SDK Licence
-.. Copy the server's (where Ansible task are running) public SSH key to Jenkins
-.. Accept the Oracle Licence when installing Java on macOS server
-+
-Both of these steps are required for the installation to complete successfully. At each step the Ansible Installer will pause and prompt with the required actions.
+
 
 .Ansible playbook will perform the following tasks:
 
