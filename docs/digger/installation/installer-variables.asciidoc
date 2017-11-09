@@ -56,11 +56,20 @@ you must specify OAuth token so adding the key automatically doesn't fail
 |Number of max number of concurrent Android builds that are allowed.
 |5
 |No
-|===
 
 |jenkins_private_key_password
 |Jenkins SSH private key password (if password protected)
 |None
+|No
+
+|jenkins_private_key_path
+|Jenkins SSH private key path
+|~/.ssh/id_rsa
+|No
+
+|jenkins_public_key_path
+|Jenkins SSH public key path
+|~/.ssh/id_rsa.pub
 |No
 |===
 
