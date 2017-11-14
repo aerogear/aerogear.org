@@ -1,7 +1,14 @@
 [[installer-variables]]
 == Installer Variables
 
-The tables below shows all variables used in the installer per role. If the variable is specified as Required (i.e. Yes in Required Field and/or empty value in Default field) it should be provided either via the command line, via the inventory file or via an encrypted http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
+This section describes all installer variables. 
+You must provide a value for all required variables. 
+
+You can specify a value using one of the following methods:
+
+* enter a value into the inventory file
+* specify a value on the command line
+* using an encrypted link:http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
 
 === general
 
@@ -42,33 +49,32 @@ The tables below shows all variables used in the installer per role. If the vari
 |No
 
 |add_public_key_automatically
-|To enable adding ssh public key to Jenkins configuration automatically
+|Determines whether to add ssh public key to Jenkins configuration automatically.
 |true
 |No
 
 |jenkins_oauth_token
-|If you're using variable `add_public_key_automatically=true` and Jenkins with OAuth,
-you must specify OAuth token so adding the key automatically doesn't fail
+|OAuth token
 |<oauth_token>
-|No
+|Yes, if `add_public_key_automatically` is set to `true` and `enable_oauth` is set to `true`.
 
 |concurrent_android_builds
-|Number of max number of concurrent Android builds that are allowed.
+|Max number of concurrent Android builds that are allowed.
 |5
 |No
 
 |jenkins_private_key_password
-|Jenkins SSH private key password (if password protected)
+|Jenkins SSH private key password 
 |None
-|No
+|Yes, if password protected
 
 |jenkins_private_key_path
-|Jenkins SSH private key path
+|Jenkins SSH private key location
 |~/.ssh/id_rsa
 |No
 
 |jenkins_public_key_path
-|Jenkins SSH public key path
+|Jenkins SSH public key location
 |~/.ssh/id_rsa.pub
 |No
 |===
@@ -85,7 +91,7 @@ you must specify OAuth token so adding the key automatically doesn't fail
 |No
 
 |enable_oauth
-|Whether to enable OAuth OpenShift integration. If false, a static account will be initialized.
+|Determines whether to enable OAuth OpenShift integration. If `false`, a static account will be created.
 |false
 |No
 
@@ -104,7 +110,7 @@ you must specify OAuth token so adding the key automatically doesn't fail
 [[variables-deploy-nagios]]
 === deploy-nagios
 
-Variables below are used in Nagios for sending alert emails.
+Variables used to configure Nagios for sending alert emails.
 
 |===
 | Variable name | Description | Default value | Required
@@ -135,12 +141,12 @@ Variables below are used in Nagios for sending alert emails.
 |No
 
 |jenkins_user
-|User for accessing jenkins during nagios checks
+|User who accesses jenkins during nagios checks.
 |admin
 |No
 
 |jenkins_pass
-|User Password for acessing jenkins during nagios checks
+|User password for <jenkins_user>.
 |password
 |No
 
@@ -149,13 +155,13 @@ Variables below are used in Nagios for sending alert emails.
 [[variables-java]]
 === java
 
-Variables below are to configure the JDK to install on the remote that runs Jenkins CLI commands.
+Variables used to configure JDK on the remote host that runs Jenkins CLI commands.
 
 |===
 | Variable name | Description | Default value | Required
 
 |repo
-|Repository to install JDK.
+|The repository used to install JDK.
 |rhel-7-server-optional-rpms
 |No
 
@@ -169,58 +175,58 @@ Variables below are to configure the JDK to install on the remote that runs Jenk
 [[variables-login]]
 === login
 
-Variables below are used to login to the OpenShift Cluster.
+Variables used to login to the OpenShift Cluster.
 
 |===
 | Variable name | Description | Default value | Required
 
 |oc_user
-|OpenShift user to login to OpenShift.
+|OpenShift user who log into OpenShift.
 |
 |Yes
 
 |oc_password
-|OpenShift user password.
+|Password for <oc_user>.
 |
 |Yes
 
 |login_url
 |Url used to log in. 
 |https://localhost:8443
-|No. * Except if running the playbook locally against a remote server and using `ansible_connection=local` Otherwise allow to default.
+|Yes, if running the playbook locally against a remote server and using `ansible_connection=local`.
 
 |===
 
 [[variables-osx-provision]]
 === osx-provision
 
-Variables below are used while provisioning an OSX node.
+Variables used while provisioning an OSX node.
 
 |===
 | Variable name | Description | Default value | Required
 
 |ansible_become_pass
-|Sudo password for carrying out root priveledged actions on a macOS server
+|Sudo password required to perform root privileged actions on a macOS server. Typically, this is specified using the command line.
 |
-|Yes/No if passing the value via the command line
+|Yes
 
 |remote_tmp_dir
-|What directory to use when creating some temporary files.
+|Location for temporary files.
 |/tmp
 |No
 
 |node_versions
-|A list of Node versions to install.
+|A space separated list of Node versions to install.
 |6
 |No
 
 |xcode_install_version
-|The version of the xcode-install tool to install on the node.
+|The version of the xcode-install tool to install.
 |2.2.1
 |No
 
 |gem_packages
-|
+|A list of gem packages to install.  Format: `{ name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }`.
 |name: public_suffix, version: 2.0.5:name: xcode-install: <xcode_install_version>
 |No
 
@@ -235,7 +241,7 @@ Variables below are used while provisioning an OSX node.
 |No
 
 |homebrew_packages
-|The packages to install using Homebrew. Format: `{ name: <PACKAGE_NAME> }`.
+|The packages to install using Homebrew. Format: `{ <PACKAGE_NAME> }`.
 |gpg, grep, jq
 |No
 
@@ -245,60 +251,60 @@ Variables below are used while provisioning an OSX node.
 |No
 
 |homebrew_repo
-|The git repo where Homebrew resides (defaults to GitHub repo).
+|The git repo for the version of Homebrew to install.
 |https://github.com/Homebrew/brew
 |No
 
 |homebrew_prefix
-|The parent directory of the directory where Homebrew resides.
+|The parent directory for the Homebrew location.
 |/usr/local
 |No
 
 
 |homebrew_install_path
-|Where Homebrew will be installed.
+|The location where Homebrew is installed.
 |<homebrew_prefix>/Homebrew
 |No
 
 
 |homebrew_brew_bin_path
-|Where `brew` will be installed.
+|The location where `brew` is installed.
 |/usr/local/bin
 |No
 
 |homebrew_paths
 |
-|<homebrew_install_path>,<homebrew_brew_bin_path>,<homebrew_var_path>,/usr/local/Cellar,/usr/local/opt,/usr/local/share,/usr/local/etc,/usr/local/include
+|<homebrew_install_path>, <homebrew_brew_bin_path>, <homebrew_var_path>, /usr/local/Cellar, /usr/local/opt, /usr/local/share, /usr/local/etc, /usr/local/include
 |No
 
 
 |homebrew_taps
-|A list of taps to add.
+|A list of Homebrew taps to add.
 |homebrew/core, caskroom/cask
 |No
 
 |xcode_install_user
-|Apple Developer Account username. If this is not set then Xcode will not be installed.
+|Apple Developer Account username. If this is not set then Xcode is not installed.
 |
-|Yes (if xcode is required)
+|Yes
 
 |xcode_install_password
-|Apple Developer Account password. If this is not set then Xcode will not be installed.
+|Apple Developer Account password. If this is not set then Xcode is not installed.
 |
-|Yes (if xcode is required)
+|Yes (if Xcode is required)
 
 |xcode_install_session_token
 |Apple Developer Account auth cookie from `fastlane spaceauth` command (For accounts with 2FA enabled).
 |
-|Yes (if xcode is required)
+|Yes (if Xcode is required)
 
 |xcode_versions
-|A list of Xcode versions to install. These may take over 30 minutes each to install.
+|A list of Xcode versions to install, can take over 30 minutes each to install.
 |'8.3.3'
 |No
 
 |xcode_default_version
-|Teh default version of xcode to be used
+|The default version of xcode to be used
 |<xcode_version>[0]
 |No
 
@@ -308,12 +314,12 @@ Variables below are used while provisioning an OSX node.
 |No
 
 |apple_wwdr_cert_file_name
-|Output file name of the downloaded file.
+|Output file name of the downloaded WWDR certificate file.
 |AppleWWDRCA.cer
 |No
 
 |buildfarm_node_port
-|The port to connect to the macOS node on.
+|The port used to connect to the macOS node.
 |22
 |No
 
@@ -349,7 +355,7 @@ Variables below are used while provisioning an OSX node.
 
 |buildfarm_node_executors
 |Number of executors (Jenkins configuration) on the macOS node.
-There is currently no build isolation with the macOS node meaning there is
+There is currently no build isolation for the macOS node. This means there is
 no guaranteed support for concurrent builds. This value should not be changed
 unless you are certain all apps will be built with the same signature
 credentials.
@@ -358,8 +364,14 @@ credentials.
 
 |buildfarm_node_mode
 |How the macOS node should be utilised. The following options are available:
+
+* NORMAL
+* EXCLUSIVE
+
+Use EXCLUSIVE if you want build jobs with labels matching this node to only use this node.
+
 |NORMAL
-|No. Can be set to EXCLUSIVE to set that only build jobs with labels matching this node will use this node.
+|No
 
 |buildfarm_node_description
 |Description of the macOS node in Jenkins.
@@ -374,12 +386,12 @@ credentials.
 |proxy_host
 |Proxy url/base hostname to be used.
 |
-|No/Yes if the macOS server only has outbound internet access via proxy
+|Yes if the macOS server only has outbound internet access via proxy
 
 |proxy_port
 |Proxy port to be used.
 |
-|No/Yes if the macOS server only has outbound internet access via proxy
+|Yes if the macOS server only has outbound internet access via proxy
 
 |proxy_device
 |The proxy network device to use the proxy config from the list of devices.
@@ -387,12 +399,12 @@ credentials.
 |No
 
 |proxy_ctx
-|A list of proxies to be set.
+|A list of proxies to use.
 |webproxy, securewebproxy
 |No
 
 |buildfarm_lang_env_var
-|Value of `LANG` environment variable to set on the macOS node. CocoaPods require this to `en_US.UTF-8`.
+|Value of `LANG` environment variable to set on the macOS node. CocoaPods requires a value of `en_US.UTF-8`.
 |en_US.UTF-8
 |No
 
@@ -402,17 +414,17 @@ credentials.
 |No
 
 |credential_private_key
-|Private key stored in Jenkins and used to SSH into the macOS node. If this is not set then a key pair will be generated.
+|Private key stored in Jenkins and used to SSH into the macOS node. If this is not set, a key pair is generated.
 |
 |No
 
 |credential_public_key
-|Public key of the pair. If this is not set then a key pair will be generated.
+|Public key of the pair. If this is not set, a key pair is generated.
 |
 |No
 
 |credential_passphrase
-|Passphrase of the private key. This is stored in Jenkins and used to SSH into the macOS node. If this is not set the private key will not be password protected.
+|Passphrase of the private key. This is stored in Jenkins and used to SSH into the macOS node. If this is not set, the private key is not password protected.
 |
 |No
 
