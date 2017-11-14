@@ -1,5 +1,5 @@
 [[installer-variables]]
-== Installer Variables
+=== Installer Variables
 
 This section describes all installer variables. 
 You must provide a value for all required variables. 
@@ -10,22 +10,8 @@ You can specify a value using one of the following methods:
 * specify a value on the command line
 * using an encrypted link:http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
 
-=== general
-
-|===
-| Variable name | Description | Default value | Required
-
-|jenkins_route_protocol
-|Route protocol used to contact Jenkins
-|https
-|No
-
-|===
-
-
-
 [[variables-android-sdk]]
-=== android-sdk
+==== android-sdk
 
 |===
 | Variable name | Description | Default value | Required
@@ -38,7 +24,7 @@ You can specify a value using one of the following methods:
 
 
 [[variables-configure-buildfarm]]
-=== configure-buildfarm
+==== configure-buildfarm
 
 |===
 | Variable name | Description | Default value | Required
@@ -77,10 +63,15 @@ You can specify a value using one of the following methods:
 |Jenkins SSH public key location
 |~/.ssh/id_rsa.pub
 |No
+
+|jenkins_route_protocol
+|Route protocol used to contact Jenkins
+|https
+|No
 |===
 
 [[variables-deploy-jenkins]]
-=== deploy-jenkins
+==== deploy-jenkins
 
 |===
 | Variable name | Description | Default value | Required
@@ -108,7 +99,7 @@ You can specify a value using one of the following methods:
 |===
 
 [[variables-deploy-nagios]]
-=== deploy-nagios
+==== deploy-nagios
 
 Variables used to configure Nagios for sending alert emails.
 
@@ -153,7 +144,7 @@ Variables used to configure Nagios for sending alert emails.
 |===
 
 [[variables-java]]
-=== java
+==== java
 
 Variables used to configure JDK on the remote host that runs Jenkins CLI commands.
 
@@ -173,7 +164,7 @@ Variables used to configure JDK on the remote host that runs Jenkins CLI command
 |===
 
 [[variables-login]]
-=== login
+==== login
 
 Variables used to login to the OpenShift Cluster.
 
@@ -191,17 +182,17 @@ Variables used to login to the OpenShift Cluster.
 |Yes
 
 |login_url
-|Url used to log in. 
+|URL used to log in to OpenShift. 
 |https://localhost:8443
 |Yes, if running the playbook locally against a remote server and using `ansible_connection=local`.
 
 |===
 
-[[variables-osx-provision]]
-=== osx-provision
+[[variables-provision-osx]]
+==== provision-osx
 
-Variables used while provisioning an OSX node.
-
+ Variables used while provisioning a macOS node.
+ 
 |===
 | Variable name | Description | Default value | Required
 
