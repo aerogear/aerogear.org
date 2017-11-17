@@ -1,15 +1,15 @@
 [[installer-variables]]
-=== Installer Variables
+== Installer Variables
 
-The tables below shows all variables used in the installer per Ansible role. If the variable is specified as Required (i.e. Yes in Required Field and/or empty value in Default field) it should be provided either via the command line, via the inventory file or via an encrypted http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
+The tables below shows all variables used in the installer per role. If the variable is specified as Required (i.e. Yes in Required Field and/or empty value in Default field) it should be provided either via the command line, via the inventory file or via an encrypted http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
 
-==== general
+=== general
 
 |===
 | Variable name | Description | Default value | Required
 
 |jenkins_route_protocol
-|Route protocol used to connect to Jenkins
+|Route protocol used to contact Jenkins
 |https
 |No
 
@@ -18,7 +18,7 @@ The tables below shows all variables used in the installer per Ansible role. If 
 
 
 [[variables-android-sdk]]
-==== android-sdk
+=== android-sdk
 
 |===
 | Variable name | Description | Default value | Required
@@ -31,7 +31,7 @@ The tables below shows all variables used in the installer per Ansible role. If 
 
 
 [[variables-configure-buildfarm]]
-==== configure-buildfarm
+=== configure-buildfarm
 
 |===
 | Variable name | Description | Default value | Required
@@ -42,13 +42,13 @@ The tables below shows all variables used in the installer per Ansible role. If 
 |No
 
 |concurrent_android_builds
-|Number of max. allowed concurrent Android builds.
+|Number of max number of concurrent Android builds that are allowed.
 |5
 |No
 |===
 
 [[variables-deploy-jenkins]]
-==== deploy-jenkins
+=== deploy-jenkins
 
 |===
 | Variable name | Description | Default value | Required
@@ -76,7 +76,7 @@ The tables below shows all variables used in the installer per Ansible role. If 
 |===
 
 [[variables-deploy-nagios]]
-==== deploy-nagios
+=== deploy-nagios
 
 Variables below are used in Nagios for sending alert emails.
 
@@ -84,7 +84,7 @@ Variables below are used in Nagios for sending alert emails.
 | Variable name | Description | Default value | Required
 
 |smtp_server
-|SMTP server that will send alert emails.
+|SMTP server to send alert emails.
 |localhost
 |No
 
@@ -99,29 +99,29 @@ Variables below are used in Nagios for sending alert emails.
 |No
 
 |smtp_from_address
-|SMTP `from` address.
+|SMTP from address.
 |admin@example.com
 |No
 
 |rhmap_admin_email
-|Destination address for alert emails.
+|Destination address of alert emails.
 |root@localhost
 |No
 
 |jenkins_user
-|User for accessing Jenkins during Nagios checks
+|User for accessing jenkins during nagios checks
 |admin
 |No
 
 |jenkins_pass
-|User Password for accessing Jenkins during Nagios checks
+|User Password for acessing jenkins during nagios checks
 |password
 |No
 
 |===
 
 [[variables-java]]
-==== java
+=== java
 
 Variables below are to configure the JDK to install on the remote that runs Jenkins CLI commands.
 
@@ -129,7 +129,7 @@ Variables below are to configure the JDK to install on the remote that runs Jenk
 | Variable name | Description | Default value | Required
 
 |repo
-|Red Hat repository to install JDK from.
+|Repository to install JDK.
 |rhel-7-server-optional-rpms
 |No
 
@@ -141,15 +141,15 @@ Variables below are to configure the JDK to install on the remote that runs Jenk
 |===
 
 [[variables-login]]
-==== login
+=== login
 
-Variables below are used for logging into the OpenShift Cluster.
+Variables below are used to login to the OpenShift Cluster.
 
 |===
 | Variable name | Description | Default value | Required
 
 |oc_user
-|OpenShift user name.
+|OpenShift user to login to OpenShift.
 |
 |Yes
 
@@ -159,27 +159,27 @@ Variables below are used for logging into the OpenShift Cluster.
 |Yes
 
 |login_url
-|URL with login page. 
+|Url used to log in. 
 |https://localhost:8443
-|No, except when running the playbook locally against a remote server and using `ansible_connection=local` - set to default value.
+|No. * Except if running the playbook locally against a remote server and using `ansible_connection=local` Otherwise allow to default.
 
 |===
 
-[[variables-provision-osx]]
-==== provision-osx
+[[variables-osx-provision]]
+=== osx-provision
 
-Variables below are used while provisioning a macOS node.
+Variables below are used while provisioning an OSX node.
 
 |===
 | Variable name | Description | Default value | Required
 
 |ansible_become_pass
-|Sudo password for carrying out root actions on a macOS server
+|Sudo password for carrying out root priveledged actions on a macOS server
 |
 |Yes/No if passing the value via the command line
 
 |remote_tmp_dir
-|What directory to use when creating temporary files.
+|What directory to use when creating some temporary files.
 |/tmp
 |No
 
@@ -219,24 +219,24 @@ Variables below are used while provisioning a macOS node.
 |No
 
 |homebrew_repo
-|Homebrew git repo  (defaults to GitHub repo).
+|The git repo where Homebrew resides (defaults to GitHub repo).
 |https://github.com/Homebrew/brew
 |No
 
 |homebrew_prefix
-|The parent directory of the directory where Homebrew will be installed.
+|The parent directory of the directory where Homebrew resides.
 |/usr/local
 |No
 
 
 |homebrew_install_path
-|Homebrew install path.
+|Where Homebrew will be installed.
 |<homebrew_prefix>/Homebrew
 |No
 
 
 |homebrew_brew_bin_path
-|Where to install `brew`.
+|Where `brew` will be installed.
 |/usr/local/bin
 |No
 
@@ -254,17 +254,17 @@ Variables below are used while provisioning a macOS node.
 |xcode_install_user
 |Apple Developer Account username. If this is not set then Xcode will not be installed.
 |
-|Yes (if Xcode is required)
+|Yes (if xcode is required)
 
 |xcode_install_password
 |Apple Developer Account password. If this is not set then Xcode will not be installed.
 |
-|Yes (if Xcode is required)
+|Yes (if xcode is required)
 
 |xcode_install_session_token
 |Apple Developer Account auth cookie from `fastlane spaceauth` command (For accounts with 2FA enabled).
 |
-|Yes (if Xcode is required)
+|Yes (if xcode is required)
 
 |xcode_versions
 |A list of Xcode versions to install. These may take over 30 minutes each to install.
@@ -272,7 +272,7 @@ Variables below are used while provisioning a macOS node.
 |No
 
 |xcode_default_version
-|Teh default version of Xcode to be used
+|Teh default version of xcode to be used
 |<xcode_version>[0]
 |No
 
@@ -341,19 +341,19 @@ credentials.
 |No
 
 |project_name
-|The name of the Digger Project in OpenShift
+|The name of the digger Project in OpenShift
 |digger
 |No
 
 |proxy_host
 |Proxy url/base hostname to be used.
 |
-|No/Yes if the macOS server only has outbound Internet access via proxy
+|No/Yes if the macOS server only has outbound internet access via proxy
 
 |proxy_port
 |Proxy port to be used.
 |
-|No/Yes if the macOS server only has outbound Internet access via proxy
+|No/Yes if the macOS server only has outbound internet access via proxy
 
 |proxy_device
 |The proxy network device to use the proxy config from the list of devices.
