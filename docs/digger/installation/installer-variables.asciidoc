@@ -1,14 +1,19 @@
 [[installer-variables]]
 === Installer Variables
 
-This section describes all installer variables. 
+This section describes all installer variables organized by tags.
+
+See link:https://github.com/aerogear/aerogear-digger-installer[Digger Installer repo^]
+
 You must provide a value for all required variables. 
 
 You can specify a value using one of the following methods:
 
 * enter a value into the inventory file
 * specify a value on the command line
-* using an encrypted link:http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault] file.
+* using an encrypted link:http://docs.ansible.com/ansible/latest/playbooks_vault.html[Ansible Vault^] file.
+
+
 
 [[variables-android-sdk]]
 ==== android-sdk
@@ -35,7 +40,7 @@ You can specify a value using one of the following methods:
 |No
 
 |add_public_key_automatically
-|Determines whether to add ssh public key to Jenkins configuration automatically.
+|Determines whether to add SSH public key to Jenkins configuration automatically.
 |true
 |No
 
@@ -45,7 +50,7 @@ You can specify a value using one of the following methods:
 |Yes, if `add_public_key_automatically` is set to `true` and `enable_oauth` is set to `true`.
 
 |concurrent_android_builds
-|Max number of concurrent Android builds that are allowed.
+|Max. number of concurrent Android builds.
 |5
 |No
 
@@ -122,7 +127,7 @@ Variables used to configure Nagios for sending alert emails.
 |No
 
 |smtp_from_address
-|SMTP from address.
+|SMTP sender address.
 |admin@example.com
 |No
 
@@ -132,7 +137,7 @@ Variables used to configure Nagios for sending alert emails.
 |No
 
 |jenkins_user
-|User who accesses jenkins during nagios checks.
+|User who accesses Jenkins during Nagios checks.
 |admin
 |No
 
@@ -184,18 +189,18 @@ Variables used to login to the OpenShift Cluster.
 |login_url
 |URL used to log in to OpenShift. 
 |https://localhost:8443
-|Yes, if running the playbook locally against a remote server and using `ansible_connection=local`.
+|Yes, if running the playbook locally against a remote server and using `ansible_connection=local`. Use default value.
 
 |===
 
 [[variables-provision-osx]]
 ==== provision-osx
 
- Variables used while provisioning a macOS node.
+Variables used while provisioning a macOS node.
  
 |===
 | Variable name | Description | Default value | Required
-
+//verify
 |ansible_become_pass
 |Sudo password required to perform root privileged actions on a macOS server. Typically, this is specified using the command line.
 |
@@ -205,7 +210,7 @@ Variables used to login to the OpenShift Cluster.
 |Location for temporary files.
 |/tmp
 |No
-
+//verify
 |node_versions
 |A space separated list of Node versions to install.
 |6
@@ -217,8 +222,14 @@ Variables used to login to the OpenShift Cluster.
 |No
 
 |gem_packages
-|A list of gem packages to install.  Format: `{ name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }`.
-|name: public_suffix, version: 2.0.5:name: xcode-install: <xcode_install_version>
+|A list of gem packages to install. 
+a|----
+gem_packages:
+- name: public_suffix
+  version: 2.0.5
+- name: xcode-install
+  version: "{{xcode_install_version}}"  
+----
 |No
 
 |cocoapods_version
@@ -227,13 +238,23 @@ Variables used to login to the OpenShift Cluster.
 |No
 
 |npm_packages
-|A list of global NPM packages to install. Format: `{ name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }`.
-|name: cordova, version: 7.0.1
+|A list of global NPM packages to install.
+a|----
+npm_packages:
+- name: cordova
+  version: 7.0.1
+----
 |No
 
 |homebrew_packages
-|The packages to install using Homebrew. Format: `{ <PACKAGE_NAME> }`.
-|gpg, grep, jq
+|The packages to install using Homebrew.
+a|
+----
+homebrew_packages:
+- name: gpg
+- name: grep
+- name: jq
+----
 |No
 
 |homebrew_version
@@ -241,11 +262,13 @@ Variables used to login to the OpenShift Cluster.
 |1.3.1
 |No
 
+//version - redundant info?
 |homebrew_repo
 |The git repo for the version of Homebrew to install.
 |https://github.com/Homebrew/brew
 |No
 
+//directory <=> location, similar, consider rewording
 |homebrew_prefix
 |The parent directory for the Homebrew location.
 |/usr/local
@@ -257,12 +280,13 @@ Variables used to login to the OpenShift Cluster.
 |<homebrew_prefix>/Homebrew
 |No
 
-
+//isn't this a target for `brew` installation?
 |homebrew_brew_bin_path
 |The location where `brew` is installed.
 |/usr/local/bin
 |No
 
+//verify
 |homebrew_paths
 |
 |<homebrew_install_path>, <homebrew_brew_bin_path>, <homebrew_var_path>, /usr/local/Cellar, /usr/local/opt, /usr/local/share, /usr/local/etc, /usr/local/include
@@ -282,12 +306,12 @@ Variables used to login to the OpenShift Cluster.
 |xcode_install_password
 |Apple Developer Account password. If this is not set then Xcode is not installed.
 |
-|Yes (if Xcode is required)
+|Yes
 
 |xcode_install_session_token
 |Apple Developer Account auth cookie from `fastlane spaceauth` command (For accounts with 2FA enabled).
 |
-|Yes (if Xcode is required)
+|Yes
 
 |xcode_versions
 |A list of Xcode versions to install, can take over 30 minutes each to install.
@@ -300,7 +324,7 @@ Variables used to login to the OpenShift Cluster.
 |No
 
 |apple_wwdr_cert_url
-| Apple WWDR certificate URL. Defaults to Apple's official URL.
+|Apple WWDR certificate URL. Defaults to Apple's official URL.
 |http://developer.apple.com/certificationauthority/AppleWWDRCA.cer
 |No
 
