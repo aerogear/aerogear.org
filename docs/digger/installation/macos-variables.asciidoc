@@ -3,8 +3,7 @@
 
 ==== Install Homebrew
 
-To run this step individually use
-`osx_install_homebrew` tag, see <<Running Installer steps individually>>
+To run this step individually use `osx_install_homebrew` tag.
 
 This installation step will also add any taps and packages specified in the options.
 
@@ -29,7 +28,7 @@ This installation step will also add any taps and packages specified in the opti
 
 === Install Ruby
 
-To run this step individually use `osx_install_ruby` tag (see <<Running Installer steps individually>>).
+To run this step individually use `osx_install_ruby` tag.
 
 This step installs RVM along with a single version of Ruby. The version of Ruby to
 install can be defined by a variable. The cocoapods gem will be installed,
@@ -64,7 +63,7 @@ other gems can be specified using the `gem_packages` variable.
 
 === Install Node.js
 
-To run this step individually use `osx_install_nodejs` tag (see <<Running Installer steps individually>>).
+To run this step individually use `osx_install_nodejs` tag.
 
 Installs NVM along with any versions of Nodejs specified through variables.
 Packages from NPM can be defined also, however they will be installed globally.
@@ -88,7 +87,7 @@ Packages from NPM can be defined also, however they will be installed globally.
 
 === Install Xcode
 
-To run this step individually use `osx_install_xcode` tag (see <<Running Installer steps individually>>).
+To run this step individually use `osx_install_xcode` tag.
 
 This step installs Xcode CLI tools and Xcode versions specified. Installing Xcode a
 single version of Xcode can take over 30 minutes so please be patient during
@@ -136,7 +135,7 @@ install.
 
 === Download Apple certificates
 
-To run this step individually use `osx_download_certs` tag. (see <<Running Installer steps individually>>).
+To run this step individually use `osx_download_certs` tag.
 
 Downloads the required certificates into the node. Right now, the only
 required certificate is Apple's WWDR certificate. This certificate will be
@@ -157,11 +156,10 @@ downloaded into the user's home directory.
 
 Executes pod repo update.
 
-To run this step individually use 
-`osx_pod_repo_update` tag. (see <<Running Installer steps individually>>).
+To run this step individually use `osx_pod_repo_update` tag.
 
 === Configure Build Farm node
-To run this step individually use `osx_configure_buildfarm` tag.(see <<Running Installer steps individually>>).
+To run this step individually use `osx_configure_buildfarm` tag.
 
 
 This step creates a credential set in the Build Farm for the macOS nodes using the

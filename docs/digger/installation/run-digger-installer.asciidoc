@@ -8,6 +8,8 @@
 NOTE: For a full list of variables that can be configured via the inventory file refer to <<installer-variables>>
 
 . Run the playbook using the updated `inventory-sample` and follow the instructions printed in the terminal:
++
+NOTE: Review https://github.com/aerogear/aerogear-digger-installer/blob/master/sample-build-playbook.yml[Digger Playbook^].
 
 ** Command to install Digger without a macOS server
 +
@@ -20,6 +22,18 @@ ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml --skip-tag
 ----
 ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
 ----
+
+** Roles can be run individually or in batch with flag --tags=<role_tag_1>,...,<role_tag_x>
++
+----
+ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml --tags=provision-osx,nagios
+----
+** To skip default roles, similarly to --skip-tags=provision-osx e.g. --skip-tags=<role_tag_1>,...,<role_tag_x>
++
+----
+ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml --skip-tags=provision-osx,nagios,java
+----
+
 
 . Manually accept Android SDK licence
 +
