@@ -1,0 +1,22 @@
+=== Nagios Installation Health checks
+
+To monitor the status of Digger components, the Digger installer will also install https://www.nagios.org/[Nagios^] and several Nagios checks. At the end of the installation, Ansible will trigger the checks and output the results.
+
+.To navigate to Nagios checks:
+
+. Log in to Nagios using the URL and credentials printed in the terminal at the end of the installation.
+. Navigate to the Services Link.
+. Verify that all Nagios checks are passing.
+
+.The environment specific checks carried out by Nagios are:
+
+* Container CPU Usage
+* Container Memory Usage
+* Container Resource Limits
+* Pod Disk Storage
+
+.The Digger specific checks carried out by Nagios are:
+
+* Availability of the Jenkins container (pod)
+* Status of the network link between Jenkins and the macOS servers
+* Status of the Android SDK PersistentVolumeClaim
