@@ -70,7 +70,7 @@ You can specify a value using one of the following methods:
 |No
 
 |jenkins_route_protocol
-|Route protocol used to contact Jenkins
+|Route protocol used to connect to Jenkins
 |https
 |No
 |===
@@ -137,7 +137,7 @@ Variables used to configure Nagios for sending alert emails.
 |No
 
 |jenkins_user
-|User who accesses Jenkins during Nagios checks.
+|User who queries Jenkins during Nagios checks.
 |admin
 |No
 
@@ -212,7 +212,7 @@ Variables used while provisioning a macOS node.
 |No
 //verify
 |node_versions
-|A space separated list of Node versions to install.
+|A comma separated list of Node versions to install.
 |6
 |No
 
@@ -268,7 +268,6 @@ homebrew_packages:
 |https://github.com/Homebrew/brew
 |No
 
-//directory <=> location, similar, consider rewording
 |homebrew_prefix
 |The parent directory for the Homebrew location.
 |/usr/local
@@ -280,13 +279,11 @@ homebrew_packages:
 |<homebrew_prefix>/Homebrew
 |No
 
-//isn't this a target for `brew` installation?
 |homebrew_brew_bin_path
 |The location where `brew` is installed.
 |/usr/local/bin
 |No
 
-//verify
 |homebrew_paths
 |
 |<homebrew_install_path>, <homebrew_brew_bin_path>, <homebrew_var_path>, /usr/local/Cellar, /usr/local/opt, /usr/local/share, /usr/local/etc, /usr/local/include
@@ -319,7 +316,7 @@ homebrew_packages:
 |No
 
 |xcode_default_version
-|The default version of xcode to be used
+|The default version of Xcode to use
 |<xcode_version>[0]
 |No
 
@@ -409,7 +406,7 @@ Use EXCLUSIVE if you want build jobs with labels matching this node to only use 
 |Yes if the macOS server only has outbound internet access via proxy
 
 |proxy_device
-|The proxy network device to use the proxy config from the list of devices.
+|The proxy network device to use for proxy configuration.
 |Ethernet
 |No
 
