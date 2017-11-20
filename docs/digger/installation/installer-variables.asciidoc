@@ -3,9 +3,9 @@
 
 This section describes all installer variables organized by tags.
 
-See link:https://github.com/aerogear/aerogear-digger-installer[Digger Installer repo^]
+For more information about these variables, see the link:https://github.com/aerogear/aerogear-digger-installer[Digger Installer repo^]
 
-You must provide a value for all required variables. 
+You must provide a value for all required variables or accept the default value. 
 
 You can specify a value using one of the following methods:
 
@@ -189,7 +189,7 @@ Variables used to login to the OpenShift Cluster.
 |login_url
 |URL used to log in to OpenShift. 
 |https://localhost:8443
-|Yes, if running the playbook locally against a remote server and using `ansible_connection=local`. Use default value.
+|Yes
 
 |===
 
