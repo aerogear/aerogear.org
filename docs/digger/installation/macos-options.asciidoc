@@ -18,7 +18,13 @@ This installation step will also add any taps and packages specified in the opti
 |homebrew_version
 |The version of Homebrew to install (git tag).
 |homebrew_packages
-|The packages to install using Homebrew. Format: { name: <PACKAGE_NAME> }.
+a|The packages to install using Homebrew. 
+[source,yml]
+----
+homebrew_packages:
+- name: <PACKAGE_NAME>
+- name: <PACKAGE_NAME>
+----
 |homebrew_repo
 |The git repo where Homebrew resides (defaults to GitHub repo).
 |homebrew_prefix -homebrew_install_path
@@ -34,9 +40,12 @@ This installation step will also add any taps and packages specified in the opti
 
 To run this step individually use `osx_install_ruby` tag (see <<Running Installer steps individually>>).
 
-This step installs RVM along with a single version of Ruby. The version of Ruby to
-install can be defined by a variable. The cocoapods gem will be installed,
-other gems can be specified using the `gem_packages` variable.
+This step installs:
+
+- RVM
+- Ruby (single version)
+- `cocoapods` gem
+- Gems specified in `gem_packages`
 
 
 
@@ -57,68 +66,102 @@ other gems can be specified using the `gem_packages` variable.
 |File name given to the GPG public key required to verify RVM.
 
 |ruby_version
-|The version of Ruby to install on the node.
+|The version of Ruby to install.
 
 |cocoapods_version
-|The version of the Cocoapods gem to install.
+|Cocoapods gem version to install.
 
 |gem_packages
+<<<<<<< Updated upstream:docs/digger/installation/macos-options.asciidoc
 |A list of gems to install on the node.
 Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
+=======
+a|A list of gems to install.
+[source, yml]
+----
+gem_packages:
+- name: <PACKAGE_NAME> 
+  version: <PACKAGE_VERSION>
+----
+>>>>>>> Stashed changes:docs/digger/installation/macos-variables.asciidoc
 |===
 
 == Install Node.js
 
 To run this step individually use `osx_install_nodejs` tag (see <<Running Installer steps individually>>).
 
-Installs NVM along with any versions of Nodejs specified through variables.
-Packages from NPM can be defined also, however they will be installed globally.
-
+Installs:
+- NVM,
+- Nodejs, (versions defined in variable)
+- Optional packages from NPM, these will be installed globally.
 
 .Install Node.js variables
 |===
 | Variable name | Description
 
 |nvm_install_url
-|The URL of NVM installation script (defaults to GitHub release).
+|URL of NVM installation script (defaults to GitHub release).
 |nvm_install_file_name
-|Define the nvm Install filename on the node
+|Define the nvm Install filename on the node  
 |node_versions
 |A list of Node versions to install.
 |npm_packages
+<<<<<<< Updated upstream:docs/digger/installation/macos-options.asciidoc
 |A list of global NPM packages to install.
 Format: { name: <PACKAGE_NAME>, version: <PACKAGE_VERSION> }.
+=======
+a|A list of global NPM packages to install.
+[source,yml]
+----
+npm_packages:
+- name: <PACKAGE_NAME> 
+  version: <PACKAGE_VERSION>
+----
+>>>>>>> Stashed changes:docs/digger/installation/macos-variables.asciidoc
 |===
 
 == Install Xcode
 
 To run this step individually use `osx_install_xcode` tag (see <<Running Installer steps individually>>).
 
-This step installs Xcode CLI tools and Xcode versions specified. Installing Xcode a
-single version of Xcode can take over 30 minutes so please be patient during
-these stages.
+Installs:
 
+- XCode CLI tools
+- XCode - specified version
+
+NOTE: Installing a single version of XCode can take over 30 minutes, please be patient.
+
+==== Xcode Two Factor Authentication (2FA) Support 
+
+NOTE: You can disable 2FA in the Apple Developer Account for the duration of the Ansible job.
+
+<<<<<<< Updated upstream:docs/digger/installation/macos-options.asciidoc
 === Two Factor Authentication (2FA) Support
+=======
+>>>>>>> Stashed changes:docs/digger/installation/macos-variables.asciidoc
 If you have 2FA enabled for the specified Apple Developer Account then
-you will need to set the `xcode_install_session_token` option to a cookie
+you will need to set the `xcode_install_session_token` to a cookie
 provided by authenticating with Apple. This can be done using Fastlane
 Spaceship.
 
+<<<<<<< Updated upstream:docs/digger/installation/macos-options.asciidoc
 
 NOTE: Installed Fastlane must be 2.42.0 or higher
+=======
+NOTE: Fastlane 2.42.0 or higher is required
+>>>>>>> Stashed changes:docs/digger/installation/macos-variables.asciidoc
 
-.Obtaining Apple Developer cookie for 2FA Xcode install
+.Obtaining Apple Developer cookie for 2FA Xcode installation
 ----
 gem install fastlane -v '~> 2.42.0'
 fastlane spaceauth -u <APPLE_DEVELOPER_USERNAME>
 ----
 
-Follow the prompts. Once authenticated successfully a cookie will be logged to
-the screen. Copy the cookie from `---\n` to the final `\n` and provide this as
+Follow the steps printed in the terminal. A cookie will be printed on the screen
+after successful authentication. 
+Copy the cookie from `---\n` to the last `\n` and provide this as
 the value for `xcode_install_session_token`.
 
-Alternatively disable 2FA on the Apple Developer Account for the duration of
-the Ansible job.
 
 .Install Xcode variables
 |===
@@ -131,19 +174,18 @@ installed.
 |Apple Developer Account password. If this is not set then Xcode will not be
 installed.
 |xcode_install_session_token
-|Apple Developer Account auth cookie from fastlane spaceauth command (For
-accounts with 2FA enabled).
+|Apple Developer Account auth cookie from `fastlane spaceauth` command (For
+accounts with enabled 2FA).
 |xcode_versions
-|A list of Xcode versions to install. These may take over 30 minutes each to
-install.
+|A list of Xcode versions to install. Installation of each version may take over 30 minutes.
 |===
 
 == Download Apple certificates
 
 To run this step individually use `osx_download_certs` tag. (see <<Running Installer steps individually>>).
 
-Downloads the required certificates into the node. Right now, the only
-required certificate is Apple's WWDR certificate. This certificate will be
+Downloads required certificates into the node. Currently, only
+Apple's WWDR certificate is required. This certificate will be
 downloaded into the user's home directory.
 
 
@@ -154,44 +196,57 @@ downloaded into the user's home directory.
 |apple_wwdr_cert_url
 |Apple WWDR certificate URL. Defaults to Apple's official URL
 |apple_wwdr_cert_file_name
-|Filename for the downloaded certificate. Default is `AppleWWDRCA.cer`.
+|Filename of the downloaded certificate. Default is `AppleWWDRCA.cer`.
 |===
 
 == Update Cocoapods
 
 Executes pod repo update.
 
+<<<<<<< Updated upstream:docs/digger/installation/macos-options.asciidoc
 To run this step individually use 
 `osx_pod_repo_update` tag. (see <<Running Installer steps individually>>).
 
 == Configure Build Farm node
 To run this step individually use `osx_configure_buildfarm` tag.(see <<Running Installer steps individually>>).
+=======
+To run this step individually, use `osx_pod_repo_update` tag.
+>>>>>>> Stashed changes:docs/digger/installation/macos-variables.asciidoc
 
+=== Configuring a Build Farm node
+To run this step individually, use `osx_configure_buildfarm` tag.
 
 This step creates a credential set in the Build Farm for the macOS nodes using the
-provided keys. Add each machine as a node in the Build Farm, connecting through
-SSH.
+provided keys. Add each machine as a node in the Build Farm, connecting through SSH.
 
-You will need to create a key pair using a tool such as ssh-keygen to allow the
-Jenkins instance to connect with the macOS nodes. Below are the steps involved
-in creating a key pair.
+You need to create a key pair using `ssh-keygen`(or similar tool) to allow the
+Jenkins instance to connect with the macOS nodes. 
 
-.Generating a key pair
+==== Generating A Key Pair With ssh-keygen
+. Run `ssh-keygen`. `-b` is number of bits (2048 by default), `-C` an optional comment.
++
 ----
-# Run ssh-keygen. -b is the number of bits (2048 by default), -C is an optional
-comment.
 ssh-keygen -t rsa -b 4096 -C "Digger-Jenkins-MacOS-Credentials"
+----
 
-# You'll be prompted to select a location for the key pair along with a name.
+. Select a location for the key pair along with a name.
++
+----
 > Enter file in which to save the key:
 > ~/.ssh/digger_macos_rsa
+----
 
-# You'll be asked to select a passphrase.
+. Enter secure passphrase:
++
+----
 > Enter passphrase (empty for no passphrase):
 > mySecurePassword
+----
 
-# Your key pair will then be available under the specified directory with the
-# specified name.
+. Your key pair is available under the specified directory with the
+specified name:
++
+----
 > ls ~/.ssh/
 digger_macos_rsa
 digger_macos_rsa.pub
@@ -205,11 +260,11 @@ digger_macos_rsa.pub
 | Variable name | Description
 
 |credential_private_key
-|Private key stored in Jenkins and used to SSH into the macOS node. If this is not set then a key pair will be generated.
+|Private key stored in Jenkins and used to SSH into the macOS node. If not set, a key pair will be generated.
 |credential_public_key
-|Public key of the pair. If this is not set then a key pair will be generated.
+|Public key of the pair. If not set, a key pair will be generated.
 |credential_passphrase
-|Passphrase of the private key. This is stored in Jenkins and used to SSH into the macOS node. If this is not set the private key will not be password protected.
+|Passphrase protecting the private key. This is stored in Jenkins and used to SSH into the macOS node. If not set, the private key will not be password protected.
 |buildfarm_node_port
 |The port used to connect to the macOS node. Default is `22`.
 |buildfarm_node_root_dir
@@ -227,18 +282,19 @@ digger_macos_rsa.pub
 |Jenkins user ID. Default is `admin`.
 |buildfarm_node_executors
 |Number of executors (Jenkins configuration) on the macOS node. Default is
-`1`. There is currently no build isolation with the macOS node meaning there is
-no guaranteed support for concurrent builds. This value should not be changed
-unless you are certain all apps will be built with the same signature
-credentials.
+`1`. Currently, there is no build isolation with the macOS node, that means there is no guaranteed support for concurrent iOS builds. Run concurrent builds only if ALL apps are to be built with the same signature credentials.
 |buildfarm_node_description
 |Description of the macOS node in Jenkins.
 |buildfarm_node_mode <MODE>
-|How the macOS node should be utilised. The following options are available:
-|<MODE> = NORMAL
-|Use this node as much as possible
-|<MODE> = EXCLUSIVE
-|Only build jobs with labels matching this node will use this node.
+a|How the macOS node should be utilised. The following options are available:
+----
+<MODE> = NORMAL
+----
+Use this node as much as possible
+----
+<MODE> = EXCLUSIVE
+----
+Only build jobs with labels matching this node will use this node.
 
 |===
 
