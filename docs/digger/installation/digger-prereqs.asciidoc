@@ -2,8 +2,6 @@
 
 The main components (jenkins, android-sdk, nagios) of the digger project are deployed to an OpenShift Container Platform. With these components installed, digger has the capability to build Android Applications. The user has the option to configure (via the digger installer) a macOS server to allow for iOS Application builds. This is an optional step and the macOS Server pre-requisites section below can be ignore if a macOS is not part of the installation.
 
-The digger tool can be installed using the https://github.com/aerogear/digger-installer[Digger Installer tool^].
-
 Before running the Digger installer, please make sure the following prerequisites are met:
 
 === General pre-requisites

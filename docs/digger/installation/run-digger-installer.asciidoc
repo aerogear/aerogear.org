@@ -1,4 +1,5 @@
-== Run the Digger Installer
+[[run-digger-installer]]
+== Run Digger Installer
 
 .To run the Digger installer, follow these steps:
 

@@ -1,7 +1,9 @@
 [[macos-server]]
 === macOS Server pre-requisites
 
-This is required for building iOS applications. The following specifications are recommended:
+NOTE: This section is required for building iOS applications. Skip to link:#run-digger-installer[Run Digger Installer] if you are NOT building for iOS or DO NOT wish to configure a mac machine for you digger installation.
+
+The following specifications are recommended:
 
 * 4GB RAM
 * 2 Cores
