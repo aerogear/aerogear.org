@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM fedora:27
 
 ## Install dependencies and rvm
 RUN dnf install -y git wget gpg which grep sed findutils htop grep procps-ng patch libyaml-devel glibc-headers autoconf gcc-c++ glibc-devel patch readline-devel zlib-devel libffi-devel openssl-devel bzip2 automake libtool bison sqlite-devel
@@ -15,9 +15,9 @@ RUN git clone https://github.com/aerogear/aerogear.org aerogear
 WORKDIR /home/aerogear/aerogear
 
 ## Setup Project
-  RUN  /bin/bash -l -c "rvm install ruby 2.1.2"
+  RUN  /bin/bash -l -c "rvm install ruby 2.4.1"
  RUN  /bin/bash -l -c "rvm gemset create aerogear"
- RUN  /bin/bash -l -c "rvm use ruby-2.1.2@aerogear"
+ RUN  /bin/bash -l -c "rvm use ruby-2.4.1@aerogear"
  RUN  /bin/bash -l -c "gem install bundler"
 USER root
 RUN dnf install -y libcurl-devel libcurl
@@ -26,6 +26,6 @@ USER aerogear
  RUN  /bin/bash -l -c "bundle install --path vendor"
 
 ## Run
-ENTRYPOINT /bin/bash -l -c "bundle install --path vendor;bundle exec jekyll serve --host=0.0.0.0 --watch"
+#ENTRYPOINT /bin/bash -l -c "bundle install --path vendor;bundle exec jekyll serve --host=0.0.0.0 --watch"
 
 EXPOSE 4000
