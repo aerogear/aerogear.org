@@ -10,6 +10,5 @@ bin/
 /.rbenv-version
 *~
 *.iml
-Gemfile.lock
 /nbproject/private/
 .idea
