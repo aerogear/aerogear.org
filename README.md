@@ -2,7 +2,7 @@
 
 ## Requirement
 
-Before you can run the side, make sure you have [asciidoc](http://www.methods.co.nz/asciidoc/) installed on your machine!
+Before you can run the site, make sure you have [asciidoc](http://www.methods.co.nz/asciidoc/) installed on your machine!
 
 ## Building
 
