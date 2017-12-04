@@ -1,33 +1,30 @@
-[[macos-server]]
-=== macOS Server pre-requisites
+[[macos-prereqs]]
+==== macOS prerequisites (optional)
 
-This is required for building iOS applications. The following specifications are recommended:
+.Recommended specifications:
 
+* A fresh macOS 10.12 Sierra install (MacinCloud service can be used, too)
 * 4GB RAM
-* 2 Cores
-* A clean install of macOS 10.12 Sierra or cloud provider macincloud
-* 30GB minimum disk space and and additional 20GB per XCode version
+* 2 CPU Cores
+* 30GB minimum disk space and and additional 20GB per installed XCode version
 
 
-The sections below outline the required state for the macOS node. Ansible requires SSH access to the macOS server in order to correctly provision the machine to support iOS builds. To enable this, it is required that
-a user with sudo permissions and SSH access exists on the target machine. Read the following sections and ensure these conditions are met to enable correct configuration of your macOS server via the Ansible installation.
+===== Create SSH User for Ansible
 
-====== Create SSH User
+Ansible requires an SSH access to the macOS server in order to correctly provision the server to support iOS builds. Create a user with sudo permissions and SSH access on the macOS server. 
 
-We recommended that you create a new user which will be provided to Ansible for SSH connections. An example bash script is provided to achieve this.
+An example bash script is provided.
 
-WARNING: The provided scripts helps with creating an OSX user. Do not use these scripts without reviewing their contents as it will allow access to your machine with a default password.
-Change the default `PASSWORD` and ensure `USER_ID` is not assigned.
+WARNING: Review the script before using it. The unmodified script will allow access to your machine with a default password. Change the default `PASSWORD` and ensure that `USER_ID` is unassigned.
 
-By default, this script will create a user named `jenkins` with a `UID` of `550` and add the user to the the `sudoers` file. The users `PASSWORD` variable is set by default to `Password1`.
-To enable iOS builds, this user is added to the `admin` group.
+By default, the script will create a user named `jenkins` with `USER_ID=550` and add the user to the the `sudoers` file. The user's `PASSWORD` is set by default to `Password1`. The user is added to the `admin` group.
 
-If using the sample script (contents provided below) you should read it carefully, understand its implications and edit it as required.
-The script can be downloaded for convenience and run using the following commands:
+IMPORTANT: Restart the server to implement the changes.
 
+Download and execute the script with the following commands:
 [source,bash]
 ----
-curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/create-osx-user.sh
+curl -O https://raw.githubusercontent.com/aerogear/aerogear-digger/master/admin/create-osx-user.sh
 sudo bash create-osx-user.sh
 ----
 
@@ -69,18 +66,22 @@ echo "${USERNAME}  ALL=(ALL:ALL) ALL" >> /etc/sudoers
 echo "Done creating OSX user - you may need to restart the osx server to apply all changes for the user ${USERNAME}"
 ----
 
-IMPORTANT: Restart the server to implement the changes made above.
 
-====== Configure Remote Login
+===== Configure Remote Login
+Enable the remotely running Ansible process to execute commands on the macOS server via SSH.
 
-We must enable the Ansible process running remotely to execute commands on the macOS server via SSH.
+A sample script is provided below. The `USERNAME` variable should contain the name of the user created in the previous step.
+This allows the `USERNAME` to access the server via SSH with a password. 
 
-Again, a sample script (contents provided below) is provided to achieve this. The `USERNAME` variable should match the user that was created in the previous step.
-It can be downloaded and executed by running the following:
+WARNING: Review and understand the script before using it.
+
+You can also add a public encryption key to the `authorized_keys` file associated with the user, with the private key of the asymmetric key pair present on the Ansible management node.
+
+The script can be downloaded and executed using the following commands:
 
 [source,bash]
 ----
-curl -O https://raw.githubusercontent.com/aerogear/digger-jenkins/master/admin/enable-osx-remote-login.sh
+curl -O https://raw.githubusercontent.com/aerogear/aerogear-digger/master/admin/enable-osx-remote-login.sh
 sudo bash enable-osx-remote-login.sh
 ----
 
@@ -107,24 +108,20 @@ dseditgroup -o edit -a ${USERNAME} -t user ${OSX_SSH_GROUP_NAME}
 # now, following should work  ---> ssh username@localhost
 ----
 
-This allows the `USERNAME` created previously to access the server via SSH with a password. You may also choose to add a public key to the `authorized_keys` file for said user, with the private key of the key pair existing on the Ansible management node.
+===== Ansible root Permissions
 
+A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation^].
+This allows Ansible to run commands as `sudo` user.
 
-====== Connecting via Ansible
+Add the name of the user created in previous steps as a variable `ansible_ssh_user` into the Ansible inventory file.
 
-A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation].
-This allows us to run commands as `sudo` user
+Set `ansible_sudo_pass` variable or `--ask-sudo-pass` flag with the user password to enable the installer to work with root permissions.
 
-The user created in the previous steps should be provided as a host variable to Ansible via `ansible_ssh_user`
+===== macOS Internet Access
 
-Set `ansible_sudo_pass` variable or pass the `--ask-sudo-pass` flag when running the Ansible playbook to enable the installer to work with root permissions.
-This value should match the password set when creating the user.
+The macOS requires Internet access to the following hosts:
 
-
-
-==== Network access
-
-The macOS requires a network access to the following hosts:
+IMPORTANT: Other external hosts may be required depending on what other packages you specify to install.
 
 .Hosts and resources they provide:
 |===
@@ -145,6 +142,3 @@ The macOS requires a network access to the following hosts:
 | https://npmjs.org
 | `NPM packages`
 |===
-
-
-Other external hosts may be required depending on what other packages you specify to install.
