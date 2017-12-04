@@ -1,4 +1,4 @@
-=== How to install Android SDK with Ansible
+==== How to install Android SDK with Ansible
 
 WARNING: During the process, you will be asked to accept the Android SDK License Agreement.
  
@@ -10,7 +10,7 @@ The Android SDK is required to build Android apps. The installer downloads the A
 
 Jenkins dynamically creates containers (pods) on OpenShift using the https://wiki.jenkins.io/display/JENKINS/Kubernetes+Plugin[Kubernetes Jenkins plugin^] for each Android build.
 
-==== Configure Android SDK components 
+===== Configure Android SDK components 
 
 The Android SDK contains many different components. Only a subset of them are installed by default.
 //TODO finish this section

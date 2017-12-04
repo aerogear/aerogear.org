@@ -1,4 +1,4 @@
-== Digger Nagios Monitoring
+== Digger Health Monitoring by Nagios
 Nagios is provisioned by default by the Digger Ansible playbook. Once Nagios is successfully installed, a number of checks are triggered by the playbook:
 
 * Check that the Android PVC (PersistentVolumeClaim) is Bound
