@@ -15,17 +15,13 @@ Before you can run the side, make sure you have [asciidoc](http://www.methods.co
 1. go to <http://127.0.0.1:4000/>
 1. profit!
 
-## Publication Info
-
-Pushing to `master` branch, will trigger a Jenkins CI build, which will deploy to <http://staging.aerogear.org>.
-
-Pushing to `production` branch, deploys the site to <http://aerogear.org>.
-
 ### Development Steps
 
-. Make changes in aerogear.org repo on a custom branch
-. Create a pr against master
-. Get the changes reviewed and verified
-. Merge to master (which publishes to staging)
-. Get the changes verified
-. Merge to production branch (which publishes to the site)
+1. Make changes in aerogear.org repo on a custom branch
+1. Create a pr against master
+1. Get the changes reviewed and verified
+1. Merge to master
+1. Contact a team member on #aerogear on irc to trigger the build to publish to staging
+1. Get the changes verified
+1. Merge to production branch
+1. Contact a team member on #aerogear on irc to trigger the build to publish to production
