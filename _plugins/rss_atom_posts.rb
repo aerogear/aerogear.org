@@ -14,7 +14,9 @@ module Reading
       feed_xml = diskcache.cache('feed_planet_aerogear_tag') do
         url = 'http://dcp.jboss.org/v1/rest/feed/?sys_type=blogpost&tag=' + feed_names.join("&tag=")
         Jekyll.logger.info "rss_atom_posts:", "fetching #{url}"
-        http = Curl.get(url)
+        http = Curl.get(url) do|http|
+          http.follow_location = true
+        end
         http.body_str
       end
 
