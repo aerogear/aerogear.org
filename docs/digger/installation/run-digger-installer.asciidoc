@@ -1,4 +1,6 @@
-=== Running Digger Installer
+[[run-digger-installer]]
+=== Run Digger Installer
+
 
 . Clone the https://github.com/aerogear/aerogear-digger-installer[Digger Installer GitHub repo^]
 
