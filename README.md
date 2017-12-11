@@ -18,10 +18,10 @@ Before you can run the site, make sure you have [asciidoc](http://www.methods.co
 ### Development Steps
 
 1. Make changes in aerogear.org repo on a custom branch
-1. Create a pr against master
+1. Create a pr against the `master` branch
 1. Get the changes reviewed and verified
-1. Merge to master
-1. Contact a team member on #aerogear on irc to trigger the build to publish to staging
+1. Merge to the `master` branch
+1. Contact a team member on #aerogear on irc to trigger the build to publish the `master` branch to https://staging.aerogear.org
 1. Get the changes verified
-1. Merge to production branch
-1. Contact a team member on #aerogear on irc to trigger the build to publish to production
+1. Merge to the `production` branch
+1. Contact a team member on #aerogear on irc to trigger the build to publish the `production` branch to to https://aerogear.org
