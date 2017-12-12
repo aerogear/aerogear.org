@@ -11,7 +11,7 @@
 
 ===== Create SSH User for Ansible
 
-Ansible requires an SSH access to the macOS server in order to correctly provision the server to support iOS builds. Create a user with sudo permissions and SSH access on the macOS server. 
+Ansible requires SSH access to the macOS server in order to correctly provision the server to support iOS builds. Create a user with sudo permissions and SSH access on the macOS server. 
 
 An example bash script is provided.
 
