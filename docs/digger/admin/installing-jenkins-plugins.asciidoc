@@ -1,13 +1,17 @@
 == Installing Jenkins plugins
-NOTE: Plugins for Jenkins can be found at https://plugins.jenkins.io
+Digger installs required Jenkins plugins by default. If you need to install more Jenkins plugins, they can be installed using Jenkins UI (recommended) or by modifying variables in certain Ansible file. See instructions below.
 
-Digger will by default install required Jenkins plugins. If more Jenkins plugins are required, they can be installed by listing them in a task in Ansible playbook or using Jenkins UI.
+NOTE: Jenkins Plugins homepage: https://plugins.jenkins.io
 
-=== Using Ansible Playbook
-https://github.com/aerogear/aerogear-digger-installer/blob/master/configure-buildfarm/defaults/main.yml[Digger Installer Ansible playbook^]. 
-The `jenkins_plugins` play can be modified to include new plugins. 
+=== Using Jenkins UI (Recommended)
+Go to `Manage Jenkins -> Manage Plugins`. If the plugin is not available in the
+`Available` tab then it   can be installed by uploading an `.hpi` file in
+`Advanced -> Upload Plugin`.
 
-.The structure of a sample Ansible task:
+=== By Modifying configure-buildfarm Defaults file
+Add a new record into `jenkins_plugins` variable in https://github.com/aerogear/aerogear-digger-installer/blob/master/configure-buildfarm/defaults/main.yml#L12[configure-buildfarm default variables^]. 
+
+.The structure of jenkins_plugins record:
 [source,yaml]
 ----
 -
@@ -16,7 +20,3 @@ The `jenkins_plugins` play can be modified to include new plugins.
   archive: http://updates.jenkins.io/download/plugins/sample-plugin/1.20/sample-plugin.hpi
 ----
 
-=== Using Jenkins UI
-Go to `Manage Jenkins -> Manage Plugins`. If the plugin is not available in the
-`Available` tab then it   can be installed by uploading an `.hpi` file in
-`Advanced -> Upload Plugin`.
