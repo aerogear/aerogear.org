@@ -1,6 +1,8 @@
 [[macos-prereqs]]
 ==== macOS prerequisites (optional)
 
+NOTE: This section is required for macOS server configuration to enable iOS application building with Aerogear Digger. Skip to link:#run-digger-installer[Run Digger Installer] if you DO NOT to wish enable this.
+
 .Recommended specifications:
 
 * A fresh macOS 10.12 Sierra install (MacinCloud service can be used, too)
