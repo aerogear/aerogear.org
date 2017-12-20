@@ -1,11 +1,9 @@
 [[macos-prereqs]]
 ==== macOS prerequisites (optional)
 
-<<<<<<< HEAD
-NOTE: This section is required for building iOS applications. Skip to link:#run-digger-installer[Run Digger Installer] if you are NOT building for iOS or DO NOT wish to configure a mac machine for you digger installation.
-
-The following specifications are recommended:
 =======
+NOTE: This section is required for macOS server configuration to enable iOS application building with Aerogear Digger. Skip to link:#run-digger-installer[Run Digger Installer] if you DO NOT to wish enable this.
+
 .Recommended specifications:
 >>>>>>> 2d862a40... RHMAP-18943 macos-prereqs review
 
