@@ -1,17 +1,18 @@
 [[macos-setup]]
 === Setup macOS Servers (optional)
 
-After setting the required Ansible variables, the installer will perform the following tasks to provision macOS servers:
+Set the required variables to make installer provision a macOS server.
 
-. Install Homebrew,
-. Install RVM and Ruby,
-. Install NVM and Node,
-. Install Xcode,
-. Download Apple certificates,
-. Update Cocoapods,
-. Register macOS Server as a node in Jenkins.
+.Steps done by installer to provision a macOS server
+. Install Homebrew
+. Install RVM and Ruby
+. Install NVM and Node
+. Install Xcode
+. Download Apple certificates
+. Update Cocoapods
+. Register macOS Server as a node in Jenkins
 
-==== Set Required Ansible Variables
+==== Required Ansible Variables for macOS server provisioning
 
 |===
 | Variable name | Description
@@ -32,13 +33,13 @@ If not set, the Jenkins node configuration will be skipped.
 | Passphrase for the private key. If not set, the Jenkins node
 configuration will be skipped.
 
-| `credential_public_key_path` -
+| `credential_public_key_path`
 | Path to the public key. The macOS node will add this to it's
 `authorized_keys` file. If not set, the Jenkins node configuration will
 be skipped.
 |===
 
-.Example command with variables needed to start the Digger Ansible job to provision macOS server:
+.Example: Command setting required variables to start the Digger Ansible job to provision macOS server:
 
 ----
 ansible-playbook -i sample-inventory-file sample-playbook.yml
@@ -52,6 +53,6 @@ ansible-playbook -i sample-inventory-file sample-playbook.yml
 ----
 
 ==== Further macOS Configuration options
+Further configuration of the macOS node is possible through optional
+xref:macos-variables[macOS variables].
 
-xref:macos-variables[View all macOS variables].
-Further configuration of the macOS node is possible through optional variables.
