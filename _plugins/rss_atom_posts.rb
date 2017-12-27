@@ -1,26 +1,30 @@
 require 'rss'
 require 'curb'
-require 'diskcached'
+
 
 module Reading
   class Generator < Jekyll::Generator
 
     def generate(site)
-      diskcache = Diskcached.new('/tmp/aerogear.site.cache', 300)
       feed_names = []
       site.data["people"].each do |nick, person|
           feed_names << person["jboss-planet-tag"] if person["jboss-planet-tag"]
       end
-      feed_xml = diskcache.cache('feed_planet_aerogear_tag') do
-        url = 'http://dcp.jboss.org/v1/rest/feed/?sys_type=blogpost&tag=' + feed_names.join("&tag=")
-        Jekyll.logger.info "rss_atom_posts:", "fetching #{url}"
-        http = Curl.get(url)
-        http.body_str
-      end
+      
+      url = 'http://dcp2.jboss.org/v2/rest/feed/?sys_type=blogpost&tag=' + feed_names.join("&tag=")
+      Jekyll.logger.info "rss_atom_posts:", "fetching #{url}"
+      http = Curl::Easy.perform(url) do |http|
+          http.headers['User-Agent'] = 'Jekyll'
+          http.headers['Charset']="UTF-8"
+        end
+      feed_xml =  http.body_str
 
       all_data = Set.new
 
       posts = []
+
+      feed_xml = feed_xml.force_encoding(Encoding::UTF_8)
+
       feed = RSS::Parser.parse(feed_xml)
       feed.items.each do |entry|
         categories = []

@@ -19,4 +19,4 @@ NOTE: If you choose to use macOS servers, their manual pre-configuration is requ
 It is possible to deploy Digger behind HTTP/HTTPS proxy that do not require authentication. see <<using-http-proxy>>
 
 === Sample jenkinsfiles To Utilise Jenkins Pipelines
-A suite of sample `jenkinsfiles` used for demonstration of application building using Jenkins pipeline is available in https://github.com/aerogear/aerogear-digger/tree/master/jenkinsfiles[aerogear-digger GitHub repo^]
+A suite of sample `jenkinsfiles` used for demonstration of application building using Jenkins pipeline is available in https://github.com/aerogear/aerogear-digger/tree/master/jenkinsfiles[aerogear-digger GitHub repo^].

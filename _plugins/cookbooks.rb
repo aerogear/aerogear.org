@@ -22,15 +22,16 @@ module Readme
       cookbooks.each do |platform, url|
         body_str = diskcache.cache('cookbook-' + platform) do
           Jekyll.logger.info "cookbooks:", "fetching #{url}"
-          http = Curl.get( url ) do |http|
+          http = Curl::Easy.perform( url ) do |http|
             http.headers['User-Agent'] = 'Jekyll'
+            http.headers['Charset']="UTF-8"
           end
-          http.body_str
+          return http.body_str
         end
 
         json = JSON.parse(body_str)
         baseurl = File.dirname(json['html_url'])
-        content = Base64.decode64(json['content'])
+        content = Base64.decode64(json['content']).force_encoding(Encoding::UTF_8)
 
 
         content = content.gsub(/^.*(?:Cookbook apps|Table of content)([^#]+)(?:##.*$|$)/m, '\1')
@@ -38,6 +39,7 @@ module Readme
         content = content.gsub(/:heavy_check_mark:/, '<i class="fa fa-check green"></i>')
         content = content.gsub(/:heavy_minus_sign:/, '<i class="fa fa-remove gray"></i>')
         content = content.gsub(/\[([^\]]+)\]\(((?!http).+)\)/, '[\1](' + baseurl + '/\2)')
+        
 
         site.data['cookbooks'] = {} unless site.data['cookbooks']
         site.data['cookbooks'][platform] = content
