@@ -1,21 +1,35 @@
 [[macos-prereqs]]
-==== macOS prerequisites (optional)
+=== macOS Prerequisites (optional)
 
-=======
 NOTE: This section is required for macOS server configuration to enable iOS application building with Aerogear Digger. Skip to link:#run-digger-installer[Run Digger Installer] if you DO NOT to wish enable this.
 
 .Recommended specifications:
->>>>>>> 2d862a40... RHMAP-18943 macos-prereqs review
+=======
+NOTE: Completing the steps presented in this section are only required to provision a macOS server to enable iOS app building with Aerogear Digger. Please skip to link:#run-digger-installer[Run Digger Installer] if you don't need this functionality.
+
+==== Recommended macOS Server Specifications:
+>>>>>>> 36db6c8d... RHMAP-18943 macos-prereqs polishing 1
 
 * A fresh macOS 10.12 Sierra install (MacinCloud service can be used, too)
 * 4GB RAM
 * 2 CPU Cores
 * 30GB minimum disk space and and additional 20GB per installed XCode version
 
+==== macOS Configuration Requirements
+. Ansible requires SSH sudo access to the macOS server in order to correctly provision the server to support iOS builds. 
++
+Enable SSH connection by following these steps:
++
+* link:#create-macos-sudo-user[Create a sudo macOS user]
+* link:#conf-remote-login-in-ansible-host[Configure Remote login(SSH) in Ansible]
+* link:#add-macos-sudo-into-playbook[Add macOS sudo user credentials into Ansible Inventory file]
 
-===== Create SSH User for Ansible
+. link:#provide-macos-with-internet[Provide macOS server with Internet access to list of hosts]
 
-Ansible requires SSH access to the macOS server in order to correctly provision the server to support iOS builds. Create a user with sudo permissions and SSH access on the macOS server. 
+[[create-macos-sudo-user]]
+==== Create a sudo macOS User
+
+Create a user with sudo permissions and SSH access on the macOS server. 
 
 An example bash script is provided.
 
@@ -70,16 +84,16 @@ echo "${USERNAME}  ALL=(ALL:ALL) ALL" >> /etc/sudoers
 echo "Done creating OSX user - you may need to restart the osx server to apply all changes for the user ${USERNAME}"
 ----
 
-
-===== Configure Remote Login
+[[conf-remote-login-in-ansible-host]]
+==== Configure Remote Login(SSH) in Ansible Host
 Enable the remotely running Ansible process to execute commands on the macOS server via SSH.
 
-A sample script is provided below. The `USERNAME` variable should contain the name of the user created in the previous step.
+A sample script is provided below. The `USERNAME` variable should contain the name of the macOS user created in the previous step.
 This allows the `USERNAME` to access the server via SSH with a password. 
 
 WARNING: Review and understand the script before using it.
 
-You can also add a public encryption key to the `authorized_keys` file associated with the user, with the private key of the asymmetric key pair present on the Ansible management node.
+You can also add a public encryption key to the `authorized_keys` file associated with the user. Private key of the asymmetric key pair is stored  on the Ansible management node.
 
 The script can be downloaded and executed using the following commands:
 
@@ -112,18 +126,19 @@ dseditgroup -o edit -a ${USERNAME} -t user ${OSX_SSH_GROUP_NAME}
 # now, following should work  ---> ssh username@localhost
 ----
 
-===== Ansible root Permissions
+[[add-macos-sudo-into-inventory-file]]
+==== Add macOS sudo Credentials into Ansible Inventory File
 
 A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation^].
-This allows Ansible to run commands as `sudo` user.
 
-Add the name of the user created in previous steps as a variable `ansible_ssh_user` into the Ansible inventory file.
+Add the name of the macOS user created in previous steps as a variable `ansible_ssh_user` into the Ansible inventory file.
+
+This allows Ansible to run commands as `sudo` user.
 
 Set `ansible_sudo_pass` variable or `--ask-sudo-pass` flag with the user password to enable the installer to work with root permissions.
 
-===== macOS Internet Access
-
-The macOS requires Internet access to the following hosts:
+[[provide-macos-with-access-to-hosts]]
+==== Provide macOS with Internet Access to List of Hosts
 
 IMPORTANT: Other external hosts may be required depending on what other packages you specify to install.
 
