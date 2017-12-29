@@ -8,10 +8,6 @@ toc_generate: true
 
 include::docs/digger/admin/about-admin-guide.asciidoc[]
 
-include::docs/digger/admin/installing-jenkins-plugins.asciidoc[]
+include::docs/digger/admin/installing-jenkins-plugins.asciidoc[]  
 
-include::docs/digger/admin/digger-nagios-monitoring.asciidoc[]
-
-include::docs/digger/admin/using-http-proxy.asciidoc[]
-
-include::docs/digger/admin/known-issues.asciidoc[]
+include::docs/digger/admin/digger-nagios-monitoring.asciidoc[] 
