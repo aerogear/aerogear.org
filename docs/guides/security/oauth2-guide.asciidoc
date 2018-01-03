@@ -276,9 +276,9 @@ First create a helper class and add these lines of code:
 AuthorizationManager.config("KeyCloakAuthz", OAuth2AuthorizationConfiguration.class)
         .setBaseURL(new URL("http://localhost:8080/auth"))
         .setClientId("shoot-third-party")
-        .setAuthzEndpoint("/realms/shoot-realm/tokens/login")
-        .setAccessTokenEndpoint("/realms/shoot-realm/tokens/access/codes")
-        .setRefreshEndpoint("/realms/shoot-realm/tokens/refresh")
+        .setAuthzEndpoint("/realms/shoot-realm/protocol/openid-connect/auth")
+        .setAccessTokenEndpoint("/realms/shoot-realm/protocol/openid-connect/token")
+        .setRefreshEndpoint("/realms/shoot-realm/protocol/openid-connect/token")
         .setAccountId("keycloak-token")
         .setRedirectURL("http://oauth2callback")
         .asModule();
