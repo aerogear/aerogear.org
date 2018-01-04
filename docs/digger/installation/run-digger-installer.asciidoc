@@ -1,28 +1,31 @@
 [[run-digger-installer]]
 === Run Digger Installer
 
-. Clone the https://github.com/aerogear/aerogear-digger-installer[Digger Installer GitHub repo^]
+. Clone https://github.com/aerogear/aerogear-digger-installer[Digger Installer GitHub repo^].
 
-. Make a copy of the Ansible https://github.com/aerogear/aerogear-digger-installer/blob/master/inventory-sample[inventory-sample^], and update it with the information about your infrastructure.
+. Make a copy of the Ansible https://github.com/aerogear/aerogear-digger-installer/blob/master/inventory-sample[inventory-sample^], and update it with information about your infrastructure.
 
 +
-NOTE: For a full list of variables that can be configured via the inventory file refer to <<installer-variables>>
+NOTE: For a full list of variables that can be configured via the inventory file, refer to <<installer-variables>>.
 
-. Run the playbook and follow the instructions printed in the terminal:
+. Use one of these commands to run the playbook and follow the instructions printed in the terminal:
+//+
+//Refer to https://github.com/aerogear/aerogear-digger-installer/blob/master/sample-build-playbook.yml[Digger Playbook^] to see the roles executed during installation and their associated tags.
+
+** Command to install Digger with macOS server
 +
-NOTE: Refer to https://github.com/aerogear/aerogear-digger-installer/blob/master/sample-build-playbook.yml[Digger Playbook^] to see the roles executed during installation and their associated tags.
-
-** Command to install Digger with a macOS server
+WARNING: Make sure your macOS Server is prepared for installation. See link:macos-prereqs[macOS Prerequisities].
 +
 ----
 ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
 ----
 +
-//** Command to install Digger without a macOS server
-//+
-//----
-//ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml //--skip-tags=provision-osx
-//----
+** Command to install Digger without a macOS server
++
+----
+ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml --skip-tags=provision-osx
+----
+WARNING: As of Jan 4th 2018, only `provision-osx` tag is working with with `--skip-tags`.
 
 +
 //** Roles can be run individually or in batch with flag //--tags=<role_tag_1>,...,<role_tag_x>
@@ -35,23 +38,26 @@ ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
 //----
 //ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml //--skip-tags=provision-osx,nagios,java
 //----
-
-. Manually accept Android SDK licence
+. Perform nonautomated tasks manually:
 +
+.. Accept Android SDK licence
 - During initial Android SDK installation
 - During sync of Android SDK versions
+.. If you are provisioning a macOS Server: 
+- Copy server's public SSH key(server that is running Ansible) into Jenkins Slave running on macOS server
+- Accept the Oracle License when installing Java on macOS server
 +
 
 
 .Ansible playbook will perform the following tasks:
 
-* Verify and Install (if required) the minimum Java version
-* Create a project in OpenShift
-* Install Jenkins
-* Install Android SDK to a Persistent Volume
-* Configure Jenkins
-* Setup macOS Server(s) (optional)
-* Install Nagios
-* Print URL and credentials for Jenkins and Nagios
+* Check if the required Java version is installed, install/upgrade if not,
+* Create an OpenShift project,
+* Install Jenkins (Master) on OpenShift,
+* Install Android SDK to a Persistent Volume,
+* Configure Jenkins Master,
+* Setup macOS Server(s) (optional). link:macos-prereqs[Manual pre-provisioning is required.]
+* Install Nagios on OpenShift,
+* Print URL and credentials for Jenkins and Nagios.
 
 //NOTE: All tasks are idempotent. You can run them multiple times and they will produce the same results.
