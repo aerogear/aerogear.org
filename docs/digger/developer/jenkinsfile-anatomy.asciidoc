@@ -53,8 +53,7 @@ logically. The `stage` function takes one argument which is the name of the
 stage.
 <4> Checkout the source code of the repo. This is done using the provided
 `checkout` function. `scm` is another helper which uses the SCM details from
-the Jenkins job configuration. When using Digger with RHMAP the SCM details
-will be configured automatically at build time.
+the Jenkins job configuration.
 <5> Platform specific pre-requisite steps are executed during the prepare stage.
 e.g. add platform for cordova.
 <6> Build the applications. This is done using a build tool such as Gradle for
