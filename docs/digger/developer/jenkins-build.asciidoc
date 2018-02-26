@@ -72,10 +72,6 @@ The table below shows the parameters that are required to build using the defaul
 |Type of build
 |"debug" or "release"
 
-|FH_CONFIG_CONTENT
-|* Relevant only for builds triggered from RHMAP.
-|
-
 |===
 +
 image::./img/pipeline_add_parameter.png[Add Parameters]
