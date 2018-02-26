@@ -18,36 +18,6 @@ node("android"){
 
 === Prepare the Environment/Application
 
-==== Adding a configuration file (RHMAP only)
-When building apps in RHMAP a properties file should be added to the app to
-allow it to make backend requests. In Android this is a properties file named
-`fhconfig.properties`, in iOS this is a plist file named `fhconfig.plist`. The
-contents of these files is provided in the Jenkinsfile through
-`params.FH_CONFIG_CONTENT`. Below are examples of populating the configuration
-file for Android and iOS.
-
-.fhconfig Android properties file
-[source,groovy]
-----
-node(platform) {
-  ...
-  stage("Prepare"){
-    writeFile file: 'app/src/main/assets/fhconfig.properties', text: params.FH_CONFIG_CONTENT
-  }
-  ...
-}
-----
-
-.fhconfig iOS plist file
-[source,groovy]
-----
-node(platform) {
-  stage("Prepare") {
-    writeFile: file: 'app/fhconfig.plist', text: params.FH_CONFIG_CONTENT
-  }
-}
-----
-
 ==== Cordova preparation
 For Cordova applications it is required to carry out steps to add and prepare the platform in the environment the application is building. Below are the steps required to complete this successfully. Note the multiple uses of the platform variable here. These steps are reused for building both "android" and "ios" depending on the platform value set.
 
@@ -219,11 +189,10 @@ The `signAndroidApks` function takes the following parameters.
 | Parameter | Description
 
 | keyStoreId
-| Keystore ID. This will be provided through the `BUILD_CREDENTIAL_ID`
-parameter if the app is built through RHMAP.
+| Keystore ID.
 
 | keyAlias
-| Alias of the private key/certificate chain. This will be provided through the `BUILD_CREDENTIAL_ALIAS` parameter if the app is built through RHMAP.
+| Alias of the private key/certificate chain.
 
 | apksToSign
 | A file name or glob pattern specifying the APK files to store.
@@ -290,8 +259,7 @@ against. If empty, the SDK will be determined by XCode.
 | Parameter | Description
 
 | profileId
-| ID of the developer profile. This will be provided through the
-`BUILD_CREDENTIAL_ID` parameter if the app is built through RHMAP.
+| ID of the developer profile.
 
 | clean
 | Removes the previous signature (if any) before signing the artifact.
