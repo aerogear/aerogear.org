@@ -26,7 +26,7 @@ be skipped.
 be skipped.
 
 | `credential_private_key_path`
-| Path to the private key that Jenkins should use to SSH into the macOS node.
+| Path to the private key that Jenkins uses to SSH into the macOS node.
 If not set, the Jenkins node configuration will be skipped.
 
 | `credential_passphrase`
@@ -34,7 +34,7 @@ If not set, the Jenkins node configuration will be skipped.
 configuration will be skipped.
 
 | `credential_public_key_path`
-| Path to the public key. The macOS node will add this to it's
+| Path to the public key. The macOS node will add this to its
 `authorized_keys` file. If not set, the Jenkins node configuration will
 be skipped.
 |===

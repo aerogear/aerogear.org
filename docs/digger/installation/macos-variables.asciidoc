@@ -82,7 +82,7 @@ gem_packages:
 //To run this step individually use `osx_install_nodejs` tag.
 
 Installs:
-- NVM,
+- NVM(Node Version Manager)
 - Nodejs, (versions defined in variable)
 - Optional packages from NPM, these will be installed globally.
 
@@ -108,14 +108,14 @@ npm_packages:
 
 === Install Xcode
 
-//To run this step individually use `osx_install_xcode` tag.
+//To run this step individually use the `osx_install_xcode` tag.
 
 Installs:
 
 - XCode CLI tools
 - XCode - specified version
 
-NOTE: Installing a single version of XCode can take over 30 minutes, please be patient.
+NOTE: Installing a single version of XCode can take over 30 minutes.
 
 ==== Xcode Two Factor Authentication (2FA) Support 
 

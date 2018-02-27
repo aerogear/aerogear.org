@@ -49,7 +49,7 @@ WARNING: As of Jan 4th 2018, only `provision-osx` tag is working with with `--sk
 +
 
 
-.Ansible playbook will perform the following tasks:
+.The Ansible playbook will perform the following tasks:
 
 * Check if the required Java version is installed, install/upgrade if not,
 * Create an OpenShift project,
@@ -60,4 +60,4 @@ WARNING: As of Jan 4th 2018, only `provision-osx` tag is working with with `--sk
 * Install Nagios on OpenShift,
 * Print URL and credentials for Jenkins and Nagios.
 
-//NOTE: All tasks are idempotent. You can run them multiple times and they will produce the same results.
+//NOTE: All tasks are idempotent. You can run the tasks multiple times and they will produce the same results.

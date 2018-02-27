@@ -4,9 +4,9 @@
 WARNING: HTTP Proxies that require authentication are not supported.
 Please read the <<Known Issues>> for more details.
 
-You can install AeroGear Digger behind a proxy by modifying variables in Ansible playbook.
+You can install AeroGear Digger behind a proxy by modifying variables in the Ansible playbook.
 
-The installer will automatically configure the following components to use proxy (if the component requires an outbound Internet access):
+The installer will automatically configure the following components to use a proxy (if the component requires outbound Internet access):
 
 * The Jenkins server
 * The Android SDK pod used to download Android SDKs
@@ -15,7 +15,7 @@ The installer will automatically configure the following components to use proxy
 
 ==== Ansible Variables for HTTP/HTTPS Proxy
 
-Set these variables in an Inventory file, or with CLI.
+Set these variables in an Inventory file, or with the CLI.
 
 |===
 | Variable name | Description
@@ -36,4 +36,4 @@ Set these variables in an Inventory file, or with CLI.
 
 ==== Using External Tools with HTTP/HTTPS Proxy
 
-If you want to use the external tools with HTTP/HTTPS proxy, you will have to manually update the configuration for those tools in the Jenkinsfile, using the values from the environment variables such as `HTTP_PROXY` and `HTTPS_PROXY`.
+If you want to use the external tools with HTTP/HTTPS proxy, manually update the configuration for the external tools in the Jenkinsfile, using the values from the environment variables, for example `HTTP_PROXY`, `HTTPS_PROXY`.
