@@ -26,7 +26,7 @@ Enable SSH connection by following these steps:
 
 Create a user with sudo permissions and SSH access on the macOS server. An example bash script is provided.
 
-WARNING: Review the script before using it. The unmodified script will allow access to your machine with a default password. Change the default `PASSWORD` and ensure that `USER_ID` is unassigned.
+WARNING: Modify the script before you use it. Change the default `PASSWORD` and ensure that `USER_ID` is unassigned. An unmodified script will allow access to your machine with a default password.
 
 .Default script behavior:
 
@@ -87,7 +87,7 @@ echo "Done creating OSX user - you may need to restart the osx server to apply a
 ==== Configure Remote Login(SSH) in Ansible Host
 Enable the remotely running Ansible process to execute commands on the macOS server via SSH.
 
-A sample script is provided below. Set `USERNAME` variable to the name of the macOS user created in the previous step. This allows `USERNAME` to access the server via SSH with a password. 
+A sample script is provided below. Set `USERNAME` variable to match the name of the macOS user created in the previous step. This allows `USERNAME` to access the server through SSH with a password. 
 
 WARNING: Understand what the script does before using it.
 
@@ -127,13 +127,13 @@ dseditgroup -o edit -a ${USERNAME} -t user ${OSX_SSH_GROUP_NAME}
 [[add-macos-sudo-into-inventory-file]]
 ==== Add macOS sudo Credentials into Ansible Inventory File
 
-A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation^].
+A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation^], to allow Ansible to run commands as the `sudo` user.
 
-Add the name of the macOS user created in previous steps as a variable `ansible_ssh_user` into the Ansible inventory file.
+* Set the `ansible_ssh_user` variable in Ansible inventory file to match the macOS user name created in previous steps.
 
-This allows Ansible to run commands as the `sudo` user.
-
-Set the `ansible_sudo_pass` variable or `--ask-sudo-pass` flag with the user password to enable the installer to work with root permissions.
+* Set the user password. Use one of these methods:
+** Put the user password into `ansible_sudo_pass` variable in Ansible inventory file.
+** Use `--ask-sudo-pass` option with the user password as an argument for a command to run the Ansible installer playbook. See link:#run-digger-installer[Run Digger Installer].
 
 [[provide-macos-with-access-to-hosts]]
 ==== Provide macOS with Internet Access to List of Hosts

@@ -16,7 +16,7 @@ Digger requires an outbound Internet access to perform npm installations. Ensure
 
 ==== Java 2.2 and higher
 
-Java is required for Jenkins configuration during the installation. It will be automatically installed if not present.
+Java is required for Jenkins configuration during the installation. It is automatically installed if not present.
 
 ==== OpenShift 3.3 or higher
 

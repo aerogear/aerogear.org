@@ -39,7 +39,7 @@ configuration will be skipped.
 be skipped.
 |===
 
-.Example: Command setting required variables to start the Digger Ansible job to provision macOS server:
+.Example: Command for running the Ansible playbook to provision a macOS server and setting the required variables:
 
 ----
 ansible-playbook -i sample-inventory-file sample-playbook.yml
