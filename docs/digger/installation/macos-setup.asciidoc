@@ -1,7 +1,7 @@
 [[macos-setup]]
 === Setup macOS Servers (optional)
 
-Set the required variables to make installer provision a macOS server.
+Set the required variables in the inventory file to make the installer provision a macOS server.
 
 .Steps done by installer to provision a macOS server
 . Install Homebrew
@@ -39,20 +39,6 @@ configuration will be skipped.
 be skipped.
 |===
 
-.Example: Command for running the Ansible playbook to provision a macOS server and setting the required variables:
-
-----
-ansible-playbook -i sample-inventory-file sample-playbook.yml
--e "ansible_sudo_pass=exampleSudoPassword"
--e "xcode_install_user=exampleAppleDeveloperUsername"
--e "xcode_install_password=exampleAppleDeveloperPassword"
--e "credential_private_key_path=/path/to/sshKey"
--e "credential_passphrase=exampleSshKeyPassphrase"
--e "credential_public_key_path=/path/to/sshKey.pub"
---tags="provision-osx"
-----
-
 ==== Further macOS Configuration options
 Further configuration of the macOS node is possible through optional
 xref:macos-variables[macOS variables].
-

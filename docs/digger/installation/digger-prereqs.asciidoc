@@ -1,5 +1,5 @@
 === Prerequisites
-Before running the Digger installer, ensure the following prerequisites are met:
+Ensure the following prerequisites are met before running the Digger installer:
 
 ==== Proxy Configuration (optional)
 
