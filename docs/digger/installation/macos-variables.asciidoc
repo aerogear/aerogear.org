@@ -5,7 +5,7 @@ This is a list of variables divided into sections, each for an individual macOS 
 
 ==== Install Homebrew
 
-//To run this step individually use `osx_install_homebrew` tag.
+//To run this step individually use the `osx_install_homebrew` tag.
 
 This installation step will, along with Homebrew, also add taps and packages specified in the variables.
 
@@ -36,7 +36,7 @@ homebrew_packages:
 
 === Install Ruby
 
-//To run this step individually use `osx_install_ruby` tag.
+//To run this step individually use the `osx_install_ruby` tag.
 
 This step installs:
 
@@ -79,10 +79,11 @@ gem_packages:
 
 === Install Node.js
 
-//To run this step individually use `osx_install_nodejs` tag.
+//To run this step individually use the `osx_install_nodejs` tag.
 
-Installs:
-- NVM(Node Version Manager)
+This step installs:
+
+- NVM,
 - Nodejs, (versions defined in variable)
 - Optional packages from NPM, these will be installed globally.
 
@@ -121,10 +122,8 @@ NOTE: Installing a single version of XCode can take over 30 minutes.
 
 NOTE: You can disable 2FA in the Apple Developer Account for the duration of the Ansible job.
 
-If you have 2FA enabled for the specified Apple Developer Account then
-you will need to set the `xcode_install_session_token` to a cookie
-provided by authenticating with Apple. This can be done using Fastlane
-Spaceship.
+If you have 2FA enabled for the specified Apple Developer Account then set the `xcode_install_session_token` to a cookie
+provided by authenticating with Apple. Obtain the authentication cookie by using Fastlane Spaceship. link:https://github.com/fastlane/fastlane/tree/master/spaceship[Fastlane Spaceship Documentation^].
 
 NOTE: Fastlane 2.42.0 or higher is required
 
@@ -136,7 +135,7 @@ fastlane spaceauth -u <APPLE_DEVELOPER_USERNAME>
 
 Follow the steps printed in the terminal. A cookie will be printed on the screen
 after successful authentication. 
-Copy the cookie from `---\n` to the last `\n` and provide this as
+Copy the cookie (from `---\n` to the last `\n`) and provide this as
 the value for `xcode_install_session_token`.
 
 
@@ -159,9 +158,9 @@ accounts with enabled 2FA).
 
 === Download Apple certificates
 
-//To run this step individually use `osx_download_certs` tag.
+//To run this step individually use the `osx_download_certs` tag.
 
-Downloads required certificates into the node. Currently, only
+This step downloads required certificates into the node. Currently, only
 Apple's WWDR certificate is required. This certificate will be
 downloaded into the user's home directory.
 
@@ -180,10 +179,10 @@ downloaded into the user's home directory.
 
 Executes pod repo update.
 
-//To run this step individually use `osx_pod_repo_update` tag.
+//To run this step individually use the `osx_pod_repo_update` tag.
 
 === Configure Build Farm node
-//To run this step individually use `osx_configure_buildfarm` tag.
+//To run this step individually use the `osx_configure_buildfarm` tag.
 
 This step creates a credential set in the Build Farm for the macOS nodes using the
 provided keys. Add each machine as a node in the Build Farm, connecting through SSH.
