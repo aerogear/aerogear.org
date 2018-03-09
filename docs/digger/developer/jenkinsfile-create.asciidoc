@@ -290,7 +290,6 @@ node("android"){
   ...
   stage("Prepare"){
       sh '. $NVM_DIR/nvm.sh && nvm install 6.9.5 && nvm alias default 6.9.5'
-      writeFile file: 'www/fhconfig.json', text: params.FH_CONFIG_CONTENT
       sh 'npm install --production'
       ...
   }
