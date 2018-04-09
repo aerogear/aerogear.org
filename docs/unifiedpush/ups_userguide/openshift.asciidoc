@@ -8,11 +8,10 @@
 [[openshift]]
 == Running the UnifiedPush Server on OpenShift
 
-AeroGear provides a link:https://github.com/aerogearcatalog/unifiedpush-apb[Ansible playbook bundle] to make it easy to get running on OpenShift.
+AeroGear provides a link:https://github.com/aerogearcatalog/unifiedpush-apb[Ansible Playbook Bundle] to make it easy to get running on OpenShift.
 If you don't already have an account you can sign up link:https://www.openshift.com/pricing/index.html[here]. You can also use one of the various ways to run OpenShift on your own hardware like link:https://github.com/minishift/minishift[Minishift], link:https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#getting-started[oc cluster up] or the link:https://github.com/aerogear/mobile-core[Mobile Application Platform].
 
-
-WARNING: It's important that immediately after creating an UnifiedPush Server instance you open the AdminUI and login to reset the password. If this is not done anyone can easily gain admin rights to your UnifiedPush Server instance.
+NOTE: When using the APB, authentication will be handled by OpenShift. KeyCloak is not required.
 
 === Add the AeroGear Unifiedpush APB to your Service Catalog
 
@@ -21,7 +20,8 @@ First you need to give your user account the permissions to access the Service B
 
 [source,bash]
 ----
-$ oc adm policy add-cluster-role-to-user access-asb-role developer
+$ oc adm policy add-cluster-role-to-user access-asb-role <your user>
+$ oc adm policy add-cluster-role-to-user cluster-admin <your user>
 ----
 
 After that you should be able to open the `ansible-service-broker` project the OpenShift UI. Go to Resouces -> Config Maps. You should see one Config Map named `broker-config`.
@@ -48,6 +48,8 @@ $ apb bootstrap
 === Create an instance using the Ansible Service Broker
 
 Open the Service Catalog and you should see an entry for `AeroGear UnifiedPush Server`. Select it, pick a namespace to deploy it and a Wizard will guide you through the setup process.
+
+image:./img/service_catalog.png[AeroGear Unified Push Server in the Service Catalog]
 
 === Next Steps
 
