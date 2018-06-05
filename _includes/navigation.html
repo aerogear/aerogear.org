@@ -20,18 +20,18 @@
           <a href="/">Home</a>
         </li>
 
-        <li class="dropdown hidden-sm {% if page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}active{% endif %}">
+        <li class="dropdown hidden-sm {% if page.section == 'getting-started' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="/">Overview</a></li>
-            <li><a href="/">Installation &amp; Configuration</a></li>
-            <li><a href="/">Creating Mobile Apps</a></li>
-            <li><a href="/">Enabling Mobile Services</a></li>  
+            <li><a href="/getting-started/overview/">Overview</a></li>
+            <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+            <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+            <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>  
           </ul>
         </li>
 
 
-        <li class="dropdown {% if page.section == 'modules' %}active{% endif %}">
+        <li class="dropdown {% if page.section == 'mobile-services' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/services/push/">AeroGear <strong>Push</strong></a></li>
@@ -42,7 +42,7 @@
             </ul>
         </li>
 
-        <li class="dropdown {% if page.section == 'platforms' %}active{% endif %}">
+        <li class="dropdown {% if page.section == 'sdks' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/sdks/android/">Android</a></li>
