@@ -20,34 +20,35 @@
           <a href="/">Home</a>
         </li>
 
-
-        <li class="dropdown {% if page.section == 'modules' %}active{% endif %}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Modules<span class="caret"></span></a>
+        <li class="dropdown hidden-sm {% if page.section == 'getting-started' %}active{% endif %}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="/push/">Push</a></li>
-            <li><a href="/security/">Security</a></li>
-            <li><a href="/sync/">Sync</a></li>
-            <li><a href="/digger/">Digger</a></li>
+            <li><a href="/getting-started/overview/">Overview</a></li>
+            <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+            <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+            <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>  
           </ul>
         </li>
 
-        <li class="dropdown {% if page.section == 'platforms' %}active{% endif %}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Platforms<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="/android/">Android</a></li>
-            <li><a href="/ios/">iOS</a></li>
-            <li><a href="/cordova/">Cordova</a></li>
-            <li><a href="/javascript/">JavaScript</a></li>
-            <li><a href="/windows/">Windows</a></li>
-          </ul>
+
+        <li class="dropdown {% if page.section == 'mobile-services' %}active{% endif %}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/push/">AeroGear <strong>Push</strong></a></li>
+              <li><a href="/services/mobile-ci-cd/">AeroGear <strong>Mobile CI/CD</strong></a></li>
+              <li><a href="/services/metrics/">AeroGear <strong>Metrics</strong></a></li>
+              <li><a href="/services/crc/">AeroGear <strong>CRC</strong></a></li>
+              <li><a href="/services/keycloak/">AeroGear <strong>Keycloak</strong></a></li>
+            </ul>
         </li>
 
-        <li class="dropdown hidden-sm {% if page.section == 'getstarted' or page.section == 'guides' or page.section == 'demos' %}active{% endif %}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Get started<span class="caret"></span></a>
+        <li class="dropdown {% if page.section == 'sdks' %}active{% endif %}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="/getstarted/downloads">Downloads and snippets</a></li>
-            <li><a href="/getstarted/guides">Guides</a></li>
-            <li><a href="/getstarted/demos">Demos</a></li>
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
           </ul>
         </li>
 
