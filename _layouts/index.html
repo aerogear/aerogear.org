@@ -39,6 +39,8 @@
               {{ content | toc_generate }}
             {% elsif page.section == 'roadmap' %}
               {% include sidebar-roadmaps.html %}
+            {% elsif page.section == 'mobile-services' %}
+              {% include sidebar-services.html %}
             {% endif %}
       </div><!-- col -->
       <div class="col-md-9">
