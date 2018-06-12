@@ -1,76 +1,196 @@
+--- 
+layout: home 
+title: Open Source Libraries for Mobile Connectivity 
+section: homepage 
 ---
-layout: home
-title: Open Source Libraries for Mobile Connectivity
-section: homepage
----
-
-<!-- TODO(agalante) **what is this xmlns for? **
-<div class="start-header" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
- -->
-
 
 <div class="main-background"></div>
 
- <section class="aditional-actions">
+<section class="aditional-actions">
   <div class="container">
-    <a class="news fixed" href="{{ site.posts.first.url }}"><strong>Check it out!</strong> {{ site.posts.first.title }}</a>
+    <a class="news fixed" href="{{ site.posts.first.url }}">
+      <strong>Check it out!</strong> {{ site.posts.first.title }}</a>
   </div>
 </section>
 
-     <section class="main-features">
-      <div class="container">
+<section class="main-features">
+  <div class="container">
+    <h2 class="section-header">AeroGear Services</h2>
 
-
-        <h2 class="section-header">AeroGear Modules</h2>
-
-
-        <div class="row">
-
-          <div class="col-md-3 push">
-            <h3><a href="/push/"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong></a></h3>
-            <p class="alt">Send push notifications to any device, regardless of platform or network.</p>
-            <p>Send push notifications from the <strong>Unified Push Server</strong> via <span title="Google Cloud Messaging, Apple’s APNs, Amazon's ADM, Microsoft's WNS and MPNS, SimplePush, WebPush">7 push networks</span> to any mobile device.</p>
-
-            <p><a href="/push/" class="btn btn-primary">Learn about AeroGear<strong>Push</strong></a></p>
-
-          </div><!-- col -->
-
-          <div class="col-md-3 security">
-            <h3><a href="/security/"><i class="fa fa-shield"></i> AeroGear<strong>Security</strong></a></h3>
-            <p class="alt">Integrate with your existing security and authentication infrastructure.</p>
-            <p>A small set of classes to provide integration with security providers written in Java, like <strong>PicketLink</strong> and <strong>Apache Shiro</strong>.</p>
-            <p><a href="/security/" class="btn btn-primary">Learn about AeroGear<strong>Security</strong></a></p>
-          </div><!-- col -->
-
-
-          <div class="col-md-3 sync">
-            <h3><a href="/sync/"><i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong></a></h3>
-            <p class="alt">Real-time, client-server data synchronization with ease and efficiency.</p>
-            <p>Full real-time data sync where updates are initiated from both the client and server over a bi-directional channel.</p>
-            <p><a href="/sync/" class="btn btn-primary">Learn about AeroGear<strong>Sync</strong></a></p>
-          </div><!-- col -->
-
-          <div class="col-md-3 sync">
-              <h3><a href="/digger/"><i><img src="img/aerogeardigger_icon_32px_cropped.png"></i> AeroGear<strong>Digger</strong></a></h3>
-              <p class="alt">Build your mobile apps in the cloud with pipelines.</p>
-              <p>Build mobile apps in an isolated, scalable and deterministic way in the cloud.</p>
-              <p><a href="/digger/" class="btn btn-primary">Learn about AeroGear<strong>Digger</strong></a></p>
-          </div><!-- col -->
-
-
-        </div><!-- row -->
-      </div><!-- container -->
-    </section><!--main features-->
-
-
-
-    <section class="custommers">
-      <div class="container">
-        <h2 class="section-header">Mobile development begins here</h2>
-        <p>Using mobile technologies will never be so easy as in the cloud. AeroGear supports several cloud-enabled providers and technologies.</p>
-        <p>
-          <a href="http://www.feedhenry.com/feedhenry-and-red-hat-pushing-ahead-with-integrations/"><img src="{{ site.baseurl }}/img/logos_home/feedhenry.gif" alt="feedhenry"  /></a>
-          <a href="https://developers.openshift.com/en/xpaas-unified-push.html"><img src="{{ site.baseurl }}/img/logos_home/openshift.gif" alt="openshift"  /></a>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>
+          <a href="/services/mobile-ci-cd/"><i class="fa fa-cogs"></i> CI CD</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
         </p>
-      </div><!-- container -->
-    </section>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/services/mobile-ci-cd/" class="btn btn-primary">Learn about <strong>CI CD</strong></a>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h3>
+          <a href="/services/metrics/"><i class="fa fa-bar-chart"></i> Metrics</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/services/metrics/" class="btn btn-primary">Learn about <strong>Metrics</strong></a>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h3>
+          <a href="/services/push/"><i class="fa fa-external-link"></i> Push</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/services/push/" class="btn btn-primary">Learn about <strong>Push</strong></a>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h3>
+          <a href="/services/keycloak/"><i class="fa fa-lock"></i> Identity Management</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/services/keycloak/" class="btn btn-primary">Learn about <strong>Identity Management</strong></a>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h3>
+          <a href="/services/crc/"><i class="fa fa-plug"></i> Custom Runtime Connector</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/services/crc/" class="btn btn-primary">Learn about <strong>CRC</strong></a>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h3>
+            <a href="#">Learn More</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          To learn more about all of the AeroGear services, read our docs!
+        </p>
+        <p>
+          <a href="#" class="btn btn-primary">Learn More</strong></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sdks">
+  <div class="container">
+    <h2 class="section-header">AeroGear SDKs</h2>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>
+          <a href="/sdks/android/"><i class="fa fa-android"></i> Android SDK</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/sdks/android/" class="btn btn-primary">Learn More</a>
+        </p>
+      </div>
+
+      <div class="col-md-3">
+        <h3>
+          <a href="/sdks/cordova/"><i class="font-icon icon-cordova"></i> Cordova SDK</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/sdks/cordova/" class="btn btn-primary">Learn More</a>
+        </p>
+      </div>
+
+      <div class="col-md-3">
+        <h3>
+          <a href="/sdks/ios/"><i class="fa fa-apple"></i> iOS SDK</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/sdks/ios/" class="btn btn-primary">Learn More</a>
+        </p>
+      </div>
+
+      <div class="col-md-3">
+        <h3>
+          <a href="/sdks/xamarin/"><i class="font-icon icon-xamarin"></i> Xamarin SDK</a>
+        </h3>
+        <p class="alt">
+          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
+        </p>
+        <p>
+          <a href="/sdks/xamarin/" class="btn btn-primary">Learn More</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="custommers">
+  <div class="container">
+    <h2 class="section-header">Mobile development begins here.</h2>
+    <p>Using mobile technologies will never be so easy as in the cloud. AeroGear supports several cloud-enabled providers and
+      technologies.</p>
+    <p>
+      <a target="_blank" href="http://www.feedhenry.com/feedhenry-and-red-hat-pushing-ahead-with-integrations/">
+        <img src="{{ site.baseurl }}/img/logos_home/feedhenry.gif" alt="feedhenry" />
+      </a>
+      <a target="_blank" href="https://developers.openshift.com/en/xpaas-unified-push.html">
+        <img src="{{ site.baseurl }}/img/logos_home/openshift.gif" alt="openshift" />
+      </a>
+    </p>
+  </div>
+</section>
