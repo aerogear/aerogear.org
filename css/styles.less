@@ -1127,23 +1127,6 @@ footer{
 }
 
 
-/* ------------------ Red Hat Tab & "A JBoss Project" label - Necessary for every JBoss project regardless of hosting location ------------------------- */
-.dropup {
-  /* --- This is the standard RH tab that overlaps what's below it (project banner or navigation bar) --- */
-  /* display: none;  HIDE IT UNTIL WORKING */
-  height: 37px;
-  background-image: url("/img/tabzilla-redhat-logo-sprite.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-  width: 250px;
-  background-color: transparent;
-  position: absolute;
-  right: 40px;
-  margin-bottom: -40px;
-  z-index: 999;
-  text-align: center;
-  margin-top: -1px !important;
-}
 /* -- These styles come into play when subprojects is marked as "true" on "_layouts/subproject.html.haml"  --- */
 #subproject .navbar {
   margin-top: 40px;
@@ -1314,22 +1297,7 @@ footer{
 #tabnav ul li#tabnav-search input:-moz-placeholder {
   color: #173444;
 }
-/* --- The "A JBoss Project box --- */
-#ajbossproject {
-  margin-top: 8px;
-  width: 130px;
-  height: 20px;
-  background-color: rgba(66, 66, 66, 0.75);
-  filter: alpha(opacity=75);
-  /* For IE8 and earlier */
-  color: #e6e7e8;
-  -moz-border-radius: 2px;
-  /* firefox */
-  -webkit-border-radius: 2px;
-  /* safari/chrome */
-  border-radius: 2px;
-  /* CSS3, works in IE9 */
-}
+
 /* =Dropup Tab */
 #tab.tabnav-opened:after {
   -moz-transform: rotate(180deg);
@@ -1405,12 +1373,6 @@ footer{
   #tabnav-panel.fullwidth {
     width: 100%;
   }
-
-  /* ---- Hides "A JBoss Project" box on mobile devices ---- */
-  #ajbossproject {
-    display: none;
-  }
-
 }
 
 
@@ -1437,17 +1399,6 @@ footer{
     width: 74px;
     right: 30px;
   }
-  /* ---- Hides "A JBoss Project" box on mobile devices ---- */
-  #ajbossproject {
-    display: none;
-  }
-}
-/* ---- End Red Hat tab and "A JBoss project" box ---- */
-@media (max-width: 768px) {
-  .dropup {
-    right: 60px;
-  }
-
 }
 
 
