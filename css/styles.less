@@ -441,24 +441,24 @@ table{
 .homepage{  
   &:before{
   #gradient > .vertical(@primary-color-dark; @primary-color);
-	left:0;
-	right: 0;
-	top: 50px;
-	bottom: 0;
+  left:0;
+  right: 0;
+  top: 50px;
+  bottom: 0;
   position: fixed;
   display: block;
   content:".";
   z-index: -2;   
   font-size: 0.00000001px;
-  }	
+  } 
   
   &:after{
-	background-image: url("/img/bg_header.png");
-	background-repeat: no-repeat;
+  background-image: url("/img/bg_header.png");
+  background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;	
+  background-size: cover; 
   content:".";
 //  text-indent: -9999999px;
   top: 50px;
@@ -598,29 +598,29 @@ table{
 
 //main-features ==================================================================
 
-.main-features{
-//   border-bottom: 1px solid @gray-divider; 
+.main-features {
   background: @main-bg-color;
-  padding-bottom: 40px!important;
     
-  .row>.col-md-6{
+  .row >.col-md-6 {
     margin-bottom: 20px;
   }
-    h3{
-//      color: @primary-color-dark;
-      font-weight: @font-weight-light;
-      strong{
-        font-weight: @font-weight-bold;
-      }//h4
-//     border-bottom: 1px solid @gray-divider; 
-//    margin-bottom: 10px;
+}
 
-   }//h4
+.sdks {
+  background: lighten(@primary-color-light, 20%);
 
-}//.main-features
+  .sdk-icon {
+    line-height: 24px;
+    height: 22px;
+    width: auto;
+  }
+}
 
-
-
+.main-features h2, .sdks h2 {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
 
 //clientss ==================================================================
 

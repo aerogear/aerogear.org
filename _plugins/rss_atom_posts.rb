@@ -31,31 +31,6 @@ module Reading
         entry.categories.each do |cat|
           categories << cat.term
         end
-        if include_blog_entry_in_news_feed(entry, categories) then
-          data_set = get_data_as_set(site, categories)
-          is_release = data_set.include?('release')
-          author = lookup_author(site, entry.author.name.content)
-          mod = lookup_module(site, nil, data_set)
-          platform = lookup_platform(site, nil, data_set)
-          data = data_set.to_a
-          classes = derive_classes(data, mod, platform, is_release)
-
-          all_data.merge(data)
-
-          post = {
-            "date" => "#{entry.published.content}",
-            "title" => entry.title.content,
-            "url" => entry.link.href,
-            "excerpt" => entry.summary.content,
-            "author" => author,
-            "module" => mod,
-            "platform" => platform,
-            "data" => data,
-            "classes" => classes,
-            "external" => true
-          }
-          posts << post
-        end
       end
 
       site.posts.each do |post|
@@ -187,10 +162,6 @@ module Reading
       end
       classes.add("release") if is_release
       return classes.to_a.join(' ')
-    end
-
-    def include_blog_entry_in_news_feed(entry, categories)
-      return categories.include? "aerogear" || entry.title.content =~ /aerogear/i || entry.summary.content =~ /aerogear/i;
     end
   end
 end
