@@ -981,9 +981,7 @@ pre {
 #toctitle {
   color: #e25027;
 }
-div.tabnav-opened ~ div#site #toc {
-  padding-top: 450px;
-}
+
 
 @media only screen and (min-width: 768px) {
   #toc + .sect1 {
