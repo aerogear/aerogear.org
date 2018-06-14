@@ -14,11 +14,12 @@
       <div class="col-sm-3">
         <h5>Mobile Services</h5>
         <ul class="list-unstyled">
-         <li><a href="/services/push/">AeroGear <strong>Push</strong></a></li>
-         <li><a href="/services/mobile-ci-cd/">AeroGear <strong>Mobile CI/CD</strong></a></li>
-         <li><a href="/services/metrics/">AeroGear <strong>Metrics</strong></a></li>
-         <li><a href="/services/crc/">AeroGear <strong>CRC</strong></a></li>
-         <li><a href="/services/keycloak">AeroGear <strong>Keycloak</strong></a></li>
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/keycloak/">Identity Management</a></li>
+         <li><a href="/services/security/">Device Security</a></li>
         </ul>
       </div><!-- col -->
 
@@ -71,34 +72,3 @@
     </p>       
   </div><!-- container -->
 </section>
-
-
-
-
-<!-- TODO(agalante) **Do we need this? ** 
-
-<script src="/js/main.js"></script>
-< to fix iPhone rotate/rescale issue https://gist.github.com/mathiasbynens/901295 >
-<script>
-    (function (doc) {
-
-        var addEvent = 'addEventListener',
-                type = 'gesturestart',
-                qsa = 'querySelectorAll',
-                scales = [1, 1],
-                meta = qsa in doc ? doc[qsa]('meta[name=viewport]') : [];
-
-        function fix() {
-            meta.content = 'width=device-width,minimum-scale=' + scales[0] + ',maximum-scale=' + scales[1];
-            doc.removeEventListener(type, fix, true);
-        }
-
-        if ((meta = meta[meta.length - 1]) && addEvent in doc) {
-            fix();
-            scales = [.25, 1.6];
-            doc[addEvent](type, fix, true);
-        }
-
-    }(document));
-</script>
--->
