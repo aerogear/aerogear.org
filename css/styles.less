@@ -473,82 +473,73 @@ table{
  }
 
 .main-banner{
-//  background: @primary-color;
-
   #gradient > .vertical(@primary-color-dark; @primary-color);
   border-bottom: 1px solid @primary-color-dark;
   color: #fff;
   position: relative;
-  .homepage &{
+
+  .homepage & {
     background: none;
     text-align: center;
   }
-  img{
+
+  img {
     width: 100%;
-    .hidden-xs
+    .hidden-xs;
   } 
 
-  .bg{
+  .bg {
     background-image: url("/img/bg_header.png");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
   }
    
-  h1{
+  h1 {
     line-height:  @line-height-large;
     font-weight: @font-weight-regular!important;
     font-size: floor((@font-size-base * 2));
+
     @media (min-width: @screen-sm-min) {
       font-size: floor((@font-size-base * 1.6));
     }
     @media (min-width: @screen-md-min) {
       font-size: floor((@font-size-base * 2.5));
     }
+  }
 
+  h3 {
+    margin: 0 0 15px 0;
   }
-  h6{
+
+  h6 {
     text-transform: uppercase;
-//    border-top: 1px solid @white-divider;
-  }
-  .crossplatform{
-    font-size: floor((@font-size-base * 3));
-    a{
-      color: @white-subtitle;
-      padding: 0 10px;
-      &:hover{
-        color: @white-text;
-      }
-    }
   }
   
-  h2,h1{
+  h1, h2 {
     text-shadow: 0 1px 2px @gray-subtitle;
     margin-top: 0;
-//    margin-bottom: 20px;
     font-weight: @font-weight-bold;
     color: @accent-color;
-//      font-size: floor((@font-size-base * 2));
    
-    small{
+    small {
       font-weight: @font-weight-light;
       color: @white-subtitle;
       text-transform: none;
-//      display: none;
+
       @media (min-width: @screen-md-min) {
         display: inline;
       }
-      
     }
-    
   }
-  p{
+
+  p {
     font-size: @font-size-large;
     line-height: 1.8;
     margin-bottom: 20px;
-    }
+  }
     
-  .see-more{
+  .see-more {
     color:rgba(255,255,255,.5);
     text-align: center;
     font-size: @font-size-h6;
@@ -560,33 +551,32 @@ table{
     text-transform: uppercase;
     font-weight: @font-weight-xbold;
     .hidden-xs;
-    i{
+
+    i {
       display: block;
     }
-    &:hover{
+
+    &:hover {
       text-decoration: none;
       color: @white-subtitle;
     }
   } 
   
-  .main-action{
-//    background: red;
+  .main-action {
     margin: 0 0 20px 0;
-    p{
+
+    p {
       font-size: (@font-size-base * .85);
       margin: 5px 0 0 0;
       color: @white-subtitle;
     }
-    .btn{
+
+    .btn {
       font-size: (@font-size-base * 1.6);
       box-shadow: 0 1px 2px @gray-subtitle;
-//      font-weight: @font-weight-regular;
     }
   }
-
-  
 }
-
 
 
 //.aditional-actions ==================================================================
