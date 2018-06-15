@@ -478,6 +478,7 @@ table{
   border-bottom: 1px solid @primary-color-dark;
   color: #fff;
   position: relative;
+  padding-top: 60px;
 
   .homepage & {
     background: none;
@@ -576,6 +577,22 @@ table{
       font-size: (@font-size-base * 1.6);
       box-shadow: 0 1px 2px @gray-subtitle;
     }
+  }
+
+  .banner-content {
+    padding-top: 30px;
+  }
+
+  .tagline {
+    text-align: left;
+
+    @media (max-width: @screen-sm-max) {
+      text-align: center;
+    }
+  }
+
+  .video {
+    height: 300px;
   }
 }
 
