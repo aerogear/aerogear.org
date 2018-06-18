@@ -1,0 +1,31 @@
+---
+layout: post
+title: Definition of Done
+section: community
+section-class: community
+section-title: Community
+section-description: Get involved, be part of the Aerogear community
+breadcrumbs-url: /community/index.html#processes
+---
+
+==== SDKs
+
+* Code changes are made in the relevant SDK
+* An issue is created to make changes to other SDKs which do not have the feature
+* Feature is added to the relevant ShowCase Application
+* Feature is documented
+
+==== ShowCase Applications
+
+* ...
+
+==== Mobile Services
+
+* ...
+
+
+
+
+==== OpenShift Integrations
+
+* ...
