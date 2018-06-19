@@ -1,0 +1,448 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - AeroGear Crypto API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm active">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Documentation <small>Aerogear API documentation &amp; specifications.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="docs">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/docs/specs/">Docs</a>
+        
+      </li>
+      <li class="active">AeroGear Crypto API</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#javascript">
+         <span class="toctext">JavaScript</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-2">
+      <a href="#android">
+         <span class="toctext">Android</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-3">
+      <a href="#ios">
+         <span class="toctext">iOS</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-4">
+      <a href="#local-data-encryption">
+         <span class="toctext">Local data encryption</span>
+      </a>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>AeroGear Crypto API</h1>
+        <p><span class="label label-warning">Status: Experimental</span></p>
+
+<p><strong>Note</strong>: This document is a working progress if you strongly disagree with something, fix it.</p>
+
+<h4 id="authors">Authors</h4>
+
+<ul>
+  <li>Bruno Oliveira</li>
+  <li>Corinne Krych</li>
+  <li>Douglas Campos</li>
+  <li>Matthias Wessendorf</li>
+</ul>
+
+<h4 id="goals">Goals</h4>
+
+<ul>
+  <li>User friendly interface for non crypto experts.</li>
+  <li>Enable advanced developers can make use of the pure crypto provider implementation.</li>
+</ul>
+
+<h4 id="supported-algorithms">Supported Algorithms</h4>
+
+<ul>
+  <li>PBKDF2 for password based key derivation</li>
+  <li>AES with GCM for symmetric encryption</li>
+</ul>
+
+<h1 id="api-symmetry">API symmetry</h1>
+
+<h2 id="javascript">JavaScript</h2>
+
+<p>AeroGear JS make use of <a href="http://crypto.stanford.edu/sjcl/">sjcl</a> with wrappers for basic functionalities like: encrypt, decrypt, password salting and key pair generation. The crypto bits were built ina separated module so it can be included/excluded in a custom build.</p>
+
+<ul>
+  <li>
+    <p>Password based key derivation support (PBKDF2)</p>
+
+    <p>var myKey = AeroGear.Crypto().deriveKey( ‘strong’ );</p>
+  </li>
+  <li>
+    <p>Symmetric encryption support (GCM)</p>
+
+    <ul>
+      <li>
+        <p>Encryption:</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  var options = {
+      IV: superRandomInitializationVector,
+      AAD: "whateverAuthenticatedData",
+      key: generatedKey,
+      data: "My bonnie lies over the ocean"
+  };
+
+  var ciphertext = AeroGear.Crypto().encrypt( options );
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Decryption:</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  var options = {
+      IV: superRandomInitializationVector,
+      AAD: "whateverAuthenticatedData",
+      key: generatedKey,
+      data: cipherText
+  };
+
+  var plainText = AeroGear.Crypto().decrypt( options );;
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="android">Android</h2>
+
+<p>The android platform unfortunately ships a incomplete and outdated version of <a href="https://code.google.com/p/android/issues/detail?id=3280">Bouncy Castle for Android</a> which also makes hard to install an updated version of the library. That said, we had to stick with <a href="http://rtyley.github.io/spongycastle/">Spongy Castle</a>, a version of <a href="http://www.bouncycastle.org">Bouncy Castle</a> repackaged to make it work on Android.</p>
+
+<ul>
+  <li>
+    <p>Password based key derivation support (PBKDF2)</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Pbkdf2 pbkdf2 = AeroGearCrypto.pbkdf2();
+  byte[] rawKey = pbkdf2.encrypt(PASSWORD);
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Symmetric encryption support (GCM)</p>
+
+    <ul>
+      <li>
+        <p>Encryption:</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  //Generate the key
+  Pbkdf2 pbkdf2 = AeroGearCrypto.pbkdf2();
+  byte[] privateKey = pbkdf2.encrypt("passphrase");
+
+  //Initializes the crypto box
+  CryptoBox cryptoBox = new CryptoBox(privateKey);
+
+  //Encryption
+  byte[] IV = new Random().randomBytes();
+  byte[] ciphertext = cryptoBox.encrypt(IV, "My bonnie lies over the ocean");
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Decryption:</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  //Decryption
+  CryptoBox pandora = new CryptoBox(privateKey);
+  byte[] message = pandora.decrypt(IV, ciphertext);
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ios">iOS</h2>
+
+<p>The iOS bits were implemented on top of <a href="https://developer.apple.com/library/mac/documentation/security/conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html">Common Crypto</a> and also make use of the <a href="https://developer.apple.com/library/ios/documentation/Security/Reference/SecurityFrameworkReference/_index.html">Security Framework</a></p>
+
+<ul>
+  <li>
+    <p>Password based key derivation support (PBKDF2)</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">@interface</span> <span class="nc">AGPBKDF2</span> <span class="p">:</span> <span class="nc">NSObject</span>
+  <span class="k">-</span> <span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nf">deriveKey</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">password</span><span class="p">;</span>
+  <span class="k">-</span> <span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nf">deriveKey</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">password</span> <span class="nf">salt</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">salt</span><span class="p">;</span>
+  <span class="k">-</span> <span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nf">deriveKey</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">password</span> <span class="nf">salt</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">salt</span> <span class="nf">iterations</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">iterations</span><span class="p">;</span>
+  <span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">validate</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">password</span> <span class="nf">encryptedPassword</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">encryptedPassword</span> <span class="nf">salt</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">salt</span><span class="p">;</span>
+  <span class="k">-</span> <span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="n">salt</span><span class="p">;</span>
+  <span class="k">@end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Symmetric encryption support (CBC)</p>
+  </li>
+</ul>
+
+<p><strong>NOTE:</strong> AES GCM Mode is not publicly supported by CommonCrypto (Part of a <a href="https://github.com/Apple-FOSS-Mirror/CommonCrypto/blob/master/Source/CommonCryptoSPI/CommonCryptorSPI.h#L71">private interface</a> ). We start first with exposing Mode AES CBC.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">@interface</span> <span class="nc">AGCryptoBox</span> <span class="p">:</span> <span class="nc">NSObject</span>
+    <span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="nf">initWithKey</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">key</span><span class="p">;</span>
+    <span class="k">-</span> <span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nf">encrypt</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">data</span> <span class="nf">IV</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">IV</span><span class="p">;</span>
+    <span class="k">-</span> <span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nf">decrypt</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">data</span> <span class="nf">IV</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">IV</span><span class="p">;</span>
+    <span class="k">@end</span>
+</code></pre></div></div>
+
+<h1 id="scenarios">Scenarios</h1>
+
+<p><strong>Note</strong>: For all scenarios the authentication process was intentionally ignored.</p>
+
+<h2 id="local-data-encryption">Local data encryption</h2>
+
+<ul>
+  <li>An user wants to store sensitive data on mobile device and the data must be protected</li>
+</ul>
+
+<p>For this scenario we will make use of <em>symmetric ciphers</em> to encrypt/decrypt the local data, of course an efficient way to properly store the key must be evaluated and the key should never be shared with others.</p>
+
+<p>The API <em>can’t</em> encourage developers to commit some common mistakes like predictable key, IV or salt, that said the API must be responsible for the entropy behind the scenes and as well generate these values.</p>
+
+<p>By default the API will provide <em>AES</em> with <em>GCM</em>, if for some reason the crypto provider doesn’t have any support for these modes, <em>CBC</em> or <em>CTR</em>  must be replacement and the change explicitly documented.</p>
+
+<p><strong>Note</strong>: The following solution doesn’t prevent an attacker from extract the data via USB and try to break the encryption.</p>
+
+<p><img src="img/local_encryption_0.0.1.png" alt="" /></p>
+
+<h1 id="demo-application-workflow">Demo application workflow</h1>
+
+<p>The demo app <code class="highlighter-rouge">AeroGear Crypto</code> is a single app that let you easily create alisaes and encrypted passwords and store them in an encrypted database that only you can access. One central point for all your passwords.</p>
+
+<p>For the initial release, the flow to change master password will not be implemented.</p>
+
+<p>Video links:</p>
+
+<ul>
+  <li>
+    <p>For <a href="http://vimeo.com/77804314">Android client</a></p>
+  </li>
+  <li>
+    <p>For <a href="http://vimeo.com/78366502">iOS client</a></p>
+  </li>
+</ul>
+
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

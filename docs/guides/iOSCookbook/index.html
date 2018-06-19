@@ -1,0 +1,1368 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+  <title>AeroGear - AeroGear iOS API Cookbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body class="  ">    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+ 
+
+  
+
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+
+  <div class="basic">
+    <div class="sect1">
+<h2 id="_aerogear_ios_api_cookbook">AeroGear iOS API Cookbook</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal of this guide is to introduce you to the current available AeroGear iOS Core APIs.</p>
+</div>
+<div class="paragraph">
+<p>A Pipe object represents a server connection. An object of this class is responsible to communicate with the server in order to perform read/write operations.</p>
+</div>
+<div class="paragraph">
+<p>A Pipeline object represents a 'collection' of server connections (aka Pipes). It provides a standard way to communicate with the server no matter the data format or transport expected. It contains some simple management APIs to create and remove Pipe objects.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_pipeline_and_a_pipe_object">Creating a Pipeline and a Pipe object</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create a pipeline, you need to use the AGPipeline class. Below is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// NSURL object:
+NSURL* serverURL = [NSURL URLWithString:@"http://myserver.rhcloud.com/"];
+
+// create the 'todo' pipeline, which points to the baseURL of the REST application
+AGPipeline* todo = [AGPipeline pipelineWithBaseURL:serverURL];
+
+// Add a REST pipe for the 'projects' endpoint
+id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"projects"];
+     // this is the default, can be emitted
+    [config setType:@"REST"];
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example above the 'projects' pipe points to an RESTful endpoint (<a href="http://myserver.rhcloud.com/projects" class="bare">http://myserver.rhcloud.com/projects</a>). However, technical details like RESTful APIs (e.g. HTTP PUT) are not exposed on the AGPipeline and AGPipe APIs. Below is shown how to get access to an actual pipe, from the AGPipeline object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// get access to the 'projects' pipe
+id&lt;AGPipe&gt; projects = [todo pipeWithName:@"projects"];</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_read_a_specific_object">Read a specific object</h3>
+<div class="paragraph">
+<p>The 'read:id' method allows you to fetch the object previously saved. The <a href="#noteid">id</a> of the object is used as the parameter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// read an object with id of 1
+[projects read:@"1" success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, where we have a RESTful pipe the API issues a HTTP GET request.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_read_all_objects_from_the_server">Read all objects from the server</h3>
+<div class="paragraph">
+<p>The 'read' method allows to (currently) read <em>all</em> object from the server, of the underlying AGPipe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">[projects read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since we are pointing to a RESTful endpoint, the API issues a HTTP GET request.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_save_object">Save object</h3>
+<div class="paragraph">
+<p>The AGPipe offers an API to store objects on a <em>remote</em> server resource. <strong>Currently</strong> the objects are <em>just</em> simple map objects. In the future we are looking to support more advanced (complex) frameworks, like Core Data. The 'save' method is described below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// create a dictionary and set some key/value data on it:
+NSMutableDictionary* projectEntity = [@{@"title": @"Hello World"} mutableCopy];
+
+// save the 'new' project:
+[projects save:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"CREATE RESPONSE\n%@", [responseObject description]);
+
+    // get the id of the new project, from the JSON response...
+    id resourceId = [responseObject valueForKey:@"id"];
+
+    // and update the 'object', so that it knows its ID...
+    [projectEntity setValue:[resourceId stringValue] forKey:@"id"];
+
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Above the <em>save</em> function stores the given NSDictionary on the server. In this case, where we have a RESTful pipe the API issues a HTTP POST request.</p>
+</div>
+<div id="noteid" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Upon success, we set the <a href="/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html#//api/name/recordId">recordId</a> property on the object from the server response. This is a required step cause this property is used by Pipe&#8217;s <a href="#update">update</a> and <a href="#remove">remove</a> methods to perform operations on the object. By default, the <a href="/docs/specs/aerogear-ios/Protocols/AGPipe.html">Pipe</a> is configured to use the name <em>"id"</em>, but if your RESTful resource uses a different name, you can easily override it using the <a href="/docs/specs/aerogear-ios/Protocols/AGPipeConfig.html#//api/name/recordId">recordId</a> configuration option when constructing the <a href="/docs/specs/aerogear-ios/Protocols/AGPipe.html">Pipe</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="update">Update object</h3>
+<div class="paragraph">
+<p>The 'save' method is also responsible for updating an 'object'. Before performing 'save', ensure that the object you are trying to save, has the <a href="#noteid">recordId</a> property set.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// change the title of the previous project 'object':
+[projectEntity setValue:@"Hello Update World!" forKey:@"title"];
+
+// and now update it on the server
+[projects save:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"UPDATE RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"UPDATE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, where we have a RESTful pipe the API issues a HTTP PUT request.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remove">Remove object</h3>
+<div class="paragraph">
+<p>The AGPipe also contains a 'remove' method to delete the object on the server. As in the case of 'update', ensure that the <a href="#noteid">recordId</a> property is set, so that it knows which resource to delete.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// Now, just remove the project:
+[projects remove:projectEntity success:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"DELETE RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"DELETE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, where we have a RESTful pipe the API issues a HTTP DELETE request.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_multipart_upload">Multipart Upload</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Support for multipart upload is also provided. The types of data that can be uploaded are local files, instances of NSData and NSInputStream.
+Let&#8217;s see how the upload mechanism works with an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// a multipart that contains a file
+NSURL *file1 = &lt;path to a local file&gt;
+AGFilePart *filePart = [[AGFilePart alloc]initWithFileURL:file1 name:@"myfile"];  // 1
+
+// a multipart that contains an NSData object
+NSData *data1 = [@"Lorem ipsum dolor sit amet.." dataUsingEncoding:NSUTF8StringEncoding];
+AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:data1    // 2
+                                                               name:@"data1"
+                                                            fileName:@"data1.txt" mimeType:@"text/plain"];
+
+// set up payload
+NSDictionary *dict = @{@"somekey": @"somevalue",  // 3
+                       @"another_key": @"some_other_key",
+                       @"file1":filePart,
+                       @"file2":dataPart};
+
+// set an (optional) progress block  // 4
+[[apiClient uploadPipe] setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+    NSLog(@"UPLOADPIPE Sent bytesWritten=%d totalBytesWritten=%qi of totalBytesExpectedToWrite=%qi bytes", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+}];
+
+// upload data
+[[apiClient uploadPipe] save:dict success:^(id responseObject) {
+    NSLog(@"Successfully uploaded!");
+
+} failure:^(NSError *error) {
+    NSLog(@"An error has occured during upload! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An <a href="https://github.com/aerogear/aerogear-ios/blob/1.6.x/AeroGear-iOS/core/AGMultipart.h#L46">AGFilePart</a> [1] and <a href="https://github.com/aerogear/aerogear-ios/blob/1.6.x/AeroGear-iOS/core/AGMultipart.h#L64">AGFileDataPart</a> [2] objects are used to attach the data we want to upload. The former is initialized to point to a local file whereas the latter point to an NSData object respectively. Not shown in the example above, but an <a href="https://github.com/aerogear/aerogear-ios/blob/1.6.x/AeroGear-iOS/core/AGMultipart.h#L86">AGStreamPart</a> can be also used to read the data from a NSInputStream directly.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For NSData we need to explicitly specify both the <em>'filename'</em> and the <em>'MIME type'</em>, since they can not be automatically determined as with the case of a file.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>After initialization of the objects, we simply attach them to the payload [3], setting an (optional) progress block [4] so we can get notified during the upload.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prior to version 1.4 of the library, multipart upload was supported by the means of attaching a <em>NSURL</em> object directly on the payload. The method is still supported, but it is now deprecated and will be removed in the future versions of the library.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_timeout">Timeout</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_time_out_and_cancel_pending_operations">Time out and Cancel pending operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_timeout_2">Timeout</h3>
+<div class="paragraph">
+<p>During construction of the Pipe object, you can optionally specify a timeout interval (default is 60 secs) for an operation to complete. If the time interval is exceeded with no response from the server, then the <em>failure</em> callback is executed with an error code set to <em>NSURLErrorTimedOut</em>.</p>
+</div>
+<div class="paragraph">
+<p>From the todo example above:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">id&lt;AGPipe&gt; projects = [todo pipe:^(id&lt;AGPipeConfig&gt; config) {
+    ...
+    [config setTimeout:20];  // set the time interval to 20 secs
+}];</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are running on iOS versions &lt; 6 and a timeout occurs on a pipe&#8217;s <em>save</em> operation, the error code is set to <em>NSURLErrorCancelled</em>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cancel">Cancel</h3>
+<div class="paragraph">
+<p>At any time after starting your operations, you can call 'cancel' on the Pipe object to cancel all running Pipe operations. Doing so will invoke the pipe&#8217;s 'failure' block with an error code set to 'NSURLErrorCancelled'. You can then check this code in order to perform your "cancellation" logic.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">[projects read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];
+
+ // cancel the request
+[projects cancel];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The library has built-in paging support, enabling the scrolling to either forward or backwards through a result set returned from the server. Paging metadata located in the server response (either in the headers via <a href="http://tools.ietf.org/html/rfc5988">WebLinking RFC</a> or custom headers, or in the body) are used to identify the next or the previous result set. For example, the Twitter search paging metadata is located in the <a href="https://dev.twitter.com/docs/api/1/get/search">body</a> of the response signifying the next or previous result set. The location of this metadata as well as naming, is fully configurable during the creation of the pipe, thus enabling greater flexibility in supporting several different paging strategies.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example that goes against the AeroGear Controller Server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">NSURL* baseURL = [NSURL URLWithString:@"https://controller-aerogear.rhcloud.com/aerogear-controller-demo"];
+AGPipeline* agPipeline = [AGPipeline pipelineWithBaseURL:baseURL];
+
+id&lt;AGPipe&gt; cars = [agPipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"cars-custom"];
+
+    [config setPageConfig:^(id&lt;AGPageConfig&gt; pageConfig) {
+        [pageConfig setNextIdentifier:@"AG-Links-Next"];
+        [pageConfig setPreviousIdentifier:@"AG-Links-Previous"];
+        [pageConfig setMetadataLocation:@"header"];
+    }];
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Paging configuration parameters are encapsulated in the AGPageConfig object. Similar to the way we set Pipe configuration params by means of a block, paging configuration params are set using <code>[AGPipeConfig setPageConfig:]</code> method passing a block with the desired paging paramaters. Notice that in our example, we explicitely declare the name of the paging identifiers supported by the server, as well as the location of these identifiers in the response. If the metadataLocation is not specified, the library will assume the server is using Web Linking pagination strategy and will default to it.</p>
+</div>
+<div class="paragraph">
+<p>For cases that a custom pagination strategy is followed in the server application , the library also allows the user to plug in a user-defined one, by the means of the [pageConfig setPageParameterExtractor] configuration setting. If set, the library will follow this strategy, overriding the build-in provided ones. In that case, the metadata location is not required and is ignored if set. The strategy should follow the protocol AGPageParameterExtractor, allowing the library to determine the 'next' and 'previous' parameters.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_start_paging">Start Paging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To kick-start pagination, you use the method <em>readWithParams</em> of the underlying AGPipe, passing your desired query parameters to the server. Upon successfully completion, the <em>pagedResultSet</em> (an enchached category of nsarray) will allow you to scroll through the result set.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">__block NSMutableArray *pagedResultSet;
+
+// fetch the first page
+[cars readWithParams:@{@"color" : @"black", @"offset" : @"0", @"limit" : @1} success:^(id responseObject) {
+    pagedResultSet = responseObject;
+
+    // do something
+
+} failure:^(NSError *error) {
+    //handle error
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_move_forward_in_the_result_set">Move Forward in the result set</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To move forward in the result set, you simple call <em>next</em> on the <em>pagedResultSet</em> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// move to the next page
+[pagedResultSet next:^(id responseObject) {
+    // do something
+
+} failure:^(NSError *error) {
+    // handle error
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_move_backwards_in_the_result_set">Move Backwards in the result set</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To move backwards in the result set, you simple call <em>previous</em> on the <em>pagedResultSet</em> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">[pagedResultSet previous:^(id responseObject) {
+    // do something
+
+} failure:^(NSError *error) {
+    // handle error
+}];</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">The library uses the 'next' and 'previous' identifiers:</div>
+<ul>
+<li>
+<p>to extract the paging information params from the response and</p>
+</li>
+<li>
+<p>filling those paging information params in the subsequent 'next' and 'previous' requests.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Failing to provide correct identifiers, means that no paging params would be appended in the request.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Without valid paging parameters the used service API may simply return the entire data. To ensure the results returned  do 'logical' represent a 'next' and 'previous' page, the user must ensure correct identifiers are set in the Page configuration.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Further, moving beyond last or first page is left on the behaviour of the specific server implementation, that is the library will not treat it differently. Some servers can throw an error (like Twitter or AeroGear Controller does) by respondng with an http error response, or simply return an empty list. The user is responsible to cater for exception cases like this.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A Store represents an abstraction layer for a storage system. Currently implemented storage systems are an <a href="/docs/specs/aerogear-ios/Classes/AGMemoryStorage.html">in-memory</a>, <a href="/docs/specs/aerogear-ios/Classes/AGPropertyListStorage.html">property list</a> and a <a href="/docs/specs/aerogear-ios/Classes/AGSQLiteStorage.html">SQLite</a> storage (note that encrypted variants of these stores are also available, check the <a href="/docs/guides/aerogear-ios/Cryptography/">Cryptography support</a> section below).</p>
+</div>
+<div class="paragraph">
+<p>A DataManager manages different Store implementations. It is basically a factory that hides the concrete instantiations of a specific Store implementation. The class offers simple APIs to add, remove or get access to a 'data store'.</p>
+</div>
+<div class="paragraph">
+<p>The code snippets below are part of <a href="https://github.com/aerogear/aerogear-ios/tree/1.6.x/AeroGear-iOSTests">aerogear-ios test suite</a>. You can browse our BDD specifications for further samples.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Right now, there is NO automatic data sync. This is up to the user.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_datamanager_with_store_object">Create a datamanager with store object:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After receiving data from the server, your application may want to keep the data around. The AGDataManager API allows you to create AGStore instances. To create a datamanager, you need to use the AGDataManager class. Below is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// create the datamanager
+AGDataManager* dm = [AGDataManager manager];
+// add a new (default) store object:
+id&lt;AGStore&gt; myStore = [dm store:^(id&lt;AGStoreConfig&gt; config) {
+    [config setName:@"tasks"];
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AGDataManager class offers some simple 'management' APIs to work with containing AGStore objects. The API offers read and write functionality. The default implementation represents an "in-memory" store. If you want to create a AGPropertyListStorage or a AGSQLiteStorage, add a config type as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// create the datamanager
+AGDataManager* dm = [AGDataManager manager];
+// add a new (default) store object:
+id&lt;AGStore&gt; store = [dm store:^(id&lt;AGStoreConfig&gt; config) {
+   [config setName:@"tasks"];
+   [config setType:@"SQLITE"];
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Storage can be of type:¬†MEMORY, PLIST or SQLITE. Similar to the pipe API technical details of the underlying system are not exposed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_save_data_to_the_store">Save data to the Store</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When using a pipe to read all entries of a endpoint, you can use the AGStore to save the received objects:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">id&lt;AGPipe&gt; tasksPipe = [todo get:@"tasks"];
+
+[tasksPipe read:^(id responseObject) {
+    // the response object represents an NSArray,
+    // containing multile 'Tasks' (as NSDictionary objects)
+
+    // Save the response object to the store
+    NSError *error;
+
+    if (![myStore save:responseObject error:&amp;error])
+        NSLog(@"Save: An error occured during save! \n%@", error);
+
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When loading all tasks from the server, the AGStore object is used inside of the <em>read</em> block from the AGPipe object. The returned collection of tasks is stored inside our in-memory store, from where the data can be accessed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_read_an_object_from_the_store">Read an object from the Store</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// read the task with the '0' ID:
+id taskObject =  [myStore read:@"0"];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <em>read</em> function accepts the <em>recordID</em> of the object you want to retrieve. If the object does not exist in the store, <em>nil</em> is returned.</p>
+</div>
+<div class="paragraph">
+<p>If you want to read <em>all</em> the objects contained in the store, simply call the <em>readAll</em> function</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// read all objects from the store
+NSArray *objects = [myStore readAll];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_remove_one_object_from_the_store">Remove one object from the Store</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The remove function allows you to delete a single entry in the collection, if present:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// remove the taskObject:
+NSError *error;
+
+if (![myStore remove:taskObject error:error])
+    NSLog(@"Save: An error occured during remove! \n%@", error);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The remove method accepts a <em>taskObject</em> which is the object you want to remove. If the object does not exist in the store, FALSE is returned.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_filter_the_entire_store">Filter the entire store</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Filtering of the data available in the AGStore is also supported, by using the familiar NSPredicate class available in iOS. In the following example, after storing a pair of dictionaries representing user information details in the store (which can be easily come from a response from a server), we simple call the <em>filter</em> method to filter out the desired information:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c"> NSMutableDictionary *user1 = [@{@"id" : @"1",
+                                @"name" : @"Robert",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Cornwell"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"advanced"},
+                                                  @{@"language" : @"C", @"level" : @"advanced"}]
+                              } mutableCopy];
+
+NSMutableDictionary *user2 = [@{@"id" : @"2",
+                                @"name" : @"David",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Cornwell"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"intermediate"},
+                                                  @{@"language" : @"Python", @"level" : @"intermediate"}]
+                              } mutableCopy];
+
+NSMutableDictionary *user3 = [@{@"id" : @"3",
+                                @"name" : @"Peter",
+                                @"city" : @"Boston",
+                                @"department" : @{@"name" : @"Software", @"address" : @"Branton"},
+                                @"experience" : @[@{@"language" : @"Java", @"level" : @"advanced"},
+                                                  @{@"language" : @"C", @"level" : @"intermediate"}]
+                              } mutableCopy];
+
+// save objects
+BOOL success = [_memStore save:users error:nil];
+
+if (success) { // if save succeeded, query the data
+    NSPredicate *predicate = [NSPredicate
+                              predicateWithFormat:@"city = 'Boston' AND department.name = 'Software' \
+                              AND SUBQUERY(experience, $x, $x.language = 'Java' AND $x.level = 'advanced').@count &gt; 0" ];
+
+    NSArray *results = [_memStore filter:predicate];
+
+    // The array now contains the dictionaries _user1_ and _user_3, since they both satisfy the query predicate.
+    // do something with the 'results'
+    // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using NSPredicate to filter desired data, is a powerful mechanism offered in iOS and we strongly suggest to familiarize yourself with it, if not already. Take a look at Apple&#8217;s own <a href="http://tinyurl.com/chmgwv5">documentation</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reset_the_entire_store">Reset the entire store</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The reset function allows you the erase all data available in the used AGStore object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// clears the entire store
+NSError *error;
+
+if (![myStore reset:&amp;error])
+    NSLog(@"Reset: An error occured during reset! \n%@", error);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_propertylist_storage_specific">PropertyList Storage Specific</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A simple <em>Property list</em> storage system is part of the library as well that uses the same 'AGStore' protocol for reading and writing. Depending on the type specified during store configuration, the system will use either <a href="https://developer.apple.com/library/mac/documentation/cocoa/reference/foundation/Classes/NSPropertyListSerialization_Class/Reference/Reference.html">NSPropertyListSerialization</a> (type ''<em>PLIST</em>'') or <a href="https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html">NSJSONSerialization</a> (type ''<em>JSON</em>'') when exporting data.</p>
+</div>
+<div class="paragraph">
+<p>NOTE
+You must adhere to the rules governing the serialization of data types for each respective plist type.</p>
+</div>
+<div class="paragraph">
+<p>The 'read', 'reset' or 'remove' API behave the same, as on the default ("in memory") store.</p>
+</div>
+<div class="paragraph">
+<p>An Authenticator manages different authentication module implementations. It is basically a factory that hides the concrete instantiation of a specific Authentication Module implementation. The class offers simple APIs to add, remove, or get access to a 'authentication module'.</p>
+</div>
+<div class="paragraph">
+<p>An AuthenticationModule represents an authentication module and provides the authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the Pipe, technical details of the underlying system are not exposed</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_authenticator_with_an_authentication_module">Creating an authenticator with an authentication module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create an authenticator, you need to use the AGAuthenticator class. Below is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// create an authenticator object
+AGAuthenticator* authenticator = [AGAuthenticator authenticator];
+
+// add a new auth module and the required 'base url':
+NSURL* baseURL = [NSURL URLWithString:@"https://myserver.rhcloud.com/"];
+id&lt;AGAuthenticationModule&gt; myMod = [authenticator auth:^(id&lt;AGAuthConfig&gt; config) {
+    [config setName:@"authMod"];
+    [config setBaseURL:baseURL];
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AGAuthenticator class offers some simple 'management' APIs to work with containing AGAuthenticationModule objects. The API provides an authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the pipe API technical details of the underlying system are not exposed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register_a_user">Register a user</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <em>enroll</em> function of the 'AGAuthenticationModule' protocol is used to register new users with the backend:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// assemble the dictionary that has all the data for THIS particular user:
+
+NSDictionary* userData = @{@"username": @"john",
+						   @"password": @"123",
+						   @"email", @"me@you.com",
+						   @"betaAccountToken", @"21sda812sad24"};
+// register a new user
+[myMod enroll:userData success:^(id data) {
+    // after a successful _registration_, we can work
+    // with the returned data...
+    NSLog(@"We got: %@", data);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <em>enroll</em> function submits a generic map object with contains all the information about the new user, that the server endpoint requires. The default (REST) auth module issues for the above a request against <em><a href="https://myserver.rhcloud.com/auth/enroll" class="bare">https://myserver.rhcloud.com/auth/enroll</a></em>. Besides the NSDictionary the function accepts two simple blocks that are invoked on success or in case of a failure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_login">Login</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have a <em>valid</em> user you can use that information to issue a login against the server, to start accessing protected endpoints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">NSDictionary *credentials = @{@"username": @"john", @"password": @"123"};
+// issuing a login
+[myMod login:credentials success:^(id object) {
+    // after a successful _login_, we can work
+    // with the returned data...
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default (REST) auth module issues for the above a request against <em><a href="https://myserver.rhcloud.com/auth/login" class="bare">https://myserver.rhcloud.com/auth/login</a></em>. Besides the <em>username</em> and the <em>password</em> (stored in a <em>NSDictionary</em>), the function accepts two simple blocks that are invoked on success or in case of a failure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pass_the_auth_module_to_a_pipe">Pass the auth module to a pipe</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After running a successful login, you can start using the <em>AGAuthenticationModule</em> object on a <em>AGPipe</em> object to access protected endpoints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">id&lt;AGPipe&gt; tasks = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"tasks"];
+    [config setBaseURL:serverURL];
+    [config setAuthModule:myMod];
+}];
+
+[tasks read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When creating a pipe you need to use the <em>authModule</em> argument in order to pass in an <em>AGAuthenticationModule</em> object.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logout">Logout</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The logout from the server can be archived by using the <em>logout</em> function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// logout:
+[myMod logout:^{
+    // after a successful _logout_, when can notify the application
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default (REST) auth module issues for the above a request against <em><a href="https://myserver.rhcloud.com/auth/logout" class="bare">https://myserver.rhcloud.com/auth/logout</a></em>. The function accepts two simple blocks that are invoked on success or in case of a failure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_nsurlcredential_support">NSURLCredential support.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As of version 1.1.0 of the library, you can pass directly on the Pipe configuration an <a href="http://tinyurl.com/neqbum2">NSURLCredential</a> object. Doing that will give you instant support for the built-in authentication protocols already supported in iOS (such as Basic/Digest). When a request comes in where an authentication challenge is required, the library will pass to the server those credentials.</p>
+</div>
+<div class="paragraph">
+<p>To pass the NSURLCredential object, use the <em>setCredential</em> configuration method during construction of the Pipe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">id&lt;AGPipe&gt; tasks = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"tasks"];
+    [config setCredential:[NSURLCredential
+                credentialWithUser:@"username" password:@"passwd" persistence:NSURLCredentialPersistenceNone];
+}];</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Care should be taken when specifying the persistence type param when constructing the NSURLCredential object. Specifying type other than <a href="http://tinyurl.com/q28l9hd">NSURLCredentialPersistenceNone</a>, will have the effect of the credentials to be preserved across session and application restarts. In that case, the developer is responsible to clear the cache. See <a href="http://tinyurl.com/n9amy5q">NSURLCredentialStorage</a> class reference for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_time_out_and_cancel_pending_operations_2">Time out and Cancel pending operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As with the case of Pipe, configured timeout interval (in the config object) and cancel operation in <em>AGAuthenticationModule</em> is supported too.</p>
+</div>
+<div class="paragraph">
+<p>An Authorizer manages different authorization module implementations. It is basically a factory that hides the concrete instantiation of a specific AGAuthorizer Module implementation. The class offers simple APIs to add, remove, or get access to a 'authorization module'.</p>
+</div>
+<div class="paragraph">
+<p>The AuthorizationModule current implementation is based on <a href="http://tools.ietf.org/html/rfc6749">OAuth2 protocol</a> and uses REST as the authz transport. Similar to the Pipe, technical details of the underlying system are not exposed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_authorizer">Creating an Authorizer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create an Authorizer, you need to use the AGAuthorizer class. Below is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// create an authenticator object
+AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+
+_restAuthzModule = [authorizer authz:^(id&lt;AGAuthzConfig&gt; config) {
+    config.name = @"restAuthMod";
+    config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+    config.authzEndpoint = @"/o/oauth2/auth";
+    config.accessTokenEndpoint = @"/o/oauth2/token";
+    config.revokeTokenEndpoint = @"/o/oauth2/revoke";
+    config.clientId = @"XXX";
+    config.redirectURL = @"YYY:/oauth2Callback";
+    config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_account_manager">Creating an Account Manager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When authorizing an OAuth2 application, you often want the user to grant access for your app only once in the app lifetime. This is the whole purpose of AccountManager — you can create multiple accounts and store them in an AGStore. It&#8217;s up to you to choose you store. By default all the sensitive data is stored in the Keychain if the iPhone passcode is set.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can use an encrypted storage for storing authorization tokens, but be aware that the user&#8217;s password must be provided.</p>
+</div>
+<div class="paragraph">
+<p>Here is how you do it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">    // set up crypto params configuration object
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];
+    [config setSalt:[self salt]];
+    [config setPassphrase:passphrase];
+
+    // initialize the encryption service passing the config
+    id&lt;AGEncryptionService&gt; encService = [[AGKeyManager manager] keyService:config];        // [1]
+
+    // access Store Manager
+    AGDataManager *manager = [AGDataManager manager];
+
+    // create store
+    id&lt;AGStore&gt; store = [manager store:^(id&lt;AGStoreConfig&gt; config) {                        // [2]
+        [config setName:@"OAuthStorage"];
+        // can also be set to "ENCRYPTED_SQLITE" for the encrypted sqlite variant
+        [config setType:@"ENCRYPTED_PLIST"];
+        [config setEncryptionService:encService];
+    }];
+
+    // initialize account manager with encrypted store backend
+    _acctManager = [AGAccountManager manager:store];                                        // [3]
+
+    // set up facebook authz modules
+    id&lt;AGAuthzModule&gt; facebookAuthzModule = [_acctManager authz:^(id&lt;AGAuthzConfig&gt; config) { // [4]
+        config.name = @"restAuthMod";
+        config.baseURL = [[NSURL alloc] init];
+        ...
+    }];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In [1] you create an encryption service to be used with the encrypted database.</p>
+</div>
+<div class="paragraph">
+<p>In [2] you create an encrypted storage passing the encryption service.</p>
+</div>
+<div class="paragraph">
+<p>Last [3] create an AccountManager by injecting the created database. You can then create an authz module using the same code as seen with Authorizer above.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pass_agauthzmodule_to_a_pipe">Pass AGAuthzModule to a pipe</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Authorization module seamlessly integrates with Pipe, all you need to do is [5] inject your AuthzModule into the Pipe.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// set up our facebook pipeline and pipes
+AGPipeline *_fbPipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"https://graph.facebook.com/me/"]];
+
+[_fbPipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"facebookUploadPipe"];
+    [config setEndpoint:@"photos"];
+    [config setAuthzModule:facebookAuthzModule];                    // [5]
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grant_access_is_implicit_by_default">Grant access is implicit by default</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You may ask when does Authz module request for authorization? Basically each time you do a CRUD operation on Pipe, tokens are checked. If there are no tokens available you will be prompted. If the tokens have expired, a refresh token action is performed under the hood. Once you&#8217;ve done all the configuration, you can use the Pipe as usual.</p>
+</div>
+<div class="sect2">
+<h3 id="_grant_access_explicitly">Grant access explicitly</h3>
+<div class="paragraph">
+<p>However if you want to trigger the grant pop-up, the explicit call to <strong>requestAccessSuccess:failure</strong> is required, as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">[_restAuthzModule requestAccessSuccess:^(id object) {
+    // Do some work here
+} failure:^(NSError *error) {
+    // Deal with failure
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_revoke_access">Revoke access</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You may want to revoke access tokens for you app by calling <strong>revokeAccessSuccess:failure</strong> as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">[_restAuthzModule revokeAccessSuccess:^(id object) {
+    // Do some work here
+} failure:^(NSError *error) {
+    // Deal with failure
+}]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since 1.3.0 release of the library, we&#8217;ve built on the security foundation provided by <a href="https://github.com/aerogear/aerogear-crypto-ios">aerogear-crypto-ios</a>
+to offer encrypted variants of our existing in-memory, plist and sqlite data stores. If you have been using the existing data stores to persist
+your data, you will be happy to know that you can easily switch to an encrypted variant by simple changing the
+type and some small (really!) amount of code to provide the necessary crypto params.
+Let&#8217;s start with a small primer to symmetric encryption, which is primary cryptography mechanism used
+to encrypt the data stores.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_symmetric_encryption_api">Symmetric encryption API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Symmetric encryption (also called private key encryption) is when the same key is used to encrypt and decrypt data. It is best defined with the following concepts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Encryption key</strong> is a block of bytes of a <em>specific length</em>. Key can be derived from password using for example, PBKDF2 algorithm. Must be kept secret.</p>
+</li>
+<li>
+<p><strong>IV (Initialization Vector)</strong> is a random value that is used to encrypt data. Encryption algorithms usually work on fixed-size blocks, IV defines the first encrypted block.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can derive the encryption key using a password or passphrase and salt with <a href="/docs/specs/aerogear-ios-crypto/Classes/AGPBKDF2.html">AGPBKDF2</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Password</strong> is easy to remember and usually defined by user and must be kept secret. A password is not a key.</p>
+</li>
+<li>
+<p><strong>Salt</strong> is a random value that is used together with a password to derive an encryption key. A salt value does not need to be kept secret.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>AeroGear-Crypto symmetric encryption is powered by <a href="http://nacl.cr.yp.to/">NaCl</a>. Using <a href="http://cr.yp.to/ecdh/curve25519-20060209.pdf">Curve 25519 algorithms</a>,
+it provides you an easy way to encrypt your sensitive data. No need to be a security expert to use the library. See by yourself.</p>
+</div>
+<div class="paragraph">
+<p>First of all, to encrypt your data you need an encryption key. Your key can be derived from a PIN, password or passphrase using <a href="/docs/specs/aerogear-ios-crypto/Classes/AGPBKDF2.html">AGPBKDF2</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">    NSData *salt = [AGRandomGenerator randomBytes];
+    NSData *encryptionKey = [pbkdf2 deriveKey:@"password4me" salt:salt];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For random generation of key, salt or IV, use <a href="/docs/specs/aerogear-ios-crypto/Classes/AGRandomGenerator.html">AGRandomGenerator</a>. By default, AGRandomGenerator generates 16 bytes key, but you can also specify the length if you wish.</p>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve got your encryption key, use <a href="/docs/specs/aerogear-ios-crypto/Classes/AGSecretBox.html">AGSecretBox</a> to do the actual encryption. Its interface is simple:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">@interface AGSecretBox : NSObject
+- (id)initWithKey:(NSData*)key;
+- (NSData*)encrypt:(NSData*)data IV:(NSData*)IV;
+- (NSData*)decrypt:(NSData*)data IV:(NSData*)IV;
+@end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With <a href="/docs/specs/aerogear-ios-crypto/Classes/AGSecretBox.html">AGSecretBox</a>, you can encrypt/decrypt data using your encryption key and a randomly generated IV (Initialization Vector) as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">    NSString* stringToEncrypt = @"I want to keep it secret";
+    // encode string into data
+    NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* IV = [AGRandomGenerator randomBytes:16];
+
+    // init secretbox with a key
+    AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:encryptionKey];
+
+    // encrypt
+    NSData* encryptedData = [secretBox encrypt:dataToEncrypt IV:IV];
+
+    // decrypt
+    NSData* decryptedData = [secretBox decrypt:encryptedData IV:IV];</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To be able to decrypt, you need the randomly generated IV and you can regenerate the key with the salt and the password (prompted on the fly).
+It is not recommended to store either password or derived key. Salt and IV are not security sensitive in the sense that they can be stored.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_encrypted_storage">Encrypted storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If your storage information need to be encrypted, AeroGear provides convenient and transparent encrypted storage support. You can use encrypted stores with the same API as the plain ones.</p>
+</div>
+<div class="paragraph">
+<p>Current available implementations are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="/docs/specs/aerogear-ios/Classes/AGEncryptedMemoryStorage.html">Encrypted Memory</a> storage which allows you to work in-memory with sensitive data.</p>
+</li>
+<li>
+<p><a href="/docs/specs/aerogear-ios/Classes/AGEncryptedPropertyListStorage.html">Encrypted Property List</a> storage implementation.</p>
+</li>
+<li>
+<p><a href="/docs/specs/aerogear-ios/Classes/AGEncryptedSQLiteStorage.html">Encrypted SQLite</a> storage implementation.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Prior to using an encrypted data store variant, we need to obtain an instance of an <a href="/docs/specs/aerogear-ios/Protocols/AGEncryptionService.html">EncryptionService</a> which we will set it as a configuration parameter when we first initialise the store. The store will then use that service to perform encryption and decryption of data. Let&#8217;s see how this works:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">    // randomly generate salt
+    NSData *salt = [AGRandomGenerator randomBytes];  // [1]
+
+    // set up crypto params configuration object
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];  // [2]
+    [config setSalt:salt];  // 3
+    [config setPassphrase:self.password.text];   // 4
+
+    // initialize the encryption service passing the config
+    id&lt;AGEncryptionService&gt; encService = [[AGKeyManager manager] keyService:config];  // [5]
+
+    // access Store Manager
+    AGDataManager *manager = [AGDataManager manager];  // 6
+
+    // create store
+    store = [manager store:^(id&lt;AGStoreConfig&gt; config) {
+        [config setName:@"CredentialsStorage"];
+        [config setType:@"ENCRYPTED_PLIST"];  // 7
+        [config setEncryptionService:encService];  // 8
+    }];
+
+    // ok time to attempt reading..
+    NSArray *data = [store readAll]) { // 9
+
+    if (data)
+        // decryption succeeded!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In [1] we initialize a random <em>salt</em> that will be used in the encryption. In [2] we initialize an instance of a <a href="/docs/specs/aerogear-ios/Protocols/AGCryptoConfig.html">CryptoConfig</a> configuration object to set our crypto params. Here we use an <a href="/docs/specs/aerogear-ios/Classes/AGPassphraseCryptoConfig.html">PassphraseCryptoConfig</a> object, that sets the necessary crypto params for the PBKDF2 Encryption Service, mainly the salt [3] and the passphrase [4].</p>
+</div>
+<div class="paragraph">
+<p>Now that we have setup the configuration, it&#8217;s time to obtain an instance of an <a href="/docs/specs/aerogear-ios/Protocols/AGEncryptionService.html">EncryptionService</a> and that&#8217;s exactly what we do in [5]. <a href="/docs/specs/aerogear-ios/Classes/AGKeyManager.html">KeyManager</a> parses the configuration and returns an instance of it. Because we passed an <a href="/docs/specs/aerogear-ios/Classes/AGPassphraseCryptoConfig.html">PassphraseCryptoConfig</a> object, a PBKDF2 encryption service would be returned.</p>
+</div>
+<div class="paragraph">
+<p>In [6] we initialize our data store (an encrypted plist [7]), setting the encryption service we obtained earlier [8]. Reading and saving operations are done like all the other stores, but this time the data are transparently encrypted/decrypted.</p>
+</div>
+<div class="paragraph">
+<p>In [9] we attempt to read data from the store. If that fails, then user supplied wrong crypto parameters (either passphrase or salt).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aerogear_crypto_password">AeroGear Crypto Password</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to see it all together, give a try to <a href="https://github.com/aerogear/aerogear-crypto-ios-demo">AeroGear Crypto Password</a> app.
+This application shows you how using encrypted storage you can store in a central point all your passwords.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

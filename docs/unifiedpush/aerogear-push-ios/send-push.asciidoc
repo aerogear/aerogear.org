@@ -1,0 +1,202 @@
+[[send-push]]
+== Sending messages
+
+Now you have the Sample App running on your phone, so it is time to use the _AeroGear UnifiedPush Server_ for delivering a _Push Notification_ message to your device!
+
+Login to the administration console of the UnifiedPush server and click on the "Send Notification" button on the desired PushApplication and write a message in the text field. Once done, hit the 'Send Push Notification':
+
+image:./img/send_notification.png[Send Notification]
+
+When the application is inactive, and a Push Notification containing the alert key is received by the device, a Popup will show up, which displays the value of the alert key:
+
+image:./img/PushMessage.png[Send Notification]
+
+=== Custom Dialog
+
+To receive the message send by the Unified Push Server console, implement _application:didReceiveRemoteNotification:_ (for foreground notification or _application:didReceiveRemoteNotification:fetchCompletionHandler:_  for background notification.
+
+[source,c]
+----
+func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult) -> Void) {
+  // When a message is received, send NSNotification, would be handled by registered ViewController
+  let notification:NSNotification = NSNotification(name:"message_received", object:nil, userInfo:userInfo)
+  NSNotificationCenter.defaultCenter().postNotification(notification)
+  print("UPS message received: \(userInfo)")
+        
+  // No additioanl data to fetch
+  fetchCompletionHandler(UIBackgroundFetchResult.NoData)
+}
+----
+
+In this example, we send a the entire notification object in NSNotificationCenter. Once intersepted the following method will process and sipaly the message contined in the notification:
+
+[source,c]
+----
+func messageReceived(notification: NSNotification) {
+  let obj:AnyObject? = notification.userInfo!["aps"]!["alert"]  // [1]    
+  // if alert is a flat string
+  if let msg = obj as? String {    // [2]
+    messages.append(msg)
+  } else {                         // [3]
+     // if the alert is a dictionary we need to extract the value of the body key
+     let msg = obj!["body"] as! String
+      messages.append(msg)
+  }
+  tableView.reloadData()
+}
+----
+
+The object received as _NSDictionary_ which represents a _JSON_ map, of the received payload. The _aps_ field of that map contains all the received attributes, like the earlier mentioned _alert_ key/value pair [1]. 
+
+If the Unified Push Server is 1.0.X the alert is aa string as in [2], if Unified Push Server is 1.1.x, the alort is an objet as shown in [3].
+
+The code simply reads the value of the _alert_ key and displays in a UITableView as shown below:
+
+image:./img/CustomDialog.png[Custom Dialog]
+
+==== Custom Keys
+
+Besides reading the standard keys, like +alert+ the UnifiedPush Server supports custom keys, which could have an application specific meaning. Admin console currently doesn't support the use of custom keys, but you can easily use link:http://curl.haxx.se[cURL] instead (check the link:/docs/specs/aerogear-unifiedpush-rest/sender/index.html[REST API documentation] for more information on how to construct the cURL request).
+
+NOTE: If you are using the link:/docs/unifiedpush/GetStartedwithJavaSender/[Java Sender] to send push notifications on the server side, simply call _".attribute("some_key", "with_value")"_ when building the message payload. Check the documentation link:/docs/unifiedpush/GetStartedwithJavaSender/#_ios_specific_payload[here] for more details.
+
+
+Reading the value of your own keys is as simple as in the above snippet about the custom dialog:
+
+[source,c]
+----
+let customValue = userInfo.valueForKeyPath("customKey")
+----
+
+Now the evaluated value can be used inside of the iOS application.
+
+=== iOS 7
+
+In iOS 7 there is a new callback which, in addition to the normal foreground processing, allows the application to process messages while it is running in the background.
+
+_Note:_ *If your application has _no_ need for background processing, using the above method is recommended.*
+
+[source,c]
+----
+func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult) -> Void) {
+    // 'userInfo' contains information related to the remote notification.
+
+    // should always be called at the end of processing so
+    // the system can take a UI snapshot of the application.
+  fetchCompletionHandler(UIBackgroundFetchResult.NoData)
+}
+----
+
+Using this method, the iOS platform processes the notification and launches the application in the background. This helps to shrink the time between seeing a push notification and displaying the actual data in the iOS application, as the download of the data for the push notification (if really needed) starts in the background as well.
+
+==== Enabling Background Notifications
+
+In order to get background processing for push notifications to work you have to open your Applications' +Info.plist+ file:
+
+image:./img/InfoPlist.png[Info.plist file of the Application]
+
+and include the following XML:
+
+[source,c]
+----
+<key>UIBackgroundModes</key>
+<array>
+    <string>remote-notification</string>
+</array>
+----
+
+==== Sending Notifications for Background Processing
+
+To ensure that your message is really received by our application when it is in background mode, you need to include the +content-available+ flag into your message payload. Admin console currently doesn't support setting this flag, but you can easily use link:http://curl.haxx.se[cURL] instead (check the link:/docs/specs/aerogear-unifiedpush-rest/sender/index.html[REST API documentation] for more information on how to construct the cURL request).
+
+NOTE: If you are using the link:/docs/unifiedpush/GetStartedwithJavaSender/[Java Sender] to send push notifications on the server side, simply call _".contentAvailable()"_ when building the message payload. Check the documentation link:/docs/unifiedpush/GetStartedwithJavaSender/#_ios_specific_payload[here]  for more details.
+
+=== iOS 8
+
+iOS 8 provides support for interactive notifications. To utilise it, follow these steps:
+
+* add extra payload +"action-category"+ in server side notification
+* add category in your client app with the same name as the one in payload 
+* add action button logic
+
+If you want a complete example that demo's interactive notification refer to link:https://github.com/aerogear/aerogear-aerodoc-ios/[AeroDoc].
+
+==== Sending interactive notifications : extra payload
+
+All you need to do is include +"action-category":"YOUR_ACTION_NAME"+ into your message payload. Admin console currently doesn't support setting this in the payload, but you can easily use link:http://curl.haxx.se[cURL] instead (check the link:/docs/specs/aerogear-unifiedpush-rest/sender/index.html[REST API documentation] for more information on how to construct the cURL request).
+
+NOTE: If you are using the link:/docs/unifiedpush/GetStartedwithJavaSender/[Java Sender] to send push notifications on the server side, simply call _".actionCategory()"_ when building the message payload. Check the documentation link:/docs/unifiedpush/GetStartedwithJavaSender/#_ios_specific_payload[here]  for more details.
+
+_Note:_ APNs interactive notification adds +category+ to its payload to associate a group of actions to a category of notification. As UPS already uses the name 'categories' in its payload but for a different purpose, the name 'action-category' was chosen instead.
+
+==== Receiving interactive notifications : add category
+When registering for remote notification, provide a category. To define a category, add all associated actions. Here we demo only action but you can define a list. 
+
+Depending on your notification setup, the list of visible actions can be limited. Using _UIUserNotificationActionContextMinimal_ you can define which actions should be displayed in priority when space is limited.
+
+[source,c]
+----
+- (UIMutableUserNotificationCategory*)registerActions {
+    UIMutableUserNotificationAction* action = [[UIMutableUserNotificationAction alloc] init];
+    action.identifier = @"YOUR_ACTION_NAME";
+    action.title = @"YOUR_ACTION_NAME";
+    action.activationMode = UIUserNotificationActivationModeForeground;
+    action.destructive = false;
+    action.authenticationRequired = false;
+    
+    UIMutableUserNotificationCategory* category = [[UIMutableUserNotificationCategory alloc] init];
+    category.identifier = @"YOUR_CATEGORY_NAME";
+    [category setActions:@[action] forContext: UIUserNotificationActionContextDefault];
+    return category;
+}
+----
+
+Once all actions are defined and wrapped into a category, add category to _UIUserNotificationSettings_ as shown below:
+
+[source,c]
+----
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+// when running under iOS 8 we will use the new API for APNS registration
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+  if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {    
+    UIUserNotificationCategory* category = [self registerActions];
+    NSMutableSet* categories = [NSMutableSet set];
+    [categories addObject:category];
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:categories];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+} else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }    
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif
+----
+
+==== Dealing with interactive notifications : add action
+
+When an action has been selected in the interactive push notification, the callback _application:handleActionWithIdentifier:forRemoteNotification:completionHandler:_ is called. To implement your action you need to check on which action was chosen:
+
+[source,c]
+----
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler {
+    if([identifier isEqualToString: @"YOUR_ACTION_NAME"]) {
+      ...
+      ...
+    }
+    completionHandler();
+}
+#endif
+----
+
+=== You are done
+
+That's all you need to use the _AeroGear_ project for sending, and receiving _Push Notifications_ for an iOS device.
+
+==== A final note
+
+When using _Push Notifications_, have in mind that it's more for signaling and once in a while notifying a client. The app has to, by Apple's guidelines, function without receving _Push Notifications_. _Remember:_ The user could have disagreed after installing your app!
+
+

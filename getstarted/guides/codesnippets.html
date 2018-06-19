@@ -1,0 +1,566 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - Code Snippet Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm active">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Documentation <small>Aerogear API documentation &amp; specifications.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="docs">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/docs/specs/">Docs</a>
+        
+      </li>
+      <li class="active">Code Snippet Example</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-8 col-md-offset-2 post">
+      
+        <h1>Code Snippet Example</h1>
+        <h3>Usage</h3>
+
+<p>Simply use <a href="http://getbootstrap.com/components/#nav-tabs">Bootstrap Nav Tabs</a> with additional class: <code>nav-snippets</code>. The links have to reference to a code snippet element, such as <code>&lt;pre id="xyz" class="snippet-abc"&gt;</code> element: <code>&lt;a href="#xyz"&gt;</code>. Notice the use of class <code>snippet-abc</code> - that class is common to all code samples in a group so that they are shown/hidden adequately (generally you can use any <code>snippet-*</code>).</p>
+
+<p>Hide all the snippets that should not be hidden initially with <code>hidden</code> or <code>style="display:none</code> attribute.</p>
+
+<p>Don't forget to include the script in the page: <code>&lt;script defer src="/js/code-snippets.js"&gt;&lt;/script&gt;</code>. The defer attribute will take care of de-duping the javascript source loading.</p>
+
+<p>For more details, inspect the source code of sample tabs and snippets bellow.</p>
+
+<h3>Push Client Registration</h3>
+
+<ul class="nav nav-tabs nav-snippets">
+  <li class="active"><a href="#android"><i class="fa fa-android"></i> Android</a></li>
+  <li><a href="#ios-objc" title="iOS - ObjectiveC"><i class="fa fa-apple"></i> ObjC</a></li>
+  <li><a href="#ios-swift" title="iOS - Swift"><i class="fa fa-apple"></i> Swift</a></li>
+  <li><a href="#cordova"><i class="fa fa-simplybuilt"></i> Cordova</a></li>
+  <li><a href="#windows-wps" title="Windows Notification Services"><i class="fa fa-windows"></i> WNS</a></li>
+  <li><a href="#windows-mpns" title="Microsoft Push Notification Service"><i class="fa fa-windows"></i> MPNS</a></li>
+  <li><a href="#js-simplepush" title="JavaScript - SimplePush"><i class="fa fa-html5"></i> SimplePush</a></li>
+</ul>
+
+<script defer src="/js/code-snippets.js"></script>
+
+
+<div id="android" class="snippet-push-client">
+<pre class="highlight">
+package com.push.pushapplication;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.jboss.aerogear.android.unifiedpush.PushConfig;
+import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
+import org.jboss.aerogear.android.unifiedpush.Registrations;
+
+import android.app.Application;
+
+public class PushApplication extends Application {
+
+    private final String VARIANT_ID       = "";
+    private final String SECRET           = "";
+    private final String GCM_SENDER_ID    = "";
+    private final String UNIFIED_PUSH_URL = "";
+
+    private PushRegistrar registration;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        Registrations registrations = new Registrations();
+
+        try {
+            PushConfig config = new PushConfig(new URI(UNIFIED_PUSH_URL), GCM_SENDER_ID);
+            config.setVariantID(VARIANT_ID);
+            config.setSecret(SECRET);
+            config.setAlias(MY_ALIAS);
+
+            registration = registrations.push("unifiedpush", config);
+
+            registration.register(getApplicationContext(), new Callback() {
+                private static final long serialVersionUID = 1L;
+
+                @Override
+                public void onSuccess(Void ignore) {
+                     Toast.makeText(MainActivity.this, "Registration Succeeded!",
+                             Toast.LENGTH_LONG).show();
+               }
+
+               @Override
+               public void onFailure(Exception exception) {
+                     Log.e("MainActivity", exception.getMessage(), exception);
+               }
+            });
+
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+</pre>
+</div>
+
+<div id="js-simplepush" class="snippet-push-client">
+<pre class="highlight">
+(function() {
+   var endpoint, endpointRequest, SPClient, UPClient;
+
+   // config params for UnifiedPush server
+   var variantId = "";
+   var variantSecret = "";
+   var unifiedPushUrl = "";
+
+    // If your SimplePush Server is running on Openshift, the URL is 
+    // If your SimplePush Server is using Mozilla's network, the URL will be wss://push.services.mozilla.com
+    // or do you run a custom server?
+   var simplePushUrl = "[URL of the SimplePush Server you are using]";
+
+    // create the 'UnifiedPush' client object:
+   UPClient = AeroGear.UnifiedPushClient(variantId, variantSecret, unifiedPushUrl);
+
+   // onConnect callback function called when SimplePush
+   // successfully establishes connection to the server
+   function spConnect() {
+
+       // use 'PushManager' to request a new PushServer URL endpoint for 'Mail' notifications:
+       endpointRequest = navigator.push.register();
+        // the DOMRequest returns 'successfully':
+       endpointRequest.onsuccess = function( event ) {
+           // extract the endpoint object from the event:
+           endpoint = event.target.result;
+
+           // if it is the first registration, need to register
+           // the 'pushEndpoint' with the UnifiedPush server.
+           if ( endpoint ) {
+               // assemble the metadata for registration with the UnifiedPush server
+               var metadata = {
+                   deviceToken: endpoint
+               };
+
+               var settings = {
+                   success: function() {
+                      //success handler
+                   },
+                   error: function() {
+                      //error handler
+                   }
+               };
+
+               settings.metadata = metadata;
+
+               // register with the server
+               UPClient.registerWithPushServer(settings);
+           } else {
+               console.log("'Endpoint' was already registered!");
+           }
+       };
+       // set the notification handler:
+       navigator.setMessageHandler( "push", function( message ) {
+           if ( message.pushEndpoint === endpoint ) {
+               // let's react on the endpoint
+           }
+       });
+   }
+
+   // onClose callback function:
+   function spClose() {
+       // handle onclose - e.g. allow reconnect
+   }
+
+   SPClient = AeroGear.SimplePushClient({
+       simplePushServerURL: simplePushUrl,
+       onConnect: spConnect,
+       onClose: spClose
+  });
+})();
+</pre>
+</div>
+
+<div id="ios-objc" class="snippet-push-client" hidden>
+<pre class="highlight">
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+ NSLog(@"APNS Success");
+
+ AGDeviceRegistration *registration =
+   [[AGDeviceRegistration alloc] initWithServerURL:
+      [NSURL URLWithString:@""]];
+
+ [registration registerWithClientInfo:^(id clientInfo) {
+
+   // apply the token, to identify this device
+   [clientInfo setDeviceToken:deviceToken];
+
+   [clientInfo setVariantID:@""];
+   [clientInfo setVariantSecret:@""];
+
+   // --optional config--
+   // set some 'useful' hardware information params
+   UIDevice *currentDevice = [UIDevice currentDevice];
+   [clientInfo setOperatingSystem:[currentDevice systemName]];
+   [clientInfo setOsVersion:[currentDevice systemVersion]];
+   [clientInfo setDeviceType: [currentDevice model]];
+
+   } success:^() {
+     NSLog(@"UPS registration worked");
+
+   } failure:^(NSError *error) {
+     NSLog(@"UPS registration Error: %@", error);
+ }];
+}
+</pre>
+</div>
+
+<div id="ios-swift" class="snippet-push-client" hidden>
+<pre class="highlight">
+func application(application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
+  println("APNS Success")
+
+  let registration = AGDeviceRegistration(serverURL: NSURL(string: ""))
+
+  registration.registerWithClientInfo({ (clientInfo: AGClientDeviceInformation!)  in
+
+      // apply the token, to identify this device
+      clientInfo.deviceToken = deviceToken
+
+      clientInfo.variantID = ""
+      clientInfo.variantSecret = ""
+
+      // --optional config--
+      // set some 'useful' hardware information params
+      let currentDevice = UIDevice()
+      clientInfo.operatingSystem = currentDevice.systemName
+      clientInfo.osVersion = currentDevice.systemVersion
+      clientInfo.deviceType = currentDevice.model
+
+  }, success: {
+      println("UPS registration worked");
+
+  }, failure: { (error:NSError!) -> () in
+      println("UPS registration Error: \(error.localizedDescription)")
+  })
+}
+</pre>
+</div>
+
+<div id="cordova" class="snippet-push-client" hidden>
+<pre class="highlight">
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+        var pushConfig = {
+           pushServerURL: "",
+           : {
+              
+              variantID: "",
+              variantSecret: ""
+           }
+        };
+        push.register(app.onNotification, successHandler, errorHandler, pushConfig);
+
+        function successHandler() {
+            console.log('success')
+        }
+
+        function errorHandler(message) {
+            console.log('error ' + message);
+        }
+    },
+    onNotification: function(event) {
+        alert(event.alert);
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+    }
+};
+
+app.initialize();
+</pre>
+</div>
+
+<div id="windows-wps" class="snippet-push-client" hidden>
+<pre class="highlight">
+using AeroGear.Push;
+
+protected async override void OnLaunched(LaunchActivatedEventArgs e)
+{
+  PushConfig pushConfig = new PushConfig() { UnifiedPushUri = new Uri(""), VariantId = "", VariantSecret = "" };
+  Registration registration = new WnsRegistration();
+  registration.PushReceivedEvent += HandleNotification;
+  await registration.Register(pushConfig);
+
+  ...
+}
+
+void HandleNotification(object sender, PushReceivedEvent e)
+{
+  Debug.WriteLine("notification received {0}", e.Args.message);
+}
+</pre>
+</div>
+
+<div id="windows-mpns" class="snippet-push-client" hidden>
+<pre class="highlight">
+using AeroGear.Push;
+
+protected async override void OnLaunched(LaunchActivatedEventArgs e)
+{
+  PushConfig pushConfig = new PushConfig() { UnifiedPushUri = new Uri(""), VariantId = "", VariantSecret = "" };
+  Registration registration = new MpnsRegistration();
+  registration.PushReceivedEvent += HandleNotification;
+  await registration.Register(pushConfig);
+
+  ...
+}
+
+void HandleNotification(object sender, PushReceivedEvent e)
+{
+  Debug.WriteLine("notification received {0}", e.Args.message);
+}
+</pre>
+</div>
+
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

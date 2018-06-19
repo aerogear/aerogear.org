@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - Authorization (OAuth2)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">Authorization (OAuth2)</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#_creating_an_authorizer">
+         <span class="toctext">Creating an Authorizer</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-2">
+      <a href="#_creating_an_account_manager">
+         <span class="toctext">Creating an Account Manager</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-3">
+      <a href="#_pass_agauthzmodule_to_a_pipe">
+         <span class="toctext">Pass AGAuthzModule to a pipe</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-4">
+      <a href="#_grant_access_is_implicit_by_default">
+         <span class="toctext">Grant access is implicit by default</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-5">
+            <a href="#_grant_access_explicitly">
+               <span class="toctext">Grant access explicitly</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-6">
+      <a href="#_revoke_access">
+         <span class="toctext">Revoke access</span>
+      </a>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>Authorization (OAuth2)</h1>
+        <div class="paragraph">
+<p>An Authorizer manages different authorization module implementations. It is basically a factory that hides the concrete instantiation of a specific AGAuthorizer Module implementation. The class offers simple APIs to add, remove, or get access to a 'authorization module'.</p>
+</div>
+<div class="paragraph">
+<p>The AuthorizationModule current implementation is based on <a href="http://tools.ietf.org/html/rfc6749">OAuth2 protocol</a> and uses REST as the authz transport. Similar to the Pipe, technical details of the underlying system are not exposed.</p>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_authorizer">Creating an Authorizer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create an Authorizer, you need to use the AGAuthorizer class. Below is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// create an authenticator object
+AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+
+_restAuthzModule = [authorizer authz:^(id&lt;AGAuthzConfig&gt; config) {
+    config.name = @"restAuthMod";
+    config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+    config.authzEndpoint = @"/o/oauth2/auth";
+    config.accessTokenEndpoint = @"/o/oauth2/token";
+    config.revokeTokenEndpoint = @"/o/oauth2/revoke";
+    config.clientId = @"XXX";
+    config.redirectURL = @"YYY:/oauth2Callback";
+    config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_account_manager">Creating an Account Manager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When authorizing an OAuth2 application, you often want the user to grant access for your app only once in the app lifetime. This is the whole purpose of AccountManager — you can create multiple accounts and store them in an AGStore. It&#8217;s up to you to choose you store. By default all the sensitive data is stored in the Keychain if the iPhone passcode is set.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can use an encrypted storage for storing authorization tokens, but be aware that the user&#8217;s password must be provided.</p>
+</div>
+<div class="paragraph">
+<p>Here is how you do it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">    // set up crypto params configuration object
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];
+    [config setSalt:[self salt]];
+    [config setPassphrase:passphrase];
+
+    // initialize the encryption service passing the config
+    id&lt;AGEncryptionService&gt; encService = [[AGKeyManager manager] keyService:config];        // [1]
+
+    // access Store Manager
+    AGDataManager *manager = [AGDataManager manager];
+
+    // create store
+    id&lt;AGStore&gt; store = [manager store:^(id&lt;AGStoreConfig&gt; config) {                        // [2]
+        [config setName:@"OAuthStorage"];
+        // can also be set to "ENCRYPTED_SQLITE" for the encrypted sqlite variant
+        [config setType:@"ENCRYPTED_PLIST"];
+        [config setEncryptionService:encService];
+    }];
+
+    // initialize account manager with encrypted store backend
+    _acctManager = [AGAccountManager manager:store];                                        // [3]
+
+    // set up facebook authz modules
+    id&lt;AGAuthzModule&gt; facebookAuthzModule = [_acctManager authz:^(id&lt;AGAuthzConfig&gt; config) { // [4]
+        config.name = @"restAuthMod";
+        config.baseURL = [[NSURL alloc] init];
+        ...
+    }];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In [1] you create an encryption service to be used with the encrypted database.</p>
+</div>
+<div class="paragraph">
+<p>In [2] you create an encrypted storage passing the encryption service.</p>
+</div>
+<div class="paragraph">
+<p>Last [3] create an AccountManager by injecting the created database. You can then create an authz module using the same code as seen with Authorizer above.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pass_agauthzmodule_to_a_pipe">Pass AGAuthzModule to a pipe</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Authorization module seamlessly integrates with Pipe, all you need to do is [5] inject your AuthzModule into the Pipe.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// set up our facebook pipeline and pipes
+AGPipeline *_fbPipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"https://graph.facebook.com/me/"]];
+
+[_fbPipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"facebookUploadPipe"];
+    [config setEndpoint:@"photos"];
+    [config setAuthzModule:facebookAuthzModule];                    // [5]
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grant_access_is_implicit_by_default">Grant access is implicit by default</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You may ask when does Authz module request for authorization? Basically each time you do a CRUD operation on Pipe, tokens are checked. If there are no tokens available you will be prompted. If the tokens have expired, a refresh token action is performed under the hood. Once you&#8217;ve done all the configuration, you can use the Pipe as usual.</p>
+</div>
+<div class="sect2">
+<h3 id="_grant_access_explicitly">Grant access explicitly</h3>
+<div class="paragraph">
+<p>However if you want to trigger the grant pop-up, the explicit call to <strong>requestAccessSuccess:failure</strong> is required, as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">[_restAuthzModule requestAccessSuccess:^(id object) {
+    // Do some work here
+} failure:^(NSError *error) {
+    // Deal with failure
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_revoke_access">Revoke access</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You may want to revoke access tokens for you app by calling <strong>revokeAccessSuccess:failure</strong> as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">[_restAuthzModule revokeAccessSuccess:^(id object) {
+    // Do some work here
+} failure:^(NSError *error) {
+    // Deal with failure
+}]</code></pre>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

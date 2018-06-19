@@ -1,0 +1,111 @@
+// ---
+// layout: post
+// title: UPS Configuration Properties
+// section: guides
+// ---
+
+[[sysprops]]
+== UPS Configuration Properties
+
+For an advanced configuration (or just plain testing purposes), it is possible to launch the UPS with a bunch of different properties - some of them can be configured via System Properties, others can be configured as a configuration of JMS subsystem and other are configured of EJB.
+
+[[envvarstable]]
+=== Environment variables for the UnifiedPush Server
+[width="80%",cols="2,^2,^2",options="header"]
+|=========================================================
+|Name |Description |Default Value
+|HTTP_PROXY_HOST |IP address of HTTP Proxy if required| None
+|HTTP_PROXY_PORT |Port number of HTTP Proxy if HTTP_PROXY_HOST is set| None
+|HTTPS_PROXY_HOST |IP address of HTTPS Proxy if required| None
+|HTTPS_PROXY_PORT |Port number of HTTPS Proxy if HTTPS_PROXY_HOST is set| None
+|HTTP_PROXY_USER |Username for HTTP Proxy basic authentication if required| None
+|NON_PROXY_HOSTS |A list of addresses, seperated by "|" which should not go through a HTTP Proxy| None
+|HTTPS_PORXY_PASS |Password for HTTP Proxy basic authentication if required| None
+|SOCKS_PROXY_HOST |Set the value to the IP address or hostname of SOCKS server if required for APN or health endpoint| None
+|SOCKS_PROXY_PORT |Set the value to the port number of SOCKS server referenced above if used| None
+|=========================================================
+
+[[propertiestable]]
+=== System Properties for the UnifiedPush Server
+[width="80%",cols="3,^2,^2",options="header"]
+|=========================================================
+|Name |Description |Default Value
+
+|custom.aerogear.apns.push.host |Defines a custom URL for APNs push server| no value, defaulting to Apple's service
+|custom.aerogear.apns.push.port |Defines a custom port for APNs push server| no value, defaulting to Apple's service
+|custom.aerogear.apns.feedback.host |Defines a custom URL for APNs feedback server| no value, defaulting to Apple's service
+|custom.aerogear.apns.feedback.port |Defines a custom port for APNs feedback server| no value, defaulting to Apple's service
+|aerogear.android.batchSize |Specifies how many Android devices tokens will be loaded and delivered in one batch| 1000
+|aerogear.android.batchesToLoad |Specifies how many Android batches should be loaded in one token-loading transaction.| 10
+|aerogear.ios.batchSize |Specifies how many iOS devices tokens will be loaded and delivered in one batch| 10000
+|aerogear.ios.batchesToLoad |Specifies how many iOS batches should be loaded in one token-loading transaction.| 3
+|aerogear.simplePush.batchSize |Specifies how many SimplePush client tokens will be loaded and delivered in one batch| 1000
+|aerogear.simplePush.batchesToLoad |Specifies how many SimplePush batches should be loaded in one token-loading transaction.| 10
+|aerogear.windows_wns.batchSize |Specifies how many Windows-8 tokens will be loaded and delivered in one batch| 1000
+|aerogear.windows_wns.batchesToLoad |Specifies how many Windows-8 batches should be loaded in one token-loading transaction.| 10
+|aerogear.windows_mpns.batchSize |Specifies how many Windows-10 devices tokens will be loaded and delivered in one batch| 1000
+|aerogear.windows_mpns.batchesToLoad |Specifies how many Windows-10 batches should be loaded in one token-loading transaction.| 10
+|aerogear.adm.batchSize |Specifies how many Amazon devices tokens will be loaded and delivered in one batch| 1000
+|aerogear.adm.batchesToLoad |Specifies how many Amazon batches should be loaded in one token-loading transaction.| 10
+
+|=========================================================
+
+
+[[commandline]]
+==== Configuring System Properties via CLI configuration arguments
+It is possible to specify one or more of the above system properties, when launching the Java EE container, like:
+
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/standalone.sh -Daerogear.ios.batchSize=2000
+----
+
+
+[[xmlconfig]]
+==== Configuring System Properties via XML configuration file
+It is also possible to include the desired system variables into the +standalone-full.xml+ configuration file:
+
+[source,xml]
+----
+...
+</extensions>
+
+<system-properties>
+   <property name="aerogear.ios.batchSize" value="2000"/>
+   ...
+</system-properties>
+----
+
+=== Configuring JMS messaging subsystem
+
+By default, JMS queues and topics required for UnifiedPush Server to work are installed via CLI script `jms-setup-wildfly.cli`.
+
+The properties of these queues and topics can be configured to change characteristics of message delivery.
+
+NOTE: Some queues are configured for each supported Push Network: Adm, APNs, GCM, MPNS, SimplePush, WNS. In the table it is represented as a placeholder {Network}.
+
+[width="80%",cols="3,^2,^2",options="header"]
+|=========================================================
+|JMS Destination |Properties |Explanation
+
+|`/queue/{Network}PushMessageQueue` |`redelivery-delay=1500`|when `TokenLoader` fails to load tokens (for example when the queue it pushes tokens to is full) it will retry delivery in 1.5s
+|`/queue/{Network}PushMessageQueue` |`redelivery-multiplier=1.5, max-redelivery-delay=5000`| `redelivery-delay` is increased after repeated failure until it reaches 5s
+|`/queue/{Network}TokenBatchQueue` |`address-full-policy=FAIL` |when the token queue is full, the `TokenLoader` will fail, and it will be redelivered according to properties of `{Network}PushMessageQueue`
+|`/queue/{Network}TokenBatchQueue` |`max-size-bytes=40000` |specifies how many tokens can be stored for given {Network} (in bytes)
+|`/queue/TriggerMetricCollectionQueue` |`redelivery-delay=1000` | trigger `MetricCollector` every 1 second until all metrics are collected
+
+|=========================================================
+
+The properties can be configured either during installation by modifying the installation CLI script or once installed, they can be changed in `<address-settings>` section of `standalone-full.xml`.
+
+=== Configuring workers
+
+UnifiedPush Server uses Message-Driven Beans (MDBs) as workers for processing internal JMS events.
+
+The number of created workers can be configured by tweaking activation config property `maxSession` in `/WEB-INF/jboss-ejb3.xml` configuration file in the deployed WAR.
+
+By default, there are 15 workers for processing each of the queues.
+
+NOTE: The only exception is `/queue/APNsTokenBatchQueue` which has limit of 10 workers, which is given by the limit of maximum 10 connections to APNs per one certificate.
+
+NOTE: In order to fully understand how JMS Internals work in UnifiedPush Server, see Appendix section.

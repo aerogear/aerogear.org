@@ -1,0 +1,458 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - AeroGear Developer Tools Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="active">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>AeroGear Community <small>Get involved; be part of the Aerogear community.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="community">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/community/">Community</a>
+        
+      </li>
+      <li class="active">AeroGear Developer Tools Guide</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-8 col-md-offset-2 post">
+      
+        <h1>AeroGear Developer Tools Guide</h1>
+        <div class="sect1">
+<h2 id="_aerogear_developer_tools_guide">AeroGear Developer Tools Guide</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This article shows suggestions of common tools that the AeroGear team uses for the development of HTML5 + REST Mobile Apps, Hybrid Apps, and Native Client Apps.</p>
+</div>
+<div class="paragraph">
+<p><em>note: this guide will assume you plan to use JBoss AS 7 as your backend.( <a href="http://jboss.org/as7">Get It Here</a> )</em></p>
+</div>
+<div class="sect2">
+<h3 id="_getting_started">Getting Started</h3>
+<div class="paragraph">
+<p>To get started the following are highly recommended</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java 6.0 (Java SDK 1.6)+</p>
+</li>
+<li>
+<p><a href="http://maven.apache.org/download.html">Maven 3+</a></p>
+</li>
+<li>
+<p><a href="https://help.github.com/articles/set-up-git">Git</a></p>
+</li>
+<li>
+<p><a href="http://github.com">Github.com account</a></p>
+</li>
+<li>
+<p><a href="http://developer.android.com/sdk/index.html">Android SDK</a></p>
+</li>
+<li>
+<p><a href="http://incubator.apache.org/cordova/">Apache Cordova</a></p>
+</li>
+<li>
+<p><a href="https://developer.apple.com/">iOS SDK</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_lets_start_coding">Lets Start Coding</h3>
+<div class="paragraph">
+<p>To start coding and create your new awesome app, you&#8217;ll need an editor.</p>
+</div>
+<div class="sect3">
+<h4 id="_full_fledged_ide_s">Full Fledged IDE&#8217;s</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.jboss.org/tools">JBoss Tools</a></p>
+</li>
+<li>
+<p><a href="http://www.redhat.com/products/jbossenterprisemiddleware/developer-studio/">JBoss Developer Studio</a></p>
+</li>
+<li>
+<p><a href="http://www.jetbrains.com/idea/">Intelli J</a></p>
+</li>
+<li>
+<p><a href="https://developer.apple.com/">Xcode</a> - OS X only</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_text_editors">Text Editors</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.vim.org/">Vim</a></p>
+</li>
+<li>
+<p><a href="http://sublimetext.com">Sublime Text 2</a> - see below for recommended packages</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_debuging">Debuging</h4>
+<div class="paragraph">
+<p>The Full Fledged IDE&#8217;s all have good debbugers for compiled code, but for JavaScript(mobile web) there are options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.google.com/intl/en/chrome/browser/">Chrome Developer Tools</a></p>
+</li>
+<li>
+<p><a href="http://getfirebug.com/">Firebug</a></p>
+</li>
+<li>
+<p><a href="http://www.apple.com/safari/">Safari Web Inspector</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>However, debugging a remote Web App gets a little tricky.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>iOS 6</p>
+</li>
+<li>
+<p><a href="http://people.apache.org/~pmuellr/weinre/docs/latest/">WEINRE</a></p>
+</li>
+<li>
+<p><a href="https://developers.google.com/chrome/mobile/docs/debugging">Chrome for Android</a></p>
+</li>
+<li>
+<p><a href="https://github.com/square/PonyDebugger#readme">PonyDebugger</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_communication">Communication</h3>
+<div class="paragraph">
+<p>As stated by <a href="../Contributing">this guide</a>, communication is key.  Here are some IRC programs:</p>
+</div>
+<div class="sect3">
+<h4 id="_multi_platform">Multi-Platform</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.pidgin.im/">Pidgin</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_os_x">OS X</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://adium.im/">Adium</a></p>
+</li>
+<li>
+<p><a href="http://codeux.com/textual/">Textual</a></p>
+</li>
+<li>
+<p><a href="http://limechat.net/mac/">Limechat</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_windows">Windows</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.mirc.com/">mIRC</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sublime_text_2_packages">Sublime Text 2 Packages</h3>
+<div class="paragraph">
+<p>according to <a href="http://www.sublimetext.com/">sublimetext.com</a> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Sublime Text is a sophisticated text editor for code, markup and prose.
+You'll love the slick user interface, extraordinary features and amazing performance.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here are some packages that will help the development process:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SublimeLinter</p>
+</li>
+<li>
+<p>TrailingSpaces</p>
+</li>
+<li>
+<p>Markdown Preview</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The easiest way to install packages is through the <a href="http://wbond.net/sublime_packages/package_control/installation">package manager</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_utilities">Utilities</h3>
+<div class="paragraph">
+<p>Helpful utility packages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://mxcl.github.com/homebrew/">homebrew</a></p>
+</li>
+<li>
+<p><a href="http://howtonode.org/how-to-install-nodejs">node</a></p>
+</li>
+<li>
+<p><a href="http://kdiff3.sourceforge.net/">kdiff3</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

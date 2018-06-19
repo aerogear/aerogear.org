@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - AeroGear Two-Factor Authentication with OTP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">AeroGear Two-Factor Authentication with OTP</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-8 col-md-offset-2 post">
+      
+        <h1>AeroGear Two-Factor Authentication with OTP</h1>
+        <div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you happen to use online banking systems, certainly you will have come across small security devices that provide you with an extra password during your login process. That is, in addition to your standard username/password combination, you are asked to provide an extra password, the so called <a href="http://en.wikipedia.org/wiki/One-time_password">"One Time Password" (OTP)"</a>.  That has two effects <em>a</em>) the bank can verify that you are the actual person making the transaction because of the possession of this device that only you can have, the so called possession factor in the <a href="http://en.wikipedia.org/wiki/Two-factor_authentication">two-factor authentication</a> system and <em>b</em>) prevents <a href="http://en.wikipedia.org/wiki/Replay_attack">replay attacks</a> cause the password is only valid for a limited amount of time. This generation of the OTP password can either be done using a hardware device (hardware token) as we described earlier, or with the help of a mobile application running on a smartphone (software token).</p>
+</div>
+<div class="paragraph">
+<p>In general, there are two approaches to OTP generation, either <a href="http://tools.ietf.org/html/rfc4226">Mathematical-algorithm-based</a> or <a href="http://tools.ietf.org/html/rfc6238">Time-synchronized</a>. The former, as the name suggests uses a complex mathematical algorithm, typically a cryptographic hash function in a hash chain mode, together with a secret key to generate the password.  The latter, takes also into consideration the time, which causes the password to change constantly over a period of time e.g. once per minute, greatly enhancing security. On example of such approach is the <a href="http://tools.ietf.org/html/rfc6238">Time Based One Time Password (TOTP)</a>.</p>
+</div>
+<div class="paragraph">
+<p>So how OTP is related to the AeroGear project? Well recently, with the amazing work of my fellow developer <a href="https://github.com/abstractj">abstractj</a>, library implementations for both <a href="https://github.com/aerogear/aerogear-otp-ios">iOS</a> and <a href="https://github.com/aerogear/aerogear-otp-java">Android</a> (and soon Javascript) of the OTP standard were introduced to the project. Currently they support only TOTP with SHA1 but work is in progress to add additional support for the other standard OTP algorithm, the event-based HOTP, together with more cryptographic hash functions support SHA-256/512.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_so_how_do_you_use_it">So how do you use it?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, a shared secret needs to be obtained that will be used for the calculation of TOTP. Here we use a static string for the purpose of the tutorial and in our demo we transfer it from the network. In practice, a QRCode encoded image of the secret should be used, so the secret should not travel across the network! In the future we will use encoded images for it.</p>
+</div>
+<div class="paragraph">
+<p>Here is a snippet of code in the iOS land:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c"> // the secret key (statically defined here but in practice it's obtained from the network)
+ NSString *secret = @"B2374TNIQ3HKC446";
+ // initialize OTP
+ AGTotp *generator = [[AGTotp alloc] initWithSecret:[AGBase32 base32Decode:secret]];
+ // generate token
+ NSString *totp = [generator generateOTP];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is a snippet of code in the Android land:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"> // the secret key (statically defined here but in practice it's obtained from the network)
+ String secret = "B2374TNIQ3HKC446";
+ // initialize OTP
+ Totp generator = new Totp(secret);
+ // generate token
+ String totp = generator.now();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In both cases variable "totp" now holds our token which can be send to the remote authentication server to validate.</p>
+</div>
+<div class="paragraph">
+<p>Worth noticing is that the Java implementation has the verifier component also implemented, so if you back-end is Java, you can also use the implementation in your server-side back-end to verify totp tokens.</p>
+</div>
+<div class="paragraph">
+<p>If you are an iOS developer, you can find the library already in the <a href="http://cocoapods.org/?q=aerogear-otp">coccoapods</a>. Further a demo application has been created that demos the library in action, so I suggest you have a look. You can find it <a href="https://github.com/aerogear/aerogear-otp-ios-demo">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you are an Android developer, you can find the library already in maven. Just include it in your project.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
+    &lt;artifactId&gt;aerogear-otp-java&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0.M1&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more in-depth information about OTP and AeroGear, I suggest you to look at the official documentation page <a href="/docs/specs/aerogear-security-otp/">here</a>. The page includes nice diagrams showing the flow of the authentication process and will help you to better understand the concept.</p>
+</div>
+<div class="paragraph">
+<p>So go ahead and give them a try. We will love your <a href="https://issues.jboss.org/browse/AEROGEAR">feedback and suggestions</a>!</p>
+</div>
+<div class="paragraph">
+<p>Enjoy!</p>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

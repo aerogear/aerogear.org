@@ -1,0 +1,426 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+  <title>AeroGear - AeroGear News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="active">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+  
+  <h2>AeroGear News <small>Articles, posts, events, videos and updates.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="news">
+  <div class="container">
+    <div class="row">   
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+            
+              <!-- TODO(agalante) this should filter the news by types  -->
+
+<div class="submenu">
+
+<h5>Services:</h5>
+            
+<div class="checkbox module all">
+  <span class="label label-primary">
+    <a href="#module">
+      All services
+    </a>
+  </span>
+</div>
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-digger">
+      <i class="material-icons" aria-hidden="true">build</i> Mobile CI/CD
+    </a>
+  </span>
+</div>
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-push">
+      <i class="material-icons" aria-hidden="true">notifications_active</i> Push Notifications
+    </a>
+  </span>
+</div>
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-push">
+      <i class="material-icons" aria-hidden="true">insert_chart</i> Metrics
+    </a>
+  </span>
+</div>
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-push">
+      <i class="material-icons" aria-hidden="true">cloud</i> Runtime Connector
+    </a>
+  </span>
+</div>
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-push">
+      <i class="material-icons" aria-hidden="true">account_circle</i> Identity Management
+    </a>
+  </span>
+</div>
+
+<div class="checkbox module">
+  <span class="label label-primary">
+    <a href="#module-security">
+      <i class="material-icons" aria-hidden="true">security</i> Device Security
+    </a>
+  </span>
+</div>
+
+
+
+
+
+<h5>SDKs:</h5>
+
+<div class="checkbox platform all">
+  <span class="label label-primary">
+    <a href="#platform">
+      All SDKs
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-android">
+      <i class="fa fa-android"></i> Android
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-ios">
+      <i class="fa fa-apple"></i> iOS
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-cordova">
+      <i class="font-icon icon-cordova"></i> Cordova
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-xamarin">
+      <i class="font-icon icon-xamarin"></i> Xamarin
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-xamarin">
+      <i class="font-icon icon-pwa"></i> PWA
+    </a>
+  </span>
+</div>
+
+<div class="checkbox platform">
+  <span class="label label-primary">
+    <a href="#platform-xamarin">
+      <i class="font-icon icon-react"></i> React Native
+    </a>
+  </span>
+</div>
+
+<!-- Tags not being used currently so removing this for now
+<h5>Popular tags:</h5>
+<div class="tag-cloud">
+  
+</div>
+-->
+
+
+</div><!-- /submenu -->
+            
+      </div><!-- col -->
+      <div class="col-md-9">
+          
+            <h2 class="section-header">AeroGear News</h2>
+
+
+<div itemscope itemtype="http://schema.org/NewsArticle" class="article news">
+    <div class="article-icon"><i class="fa fa-newspaper-o fa-lg"></i></div>
+    <div class="article-header">
+
+        <h4 class="article-title" itemprop="name">
+            <a href="/news/2018/06/12/first-community-meeting/index.html">
+                Announcing our Community Meeting!
+
+            </a>
+          
+        </h4>
+        
+        <div class="media">
+          
+          <div class="media-left">
+            <img src="https://avatars3.githubusercontent.com/u/6498727" />
+          </div>
+          
+          
+          <div class="media-body">
+            
+            <p class="article-subtitle">by
+              <span itemprop="author">
+              Laura Fitzgerald
+              </span>
+            </p>
+                    
+            <p class="article-date" itemprop="datePublished" content="2018-06-12">
+              posted on 12 Jun 2018
+            </p>
+          </div>
+        </div>        
+ 
+
+    </div><!-- article header -->
+
+    <div class="article-description" itemprop="description">
+        <p>We are delighted to announce that we held our first AeroGear Community meeting on Monday 11th June 2018. 
+Thanks to everyone who was able to attend. For those who couldn’t, you can find more detail (including the recording, discussions had and decisions made) on <a href="https://groups.google.com/forum/#!topic/aerogear/ohcRq2D6r2Q" target="_blank">this thread</a>.</p>
+
+    </div><!-- article-description -->
+
+
+    <ul class="list-inline article-extra-info">
+      
+      
+
+      
+
+      
+
+      
+      
+    </ul>
+
+</div><!-- article -->
+
+
+<script src="/js/news.js"></script>
+          
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

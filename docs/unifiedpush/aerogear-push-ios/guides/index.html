@@ -1,0 +1,1472 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - APNs Push Notifications with AeroGear's UnifiedPush Server</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">APNs Push Notifications with AeroGear's UnifiedPush Server</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#app-id-ssl-certificate-apns">
+         <span class="toctext">Apple related setup</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-2">
+            <a href="#_certificate_signing_request">
+               <span class="toctext">Certificate Signing Request</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-3">
+            <a href="#_apple_app_id_and_ssl_certificate_for_apns">
+               <span class="toctext">Apple App ID and SSL certificate for APNs</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-4">
+      <a href="#provisioning-profiles">
+         <span class="toctext">Creating a Provisioning Profile</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-5">
+            <a href="#_development_provisioning_profile">
+               <span class="toctext">Development Provisioning Profile</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-6">
+            <a href="#_distribution_provisioning_profile">
+               <span class="toctext">Distribution Provisioning Profile</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-7">
+            <a href="#_settting_up_xcode">
+               <span class="toctext">Settting up Xcode</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-8">
+      <a href="#xcode-setup">
+         <span class="toctext">Code signing, app id, provisioning profile</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-9">
+            <a href="#_code_signing">
+               <span class="toctext">Code signing</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-10">
+            <a href="#_entitlements">
+               <span class="toctext">Entitlements</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-11">
+            <a href="#_provisioning_profile_2">
+               <span class="toctext">Provisioning profile</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-12">
+            <a href="#_code_signing_and_provisioning_profile_in_xcode_automatic_mode">
+               <span class="toctext">Code signing and Provisioning Profile in Xcode: automatic mode</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-13">
+            <a href="#_running_into_no_matching_provisioning_profiles_found_issue">
+               <span class="toctext">Running into "No matching provisioning profiles found" issue?</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-14">
+      <a href="#unified-push-server">
+         <span class="toctext">The UnifiedPush Server</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-15">
+            <a href="#_xcode">
+               <span class="toctext">Xcode</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-16">
+      <a href="#ios-app">
+         <span class="toctext">Creating an iOS application</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-17">
+            <a href="#_helloworld_app">
+               <span class="toctext">HelloWorld App</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-18">
+            <a href="#_setting_up_the_ios_variant_id">
+               <span class="toctext">Setting up the iOS Variant ID</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-19">
+            <a href="#_metrics">
+               <span class="toctext">Metrics</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-20">
+            <a href="#_test_the_app_on_your_device">
+               <span class="toctext">Test the app on your device</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-21">
+            <a href="#_sending_messages_to_the_device">
+               <span class="toctext">Sending messages to the device</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-22">
+      <a href="#send-push">
+         <span class="toctext">Sending messages</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-23">
+            <a href="#_custom_dialog">
+               <span class="toctext">Custom Dialog</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-24">
+            <a href="#_ios_7">
+               <span class="toctext">iOS 7</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-25">
+            <a href="#_ios_8">
+               <span class="toctext">iOS 8</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-26">
+            <a href="#_you_are_done">
+               <span class="toctext">You are done</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-27">
+      <a href="#troubleshooting">
+         <span class="toctext">iOS Troubleshooting</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-28">
+            <a href="#_question_no_matching_provisioning_profiles_found">
+               <span class="toctext">Question: No matching provisioning profiles found</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-29">
+            <a href="#_question_remote_host_closed_connection_during_handshake">
+               <span class="toctext">Question: Remote host closed connection during handshake</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-30">
+            <a href="#_question_apns_error">
+               <span class="toctext">Question: APNs error</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-31">
+            <a href="#_question_my_registration_fails_because_of_nil_deviceid">
+               <span class="toctext">Question: My registration fails because of nil deviceID</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-32">
+            <a href="#_question_compilation_error_in_xcode6">
+               <span class="toctext">Question: Compilation error in Xcode6</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-33">
+            <a href="#_question_failure_to_connect_when_server_uses_a_self_signed_certificate">
+               <span class="toctext">Question: Failure to connect when server uses a self-signed certificate</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>APNs Push Notifications with AeroGear's UnifiedPush Server</h1>
+        <div class="paragraph">
+<p>The following step-by-step guides, give you an introduction on how to use the AeroGear UnifiedPush Server for sending Push Notifications to your own iOS Apps. The guide assumes you have an Apple developer account already setup as well as a real iOS device (not through emulator) for testing. So, let&#8217;s get started:</p>
+</div>
+<div class="sect1">
+<h2 id="app-id-ssl-certificate-apns">Apple related setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before you are able to use Push Notifications on your iOS Application, a few steps are required. This section of the tutorial gives a quick overview of what is needed!</p>
+</div>
+<div class="sect2">
+<h3 id="_certificate_signing_request">Certificate Signing Request</h3>
+<div class="paragraph">
+<p>First you need to submit a request for a new digital certificate, which is based on a public/private key. The Certificate itself is acting as the public key, and when you request it, a private key is added to your <strong>KeyChain</strong> tool. The Cerficate will be used later on, to request an SSL certificate for the <em>Apple Push Network Service</em>, which will allow the <em>AeroGear Push Server</em> to send notification messages to it. Now the actual CSR (Certificate Signing Request) is done using <strong>KeyChain Access</strong> tool found in <strong>Applications &gt; Utilities</strong> folder on your Mac.  Once opened, in the <strong>KeyChain Access</strong> menu, choose <strong>Certificate Assistant &gt; Request a Certificate from a Certificate Authority</strong>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/SubmitCSR.png" alt="Submit Signing Request"></span></p>
+</div>
+<div class="paragraph">
+<p>Make sure that you have choosen to store the CSR <em>on file</em>, so we can upload it later in the provisioning portal when requesting the actual SSL cert. Going back to <strong>KeyChain Access</strong> you now see a new <strong>private</strong> key:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/KeyChain_prtKey.png" alt="private"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_apple_app_id_and_ssl_certificate_for_apns">Apple App ID and SSL certificate for APNs</h3>
+<div class="paragraph">
+<p>Now that the CSR is generated, go to the <a href="https://developer.apple.com/account/overview.action">Provisioning Portal</a> and log in with your Apple developer account. Now, click on the <strong>Identifiers</strong> link in order to create a new App ID (use the <strong>PLUS</strong> Icon on the right). In the formular give the <strong>App ID</strong> a <em>descriptive</em> name, like <strong>My first AeroGear Push App</strong>. Double check that the <strong>Push Notifications</strong> checkbox is <em>selected</em>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/AppID_1.png" alt="Give the App ID a name"></span></p>
+</div>
+<div class="paragraph">
+<p>Later in the same page you are asked for an <strong>Explicit App ID</strong>, since the generic <strong>Wildcard App ID</strong> does not work with Push Notifications. In the <em>Bundle ID</em> field enter <strong>YOUR</strong> bundle ID. This is similar to Java packages. In this example we choose <em>org.aerogear.PushTest</em>, however you <strong>must</strong> use your own ID. <strong>NOTE:</strong> The <em>Bundle ID</em> has to match the one from the actual iOS application that you are building later in this guide.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/AppID_2.png" alt="Apply the Bundle ID from our App"></span></p>
+</div>
+<div class="paragraph">
+<p>In the next screen confirm your new App ID, and double check that the <em>Push Notifications</em> option is <em>enabled</em>. Afterwards click the <em>Submit</em> button! Now you are <em>Done</em>. In the next screen, click on on the <strong>newly created</strong> App ID. After clicking on it, the following screen appears:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/AppID_3.png" alt="Overview"></span></p>
+</div>
+<div class="paragraph">
+<p>Click the Edit button and scroll down to the Push Notifications section. Here we are asked to generate a <em>Development</em> and a <em>Production</em> certificate that will be used by the UnifiedPush server when contacting the Apple Push Notification service to send messages. If you plan to distribute your app in the App Store, you are required to generate a Production certificate. In this guide we will generate both Certificates and register them with the UnifiedPush server.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s start first by generating the <em>Development Certificate</em>. Click the <em>Create Certificate&#8230;&#8203;</em> button on the <em>Development SSL Certificate</em> section:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/SSLCert.png" alt="SSL Certificate"></span></p>
+</div>
+<div class="paragraph">
+<p>Inside of the next Dialog you are asked to upload the <em>Certificate Signing Request</em> that we created earlier. Now perform an upload of the <strong>CSR</strong> and click the <em>Generate</em> button:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/SSLCert_upload.png" alt="CSR upload"></span></p>
+</div>
+<div class="paragraph">
+<p>Finishing the upload dialog, you are coming back to the overview of the <strong>App ID</strong>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/AppID_3.png" alt="Overview"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Now</strong> click the <em>Edit</em> button again and scroll down to the Push Notifications section. Notice that the <em>Development SSL Certificate</em> section is filled with the required details.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/SSLCertProd.png" alt="SSL Certificate Production"></span></p>
+</div>
+<div class="paragraph">
+<p>Time now to create the <em>Production</em> certificate by following the same steps as previously, this time by clicking the 'Create Certificate' button on the <em>Production SSL Certificate</em> section. Once you are done, you are back to the overview of the <strong>App ID</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Click the <em>Edit</em> button again and scroll down to the Push Notifications section. Now that we have both Certificates generated, time to download them locally to your computer.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/SSLCert_downloadProd.png" alt="SSL Certificate download"></span></p>
+</div>
+<div class="paragraph">
+<p>The <em>Development SSL Certificate</em> file is being downloaded as <em>aps_development.cer</em>. Double click on it and it will show up in the <strong>KeyChain Access</strong> tool:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/PushCert.png" alt="APNs certificate"></span></p>
+</div>
+<div class="paragraph">
+<p>Now you have to export this certificate/private key pair to the <strong>.p12</strong> (<em>Personal Information Exchange</em>). This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself for your <strong>development</strong> application on <em>Apple Push Network Service</em> and send messages to it.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/PushCert_Export.png" alt="Export to .p12 format"></span></p>
+</div>
+<div class="paragraph">
+<p>When exporting the file, as your private key, you need to assign a passphrase for it. Make note of it, because later when uploading it to the <em>AeroGear Push Server</em> you will need both the exported file and the passphrase.</p>
+</div>
+<div class="paragraph">
+<p>Follow the same steps to download the <em>Production SSL Certificate</em>, the file is being downloaded as <em>aps_production.cer</em>. Double click to add in your <strong>KeyChain Access</strong> tool:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/PushCertProd.png" alt="APNs Distribution certificate"></span></p>
+</div>
+<div class="paragraph">
+<p>Now export it too as a <strong>.p12</strong> (<em>Personal Information Exchange</em>). This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself for your <strong>production</strong> application on <em>Apple Push Network Service</em> and send messages to it. When exporting the file, as your private key, you need to assing a passphrase for it (this can be same or different with your passphrase for your development certificate).</p>
+</div>
+<div class="sect3">
+<h4 id="_provisioning_profile">Provisioning Profile</h4>
+<div class="paragraph">
+<p>Next, you need to create an <a href="#provisioning-profiles">Apple Provisioning Profile</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="provisioning-profiles">Creating a Provisioning Profile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you have created an App ID and you got your SSL certificate, it&#8217;s time to create a <em>Provisioning Profile</em></p>
+</div>
+<div class="sect2">
+<h3 id="_development_provisioning_profile">Development Provisioning Profile</h3>
+<div class="paragraph">
+<p>In the <em>Provisioning Portal</em> you need to create an <em>iOS App Development</em> provisioning profile, so that you can test the Push Notifications on your own iOS devices:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/Provisioning_profile_1.png" alt="Development Profile"></span></p>
+</div>
+<div class="paragraph">
+<p>Now, select the <em>App ID</em>, that you created earlier:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/Select_APP_ID.png" alt="Select App ID"></span></p>
+</div>
+<div class="paragraph">
+<p>Select your Developer Certificate:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/DevCert.png" alt="Select Developer Cert"></span></p>
+</div>
+<div class="paragraph">
+<p>Select a <em>Test</em> Device, this is usually your phone, which is already known by Xcode:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/TestDevice.png" alt="Choose Test Devices"></span></p>
+</div>
+<div class="paragraph">
+<p>Give it a Profile Name and generate it:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/ProfileName.png" alt="Give the Profile a Name"></span></p>
+</div>
+<div class="paragraph">
+<p>Now download the Profile and open the file. Go to Xcode &#8594; preferences&#8230;&#8203; menu, select the "Account" tab, on the right bottom corner click "View details&#8230;&#8203;" and you should see your provisioning profile:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/XcodeOrganizer.png" alt="Xcode Organizer shows the new Provisioning Profile"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_distribution_provisioning_profile">Distribution Provisioning Profile</h3>
+<div class="paragraph">
+<p>In order to test Push Notifications on a <strong>production environment</strong>, you need to create an <em>iOS App Distribution</em> provisioning profile in the <em>Provisioning Portal</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/Provisioning_profile_2.png" alt="Distribution Profile"></span></p>
+</div>
+<div class="paragraph">
+<p>Now, select the <em>App ID</em>, that you created earlier:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/Select_APP_ID.png" alt="Select App ID"></span></p>
+</div>
+<div class="paragraph">
+<p>Select your Developer Certificate:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/DevCert.png" alt="Select Developer Cert"></span></p>
+</div>
+<div class="paragraph">
+<p>You still need a <em>test device</em> to try your <em>production</em> app with your <em>distribution provisioning profile</em>. Select a <em>Test</em> Device, this is usually your phone, which is already known by Xcode:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/TestDevice.png" alt="Choose Test Devices"></span></p>
+</div>
+<div class="paragraph">
+<p>Give it a Profile Name and generate it:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/ProfileNameProd.png" alt="Give the Distribution Profile a Name"></span></p>
+</div>
+<div class="paragraph">
+<p>Now download the Profile and open the file. Go to Xcode &#8594; preferences&#8230;&#8203; menu, select the "Account" tab, on the right bottom corner click "View details&#8230;&#8203;" and you should see your provisioning profile:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/XcodeOrganizer.png" alt="Xcode Organizer shows the new Provisioning Profile"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_settting_up_xcode">Settting up Xcode</h3>
+<div class="paragraph">
+<p>Now, let&#8217;s setup the <a href="#xcode-setup">Xcode</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="xcode-setup">Code signing, app id, provisioning profile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s explain the Apple code signing and provisioning profile approach. It all starts with a developer certificate.</p>
+</div>
+<div class="paragraph">
+<p>Developer or Distribution certificate</p>
+</div>
+<div class="paragraph">
+<p>As an iOS developer, chances are you have a certificate, a public key, and a private key on your development machine. A certificate is — very broadly speaking — a public key combined with a lot of additional information that was itself signed by Apple Worldwide Developer Relations CA. This is the certificate you need to renew every year.</p>
+</div>
+<div class="sect2">
+<h3 id="_code_signing">Code signing</h3>
+<div class="paragraph">
+<p>Code signing is a security technology that allows you to certify that an app was created by you.
+All apps running on iOS must be code signed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_entitlements">Entitlements</h3>
+<div class="paragraph">
+<p>Entitlements specify which resources of the system an app is allowed to use. These entitlements should all be enabled in the developer center’s App ID, and embedded in the provisioning profile. Setting entitlements to enable Push notification is done in <a href="#app-id-ssl-certificate-apns">Apple App ID and SSL certificate for APNs</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_provisioning_profile_2">Provisioning profile</h3>
+<div class="paragraph">
+<p>A provisioning profile is a collection of all the components needed to determine if a particular app can run on a particular device. It&#8217;s a central point where app-id, list all UUID devices where app can run, certificate and entitlements are gathered together.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_signing_and_provisioning_profile_in_xcode_automatic_mode">Code signing and Provisioning Profile in Xcode: automatic mode</h3>
+<div class="paragraph">
+<p>Code signing and provisioning profile selection should be in automatic mode by default. Specifically if your project is used by multiple iOS developpers, let Xcode find the appropriate developer provisioning profile.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../img/code_signing.png" alt="Xcode project settings">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>NOTES:</strong> The Provisioning profile setting is set to 'None' in Xcode 5. And in Xcode 6, the Provisioning profile setting should be set to 'Automatic' by default. Check <a href="https://developer.apple.com/library/ios/qa/qa1814/_index.html">apple documentation for more details</a>.</p>
+</div>
+<div class="paragraph">
+<p>In Xcode 8, a .entitlements file is needed to make push notifications work.
+To create it, go to the Capabilities section of the project.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../img/push-capabilities-disabled.png" alt="Push Capabilities disabled">
+</div>
+</div>
+<div class="paragraph">
+<p>You can see that the Push Notifications switch is in "OFF" state.
+Click the switch and Xcode 8 will connect with your developer account to add the needed provisioning profiles and will also create the YourProjectName.entitlements file.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../img/push-capabilities-enabled.png" alt="Push Capabilities enabled">
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that the status of the Push Notifications switch is now "ON" and there is a new HelloWorld.entitlements file in the left side.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_into_no_matching_provisioning_profiles_found_issue">Running into "No matching provisioning profiles found" issue?</h3>
+<div class="paragraph">
+<p>Check out <a href="#_question_no_matching_provisioning_profiles_found">iOS troubleshooting guide</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_unifiedpush_server">UnifiedPush Server</h4>
+<div class="paragraph">
+<p>Now, after managing all the Apple certificates, let&#8217;s setup the <a href="#unified-push-server">UnifiedPush Server</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="unified-push-server">The UnifiedPush Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With all the Apple work being done, we are now ready to setup the <a href="https://github.com/aerogear/aerogear-unifiedpush-server">UnifiedPush Server</a>, so that it can be used to connect to APNs for a later message sending.</p>
+</div>
+<div class="paragraph">
+<p>In the <a href="/docs/unifiedpush/ups_userguide/index/#_the_wizard">Wizard</a> after you create a PushApplication, click the <strong>Add Variant</strong> button and fill out the iOS option. You will want to use the certificate, that you created earlier:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant_01.png" alt="iOS Variant Options"></span></p>
+</div>
+<div class="paragraph">
+<p>Afterwards you will see some code snippets, containing the <strong>Variant ID</strong> and <strong>Secret</strong>, that you can use in your Windows application for the registration of the device, running your app:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant_02.png" alt="iOS Variant Details"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Clicking on the appropriate tab, you can choose between <em>Objective-C</em>, <em>Swift</em> and <em>Cordova</em> snippet!
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_xcode">Xcode</h3>
+<div class="paragraph">
+<p>The server is now configured. Let&#8217;s move to Xcode to create a very simple <a href="#ios-app">example application</a> that will connect to the UnifiedPush server and start receiving notifications.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ios-app">Creating an iOS application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To start, get this <a href="https://github.com/jboss-mobile/unified-push-helloworld/tree/master/ios-swift">HelloWorld Application</a>. It uses our SDK to register your application installation with the iOS Variant you registered earlier!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">git clone git@github.com:jboss-mobile/unified-push-helloworld.git
+cd ios-swift</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_helloworld_app">HelloWorld App</h3>
+<div class="paragraph">
+<p>To open the project, invoke:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">open HelloWorldSwift.xcodeproj</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the project is opened in Xcode, you need to change the <strong>Bundle ID</strong>, since it <strong>has</strong> to match the one that you created earlier:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/bundleIDchange.png" alt="Change the Bundle Identifier"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_up_the_ios_variant_id">Setting up the iOS Variant ID</h3>
+<div class="paragraph">
+<p>Now it is time to look at the code: Open the <a href="https://github.com/jboss-mobile/unified-push-helloworld/blob/master/ios-swift/HelloWorldSwift/AppDelegate.swift">AppDelegate file</a>.</p>
+</div>
+<div class="paragraph">
+<p>Here we have removed all the unneeded boilerplate code, in order to focus on getting the <em>Apple Push Notifications</em> to work. The <em>application:didFinishLaunchingWithOptions:</em> method contains a call to the <em>registerForRemoteNotificationTypes</em> to notify the operating system, that this app is interested in different types of <em>Remote Notifications</em>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+  // bootstrap the registration process by asking the user to 'Accept' and then register with APNS thereafter
+  let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+  UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+  UIApplication.sharedApplication().registerForRemoteNotifications()
+...
+  return true
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>Note iO7:</em> Instead of iOS8 specific <em>registerUserNotificationSettings</em> use <em>registerForRemoteNotificationTypes</em>. If you want to offer support for both iOS7 and iOS8 in ObjC syntax see this <a href="https://www.hackingwithswift.com/new-syntax-swift-2-availability-checking">code</a>, for a Swift2 check use <a href="https://www.hackingwithswift.com/new-syntax-swift-2-availability-checking">#available check</a>.</p>
+</div>
+<div class="paragraph">
+<p>Once the application is started the <em>FIRST</em> time, it generates the following dialog, where the user has to agree that the application <em>may</em> receive "Push Notification Messages":</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/PushDialog.png" alt="iOS Push Dialoag"></span></p>
+</div>
+<div class="paragraph">
+<p>Once the user agrees, Push Messages can be received by the app!</p>
+</div>
+<div class="paragraph">
+<p>After making sure the user is asked to agree on receiving Push Messages, we need to implement the <em>application: didRegisterForRemoteNotificationsWithDeviceToken:</em> from the <em>UIApplicationDelegate</em> protocol. This is callback is <em>ALWAYS</em> invoked when the user is allowing <em>Push Notifications</em>. It basically delegates the <em>DeviceToken</em>, that your device and the <em>Apple Push Network Service</em> negotiated, to <em>AeroGear Push Server</em> so that it can store it in a "Database" and use it to send messages to it. The <em>deviceToken</em> basically identifies THIS phone with <em>APNs</em>.</p>
+</div>
+<div class="paragraph">
+<p><em>Note: Mostly the token stays the same, but there are cases when it may change&#8230;&#8203;</em></p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s look at the important code section:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+  // time to register user with the "AeroGear UnifiedPush Server"
+
+  let device = AGDeviceRegistration(config: "pushconfig")  // [1]
+  // perform registration of this device
+  device.registerWithClientInfo({ (clientInfo: AGClientDeviceInformation!) in // [2]
+    // set the deviceToken
+    clientInfo.deviceToken = deviceToken
+
+    // --optional config--
+    // set some 'useful' hardware information params
+    let currentDevice = UIDevice()
+
+    clientInfo.operatingSystem = currentDevice.systemName // [3]
+    clientInfo.osVersion = currentDevice.systemVersion    // [4]
+    clientInfo.deviceType = currentDevice.model           // [5]
+  },
+  success: {
+    // successfully registered!
+    print("successfully registered with UPS!")
+
+    // send NSNotification for success_registered, will be handle by registered AGViewController
+    let notification = NSNotification(name:"success_registered", object: nil)
+    NSNotificationCenter.defaultCenter().postNotification(notification)
+    },
+
+  failure: {(error: NSError!) in
+    print("Error Registering with UPS: \(error.localizedDescription)")
+
+    let notification = NSNotification(name:"error_register", object: nil)
+     NSNotificationCenter.defaultCenter().postNotification(notification)
+  })
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In [1] we initialize our <em>AGDeviceRegistration</em> object reading fhconfig.plist file. See below the content of the config file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+    &lt;key&gt;serverURL&lt;/key&gt;
+    &lt;string&gt;http://192.168.0.10:8080/ag-push&lt;/string&gt;
+    &lt;key&gt;variantID&lt;/key&gt;
+    &lt;string&gt;a62785ec-2f08-408d-93f3-c4869e0edbfe&lt;/string&gt;
+    &lt;key&gt;variantSecret&lt;/key&gt;
+    &lt;string&gt;7ba81aed-f561-4476-8ecf-45d506800dca&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this file we define the <em>serverURL</em> if the Unified Push Server,the <em>VariantID</em>  and <em>VariantSecret</em> (which we received it in the previous chapter when we were registering the <em>iOS Variant</em> with the <em>Push Application</em>).</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong> You can not use <em>localhost</em> from the device, you have to use an (internal) IP address, where the <em>AeroGear UnifiedPush Server</em> is running!</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Do not forget to use the <em>development</em> <em>VariantID</em> and <em>VariantSecret</em> if you are using your <em>development</em> provisioning profile as your signing identity in Xcode, or to use <em>production</em> <em>VariantID</em> and <em>VariantSecret</em> if you are using your <em>distribution</em> provisioning profile.)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Next, in [2] we call <em>registerWithClientInfo</em> passing a configuration block that sets up the parameters needed to register this app with the <em>AeroGear Push Server</em>: the Device Token. It is valid to specify a bit more data on the <em>clientInfo</em> and we do here by setting metadata such the operating system [3], its version [4] and the device type [5].</p>
+</div>
+<div class="sect3">
+<h4 id="_callbacks">Callbacks</h4>
+<div class="paragraph">
+<p>The <em>success</em> callback is invoked, when the <em>AeroGear UnifiedPush Server</em> was able to register your device with the given <em>iOS Variant</em>. Otherwise the <em>failure</em> callback would be invoked. One case could be a wrong IP address&#8230;&#8203;.</p>
+</div>
+<div class="paragraph">
+<p>The <em>application: didFailToRegisterForRemoteNotificationsWithError:</em> would be invoked if there is a problem in receving a token from <em>APNs</em>&#8230;&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_metrics">Metrics</h3>
+<div class="paragraph">
+<p>Optionally the iOS SDK supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.</p>
+</div>
+<div class="paragraph">
+<p>UPS sends an unique ID for every push message by default all we have to do is send this ID back to UPS when the app was opened using the message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+
+  // bootstrap the registration process by asking the user to 'Accept' and then register with APNS thereafter
+  let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+  UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+  UIApplication.sharedApplication().registerForRemoteNotifications()
+
+  // Send metrics when app is launched due to push notification
+  AGPushAnalytics.sendMetricsWhenAppLaunched(launchOptions)
+  ...
+  return true
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the application is launched using a push notification the <em>sendMetricsWhenAppLaunched</em> static function needs to be invoked within the <em>didFinishLaunchingWithOptions</em> method.</p>
+</div>
+<div class="paragraph">
+<p>When the app is brought from background to foreground due to a push notification, the following line needs to be added to the <em>didReceiveRemoteNotification</em> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult) -&gt; Void) {
+  // When a message is received, send NSNotification, would be handled by registered ViewController
+  let notification:NSNotification = NSNotification(name:"message_received", object:nil, userInfo:userInfo)
+  NSNotificationCenter.defaultCenter().postNotification(notification)
+  print("UPS message received: \(userInfo)")
+
+  // Send metrics when app is brpught form backgrpund tp foreground due to push notification
+  AGPushAnalytics.sendMetricsWhenAppAwoken(application.applicationState, userInfo: userInfo)
+
+   // No additioanl data to fetch
+   fetchCompletionHandler(UIBackgroundFetchResult.NoData)
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_the_app_on_your_device">Test the app on your device</h3>
+<div class="paragraph">
+<p>Now run the phone on the device. After agreeing on receiving Push Messages, you will see another Dialog, that welcomes you! Now put the app into the background, by clicking the home button.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sending_messages_to_the_device">Sending messages to the device</h3>
+<div class="paragraph">
+<p>The last chapter shows how to <a href="#send-push">send messages</a> to the device, using the <em>AeroGear UnifiedPush Server</em>!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="send-push">Sending messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now you have the Sample App running on your phone, so it is time to use the <em>AeroGear UnifiedPush Server</em> for delivering a <em>Push Notification</em> message to your device!</p>
+</div>
+<div class="paragraph">
+<p>Login to the administration console of the UnifiedPush server and click on the "Send Notification" button on the desired PushApplication and write a message in the text field. Once done, hit the 'Send Push Notification':</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/send_notification.png" alt="Send Notification"></span></p>
+</div>
+<div class="paragraph">
+<p>When the application is inactive, and a Push Notification containing the alert key is received by the device, a Popup will show up, which displays the value of the alert key:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/PushMessage.png" alt="Send Notification"></span></p>
+</div>
+<div class="sect2">
+<h3 id="_custom_dialog">Custom Dialog</h3>
+<div class="paragraph">
+<p>To receive the message send by the Unified Push Server console, implement <em>application:didReceiveRemoteNotification:</em> (for foreground notification or <em>application:didReceiveRemoteNotification:fetchCompletionHandler:</em>  for background notification.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult) -&gt; Void) {
+  // When a message is received, send NSNotification, would be handled by registered ViewController
+  let notification:NSNotification = NSNotification(name:"message_received", object:nil, userInfo:userInfo)
+  NSNotificationCenter.defaultCenter().postNotification(notification)
+  print("UPS message received: \(userInfo)")
+
+  // No additioanl data to fetch
+  fetchCompletionHandler(UIBackgroundFetchResult.NoData)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, we send a the entire notification object in NSNotificationCenter. Once intersepted the following method will process and sipaly the message contined in the notification:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">func messageReceived(notification: NSNotification) {
+  let obj:AnyObject? = notification.userInfo!["aps"]!["alert"]  // [1]
+  // if alert is a flat string
+  if let msg = obj as? String {    // [2]
+    messages.append(msg)
+  } else {                         // [3]
+     // if the alert is a dictionary we need to extract the value of the body key
+     let msg = obj!["body"] as! String
+      messages.append(msg)
+  }
+  tableView.reloadData()
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The object received as <em>NSDictionary</em> which represents a <em>JSON</em> map, of the received payload. The <em>aps</em> field of that map contains all the received attributes, like the earlier mentioned <em>alert</em> key/value pair [1].</p>
+</div>
+<div class="paragraph">
+<p>If the Unified Push Server is 1.0.X the alert is aa string as in [2], if Unified Push Server is 1.1.x, the alort is an objet as shown in [3].</p>
+</div>
+<div class="paragraph">
+<p>The code simply reads the value of the <em>alert</em> key and displays in a UITableView as shown below:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/CustomDialog.png" alt="Custom Dialog"></span></p>
+</div>
+<div class="sect3">
+<h4 id="_custom_keys">Custom Keys</h4>
+<div class="paragraph">
+<p>Besides reading the standard keys, like alert the UnifiedPush Server supports custom keys, which could have an application specific meaning. Admin console currently doesn&#8217;t support the use of custom keys, but you can easily use <a href="http://curl.haxx.se">cURL</a> instead (check the <a href="/docs/specs/aerogear-unifiedpush-rest/sender/index.html">REST API documentation</a> for more information on how to construct the cURL request).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are using the <a href="/docs/unifiedpush/GetStartedwithJavaSender/">Java Sender</a> to send push notifications on the server side, simply call <em>".attribute("some_key", "with_value")"</em> when building the message payload. Check the documentation <a href="/docs/unifiedpush/GetStartedwithJavaSender/#_ios_specific_payload">here</a> for more details.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Reading the value of your own keys is as simple as in the above snippet about the custom dialog:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">let customValue = userInfo.valueForKeyPath("customKey")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now the evaluated value can be used inside of the iOS application.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ios_7">iOS 7</h3>
+<div class="paragraph">
+<p>In iOS 7 there is a new callback which, in addition to the normal foreground processing, allows the application to process messages while it is running in the background.</p>
+</div>
+<div class="paragraph">
+<p><em>Note:</em> <strong>If your application has <em>no</em> need for background processing, using the above method is recommended.</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult) -&gt; Void) {
+    // 'userInfo' contains information related to the remote notification.
+
+    // should always be called at the end of processing so
+    // the system can take a UI snapshot of the application.
+  fetchCompletionHandler(UIBackgroundFetchResult.NoData)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using this method, the iOS platform processes the notification and launches the application in the background. This helps to shrink the time between seeing a push notification and displaying the actual data in the iOS application, as the download of the data for the push notification (if really needed) starts in the background as well.</p>
+</div>
+<div class="sect3">
+<h4 id="_enabling_background_notifications">Enabling Background Notifications</h4>
+<div class="paragraph">
+<p>In order to get background processing for push notifications to work you have to open your Applications' Info.plist file:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/InfoPlist.png" alt="Info.plist file of the Application"></span></p>
+</div>
+<div class="paragraph">
+<p>and include the following XML:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">&lt;key&gt;UIBackgroundModes&lt;/key&gt;
+&lt;array&gt;
+    &lt;string&gt;remote-notification&lt;/string&gt;
+&lt;/array&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sending_notifications_for_background_processing">Sending Notifications for Background Processing</h4>
+<div class="paragraph">
+<p>To ensure that your message is really received by our application when it is in background mode, you need to include the content-available flag into your message payload. Admin console currently doesn&#8217;t support setting this flag, but you can easily use <a href="http://curl.haxx.se">cURL</a> instead (check the <a href="/docs/specs/aerogear-unifiedpush-rest/sender/index.html">REST API documentation</a> for more information on how to construct the cURL request).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are using the <a href="/docs/unifiedpush/GetStartedwithJavaSender/">Java Sender</a> to send push notifications on the server side, simply call <em>".contentAvailable()"</em> when building the message payload. Check the documentation <a href="/docs/unifiedpush/GetStartedwithJavaSender/#_ios_specific_payload">here</a>  for more details.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ios_8">iOS 8</h3>
+<div class="paragraph">
+<p>iOS 8 provides support for interactive notifications. To utilise it, follow these steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>add extra payload "action-category" in server side notification</p>
+</li>
+<li>
+<p>add category in your client app with the same name as the one in payload</p>
+</li>
+<li>
+<p>add action button logic</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you want a complete example that demo&#8217;s interactive notification refer to <a href="https://github.com/aerogear/aerogear-aerodoc-ios/">AeroDoc</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_sending_interactive_notifications_extra_payload">Sending interactive notifications : extra payload</h4>
+<div class="paragraph">
+<p>All you need to do is include "action-category":"YOUR_ACTION_NAME" into your message payload. Admin console currently doesn&#8217;t support setting this in the payload, but you can easily use <a href="http://curl.haxx.se">cURL</a> instead (check the <a href="/docs/specs/aerogear-unifiedpush-rest/sender/index.html">REST API documentation</a> for more information on how to construct the cURL request).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are using the <a href="/docs/unifiedpush/GetStartedwithJavaSender/">Java Sender</a> to send push notifications on the server side, simply call <em>".actionCategory()"</em> when building the message payload. Check the documentation <a href="/docs/unifiedpush/GetStartedwithJavaSender/#_ios_specific_payload">here</a>  for more details.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><em>Note:</em> APNs interactive notification adds category to its payload to associate a group of actions to a category of notification. As UPS already uses the name 'categories' in its payload but for a different purpose, the name 'action-category' was chosen instead.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_receiving_interactive_notifications_add_category">Receiving interactive notifications : add category</h4>
+<div class="paragraph">
+<p>When registering for remote notification, provide a category. To define a category, add all associated actions. Here we demo only action but you can define a list.</p>
+</div>
+<div class="paragraph">
+<p>Depending on your notification setup, the list of visible actions can be limited. Using <em>UIUserNotificationActionContextMinimal</em> you can define which actions should be displayed in priority when space is limited.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">- (UIMutableUserNotificationCategory*)registerActions {
+    UIMutableUserNotificationAction* action = [[UIMutableUserNotificationAction alloc] init];
+    action.identifier = @"YOUR_ACTION_NAME";
+    action.title = @"YOUR_ACTION_NAME";
+    action.activationMode = UIUserNotificationActivationModeForeground;
+    action.destructive = false;
+    action.authenticationRequired = false;
+
+    UIMutableUserNotificationCategory* category = [[UIMutableUserNotificationCategory alloc] init];
+    category.identifier = @"YOUR_CATEGORY_NAME";
+    [category setActions:@[action] forContext: UIUserNotificationActionContextDefault];
+    return category;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once all actions are defined and wrapped into a category, add category to <em>UIUserNotificationSettings</em> as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+// when running under iOS 8 we will use the new API for APNS registration
+#if __IPHONE_OS_VERSION_MAX_ALLOWED &gt;= 80000
+  if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    UIUserNotificationCategory* category = [self registerActions];
+    NSMutableSet* categories = [NSMutableSet set];
+    [categories addObject:category];
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:categories];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+} else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dealing_with_interactive_notifications_add_action">Dealing with interactive notifications : add action</h4>
+<div class="paragraph">
+<p>When an action has been selected in the interactive push notification, the callback <em>application:handleActionWithIdentifier:forRemoteNotification:completionHandler:</em> is called. To implement your action you need to check on which action was chosen:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">#if __IPHONE_OS_VERSION_MAX_ALLOWED &gt;= 80000
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler {
+    if([identifier isEqualToString: @"YOUR_ACTION_NAME"]) {
+      ...
+      ...
+    }
+    completionHandler();
+}
+#endif</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_you_are_done">You are done</h3>
+<div class="paragraph">
+<p>That&#8217;s all you need to use the <em>AeroGear</em> project for sending, and receiving <em>Push Notifications</em> for an iOS device.</p>
+</div>
+<div class="sect3">
+<h4 id="_a_final_note">A final note</h4>
+<div class="paragraph">
+<p>When using <em>Push Notifications</em>, have in mind that it&#8217;s more for signaling and once in a while notifying a client. The app has to, by Apple&#8217;s guidelines, function without receving <em>Push Notifications</em>. <em>Remember:</em> The user could have disagreed after installing your app!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="troubleshooting">iOS Troubleshooting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This troubleshooting guide takes as a pre-requesite that you have carefully followed the instructions in the <a href="../index.html">iOS tutotial</a>.</p>
+</div>
+<div class="paragraph">
+<p>Something goes wrong, you have the symptoms and you would like to know how to fix it.  Follow the guide of frequently asked questions below and if you still can&#8217;t find an answer to your problem, don&#8217;t hesitate to ask our <a href="http://aerogear-dev.1069024.n5.nabble.com/">mailing list</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_question_no_matching_provisioning_profiles_found">Question: No matching provisioning profiles found</h3>
+<div class="paragraph">
+<p><strong>Problem description</strong></p>
+</div>
+<div class="paragraph">
+<p>Running a client app, you run into "No matching provisioning profiles found":</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/no_matching_provisionning_profile.png" alt="No matching provisioning profile"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Answer</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>have you changed your computer recently? If yes, if you provisioning profile was deliver in your previous machine, you need to migrate your provisioning profile, please follow <a href="https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/export_signing_assets.html#//apple_ref/doc/uid/TP40013306-CH8-SW1">Exporting Your Signing Identities and Provisioning Profiles</a> Apple documentation.</p>
+</li>
+<li>
+<p>is it the first time you use this app? have you followed the pre-requisite section on <a href="#provisioning-profiles">provisioning profile</a>?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_question_remote_host_closed_connection_during_handshake">Question: Remote host closed connection during handshake</h3>
+<div class="paragraph">
+<p><strong>Problem description</strong></p>
+</div>
+<div class="paragraph">
+<p>When sending a push notification you are receicing an 'Remote host closed connection during handshake'</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Answer</strong></p>
+</div>
+<div class="paragraph">
+<p>Your .p12 is not good. You need to create a .p12 out of your certificate as described in <a href="#_apple_app_id_and_ssl_certificate_for_apns">Apple App ID and SSL certificate for APNs</a>?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_question_apns_error">Question: APNs error</h3>
+<div class="paragraph">
+<p><strong>Problem description</strong></p>
+</div>
+<div class="paragraph">
+<p>You have implemented application:didFailToRegisterForRemoteNotificationsWithError:. When launching the app, you get the eror no valid 'aps-environment':</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">Domain=NSCocoaErrorDomain Code=3000 "no valid 'aps-environment' entitlement string found for application" UserInfo=0x1555edc0 {NSLocalizedDescription=no valid 'aps-environment' entitlement string found for application}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Answer</strong></p>
+</div>
+<div class="paragraph">
+<p>Your Bundle ID name should match with the Bundle ID as created on Apple&#8217;s developer portal. Please refer to [Apple App ID and SSL certificate for APNs](app-id-sll-certificate-apns.asciidoc) documentation for more details on configuration.</p>
+</div>
+<div class="sect3">
+<h4 id="_question_my_registration_to_ups_never_happens">Question: My registration to UPS never happens</h4>
+<div class="paragraph">
+<p><strong>Problem description</strong></p>
+</div>
+<div class="paragraph">
+<p>The success callback application:didRegisterForRemoteNotificationsWithDeviceToken: is never called.</p>
+</div>
+<div class="paragraph">
+<p><strong>Answer</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>implement application:didFailToRegisterForRemoteNotificationsWithError: to track any issue with APN registration. In the body of the method, print an error message as shown below:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    // something went wrong, while talking to APNs
+    // for now we simply log the error
+    NSLog(@"APNs Error: %@", error);
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you do enter the failure callback then your problem is similar to <a href="#_question_apns_error">APNs error</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you do not enter the error callback, check you actually <em>did</em> register for remote notifications. Note: with iOS8, your remote registration to APNs is splitted into 2 methods call. See code snippet in <a href="#_question_compilation_error_in_xcode6">Compilation error in Xcode6</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_question_my_registration_fails_because_of_nil_deviceid">Question: My registration fails because of nil deviceID</h3>
+<div class="paragraph">
+<p><strong>Problem description</strong></p>
+</div>
+<div class="paragraph">
+<p>UPS registration fails with the following error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">assertion failed: 'token' should be set: file /.../aerogear-push-ios-registration/push-sdk-swift/AGDeviceRegistration.swift, line 75</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Answer</strong></p>
+</div>
+<div class="paragraph">
+<p>In application like <a href="https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-ios-client">Contacts app</a> where UPS registration does not happen in AppDelegate but later in the flow, at Login, we save deviceID in NSUserDefaults within application:didRegisterForRemoteNotificationsWithDeviceToken. However, if the method application:didRegisterForRemoteNotificationsWithDeviceToken: is not called, deviceID is nil causing UPS registration to fail.</p>
+</div>
+<div class="paragraph">
+<p>To solve the problem, refer to <a href="#_question_my_registration_to_ups_never_happens">My registration to UPS never happens</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_question_compilation_error_in_xcode6">Question: Compilation error in Xcode6</h3>
+<div class="paragraph">
+<p><strong>Problem description</strong></p>
+</div>
+<div class="paragraph">
+<p>When trying to run my Xcode5 app in Xcode6, I run into compilation error.</p>
+</div>
+<div class="paragraph">
+<p><strong>Answer</strong></p>
+</div>
+<div class="paragraph">
+<p>Since iO8, registerForRemoteNotificationTypes has been deprecated in favour of registerUserNotificationSettings: with registerForRemoteNotifications. The API unifies notification settings whether it&#8217;s a remote or user notification. If you want to be able to run either using Xcode5 or Xcode6 on iOS7 or iOS8, use the macro as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">#if __IPHONE_OS_VERSION_MAX_ALLOWED &gt;= 80000
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_question_failure_to_connect_when_server_uses_a_self_signed_certificate">Question: Failure to connect when server uses a self-signed certificate</h3>
+<div class="paragraph">
+<p><strong>Problem description</strong></p>
+</div>
+<div class="paragraph">
+<p>When trying to connect  to a server that uses a self-signed certificate, the application fails to connect with the following message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">Domain=NSURLErrorDomain Code=-1202 "The certificate for this server is invalid. You might be connecting to a server that is pretending to be “example.com” which could put your confidential information at risk." UserInfo=0x14a730 {NSErrorFailingURLStringKey=https://example.com/, NSLocalizedRecoverySuggestion=Would you like to connect to the server anyway?, ..}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Answer</strong></p>
+</div>
+<div class="paragraph">
+<p>By default, the underlying networking foundation rejects connections to server&#8217;s that use a self-signed certificate and you need to take extra measures in order to make it work. Although the following snippets of code can bypass the built-in security check, they are <strong>not recommended unless you are working in a development sandbox and you need a quick-and-dirty solution for internal testing</strong>. You can find more information on self-signed certificates on <a href="https://developer.apple.com/library/ios/technotes/tn2232/_index.html#//apple_ref/doc/uid/DTS40012884-CH1-SECSELFSIGNEDCERTS">Apple technote paper</a> as well in <a href="https://github.com/aerogear/aerogear-ios-push/pull/46#issuecomment-75815787">this page here</a> that summarizes possible solutions when you take your app in production.</p>
+</div>
+<div class="paragraph">
+<p><strong>Objective-C</strong></p>
+</div>
+<div class="paragraph">
+<p>If you are using Objective-C, modify the <a href="https://github.com/aerogear/aerogear-ios-push/blob/1.x_dev/push-sdk/AGDeviceRegistration.m">AGDeviceRegistration.m</a> source code and add the following function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {
+    if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust] &amp;&amp; [challenge.protectionSpace.host isEqualToString:_baseURL.host]) {
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        completionHandler(NSURLSessionAuthChallengeUseCredential,credential);
+    } else {
+        completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Swift</strong></p>
+</div>
+<div class="paragraph">
+<p>If you are using Swift modify the <a href="https://github.com/aerogear/aerogear-ios-push/blob/master/push-sdk-swift/AGDeviceRegistration.swift">AGDeviceRegistration.swift</a> source code and add the following function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">public func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential!) -&gt; Void) {
+    if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust &amp;&amp; challenge.protectionSpace.host == serverURL.host! {
+        let credentials = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!)
+        completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential, credentials)
+    } else {
+        completionHandler(NSURLSessionAuthChallengeDisposition.CancelAuthenticationChallenge, nil)
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

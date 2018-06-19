@@ -1,0 +1,74 @@
+[[app-id-ssl-certificate-apns]]
+== Apple related setup
+
+Before you are able to use Push Notifications on your iOS Application, a few steps are required. This section of the tutorial gives a quick overview of what is needed!
+
+=== Certificate Signing Request
+
+First you need to submit a request for a new digital certificate, which is based on a public/private key. The Certificate itself is acting as the public key, and when you request it, a private key is added to your *KeyChain* tool. The Cerficate will be used later on, to request an SSL certificate for the _Apple Push Network Service_, which will allow the _AeroGear Push Server_ to send notification messages to it. Now the actual CSR (Certificate Signing Request) is done using *KeyChain Access* tool found in *Applications > Utilities* folder on your Mac.  Once opened, in the *KeyChain Access* menu, choose *Certificate Assistant > Request a Certificate from a Certificate Authority*:
+
+image:./img/SubmitCSR.png[Submit Signing Request]
+
+Make sure that you have choosen to store the CSR _on file_, so we can upload it later in the provisioning portal when requesting the actual SSL cert. Going back to *KeyChain Access* you now see a new *private* key:
+
+image:./img/KeyChain_prtKey.png[private]
+
+=== Apple App ID and SSL certificate for APNs
+
+Now that the CSR is generated, go to the link:https://developer.apple.com/account/overview.action[Provisioning Portal] and log in with your Apple developer account. Now, click on the *Identifiers* link in order to create a new App ID (use the *PLUS* Icon on the right). In the formular give the *App ID* a _descriptive_ name, like *My first AeroGear Push App*. Double check that the *Push Notifications* checkbox is _selected_:
+
+
+image:./img/AppID_1.png[Give the App ID a name]
+
+
+Later in the same page you are asked for an *Explicit App ID*, since the generic *Wildcard App ID* does not work with Push Notifications. In the _Bundle ID_ field enter *YOUR* bundle ID. This is similar to Java packages. In this example we choose _org.aerogear.PushTest_, however you *must* use your own ID. *NOTE:* The _Bundle ID_ has to match the one from the actual iOS application that you are building later in this guide.
+
+image:./img/AppID_2.png[Apply the Bundle ID from our App]
+
+In the next screen confirm your new App ID, and double check that the _Push Notifications_ option is _enabled_. Afterwards click the _Submit_ button! Now you are _Done_. In the next screen, click on on the *newly created* App ID. After clicking on it, the following screen appears:
+
+image:./img/AppID_3.png[Overview]
+
+Click the Edit button and scroll down to the Push Notifications section. Here we are asked to generate a _Development_ and a _Production_ certificate that will be used by the UnifiedPush server when contacting the Apple Push Notification service to send messages. If you plan to distribute your app in the App Store, you are required to generate a Production certificate. In this guide we will generate both Certificates and register them with the UnifiedPush server.
+
+Let's start first by generating the _Development Certificate_. Click the _Create Certificate..._ button on the _Development SSL Certificate_ section:
+
+image:./img/SSLCert.png[SSL Certificate]
+ 
+Inside of the next Dialog you are asked to upload the _Certificate Signing Request_ that we created earlier. Now perform an upload of the *CSR* and click the _Generate_ button:
+
+image:./img/SSLCert_upload.png[CSR upload]
+
+Finishing the upload dialog, you are coming back to the overview of the *App ID*.
+
+image:./img/AppID_3.png[Overview]
+
+*Now* click the _Edit_ button again and scroll down to the Push Notifications section. Notice that the _Development SSL Certificate_ section is filled with the required details.
+
+image:./img/SSLCertProd.png[SSL Certificate Production]
+
+Time now to create the _Production_ certificate by following the same steps as previously, this time by clicking the 'Create Certificate' button on the _Production SSL Certificate_ section. Once you are done, you are back to the overview of the *App ID*.
+
+Click the _Edit_ button again and scroll down to the Push Notifications section. Now that we have both Certificates generated, time to download them locally to your computer.
+
+image:./img/SSLCert_downloadProd.png[SSL Certificate download]
+
+The _Development SSL Certificate_ file is being downloaded as _aps_development.cer_. Double click on it and it will show up in the *KeyChain Access* tool:
+
+image:./img/PushCert.png[APNs certificate]
+
+Now you have to export this certificate/private key pair to the *.p12* (_Personal Information Exchange_). This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself for your *development* application on _Apple Push Network Service_ and send messages to it.
+
+image:./img/PushCert_Export.png[Export to .p12 format]
+
+When exporting the file, as your private key, you need to assign a passphrase for it. Make note of it, because later when uploading it to the _AeroGear Push Server_ you will need both the exported file and the passphrase.
+
+Follow the same steps to download the _Production SSL Certificate_, the file is being downloaded as _aps_production.cer_. Double click to add in your *KeyChain Access* tool:
+
+image:./img/PushCertProd.png[APNs Distribution certificate]
+
+Now export it too as a *.p12* (_Personal Information Exchange_). This file will be uploaded later on to the AeroGear Push Server enabling it to authorize itself for your *production* application on _Apple Push Network Service_ and send messages to it. When exporting the file, as your private key, you need to assing a passphrase for it (this can be same or different with your passphrase for your development certificate).
+
+==== Provisioning Profile
+
+Next, you need to create an link:#provisioning-profiles[Apple Provisioning Profile]

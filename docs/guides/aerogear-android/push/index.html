@@ -1,0 +1,454 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - AeroGear Android Push</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">AeroGear Android Push</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#_push_in_a_nutshell">
+         <span class="toctext">Push in a Nutshell</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-2">
+      <a href="#_how_to_use_it">
+         <span class="toctext">How to use it</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-3">
+            <a href="#_registering_with_gcm_and_unified_push_server">
+               <span class="toctext">Registering with GCM and Unified Push Server</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-4">
+            <a href="#_configuring_your_application_to_receive_push_messages">
+               <span class="toctext">Configuring your application to receive Push messages</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-5">
+            <a href="#_handling_messages">
+               <span class="toctext">Handling messages</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>AeroGear Android Push</h1>
+        <div class="paragraph">
+<p>AeroGear for Android provides support for integrating with push services. Currently only Google&#8217;s Cloud Messaging (GCM) with the AeroGear Unified Push Server is supported, but we are planning to add support for Mozilla&#8217;s Simple Push, MQTT, and standalone GCM soon.</p>
+</div>
+<div class="paragraph">
+<p>This document supplements the <a href="/docs/unifiedpush/aerogear-push-android/">Push Notification Tutorial</a> by focusing only on the Push API code. The tutorial includes a much fuller look at the Android&#8217;s place in the push ecosystem.</p>
+</div>
+<div class="sect1">
+<h2 id="_push_in_a_nutshell">Push in a Nutshell</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Push messaging is a mechanism for sending data to mobile clients from a remote server.  For mobile services this reduces battery usage, removes polling code, and provides for a better user experience as data changes are communicated in real time.</p>
+</div>
+<div class="paragraph">
+<p>On Android messages that GCM receives from an application server are sent to the Android device over a connection managed by the operating system.  These messages are then extracted and passed to an application using services definied in that application&#8217;s AndroidManifest.xml file.  The <a href="https://developers.google.com/cloud-messaging/">GCM docs</a> explore this in much more depth.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_use_it">How to use it</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_registering_with_gcm_and_unified_push_server">Registering with GCM and Unified Push Server</h3>
+<div class="paragraph">
+<p>This code example demonstrates how to create a <a href="/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/PushRegistrar.html">PushRegistrar</a>, provide values required to register the application with GCM and Unified Push, and perform the registration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">RegistrarManager.config("myPushRegistar", AeroGearGCMPushConfiguration.class)
+                .setPushServerURI(new URI(UNIFIED_PUSH_URL))
+                .setSenderIds(GCM_SENDER_ID)
+                .setVariantID(VARIANT_ID)
+                .setSecret(SECRET)
+                .asRegistrar();
+
+PushRegistrar registrar = RegistrarManager.getRegistrar("myPushRegistar");
+registrar.register(getApplicationContext(), new Callback&lt;Void&gt;() {
+    @Override
+    public void onSuccess(Void ignore) {
+        // Seems your device was registered in Unified Push Server
+    }
+
+    @Override
+    public void onFailure(Exception exception) {
+        // Oops! Something is wrong.
+        /* The developer should resolve the error and retry registration */
+    }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you no longer wish to receive Push notifications, you may unregister.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">registrar.unregister(getApplicationContext(), new Callback&lt;Void&gt;() {
+    @Override
+    public void onSuccess(Void ignore) {
+        // Seems your device was unregistered in Unified Push Server
+    }
+
+    @Override
+    public void onFailure(Exception exception) {
+        // Oops! Something is wrong.
+    }
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_your_application_to_receive_push_messages">Configuring your application to receive Push messages</h3>
+<div class="paragraph">
+<p>Before you can use GCM notifications in Android, your application&#8217;s AndroidManifest.xml must be updated to include permissions for GCM, broadcast receiver to consume push messages from  GCM, and a service to provide application specific logic.  Optionally you may also listen for updates to your GCM registration ID (InstanceID) and respond to them as well.</p>
+</div>
+<div class="paragraph">
+<p>To enable the permissions add these as a child of the manifest element.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+&lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;
+&lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
+&lt;uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /&gt;
+
+&lt;permission
+    android:name="com.mypackage.C2D_MESSAGE"
+    android:protectionLevel="signature" /&gt;
+
+&lt;uses-permission android:name="[PUT YOUR APP PACKAGE HERE]" /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and add these elements as children of the application element to register the default AeroGear Android GCM Service. It will receive all messages and dispatch them to registered handlers.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;receiver
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
+    android:permission="com.google.android.c2dm.permission.SEND" &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;
+        &lt;category android:name="[PUT YOUR APP PACKAGE HERE]" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+&lt;service
+    android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also add a default message handler to the AeroGearGCMMessageReceiver service in AndroidManifest.xml. If there are currently no handlers registered on the Registrations object it will handle the message.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;service
+    android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;
+    &lt;/intent-filter&gt;
+    &lt;meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY"
+               android:value="[PUT YOUR CLASS WITH MessageHandler IMPLEMENTATION HERE]" /&gt;
+&lt;/service&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should also register the UnifiedPushInstanceIDListenerService in your manifest.  This class will listen for changes to you InstanceID token from GCM and update the Unified Push Server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;service android:name="org.jboss.aerogear.android.unifiedpush.gcm.UnifiedPushInstanceIDListenerService" android:exported="false"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="com.google.android.gms.iid.InstanceID"/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_messages">Handling messages</h3>
+<div class="paragraph">
+<p>Currently, push messages are received by an instance of <a href="/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/gcm/AeroGearGCMMessageReceiver.html">AeroGearGCMMessageReceiver</a>. The messages are processed and passed to <a href="/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html">RegistrarManager</a> via notifyHandlers method.</p>
+</div>
+<div class="paragraph">
+<p>Classes which implement MessageHandler can ask that their methods be called on either the UI thread using <a href="/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html#registerMainThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)">RegistrarManager.registerMainThreadHandler</a> or on a background thread using <a href="/docs/specs/aerogear-android-push/org/jboss/aerogear/android/unifiedpush/RegistrarManager.html#registerBackgroundThreadHandler(org.jboss.aerogear.android.unifiedpush.MessageHandler)">RegistrarManager:registerBackgroundThreadHandler</a>. UI threads are most useful for Activities and Fragments, background threads are most useful for everything else.</p>
+</div>
+<div class="paragraph">
+<p>In an Activity (also in a Fragment) you <strong>must</strong> remove the handler when the Activity goes into the background and <strong>must</strong> reenable it when it comes into the foreground.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">public class MainActivity extends Activity implements MessageHandler {
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Registrations.registerMainThreadHandler(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Registrations.unregisterMainThreadHandler(this);
+    }
+
+    @Override
+    public void onMessage(Context context, Bundle message) {
+        TextView text = (TextView) findViewById(R.id.text_view1);
+        text.setText(message.getString(UnifiedPushMessage.ALERT_KEY));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Take a look at the complete example in our <a href="https://github.com/aerogear/aerogear-push-helloworld/tree/master/android">push helloworld example</a></p>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

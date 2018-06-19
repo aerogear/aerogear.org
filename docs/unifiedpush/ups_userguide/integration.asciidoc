@@ -1,0 +1,16 @@
+// ---
+// layout: post
+// title: Integration
+// section: guides
+// ---
+
+[[integration]]
+== Integration
+
+It is possible to integrate the UnifiedPush Server into your infrastructure, so that you can use code to setup the PushApplications and their variants. Due to the HTTP nature of the UnifiedPush Server all you need is an HTTP client that talks with the the server:
+
+image:img/directgrant_app_creation_sd.png[Creating a PushApplication]
+
+The above sequence diagram shows how to obtain an access token from Keycloak, which itself is used to authorize against the UnifiedPush Server for API calls, like creating a Push Application.
+
+WARNING: Since the UnifiedPush Server itself is protected using Keycloak, you need to use Keycloak's link:http://keycloak.github.io/docs/userguide/html/direct-access-grants.html[Direct Access Grants Tokens] in order to invoke the RESTful APIs of the UnifiedPush Server.

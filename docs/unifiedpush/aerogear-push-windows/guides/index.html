@@ -1,0 +1,796 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - WPN Push Notifications with AeroGear's UnifiedPush Server</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">WPN Push Notifications with AeroGear's UnifiedPush Server</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#windows-setup">
+         <span class="toctext">Windows setup</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-2">
+            <a href="#_register_your_app">
+               <span class="toctext">Register your app</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-3">
+      <a href="#register-device">
+         <span class="toctext">The AeroGear UnifiedPush Server</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-4">
+            <a href="#_visual_studio">
+               <span class="toctext">Visual Studio</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-5">
+      <a href="#windows-app">
+         <span class="toctext">Your first Windows/Push App</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-6">
+            <a href="#_creating_the_application">
+               <span class="toctext">Creating the application</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-7">
+            <a href="#_registration_with_the_unifiedpush_server">
+               <span class="toctext">Registration with the UnifiedPush server</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-8">
+            <a href="#_receiving_notifications">
+               <span class="toctext">Receiving notifications</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-9">
+            <a href="#_edit_app_s_settings">
+               <span class="toctext">Edit App’s settings</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-10">
+            <a href="#_handling_notification">
+               <span class="toctext">Handling notification</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-11">
+            <a href="#_metrics">
+               <span class="toctext">Metrics</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-12">
+      <a href="#push-notification">
+         <span class="toctext">Send a Push Notification</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-13">
+            <a href="#_simple_sender">
+               <span class="toctext">Simple Sender</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-14">
+            <a href="#_you_are_done">
+               <span class="toctext">You are done</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>WPN Push Notifications with AeroGear's UnifiedPush Server</h1>
+        <div class="paragraph">
+<p>The following step-by-step guides, give you an introduction on how to use the AeroGear UnifiedPush Server for sending Push Notifications to your own Windows Apps. You will need a Windows dev account to use Window&#8217;s services, and can use either a real Windows device or the emulator to test. So, let’s get started:</p>
+</div>
+<div class="sect1">
+<h2 id="windows-setup">Windows setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before the Windows application is able to receive the notifications, you must authenticate yourself with Microsoft as a developer. You&#8217;ll need to create or have a Microsoft account.</p>
+</div>
+<div class="sect2">
+<h3 id="_register_your_app">Register your app</h3>
+<div class="paragraph">
+<p>Then you&#8217;ll need to register your app. Open the <a href="https://dev.windows.com/">Windows Store apps</a> page of the Windows Dev Center and sign in with your Microsoft account.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Click submit apps:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wdc-1.png" alt="Submit apps"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Choose 'Windows Phone Store' for now:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wdc-2.png" alt="Windows Phone Store"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>On the dasboard page click the 'Submit App' button:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wdc-3.png" alt="Submit App"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go to the 'App Info' page to fill out nessary information:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wdc-4.png" alt="App Info"></span></p>
+</div>
+<div class="paragraph">
+<p>Provide a unique name for your app. Enter the name and click the Reserve name button. If the name is available, it is reserved for your app. Once you have successfully reserved a name for your app, the credentials will be displayed, you&#8217;ll need to save these for later:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wdc-5.png" alt="Credentials of your app"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Select a category and click 'More options' and then click the 'here' link:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wdc-6.png" alt="Push notifications"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Note down the Package SID and the Client Secret as we&#8217;ll need those later on:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wdc-7.png" alt="Push App Settings"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="register-device">The AeroGear UnifiedPush Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With all the Windows Setup work being done, we are now ready to setup the <a href="https://github.com/aerogear/aerogear-unified-push-server">UnifiedPush Server</a>, so that it can be used to connect to WNS for a later message sending.</p>
+</div>
+<div class="paragraph">
+<p>In the <a href="/docs/unifiedpush/ups_userguide/index/#_the_wizard">Wizard</a> after you create a PushApplication, click the <strong>Add Variant</strong> button and fill out the Windows options. You will want to use the <strong>Package SID</strong> and <strong>Client Secret</strong> from the <strong>Windows Dev Center</strong> in their appropriate fields:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant_02.png" alt="Windows Variant Options"></span></p>
+</div>
+<div class="paragraph">
+<p>Afterwards you will see some code snippets, containing the <strong>Variant ID</strong> and <strong>Secret</strong>, that you can use in your Windows application for the registration of the device, running your app:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant_03.png" alt="Windows Variant Created"></span></p>
+</div>
+<div class="sect2">
+<h3 id="_visual_studio">Visual Studio</h3>
+<div class="paragraph">
+<p>The server is now configured. Let&#8217;s move to Visual Studio and <a href="#windows-app">create an Windows application</a> that will use the AeroGear Windows library to connect to the UnifiedPush server and start receiving notifications.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="windows-app">Your first Windows/Push App</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that the UnifiedPush server is up and running, time to create a sample application that will exercice AeroGear&#8217;s Windows Push library support.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s get started!</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_the_application">Creating the application</h3>
+<div class="paragraph">
+<p>Fire up Visual Studio and choose 'File'&#8594; 'New' &#8594; 'Project', then choose 'Blank App (Windows Phone)' on the project template dialog. Fill the 'Name' field with the name 'PushApplication'.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/new-project.png" alt="New Project"></span></p>
+</div>
+<div class="paragraph">
+<p>Now Visual Studio has generated a sample Windows Phone project with a default 'App' class.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/visual-studio-main.png" alt="Visual Studio Main Screen"></span></p>
+</div>
+<div class="paragraph">
+<p>Now it&#8217;s time to add the aerogear nuget package, right click on project in the 'Solution Explorer' and select 'Manage NuGet Packages' select online and nuget.org and search for aerogear and install to add the dependency.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/nuget.png" alt="NuGet Package"></span></p>
+</div>
+<div class="paragraph">
+<p>Open <code>MainPage.xaml</code> from the <code>Solution Explorer</code> and add a <code>ListView</code> to the <code>Grid</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;ListView Name="Messages" ItemsSource="{Binding messageList}"&gt;
+    &lt;ListView.ItemTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;TextBlock Text="{Binding}"/&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/ListView.ItemTemplate&gt;
+&lt;/ListView&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Open the <code>MainPage.xaml.cs</code> and add a field to bind the list view to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-csharp" data-lang="csharp">public ObservableCollection&lt;string&gt; messageList { get; private set; }
+public MainPage()
+{
+    messageList = new ObservableCollection&lt;string&gt;();
+    DataContext = this;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now that we have the project set up, time to configure it to receive Push notifications. We will start first with the registration of the application with the UnifiedPush server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_registration_with_the_unifiedpush_server">Registration with the UnifiedPush server</h3>
+<div class="paragraph">
+<p>For now let&#8217;s keep it simple and add the Registration logic to the MainPage before the components have initialized:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-csharp" data-lang="csharp">using AeroGear.Push;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+
+namespace PushApplication
+{
+    /// &lt;summary&gt;
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// &lt;/summary&gt;
+    public sealed partial class MainPage : Page
+    {
+        public ObservableCollection&lt;string&gt; messageList { get; private set; }
+        public MainPage()
+        {
+            messageList = new ObservableCollection&lt;string&gt;();
+            DataContext = this;
+
+            PushConfig pushConfig = new PushConfig() { UnifiedPushUri = new Uri("&lt;the URL of the running UnifiedPush server&gt;"), VariantId = "&lt;Your-Variant-ID&gt;", VariantSecret = "&lt;Your-Variant-Secret&gt;" };
+            Registration registration = new WnsRegistration();
+            registration.Register(pushConfig);
+
+            this.InitializeComponent();
+
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+        }
+
+        /// &lt;summary&gt;
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// &lt;/summary&gt;
+        /// &lt;param name="e"&gt;Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.&lt;/param&gt;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // TODO: Prepare page for display here.
+
+            // TODO: If your application contains multiple pages, ensure that you are
+            // handling the hardware Back button by registering for the
+            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
+            // If you are using the NavigationHelper provided by some templates,
+            // this event is handled for you.
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the top of the file we declare the configurations params we obtained at the previous steps. The VARIANT_ID and SECRET are the id&#8217;s you got after registering your Windows variant to the UnifiedPush server. Fill them with the values representing your specific configuration.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are a very common source of problems, so please revisit them if you are experiencing problems.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>That is all what is needed to register with the UnifiedPush server!</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Notice that we didn&#8217;t have to write any code to register the device with WNS. The library takes care off all the plumbing to register the device with WNS, obtain the 'channelUrl' and submit it to the UnifiedPush server.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_receiving_notifications">Receiving notifications</h3>
+<div class="paragraph">
+<p>We are going to register a event handler that will display the received notification in the <code>ListView</code>. First we need to edit the app&#8217;s settings.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_edit_app_s_settings">Edit App&#8217;s settings</h3>
+<div class="paragraph">
+<p>Open the <em>Package.appxmanifest</em> and set <code>Toast capable</code> to Yes</p>
+</div>
+<div class="paragraph">
+<p>Open the <em>Package.appxmanifest</em> in source mode (press F7) find the &lt;Identity&gt;' entry add the necessary app identity values you got from the Windows Dev Center in the previous step:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">...
+&lt;Identity Name="928pubname.PushApplication" Publisher="CN=46C334AA-C383-434A-A35E-D2C588F092D3" Version="1.0.0.0" /&gt;
+...</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_notification">Handling notification</h3>
+<div class="paragraph">
+<p>Create a new method, name it 'HandleNotification' and paste the following code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-csharp" data-lang="csharp">void HandleNotification(object sender, PushReceivedEvent e)
+{
+    Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =&gt; messageList.Add(e.Args.ToastNotification.Content.InnerText));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now add this method to the <code>PushReceivedEvent</code> on the <code>register</code> object the full code now looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-csharp" data-lang="csharp">using AeroGear.Push;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+
+namespace PushApplication
+{
+    /// &lt;summary&gt;
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// &lt;/summary&gt;
+    public sealed partial class MainPage : Page
+    {
+        public ObservableCollection&lt;string&gt; messageList { get; private set; }
+        public MainPage()
+        {
+            messageList = new ObservableCollection&lt;string&gt;();
+            DataContext = this;
+
+            PushConfig pushConfig = new PushConfig() { UnifiedPushUri = new Uri("&lt;the URL of the running UnifiedPush server&gt;"), VariantId = "&lt;Your-Variant-ID&gt;", VariantSecret = "&lt;Your-Variant-Secret&gt;" };
+            Registration registration = new WnsRegistration();
+            registration.PushReceivedEvent += HandleNotification;
+            registration.Register(pushConfig);
+
+            this.InitializeComponent();
+
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+        }
+
+        void HandleNotification(object sender, PushReceivedEvent e) //[3]
+        {
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =&gt; messageList.Add(e.Args.message));
+        }
+
+        /// &lt;summary&gt;
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// &lt;/summary&gt;
+        /// &lt;param name="e"&gt;Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.&lt;/param&gt;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // TODO: Prepare page for display here.
+
+            // TODO: If your application contains multiple pages, ensure that you are
+            // handling the hardware Back button by registering for the
+            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
+            // If you are using the NavigationHelper provided by some templates,
+            // this event is handled for you.
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the 'HandleNotification' callback method [3] we simple extract the message payload and add it to the <code>messageList</code>.</p>
+</div>
+<div class="paragraph">
+<p>We are now ready to run the application.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/app-main-screen.png" alt="Push Application Main Screen"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_metrics">Metrics</h3>
+<div class="paragraph">
+<p>Optionally the windows client SDK supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.</p>
+</div>
+<div class="paragraph">
+<p>UPS sends an unique ID for every push message by default all we have to do is send this ID back to UPS when the app was opened using the message. Open the <em>App.xaml.cs</em> and find the <code>OnLaunched</code> method. At the end of the method add the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-csharp" data-lang="csharp">if (!string.IsNullOrEmpty(e.Arguments))
+{
+    var data = UrlQueryParser.ParseQueryString(e.Arguments); // [1]
+    rootFrame.Navigate(typeof(MainPage), data[Registration.PUSH_ID_KEY]); // [2]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>e.Arguments</code> are filled when the user 'opens' the app using the message in [1] we create a <code>IDictionary</code> out off the passed arguments and then navigate to the <em>MainPage</em> with the push message ID, then on the MainPage where we do the registration we can also send the metrics, all we have to do is change the logic slightly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-csharp" data-lang="csharp">var param = e.Parameter as string;  // [1]
+if (string.IsNullOrEmpty(param))
+{
+    await registration.Register(pushConfig);
+    onRegistrationComplete();
+}
+else
+{
+    await registration.SendMetricWhenAppLaunched(pushConfig, param);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the push message ID [1] is not there we perform a normal registration otherwise we send the metrics to UPS</p>
+</div>
+<div class="paragraph">
+<p>Now that we have our application up an running time to <a href="#push-notification">send messages</a> using the AeroGear UnifiedPush Server!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="push-notification">Send a Push Notification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that we have the sample application running, it is time to use the <em>AeroGear UnifiedPush Server</em> for delivering a <em>Push Notification</em> message.</p>
+</div>
+<div class="sect2">
+<h3 id="_simple_sender">Simple Sender</h3>
+<div class="paragraph">
+<p>Login to the administration console of the UnifiedPush server and click on the "Send Notification" button on the desired PushApplication and write a message in the text field. Once done, hit the 'Send Push Notification'.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/send_notification.png" alt="Send Notification"></span></p>
+</div>
+<div class="paragraph">
+<p>If all goes well, you should see the message payload being displayed on screen:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/hello-unifiedpush-active.png" alt="Message Received-Active"></span></p>
+</div>
+<div class="paragraph">
+<p>Now click the 'Home' button to return to Home Screen and send another push message. You should see the notification being displayed in the Notification Manager:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/hello-unifiedpush-inactive.png" alt="Message Received-InActive"></span></p>
+</div>
+<div class="paragraph">
+<p>If you want to go to a specific page when the application is brought back into the foreground you can add a page parameter into the message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"message": {
+    "windows": {
+      "page": "/YourPage.xaml"
+      ...
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_you_are_done">You are done</h3>
+<div class="paragraph">
+<p>That&#8217;s all you need to use the <em>AeroGear</em> project for sending and receiving <em>Push Notifications</em> for Windows.</p>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

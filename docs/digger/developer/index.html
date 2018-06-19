@@ -1,0 +1,1094 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - Digger developer guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">Digger developer guide</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#_overview">
+         <span class="toctext">Overview</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-2">
+      <a href="#_anatomy_of_a_jenkinsfile">
+         <span class="toctext">Anatomy of a Jenkinsfile</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-3">
+            <a href="#_general_jenkinsfile_structure">
+               <span class="toctext">General Jenkinsfile structure</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-4">
+      <a href="#_using_jenkinsfiles_in_an_app">
+         <span class="toctext">Using Jenkinsfiles in an app</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-5">
+            <a href="#_checkout_source_code">
+               <span class="toctext">Checkout source code</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-6">
+            <a href="#_prepare_the_environment_application">
+               <span class="toctext">Prepare the Environment/Application</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-7">
+            <a href="#_building_the_application">
+               <span class="toctext">Building the Application</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-8">
+            <a href="#_signing_the_application">
+               <span class="toctext">Signing the Application</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-9">
+            <a href="#_function_parameters">
+               <span class="toctext">Function Parameters</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-10">
+            <a href="#_customising_jenkinsfile">
+               <span class="toctext">Customising Jenkinsfile</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-11">
+      <a href="#_fastlane_support">
+         <span class="toctext">Fastlane Support</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-12">
+      <a href="#build-application">
+         <span class="toctext">Building Applications</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-13">
+            <a href="#_building_ios_applications">
+               <span class="toctext">Building iOS Applications</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>Digger developer guide</h1>
+        <div class="sect1">
+<h2 id="_overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The AeroGear Digger project leverages Jenkinsfiles to build applications.
+A Jenkinsfile will need to exist in a repo for it to be built succesfully.</p>
+</div>
+<div class="paragraph">
+<p>This guide covers the basic anatomy of a Jenkinsfile, plugins that can
+be used to help with building and signing applications and migrating an
+existing application to using a Jenkinsfile.</p>
+</div>
+<div class="paragraph">
+<p>Further information on using Jenkinsfiles is available in the
+<a href="https://jenkins.io/doc/pipeline/steps/" target="_blank" rel="noopener">Jenkins pipeline documentation</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_anatomy_of_a_jenkinsfile">Anatomy of a Jenkinsfile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A typical Jenkinsfile will contain a number of sections. These sections define
+the steps required to build an Application specific to it&#8217;s type.</p>
+</div>
+<div class="paragraph">
+<p>Aerogear Digger provides sample <a href="https://github.com/aerogear/digger-jenkins/tree/master/jenkinsfiles" target="_blank" rel="noopener">Jenkinsfiles</a> for building the following 3 types of Applications</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Native Android</p>
+</li>
+<li>
+<p>Native iOS</p>
+</li>
+<li>
+<p>Cordova (for Android and iOS)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Further details are provided below on the structure and functions of the provided Jenkinsfiles. To try out these files in a deployed digger installation skip to the <a href="#build-application">Building Applications</a> section</p>
+</div>
+<div class="sect2">
+<h3 id="_general_jenkinsfile_structure">General Jenkinsfile structure</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy"># Define/Assign variables e.g <i class="conum" data-value="1"></i><b>(1)</b>
+def platform = "android"
+
+node(platform) { <i class="conum" data-value="2"></i><b>(2)</b>
+  stage('Checkout') { <i class="conum" data-value="3"></i><b>(3)</b>
+    checkout scm <i class="conum" data-value="4"></i><b>(4)</b>
+  }
+
+  stage('Prepare'){ <i class="conum" data-value="5"></i><b>(5)</b>
+    ...
+  }
+
+  stage('Build') { <i class="conum" data-value="6"></i><b>(6)</b>
+    ...
+  }
+
+  stage('Sign') { <i class="conum" data-value="7"></i><b>(7)</b>
+    ...
+  }
+
+  stage('Archive') { <i class="conum" data-value="8"></i><b>(8)</b>
+    ...
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Assign variables to use during the build steps. The example shown above
+is the <code>platform</code> variable. The only argument for the <code>platform</code> variable
+is a string that should match a label given to a Jenkins node. In Digger
+this value should be <code>ios</code> or <code>android</code>. any other value will result in the
+build not being assigned to a node and timing out.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>node</code> function defines the node that the build should run on. This
+is populated by the platform parameter. By providing a variable here the
+same Jenkinsfile can be used in the case of Cordova where the builds may
+need to be executed on and 'android' or 'ios' node.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Add a stage to the build. Multiple stages can be added to break up builds
+logically. The <code>stage</code> function takes one argument which is the name of the
+stage.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Checkout the source code of the repo. This is done using the provided
+<code>checkout</code> function. <code>scm</code> is another helper which uses the SCM details from
+the Jenkins job configuration.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Platform specific pre-requisite steps are executed during the prepare stage.
+e.g. add platform for cordova.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Build the applications. This is done using a build tool such as Gradle for
+Android or Xcode for iOS. The steps involved here are covered further in
+<a href="#_using_jenkinsfiles_in_an_app">Using Jenkinsfiles in an app</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Sign the application using application specific steps if required</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Archive the resulting artifacts of the build. When building Android and iOS
+apps there will be resulting build artifacts which can be stored. The
+<code>archiveArtifacts</code> function allows this to be done by providing the path to the
+artifacts as parameters.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_jenkinsfiles_in_an_app">Using Jenkinsfiles in an app</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The below section outlines in further detail the steps taken via the Jenkinsfile to build an Application. Please refer to these sections if the provided Jenkinsfiles require altering or adjusting to work for building applications in your environment.</p>
+</div>
+<div class="sect2">
+<h3 id="_checkout_source_code">Checkout source code</h3>
+<div class="paragraph">
+<p>To checkout a projects source code the <code>checkout</code> step can be used.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">node("android"){
+  ...
+  stage("Checkout"){
+    checkout scm
+  }
+  ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_prepare_the_environment_application">Prepare the Environment/Application</h3>
+<div class="sect3">
+<h4 id="_cordova_preparation">Cordova preparation</h4>
+<div class="paragraph">
+<p>For Cordova applications it is required to carry out steps to add and prepare the platform in the environment the application is building. Below are the steps required to complete this successfully. Note the multiple uses of the platform variable here. These steps are reused for building both "android" and "ios" depending on the platform value set.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">node(platform) {
+  stage("Prepare") {
+    sh "cordova platform rm ${platform}"
+    sh "cordova platform add ${platform}"
+    sh "cordova prepare ${platform}"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_building_the_application">Building the Application</h3>
+<div class="sect3">
+<h4 id="_building_applications_with_xcode">Building Applications with Xcode</h4>
+<div class="paragraph">
+<p>To build Xcode projects you can use the <code>xcodeBuild</code> function in your
+Jenkinsfile, this requires the <code>XC_VERSION</code> environment variable to be defined.
+To sign the app the <code>xcodeBuild</code> function can then be used. See the <a href="#building-with-xcode">parameters section</a> for further details on values passed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">node('ios'){
+  ...
+  stage('Build') {
+    withEnv(['XC_VERSION=8.3']) {
+      xcodeBuild(
+        cleanBeforeBuild: true,
+        src: 'helloworld-ios-swift',
+        schema: 'helloworld-ios-app',
+        workspace: 'helloworld-ios-app',
+        buildDir: 'build',
+        sdk: 'iphoneos',
+        version: '0.1-alpha',
+        shortVersion: '0.1',
+        bundleId: 'com.feedhenry.helloworld-ios-app',
+        infoPlistPath: 'helloworld-ios-app/helloworld-ios-app-Info.plist',
+        flags: '-fstack-protector -fstack-protector-all ENABLE_BITCODE=NO',
+        autoSign: false
+      )
+    }
+  }
+
+  stage('CodeSign') {
+    codeSign(
+      profileId: "${params.BUILD_CREDENTIAL_ID}",
+      clean: true,
+      verify: true,
+      ipaName: 'myapp',
+      appPath: 'helloworld-ios-swift/build/Debug-iphoneos/helloworld-ios-app.app'
+    )
+  }
+  ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_building_cordova_applications">Building Cordova Applications</h4>
+<div class="paragraph">
+<p>To build Cordova Applications the Jenkinsfile carries out seperate steps depending on whether the Application is being built for debug or release. Again note the use of the platform environment variable. Also BUILD_CONFIG is used in this case to decide the use of the <code>cordova build</code> command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">node(platform){
+  ...
+  stage('Build'){
+      if (BUILD_CONFIG == 'debug') {
+            sh "cordova build ${platform} --debug"
+      } else {
+            sh "cordova build ${platform} --release"
+      }
+  }
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_building_android_applications">Building Android Applications</h4>
+<div class="paragraph">
+<p>See the steps shown below showing the use <code>gradle</code> to build an Android Application for Debug or Release.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">node("android"){
+  ...
+  stage("Build"){
+    sh 'chmod +x ./gradlew'
+    if (params.BUILD_CONFIG == 'release') {
+      sh './gradlew clean assembleRelease' // builds app/build/outputs/apk/app-release.apk file
+    } else {
+      sh './gradlew clean assembleDebug' // builds app/build/outputs/apk/app-debug.apk
+    }
+  }
+  ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_specific_versions_of_android_sdk_and_gradle">Using specific versions of Android SDK and Gradle</h4>
+<div class="paragraph">
+<p>Android SDK and Gradle versions are defined in the Android project.</p>
+</div>
+<div class="paragraph">
+<p>To change Android SDK version change the version information in app&#8217;s <code>app/build.gradle</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        ...
+        minSdkVersion 16
+        targetSdkVersion 25
+        ...
+    }
+...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="https://developer.android.com/studio/build/index.html">Android platform documents</a> for
+explanation of these properties.</p>
+</div>
+<div class="paragraph">
+<p>To change Gradle version, change the <code>distributionUrl</code> property in <code>gradle/wrapper/gradle-wrapper.properties</code>
+in the app&#8217;s source tree.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-properties" data-lang="properties">distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_signing_the_application">Signing the Application</h3>
+<div class="sect3">
+<h4 id="_signing_android_build">Signing Android build</h4>
+<div class="paragraph">
+<p>When an Android apk is created it can be signed using the provided
+<code>signAndroidApks</code> function. See the <a href="#sign-android-apks">parameters section</a> for additional information of values passed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">node("android"){
+  ...
+  stage("Sign"){
+    if (params.BUILD_CONFIG == 'release') {
+        signAndroidApks (
+          keyStoreId: "${params.BUILD_CREDENTIAL_ID}",
+          keyAlias: "${params.BUILD_CREDENTIAL_ALIAS}",
+          apksToSign: "**/*-unsigned.apk",
+          // uncomment the following line to output the signed APK to a
+          separate directory as described above
+          // signedApkMapping: [ $class: UnsignedApkBuilderDirMapping ],
+        )
+    } else {
+      println('Debug Build - Using default developer signing key')
+    }
+  }
+  ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_function_parameters">Function Parameters</h3>
+<div class="sect3">
+<h4 id="sign-android-apks">signAndroidApks Parameters</h4>
+<div class="paragraph">
+<p>The <code>signAndroidApks</code> function takes the following parameters.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. signAndroidApks options</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keyStoreId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keystore ID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keyAlias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alias of the private key/certificate chain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">apksToSign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A file name or glob pattern specifying the APK files to store.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">signedApkMapping</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output the signed APK to a separate directory than the unsigned APK. Omit if
+storing in the same directory.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">androidHome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Override Android home directory.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The function takes the following parameters.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="building-with-xcode">Building with xCode Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. xcodeBuild options</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cleanBeforeBuild</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This will delete the build directories before invoking the build. This will
+force the rebuilding of all dependencies and can make large projects take a lot
+longer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">target</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The target to build. If left empty, this will build all targets in the
+project. If you wish to build your binary and the unit test module, it is best
+to do this as two separate steps each with their own target.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sdk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You only need to supply this value if you want to specify the SDK to build
+against. If empty, the SDK will be determined by XCode.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">workspace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Workspace to build from.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">buildDir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value to use for CONFIGURATION_BUILD_DIR setting (BUILD_DIR in &gt;= 2.0.0).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of the app.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shortVersion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Short representation of the apps version.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autoSign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to sign the app automatically or not.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">infoPlistPath</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the apps plist file.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">flags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flags to add to the command that is executed.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_codesign_parameters">CodeSign Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. codeSign options</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">profileId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of the developer profile.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes the previous signature (if any) before signing the artifact.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">verify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not to verify the signature of the app after signing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ipaName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the created ipa file.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">appPath</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the app to sign.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_customising_jenkinsfile">Customising Jenkinsfile</h3>
+<div class="paragraph">
+<p>A developer may wish to customise their <code>Jenkinsfile</code> to build an application. For instance they may want to install
+a specific version of <code>nodejs</code> or build with a specific version of a dependency as an alternative to the default
+version which is installed globally. An example snippet of each use case is outlined below:</p>
+</div>
+<div class="sect3">
+<h4 id="_specifying_a_specific_nodejs_version">Specifying a specific nodejs version</h4>
+<div class="paragraph">
+<p>A developer needs to install dependencies on a <code>Node v6.9.5</code> runtime</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>node("android"){
+  ...
+  stage("Prepare"){
+      sh '. $NVM_DIR/nvm.sh &amp;&amp; nvm install 6.9.5 &amp;&amp; nvm alias default 6.9.5'
+      sh 'npm install --production'
+      ...
+  }
+  ...
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_installing_and_using_a_specific_dependency_version">Installing and using a specific dependency version</h4>
+<div class="paragraph">
+<p>A developer&#8217;s Cordova application needs to be built with Cordova version 6.3.1</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>node("android"){
+  ...
+
+  stage("Prepare"){
+      ...
+      sh "npm install cordova@6.3.1"
+      sh "node_modules/cordova/bin/cordova platform rm ${platform}"
+      sh "node_modules/cordova/bin/cordova platform add ${platform}"
+      sh "node_modules/cordova/bin/cordova prepare ${platform}"
+      ...
+  }
+  ...
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fastlane_support">Fastlane Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AeroGear Digger provides support for using <a href="https://fastlane.tools/" target="_blank" rel="noopener">fastlane</a> (version 2.60.1) when building applications. This required resources (mentioned in the steps below) are provided in <a href="https://github.com/aerogear/aerogear-digger/tree/master/fastlane" target="_blank" rel="noopener">aerogear-digger repo</a> on github.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copy the specific platform (ios/android) fastlane folder to the root directory of you application</p>
+</li>
+<li>
+<p>Copy/Update Jenkinsfile</p>
+<div class="paragraph">
+<p>If you have an existing Jenkinsfile use the <code>Prepare</code> and <code>Build</code> steps in the provided Jenkinsfile as examples of how to use the fastlane tool in an existing Jenkinsfile</p>
+</div>
+<div class="paragraph">
+<p>If do not have an existing Jenkinsfile, copy the Jenkinsfile from the specific platform fastlane folder to the root directory of you application.</p>
+</div>
+</li>
+<li>
+<p>Trigger a build in your AeroGear Digger instance.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-application">Building Applications</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_building_ios_applications">Building iOS Applications</h3>
+<div class="paragraph">
+<p>To build iOS Application using Aerogear Digger take the following steps below.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a Jenkinsfile to the Application</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Add a relevant (depending on the type of the application) Jenkinsfile to the root directoy of your application.
+Aerogear Digger provides sample <a href="https://github.com/aerogear/digger-jenkins/tree/master/jenkinsfiles" target="_blank" rel="noopener">Jenkinsfiles</a> for building the following 3 types of Applications</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Native Android</p>
+</li>
+<li>
+<p>Native iOS</p>
+</li>
+<li>
+<p>Cordova (for Android and iOS)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The files are provided with a .groovy extension. Rename the file to <code>Jenkinsfile</code> when adding it to the application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create iOS Credentials</p>
+<div class="paragraph">
+<p>Create a zipfile with your dev certificate and private key (in p12 file format) and a provisioning profile.</p>
+</div>
+</li>
+<li>
+<p>Create new Jenkins Credentials</p>
+<div class="paragraph">
+<p>Create a new Jenkins credentials using the <code>apple developer profile</code> type using the following steps</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Login in as admin user</p>
+</li>
+<li>
+<p>&#8594; Click on <code>Credentials</code> (left menu)</p>
+</li>
+<li>
+<p>&#8594; Click on <code>System</code> (left menu)</p>
+</li>
+<li>
+<p>&#8594; Click on <code>global credentials</code></p>
+</li>
+<li>
+<p>&#8594; Click on <code>Add Credentials</code></p>
+</li>
+<li>
+<p>Choose Kind: <code>Apple Developer Profile</code></p>
+</li>
+<li>
+<p>Upload the zip file created in Step 1</p>
+</li>
+<li>
+<p>Enter password (Note: you may need to resize your browser to view the password entry correctly)</p>
+</li>
+<li>
+<p>Add description (optional)</p>
+</li>
+<li>
+<p>Press <code>OK</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create a new Pipeline job in Jenkins</p>
+</li>
+<li>
+<p>Create a new pipeline job using the following steps.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click on <code>New Item</code></p>
+</li>
+<li>
+<p>Enter a Name for the Build Pipeline</p>
+</li>
+<li>
+<p>Choose <code>Pipeline</code></p>
+</li>
+<li>
+<p>Click on <code>OK</code></p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../img/create_build_pipeline.png" alt="Create Build Pipeline">
+</div>
+</div>
+</li>
+<li>
+<p>Configure the newly created pipeline</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>&#8594; Select the newly create pipeline from the main screen.</p>
+</li>
+<li>
+<p>&#8594; Click on <code>Configure</code> (left menu)</p>
+</li>
+<li>
+<p>The image below points to the relevant items for the following sections</p>
+<div class="imageblock">
+<div class="content">
+<img src="../img/configure_pipeline.png" alt="Configure Build Pipeline">
+</div>
+</div>
+</li>
+<li>
+<p>&#8594; Select <code>This project is parameterised</code> (see image)</p>
+</li>
+<li>
+<p>Create the required parameters</p>
+<div class="paragraph">
+<p>The table below shows the parameters that are required to build using the default <a href="https://github.com/aerogear/digger-jenkins/tree/master/jenkinsfiles">Jenkinsfile</a> provided by Aerogear Digger.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Variable name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BUILD_CREDENTIAL_ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Jenkins Credentials id that was created in step 2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BUILD_CONFIG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of build</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"debug" or "release"</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="../img/pipeline_add_parameter.png" alt="Add Parameters">
+</div>
+</div>
+</li>
+<li>
+<p>Click on <code>Defenition</code> dropdown</p>
+<div class="imageblock">
+<div class="content">
+<img src="../img/pipeline_from_script.png" alt="Pipeline from Script">
+</div>
+</div>
+</li>
+<li>
+<p>Choose <code>Pipeline script from SCM</code></p>
+</li>
+<li>
+<p>Choose <code>SCM</code> &#8594; Git</p>
+</li>
+<li>
+<p>Enter <code>Repository URL</code> &#8594; the url of the git repository</p>
+</li>
+<li>
+<p>Add <code>Credentials</code></p>
+</li>
+<li>
+<p>Review <code>Branches to build</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Trigger the build</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Return to the build screen</p>
+</li>
+<li>
+<p>&#8594; Click on <code>Build with Parameters</code></p>
+</li>
+<li>
+<p>Update parameters (if required)</p>
+</li>
+<li>
+<p>&#8594; Click on <code>Build</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

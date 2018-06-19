@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - AeroGear Client Paging</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm active">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Documentation <small>Aerogear API documentation &amp; specifications.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="docs">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/docs/specs/">Docs</a>
+        
+      </li>
+      <li class="active">AeroGear Client Paging</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#set-up-the-paging">
+         <span class="toctext">Set up the Paging</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-2">
+      <a href="#the-paging-configuration">
+         <span class="toctext">The Paging configuration</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-3">
+            <a href="#properties">
+               <span class="toctext">Properties</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-4">
+            <a href="#the-pagination---scrolling-through-the-result-set">
+               <span class="toctext">The Pagination - Scrolling through the result set</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-5">
+            <a href="#methods">
+               <span class="toctext">Methods</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-6">
+      <a href="#use-cases---behaviour">
+         <span class="toctext">Use cases - Behaviour</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-7">
+            <a href="#start-the-pagination-and-next">
+               <span class="toctext">start the pagination and next</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-8">
+            <a href="#jump-to-a-specific-page">
+               <span class="toctext">Jump to a specific page</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>AeroGear Client Paging</h1>
+        <p>This document describes the client side interfaces which a developer can use to Page through data obtained from remote rest services.  This document describes both how to interact with paging enabled applications as well how to extend the client libraries and APIs to support most other restful services.</p>
+
+<p>At a high level, Paging is supported through the Pipe’s <code class="highlighter-rouge">read</code> method (see the platform API doc, for specific details).</p>
+
+<h2 id="set-up-the-paging">Set up the Paging</h2>
+
+<p>In order to start a paging request, the API needs to accept a configuration setting, which sets the offset of the first element that should be included in the returned collection (<code class="highlighter-rouge">offset</code>) and the number of results that should be listed on a page (<code class="highlighter-rouge">limit</code>). The different platform SDKs may support different ways to apply the <em>paging configuration</em> (see the platform API doc, for specific details).</p>
+
+<p>The actual Pipe implementation will be responsible for processing a request along with any paging data and sending the appropriate headers, data, and query parameters to the server application.  Once the response has been received, the Pipe implementation will provide the result to the supplied callback (see the platform API doc, for specific details).</p>
+
+<hr />
+
+<h2 id="the-paging-configuration">The Paging configuration</h2>
+
+<p>An object to apply general information about a (paging) request.</p>
+
+<h3 id="properties">Properties</h3>
+
+<h4 id="pipe-level">Pipe level</h4>
+
+<p><em>locations</em></p>
+
+<ul>
+  <li><em>metadataLocation</em>: String, indicates whether paging information (see <code class="highlighter-rouge">identifiers</code>) is received from the response <code class="highlighter-rouge">header</code>, the response body (<code class="highlighter-rouge">body</code>) or via <a href="http://tools.ietf.org/html/rfc5988">RFC 5988</a> (<code class="highlighter-rouge">webLinking</code>), which is the <code class="highlighter-rouge">default</code>.</li>
+</ul>
+
+<p><em>Linking</em></p>
+
+<ul>
+  <li><em>nextIdentifier</em>: String, the <code class="highlighter-rouge">next</code> identifier name (default: <code class="highlighter-rouge">next</code>)</li>
+  <li><em>previousIdentifier</em>: String, the <code class="highlighter-rouge">previous</code> identifier name (default: <code class="highlighter-rouge">previous</code>)</li>
+</ul>
+
+<h4 id="request--and-pipe--level">Request- and Pipe- level</h4>
+
+<p>The <em>paging parameters</em> can be defined on the Pipe and on the <em>paging request</em>. For instance an initial default (e.g. list always 15 items per page and always start at the second page) works fine on the Pipe. The Pipe is responsible to maintain the paging requests (e.g. <code class="highlighter-rouge">next</code> or <code class="highlighter-rouge">previous</code>), by using the given <code class="highlighter-rouge">identifier</code>s.</p>
+
+<p>However, it should be always possible for a user to update the arguments on a <em>per request</em> base. For instance if the application needs to show for a specific reason <code class="highlighter-rouge">20</code> items <em>instead</em> of the 15 from the beginning. Another reason could be the server does <em>not</em> support the above discussed <code class="highlighter-rouge">identifier</code>s, so the application developer needs to maintain the <em>next</em> and <em>previous</em> information.</p>
+
+<h5 id="default-parameter-providers">DEFAULT parameter providers</h5>
+
+<p><em>offset</em></p>
+
+<ul>
+  <li><em>offsetValue</em>: String, the offset of the first element that should be included in the returned collection (default: <code class="highlighter-rouge">0</code>)</li>
+</ul>
+
+<p><em>limit</em></p>
+
+<ul>
+  <li><em>limitValue</em>: int, the maximum number of results the server should return (default: <code class="highlighter-rouge">10</code>)</li>
+</ul>
+
+<h5 id="custom-parameter-providers">CUSTOM parameter providers</h5>
+
+<p>A <code class="highlighter-rouge">parameter provider</code> API will be provided to that the application developer can submit any (paging) parameter that the used server requires. An example would be that the used paging service supports sorting as well.</p>
+
+<hr />
+
+<h3 id="the-pagination---scrolling-through-the-result-set">The Pagination - Scrolling through the result set</h3>
+
+<p>In order to navigate through a large data set, the following methods are required. The actual implementation can be different, based on the used SDK (see the platform API doc, for specific details).</p>
+
+<h3 id="methods">Methods</h3>
+<ul>
+  <li><em>next</em>: Reads the next ‘page’ of the paging result, from the server.</li>
+  <li><em>previous</em>: Reads the previous ‘page’ of the paging result, from the server.</li>
+</ul>
+
+<p><em>NOTE:</em> When scrolling outside of the allowed range (e.g. invoking <code class="highlighter-rouge">next</code> on the last page), the client should be able to handle any success response, whether there is data or not, and also any error response.</p>
+
+<hr />
+
+<h2 id="use-cases---behaviour">Use cases - Behaviour</h2>
+
+<h3 id="start-the-pagination-and-next">start the pagination and next</h3>
+
+<ul>
+  <li>start a <code class="highlighter-rouge">paged read</code> (see concrete API docs for details)</li>
+  <li>this returns the first page</li>
+  <li>scroll to the <code class="highlighter-rouge">next</code> or <code class="highlighter-rouge">last</code> page - if possible/desired</li>
+</ul>
+
+<h3 id="jump-to-a-specific-page">Jump to a specific page</h3>
+
+<ul>
+  <li>set up the paging configuration (set the <code class="highlighter-rouge">offset</code> to the desired page, e.g <code class="highlighter-rouge">offset:3</code>)</li>
+  <li>issue a <code class="highlighter-rouge">read</code></li>
+  <li>This returns the desired page</li>
+  <li>For there you can scroll (<code class="highlighter-rouge">next</code> or <code class="highlighter-rouge">previous</code>, if possible…)</li>
+</ul>
+
+
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

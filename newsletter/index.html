@@ -1,0 +1,569 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+  <title>AeroGear - Email Updates</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body class="  ">    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+ 
+
+  
+
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+
+  <div class="basic">
+    <!-- import jquery for tracking code usage -->
+<script type="text/javascript" src="http://www.redhat.com/j/lib/jquery/jquery-1.2.6.pack.js"></script>
+<script type="text/javascript">
+    <!--
+    var verifyForm = function genVerificaiton()
+    {
+        var hform =document.getElementById("VerificationID");
+        if(hform){
+            var s_vi = getCookie("s_vi");
+            if(s_vi){
+                hform.value="#D"+s_vi.substring(7,16);
+            }else{
+                var elqCk = randVerify();
+                if(elqCk){
+                    hform.value=(elqCk);
+                }
+            }
+        }
+    }
+
+    if (window.attachEvent) {
+        window.attachEvent('onload', verifyForm);
+    }else if (window.addEventListener) {
+        window.addEventListener('load', verifyForm, false);
+    }else {
+        document.addEventListener('load', verifyForm, false);
+    }
+
+    function getCookie(c_name)
+    {
+        var i,x,y,ARRcookies=document.cookie.split(";");
+        for (i=0;i<ARRcookies.length;i++)
+        {
+            x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+            y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+            x=x.replace(/^\s+|\s+$/g,"");
+            if (x==c_name)
+            {
+                return unescape(y);
+            }
+        }
+    }
+    function randVerify() {
+        var S4 = function() {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+        };
+        return (S4()+S4()+S4());
+    }
+    -->
+</script>
+<script src="https://www.redhat.com/j/rh_eloqua.js"></script>
+<STYLE type="text/css"> .elqFieldValidation { background-color:FC8888; } .elqLayout{}.elqField{margin: 5px 5px 5px 0;}.elqLabel{margin: 5px 5px 5px 0;}.elqLayoutRow{}.elqSubmit{}.elqHeading{}.elqSubHeading{}.elqMatrix{}.elqMatrixRow{}.elqTextArea{}.elqMatrixHeaderRow{}.elqMatrixAltRow{}</STYLE>
+<SCRIPT TYPE="text/javascript">
+var errorSet = null;
+
+FieldObj = function() {
+    var Field;
+    this.get_Field = function() { return Field; }
+    this.set_Field = function(val) { Field = val; }
+
+    var ErrorMessage;
+    this.get_ErrorMessage = function() { return ErrorMessage; }
+    this.set_ErrorMessage = function(val) { ErrorMessage = val; }
+}
+
+
+function ResetHighlight() {
+    var field;
+
+    if (errorSet != null) {
+        for (var i = 0; i < errorSet.length; i++) {
+            errorSet[i].Field.className = 'elqField'
+        }
+    }
+    errorSet = new Array();
+}
+
+
+function DisplayErrorSet(ErrorSet) {
+    var element;
+    var ErrorMessage = '';
+
+    for (var i = 0; i < ErrorSet.length; i++) {
+        ErrorMessage = ErrorMessage + ErrorSet[i].ErrorMessage + '\n';
+        ErrorSet[i].Field.className = 'elqFieldValidation';
+    }
+
+    if (ErrorMessage != '')
+        alert(ErrorMessage);
+}
+
+
+function ValidateRequiredField(Element, args) {
+    var elementVal=Element.value;
+    var testPass=true;
+    if (Element) {
+        if (args.Type == 'text') {
+            if (Element.value == null || Element.value == "") {
+                return false;
+            }
+        }
+        else if (args.Type == 'singlesel') {
+            if (Element.value == null || Element.value == "") {
+                return false;
+            }
+        }
+        else if (args.Type == 'multisel') {
+            var selCount=0;
+            for (var i=0; i<Element.length; i++) {
+                if (Element[i].selected && Element[i].value !='') {
+                    selCount += 1;
+                }
+            }
+            if (selCount == 0)
+                return false;
+        }
+    }
+    else
+        testPass = false;
+    return testPass;
+}
+
+
+function ValidateEmailAddress(Element) {
+    var varRegExp='^[A-Z0-9!#\\$%&\'\\*\\+\\-/=\\?\\^_`\\{\\|\\}~][A-Z0-9!#\\$%&\'\\*\\+\\-/=\\?\\^_`\\{\\|\\}~\\.]{0,62}@([A-Z0-9](?:[A-Z0-9\\-]{0,61}[A-Z0-9])?(\\.[A-Z0-9](?:[A-Z0-9\\-]{0,61}[A-Z0-9])?)+)$';
+    if ((Element) && (Element.value != '')) {
+        var reg = new RegExp(varRegExp,"i");
+        var match = reg.exec(Element.value);
+        if ((match) && (match.length=3) && (match[1].length<=255) && ((match[2].length>=3) & (match[2].length<=7)))
+            return true;
+    }
+    return false;
+}
+
+
+function ValidateDataTypeLength(Element, args, ErrorMessage) {
+    var elementVal = Element.value;
+    var testPass = true;
+
+    if (Element) {
+        if (args.Type == 'text') {
+            if ((elementVal == '')) {
+                testPass = false;
+            }
+            if ((args.Minimum != '') && (elementVal.length < args.Minimum))
+                testPass = false;
+            if ((args.Maximum != '') && (elementVal.length > args.Maximum))
+                testPass = false;
+        }
+        else if (args.Type == 'numeric') {
+            if ((elementVal == '')) {
+                testPass = false;
+            }
+            if ((elementVal != '') && (elementVal != parseFloat(elementVal)))
+                testPass = false;
+            if (args.Minimum != '') {
+                if ((elementVal == '') || (parseFloat(elementVal) < args.Minimum))
+                    testPass = false;
+            }
+            if (args.Maximum != '') {
+                if ((elementVal != '') && (parseFloat(elementVal) > args.Maximum))
+                    testPass = false;
+            }
+        }
+    }
+    else
+        testPass = false;
+    return testPass;
+}
+
+
+function CheckElqForm(elqForm) {
+    var args = null;
+    var allValid = true;
+
+    if (elqForm == null) {
+        alert('Unable to execute form validation!\Unable to locate correct form');
+        return false;
+    }
+    ResetHighlight();
+
+
+    formField = new FieldObj();
+    formField.Field = elqForm.elements['C_Country'];
+    formField.ErrorMessage ='Form field Country is required'
+    args = {'Type': 'singlesel' };
+    if (formField.Field != null) {
+        if (!ValidateRequiredField(formField.Field, args)) {
+            errorSet.push(formField);
+            allValid = false;
+        }
+    }
+
+    if (!allValid) {
+        DisplayErrorSet(errorSet);
+        return false;
+    }
+
+    return true;
+}
+
+function submitForm(elqForm) {
+    if (CheckElqForm(elqForm)) {
+        prepareSelectsForEloqua(elqForm);
+        fnPrepareCheckboxMatricesForEloqua(elqForm);
+        return true;
+    }
+    else { return false; }
+}
+
+function prepareSelectsForEloqua(elqForm) {
+    var selects = elqForm.getElementsByTagName("SELECT");
+    for (var i = 0; i < selects.length; i++) {
+        if (selects[i].multiple) {
+            createEloquaSelectField(elqForm, selects[i]);
+        }
+    }
+    return true;
+}
+
+function createEloquaSelectField(elqForm, sel) {
+    var inputName = sel.name;
+    var newInput = document.createElement('INPUT');
+    newInput.style.display = "none";
+    newInput.name = inputName;
+    newInput.value = "";
+
+    for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].selected) {
+            newInput.value += sel.options[i].value + "::";
+        }
+    }
+    if (newInput.value.length > 0) {
+        newInput.value = newInput.value.substr(0, newInput.value.length - 2);
+    }
+    sel.disabled = true;
+    newInput.id = inputName;
+    elqForm.insertBefore(newInput, elqForm.firstChild);
+}
+
+function fnPrepareCheckboxMatricesForEloqua(elqForm) {
+    var matrices = elqForm.getElementsByTagName('TABLE');
+    for (var i = 0; i < matrices.length; i++) {
+        var tableClassName = matrices[i].className;
+        if (tableClassName.match(/elqMatrix/)) {
+            if (fnDetermineMatrixType(matrices[i]).toLowerCase() == 'checkbox') {
+                if (matrices[i].rows[0].cells[0].childNodes.length == 1) {
+                    if (matrices[i].rows[0].cells[0].childNodes[0].nodeName != '#text') {
+                        fnCreateHorizontalMatrixCheckboxField(elqForm, matrices[i]);
+                    }
+                    else {
+                        fnCreateVerticalMatrixCheckboxField(elqForm, matrices[i]);
+                    }
+                }
+            }
+        }
+    }
+    return true;
+}
+
+function fnCreateVerticalMatrixCheckboxField(elqForm, matrix) {
+    var inputName = matrix.id + 'r' + 1;
+    var newInput = document.createElement('INPUT');
+    newInput.style.display = 'none';
+    newInput.name = inputName;
+    newInput.value = '';
+
+    var inputs = document.getElementsByName(inputName);
+    for (var i=0; i < inputs.length; i++) {
+        if (inputs[i].nodeName.toLowerCase() == 'input') {
+            if (inputs[i].checked == true) {
+                if (inputs[i].type.toLowerCase() == 'checkbox') {
+                    newInput.value += inputs[i].value + '::';
+                    inputs[i].disabled = true;
+                }
+            }
+        }
+    }
+    if (newInput.value.length > 0) {
+        newInput.value = newInput.value.substr(0, newInput.value.length - 2);
+    }
+
+    newInput.id = inputName;
+    elqForm.insertBefore(newInput, elqForm.firstChild);
+    matrix.disabled = true;
+}
+
+function fnCreateHorizontalMatrixCheckboxField(elqForm, matrix) {
+    for (var i=1; i < matrix.rows.length; i++) {
+        var inputs = document.getElementsByName(matrix.id + 'r' + i);
+        var oMatrixRow = matrix.rows[i];
+        var inputName = oMatrixRow.id;
+        var newInput = document.createElement('INPUT');
+        newInput.style.display = 'none';
+        newInput.name = inputName;
+        newInput.value = '';
+
+        for (var j=0; j < inputs.length; j++) {
+            if (inputs[j].nodeName.toLowerCase() == 'input') {
+                if (inputs[j].checked == true) {
+                    if (inputs[i].type.toLowerCase() == 'checkbox') {
+                        newInput.value += inputs[j].value + '::';
+                        inputs[j].disabled = true;
+                    }
+                }
+            }
+        }
+
+        if (newInput.value.length > 0) {
+            newInput.value = newInput.value.substr(0, newInput.value.length - 2);
+        }
+
+        newInput.id = inputName;
+        elqForm.insertBefore(newInput, elqForm.firstChild);
+    }
+    matrix.disabled = true;
+}
+
+function fnDetermineMatrixType(oTable) {
+    var oFirstMatrixInput = oTable.rows[1].cells[1].childNodes[0];
+    return oFirstMatrixInput.type;
+}
+
+</SCRIPT>
+
+<form name="aerogear-email-signup" id="aerogear-email-signup" onsubmit='return submitForm(this);' action="https://s1795.t.eloqua.com/e/f2" method="post">
+
+    <input type="hidden" name="elqFormName" value="aerogear-email-signup">
+    <input type="hidden" name="elqSiteID" value="1795">
+    <input name="OmnitureInternalCampaignId" id="OmnitureInternalCampaignId" value="" type="hidden">
+    <input name="OmnitureExternalCampaignId" id="OmnitureExternalCampaignId" value="" type="hidden">
+
+    <h3>AeroGear Email Updates</h3>
+    <p>Sign up here to receive more information.</p>
+    <p>
+        <label for="C_EmailAddress" class="newsletter-label">Email <font size="1"><span style="color: rgb(255, 0, 0);"> *</span></font></label><input name="C_EmailAddress" id="C_EmailAddress" class="elqField" size="40" style="width: 275px;" type="text" />
+    </p>
+    <p>
+        <label for="C_Country" class="newsletter-label">Country <font size="1"><span style="color: rgb(255, 0, 0);"> *</span></font></label><select value="" name="C_Country" id="C_Country" class="elqField">
+    <option selected="true" value="">Select</option><option value="AF">Afghanistan</option><option value="AX">??land Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AT">Austria</option><option value="AU">Australia</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="BN">Brunei Darussalam</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos (Keeling) Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo</option><option value="CD">Congo, The Democratic Republic of The</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="CI">C??te D'Ivoire</option><option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="TP">East Timor</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands (Malvinas)</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option value="VA">Holy See (Vatican City State)</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KR">Korea, Republic of</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Lao People's Democratic Republic</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libyan Arab Jamahiriya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao</option><option value="MK">Macedonia, The Former Yugoslav Republic of</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia, Federated States of</option><option value="MD">Moldova, Republic of</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestinian Territory, Occupied</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RE">R??union</option><option value="RO">Romania</option><option value="RU">Russian Federation</option><option value="RW">Rwanda</option><option value="BL">Saint Barth??lemy</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="MF">Saint Martin</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and The Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome and Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="CS">Serbia and Montenegro</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia and The South Sandwich Islands</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan, Province of China</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania, United Republic of</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States of America</option><option value="UM">United States Minor Outlying Islands</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Viet Nam</option><option value="VG">Virgin Islands, British</option><option value="VI">Virgin Islands, U.S.</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option>
+</select>
+</p>
+<p>
+    <input class="elqSubmit" id="submit" value="Submit" name="submit" type="submit">
+</p>
+</form>
+
+</div>
+
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

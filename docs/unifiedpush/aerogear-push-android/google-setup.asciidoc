@@ -1,0 +1,40 @@
+[[google-setup]]
+== Obtaining Firebase Cloud Messaging Credentials
+
+Before the Android application is able to receive the notifications, you must set up access to Firebase Cloud Messaging. Luckily, this is both easy and free to do, and does not require much setup. As with iOS, you are only able to test out your push notifications in a real device. This section shows you how to obtain the credentials necessary to set up Firebase Cloud Messaging for your app, including:
+
+* the **Server key**
+* the **Sender ID**
+* the `google-services.json` file containing the credentials required to connect your app to Firebase and Google services.
+
+=== Project Setup and App Registration using the Firebase Console
+
+First, register with the Firebase Cloud Messaging (FCM) platform, formerly known as Google Cloud Messaging (GCM). You need a Google Account to do this. Start by opening the https://console.firebase.google.com[Firebase Console].
+
+1. If you haven't created a project, click **Create New Project**:
++
+image:./img/create_new_project.png[Create New Project]
++
+2. Now give your new project a name:
++
+image:./img/project_name.png[New Project Name]
++
+3. Once the project has been created you will be taken to the _Overview_ screen. From there click the Settings icon located next to the project name in the sidebar, and in the pop-up menu click **Project Settings**.
++
+image:./img/project_settings.png[Project Number]
++
+4. On the _Project Settings_ screen, switch to the _Cloud Messaging_ tab, where you can find the **Server key** and **Sender ID** (known in GCM as **Project Number**).
++
+image:./img/retrieve_credentials.png[Retrieve Credentials]
++
+5. As the final step of the setup procedure, you need to download the `google-services.json` file. To do this, first navigate to the _Overview_ screen and click on **Add App** (If you have no apps connected to FCM yet, select the option to **Add Firebase to your Android app**).
++
+image:./img/add_app.png[Add Firebase to your app]
++
+6. In the pop-up window enter the Package name of your app and then click the **Add app** button. This generates the `google-services.json` file that needs to be built into your app binary. Download the JSON file and save it. To close the pop-up window, click **Continue** and then **Finish** on the following screen.
++
+image:./img/download_json.png[Download google-services.json]
+
+TIP: To re-download the `google-services.json` file, navigate to the _Project Settings_ screen, then switch to the _General_ tab, choose the desired app and click the `google-services.json` download button.
+
+Now that Google is ready to accept and deliver our messages, we are ready to setup the link:#register-device[UnifiedPush server].

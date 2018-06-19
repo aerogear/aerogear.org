@@ -1,0 +1,406 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+  <title>AeroGear - Documentation Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm active">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+  
+  <h2>Documentation <small>Aerogear API documentation &amp; specifications.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="docs">
+  <div class="container">
+    <div class="row">   
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+            
+              <ul class="nav">
+  <li class="active">
+    <a href="#core"><strong>SDK</strong> Docs</a>
+  </li>
+  <li>
+    <a href="#push"><strong>Push</strong> Docs</a>
+  </li>
+  <li>
+    <a href="#security"><strong>Security</strong> Specs</a>
+  </li>
+  <li>
+    <a href="#sync"><strong>Sync</strong> Specs</a>
+  </li>
+  <li>
+    <a href="#digger"><strong>Digger</strong> Docs</a>
+  </li>
+</ul>
+            
+      </div><!-- col -->
+      <div class="col-md-9">
+          
+            <h2 class="section-header" id="core"><i class="fa fa-rocket"></i> AeroGear<strong>SDK</strong> Docs</h2>
+
+<style>
+span.version {
+   color: gray;
+   font-size: 0.8em;
+}
+</style>
+
+<h4 id="coreAndroid">Android</h4>
+
+<ul>
+  <li><a href="http://www.javadoc.io/doc/org.jboss.aerogear/aerogear-android-core/">Core</a> <span class="version">3.1.0</span></li>
+  <li><a href="http://www.javadoc.io/doc/org.jboss.aerogear/aerogear-android-security/">Security</a> <span class="version">3.1.0</span></li>
+  <li><a href="http://www.javadoc.io/doc/org.jboss.aerogear/aerogear-android-store/">Store</a> <span class="version">3.1.0</span></li>
+  <li><a href="http://www.javadoc.io/doc/org.jboss.aerogear/aerogear-android-pipe/">Pipe</a> <span class="version">3.2.0</span></li>
+  <li><a href="http://www.javadoc.io/doc/org.jboss.aerogear/aerogear-android-auth/">Auth</a> <span class="version">3.1.0</span></li>
+  <li><a href="http://www.javadoc.io/doc/org.jboss.aerogear/aerogear-android-authz/">Authz</a> <span class="version">3.1.0</span></li>
+  <li><a href="http://www.javadoc.io/doc/org.jboss.aerogear/aerogear-android-push/">Push</a> <span class="version">4.1.0</span></li>
+  <li><a href="http://www.javadoc.io/doc/org.jboss.aerogear/aerogear-android-sync/">Sync</a> <span class="version">2.1.0</span></li>
+</ul>
+
+<h4 id="coreIOS">iOS</h4>
+<ul>
+  <li><a href="aerogear-ios-http">Http</a> <span class="version">0.2.0</span></li>
+  <li><a href="aerogear-ios-oauth2">OAuth2</a> <span class="version">0.2.0</span></li>
+  <li><a href="aerogear-ios-jsonsz">JsonSZ</a> <span class="version">0.1.0</span></li>
+  <li><a href="aerogear-ios-sync">Sync</a> <span class="version">1.0.0-alpha.1</span></li>
+  <li><a href="aerogear-ios-sync-client">Sync client</a> <span class="version">1.0.0-alpha.1</span></li>
+  <li><a href="aerogear-ios-push">Push</a> <span class="version">1.1.0-beta.1-swift</span></li>
+  <li><a href="aerogear-otp-ios">OTP</a> <span class="version">1.0.0</span></li>
+  <li><a href="aerogear-ios-crypto">Crypto</a> <span class="version">0.2.3</span></li>
+</ul>
+
+<h4 id="coreCordova">Cordova</h4>
+<ul>
+  <li><a href="aerogear-cordova">AeroGear Cordova</a></li>
+</ul>
+
+<h4 id="coreJs">JavaScript</h4>
+<ul>
+  <li><a href="aerogear-js">AeroGear.js</a> <span class="version">2.1.0</span></li>
+</ul>
+
+<h4>Deprecated</h4>
+<ul>
+  <li><a href="aerogear-client-pipe">Pipe API</a></li>
+  <li><a href="aerogear-client-paging">Paging API</a></li>
+  <li><a href="aerogear-client-paging-usage">Paging API usage examples</a></li>
+</ul>
+
+<hr />
+
+<h2 class="section-header" id="push"><i class="fa fa-paper-plane"></i> AeroGear<strong>Push</strong> Docs</h2>
+
+<h4 id="unifiedpush">UnifiedPush</h4>
+
+<ul>
+  <li><a href="../unifiedpush/push-message-format/">UnifiedPush Message Format</a></li>
+  <li><a href="../unifiedpush/client-registration/">UnifiedPush Client Registration</a></li>
+  <li><a href="aerogear-unifiedpush-rest/index.html">UnifiedPush RESTful APIs</a>  <span class="version">1.1.0</span></li>
+  <li><a href="aerogear-unifiedpush-rest-1.0.x/overview-index.html">UnifiedPush RESTful APIs</a>  <span class="version">1.0.3</span></li>
+  <li><a href="aerogear-unifiedpush-java-client">UnifiedPush Java Client</a> <span class="version">1.1.0</span></li>
+  <li><a href="aerogear-unifiedpush-nodejs-client">UnifiedPush Node.js Client</a> <span class="version">0.13.0</span></li>
+</ul>
+
+<h4>SimplePush</h4>
+
+<ul>
+  <li><a href="aerogear-simplepush-java-client">SimplePush Java Client</a></li>
+</ul>
+
+<h4>Client Libs</h4>
+
+<ul>
+  <li><a href="/docs/specs/aerogear-android-push/">Android Push</a> <span class="version">2.0.0</span></li>
+  <li><a href="aerogear-ios-push">Push iOS</a> <span class="version">1.0.0</span></li>
+  <li><a href="aerogear-cordova/Push.html">Cordova Push</a></li>
+</ul>
+
+<hr />
+
+<h2 class="section-header" id="security"><i class="fa fa-shield"></i> AeroGear<strong>Security</strong> Specifications</h2>
+
+<h4 id="securityAuthentication">Authentication</h4>
+<ul>
+  <li><a href="/docs/specs/aerogear-android-auth/">Android Auth</a> <span class="version">2.0.0</span></li>
+  <li><a href="/docs/specs/aerogear-android-authz/">Android Authz</a> <span class="version">2.0.0</span></li>
+  <li><a href="aerogear-ios-oauth2">iOS OAuth2</a> <span class="version">0.2.0</span></li>
+  <li><a href="/docs/specs/aerogear-cordova/OAuth2.html">Cordova OAuth2</a></li>
+</ul>
+
+<h4 id="securityOTP">One-Time Password</h4>
+<ul>
+  <li>Android OTP</li>
+  <li><a href="aerogear-otp-ios">iOS OTP</a> <span class="version">1.0.0</span></li>
+  <li><a href="/docs/specs/aerogear-cordova/AeroGear.Totp.html">Cordova OTP</a></li>
+</ul>
+
+<h4 id="securityCryptography">Cryptography</h4>
+<ul>
+  <li><a href="aerogear-crypto">Crypto API Specification</a></li>
+  <li>Android Crypto</li>
+  <li><a href="aerogear-ios-crypto">iOS Crypto</a> <span class="version">0.2.3</span></li>
+  <li><a href="/docs/specs/aerogear-cordova/AeroGear.Crypto.html">Cordova Crypto</a></li>
+  <li><a href="/docs/specs/aerogear-js/AeroGear.Crypto.html">JS Crypto</a></li>
+</ul>
+
+<h4 id="securityGeneral">General</h4>
+<ul>
+  <li><a href="/docs/specs/aerogear-android-security/">AeroGear Android Security</a> <span class="version">2.0.0</span></li>
+</ul>
+
+<hr />
+
+<h2 class="section-header" id="sync"><i class="fa fa-refresh"></i> AeroGear<strong>Sync</strong> Specifications <sub><span class="label label-warning">Experimental</span></sub></h2>
+<ul>
+  <li><a href="aerogear-data-sync">Data Sync Specification</a></li>
+  <li><a href="aerogear-sync-data-format">Data Sync Message Format</a></li>
+</ul>
+
+<h4 id="securityGeneral">Sync Server</h4>
+<ul>
+  <li><a href="aerogear-sync-server-java-api/org/jboss/aerogear/sync/server/ServerSyncEngine.html">Java Server API</a></li>
+  <li><a href="aerogear-sync-server-java-api/org/jboss/aerogear/sync/client/ClientSyncEngine.html">Java Client API</a></li>
+</ul>
+
+<h4 id="securityGeneral">Proposals</h4>
+<ul>
+  <li><a href="aerogear-sync-client-api">Client API Proposals</a></li>
+</ul>
+
+<hr />
+
+<h2 class="section-header" id="digger"><i><img src="/img/aerogeardigger_icon_32px_cropped.png" /></i> AeroGear<strong>Digger</strong> Docs</h2>
+
+<h4>Guides</h4>
+<ul>
+  <li><a href="/docs/digger/installation">Installation Guide</a></li>
+  <li><a href="/docs/digger/admin">Admin Guide</a></li>
+  <li><a href="/docs/digger/developer">Developer Guide</a></li>
+</ul>
+
+<h4>Specs</h4>
+<ul>
+  <li><a href="/docs/specs/aerogear-digger-java-client">Java client specs</a></li>
+  <li><a href="/docs/specs/aerogear-digger-node-client">Node client specs</a></li>
+</ul>
+
+<hr />
+
+<h5>...are you looking for more?</h5>
+<p>
+   <a href="/getstarted/guides" class="btn btn-primary"><i class="fa fa-book"></i> Guides! Learn more</a>
+   <a href="/getstarted/demos" class="btn btn-primary"><i class="fa fa-cogs"></i> Demo Applications</a>
+   <a href="/getstarted/downloads" class="btn btn-primary"><i class="fa fa-download"></i> Downloads and Snippets</a>
+</p>
+
+          
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

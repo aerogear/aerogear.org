@@ -1,0 +1,742 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - AeroGear Cordova Push Plugin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">AeroGear Cordova Push Plugin</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#_getting_started">
+         <span class="toctext">Getting Started</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-2">
+            <a href="#_create_the_app">
+               <span class="toctext">Create the App</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-3">
+            <a href="#_add_platform_s">
+               <span class="toctext">Add platform(s)</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-4">
+            <a href="#_install_the_plugin">
+               <span class="toctext">Install the plugin</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-5">
+            <a href="#_sample_example">
+               <span class="toctext">Sample Example</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-6">
+      <a href="#_start_receiving_messages">
+         <span class="toctext">Start receiving messages</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-7">
+            <a href="#_metrics">
+               <span class="toctext">Metrics</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-8">
+            <a href="#_ios_background_notification">
+               <span class="toctext">iOS background notification</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-9">
+            <a href="#_windows">
+               <span class="toctext">Windows</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-10">
+      <a href="#_to_unregister_only_available_on_android">
+         <span class="toctext">To unregister (only available on Android)</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-11">
+      <a href="#_xcode_8_setup">
+         <span class="toctext">Xcode 8 setup</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-12">
+      <a href="#_documentation">
+         <span class="toctext">Documentation</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-13">
+            <a href="#_troubleshooting">
+               <span class="toctext">Troubleshooting</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>AeroGear Cordova Push Plugin</h1>
+        <div class="paragraph">
+<p>The AeroGear Cordova Push Plugin is an extension of the standard Cordova Push Plugin the difference is that it&#8217;s
+that it supports AeroGears UnifiedPush better and that makes that there is less boiler plate to take care of in
+your javascript.</p>
+</div>
+<div class="paragraph">
+<p>Before we start please install <a href="https://github.com/apache/cordova-cli/">Apache Cordova CLI</a>, which is the command
+line tool to build, deploy and manage Cordova-based applications.</p>
+</div>
+<div class="paragraph">
+<p>Make sure you have the 3rd party configuration, required by GCM or APNs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/docs/unifiedpush/aerogear-push-android/guides/#google-setup">Setup for android</a></p>
+</li>
+<li>
+<p><a href="/docs/unifiedpush/aerogear-push-ios/guides/#app-id-ssl-certificate-apns">Setup for ios</a></p>
+</li>
+<li>
+<p><a href="/docs/unifiedpush/aerogear-push-windows/guides/#windows-setup">Setup for windows</a></p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Cordova command line tooling is based on node.js so first you&#8217;ll need to <a href="http://nodejs.org/download/">install node</a> then you can install Cordova by executing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ npm install -g cordova</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To deploy on iOS you need to install the ios-deploy package as well</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ npm install -g ios-deploy</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_the_app">Create the App</h3>
+<div class="paragraph">
+<p>Create a new app by executing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ cordova create &lt;project-name&gt; [app-id] [app-name]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_platform_s">Add platform(s)</h3>
+<div class="paragraph">
+<p>Specify a set of target platforms by executing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ cordova platform add &lt;platform&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The available <em>platform</em> values are <em>ios</em> and <em>android</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_install_the_plugin">Install the plugin</h3>
+<div class="paragraph">
+<p>Install the aerogear-pushplugin-cordova plugin by executing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ cordova plugin add aerogear-cordova-push</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or if you want the latest and greatest development version you can install the version from the git repo like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ cordova plugin add https://github.com/aerogear/aerogear-pushplugin-cordova.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Done! Your project now contains the AeroGear PushPlugin. For an integration with the <em>UnifiedPush Server</em> open the <code>www</code> folder in your text editor and apply the code from the example below. Afterwards you can execute the project with <code>cordova run &lt;platform&gt;</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sample_example">Sample Example</h3>
+<div class="paragraph">
+<p>There are two ways to register a device in the AeroGear UnifiedPush Server devices registry :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Passing the config parameters directly in the JavaScript code :</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">var pushConfig = {
+    pushServerURL: "&lt;pushServerURL e.g http(s)//host:port/context &gt;",
+    alias: "&lt;alias e.g. a username or an email address optional&gt;",
+    android: {
+      senderID: "&lt;senderID e.g Google Project ID only for android&gt;",
+      variantID: "&lt;variantID e.g. 1234456-234320&gt;",
+      variantSecret: "&lt;variantSecret e.g. 1234456-234320&gt;"
+    },
+    ios: {
+      variantID: "&lt;variantID e.g. 1234456-234320&gt;",
+      variantSecret: "&lt;variantSecret e.g. 1234456-234320&gt;"
+    }
+};
+
+push.register(onNotification, successHandler, errorHandler, pushConfig);</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using an external configuration file named <em>push-config.json</em>, placed inside the <em>www</em> folder :</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+   "pushServerURL": "&lt;pushServerURL e.g http(s)//host:port/context &gt;",
+   "android": {
+      "senderID": "&lt;senderID e.g Google Project ID only for android&gt;",
+      "variantID": "&lt;variantID e.g. 1234456-234320&gt;",
+      "variantSecret": "&lt;variantSecret e.g. 1234456-234320&gt;"
+   },
+   "ios": {
+      "variantID": "&lt;variantID e.g. 1234456-234320&gt;",
+      "variantSecret": "&lt;variantSecret e.g. 1234456-234320&gt;"
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And then in your JavaScript :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">push.register(onNotification, successHandler, errorHandler);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or you can use a combination of the two, this is ideal when you have some dynamic configuration like categories or aliases:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">ajax({
+    url: "push-config.json",
+    dataType: "text"
+})
+.then( function( result ) {
+    var pushConfig = JSON.parse(result.data);
+
+    //now set the categories that you get from elsewhere from the user.
+    pushConfig.categories = categories;
+
+    //and then register..
+    push.register(onNotification, successHandler, errorHandler, pushConfig);
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The onNotification callback will get executed by the plugin when a new message arrives. If you are only targeting one
+platform you can simplfy the config (or your push-config.json file) above like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">var pushConfig = {
+    pushServerURL: "&lt;pushServerURL e.g http(s)//host:port/context &gt;",
+    alias: "&lt;alias e.g. a username or an email address optional&gt;",
+    variantID: "&lt;ios variantID e.g. 1234456-234320&gt;",
+    variantSecret: "&lt;ios variantSecret e.g. 1234456-234320&gt;"
+};
+
+push.register(onNotification, successHandler, errorHandler, pushConfig);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_start_receiving_messages">Start receiving messages</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">function onNotification(event) {
+    alert(event.alert);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The passed in 'event' object contains:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>alert the alert message send</p>
+</li>
+<li>
+<p>coldstart was the app running when the message was received</p>
+</li>
+<li>
+<p>badge the number to display on the icon ios specific</p>
+</li>
+<li>
+<p>any custom set properties are available under e.payload ( e.g <code>alert(e.payload.foo);</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also have a look here for <a href="docs/unifiedpush/">more information about the message</a> sending and properties</p>
+</div>
+<div class="sect2">
+<h3 id="_metrics">Metrics</h3>
+<div class="paragraph">
+<p>Optionally the cordova plugin supports sending metrics to UPS. Metrics can be used to view how many users have used the message to open the app. This can be important information if you want to know how well your messages are received by your application users.</p>
+</div>
+<div class="paragraph">
+<p>UPS sends an unique ID for every push message by default all we have to do set <code>sendMetricInfo</code> to <code>true</code> in the config to tell the plugin to send this ID back when the user opened the app with the notification.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">var pushConfig = {
+    pushServerURL: "&lt;pushServerURL e.g http(s)//host:port/context &gt;",
+    sendMetricInfo: true, <i class="conum" data-value="1"></i><b>(1)</b>
+    ...
+};</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>With this set to <code>true</code> the UPS dashboard will show metrics on how 'successful' your message was</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ios_background_notification">iOS background notification</h3>
+<div class="paragraph">
+<p>Sending notifications that contain 'content-availble' on iOS will call the javacript first before launching the app, this will enable you to update the UI or do a silent push (e.g. without an alert) to update the content of your app without the user noticing.  After fetching the content you&#8217;ll have to 'inform' the os about the result by calling setContentAvailable with either NewData, NoData or Failed <a href="/docs/specs/aerogear-cordova/Push.html#setContentAvailable">AeroGear Push plugin API</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">function onNotification(event) {
+
+  if (event['content-available'] === 1) {
+    if (!event.foreground) {
+      // fetch content
+      push.setContentAvailable(push.FetchResult.NewData);
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_windows">Windows</h3>
+<div class="paragraph">
+<p>In order for your callback to be called when the user uses the notification to bring the application in foreground, you&#8217;ll need to add a page parameter to the message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">"message": {
+    "windows": {
+      "page": "cordova"
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The sender will use this to trigger a 'special internal' page within the plugin that will call your javascript callback and parse the user-data. Without this page 'param' the app will come to foreground without invoking the javascript callback like you are used on the other platforms.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_to_unregister_only_available_on_android">To unregister (only available on Android)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">push.unregister(successHandler, errorHandler);
+
+function successHandler() {
+    console.log('success')
+}
+
+function errorHandler(message) {
+    console.log('error ' + message);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Full example (<a href="https://github.com/aerogear/aerogear-pushplugin-cordova/blob/master/example/index.html">index.html</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;script type="text/javascript" charset="utf-8" src="cordova.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+
+  function onDeviceReady() {
+    var pushConfig = {
+        pushServerURL: "&lt;pushServerURL e.g http(s)//host:port/context &gt;",
+        alias: "&lt;alias e.g. a username or an email address optional&gt;",
+        android: {
+          senderID: "&lt;senderID e.g Google Project ID only for android&gt;",
+          variantID: "&lt;variantID e.g. 1234456-234320&gt;",
+          variantSecret: "&lt;variantSecret e.g. 1234456-234320&gt;"
+        },
+        ios: {
+          variantID: "&lt;variantID e.g. 1234456-234320&gt;",
+          variantSecret: "&lt;variantSecret e.g. 1234456-234320&gt;"
+        }
+    };
+
+    var statusList = $("#app-status-ul");
+    statusList.append('&lt;li&gt;deviceready event received&lt;/li&gt;');
+
+    try {
+      statusList.append('&lt;li&gt;registering &lt;/li&gt;');
+      push.register(onNotification, successHandler, errorHandler, pushConfig);
+    } catch (err) {
+      txt = "There was an error on this page.\n\n";
+      txt += "Error description: " + err.message + "\n\n";
+      alert(txt);
+    }
+  }
+
+  function onNotification(e) {
+    var statusList = $("#app-status-ul");
+
+    // on android we could play the sound, if we add the Media plugin
+    if (e.sound &amp;&amp; (typeof Media != 'undefined')) {
+      var media = new Media("/android_asset/www/" + e.sound + '.wav');
+      media.play();
+    }
+
+    if (e.coldstart) {
+      statusList.append('&lt;li&gt;--COLDSTART NOTIFICATION--' + '&lt;/li&gt;');
+    }
+
+    statusList.append('&lt;li&gt;MESSAGE -&gt; MSG: ' + e.alert + '&lt;/li&gt;');
+
+    //only on ios
+    if (e.badge) {
+      push.setApplicationIconBadgeNumber(successHandler, e.badge);
+    }
+  }
+
+  function successHandler() {
+    $("#app-status-ul").append('&lt;li&gt;success&lt;/li&gt;');
+  }
+
+  function errorHandler(error) {
+    $("#app-status-ul").append('&lt;li&gt;error:' + error + '&lt;/li&gt;');
+  }
+
+  document.addEventListener('deviceready', onDeviceReady, true);
+
+&lt;/script&gt;
+&lt;div id="home"&gt;
+  &lt;div id="app-status-div"&gt;
+    &lt;ul id="app-status-ul"&gt;
+      &lt;li&gt;AeroGear PushPlugin Unified Push Demo&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_xcode_8_setup">Xcode 8 setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Xcode 8 requires a .entitlements file with a <code>aps-environment</code> key present in order to make the push notifications work.
+The plugin includes a Cordova hook that will add that file with the <code>aps-environment</code> key and <code>development</code> value.
+To change the value to <code>production</code> you have to provide your own Push.entitlements file. You can pick the <a href="https://github.com/aerogear/aerogear-cordova-push/blob/master/src/ios/Push.entitlements">example file</a>, change the value to <code>production</code> and put it inside the www folder. It&#8217;s values will be copied to the project when <code>cordova prepare ios</code> is run.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_documentation">Documentation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/docs/specs/aerogear-cordova/index.html">AeroGear Push plugin API doc</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_troubleshooting">Troubleshooting</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/docs/unifiedpush/aerogear-push-cordova/troubleshooting/">Having issues with getting it to run?</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

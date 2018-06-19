@@ -1,0 +1,44 @@
+[[known-issues]]
+=== Known Issues
+
+==== Issues with using HTTP Proxy
+
+===== HTTP proxy with macOS Jenkins node
+
+When configuring Jenkins to run behind a HTTP proxy, there is a https://issues.jenkins-ci.org/browse/JENKINS-31464[limitation/bug^] in the way slave nodes use the Git plugins. This is because the slaves inherit proxy information from the master.
+
+The result is that a macOS node (the Jenkins slave responsible for iOS builds), will attempt to checkout application source code through a HTTP proxy address and port if one has been specified during the provisioning of Digger.
+
+This may not be an issue if the slave exists on the same network, but can be an issue  if it exists on network outside the OpenShift cluster. Two potential workarounds exist:
+
+1. Add networking rules to allow the macOS server to route requests through the proxy. This is the recommended approach as it allows you to keep your Jenkins configuration intact.
+
+2. Remove the proxy configuration in Jenkins > Manage Jenkins > Manage Plugins > Advanced. If you then need to checkout source code behind a proxy for specific builds, the required configuration steps can be added to the Jenkinsfile when necessary.
+
+===== HTTP proxy authentication in Android builds
+When building Android apps, the pod in which the apps are built cannot use a proxy that requires authentication. This is due to an issue within Gradle.
+
+===== Android SDK Manager tools don't support HTTP proxy with authentication
+(Regarding installation of Android SDK into the Android SDK OpenShift pod during provisioning).
+
+==== Issues with Ansible provisioning
+
+===== Encrypted private key cannot be provided in Ansible provisioning
+The user's private key cannot be encrypted when running the Ansible playbook.
+
+Note that this does not include the key pair that should be provided when provisioning the macOS node, the private key of the macOS key pair should be encrypted with a passphrase.
+
+The workaround is to use `openssl` to remove the passphrase from your key using the following command.
+
+----
+openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new
+----
+
+==== iOS Build Limitations
+
+===== No Build Isolation Support
+
+At the moment(November 2017), the iOS builds do not support build isolation. This means if one iOS build process changes the settings/environment, it will impact all iOS build processes.
+
+===== No Parallel Build Support On A Single macOS Server
+Each iOS build needs to update parts of the global configuration (certifications, keys etc). If you need to support parallel iOS builds, you will need to configure multiple macOSservers.

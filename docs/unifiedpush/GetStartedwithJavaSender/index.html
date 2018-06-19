@@ -1,0 +1,927 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - Getting Started with Java Sender client API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">Getting Started with Java Sender client API</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-8 col-md-offset-2 post">
+      
+        <h1>Getting Started with Java Sender client API</h1>
+        <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_installation">Installation</a></li>
+<li><a href="#_api_overview">API Overview</a></li>
+<li><a href="#_initialisation_of_the_defaultpushsender">Initialisation of the DefaultPushSender</a></li>
+<li><a href="#_sending_a_message">Sending a message</a></li>
+<li><a href="#_selected_send">Selected send</a></li>
+<li><a href="#_apns_ios_specific_payload">APNs (iOS) specific payload</a></li>
+<li><a href="#_windows_specific_payload">Windows specific payload</a></li>
+<li><a href="#_connect_via_a_proxy">Connect via a Proxy</a></li>
+<li><a href="#_use_a_custom_trustore">Use a custom Trustore</a></li>
+<li><a href="#_integrating_with_java_ee">Integrating with Java EE</a></li>
+<li><a href="#_conclusion">Conclusion</a></li>
+</ul>
+</div>
+<!-- toc disabled -->
+<div class="paragraph">
+<p>AeroGear provides a Java library that allows you to programmatically access and send notifications to the AeroGear Unified Push server. The library can be used in your standalone Java applications as well as be embedded in a Java EE environment. This guide will explain the features of the API as well as give example usages for both scenarios. We assume you are already familiar with the concepts of the AeroGear UnifiedPush server. If not, please visit the project&#8217;s <a href="https://github.com/aerogear/aerogear-unified-push-server">github</a> page for more information.</p>
+</div>
+<div class="sect1">
+<h2 id="_installation">Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The library can be downloaded through the project <a href="https://github.com/aerogear/aerogear-unified-push-java-client">github</a> page or if you are using Maven, simply add the following dependency in your 'pom.xml':</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.aerogear&lt;/groupId&gt;
+    &lt;artifactId&gt;unifiedpush-java-client&lt;/artifactId&gt;
+    &lt;version&gt;1.1.0.Final&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_api_overview">API Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The API is straightforward to use and consists of the following methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">public interface PushSender {
+
+    /**
+     * Sends the given payload to installations of the referenced PushApplication.
+     * We also pass a callback to handle the message.
+     */
+    void send(UnifiedMessage unifiedMessage, MessageResponseCallback callback);
+
+    /**
+     * Sends the given payload to installations of the referenced PushApplication.
+     */
+    void send(UnifiedMessage unifiedMessage);
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <em>UnifiedMessage</em> object passed as a parameter on those methods contain the actual notification payload. The object, as we will see in the example later on, utilizes the builder pattern to help you construct easily the payload. The difference between the two methods, is that the first one allows you to pass a callback so that you can be notified regarding whether the notification was successfully accepted by the server for transmission.</p>
+</div>
+<div class="paragraph">
+<p>A concrete implementation of the <em>PushSender</em> interface can be found on the 'DefaultPushSender' class, which internally uses <em>HttpURLConnection</em> for the communication (but can easily be adopted to support other http providers).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_initialisation_of_the_defaultpushsender">Initialisation of the DefaultPushSender</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are 2 ways to instantiate a DefaultPushSender :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"Inline" :</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>PushSender defaultPushSender = DefaultPushSender.withRootServerURL("http://localhost:8080/ag-push")
+                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")
+                .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
+                .build();</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using a external config file :</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">   //pushConfig.json
+{
+  "serverUrl": "http://aerogear.example.com/ag-push",
+  "pushApplicationId": "c7fc6525-5506-4ca9-9cf1-55cc261ddb9c",
+  "masterSecret": "8b2f43a9-23c8-44fe-bee9-d6b0af9e316b"}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">  PushSender defaultPushSender = DefaultPushSender.withConfig("pushConfig.json").build();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sending_a_message">Sending a message</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s start now with a simple example where the notification is send to all mobile variants registered under the Push Application ID:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">PushSender defaultPushSender = DefaultPushSender.withRootServerURL("http://localhost:8080/ag-push")
+                .pushApplicationId("c7fc6525-5506-4ca9-9cf1-55cc261ddb9c")
+                .masterSecret("8b2f43a9-23c8-44fe-bee9-d6b0af9e316b")
+                .build();
+
+UnifiedMessage unifiedMessage = new UnifiedMessage.withMessage()                 // [2]
+                .alert("Hello from Java Sender API!")
+                .sound("default")
+                .badge("1")
+                .userData("some_key", "with_value")  // [3]
+                .withConfig()
+                  .timeToLive(3600)  // [4]
+                .build();
+
+sender.send(unifiedMessage, new MessageResponseCallback() {      // [5]
+
+            @Override
+            public void onComplete(int statusCode) {
+              // check the 'statusCode' to determine whether the notification
+              // was accepted for transmission by the server.
+            }
+
+          });</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In [1] we initialize the client passing the hostname of the running AeroGear UnifiedPush Server. If the hostname changes, you will need to create a new instance of the client.  The <em>pushApplicationId</em> and <em>masterSecret</em> params are used to identify the particular Push Application on the UnifiedPush server as well as performing authentication against it. You were given them when you initially registered your PushApplication with the server. Ensure they are present and valid, otherwise there will be an error when trying to send.</p>
+</div>
+<div class="paragraph">
+<p>In [2], we access the builder object and we use it to fill in the parameters.</p>
+</div>
+<div class="paragraph">
+<p>Further, support is provided with the help of the <em>userData</em> param [3], to attach on the notification arbitrary key/value pairs that make sense on your business context. Those pairs will eventually be interpreted by your client code once the notification arrives.</p>
+</div>
+<div class="paragraph">
+<p>An optional <em>timeToLive</em> [4] (in seconds) can be added on the notification payload configuration section, instructing the remote provider to drop the notification in case the device is unable to receive it (e.g. offline) for a period longer than the seconds specified.</p>
+</div>
+<div class="paragraph">
+<p>Once the notification payload is constructed, we invoke the send method [5] passing along our callback. The&#8217;onComplete' callback will be called with the 'statusCode' initialized to the response code as returned from the server. Normally, a status code of '200' would be returned to indicate that the server accepted it for transmission. Check the <a href="/docs/specs/aerogear-unifiedpush-rest/sender/index.html">server documentation</a> for a list of valid responses.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_selected_send">Selected send</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To narrow down the list of the recipients, you can use the the criteria builder. There are 2 ways of using this criteria builder :
+- Start building your message by passing the criteria :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">UnifiedMessage unifiedMessage = UnifiedMessage.withCriteria()
+                .aliases("mike")
+                .message()
+                  .aler("hello")</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Anytime while building your message :</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .alert(ALERT_MSG)
+                .sound(DEFAULT_SOUND)
+                .criteria().aliases("mike")
+                .build();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The different criteria options are :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>narrow down by specific mobile variants (e.g. HR Android, HR iPhone):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    variants(Arrays.asList("c3f0a94f-48de-4b77-a08e..." /* HR_Premium */, "444939cd-ae63-4ce1-96a4..." /* HR_Free */));</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>narrow down by specific aliases, thus allowing to send a message directly to a specific mobile installation. Note that here we used an email address, but anything that helps to identify a user can be used (e.g. username, user ID, etc)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    .aliases(Arrays.asList("john@somewhere.com", "maria@somewhere.com"));</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>narrow down by specific device types:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    .deviceType(Arrays.asList("iPhone", "iPad_Mini", "web"));</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>narrow down by specific categories:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .categories("someCategory", "otherCategory");</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>narrow down SimplePush clients:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .simplePush("version");</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All these query criterias are optional. If no criterias are passed it will act as a broadcast send, where all clients are notified.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As you realize from the list, the Sender API offers <em>tremendous</em> flexibility in supporting even the most complex scenarios. You can mix and match options to target a specific mobile audience.</p>
+</div>
+<div class="paragraph">
+<p>Once the UnifiedMessage is build with your desired criterias, simply call the <em>send</em> method on the JavaSender to send the notification.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_apns_ios_specific_payload">APNs (iOS) specific payload</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For APNs specific payload you can use the apns() builder method :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">  UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .apns()
+                   .contentAvailable() // just an example, see the complete list below</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These are the specific APNs payload options : (shown with the respective builder method)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An iOS specific argument to send notifications to Newsstand applications and submitting silent iOS notifications (iOS7)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .contentAvailable()</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An iOS specific argument to pass an Action Category for interactive notifications (iOS8)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .actionCategory("acceptLead")</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sets the value of the 'action' key from the submitted payload</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .action("myAction")</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sets the value of the 'title' key from the submitted payload</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .title("myTitle")</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The key to a title string in the Localizable.strings file for the current localization</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .localizedTitleKey("fr_title")</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sets the arguments for the localizable title key</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .localizedTitleArguments(["title1","title2"])</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sets the value of the 'url-args' key from the submitted payload</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .urlArgs(["arg1","arg2"])</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_windows_specific_payload">Windows specific payload</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For Windows specific payload you can use the windows() builder method :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">  UnifiedMessage unifiedMessage = UnifiedMessage.withMessage()
+                .windows()
+                   .raw() // just an example, see the complete list below</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These are the specific Windows payload options : (shown with the respective builder method)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the type of message to send toast, raw, badge or tile. Check <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh465403.aspx">here</a> for detailed information/</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .type(Type.tile)</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the raw notification type. A raw notification is a type of push notification without any associated UI. Check <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh761463.aspx">here</a> for detailed information/</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .raw()</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the badge notifications type for badges that are not numbers. Check <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx">here</a> for detailed information/</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .badgeType(BadgeType.activity)</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the type of the tile messages, different sizes are available. Check <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx">here</a> for detailed information/</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .tileType(TileType.TileSquareBlock)</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the duration of a Toast message (long or short)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .durationType(DurationType.long)</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the toast template. Check <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx">here</a> for detailed information/</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .toastType(ToastType.ToastText01)</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set a list of image&#8217;s paths for the Tile Notification Type</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .images(Arrays.asList("/images/image1.png","/images/image2.png")</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set a list of text fields for the Tile Notification Type</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .textFields(Arrays.asList("foo","bar")</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the page in you application to launch when the user 'touches' the notification in the notification dock.
+NOTE: For cordova applications set this to 'cordova' to launch your app and invoke the javascript callback.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>   .page("myPage")</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_connect_via_a_proxy">Connect via a Proxy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If your infrastructure is behind a proxy, you can specify this while creating an instance of your SenderClient :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">PushSender defaultJavaSender = DefaultPushSender.withConfig("pushConfig.json")
+                .proxy("proxy.example.com", 8080)
+                .proxyUser("proxyuser")
+                .proxyPassword("password")
+                .proxyType(Proxy.Type.HTTP)
+                .build();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_a_custom_trustore">Use a custom Trustore</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If your infrastructure uses a custom TrustStore, you can specify this while creating an instance of your SenderClient :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">PushSender defaultJavaSender = DefaultPushSender.withConfig("pushConfig.json")
+                .customTrustStore("setup/aerogear.truststore", "jks", "aerogear")
+                .build();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrating_with_java_ee">Integrating with Java EE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The library can be used inside a Java EE environment to enable your enterprise applications to send notification messages to mobile clients, when e.g. a particular business event occurs. Let&#8217;s see one approach of integration through an example of a PaymentGateway.</p>
+</div>
+<div class="paragraph">
+<p>A payment request is initiated through a REST endpoint. The endpoint delegates the processing to an EJB and if the transaction succeeds, a CDI Payment Event is fired. The event is then picked up from CDI Observer bean, which then uses the JavaSender API to send a notification back to client.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">/**
+ *  Various resource produces e.g. PersistentContext etc.
+ */
+public class Resources {
+
+    // ...
+
+    @Produces
+    @ApplicationScoped
+    public PushSender getSenderClient() {
+       // initialize to point to the hostname of the running UnifiedPush server
+       return DefaultPushSender.withConfig("pushConfig.json").build();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Payment.java</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">/**
+ * Models a payment
+ */
+ public class Payment {
+
+    private String userAlias;
+    private BigDecimal amount;
+    private Date datetime;
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public String getUserAlias() {
+        return userAlias;
+    }
+
+    public void setUserAlias(String userAlias) {
+        this.userAlias = userAlias;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>PaymentResource.java</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">/**
+ *  A JAX-RS endpoint for clients to kickstart payment processing
+ */
+ @Path("/payments")
+ public class PaymentResource {
+
+  @Inject
+  PaymentsProcessor processor;
+
+  @POST
+  @Consumes("application/json")
+  public Response pay(Payment payment) {
+    processor.pay(payment)
+
+    return Response.ok().build();
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>PaymentsProcessor.java</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">/**
+ *  The EJB responsible for processing the payment
+ */
+@Stateless
+public class PaymentsProcessor {
+
+    @Inject
+    Event&lt;Payment&gt; event;
+
+    public void pay(Payment payment) {
+        // process the payment
+        // ...
+
+        event.fire(payment);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>NotificationSender.java</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">/**
+ * The class that listens for payment events
+ * and responsible to send receipt notifications
+ */
+public class NotificationSender {
+
+  @Inject
+  SenderClient sender;
+
+  // here the CDI 'Payment' event is caught and the actual send is triggered
+  void sendPaymentNotification(@Observes(during = AFTER_SUCCESS) Payment payment) {
+      UnifiedMessage unifiedMessage =  UnifiedMessage.withMessage()
+                .alert("Thank you for your payment!")
+                .sound("default")
+                .criteria()
+                   .aliases(Arrays.asList(payment.getUserAlias()))
+                .build();
+
+      sender.send(message)
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion">Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Sender API is simple and easy to use, allowing you to connect to the UnifiedPush server and send notifications. It can be used both in your standalone applications or be embedded in a Java EE environment. Work is being done to port it to other languages too and if you are interested you can give us a hand too! Please join our <a href="https://lists.jboss.org/mailman/listinfo/aerogear-dev">developer mailing list</a>, or find us on <a href="irc://irc.freenode.net/aerogear">IRC</a> and introduce yourself!</p>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

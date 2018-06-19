@@ -1,0 +1,482 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+  <title>AeroGear - How to Handle AeroGear Pull Requests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body class="  ">    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+ 
+
+  
+
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+ 
+
+
+<section class="community">
+
+  <div class="container">
+    <ol class="breadcrumb" style="margin:0">
+      <li><a href="/community/index.html#guides">Community</a></li>
+  
+      <li><a href="/community/index.html#guides">Contributing Guide</a></li>
+      <li class="active">How to Handle AeroGear Pull Requests</li>
+  
+    </ol>
+  </div><!-- container -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 post">
+        <h1>How to Handle AeroGear Pull Requests</h1>      
+        <div class="sect1">
+<h2 id="_how_to_handle_aerogear_pull_requests">How to Handle AeroGear Pull Requests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This article shows the guidelines and tasks required for project developers to manage and handle pull requests (PR).</p>
+</div>
+<div class="sect2">
+<h3 id="_general_guidelines">General Guidelines</h3>
+<div class="paragraph">
+<p>These are general guidelines about handling PRs and things to keep in mind as a project developer.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All changes should be made via PRs</p>
+</li>
+<li>
+<p>You should not process your own PRs</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Another project developer should handle your PR as described below</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is especially important for large or complex changes</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Exceptions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updates are clearly trivial</p>
+</li>
+<li>
+<p>No one is available to review in a timely manor</p>
+</li>
+<li>
+<p>Updates are blocking your progress with other critical items</p>
+</li>
+<li>
+<p>Another project developer has "+1"'ed the PR after a basic review</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Do NOT use the GitHub PR merge facilities</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This creates merge commits that we want to avoid</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_handling_a_pull_request">Handling a Pull Request</h4>
+<div class="paragraph">
+<p>This section talks about handling a pull request generated from a community member or another project developer.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jira</p>
+<div class="ulist">
+<ul>
+<li>
+<p>90% of the time there should be a jira associated with a PR</p>
+</li>
+<li>
+<p>The Jira should be linked to the PR following the instructions in the <a href="../GitHubWorkflow">AeroGear GitHub Workflow &amp; Instructions</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Make sure your own local repo is up to date with the latest from AeroGear</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Follow the instructions in the <a href="../GitHubWorkflow">AeroGear GitHub Workflow &amp; Instructions</a> document.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_add_a_git_remote_reference_to_the_pr_location">Add a git remote reference to the PR location</h5>
+<div class="paragraph">
+<p>You will need to get the updates from the contributors repository into your own. To do this create a remote reference to their repo</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ git remote add contrib_usr git@github.com:[contrib_usr]/[target repo].git</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_create_a_topic_branch_and_pull_in_pr_updates">Create a topic branch and pull in PR updates</h5>
+<div class="paragraph">
+<p>It is highly recommended that you create a topic branch for verifying PRs. After that you need to pull in their updates for review.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ git checkout -b &lt;contrib_topic_branch&gt;
+$ git fetch &lt;contrib_usr&gt;
+$ git rebase -i &lt;contrib_usr&gt;/&lt;contrib_topic_branch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You now have a topic branch that should be the exact same as the PR.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_verify_test_and_comment_on_the_pr_as_needed">Verify, test, and comment on the PR as needed</h4>
+<div class="paragraph">
+<p>At this point you should:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Review all of the updates</p>
+</li>
+<li>
+<p>Verify and test effected parts of the code</p>
+</li>
+<li>
+<p>Check code style, and other standards</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Work with the contributor through comments in the PR, IRC, forums, or whatever will accomplish the task. As the contributor makes updates work them until the PR is acceptable in quality and consistent with our coding standards.</p>
+</div>
+<div class="sect4">
+<h5 id="_push_updates_to_upstream">Push updates to upstream</h5>
+<div class="paragraph">
+<p>When satisfied with the quality and functionality of the PR you can push to the upstream repos. Remember you must make sure you are up to date with upstream, and rebase as needed as described above.</p>
+</div>
+<div class="paragraph">
+<p>There are two options here for merging. You can use --ff-only to not keep the topic branch - this is fine for simple, or single commit updates. For complex or multi-commit updates you can use --no-ff which will force a merge commit, and maintain the topic branch. This can make it easier to visualize, debug and bundle related commits.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ git checkout master
+
+#for simple or single commit updates
+$ git merge --ff-only &lt;contrib_topic_branch&gt;
+
+#for complex, or multi-commit update
+$ git merge --no-ff &lt;contrib_topic_branch&gt;
+
+$ git push upstream master
+$ git push origin master
+$ git branch -d &lt;contrib_topic_branch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At this point the upstream repo, your fork, and your local repo&#8217;s should be in sync and have the commits from the PR in place.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_wrapping_up">Wrapping up</h4>
+<div class="paragraph">
+<p>The final steps are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Close the PR</p>
+<div class="ulist">
+<ul>
+<li>
+<p>GitHub may do this for you automatically based on the push</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Resolve the jira</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In most cases it is best for the author to resolve the issue</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows for the author to add any closing comments, or follow up info</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If it is clear the issue was resolved the committer may resolve the issue</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Thank the user, and offer to buy them a beer the next time we meet!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_handling_your_own_pull_request">Handling your own pull request</h4>
+<div class="paragraph">
+<p>This section describes additional steps you should take when handling your own pull request for the various reasons discussed above. They are exactly the same and the instructions above, except as described outlined below.</p>
+</div>
+<div class="sect4">
+<h5 id="_test_it_again">Test it again</h5>
+<div class="paragraph">
+<p>Your going to be committing code that has had only one set of eyes on it. Run through a couple of extra tests, verify the wording, etc&#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_comment_in_the_pr">Comment in the PR</h5>
+<div class="paragraph">
+<p>Add a comment in the PR describing why you needed to push this PR yourself. If other project developers "+1"'ed this is not needed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div><!-- col 9 -->
+    </div><!-- row -->
+  </div><!-- container -->
+
+
+</section>
+
+
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

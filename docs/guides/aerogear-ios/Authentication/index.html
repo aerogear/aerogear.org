@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - Authentication and User enrollment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">Authentication and User enrollment</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#_creating_an_authenticator_with_an_authentication_module">
+         <span class="toctext">Creating an authenticator with an authentication module</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-2">
+      <a href="#_register_a_user">
+         <span class="toctext">Register a user</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-3">
+      <a href="#_login">
+         <span class="toctext">Login</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-4">
+      <a href="#_pass_the_auth_module_to_a_pipe">
+         <span class="toctext">Pass the auth module to a pipe</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-5">
+      <a href="#_logout">
+         <span class="toctext">Logout</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-6">
+      <a href="#_nsurlcredential_support">
+         <span class="toctext">NSURLCredential support.</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-7">
+      <a href="#_time_out_and_cancel_pending_operations">
+         <span class="toctext">Time out and Cancel pending operations</span>
+      </a>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>Authentication and User enrollment</h1>
+        <div class="paragraph">
+<p>An Authenticator manages different authentication module implementations. It is basically a factory that hides the concrete instantiation of a specific Authentication Module implementation. The class offers simple APIs to add, remove, or get access to a 'authentication module'.</p>
+</div>
+<div class="paragraph">
+<p>An AuthenticationModule represents an authentication module and provides the authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the Pipe, technical details of the underlying system are not exposed</p>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_authenticator_with_an_authentication_module">Creating an authenticator with an authentication module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create an authenticator, you need to use the AGAuthenticator class. Below is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// create an authenticator object
+AGAuthenticator* authenticator = [AGAuthenticator authenticator];
+
+// add a new auth module and the required 'base url':
+NSURL* baseURL = [NSURL URLWithString:@"https://myserver.rhcloud.com/"];
+id&lt;AGAuthenticationModule&gt; myMod = [authenticator auth:^(id&lt;AGAuthConfig&gt; config) {
+    [config setName:@"authMod"];
+    [config setBaseURL:baseURL];
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AGAuthenticator class offers some simple 'management' APIs to work with containing AGAuthenticationModule objects. The API provides an authentication and enrollment API. The default implementation uses REST as the auth transport. Similar to the pipe API technical details of the underlying system are not exposed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register_a_user">Register a user</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <em>enroll</em> function of the 'AGAuthenticationModule' protocol is used to register new users with the backend:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// assemble the dictionary that has all the data for THIS particular user:
+
+NSDictionary* userData = @{@"username": @"john",
+						   @"password": @"123",
+						   @"email", @"me@you.com",
+						   @"betaAccountToken", @"21sda812sad24"};
+// register a new user
+[myMod enroll:userData success:^(id data) {
+    // after a successful _registration_, we can work
+    // with the returned data...
+    NSLog(@"We got: %@", data);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <em>enroll</em> function submits a generic map object with contains all the information about the new user, that the server endpoint requires. The default (REST) auth module issues for the above a request against <em><a href="https://myserver.rhcloud.com/auth/enroll" class="bare">https://myserver.rhcloud.com/auth/enroll</a></em>. Besides the NSDictionary the function accepts two simple blocks that are invoked on success or in case of a failure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_login">Login</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have a <em>valid</em> user you can use that information to issue a login against the server, to start accessing protected endpoints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">NSDictionary *credentials = @{@"username": @"john", @"password": @"123"};
+// issuing a login
+[myMod login:credentials success:^(id object) {
+    // after a successful _login_, we can work
+    // with the returned data...
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default (REST) auth module issues for the above a request against <em><a href="https://myserver.rhcloud.com/auth/login" class="bare">https://myserver.rhcloud.com/auth/login</a></em>. Besides the <em>username</em> and the <em>password</em> (stored in a <em>NSDictionary</em>), the function accepts two simple blocks that are invoked on success or in case of a failure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pass_the_auth_module_to_a_pipe">Pass the auth module to a pipe</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After running a successful login, you can start using the <em>AGAuthenticationModule</em> object on a <em>AGPipe</em> object to access protected endpoints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">id&lt;AGPipe&gt; tasks = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"tasks"];
+    [config setBaseURL:serverURL];
+    [config setAuthModule:myMod];
+}];
+
+[tasks read:^(id responseObject) {
+    // LOG the JSON response, returned from the server:
+    NSLog(@"READ RESPONSE\n%@", [responseObject description]);
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"Read: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When creating a pipe you need to use the <em>authModule</em> argument in order to pass in an <em>AGAuthenticationModule</em> object.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logout">Logout</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The logout from the server can be archived by using the <em>logout</em> function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">// logout:
+[myMod logout:^{
+    // after a successful _logout_, when can notify the application
+} failure:^(NSError *error) {
+    // when an error occurs... at least log it to the console..
+    NSLog(@"SAVE: An error occured! \n%@", error);
+}];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default (REST) auth module issues for the above a request against <em><a href="https://myserver.rhcloud.com/auth/logout" class="bare">https://myserver.rhcloud.com/auth/logout</a></em>. The function accepts two simple blocks that are invoked on success or in case of a failure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_nsurlcredential_support">NSURLCredential support.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As of version 1.1.0 of the library, you can pass directly on the Pipe configuration an <a href="http://tinyurl.com/neqbum2">NSURLCredential</a> object. Doing that will give you instant support for the built-in authentication protocols already supported in iOS (such as Basic/Digest). When a request comes in where an authentication challenge is required, the library will pass to the server those credentials.</p>
+</div>
+<div class="paragraph">
+<p>To pass the NSURLCredential object, use the <em>setCredential</em> configuration method during construction of the Pipe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">id&lt;AGPipe&gt; tasks = [pipeline pipe:^(id&lt;AGPipeConfig&gt; config) {
+    [config setName:@"tasks"];
+    [config setCredential:[NSURLCredential
+                credentialWithUser:@"username" password:@"passwd" persistence:NSURLCredentialPersistenceNone];
+}];</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Care should be taken when specifying the persistence type param when constructing the NSURLCredential object. Specifying type other than <a href="http://tinyurl.com/q28l9hd">NSURLCredentialPersistenceNone</a>, will have the effect of the credentials to be preserved across session and application restarts. In that case, the developer is responsible to clear the cache. See <a href="http://tinyurl.com/n9amy5q">NSURLCredentialStorage</a> class reference for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_time_out_and_cancel_pending_operations">Time out and Cancel pending operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As with the case of Pipe, configured timeout interval (in the config object) and cancel operation in <em>AGAuthenticationModule</em> is supported too.</p>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!doctype html>
+<!-- TODO(agalante) **do we need the no-js and the lang**
+<html class="no-js" lang="en"> -->
+<html>
+<head>
+  <title>AeroGear - OAuth2 basic steps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body class="  ">    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+ 
+
+  
+
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+
+  <div class="basic">
+    <div class="sect1">
+<h2 id="_oauth2_basic_steps">OAuth2 basic steps</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Google">Google Account Setup</a></p>
+</li>
+<li>
+<p><a href="#Facebook">Facebook Account Setup</a></p>
+</li>
+<li>
+<p><a href="#Keycloak">Keycloak and Shoot Server Setup</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="Google">Google Account Setup</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, you must authenticate with Google. You will need a Google Account
+for this. Now open the <a href="http://console.developer.google.com">Google
+Console</a>.</p>
+</li>
+<li>
+<p>If you haven&#8217;t created a project, click "Create Project" and give the
+new project a name:</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/google-console-1.png" alt="Google Console - Create Project"></span></p>
+</div>
+</li>
+<li>
+<p>Now you enable the Drive API. To do that, navigate to APIs &amp;
+auth &gt; APIs and scroll down to the Drive API item, which you need to
+turn on:</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/google-console-2.png" alt="Google Console - Enable APIs"></span></p>
+</div>
+</li>
+<li>
+<p>Create new credentials to access your Drive accounts from
+the app. Go to APIs &amp; auth &gt; Credentials and inside OAuth area click the
+blue <code>Create new Client ID</code> button.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/google-console-3.png" alt="Google Console - Create client ID"></span></p>
+</div>
+</li>
+<li>
+<p>You will need to create a <em>consent screen</em>. Click the blue
+<code>Configure consent screen</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/google-console-4.png" alt="Google Console - Consent screen"></span></p>
+</div>
+</li>
+<li>
+<p>Afterwards, click save and you will return to the Client ID. Select <code>Installed application</code> and <code>iOS</code> and fill in your <code>bundle ID</code>, these settings will work for Android and iOS:</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/google-console-5.png" alt="Google Console - Create client ID"></span></p>
+</div>
+</li>
+<li>
+<p>On the last screen we finally get to see the actual value of the
+generated <code>client id</code>, <code>secret id</code> and <code>redirect uris</code>, which you will
+use later:</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/google-console-6.png" alt="Google Console - Credentials"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Facebook">Facebook Account Setup</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First you must have a Facebook account. Now open the
+<a href="https://developers.facebook.com/">Facebook Developers</a> page and select
+<code>Apps</code> &#8594; <code>Add a New App</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/facebook-1.png" alt="Facebook - Add App"></span></p>
+</div>
+</li>
+<li>
+<p>Create a new app and select <code>Website</code> as platform</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/facebook-2.png" alt="Facebook - Select platform"></span></p>
+</div>
+</li>
+<li>
+<p>Click <code>Skip and Create App ID</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/facebook-3.png" alt="Facebook - Skip and Create App ID"></span></p>
+</div>
+</li>
+<li>
+<p>Setup a Display Name and Namespace and select a category, then click
+<code>Create App ID</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/facebook-4.png" alt="Facebook - Choice app category"></span></p>
+</div>
+</li>
+<li>
+<p>Fill out the captcha</p>
+</li>
+<li>
+<p>Now on the Dashboard view. Make a note of your <code>App ID</code> and
+<code>App Secret</code>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/facebook-5.png" alt="Facebook - Dashboard"></span></p>
+</div>
+</li>
+<li>
+<p>Select <code>Settings</code> from the sidebar and then the <code>Advanced</code> tab</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/facebook-6.png" alt="Facebook - Advanced Tab"></span></p>
+</div>
+</li>
+<li>
+<p>Scroll to Security and enable <code>Embedded browser OAuth Login</code> and make
+<code><a href="https://localhost/" class="bare">https://localhost/</a></code> your redirectURI</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/facebook-7.png" alt="Facebook - Enable OAuth"></span></p>
+</div>
+<div class="paragraph">
+<p>Now save your changes and Facebook is ready to go.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Keycloak">Keycloak and Shoot Server Setup</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download Keycloak Appliance Distribution version <a href="http://sourceforge.net/projects/keycloak/files/1.1.0.Final/">1.1.0.Final</a></p>
+</li>
+<li>
+<p>Start the server</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ KEYCLOAK_APPLIANCE_HOME/keycloak/bin/standalone.sh -b 0.0.0.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A quick screencast can be seen <a href="https://asciinema.org/a/16876">here</a>.</p>
+</div>
+</li>
+<li>
+<p>Open <a href="http://localhost:8080/auth/admin/index.html">http://localhost:8080/auth/admin/index.html</a></p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/keycloak-1.jpg" alt="Keycloak - Login page"></span></p>
+</div>
+</li>
+<li>
+<p>Login using <strong>Username</strong>: <em>admin</em> / <strong>Password</strong>: <em>admin</em></p>
+</li>
+<li>
+<p>Insert a new password</p>
+</li>
+<li>
+<p>Click on <code>Add realm</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/keycloak-2.jpg" alt="Keycloak - Realm configuration"></span></p>
+</div>
+</li>
+<li>
+<p>Import the <a href="https://raw.githubusercontent.com/aerogear/aerogear-backend-cookbook/master/Shoot/configuration/shoot-realm.json">realm configuration file</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

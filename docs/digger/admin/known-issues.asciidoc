@@ -1,0 +1,2 @@
+== Known issues
+List of known issues can be found in the link:../../../docs/digger/installation#known-issues[Installation Guide - Known Issues]

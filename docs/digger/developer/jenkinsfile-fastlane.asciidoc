@@ -1,0 +1,12 @@
+== Fastlane Support
+
+AeroGear Digger provides support for using https://fastlane.tools/[fastlane^] (version 2.60.1) when building applications. This required resources (mentioned in the steps below) are provided in https://github.com/aerogear/aerogear-digger/tree/master/fastlane[aerogear-digger repo^] on github.
+
+. Copy the specific platform (ios/android) fastlane folder to the root directory of you application
+. Copy/Update Jenkinsfile
++
+If you have an existing Jenkinsfile use the `Prepare` and `Build` steps in the provided Jenkinsfile as examples of how to use the fastlane tool in an existing Jenkinsfile
++
+If do not have an existing Jenkinsfile, copy the Jenkinsfile from the specific platform fastlane folder to the root directory of you application.
+
+. Trigger a build in your AeroGear Digger instance.

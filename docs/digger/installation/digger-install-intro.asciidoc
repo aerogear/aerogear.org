@@ -1,0 +1,22 @@
+== AeroGear Digger Installation
+The AeroGear Digger project allows you to setup a Jenkins CI/CD server that utilizes Jenkins Pipelines for mobile application building. AeroGear Digger is deployed in OpenShift containers, providing isolated build environments.
+
+https://github.com/aerogear/aerogear-digger-installer[aerogear-digger-installer^] - GitHub repo with an http://docs.ansible.com/ansible/index.html[Ansible^] based tool, used for automated AeroGear Digger installation.
+
+NOTE: For more details about Ansible playbooks and variables, please refer to http://docs.ansible.com/ansible/playbooks_variables.html[Ansible Playbook Variables Docs^].
+
+Use the installation tool to create an OpenShift project and to deploy the following components in it:
+
+* A Jenkins server, used to run the build tasks
+* Docker-formatted images with all tools required for Android application building
+* A Nagios server for health monitoring of installed components
+
+If you want iOS building capability, the installer can optionally configure macOS server(s) with required tools. See <<macos-setup>>. These are not deployed in OpenShift project, but are connected as a Jenkins slaves to Jenkins master present in OpenShift project.
+
+NOTE: If you choose to use macOS servers, their manual pre-configuration is required, see <<macos-prereqs>>
+
+=== Installing AeroGear Digger Behind Proxy
+It is possible to deploy Digger behind HTTP/HTTPS proxy that do not require authentication. see <<using-http-proxy>>
+
+=== Sample jenkinsfiles To Utilise Jenkins Pipelines
+A suite of sample `jenkinsfiles` used for demonstration of application building using Jenkins pipeline is available in https://github.com/aerogear/aerogear-digger/tree/master/jenkinsfiles[aerogear-digger GitHub repo^].

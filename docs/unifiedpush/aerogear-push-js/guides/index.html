@@ -1,0 +1,657 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - Using UnifiedPush with AeroGear SimplePush</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">Using UnifiedPush with AeroGear SimplePush</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#simplepush-primer">
+         <span class="toctext">SimplePush Primer</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-2">
+            <a href="#_simplepush_workflow">
+               <span class="toctext">SimplePush Workflow</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-3">
+            <a href="#_simplepush_javascript_api">
+               <span class="toctext">SimplePush JavaScript API</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-4">
+            <a href="#_aerogear_simplepush_javascript_api">
+               <span class="toctext">AeroGear SimplePush JavaScript API</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-5">
+      <a href="#simplepush-server">
+         <span class="toctext">The AeroGear SimplePush Server</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-6">
+            <a href="#_setup">
+               <span class="toctext">Setup</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-7">
+      <a href="#unifiedpush-server">
+         <span class="toctext">The AeroGear UnifiedPush Server</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-8">
+            <a href="#_web_app">
+               <span class="toctext">Web App</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-9">
+      <a href="#web-app">
+         <span class="toctext">Web Example</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-10">
+      <a href="#send-push">
+         <span class="toctext">Sending messages</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-11">
+            <a href="#_simple_sender">
+               <span class="toctext">Simple Sender</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-12">
+            <a href="#_you_are_done">
+               <span class="toctext">You are done</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>Using UnifiedPush with AeroGear SimplePush</h1>
+        <div class="paragraph">
+<p>The [AeroGear UnifiedPush](<a href="https://github.com/aerogear/aerogear-unifiedpush-server.git" class="bare">https://github.com/aerogear/aerogear-unifiedpush-server.git</a>) server apart from providing support on pushing notifications to different mobile platforms (called <em>Variants</em>), it also supports pushing notifications to Web clients too. It includes [SimplePush protocol](<a href="https://wiki.mozilla.org/WebAPI/SimplePush/Protocol" class="bare">https://wiki.mozilla.org/WebAPI/SimplePush/Protocol</a>) support, Mozilla&#8217;s new emerging standard for push notifications, integrated into the server as another supported <em>Variant</em>.</p>
+</div>
+<div class="paragraph">
+<p>The following step-by-step guides, will briefly introduce you to the concepts of SimplePush itself, howto setup the AeroGear SimplePush and UnifiedPush servers, and with the help of an example we will show you how to send notification messages to your web applications.</p>
+</div>
+<div class="sect1">
+<h2 id="simplepush-primer">SimplePush Primer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SimplePush protocol is Mozilla&#8217;s new emerging standard for push notifications, conceptually based on <a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/pubs/archive/37474.pdf">Thialfi</a>, Google&#8217;s own highly scalable notification service. Introduced first in Firefox OS, there are plans to bring support to it on desktop and mobile browsers as well. The primary goal of the protocol, as stated in the <a href="https://wiki.mozilla.org/WebAPI/SimplePush/Protocol">SimplePush specification</a> is:</p>
+</div>
+<div class="paragraph">
+<p><em>"To notify clients of changes to application server state in a reliable manner by ensuring that the client will always eventually learn of the latest version of an object for which it has expressed interest."</em></p>
+</div>
+<div class="paragraph">
+<p>If you closely read the definition, one important fact arises. By the use of words 'notify' and 'eventually learn', the spec upfront <em>suggests</em> that the system is designed for data-signaling  and not be used for data carrying. Once the client is notified for a change in the server state, the client may choose to connect to the server and obtain the most 'recent version' of the object. That is in pair with how mobile notifications systems work, where the notification is used as a method of signaling instead of carrying the message.</p>
+</div>
+<div class="paragraph">
+<p>The protocol involves three components. A server component (the <em>SimplePush</em> server), responsible for pushing notification to web clients upon a change, a client component, a JavaScript API provided by the browser for web developers to use to register with the server and attach notification callbacks, and a third component, your application server (JBoss etc) where your backend application is running and changes in object state occur. The protocol utilizes WebSockets for real-time communication between the browser clients and the SimplePush server.</p>
+</div>
+<div class="sect2">
+<h3 id="_simplepush_workflow">SimplePush Workflow</h3>
+<div class="paragraph">
+<p>Let&#8217;s examine how the SimplePush protocol works with the aid of an example. A user ''Joe'' uses an online web forum application and wants to be notified when a new post is created on a topic he has expressed interest. To accomplish that, the application using the JS API, registers with a SimplePush server the 'channel' is interested in (here the topic name). The server replies with an 'endpoint' URL. The client then sends the endpoint to the 3rd party application server. Now, when a change in state occurs, the application server simply does an HTTP PUT on the endpoint URL informing the SimplePush server that a notification should be sent to client. The HTTP PUT payload contains a 'version' number of the object that is keep increasing every time the application server updates the endpoint. Once the notification is received, the client triggers a request against the application server to request the updated state (e.g. the new post).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The client did <em>not</em> receive the data of the new post; instead it received a notification that it could fetch the latest data.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following diagram visually describes the workflow:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/simplepush_flow.png" alt="SimplePush flow"></span></p>
+</div>
+<div class="paragraph">
+<p>Primary advantages of using SimplePush are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>offloads the client to continuously poll your application server for changes in state.</p>
+</li>
+<li>
+<p>offloads your application server for notification delivery and handling. It simply does a simple HTTP PUT on an endpoint when change in state occurs.</p>
+</li>
+<li>
+<p>The SimplePush server is designed to be highly efficient in notification delivery as well as gracefully handle communication failures, server crashes etc. No need to start from scratch!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_simplepush_javascript_api">SimplePush JavaScript API</h3>
+<div class="paragraph">
+<p>The API is straightforward to use and consists of two parts, registration of the channels with the SimplePush server and attaching a callback called when a notification is received.</p>
+</div>
+<div class="paragraph">
+<p><em>Registration on the SimplePush server:</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">// register to receive notification updates for new posts in a fiction forum called 'tech'
+var req = navigator.push.register();  // [1]
+req.onsuccess = function() {
+  var endpoint = req.result;
+  // if it is the first registration need to post the
+  // received update endpoint to your application server.
+  if (endpoint.pushEndpoint)
+     $.post('/registrations/forums/tech/', { endpoint: endpoint.pushEndpoint })
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>Receiving push notifications:</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">navigator.setMessageHandler( "push", function( message ) {
+  // --notification received--
+  // 'message.channelID' contains the ID of the channel
+  // 'message.version' contains the version of the object
+
+  // contact the application server to receive the latest updates e.g.
+  $.get("/forums/tech", function(data) {
+    // data should contains the latest posts
+  });</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For a more detailed information of the SimplePush protocol, we suggest you to visit Mozilla&#8217;s <a href="https://wiki.mozilla.org/WebAPI/SimplePush">protocol page</a>. Further, if you want to see how SimplePush can be used under <a href="http://www.mozilla.org/en-US/firefox/os/">Firefox OS</a>, Mozilla has written a detailed article and can be found in <a href="https://hacks.mozilla.org/2013/07/dont-miss-out-on-the-real-time-fun-use-firefox-os-push-notifications/">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_aerogear_simplepush_javascript_api">AeroGear SimplePush JavaScript API</h3>
+<div class="paragraph">
+<p>Currently the SimplePush API is supported only in Firefox OS v1.1 and in custom builds of Firefox. AeroGear already provides a polyfill library that can support other browsers as well. It leverages <a href="https://github.com/sockjs/sockjs-client">SockJS</a> on the client and on the server to ensure maximum transport compatibility e.g. for older browsers that lack websocket support.</p>
+</div>
+<div class="paragraph">
+<p>You can find more information on AeroGear SimplePush JavaScript API on our <a href="https://github.com/aerogear/aerogear-simplepush-quickstart">SimplePush quickstart</a>. This guide leverages that example and enchances to support registration with the UnifiedPush server. Now once a notification is received in the UnifiedPush server, it will forward to the SimplePush server which will in turn push it to all registered SimplePush clients.</p>
+</div>
+<div class="paragraph">
+<p>In the <a href="#simplepush-server">next section</a> we will have a brief look at the second component of the SimplePush, the SimplePush server.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="simplepush-server">The AeroGear SimplePush Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/aerogear/aerogear-simplepush-server">AeroGear SimplePush server</a> is a high performant implementation of the <a href="https://wiki.mozilla.org/WebAPI/SimplePush/Protocol">SimplePush protocol</a>. Mozilla provides a <a href="https://github.com/jrconlin/pushgo">server implementation</a> based on the Go programming language and <a href="https://github.com/aerogear/aerogear-js#simplepushclient">AeroGear&#8217;s JavaScript client</a> will work just fine against that implementation. We wanted to provide another server option both for security (some companies would like more control over the push environment) and as a way to set up completely internal push networks. For example, a company with an internal app with a need for push notifications, could deploy a SimplePush server on their internal network/VPN and have push messaging capability to their web apps without having to contact an outside server.</p>
+</div>
+<div class="paragraph">
+<p>AeroGear SimplePush is a Java implementation of the server side part of the specification and two version are provided, one based on <a href="http://netty.io/">Netty</a>, and one based on <a href="http://vertx.io">Vert.x</a></p>
+</div>
+<div class="paragraph">
+<p>The SimplePush specification states that secure WebSockets should be used as the transport protocol but for web applications this is not always possible. Older browsers versions may lack WebSocket support, or issues with restrictive proxies in combination with WebSockets can lead to situations where the communication will simply not work. To counter this AeroGear&#8217;s SimplePush server uses <a href="https://github.com/sockjs/sockjs-client">SockJS</a> to provide a fallback strategy. SockJS provides a client side and server side protocol and provides fallback handling in situations where a WebSocket connection cannot be made. AeroGear uses Netty&#8217;s upcoming SockJS support which takes care of the SockJS handling.</p>
+</div>
+<div class="paragraph">
+<p>In this guide we will describe the setup of the <em>Netty</em> based implementation which can be used both as a standalone component, or be integrated into JBoss Application Server. Details on how you can integrate the server with the JBoss can be found in <a href="https://github.com/aerogear/aerogear-simplepush-server/tree/master/wildfly-module">this page</a> but this guide will use the standalone component.</p>
+</div>
+<div class="sect2">
+<h3 id="_setup">Setup</h3>
+<div class="paragraph">
+<p>Download the server from the project&#8217;s <a href="https://github.com/aerogear/aerogear-simplepush-server">github page</a>. Then on the command line issue:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">cd aerogear-simplepush-server
+mvn install -DskipTests=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We are now ready to run the server. On the command line issue:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">cd server-netty
+mvn exec:java</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will start the server and by default it will listen on localhost using port 7777. If you want to override those arguments have a look at the <a href="https://github.com/aerogear/aerogear-simplepush-server/tree/master/server-netty">server documentation</a> for more details.</p>
+</div>
+<div class="paragraph">
+<p>On the console you should now see the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">....
+[INFO] --- exec-maven-plugin:1.2:java (default-cli) @ aerogear-simplepush-server-netty ---
+SockJS server with options {ACK_INTERVAL=10000, PORT=7777, TOKEN_KEY=yourRandomToken, TLS=false, USERAGENT_REAPER_TIMEOUT=60000, HOST=localhost}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now that we have the SimplePush server up and running, let&#8217;s move to the <a href="#unifiedpush-server">next section</a> to configure the UnifiedPush server.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="unifiedpush-server">The AeroGear UnifiedPush Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <em>AeroGear UnifiedPush Server</em> defines logical <em>abstraction</em> for Mobile Applications that have support for different Push Networks. It&#8217;s <em>Push Applications</em> can have different "Variants". For this tutorial we need to create a <em>Push Application</em> which will contain the <em>SimplePush</em> variant. Details on the AeroGear UnifiedPush Server are discussed <a href="/docs/unifiedpush/">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>include:docs/unifiedpush/include&#8212;&#8203;register-app.asciidoc[]</p>
+</div>
+<div class="paragraph">
+<p>Time to register our SimplePush Variant. Click on the <strong>Add Variant</strong> button</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/add_variant.png" alt="Add Variant"></span></p>
+</div>
+<div class="paragraph">
+<p>Fill in a <em>name</em> and a <em>description</em> and choose the <em>SimplePush</em> option from the list of available variant types.</p>
+</div>
+<div class="paragraph">
+<p>Once finish editing, click the <strong>Add</strong> button and the variant will be created on server.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant_created.png" alt="Variant Created"></span></p>
+</div>
+<div class="paragraph">
+<p>Notice an <em>Example Installation</em> link which, when clicked, reveals a screen with source code examples for the registration to the UPS, with the settings preconfigured automatically based on the current environment. A handy feature that you can refer when creating your own applications to easy the setup process.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/example_impl.png" alt="Example Implementation"></span></p>
+</div>
+<div class="sect2">
+<h3 id="_web_app">Web App</h3>
+<div class="paragraph">
+<p>That&#8217;s all. That was really simple, wasn&#8217;t it?</p>
+</div>
+<div class="paragraph">
+<p>Now, let&#8217;s move to create a very simple <a href="#web-app">web application</a> that will receive notifications.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="web-app">Web Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that we have configured both SimplePush and UnifiedPush servers and have them up and running, it&#8217;s time to explore a simple web application that will exercise AeroGear JavaScript API support and demonstrate the workflow in action. Start by cloning the example from <a href="https://github.com/aerogear/aerogear-simplepush-unifiedpush-quickstart">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>As with the <a href="/docs/unifiedpush/aerogear-push-ios/">iOS</a> and <a href="/docs/unifiedpush/aerogear-push-android/">Android</a> client SDKs, we need to configure the <em>variantId</em>, <em>variantSecret</em> and the <em>URL&#8217;s</em> of our running servers. Navigate to <em>js/</em> folder and open in your favorite text editor, the <em>unifiedpush.js</em> file. The file contains the main logic of the application and is responsible to register the channels with the SimplePush server, retrieve the endpoints for the update, and then register those endpoints with the UnifiedPush server so that notifications can be received.</p>
+</div>
+<div class="paragraph">
+<p>Prior to run the application, let&#8217;s do a walkthrough of the code involved. On top of the file you will notice the configuration params that you need to change according to your specific configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">var variantId = "&lt;Your-Variant-ID&gt;";
+var variantSecret = "&lt;Your-Variant-Secret&gt;";
+var unifiedPushUrl = "&lt;URL of the running UnifiedPush server&gt;";
+var simplePushUrl = "&lt;URL of the running SimplePush server&gt;";</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Ensure that you put valid values on those params, otherwise you would be unable to register and receive notifications from the UnifiedPush server. Invalid configuration params are common source of problem, so please revisit them if you are experiencing problems.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are unsure, you can always look at the Example from the AdminUI as <a href="#unifiedpush-server">described in previous chapter</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Next our UnifiedPush client object is created passing along the configuration params we declared earlier. The object would be used, as we will see later, to register the received endpoints from the SimplePush server to the UnifiedPush server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">UPClient = AeroGear.UnifiedPushClient(variantId, variantSecret, unifiedPushUrl);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The code is then similar to our <a href="https://github.com/aerogear/aerogear-simplepush-quickstart">simplepush-quickstart</a> with one difference. When we first register the channel with the SimplePush server, we grab the <em>pushEndpoint</em> we received, construct a registration object containing these metadata [1], apply some callback [2] and stash the metadata on the settings object [3]. Finally we use the <em>UPClient.registerWithPushServer</em> function [4] to register the installation with the UnifiedPush server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">// if it is the first registration, need to register
+// the 'pushEndpoint' with the UnifiedPush server.
+if ( mailEndpoint ) {
+    // assemble the metadata for registration with the UnifiedPush server
+    var metadata = {                                  // 1
+        deviceToken: mailEndpoint,
+        alias: "john",
+        categories: ["mail"]
+    };
+
+    // apply callbacks
+    var settings = {                                  // 2
+        success: function() {
+            console.log("Registered 'Mail' endpoint with UnifiedPush server!");
+        },
+        error: function() {
+            console.log("Error when registering with UnifiedPush server!");
+        }
+    };
+
+    // stash the metadata on the settings object     // 3
+    settings.metadata = metadata;
+
+    // register with the server
+    UPClient.registerWithPushServer(metadata);       // 4
+
+} else {
+	appendTextArea("'Mail' was already registered!");
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On the client side we registered one endpoint for 'mail' notifications. We are ready to run the application. Point your web browser to it and you should see the following:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/unifiedpush_main_screen.png" alt="UnifiedPush main screen"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Success!</strong></p>
+</div>
+<div class="paragraph">
+<p>A connection to the SimplePush server is established where we register our 'mail' channel, and then we register the endpoint received with the UnifiedPush server.</p>
+</div>
+<div class="paragraph">
+<p>Now that we have our application up an running time to <a href="#send-push">send messages</a> using the AeroGear UnifiedPush Server!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="send-push">Sending messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now you have the Sample App running on your phone, so it is time to use the <em>AeroGear UnifiedPush Server</em> for delivering a <em>Push Notification</em> message to your device!</p>
+</div>
+<div class="sect2">
+<h3 id="_simple_sender">Simple Sender</h3>
+<div class="paragraph">
+<p>Login to the administration console of the UnifiedPush server and click on the "Send Push" icon in the navigation menu. Select the application that you created and write a message in the text field. Once done, hit the 'Send Push Notification'.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../../aerogear-push-ios/img/send_notification.png" alt="Send Notification"></span></p>
+</div>
+<div class="paragraph">
+<p>You should see again the 'mail' notification being received:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/unifiedpush_selected_screen.png" alt="UnifiedPush Selected screen"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_you_are_done">You are done</h3>
+<div class="paragraph">
+<p>UnifiedPush server integrates with SimplePush and treats it as another mobile variant, in par with iOS and Android platforms that we currently support. Now sending notifications to your mobile clients means that your web applications can benefit too, either running on a mobile device or on a desktop. As a final note, the SimplePush specification is an on-going effort from Mozilla and currently marked experimental, so some of the APIs outlined in the guide may change or deprecate. The AeroGear project pays close attention to the development of the SimplePush specification and will incorporate changes as soon as become available.</p>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

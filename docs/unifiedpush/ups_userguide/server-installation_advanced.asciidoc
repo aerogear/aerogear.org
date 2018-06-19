@@ -1,0 +1,121 @@
+// ---
+// layout: post
+// title: Cluster configuration and Docker
+// section: guides
+// ---
+
+[[cluster]]
+== Cluster configuration
+
+The previous section describes the installation via a single standalone instance, while here some more advanced topics such as WildFly clustering or Docker are discussed.
+
+
+[[wf-standalone-ha]]
+=== Cluster in WildFly Standalone HA
+
+For the standalone configuration option of WildFly it is also possible to enable clustering, using the different _ha_ configuration options:
+
+* standalone-ha.xml
+* standalone-full-ha.xml
+
+Since the UnifiedPush Server requires a full profile, we need to start the server using the the _standalone-full-ha.xml_ file:
+
+[source,c]
+----
+$ ./path/to/NODE_x/bin/standalone.sh --server-config=standalone-full-ha.xml -Djboss.node.name=NameOfTheNode -Djboss.messaging.cluster.password=SomePassword -Djava.net.preferIPv4Stack=true
+----
+
+Each node needs to get a unique name inside of the cluster, that is another slight difference to running a single standalone instance.
+
+NOTE: In case the different nodes are running on the same machine, it is required to also apply the _jboss.socket.binding.port-offset_ configuration, e.g -Djboss.socket.binding.port-offset=100, for a different port on the other nodes.
+
+All other steps are exactly the same, including setting up the link:#gendbds[Database] as well and the link:#deploy[Deployment] of the UPS WAR files.
+
+NOTE: For deployments on nodes, running on a different port, make sure to specify the port via link:https://docs.jboss.org/author/display/WFLY10/CLI+Recipes[jboss-cli] or the link:https://docs.jboss.org/wildfly/plugins/maven/latest/deploy-mojo.html#port[WildFly Maven Plugin].
+
+[NOTE]
+============================================================
+On OS X, you need to enable multicast first:
+----
+sudo route add -net 224.0.0.0/5 127.0.0.1
+----
+============================================================
+
+
+[[wf-domain]]
+=== Cluster in WildFly Domain Mode
+
+Another option to run a WildFly cluster running it as a _Managed Domain_, which allows you to run and manage a multi-server domain topologyis in a more centralized way, as discussed in the link:https://docs.jboss.org/author/display/WFLY8/Operating+modes[WildFly documentation].
+
+NOTE: Arun Gupta did a short screencast on how to configure a link:http://blog.arungupta.me/wildfly-8-clustering-and-session-failover/[Managed Domain].
+
+Once the Managed WildFly server is configured and running, like in the link:#gendbds[standalone server] it is time to setup the Database and JNDI datasource. Since the process is pretty much the same, this section focuses on MySQL as the canonical database:
+
+. Copy the MySQL module, located in the +databases/src/main/resources/modules/com+ directory of the release bundle, to the application server modules directory
++
+[source,c]
+----
+$ cp -r /path/to/com /path/to/SERVER_HOME/modules/
+----
+. Add the MySQL JDBC driver to the application server +mysql+ module
++
+[source,c]
+----
+$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.44 \
+-DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/
+----
+. Database setup
++
+Like described in the link:#gendbds[previous] section, you can install the MySQL server on your machine and setup the required schema, or you can use a Docker-based MySQL server, as explained link:#Docker[here].
++
+. Configure the application server to use the MySQL driver and create and add the required _UnifiedPushDS_ and _KeycloakDS_ datasource for the MySQL database using the application server CLI and downloaded configuration script, located in the +databases+ directory of the release bundle:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config-wildfly-managed-domain.cli
+----
+. Deploy the UnifiedPush Server
++
+To deploy the UnifiedPush Server, you need to invoke another command line script. The script ensures the deployment is propagated down to all nodes of the Managed Domain:
++
+[source,c]
+----
+$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config-wildfly-managed-domain.cli
+----
+After deployment with the application server running, the UnifiedPush Server Console can be accessed at link:http://localhost:8080/ag-push/[]. For information about using the Console, see link:#admin-ui[Using the Admin UI].
+
+[[Docker]]
+== Docker
+
+NOTE: You need to have link:https://docs.docker.com/installation/rhel/[Docker] and link:https://github.com/docker/compose/[Docker Compose] installed to follow the instructions. For link:https://docs.docker.com/installation/windows/[Windows] or link:https://docs.docker.com/installation/mac/[Mac OS X] the installation of Docker is quite different, using link:https://github.com/boot2docker/boot2docker[boot2docker].
+
+[[Docker-Server]]
+=== UnifiedPush Server as a Docker container
+
+The simplest version to run the Push Server is via Docker. The AeroGear team has a docker image on Docker Hub, that is easy to run:
+
+[source,c]
+----
+docker run -it -p YOUR_PORT:8443 aerogear/unifiedpush-wildfly
+----
+
+Afterwards the server is TLS enabled and you can access it via _https://DOCKER_IP:YOUR_PORT/ag-push_
+
+
+[[Docker-databases]]
+=== Databases via Docker
+
+In case you just want to virtualize the databases, that's possible too. For the UnifiedPush Server we need two datasources:
+* one for the Push server data
+* one for the Keycloak server
+
+The easiest way to run multiple Docker containers is using _Docker Compose_. In the ++docker++ folder of the download bundle, there is a +ups-datasource.yml+ file, which is used by the following comannd:
+
+[source,c]
+----
+$ docker-compose up -d
+----
+
+Once the command is done, you have two MySQL servers, running on the specified ports.
+
+NOTE: With _docker ps_ you can see the running processes on the commandline!

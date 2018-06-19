@@ -1,0 +1,2794 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - UnifiedPush Server User Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">UnifiedPush Server User Guide</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#overview">
+         <span class="toctext">Overview</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-2">
+            <a href="#_about_the_unifiedpush_server">
+               <span class="toctext">About the UnifiedPush Server</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-3">
+            <a href="#_privacy_note">
+               <span class="toctext">Privacy note</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-4">
+            <a href="#_use_cases_and_scenarios">
+               <span class="toctext">Use-cases and scenarios</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-5">
+            <a href="#_useful_terminology">
+               <span class="toctext">Useful Terminology</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-6">
+            <a href="#_how_the_unifiedpush_server_works">
+               <span class="toctext">How the UnifiedPush Server Works</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-7">
+      <a href="#server-installation">
+         <span class="toctext">Install and Configure the UnifiedPush Server</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-8">
+            <a href="#getfiles">
+               <span class="toctext">Get the UnifiedPush Server Application Files</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-9">
+            <a href="#confjms">
+               <span class="toctext">Configure JMS destinations for the UnifiedPush</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-10">
+            <a href="#gendbds">
+               <span class="toctext">Generate the UnifiedPush Database and Datasource</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-11">
+            <a href="#schema">
+               <span class="toctext">Create the database schema</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-12">
+            <a href="#deploy">
+               <span class="toctext">Deploy the UnifiedPush Server</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-13">
+            <a href="#_database_migration">
+               <span class="toctext">Database Migration</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-14">
+      <a href="#sysprops">
+         <span class="toctext">UPS Configuration Properties</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-15">
+            <a href="#envvarstable">
+               <span class="toctext">Environment variables for the UnifiedPush Server</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-16">
+            <a href="#propertiestable">
+               <span class="toctext">System Properties for the UnifiedPush Server</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-17">
+            <a href="#_configuring_jms_messaging_subsystem">
+               <span class="toctext">Configuring JMS messaging subsystem</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-18">
+            <a href="#_configuring_workers">
+               <span class="toctext">Configuring workers</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-19">
+      <a href="#cluster">
+         <span class="toctext">Cluster configuration</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-20">
+            <a href="#wf-standalone-ha">
+               <span class="toctext">Cluster in WildFly Standalone HA</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-21">
+            <a href="#wf-domain">
+               <span class="toctext">Cluster in WildFly Domain Mode</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-22">
+      <a href="#Docker">
+         <span class="toctext">Docker</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-23">
+            <a href="#Docker-Server">
+               <span class="toctext">UnifiedPush Server as a Docker container</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-24">
+            <a href="#Docker-databases">
+               <span class="toctext">Databases via Docker</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-25">
+      <a href="#openshift">
+         <span class="toctext">Running the UnifiedPush Server on OpenShift</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-26">
+            <a href="#_create_an_instance_using_openshift_s_web_ui">
+               <span class="toctext">Create an instance using OpenShift’s Web UI</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-27">
+            <a href="#_create_an_instance_using_openshift_s_command_line_interface">
+               <span class="toctext">Create an instance using OpenShift’s command line interface</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-28">
+            <a href="#_next_steps">
+               <span class="toctext">Next Steps</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-29">
+      <a href="#admin-ui">
+         <span class="toctext">Using the Admin UI</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-30">
+            <a href="#_admin_and_developer_accounts">
+               <span class="toctext">Admin and Developer accounts</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-31">
+            <a href="#_login_and_landing_page">
+               <span class="toctext">Login and landing page</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-32">
+            <a href="#_account_management">
+               <span class="toctext">Account Management</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-33">
+            <a href="#_the_wizard">
+               <span class="toctext">The Wizard</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-34">
+            <a href="#_management_of_pushapplication">
+               <span class="toctext">Management of PushApplication</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-35">
+            <a href="#_management_of_variants">
+               <span class="toctext">Management of Variants</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-36">
+            <a href="#_managing_registered_device">
+               <span class="toctext">Managing registered device</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-37">
+            <a href="#_importing_device_metadata">
+               <span class="toctext">Importing Device Metadata</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-38">
+            <a href="#_exporting_device_metadata">
+               <span class="toctext">Exporting Device Metadata</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-39">
+            <a href="#_sending_a_push_notification">
+               <span class="toctext">Sending a Push Notification</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-40">
+            <a href="#_pushapplication_analytics">
+               <span class="toctext">PushApplication Analytics</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-41">
+            <a href="#_pushapplication_activity">
+               <span class="toctext">PushApplication Activity</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-42">
+            <a href="#_next_steps_2">
+               <span class="toctext">Next Steps</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-43">
+      <a href="#debugging">
+         <span class="toctext">Debugging the UnifiedPush Server</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-44">
+            <a href="#_enable_logging">
+               <span class="toctext">Enable Logging</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-45">
+            <a href="#_dashboard_of_the_adminui">
+               <span class="toctext">Dashboard of the AdminUI</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-46">
+      <a href="#integration">
+         <span class="toctext">Integration</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-47">
+      <a href="#migration-guide">
+         <span class="toctext">Migration Guide</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-48">
+            <a href="#_supported_versions">
+               <span class="toctext">Supported versions</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-49">
+            <a href="#_database_migration_2">
+               <span class="toctext">Database migration</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-50">
+            <a href="#_war_file_migration">
+               <span class="toctext">WAR file migration</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-51">
+      <a href="#next-steps">
+         <span class="toctext">Next steps</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-52">
+            <a href="#_client_integration_tutorials">
+               <span class="toctext">Client Integration Tutorials</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-53">
+            <a href="#_server_integration_tutorials">
+               <span class="toctext">Server Integration Tutorials</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-54">
+            <a href="#_quickstarts">
+               <span class="toctext">Quickstarts</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-55">
+            <a href="#_more_demos">
+               <span class="toctext">More demos</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-56">
+      <a href="#appendix">
+         <span class="toctext">Appendix</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-57">
+            <a href="#_global_architecture">
+               <span class="toctext">Global Architecture</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-58">
+            <a href="#_rest_apis">
+               <span class="toctext">REST APIs</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-59">
+            <a href="#_jms_internals">
+               <span class="toctext">JMS internals</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>UnifiedPush Server User Guide</h1>
+        <div class="sect1">
+<h2 id="overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The AeroGear UnifiedPush Server is a server that allows sending native push messages to different mobile operating systems. Currently the server supports</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://developer.apple.com/library/mac/<mark>documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html</mark>//apple_ref/doc/uid/TP40008194-CH100-SW9">Apple’s APNs</a></p>
+</li>
+<li>
+<p><a href="http://developer.android.com/google/gcm/index.html">Google Cloud Messaging</a></p>
+</li>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh913756.aspx">Microsoft&#8217;s Windows Push Notification service (WNS)</a></p>
+</li>
+<li>
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx">Microsoft&#8217;s Push Notification service (MPNs)</a></p>
+</li>
+<li>
+<p><a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/">Amazon Device Messaging (ADM)</a> - <em>experimental</em></p>
+</li>
+<li>
+<p><a href="https://wiki.mozilla.org/WebAPI/SimplePush">Mozilla’s SimplePush</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_about_the_unifiedpush_server">About the UnifiedPush Server</h3>
+<div class="paragraph">
+<p>The AeroGear UnifiedPush Server offers a unified Notification Service API to the above mentioned Push Network Services. When a push message request is sent to the UnifiedPush Server, it is internally translated into the format of these 3rd party networks. This gives a server the ability to send Push notifications to different mobile platforms.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When using the UnifiedPush Server, please keep in mind that Push notification is a signalling mechanism and that it is not suitable to be used as a data carrying system (e.g. use in a chat application).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_privacy_note">Privacy note</h3>
+<div class="paragraph">
+<p>As explained in the <em><a href="#_how_the_unifiedpush_server_works">How the UnifiedPush Server works</a></em> section, the payload of the push notification is delivered to 3rd party Push Network providers, like Google or Apple.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+It is highly recommended to not sent any send sensitive personal or confidential information belonging to an individual (e.g. a social security number, financial account or transactional information, or any information where the individual may have a reasonable expectation of secure transmission) as part of any Push Notification!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For analytic purposes on our <a href="#_dashboard">Dashboard</a> we store the content of the alert key sent to the UnifiedPush Server. The content of the alert key belongs to the metadata, which is deleted after 30 days, using a nightly job within the UnifiedPush Server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_cases_and_scenarios">Use-cases and scenarios</h3>
+<div class="paragraph">
+<p>Different use-cases and scenarios are supported. Below are a few to give an idea how the UnifiedPush Server can be used:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MyWarehouseInc-backend can send <em>notification messages</em> to different groups (e.g. discounts for only iOS (or only Android) users)</p>
+</li>
+<li>
+<p>MyInsuranceCorp-backend can send “notification messages” to different variants of its mobile Applications:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>App for the Customers</p>
+</li>
+<li>
+<p>App for the employed Sales Agents</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Publishing Company:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>MyPublishing-Company-backend sends update “notification messages” to all of its apps (free and premium - regardless of the mobile OS)</p>
+</li>
+<li>
+<p>Targeting: Sending push messages to different groups of users. For instance, availability of “advanced content” is only notified to the paying customers (e.g. those that run the premium app).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A company has different backends (small/simple apps for different tasks) - and these different backends could be able to reach all (or some) of the company’s mobile apps.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><em>Motivation:</em></strong> Easy use of Push Notifications for any (JBoss/AeroGear powered) mobile application, that is backed by JBoss technology (e.g. LiveOak, Drools, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_useful_terminology">Useful Terminology</h3>
+<div class="paragraph">
+<p>Before we get into details, it’s important that we have a good lexicon.</p>
+</div>
+<div class="sect3">
+<h4 id="_pushapplication">PushApplication</h4>
+<div class="paragraph">
+<p>A logical construct that represents an overall mobile application (e.g. Mobile HR).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_variant">Variant</h4>
+<div class="paragraph">
+<p>A variant of the PushApplication, representing a specific mobile platform, like iOS or Android, or even more fine grain differentiation like iPad or iPhone. There can be multiple variants for a single PushApplication (e.g. HR Android, HR iPad, HR iPhone free or HR iPhone premium). Each supported variant type contains some platform specific properties, such as a Google API key (Android) or passphrase and certificate (Apple).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_installation">Installation</h4>
+<div class="paragraph">
+<p>Represents an actual device, registered with the UnifiedPush Server. User1 running <em>HR Android</em> app, while User2 runs <em>HR iPhone premium</em> on his phone.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_push_notification_message">Push Notification Message</h4>
+<div class="paragraph">
+<p>A simple message to be sent to a PushApplication.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sender_endpoint_api">Sender Endpoint API</h4>
+<div class="paragraph">
+<p>A RESTful API that receives Push Notification Message requests for a PushApplication or some of its different Variants. The Server translate this request into the platform specific details and delivers the payload to the 3rd party cloud provides, which eventually might deliver the message to the physical device.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_the_unifiedpush_server_works">How the UnifiedPush Server Works</h3>
+<div class="paragraph">
+<p>The AeroGear UnifiedPush Server can be seen as a <em>broker</em> that distributes push messages to different 3rd party Push Networks. The graphic below gives a little overview:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/aerogear_unified_push_server.png" alt="How it works"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>One PushApplication and at least one mobile platform variant must be created (<a href="#admin-ui">see Using the Admin UI</a>).</p>
+</li>
+<li>
+<p>The variant credentials that are generated and stored by the UnifiedPush Server must be added to the mobile application source, enabling the application running on the mobile device to register with the UnifiedPush Server once it is installed on mobile devices (see <a href="#next-steps">tutorials</a>).</p>
+</li>
+<li>
+<p>Sending a push message can happen in different ways: The AdminUI can be used to send a (test) message to registered devices, as explained in <a href="#sending_a_push_notification">Sending a Push Notification</a>. However, in a real-world scenario the Push Notification Message request is triggered from a backend application, which sends its requests using the <em>Sender API</em>. Different SDKs for different languages are supported (see <a href="#_sending_a_push_notification_from_code">Sending a Push Notification from Code</a>).</p>
+</li>
+<li>
+<p>The push request is then translated into platform specific details for the required variant Push Network. The Dashboard of the AdminUI gives a status report if a message is sent to the Push Network, as described in <a href="#_dashboard">Dashboard</a>.</p>
+</li>
+<li>
+<p>The UnifiedPush Server does not directly deliver the message to the mobile device. This is done by the appropriate variant Push Network. <em>Note</em>: There can be latency in the actual delivery. Most Push Networks, such as APNs or GCM, do not guarantee to deliver messages to mobile devices.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now that you are familiar with the basics of the UnifiedPush Server it is time for the <a href="#server-administration">Installation and configuration</a> part!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="server-installation">Install and Configure the UnifiedPush Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Getting the UnifiedPush Server up and running with an on-premise application server is a four-step setup process:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#getfiles">Get the UnifiedPush Server application files</a></p>
+</li>
+<li>
+<p><a href="#gendbds">Generate the UnifiedPush database and datasource</a></p>
+</li>
+<li>
+<p><a href="#schema">Create the database schema</a></p>
+</li>
+<li>
+<p><a href="#deploy">Deploy the UnifiedPush Server</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each of these steps is detailed here, with instructions and useful scripts provided for the supported databases (MySQL, PostgreSQL) and application servers. <em>Make sure to run them in the <strong>full-profile</strong> mode as discussed below!</em></p>
+</div>
+<div class="paragraph">
+<p>Find below the required application server version:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>UnifiedPush Server version 1.1.x - <a href="https://developers.redhat.com/products/eap/download/">EAP 6.4.0 GA</a>or <a href="http://wildfly.org/downloads/">WildFly 8.x</a></p>
+</li>
+<li>
+<p>UnifiedPush Server 1.2.x - <a href="https://developers.redhat.com/products/eap/download/">EAP 7.x</a> or <a href="http://wildfly.org/downloads/">WildFly 10.x</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can also <a href="#openshift">run the UnifiedPush Server in the cloud with OpenShift</a> but this requires a different setup process.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Extract the downloaded archive in a directory of your choice and save that path in an environment variable</p>
+</div>
+<div class="paragraph">
+<p><strong>UNIX</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">export APPSRV_HOME=/path/to/SERVER_HOME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>WINDOWS</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-batch" data-lang="batch">set APPSRV_HOME=X:\path\to\SERVER_HOME</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getfiles">Get the UnifiedPush Server Application Files</h3>
+<div class="paragraph">
+<p>The UnifiedPush Server application is provided in two files: unifiedpush-server.war and unifiedpush-auth-server.war. These files contain the core functionality and authentication components of the UnifiedPush Server. Both files are necessary to achieve a working UnifiedPush Server application.</p>
+</div>
+<div class="paragraph">
+<p>Download the latest copies of these files using the following link:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/aerogear/aerogear-unifiedpush-server/releases/tag/1.1.3.Final">Download UnifiedPush Server Release Bundle</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Different files are provided for each application servers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For WildFly, unifiedpush-server-wildfly.war</p>
+</li>
+<li>
+<p>For EAP, unifiedpush-server-as7.war</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Extract the downloaded archive in a working directory of your choice and save that path in an environment variable.</p>
+</div>
+<div class="paragraph">
+<p><strong>UNIX</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">export WORK_DIR=/path/to/WORK_DIR</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>WINDOWS</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">set WORK_DIR=X:\path\to\WORK_DIR</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>From now on we will refer only to unix syntax. It will be, however, pretty simple to convert the commands to the Windows syntax.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="confjms">Configure JMS destinations for the UnifiedPush</h3>
+<div class="paragraph">
+<p>The UnifiedPush Server 1.2.x requires JMS queues and topics that it uses for token loading, notification dispatching and metrics collection.</p>
+</div>
+<div class="paragraph">
+<p>Following CLI script creates all required JMS destinations and also configures address settings that influence JMS destinations behavior:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/configuration/jms-setup-wildfly.cli</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gendbds">Generate the UnifiedPush Database and Datasource</h3>
+<div class="paragraph">
+<p>The UnifiedPush Server requires an accompanying database in which to store push application, variant and installation details. You can use the database of your choice but the corresponding datasource added to the application server must have JNDI name java:jboss/datasources/UnifiedPushDS.</p>
+</div>
+<div class="paragraph">
+<p>Information is provided here for generating UnifiedPush datasources for several database types. Note that if the intended application server has not previously been used with the chosen database type, additional configuration must also be completed in order to enable the application server to connect to the database. As detailed here, sources and scripts are available to assist with all these processes.</p>
+</div>
+<div class="sect3">
+<h4 id="_mysql_database">MySQL Database</h4>
+<div class="paragraph">
+<p>You can use a <a href="http://www.mysql.com/">MySQL</a> database with the UnifiedPush Server. As demonstrated here, the application server must first be configured for MySQL and the UnifiedPush MySQL database must exist before the application server can be configured with the associated UnifiedPush datasource.</p>
+</div>
+<div class="paragraph">
+<p>To complete these prerequisite processes and configure the application server for the UnifiedPush MySQL database, complete the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copy the MySQL module, located in the databases/src/main/resources/modules/com directory of the release bundle, to the application server modules directory</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ cp -r $WORK_DIR/databases/src/main/resources/modules/com $APPSRV_HOME/modules/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the MySQL JDBC driver to the application server mysql module</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.44 -DoutputDirectory=$APPSRV_HOME/modules/com/mysql/jdbc/main/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the UnifiedPush MySQL database</p>
+<div class="paragraph">
+<p>For 1.0.x :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-SQL" data-lang="SQL">$ mysql -u &lt;user-name&gt;
+mysql&gt; create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
+mysql&gt; create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
+mysql&gt; GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON unifiedpush.* TO 'unifiedpush'@'localhost';</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For 1.1.x :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-SQL" data-lang="SQL">$ mysql -u &lt;user-name&gt;
+mysql&gt; create database unifiedpush default character set = "UTF8" default collate = "utf8_general_ci";
+mysql&gt; create database keycloak default character set = "UTF8" default collate = "utf8_general_ci";
+mysql&gt; create user 'unifiedpush'@'localhost' identified by 'unifiedpush';
+mysql&gt; GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP,INDEX ON unifiedpush.* TO 'unifiedpush'@'localhost';
+mysql&gt; GRANT SELECT,INSERT,UPDATE,ALTER,DELETE,CREATE,DROP ON keycloak.* TO 'unifiedpush'@'localhost';</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the application server, using the full-profile mode</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ $APPSRV_HOME/bin/standalone.sh --server-config=standalone-full.xml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Configure the application server to use the MySQL driver and create and add the UnifiedPush datasource for the MySQL database using the application server CLI and downloaded configuration script, located in the databases directory of the release bundle</p>
+<div class="paragraph">
+<p>For WildFly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/databases/mysql-database-config-wildfly.cli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For EAP:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/databases/mysql-database-config.cli</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_postgresql_database">PostgreSQL Database</h4>
+<div class="paragraph">
+<p>You can use a <a href="http://www.postgresql.org/">PostgreSQL</a> database with the UnifiedPush Server. As demonstrated here, the application server must first be configured for PostgreSQL and the UnifiedPush PostgreSQL database must exist before the application server can be configured with the associated UnifiedPush datasource.</p>
+</div>
+<div class="paragraph">
+<p>To complete these prerequisite processes and configure the application server for the UnifiedPush PostgreSQL database, complete the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copy the PostgreSQL module, located in the databases/src/main/resources/modules/org directory of the release bundle, to the application server modules directory</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ cp -r $WORK_DIR/databases/src/main/resources/modules/org $APPSRV_HOME/modules/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the PostgreSQL JDBC driver to the application server postgresql module</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ mvn dependency:copy -Dartifact=org.postgresql:postgresql:9.2-1004-jdbc41 -DoutputDirectory=$APPSRV_HOME/modules/org/postgresql/main/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the UnifiedPush PostgreSQL database</p>
+<div class="paragraph">
+<p>For 1.0.x :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-SQL" data-lang="SQL">$ psql -U &lt;user-name&gt;
+psql&gt; create database unifiedpush;
+psql&gt; create user unifiedpush with password 'unifiedpush';
+psql&gt; GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For 1.1.x :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-SQL" data-lang="SQL">$ psql -U &lt;user-name&gt;
+psql&gt; create database unifiedpush;
+psql&gt; create database keycloak;
+psql&gt; create user unifiedpush with password 'unifiedpush';
+psql&gt; GRANT ALL PRIVILEGES ON DATABASE unifiedpush to unifiedpush;
+psql&gt; GRANT ALL PRIVILEGES ON DATABASE keycloak to unifiedpush;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If necessary, enable UnifiedPush Server access to the PostgreSQL database by adding the following lines to your $POSTGRES_HOME/data/pg_hba.conf file</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">host    all             unifiedpush     127.0.0.1/32            md5</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the application server, using the full-profile mode</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ $APPSRV_HOME/bin/standalone.sh --server-config=standalone-full.xml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Configure the application server to use the PostgreSQL driver and create and add the UnifiedPush datasource for the PostgreSQL database using the application server CLI and downloaded configuration script, located in the databases directory of the release bundle</p>
+<div class="paragraph">
+<p>For WildFly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/databases/postgresql-database-config-wildfly.cli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For EAP:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ $APPSRV_HOME/bin/jboss-cli.sh --file=$WORK_DIR/databases/postgresql-database-config.cli</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="schema">Create the database schema</h3>
+<div class="paragraph">
+<p>After the application server is configured for the UnifiedPush datasource, the schema must be created. Inside of the release bundle there is a migrator folder which contains a command line interface to create the required database schema. The tool is also used to migrate from an existing schema to a newer version of the schema, used for the UnifiedPush Server.</p>
+</div>
+<div class="paragraph">
+<p>Copy the <em>liquibase example</em> file to  liquibase.properties and edit it to match your database name and credentials.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">cp liquibase-database-flavor-example.properties liquibase.properties</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the liquibase.properties contains the proper credentials, you need to execute the migration tool:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">./bin/ups-migrator update</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case of a successful run, the script prints</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">Liquibase Update Successful</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deploy">Deploy the UnifiedPush Server</h3>
+<div class="paragraph">
+<p>With the database schema in place, the two UnifiedPush Server application .war files must both be deployed to the application server to achieve a complete and operational UnifiedPush Server.</p>
+</div>
+<div class="paragraph">
+<p>To deploy the UnifiedPush Server, copy the two .war files to $APPSRV_HOME/standalone/deployments/. This can be done either before or after starting the application server.</p>
+</div>
+<div class="paragraph">
+<p>After deployment with the application server running, the UnifiedPush Server Console can be accessed at <a href="http://localhost:8080/ag-push/" class="bare">http://localhost:8080/ag-push/</a>. For information about using the Console, see <a href="#admin-ui">Using the Admin UI</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_database_migration">Database Migration</h3>
+<div class="paragraph">
+<p>For migrating the database schema to a new version the migration tool from the above <a href="#schema">Create the database schema</a> section is used. For details around the database migration, consult the <a href="#migration-guide">Migration guide</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sysprops">UPS Configuration Properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For an advanced configuration (or just plain testing purposes), it is possible to launch the UPS with a bunch of different properties - some of them can be configured via System Properties, others can be configured as a configuration of JMS subsystem and other are configured of EJB.</p>
+</div>
+<div class="sect2">
+<h3 id="envvarstable">Environment variables for the UnifiedPush Server</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Description</th>
+<th class="tableblock halign-center valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP_PROXY_HOST</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">IP address of HTTP Proxy if required</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP_PROXY_PORT</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Port number of HTTP Proxy if HTTP_PROXY_HOST is set</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS_PROXY_HOST</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">IP address of HTTPS Proxy if required</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS_PROXY_PORT</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Port number of HTTPS Proxy if HTTPS_PROXY_HOST is set</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP_PROXY_USER</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Username for HTTP Proxy basic authentication if required</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NON_PROXY_HOSTS</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">A list of addresses, seperated by "</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">" which should not go through a HTTP Proxy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">HTTPS_PORXY_PASS</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Password for HTTP Proxy basic authentication if required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">SOCKS_PROXY_HOST</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Set the value to the IP address or hostname of SOCKS server if required for APN or health endpoint</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">SOCKS_PROXY_PORT</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Set the value to the port number of SOCKS server referenced above if used</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="propertiestable">System Properties for the UnifiedPush Server</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Description</th>
+<th class="tableblock halign-center valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">custom.aerogear.apns.push.host</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Defines a custom URL for APNs push server</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">no value, defaulting to Apple&#8217;s service</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">custom.aerogear.apns.push.port</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Defines a custom port for APNs push server</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">no value, defaulting to Apple&#8217;s service</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">custom.aerogear.apns.feedback.host</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Defines a custom URL for APNs feedback server</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">no value, defaulting to Apple&#8217;s service</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">custom.aerogear.apns.feedback.port</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Defines a custom port for APNs feedback server</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">no value, defaulting to Apple&#8217;s service</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.android.batchSize</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many Android devices tokens will be loaded and delivered in one batch</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.android.batchesToLoad</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many Android batches should be loaded in one token-loading transaction.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.ios.batchSize</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many iOS devices tokens will be loaded and delivered in one batch</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.ios.batchesToLoad</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many iOS batches should be loaded in one token-loading transaction.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.simplePush.batchSize</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many SimplePush client tokens will be loaded and delivered in one batch</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.simplePush.batchesToLoad</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many SimplePush batches should be loaded in one token-loading transaction.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.windows_wns.batchSize</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many Windows-8 tokens will be loaded and delivered in one batch</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.windows_wns.batchesToLoad</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many Windows-8 batches should be loaded in one token-loading transaction.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.windows_mpns.batchSize</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many Windows-10 devices tokens will be loaded and delivered in one batch</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.windows_mpns.batchesToLoad</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many Windows-10 batches should be loaded in one token-loading transaction.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.adm.batchSize</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many Amazon devices tokens will be loaded and delivered in one batch</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aerogear.adm.batchesToLoad</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specifies how many Amazon batches should be loaded in one token-loading transaction.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="commandline">Configuring System Properties via CLI configuration arguments</h4>
+<div class="paragraph">
+<p>It is possible to specify one or more of the above system properties, when launching the Java EE container, like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ ./path/to/SERVER_HOME/bin/standalone.sh -Daerogear.ios.batchSize=2000</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="xmlconfig">Configuring System Properties via XML configuration file</h4>
+<div class="paragraph">
+<p>It is also possible to include the desired system variables into the standalone-full.xml configuration file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">...
+&lt;/extensions&gt;
+
+&lt;system-properties&gt;
+   &lt;property name="aerogear.ios.batchSize" value="2000"/&gt;
+   ...
+&lt;/system-properties&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_jms_messaging_subsystem">Configuring JMS messaging subsystem</h3>
+<div class="paragraph">
+<p>By default, JMS queues and topics required for UnifiedPush Server to work are installed via CLI script <code>jms-setup-wildfly.cli</code>.</p>
+</div>
+<div class="paragraph">
+<p>The properties of these queues and topics can be configured to change characteristics of message delivery.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Some queues are configured for each supported Push Network: Adm, APNs, GCM, MPNS, SimplePush, WNS. In the table it is represented as a placeholder {Network}.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">JMS Destination</th>
+<th class="tableblock halign-center valign-top">Properties</th>
+<th class="tableblock halign-center valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/queue/{Network}PushMessageQueue</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>redelivery-delay=1500</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">when <code>TokenLoader</code> fails to load tokens (for example when the queue it pushes tokens to is full) it will retry delivery in 1.5s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/queue/{Network}PushMessageQueue</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>redelivery-multiplier=1.5, max-redelivery-delay=5000</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>redelivery-delay</code> is increased after repeated failure until it reaches 5s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/queue/{Network}TokenBatchQueue</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>address-full-policy=FAIL</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">when the token queue is full, the <code>TokenLoader</code> will fail, and it will be redelivered according to properties of <code>{Network}PushMessageQueue</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/queue/{Network}TokenBatchQueue</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>max-size-bytes=40000</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">specifies how many tokens can be stored for given {Network} (in bytes)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/queue/TriggerMetricCollectionQueue</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>redelivery-delay=1000</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">trigger <code>MetricCollector</code> every 1 second until all metrics are collected</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The properties can be configured either during installation by modifying the installation CLI script or once installed, they can be changed in <code>&lt;address-settings&gt;</code> section of <code>standalone-full.xml</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_workers">Configuring workers</h3>
+<div class="paragraph">
+<p>UnifiedPush Server uses Message-Driven Beans (MDBs) as workers for processing internal JMS events.</p>
+</div>
+<div class="paragraph">
+<p>The number of created workers can be configured by tweaking activation config property <code>maxSession</code> in <code>/WEB-INF/jboss-ejb3.xml</code> configuration file in the deployed WAR.</p>
+</div>
+<div class="paragraph">
+<p>By default, there are 15 workers for processing each of the queues.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The only exception is <code>/queue/APNsTokenBatchQueue</code> which has limit of 10 workers, which is given by the limit of maximum 10 connections to APNs per one certificate.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In order to fully understand how JMS Internals work in UnifiedPush Server, see Appendix section.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cluster">Cluster configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The previous section describes the installation via a single standalone instance, while here some more advanced topics such as WildFly clustering or Docker are discussed.</p>
+</div>
+<div class="sect2">
+<h3 id="wf-standalone-ha">Cluster in WildFly Standalone HA</h3>
+<div class="paragraph">
+<p>For the standalone configuration option of WildFly it is also possible to enable clustering, using the different <em>ha</em> configuration options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>standalone-ha.xml</p>
+</li>
+<li>
+<p>standalone-full-ha.xml</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since the UnifiedPush Server requires a full profile, we need to start the server using the the <em>standalone-full-ha.xml</em> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ ./path/to/NODE_x/bin/standalone.sh --server-config=standalone-full-ha.xml -Djboss.node.name=NameOfTheNode -Djboss.messaging.cluster.password=SomePassword -Djava.net.preferIPv4Stack=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each node needs to get a unique name inside of the cluster, that is another slight difference to running a single standalone instance.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In case the different nodes are running on the same machine, it is required to also apply the <em>jboss.socket.binding.port-offset</em> configuration, e.g -Djboss.socket.binding.port-offset=100, for a different port on the other nodes.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All other steps are exactly the same, including setting up the <a href="#gendbds">Database</a> as well and the <a href="#deploy">Deployment</a> of the UPS WAR files.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For deployments on nodes, running on a different port, make sure to specify the port via <a href="https://docs.jboss.org/author/display/WFLY10/CLI+Recipes">jboss-cli</a> or the <a href="https://docs.jboss.org/wildfly/plugins/maven/latest/deploy-mojo.html#port">WildFly Maven Plugin</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>On OS X, you need to enable multicast first:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sudo route add -net 224.0.0.0/5 127.0.0.1</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wf-domain">Cluster in WildFly Domain Mode</h3>
+<div class="paragraph">
+<p>Another option to run a WildFly cluster running it as a <em>Managed Domain</em>, which allows you to run and manage a multi-server domain topologyis in a more centralized way, as discussed in the <a href="https://docs.jboss.org/author/display/WFLY8/Operating+modes">WildFly documentation</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Arun Gupta did a short screencast on how to configure a <a href="http://blog.arungupta.me/wildfly-8-clustering-and-session-failover/">Managed Domain</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the Managed WildFly server is configured and running, like in the <a href="#gendbds">standalone server</a> it is time to setup the Database and JNDI datasource. Since the process is pretty much the same, this section focuses on MySQL as the canonical database:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copy the MySQL module, located in the databases/src/main/resources/modules/com directory of the release bundle, to the application server modules directory</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ cp -r /path/to/com /path/to/SERVER_HOME/modules/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the MySQL JDBC driver to the application server mysql module</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ mvn dependency:copy -Dartifact=mysql:mysql-connector-java:5.1.44 \
+-DoutputDirectory=/path/to/SERVER_HOME/modules/com/mysql/jdbc/main/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Database setup</p>
+<div class="paragraph">
+<p>Like described in the <a href="#gendbds">previous</a> section, you can install the MySQL server on your machine and setup the required schema, or you can use a Docker-based MySQL server, as explained <a href="#Docker">here</a>.</p>
+</div>
+</li>
+<li>
+<p>Configure the application server to use the MySQL driver and create and add the required <em>UnifiedPushDS</em> and <em>KeycloakDS</em> datasource for the MySQL database using the application server CLI and downloaded configuration script, located in the databases directory of the release bundle:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config-wildfly-managed-domain.cli</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy the UnifiedPush Server</p>
+<div class="paragraph">
+<p>To deploy the UnifiedPush Server, you need to invoke another command line script. The script ensures the deployment is propagated down to all nodes of the Managed Domain:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ ./path/to/SERVER_HOME/bin/jboss-cli.sh --file=/path/to/mysql-database-config-wildfly-managed-domain.cli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After deployment with the application server running, the UnifiedPush Server Console can be accessed at <a href="http://localhost:8080/ag-push/" class="bare">http://localhost:8080/ag-push/</a>. For information about using the Console, see <a href="#admin-ui">Using the Admin UI</a>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Docker">Docker</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You need to have <a href="https://docs.docker.com/installation/rhel/">Docker</a> and <a href="https://github.com/docker/compose/">Docker Compose</a> installed to follow the instructions. For <a href="https://docs.docker.com/installation/windows/">Windows</a> or <a href="https://docs.docker.com/installation/mac/">Mac OS X</a> the installation of Docker is quite different, using <a href="https://github.com/boot2docker/boot2docker">boot2docker</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="Docker-Server">UnifiedPush Server as a Docker container</h3>
+<div class="paragraph">
+<p>The simplest version to run the Push Server is via Docker. The AeroGear team has a docker image on Docker Hub, that is easy to run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">docker run -it -p YOUR_PORT:8443 aerogear/unifiedpush-wildfly</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Afterwards the server is TLS enabled and you can access it via <em><a href="https://DOCKER_IP:YOUR_PORT/ag-push" class="bare">https://DOCKER_IP:YOUR_PORT/ag-push</a></em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Docker-databases">Databases via Docker</h3>
+<div class="paragraph">
+<p>In case you just want to virtualize the databases, that&#8217;s possible too. For the UnifiedPush Server we need two datasources:
+* one for the Push server data
+* one for the Keycloak server</p>
+</div>
+<div class="paragraph">
+<p>The easiest way to run multiple Docker containers is using <em>Docker Compose</em>. In the docker folder of the download bundle, there is a ups-datasource.yml file, which is used by the following comannd:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">$ docker-compose up -d</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the command is done, you have two MySQL servers, running on the specified ports.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+With <em>docker ps</em> you can see the running processes on the commandline!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="openshift">Running the UnifiedPush Server on OpenShift</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AeroGear provides an UnifiedPush Server cartridge to make it easy to get it running on OpenShift. If you don&#8217;t already have an account or don&#8217;t know how to create applications go to <a href="https://www.openshift.com/" class="bare">https://www.openshift.com/</a> first. You can create the UnifiedPush Server instance either with the web tool or the command line tool, both approaches are described below.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+It&#8217;s important that immediately after creating an UnifiedPush Server instance you open the AdminUI and login to reset the password. If this is not done anyone can easily gain admin rights to your UnifiedPush Server instance.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_create_an_instance_using_openshift_s_web_ui">Create an instance using OpenShift&#8217;s Web UI</h3>
+<div class="paragraph">
+<p>The easiest way to run on OpenShift is to the click the button below:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="https://openshift.redhat.com/app/console/application_type/quickstart!31"><img src="http://launch-shifter.rhcloud.com/launch/light/LAUNCH%20ON.svg" alt="Run me on Openshift"></a></span></p>
+</div>
+<div class="paragraph">
+<p>Now, just fill in the form and click on Create Application! This creates an UnifiedPush Server instance with a configured <em>MySQL 5.5</em> database. Click on Continue to the application overview page.
+Under the list of applications you should find your new UnifiedPush Server instance and the status should be <em>Started</em>. Click on it to open the UnifiedPush Server&#8217;s homepage.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_an_instance_using_openshift_s_command_line_interface">Create an instance using OpenShift&#8217;s command line interface</h3>
+<div class="paragraph">
+<p>Make sure the <a href="https://www.openshift.com/developers/rhc-client-tools-install">OpenShift Client tools </a> are correctly installed and run the following command from a terminal:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">rhc app create --no-git &lt;APPLICATION NAME&gt; https://cartreflect-claytondev.rhcloud.com/reflect?github=aerogear/openshift-origin-cartridge-aerogear-push</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace &lt;APPLICATION NAME&gt; with the name you want (for example unifiedpush).</p>
+</div>
+<div class="paragraph">
+<p>Once the instance is created the rhc tool outputs details about it. Open the returned URL in a browser to open the UnifiedPush Server&#8217;s homepage.</p>
+</div>
+<div class="sect3">
+<h4 id="_documentation_on_rhc">Documentation on rhc</h4>
+<div class="paragraph">
+<p>If you are interested to learn more about rhc, checkout the following resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.openshift.com/blogs/using-rhc-to-manage-paas-apps">How to Manage Apps in the Cloud with RHC</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-US/OpenShift/2.0/html-single/User_Guide/index.html">OpenShift Online - User Guide</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_next_steps">Next Steps</h3>
+<div class="paragraph">
+<p>Now it is time to make yourself familiar with the <a href="#admin-ui">Admin UI</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="admin-ui">Using the Admin UI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Unified Push Server can be accessed via its RESTful endpoints, as well over an administrative user interface.</p>
+</div>
+<div class="sect2">
+<h3 id="_admin_and_developer_accounts">Admin and Developer accounts</h3>
+<div class="paragraph">
+<p>Once installed, the Unified Push Server comes with two different account types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a single admin user</p>
+</li>
+<li>
+<p>a developer role</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The difference between the admin and developer account types is that the former can access all PushApplications and Variants configured on the server, whereas the latter has access only to the PushApplications and Variants created by the actual user. Further, the administration of the Unified Push Server, as well as management of it&#8217;s users in the <strong>Keycloak Admin Console</strong>, can only be performed by the admin.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+By default there is <em>no</em> developer account and one needs to be explicitly created by the admin inside of the Keycloak Admin Console!
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_login_and_landing_page">Login and landing page</h3>
+<div class="paragraph">
+<p>Once you have the Unified Push Server running, whether on <a href="#openshift">Openshift</a> or <a href="#server-installation">standalone</a>, it is time to open the <em>AdminUI</em>, by accessing http(s)://SERVER:PORT/ag-push in your browser. You are prompted by a login dialog:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/login.png" alt="Login to the Unified Push Server"></span></p>
+</div>
+<div class="paragraph">
+<p>The default credentials for the <em>admin</em> are admin/123.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+On the very first login you are asked to update the password. It is a wise idea to change it to something completely different.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>After applying the password you are able to use the AdminUI of the Unified Push Server:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/landing_page.png" alt="List of PushApplications"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Right after a fresh installation you won&#8217;t have any PushApplication in our database. In this case you will see the Wizard (learn more in <a href="#_the_wizard">Wizard section</a>) as the landing page.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_account_management">Account Management</h3>
+<div class="paragraph">
+<p>To manage some details on your account, you need to click on the username (<em>admin</em> in this case) in the right hand corner of the screen. This opens a context menu where you click on Account Management:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/account1.png" alt="Go to the Account Management page"></span></p>
+</div>
+<div class="paragraph">
+<p>This brings you to the page where you can configure details about your account. The first option allows you to provide additional information like your name and your email address:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/account2.png" alt="Account Details"></span></p>
+</div>
+<div class="paragraph">
+<p>The next section allows you to update your current password.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please make sure to pick a <em><strong>strong password</strong></em>, see the admin user as the root on your machine&#8230;&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/account3.png" alt="Password Details"></span></p>
+</div>
+<div class="paragraph">
+<p>It is also possible to use the <a href="http://code.google.com/p/google-authenticator/">Google Authenticator app</a> as an additional security mechanism for your login:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/account4.png" alt="Setup an authenticator"></span></p>
+</div>
+<div class="paragraph">
+<p>On the <em>Sessions</em> menu there is an overview of all client sessions that are currently active. If the session is connected via a browser the only information that is presented in the table below is the IP address of the client:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/account5.png" alt="List of OAuth client sessions"></span></p>
+</div>
+<div class="paragraph">
+<p>On the <em>Applications</em> menu you see a read-only list of all application clients that have rights to access the Unified Push Server:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/account6.png" alt="List of OAuth client sessions"></span></p>
+</div>
+<div class="paragraph">
+<p>To go back to the Unified Push AdminUI click the marked link on the right corner, this performs a redirect to the previous landing page:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/account7.png" alt="Going back to the Unified Push AdminUI"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_wizard">The Wizard</h3>
+<div class="paragraph">
+<p>To be able to use the Unified Push Server for your mobile development you need to create a PushApplication and at least one Variant. The PushApplication is a logical construct, that represents an overall mobile application container for its <em>different</em> mobile platforms, which are called Variants. The Wizard is used to create a PushApplication and one Variant. The Wizard is launched when clicking the <em>Create Application</em> button on the overview page:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard_create_app.png" alt="Create Application"></span></p>
+</div>
+<div class="sect3">
+<h4 id="_wizard_start">Wizard: Start!</h4>
+<div class="paragraph">
+<p>Before diving into the details the Wizard shows an overview page, containing a bit more details on the steps inside the wizard:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard0.png" alt="Wizard - overview"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_wizard_step_1">Wizard: Step 1</h4>
+<div class="paragraph">
+<p>To create a new PushApplication click the <em>START HERE</em> button, which brings you to the first step of the Wizard, asking for the name of your PushApplication:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard1.png" alt="Wizard - PushApplication"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+At any time, you can skip the workflow of the Wizard, by clicking the <em>Skip the wizard</em> link on the top right!
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_wizard_step_2">Wizard: Step 2</h4>
+<div class="paragraph">
+<p>Since the PushApplication is a container for different platforms you need to create a <em>Variant</em> for a specific mobile platform, like Android, iOS or Windows.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard2.png" alt="Wizard - Add Variant"></span></p>
+</div>
+<div class="paragraph">
+<p>Next click on the <em>+Add A Variant</em> button in the screen above, which brings you to the details page for the Variant:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard3.png" alt="Wizard - Variant details"></span></p>
+</div>
+<div class="paragraph">
+<p>In this example we are creating an Android Variant and giving it a name. Besides the name, each supported variant type contains some platform specific properties, such as a Google Cloud Messaging key (Android) or passphrase and certificate (Apple). In this case we enter the require <em>GCM Key</em> and the <em>GCM Project Number</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are not familiar with the details of your desired mobile platform, click <a href="../../../unifiedpush/aerogear-push-android/">here</a> for Android, <a href="../../../guides/aerogear-cordova/AerogearCordovaPush/">here</a> for Apache Cordova, <a href="../../../unifiedpush/aerogear-push-ios/">here</a> for iOS and <a href="../../../unifiedpush/aerogear-push-windows/">here</a> for Windows.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>After finishing the above dialog you are coming to the details page of the newly created Variant:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard4.png" alt="Wizard - code snippets"></span></p>
+</div>
+<div class="paragraph">
+<p>The page contains some code snippets that are specific to the underlying mobile platform (e.g. Android), which allows your mobile application, running on a device, to register itself against the Unified Push Server for push notification delivery.</p>
+</div>
+<div class="paragraph">
+<p>In our Android example you are getting two options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Native Android source code</p>
+</li>
+<li>
+<p>JavaScript for Apache Cordova</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_wizard_step_3">Wizard: Step 3</h4>
+<div class="paragraph">
+<p>The next step in the Wizard gives the option to send a test push notification to the devices that are registered with the Variant. In this case we have registered devices and can use the textfield to send a test notification:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard5a.png" alt="Wizard - Test notification"></span></p>
+</div>
+<div class="paragraph">
+<p>However, the textfield will be disabled in case there are no devices registered:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard5b.png" alt="Wizard - Test notification"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The transition to from step 3 to the <em>Test notification</em> dialog happens automatically in case a devices performs the registration, while looking at the Wizard.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_wizard_step_4">Wizard: Step 4</h4>
+<div class="paragraph">
+<p>For the supported SDKs the Unified Push Server has a feature to generate code snippets for the backend part as well:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard6.png" alt="Wizard - Backend integration hooks"></span></p>
+</div>
+<div class="paragraph">
+<p>The visible Java code above can be used in any JavaSE or JavaEE application that needs to send Push Notification requests to the Unified Push Server. Besides Java, the UI contains snippets for Node.js and cURL.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_wizard_finished">Wizard: Finished!</h4>
+<div class="paragraph">
+<p>After all of that, you are done! Congratulations!</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/wizard7.png" alt="Wizard - Finished"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_management_of_pushapplication">Management of PushApplication</h3>
+<div class="paragraph">
+<p>To work with a specific PushApplication, you have to select one from the overview list. However, to update the name or even deleting it, you have to click one of those links that are visible when hovering over the desired PushApplications:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/application0.png" alt="PushAPplication - Overview"></span></p>
+</div>
+<div class="paragraph">
+<p>The <em>Edit name</em> option gives you a simple dialog, which accepts the new name:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/application1.png" alt="PushAPplication - Rename"></span></p>
+</div>
+<div class="paragraph">
+<p>In order to remove the PushApplication, you have to confirm by entering the its name:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/application2.png" alt="PushAPplication - Delete"></span></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+When deleting a PushApplication, all Variants and their registered devices are removed!
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_management_of_variants">Management of Variants</h3>
+<div class="paragraph">
+<p>The <em>Variants</em> tab of the PushApplication gives a list of all existing variants. To edit or delete a Variant expand the details of the desired Variants (+).</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant1.png" alt="Variant - Details"></span></p>
+</div>
+<div class="paragraph">
+<p>The above view shows details about the variant, such as the number of sent messages and registered devices. The view also contains more details about the involved 3rd party Push Network, GCM in this example. At the bottom the view also contains a list of all registered devices, showing their metadata.</p>
+</div>
+<div class="paragraph">
+<p>To change the name of the variant, click on the <em>Edit name</em> link:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant_edit.png" alt="Variant - Rename"></span></p>
+</div>
+<div class="paragraph">
+<p>Similar to the PushApplication, in order to remove the variant, you have to confirm by entering the name of the variant:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant_delete.png" alt="Variant - Delete"></span></p>
+</div>
+<div class="paragraph">
+<p>To update the details of the used Push Network, such as the Apple certificate or the GCM key, click on <em>Edit Network Options</em> link:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant2.png" alt="Variant - Edit Push Network Options"></span></p>
+</div>
+<div class="paragraph">
+<p>It is also possible to renew the Variant Secret, used by the Mobile Applications running on the device:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/variant3.png" alt="Variant - Renew Variant Secret"></span></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+When changing the variant secret or deleting it, existing mobile apps are no longer able to register their metadata on the Unified Push Server!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You have to confirm this change, as this requires updates to the mobile applications, running on the devices!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_managing_registered_device">Managing registered device</h3>
+<div class="paragraph">
+<p>The details view of a specific variant as a list of the registered devices at the bottom:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/devices1.png" alt="Device list"></span></p>
+</div>
+<div class="paragraph">
+<p>The table shows the metadata of each device, including the device token, subscribed categories or - if present - the used alias. On this screen you could also exclude a specific device from receiving Push Notifications, by unchecking the <em>Receiving</em> check-box.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_importing_device_metadata">Importing Device Metadata</h3>
+<div class="paragraph">
+<p>For various reasons, e.g. migrating from a custom solution to the Unified Push Server, it is possible to import devices and their metadata, including their devicetoken, into a variant. This is possible via cURL and on the UI. For that, on a specific variant, click on the <em>More</em> menu you have the the choice to select the <em>Import</em> option:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/import1.png" alt="Import UI"></span></p>
+</div>
+<div class="paragraph">
+<p>The following dialog allows you to upload a JSON file, containing the device metadata.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The API for the JSON importer is described <a href="/docs/specs/aerogear-unifiedpush-rest/registry/device/importer/index.html#POST">here</a>!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/import2.png" alt="Import UI"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exporting_device_metadata">Exporting Device Metadata</h3>
+<div class="paragraph">
+<p>Similar, the Unified Push Server has an option to export the device metadata of a variant. This is handy when you want to move from one Unified Push Server instance to a different one. On the <em>More</em> menu of a specific variant, you have the the choice to select the <em>Export</em> option:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/export1.png" alt="Export the tokens"></span></p>
+</div>
+<div class="paragraph">
+<p>Starting the export will generate a JSON file, which is being downloaded to your machine:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/export2.png" alt="Export the tokens"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sending_a_push_notification">Sending a Push Notification</h3>
+<div class="paragraph">
+<p>The Admin UI allows you to send a (test) Push Notification to your Variants and their devices at any time. For that, open a PushApplication and click on the "Send Notification" button:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/send1.png" alt="Send a Push"></span></p>
+</div>
+<div class="paragraph">
+<p>Now the <em>Send Push</em> dialog pops up:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/send2.png" alt="Enter the payload"></span></p>
+</div>
+<div class="paragraph">
+<p>In the Send Push dialog, the Message text field contains the payload to be sent out to the 3rd party Push Network. To deliver the message click the Send Push Notification button.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is possible to filter the list of receivers, using Alias, Device Types and Category. Read the <a href="#_server_integration_tutorials">Server Integration Tutorials</a> for more details.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If all goes well, your message will be delivered by the 3rd party Push Network to your device:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/docs/unifiedpush/aerogear-push-ios/img/PushMessage.png" alt="You got a notification!"></span></p>
+</div>
+<div class="sect3">
+<h4 id="_sending_a_push_notification_from_code">Sending a Push Notification from code</h4>
+<div class="paragraph">
+<p>While sending a Push Notification from the AdminUI is a nice feature, in a real world scenario, the Push Notification is triggered by a backend, as explained in <a href="#_server_integration_tutorials">Server Integration Tutorials</a>.</p>
+</div>
+<div class="paragraph">
+<p>The Unified Push Server comes with APIs for <a href="../../../unifiedpush/GetStartedwithJavaSender/">Java</a> and <a href="https://github.com/aerogear/aerogear-unifiedpush-nodejs-client#examples">Node.js</a>. Due to its RESTful architecture any backend, written in any language that supports HTTP(S), can <a href="../../../specs/aerogear-unifiedpush-rest/sender/index.html">send Push Notification requests</a> to it. On the details page of a PushApplication you find the required Server URL and credentials (Application ID and Master Secret).</p>
+</div>
+<div class="paragraph">
+<p>For the supported SDKs the Unified Push Server has a feature to generate code snippets for the backend part as well:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/send3.png" alt="Backend push integration"></span></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Due to security reasons the Application ID and the Master Secret should be never stored on a mobile device! Push Notification requests should <em>never</em> be triggered directly from a mobile device.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The visible Java code above can be used in any JavaSE or JavaEE application that needs to send Push Notification requests to the Unified Push Server, like shown in the diagram below:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/sending_sd.png" alt="Sending Push from Backend"></span></p>
+</div>
+<div class="paragraph">
+<p>Besides Java, the UI contains snippets for Node.js and cURL.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pushapplication_analytics">PushApplication Analytics</h3>
+<div class="paragraph">
+<p>The Unified Push Server provides some metrics and analytics which are presented on a dasboard :</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/analyticsClean.png" alt="Push Activity"></span></p>
+</div>
+<div class="paragraph">
+<p>The upper part shows some <strong>key</strong> numbers :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Push Messages</em> : The total number of push messages sent to UnifiedPush Server for dispatching to registered devices.</p>
+</li>
+<li>
+<p><em>Notification Dispatched</em> : The total number of notifications dispatched via Push Networks to registered devices.</p>
+</li>
+<li>
+<p><em>Notifications Opened</em> : Number of notifications that were delivered to registered device and opened by a user.</p>
+</li>
+<li>
+<p><em>Average Open Rate</em> : The result of <em>Notifications Opened</em> / <em>Notifications Dispatched</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <em>Performance</em> chart show for each Push Notification the number of targeted devices, the number of opened apps. The x-axis legend shows the <em>alert</em> value of the Push Notification payload.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the <em>Push Networks</em> chart shows the split between the different Push Networks.</p>
+</div>
+<div class="paragraph">
+<p>To get the <em>Notifications Opened</em> metric activated, it needs to be "turned on" on the different client SDKs :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For iOS, please refer to <a href="https://aerogear.org/docs/specs/aerogear-ios-push/Classes/AGPushAnalytics.html">this document</a>.</p>
+</li>
+<li>
+<p>For Android, please check the <em>org.jboss.aerogear.android.unifiedpush.metrics</em> package  in <a href="https://aerogear.org/docs/specs/aerogear-android-push/">the JavaDoc</a>.</p>
+</li>
+<li>
+<p>For Cordova, please refer to the <em>Metrics</em> section of <a href="https://aerogear.org/docs/guides/aerogear-cordova/AerogearCordovaPush/">this document</a>.</p>
+</li>
+<li>
+<p>For Windows, please refer to <a href="https://aerogear.org/docs/unifiedpush/aerogear-push-windows/guides/#_metrics">this document</a>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The collected metadata and payload is <em>automatically</em> deleted after 30 days, using a nightly job within the Unified Push Server.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pushapplication_activity">PushApplication Activity</h3>
+<div class="paragraph">
+<p>On the <em>Activity log</em> tab of a PushApplication you see a list of Push notifications that have been sent to the server:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/activity1.png" alt="Push Activity - Details"></span></p>
+</div>
+<div class="paragraph">
+<p>Each Push Notification can be expanded to see parts of the payload. While being in this view and opening the <a href="#_sending_a_push_notification">Send Push Notification</a> Dialog to send a Push Notification, you will see the <em>Pending&#8230;&#8203;</em> status afterwards, until the message was delivered to all involved 3rd party Push Networks:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/activity2.png" alt="Push Activity - Pending"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The collected metadata and payload is <em>automatically</em> deleted after 30 days, using a nightly job within the Unified Push Server.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_next_steps_2">Next Steps</h3>
+<div class="paragraph">
+<p>Now that you are familiar with the AdminUI of the Unified Push Server, you can learn about its Administrative UI <a href="#server-administration">here</a>.
+If you want to dive straight into some mobile development, you can find a list of different tutorials and guides <a href="#next-steps">here</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="debugging">Debugging the UnifiedPush Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are several ways to learn more about <em>"What&#8217;s going on"</em> inside the UnifiedPush Server</p>
+</div>
+<div class="sect2">
+<h3 id="_enable_logging">Enable Logging</h3>
+<div class="paragraph">
+<p>The UnifiedPush Server internally uses java.util.logging as its logging framework.</p>
+</div>
+<div class="sect3">
+<h4 id="_wildfly_and_jboss_as">WildFly and JBoss AS</h4>
+<div class="paragraph">
+<p>There are different ways to enable detailed logging for the UnifiedPush Server in WildFly and JBoss AS.</p>
+</div>
+<div class="sect4">
+<h5 id="_using_jboss_cli_tool">Using jboss-cli tool</h5>
+<div class="paragraph">
+<p>The most convenient way to enable logging on a running server is using the jboss-cli.sh (jboss-cli.bat on Windows) tool. Once the server is running, launch the tool:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$SERVER_HOME/bin/jboss-cli.sh --connect</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once connected to the server, paste in the following two commands, one by one:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">/subsystem=logging/console-handler=AEROGEAR:add(formatter="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n",autoflush=true)
+
+/subsystem=logging/logger=org.jboss.aerogear.unifiedpush:add(level=FINEST,use-parent-handlers=false,handlers=["AEROGEAR"])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After each line you should notice a statement that your configuration was successful:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">{"outcome" =&gt; "success"}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_tweaking_the_standalone_xml_file">Tweaking the standalone.xml file</h5>
+<div class="paragraph">
+<p>Another option is editing the $SERVER_HOME/standalone/configuration/standalone.xml file.
+NOTE: This requires a stop of the server.</p>
+</div>
+<div class="paragraph">
+<p>Inside of the &lt;subsystem&gt; element of the <em>logging</em> subsystem you simply need to add the following XML snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;console-handler name="AEROGEAR"&gt;
+    &lt;formatter&gt;
+        &lt;pattern-formatter pattern="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/&gt;
+    &lt;/formatter&gt;
+&lt;/console-handler&gt;
+&lt;logger category="org.jboss.aerogear.unifiedpush" use-parent-handlers="false"&gt;
+    &lt;level name="FINEST"/&gt;
+    &lt;handlers&gt;
+        &lt;handler name="AEROGEAR"/&gt;
+    &lt;/handlers&gt;
+&lt;/logger&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once done save the file and restart the server.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_the_enabled_logging">Test the enabled logging</h5>
+<div class="paragraph">
+<p>At this point all log levels from the UnifiedPush Server are enabled. To verify this, you can send a Push Notification from the Admin Console. The console should print a message like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">17:30:50,571 FINE  [org.jboss.aerogear.unifiedpush.rest.sender.PushNotificationSenderEndpoint]
+   (http--127.0.0.1-8080-1) Message sent by: 'AeroGear UnifiedPush Console'</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dashboard_of_the_adminui">Dashboard of the AdminUI</h3>
+<div class="paragraph">
+<p>The AdminUI contains a <em>Dashboard</em> which provides a number of valuable information as well:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Most Active section shows a recent list of PushApplications that have submitted Push Notification requests. Learn more <a href="#_dashboard_most_active">here</a>.</p>
+</li>
+<li>
+<p>The Warnings section shows of a list of recent problems that occured. Learn more <a href="#_dashboard_warnings">here</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="integration">Integration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is possible to integrate the UnifiedPush Server into your infrastructure, so that you can use code to setup the PushApplications and their variants. Due to the HTTP nature of the UnifiedPush Server all you need is an HTTP client that talks with the the server:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/directgrant_app_creation_sd.png" alt="Creating a PushApplication"></span></p>
+</div>
+<div class="paragraph">
+<p>The above sequence diagram shows how to obtain an access token from Keycloak, which itself is used to authorize against the UnifiedPush Server for API calls, like creating a Push Application.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Since the UnifiedPush Server itself is protected using Keycloak, you need to use Keycloak&#8217;s <a href="http://keycloak.github.io/docs/userguide/html/direct-access-grants.html">Direct Access Grants Tokens</a> in order to invoke the RESTful APIs of the UnifiedPush Server.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="migration-guide">Migration Guide</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The UnifiedPush Server supports a migration from older release to newer versions.</p>
+</div>
+<div class="sect2">
+<h3 id="_supported_versions">Supported versions</h3>
+<div class="paragraph">
+<p>For the migration to our 1.0.3 release we are only supporting the 1.0.x series of the UnifiedPush Server:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1.0.0</p>
+</li>
+<li>
+<p>1.0.1</p>
+</li>
+<li>
+<p>1.0.2</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_database_migration_2">Database migration</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We are supporting MySQL 5.5 and PostgreSQL 9.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Extract the unifiedpush-migrator-dist.zip from the <a href="#getfiles">release bundle</a> to your desired location.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+It is recommended to shutdown the application server, while performing the migration.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Below you find information on how to perform the migration on each of the supported databases.</p>
+</div>
+<div class="sect3">
+<h4 id="_postgresql">PostgreSQL</h4>
+<div class="paragraph">
+<p>Inside of the extracted zip file, there is a liquibase-postgresql-example.properties, copy that to liquibase.properties.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">cp liquibase-postgresql-example.properties liquibase.properties</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once done, you need to edit the new file to match your database name and credentials.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mysql">MySQL</h4>
+<div class="paragraph">
+<p>Inside of the extracted zip file, there is a liquibase-mysql-example.properties, copy that to liquibase.properties.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">cp liquibase-mysql-example.properties liquibase.properties</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once done, you need to edit the new file to match your database name and credentials.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_the_script">Run the script</h4>
+<div class="paragraph">
+<p>After the liquibase.properties contains the proper credentials, you need to execute the migration tool:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">./bin/ups-migrator update</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case of a successful run, the script prints</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">Liquibase Update Successful</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you want to get some more details on the actual migration steps, enable logging while performing the database migration:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c" data-lang="c">./bin/ups-migrator --logLevel=DEBUG update</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_war_file_migration">WAR file migration</h3>
+<div class="paragraph">
+<p>After successfully executing the above database migration script you need to replace the deployed 1.0.x WAR files with the new ones and start the application server.</p>
+</div>
+<div class="paragraph">
+<p>In case of any error, please contact us on our [mailing list](<a href="https://github.com/aerogear/aerogear-unifiedpush-server#project-info)!" class="bare">https://github.com/aerogear/aerogear-unifiedpush-server#project-info)!</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="next-steps">Next steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you are familiar with the UnifiedPush Server it is time to checkout out our tutorials to get Push Notification working with our mobile clients and existing backends!</p>
+</div>
+<div class="sect2">
+<h3 id="_client_integration_tutorials">Client Integration Tutorials</h3>
+<div class="paragraph">
+<p>Different type of client technologies are supported with the Server</p>
+</div>
+<div class="sect3">
+<h4 id="_native_clients">Native Clients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../aerogear-push-android">Android and GCM integration</a></p>
+</li>
+<li>
+<p><a href="../../aerogear-push-ios">iOS and APNs integration</a></p>
+</li>
+<li>
+<p><a href="../../aerogear-push-js">FirefoxOS with SimplePush and JavaScript</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hybrid_clients">Hybrid Clients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/docs/guides/aerogear-cordova/AerogearCordovaPush/">Apache Cordova for APNs and GCM</a></p>
+</li>
+<li>
+<p><a href="../../aerogear-push-chrome">Chrome Packaged Apps</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_server_integration_tutorials">Server Integration Tutorials</h3>
+<div class="paragraph">
+<p>For the backend integration of your server we have a few different tutorials as well:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../GetStartedwithJavaSender">Java Integration</a></p>
+</li>
+<li>
+<p><a href="https://github.com/aerogear/aerogear-unifiedpush-nodejs-client#examples">Node.js Integration</a></p>
+</li>
+<li>
+<p><a href="../../../specs/aerogear-unifiedpush-rest/sender/index.html">REST API</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quickstarts">Quickstarts</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jboss-mobile/unified-push-helloworld">HelloWorld for Android, Cordova and iOS</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jboss-mobile/unified-push-quickstarts">MobileContacts for Android, Cordova and iOS + JAX-RS and Fabric8</a></p>
+</li>
+<li>
+<p><a href="https://github.com/aerogear/aerogear-js-cookbook/tree/master/simplepush-unifiedpush-example">SimplePush and UnifiedPush</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_more_demos">More demos</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>AeroDoc Showcase (includes cases like Geolocation, via Hibernate Search)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/aerogear/aerogear-backend-cookbook/tree/master/aerodoc-backend">JavaEE Backend Application</a></p>
+</li>
+<li>
+<p><a href="https://github.com/aerogear/aerogear-android-cookbook/tree/master/AeroDoc">Android client</a></p>
+</li>
+<li>
+<p><a href="https://github.com/aerogear/aerogear-ios-cookbook/tree/1.6.x/AeroDoc">iOS client</a></p>
+</li>
+<li>
+<p><a href="https://github.com/aerogear/aerogear-cordova-cookbook/tree/master/aerodoc-cordova">Apache Cordova client</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="appendix">Appendix</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section contains a few diagrams, that explain the architecutre and the work-flow of the UnifiedPush Server</p>
+</div>
+<div class="sect2">
+<h3 id="_global_architecture">Global Architecture</h3>
+<div class="paragraph">
+<p>This diagram show the different components that compose the UnifiedPush Server:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/global_architecture.png" alt="Global Architecture"></span></p>
+</div>
+<div class="paragraph">
+<p>The <em>UPS Core</em> contains a DAO layer, talking to the (MySQL/Postgres) database. The DAO layer is invoked by different service classes. The message delivery to the different Push Networks is handled by JMS (see <a href="#_jms_internals">here</a> for more details). The access to the server is handled via two different categories of RESTful APIs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rest_apis">REST APIs</h3>
+<div class="sect3">
+<h4 id="_core_apis">Core APIs</h4>
+<div class="paragraph">
+<p>The UnifiedPush Server is not limited to be accessed only via the UI for creating PushApplications or Variants. The RESTful <em>Core APIs</em> (e.g. Management/Metric APIs) offer access to the server for integration cases like discussed in the <a href="#integration">UPS Integration</a> section or below:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/directgrant_app_creation_sd.png" alt="Creating PushApplication from code"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_developer_apis">Developer APIs</h4>
+<div class="paragraph">
+<p>The <em>Developer APIs</em> are more commonly used. They offer public endpoints for device registration and sending Push Notification delivery requests.</p>
+</div>
+<div class="sect4">
+<h5 id="_device_registration">Device Registration</h5>
+<div class="paragraph">
+<p>Below is a diagram that explain the flow of the <em>Device Registration Process</em>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/registration_sd.png" alt="Device Registration"></span></p>
+</div>
+<div class="paragraph">
+<p>When the mobile device obtains a device token (or registrationID) from its PushNetwork (e.g. GCM or APNs), the AeroGear powered application calls our Registration SDK with the given token. The SDK itself authenticates itself against the UnifiedPush Server and sends the token to the server, so that it can be used for future Push Notification sends.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_sending_a_push_notification_2">Sending a Push Notification</h5>
+<div class="paragraph">
+<p>The UnifiedPush Server comes with APIs for <a href="../../../unifiedpush/GetStartedwithJavaSender/">Java</a> and <a href="https://github.com/aerogear/aerogear-unifiedpush-nodejs-client#examples">Node.js</a>. Due to its RESTful architecture any backend, written in any language that supports HTTP(S), can <a href="../../../specs/aerogear-unifiedpush-rest/sender/index.html">send Push Notification requests</a> to it:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/sending_sd.png" alt="Sending Push from Backend"></span></p>
+</div>
+<div class="paragraph">
+<p>If the backend needs to send a push notification, e.g. after catching an event, the AeroGear Push Sender SDK is invoked. SDK itself authenticates itself against the UnifiedPush Server and sends the payload to it. This results in several JMS jobs, that are than delivering the payload to the 3rd party Push Networks. Eventually the message may hit the device, delivered from the 3rd party Push Network.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jms_internals">JMS internals</h3>
+<div class="paragraph">
+<p>Currently the delivery of Push Notifications is handled with CDI events and JMS.</p>
+</div>
+<div class="paragraph">
+<p>CDI events are translated into JMS messages so that they can be processed asynchronously and transactionally (if needed).</p>
+</div>
+<div class="sect3">
+<h4 id="_token_loading_and_notification_dispatching">Token Loading and Notification Dispatching</h4>
+<div class="paragraph">
+<p>There is architectural diagram describing how different processors works internally:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/jms_overview.png" alt="JMS details of the UnifiedPush Server"></span></p>
+</div>
+<div class="paragraph">
+<p>Once the payload hits the RESTful endpoint, a <code>NotificationRouter</code> is invoked, which queues a JMS message into <code>{Network}PushMessageQueue</code>, one for each Variant in the given Application. Once these messages are queued, the REST interface replies 202 Accepted, which indicates that the Push Message was accepted for later processing.</p>
+</div>
+<div class="paragraph">
+<p>Messages from <code>{Network}PushMessageQueue</code> are then processed by <code>TokenLoader</code> transactionally. <code>TokenLoader</code> streams device tokens from database and pushes token batches of configured size (<code>aerogear.{network}.batchSize</code> system property) to <code>{Network}TokenBatchQueue</code>. The <code>TokenLoader</code> loads number of batches to load in one transaction (configurable by <code>aerogear.{network}.batchesToLoad</code> system property). After one token loading transaction, <code>TokenLoader</code> sends a message back to same <code>{Network}PushMessageQueue</code> with information from which token should next transaction continue. The <code>TokenLoader</code> transaction can also fail when memory limits of <code>{Network}TokenBatchQueue</code> are exceeded. In that case, the token loading transaction will be repeated (the batches are de-duplicated by their serial ID, so in that case there will be no duplicate batches).</p>
+</div>
+<div class="paragraph">
+<p>The tokens from <code>{Network}TokenBatchQueue</code> are received by <code>NotificationDispatcher</code> that opens connection/-s to a given Push Network and submits Push Messages for the given batch of tokens. The number of <code>NotificationDispatcher</code> workers can be limited by configuring <code>maxSession</code> activation config properties of Message-Driven Beans.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>maxSession</code> activation config property for MDBs influences how many workers can be instantiated on given node, so this does not limit number of workers in a cluster of nodes.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once <code>NotificationDispatches</code> finishes processing for given batch of tokens (no matter if it succeeds or fails), it triggers <code>MetricsCollector</code> that writes metric into database.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_metric_collection">Metric Collection</h4>
+<div class="paragraph">
+<p>The further details on metric collection process can be seen in the following diagram:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/jms_metric_collection.png" alt="JMS details of the Metric Collection"></span></p>
+</div>
+<div class="paragraph">
+<p>Once <code>TokenLoader</code> loads a batch and sends it for processing, it also queues messages to <code>BatchLoadedQueue</code>. Once it loads last token batch, it also queues message to <code>AllBatchesLoadedQueue</code>. These events are important for <code>MetricCollector</code> to decide whether token loading process ended.</p>
+</div>
+<div class="paragraph">
+<p><code>NotificationDispatches</code> sends metrics for each processed message to <code>MetricQueue</code>.</p>
+</div>
+<div class="paragraph">
+<p>Both, <code>TokenLoader</code> and <code>NotificationDispatcher</code> sends message to <code>TriggerVariantMetricQueue</code>. That messages are processed by <code>MetricCollectionTrigger</code> that receives them, deduplicates and sends exactly one message to <code>TriggerMetricCollectionQueue</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>MetricCollector</code> is triggered by message from <code>TriggerMetricCollectionQueue</code>. It receives it transactionally, and if it detects that Push Messaging processing is still in progress, it will roll that transaction back, which means that it will be redelivered (the time after it is redelivered can be configured in JMS queue properties).</p>
+</div>
+<div class="paragraph">
+<p><code>MetricCollector</code> internally collects messages from <code>MetricQueue</code> and <code>BatchLoadedQueue</code>, updates <code>PushMessageInformation</code> object and writes it into database. Once <code>MetricCollector</code> receives message from <code>AllBatchesLoadedQueue</code> and it detects, that metrics were processed for all loaded batches, it ends Push Message metrics collection process by committing its transaction.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_limiting_number_of_apnsservices">Limiting Number of ApnsServices</h4>
+<div class="paragraph">
+<p>APNs limits how many connections can be created for one iOS variant. In order to make sure that the number of opened connection won&#8217;t exceed that limit, UnifiedPush Server manages distributed counter of available (free) service slots. The counter is stored as messages in <code>FreeServiceSlotQueue</code>, so each message in that queue represents one available slot for a new service that can be used to open connection to APNs.</p>
+</div>
+<div class="paragraph">
+<p><code>FreeServiceSlotQueue</code> is populated in <code>NotificationRouter</code> with number of messages representing limit of connections that can be created.</p>
+</div>
+<div class="paragraph">
+<p>Once <code>NotificationDispatcher</code> wants to push messages to APNs leveraging <code>ApnsService</code>, it will first ask <code>ApnsServiceHolder</code> for an instance of service. <code>ApnsServiceHolder</code> provides a cached instance or it asks for a slot for a new service instance, then it can create it.</p>
+</div>
+<div class="paragraph">
+<p>When the notifications are dispatched, <code>NotificationDispatches</code> returns instance of <code>ApnsService</code> to <code>ApnsServiceHolder</code> that stores it to a cache for reuse by another dispatcher, and if not reused within time limits, it closes allocated connection and sends a messages to <code>FreeServiceSlotQueue</code> indicating that a new instance can be created.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/jms_service_holder.png" alt="JMS details of the ApnsServiceHolder"></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>

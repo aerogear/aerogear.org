@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+<head>
+  <title>AeroGear - Get Started with iOS platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Main styles-->
+  <link href="/css/styles.css" rel="stylesheet" media="screen">
+
+  <!-- Syntax highlighting -->
+  <link href="/css/syntax.css" rel="stylesheet"> 
+
+  <!-- Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/openshift-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <!-- google analytics -->
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28733717-2']);
+      _gaq.push(['_setDomainName', 'aerogear.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  
+
+</head>
+
+<body>    
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index.html">AeroGear</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+
+        <li class="">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="">
+          <a href="/getting-started/overview/">Getting Started</a>
+        </li>
+
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+              <li><a href="/services/push/">Push Notifications</a></li>
+              <li><a href="/services/metrics/">Metrics</a></li>
+              <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+              <li><a href="/services/identity-management/">Identity Management</a></li>
+              <li><a href="/services/device-security/">Device Security</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/sdks/android/">Android</a></li>
+            <li><a href="/sdks/cordova/">Cordova</li>
+            <li><a href="/sdks/ios/">iOS</a></li>
+            <li><a href="/sdks/xamarin/">Xamarin</a></li>
+          </ul>
+        </li>
+
+        <li class="hidden-sm ">
+          <a href="https://docs.aerogear.org">Docs</a>
+        </li>
+   
+        
+        <li class="">
+          <a href="/community">Community</a>
+        </li>
+        
+
+        <li class="">
+          <a href="/news">News</a>
+        </li>
+        
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="main-banner">
+  <div class="container">
+    
+  <h2>Aerogear Guides <small>Tutorials to help get you off and running.</small></h2>
+
+  </div><!-- container -->
+</section> <!-- main banner -->
+
+
+<section class="guides">
+  
+  <div class="container">
+         <ol class="breadcrumb" style="margin:0">
+      <li>
+        
+          <a href="/getstarted/guides/">Guides</a>
+        
+      </li>
+      <li class="active">Get Started with iOS platform</li>
+    </ol>
+  </div><!-- container -->
+
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-3 hidden-sm hidden-xs sidebar">
+        <ul class="nav">
+   <li class="toc_level-1 toc_section-1">
+      <a href="#_prerequisites">
+         <span class="toctext">Prerequisites</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-2">
+      <a href="#_online_training">
+         <span class="toctext">Online Training</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-3">
+      <a href="#_books">
+         <span class="toctext">Books</span>
+      </a>
+   </li>
+   <li class="toc_level-1 toc_section-4">
+      <a href="#_get_started_with_aerogear">
+         <span class="toctext">Get started with AeroGear</span>
+      </a>
+      <ul>
+         <li class="toc_level-2 toc_section-5">
+            <a href="#_aerogear_xcode_and_ios">
+               <span class="toctext">AeroGear: Xcode and iOS</span>
+            </a>
+         </li>
+         <li class="toc_level-2 toc_section-6">
+            <a href="#_build_with_cocoapods">
+               <span class="toctext">Build with cocoapods</span>
+            </a>
+         </li>
+      </ul>
+   </li>
+   <li class="toc_level-1 toc_section-7">
+      <a href="#_going_further_with_aerogear">
+         <span class="toctext">Going further with AeroGear</span>
+      </a>
+   </li>
+</ul>
+      </div><!-- col -->
+      
+      <div class="col-md-9 post">
+      
+        <h1>Get Started with iOS platform</h1>
+        <div class="paragraph">
+<p>If you&#8217;re brand new to iOS, this first section will give you interesting links to start with iOS environment and platform. We&#8217;ve all been a beginner at one point, do not fear iOS platform is easy to start with specially with its new Swift language.</p>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites">Prerequisites</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Get a mac and an iOS device.</p>
+</li>
+<li>
+<p>Target the latest release: install Yosemite, Xcode 6.1.1. iOS 8.1.3</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_online_training">Online Training</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you like screencast and MOOC session, I&#8217;d recommend the excellent Stanford classes. You can find them for free on <a href="https://itunes.apple.com/us/course/developing-ios-8-apps-swift/id961180099">iTunes</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_books">Books</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are plenty of good books to learn from, among good one here is a book with tutorials from <a href="http://www.raywenderlich.com/store/ios-apprentice">Ray Wenderlich</a>.</p>
+</div>
+<div class="paragraph">
+<p>To start with Swift, we recommend the <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html">Swift guided tour</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_get_started_with_aerogear">Get started with AeroGear</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_aerogear_xcode_and_ios">AeroGear: Xcode and iOS</h3>
+<div class="sect3">
+<h4 id="_aerogear_2_x">AeroGear 2.X</h4>
+<div class="paragraph">
+<p>Our libraries for AeroGear iOS 2.X are Swift based you will need at least Xcode 6.1.1.</p>
+</div>
+<div class="paragraph">
+<p>Runtime for Swift based demo and libraries is 8.X.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_aerogear_1_6_x">AeroGear 1.6.X</h4>
+<div class="paragraph">
+<p>Our earlier version work for Xcode 5 and iOS 6.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong> Although still supported AeroGear 1.6.X is a deprecated branch, all new features go in 2.X version (on master for all libraries).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_with_cocoapods">Build with cocoapods</h3>
+<div class="paragraph">
+<p>Our Swift and ObjC libraries are build using <a href="http://cocoapods.org/">Cocoapods 0.36.0</a>.
+In your Podfile add the AeroGear dependencies you&#8217;re interested in (here for example OAuth2):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">pod 'AeroGearOAuth2'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> For Swift dependencies we use "dependencies as framework".
+You need to add <code><code>use_frameworks!</code></code> to your Podfile.
+Read more about it <a href="http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/">here</a> and see for example our <a href="https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Jedi/JsonPatchSync/Podfile#L5">cookbook podfile</a>.</p>
+</div>
+<div class="paragraph">
+<p>and then run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pod install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to install your dependencies. Open the xcodeworkspace to work with it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_going_further_with_aerogear">Going further with AeroGear</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you get familiar with the environment, you are ready to try out our <a href="/getstarted/demos/#ios">cookbook recipes</a> or carry on with <a href="/ios/">AeroGear iOS overview page</a>.</p>
+</div>
+</div>
+</div>
+      
+      </div><!-- col 8 -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Getting Started</h5>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/overview/">Overview</a></li>
+          <li><a href="/getting-started/installation-and-configuration/">Installation &amp; Configuration</a></li>
+          <li><a href="/getting-started/creating-mobile-apps/">Creating Mobile Apps</a></li>
+          <li><a href="/getting-started/enabling-mobile-services/">Enabling Mobile Services</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile Services</h5>
+        <ul class="list-unstyled">
+         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
+         <li><a href="/services/push/">Push Notifications</a></li>
+         <li><a href="/services/metrics/">Metrics</a></li>
+         <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
+         <li><a href="/services/identity-management/">Identity Management</a></li>
+         <li><a href="/services/device-security/">Device Security</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-3">
+        <h5>Mobile SDKs</h5>
+        <ul class="list-unstyled">
+         <li><a href="/sdks/android/">Android</a></li>
+         <li><a href="/sdks/cordova/">Cordova</li>
+         <li><a href="/sdks/ios/">iOS</a></li>
+         <li><a href="/sdks/xamarin/">Xamarin</a></li>
+        </ul>
+      </div><!-- col -->
+      
+      <div class="col-sm-3">
+        <h5>COMMUNITY</h5>
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
+          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
+          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
+          <li><a  href="/community/contribution-guide/">Contribution Guide</a></li>
+          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
+          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
+        </ul>
+      </div><!-- col -->
+
+      <div class="col-sm-12 follow">
+        <h5>FOLLOW US</h5>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+          <li><a target="_blank" href="https://www.facebook.com/AeroGearProject"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a target="_blank" href="https://plus.google.com/106588661437153585722/posts"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+          <li><a target="_blank" href="/feed.atom"><i class="fa fa-rss-square"></i> Feed</a></li>
+        </ul>
+        
+        <p>AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
+      </div><!-- col -->
+    
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</footer><!-- footer -->
+
+<section class="redhat">
+  <div class="container">
+    <p class="text-center">
+      <a href="http://www.redhat.com/">
+        <img src="/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
+      </a>
+    </p>       
+  </div><!-- container -->
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed  -->  
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>
