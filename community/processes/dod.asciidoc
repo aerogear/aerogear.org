@@ -8,12 +8,18 @@ section-description: Get involved, be part of the Aerogear community
 breadcrumbs-url: /community/index.html#processes
 ---
 
+
+=== Introduction
+
+This article introduces standards by which the AeroGear team asseses whether a User Story is complete or not. Examples of our User Stories can be found on any of our 3 team (https://trello.com/b/rsuQT3uU/mobilenext-service-team-1[Service Team 1], https://trello.com/b/xACeTJNZ/mobilenext-service-team-2[Service Team 2], https://trello.com/b/VrnvGm7P/mobile-core[Core Team]) trello boards.
+
 ==== SDKs
 
 * Code changes are made in the relevant SDK
-* An issue is created to make changes to other SDKs which do not have the feature
-* Feature is added to the relevant ShowCase Application
-* Feature is documented
+* An issue is created to make changes to other SDKs which do not have the functionality implemented
+* Any functionality associated with the story is added to the relevant ShowCase Application
+* Any functionality associated with the story is documented appropriately
+* Code changes are tested
 
 ==== ShowCase Applications
 
