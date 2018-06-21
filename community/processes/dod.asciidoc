@@ -19,11 +19,15 @@ This article introduces standards by which the AeroGear team asseses whether a U
 * An issue is created to make changes to other SDKs which do not have the functionality implemented
 * Any functionality associated with the story is added to the relevant ShowCase Application
 * Any functionality associated with the story is documented appropriately
+* Code changes are reviewed
 * Code changes are tested
+
 
 ==== ShowCase Applications
 
-* ...
+* New changes have the same look and feel as existing work in the application
+* Code changes are reviewed
+* Code changes are tested
 
 ==== Mobile Services
 
