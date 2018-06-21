@@ -1,5 +1,72 @@
+--- 
+layout: index 
+title: Overview 
+section: getting-started 
 ---
-layout: index
-title: Overview
-section: getting-started
----
+
+<article id="overview">
+  <h2 class="section-header">Getting Started</h2>
+  <p>AeroGear provides a suite of Mobile Services across a range of native and hybrid client SDKs, leveraging OpenShift's Container technology to provide a secure, scalable backend platform. The workflow for connecting your mobile app to mobile services is outlined <a href="https://docs.aerogear.org/aerogear/latest/workflow.html">here</a>.</p>
+</article>
+
+
+<article>
+  <h2 class="section-header">Installation</h2>
+  <h4>Prerequisites</h4>
+  <p>
+    <ul>
+      <li>MacOS or Linux</li>
+      <li>Docker version <code>17.09.1</code></li>
+      <li>Ansible <code>2.4</code> or later</li>
+      <li>OpenShift client tools <code>3.9</code> or later (see
+        <a href="https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md">this guide</a>)</li>
+    </ul>
+  </p>
+  <br>
+  <p>Once OpenShift is installed, you need to install an add-on which will enable the AeroGear suite of Mobile Services on top of OpenShift. </p>
+  <p>The installation process is straightforward when using the installation script provided in the <a href="https://github.com/aerogear/mobile-core"></a> mobile core repo:</p>
+  <p>
+    <pre class="prettyprint"><code>git clone git@github.com:aerogear/mobile-core.git && cd mobile-core
+git checkout 1.0.0-alpha
+./installer/install.sh</code></pre>
+  </p>
+  <p>
+    Once the installation is complete, open a browser and (accepting the self-signed certificate) navigate to: <code><a href="https://192.168.37.1:8443/console/">https://192.168.37.1:8443/console/</a></code>
+  </p>
+  <p>
+    The developer login credentials are:
+    
+    <pre><code>username: developer
+password: password</code></pre>
+  </p>
+  <p>For a full list of options and troubleshooting the install script, see the <a href="https://docs.aerogear.org/aerogear/latest/installing-mobile-services.html">complete installation guide</a>.</p>
+</article>
+
+
+<article class="first-app">
+  <h2 class="section-header">Creating your first App</h2>
+  <p>AeroGear contains support for multiple different platforms: iOS, Android, Cordova and Xamarin. There are a few simple steps for getting started with AeroGear services within your Mobile app.</p>
+  <p><strong>Note:</strong> If you do not have an application, there are a variety of different sample applications that you get up and running with quickly. See more about our showcase applications <a href="https://docs.aerogear.org/aerogear/latest/showcase-apps/index.html">here</a>.</p>
+    
+    <br>
+    <h4>Getting Started</h4>
+    <ol>
+      <li><strong>Set up a representation of your application in OpenShift.</strong> You need to create a represenation of your Mobile application in OpenShift by creating a <b>Mobile Client</b>. Follow the guide <a href="https://docs.aerogear.org/aerogear/latest/registering-a-mobile-app.html">here</a> for doing this.</li>
+      <li><strong>Provision a Mobile Service</strong>. There are a variety of different Mobile Services you can plug in to your application. Follow the guide <a href="https://docs.aerogear.org/aerogear/latest/provisioning-services.html">here</a> for provisiong a Mobile Service and binding it to your Mobile Client.</li>
+      <li><strong>Configure your application</strong>. Now that you've created the desired structure for your application on OpenShift, you're ready to incorporate it into your code. To do this, you need to <a href="https://docs.aerogear.org/aerogear/latest/configuring-dev-env.html#obtaining-the-mobile-sdk-configuration-file">configure your application</a> with the JSON config file from your Mobile Client on OpenShift and <a href="https://docs.aerogear.org/aerogear/latest/configuring-dev-env.html#adding-aerogear-sdk-modules-for-the-mobile-platforms">any SDK components</a> you may need for communicating with the Mobile Service.</li>
+    </ol>
+  </p>
+  <p>That's it! Head to the <a href="https://docs.aerogear.org">AeroGear docs</a> for many more examples and in depth instructions on getting started with our Mobile offering.</p>
+</article>
+
+
+<article>
+  <h2 class="section-header">Next Steps</h2>
+  <p>
+    <ul>
+      <li>Read more about the AeroGear <a href="https://docs.aerogear.org/aerogear/latest/con_services.html">services</a> and SDKs</li>
+      <li>Take a look at the <a href="https://docs.aerogear.org/aerogear/latest/showcase-apps/index.html">Showcase Applications</a></li>
+      <li>Get started with the <a href="https://docs.aerogear.org/aerogear/latest/mobile-cli.html">mobile command line tool</a></li>
+    </ul>
+  </p>
+</article>
