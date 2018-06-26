@@ -19,7 +19,7 @@ To get started the following are highly recommended
 * Java 6.0 (Java SDK 1.6)+
 * http://maven.apache.org/download.html[Maven 3+]
 * https://help.github.com/articles/set-up-git[Git]
-* http://github.com[Github.com account]
+* http://github.com[GitHub.com account]
 
 * http://developer.android.com/sdk/index.html[Android SDK]
 * http://incubator.apache.org/cordova/[Apache Cordova]

@@ -9,6 +9,5 @@ gem 'rouge', '2.2.1'
 gem 'less', '2.6.0'
 gem 'curb', '0.9.4'
 gem 'diskcached', '1.1.2'
-gem 'html-proofer', '3.7.4'
 gem 'therubyracer', '0.12.3'
-
+gem 'nokogiri', '1.8.3'
