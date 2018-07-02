@@ -617,15 +617,15 @@ table{
 //main-features ==================================================================
 
 .main-features {
-  background: @main-bg-color;
-    
+  background: lighten(@primary-color-light, 20%);
+
   .row >.col-md-6 {
     margin-bottom: 20px;
   }
 }
 
 .sdks {
-  background: lighten(@primary-color-light, 20%);
+  background: @main-bg-color;
 
   .sdk-icon {
     line-height: 24px;
@@ -1263,4 +1263,26 @@ span[title] {
 
 i.material-icons {
   font-size: 22.4px;
+}
+
+.sdk-service-matrix .fa-check-square {
+  color: #56a96e;
+  font-size: 24px;
+}
+
+.sdk-service-matrix {
+  font-size: 1.9rem;
+}
+
+.sdk-service-matrix td.text-right {
+  font-weight: bold;
+  padding-left: 12px;
+}
+
+.sdk-service-matrix td.text-right i {
+  font-size: 2.5rem;
+}
+
+.sdk-service-matrix th.service-heading {
+  width: 200px;
 }
