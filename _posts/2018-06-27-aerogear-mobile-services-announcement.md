@@ -9,7 +9,7 @@ Over the past six months, the AeroGear team has been busy with a new vision for 
 
 AeroGear provides a suite of Mobile Services across a range of native (iOS & Android) and hybrid client SDKs (including Xamarin & Cordova) that will simplify your mobile and modern application development needs, leveraging OpenShift's Container technology to provide a secure, scalable backend platform.
 
-We're really excited about what we've been building, and would encourage you to [get started](https://docs.aerogear.org/aerogear/latest/getting-started.html) with AeroGear today.
+We're really excited about what we've been building, and would encourage you to [get started](/getting-started/overview/) with AeroGear today.
 
 \- *The AeroGear Team*
 
