@@ -25,7 +25,7 @@ To get started with AeroGear Mobile Services, the first step is to register a Mo
 ![](/img/mobile-clients-services.png)
 
 
-We're really excited about what we've been building, and would encourage you to [get started](/getting-started/overview/) with AeroGear today.
+We're really excited about what we've been building, and would encourage you to [get started](/getting-started/) with AeroGear today.
 
 \- *The AeroGear Team*
 
