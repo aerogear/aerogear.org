@@ -20,28 +20,16 @@ section: homepage
     <div class="row">
       <div class="col-md-4">
         <h3>
-          <a href="/services/mobile-ci-cd/"><i class="material-icons" aria-hidden="true">build</i> Mobile CI/CD</a>
+          <a href="/services/identity-management/"><i class="material-icons" aria-hidden="true">account_circle</i> Identity Management</a>
         </h3>
         <p>
-          Automate the building of your native and hybrid mobile app for both Android and iOS
+          Add authentication and authorization to your mobile app
         </p>
         <ul class="alt">
-          <li>Leverage your Jenkins expertise to manage and automate mobile builds</li>
-          <li>Containerised builds on OpenShift for Android</li>
-          <li>Support for integrating OSX as build slaves for iOS builds</li>
-        </ul>
-      </div>
-
-      <div class="col-md-4">
-        <h3>
-          <a href="/services/metrics/"><i class="material-icons" aria-hidden="true">insert_chart</i> Metrics</a>
-        </h3>
-        <p>
-          Gather metrics on mobile apps, device versions, device security checks and back-end mobile service usage
-        </p>
-        <ul class="alt">
-          <li>Monitor usage by version of mobile app, platform and SDK</li>
-          <li>Monitor interactions with the Identity Management service</li>
+          <li>Secure your mobile app using the industry standard OpenID Connect protocol</li>
+          <li>Add access control to your app based on user’s group membership</li>
+          <li>Easily implement SSO, multi factor authentication and Social Login support</li>
+          <li>Back end support for identity brokering and user federation</li>
         </ul>
       </div>
 
@@ -62,21 +50,6 @@ section: homepage
 
       <div class="col-md-4">
         <h3>
-          <a href="/services/identity-management/"><i class="material-icons" aria-hidden="true">account_circle</i> Identity Management</a>
-        </h3>
-        <p>
-          Add authentication and authorization to your mobile app
-        </p>
-        <ul class="alt">
-          <li>Secure your mobile app using the industry standard OpenID Connect protocol</li>
-          <li>Add access control to your app based on user’s group membership</li>
-          <li>Easily implement SSO, multi factor authentication and Social Login support</li>
-          <li>Back end support for identity brokering and user federation</li>
-        </ul>
-      </div>
-
-      <div class="col-md-4">
-        <h3>
           <a href="/services/runtime-connector/"><i class="material-icons" aria-hidden="true">cloud</i> Runtime Connector</a>
         </h3>
         <p>
@@ -85,6 +58,35 @@ section: homepage
         <ul class="alt">
           <li>Bind your mobile client to custom backend API services and business logic</li>
           <li>Add custom configuration for a backend service, which becomes accessible from your Mobile App</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h3>
+          <a href="/services/metrics/"><i class="material-icons" aria-hidden="true">insert_chart</i> Mobile Metrics</a>
+        </h3>
+        <p>
+          Gather metrics on mobile apps, device versions, device security checks and back-end mobile service usage
+        </p>
+        <ul class="alt">
+          <li>Monitor usage by version of mobile app, platform and SDK</li>
+          <li>Monitor interactions with the Identity Management service</li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h3>
+          <a href="/services/mobile-ci-cd/"><i class="material-icons" aria-hidden="true">build</i> Mobile CI/CD</a>
+        </h3>
+        <p>
+          Automate the building of your native and hybrid mobile app for both Android and iOS
+        </p>
+        <ul class="alt">
+          <li>Leverage your Jenkins expertise to manage and automate mobile builds</li>
+          <li>Containerised builds on OpenShift for Android</li>
+          <li>Support for integrating OSX as build slaves for iOS builds</li>
         </ul>
       </div>
 
@@ -108,99 +110,128 @@ section: homepage
   <div class="container">
     <h2>AeroGear SDKs</h2>
 
-    <div class="row">
-      <div class="col-md-4">
-        <h3>
-          <a href="/sdks/android/"><i class="fa fa-android"></i> Android SDK</a>
-        </h3>
-        <p class="alt">
-          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
-        </p>
-        <p>
-          <a href="/sdks/android/" class="btn btn-primary">Learn More</a>
-        </p>
-      </div>
+<div style="overflow-x:auto;">
+  <table class="sdk-service-matrix table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="text-center">
+          <a href="/services/identity-management/">
+            <i class="material-icons" aria-hidden="true">account_circle</i>
+            <div>Identity Management</div>
+          </a>
+        </th>
+        <th class="text-center service-heading">
+          <a href="/services/push/">
+            <i class="material-icons" aria-hidden="true">notifications_active</i>
+            <div>Push Notifications</div>
+          </a>
+        </th>
+        <th class="text-center service-heading">
+          <a href="/services/runtime-connector/">
+            <i class="material-icons" aria-hidden="true">cloud</i>
+            <div>Runtime Connector</div>
+          </a>
+        </th>
+        <th class="text-center service-heading">
+          <a href="/services/metrics/">
+            <i class="material-icons" aria-hidden="true">insert_chart</i>
+            <div>Mobile Metrics</div>
+        </th>
+        <th class="text-center service-heading">
+          <a href="/services/device-security/">
+            <i class="material-icons" aria-hidden="true">security</i>
+            <div>Device Security</div>
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tr>
+      <td class="text-right">
+        <a href="http://www.javadoc.io/doc/org.aerogear/core/">Android
+        <i class="fa fa-android"></i></a>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <a href="https://docs.aerogear.org/api/cordova/latest/core/">Cordova
+        <i class="font-icon icon-cordova"></i></a>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <a href="https://docs.aerogear.org/api/ios/latest/core/">iOS
+        <i class="fa fa-apple"></i></a>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <a href="https://docs.aerogear.org/api/xamarin/latest/">Xamarin
+        <i class="font-icon icon-xamarin"></i></a>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+      <td class="text-center">
+        <i class="fa fa-check-square"></i>
+      </td>
+    </tr>
+  </table>
+</div>
 
-      <div class="col-md-4">
-        <h3>
-          <a href="/sdks/cordova/"><i class="font-icon icon-cordova"></i> Cordova SDK</a>
-        </h3>
-        <p class="alt">
-          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
-        </p>
-        <p>
-          <a href="/sdks/cordova/" class="btn btn-primary">Learn More</a>
-        </p>
-      </div>
-
-      <div class="col-md-4">
-        <h3>
-          <a href="/sdks/ios/"><i class="fa fa-apple"></i> iOS SDK</a>
-        </h3>
-        <p class="alt">
-          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
-        </p>
-        <p>
-          <a href="/sdks/ios/" class="btn btn-primary">Learn More</a>
-        </p>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-md-4">
-        <h3>
-          <a href="/sdks/xamarin/"><i class="font-icon icon-xamarin"></i> Xamarin SDK</a>
-        </h3>
-        <p class="alt">
-          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
-        </p>
-        <p>
-          <a href="/sdks/xamarin/" class="btn btn-primary">Learn More</a>
-        </p>
-      </div>
-
-      <div class="col-md-4">
-        <h3>
-          <a href="/sdks/js"><i class="font-icon icon-react"></i> React Native SDK</a>
-        </h3>
-        <p class="alt">
-          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
-        </p>
-        <p>
-          <a target="_blank" href="https://github.com/feedhenry/fh-js-sdk" class="btn btn-primary">Learn More</a>
-        </p>
-      </div>
-
-      <div class="col-md-4">
-        <h3>
-          <a href="/sdks/js"><i class="font-icon icon-pwa"></i> PWA SDK</a>
-        </h3>
-        <p class="alt">
-          Maecenas ut magna aliquet, facilisis odio ut, sollicitudin nunc. 
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ante, cursus sit amet accumsan at, sodales blandit.
-        </p>
-        <p>
-          <a target="_blank" href="https://github.com/feedhenry/fh-js-sdk" class="btn btn-primary">Learn More</a>
-        </p>
-      </div>
-    </div>
   </div>
 </section>
 

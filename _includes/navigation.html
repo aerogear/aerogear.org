@@ -27,48 +27,42 @@
 
         <li class="dropdown {% if page.section == 'mobile-services' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li>
-                <a href="/services/mobile-ci-cd/">
-                  <i class="material-icons" aria-hidden="true">build</i> Mobile CI/CD
-                </a>
-              </li>
-              <li>
-                <a href="/services/push/">
-                  <i class="material-icons" aria-hidden="true">notifications_active</i> Push Notifications
-                </a>
-              </li>
-              <li>
-                <a href="/services/metrics/">
-                  <i class="material-icons" aria-hidden="true">insert_chart</i> Metrics
-                </a>
-              </li>
-              <li>
-                <a href="/services/runtime-connector/">
-                  <i class="material-icons" aria-hidden="true">cloud</i> Runtime Connector
-                </a>
-              </li>
-              <li>
-                <a href="/services/identity-management/">
-                  <i class="material-icons" aria-hidden="true">account_circle</i> Identity Management
-                </a>
-              </li>
-              <li>
-                <a href="/services/device-security/">
-                  <i class="material-icons" aria-hidden="true">security</i> Device Security
-                </a>
-              </li>
-            </ul>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="/services/identity-management/">
+                <i class="material-icons" aria-hidden="true">account_circle</i> Identity Management
+              </a>
+            </li>
+            <li>
+              <a href="/services/push/">
+                <i class="material-icons" aria-hidden="true">notifications_active</i> Push Notifications
+              </a>
+            </li>
+            <li>
+              <a href="/services/runtime-connector/">
+                <i class="material-icons" aria-hidden="true">cloud</i> Runtime Connector
+              </a>
+            </li>
+            <li>
+              <a href="/services/metrics/">
+                <i class="material-icons" aria-hidden="true">insert_chart</i> Mobile Metrics
+              </a>
+            </li>
+            <li>
+              <a href="/services/mobile-ci-cd/">
+                <i class="material-icons" aria-hidden="true">build</i> Mobile CI/CD
+              </a>
+            </li>
+            <li>
+              <a href="/services/device-security/">
+                <i class="material-icons" aria-hidden="true">security</i> Device Security
+              </a>
+            </li>
+          </ul>
         </li>
 
         <li class="dropdown {% if page.section == 'sdks' %}active{% endif %}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile SDKs<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="/sdks/android/">Android</a></li>
-            <li><a href="/sdks/cordova/">Cordova</li>
-            <li><a href="/sdks/ios/">iOS</a></li>
-            <li><a href="/sdks/xamarin/">Xamarin</a></li>
-          </ul>
+          <a href="/sdks">Mobile SDKs</a>
         </li>
 
         <li class="hidden-sm {% if page.section == 'docs' %}active{% endif %}">
