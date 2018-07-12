@@ -15,15 +15,15 @@ As an open source project we are always on the lookout for community members tha
 
 === Apache License
 
-All contributions to AeroGear are made under the http://apache.org/licenses/LICENSE-2.0.txt[Apache License, Version 2.0].
+All contributions to AeroGear are made under the http://apache.org/licenses/LICENSE-2.0.txt[Apache License, Version 2.0^].
 
 === Help Others
-Have experience with mobile or HTML5 based technologies? Interested in sharing your knowledge?
+Have experience with mobile, container and orchestration based technologies? Interested in sharing your knowledge?
 
-If you've got ideas for the project, or want to discuss ways to improve AeroGear, join the https://lists.jboss.org/mailman/listinfo/aerogear-dev[aerogear-dev] mailing list] and share what your working on, or struggling with. For more immediate gratification join the IRC channel (#aerogear). There are are usually a good bunch of people hanging out there. Ask your questions, share your experience, or just make jokes :-)
+If you've got ideas for the project, or want to discuss ways to improve AeroGear, join the https://groups.google.com/forum/#!forum/aerogear[aerogear-dev^] google group and share what your working on, or struggling with. For more immediate gratification join https://webchat.freenode.net/?channels=%23aerogear[#aerogear @ irc.freenode.net^]. There are are usually a good bunch of people hanging out there. Ask your questions, share your experience, or just make jokes :-)
 
 ==== Found An Issue?
-Have you run into an issue with one of our examples, sites, or have a suggestion? The best place to start is probably talking about it in the forums or IRC. If you've already done that, or just want to create the issue please do at https://issues.jboss.org/browse/AEROGEAR.
+Have you run into an issue with one of our https://docs.aerogear.org/aerogear/latest/con_services.html[services], https://github.com/aerogear?utf8=%E2%9C%93&q=showcase&type=&language=[apps^], or link:../../../sdks[sdks] or just have a suggestion? The best place to start is probably talking about it in the google group or IRC. If you've already done that, or just want to create the issue please do in the https://issues.jboss.org/browse/AEROGEAR[AEROGEAR project on JIRA^].
 
 We only ask that you review our link:../JIRAUsage[AeroGear Jira Usage and Guidelines] and use your noodle! Help the community help you :-)
 
@@ -36,21 +36,18 @@ The first recommended step is to communicate with the project team. This way you
 
 The best ways to do this are through:
 
-* IRC: #aerogear @ irc.freenode.net
-* Developer mailing list: https://lists.jboss.org/mailman/listinfo/aerogear-dev[aerogear-dev]
-* Project meetings: https://www.jboss.org/aerogear/AeroGearCalendar[AeroGear Community Calendar]
+* IRC: https://webchat.freenode.net/?channels=%23aerogear[#aerogear @ irc.freenode.net^]
+* Developer mailing list: https://groups.google.com/forum/#!forum/aerogear[aerogear-dev^]
+* Project meetings:
+
+++++
+<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=0o7fjkbrkataprkktnns124mj4%40group.calendar.google.com&amp;color=%238C500B&amp;ctz=Etc%2FGMT" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+++++
+
 
 *Pick your poison*
 
 If what you want to work on is already in jira, then ask to have it assigned to you (see communicate section above). If there is no jira, go ahead and make one as described above, and in the link:../JIRAUsage[AeroGear Jira Usage and Guidelines].
-
-*Follow AeroGear's coding conventions and style*
-
-This link has the IDE settings, and conventions that should be followed for all AeroGear source code. Be sure to use the *aerogear* branch as it contains the correct link:../license[license and copyright information]. The aerogear branch should be the default branch.
-
-****
-https://github.com/aerogear/ide-config
-****
 
 *Follow AeroGear's github workflow*
 
