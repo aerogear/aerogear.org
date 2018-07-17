@@ -5,7 +5,7 @@ title: Announcing AeroGear Mobile Services on OpenShift
 author: aerogear
 ---
 
-Today, the AeroGear Community is delighted to announce the availability of a suite of Mobile Services, which provides simple solutions to common development challenges faced by mobile developers. After six months of development, this moves AeroGear from being a project primarily focused on Push Notifications to a vision for Cloud Native Mobile and Modern App Development. With OpenShift's Container technology providing  a secure, scalable backend platform, mobile developers can use a range of native ([iOS](/sdks/ios/) & [Android](/sdks/android/)) and hybrid ([Xamarin](/sdks/xamarin/) & [Cordova](/sdks/cordova/)) client SDKs to create secure, high quality apps and makes it easy to add features such as Push Notifications or Authentication.
+Today, the AeroGear Community is delighted to announce the availability of a suite of Mobile Services, which provides simple solutions to common development challenges faced by mobile developers. After six months of development, this moves AeroGear from being a project primarily focused on Push Notifications to a vision for Cloud Native Mobile and Modern App Development. With OpenShift's Container technology providing  a secure, scalable backend platform, mobile developers can use a range of native iOS & Android and hybrid Xamarin & Cordova client [SDKs](/sdks) to create secure, high quality apps and makes it easy to add features such as Push Notifications or Authentication.
 
 With this release, we are adding Mobile functionality to OpenShift in the following ways:
 * A new Mobile Category in the OpenShift Service Catalog, where you can create Mobile Clients and Mobile Services
