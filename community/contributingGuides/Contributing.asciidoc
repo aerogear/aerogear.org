@@ -23,7 +23,8 @@ Have experience with mobile, container and orchestration based technologies? Int
 If you've got ideas for the project, or want to discuss ways to improve AeroGear, join the https://groups.google.com/forum/#!forum/aerogear[aerogear-dev^] google group and share what your working on, or struggling with. For more immediate gratification join https://webchat.freenode.net/?channels=%23aerogear[#aerogear @ irc.freenode.net^]. There are are usually a good bunch of people hanging out there. Ask your questions, share your experience, or just make jokes :-)
 
 ==== Found An Issue?
-Have you run into an issue with one of our https://docs.aerogear.org/aerogear/latest/con_services.html[services], https://github.com/aerogear?utf8=%E2%9C%93&q=showcase&type=&language=[apps^], or link:../../../sdks[sdks] or just have a suggestion? The best place to start is probably talking about it in the google group or IRC. If you've already done that, or just want to create the issue please do in the https://issues.jboss.org/browse/AEROGEAR[AEROGEAR project on JIRA^].
+
+Have you run into an issue with one of our https://docs.aerogear.org/aerogear/latest/con_services.html[services], https://github.com/aerogear?utf8=%E2%9C%93&q=showcase&type=&language=[apps^], or link:../../../sdks[sdks] or just have a suggestion? The best place to start is probably talking about it in the google group or IRC. If you've already done that, or just want to create the issue please do in the https://issues.jboss.org/browse/AEROGEAR[AEROGEAR project on JIRA^] or as a git issue in the related git repo.
 
 We only ask that you review our link:../JIRAUsage[AeroGear Jira Usage and Guidelines] and use your noodle! Help the community help you :-)
 
