@@ -31,7 +31,7 @@ We only ask that you review our link:../JIRAUsage[AeroGear Jira Usage and Guidel
 ==== Fix an Issue!
 Your ready to start taking action, dig into an issue, and update some code! Excellent!!
 
-*Communicate*
+==== Communicate
 
 The first recommended step is to communicate with the project team. This way you can get any advice, or feedback on your plans.
 
