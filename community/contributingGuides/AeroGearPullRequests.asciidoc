@@ -9,8 +9,6 @@ breadcrumbs-url: /community/index.html#guides
 sub-section-title: Contributing Guide  
 ---
 
-== How to Handle AeroGear Pull Requests
-
 This article shows the guidelines and tasks required for project developers to manage and handle pull requests (PR).
 
 === General Guidelines

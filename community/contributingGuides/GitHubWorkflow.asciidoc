@@ -9,8 +9,6 @@ breadcrumbs-url: /community/index.html#guides
 sub-section-title: Contributing Guide  
 ---
 
-== AeroGear GitHub Workflow & Instructions
-
 This article outlines the standard git and GitHub process, and workflow for working with AeroGear examples, and repositories. Any repository specific requirements will be listed in the repository, and/or will be linked in the document. 
 
 === Get a GitHub account
