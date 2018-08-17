@@ -9,9 +9,6 @@ breadcrumbs-url: /community/index.html#guides
 sub-section-title: Contributing Guide  
 ---
 
-
-== AeroGear Developer Tools Guide
-
 This article shows suggestions of common tools that the AeroGear team uses for the development of HTML5 + REST Mobile Apps, Hybrid Apps, and Native Client Apps.
 
 

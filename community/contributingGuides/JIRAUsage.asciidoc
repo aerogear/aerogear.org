@@ -9,11 +9,10 @@ breadcrumbs-url: /community/index.html#guides
 sub-section-title: Contributing Guide  
 ---
 
-== AeroGear JIRA Usage and Guidelines
-
 This document describes the basic jira usage and guidelines for AeroGear. The most important point is _use your noodle_! Be descriptive, and link to forums, git, examples, and related jiras - it all helps get it resolved quickly.
 
-.Creation
+## Creation
+
 Anyone can create an issue. When the issue is created it should as a minimum have:
 
 * a good summary/title (self-explanatory if possible)
@@ -25,19 +24,21 @@ Anyone can create an issue. When the issue is created it should as a minimum hav
 
 Assignment and fix versions should only be done by the committers.
 
-.Assignment
+## Assignment
+
 Only committers/developers should assign the issue. Do not assign the issue to anyone unless it is yourself or you are sure they are supposed to work on the task.
 
 The one who assign should also make sure to set:
 
-* the fix version to indicate when it should be completed
 * the Priority should be set in context of the fix version
 ** An issue can be trivial to implement but still be a Blocker if it is a must have feature or bug to have for the release.
 
-.Discussions
+## Discussions
+
 Keep the description/comments updated as work progresses. This means comments related to reproducing, fixing or implementation requirements should be added. That saves time for anyone who is working with this issue to understand what actually should be done and how to verify it. Discussions in jira should be limited strictly to items related to the reproduction, description, and resolution of the issues. It should not evolve into a forum like discussion of questions. These are best moved to the forums.
 
-.Fixing/Resolving
+## Fixing/Resolving
+
 When an issue gets fixed the developer should make sure to:
 
 * Follow instructions on Jira and GitHub pull requests here: link:../GitHubWorkflow[AeroGear GitHub Workflow &amp; Instructions]
