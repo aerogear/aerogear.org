@@ -6,7 +6,7 @@ Before you can run the site, make sure you have [asciidoc](http://www.methods.co
 
 ## Running locally
 
-Ruby & its ecosystem is difficult to install and manage, so we recommend running Jekyll & aerogear.org in via Docker.
+Ruby & its ecosystem is difficult to install and manage, so we recommend running Jekyll & aerogear.org via Docker.
 
 ### Building
 
@@ -29,13 +29,10 @@ docker run --rm -it -p 4000:4000 -v `pwd`:/home/aerogear/aerogear aerogear.org
 This will setup a watch locally, and serve content locally via http://localhost:4000
 
 
-### Deploying Changes
+### Publishing Changes
 
 1. Make changes in aerogear.org repo on a custom branch
 1. Create a PR against the `master` branch
 1. Get the changes reviewed and verified
 1. Merge to the `master` branch
-1. Contact a team member on #aerogear on irc to trigger the build to publish the `master` branch to https://staging.aerogear.org
-1. Get the changes verified
-1. Merge to the `production` branch
-1. Contact a team member on #aerogear on irc to trigger the build to publish the `production` branch to to https://aerogear.org
+1. Contact a team member on #aerogear on irc to trigger the build to publish the `master` branch to https://aerogear.org
