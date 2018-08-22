@@ -28,36 +28,13 @@
         <li class="dropdown {% if page.section == 'mobile-services' %}active{% endif %}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
+            {% for service in site.data.services %}
             <li>
-              <a href="/services/identity-management/">
-                <i class="material-icons" aria-hidden="true">account_circle</i> Identity Management
+              <a href="{{ service[1].link }}">
+                <i class="material-icons" aria-hidden="true">{{ service[1].icon }}</i> {{ service[1].name }}
               </a>
             </li>
-            <li>
-              <a href="/services/push/">
-                <i class="material-icons" aria-hidden="true">notifications_active</i> Push Notifications
-              </a>
-            </li>
-            <li>
-              <a href="/services/runtime-connector/">
-                <i class="material-icons" aria-hidden="true">cloud</i> Runtime Connector
-              </a>
-            </li>
-            <li>
-              <a href="/services/metrics/">
-                <i class="material-icons" aria-hidden="true">insert_chart</i> Mobile Metrics
-              </a>
-            </li>
-            <li>
-              <a href="/services/mobile-ci-cd/">
-                <i class="material-icons" aria-hidden="true">build</i> Mobile CI/CD
-              </a>
-            </li>
-            <li>
-              <a href="/services/device-security/">
-                <i class="material-icons" aria-hidden="true">security</i> Device Security
-              </a>
-            </li>
+            {% endfor %}
           </ul>
         </li>
 
