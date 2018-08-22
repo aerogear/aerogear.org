@@ -8,7 +8,7 @@ NOTE: Completing the steps presented in this section are only required to provis
 * A fresh macOS 10.12 Sierra install (MacinCloud service can be used, too)
 * 4GB RAM
 * 2 CPU Cores
-* 30GB minimum disk space and and additional 20GB per installed XCode version
+* 30GB minimum disk space and additional 20GB per installed XCode version
 
 ==== macOS Configuration Requirements
 . Ansible requires SSH sudo access to the macOS server in order to correctly provision the server to support iOS builds. 
@@ -24,17 +24,21 @@ Enable SSH connection by following these steps:
 [[create-macos-sudo-user]]
 ==== Create a sudo macOS User
 
-Create a user with sudo permissions and SSH access on the macOS server. 
+Create a user with sudo permissions and SSH access on the macOS server. An example bash script is provided.
 
-An example bash script is provided.
+WARNING: Modify the script before you use it. Change the default `PASSWORD` and ensure that `USER_ID` is unassigned. An unmodified script will allow access to your machine with a default password.
 
-WARNING: Review the script before using it. The unmodified script will allow access to your machine with a default password. Change the default `PASSWORD` and ensure that `USER_ID` is unassigned.
+.Default script behavior:
 
-By default, the script will create a user named `jenkins` with `USER_ID=550` and add the user to the the `sudoers` file. The user's `PASSWORD` is set by default to `Password1`. The user is added to the `admin` group.
+Create a user named `jenkins` with `USER_ID=550` and:
+
+* Add the user to the `sudoers` file,
+* Set `PASSWORD` to `Password1`,
+* Add `jenkins` to the `admin` group.
 
 IMPORTANT: Restart the server to implement the changes.
 
-Download and execute the script with the following commands:
+Use the following commands to download and execute the script:
 [source,bash]
 ----
 curl -O https://raw.githubusercontent.com/aerogear/aerogear-digger/master/admin/create-osx-user.sh
@@ -83,14 +87,13 @@ echo "Done creating OSX user - you may need to restart the osx server to apply a
 ==== Configure Remote Login(SSH) in Ansible Host
 Enable the remotely running Ansible process to execute commands on the macOS server via SSH.
 
-A sample script is provided below. The `USERNAME` variable should contain the name of the macOS user created in the previous step.
-This allows the `USERNAME` to access the server via SSH with a password. 
+A sample script is provided below. Set `USERNAME` variable to match the name of the macOS user created in the previous step. This allows `USERNAME` to access the server through SSH with a password. 
 
-WARNING: Review and understand the script before using it.
+WARNING: Understand what the script does before using it.
 
-You can also add a public encryption key to the `authorized_keys` file associated with the user. Private key of the asymmetric key pair is stored  on the Ansible management node.
+You can also add a public encryption key to the SSH `authorized_keys` file associated with the user. Private key of the asymmetric key pair is stored on the Ansible management node.
 
-The script can be downloaded and executed using the following commands:
+Use the following commands to download and execute the sample script:
 
 [source,bash]
 ----
@@ -124,13 +127,13 @@ dseditgroup -o edit -a ${USERNAME} -t user ${OSX_SSH_GROUP_NAME}
 [[add-macos-sudo-into-inventory-file]]
 ==== Add macOS sudo Credentials into Ansible Inventory File
 
-A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation^].
+A number of tasks in the `provision-osx` Ansible role used in the installer require http://docs.ansible.com/ansible/latest/become.html[privilege escalation^], to allow Ansible to run commands as the `sudo` user.
 
-Add the name of the macOS user created in previous steps as a variable `ansible_ssh_user` into the Ansible inventory file.
+* Set the `ansible_ssh_user` variable in Ansible inventory file to match the macOS user name created in previous steps.
 
-This allows Ansible to run commands as `sudo` user.
-
-Set `ansible_sudo_pass` variable or `--ask-sudo-pass` flag with the user password to enable the installer to work with root permissions.
+* Set the user password. Use one of these methods:
+** Put the user password into `ansible_sudo_pass` variable in Ansible inventory file.
+** Use `--ask-sudo-pass` option with the user password as an argument for a command to run the Ansible installer playbook. See link:#run-digger-installer[Run Digger Installer].
 
 [[provide-macos-with-access-to-hosts]]
 ==== Provide macOS with Internet Access to List of Hosts

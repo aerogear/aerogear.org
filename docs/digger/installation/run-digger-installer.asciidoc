@@ -12,9 +12,26 @@ NOTE: For a full list of variables that can be configured via the inventory file
 //+
 //Refer to https://github.com/aerogear/aerogear-digger-installer/blob/master/sample-build-playbook.yml[Digger Playbook^] to see the roles executed during installation and their associated tags.
 
-** Command to install Digger with macOS server
+** Commands to install Digger with macOS server
 +
-WARNING: Make sure your macOS Server is prepared for installation. See link:macos-prereqs[macOS Prerequisities].
+WARNING: Ensure your macOS Server is prepared for installation. See link:macos-prereqs[macOS Prerequisities].
++
+One of the steps is to update the inventory file with the required macOS variables.
++
+Modify and use the following command if you did not set the required macOS variables:
++
+----
+ansible-playbook -i sample-inventory-file sample-playbook.yml
+-e "ansible_sudo_pass=exampleSudoPassword"
+-e "xcode_install_user=exampleAppleDeveloperUsername"
+-e "xcode_install_password=exampleAppleDeveloperPassword"
+-e "credential_private_key_path=/path/to/sshKey"
+-e "credential_passphrase=exampleSshKeyPassphrase"
+-e "credential_public_key_path=/path/to/sshKey.pub"
+--tags="provision-osx"
+----
++
+Use the following command if you have set the required macOS variables manually:
 +
 ----
 ansible-playbook -i <your-inventory-sample> sample-build-playbook.yml
@@ -49,7 +66,7 @@ WARNING: As of Jan 4th 2018, only `provision-osx` tag is working with with `--sk
 +
 
 
-.Ansible playbook will perform the following tasks:
+.The Ansible playbook will perform the following tasks:
 
 * Check if the required Java version is installed, install/upgrade if not,
 * Create an OpenShift project,
@@ -60,4 +77,4 @@ WARNING: As of Jan 4th 2018, only `provision-osx` tag is working with with `--sk
 * Install Nagios on OpenShift,
 * Print URL and credentials for Jenkins and Nagios.
 
-//NOTE: All tasks are idempotent. You can run them multiple times and they will produce the same results.
+//NOTE: All tasks are idempotent. You can run the tasks multiple times and they will produce the same results.

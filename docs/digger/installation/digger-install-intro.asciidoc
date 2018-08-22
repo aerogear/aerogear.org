@@ -1,4 +1,4 @@
-== AeroGear Digger Installation
+== Installing AeroGear Digger
 The AeroGear Digger project allows you to setup a Jenkins CI/CD server that utilizes Jenkins Pipelines for mobile application building. AeroGear Digger is deployed in OpenShift containers, providing isolated build environments.
 
 https://github.com/aerogear/aerogear-digger-installer[aerogear-digger-installer^] - GitHub repo with an http://docs.ansible.com/ansible/index.html[Ansible^] based tool, used for automated AeroGear Digger installation.

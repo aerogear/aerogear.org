@@ -106,7 +106,7 @@ You can specify a value using one of the following methods:
 [[variables-deploy-nagios]]
 ==== deploy-nagios
 
-Variables used to configure Nagios for sending alert emails.
+The variables used to configure Nagios for sending alert emails.
 
 |===
 | Variable name | Description | Default value | Required
@@ -151,7 +151,7 @@ Variables used to configure Nagios for sending alert emails.
 [[variables-java]]
 ==== java
 
-Variables used to configure JDK on the remote host that runs Jenkins CLI commands.
+The variables used to configure JDK on the remote host that runs Jenkins CLI commands.
 
 |===
 | Variable name | Description | Default value | Required
@@ -171,7 +171,7 @@ Variables used to configure JDK on the remote host that runs Jenkins CLI command
 [[variables-login]]
 ==== login
 
-Variables used to login to the OpenShift Cluster.
+The variables used to login to the OpenShift Cluster.
 
 |===
 | Variable name | Description | Default value | Required
@@ -196,7 +196,7 @@ Variables used to login to the OpenShift Cluster.
 [[variables-provision-osx]]
 ==== provision-osx
 
-Variables used while provisioning a macOS node.
+The variables used while provisioning a macOS node.
  
 |===
 | Variable name | Description | Default value | Required
@@ -398,12 +398,12 @@ Use EXCLUSIVE if you want build jobs with labels matching this node to only use 
 |proxy_host
 |Proxy url/base hostname to be used.
 |
-|Yes if the macOS server only has outbound internet access via proxy
+|Yes if the macOS server only has outbound internet access through proxy
 
 |proxy_port
 |Proxy port to be used.
 |
-|Yes if the macOS server only has outbound internet access via proxy
+|Yes if the macOS server only has outbound internet access through proxy
 
 |proxy_device
 |The proxy network device to use for proxy configuration.

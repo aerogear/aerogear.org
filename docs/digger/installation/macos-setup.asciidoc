@@ -1,7 +1,7 @@
 [[macos-setup]]
 === Setup macOS Servers (optional)
 
-Set the required variables to make installer provision a macOS server.
+Set the required variables in the inventory file to make the installer provision a macOS server.
 
 .Steps done by installer to provision a macOS server
 . Install Homebrew
@@ -26,7 +26,7 @@ be skipped.
 be skipped.
 
 | `credential_private_key_path`
-| Path to the private key that Jenkins should use to SSH into the macOS node.
+| Path to the private key that Jenkins uses to SSH into the macOS node.
 If not set, the Jenkins node configuration will be skipped.
 
 | `credential_passphrase`
@@ -34,25 +34,11 @@ If not set, the Jenkins node configuration will be skipped.
 configuration will be skipped.
 
 | `credential_public_key_path`
-| Path to the public key. The macOS node will add this to it's
+| Path to the public key. The macOS node will add this to its
 `authorized_keys` file. If not set, the Jenkins node configuration will
 be skipped.
 |===
 
-.Example: Command setting required variables to start the Digger Ansible job to provision macOS server:
-
-----
-ansible-playbook -i sample-inventory-file sample-playbook.yml
--e "ansible_sudo_pass=exampleSudoPassword"
--e "xcode_install_user=exampleAppleDeveloperUsername"
--e "xcode_install_password=exampleAppleDeveloperPassword"
--e "credential_private_key_path=/path/to/sshKey"
--e "credential_passphrase=exampleSshKeyPassphrase"
--e "credential_public_key_path=/path/to/sshKey.pub"
---tags="provision-osx"
-----
-
 ==== Further macOS Configuration options
 Further configuration of the macOS node is possible through optional
 xref:macos-variables[macOS variables].
-
