@@ -68,3 +68,13 @@ security:
     - Distribute SSL certificates with a mobile app to create a direct chain of trust (certificate pinning) for Android
   documentation: https://docs.aerogear.org/aerogear/latest/device-security.html
   github: 
+
+sync:
+  name: Data Sync
+  icon: sync
+  link: /services/data-sync/
+  description: GraphQL based data sync server for mobile, with backend integration capabilities
+  features: 
+  documentation: 
+  github: 
+
