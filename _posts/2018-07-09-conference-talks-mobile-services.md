@@ -10,5 +10,10 @@ Following on from the announcment about the first release of AeroGear Mobile Ser
 
 You can find us at:
 
-TODO: add any conference you are confirmed attending to talk about Mobile Services here.
+* [Dev Conf US - August 2018](https://devconfus2018.sched.com/event/FNMK/calling-serverless-functions-from-an-android-app){:target="_blank"}
+	* Peter Braun and David Martin
+	* Calling serverless functions from an android app
 
+* [Connect.tech - October 2018](http://connect.tech){:target="_blank"}
+	* Summers Pittman
+	* Using bots, containers, and mobile technologies to respond to events
