@@ -16,93 +16,37 @@ section: homepage
 <section class="main-features">
   <div class="container">
     <h2>AeroGear Services</h2>
+    {% for service in site.data.services %}
+  
+      {% capture index %}{{ forloop.index0 | modulo:3 }}{% endcapture %}
 
-    <div class="row">
-      <div class="col-md-4">
-        <h3>
-          <a href="/services/identity-management/"><i class="material-icons" aria-hidden="true">account_circle</i> Identity Management</a>
-        </h3>
-        <p>
-          Add authentication and authorization to your mobile app
-        </p>
-        <ul class="alt">
-          <li>Secure your mobile app using the industry standard OpenID Connect protocol</li>
-          <li>Add access control to your app based on user’s group membership</li>
-          <li>Easily implement SSO, multi factor authentication and Social Login support</li>
-          <li>Back end support for identity brokering and user federation</li>
-        </ul>
-      </div>
+      {% if index == '0' or forloop.first %}
+        <div class="row">
+      {% endif %}
 
       <div class="col-md-4">
         <h3>
-          <a href="/services/push/"><i class="material-icons" aria-hidden="true">notifications_active</i> Push Notifications</a>
+          <a href="{{ service[1].link }}"><i class="material-icons" aria-hidden="true">{{ service[1].icon }}</i> {{ service[1].name }}</a>
         </h3>
+        {% if service[1].description %}
         <p>
-          Send native push notifications to different mobile operating systems 
+          {{ service[1].description }}
         </p>
+        {% endif %}
+        {% if service[1].features %}
         <ul class="alt">
-          <li>Code once and send push notifications to iOS and Android</li>
-          <li>Send push notifications to defined groups</li>
-          <li>Send push notifications to different variants of a mobile app</li>
-          <li>Send push notifications from different back-end apps to the same mobile app</li>
+          {% for feature in service[1].features %}
+          <li>{{ feature }}</li>
+          {% endfor %}
         </ul>
-      </div>
+        {% endif %}
+      </div>              
 
-      <div class="col-md-4">
-        <h3>
-          <a href="/services/runtime-connector/"><i class="material-icons" aria-hidden="true">cloud</i> Runtime Connector</a>
-        </h3>
-        <p>
-          Connect your mobile apps to your own backend API servers
-        </p>
-        <ul class="alt">
-          <li>Bind your mobile client to custom backend API services and business logic</li>
-          <li>Add custom configuration for a backend service, which becomes accessible from your Mobile App</li>
-        </ul>
-      </div>
-    </div>
+      {% if index == '2' or forloop.last %}
+        </div>
+      {% endif %}
 
-    <div class="row">
-      <div class="col-md-4">
-        <h3>
-          <a href="/services/metrics/"><i class="material-icons" aria-hidden="true">insert_chart</i> Mobile Metrics</a>
-        </h3>
-        <p>
-          Gather metrics on mobile apps, device versions, device security checks and back-end mobile service usage
-        </p>
-        <ul class="alt">
-          <li>Monitor usage by version of mobile app, platform and SDK</li>
-          <li>Monitor interactions with the Identity Management service</li>
-        </ul>
-      </div>
-
-      <div class="col-md-4">
-        <h3>
-          <a href="/services/mobile-ci-cd/"><i class="material-icons" aria-hidden="true">build</i> Mobile CI/CD</a>
-        </h3>
-        <p>
-          Automate the building of your native and hybrid mobile app for both Android and iOS
-        </p>
-        <ul class="alt">
-          <li>Leverage your Jenkins expertise to manage and automate mobile builds</li>
-          <li>Containerised builds on OpenShift for Android</li>
-          <li>Support for integrating OSX as build slaves for iOS builds</li>
-        </ul>
-      </div>
-
-      <div class="col-md-4">
-        <h3>
-            <a href="/services/device-security/"> <i class="material-icons" aria-hidden="true">security</i> Device Security</a>
-        </h3>
-        <p>
-          Easily configure and manage device security, and trust checks for your mobile app
-        </p>
-        <ul class="alt">
-          <li>Perform a range of device trust checks on the mobile device, such as checking if the device is rooted, and allows you take proactive action based on the results</li>
-          <li>Distribute SSL certificates with a mobile app to create a direct chain of trust (certificate pinning) for Android</li>
-        </ul>
-      </div>
-    </div>
+    {% endfor %}   
   </div>
 </section>
 
