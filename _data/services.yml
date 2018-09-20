@@ -24,17 +24,6 @@ push:
   documentation: https://docs.aerogear.org/aerogear/latest/push-notifications.html
   github: https://github.com/aerogearcatalog/unified-push-apb/
 
-conector:
-  name: Runtime Connector
-  icon: cloud
-  link: /services/runtime-connector/
-  description: Connect your mobile apps to your own backend API servers
-  features: 
-    - Bind your mobile client to custom backend API services and business logic
-    - Add custom configuration for a backend service, which becomes accessible from your Mobile App
-  documentation: https://docs.aerogear.org/aerogear/latest/runtime-connector.html
-  github: http://github.com/aerogearcatalog/custom-runtime-connector-apb/
-
 metrics:
   name: Mobile Metrics
   icon: insert_chart
