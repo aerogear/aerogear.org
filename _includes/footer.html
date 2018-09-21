@@ -9,12 +9,9 @@
       <div class="col-sm-4">
         <h5 class="text-center">Mobile Services</h5>
         <ul class="text-center list-unstyled">
-          <li><a href="/services/identity-management/">Identity Management</a></li>
-          <li><a href="/services/push/">Push Notifications</a></li>
-          <li><a href="/services/runtime-connector/">Runtime Connector</a></li>
-          <li><a href="/services/metrics/">Mobile Metrics</a></li>
-         <li><a href="/services/mobile-ci-cd/">Mobile CI/CD</a></li>
-         <li><a href="/services/device-security/">Device Security</a></li>
+          {% for service in site.data.services %}
+          <li><a href="{{ service[1].link }}">{{ service[1].name }}</a></li>
+          {% endfor %}
         </ul>
       </div><!-- col -->
 
