@@ -22,7 +22,7 @@ push:
     - Send push notifications to different variants of a mobile app
     - Send push notifications from different back-end apps to the same mobile app
   documentation: https://docs.aerogear.org/aerogear/latest/push-notifications.html
-  github: https://github.com/aerogearcatalog/unified-push-apb/
+  github: https://github.com/aerogearcatalog/unifiedpush-apb/
 
 metrics:
   name: Mobile Metrics
