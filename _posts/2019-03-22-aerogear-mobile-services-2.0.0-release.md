@@ -10,7 +10,7 @@ About 7 months ago, we announced [the 1.0.0 release](/news/2018/07/04/aerogear-m
 
 ## What's New
 
-* A new [Data Sync](/services/data-sync/) framework is now available. It is built on top of the popular [Apollo GraphQL framework](https://www.apollographql.com/). We added a set of new features like offline support, conflict handling etc to make it easier for developers to create mobile applications that need to sync data between clients and server. To learn more, please checkout the [Voyager server](https://github.com/aerogear/voyager-server) and the [Voyager client](https://github.com/aerogear/aerogear-js-sdk/tree/master/packages/sync) repos.
+* A new [Data Sync](/services/data-sync/) framework is now available. It is built on top of the popular [Apollo GraphQL framework](https://www.apollographql.com/). We added a set of new features like offline support, conflict handling etc to make it easier for developers to create mobile applications that need to sync data between clients and server. To learn more, please check the [Voyager server](https://github.com/aerogear/voyager-server) and the [Voyager client](https://github.com/aerogear/aerogear-js-sdk/tree/master/packages/sync) repos.
 * A new [Cordova showcase app](https://github.com/aerogear/ionic-showcase) was created to demonstrate the new data sync capabilities and how to use it with other services.
 * The APIs of the [AeroGear JS SDK](https://github.com/aerogear/aerogear-js-sdk) core module have been refactored to make it easier for developers to consume.
 * A new [installer repo](https://github.com/aerogear/mobile-services-installer) is created to make it easier for developers to install AeroGear Mobile Services. You can also find out which versions of each service are included in a given release. For example, the 2.0.0 release contains [these services](https://github.com/aerogear/mobile-services-installer/blob/2.0.0/versions.yml).
@@ -19,7 +19,9 @@ About 7 months ago, we announced [the 1.0.0 release](/news/2018/07/04/aerogear-m
 
 ## Try It Out
 
-If you would like to try out the new features, please follow our [getting-started guide](https://docs.aerogear.org/aerogear/latest/getting-started.html) with the new [Cordova showcase app](https://github.com/aerogear/ionic-showcase). Please remember, feedback is always welcome and we can't wait to hear what you think!
+If you would like to try out the new features, please follow our [getting-started guide](https://docs.aerogear.org/aerogear/latest/getting-started.html) with the new [Cordova showcase app](https://github.com/aerogear/ionic-showcase). If you would like to know more about Data Sync, please check the [documentations](https://docs.aerogear.org/aerogear/latest/data-sync.html).
+
+Please remember, feedback is always welcome and we can't wait to hear what you think!
 
 Thanks.
 
