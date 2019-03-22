@@ -1,5 +1,0 @@
-<dependency>
-  <groupId>org.jboss.aerogear</groupId>
-  <artifactId>aerogear-simplepush-java-client</artifactId>
-  <version>0.1.0</version>
-</dependency>
