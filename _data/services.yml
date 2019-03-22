@@ -6,10 +6,10 @@ sync:
   features:
     - Use GraphQL to design the APIs for your mobile app
     - Add real time data synchronisation to your mobile app
-    - Allow your moible app to work offline
+    - Allow your mobile app to work offline
     - Easily resolve conflicts with the flexible conflict resolution strategies
     - Support authentication and authorization using the Identity Management service or choice of your own
-    - Great observability through the Mobile Metrics Service
+    - Great observability through the AeroGear Mobile Metrics Service
     - Track all actions with audit logs
   documentation: https://docs.aerogear.org/aerogear/latest/data-sync.html
   github: https://github.com/aerogear/voyager-server/
