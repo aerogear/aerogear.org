@@ -14,7 +14,7 @@ layout: null
    <email>{{ site.email }}</email>
  </author>
 
- {% for post in site.data['all_posts'] limit 25 %}
+ {% for post in site.posts limit 25 %}
  <entry>
    <title>{{ post.title }}</title>
    <link href="{% if post.external != true %}http://{{ site.domain }}{% endif %}{{ post.url }}"/>
