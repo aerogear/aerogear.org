@@ -1,4 +1,4 @@
---- 
+---
 layout: home 
 title: Open Source Libraries for Mobile Connectivity 
 section: homepage 
@@ -17,7 +17,7 @@ section: homepage
   <div class="container">
     <h2>AeroGear Services</h2>
     {% for service in site.data.services %}
-  
+
       {% capture index %}{{ forloop.index0 | modulo:3 }}{% endcapture %}
 
       {% if index == '0' or forloop.first %}
@@ -40,13 +40,13 @@ section: homepage
           {% endfor %}
         </ul>
         {% endif %}
-      </div>              
+      </div>
 
       {% if index == '2' or forloop.last %}
         </div>
       {% endif %}
 
-    {% endfor %}   
+    {% endfor %}
   </div>
 </section>
 
@@ -101,7 +101,7 @@ section: homepage
         </thead>
         <tr>
           <td class="text-right">
-            <a href="https://docs.aerogear.org/aerogear/latest/mobile-developer-console.html#android">Android
+            Android
             <i class="fa fa-android"></i></a>
           </td>
           <td class="text-center">
@@ -121,7 +121,7 @@ section: homepage
         </tr>
         <tr>
           <td class="text-right">
-            <a href="https://docs.aerogear.org/aerogear/latest/mobile-developer-console.html#cordova">Cordova
+            Cordova
             <i class="font-icon icon-cordova"></i></a>
           </td>
           <td class="text-center">
@@ -142,7 +142,7 @@ section: homepage
         </tr>
         <tr>
           <td class="text-right">
-            <a href="https://docs.aerogear.org/aerogear/latest/mobile-developer-console.html#ios">iOS
+            iOS
             <i class="fa fa-apple"></i></a>
           </td>
           <td class="text-center">
@@ -162,7 +162,7 @@ section: homepage
         </tr>
         <tr>
           <td class="text-right">
-            <a href="https://docs.aerogear.org/aerogear/latest/mobile-developer-console.html#xamarin">Xamarin
+            Xamarin
             <i class="font-icon icon-xamarin"></i></a>
           </td>
           <td class="text-center">
@@ -188,7 +188,7 @@ section: homepage
 <section class="customers">
   <div class="container">
     <h2 class="section-header">Mobile development begins here</h2>
-    <h4>We make enterprise mobile development easy</h4> 
+    <h4>We make enterprise mobile development easy</h4>
     <p>AeroGear provides a suite of Mobile Services across a range of native and hybrid client SDKs that will simplify your mobile and modern application development needs, leveraging OpenShift's Container technology to provide a secure, scalable backend platform.</p>
     <p>
       <a target="_blank" href="https://www.openshift.org/">
