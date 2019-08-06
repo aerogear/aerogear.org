@@ -63,7 +63,7 @@ ci:
   documentation: https://docs.aerogear.org/aerogear/latest/mobile-cicd.html
   github: https://github.com/aerogearcatalog/aerogear-digger-apb
 
-security:
+device-security:
   name: Device Security
   icon: security
   link: /services/device-security/
@@ -72,4 +72,16 @@ security:
     - Perform a range of device trust checks on the mobile device, such as checking if the device is rooted, and allows you take proactive action based on the results
     - Distribute SSL certificates with a mobile app to create a direct chain of trust (certificate pinning) for Android
   documentation: https://docs.aerogear.org/aerogear/latest/device-security.html
+  github: 
+
+app-security:
+  name: Application Security
+  icon: lock
+  link: /services/app-security/
+  description: Easily configure and manage application security 
+  features: 
+    - Allows you to connect to the bound mobile security service on OpenShift 
+    - Can be use by a security administrator to enable or disable applications
+    - Returns a message from the mobile security service which can be used by a developer to inform a user that the application has been disabled.
+  documentation: https://docs.aerogear.org/aerogear/latest/app-security.html
   github: 
