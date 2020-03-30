@@ -1,8 +1,0 @@
-JsonSZ.swift
-	public init() {}
-	public func <=<T>(inout left: T, right: JsonSZ)
-	public func <=<T: JSONSerializable>(inout left: T, right: JsonSZ)
-	public func <=<T: JSONSerializable>(inout left: [T], right: JsonSZ)
-	public func <=(inout left: [AnyObject], right: JsonSZ)
-	public func <=<T: JSONSerializable>(inout left: [String:  T], right: JsonSZ)
-	public func <=(inout left: [String:  AnyObject], right: JsonSZ)

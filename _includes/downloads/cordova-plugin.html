@@ -1,8 +1,0 @@
-{% assign moduleName = include.moduleName %}
-{% assign module = include.module %}
-<p>
-  <a href="https://github.com/aerogear/aerogear-{{ moduleName }}-cordova/releases/{{ module.version }}" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download {{ module.name }} Plugin</a>
-  <a href="https://www.npmjs.com/package/{{ module.plugin }}" class="btn btn-primary btn-sm"><i class="fa fa-cubes"></i> Plugin Registry</a>
-  <a href="https://github.com/aerogear/aerogear-cordova-{{ moduleName }}/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
-  <span class="label label-default cordovaplugin" contenteditable="true" readonly="readonly"><span contenteditable="false">{{ module.plugin }}</span></span>
-</p>

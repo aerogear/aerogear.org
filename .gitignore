@@ -12,3 +12,6 @@ bin/
 *.iml
 /nbproject/private/
 .idea
+build
+node_modules
+*.lock

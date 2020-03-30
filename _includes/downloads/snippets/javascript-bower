@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    ...
-    "aerogear": "{{ include.version }}"
-  }
-}

@@ -1,7 +1,0 @@
-Device Registration with UPS
- 
-note left ofDevice: Got token from Push Network
-Device->RegistrationSDK: RegisterWithDeviceToken
-RegistrationSDK->UPS: Basic Auth + SendDeviceTokenViaHttps
-UPS->RegistrationSDK: OK
-RegistrationSDK->Device: invoke callback 

@@ -1,9 +1,0 @@
-{% assign module = include.module %}
-{% assign moduleName = module.name %}
-<p>
-  <a href="{{ module.zip }}" class="btn btn-primary-inverse"><i class="fa fa-cloud-download"></i> Download iOS {{ module.name }} v{{ module.version }}</a>
-  <a href="http://cocoapods.org/?q={{ module.cocoapod }}" class="btn btn-primary btn-sm"><i class="fa fa-cubes"></i> CocoaPods</a>
-  <a href="{{ module.demo }}" class="btn btn-primary btn-sm"><i class="fa fa-cogs"></i> Demo</a>
-  <a href="{{ module.guide }}" class="btn btn-primary btn-sm"><i class="fa fa-book"></i> Guide</a>
-  <a href="https://github.com/aerogear/aerogear-ios-{{ moduleName }}/" class="btn btn-primary btn-sm"><i class="fa fa-github-alt"></i> View the Source</a>
-</p>

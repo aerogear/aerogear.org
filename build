@@ -1,6 +1,0 @@
-#!/bin/sh
-
-gem install --conservative bundler
-bundle install --path vendor/bundle
-rm -rf _site/
-bundle exec jekyll build
