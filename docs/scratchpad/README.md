@@ -1,2 +1,0 @@
-AeroGear Scratchpad Docs
-========================

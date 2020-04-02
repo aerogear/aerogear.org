@@ -1,5 +1,0 @@
-<dependency>
-  <groupId>org.jboss.aerogear</groupId>
-  <artifactId>unifiedpush-java-client</artifactId>
-  <version>1.0.0</version>
-</dependency>

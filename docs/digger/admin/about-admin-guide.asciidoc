@@ -1,5 +1,0 @@
-== AeroGear Digger Administration
-The following text describes optional post-installation steps:
-
-- Installing Jenkins Plugins
-- Accessing Nagios server for Digger installation health monitoring
