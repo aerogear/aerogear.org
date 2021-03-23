@@ -45,7 +45,7 @@ class Footer extends React.Component {
           </div>
           <div>
             <h5>Community</h5>
-            <a href="/help">
+            <a href={`${this.props.config.baseUrl}/help`}>
               Help
             </a>
             <a href={this.props.config.mailingList}>
