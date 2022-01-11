@@ -22,6 +22,6 @@ production_url : http://aerogear.org
 
 
 # Less compiler
-gems: ['jekyll-less']
+# gems: ['jekyll-less']
 
-lessc: /css/styles.less , /css/styles.css
+# lessc: /css/styles.less , /css/styles.css
