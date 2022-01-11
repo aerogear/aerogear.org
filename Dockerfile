@@ -2,7 +2,7 @@ FROM fedora:27
 
 ## Install dependencies and rvm
 RUN dnf install -y git wget gpg which grep sed findutils htop grep procps-ng patch libyaml-devel glibc-headers autoconf gcc-c++ glibc-devel patch readline-devel zlib-devel libffi-devel openssl-devel bzip2 automake libtool bison sqlite-devel libcurl-devel libcurl
-RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+RUN gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN \curl -sSL https://get.rvm.io | bash -s stable
 
 ## Setup user, project, and workdir
